@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>合同会社RIVIA&CO. | 旅先で「暮らす」という、新しい選択肢。</title>
     <meta name="description" content="全国の空き家に息を吹き込み、その土地の自然や食をのびのびと楽しめる空間へ。日本に足りなかった新しい滞在の形を、私たちがデザインします。">
+
+    <!--
+        OGP（SNSでシェアされたときの表示）
+        公開ドメインが決まったら、og:url と og:image の「https://example.com」を実際のURLに変更してください。
+        og:image は絶対URLでないと各SNSで表示されません。
+    -->
+    <meta property="og:title" content="合同会社RIVIA&amp;CO. | 旅先で「暮らす」という、新しい選択肢。">
+    <meta property="og:description" content="全国の空き家に息を吹き込み、その土地の自然や食をのびのびと楽しめる空間へ。日本に足りなかった新しい滞在の形を、私たちがデザインします。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:image" content="https://example.com/images/ogp.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="合同会社RIVIA&amp;CO.">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary_large_image">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -159,8 +175,8 @@
                         <!-- Service Card 1 -->
                         <div class="group cursor-pointer flex flex-col" onclick="navigate('service-owned')">
                             <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-8 shadow-sm border border-brand-gray/50 bg-white">
-                                <!-- 画像（Unsplashから仮置き） -->
-                                <img src="https://images.unsplash.com/photo-1502672260266-1c1c24240f58?q=80&w=800&auto=format&fit=crop" alt="自社宿泊施設の運営" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <!-- 画像: NODE Shimoda 客室 -->
+                                <img src="images/node-shimoda-amenity.avif" alt="NODE Shimoda 客室（ベッドとタオル）" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                                 <div class="absolute inset-0 bg-brand-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                 <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 text-sm font-bold text-brand-black shadow-sm">
                                     <i class="ph ph-house-line text-brand-green text-lg"></i> 01
@@ -226,8 +242,8 @@
             <!-- Service LP Hero -->
             <section class="relative pt-20 pb-24 md:pt-32 md:pb-40 bg-brand-black text-white overflow-hidden">
                 <div class="absolute inset-0 hero-overlay opacity-90 z-10"></div>
-                <!-- Unsplash Background Image -->
-                <div class="absolute inset-0 z-0 bg-gray-800" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1920&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+                <!-- 背景画像: NODE Shimoda リビング -->
+                <div class="absolute inset-0 z-0 bg-gray-800" style="background-image: url('images/node-shimoda-living.avif'); background-size: cover; background-position: center;"></div>
                 
                 <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="max-w-3xl">
@@ -301,7 +317,7 @@
                         </div>
                         <div class="relative">
                             <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-brand-gray shadow-xl relative z-10">
-                                 <img src="https://images.unsplash.com/photo-1503694978374-8a2fa686963a?q=80&w=800&auto=format&fit=crop" alt="空間設計のプロセス" class="w-full h-full object-cover">
+                                 <img src="images/node-shimoda-bedroom.avif" alt="NODE Shimoda 寝室（ブルーアクセントウォール・ダブルベッド）" loading="lazy" decoding="async" class="w-full h-full object-cover">
                             </div>
                             <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-brand-green/10 rounded-full z-0 filter blur-2xl"></div>
                         </div>
@@ -640,7 +656,14 @@
 
                     <!-- Contact Form Formspree integration -->
                     <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-brand-gray/50">
-                        <form action="https://formspree.io/f/rivia.co0122@gmail.com" method="POST" class="space-y-6">
+                        <!--
+                            ▼ 送信先の設定（要対応）
+                            1. https://formspree.io にログインし「+ New Form」でフォームを作成
+                               （通知先メールアドレス: rivia.co0122@gmail.com）
+                            2. 発行された URL（例: https://formspree.io/f/abcdwxyz）の
+                               「YOUR_FORM_ID」の部分を、発行された ID に置き換える
+                        -->
+                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6">
                             
                             <!-- Name -->
                             <div>
