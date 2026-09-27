@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合同会社RIVIA&CO. | 旅先で「暮らす」という、新しい選択肢。</title>
+    <meta name="description" content="全国の空き家に息を吹き込み、その土地の自然や食をのびのびと楽しめる空間へ。日本に足りなかった新しい滞在の形を、私たちがデザインします。">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config for Custom Colors & Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            white: '#ffffff',
+                            light: '#f7f9fa',
+                            gray: '#e5e7eb',
+                            charcoal: '#374151',
+                            green: '#1a472a', // Deep green accent
+                            green_light: '#2d6a43',
+                            black: '#111827'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons (for UI elements) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="flex flex-col min-h-screen font-sans">
+
+    <header class="fixed w-full z-50 glass-header transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="navigate('home')">
+                    <span class="font-serif font-semibold text-2xl tracking-wider text-brand-black">RIVIA<span class="text-brand-green">&</span>CO.</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <div class="relative group">
+                        <button class="text-brand-charcoal hover:text-brand-green font-medium text-sm transition-colors py-2 flex items-center gap-1">
+                            Services <i class="ph ph-caret-down text-xs"></i>
+                        </button>
+                        <!-- Dropdown -->
+                        <div class="absolute left-0 mt-2 w-56 rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                            <div class="py-2 px-2" role="menu" aria-orientation="vertical">
+                                <a href="#" onclick="navigate('service-owned'); return false;" class="block px-4 py-3 text-sm text-brand-charcoal hover:bg-brand-light hover:text-brand-green rounded-lg transition-colors">自社宿泊施設の運営</a>
+                                <a href="#" onclick="navigate('service-management'); return false;" class="block px-4 py-3 text-sm text-brand-charcoal hover:bg-brand-light hover:text-brand-green rounded-lg transition-colors">運営委託事業</a>
+                                <a href="#" onclick="navigate('service-sns'); return false;" class="block px-4 py-3 text-sm text-brand-charcoal hover:bg-brand-light hover:text-brand-green rounded-lg transition-colors">SNSマーケティング</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" onclick="navigate('about'); return false;" class="text-brand-charcoal hover:text-brand-green font-medium text-sm transition-colors">About</a>
+                    <a href="#" onclick="navigate('contact'); return false;" class="bg-brand-green hover:bg-brand-green_light text-white px-5 py-2.5 rounded-full font-medium text-sm transition-all shadow-sm hover:shadow-md">お問い合わせ</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-charcoal hover:text-brand-green focus:outline-none p-2">
+                        <i class="ph ph-list text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-brand-gray shadow-lg absolute w-full left-0">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <p class="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">Services</p>
+                <a href="#" onclick="navigate('service-owned'); toggleMobileMenu(); return false;" class="block px-3 py-3 rounded-md text-base font-medium text-brand-charcoal hover:bg-brand-light hover:text-brand-green pl-6">自社宿泊施設の運営</a>
+                <a href="#" onclick="navigate('service-management'); toggleMobileMenu(); return false;" class="block px-3 py-3 rounded-md text-base font-medium text-brand-charcoal hover:bg-brand-light hover:text-brand-green pl-6">運営委託事業</a>
+                <a href="#" onclick="navigate('service-sns'); toggleMobileMenu(); return false;" class="block px-3 py-3 rounded-md text-base font-medium text-brand-charcoal hover:bg-brand-light hover:text-brand-green pl-6">SNSマーケティング</a>
+                <div class="border-t border-gray-100 my-2"></div>
+                <a href="#" onclick="navigate('about'); toggleMobileMenu(); return false;" class="block px-3 py-3 rounded-md text-base font-medium text-brand-charcoal hover:bg-brand-light hover:text-brand-green">About</a>
+                <a href="#" onclick="navigate('contact'); toggleMobileMenu(); return false;" class="block mt-4 px-3 py-3 text-center rounded-md text-base font-medium bg-brand-green text-white hover:bg-brand-green_light">お問い合わせ</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area - Dynamic Routing -->
+    <main class="flex-grow pt-20">
+
+        <div id="page-home" class="page-view active">
+            <!-- Hero Section -->
+            <section class="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+                <!-- Abstract Background -->
+                <div class="absolute inset-0 z-0 bg-brand-light">
+                    <!-- Placeholder for abstract nature/architecture inspired shapes -->
+                    <div class="absolute top-0 left-0 w-full h-full opacity-30" style="background-image: radial-gradient(#1a472a 1px, transparent 1px); background-size: 40px 40px;"></div>
+                    <div class="absolute top-1/4 right-0 w-[600px] h-[600px] bg-brand-gray rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+                    <div class="absolute top-1/3 left-[-10%] w-[500px] h-[500px] bg-[#e2e8f0] rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+                </div>
+                
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-brand-black leading-tight mb-8 animate-fade-up delay-100">
+                        旅先で<span class="text-brand-green">「暮らす」</span>という、<br class="hidden md:block" />新しい選択肢。
+                    </h1>
+                    <p class="mt-4 text-base md:text-lg text-brand-charcoal max-w-2xl mx-auto leading-relaxed animate-fade-up delay-200">
+                        全国の空き家に息を吹き込み、その土地の自然や食をのびのびと楽しめる空間へ。<br class="hidden md:block" />
+                        日本に足りなかった新しい滞在の形を、私たちがデザインします。
+                    </p>
+                    <div class="mt-10 flex justify-center gap-4 animate-fade-up delay-300">
+                        <button onclick="navigate('about')" class="bg-brand-black hover:bg-brand-charcoal text-white px-8 py-4 rounded-full font-medium transition-all shadow-lg hover:shadow-xl flex items-center gap-2">
+                            Vision <i class="ph ph-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mission/Vision Section -->
+            <section class="py-24 bg-white relative">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-sm font-bold text-brand-green tracking-widest uppercase mb-4">Our Vision</h2>
+                    <p class="text-2xl md:text-3xl font-serif font-medium leading-relaxed text-brand-black mb-10">
+                        「日本の魅力を、暮らすように味わう。」
+                    </p>
+                    <div class="w-24 h-1 bg-brand-gray mx-auto mb-10"></div>
+                    <p class="text-brand-charcoal leading-loose text-left md:text-center text-lg">
+                        私たちは、単なる宿泊施設を提供するのではありません。<br class="hidden md:block" />
+                        地域に眠る資源（空き家や遊休不動産）を、デザインとテクノロジーの力で<br class="hidden md:block" />
+                        「その土地の日常を体験できる居場所」へとアップデートします。<br /><br />
+                        旅行者には新しい滞在価値を、地域には持続可能な経済循環を。
+                    </p>
+                </div>
+            </section>
+
+            <!-- Services Hub Section -->
+            <section class="py-32 bg-brand-light border-t border-brand-gray/30">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-20">
+                        <h2 class="text-sm font-bold text-brand-green tracking-widest uppercase mb-3">Our Services</h2>
+                        <h3 class="text-3xl md:text-4xl font-serif font-medium text-brand-black mb-6">事業内容</h3>
+                        <p class="text-brand-charcoal max-w-2xl mx-auto text-lg leading-relaxed">
+                            宿泊体験の創造から、施設運営の最適化、そして魅力の伝達まで。<br class="hidden md:block" />一気通貫で課題を解決します。
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-14">
+                        <!-- Service Card 1 -->
+                        <div class="group cursor-pointer flex flex-col" onclick="navigate('service-owned')">
+                            <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-8 shadow-sm border border-brand-gray/50 bg-white">
+                                <!-- 画像（Unsplashから仮置き） -->
+                                <img src="https://images.unsplash.com/photo-1502672260266-1c1c24240f58?q=80&w=800&auto=format&fit=crop" alt="自社宿泊施設の運営" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-brand-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 text-sm font-bold text-brand-black shadow-sm">
+                                    <i class="ph ph-house-line text-brand-green text-lg"></i> 01
+                                </div>
+                            </div>
+                            <h4 class="text-2xl font-bold text-brand-black mb-4 group-hover:text-brand-green transition-colors">自社宿泊施設の運営</h4>
+                            <p class="text-brand-charcoal text-base leading-relaxed mb-8 flex-grow">
+                                「暮らすように旅する」コンセプトを体現するフラッグシップ施設の開発・運営。ゼロからの空間設計と持続可能なオペレーション。
+                            </p>
+                            <div class="mt-auto flex items-center text-brand-black font-medium group-hover:text-brand-green transition-colors">
+                                <span class="border-b border-brand-black group-hover:border-brand-green pb-1 flex items-center gap-2 transition-all">
+                                    詳細を見る <i class="ph ph-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Service Card 2 -->
+                        <div class="group cursor-pointer flex flex-col" onclick="navigate('service-management')">
+                            <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-8 shadow-sm border border-brand-gray/50 bg-white">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="運営委託事業" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-brand-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 text-sm font-bold text-brand-black shadow-sm">
+                                    <i class="ph ph-handshake text-brand-green text-lg"></i> 02
+                                </div>
+                            </div>
+                            <h4 class="text-2xl font-bold text-brand-black mb-4 group-hover:text-brand-green transition-colors">運営委託事業</h4>
+                            <p class="text-brand-charcoal text-base leading-relaxed mb-8 flex-grow">
+                                現場の負担を減らし、宿のポテンシャルを最大化する伴走型の運営委託。プロによるハイブリッド運営で利益率を改善。
+                            </p>
+                            <div class="mt-auto flex items-center text-brand-black font-medium group-hover:text-brand-green transition-colors">
+                                <span class="border-b border-brand-black group-hover:border-brand-green pb-1 flex items-center gap-2 transition-all">
+                                    詳細を見る <i class="ph ph-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Service Card 3 -->
+                        <div class="group cursor-pointer flex flex-col" onclick="navigate('service-sns')">
+                            <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-8 shadow-sm border border-brand-gray/50 bg-white">
+                                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" alt="SNSマーケティング" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-brand-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 text-sm font-bold text-brand-black shadow-sm">
+                                    <i class="ph ph-share-network text-brand-green text-lg"></i> 03
+                                </div>
+                            </div>
+                            <h4 class="text-2xl font-bold text-brand-black mb-4 group-hover:text-brand-green transition-colors">SNSマーケティング</h4>
+                            <p class="text-brand-charcoal text-base leading-relaxed mb-8 flex-grow">
+                                宿の魅力を「届けたい人」へ。宿泊業界に特化したアカウント設計とクリエイティブで、直接予約に直結する導線を構築。
+                            </p>
+                            <div class="mt-auto flex items-center text-brand-black font-medium group-hover:text-brand-green transition-colors">
+                                <span class="border-b border-brand-black group-hover:border-brand-green pb-1 flex items-center gap-2 transition-all">
+                                    詳細を見る <i class="ph ph-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <div id="page-service-owned" class="page-view">
+            <!-- Service LP Hero -->
+            <section class="relative pt-20 pb-24 md:pt-32 md:pb-40 bg-brand-black text-white overflow-hidden">
+                <div class="absolute inset-0 hero-overlay opacity-90 z-10"></div>
+                <!-- Unsplash Background Image -->
+                <div class="absolute inset-0 z-0 bg-gray-800" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1920&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+                
+                <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl">
+                        <span class="text-brand-green_light font-bold tracking-widest uppercase text-sm mb-4 block">Service 01</span>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-medium leading-tight mb-6">
+                            「暮らすように旅する」を体現する、<br />私たちのフラッグシップ。
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-10">
+                            自社宿泊施設の開発・運営
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Problem Section (課題提起) -->
+            <section class="lp-section bg-brand-light">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-serif font-bold text-brand-black">こんなお悩みはありませんか？</h2>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border-l-4 border-brand-charcoal flex gap-4">
+                            <i class="ph ph-question text-3xl text-brand-charcoal flex-shrink-0"></i>
+                            <p class="text-brand-charcoal font-medium text-lg leading-relaxed">
+                                空き家や遊休不動産を活用したいが、ありきたりな民泊にはしたくない
+                            </p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border-l-4 border-brand-charcoal flex gap-4">
+                            <i class="ph ph-question text-3xl text-brand-charcoal flex-shrink-0"></i>
+                            <p class="text-brand-charcoal font-medium text-lg leading-relaxed">
+                                地域に根ざした、長く愛される価値ある宿を創りたいがノウハウがない
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Solution & Strength Section (解決策・強み) -->
+            <section class="lp-section bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <span class="text-brand-green font-bold tracking-widest uppercase text-sm mb-2 block">Our Strength</span>
+                            <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-black mb-6 leading-tight">
+                                コンセプト設計から<br />持続可能な運営まで一貫して。
+                            </h2>
+                            <p class="text-brand-charcoal leading-loose mb-8 text-lg">
+                                RIVIA&CO.は、単なるリノベーション業者ではありません。その土地の歴史、自然、日常を丁寧に紐解き、ターゲット層に深く刺さる「体験」をゼロからデザインします。
+                            </p>
+                            
+                            <ul class="space-y-6">
+                                <li class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-green flex-shrink-0">
+                                        <i class="ph ph-check-circle text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-brand-black text-lg">地域の日常を体験する空間作り</h4>
+                                        <p class="text-brand-charcoal mt-2 text-sm leading-relaxed">画一的なホテルライクではなく、その土地の気候風土に合わせた素材選びや、地元のクラフトマンシップを取り入れた唯一無二の空間を設計します。</p>
+                                    </div>
+                                </li>
+                                <li class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-green flex-shrink-0">
+                                        <i class="ph ph-check-circle text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-brand-black text-lg">属人化しないオペレーション構築</h4>
+                                        <p class="text-brand-charcoal mt-2 text-sm leading-relaxed">テクノロジーを活用し、チェックインから清掃管理、ゲスト対応まで、高品質ながらも効率的で持続可能な運営体制を構築します。</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="relative">
+                            <div class="aspect-[4/5] rounded-2xl overflow-hidden bg-brand-gray shadow-xl relative z-10">
+                                 <img src="https://images.unsplash.com/photo-1503694978374-8a2fa686963a?q=80&w=800&auto=format&fit=crop" alt="空間設計のプロセス" class="w-full h-full object-cover">
+                            </div>
+                            <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-brand-green/10 rounded-full z-0 filter blur-2xl"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="py-20 bg-brand-green text-white text-center">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl md:text-4xl font-serif font-medium mb-6">遊休資産の価値を最大化しませんか？</h2>
+                    <p class="text-brand-light opacity-90 mb-10 max-w-2xl mx-auto text-lg">
+                        物件の活用方法、共同事業の可能性について、まずはお気軽にご相談ください。
+                    </p>
+                    <button onclick="navigate('contact')" class="bg-white text-brand-green hover:bg-brand-light px-10 py-5 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2">
+                        物件の活用・共同事業について相談する <i class="ph ph-arrow-right"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+
+        <div id="page-service-management" class="page-view">
+            <!-- Service LP Hero -->
+            <section class="relative pt-20 pb-24 md:pt-32 md:pb-40 bg-brand-black text-white overflow-hidden">
+                <div class="absolute inset-0 bg-brand-charcoal opacity-90 z-10"></div>
+                <!-- Unsplash Background Image -->
+                <div class="absolute inset-0 z-0 bg-gray-800" style="background-image: url('https://images.unsplash.com/photo-1556745753-b2904692b3cd?q=80&w=1920&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+                
+                <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl">
+                        <span class="text-brand-gray font-bold tracking-widest uppercase text-sm mb-4 block">Service 02</span>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-medium leading-tight mb-6">
+                            現場の負担を減らし、<br />宿のポテンシャルを最大化する。
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-10">
+                            伴走型・運営委託事業
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Problem Section -->
+            <section class="lp-section bg-brand-light">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-serif font-bold text-brand-black">宿泊施設運営の現場で、<br class="md:hidden"/>こんな課題を抱えていませんか？</h2>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border-l-4 border-brand-charcoal flex gap-4">
+                            <i class="ph ph-users-three text-3xl text-brand-charcoal flex-shrink-0"></i>
+                            <p class="text-brand-charcoal font-medium text-lg leading-relaxed">
+                                人手不足で、日々の清掃やゲスト対応など目の前の業務が回らない
+                            </p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border-l-4 border-brand-charcoal flex gap-4">
+                            <i class="ph ph-chart-line-down text-3xl text-brand-charcoal flex-shrink-0"></i>
+                            <p class="text-brand-charcoal font-medium text-lg leading-relaxed">
+                                複数OTAの管理が複雑で、適切な価格設定や集客対策ができていない
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Solution Section -->
+            <section class="lp-section bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center flex-row-reverse">
+                        <div class="lg:order-2">
+                            <span class="text-brand-charcoal font-bold tracking-widest uppercase text-sm mb-2 block">Our Approach</span>
+                            <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-black mb-6 leading-tight">
+                                プロによるハイブリッド運営で、<br />利益率を抜本的に改善。
+                            </h2>
+                            <p class="text-brand-charcoal leading-loose mb-8 text-lg">
+                                自社施設を運営している私たちだからこそ、現場のリアルな痛みが分かります。オンラインの効率化とオフラインのおもてなしを融合させたハイブリッド体制で伴走します。
+                            </p>
+                            
+                            <ul class="space-y-6">
+                                <li class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-black flex-shrink-0">
+                                        <i class="ph ph-lightning text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-brand-black text-lg">バックオフィス業務の完全巻き取り</h4>
+                                        <p class="text-brand-charcoal mt-2 text-sm leading-relaxed">予約管理、メッセージ対応、ダイナミックプライシング（料金最適化）など、煩雑な業務を代行し、オーナー様が「宿の価値向上」に集中できる環境を作ります。</p>
+                                    </div>
+                                </li>
+                                <li class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-black flex-shrink-0">
+                                        <i class="ph ph-trend-up text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-brand-black text-lg">データドリブンな収益最大化</h4>
+                                        <p class="text-brand-charcoal mt-2 text-sm leading-relaxed">周辺エリアの市場データや競合分析に基づき、稼働率と客単価のバランスを最適化。確実な利益改善の仕組みを構築します。</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="relative lg:order-1">
+                            <div class="aspect-square rounded-2xl overflow-hidden bg-brand-gray shadow-xl">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="運営データ分析" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="py-20 bg-brand-charcoal text-white text-center">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl md:text-4xl font-serif font-medium mb-6">運営の現状、無料で診断いたします。</h2>
+                    <p class="text-brand-gray opacity-90 mb-10 max-w-2xl mx-auto text-lg">
+                        「今の運営体制で良いのか」「もっと利益を残せるのではないか」など、お気軽にご相談ください。
+                    </p>
+                    <button onclick="navigate('contact')" class="bg-white text-brand-charcoal hover:bg-brand-light px-10 py-5 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2">
+                        運営の悩みを無料で相談する <i class="ph ph-arrow-right"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+
+        <div id="page-service-sns" class="page-view">
+            <!-- Service LP Hero -->
+            <section class="relative pt-20 pb-24 md:pt-32 md:pb-40 bg-brand-light overflow-hidden border-b border-brand-gray">
+                <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <span class="text-brand-green font-bold tracking-widest uppercase text-sm mb-4 block">Service 03</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-medium leading-tight mb-6 text-brand-black">
+                        宿の魅力を「届けたい人」へ。<br />予約に直結するSNSマーケティング。
+                    </h1>
+                    <p class="text-lg md:text-xl text-brand-charcoal leading-relaxed mb-10 max-w-2xl mx-auto">
+                        宿泊業界特化型 SNS運用・クリエイティブ制作
+                    </p>
+                </div>
+                <!-- Abstract social elements background -->
+                <div class="absolute inset-0 z-0 opacity-10 pointer-events-none overflow-hidden flex justify-center items-center">
+                     <i class="ph ph-instagram-logo text-[30rem] text-brand-charcoal absolute -right-20 -bottom-20 transform -rotate-12"></i>
+                     <i class="ph ph-camera text-[20rem] text-brand-green absolute -left-10 top-10 transform rotate-12"></i>
+                </div>
+            </section>
+
+            <!-- Problem Section -->
+            <section class="lp-section bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-serif font-bold text-brand-black">SNS運用が「作業」になっていませんか？</h2>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="bg-brand-light p-8 rounded-2xl border-t-4 border-brand-green flex flex-col items-center text-center">
+                            <i class="ph ph-heart-break text-4xl text-brand-charcoal mb-4"></i>
+                            <p class="text-brand-charcoal font-medium text-lg leading-relaxed">
+                                Instagramをやっているが、フォロワーが増えず、実際の予約に繋がっている実感がない
+                            </p>
+                        </div>
+                        <div class="bg-brand-light p-8 rounded-2xl border-t-4 border-brand-green flex flex-col items-center text-center">
+                            <i class="ph ph-calendar-blank text-4xl text-brand-charcoal mb-4"></i>
+                            <p class="text-brand-charcoal font-medium text-lg leading-relaxed">
+                                日々の発信企画が思いつかず、写真のクオリティも低いため、更新がストップしている
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Solution Section -->
+            <section class="lp-section bg-brand-light">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <span class="text-brand-green font-bold tracking-widest uppercase text-sm mb-2 block">Solutions</span>
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-black">宿泊業界に特化した、<br class="md:hidden"/>”勝てる”アカウント設計。</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-brand-green/10 rounded-lg flex items-center justify-center text-brand-green mb-6">
+                                <i class="ph ph-compass text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-black mb-4">戦略的アカウント設計</h3>
+                            <p class="text-brand-charcoal text-sm leading-relaxed">
+                                ターゲット層（ペルソナ）を明確に定義し、彼らが「行きたい」と思うコンセプトと世界観を再構築。場当たり的ではない、予約獲得をゴールとしたKGI/KPI設計を行います。
+                            </p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-brand-green/10 rounded-lg flex items-center justify-center text-brand-green mb-6">
+                                <i class="ph ph-aperture text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-black mb-4">120%引き出すクリエイティブ</h3>
+                            <p class="text-brand-charcoal text-sm leading-relaxed">
+                                空間の魅力、食事のシズル感、周辺環境の空気感を伝える高品質な写真・ショート動画（リール）の撮影から編集までを実施。目を引くビジュアルでエンゲージメントを高めます。
+                            </p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-brand-green/10 rounded-lg flex items-center justify-center text-brand-green mb-6">
+                                <i class="ph ph-mouse-left-click text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-black mb-4">直接予約を増やす導線設計</h3>
+                            <p class="text-brand-charcoal text-sm leading-relaxed">
+                                フォロワーを増やすだけが目的ではありません。プロフィール設計、ハイライト活用、ストーリーズでのコミュニケーションを通じて、自社サイト経由の直接予約（手数料無料）を最大化します。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="py-20 bg-brand-black text-white text-center">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl md:text-4xl font-serif font-medium mb-6">SNSのポテンシャルを解放しませんか？</h2>
+                    <p class="text-brand-gray opacity-90 mb-10 max-w-2xl mx-auto text-lg">
+                        現在のアカウントの課題分析から改善提案まで。<br class="hidden md:block" />OTA依存から脱却するための第一歩をサポートします。
+                    </p>
+                    <button onclick="navigate('contact')" class="bg-brand-green hover:bg-brand-green_light text-white px-10 py-5 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2">
+                        SNS運用の無料診断・相談はこちら <i class="ph ph-arrow-right"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+
+        <div id="page-about" class="page-view bg-white">
+            
+            <!-- About Hero -->
+            <section class="pt-32 pb-16 md:pt-40 md:pb-24 bg-brand-light border-b border-brand-gray/50">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-black mb-6">About Us</h1>
+                    <p class="text-lg text-brand-charcoal font-medium">合同会社RIVIA&CO.について</p>
+                </div>
+            </section>
+
+            <!-- Message Section -->
+            <section class="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-serif font-bold text-brand-black mb-12 text-center">Message</h2>
+                
+                <div class="space-y-8 text-brand-charcoal leading-loose text-lg font-serif">
+                    <p class="text-2xl font-bold text-brand-black leading-relaxed mb-10 border-l-4 border-brand-green pl-6">
+                        「日本の観光産業が持つポテンシャルは、まだまだこんなものではない」<br />
+                        ——それが、私たちがRIVIA&CO.を立ち上げた原点です。
+                    </p>
+                    <p>
+                        近年、日本全国で深刻化する「空き家問題」。<br class="hidden md:block"/>
+                        私たちはこの社会課題を、マイナスなものとしてではなく、新たな価値を創出するための豊かな資源だと捉えています。
+                    </p>
+                    <p>
+                        私たちが目指すのは、単なる宿泊施設の提供ではありません。<br class="hidden md:block"/>
+                        ワーケーションを主軸とする国内外のトラベラーが、その土地ならではの豊かな食や手つかずの自然、息づく風土を五感で味わいながら、のびのびと過ごせる空間を創り出すことです。
+                    </p>
+                    <p>
+                        旅の本来の目的とは、有名な観光名所を慌ただしく巡ることだけではなく、その土地の日常に溶け込み、新しい自分の居場所を見つけることにあると私たちは信じています。
+                    </p>
+                    <p class="text-xl font-bold text-brand-black text-center my-12">
+                        「暮らすように旅する」
+                    </p>
+                    <p>
+                        このコンセプトを体現する宿を全国津々浦々に展開し、地域の息吹を感じられる新しい滞在体験をデザインしていく。<br class="hidden md:block"/>
+                        そして、宿泊施設の運営・支援・マーケティングという3つの軸を通じて、日本の観光産業を次なるステージへと引き上げてまいります。
+                    </p>
+                </div>
+            </section>
+
+            <!-- Founders Profile -->
+            <section class="py-24 bg-brand-light">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-serif font-bold text-brand-black mb-16 text-center">Founders</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <!-- Profile 1 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gray/30">
+                            <h3 class="text-2xl font-bold text-brand-black mb-2">石原 佑真</h3>
+                            <p class="text-brand-green font-medium mb-6">Yuma Ishihara</p>
+                            <p class="text-brand-charcoal text-sm leading-relaxed">
+                                大阪府出身。新卒で株式会社リクルートに入社し、新規事業開発室にてゼロイチの事業立ち上げを経験。その後、HR Techベンチャー、サイバーセキュリティベンチャーにおいて、一貫して新規事業の創出と組織拡大を牽引。ビジネスをグロースさせる確かな手腕と、テクノロジー領域での幅広い知見を活かし、RIVIA&CO.を共同創業。
+                            </p>
+                        </div>
+                        
+                        <!-- Profile 2 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gray/30">
+                            <h3 class="text-2xl font-bold text-brand-black mb-2">片井 進太</h3>
+                            <p class="text-brand-green font-medium mb-6">Shinta Katai</p>
+                            <p class="text-brand-charcoal text-sm leading-relaxed">
+                                静岡県出身。新卒で静岡県庁に入庁し、行政の視点から地域課題に向き合う。その後、大手メーカー、リクルート、HR Techベンチャーを経て、ビッグデータを扱うベンチャー企業に参画。官民両方の視点と、多角的な業界知見、データ分析力を強みに持つ。現在、複数企業の経営にも携わりながらRIVIA&CO.を共同創業。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Company Profile Table -->
+            <section class="py-24 bg-white">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-serif font-bold text-brand-black mb-12 text-center">Company Profile</h2>
+                    
+                    <div class="border-t border-brand-gray">
+                        <dl class="divide-y divide-brand-gray">
+                            <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                                <dt class="text-sm font-bold text-brand-black">商号</dt>
+                                <dd class="mt-1 text-sm text-brand-charcoal sm:mt-0 sm:col-span-2">合同会社RIVIA&CO. (RIVIA&CO. LLC)</dd>
+                            </div>
+                            <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                                <dt class="text-sm font-bold text-brand-black">設立</dt>
+                                <dd class="mt-1 text-sm text-brand-charcoal sm:mt-0 sm:col-span-2">2026年9月1日</dd>
+                            </div>
+                            <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                                <dt class="text-sm font-bold text-brand-black">資本金</dt>
+                                <dd class="mt-1 text-sm text-brand-charcoal sm:mt-0 sm:col-span-2">1,000,000円</dd>
+                            </div>
+                            <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                                <dt class="text-sm font-bold text-brand-black">代表社員</dt>
+                                <dd class="mt-1 text-sm text-brand-charcoal sm:mt-0 sm:col-span-2">片井 進太 ／ 石原 佑真</dd>
+                            </div>
+                            <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                                <dt class="text-sm font-bold text-brand-black">本店所在地</dt>
+                                <dd class="mt-1 text-sm text-brand-charcoal sm:mt-0 sm:col-span-2">
+                                    〒121-0012<br>
+                                    東京都足立区青井六丁目8番8号 Grand Maison青井201
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <div id="page-contact" class="page-view bg-brand-light min-h-[80vh]">
+            
+            <section class="pt-32 pb-16 md:pt-40 md:pb-24">
+                <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-black mb-6">Contact</h1>
+                        <p class="text-brand-charcoal">
+                            事業に関するご相談、協業のお問い合わせなど、<br class="hidden md:block"/>
+                            下記フォームよりお気軽にご連絡ください。
+                        </p>
+                    </div>
+
+                    <!-- Contact Form Formspree integration -->
+                    <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12 border border-brand-gray/50">
+                        <form action="https://formspree.io/f/rivia.co0122@gmail.com" method="POST" class="space-y-6">
+                            
+                            <!-- Name -->
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-brand-black mb-2">お名前 <span class="text-red-500">*</span></label>
+                                <input type="text" name="name" id="name" required
+                                    class="w-full rounded-lg border-brand-gray border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-shadow bg-brand-light/50"
+                                    placeholder="山田 太郎">
+                            </div>
+
+                            <!-- Company/Facility Name -->
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-brand-black mb-2">会社名・施設名</label>
+                                <input type="text" name="company" id="company"
+                                    class="w-full rounded-lg border-brand-gray border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-shadow bg-brand-light/50"
+                                    placeholder="株式会社○○ / ゲストハウス○○">
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-brand-black mb-2">メールアドレス <span class="text-red-500">*</span></label>
+                                <input type="email" name="email" id="email" required
+                                    class="w-full rounded-lg border-brand-gray border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-shadow bg-brand-light/50"
+                                    placeholder="your@email.com">
+                            </div>
+
+                            <!-- Phone -->
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-brand-black mb-2">電話番号</label>
+                                <input type="tel" name="phone" id="phone"
+                                    class="w-full rounded-lg border-brand-gray border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-shadow bg-brand-light/50"
+                                    placeholder="090-1234-5678">
+                            </div>
+
+                            <!-- Service Category -->
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-brand-black mb-2">ご相談の事業 <span class="text-red-500">*</span></label>
+                                <div class="relative">
+                                    <select name="service" id="service" required
+                                        class="w-full rounded-lg border-brand-gray border px-4 py-3 appearance-none focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-shadow bg-brand-light/50">
+                                        <option value="" disabled selected>選択してください</option>
+                                        <option value="自社宿泊施設の運営について">自社宿泊施設の運営について（物件活用・協業など）</option>
+                                        <option value="運営委託事業について">運営委託事業について（運営代行の相談など）</option>
+                                        <option value="SNSマーケティングについて">SNSマーケティングについて</option>
+                                        <option value="その他">その他</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-charcoal">
+                                        <i class="ph ph-caret-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Message -->
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-brand-black mb-2">お問い合わせ内容 <span class="text-red-500">*</span></label>
+                                <textarea name="message" id="message" rows="5" required
+                                    class="w-full rounded-lg border-brand-gray border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-shadow bg-brand-light/50 resize-y"
+                                    placeholder="具体的なご相談内容をご記入ください。"></textarea>
+                            </div>
+
+                            <!-- Formspree hidden inputs for config -->
+                            <input type="hidden" name="_subject" value="【RIVIA&CO.】Webサイトからのお問い合わせ">
+                            <!-- Optional: redirect URL after submission (can be set in formspree settings or here) -->
+                            <!-- <input type="hidden" name="_next" value="https://your-domain.com/thanks.html"> -->
+
+                            <div class="pt-4">
+                                <button type="submit"
+                                    class="w-full bg-brand-black hover:bg-brand-charcoal text-white font-bold py-4 px-8 rounded-lg transition-colors shadow-md flex justify-center items-center gap-2">
+                                    送信する <i class="ph ph-paper-plane-right"></i>
+                                </button>
+                            </div>
+                            
+                            <p class="text-xs text-center text-gray-500 mt-4">
+                                ※送信後、数営業日以内に担当者よりご連絡いたします。
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-brand-black text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-center md:text-left">
+                    <span class="font-serif font-semibold text-2xl tracking-wider block mb-2 cursor-pointer" onclick="navigate('home')">RIVIA<span class="text-brand-green">&</span>CO.</span>
+                    <p class="text-gray-400 text-sm">合同会社RIVIA&CO.</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+                    <a href="#" onclick="navigate('home'); return false;" class="hover:text-white transition-colors">Home</a>
+                    <a href="#" onclick="navigate('service-owned'); return false;" class="hover:text-white transition-colors">自社宿泊施設</a>
+                    <a href="#" onclick="navigate('service-management'); return false;" class="hover:text-white transition-colors">運営委託</a>
+                    <a href="#" onclick="navigate('service-sns'); return false;" class="hover:text-white transition-colors">SNSマーケティング</a>
+                    <a href="#" onclick="navigate('about'); return false;" class="hover:text-white transition-colors">About</a>
+                    <a href="#" onclick="navigate('contact'); return false;" class="hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2026 RIVIA&CO. LLC All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
