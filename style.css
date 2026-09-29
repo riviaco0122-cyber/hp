@@ -274,36 +274,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .vision__outcomes { grid-template-columns: 1fr; margin-top: 16px; }
 }
 
-/* トップのファーストビュー写真（下田の海辺・縦長写真） */
-.hero--photo { isolation: isolate; }
-.hero__photo { position: absolute; z-index: -1; background: url("hero.jpg") 60% 55% / cover no-repeat, linear-gradient(180deg, #cfe0e6 0%, #9fbfcb 45%, #5f8c9c 75%, #3e6776 100%); }
-.hero__caption { position: absolute; right: var(--gutter); bottom: 24px; z-index: 1; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.85); text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); }
-@media (min-width: 900px) {
-  /* PC: 写真を全面に敷き、文字の後ろ（左側）だけ白くぼかして黒文字で読ませる */
-  .hero__photo { inset: 0; background-size: cover, cover; background-position: center 64%, center; animation: heroZoom 14s var(--ease) forwards; transform: scale(1.03); }
-  .hero--photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.84) 38%, rgba(255, 255, 255, 0.4) 60%, rgba(255, 255, 255, 0) 78%); }
-  .hero--photo .container { position: relative; z-index: 1; }
-  .hero--photo .container > * { max-width: 720px; }
-  .hero--photo .hero__title { font-size: clamp(36px, 4.2vw, 60px); white-space: nowrap; }
-  .hero--photo .hero__sub { max-width: 560px; }
-  .hero--photo .hero__lines { display: none; }
-  .hero--photo .hero__sub { color: var(--c-text); }
-  .hero--photo .hero__scroll { color: var(--c-sub); }
-}
-@media (max-width: 899px) {
-  /* スマホ: 写真を全面に敷き、白文字を重ねる */
-  .hero--photo { color: #fff; min-height: calc(92vh - var(--header-h)); align-items: flex-end; }
-  .hero__photo { inset: 0; }
-  /* 空の白い雲の上でも白文字が読めるよう、全体に海の色味の影をかける */
-  .hero--photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(8, 28, 40, 0.5) 0%, rgba(8, 28, 40, 0.42) 50%, rgba(8, 28, 40, 0.62) 100%); }
-  .hero--photo .hero__lines { display: none; }
-  .hero--photo .hero__title, .hero--photo .hero__sub { color: #fff; text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25); }
-  .hero--photo .btn { background: #fff; border-color: #fff; color: var(--c-text); }
-  .hero--photo .btn--ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.85); }
-}
-@media (max-width: 1279px) { .hero--photo .hero__scroll { display: none; } }
-@media (prefers-reduced-motion: reduce) { .hero__photo { animation: none !important; transform: none !important; } }
-
 /* News */
 .news { display: grid; grid-template-columns: 240px 1fr; gap: 40px; }
 .news__list { border-top: 1px solid var(--c-line); }
@@ -394,43 +364,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .page-hero__ja { margin-top: 20px; font-size: 14px; color: var(--c-sub); letter-spacing: 0.12em; }
 .page-hero__lead { margin-top: 40px; color: var(--c-sub); max-width: 680px; line-height: 2.2; }
 @media (max-width: 899px) { .page-hero { padding: 72px 0 64px; } }
-
-/* 写真つきのページ見出し（採用ページ） */
-.page-hero--photo { position: relative; overflow: hidden; min-height: min(78vh, 720px); display: flex; align-items: flex-end; padding: 160px 0 96px; border-bottom: 0; color: #fff; }
-.page-hero__photo {
-  position: absolute; inset: 0; z-index: -2;
-  /* 写真がない場合は下のグラデーションを表示（現在は未使用。写真つき見出しを使うページ用） */
-  background:
-    url("hero.jpg") center / cover no-repeat,
-    linear-gradient(180deg, #cfe0e6 0%, #9fbfcb 45%, #5f8c9c 75%, #3e6776 100%);
-  transform: scale(1.03); animation: heroZoom 14s var(--ease) forwards;
-}
-.page-hero--photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0) 35%, rgba(17, 17, 17, 0.55) 100%); }
-.page-hero--photo .page-hero__en, .page-hero--photo .page-hero__ja, .page-hero--photo .page-hero__lead { color: #fff; }
-.page-hero--photo .page-hero__lead { text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25); }
-.page-hero--photo .breadcrumb ol, .page-hero--photo .breadcrumb a { color: rgba(255, 255, 255, 0.85); }
-.page-hero--photo .breadcrumb li + li::before { color: rgba(255, 255, 255, 0.5); }
-.page-hero__caption { position: absolute; right: var(--gutter); bottom: 24px; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.8); }
-@keyframes heroZoom { to { transform: scale(1); } }
-@media (max-width: 899px) {
-  .page-hero--photo { min-height: 72vh; padding: 120px 0 72px; }
-  .page-hero__photo { background-position: 55% center, center; }
-  .page-hero--photo::after { background: linear-gradient(180deg, rgba(8, 28, 40, 0.5) 0%, rgba(8, 28, 40, 0.42) 50%, rgba(8, 28, 40, 0.62) 100%); }
-}
-/* PC: 写真は縦長のため、右側に縦長のまま配置して拡大によるボケを防ぐ。文字は左に黒で置く */
-@media (min-width: 900px) {
-  .page-hero--photo { color: var(--c-text); align-items: center; min-height: min(84vh, 780px); padding: 120px 0; border-bottom: 1px solid var(--c-line); }
-  .page-hero__photo { background-size: max(140%, 100vw) auto, cover; background-position: 0% 38%, center; }
-  .page-hero--photo::after { display: block; background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.78) 34%, rgba(255, 255, 255, 0.25) 62%, rgba(255, 255, 255, 0) 80%); }
-  .page-hero--photo .container { position: relative; z-index: 1; }
-  .page-hero--photo .container > * { max-width: 640px; }
-  .page-hero--photo .page-hero__en, .page-hero--photo .page-hero__ja { color: var(--c-text); }
-  .page-hero--photo .page-hero__lead { color: var(--c-text); text-shadow: none; }
-  .page-hero--photo .breadcrumb ol, .page-hero--photo .breadcrumb a { color: var(--c-muted); }
-  .page-hero--photo .breadcrumb li + li::before { color: var(--c-line-strong); }
-  .page-hero__caption { z-index: 1; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); }
-}
-@media (prefers-reduced-motion: reduce) { .page-hero__photo { animation: none; transform: none; } }
 
 .overview { display: grid; grid-template-columns: 280px 1fr; gap: 56px; }
 .overview__text { font-family: var(--font-serif); font-weight: 300; font-size: 19px; line-height: 2.3; letter-spacing: 0.06em; }
