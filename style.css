@@ -365,6 +365,26 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .page-hero__lead { margin-top: 40px; color: var(--c-sub); max-width: 680px; line-height: 2.2; }
 @media (max-width: 899px) { .page-hero { padding: 72px 0 64px; } }
 
+/* 写真つきのページ見出し（採用ページ） */
+.page-hero--photo { position: relative; overflow: hidden; min-height: min(78vh, 720px); display: flex; align-items: flex-end; padding: 160px 0 96px; border-bottom: 0; color: #fff; }
+.page-hero__photo {
+  position: absolute; inset: 0; z-index: -2;
+  /* careers-hero.jpg がない場合は下のグラデーション（海のイメージ）を表示 */
+  background:
+    url("careers-hero.jpg") center / cover no-repeat,
+    linear-gradient(180deg, #cfe0e6 0%, #9fbfcb 45%, #5f8c9c 75%, #3e6776 100%);
+  transform: scale(1.03); animation: heroZoom 14s var(--ease) forwards;
+}
+.page-hero--photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0) 35%, rgba(17, 17, 17, 0.55) 100%); }
+.page-hero--photo .page-hero__en, .page-hero--photo .page-hero__ja, .page-hero--photo .page-hero__lead { color: #fff; }
+.page-hero--photo .page-hero__lead { text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25); }
+.page-hero--photo .breadcrumb ol, .page-hero--photo .breadcrumb a { color: rgba(255, 255, 255, 0.85); }
+.page-hero--photo .breadcrumb li + li::before { color: rgba(255, 255, 255, 0.5); }
+.page-hero__caption { position: absolute; right: var(--gutter); bottom: 24px; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.8); }
+@keyframes heroZoom { to { transform: scale(1); } }
+@media (max-width: 899px) { .page-hero--photo { min-height: 72vh; padding: 120px 0 72px; } }
+@media (prefers-reduced-motion: reduce) { .page-hero__photo { animation: none; transform: none; } }
+
 .overview { display: grid; grid-template-columns: 280px 1fr; gap: 56px; }
 .overview__text { font-family: var(--font-serif); font-weight: 300; font-size: 19px; line-height: 2.3; letter-spacing: 0.06em; }
 @media (max-width: 899px) { .overview { grid-template-columns: 1fr; gap: 24px; } .overview__text { font-size: 16px; } }
