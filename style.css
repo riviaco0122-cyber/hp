@@ -32,11 +32,6 @@
   }
 }
 
-/* ---------- Pages（index.html 内のページ切り替え） ---------- */
-.js .page { display: none; }
-.js .page.is-active { display: block; }
-.sticky-cta[hidden] { display: none !important; }
-
 /* ---------- Reset / Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: var(--header-h); }

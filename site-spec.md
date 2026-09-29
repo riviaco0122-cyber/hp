@@ -11,20 +11,29 @@
 * **除外要素:** 「Seminar & Event」「マガジン」「SNSへのリンク」は置かない。
 * **技術スタック:** HTML / CSS / JavaScript（外部ライブラリなし）。GitHub → Vercel で公開。
 
-### ファイル構成（4ファイル）
+### ファイル構成
+
+検索エンジンが事業ごとのページを個別に評価できるよう、ページごとにHTMLファイルを分ける。フォルダは作らず、すべて同じ場所に置く。
 
 ```
-index.html     全ページ（トップ / About / サービス5ページ / Careers / Contact / プライバシーポリシー）
-style.css      全ページ共通スタイル（実績写真もこの中に埋め込み）
-main.js        ページ切り替え、ドロップダウン、フェードイン、フォーム補助
-site-spec.md   この指示書（公開サーバーには置かない）
+index.html                 トップページ
+about.html                 About Us
+service-operation.html     宿泊施設運営事業
+service-consignment.html   運営委託事業
+service-marketing.html     WEB集客支援事業
+service-recruit.html       WEB採用支援事業
+service-consulting.html    宿泊施設 開業・運営コンサルティング事業
+careers.html               採用情報
+contact.html               お問い合わせ
+privacy.html               プライバシーポリシー
+style.css                  全ページ共通スタイル（実績写真もこの中に埋め込み）
+main.js                    ドロップダウン、フェードイン、フォーム補助など
+ogp.jpg                    SNSシェア画像（1200×630）
+site-spec.md               この指示書（公開サーバーには置かない）
 ```
 
-* 任意: `ogp.jpg`（SNSシェア画像。1200×630）を index.html と同じ場所に置くと、SNSでシェアされたときに画像が表示される。
-* 各ページは index.html 内の `<section class="page" id="…">` として記述し、URLの末尾（#about、#service-operation など）でページを切り替える。
-* ページID: #home ／ #about ／ #service-operation ／ #service-consignment ／ #service-marketing ／ #service-recruit ／ #service-consulting ／ #careers ／ #contact ／ #privacy
-* ページを切り替えるとブラウザのタブのタイトルも切り替わり、戻るボタンで前のページに戻れる。
-* main.js が読み込めなかった場合でも、2秒後に全コンテンツを表示する（アニメーション待ちで中身が消えたままにならないようにする）。
+* ヘッダー・フッターは全ページ共通。変更する場合は全HTMLを同じ内容に揃える。
+* フェードインは「画面内に入った要素・通り過ぎた要素をすべて表示」する方式。main.js が読み込めなかった場合も、2秒後に全コンテンツを表示する（表示抜けの防止）。
 
 ---
 
@@ -57,14 +66,14 @@ site-spec.md   この指示書（公開サーバーには置かない）
 * トップ以外の全ページで、ページ見出しの上に「TOP / Service / 宿泊施設運営事業」のような現在地を表示する。
 
 ### SEO・計測（追加）
-* title / description / canonical / OGP（og:image は ogp.jpg、1200×630）/ ファビコン（HTMLに埋め込み）。
-* 会社情報の構造化データ（Organization）を設置。
+* 全ページ: 個別の title / description / canonical / OGP（og:image は ogp.jpg、1200×630）/ ファビコン（HTMLに埋め込み）。
+* トップ: 会社情報の構造化データ（Organization）。サービスページ: よくある質問の構造化データ（FAQPage）。
 * Googleアナリティクスを使う場合は、各ページの `<head>` 内のコメント箇所に計測タグを貼る。
 * **公開ドメイン確定後に、全HTMLの `https://example.com` を実際のURLに置き換える。**
 
 ---
 
-## 3. トップページ（#home）
+## 3. トップページ（index.html）
 
 ### Hero / First View
 * 写真は使わない。白地に縦の極細線を3本引き、大きな明朝体のコピーのみで構成。
@@ -109,7 +118,7 @@ site-spec.md   この指示書（公開サーバーには置かない）
 
 ---
 
-## 4. About Us（#about）
+## 4. About Us（about.html）
 * Message、Founders（石原 佑真 ／ 片井 進太）、Company Profile は従来の内容どおり。
 * 会社概要に「事業内容」（5事業）を追加。ページ末尾に相談CTAを追加。
 
@@ -141,7 +150,7 @@ site-spec.md   この指示書（公開サーバーには置かない）
 
 ---
 
-### 宿泊施設運営事業（`#service-operation`）
+### 宿泊施設運営事業（`service-operation.html`）
 
 * **トップメッセージ:** 空き家を、地域を照らす新たな拠点へ。
 * **こんな方へ:** 「実家・空き家の処分や利活用に悩んでいる」
@@ -199,7 +208,7 @@ site-spec.md   この指示書（公開サーバーには置かない）
 
 ---
 
-### 運営委託事業（`#service-consignment`）
+### 運営委託事業（`service-consignment.html`）
 
 * **トップメッセージ:** 現場を知るプロが、あなたの施設の価値を最大化する。
 * **こんな方へ:** 「既存宿の運営代行・業務を丸投げしたい」
@@ -257,7 +266,7 @@ site-spec.md   この指示書（公開サーバーには置かない）
 
 ---
 
-### WEB集客支援事業（`#service-marketing`）
+### WEB集客支援事業（`service-marketing.html`）
 
 * **トップメッセージ:** 施設の魅力を、「予約」という結果に変える。
 * **こんな方へ:** 「自社サイトやSNSからの直接予約を増やしたい」
@@ -315,7 +324,7 @@ site-spec.md   この指示書（公開サーバーには置かない）
 
 ---
 
-### WEB採用支援事業（`#service-recruit`）
+### WEB採用支援事業（`service-recruit.html`）
 
 * **トップメッセージ:** 地域の未来を創る、最適な人材と出会うために。
 * **こんな方へ:** 「観光業・地方ビジネスでの人材不足を解決したい」
@@ -373,7 +382,7 @@ site-spec.md   この指示書（公開サーバーには置かない）
 
 ---
 
-### 宿泊施設 開業・運営コンサルティング事業（`#service-consulting`）
+### 宿泊施設 開業・運営コンサルティング事業（`service-consulting.html`）
 
 * **トップメッセージ:** 理想の宿を、確かな事業へ。
 * **こんな方へ:** 「副業や投資として宿泊事業を立ち上げたい」
@@ -431,13 +440,13 @@ site-spec.md   この指示書（公開サーバーには置かない）
 
 ---
 
-## 6. Careers（#careers）
+## 6. Careers（careers.html）
 * **トップメッセージ:** 一緒に働いてくれる方を募集しています。／年齢や経験は不問です。／弊社のMISSIONとVALUESに共感した方はお気軽にご連絡ください！
     * ⚠ サイト内に MISSION / VALUES の記載がないため、About に追加するか文言を調整する。
 * **エントリーフォーム:** お名前*（名字 名前）／ Email*（Email@address）／ 詳細*（志望動機や希望年収、思っていることを是非教えてください。）／ 添付ファイル*（職務経歴書・履歴書：点線枠のファイル選択×2。選択後はファイル名を表示）／ プライバシーポリシーへの同意*（追加）／ [送信する]
 * 送信先: Formspree（`YOUR_CAREERS_FORM_ID` を発行IDに置き換え。ファイル添付は有料プランのみ）
 
-## 7. Contact（#contact）
+## 7. Contact（contact.html）
 * **見出し:** Contact ／ お問い合わせ
 * **リード文:** まずは気軽にご相談ください。無料でご相談をお受けしています。2営業日以内に担当者よりご連絡いたします。
 * **安心材料（追加）:** ご相談・お見積りは無料 ／ 無理な営業は一切なし ／ 2営業日以内にご連絡
@@ -446,7 +455,7 @@ site-spec.md   この指示書（公開サーバーには置かない）
 * **フォーム下（追加）:** ご相談の流れ（4ステップ）
 * 送信先: Formspree（`YOUR_FORM_ID` を発行IDに置き換え。通知先 rivia.co0122@gmail.com）
 
-## 8. プライバシーポリシー（#privacy・追加）
+## 8. プライバシーポリシー（privacy.html・追加）
 * フォームで個人情報を取得するため新設。一般的なひな形のため、公開前に内容を確認する。
     1. 個人情報の取得
     2. 利用目的
@@ -461,7 +470,7 @@ site-spec.md   この指示書（公開サーバーには置かない）
 
 ## 9. 公開前チェックリスト
 
-- [ ] index.html の `https://example.com` を公開ドメインに置き換える（canonical / OGP / 構造化データ）
+- [ ] 全HTMLの `https://example.com` を公開ドメインに置き換える（canonical / OGP / 構造化データ）
 - [ ] Formspree のフォームIDを設定する（お問い合わせ・採用）
 - [ ] 市場データの出典を確認し、確認できない数値を差し替え・削除する
 - [ ] Careers の MISSION / VALUES の扱いを決める

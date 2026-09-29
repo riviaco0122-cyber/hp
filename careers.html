@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers | 合同会社RIVIA&amp;CO.</title>
+  <meta name="description" content="合同会社RIVIA&amp;CO.の採用情報です。年齢・経験は問いません。一緒に働く仲間を募集しています。">
+  <link rel="canonical" href="https://example.com/careers.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='38' fill='%23fff'%3ER%3C/text%3E%3Ccircle cx='49' cy='44' r='3' fill='%232d6a43'/%3E%3C/svg%3E" type="image/svg+xml">
+
+  <!--
+    OGP（SNSでシェアされたときの表示）
+    公開ドメインが決まったら「https://example.com」を実際のURLに変更してください。
+  -->
+  <meta property="og:title" content="Careers | 合同会社RIVIA&amp;CO.">
+  <meta property="og:description" content="合同会社RIVIA&amp;CO.の採用情報です。年齢・経験は問いません。一緒に働く仲間を募集しています。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://example.com/careers.html">
+  <meta property="og:image" content="https://example.com/ogp.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="合同会社RIVIA&amp;CO.">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!--
+    アクセス解析（Google アナリティクス）を使う場合は、発行された計測タグをここに貼り付けてください。
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // JS が有効なときだけアニメーション用の非表示を使う。
+    // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
+    document.documentElement.classList.add('js');
+    setTimeout(function () { if (!window.RIVIA_READY) document.documentElement.classList.remove('js'); }, 2000);
+  </script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" aria-label="RIVIA&amp;CO. トップページ">RIVIA<span>&amp;</span>CO.</a>
+
+      <nav class="gnav" aria-label="メインナビゲーション">
+        <ul class="gnav__list">
+          <li><a href="about.html" class="gnav__link">About</a></li>
+          <li class="gnav__item--has-sub">
+            <button type="button" class="gnav__link" aria-expanded="false" aria-controls="subnav-service">Service <span class="gnav__caret" aria-hidden="true"></span></button>
+            <ul class="subnav" id="subnav-service">
+              <li><a href="service-operation.html">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></a></li>
+              <li><a href="service-consignment.html">運営委託事業 <span class="arrow" aria-hidden="true"></span></a></li>
+              <li><a href="service-marketing.html">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
+              <li><a href="service-recruit.html">WEB採用支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
+              <li><a href="service-consulting.html">宿泊施設 開業・運営コンサルティング事業 <span class="arrow" aria-hidden="true"></span></a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#project" class="gnav__link">Project</a></li>
+          <li><a href="careers.html" class="gnav__link" aria-current="page">Careers</a></li>
+        </ul>
+      </nav>
+
+      <a href="contact.html" class="btn header__cta">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト"><ol><li><a href="index.html">TOP</a></li><li aria-current="page">Careers</li></ol></nav>
+        <p class="page-hero__en reveal">Careers</p>
+        <h1 class="page-hero__ja reveal" data-delay="1">採用情報</h1>
+        <p class="page-hero__lead reveal" data-delay="2">一緒に働いてくれる方を募集しています。<br>年齢や経験は不問です。<br>弊社のMISSIONとVALUESに共感した方は<br class="sp-only">お気軽にご連絡ください！</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-head reveal">
+          <span class="eyebrow">Entry</span>
+          <h2 class="section-title">エントリーフォーム</h2>
+        </div>
+        <!--
+          ▼ 送信先の設定（要対応）
+          Formspree で採用用のフォームを作成し、「YOUR_CAREERS_FORM_ID」を発行された ID に置き換えてください。
+          ※ Formspree でのファイル添付は有料プランのみ対応です。
+        -->
+        <form class="form reveal" action="https://formspree.io/f/YOUR_CAREERS_FORM_ID" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】採用エントリー">
+          <div class="form__field">
+            <label for="c-name">お名前 <span class="req">必須</span></label>
+            <input type="text" id="c-name" name="name" placeholder="名字 名前" autocomplete="name" required>
+          </div>
+          <div class="form__field">
+            <label for="c-email">Email <span class="req">必須</span></label>
+            <input type="email" id="c-email" name="email" placeholder="Email@address" autocomplete="email" required>
+          </div>
+          <div class="form__field">
+            <label for="c-detail">詳細 <span class="req">必須</span></label>
+            <textarea id="c-detail" name="detail" placeholder="志望動機や希望年収、思っていることを是非教えてください。" required></textarea>
+          </div>
+          <fieldset class="form__field form__fieldset">
+            <legend class="form__legend">添付ファイル <span class="req">必須</span></legend>
+            <p class="form__notes form__notes--above">職務経歴書・履歴書を添付してください。</p>
+            <div class="files">
+            <label class="file">
+              <input type="file" name="resume" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" required>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/></svg>
+              <span class="file__title">職務経歴書</span>
+              <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択">クリックまたはドラッグ&amp;ドロップでファイルを選択</span>
+            </label>
+            <label class="file">
+              <input type="file" name="cv" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" required>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/></svg>
+              <span class="file__title">履歴書</span>
+              <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択">クリックまたはドラッグ&amp;ドロップでファイルを選択</span>
+            </label>
+            </div>
+          </fieldset>
+          <div class="form__consent">
+            <label class="check" for="c-agree">
+              <input type="checkbox" id="c-agree" name="privacy_agree" value="同意する" required>
+              <span><a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する <span class="req">必須</span></span>
+            </label>
+          </div>
+          <div class="form__submit"><button type="submit" class="btn btn--lg">送信する <span class="arrow" aria-hidden="true"></span></button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="logo">RIVIA<span>&amp;</span>CO.</a>
+          <p class="footer__copy">地方の価値をマーケティングし、日本の観光産業を次なるステージへ。宿泊施設の運営から集客・採用、まちづくりまでを牽引する伴走型パートナー。</p>
+          <address class="footer__address">〒121-0012<br>東京都足立区青井六丁目8番8号 Grand Maison青井201</address>
+        </div>
+        <nav class="footer__nav" aria-label="フッターナビゲーション">
+          <div><h3><a href="about.html">About</a></h3></div>
+          <div class="footer__service">
+            <h3>Service</h3>
+            <ul>
+              <li><a href="service-operation.html">宿泊施設運営事業</a></li>
+              <li><a href="service-consignment.html">運営委託事業</a></li>
+              <li><a href="service-marketing.html">WEB集客支援事業</a></li>
+              <li><a href="service-recruit.html">WEB採用支援事業</a></li>
+              <li><a href="service-consulting.html">宿泊施設 開業・運営コンサルティング事業</a></li>
+            </ul>
+          </div>
+          <div><h3><a href="index.html#project">Project</a></h3></div>
+          <div><h3><a href="careers.html">Careers</a></h3></div>
+          <div><h3><a href="contact.html">Contact</a></h3></div>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <a href="privacy.html">プライバシーポリシー</a>
+        <p>&copy; 2026 合同会社RIVIA&amp;CO. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="main.js"></script>
+</body>
+</html>
