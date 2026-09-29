@@ -51,11 +51,21 @@
           <li class="gnav__item--has-sub">
             <button type="button" class="gnav__link" aria-expanded="false" aria-controls="subnav-service">Service <span class="gnav__caret" aria-hidden="true"></span></button>
             <ul class="subnav" id="subnav-service">
-              <li><a href="service-operation.html">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></a></li>
-              <li><a href="service-consignment.html">運営委託事業 <span class="arrow" aria-hidden="true"></span></a></li>
-              <li><a href="service-marketing.html">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
-              <li><a href="service-recruit.html">WEB採用支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
-              <li><a href="service-consulting.html">宿泊施設 開業・運営コンサルティング事業 <span class="arrow" aria-hidden="true"></span></a></li>
+              <li class="subnav__group">
+                <span class="subnav__label">宿泊施設の運営・開業</span>
+                <ul>
+                  <li><a href="service-operation.html">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                  <li><a href="service-consignment.html">運営委託事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                  <li><a href="service-consulting.html">宿泊施設 開業・運営コンサルティング事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                </ul>
+              </li>
+              <li class="subnav__group">
+                <span class="subnav__label">WEBマーケティング支援</span>
+                <ul>
+                  <li><a href="service-marketing.html">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                  <li><a href="service-recruit.html">WEB採用支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                </ul>
+              </li>
             </ul>
           </li>
           <li><a href="index.html#project" class="gnav__link">Project</a></li>
@@ -104,32 +114,46 @@
           <h2 class="section-title">目的・お悩みから探す</h2>
           <p class="section-lead">いま抱えている課題に近いものをお選びください。最適なご支援内容をご案内します。</p>
         </div>
-        <div class="persona">
-          <a href="service-operation.html" class="persona__card reveal" data-delay="0">
-            <span class="persona__num">01</span>
-            <p class="persona__worry">「実家・空き家の処分や利活用に悩んでいる」</p>
-            <span class="persona__to">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></span>
-          </a>
-          <a href="service-consignment.html" class="persona__card reveal" data-delay="1">
-            <span class="persona__num">02</span>
-            <p class="persona__worry">「既存宿の運営代行・業務を丸投げしたい」</p>
-            <span class="persona__to">運営委託事業 <span class="arrow" aria-hidden="true"></span></span>
-          </a>
-          <a href="service-marketing.html" class="persona__card reveal" data-delay="2">
-            <span class="persona__num">03</span>
-            <p class="persona__worry">「自社サイトやSNSからの直接予約を増やしたい」</p>
-            <span class="persona__to">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></span>
-          </a>
-          <a href="service-recruit.html" class="persona__card reveal" data-delay="0">
-            <span class="persona__num">04</span>
-            <p class="persona__worry">「観光業・地方ビジネスでの人材不足を解決したい」</p>
-            <span class="persona__to">WEB採用支援事業 <span class="arrow" aria-hidden="true"></span></span>
-          </a>
-          <a href="service-consulting.html" class="persona__card reveal" data-delay="1">
-            <span class="persona__num">05</span>
-            <p class="persona__worry">「副業や投資として宿泊事業を立ち上げたい」</p>
-            <span class="persona__to">宿泊施設 開業・運営コンサルティング事業 <span class="arrow" aria-hidden="true"></span></span>
-          </a>
+        <div class="persona-group">
+          <div class="persona-group__head reveal">
+            <p class="group-label"><span>Hospitality</span>宿泊施設の運営・開業</p>
+            <p class="persona-group__lead">空き家の再生から既存施設の運営、これから宿を始める方の開業まで。自ら宿を運営する当事者として支援します。</p>
+          </div>
+          <div class="persona persona--3">
+            <a href="service-operation.html" class="persona__card reveal" data-delay="0">
+              <span class="persona__num">01</span>
+              <p class="persona__worry">「実家・空き家の処分や利活用に悩んでいる」</p>
+              <span class="persona__to">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></span>
+            </a>
+            <a href="service-consignment.html" class="persona__card reveal" data-delay="1">
+              <span class="persona__num">02</span>
+              <p class="persona__worry">「既存宿の運営代行・業務を丸投げしたい」</p>
+              <span class="persona__to">運営委託事業 <span class="arrow" aria-hidden="true"></span></span>
+            </a>
+            <a href="service-consulting.html" class="persona__card reveal" data-delay="2">
+              <span class="persona__num">03</span>
+              <p class="persona__worry">「副業や投資として宿泊事業を立ち上げたい」</p>
+              <span class="persona__to">宿泊施設 開業・運営コンサルティング事業 <span class="arrow" aria-hidden="true"></span></span>
+            </a>
+          </div>
+        </div>
+        <div class="persona-group">
+          <div class="persona-group__head reveal">
+            <p class="group-label"><span>Web Marketing</span>WEBマーケティング支援</p>
+            <p class="persona-group__lead">宿泊・観光事業の「集客」と「採用」を、WEBマーケティングの力で経営課題から解決します。</p>
+          </div>
+          <div class="persona persona--2">
+            <a href="service-marketing.html" class="persona__card reveal" data-delay="0">
+              <span class="persona__num">04</span>
+              <p class="persona__worry">「OTAに頼らず、自社の集客で直接予約を増やしたい」</p>
+              <span class="persona__to">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></span>
+            </a>
+            <a href="service-recruit.html" class="persona__card reveal" data-delay="1">
+              <span class="persona__num">05</span>
+              <p class="persona__worry">「観光業・地方ビジネスでの人材不足を解決したい」</p>
+              <span class="persona__to">WEB採用支援事業 <span class="arrow" aria-hidden="true"></span></span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -144,7 +168,7 @@
           <li class="reason reveal" data-delay="0">
             <span class="reason__num">01</span>
             <h3 class="reason__title">自ら宿を運営する「当事者」</h3>
-            <p class="reason__text">静岡県下田市で「NODE Shimoda」を自社で運営し、Airbnb評価4.88を獲得しています。机上の提案ではなく、現場で検証したノウハウをお届けします。</p>
+            <p class="reason__text">静岡県下田市の「NODE Shimoda」（Airbnb評価4.88）をはじめ、複数の宿泊施設を自ら運営しています。机上の提案ではなく、現場で検証したノウハウをお届けします。</p>
           </li>
           <li class="reason reveal" data-delay="1">
             <span class="reason__num">02</span>
@@ -165,12 +189,14 @@
         <div class="section-head reveal">
           <span class="eyebrow">Project</span>
           <h2 class="section-title">運営実績</h2>
+          <p class="section-lead">RIVIAは、複数の宿泊施設を自ら運営しています。その中から代表的な一例をご紹介します。</p>
         </div>
         <a href="https://www.com-shizuoka.com/ja/property/node-shimoda/amenities.html" class="project reveal" target="_blank" rel="noopener">
           <div class="project__img">
             <div class="project__photo" role="img" aria-label="NODE Shimoda のリビング"></div>
           </div>
           <div>
+            <span class="project__badge">運営施設の一例</span>
             <h3 class="project__name">NODE Shimoda</h3>
             <p class="project__meta">静岡県下田市 ｜ 一棟貸しバケーションレンタル</p>
             <p class="project__desc">下田市旧町内の中心部、空き家をリノベーションした滞在型アパート。ペリーロードなど観光スポットへも徒歩圏内。RIVIAが運営・集客・DX化（多言語AIチャットボット導入）を担当し、地方の空き家活用と宿泊施設のデジタル化を現場で実践しています。</p>
@@ -178,6 +204,7 @@
             <span class="project__link">施設サイトを見る（別タブで開きます） <span class="arrow" aria-hidden="true"></span></span>
           </div>
         </a>
+        <p class="project__note reveal">※ RIVIAでは、NODE Shimodaのほかにも複数の宿泊施設を運営しています。ここでは、空き家再生から運営・集客・DX化までを一貫して手がけた代表的な事例としてご紹介しています。その他の運営施設については、お気軽にお問い合わせください。</p>
       </div>
     </section>
 
@@ -251,11 +278,13 @@
           <div class="footer__service">
             <h3>Service</h3>
             <ul>
+              <li class="footer__group">宿泊施設の運営・開業</li>
               <li><a href="service-operation.html">宿泊施設運営事業</a></li>
               <li><a href="service-consignment.html">運営委託事業</a></li>
+              <li><a href="service-consulting.html">宿泊施設 開業・運営コンサルティング事業</a></li>
+              <li class="footer__group">WEBマーケティング支援</li>
               <li><a href="service-marketing.html">WEB集客支援事業</a></li>
               <li><a href="service-recruit.html">WEB採用支援事業</a></li>
-              <li><a href="service-consulting.html">宿泊施設 開業・運営コンサルティング事業</a></li>
             </ul>
           </div>
           <div><h3><a href="index.html#project">Project</a></h3></div>

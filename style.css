@@ -152,6 +152,8 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   transition: opacity .3s, transform .3s var(--ease), visibility .3s;
 }
 .subnav::before { content: ""; position: absolute; left: 0; right: 0; top: -20px; height: 20px; } /* ホバーの隙間対策 */
+.subnav__group + .subnav__group { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--c-line); }
+.subnav__label { display: block; padding: 8px 28px 4px; font-size: 11px; color: var(--c-muted); letter-spacing: 0.14em; }
 .subnav a { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 12px 28px; font-size: 14px; letter-spacing: 0.06em; transition: background .2s; }
 .subnav a:hover, .subnav a[aria-current="page"] { background: var(--c-bg-soft); }
 .subnav a .arrow { width: 16px; }
@@ -190,7 +192,8 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .gnav__item--has-sub.is-open .subnav { transform: translateY(0); }
   .subnav::before { display: none; }
   .subnav { white-space: normal; }
-  .subnav a { padding: 14px var(--gutter); }
+  .subnav a { padding: 12px var(--gutter); }
+  .subnav__label { padding: 8px var(--gutter) 2px; }
 }
 
 /* ==========================================================================
@@ -205,6 +208,8 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .footer__nav li a { font-size: 13px; color: var(--c-sub); line-height: 2.2; transition: color .2s; }
 .footer__nav li a:hover, .footer__nav h3 a:hover { color: var(--c-muted); }
 .footer__service { grid-row: span 4; }
+.footer__group { font-size: 11px; color: var(--c-muted); letter-spacing: 0.12em; margin-top: 10px; }
+.footer__group:first-child { margin-top: 0; }
 .footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 32px; margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--c-line); font-size: 12px; color: var(--c-muted); font-family: var(--font-en); letter-spacing: 0.08em; }
 .footer__bottom a { font-family: var(--font-sans); transition: color .2s; }
 .footer__bottom a:hover { color: var(--c-text); }
@@ -252,15 +257,29 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   transition: background .4s;
   min-height: 300px;
 }
-.persona__card:nth-child(4), .persona__card:nth-child(5) { grid-column: span 3; }
+.persona--2 .persona__card { grid-column: span 3; }
 .persona__card:hover { background: var(--c-bg-soft); }
 .persona__num { font-family: var(--font-en); font-size: 15px; color: var(--c-muted); letter-spacing: 0.1em; }
 .persona__worry { font-family: var(--font-serif); font-weight: 300; font-size: 19px; line-height: 1.9; letter-spacing: 0.06em; flex-grow: 1; }
 .persona__to { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 20px; border-top: 1px solid var(--c-line); font-size: 13px; color: var(--c-sub); }
 @media (max-width: 899px) {
   .persona { grid-template-columns: 1fr; }
-  .persona__card, .persona__card:nth-child(4), .persona__card:nth-child(5) { grid-column: auto; min-height: 0; padding: 36px 24px 28px; gap: 20px; }
+  .persona__card, .persona--2 .persona__card { grid-column: auto; min-height: 0; padding: 36px 24px 28px; gap: 20px; }
   .persona__worry { font-size: 17px; }
+}
+
+/* 事業の2つの軸 */
+.group-label { display: flex; align-items: baseline; gap: 16px; font-family: var(--font-serif); font-size: 19px; letter-spacing: 0.08em; }
+.group-label span { font-family: var(--font-en); font-size: 14px; color: var(--c-muted); letter-spacing: 0.16em; text-transform: uppercase; }
+.persona-group + .persona-group { margin-top: 72px; }
+.persona-group__head { display: grid; grid-template-columns: minmax(260px, auto) 1fr; align-items: baseline; gap: 12px 40px; margin-bottom: 24px; }
+.persona-group__lead { font-size: 14px; color: var(--c-sub); }
+.related-group + .related-group { margin-top: 48px; }
+.related-group .group-label { margin-bottom: 20px; font-size: 16px; }
+@media (max-width: 899px) {
+  .persona-group + .persona-group { margin-top: 56px; }
+  .persona-group__head { grid-template-columns: 1fr; }
+  .group-label { flex-wrap: wrap; gap: 4px 12px; }
 }
 
 /* Project */
@@ -268,6 +287,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .project__img { overflow: hidden; aspect-ratio: 3 / 2; background: var(--c-bg-soft); }
 .project__photo { width: 100%; height: 100%; background: var(--photo-node-shimoda) center / cover no-repeat; transition: transform 1.2s var(--ease); }
 .project:hover .project__photo { transform: scale(1.05); }
+.project__badge { display: inline-block; margin-bottom: 16px; padding: 3px 14px; border: 1px solid var(--c-text); font-size: 12px; letter-spacing: 0.1em; }
 .project__name { font-family: var(--font-en); font-weight: 300; font-size: clamp(34px, 4vw, 52px); letter-spacing: 0.06em; line-height: 1.2; }
 .project__meta { margin-top: 12px; font-size: 13px; color: var(--c-muted); letter-spacing: 0.08em; }
 .project__desc { margin-top: 28px; color: var(--c-sub); font-size: 14px; }
@@ -275,6 +295,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .project__rating strong { font-family: var(--font-en); font-weight: 300; font-size: 44px; line-height: 1; letter-spacing: 0.02em; }
 .project__rating span { font-size: 13px; color: var(--c-sub); }
 .project__link { margin-top: 28px; display: inline-flex; align-items: center; gap: 14px; font-size: 13px; letter-spacing: 0.1em; }
+.project__note { margin-top: 28px; font-size: 13px; color: var(--c-sub); line-height: 2; }
 @media (max-width: 899px) { .project { grid-template-columns: 1fr; gap: 36px; } }
 
 /* Careers CTA */
@@ -432,12 +453,27 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .founder + .founder { padding-left: 48px; padding-right: 0; border-left: 1px solid var(--c-line); }
 .founder__name { font-family: var(--font-serif); font-weight: 400; font-size: 24px; letter-spacing: 0.14em; }
 .founder__en { font-family: var(--font-en); font-size: 16px; color: var(--c-muted); letter-spacing: 0.12em; margin-top: 4px; }
+.founder__role { font-size: 12px; color: var(--c-muted); letter-spacing: 0.14em; margin-bottom: 12px; }
 .founder__bio { margin-top: 28px; font-size: 14px; color: var(--c-sub); line-height: 2.1; }
+.founder__block { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--c-line); }
+.founder__label { display: block; font-size: 12px; color: var(--c-muted); letter-spacing: 0.14em; margin-bottom: 16px; }
+.founder__career li { position: relative; padding: 0 0 18px 24px; font-size: 14px; line-height: 1.8; }
+.founder__career li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 9px; height: 9px; border: 1px solid var(--c-text); border-radius: 50%; background: #fff; z-index: 1; }
+.founder__career li::after { content: ""; position: absolute; left: 4px; top: 0.6em; bottom: -0.6em; width: 1px; background: var(--c-line-strong); }
+.founder__career li:last-child { padding-bottom: 0; }
+.founder__career li:last-child::after { display: none; }
+.founder__career li:last-child::before { background: var(--c-text); }
+.founder__career strong { font-weight: 500; }
+.founder__career span { display: block; font-size: 13px; color: var(--c-sub); }
+.founder__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.founder__tags li { border: 1px solid var(--c-line-strong); padding: 4px 14px; font-size: 12px; letter-spacing: 0.06em; }
 @media (max-width: 899px) { .founders { grid-template-columns: 1fr; } .founder, .founder + .founder { padding: 40px 0; border-left: 0; } }
 
 .profile { border-top: 1px solid var(--c-line); }
 .profile__row { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--c-line); font-size: 14px; }
 .profile__row dt { color: var(--c-muted); letter-spacing: 0.1em; }
+.profile__group { display: inline-block; margin-top: 8px; font-size: 12px; color: var(--c-muted); letter-spacing: 0.1em; }
+.profile__row dd > .profile__group:first-child { margin-top: 0; }
 @media (max-width: 899px) { .profile__row { grid-template-columns: 1fr; gap: 4px; padding: 22px 0; } }
 
 /* ==========================================================================

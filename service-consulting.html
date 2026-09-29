@@ -37,7 +37,7 @@
     document.documentElement.classList.add('js');
     setTimeout(function () { if (!window.RIVIA_READY) document.documentElement.classList.remove('js'); }, 2000);
   </script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "宿泊業の経験が全くない初心者でも開業できますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。ゼロから自走できるよう、現場のオペレーション手順やシステム操作まで実務ベースで全て伝授いたします。"}}, {"@type": "Question", "name": "自己資金はどれくらい必要になりますか？", "acceptedAnswer": {"@type": "Answer", "text": "賃貸物件を活用した小規模な一棟貸し民泊であれば、数千万円単位の巨額な資金がなくても数百万円程度からスタート可能なプランをご提案できます。"}}, {"@type": "Question", "name": "許認可が降りず開業できないリスクはありませんか？", "acceptedAnswer": {"@type": "Answer", "text": "契約前のSTEP1（物件診断）の段階で行政（保健所・消防）への事前相談を徹底し、確実に許可が降りる見込みを確認してから本格的な投資に進みます。"}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "宿泊業の経験が全くない初心者でも開業できますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。ゼロから自走できるよう、現場のオペレーション手順やシステム操作まで実務ベースで全て伝授いたします。"}}, {"@type": "Question", "name": "自己資金はどれくらい必要になりますか？", "acceptedAnswer": {"@type": "Answer", "text": "賃貸物件を活用した小規模な一棟貸し民泊であれば、数千万円単位の巨額な資金がなくても数百万円程度からスタート可能なプランをご提案できます。"}}, {"@type": "Question", "name": "許認可が降りず開業できないリスクはありませんか？", "acceptedAnswer": {"@type": "Answer", "text": "契約前のSTEP1（物件診断）の段階で行政（保健所・消防）への事前相談を徹底し、確実に許可が降りる見込みを確認してから本格的な投資に進みます。"}}, {"@type": "Question", "name": "物件がまだ決まっていない段階から相談できますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。STEP1の事業構想・立地＆物件診断から伴走します。予算や目標収支を整理したうえで、候補物件の見極めから一緒に進めます。"}}]}</script>
 </head>
 <body class="has-sticky-cta">
 
@@ -51,11 +51,21 @@
           <li class="gnav__item--has-sub">
             <button type="button" class="gnav__link" aria-expanded="false" aria-controls="subnav-service" aria-current="page">Service <span class="gnav__caret" aria-hidden="true"></span></button>
             <ul class="subnav" id="subnav-service">
-              <li><a href="service-operation.html">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></a></li>
-              <li><a href="service-consignment.html">運営委託事業 <span class="arrow" aria-hidden="true"></span></a></li>
-              <li><a href="service-marketing.html">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
-              <li><a href="service-recruit.html">WEB採用支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
-              <li><a href="service-consulting.html" aria-current="page">宿泊施設 開業・運営コンサルティング事業 <span class="arrow" aria-hidden="true"></span></a></li>
+              <li class="subnav__group">
+                <span class="subnav__label">宿泊施設の運営・開業</span>
+                <ul>
+                  <li><a href="service-operation.html">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                  <li><a href="service-consignment.html">運営委託事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                  <li><a href="service-consulting.html" aria-current="page">宿泊施設 開業・運営コンサルティング事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                </ul>
+              </li>
+              <li class="subnav__group">
+                <span class="subnav__label">WEBマーケティング支援</span>
+                <ul>
+                  <li><a href="service-marketing.html">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                  <li><a href="service-recruit.html">WEB採用支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                </ul>
+              </li>
             </ul>
           </li>
           <li><a href="index.html#project" class="gnav__link">Project</a></li>
@@ -211,7 +221,7 @@
             <div class="issue__bridge" aria-hidden="true"><span></span></div>
             <div class="issue__answer">
               <span class="issue__sublabel">RIVIAの打ち手</span>
-              <div class="issue__solve"><p>自社施設「NODE Shimoda」の運営で得た実データと現場知見をもとに助言します。</p><p>コンセプトから収支計画まで、実際の稼働・単価・コスト感に即した事業計画を一緒につくります。</p></div>
+              <div class="issue__solve"><p>NODE Shimodaをはじめ、自ら運営する複数の宿泊施設で得た実データと現場知見をもとに助言します。</p><p>コンセプトから収支計画まで、実際の稼働・単価・コスト感に即した事業計画を一緒につくります。</p></div>
               <div class="issue__kpi">
                 <span class="issue__sublabel">改善する経営指標</span>
                 <ul><li>収支計画の精度</li><li>投資回収期間</li><li>開業後の稼働率</li></ul>
@@ -287,13 +297,14 @@
         <div class="section-head reveal">
           <span class="eyebrow">Project</span>
           <h2 class="section-title">RIVIAの運営実績</h2>
-          <p class="section-lead">私たちは、自ら宿を運営する当事者です。現場で検証したノウハウをご支援に活かしています。</p>
+          <p class="section-lead">RIVIAは、複数の宿泊施設を自ら運営する当事者です。その中から代表的な一例をご紹介します。現場で検証したノウハウを、ご支援に活かしています。</p>
         </div>
         <a href="https://www.com-shizuoka.com/ja/property/node-shimoda/amenities.html" class="project project--compact reveal" target="_blank" rel="noopener">
           <div class="project__img">
             <div class="project__photo" role="img" aria-label="NODE Shimoda のリビング"></div>
           </div>
           <div>
+            <span class="project__badge">運営施設の一例</span>
             <h3 class="project__name">NODE Shimoda</h3>
             <p class="project__meta">静岡県下田市 ｜ 一棟貸しバケーションレンタル</p>
             <p class="project__desc">下田市旧町内の中心部、空き家をリノベーションした滞在型アパート。ペリーロードなど観光スポットへも徒歩圏内。RIVIAが運営・集客・DX化（多言語AIチャットボット導入）を担当し、地方の空き家活用と宿泊施設のデジタル化を現場で実践しています。</p>
@@ -301,6 +312,7 @@
             <span class="project__link">施設サイトを見る（別タブで開きます） <span class="arrow" aria-hidden="true"></span></span>
           </div>
         </a>
+        <p class="project__note reveal">※ RIVIAでは、NODE Shimodaのほかにも複数の宿泊施設を運営しています。ここでは、空き家再生から運営・集客・DX化までを一貫して手がけた代表的な事例としてご紹介しています。その他の運営施設については、お気軽にお問い合わせください。</p>
       </div>
     </section>
 
@@ -332,6 +344,10 @@
             <summary class="faq__q"><span class="faq__mark">Q</span><span>許認可が降りず開業できないリスクはありませんか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
             <div class="faq__a"><span class="faq__mark">A</span><p>契約前のSTEP1（物件診断）の段階で行政（保健所・消防）への事前相談を徹底し、確実に許可が降りる見込みを確認してから本格的な投資に進みます。</p><span></span></div>
           </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span class="faq__mark">Q</span><span>物件がまだ決まっていない段階から相談できますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <div class="faq__a"><span class="faq__mark">A</span><p>はい。STEP1の事業構想・立地＆物件診断から伴走します。予算や目標収支を整理したうえで、候補物件の見極めから一緒に進めます。</p><span></span></div>
+          </details>
         </div>
       </div>
     </section>
@@ -342,23 +358,31 @@
           <span class="eyebrow">Other Services</span>
           <h2 class="section-title">そのほかのサービス</h2>
         </div>
-        <div class="related">
-          <a href="service-operation.html" class="related__card reveal">
-            <span class="related__worry">「実家・空き家の処分や利活用に悩んでいる」</span>
-            <span class="related__name">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></span>
-          </a>
-          <a href="service-consignment.html" class="related__card reveal">
-            <span class="related__worry">「既存宿の運営代行・業務を丸投げしたい」</span>
-            <span class="related__name">運営委託事業 <span class="arrow" aria-hidden="true"></span></span>
-          </a>
-          <a href="service-marketing.html" class="related__card reveal">
-            <span class="related__worry">「自社サイトやSNSからの直接予約を増やしたい」</span>
-            <span class="related__name">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></span>
-          </a>
-          <a href="service-recruit.html" class="related__card reveal">
-            <span class="related__worry">「観光業・地方ビジネスでの人材不足を解決したい」</span>
-            <span class="related__name">WEB採用支援事業 <span class="arrow" aria-hidden="true"></span></span>
-          </a>
+        <div class="related-group">
+          <p class="group-label"><span>Hospitality</span>宿泊施設の運営・開業（同じ領域のサービス）</p>
+          <div class="related">
+            <a href="service-operation.html" class="related__card reveal">
+              <span class="related__worry">「実家・空き家の処分や利活用に悩んでいる」</span>
+              <span class="related__name">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></span>
+            </a>
+            <a href="service-consignment.html" class="related__card reveal">
+              <span class="related__worry">「既存宿の運営代行・業務を丸投げしたい」</span>
+              <span class="related__name">運営委託事業 <span class="arrow" aria-hidden="true"></span></span>
+            </a>
+          </div>
+        </div>
+        <div class="related-group">
+          <p class="group-label"><span>Web Marketing</span>WEBマーケティング支援</p>
+          <div class="related">
+            <a href="service-marketing.html" class="related__card reveal">
+              <span class="related__worry">「OTAに頼らず、自社の集客で直接予約を増やしたい」</span>
+              <span class="related__name">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></span>
+            </a>
+            <a href="service-recruit.html" class="related__card reveal">
+              <span class="related__worry">「観光業・地方ビジネスでの人材不足を解決したい」</span>
+              <span class="related__name">WEB採用支援事業 <span class="arrow" aria-hidden="true"></span></span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -377,11 +401,13 @@
           <div class="footer__service">
             <h3>Service</h3>
             <ul>
+              <li class="footer__group">宿泊施設の運営・開業</li>
               <li><a href="service-operation.html">宿泊施設運営事業</a></li>
               <li><a href="service-consignment.html">運営委託事業</a></li>
+              <li><a href="service-consulting.html">宿泊施設 開業・運営コンサルティング事業</a></li>
+              <li class="footer__group">WEBマーケティング支援</li>
               <li><a href="service-marketing.html">WEB集客支援事業</a></li>
               <li><a href="service-recruit.html">WEB採用支援事業</a></li>
-              <li><a href="service-consulting.html">宿泊施設 開業・運営コンサルティング事業</a></li>
             </ul>
           </div>
           <div><h3><a href="index.html#project">Project</a></h3></div>

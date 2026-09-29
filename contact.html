@@ -50,11 +50,21 @@
           <li class="gnav__item--has-sub">
             <button type="button" class="gnav__link" aria-expanded="false" aria-controls="subnav-service">Service <span class="gnav__caret" aria-hidden="true"></span></button>
             <ul class="subnav" id="subnav-service">
-              <li><a href="service-operation.html">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></a></li>
-              <li><a href="service-consignment.html">運営委託事業 <span class="arrow" aria-hidden="true"></span></a></li>
-              <li><a href="service-marketing.html">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
-              <li><a href="service-recruit.html">WEB採用支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
-              <li><a href="service-consulting.html">宿泊施設 開業・運営コンサルティング事業 <span class="arrow" aria-hidden="true"></span></a></li>
+              <li class="subnav__group">
+                <span class="subnav__label">宿泊施設の運営・開業</span>
+                <ul>
+                  <li><a href="service-operation.html">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                  <li><a href="service-consignment.html">運営委託事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                  <li><a href="service-consulting.html">宿泊施設 開業・運営コンサルティング事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                </ul>
+              </li>
+              <li class="subnav__group">
+                <span class="subnav__label">WEBマーケティング支援</span>
+                <ul>
+                  <li><a href="service-marketing.html">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                  <li><a href="service-recruit.html">WEB採用支援事業 <span class="arrow" aria-hidden="true"></span></a></li>
+                </ul>
+              </li>
             </ul>
           </li>
           <li><a href="index.html#project" class="gnav__link">Project</a></li>
@@ -112,11 +122,15 @@
             <div class="select">
               <select id="category" name="category">
                 <option value="" selected>選択してください</option>
-                <option value="宿泊施設運営" data-key="operation">宿泊施設運営</option>
-                <option value="運営委託" data-key="consignment">運営委託</option>
-                <option value="WEB集客" data-key="marketing">WEB集客</option>
-                <option value="WEB採用" data-key="recruit">WEB採用</option>
-                <option value="開業コンサル" data-key="consulting">開業コンサル</option>
+                <optgroup label="宿泊施設の運営・開業">
+                  <option value="宿泊施設運営" data-key="operation">宿泊施設運営</option>
+                  <option value="運営委託" data-key="consignment">運営委託</option>
+                  <option value="開業・運営コンサル" data-key="consulting">開業・運営コンサル</option>
+                </optgroup>
+                <optgroup label="WEBマーケティング支援">
+                  <option value="WEB集客" data-key="marketing">WEB集客</option>
+                  <option value="WEB採用" data-key="recruit">WEB採用</option>
+                </optgroup>
                 <option value="その他" data-key="other">その他</option>
               </select>
             </div>
@@ -186,11 +200,13 @@
           <div class="footer__service">
             <h3>Service</h3>
             <ul>
+              <li class="footer__group">宿泊施設の運営・開業</li>
               <li><a href="service-operation.html">宿泊施設運営事業</a></li>
               <li><a href="service-consignment.html">運営委託事業</a></li>
+              <li><a href="service-consulting.html">宿泊施設 開業・運営コンサルティング事業</a></li>
+              <li class="footer__group">WEBマーケティング支援</li>
               <li><a href="service-marketing.html">WEB集客支援事業</a></li>
               <li><a href="service-recruit.html">WEB採用支援事業</a></li>
-              <li><a href="service-consulting.html">宿泊施設 開業・運営コンサルティング事業</a></li>
             </ul>
           </div>
           <div><h3><a href="index.html#project">Project</a></h3></div>
