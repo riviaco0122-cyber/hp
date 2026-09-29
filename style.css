@@ -343,6 +343,15 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .fact__figure--word { font-family: var(--font-serif); font-weight: 200; font-size: clamp(26px, 2.5vw, 36px); line-height: 1.5; letter-spacing: 0.08em; white-space: normal; min-height: calc(clamp(64px, 6.4vw, 96px) * 1.1); }
 .fact__headline { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--c-line); font-family: var(--font-serif); font-weight: 400; font-size: 19px; line-height: 1.7; letter-spacing: 0.05em; }
 .fact__text { margin-top: 14px; color: var(--c-sub); font-size: 14px; line-height: 2; flex-grow: 1; }
+.fact__compare { margin-top: 24px; display: grid; gap: 12px; }
+.fact__bar { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; }
+.fact__bar-label { grid-column: 1 / -1; font-size: 12px; color: var(--c-sub); line-height: 1.6; }
+.fact__bar-track { height: 6px; background: var(--c-line); position: relative; }
+.fact__bar-track span { position: absolute; inset: 0 auto 0 0; background: var(--c-line-strong); }
+.fact__bar.is-main .fact__bar-track span { background: var(--c-text); }
+.fact__bar-value { font-family: var(--font-en); font-size: 18px; line-height: 1; min-width: 3.4em; text-align: right; }
+.fact__bar.is-main .fact__bar-label { color: var(--c-text); }
+.fact__note { margin-top: 14px; font-size: 11px; color: var(--c-muted); line-height: 1.9; }
 .fact__impact { margin-top: 28px; padding: 18px 20px; background: var(--c-bg-soft); }
 .fact__impact-label { display: block; font-size: 12px; color: var(--c-muted); letter-spacing: 0.1em; margin-bottom: 6px; }
 .fact__impact p { font-size: 14px; line-height: 1.9; }
