@@ -87,6 +87,55 @@
   }
 
   /**
+   * Media: カテゴリの絞り込みと「もっと記事を見てみる」
+   * 例) media.html?cat=akiya
+   */
+  var mediaList = document.getElementById('media-list');
+  if (mediaList) {
+    var cards = Array.prototype.slice.call(mediaList.querySelectorAll('.media-card'));
+    var filters = document.querySelectorAll('.media-filter');
+    var moreBtn = document.querySelector('.media-more__btn');
+    var empty = document.querySelector('.media-empty');
+    var pageSize = parseInt(mediaList.getAttribute('data-page-size'), 10) || 6;
+    var shown = pageSize;
+    var current = 'all';
+
+    var renderMedia = function () {
+      var matched = cards.filter(function (c) {
+        return current === 'all' || c.getAttribute('data-category') === current;
+      });
+      cards.forEach(function (c) { c.hidden = true; });
+      matched.slice(0, shown).forEach(function (c) { c.hidden = false; c.classList.add('is-visible'); });
+      if (moreBtn) moreBtn.hidden = matched.length <= shown;
+      if (empty) empty.hidden = matched.length > 0;
+      filters.forEach(function (f) {
+        var on = f.getAttribute('data-filter') === current;
+        f.classList.toggle('is-active', on);
+        f.setAttribute('aria-pressed', String(on));
+      });
+    };
+
+    filters.forEach(function (f) {
+      f.addEventListener('click', function () {
+        current = f.getAttribute('data-filter');
+        shown = pageSize;
+        renderMedia();
+      });
+    });
+    if (moreBtn) {
+      moreBtn.addEventListener('click', function () {
+        shown += pageSize;
+        renderMedia();
+      });
+    }
+    if (window.URLSearchParams) {
+      var cat = new URLSearchParams(window.location.search).get('cat');
+      if (cat && document.querySelector('.media-filter[data-filter="' + cat + '"]')) current = cat;
+    }
+    renderMedia();
+  }
+
+  /**
    * Careers: 選択したファイル名を表示
    */
   document.querySelectorAll('.file input[type="file"]').forEach(function (input) {
