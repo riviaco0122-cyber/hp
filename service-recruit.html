@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WEB採用支援事業 | 合同会社RIVIA&amp;CO.</title>
   <meta name="description" content="観光業や地方企業が抱える「人材不足」の課題を、WEBマーケティングの手法で解決する事業です。">
+  <link rel="canonical" href="https://example.com/service-recruit.html">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 
   <!--
     OGP（SNSでシェアされたときの表示）
@@ -21,13 +23,18 @@
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
 
+  <!--
+    アクセス解析（Google アナリティクス）を使う場合は、発行された計測タグをここに貼り付けてください。
+  -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "求人媒体に出すのと何が違うのですか？", "acceptedAnswer": {"@type": "Answer", "text": "媒体に埋もれて価格競争（給与競争）に巻き込まれるのではなく、自社のファンを作って直接応募を獲得する自社採用チャネルを構築します。"}}, {"@type": "Question", "name": "地方や田舎の施設でも都会から人が集まりますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。「移住×観光」「地域貢献」「自由な働き方」に価値を感じる都市部の人材へピンポイントで届けるアプローチが可能です。"}}, {"@type": "Question", "name": "面接のやり方や選考基準に自信がないのですが。", "acceptedAnswer": {"@type": "Answer", "text": "応募者を見極めるための面接質問シートの作成や、ミスマッチを防ぐ選考フローの構築までアドバイスいたします。"}}]}</script>
 </head>
-<body>
+<body class="has-sticky-cta">
 
   <header class="header">
     <div class="container header__inner">
@@ -58,8 +65,14 @@
   <main>
     <section class="page-hero">
       <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト"><ol><li><a href="index.html">TOP</a></li><li><a href="index.html#service">Service</a></li><li aria-current="page">WEB採用支援事業</li></ol></nav>
         <p class="page-hero__label reveal">WEB採用支援事業</p>
         <h1 class="page-hero__title reveal" data-delay="1">地域の未来を創る、<br>最適な人材と出会うために。</h1>
+        <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「観光業・地方ビジネスでの人材不足を解決したい」</p>
+        <div class="page-hero__actions reveal" data-delay="2">
+          <a href="contact.html?category=recruit" class="btn">無料で相談する <span class="arrow" aria-hidden="true"></span></a>
+          <a href="#issues" class="btn btn--ghost">お悩みと解決策を見る</a>
+        </div>
       </div>
     </section>
 
@@ -78,26 +91,50 @@
         <div class="section-head reveal">
           <span class="eyebrow">Background</span>
           <h2 class="section-title">社会的背景と市場データ</h2>
+          <p class="section-lead">いま、この市場で何が起きているのか。3つのデータから整理します。</p>
         </div>
-        <!-- 数値データは公開前に出典を確認し、必要に応じて出典を明記してください -->
+        <!-- 数値データは公開前に出典を確認し、確認できたものは source に出典を記載してください -->
         <div class="facts">
-          <div class="fact reveal">
+          <article class="fact reveal" data-delay="0">
+            <div class="fact__head"><span class="fact__no">01</span><span class="fact__label">宿泊・サービス業の有効求人倍率</span></div>
             <p class="fact__figure">4.5<small>倍</small></p>
+            <h3 class="fact__headline">1人の求職者を複数社で奪い合う</h3>
             <p class="fact__text">宿泊・サービス業における有効求人倍率は他業種を圧倒。従来の求人誌や掲載型求人サイトに数十万円払っても「応募ゼロ」が常態化。</p>
-          </div>
-          <div class="fact reveal">
+            <div class="fact__impact">
+              <span class="fact__impact-label">企業にとっては</span>
+              <p>求人広告を出すだけでは、応募が集まらない状況が続いています。</p>
+            </div>
+          </article>
+          <article class="fact reveal" data-delay="1">
+            <div class="fact__head"><span class="fact__no">02</span><span class="fact__label">SNS・特設サイトで応募を判断する若手人材</span></div>
             <p class="fact__figure">81.9<small>%</small></p>
+            <h3 class="fact__headline">「どんな会社か」が見られている</h3>
             <p class="fact__text">若手人材の8割以上が、給与条件だけでなく「どんな人が働いているか」「企業のミッション」をSNSや特設サイトで確認して応募を判断している。</p>
-          </div>
-          <div class="fact reveal">
+            <div class="fact__impact">
+              <span class="fact__impact-label">企業にとっては</span>
+              <p>条件だけでなく、働く人やビジョンを伝えられる会社が選ばれます。</p>
+            </div>
+          </article>
+          <article class="fact reveal" data-delay="2">
+            <div class="fact__head"><span class="fact__no">03</span><span class="fact__label">求職者の変化</span></div>
             <p class="fact__figure fact__figure--word">価値観の多様化</p>
+            <h3 class="fact__headline">地方移住・副業・地域貢献への関心</h3>
             <p class="fact__text">働き方の変化により、「地方移住」「パラレルキャリア」「地域貢献」など仕事に求める価値観が多様化。従来の画一的な求人票では自社の魅力が伝わらなくなっている。</p>
-          </div>
+            <div class="fact__impact">
+              <span class="fact__impact-label">企業にとっては</span>
+              <p>地方や観光業ならではの魅力は、伝え方次第で強い採用力になります。</p>
+            </div>
+          </article>
+        </div>
+        <div class="facts-summary reveal">
+          <span class="facts-summary__label">つまり</span>
+          <p class="facts-summary__text">条件の比較だけでは、人材の獲得競争に勝てません。RIVIAは自社の魅力を言語化し、共感する人材に直接届く採用の仕組みをつくります。</p>
+          <a href="#issues" class="facts-summary__link">具体的なお悩みと解決策を見る <span class="facts-summary__down" aria-hidden="true"></span></a>
         </div>
       </div>
     </section>
 
-    <section class="section section--soft">
+    <section class="section section--soft" id="issues">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Issues &amp; Solutions</span>
@@ -213,12 +250,34 @@
       </div>
     </section>
 
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Project</span>
+          <h2 class="section-title">RIVIAの運営実績</h2>
+          <p class="section-lead">私たちは、自ら宿を運営する当事者です。現場で検証したノウハウをご支援に活かしています。</p>
+        </div>
+        <a href="https://www.com-shizuoka.com/ja/property/node-shimoda/amenities.html" class="project project--compact reveal" target="_blank" rel="noopener">
+          <div class="project__img">
+            <img src="images/node-shimoda-living.avif" alt="NODE Shimoda のリビング" width="1440" height="960" loading="lazy" decoding="async">
+          </div>
+          <div>
+            <h3 class="project__name">NODE Shimoda</h3>
+            <p class="project__meta">静岡県下田市 ｜ 一棟貸しバケーションレンタル</p>
+            <p class="project__desc">下田市旧町内の中心部、空き家をリノベーションした滞在型アパート。ペリーロードなど観光スポットへも徒歩圏内。RIVIAが運営・集客・DX化（多言語AIチャットボット導入）を担当し、地方の空き家活用と宿泊施設のデジタル化を現場で実践しています。</p>
+            <div class="project__rating"><strong>★ 4.88</strong><span>Airbnb評価（51件）</span></div>
+            <span class="project__link">施設サイトを見る（別タブで開きます） <span class="arrow" aria-hidden="true"></span></span>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <section class="section section--soft cta">
       <div class="container reveal">
         <h2 class="cta__title">まずは、現状をお聞かせください。</h2>
         <p class="cta__text">課題の整理からでも構いません。現場を知るメンバーが直接お話を伺います。</p>
         <div class="cta__btn"><a href="contact.html?category=recruit" class="btn btn--lg">ご相談はこちらから <span class="arrow" aria-hidden="true"></span></a></div>
-        <p class="cta__notes"><span>※相談無料</span><span>※無理な営業は一切いたしません</span></p>
+        <p class="cta__notes"><span>※相談無料</span><span>※無理な営業は一切いたしません</span><span>※2営業日以内にご連絡</span></p>
       </div>
     </section>
 
@@ -241,6 +300,33 @@
             <summary class="faq__q"><span class="faq__mark">Q</span><span>面接のやり方や選考基準に自信がないのですが。</span><span class="faq__toggle" aria-hidden="true"></span></summary>
             <div class="faq__a"><span class="faq__mark">A</span><p>応募者を見極めるための面接質問シートの作成や、ミスマッチを防ぐ選考フローの構築までアドバイスいたします。</p><span></span></div>
           </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Other Services</span>
+          <h2 class="section-title">そのほかのサービス</h2>
+        </div>
+        <div class="related">
+          <a href="service-operation.html" class="related__card reveal">
+            <span class="related__worry">「実家・空き家の処分や利活用に悩んでいる」</span>
+            <span class="related__name">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></span>
+          </a>
+          <a href="service-consignment.html" class="related__card reveal">
+            <span class="related__worry">「既存宿の運営代行・業務を丸投げしたい」</span>
+            <span class="related__name">運営委託事業 <span class="arrow" aria-hidden="true"></span></span>
+          </a>
+          <a href="service-marketing.html" class="related__card reveal">
+            <span class="related__worry">「自社サイトやSNSからの直接予約を増やしたい」</span>
+            <span class="related__name">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></span>
+          </a>
+          <a href="service-consulting.html" class="related__card reveal">
+            <span class="related__worry">「副業や投資として宿泊事業を立ち上げたい」</span>
+            <span class="related__name">宿泊施設 開業・運営コンサルティング事業 <span class="arrow" aria-hidden="true"></span></span>
+          </a>
         </div>
       </div>
     </section>
@@ -271,10 +357,17 @@
           <div><h3><a href="contact.html">Contact</a></h3></div>
         </nav>
       </div>
-      <p class="footer__bottom">&copy; 2026 合同会社RIVIA&amp;CO. All Rights Reserved.</p>
+      <div class="footer__bottom">
+        <a href="privacy.html">プライバシーポリシー</a>
+        <p>&copy; 2026 合同会社RIVIA&amp;CO. All Rights Reserved.</p>
+      </div>
     </div>
   </footer>
 
+  <div class="sticky-cta" aria-hidden="true">
+    <p class="sticky-cta__text">ご相談は<strong>無料</strong>です</p>
+    <a href="contact.html?category=recruit" class="btn sticky-cta__btn" tabindex="-1">無料で相談する <span class="arrow" aria-hidden="true"></span></a>
+  </div>
   <script src="js/main.js"></script>
 </body>
 </html>

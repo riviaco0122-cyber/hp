@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>合同会社RIVIA&amp;CO. | 地方の価値を、マーケティングする。</title>
   <meta name="description" content="地方の価値を、マーケティングする。宿泊施設の運営から集客・採用、開業支援まで、現場目線でまるごと支援する合同会社RIVIA&amp;CO.のコーポレートサイトです。">
+  <link rel="canonical" href="https://example.com/">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 
   <!--
     OGP（SNSでシェアされたときの表示）
@@ -21,13 +23,18 @@
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
 
+  <!--
+    アクセス解析（Google アナリティクス）を使う場合は、発行された計測タグをここに貼り付けてください。
+  -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "合同会社RIVIA&CO.", "alternateName": "RIVIA&CO. LLC", "url": "https://example.com/", "logo": "https://example.com/images/ogp.jpg", "foundingDate": "2026-09-01", "founder": [{"@type": "Person", "name": "片井 進太"}, {"@type": "Person", "name": "石原 佑真"}], "address": {"@type": "PostalAddress", "postalCode": "121-0012", "addressRegion": "東京都", "addressLocality": "足立区", "streetAddress": "青井六丁目8番8号 Grand Maison青井201", "addressCountry": "JP"}}</script>
 </head>
-<body>
+<body class="has-sticky-cta">
 
   <header class="header">
     <div class="container header__inner">
@@ -61,6 +68,10 @@
       <div class="container">
         <h1 class="hero__title reveal">地方の価値を、<br>マーケティングする。</h1>
         <p class="hero__sub reveal" data-delay="2">「暮らすように旅をする」体験をつくる——<br>宿泊施設の枠を超え、観光コンテンツの創出からまちづくりまで、現場目線でまるごと支援します。</p>
+        <div class="hero__actions reveal" data-delay="3">
+          <a href="contact.html" class="btn">無料で相談する <span class="arrow" aria-hidden="true"></span></a>
+          <a href="#service" class="btn btn--ghost">お悩みから探す</a>
+        </div>
       </div>
       <span class="hero__scroll" aria-hidden="true">Scroll</span>
     </section>
@@ -81,7 +92,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="service">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Service</span>
@@ -118,6 +129,32 @@
       </div>
     </section>
 
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Why RIVIA</span>
+          <h2 class="section-title">RIVIAが選ばれる理由</h2>
+        </div>
+        <ol class="reasons">
+          <li class="reason reveal" data-delay="0">
+            <span class="reason__num">01</span>
+            <h3 class="reason__title">自ら宿を運営する「当事者」</h3>
+            <p class="reason__text">静岡県下田市で「NODE Shimoda」を自社で運営し、Airbnb評価4.88を獲得しています。机上の提案ではなく、現場で検証したノウハウをお届けします。</p>
+          </li>
+          <li class="reason reveal" data-delay="1">
+            <span class="reason__num">02</span>
+            <h3 class="reason__title">運営・集客・採用をワンストップで</h3>
+            <p class="reason__text">宿の経営課題は、運営・集客・人材がすべてつながっています。窓口をひとつにまとめ、施策がばらばらにならないよう一貫して支援します。</p>
+          </li>
+          <li class="reason reveal" data-delay="2">
+            <span class="reason__num">03</span>
+            <h3 class="reason__title">事業づくりとデータ分析の経験</h3>
+            <p class="reason__text">新規事業開発、行政、データ分析のキャリアを持つ創業メンバーが、数字にもとづいて意思決定を支援します。</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
     <section class="section section--soft" id="project">
       <div class="container">
         <div class="section-head reveal">
@@ -133,9 +170,50 @@
             <p class="project__meta">静岡県下田市 ｜ 一棟貸しバケーションレンタル</p>
             <p class="project__desc">下田市旧町内の中心部、空き家をリノベーションした滞在型アパート。ペリーロードなど観光スポットへも徒歩圏内。RIVIAが運営・集客・DX化（多言語AIチャットボット導入）を担当し、地方の空き家活用と宿泊施設のデジタル化を現場で実践しています。</p>
             <div class="project__rating"><strong>★ 4.88</strong><span>Airbnb評価（51件）</span></div>
-            <span class="project__link">施設サイトを見る <span class="arrow" aria-hidden="true"></span></span>
+            <span class="project__link">施設サイトを見る（別タブで開きます） <span class="arrow" aria-hidden="true"></span></span>
           </div>
         </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Flow</span>
+          <h2 class="section-title">ご相談の流れ</h2>
+          <p class="section-lead">ご契約までに費用がかかることはありません。まずはお気軽にお問い合わせください。</p>
+        </div>
+        <ol class="flow">
+          <li class="flow__step reveal" data-delay="0">
+            <span class="flow__num">01</span>
+            <h3 class="flow__title">お問い合わせ</h3>
+            <p class="flow__desc">フォームから24時間受け付けています。2営業日以内に担当者よりご連絡いたします。</p>
+          </li>
+          <li class="flow__step reveal" data-delay="1">
+            <span class="flow__num">02</span>
+            <h3 class="flow__title">無料ヒアリング</h3>
+            <p class="flow__desc">現状と課題、目指したい姿をお伺いします。まだ考えがまとまっていない段階でも構いません。</p>
+          </li>
+          <li class="flow__step reveal" data-delay="2">
+            <span class="flow__num">03</span>
+            <h3 class="flow__title">ご提案</h3>
+            <p class="flow__desc">課題に合わせた支援内容・進め方・お見積りをご提示します。</p>
+          </li>
+          <li class="flow__step reveal" data-delay="3">
+            <span class="flow__num">04</span>
+            <h3 class="flow__title">ご支援開始</h3>
+            <p class="flow__desc">ご納得いただけた場合のみご契約。現場に入り、成果が出るまで伴走します。</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--soft cta">
+      <div class="container reveal">
+        <h2 class="cta__title">まずは、現状をお聞かせください。</h2>
+        <p class="cta__text">課題の整理からでも構いません。現場を知るメンバーが直接お話を伺います。</p>
+        <div class="cta__btn"><a href="contact.html" class="btn btn--lg">ご相談はこちらから <span class="arrow" aria-hidden="true"></span></a></div>
+        <p class="cta__notes"><span>※相談無料</span><span>※無理な営業は一切いたしません</span><span>※2営業日以内にご連絡</span></p>
       </div>
     </section>
 
@@ -180,10 +258,17 @@
           <div><h3><a href="contact.html">Contact</a></h3></div>
         </nav>
       </div>
-      <p class="footer__bottom">&copy; 2026 合同会社RIVIA&amp;CO. All Rights Reserved.</p>
+      <div class="footer__bottom">
+        <a href="privacy.html">プライバシーポリシー</a>
+        <p>&copy; 2026 合同会社RIVIA&amp;CO. All Rights Reserved.</p>
+      </div>
     </div>
   </footer>
 
+  <div class="sticky-cta" aria-hidden="true">
+    <p class="sticky-cta__text">ご相談は<strong>無料</strong>です</p>
+    <a href="contact.html" class="btn sticky-cta__btn" tabindex="-1">無料で相談する <span class="arrow" aria-hidden="true"></span></a>
+  </div>
   <script src="js/main.js"></script>
 </body>
 </html>

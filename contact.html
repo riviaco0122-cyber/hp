@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | 合同会社RIVIA&amp;CO.</title>
   <meta name="description" content="合同会社RIVIA&amp;CO.へのお問い合わせはこちらから。ご相談は無料です。2営業日以内に担当者よりご連絡いたします。">
+  <link rel="canonical" href="https://example.com/contact.html">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 
   <!--
     OGP（SNSでシェアされたときの表示）
@@ -20,6 +22,10 @@
   <meta property="og:site_name" content="合同会社RIVIA&amp;CO.">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
+
+  <!--
+    アクセス解析（Google アナリティクス）を使う場合は、発行された計測タグをここに貼り付けてください。
+  -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,9 +64,15 @@
   <main>
     <section class="page-hero">
       <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト"><ol><li><a href="index.html">TOP</a></li><li aria-current="page">Contact</li></ol></nav>
         <p class="page-hero__en reveal">Contact</p>
         <h1 class="page-hero__ja reveal" data-delay="1">お問い合わせ</h1>
         <p class="page-hero__lead reveal" data-delay="2">まずは気軽にご相談ください。無料でご相談をお受けしています。<br class="pc-only">2営業日以内に担当者よりご連絡いたします。</p>
+        <ul class="assure reveal" data-delay="3">
+          <li>ご相談・お見積りは無料</li>
+          <li>無理な営業は一切なし</li>
+          <li>2営業日以内にご連絡</li>
+        </ul>
       </div>
     </section>
 
@@ -106,7 +118,13 @@
           </div>
           <div class="form__field">
             <label for="message">お問い合わせ内容 <span class="req">必須</span></label>
-            <textarea id="message" name="message" placeholder="ご相談内容をご記入ください。" required></textarea>
+            <textarea id="message" name="message" placeholder="ご相談内容をご記入ください。まだ考えがまとまっていない段階でも構いません。" required></textarea>
+          </div>
+          <div class="form__consent">
+            <label class="check" for="agree">
+              <input type="checkbox" id="agree" name="privacy_agree" value="同意する" required>
+              <span><a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する <span class="req">必須</span></span>
+            </label>
           </div>
           <div class="form__notes">
             <p>※無理な営業や電話勧誘は一切いたしません。</p>
@@ -114,6 +132,38 @@
           </div>
           <div class="form__submit"><button type="submit" class="btn btn--lg">送信する <span class="arrow" aria-hidden="true"></span></button></div>
         </form>
+      </div>
+    </section>
+
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Flow</span>
+          <h2 class="section-title">ご相談の流れ</h2>
+          <p class="section-lead">ご契約までに費用がかかることはありません。まずはお気軽にお問い合わせください。</p>
+        </div>
+        <ol class="flow">
+          <li class="flow__step reveal" data-delay="0">
+            <span class="flow__num">01</span>
+            <h3 class="flow__title">お問い合わせ</h3>
+            <p class="flow__desc">フォームから24時間受け付けています。2営業日以内に担当者よりご連絡いたします。</p>
+          </li>
+          <li class="flow__step reveal" data-delay="1">
+            <span class="flow__num">02</span>
+            <h3 class="flow__title">無料ヒアリング</h3>
+            <p class="flow__desc">現状と課題、目指したい姿をお伺いします。まだ考えがまとまっていない段階でも構いません。</p>
+          </li>
+          <li class="flow__step reveal" data-delay="2">
+            <span class="flow__num">03</span>
+            <h3 class="flow__title">ご提案</h3>
+            <p class="flow__desc">課題に合わせた支援内容・進め方・お見積りをご提示します。</p>
+          </li>
+          <li class="flow__step reveal" data-delay="3">
+            <span class="flow__num">04</span>
+            <h3 class="flow__title">ご支援開始</h3>
+            <p class="flow__desc">ご納得いただけた場合のみご契約。現場に入り、成果が出るまで伴走します。</p>
+          </li>
+        </ol>
       </div>
     </section>
   </main>
@@ -143,9 +193,13 @@
           <div><h3><a href="contact.html">Contact</a></h3></div>
         </nav>
       </div>
-      <p class="footer__bottom">&copy; 2026 合同会社RIVIA&amp;CO. All Rights Reserved.</p>
+      <div class="footer__bottom">
+        <a href="privacy.html">プライバシーポリシー</a>
+        <p>&copy; 2026 合同会社RIVIA&amp;CO. All Rights Reserved.</p>
+      </div>
     </div>
   </footer>
+
 
   <script src="js/main.js"></script>
 </body>

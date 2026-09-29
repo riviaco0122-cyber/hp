@@ -5,12 +5,15 @@
   'use strict';
 
   /**
-   * Header: スクロール時に下線を表示
+   * Header の下線と、スマホ用の固定相談バーの表示切り替え
    */
   var header = document.querySelector('.header');
+  var stickyCta = document.querySelector('.sticky-cta');
   function onScroll() {
-    if (!header) return;
-    header.classList.toggle('is-scrolled', window.scrollY > 10);
+    var y = window.scrollY;
+    if (header) header.classList.toggle('is-scrolled', y > 10);
+    // スマホ用の固定相談バー: ファーストビューを過ぎたら表示
+    if (stickyCta) stickyCta.classList.toggle('is-visible', y > window.innerHeight * 0.6);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

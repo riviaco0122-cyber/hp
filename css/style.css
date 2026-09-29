@@ -205,7 +205,9 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .footer__nav li a { font-size: 13px; color: var(--c-sub); line-height: 2.2; transition: color .2s; }
 .footer__nav li a:hover, .footer__nav h3 a:hover { color: var(--c-muted); }
 .footer__service { grid-row: span 4; }
-.footer__bottom { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--c-line); font-size: 12px; color: var(--c-muted); font-family: var(--font-en); letter-spacing: 0.08em; }
+.footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 32px; margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--c-line); font-size: 12px; color: var(--c-muted); font-family: var(--font-en); letter-spacing: 0.08em; }
+.footer__bottom a { font-family: var(--font-sans); transition: color .2s; }
+.footer__bottom a:hover { color: var(--c-text); }
 @media (max-width: 899px) {
   .footer { padding-top: 72px; }
   .footer__grid { grid-template-columns: 1fr; gap: 48px; }
@@ -307,14 +309,44 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .overview__text { font-family: var(--font-serif); font-weight: 300; font-size: 19px; line-height: 2.3; letter-spacing: 0.06em; }
 @media (max-width: 899px) { .overview { grid-template-columns: 1fr; gap: 24px; } .overview__text { font-size: 16px; } }
 
-/* Market data: 極細の巨大タイポ + 1px罫線 */
-.facts { border-top: 1px solid var(--c-line); }
-.fact { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 64px; align-items: center; padding: 80px 0; border-bottom: 1px solid var(--c-line); }
-.fact__figure { font-family: var(--font-en); font-weight: 300; font-size: clamp(72px, 10vw, 148px); line-height: 1; letter-spacing: 0.01em; white-space: nowrap; }
-.fact__figure small { font-family: var(--font-serif); font-weight: 200; font-size: 0.32em; letter-spacing: 0.08em; margin-left: 0.15em; }
-.fact__figure--word { font-family: var(--font-serif); font-weight: 200; font-size: clamp(36px, 5vw, 68px); line-height: 1.4; letter-spacing: 0.1em; white-space: normal; }
-.fact__text { color: var(--c-sub); font-size: 15px; line-height: 2.2; }
-@media (max-width: 899px) { .fact { grid-template-columns: 1fr; gap: 24px; padding: 56px 0; } .fact__text { font-size: 14px; } }
+/* 社会的背景と市場データ
+   「何の数字か → 数字 → 一言でいうと → 解説 → 読み手にとっての意味」の順で読めるカード */
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--c-text); }
+.fact { display: flex; flex-direction: column; padding: 44px 40px 48px; border-bottom: 1px solid var(--c-line); }
+.fact + .fact { border-left: 1px solid var(--c-line); }
+.fact__head { display: flex; align-items: baseline; gap: 14px; min-height: 3.6em; }
+.fact__no { font-family: var(--font-en); font-size: 15px; color: var(--c-muted); letter-spacing: 0.1em; }
+.fact__label { font-size: 13px; color: var(--c-sub); letter-spacing: 0.06em; line-height: 1.8; }
+.fact__figure { margin-top: 20px; font-family: var(--font-en); font-weight: 300; font-size: clamp(64px, 6.4vw, 96px); line-height: 1; letter-spacing: 0.01em; white-space: nowrap; min-height: 1.1em; display: flex; align-items: flex-end; }
+.fact__figure small { font-family: var(--font-serif); font-weight: 300; font-size: 0.3em; letter-spacing: 0.06em; margin-left: 0.12em; padding-bottom: 0.18em; }
+.fact__figure--word { font-family: var(--font-serif); font-weight: 200; font-size: clamp(26px, 2.5vw, 36px); line-height: 1.5; letter-spacing: 0.08em; white-space: normal; min-height: calc(clamp(64px, 6.4vw, 96px) * 1.1); }
+.fact__headline { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--c-line); font-family: var(--font-serif); font-weight: 400; font-size: 19px; line-height: 1.7; letter-spacing: 0.05em; }
+.fact__text { margin-top: 14px; color: var(--c-sub); font-size: 14px; line-height: 2; flex-grow: 1; }
+.fact__impact { margin-top: 28px; padding: 18px 20px; background: var(--c-bg-soft); }
+.fact__impact-label { display: block; font-size: 12px; color: var(--c-muted); letter-spacing: 0.1em; margin-bottom: 6px; }
+.fact__impact p { font-size: 14px; line-height: 1.9; }
+.fact__source { margin-top: 16px; font-size: 11px; color: var(--c-muted); letter-spacing: 0.04em; }
+.facts-summary { display: grid; grid-template-columns: 120px 1fr auto; align-items: center; gap: 32px; margin-top: 56px; padding: 40px 48px; border: 1px solid var(--c-text); }
+.facts-summary__label { font-family: var(--font-serif); font-size: 20px; letter-spacing: 0.2em; }
+.facts-summary__text { font-family: var(--font-serif); font-weight: 300; font-size: 17px; line-height: 2.1; letter-spacing: 0.04em; }
+.facts-summary__link { display: inline-flex; align-items: center; gap: 12px; font-size: 13px; letter-spacing: 0.06em; white-space: nowrap; border-bottom: 1px solid var(--c-text); padding-bottom: 4px; }
+.facts-summary__down { width: 7px; height: 7px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+@media (max-width: 1099px) {
+  .fact { padding: 40px 28px 44px; }
+  .facts-summary { grid-template-columns: 1fr; gap: 16px; padding: 32px; }
+}
+@media (max-width: 899px) {
+  .facts { grid-template-columns: 1fr; }
+  .fact { padding: 40px 0 44px; }
+  .fact + .fact { border-left: 0; }
+  .fact__head { min-height: 0; }
+  .fact__figure--word { min-height: 0; }
+  .fact__figure { font-size: 72px; }
+  .fact__figure--word { font-size: 28px; }
+  .facts-summary { margin-top: 40px; padding: 28px 24px; }
+  .facts-summary__text { font-size: 15px; }
+  .facts-summary__link { white-space: normal; }
+}
 
 /* 経営課題 × RIVIAの貢献 */
 .issues { border-top: 1px solid var(--c-text); }
@@ -441,6 +473,108 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .file.has-file { border-style: solid; border-color: var(--c-text); }
 .files { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 899px) { .files { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   Conversion components
+   ========================================================================== */
+/* Hero / page hero のボタン */
+.hero__actions, .page-hero__actions { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 16px; }
+.page-hero__actions { margin-top: 40px; }
+.page-hero__target { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; font-family: var(--font-serif); font-weight: 300; font-size: 16px; letter-spacing: 0.04em; }
+.page-hero__target span { font-family: var(--font-sans); font-size: 12px; border: 1px solid var(--c-line-strong); padding: 2px 12px; color: var(--c-sub); letter-spacing: 0.1em; }
+@media (max-width: 899px) {
+  .hero__actions .btn, .page-hero__actions .btn { flex: 1 1 100%; }
+}
+
+/* パンくず */
+.breadcrumb { margin-bottom: 40px; }
+.breadcrumb ol { display: flex; flex-wrap: wrap; gap: 4px 0; font-size: 12px; color: var(--c-muted); letter-spacing: 0.06em; }
+.breadcrumb li + li::before { content: "/"; margin: 0 12px; color: var(--c-line-strong); }
+.breadcrumb a { transition: color .2s; }
+.breadcrumb a:hover { color: var(--c-text); }
+@media (max-width: 899px) { .breadcrumb { margin-bottom: 28px; } }
+
+/* 選ばれる理由 */
+.reasons { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--c-line); }
+.reason { padding: 48px 40px 48px 0; border-bottom: 1px solid var(--c-line); }
+.reason + .reason { padding-left: 40px; border-left: 1px solid var(--c-line); }
+.reason__num { font-family: var(--font-en); font-weight: 300; font-size: 56px; line-height: 1; color: var(--c-line-strong); }
+.reason__title { margin-top: 28px; font-family: var(--font-serif); font-weight: 400; font-size: 20px; line-height: 1.7; letter-spacing: 0.05em; }
+.reason__text { margin-top: 16px; font-size: 14px; color: var(--c-sub); line-height: 2.1; }
+@media (max-width: 899px) {
+  .reasons { grid-template-columns: 1fr; }
+  .reason, .reason + .reason { padding: 36px 0; border-left: 0; }
+}
+
+/* ご相談の流れ */
+.flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.flow__step { position: relative; padding: 36px 28px 32px; background: #fff; border: 1px solid var(--c-line); }
+.flow__step:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -13px; width: 10px; height: 10px; border-top: 1px solid var(--c-muted); border-right: 1px solid var(--c-muted); transform: translateY(-50%) rotate(45deg); }
+.flow__num { font-family: var(--font-en); font-size: 15px; letter-spacing: 0.14em; color: var(--c-muted); }
+.flow__title { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 18px; letter-spacing: 0.06em; }
+.flow__desc { margin-top: 12px; font-size: 13px; color: var(--c-sub); line-height: 2; }
+@media (max-width: 899px) {
+  .flow { grid-template-columns: 1fr; gap: 24px; }
+  .flow__step:not(:last-child)::after { top: auto; bottom: -17px; right: 50%; transform: translateX(50%) rotate(135deg); }
+}
+
+/* 実績カード（サービスページ用のコンパクト版） */
+.project--compact { grid-template-columns: 1fr 1.2fr; gap: 56px; }
+.project--compact .project__name { font-size: clamp(30px, 3vw, 40px); }
+@media (max-width: 899px) { .project--compact { grid-template-columns: 1fr; gap: 32px; } }
+
+/* そのほかのサービス */
+.related { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--c-line); border-left: 1px solid var(--c-line); }
+.related__card { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; padding: 32px 28px; border-right: 1px solid var(--c-line); border-bottom: 1px solid var(--c-line); transition: background .4s; }
+.related__card:hover { background: var(--c-bg-soft); }
+.related__worry { font-family: var(--font-serif); font-weight: 300; font-size: 15px; line-height: 1.9; }
+.related__name { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; color: var(--c-sub); padding-top: 16px; border-top: 1px solid var(--c-line); }
+@media (max-width: 1099px) { .related { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 899px) { .related { grid-template-columns: 1fr; } .related__card { padding: 28px 20px; gap: 20px; } }
+
+/* お問い合わせの安心材料 */
+.assure { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.assure li { display: flex; align-items: center; gap: 10px; padding: 8px 18px; border: 1px solid var(--c-line-strong); font-size: 13px; letter-spacing: 0.06em; }
+.assure li::before { content: ""; width: 10px; height: 5px; border-left: 1px solid var(--c-text); border-bottom: 1px solid var(--c-text); transform: translateY(-2px) rotate(-45deg); }
+
+/* 同意チェック */
+.form__fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.form__notes--above { margin-bottom: 12px; }
+.form__consent { text-align: center; }
+.check { display: inline-flex; align-items: center; gap: 12px; cursor: pointer; font-size: 14px; }
+.check input { -webkit-appearance: none; appearance: none; flex-shrink: 0; width: 20px; height: 20px; border: 1px solid var(--c-text); background: #fff; display: grid; place-items: center; margin: 0; cursor: pointer; }
+.check input::after { content: ""; width: 10px; height: 5px; border-left: 1.5px solid #fff; border-bottom: 1.5px solid #fff; transform: translateY(-1px) rotate(-45deg); opacity: 0; }
+.check input:checked { background: var(--c-text); }
+.check input:checked::after { opacity: 1; }
+.check a { text-decoration: underline; text-underline-offset: 4px; }
+.check .req { margin-left: 4px; }
+
+/* スマホ用 固定相談バー */
+.sticky-cta { display: none; }
+@media (max-width: 899px) {
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.97); border-top: 1px solid var(--c-line);
+    transform: translateY(110%); transition: transform .4s var(--ease);
+  }
+  .sticky-cta.is-visible { transform: none; }
+  .sticky-cta__text { font-size: 12px; color: var(--c-sub); letter-spacing: 0.04em; }
+  .sticky-cta__text strong { font-weight: 500; color: var(--c-text); }
+  .sticky-cta__btn { padding: 12px 20px; font-size: 13px; gap: 10px; }
+  .sticky-cta__btn .arrow { width: 18px; }
+  body.has-sticky-cta { padding-bottom: 72px; }
+}
+
+/* プライバシーポリシー */
+.policy__intro { line-height: 2.2; }
+.policy { margin-top: 56px; border-top: 1px solid var(--c-line); }
+.policy__item { padding: 36px 0; border-bottom: 1px solid var(--c-line); }
+.policy__item h2 { font-family: var(--font-serif); font-weight: 400; font-size: 18px; letter-spacing: 0.06em; margin-bottom: 14px; }
+.policy__item p { font-size: 14px; color: var(--c-sub); line-height: 2.2; }
+.policy__item a { text-decoration: underline; text-underline-offset: 4px; }
+.policy__date { margin-top: 40px; font-size: 13px; color: var(--c-muted); text-align: right; }
 
 /* ==========================================================================
    Scroll reveal（JS有効時のみ非表示から開始）

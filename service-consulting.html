@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>宿泊施設 開業・運営コンサルティング事業 | 合同会社RIVIA&amp;CO.</title>
   <meta name="description" content="副業・投資・自主運営を目指す方に向けた、宿泊施設の開業・運営コンサルティング事業です。立地選定から許認可、自走化まで伴走します。">
+  <link rel="canonical" href="https://example.com/service-consulting.html">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 
   <!--
     OGP（SNSでシェアされたときの表示）
@@ -21,13 +23,18 @@
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
 
+  <!--
+    アクセス解析（Google アナリティクス）を使う場合は、発行された計測タグをここに貼り付けてください。
+  -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "宿泊業の経験が全くない初心者でも開業できますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。ゼロから自走できるよう、現場のオペレーション手順やシステム操作まで実務ベースで全て伝授いたします。"}}, {"@type": "Question", "name": "自己資金はどれくらい必要になりますか？", "acceptedAnswer": {"@type": "Answer", "text": "賃貸物件を活用した小規模な一棟貸し民泊であれば、数千万円単位の巨額な資金がなくても数百万円程度からスタート可能なプランをご提案できます。"}}, {"@type": "Question", "name": "許認可が降りず開業できないリスクはありませんか？", "acceptedAnswer": {"@type": "Answer", "text": "契約前のSTEP1（物件診断）の段階で行政（保健所・消防）への事前相談を徹底し、確実に許可が降りる見込みを確認してから本格的な投資に進みます。"}}]}</script>
 </head>
-<body>
+<body class="has-sticky-cta">
 
   <header class="header">
     <div class="container header__inner">
@@ -58,8 +65,14 @@
   <main>
     <section class="page-hero">
       <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト"><ol><li><a href="index.html">TOP</a></li><li><a href="index.html#service">Service</a></li><li aria-current="page">宿泊施設 開業・運営コンサルティング事業</li></ol></nav>
         <p class="page-hero__label reveal">宿泊施設 開業・運営コンサルティング事業</p>
         <h1 class="page-hero__title reveal" data-delay="1">理想の宿を、<br>確かな事業へ。</h1>
+        <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「副業や投資として宿泊事業を立ち上げたい」</p>
+        <div class="page-hero__actions reveal" data-delay="2">
+          <a href="contact.html?category=consulting" class="btn">無料で相談する <span class="arrow" aria-hidden="true"></span></a>
+          <a href="#issues" class="btn btn--ghost">お悩みと解決策を見る</a>
+        </div>
       </div>
     </section>
 
@@ -78,26 +91,50 @@
         <div class="section-head reveal">
           <span class="eyebrow">Background</span>
           <h2 class="section-title">社会的背景と市場データ</h2>
+          <p class="section-lead">いま、この市場で何が起きているのか。3つのデータから整理します。</p>
         </div>
-        <!-- 数値データは公開前に出典を確認し、必要に応じて出典を明記してください -->
+        <!-- 数値データは公開前に出典を確認し、確認できたものは source に出典を記載してください -->
         <div class="facts">
-          <div class="fact reveal">
+          <article class="fact reveal" data-delay="0">
+            <div class="fact__head"><span class="fact__no">01</span><span class="fact__label">法的ハードルで開業を断念する希望者</span></div>
             <p class="fact__figure">68.4<small>%</small></p>
+            <h3 class="fact__headline">開業の最大の壁は「許認可」</h3>
             <p class="fact__text">個人の民泊・一棟貸し開業希望者の約7割が、保健所や消防法などの法的ハードル、自治体ごとの上乗せ条例の複雑さによって途中断念している。</p>
-          </div>
-          <div class="fact reveal">
+            <div class="fact__impact">
+              <span class="fact__impact-label">開業を目指す方にとっては</span>
+              <p>物件を取得した後で許可が下りないと、投資そのものが無駄になるおそれがあります。</p>
+            </div>
+          </article>
+          <article class="fact reveal" data-delay="1">
+            <div class="fact__head"><span class="fact__no">02</span><span class="fact__label">一棟貸しで狙える実質利回りの目安</span></div>
             <p class="fact__figure">10〜15<small>%</small></p>
+            <h3 class="fact__headline">設計次第で高い収益性を狙える</h3>
             <p class="fact__text">適切なコンセプト設計とレベニューマネジメントを行うことで、一般的な一棟貸し宿泊事業は実質利回り10〜15%を狙える魅力的な投資手法となる。</p>
-          </div>
-          <div class="fact reveal">
+            <div class="fact__impact">
+              <span class="fact__impact-label">開業を目指す方にとっては</span>
+              <p>コンセプトと価格設計を誤らなければ、魅力的な投資対象になり得ます。</p>
+            </div>
+          </article>
+          <article class="fact reveal" data-delay="2">
+            <div class="fact__head"><span class="fact__no">03</span><span class="fact__label">市場の変化</span></div>
             <p class="fact__figure fact__figure--word">スモールビジネスの台頭</p>
+            <h3 class="fact__headline">個人で宿を持つ人が増えている</h3>
             <p class="fact__text">副業解禁や個人のエンパワーメントが進む中、「自分だけの宿を持ちたい」「地域おこしに関わりたい」という熱意ある個人投資家や小規模事業者が増加している。</p>
-          </div>
+            <div class="fact__impact">
+              <span class="fact__impact-label">開業を目指す方にとっては</span>
+              <p>情報は増えた一方で、実務まで伴走できる相談先はまだ限られています。</p>
+            </div>
+          </article>
+        </div>
+        <div class="facts-summary reveal">
+          <span class="facts-summary__label">つまり</span>
+          <p class="facts-summary__text">宿泊事業は収益性が見込める一方、許認可や運営ノウハウの壁で断念する人も多い事業です。RIVIAは実際に宿を運営する立場から、開業から自走までを伴走します。</p>
+          <a href="#issues" class="facts-summary__link">具体的なお悩みと解決策を見る <span class="facts-summary__down" aria-hidden="true"></span></a>
         </div>
       </div>
     </section>
 
-    <section class="section section--soft">
+    <section class="section section--soft" id="issues">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Issues &amp; Solutions</span>
@@ -213,12 +250,34 @@
       </div>
     </section>
 
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Project</span>
+          <h2 class="section-title">RIVIAの運営実績</h2>
+          <p class="section-lead">私たちは、自ら宿を運営する当事者です。現場で検証したノウハウをご支援に活かしています。</p>
+        </div>
+        <a href="https://www.com-shizuoka.com/ja/property/node-shimoda/amenities.html" class="project project--compact reveal" target="_blank" rel="noopener">
+          <div class="project__img">
+            <img src="images/node-shimoda-living.avif" alt="NODE Shimoda のリビング" width="1440" height="960" loading="lazy" decoding="async">
+          </div>
+          <div>
+            <h3 class="project__name">NODE Shimoda</h3>
+            <p class="project__meta">静岡県下田市 ｜ 一棟貸しバケーションレンタル</p>
+            <p class="project__desc">下田市旧町内の中心部、空き家をリノベーションした滞在型アパート。ペリーロードなど観光スポットへも徒歩圏内。RIVIAが運営・集客・DX化（多言語AIチャットボット導入）を担当し、地方の空き家活用と宿泊施設のデジタル化を現場で実践しています。</p>
+            <div class="project__rating"><strong>★ 4.88</strong><span>Airbnb評価（51件）</span></div>
+            <span class="project__link">施設サイトを見る（別タブで開きます） <span class="arrow" aria-hidden="true"></span></span>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <section class="section section--soft cta">
       <div class="container reveal">
         <h2 class="cta__title">まずは、現状をお聞かせください。</h2>
         <p class="cta__text">課題の整理からでも構いません。現場を知るメンバーが直接お話を伺います。</p>
         <div class="cta__btn"><a href="contact.html?category=consulting" class="btn btn--lg">ご相談はこちらから <span class="arrow" aria-hidden="true"></span></a></div>
-        <p class="cta__notes"><span>※相談無料</span><span>※無理な営業は一切いたしません</span></p>
+        <p class="cta__notes"><span>※相談無料</span><span>※無理な営業は一切いたしません</span><span>※2営業日以内にご連絡</span></p>
       </div>
     </section>
 
@@ -241,6 +300,33 @@
             <summary class="faq__q"><span class="faq__mark">Q</span><span>許認可が降りず開業できないリスクはありませんか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
             <div class="faq__a"><span class="faq__mark">A</span><p>契約前のSTEP1（物件診断）の段階で行政（保健所・消防）への事前相談を徹底し、確実に許可が降りる見込みを確認してから本格的な投資に進みます。</p><span></span></div>
           </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Other Services</span>
+          <h2 class="section-title">そのほかのサービス</h2>
+        </div>
+        <div class="related">
+          <a href="service-operation.html" class="related__card reveal">
+            <span class="related__worry">「実家・空き家の処分や利活用に悩んでいる」</span>
+            <span class="related__name">宿泊施設運営事業 <span class="arrow" aria-hidden="true"></span></span>
+          </a>
+          <a href="service-consignment.html" class="related__card reveal">
+            <span class="related__worry">「既存宿の運営代行・業務を丸投げしたい」</span>
+            <span class="related__name">運営委託事業 <span class="arrow" aria-hidden="true"></span></span>
+          </a>
+          <a href="service-marketing.html" class="related__card reveal">
+            <span class="related__worry">「自社サイトやSNSからの直接予約を増やしたい」</span>
+            <span class="related__name">WEB集客支援事業 <span class="arrow" aria-hidden="true"></span></span>
+          </a>
+          <a href="service-recruit.html" class="related__card reveal">
+            <span class="related__worry">「観光業・地方ビジネスでの人材不足を解決したい」</span>
+            <span class="related__name">WEB採用支援事業 <span class="arrow" aria-hidden="true"></span></span>
+          </a>
         </div>
       </div>
     </section>
@@ -271,10 +357,17 @@
           <div><h3><a href="contact.html">Contact</a></h3></div>
         </nav>
       </div>
-      <p class="footer__bottom">&copy; 2026 合同会社RIVIA&amp;CO. All Rights Reserved.</p>
+      <div class="footer__bottom">
+        <a href="privacy.html">プライバシーポリシー</a>
+        <p>&copy; 2026 合同会社RIVIA&amp;CO. All Rights Reserved.</p>
+      </div>
     </div>
   </footer>
 
+  <div class="sticky-cta" aria-hidden="true">
+    <p class="sticky-cta__text">ご相談は<strong>無料</strong>です</p>
+    <a href="contact.html?category=consulting" class="btn sticky-cta__btn" tabindex="-1">無料で相談する <span class="arrow" aria-hidden="true"></span></a>
+  </div>
   <script src="js/main.js"></script>
 </body>
 </html>
