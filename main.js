@@ -87,12 +87,35 @@
   }
 
   /**
+   * Media: 公開日を迎えていない記事は表示しない（予約公開）
+   * 各カードの data-date（YYYY-MM-DD）と今日の日付を比べる
+   */
+  var now = new Date();
+  var today = now.getFullYear() + '-' + ('0' + (now.getMonth() + 1)).slice(-2) + '-' + ('0' + now.getDate()).slice(-2);
+  document.querySelectorAll('.media-card[data-date]').forEach(function (c) {
+    if (c.getAttribute('data-date') > today) {
+      c.setAttribute('data-future', '');
+      c.hidden = true;
+    }
+  });
+  // トップ・サービス・記事下の記事一覧: 公開済みの先頭 N 件だけ表示
+  document.querySelectorAll('.media-grid[data-limit]').forEach(function (grid) {
+    var limit = parseInt(grid.getAttribute('data-limit'), 10) || 3;
+    var published = Array.prototype.slice.call(grid.querySelectorAll('.media-card:not([data-future])'));
+    published.forEach(function (c, i) { c.hidden = i >= limit; });
+    if (!published.length) {
+      var section = grid.closest('.section');
+      if (section) section.hidden = true;
+    }
+  });
+
+  /**
    * Media: カテゴリの絞り込みと「もっと記事を見てみる」
    * 例) media.html?cat=akiya
    */
   var mediaList = document.getElementById('media-list');
   if (mediaList) {
-    var cards = Array.prototype.slice.call(mediaList.querySelectorAll('.media-card'));
+    var cards = Array.prototype.slice.call(mediaList.querySelectorAll('.media-card:not([data-future])'));
     var filters = document.querySelectorAll('.media-filter');
     var moreBtn = document.querySelector('.media-more__btn');
     var empty = document.querySelector('.media-empty');
