@@ -274,6 +274,32 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .vision__outcomes { grid-template-columns: 1fr; margin-top: 16px; }
 }
 
+/* トップのファーストビュー写真（下田の海辺・縦長写真） */
+.hero--photo { isolation: isolate; }
+.hero__photo { position: absolute; z-index: -1; background: url("careers-hero.jpg") center 42% / cover no-repeat, linear-gradient(180deg, #cfe0e6 0%, #9fbfcb 45%, #5f8c9c 75%, #3e6776 100%); }
+.hero__caption { position: absolute; right: var(--gutter); bottom: 24px; z-index: 1; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.85); text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); }
+@media (min-width: 900px) {
+  /* 右側に写真を縦長のまま置き、左にコピー */
+  .hero__photo { top: 0; right: 0; bottom: 0; width: 40vw; max-width: 600px; animation: heroZoom 14s var(--ease) forwards; transform: scale(1.03); }
+  .hero--photo .container { position: relative; z-index: 1; }
+  .hero--photo .container > * { max-width: calc(100% - min(40vw, 600px)); padding-right: 40px; }
+  .hero--photo .hero__title { font-size: clamp(32px, 3.4vw, 50px); white-space: nowrap; }
+  .hero--photo .hero__sub { max-width: 520px; }
+  .hero--photo .hero__lines span:nth-child(3) { display: none; }
+}
+@media (max-width: 899px) {
+  /* スマホ: 写真を全面に敷き、白文字を重ねる */
+  .hero--photo { color: #fff; min-height: calc(92vh - var(--header-h)); align-items: flex-end; }
+  .hero__photo { inset: 0; }
+  .hero--photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(17, 17, 17, 0.1) 0%, rgba(17, 17, 17, 0.05) 35%, rgba(17, 17, 17, 0.6) 100%); }
+  .hero--photo .hero__lines { display: none; }
+  .hero--photo .hero__title, .hero--photo .hero__sub { color: #fff; text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25); }
+  .hero--photo .btn { background: #fff; border-color: #fff; color: var(--c-text); }
+  .hero--photo .btn--ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.85); }
+}
+@media (max-width: 1279px) { .hero--photo .hero__scroll { display: none; } }
+@media (prefers-reduced-motion: reduce) { .hero__photo { animation: none !important; transform: none !important; } }
+
 /* News */
 .news { display: grid; grid-template-columns: 240px 1fr; gap: 40px; }
 .news__list { border-top: 1px solid var(--c-line); }
