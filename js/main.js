@@ -1,83 +1,89 @@
 /**
- * Simple SPA Routing System
+ * RIVIA&CO. Corporate Site
  */
-const pages = ['home', 'service-owned', 'service-management', 'service-sns', 'about', 'contact'];
+(function () {
+  'use strict';
 
-function navigate(pageId) {
-    // Validate page
-    if (!pages.includes(pageId)) return;
+  /**
+   * Header: スクロール時に下線を表示
+   */
+  var header = document.querySelector('.header');
+  function onScroll() {
+    if (!header) return;
+    header.classList.toggle('is-scrolled', window.scrollY > 10);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-    // Hide all pages
-    pages.forEach(id => {
-        const el = document.getElementById(`page-${id}`);
-        if (el) {
-            el.classList.remove('active');
-        }
+  /**
+   * Service ドロップダウン
+   * PC はホバーで開き、タップ・クリック・キーボードでも開閉できる
+   */
+  var subItems = document.querySelectorAll('.gnav__item--has-sub');
+  subItems.forEach(function (item) {
+    var trigger = item.querySelector('.gnav__link');
+    trigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = !item.classList.contains('is-open');
+      item.classList.toggle('is-open', open);
+      trigger.setAttribute('aria-expanded', String(open));
     });
+  });
 
-    // Show selected page
-    const targetPage = document.getElementById(`page-${pageId}`);
-    if (targetPage) {
-        targetPage.classList.add('active');
-        // Scroll to top smoothly
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+  function closeSubnav() {
+    subItems.forEach(function (item) {
+      item.classList.remove('is-open');
+      item.querySelector('.gnav__link').setAttribute('aria-expanded', 'false');
+    });
+  }
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.gnav__item--has-sub')) closeSubnav();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeSubnav();
+  });
+
+  /**
+   * スクロールに応じたフェードイン
+   */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /**
+   * Contact: サービスページから遷移した場合、ご相談カテゴリを自動選択
+   * 例) contact.html?category=operation
+   */
+  var category = document.getElementById('category');
+  if (category && window.URLSearchParams) {
+    var param = new URLSearchParams(window.location.search).get('category');
+    if (param) {
+      var option = category.querySelector('option[data-key="' + param + '"]');
+      if (option) option.selected = true;
     }
+  }
 
-    // Update URL hash for simple back-button support (optional but good practice)
-    window.location.hash = pageId;
-}
-
-// Handle initial load based on URL hash
-window.addEventListener('DOMContentLoaded', () => {
-    const hash = window.location.hash.replace('#', '');
-    if (hash && pages.includes(hash)) {
-        navigate(hash);
-    } else {
-        navigate('home');
-    }
-});
-
-// Handle browser back/forward buttons
-window.addEventListener('hashchange', () => {
-    const hash = window.location.hash.replace('#', '');
-    if (hash && pages.includes(hash)) {
-        navigate(hash);
-    } else if (!hash) {
-        navigate('home');
-    }
-});
-
-
-/**
- * Mobile Menu Toggle
- */
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-const menuIcon = document.getElementById('menu-icon');
-
-function toggleMobileMenu() {
-    mobileMenu.classList.toggle('hidden');
-    if (mobileMenu.classList.contains('hidden')) {
-        menuIcon.classList.remove('ph-x');
-        menuIcon.classList.add('ph-list');
-    } else {
-        menuIcon.classList.remove('ph-list');
-        menuIcon.classList.add('ph-x');
-    }
-}
-
-mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-
-/**
- * Header Scroll Effect (Glassmorphism shadow adjust)
- */
-const header = document.getElementById('main-header');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-        header.classList.add('shadow-sm');
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-    } else {
-        header.classList.remove('shadow-sm');
-        header.style.background = 'rgba(255, 255, 255, 0.85)';
-    }
-});
+  /**
+   * Careers: 選択したファイル名を表示
+   */
+  document.querySelectorAll('.file input[type="file"]').forEach(function (input) {
+    input.addEventListener('change', function () {
+      var box = input.closest('.file');
+      var name = box.querySelector('.file__name');
+      var file = input.files && input.files[0];
+      box.classList.toggle('has-file', !!file);
+      name.textContent = file ? file.name : name.getAttribute('data-default');
+    });
+  });
+})();
