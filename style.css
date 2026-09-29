@@ -276,12 +276,12 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 
 /* トップのファーストビュー写真（下田の海辺・縦長写真） */
 .hero--photo { isolation: isolate; }
-.hero__photo { position: absolute; z-index: -1; background: url("hero.jpg") 55% center / cover no-repeat, linear-gradient(180deg, #cfe0e6 0%, #9fbfcb 45%, #5f8c9c 75%, #3e6776 100%); }
+.hero__photo { position: absolute; z-index: -1; background: url("hero.jpg") 60% 55% / cover no-repeat, linear-gradient(180deg, #cfe0e6 0%, #9fbfcb 45%, #5f8c9c 75%, #3e6776 100%); }
 .hero__caption { position: absolute; right: var(--gutter); bottom: 24px; z-index: 1; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.85); text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); }
 @media (min-width: 900px) {
   /* PC: 写真を全面に敷き、文字の後ろ（左側）だけ白くぼかして黒文字で読ませる */
-  .hero__photo { inset: 0; background-size: max(140%, 100vw) auto, cover; background-position: 0% 38%, center; animation: heroZoom 14s var(--ease) forwards; transform: scale(1.03); }
-  .hero--photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.78) 34%, rgba(255, 255, 255, 0.25) 62%, rgba(255, 255, 255, 0) 80%); }
+  .hero__photo { inset: 0; background-size: cover, cover; background-position: center 64%, center; animation: heroZoom 14s var(--ease) forwards; transform: scale(1.03); }
+  .hero--photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.84) 38%, rgba(255, 255, 255, 0.4) 60%, rgba(255, 255, 255, 0) 78%); }
   .hero--photo .container { position: relative; z-index: 1; }
   .hero--photo .container > * { max-width: 720px; }
   .hero--photo .hero__title { font-size: clamp(36px, 4.2vw, 60px); white-space: nowrap; }
