@@ -382,7 +382,20 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .page-hero--photo .breadcrumb li + li::before { color: rgba(255, 255, 255, 0.5); }
 .page-hero__caption { position: absolute; right: var(--gutter); bottom: 24px; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.8); }
 @keyframes heroZoom { to { transform: scale(1); } }
-@media (max-width: 899px) { .page-hero--photo { min-height: 72vh; padding: 120px 0 72px; } }
+@media (max-width: 899px) { .page-hero--photo { min-height: 72vh; padding: 120px 0 72px; } .page-hero__photo { background-position: center 40%, center; } }
+/* PC: 写真は縦長のため、右側に縦長のまま配置して拡大によるボケを防ぐ。文字は左に黒で置く */
+@media (min-width: 900px) {
+  .page-hero--photo { color: var(--c-text); align-items: center; min-height: min(84vh, 780px); padding: 120px 0; border-bottom: 1px solid var(--c-line); }
+  .page-hero--photo::after { display: none; }
+  .page-hero__photo { left: auto; width: 42vw; max-width: 620px; z-index: 0; background-position: center 42%, center; }
+  .page-hero--photo .container { position: relative; z-index: 1; }
+  .page-hero--photo .container > * { max-width: calc(100% - min(42vw, 620px)); padding-right: 48px; }
+  .page-hero--photo .page-hero__en, .page-hero--photo .page-hero__ja { color: var(--c-text); }
+  .page-hero--photo .page-hero__lead { color: var(--c-sub); text-shadow: none; }
+  .page-hero--photo .breadcrumb ol, .page-hero--photo .breadcrumb a { color: var(--c-muted); }
+  .page-hero--photo .breadcrumb li + li::before { color: var(--c-line-strong); }
+  .page-hero__caption { z-index: 1; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); }
+}
 @media (prefers-reduced-motion: reduce) { .page-hero__photo { animation: none; transform: none; } }
 
 .overview { display: grid; grid-template-columns: 280px 1fr; gap: 56px; }
