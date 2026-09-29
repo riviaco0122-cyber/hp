@@ -276,11 +276,11 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 
 /* トップのファーストビュー写真（下田の海辺・縦長写真） */
 .hero--photo { isolation: isolate; }
-.hero__photo { position: absolute; z-index: -1; background: url("careers-hero.jpg") 38% center / cover no-repeat, linear-gradient(180deg, #cfe0e6 0%, #9fbfcb 45%, #5f8c9c 75%, #3e6776 100%); }
+.hero__photo { position: absolute; z-index: -1; background: url("careers-hero.jpg") 55% center / cover no-repeat, linear-gradient(180deg, #cfe0e6 0%, #9fbfcb 45%, #5f8c9c 75%, #3e6776 100%); }
 .hero__caption { position: absolute; right: var(--gutter); bottom: 24px; z-index: 1; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.85); text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); }
 @media (min-width: 900px) {
   /* PC: 写真を全面に敷き、文字の後ろ（左側）だけ白くぼかして黒文字で読ませる */
-  .hero__photo { inset: 0; background-position: center 62%, center; animation: heroZoom 14s var(--ease) forwards; transform: scale(1.03); }
+  .hero__photo { inset: 0; background-size: max(140%, 100vw) auto, cover; background-position: 0% 38%, center; animation: heroZoom 14s var(--ease) forwards; transform: scale(1.03); }
   .hero--photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.78) 34%, rgba(255, 255, 255, 0.25) 62%, rgba(255, 255, 255, 0) 80%); }
   .hero--photo .container { position: relative; z-index: 1; }
   .hero--photo .container > * { max-width: 720px; }
@@ -414,13 +414,13 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 @keyframes heroZoom { to { transform: scale(1); } }
 @media (max-width: 899px) {
   .page-hero--photo { min-height: 72vh; padding: 120px 0 72px; }
-  .page-hero__photo { background-position: 38% center, center; }
+  .page-hero__photo { background-position: 55% center, center; }
   .page-hero--photo::after { background: linear-gradient(180deg, rgba(8, 28, 40, 0.5) 0%, rgba(8, 28, 40, 0.42) 50%, rgba(8, 28, 40, 0.62) 100%); }
 }
 /* PC: 写真は縦長のため、右側に縦長のまま配置して拡大によるボケを防ぐ。文字は左に黒で置く */
 @media (min-width: 900px) {
   .page-hero--photo { color: var(--c-text); align-items: center; min-height: min(84vh, 780px); padding: 120px 0; border-bottom: 1px solid var(--c-line); }
-  .page-hero__photo { background-position: center 62%, center; }
+  .page-hero__photo { background-size: max(140%, 100vw) auto, cover; background-position: 0% 38%, center; }
   .page-hero--photo::after { display: block; background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.78) 34%, rgba(255, 255, 255, 0.25) 62%, rgba(255, 255, 255, 0) 80%); }
   .page-hero--photo .container { position: relative; z-index: 1; }
   .page-hero--photo .container > * { max-width: 640px; }
