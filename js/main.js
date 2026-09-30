@@ -16,7 +16,16 @@
     var y = window.scrollY;
     if (header) header.classList.toggle('is-scrolled', y > 10);
     // ファーストビューを過ぎたら固定相談バーを表示
-    if (stickyCta) stickyCta.classList.toggle('is-visible', y > window.innerHeight * 0.6);
+    // 同じボタンがあるページ末尾の相談セクションが見えている間は重複させない
+    if (stickyCta) stickyCta.classList.toggle('is-visible', y > window.innerHeight * 0.6 && !ctaInView);
+  }
+  var ctaInView = false;
+  var ctaSection = document.querySelector('.cta');
+  if (stickyCta && ctaSection && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      ctaInView = entries[0].isIntersecting;
+      onScroll();
+    }, { threshold: 0.3 }).observe(ctaSection);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
