@@ -1216,10 +1216,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .tri__node--owner { background: #f3f3f2; border-top: 3px solid var(--c-owner); }
 .tri__node--investor { border-top: 3px solid #c8a24f; }
 .tri__node .scheme__list { margin-top: 10px; }
-.tri__label { position: absolute; transform: translate(-50%, -50%); padding: 6px 14px; border-radius: 999px; background: var(--c-bg-soft); font-size: 13px; font-weight: 500; line-height: 1.6; color: #7a5f22; text-align: center; white-space: nowrap; }
-.tri__label--left { left: 25%; top: 46%; }
-.tri__label--right { left: 75%; top: 46%; }
-.tri__label--bottom { left: 50%; top: 91%; }
+.tri__label { position: absolute; z-index: 1; transform: translate(-50%, -50%); padding: 4px 12px; border-radius: 999px; background: var(--c-bg-soft); font-size: 13px; font-weight: 500; line-height: 1.6; color: #7a5f22; text-align: center; white-space: nowrap; }
 .tri__steps { display: none; }
 @media (max-width: 899px) {
   .tri { aspect-ratio: 1000 / 1050; }
@@ -1233,10 +1230,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .tri__node--top { left: 50%; top: 14%; width: 48%; }
   .tri__node--left { left: 23%; top: 82%; }
   .tri__node--right { left: 77%; top: 82%; }
-  .tri__num { display: flex; position: absolute; transform: translate(-50%, -50%); gap: 2px; padding: 2px 8px; border-radius: 999px; background: #fff; border: 1px solid #c8a24f; color: #7a5f22; font-size: 13px; font-weight: 500; line-height: 1.5; }
-  .tri__num--left { left: 27%; top: 47%; }
-  .tri__num--right { left: 73%; top: 47%; }
-  .tri__num--bottom { left: 50%; top: 82%; }
+  .tri__num { display: grid; place-items: center; width: 24px; height: 24px; position: absolute; z-index: 1; transform: translate(-50%, -50%); border-radius: 999px; background: #fff; border: 1px solid #c8a24f; color: #7a5f22; font-size: 13px; font-weight: 500; line-height: 1.5; }
   .tri__steps { display: grid; gap: 10px; margin-top: 16px; padding: 18px 16px; background: var(--c-bg); border: 1px solid var(--c-card-line); border-radius: var(--radius); }
   .tri__steps li { display: grid; grid-template-columns: 24px 1fr; gap: 8px; align-items: baseline; font-size: 13.5px; line-height: 1.7; }
   .tri__step-no { color: #7a5f22; font-weight: 500; }
