@@ -124,9 +124,8 @@ rivia-hp/
         5. 「観光業・地方ビジネスでの人材不足を解決したい」 → WEB採用支援事業
 
 ### ロゴ
-* ワードマーク：Cormorant Garamond の RIVIA&CO.。& のみイタリック体・ブランドグリーン（#1a472a）でアクセントにする。文字はアウトライン化済み。
-* シンボル（ファビコン等）：深緑の角丸正方形に白のイタリック体 &。
-* ファイル：images/logo/（logo.svg 横組み／logo-white.svg 暗い背景用／logo-mark.svg & のみ／logo-square.svg・logo.png 512px 正方形）、images/favicon.svg・favicon-48.png・apple-touch-icon.png
+* シンボル：細い円（地域とのつながり）＋明朝体のR＋屋根の一線（家・宿）。ワードマーク：Cormorant Garamond の RIVIA&CO.（& のみブランドグリーン #1a472a）。文字はアウトライン化済み。
+* ファイル：images/logo/（logo.svg 横組み／logo-white.svg 暗い背景用／logo-mark.svg シンボルのみ／logo-square.svg・logo.png 512px 正方形）、images/favicon.svg・favicon-48.png・apple-touch-icon.png
 * 検索結果向けに、構造化データ（Organization の logo）へ logo.png を指定している。
 
 ### プラン例（空き家再生事業・開業コンサルティング事業のページ）
