@@ -972,3 +972,11 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .founder__origin { display: block; margin-top: 2px; font-family: var(--font-sans); font-size: 12px; letter-spacing: 0.08em; }
   .founder__origin::before { content: none; }
 }
+
+/* 明るい写真・情報量の多い写真は、文字の読みやすさを優先して暗めに */
+.page-hero--bright::before {
+  background:
+    linear-gradient(90deg, rgba(12, 14, 12, 0.8) 0%, rgba(12, 14, 12, 0.6) 55%, rgba(12, 14, 12, 0.3) 100%),
+    linear-gradient(0deg, rgba(12, 14, 12, 0.45) 0%, rgba(12, 14, 12, 0) 45%);
+}
+@media (max-width: 899px) { .page-hero--bright::before { background: rgba(12, 14, 12, 0.66); } }
