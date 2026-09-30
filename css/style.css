@@ -1136,3 +1136,22 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .plan__val--mid { background: var(--c-rivia-soft); color: var(--c-rivia); }
 .plan__val--low { background: var(--c-bg-soft); color: var(--c-sub); font-weight: 400; }
 @media (max-width: 899px) { .biz-card__num { font-size: 36px; } }
+
+/* プランカードの行の高さを3枚でそろえる（subgrid） */
+@media (min-width: 1100px) {
+  .plans { row-gap: 0; column-gap: 20px; grid-template-rows: repeat(8, auto); }
+  .plan { display: grid; grid-row: span 8; grid-template-rows: subgrid; row-gap: 0; }
+}
+.plan__block { margin-top: 22px; }
+
+/* だれが負担／担当するか：色ラベルで一目で */
+.who { display: inline-flex; justify-content: center; align-items: center; min-width: 76px; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; }
+.who--owner { background: var(--c-owner); color: #fff; }
+.who--rivia { background: var(--c-rivia); color: #fff; }
+.who--half { background: linear-gradient(90deg, var(--c-owner) 50%, var(--c-rivia) 50%); color: #fff; }
+.plan__split { display: grid; gap: 8px; }
+.plan__split li { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; line-height: 1.5; }
+.plan__split-item { color: var(--c-sub); }
+.plans__legend { margin-top: 48px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; font-size: 13px; }
+.plans__legend-text { color: var(--c-muted); font-size: 12px; letter-spacing: 0.12em; margin-right: 4px; }
+.plans__legend + .plans { margin-top: 32px; }
