@@ -305,12 +305,19 @@
         <div class="scheme reveal">
           <p class="scheme__head">しくみ：だれが、何を担うのか</p>
           <div class="tri">
-          <svg class="tri__lines" viewBox="0 0 1000 640" aria-hidden="true" preserveAspectRatio="none">
+          <svg class="tri__lines tri-pc" viewBox="0 0 1000 640" aria-hidden="true">
             <defs>
-              <marker id="tri-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z"/></marker>
-              <marker id="tri-arrow-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10z"/></marker>
+              <marker id="tri-pc-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z"/></marker>
+              <marker id="tri-pc-s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10z"/></marker>
             </defs>
-            <line x1="405" y1="234" x2="265" y2="404" marker-start="url(#tri-arrow-start)"/><line x1="735" y1="404" x2="595" y2="234" marker-start="url(#tri-arrow-start)"/><line x1="340" y1="520" x2="660" y2="520" marker-start="url(#tri-arrow-start)"/>
+            <line x1="405" y1="234" x2="265" y2="404" marker-start="url(#tri-pc-s)"/><line x1="735" y1="404" x2="595" y2="234" marker-start="url(#tri-pc-s)"/><line x1="340" y1="520" x2="660" y2="520" marker-start="url(#tri-pc-s)"/>
+          </svg>
+          <svg class="tri__lines tri-sp" viewBox="0 0 1000 1050" aria-hidden="true">
+            <defs>
+              <marker id="tri-sp-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z"/></marker>
+              <marker id="tri-sp-s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10z"/></marker>
+            </defs>
+            <line x1="426" y1="343" x2="301" y2="674" marker-start="url(#tri-sp-s)"/><line x1="699" y1="674" x2="574" y2="343" marker-start="url(#tri-sp-s)"/><line x1="445" y1="861" x2="555" y2="861" marker-start="url(#tri-sp-s)"/>
           </svg>
           <div class="tri__node tri__node--top tri__node--rivia">
               <span class="scheme__en">PARTNER</span>
@@ -331,8 +338,9 @@
               <ul class="scheme__list"><li>宿を予約・滞在</li><li>宿泊料金を支払う</li></ul>
             </div>
           <p class="tri__label tri__label--left">① 運営を委託<br>④ 運営委託の費用</p><p class="tri__label tri__label--right">② 集客・予約・ゲスト対応</p><p class="tri__label tri__label--bottom">③ 宿泊料金（売上はオーナー様へ）</p>
+          <span class="tri__num tri__num--left">①④</span><span class="tri__num tri__num--right">②</span><span class="tri__num tri__num--bottom">③</span>
         </div>
-        <ol class="tri__steps"><li>① 運営を委託 ／ ④ 運営委託の費用</li><li>② 集客・予約・ゲスト対応</li><li>③ 宿泊料金（売上はオーナー様へ）</li></ol>
+        <ol class="tri__steps"><li><span class="tri__step-no">①</span>運営を委託</li><li><span class="tri__step-no">②</span>集客・予約・ゲスト対応</li><li><span class="tri__step-no">③</span>宿泊料金（売上はオーナー様へ）</li><li><span class="tri__step-no">④</span>運営委託の費用</li></ol>
           <p class="scheme__summary">経営の判断はオーナー様。日々の運営の手間は、RIVIAが引き受けます。</p>
         </div>
 

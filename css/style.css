@@ -1202,11 +1202,12 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .fact__impact { align-self: start; }
 }
 
-/* 協業スキーム：三角形の図 */
+/* 協業スキーム：三角形の図（PC：矢印に説明／スマホ：番号だけ図に置き、説明は下に） */
 .tri { position: relative; aspect-ratio: 1000 / 640; max-width: 1040px; margin: 0 auto; }
 .tri__lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .tri__lines line { stroke: #c8a24f; stroke-width: 2; }
 .tri__lines marker path { fill: #c8a24f; }
+.tri-sp, .tri__num { display: none; }
 .tri__node { position: absolute; width: 30%; transform: translate(-50%, -50%); padding: 22px 20px; border-radius: var(--radius); background: var(--c-bg); border: 1px solid var(--c-card-line); box-shadow: var(--shadow-sm); text-align: center; }
 .tri__node--top { left: 50%; top: 18.4%; }
 .tri__node--left { left: 17%; top: 81.2%; }
@@ -1220,15 +1221,25 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .tri__label--right { left: 75%; top: 46%; }
 .tri__label--bottom { left: 50%; top: 91%; }
 .tri__steps { display: none; }
-@media (max-width: 1099px) {
-  .tri { aspect-ratio: auto; display: grid; gap: 12px; }
-  .tri__lines, .tri__label { display: none; }
-  .tri__node { position: static; transform: none; width: auto; }
-  .tri__node--top { order: 2; }
-  .tri__node--left { order: 1; }
-  .tri__node--right { order: 3; }
-  .tri__steps { display: grid; gap: 8px; margin-top: 20px; padding: 20px; background: var(--c-bg); border-radius: var(--radius); counter-reset: none; }
-  .tri__steps li { font-size: 13.5px; line-height: 1.8; color: #7a5f22; font-weight: 500; }
+@media (max-width: 899px) {
+  .tri { aspect-ratio: 1000 / 1050; }
+  .tri-pc, .tri__label { display: none; }
+  .tri-sp { display: block; }
+  .tri__node { width: 40%; padding: 12px 6px 10px; }
+  .tri__node .scheme__list { display: none; }
+  .tri__node .scheme__en { font-size: 9px; letter-spacing: 0.14em; }
+  .tri__node .scheme__title { font-size: 13px; margin-top: 2px; letter-spacing: 0; white-space: nowrap; }
+  .tri__node .scheme__role { font-size: 11px; }
+  .tri__node--top { left: 50%; top: 14%; width: 48%; }
+  .tri__node--left { left: 23%; top: 82%; }
+  .tri__node--right { left: 77%; top: 82%; }
+  .tri__num { display: flex; position: absolute; transform: translate(-50%, -50%); gap: 2px; padding: 2px 8px; border-radius: 999px; background: #fff; border: 1px solid #c8a24f; color: #7a5f22; font-size: 13px; font-weight: 500; line-height: 1.5; }
+  .tri__num--left { left: 27%; top: 47%; }
+  .tri__num--right { left: 73%; top: 47%; }
+  .tri__num--bottom { left: 50%; top: 82%; }
+  .tri__steps { display: grid; gap: 10px; margin-top: 16px; padding: 18px 16px; background: var(--c-bg); border: 1px solid var(--c-card-line); border-radius: var(--radius); }
+  .tri__steps li { display: grid; grid-template-columns: 24px 1fr; gap: 8px; align-items: baseline; font-size: 13.5px; line-height: 1.7; }
+  .tri__step-no { color: #7a5f22; font-weight: 500; }
 }
 #scheme .scheme__summary { margin-top: 24px; }
 .tri__lines line.is-dashed { stroke: var(--c-line-strong); stroke-dasharray: 6 6; }

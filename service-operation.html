@@ -305,12 +305,19 @@
         <div class="scheme reveal">
           <p class="scheme__head">しくみ：だれが、何を担うのか</p>
           <div class="tri">
-          <svg class="tri__lines" viewBox="0 0 1000 640" aria-hidden="true" preserveAspectRatio="none">
+          <svg class="tri__lines tri-pc" viewBox="0 0 1000 640" aria-hidden="true">
             <defs>
-              <marker id="tri-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z"/></marker>
-              <marker id="tri-arrow-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10z"/></marker>
+              <marker id="tri-pc-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z"/></marker>
+              <marker id="tri-pc-s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10z"/></marker>
             </defs>
-            <line x1="405" y1="234" x2="265" y2="404" marker-end="url(#tri-arrow)" marker-start="url(#tri-arrow-start)"/><line x1="735" y1="404" x2="595" y2="234" marker-end="url(#tri-arrow)" marker-start="url(#tri-arrow-start)"/><line x1="340" y1="520" x2="660" y2="520" class="is-dashed"/>
+            <line x1="405" y1="234" x2="265" y2="404" marker-end="url(#tri-pc-a)" marker-start="url(#tri-pc-s)"/><line x1="735" y1="404" x2="595" y2="234" marker-end="url(#tri-pc-a)" marker-start="url(#tri-pc-s)"/><line x1="340" y1="520" x2="660" y2="520" class="is-dashed"/>
+          </svg>
+          <svg class="tri__lines tri-sp" viewBox="0 0 1000 1050" aria-hidden="true">
+            <defs>
+              <marker id="tri-sp-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z"/></marker>
+              <marker id="tri-sp-s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10z"/></marker>
+            </defs>
+            <line x1="426" y1="343" x2="301" y2="674" marker-end="url(#tri-sp-a)" marker-start="url(#tri-sp-s)"/><line x1="699" y1="674" x2="574" y2="343" marker-end="url(#tri-sp-a)" marker-start="url(#tri-sp-s)"/><line x1="445" y1="861" x2="555" y2="861" class="is-dashed"/>
           </svg>
           <div class="tri__node tri__node--top tri__node--rivia">
               <span class="scheme__en">PARTNER</span>
@@ -331,8 +338,9 @@
               <ul class="scheme__list"><li>暮らすように旅する滞在</li><li>宿泊料金を支払う</li></ul>
             </div>
           <p class="tri__label tri__label--left">① 物件を貸す<br>④ 家賃をお支払い</p><p class="tri__label tri__label--right">② 宿として運営・おもてなし<br>③ 宿泊料金</p><p class="tri__label tri__label--bottom is-soft">思い出の家が、旅人の滞在先に</p>
+          <span class="tri__num tri__num--left">①④</span><span class="tri__num tri__num--right">②③</span>
         </div>
-        <ol class="tri__steps"><li>① 物件を貸す ／ ④ 家賃をお支払い</li><li>② 宿として運営・おもてなし ／ ③ 宿泊料金</li></ol>
+        <ol class="tri__steps"><li><span class="tri__step-no">①</span>物件を貸す</li><li><span class="tri__step-no">②</span>宿として運営・おもてなし</li><li><span class="tri__step-no">③</span>宿泊料金</li><li><span class="tri__step-no">④</span>家賃をお支払い</li></ol>
           <p class="scheme__summary">オーナー様は「物件を貸す」だけ。運営の手間はかかりません。</p>
         </div>
 
