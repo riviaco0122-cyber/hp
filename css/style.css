@@ -653,24 +653,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .check a { text-decoration: underline; text-underline-offset: 4px; }
 .check .req { margin-left: 4px; }
 
-/* スマホ用 固定相談バー */
-.sticky-cta { display: none; }
-@media (max-width: 899px) {
-  .sticky-cta {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
-    background: rgba(255, 255, 255, 0.97); border-top: 1px solid var(--c-line);
-    transform: translateY(110%); transition: transform .4s var(--ease);
-  }
-  .sticky-cta.is-visible { transform: none; }
-  .sticky-cta__text { font-size: 12px; color: var(--c-sub); letter-spacing: 0.04em; }
-  .sticky-cta__text strong { font-weight: 500; color: var(--c-text); }
-  .sticky-cta__btn { padding: 12px 20px; font-size: 13px; gap: 10px; }
-  .sticky-cta__btn .arrow { width: 18px; }
-  body.has-sticky-cta { padding-bottom: 72px; }
-}
-
 /* プライバシーポリシー */
 .policy__intro { line-height: 2.2; }
 .policy { margin-top: 56px; border-top: 1px solid var(--c-line); }

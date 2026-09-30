@@ -8,24 +8,12 @@
   document.documentElement.classList.add('js');
 
   /**
-   * Header の下線と、スマホ用の固定相談バーの表示切り替え
+   * Header の下線
    */
   var header = document.querySelector('.header');
-  var stickyCta = document.querySelector('.sticky-cta');
   function onScroll() {
     var y = window.scrollY;
     if (header) header.classList.toggle('is-scrolled', y > 10);
-    // ファーストビューを過ぎたら固定相談バーを表示
-    // 同じボタンがあるページ末尾の相談セクションが見えている間は重複させない
-    if (stickyCta) stickyCta.classList.toggle('is-visible', y > window.innerHeight * 0.6 && !ctaInView);
-  }
-  var ctaInView = false;
-  var ctaSection = document.querySelector('.cta');
-  if (stickyCta && ctaSection && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      ctaInView = entries[0].isIntersecting;
-      onScroll();
-    }, { threshold: 0.3 }).observe(ctaSection);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
