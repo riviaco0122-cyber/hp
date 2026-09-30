@@ -1002,3 +1002,21 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 }
 .page-hero--photo .page-hero__en { text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25); }
 .page-hero--photo .page-hero__ja { color: rgba(255, 255, 255, 0.9); }
+
+/* TOPの事業紹介カード */
+.biz-card { gap: 28px; }
+.biz-card__top { display: flex; justify-content: space-between; align-items: center; }
+.biz-card__icon { width: 52px; height: 52px; border: 1px solid var(--c-line-strong); border-radius: 50%; display: grid; place-items: center; transition: background .4s, border-color .4s; }
+.biz-card__icon svg { width: 24px; height: 24px; stroke: var(--c-text); stroke-width: 1; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: stroke .4s; }
+.biz-card:hover .biz-card__icon { background: var(--c-text); border-color: var(--c-text); }
+.biz-card:hover .biz-card__icon svg { stroke: #fff; }
+.biz-card__body { flex-grow: 1; }
+.biz-card__en { display: block; font-family: var(--font-en); font-size: 14px; color: var(--c-muted); letter-spacing: 0.14em; text-transform: uppercase; }
+.biz-card__name { margin-top: 8px; font-family: var(--font-serif); font-weight: 400; font-size: 20px; line-height: 1.6; letter-spacing: 0.05em; }
+.biz-card__text { margin-top: 14px; font-size: 14px; color: var(--c-sub); line-height: 2; }
+@media (max-width: 899px) {
+  .biz-card { gap: 20px; }
+  .biz-card__icon { width: 44px; height: 44px; }
+  .biz-card__icon svg { width: 20px; height: 20px; }
+  .biz-card__name { font-size: 18px; }
+}
