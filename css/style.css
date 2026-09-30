@@ -808,6 +808,73 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 @media (max-width: 899px) { .article-cta { padding: 28px 20px; } .article-cta .btn--lg { width: 100%; padding: 20px; } }
 
 /* ==========================================================================
+   Depth（カードの立体感）
+   白地のミニマルさは保ちつつ、カードを浮かせて奥行きを出す
+   ========================================================================== */
+:root {
+  --radius: 10px;
+  --shadow-sm: 0 1px 2px rgba(17, 17, 17, 0.04), 0 6px 16px rgba(17, 17, 17, 0.05);
+  --shadow-md: 0 2px 4px rgba(17, 17, 17, 0.04), 0 14px 36px rgba(17, 17, 17, 0.08);
+  --shadow-lg: 0 4px 8px rgba(17, 17, 17, 0.05), 0 24px 56px rgba(17, 17, 17, 0.12);
+  --c-card-line: rgba(17, 17, 17, 0.06);
+}
+
+/* 共通カード */
+.persona__card, .related__card, .fact, .reason, .flow__step, .issue, .founder,
+.careers-cta, .facts-summary, .map, .keypoints, .article-cta {
+  background-color: var(--c-bg);
+  border: 1px solid var(--c-card-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.project__img, .media-card .thumb { border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+
+/* ホバーで浮き上がる（リンクになっているカード） */
+.persona__card, .related__card, .careers-cta, .media-card .thumb, .project__img {
+  transition: translate .5s var(--ease), box-shadow .5s var(--ease), background .4s;
+}
+.js .persona__card.reveal, .js .related__card.reveal, .js .careers-cta.reveal {
+  transition: opacity 1.2s var(--ease), transform 1.2s var(--ease), translate .5s var(--ease), box-shadow .5s var(--ease), background .4s;
+}
+@media (hover: hover) {
+  .persona__card:hover, .related__card:hover, .careers-cta:hover { translate: 0 -6px; box-shadow: var(--shadow-lg); background: var(--c-bg); }
+  .media-card:hover .thumb { transform: none; translate: 0 -6px; box-shadow: var(--shadow-lg); }
+  .project:hover .project__img { box-shadow: var(--shadow-lg); }
+}
+
+/* 枠線を共有していたグリッドを、間隔のあるカードの並びに */
+.persona { gap: 20px; border: 0; }
+.related { gap: 16px; border: 0; }
+.facts { gap: 20px; border-top: 0; }
+.fact + .fact { border-left: 1px solid var(--c-card-line); }
+.reasons { gap: 20px; border-top: 0; }
+.reason, .reason + .reason { padding: 44px 36px; border-left: 1px solid var(--c-card-line); }
+.founders { gap: 24px; border-top: 0; }
+.founder, .founder + .founder { padding: 48px 44px; border-left: 1px solid var(--c-card-line); }
+.facts-summary, .issue { box-shadow: var(--shadow-md); }
+.issue__answer { border-radius: calc(var(--radius) - 4px); }
+
+/* ボタンにも軽い影 */
+.btn { box-shadow: 0 6px 18px rgba(17, 17, 17, 0.12); transition: background .3s, color .3s, translate .4s var(--ease), box-shadow .4s var(--ease); }
+.btn--ghost { box-shadow: none; }
+@media (hover: hover) { .btn:hover { translate: 0 -2px; box-shadow: 0 10px 24px rgba(17, 17, 17, 0.16); } }
+
+/* スクロール後のヘッダーに薄い影 */
+.header { transition: border-color .3s, box-shadow .3s; }
+.header.is-scrolled { box-shadow: 0 6px 20px rgba(17, 17, 17, 0.05); }
+
+@media (max-width: 1099px) {
+  .fact { padding: 36px 28px 40px; }
+}
+@media (max-width: 899px) {
+  .persona, .related, .facts, .reasons { gap: 14px; }
+  .fact, .fact + .fact { padding: 32px 22px 36px; }
+  .reason, .reason + .reason { padding: 32px 24px; }
+  .founders { gap: 16px; }
+  .founder, .founder + .founder { padding: 36px 22px; }
+}
+
+/* ==========================================================================
    埋め込み画像（NODE Shimoda リビング写真）
    差し替える場合は、画像を Base64 に変換して url() の中を置き換えてください。
    ========================================================================== */
