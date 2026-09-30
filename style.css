@@ -518,6 +518,10 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .founder__career span { display: block; font-size: 13px; color: var(--c-sub); }
 .founder__tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .founder__tags li { border: 1px solid var(--c-line-strong); padding: 4px 14px; font-size: 12px; letter-spacing: 0.06em; }
+.founder__sns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.founder__sns a { display: inline-flex; align-items: center; gap: 10px; padding: 9px 18px; border: 1px solid var(--c-text); font-size: 13px; letter-spacing: 0.08em; transition: background .2s, color .2s; }
+.founder__sns a:hover { background: var(--c-text); color: #fff; }
+.founder__sns svg { width: 16px; height: 16px; fill: currentColor; }
 @media (max-width: 899px) { .founders { grid-template-columns: 1fr; } .founder, .founder + .founder { padding: 40px 0; border-left: 0; } }
 
 .profile { border-top: 1px solid var(--c-line); }
