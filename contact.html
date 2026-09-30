@@ -103,8 +103,9 @@
           1. https://formspree.io にログインし「+ New Form」でフォームを作成
              （通知先メールアドレス: rivia.co0122@gmail.com）
           2. 下記 action の「YOUR_FORM_ID」を、発行された ID（例: abcdwxyz）に置き換える
+          ※ Formspree でのファイル添付は有料プランのみ対応です。
         -->
-        <form class="form reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form class="form reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】Webサイトからのお問い合わせ">
           <div class="form__field">
             <label for="name">お名前 <span class="req">必須</span></label>
@@ -144,6 +145,16 @@
             <label for="message">お問い合わせ内容 <span class="req">必須</span></label>
             <textarea id="message" name="message" placeholder="ご相談内容をご記入ください。まだ考えがまとまっていない段階でも構いません。" required></textarea>
           </div>
+          <fieldset class="form__field form__fieldset">
+            <legend class="form__legend">添付ファイル <span class="opt">任意</span></legend>
+            <p class="form__notes form__notes--above">物件の資料・写真・図面などがあれば添付してください。PDF・画像・Word・Excelなど、合計10MBまでを目安にお送りください。</p>
+            <label class="file">
+              <input type="file" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.heic" multiple>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/></svg>
+              <span class="file__title">ファイルを添付する</span>
+              <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）">クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）</span>
+            </label>
+          </fieldset>
           <div class="form__consent">
             <label class="check" for="agree">
               <input type="checkbox" id="agree" name="privacy_agree" value="同意する" required>

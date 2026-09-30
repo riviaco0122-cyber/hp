@@ -159,15 +159,17 @@
   }
 
   /**
-   * Careers: 選択したファイル名を表示
+   * ファイル添付（採用・お問い合わせ）: 選択したファイル名を表示
    */
   document.querySelectorAll('.file input[type="file"]').forEach(function (input) {
     input.addEventListener('change', function () {
       var box = input.closest('.file');
       var name = box.querySelector('.file__name');
-      var file = input.files && input.files[0];
-      box.classList.toggle('has-file', !!file);
-      name.textContent = file ? file.name : name.getAttribute('data-default');
+      var files = input.files || [];
+      box.classList.toggle('has-file', files.length > 0);
+      name.textContent = files.length === 0 ? name.getAttribute('data-default')
+        : files.length === 1 ? files[0].name
+        : files[0].name + ' ほか' + (files.length - 1) + '件';
     });
   });
 })();
