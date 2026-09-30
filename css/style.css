@@ -321,7 +321,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 @media (max-width: 899px) {
   .persona-group + .persona-group { margin-top: 56px; }
   .persona-group__head { grid-template-columns: 1fr; }
-  .group-label { flex-wrap: wrap; gap: 4px 12px; }
+  .group-label { flex-direction: column; align-items: flex-start; gap: 4px; }
 }
 
 /* Project */
