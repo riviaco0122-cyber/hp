@@ -81,7 +81,10 @@
 
   <main>
     <section class="page-hero page-hero--photo">
-      <img class="page-hero__bg" src="images/photos/thatched-house.jpg" alt="" width="1920" height="1080" style="object-position:50% 60%" fetchpriority="high" decoding="async">
+      <picture>
+        <source media="(max-width: 899px)" srcset="images/photos/terraced-fields.jpg" width="1080" height="1620">
+        <img class="page-hero__bg" src="images/photos/terraced-fields-wide.jpg" alt="" width="1080" height="680" style="object-position:50% 50%" fetchpriority="high" decoding="async">
+      </picture>
       <div class="container">
         <nav class="breadcrumb" aria-label="パンくずリスト"><ol><li><a href="index.html">TOP</a></li><li aria-current="page">About Us</li></ol></nav>
         <p class="page-hero__en reveal">About Us</p>
