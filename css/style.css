@@ -1258,3 +1258,14 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .tri__num { width: 22px; height: 22px; }
   .tri__steps { margin-top: 28px; }
 }
+/* 三角形はほぼ正三角形に（ノードの中心＝三角形の頂点） */
+.tri { aspect-ratio: 1000 / 740; }
+.tri__node--top { left: 50%; top: 14.9%; }
+.tri__node--left { left: 20%; top: 85.1%; }
+.tri__node--right { left: 80%; top: 85.1%; }
+@media (max-width: 899px) {
+  .tri { aspect-ratio: 1000 / 800; margin-top: 16px; margin-bottom: 8px; }
+  .tri__node--top { top: 16.25%; }
+  .tri__node--left { left: 19%; top: 83.4%; }
+  .tri__node--right { left: 81%; top: 83.4%; }
+}
