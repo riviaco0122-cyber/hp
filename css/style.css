@@ -911,15 +911,32 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .cta--photo .btn { background: #fff; color: var(--c-text); border-color: #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); }
 .cta--photo .btn:hover { background: transparent; color: #fff; }
 
-/* サービス概要：文章＋縦位置の写真 */
-.overview--photo { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 80px; align-items: center; }
-.overview--photo .overview__text { margin-top: 40px; }
-.overview__photo { aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius); box-shadow: var(--shadow-md); }
-.overview__photo img { width: 100%; height: 100%; object-fit: cover; }
+/* サービスページTOP：TOPと同じく写真を全面に敷いて白文字 */
+.page-hero--photo {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: min(86vh, 820px); display: flex; align-items: center;
+  border-bottom: 0; color: #fff; background: #1b1f1a;
+}
+.page-hero--photo > .container { width: 100%; }
+.page-hero__bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.page-hero--photo::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(12, 14, 12, 0.7) 0%, rgba(12, 14, 12, 0.46) 50%, rgba(12, 14, 12, 0.18) 100%),
+    linear-gradient(0deg, rgba(12, 14, 12, 0.4) 0%, rgba(12, 14, 12, 0) 45%);
+}
+.page-hero--photo .page-hero__title { text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25); }
+.page-hero--photo .page-hero__label, .page-hero--photo .breadcrumb ol { color: rgba(255, 255, 255, 0.82); }
+.page-hero--photo .page-hero__label::before { background: rgba(255, 255, 255, 0.7); }
+.page-hero--photo .breadcrumb li + li::before { color: rgba(255, 255, 255, 0.5); }
+.page-hero--photo .breadcrumb a:hover { color: #fff; }
+.page-hero--photo .page-hero__target { text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3); }
+.page-hero--photo .page-hero__target span { color: #fff; border-color: rgba(255, 255, 255, 0.6); text-shadow: none; }
+.page-hero--photo .btn:not(.btn--ghost) { background: #fff; color: var(--c-text); border-color: #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); }
+.page-hero--photo .btn:not(.btn--ghost):hover { background: transparent; color: #fff; }
 @media (max-width: 899px) {
-  .overview--photo { grid-template-columns: 1fr; gap: 40px; }
-  .overview--photo .overview__text { margin-top: 24px; }
-  .overview__photo { aspect-ratio: 4 / 3; }
+  .page-hero--photo { min-height: calc(100svh - var(--header-h)); }
+  .page-hero--photo::before { background: linear-gradient(0deg, rgba(12, 14, 12, 0.74) 0%, rgba(12, 14, 12, 0.52) 55%, rgba(12, 14, 12, 0.4) 100%); }
 }
 
 /* 横長の写真帯（会社概要） */
