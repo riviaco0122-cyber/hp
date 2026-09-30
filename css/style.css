@@ -1188,3 +1188,5 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .plan__costs dt { font-size: 13px; color: var(--c-sub); }
 .plan__costs dd { font-family: var(--font-serif); font-size: 16px; text-align: right; }
 .plan__costs + .plan__example { margin-top: 10px; background: none; padding: 0; font-size: 12px; color: var(--c-muted); }
+.persona--4 .persona__card { grid-column: span 3; }
+@media (max-width: 899px) { .persona--4 .persona__card { grid-column: auto; } }
