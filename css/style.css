@@ -1219,18 +1219,18 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .tri__label { position: absolute; z-index: 1; transform: translate(-50%, -50%); padding: 4px 12px; border-radius: 999px; background: var(--c-bg-soft); font-size: 13px; font-weight: 500; line-height: 1.6; color: #7a5f22; text-align: center; white-space: nowrap; }
 .tri__steps { display: none; }
 @media (max-width: 899px) {
-  .tri { aspect-ratio: 1000 / 1050; }
+  .tri { aspect-ratio: 1000 / 900; }
   .tri-pc, .tri__label { display: none; }
   .tri-sp { display: block; }
-  .tri__node { width: 40%; padding: 12px 6px 10px; }
+  .tri__node { width: 36%; padding: 10px 4px 9px; }
   .tri__node .scheme__list { display: none; }
-  .tri__node .scheme__en { font-size: 9px; letter-spacing: 0.14em; }
-  .tri__node .scheme__title { font-size: 13px; margin-top: 2px; letter-spacing: 0; white-space: nowrap; }
-  .tri__node .scheme__role { font-size: 11px; }
-  .tri__node--top { left: 50%; top: 14%; width: 48%; }
-  .tri__node--left { left: 23%; top: 82%; }
-  .tri__node--right { left: 77%; top: 82%; }
-  .tri__num { display: grid; place-items: center; width: 24px; height: 24px; position: absolute; z-index: 1; transform: translate(-50%, -50%); border-radius: 999px; background: #fff; border: 1px solid #c8a24f; color: #7a5f22; font-size: 13px; font-weight: 500; line-height: 1.5; }
+  .tri__node .scheme__en { font-size: 9px; letter-spacing: 0.12em; }
+  .tri__node .scheme__title { font-size: 12px; margin-top: 2px; letter-spacing: 0; white-space: nowrap; }
+  .tri__node .scheme__role { font-size: 10.5px; line-height: 1.5; }
+  .tri__node--top { left: 50%; top: 15.5%; width: 44%; }
+  .tri__node--left { left: 19%; top: 84.4%; }
+  .tri__node--right { left: 81%; top: 84.4%; }
+  .tri__num { display: grid; place-items: center; width: 22px; height: 22px; font-family: var(--font-en); font-size: 14px !important; position: absolute; z-index: 1; transform: translate(-50%, -50%); border-radius: 999px; background: #fff; border: 1px solid #c8a24f; color: #7a5f22; font-size: 13px; font-weight: 500; line-height: 1.5; }
   .tri__steps { display: grid; gap: 10px; margin-top: 16px; padding: 18px 16px; background: var(--c-bg); border: 1px solid var(--c-card-line); border-radius: var(--radius); }
   .tri__steps li { display: grid; grid-template-columns: 24px 1fr; gap: 8px; align-items: baseline; font-size: 13.5px; line-height: 1.7; }
   .tri__step-no { color: #7a5f22; font-weight: 500; }
