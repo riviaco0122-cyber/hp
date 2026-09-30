@@ -1000,3 +1000,5 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .subnav__worry { font-size: 13.5px; }
   .subnav a { padding: 10px var(--gutter); }
 }
+.page-hero--photo .page-hero__en { text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25); }
+.page-hero--photo .page-hero__ja { color: rgba(255, 255, 255, 0.9); }
