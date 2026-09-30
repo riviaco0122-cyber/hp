@@ -980,3 +980,23 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
     linear-gradient(0deg, rgba(12, 14, 12, 0.45) 0%, rgba(12, 14, 12, 0) 45%);
 }
 @media (max-width: 899px) { .page-hero--bright::before { background: rgba(12, 14, 12, 0.66); } }
+
+/* Serviceメニュー：目的・お悩みから探す */
+.subnav__head { grid-column: 1 / -1; padding: 4px 28px 14px; margin-bottom: 8px; border-bottom: 1px solid var(--c-line); font-family: var(--font-serif); font-size: 15px; letter-spacing: 0.08em; white-space: normal; }
+.subnav__text { display: flex; flex-direction: column; gap: 4px; min-width: 0; white-space: normal; }
+.subnav__worry { font-family: var(--font-serif); font-size: 14px; line-height: 1.6; letter-spacing: 0.04em; color: var(--c-text); }
+.subnav__name { font-size: 11px; color: var(--c-muted); letter-spacing: 0.08em; }
+.subnav a { align-items: center; }
+.subnav a .arrow { flex-shrink: 0; }
+.subnav__foot { grid-column: 1 / -1; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--c-line); }
+.subnav__foot a { justify-content: flex-end; gap: 14px; font-size: 12px; color: var(--c-sub); }
+@media (min-width: 900px) {
+  /* メニューは画面中央に配置し、狭いPC幅でもはみ出さないようにする */
+  .gnav__item--has-sub { position: static; }
+  .subnav { top: 100%; min-width: 0; width: min(960px, calc(100vw - 40px)); }
+}
+@media (max-width: 899px) {
+  .subnav__head { padding: 8px var(--gutter) 12px; font-size: 14px; }
+  .subnav__worry { font-size: 13.5px; }
+  .subnav a { padding: 10px var(--gutter); }
+}
