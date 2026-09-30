@@ -304,31 +304,35 @@
 
         <div class="scheme reveal">
           <p class="scheme__head">しくみ：だれが、何を担うのか</p>
-          <div class="scheme__roles">
-            <div class="scheme__node scheme__node--owner">
-              <span class="scheme__en">OWNER</span>
-              <p class="scheme__title">オーナー様</p>
-              <p class="scheme__role">所有・経営</p>
-              <ul class="scheme__list"><li>施設・設備の所有</li><li>宿の事業主として売上を受け取る</li></ul>
-            </div>
-            <div class="scheme__arrow"><span>所有・経営</span></div>
-            <div class="scheme__node scheme__node--prop">
-              <span class="scheme__en">PROPERTY</span>
-              <p class="scheme__title">あなたの宿</p>
-              <p class="scheme__role">運営を委託</p>
-            </div>
-            <div class="scheme__arrow scheme__arrow--rev"><span>運営代行</span></div>
-            <div class="scheme__node scheme__node--rivia">
+          <div class="tri">
+          <svg class="tri__lines" viewBox="0 0 1000 640" aria-hidden="true" preserveAspectRatio="none">
+            <defs>
+              <marker id="tri-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z"/></marker>
+              <marker id="tri-arrow-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10z"/></marker>
+            </defs>
+            <line x1="405" y1="234" x2="265" y2="404" marker-start="url(#tri-arrow-start)"/><line x1="735" y1="404" x2="595" y2="234" marker-start="url(#tri-arrow-start)"/><line x1="340" y1="520" x2="660" y2="520" marker-start="url(#tri-arrow-start)"/>
+          </svg>
+          <div class="tri__node tri__node--top tri__node--rivia">
               <span class="scheme__en">PARTNER</span>
               <p class="scheme__title">RIVIA</p>
               <p class="scheme__role">運営代行</p>
               <ul class="scheme__list"><li>集客・価格調整・予約管理</li><li>清掃・ゲスト対応（プランによる）</li></ul>
             </div>
-          </div>
-          <p class="scheme__head scheme__head--money">お金の流れ</p>
-          <div class="flow-line">
-            <div class="flow-chip flow-chip--guest">ゲスト（宿泊者）</div><div class="flow-arrow"><span>宿泊料金</span></div><div class="flow-chip flow-chip--owner">オーナー様</div><div class="flow-arrow"><span>運営委託の費用</span></div><div class="flow-chip flow-chip--rivia">RIVIA</div>
-          </div>
+          <div class="tri__node tri__node--left tri__node--owner">
+              <span class="scheme__en">OWNER</span>
+              <p class="scheme__title">オーナー様</p>
+              <p class="scheme__role">所有・経営</p>
+              <ul class="scheme__list"><li>施設・設備の所有</li><li>宿の事業主として売上を受け取る</li></ul>
+            </div>
+          <div class="tri__node tri__node--right tri__node--investor">
+              <span class="scheme__en">GUEST</span>
+              <p class="scheme__title">ゲスト（宿泊者）</p>
+              <p class="scheme__role">宿に滞在</p>
+              <ul class="scheme__list"><li>宿を予約・滞在</li><li>宿泊料金を支払う</li></ul>
+            </div>
+          <p class="tri__label tri__label--left">① 運営を委託<br>④ 運営委託の費用</p><p class="tri__label tri__label--right">② 集客・予約・ゲスト対応</p><p class="tri__label tri__label--bottom">③ 宿泊料金（売上はオーナー様へ）</p>
+        </div>
+        <ol class="tri__steps"><li>① 運営を委託 ／ ④ 運営委託の費用</li><li>② 集客・予約・ゲスト対応</li><li>③ 宿泊料金（売上はオーナー様へ）</li></ol>
           <p class="scheme__summary">経営の判断はオーナー様。日々の運営の手間は、RIVIAが引き受けます。</p>
         </div>
 

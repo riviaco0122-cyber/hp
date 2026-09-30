@@ -1231,3 +1231,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .tri__steps li { font-size: 13.5px; line-height: 1.8; color: #7a5f22; font-weight: 500; }
 }
 #scheme .scheme__summary { margin-top: 24px; }
+.tri__lines line.is-dashed { stroke: var(--c-line-strong); stroke-dasharray: 6 6; }
+.tri__label.is-soft { background: transparent; color: var(--c-muted); font-weight: 400; font-family: var(--font-serif); }
+.scheme .tri { margin-top: 8px; }

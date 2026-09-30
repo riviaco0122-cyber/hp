@@ -304,31 +304,35 @@
 
         <div class="scheme reveal">
           <p class="scheme__head">しくみ：だれが、何を担うのか</p>
-          <div class="scheme__roles">
-            <div class="scheme__node scheme__node--owner">
-              <span class="scheme__en">OWNER</span>
-              <p class="scheme__title">オーナー様</p>
-              <p class="scheme__role">物件を貸す</p>
-              <ul class="scheme__list"><li>建物をRIVIAに貸し出す</li><li>建物の構造部分の補修（プランによる）</li></ul>
-            </div>
-            <div class="scheme__arrow"><span>賃貸借契約</span></div>
-            <div class="scheme__node scheme__node--prop">
-              <span class="scheme__en">PROPERTY</span>
-              <p class="scheme__title">空き家</p>
-              <p class="scheme__role">宿泊施設に再生</p>
-            </div>
-            <div class="scheme__arrow scheme__arrow--rev"><span>改修・運営</span></div>
-            <div class="scheme__node scheme__node--rivia">
+          <div class="tri">
+          <svg class="tri__lines" viewBox="0 0 1000 640" aria-hidden="true" preserveAspectRatio="none">
+            <defs>
+              <marker id="tri-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z"/></marker>
+              <marker id="tri-arrow-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10z"/></marker>
+            </defs>
+            <line x1="405" y1="234" x2="265" y2="404" marker-end="url(#tri-arrow)" marker-start="url(#tri-arrow-start)"/><line x1="735" y1="404" x2="595" y2="234" marker-end="url(#tri-arrow)" marker-start="url(#tri-arrow-start)"/><line x1="340" y1="520" x2="660" y2="520" class="is-dashed"/>
+          </svg>
+          <div class="tri__node tri__node--top tri__node--rivia">
               <span class="scheme__en">PARTNER</span>
               <p class="scheme__title">RIVIA</p>
               <p class="scheme__role">改修・運営</p>
               <ul class="scheme__list"><li>改修・家具など開業準備</li><li>集客・予約・清掃・接客</li></ul>
             </div>
-          </div>
-          <p class="scheme__head scheme__head--money">お金の流れ</p>
-          <div class="flow-line">
-            <div class="flow-chip flow-chip--guest">ゲスト（宿泊者）</div><div class="flow-arrow"><span>宿泊料金</span></div><div class="flow-chip flow-chip--rivia">RIVIA</div><div class="flow-arrow"><span>家賃（＋売上に応じた上乗せ）</span></div><div class="flow-chip flow-chip--owner">オーナー様</div>
-          </div>
+          <div class="tri__node tri__node--left tri__node--owner">
+              <span class="scheme__en">OWNER</span>
+              <p class="scheme__title">オーナー様</p>
+              <p class="scheme__role">物件を貸す</p>
+              <ul class="scheme__list"><li>建物をRIVIAに貸し出す</li><li>建物の構造部分の補修（プランによる）</li></ul>
+            </div>
+          <div class="tri__node tri__node--right tri__node--investor">
+              <span class="scheme__en">GUEST</span>
+              <p class="scheme__title">ゲスト（宿泊者）</p>
+              <p class="scheme__role">宿に滞在</p>
+              <ul class="scheme__list"><li>暮らすように旅する滞在</li><li>宿泊料金を支払う</li></ul>
+            </div>
+          <p class="tri__label tri__label--left">① 物件を貸す<br>④ 家賃をお支払い</p><p class="tri__label tri__label--right">② 宿として運営・おもてなし<br>③ 宿泊料金</p><p class="tri__label tri__label--bottom is-soft">思い出の家が、旅人の滞在先に</p>
+        </div>
+        <ol class="tri__steps"><li>① 物件を貸す ／ ④ 家賃をお支払い</li><li>② 宿として運営・おもてなし ／ ③ 宿泊料金</li></ol>
           <p class="scheme__summary">オーナー様は「物件を貸す」だけ。運営の手間はかかりません。</p>
         </div>
 

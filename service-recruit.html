@@ -306,31 +306,35 @@
 
         <div class="scheme reveal">
           <p class="scheme__head">しくみ：だれが、何を担うのか</p>
-          <div class="scheme__roles">
-            <div class="scheme__node scheme__node--owner">
-              <span class="scheme__en">CLIENT</span>
-              <p class="scheme__title">事業者様</p>
-              <p class="scheme__role">採用の決定</p>
-              <ul class="scheme__list"><li>面接・採用の最終判断</li><li>入社後の受け入れ・育成</li></ul>
-            </div>
-            <div class="scheme__arrow"><span>採用の決定</span></div>
-            <div class="scheme__node scheme__node--prop">
-              <span class="scheme__en">HIRING</span>
-              <p class="scheme__title">採用活動</p>
-              <p class="scheme__role">計画・発信・応募対応</p>
-            </div>
-            <div class="scheme__arrow scheme__arrow--rev"><span>設計・代行</span></div>
-            <div class="scheme__node scheme__node--rivia">
+          <div class="tri">
+          <svg class="tri__lines" viewBox="0 0 1000 640" aria-hidden="true" preserveAspectRatio="none">
+            <defs>
+              <marker id="tri-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z"/></marker>
+              <marker id="tri-arrow-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10z"/></marker>
+            </defs>
+            <line x1="405" y1="234" x2="265" y2="404" marker-start="url(#tri-arrow-start)"/><line x1="735" y1="404" x2="595" y2="234" marker-start="url(#tri-arrow-start)"/><line x1="340" y1="520" x2="660" y2="520" marker-start="url(#tri-arrow-start)"/>
+          </svg>
+          <div class="tri__node tri__node--top tri__node--rivia">
               <span class="scheme__en">PARTNER</span>
               <p class="scheme__title">RIVIA</p>
               <p class="scheme__role">採用の設計・代行</p>
               <ul class="scheme__list"><li>採用計画・求人原稿・採用ページ</li><li>媒体運用・応募者対応（プランによる）</li></ul>
             </div>
-          </div>
-          <p class="scheme__head scheme__head--money">お金の流れ</p>
-          <div class="flow-line">
-            <div class="flow-chip flow-chip--owner">事業者様</div><div class="flow-arrow"><span>採用支援の費用</span></div><div class="flow-chip flow-chip--rivia">RIVIA</div>
-          </div>
+          <div class="tri__node tri__node--left tri__node--owner">
+              <span class="scheme__en">CLIENT</span>
+              <p class="scheme__title">事業者様</p>
+              <p class="scheme__role">採用の決定</p>
+              <ul class="scheme__list"><li>面接・採用の最終判断</li><li>入社後の受け入れ・育成</li></ul>
+            </div>
+          <div class="tri__node tri__node--right tri__node--investor">
+              <span class="scheme__en">CANDIDATE</span>
+              <p class="scheme__title">求職者</p>
+              <p class="scheme__role">応募・入社</p>
+              <ul class="scheme__list"><li>求人・採用ページで会社を知る</li><li>応募して面接を受ける</li></ul>
+            </div>
+          <p class="tri__label tri__label--left">① 採用を依頼<br>④ 採用支援の費用</p><p class="tri__label tri__label--right">② 求人・スカウトで魅力を届ける</p><p class="tri__label tri__label--bottom">③ 応募・面接・入社</p>
+        </div>
+        <ol class="tri__steps"><li>① 採用を依頼 ／ ④ 採用支援の費用</li><li>② 求人・スカウトで魅力を届ける</li><li>③ 応募・面接・入社</li></ol>
           <p class="scheme__summary">採用の「手間」はRIVIAに。事業者様は「誰と働くか」の判断に集中できます。</p>
         </div>
 
