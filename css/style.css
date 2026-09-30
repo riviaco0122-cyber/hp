@@ -1119,3 +1119,20 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .scheme__summary { font-size: 14px; }
   .plans__advice { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
 }
+
+/* 記号アイコンをやめ、数字と英字ラベルで上品に見せる */
+.biz-card__num { font-family: var(--font-en); font-weight: 300; font-size: 44px; line-height: 1; color: var(--c-line-strong); letter-spacing: 0.02em; transition: color .4s; }
+.biz-card:hover .biz-card__num { color: var(--c-accent); }
+.scheme__en { display: block; font-family: var(--font-en); font-size: 13px; letter-spacing: 0.24em; color: var(--c-muted); }
+.scheme__node--rivia .scheme__en { color: var(--c-rivia); }
+.scheme__title { margin-top: 6px; }
+.flow-chip { padding: 12px 24px; }
+
+/* プランの比較：丸の数ではなく言葉で示し、メリットは緑で強調 */
+.plan__ratings li { align-items: center; }
+.plan__axis { color: var(--c-sub); }
+.plan__val { flex-shrink: 0; padding: 4px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em; text-align: right; }
+.plan__val--good { background: var(--c-rivia); color: #fff; }
+.plan__val--mid { background: var(--c-rivia-soft); color: var(--c-rivia); }
+.plan__val--low { background: var(--c-bg-soft); color: var(--c-sub); font-weight: 400; }
+@media (max-width: 899px) { .biz-card__num { font-size: 36px; } }
