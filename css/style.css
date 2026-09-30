@@ -1179,3 +1179,10 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .buyout__compare { grid-template-columns: 1fr; }
   .buyout__cta { width: 100%; }
 }
+
+/* 費用の内訳（項目｜金額の表形式で短く） */
+.plan__costs { display: grid; gap: 0; border-top: 1px solid var(--c-line); }
+.plan__costs > div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--c-line); }
+.plan__costs dt { font-size: 13px; color: var(--c-sub); }
+.plan__costs dd { font-family: var(--font-serif); font-size: 16px; text-align: right; }
+.plan__costs + .plan__example { margin-top: 10px; background: none; padding: 0; font-size: 12px; color: var(--c-muted); }
