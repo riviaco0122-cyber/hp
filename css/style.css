@@ -670,17 +670,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .sticky-cta__btn .arrow { width: 18px; }
   body.has-sticky-cta { padding-bottom: 72px; }
 }
-/* サービスページ：PC でも右下に相談ボタンを常に表示 */
-@media (min-width: 900px) {
-  .sticky-cta--float {
-    display: block; position: fixed; right: 32px; bottom: 32px; z-index: 90;
-    opacity: 0; transform: translateY(16px); pointer-events: none;
-    transition: opacity .35s var(--ease), transform .35s var(--ease);
-  }
-  .sticky-cta--float.is-visible { opacity: 1; transform: none; pointer-events: auto; }
-  .sticky-cta--float .sticky-cta__text { display: none; }
-  .sticky-cta--float .sticky-cta__btn { padding: 18px 28px; border-radius: 999px; box-shadow: var(--shadow-lg); }
-}
 
 /* プライバシーポリシー */
 .policy__intro { line-height: 2.2; }
