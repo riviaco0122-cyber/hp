@@ -231,8 +231,9 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 /* ==========================================================================
    Top page
    ========================================================================== */
-.hero { min-height: calc(88vh - var(--header-h)); display: flex; align-items: center; padding: 120px 0; position: relative; overflow: hidden; }
-.hero__lines { position: absolute; inset: 0; pointer-events: none; }
+.hero { min-height: calc(88vh - var(--header-h)); display: flex; align-items: center; padding: 120px 0; position: relative; overflow: hidden; isolation: isolate; }
+/* 背景の縦線は文字・ボタンの後ろに置く */
+.hero__lines { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 .hero__lines span { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--c-line); }
 .hero__title {
   font-family: var(--font-serif); font-weight: 200;
@@ -242,7 +243,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .hero__scroll { position: absolute; left: var(--gutter); bottom: 0; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.3em; color: var(--c-muted); writing-mode: vertical-rl; padding-bottom: 88px; }
 .hero__scroll::after { content: ""; position: absolute; left: 50%; bottom: 0; width: 1px; height: 72px; background: var(--c-muted); animation: scrollLine 2.4s var(--ease) infinite; transform-origin: top; }
 @keyframes scrollLine { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
-@media (max-width: 899px) { .hero { padding: 80px 0 120px; } .hero__title { font-size: min(8.2vw, 48px); letter-spacing: 0.04em; } .hero__sub { margin-top: 32px; font-size: 14px; } .hero__scroll { display: none; } }
+@media (max-width: 899px) { .hero { padding: 80px 0 120px; } .hero__title { font-size: min(8.2vw, 48px); letter-spacing: 0.04em; } .hero__sub { margin-top: 32px; font-size: 14px; } .hero__scroll { display: none; } .hero__lines { display: none; } }
 
 /* Vision */
 .vision__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 40px 80px; align-items: end; }
