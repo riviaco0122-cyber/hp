@@ -1310,3 +1310,10 @@ button.is-sending { opacity: .6; pointer-events: none; }
 .cta__text { font-size: 14px; letter-spacing: 0.06em; }
 .cta--photo .cta__text { color: rgba(255, 255, 255, 0.88); }
 .cta__btn + .cta__text { margin-top: 28px; line-height: 2; }
+
+/* ご支援内容（PC）：STEP名が2行になっても、期間・説明の位置を全STEPでそろえる */
+@media (min-width: 900px) {
+  .timeline { grid-template-rows: repeat(4, auto); }
+  .timeline__step { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
+  .timeline__term { justify-self: start; align-self: start; }
+}
