@@ -389,41 +389,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .overview__text { font-family: var(--font-serif); font-weight: 300; font-size: 19px; line-height: 2.3; letter-spacing: 0.06em; }
 @media (max-width: 899px) { .overview { grid-template-columns: 1fr; gap: 24px; } .overview__text { font-size: 16px; } }
 
-/* 社会的背景と市場データ
-   「何の数字か → 数字 → 一言でいうと → 解説 → 読み手にとっての意味」の順で読めるカード */
-.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--c-text); }
-.fact { display: flex; flex-direction: column; padding: 44px 40px 48px; border-bottom: 1px solid var(--c-line); }
-.fact + .fact { border-left: 1px solid var(--c-line); }
-.fact__head { display: flex; align-items: baseline; gap: 14px; min-height: 3.6em; }
-.fact__no { flex-shrink: 0; white-space: nowrap; font-family: var(--font-en); font-size: 15px; color: var(--c-muted); letter-spacing: 0.1em; }
-.fact__label { font-size: 13px; color: var(--c-sub); letter-spacing: 0.06em; line-height: 1.8; }
-.fact__figure { margin-top: 20px; font-family: var(--font-en); font-weight: 300; font-size: clamp(64px, 6.4vw, 96px); line-height: 1; letter-spacing: 0.01em; white-space: nowrap; min-height: 1.1em; display: flex; align-items: flex-end; }
-.fact__figure small { font-family: var(--font-serif); font-weight: 300; font-size: 0.3em; letter-spacing: 0.06em; margin-left: 0.12em; padding-bottom: 0.18em; }
-.fact__figure--word { font-family: var(--font-serif); font-weight: 200; font-size: clamp(26px, 2.5vw, 36px); line-height: 1.5; letter-spacing: 0.08em; white-space: normal; min-height: calc(clamp(64px, 6.4vw, 96px) * 1.1); }
-.fact__headline { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--c-line); font-family: var(--font-serif); font-weight: 400; font-size: 19px; line-height: 1.7; letter-spacing: 0.05em; }
-.fact__compare { margin-top: 24px; display: grid; gap: 12px; }
-.fact__bar { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; }
-.fact__bar-label { grid-column: 1 / -1; font-size: 12px; color: var(--c-sub); line-height: 1.6; }
-.fact__bar-track { height: 6px; background: var(--c-line); position: relative; }
-.fact__bar-track span { position: absolute; inset: 0 auto 0 0; background: var(--c-line-strong); }
-.fact__bar.is-main .fact__bar-track span { background: var(--c-text); }
-.fact__bar-value { font-family: var(--font-en); font-size: 18px; line-height: 1; min-width: 3.4em; text-align: right; }
-.fact__bar.is-main .fact__bar-label { color: var(--c-text); }
-.fact__note { margin-top: 14px; font-size: 11px; color: var(--c-muted); line-height: 1.9; }
-.fact__source { margin-top: 16px; font-size: 11px; color: var(--c-muted); letter-spacing: 0.04em; }
-@media (max-width: 1099px) {
-  .fact { padding: 40px 28px 44px; }
-}
-@media (max-width: 899px) {
-  .facts { grid-template-columns: 1fr; }
-  .fact { padding: 40px 0 44px; }
-  .fact + .fact { border-left: 0; }
-  .fact__head { min-height: 0; }
-  .fact__figure--word { min-height: 0; }
-  .fact__figure { font-size: 72px; }
-  .fact__figure--word { font-size: 28px; }
-}
-
 /* 経営課題 × RIVIAの貢献 */
 .issues { display: grid; gap: 24px; }
 .issue { display: grid; grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1.1fr); gap: 0 28px; padding: 48px; background: var(--c-bg); border: 1px solid var(--c-line); }
@@ -797,7 +762,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 }
 
 /* 共通カード */
-.persona__card, .related__card, .fact, .reason, .flow__step, .issue, .founder,
+.persona__card, .related__card, .reason, .flow__step, .issue, .founder,
 .careers-cta, .map, .keypoints, .article-cta {
   background-color: var(--c-bg);
   border: 1px solid var(--c-card-line);
@@ -822,8 +787,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 /* 枠線を共有していたグリッドを、間隔のあるカードの並びに */
 .persona { gap: 20px; border: 0; }
 .related { gap: 16px; border: 0; }
-.facts { gap: 20px; border-top: 0; }
-.fact + .fact { border-left: 1px solid var(--c-card-line); }
 .reasons { gap: 20px; border-top: 0; }
 .reason, .reason + .reason { padding: 44px 36px; border-left: 1px solid var(--c-card-line); }
 .founders { gap: 24px; border-top: 0; }
@@ -840,12 +803,8 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .header { transition: border-color .3s, box-shadow .3s; }
 .header.is-scrolled { box-shadow: 0 6px 20px rgba(17, 17, 17, 0.05); }
 
-@media (max-width: 1099px) {
-  .fact { padding: 36px 28px 40px; }
-}
 @media (max-width: 899px) {
-  .persona, .related, .facts, .reasons { gap: 14px; }
-  .fact, .fact + .fact { padding: 32px 22px 36px; }
+  .persona, .related, .reasons { gap: 14px; }
   .reason, .reason + .reason { padding: 32px 24px; }
   .founders { gap: 16px; }
   .founder, .founder + .founder { padding: 36px 22px; }
@@ -1135,15 +1094,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .persona--4 .persona__card { grid-column: span 3; }
 @media (max-width: 899px) { .persona--4 .persona__card { grid-column: auto; } }
 
-/* 市場データのカード：3枚の各段の高さをそろえる */
-.fact__body { flex-grow: 1; }
-.fact__foot:empty { display: none; }
-@media (min-width: 900px) {
-  .facts { grid-template-rows: repeat(5, auto); row-gap: 0; }
-  .fact { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
-  .fact__foot:empty { display: block; }
-  .fact__figure { align-self: end; }
-}
 
 /* 協業スキーム：三角形の図（PC：矢印に説明／スマホ：番号だけ図に置き、説明は下に） */
 .tri { position: relative; aspect-ratio: 1000 / 640; max-width: 1040px; margin: 0 auto; }
@@ -1269,16 +1219,8 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .footer__group, .footer__group:first-child { margin-top: 18px; margin-bottom: 2px; }
 }
 
-/* スマホ：市場データ・関連サービスは縦並び、事業紹介はカルーセル。いずれもコンパクトに */
+/* スマホ：関連サービスは縦並び、事業紹介はカルーセル。いずれもコンパクトに */
 @media (max-width: 899px) {
-  .facts { gap: 12px; }
-  .fact { padding: 22px 20px; }
-  .fact__head { font-size: 12px; }
-  .fact__figure { margin-top: 10px; font-size: 52px; min-height: 0; }
-  .fact__figure--word { font-size: 24px; }
-  .fact__headline { margin-top: 14px; padding-top: 12px; font-size: 16px; }
-  .fact__compare { margin-top: 12px; }
-  .fact__foot:not(:empty) { margin-top: 8px; }
   .persona__card, .persona--2 .persona__card { padding: 20px 20px 16px; gap: 10px; }
   .biz-card__num { font-size: 22px; }
   .biz-card__name { margin-top: 4px; font-size: 17px; }
