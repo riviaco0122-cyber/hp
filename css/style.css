@@ -1279,3 +1279,9 @@ button.is-sending { opacity: .6; pointer-events: none; }
 .review__who { font-size: 12px; color: var(--c-muted); letter-spacing: 0.06em; }
 .review__who span { margin-left: 10px; }
 @media (max-width: 899px) { .reviews__list { grid-template-columns: 1fr; gap: 10px; } .review { padding: 18px 20px; } }
+
+/* お悩みカード（PC）：左の「お悩み」を右の「打ち手」の高さに対して中央に置き、上下の余白をそろえる */
+@media (min-width: 900px) {
+  .issue { align-items: center; }
+  .issue__problem { align-self: center; }
+}
