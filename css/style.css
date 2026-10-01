@@ -481,7 +481,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
    About
    ========================================================================== */
 .message { font-family: var(--font-serif); font-weight: 300; font-size: 17px; line-height: 2.5; letter-spacing: 0.06em; }
-.message__lead { font-size: clamp(20px, 2.6vw, 28px); line-height: 2.3; letter-spacing: 0.04em; font-weight: 300; padding-bottom: 56px; margin-bottom: 56px; border-bottom: 1px solid var(--c-line); }
+.message__lead { font-size: clamp(20px, 2.6vw, 28px); line-height: 2; font-weight: 300; padding-bottom: 56px; margin-bottom: 56px; border-bottom: 1px solid var(--c-line); }
 .message p + p { margin-top: 2em; }
 .message__concept { text-align: center; font-size: clamp(24px, 3vw, 32px); font-weight: 200; letter-spacing: 0.2em; padding: 32px 0; }
 @media (max-width: 899px) { .message { font-size: 15px; line-height: 2.3; } }
@@ -1337,5 +1337,7 @@ button.is-sending { opacity: .6; pointer-events: none; }
 
 /* 一文のリード（サービス概要・ヒーローの説明など）は、行の長さをそろえて折り返す */
 .overview__text, .hero__sub, .cta__text { text-wrap: balance; }
-@media (max-width: 767px) { .message__lead { font-size: 19px; line-height: 2.25; } }
-.message__lead { text-wrap: balance; }
+.message__quote, .message__origin { display: block; }
+.message__origin { margin-top: 1.2em; }
+.message__quote:has(> n-w.j), .message__origin:has(> n-w.j) { text-align: justify; }
+@media (max-width: 767px) { .message__lead { font-size: 18px; } }
