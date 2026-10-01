@@ -260,7 +260,7 @@
       });
     }
     if (lines.length < 2) return 0;
-    return lines.filter(function (l) { return l.width / fs < 4; }).length;
+    return lines.filter(function (l) { return l.width / fs < 5; }).length;
   }
   function fixShortLines() {
     var blocks = [];
