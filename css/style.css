@@ -438,10 +438,11 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .timeline__num { font-family: var(--font-en); font-size: 14px; letter-spacing: 0.2em; color: var(--c-muted); }
 .timeline__title { margin-top: 12px; font-family: var(--font-serif); font-weight: 400; font-size: 18px; line-height: 1.6; letter-spacing: 0.04em; }
 .timeline__term { display: inline-block; margin-top: 14px; font-size: 12px; border: 1px solid var(--c-line-strong); padding: 2px 12px; letter-spacing: 0.06em; }
-.timeline__desc { margin-top: 16px; font-size: 14px; color: var(--c-sub); line-height: 2; }
 @media (max-width: 899px) {
   .timeline { grid-template-columns: 1fr; }
-  .timeline__step { padding: 0 0 48px 40px; }
+  .timeline__step { padding: 0 0 22px 36px; }
+  .timeline__title { margin-top: 2px; font-size: 16px; }
+  .timeline__term { margin-top: 6px; }
   .timeline__step::before { top: 6px; bottom: 0; left: 6px; right: auto; width: 1px; height: auto; }
   .timeline__step:last-child::before { background: linear-gradient(to bottom, var(--c-line-strong) 50%, transparent); }
   .timeline__step:last-child { padding-bottom: 0; }
@@ -1248,3 +1249,24 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .hero--photo { min-height: 0; padding: 72px 0 64px; }
   .page-hero--photo { min-height: 0; padding: 64px 0 56px; }
 }
+
+/* 送信完了ページ */
+.thanks { text-align: center; }
+.thanks__lead { font-family: var(--font-serif); font-size: 18px; line-height: 2.1; letter-spacing: 0.06em; }
+.thanks__note { margin-top: 24px; font-size: 13px; color: var(--c-muted); text-align: left; }
+.thanks__actions { margin-top: 48px; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+@media (max-width: 899px) { .thanks__lead { font-size: 16px; } .thanks__actions .btn { flex: 1 1 100%; } }
+.form__error { margin-top: 16px; color: #b3261e; font-size: 13px; text-align: center; }
+.form__error:empty { display: none; }
+button.is-sending { opacity: .6; pointer-events: none; }
+
+/* NODE Shimoda のゲストレビュー */
+.reviews { margin-top: 40px; }
+.reviews__head { font-family: var(--font-serif); font-size: 17px; letter-spacing: 0.08em; margin-bottom: 16px; }
+.reviews__head span { margin-left: 12px; font-family: var(--font-sans); font-size: 12px; color: var(--c-muted); letter-spacing: 0.06em; }
+.reviews__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.review { margin: 0; padding: 24px; background: var(--c-bg); border: 1px solid var(--c-card-line); border-radius: var(--radius); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
+.review__text { margin: 0; font-family: var(--font-serif); font-size: 15px; line-height: 1.9; letter-spacing: 0.04em; }
+.review__who { font-size: 12px; color: var(--c-muted); letter-spacing: 0.06em; }
+.review__who span { margin-left: 10px; }
+@media (max-width: 899px) { .reviews__list { grid-template-columns: 1fr; gap: 10px; } .review { padding: 18px 20px; } }

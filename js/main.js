@@ -209,4 +209,34 @@
         : files[0].name + ' ほか' + (files.length - 1) + '件';
     });
   });
+
+  /**
+   * フォーム送信：画面を移動せずに送信し、成功したら送信完了ページ（thanks.html）へ移動する
+   * （JS が使えない環境では、通常の送信にそのまま切り替わる）
+   */
+  document.querySelectorAll('form[data-thanks]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      if (!window.fetch || !window.FormData) return;
+      e.preventDefault();
+      var btn = form.querySelector('[type="submit"]');
+      var err = form.querySelector('.form__error');
+      if (!err) {
+        err = document.createElement('p');
+        err.className = 'form__error';
+        err.setAttribute('role', 'alert');
+        form.appendChild(err);
+      }
+      err.textContent = '';
+      if (btn) { btn.disabled = true; btn.classList.add('is-sending'); }
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (res) {
+          if (!res.ok) throw new Error('send failed');
+          window.location.href = form.getAttribute('data-thanks');
+        })
+        .catch(function () {
+          err.textContent = '送信できませんでした。時間をおいて再度お試しいただくか、入力内容をご確認ください。';
+          if (btn) { btn.disabled = false; btn.classList.remove('is-sending'); }
+        });
+    });
+  });
 })();

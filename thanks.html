@@ -12,9 +12,10 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Careers | 合同会社RIVIA&amp;CO.</title>
-  <meta name="description" content="合同会社RIVIA&amp;CO.の採用情報です。年齢・経験は問いません。一緒に働く仲間を募集しています。">
-  <link rel="canonical" href="https://example.com/careers.html">
+  <title>送信完了 | 合同会社RIVIA&amp;CO.</title>
+  <meta name="description" content="お問い合わせを受け付けました。">
+  <link rel="canonical" href="https://example.com/thanks.html">
+  <meta name="robots" content="noindex">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="images/favicon-48.png" type="image/png" sizes="48x48">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -23,10 +24,10 @@
     OGP（SNSでシェアされたときの表示）
     公開ドメインが決まったら「https://example.com」を実際のURLに変更してください。
   -->
-  <meta property="og:title" content="Careers | 合同会社RIVIA&amp;CO.">
-  <meta property="og:description" content="合同会社RIVIA&amp;CO.の採用情報です。年齢・経験は問いません。一緒に働く仲間を募集しています。">
+  <meta property="og:title" content="送信完了 | 合同会社RIVIA&amp;CO.">
+  <meta property="og:description" content="お問い合わせを受け付けました。">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://example.com/careers.html">
+  <meta property="og:url" content="https://example.com/thanks.html">
   <meta property="og:image" content="https://example.com/images/ogp.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -72,7 +73,7 @@
           </li>
           <li><a href="index.html#project" class="gnav__link">Project</a></li>
           <li><a href="media.html" class="gnav__link">Media</a></li>
-          <li><a href="careers.html" class="gnav__link" aria-current="page">Careers</a></li>
+          <li><a href="careers.html" class="gnav__link">Careers</a></li>
         </ul>
       </nav>
 
@@ -84,65 +85,27 @@
   <main>
     <section class="page-hero">
       <div class="container">
-        <p class="page-hero__en reveal">Careers</p>
-        <h1 class="page-hero__ja reveal" data-delay="1">採用情報</h1>
-        <p class="page-hero__lead reveal" data-delay="2">一緒に<wbr>働く<wbr>仲間を<wbr>募集しています。<br><n-w>年齢・経験は問いません。お気軽にご連絡くだ<n-b>さい。</n-b></n-w></p>
+        <p class="page-hero__en reveal">Thank you</p>
+        <h1 class="page-hero__ja reveal" data-delay="1">送信が<wbr>完了しました</h1>
       </div>
     </section>
 
     <section class="section">
-      <div class="container container--narrow">
-        <div class="section-head reveal">
-          <span class="eyebrow">Entry</span>
-          <h2 class="section-title">エントリーフォーム</h2>
+      <div class="container container--narrow thanks">
+        <p class="thanks__lead reveal">送信いただき、<wbr>ありがとう<wbr>ございます。<br><n-w>内容を確認のうえ、2営業日以内に担当者よりご連絡いたし<n-b>ます。</n-b></n-w></p>
+        <p class="thanks__note reveal"><n-w>連絡が届かない場合は、迷惑メールフォルダもご確認くだ<n-b>さい。</n-b></n-w></p>
+        <div class="thanks__actions reveal">
+          <a href="index.html" class="btn">トップページへ<wbr>戻る<wbr> <span class="arrow" aria-hidden="true"></span></a>
+          <a href="media.html" class="btn btn--ghost">RIVIA MEDIA を<wbr>読む</a>
         </div>
-        <!--
-          ▼ 送信先の設定（要対応）
-          Formspree で採用用のフォームを作成し、「YOUR_CAREERS_FORM_ID」を発行された ID に置き換えてください。
-          ※ Formspree でのファイル添付は有料プランのみ対応です。
-        -->
-        <form class="form reveal" action="https://formspree.io/f/YOUR_CAREERS_FORM_ID" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=careers">
-          <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】採用エントリー">
-          <div class="form__field">
-            <label for="c-name">お名前 <span class="req">必須</span></label>
-            <input type="text" id="c-name" name="name" placeholder="名字 名前" autocomplete="name" required>
-          </div>
-          <div class="form__field">
-            <label for="c-email">Email <span class="req">必須</span></label>
-            <input type="email" id="c-email" name="email" placeholder="Email@address" autocomplete="email" required>
-          </div>
-          <div class="form__field">
-            <label for="c-detail">詳細 <span class="req">必須</span></label>
-            <textarea id="c-detail" name="detail" placeholder="志望動機や希望年収、思っていることを是非教えてください。" required></textarea>
-          </div>
-          <fieldset class="form__field form__fieldset">
-            <legend class="form__legend">添付ファイル <span class="req">必須</span></legend>
-            <p class="form__notes form__notes--above">職務経歴書・履歴書を<wbr>添付してください。</p>
-            <div class="files">
-            <label class="file">
-              <input type="file" name="resume" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" required>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/></svg>
-              <span class="file__title">職務経歴書</span>
-              <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択"><n-w>クリックまたはドラッグ&amp;ドロップでファイル<n-b>を選択</n-b></n-w></span>
-            </label>
-            <label class="file">
-              <input type="file" name="cv" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" required>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/></svg>
-              <span class="file__title">履歴書</span>
-              <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択"><n-w>クリックまたはドラッグ&amp;ドロップでファイル<n-b>を選択</n-b></n-w></span>
-            </label>
-            </div>
-          </fieldset>
-          <div class="form__consent">
-            <label class="check" for="c-agree">
-              <input type="checkbox" id="c-agree" name="privacy_agree" value="同意する" required>
-              <span><a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に<wbr>同意する<wbr> <span class="req">必須</span></span>
-            </label>
-          </div>
-          <div class="form__submit"><button type="submit" class="btn btn--lg">送信する<wbr> <span class="arrow" aria-hidden="true"></span></button></div>
-        </form>
       </div>
     </section>
+    <script>
+      // フォーム送信の完了を GA4 に記録（どのフォームからかを form_type で区別）
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { form_type: new URLSearchParams(location.search).get('form') || 'contact' });
+      }
+    </script>
   </main>
 
   <footer class="footer">
