@@ -1091,7 +1091,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .plan__split { display: grid; gap: 8px; }
 .plan__split li { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; line-height: 1.5; }
 .plan__split-item { color: var(--c-sub); min-width: 0; }
-.plan__split .who { flex-shrink: 0; }
+.plan__split .who { flex-shrink: 0; width: 7.2em; min-width: 0; padding-left: 0; padding-right: 0; }
 .plans__legend { margin-top: 48px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; font-size: 13px; }
 .plans__legend-text { color: var(--c-muted); font-size: 12px; letter-spacing: 0.12em; margin-right: 4px; }
 .plans__legend + .plans { margin-top: 32px; }
