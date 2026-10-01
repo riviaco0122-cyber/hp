@@ -196,6 +196,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 
   .gnav {
     position: fixed; top: var(--header-h); left: 0; right: 0; bottom: 0; z-index: 99;
+    justify-self: stretch; align-self: stretch; /* PC 用の中央寄せを解除（グリッド内の固定配置は幅が縮むため） */
     background: #fff; border-top: 1px solid var(--c-line);
     overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
     opacity: 0; visibility: hidden; transform: translateY(-8px);
@@ -206,14 +207,16 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .gnav__list > li { border-bottom: 1px solid var(--c-line); }
   .gnav__link { display: block; width: 100%; padding: 18px var(--gutter); font-size: 18px; letter-spacing: 0.1em; text-align: left; }
   .gnav__link[aria-current="page"]::after { display: none; }
-  .gnav__item--has-sub { order: -1; position: static; }
-  .gnav__item--has-sub > .gnav__link { pointer-events: none; padding-bottom: 6px; }
-  .gnav__caret { display: none; }
+  /* Service は「Service」をタップしたときだけ開く（アコーディオン） */
+  .gnav__item--has-sub { position: static; }
+  .gnav__item--has-sub > .gnav__link { display: flex; justify-content: space-between; align-items: center; }
+  .gnav__item--has-sub.is-open > .gnav__link { padding-bottom: 6px; }
   .subnav, .gnav__item--has-sub.is-open .subnav {
     position: static; width: auto; min-width: 0; max-height: none; overflow: visible;
     opacity: 1; visibility: visible; transform: none;
-    border: 0; box-shadow: none; padding: 0; white-space: normal; background: none;
+    border: 0; box-shadow: none; padding: 0 0 12px; white-space: normal; background: none;
   }
+  .gnav__item--has-sub:not(.is-open) .subnav { display: none; }
   .subnav::before { display: none; }
   .subnav a { padding: 10px var(--gutter); }
   .subnav__tabs { background: none; border-bottom: 0; padding-bottom: 4px; }
@@ -1296,4 +1299,10 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .gnav .subnav__tabs { background: none; border-bottom: 0; padding: 4px var(--gutter) 4px; }
   .gnav .subnav__panel { padding-top: 10px; }
   .gnav .subnav__foot { border-top: 0; }
+}
+
+/* スマホ：ヘッダーが1段になった分、背景写真のファーストビューは上下の余白を詰める */
+@media (max-width: 899px) {
+  .hero--photo { min-height: 0; padding: 72px 0 64px; }
+  .page-hero--photo { min-height: 0; padding: 64px 0 56px; }
 }

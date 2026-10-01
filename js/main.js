@@ -28,6 +28,7 @@
     document.documentElement.classList.toggle('is-menu-open', open);
     menuBtn.setAttribute('aria-expanded', String(open));
     menuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    if (!open) closeSubnav();
   }
   if (menuBtn) {
     menuBtn.addEventListener('click', function () {
