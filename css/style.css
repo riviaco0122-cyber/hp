@@ -385,9 +385,16 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .page-hero__lead { margin-top: 40px; color: var(--c-sub); max-width: 680px; line-height: 2.2; }
 @media (max-width: 899px) { .page-hero { padding: 72px 0 64px; } }
 
-.overview { display: grid; grid-template-columns: 280px 1fr; gap: 56px; }
-.overview__text { font-family: var(--font-serif); font-weight: 300; font-size: 19px; line-height: 2.3; letter-spacing: 0.06em; }
-@media (max-width: 899px) { .overview { grid-template-columns: 1fr; gap: 24px; } .overview__text { font-size: 16px; } }
+/* サービス概要：一文のリードとして、余白を詰めた帯で見せる */
+.section--overview { padding: 88px 0; }
+.overview { display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: center; }
+.overview .section-title { margin-bottom: 0; }
+.overview__text { font-family: var(--font-serif); font-weight: 300; font-size: 24px; line-height: 1.9; letter-spacing: 0.06em; padding-left: 40px; border-left: 1px solid var(--c-line-strong); }
+@media (max-width: 899px) {
+  .section--overview { padding: 56px 0; }
+  .overview { grid-template-columns: 1fr; gap: 16px; }
+  .overview__text { font-size: 17px; padding-left: 16px; }
+}
 
 /* 経営課題 × RIVIAの貢献 */
 .issues { display: grid; gap: 24px; }
@@ -438,11 +445,13 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .timeline__num { font-family: var(--font-en); font-size: 14px; letter-spacing: 0.2em; color: var(--c-muted); }
 .timeline__title { margin-top: 12px; font-family: var(--font-serif); font-weight: 400; font-size: 18px; line-height: 1.6; letter-spacing: 0.04em; }
 .timeline__term { display: inline-block; margin-top: 14px; font-size: 12px; border: 1px solid var(--c-line-strong); padding: 2px 12px; letter-spacing: 0.06em; }
+.timeline__desc { margin-top: 12px; font-size: 13px; color: var(--c-sub); line-height: 1.8; }
 @media (max-width: 899px) {
   .timeline { grid-template-columns: 1fr; }
   .timeline__step { padding: 0 0 22px 36px; }
   .timeline__title { margin-top: 2px; font-size: 16px; }
   .timeline__term { margin-top: 6px; }
+  .timeline__desc { margin-top: 6px; }
   .timeline__step::before { top: 6px; bottom: 0; left: 6px; right: auto; width: 1px; height: auto; }
   .timeline__step:last-child::before { background: linear-gradient(to bottom, var(--c-line-strong) 50%, transparent); }
   .timeline__step:last-child { padding-bottom: 0; }
