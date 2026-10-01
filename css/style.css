@@ -51,7 +51,8 @@ body {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
-n-w { text-wrap: pretty; } /* 本文は文節ごとに折り返し、最後の行が短くなりすぎないよう整える */
+n-w { text-wrap: pretty; } /* 2〜3行の文は文節ごとに折り返し、最後の行が短くなりすぎないよう整える */
+n-w.j { word-break: normal; line-break: strict; } /* 行数の多い段落は行末まで詰めて折り返す（両端揃え） */
 n-b { white-space: nowrap; } /* 文末の短い文節は直前の文節とまとめて改行しない */
 /* 長い段落（60字超）は両端揃えにして、右端のガタつきをなくす（最終行は左寄せ） */
 :is(p, li, dd, blockquote):has(> n-w.j) { text-align: justify; text-justify: inter-character; }
@@ -1086,6 +1087,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .who--owner { background: var(--c-owner); color: #fff; }
 .who--rivia { background: var(--c-rivia); color: #fff; }
 .who--half { background: linear-gradient(90deg, var(--c-owner) 50%, var(--c-rivia) 50%); color: #fff; }
+.who--co { background: var(--c-rivia-soft); color: var(--c-rivia); box-shadow: inset 0 0 0 1px var(--c-rivia); }
 .plan__split { display: grid; gap: 8px; }
 .plan__split li { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; line-height: 1.5; }
 .plan__split-item { color: var(--c-sub); }
@@ -1341,3 +1343,5 @@ button.is-sending { opacity: .6; pointer-events: none; }
 .message__origin { margin-top: 1.2em; }
 .message__quote:has(> n-w.j), .message__origin:has(> n-w.j) { text-align: justify; }
 @media (max-width: 767px) { .message__lead { font-size: 18px; } }
+/* 本文中の大事な言葉：太字＋下側だけのマーカー */
+strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(transparent 62%, rgba(26, 71, 42, 0.16) 62%); padding: 0 1px; }

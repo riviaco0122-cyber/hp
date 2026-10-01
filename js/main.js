@@ -239,4 +239,60 @@
         });
     });
   });
+  /**
+   * 本文の段落末（改行の直前を含む）が「す。」「ます。」のような短い行になったら、
+   * その段落の字間をわずかに（最大 ±0.1em）調整して、短い行が残らないように整える
+   */
+  function shortLines(block, fs) {
+    // 文字（テキスト）だけを行ごとに集計し、短い行の数を返す
+    var lines = [];
+    var walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+    var range = document.createRange();
+    for (var node = walker.nextNode(); node; node = walker.nextNode()) {
+      if (!node.nodeValue.trim()) continue;
+      range.selectNodeContents(node);
+      Array.prototype.forEach.call(range.getClientRects(), function (r) {
+        if (!r.width) return;
+        var line = null;
+        for (var k = 0; k < lines.length; k++) if (Math.abs(lines[k].top - r.top) < fs * 0.6) { line = lines[k]; break; }
+        if (!line) { line = { top: r.top, width: 0 }; lines.push(line); }
+        line.width += r.width;
+      });
+    }
+    if (lines.length < 2) return 0;
+    return lines.filter(function (l) { return l.width / fs < 4; }).length;
+  }
+  function fixShortLines() {
+    var blocks = [];
+    document.querySelectorAll('n-w.j').forEach(function (el) {
+      var b = el.parentElement;
+      if (b && blocks.indexOf(b) < 0) blocks.push(b);
+    });
+    blocks.forEach(function (b) {
+      b.style.letterSpacing = '';
+      if (!b.offsetParent) return;
+      var cs = getComputedStyle(b);
+      var fs = parseFloat(cs.fontSize);
+      var base = parseFloat(cs.letterSpacing) || 0;
+      var best = shortLines(b, fs), bestStep = 0;
+      if (!best) return;
+      var steps = [-0.01, 0.01, -0.02, 0.02, -0.03, 0.03, -0.04, 0.04, -0.05, 0.05, -0.06, 0.06, -0.07, 0.07, -0.08, 0.08, -0.09, 0.09, -0.1, 0.1];
+      for (var i = 0; i < steps.length && best; i++) {
+        b.style.letterSpacing = (base + steps[i] * fs) + 'px';
+        var n = shortLines(b, fs);
+        if (n < best) { best = n; bestStep = steps[i]; }
+      }
+      b.style.letterSpacing = bestStep ? (base + bestStep * fs) + 'px' : '';
+    });
+  }
+  var fixTimer;
+  function scheduleFix() { clearTimeout(fixTimer); fixTimer = setTimeout(fixShortLines, 150); }
+  window.addEventListener('load', fixShortLines);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fixShortLines);
+  var lastWidth = window.innerWidth;
+  window.addEventListener('resize', function () {
+    if (window.innerWidth === lastWidth) return;  // スマホのスクロールでの高さ変化は無視
+    lastWidth = window.innerWidth;
+    scheduleFix();
+  });
 })();
