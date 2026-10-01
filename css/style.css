@@ -161,14 +161,9 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   transition: opacity .3s, transform .3s var(--ease), visibility .3s;
 }
 .subnav::before { content: ""; position: absolute; left: 0; right: 0; top: -20px; height: 20px; } /* ホバーの隙間対策 */
-.subnav__group + .subnav__group { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--c-line); }
 @media (min-width: 900px) {
-  /* 2つの事業軸を左右に並べ、どちらも同じ高さで見えるようにする */
-  .subnav { display: grid; grid-template-columns: 1fr 1fr; min-width: 720px; padding: 20px 0; }
-  .subnav__group + .subnav__group { margin-top: 0; padding-top: 0; border-top: 0; border-left: 1px solid var(--c-line); }
   .subnav { max-height: calc(100vh - var(--header-h) - 24px); overflow-y: auto; }
 }
-.subnav__label { display: block; padding: 8px 28px 4px; font-size: 11px; color: var(--c-muted); letter-spacing: 0.14em; }
 .subnav a { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 12px 28px; font-size: 14px; letter-spacing: 0.06em; transition: background .2s; }
 .subnav a:hover, .subnav a[aria-current="page"] { background: var(--c-bg-soft); }
 .subnav a .arrow { width: 16px; }
@@ -210,7 +205,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .subnav::before { display: none; }
   .subnav { white-space: normal; }
   .subnav a { padding: 12px var(--gutter); }
-  .subnav__label { padding: 8px var(--gutter) 2px; }
 }
 
 /* ==========================================================================
@@ -959,21 +953,17 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 @media (max-width: 899px) { .page-hero--bright::before { background: rgba(12, 14, 12, 0.66); } }
 
 /* Serviceメニュー：目的・お悩みから探す */
-.subnav__head { grid-column: 1 / -1; padding: 4px 28px 14px; margin-bottom: 8px; border-bottom: 1px solid var(--c-line); font-family: var(--font-serif); font-size: 15px; letter-spacing: 0.08em; white-space: normal; }
 .subnav__text { display: flex; flex-direction: column; gap: 4px; min-width: 0; white-space: normal; }
 .subnav__worry { font-family: var(--font-serif); font-size: 14px; line-height: 1.6; letter-spacing: 0.04em; color: var(--c-text); }
 .subnav__name { font-size: 11px; color: var(--c-muted); letter-spacing: 0.08em; }
 .subnav a { align-items: center; }
 .subnav a .arrow { flex-shrink: 0; }
-.subnav__foot { grid-column: 1 / -1; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--c-line); }
 .subnav__foot a { justify-content: flex-end; gap: 14px; font-size: 12px; color: var(--c-sub); }
 @media (min-width: 900px) {
   /* メニューは画面中央に配置し、狭いPC幅でもはみ出さないようにする */
   .gnav__item--has-sub { position: static; }
-  .subnav { top: 100%; min-width: 0; width: min(960px, calc(100vw - 40px)); }
 }
 @media (max-width: 899px) {
-  .subnav__head { padding: 8px var(--gutter) 12px; font-size: 14px; }
   .subnav__worry { font-size: 13.5px; }
   .subnav a { padding: 10px var(--gutter); }
 }
@@ -1214,13 +1204,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .tri__lines line.is-dashed { stroke: var(--c-line-strong); stroke-dasharray: 6 6; }
 .tri__label.is-soft { background: transparent; color: var(--c-muted); font-weight: 400; font-family: var(--font-serif); }
 .scheme .tri { margin-top: 8px; }
-.subnav__label { font-size: 12px; color: var(--c-text); font-weight: 500; letter-spacing: 0.1em; }
-.subnav__label small { margin-left: 10px; font-size: 11px; font-weight: 400; color: var(--c-muted); letter-spacing: 0.06em; }
-@media (min-width: 900px) {
-  .subnav { grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(1120px, calc(100vw - 40px)); }
-  .subnav__group + .subnav__group { border-left: 1px solid var(--c-line); }
-  .subnav__label small { display: block; margin: 2px 0 0; }
-}
 @media (min-width: 1100px) { .plans--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 880px; margin-left: auto; margin-right: auto; } }
 .tri__num { font-family: var(--font-sans) !important; font-variant-numeric: lining-nums tabular-nums; line-height: 1 !important; font-size: 12px !important; font-weight: 500; padding: 0 !important; }
 @media (max-width: 899px) {
@@ -1267,4 +1250,41 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .issue__steps li { grid-template-columns: 20px minmax(0, 1fr); gap: 8px; }
   .issue__step-num { width: 20px; height: 20px; line-height: 20px; font-size: 12px; margin-top: 4px; }
   .facts { align-items: stretch; }
+}
+
+/* Serviceメニュー：お客様の立場をタブで選び、その立場のサービスだけを表示する */
+.subnav { padding: 0; }
+.subnav__tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 16px 28px; border-bottom: 1px solid var(--c-line); background: var(--c-bg-soft); }
+.subnav__tab {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+  padding: 10px 14px; border: 1px solid var(--c-line-strong); border-radius: 8px; background: var(--c-bg);
+  font: inherit; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; color: var(--c-sub); text-align: left; cursor: pointer;
+  transition: border-color .2s, background .2s, color .2s;
+}
+.subnav__tab small { font-size: 11px; font-weight: 400; color: var(--c-muted); letter-spacing: 0.04em; }
+.subnav__tab[aria-selected="true"] { border-color: var(--c-accent); background: var(--c-rivia-soft); color: var(--c-accent); }
+.subnav__tab:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }
+.subnav__panel { padding: 14px 0 6px; }
+.js .subnav__panel:not(.is-active) { display: none; }
+.subnav__head { padding: 0 28px 6px; font-size: 11px; color: var(--c-muted); letter-spacing: 0.14em; white-space: normal; }
+.subnav__label { display: block; padding: 10px 28px 2px; font-size: 11px; color: var(--c-accent); letter-spacing: 0.1em; }
+.subnav__foot { padding: 4px 0 8px; border-top: 1px solid var(--c-line); }
+@media (min-width: 900px) {
+  .subnav { display: block; top: 100%; min-width: 0; width: min(560px, calc(100vw - 40px)); }
+}
+@media (max-width: 899px) {
+  .subnav__tabs { padding: 12px var(--gutter); }
+  .subnav__tab { padding: 9px 12px; font-size: 12.5px; }
+  .subnav__head { padding: 0 var(--gutter) 4px; }
+  .subnav__label { padding: 8px var(--gutter) 0; }
+}
+
+/* フッター（スマホ）：About などのリンクは横並びでコンパクトに、Service は全幅でゆったり見せる */
+@media (max-width: 899px) {
+  .footer__nav { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 16px; }
+  .footer__nav h3 { font-size: 15px; margin-bottom: 0; }
+  .footer__service { grid-column: 1 / -1; grid-row: auto; order: 10; margin-top: 12px; padding-top: 28px; border-top: 1px solid var(--c-line); }
+  .footer__service h3 { margin-bottom: 4px; }
+  .footer__service li a { display: block; padding: 5px 0; line-height: 1.7; font-size: 13.5px; }
+  .footer__group, .footer__group:first-child { margin-top: 18px; margin-bottom: 2px; }
 }

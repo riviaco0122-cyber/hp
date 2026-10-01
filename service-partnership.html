@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RZVE2XBPQ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RZVE2XBPQ2');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>不動産事業者様との協業 | 合同会社RIVIA&amp;CO.</title>
@@ -24,10 +33,6 @@
   <meta property="og:site_name" content="合同会社RIVIA&amp;CO.">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
-
-  <!--
-    アクセス解析（Google アナリティクス）を使う場合は、発行された計測タグをここに貼り付けてください。
-  -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,27 +58,15 @@
           <li class="gnav__item--has-sub">
             <button type="button" class="gnav__link" aria-expanded="false" aria-controls="subnav-service" aria-current="page">Service <span class="gnav__caret" aria-hidden="true"></span></button>
             <ul class="subnav" id="subnav-service">
-              <li class="subnav__head">目的・<wbr>お悩みから<wbr>探す</li>
-              <li class="subnav__group">
-                <span class="subnav__label">個人の<wbr>お客様<small>空き家・副業・投資</small></span>
-                <ul>
-                  <li><a href="service-operation.html"><span class="subnav__text"><span class="subnav__worry">「実家・<wbr>空き家の<wbr>処分や<wbr>利活用に<wbr>悩んでいる」</span><span class="subnav__name">空き家再生事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li>
-                  <li><a href="service-consulting.html"><span class="subnav__text"><span class="subnav__worry">「副業や<wbr>投資と<wbr>して<wbr>民泊を<wbr>検討している」</span><span class="subnav__name">宿泊施設 開業・運営コンサルティング事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li>
-                </ul>
+              <li class="subnav__tabs" role="tablist" aria-label="お客様の種類"><button type="button" class="subnav__tab" role="tab" id="subnav-tab-personal" aria-controls="subnav-personal" aria-selected="false">個人の<wbr>お客様<small>空き家・副業・投資</small></button><button type="button" class="subnav__tab" role="tab" id="subnav-tab-business" aria-controls="subnav-business" aria-selected="true">法人・事業者の<wbr>お客様<small>宿の<wbr>運営・<wbr>不動産・集客・採用</small></button></li>
+              <li class="subnav__panel" id="subnav-personal" role="tabpanel" aria-labelledby="subnav-tab-personal">
+                <p class="subnav__head">目的・<wbr>お悩みから<wbr>探す</p>
+                <div class="subnav__group"><ul><li><a href="service-operation.html"><span class="subnav__text"><span class="subnav__worry">「実家・<wbr>空き家の<wbr>処分や<wbr>利活用に<wbr>悩んでいる」</span><span class="subnav__name">空き家再生事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-consulting.html"><span class="subnav__text"><span class="subnav__worry">「副業や<wbr>投資と<wbr>して<wbr>民泊を<wbr>検討している」</span><span class="subnav__name">宿泊施設 開業・運営コンサルティング事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li></ul></div>
               </li>
-              <li class="subnav__group">
-                <span class="subnav__label">法人の<wbr>お客様<small>宿泊施設の<wbr>運営・<wbr>不動産</small></span>
-                <ul>
-                  <li><a href="service-consignment.html"><span class="subnav__text"><span class="subnav__worry">「既存宿の<wbr>運営代行・業務を<wbr>丸投げしたい」</span><span class="subnav__name">運営委託事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li>
-                  <li><a href="service-partnership.html" aria-current="page"><span class="subnav__text"><span class="subnav__worry">「保有物件を、<wbr>民泊の<wbr>投資物件と<wbr>して<wbr>販売したい」</span><span class="subnav__name">不動産事業者様との<wbr>協業</span></span> <span class="arrow" aria-hidden="true"></span></a></li>
-                </ul>
-              </li>
-              <li class="subnav__group">
-                <span class="subnav__label">法人の<wbr>お客様<small>集客・採用<wbr>（WEBマーケティング）</small></span>
-                <ul>
-                  <li><a href="service-marketing.html"><span class="subnav__text"><span class="subnav__worry">「集客を<wbr>強化して、<wbr>予約と<wbr>売上を<wbr>伸ば<wbr>したい」</span><span class="subnav__name">WEB集客支援事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li>
-                  <li><a href="service-recruit.html"><span class="subnav__text"><span class="subnav__worry">「観光業・地方ビジネスでの<wbr>人材不足を<wbr>解決したい」</span><span class="subnav__name">WEB採用支援事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li>
-                </ul>
+              <li class="subnav__panel is-active" id="subnav-business" role="tabpanel" aria-labelledby="subnav-tab-business">
+                <p class="subnav__head">目的・<wbr>お悩みから<wbr>探す</p>
+                <div class="subnav__group"><span class="subnav__label">宿泊施設の<wbr>運営・<wbr>不動産</span><ul><li><a href="service-consignment.html"><span class="subnav__text"><span class="subnav__worry">「既存宿の<wbr>運営代行・業務を<wbr>丸投げしたい」</span><span class="subnav__name">運営委託事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-partnership.html" aria-current="page"><span class="subnav__text"><span class="subnav__worry">「保有物件を、<wbr>民泊の<wbr>投資物件と<wbr>して<wbr>販売したい」</span><span class="subnav__name">不動産事業者様との<wbr>協業</span></span> <span class="arrow" aria-hidden="true"></span></a></li></ul></div>
+                <div class="subnav__group"><span class="subnav__label">集客・採用<wbr>（WEBマーケティング）</span><ul><li><a href="service-marketing.html"><span class="subnav__text"><span class="subnav__worry">「集客を<wbr>強化して、<wbr>予約と<wbr>売上を<wbr>伸ば<wbr>したい」</span><span class="subnav__name">WEB集客支援事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-recruit.html"><span class="subnav__text"><span class="subnav__worry">「観光業・地方ビジネスでの<wbr>人材不足を<wbr>解決したい」</span><span class="subnav__name">WEB採用支援事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li></ul></div>
               </li>
               <li class="subnav__foot"><a href="index.html#service">すべての<wbr>サービスを<wbr>見る<wbr> <span class="arrow" aria-hidden="true"></span></a></li>
             </ul>

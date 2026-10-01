@@ -33,6 +33,19 @@
     });
   });
 
+  // Serviceメニュー：お客様の立場（個人／法人・事業者）のタブ切り替え
+  document.querySelectorAll('.subnav__tab').forEach(function (tab) {
+    tab.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var menu = tab.closest('.subnav');
+      menu.querySelectorAll('.subnav__tab').forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        document.getElementById(t.getAttribute('aria-controls')).classList.toggle('is-active', on);
+      });
+    });
+  });
+
   function closeSubnav() {
     subItems.forEach(function (item) {
       item.classList.remove('is-open');
