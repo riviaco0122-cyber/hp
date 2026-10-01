@@ -41,7 +41,7 @@ rivia-hp/
 │   ├── shizuoka-yaizu-akiya-inn.html
 │   ├── izu-shimoda-akiya-inn.html
 │   ├── takehara-machiya-inn.html
-├── css/style.css            全ページ共通スタイル（実績写真もこの中に埋め込み）
+├── css/style.css            全ページ共通スタイル（実績写真は images/photos/node-shimoda.avif を参照。CSSに画像を埋め込むと全ページの表示が遅くなるため埋め込まない）
 ├── js/main.js               ドロップダウン、フェードイン、絞り込み、フォーム補助など
 ├── images/ogp.jpg           SNSシェア画像（1200×630）。画像を追加するときもこのフォルダへ
 ├── docs/site-spec.md        この指示書（公開サーバーには置かない）
