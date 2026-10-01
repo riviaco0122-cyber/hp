@@ -379,7 +379,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .fact { display: flex; flex-direction: column; padding: 44px 40px 48px; border-bottom: 1px solid var(--c-line); }
 .fact + .fact { border-left: 1px solid var(--c-line); }
 .fact__head { display: flex; align-items: baseline; gap: 14px; min-height: 3.6em; }
-.fact__no { font-family: var(--font-en); font-size: 15px; color: var(--c-muted); letter-spacing: 0.1em; }
+.fact__no { flex-shrink: 0; white-space: nowrap; font-family: var(--font-en); font-size: 15px; color: var(--c-muted); letter-spacing: 0.1em; }
 .fact__label { font-size: 13px; color: var(--c-sub); letter-spacing: 0.06em; line-height: 1.8; }
 .fact__figure { margin-top: 20px; font-family: var(--font-en); font-weight: 300; font-size: clamp(64px, 6.4vw, 96px); line-height: 1; letter-spacing: 0.01em; white-space: nowrap; min-height: 1.1em; display: flex; align-items: flex-end; }
 .fact__figure small { font-family: var(--font-serif); font-weight: 300; font-size: 0.3em; letter-spacing: 0.06em; margin-left: 0.12em; padding-bottom: 0.18em; }
@@ -395,9 +395,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .fact__bar-value { font-family: var(--font-en); font-size: 18px; line-height: 1; min-width: 3.4em; text-align: right; }
 .fact__bar.is-main .fact__bar-label { color: var(--c-text); }
 .fact__note { margin-top: 14px; font-size: 11px; color: var(--c-muted); line-height: 1.9; }
-.fact__impact { margin-top: 28px; padding: 18px 20px; background: var(--c-bg-soft); }
-.fact__impact-label { display: block; font-size: 12px; color: var(--c-muted); letter-spacing: 0.1em; margin-bottom: 6px; }
-.fact__impact p { font-size: 14px; line-height: 1.9; }
 .fact__source { margin-top: 16px; font-size: 11px; color: var(--c-muted); letter-spacing: 0.04em; }
 .facts-summary { display: grid; grid-template-columns: 120px 1fr auto; align-items: center; gap: 32px; margin-top: 56px; padding: 40px 48px; border: 1px solid var(--c-text); }
 .facts-summary__label { font-family: var(--font-serif); font-size: 20px; letter-spacing: 0.2em; }
@@ -1160,11 +1157,10 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .fact__body { flex-grow: 1; }
 .fact__foot:empty { display: none; }
 @media (min-width: 900px) {
-  .facts { grid-template-rows: repeat(6, auto); row-gap: 0; }
-  .fact { display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
+  .facts { grid-template-rows: repeat(5, auto); row-gap: 0; }
+  .fact { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
   .fact__foot:empty { display: block; }
   .fact__figure { align-self: end; }
-  .fact__impact { align-self: start; }
 }
 
 /* 協業スキーム：三角形の図（PC：矢印に説明／スマホ：番号だけ図に置き、説明は下に） */
