@@ -1307,4 +1307,3 @@ button.is-sending { opacity: .6; pointer-events: none; }
   background: var(--c-rivia-soft); color: var(--c-accent); font-size: 12px; letter-spacing: 0.08em;
 }
 @media (max-width: 899px) { .area-note { padding-left: 16px; margin-top: 14px; } }
-.page-hero__area { margin-top: 20px; font-size: 13px; color: var(--c-sub); }
