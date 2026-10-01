@@ -1317,3 +1317,20 @@ button.is-sending { opacity: .6; pointer-events: none; }
   .timeline__step { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
   .timeline__term { justify-self: start; align-self: start; }
 }
+
+/* プランカード：「毎月の受け取り方」のラベル・本文・例の各段を、カード間でそろえる */
+@media (min-width: 1100px) {
+  .plans { grid-template-rows: repeat(10, auto); }
+  .plan { grid-row: span 10; }
+  .plan__money { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
+  .plan__money .plan__example { align-self: start; }
+}
+@media (max-width: 899px) {
+  .plans {
+    display: grid; grid-auto-flow: column; grid-auto-columns: 84%; grid-template-columns: none;
+    grid-template-rows: repeat(10, auto); column-gap: 14px; row-gap: 0;
+  }
+  .plan { display: grid; grid-row: span 10; grid-template-rows: subgrid; row-gap: 0; }
+  .plan__money { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; }
+  .plan__money .plan__example { align-self: start; }
+}
