@@ -241,7 +241,9 @@
   });
   /**
    * 本文の段落末（改行の直前を含む）が「す。」「ます。」のような短い行になったら、
-   * その段落の字間をわずかに（最大 ±0.1em）調整して、短い行が残らないように整える
+   * その段落の字間をわずかに（最大 0.05em）詰めて、短い行が残らないように整える
+   * （字間を広げると段落ごとに見た目が変わるため、詰める方向だけにする）
+   * 詰めても直らない左揃えの文は、文末の言葉をまとめて次の行へ送る
    */
   function shortLines(block, fs) {
     // 文字（テキスト）だけを行ごとに集計し、短い行の数を返す
@@ -264,10 +266,11 @@
   }
   function fixShortLines() {
     var blocks = [];
-    document.querySelectorAll('n-w.j').forEach(function (el) {
+    document.querySelectorAll('n-w').forEach(function (el) {
       var b = el.parentElement;
       if (b && blocks.indexOf(b) < 0) blocks.push(b);
     });
+    unguard(document);
     blocks.forEach(function (b) {
       b.style.letterSpacing = '';
       if (!b.offsetParent) return;
@@ -276,13 +279,46 @@
       var base = parseFloat(cs.letterSpacing) || 0;
       var best = shortLines(b, fs), bestStep = 0;
       if (!best) return;
-      var steps = [-0.01, 0.01, -0.02, 0.02, -0.03, 0.03, -0.04, 0.04, -0.05, 0.05, -0.06, 0.06, -0.07, 0.07, -0.08, 0.08, -0.09, 0.09, -0.1, 0.1];
+      var steps = [-0.01, -0.02, -0.03, -0.04, -0.05];
       for (var i = 0; i < steps.length && best; i++) {
         b.style.letterSpacing = (base + steps[i] * fs) + 'px';
         var n = shortLines(b, fs);
         if (n < best) { best = n; bestStep = steps[i]; }
       }
       b.style.letterSpacing = bestStep ? (base + bestStep * fs) + 'px' : '';
+      // 左揃えの短い文で、まだ最後の行が短い場合は、文末の言葉（5〜9字）をまとめて改行させない
+      if (best && !b.querySelector('n-w.j')) guardTail(b, fs);
+    });
+  }
+  function guardTail(b, fs) {
+    var nws = b.querySelectorAll('n-w');
+    var nw = nws[nws.length - 1];
+    var text = nw && nw.lastChild;
+    if (!text || text.nodeType !== 3) return;
+    var str = text.nodeValue.replace(/\s+$/, '');
+    if (str.length < 12) return;
+    var words = [];
+    if (window.Intl && Intl.Segmenter) {
+      var seg = new Intl.Segmenter('ja', { granularity: 'word' });
+      words = Array.from(seg.segment(str), function (x) { return x.segment; });
+    } else {
+      words = str.split('');
+    }
+    var tail = '';
+    while (words.length && tail.length < 5 && (tail + words[words.length - 1]).length <= 9) tail = words.pop() + tail;
+    if (tail.length < 5) tail = str.slice(-5);
+    var guard = document.createElement('n-b');
+    guard.setAttribute('data-auto', '');
+    guard.textContent = tail;
+    text.nodeValue = str.slice(0, str.length - tail.length);
+    nw.appendChild(guard);
+    if (shortLines(b, fs)) unguard(b);  // 改善しなければ元に戻す
+  }
+  function unguard(root) {
+    root.querySelectorAll('n-b[data-auto]').forEach(function (g) {
+      var parent = g.parentNode;
+      parent.replaceChild(document.createTextNode(g.textContent), g);
+      parent.normalize();
     });
   }
   var fixTimer;
