@@ -1195,15 +1195,15 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 
 /* スマホ：数が多く縦に長くなる一覧は、横スワイプのカルーセルにする（次のカードを少し見せる） */
 @media (max-width: 899px) {
-  .plans, .issues, .media-grid--scroll {
+  .persona, .plans, .issues, .media-grid--scroll {
     display: flex; gap: 14px;
     max-width: none; margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1);
     padding: 6px var(--gutter) 20px; scroll-padding-inline: var(--gutter);
     overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch; scrollbar-width: none;
   }
-  .plans::-webkit-scrollbar, .issues::-webkit-scrollbar, .media-grid--scroll::-webkit-scrollbar { display: none; }
-  .plans > *, .issues > *, .media-grid--scroll > * {
+  .persona::-webkit-scrollbar, .plans::-webkit-scrollbar, .issues::-webkit-scrollbar, .media-grid--scroll::-webkit-scrollbar { display: none; }
+  .persona > *, .plans > *, .issues > *, .media-grid--scroll > * {
     flex: 0 0 84%; min-width: 0; scroll-snap-align: start;
   }
   .media-grid--scroll > * { flex-basis: 76%; }
@@ -1252,7 +1252,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .footer__group, .footer__group:first-child { margin-top: 18px; margin-bottom: 2px; }
 }
 
-/* スマホ：市場データ・事業紹介・関連サービスは縦並びのままコンパクトに */
+/* スマホ：市場データ・関連サービスは縦並び、事業紹介はカルーセル。いずれもコンパクトに */
 @media (max-width: 899px) {
   .facts { gap: 12px; }
   .fact { padding: 22px 20px; }
@@ -1262,7 +1262,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .fact__headline { margin-top: 14px; padding-top: 12px; font-size: 16px; }
   .fact__compare { margin-top: 12px; }
   .fact__foot:not(:empty) { margin-top: 8px; }
-  .persona { gap: 10px; }
   .persona__card, .persona--2 .persona__card { padding: 20px 20px 16px; gap: 10px; }
   .biz-card__num { font-size: 22px; }
   .biz-card__name { margin-top: 4px; font-size: 17px; }
