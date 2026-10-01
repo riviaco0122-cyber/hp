@@ -384,7 +384,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .fact__figure small { font-family: var(--font-serif); font-weight: 300; font-size: 0.3em; letter-spacing: 0.06em; margin-left: 0.12em; padding-bottom: 0.18em; }
 .fact__figure--word { font-family: var(--font-serif); font-weight: 200; font-size: clamp(26px, 2.5vw, 36px); line-height: 1.5; letter-spacing: 0.08em; white-space: normal; min-height: calc(clamp(64px, 6.4vw, 96px) * 1.1); }
 .fact__headline { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--c-line); font-family: var(--font-serif); font-weight: 400; font-size: 19px; line-height: 1.7; letter-spacing: 0.05em; }
-.fact__text { margin-top: 14px; color: var(--c-sub); font-size: 14px; line-height: 2; flex-grow: 1; }
 .fact__compare { margin-top: 24px; display: grid; gap: 12px; }
 .fact__bar { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; }
 .fact__bar-label { grid-column: 1 / -1; font-size: 12px; color: var(--c-sub); line-height: 1.6; }
@@ -1196,16 +1195,15 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 
 /* スマホ：数が多く縦に長くなる一覧は、横スワイプのカルーセルにする（次のカードを少し見せる） */
 @media (max-width: 899px) {
-  .persona, .plans, .facts, .related, .issues, .media-grid--scroll {
+  .plans, .issues, .media-grid--scroll {
     display: flex; gap: 14px;
     max-width: none; margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1);
     padding: 6px var(--gutter) 20px; scroll-padding-inline: var(--gutter);
     overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch; scrollbar-width: none;
   }
-  .persona::-webkit-scrollbar, .plans::-webkit-scrollbar, .facts::-webkit-scrollbar,
-  .related::-webkit-scrollbar, .issues::-webkit-scrollbar, .media-grid--scroll::-webkit-scrollbar { display: none; }
-  .persona > *, .plans > *, .facts > *, .related > *, .issues > *, .media-grid--scroll > * {
+  .plans::-webkit-scrollbar, .issues::-webkit-scrollbar, .media-grid--scroll::-webkit-scrollbar { display: none; }
+  .plans > *, .issues > *, .media-grid--scroll > * {
     flex: 0 0 84%; min-width: 0; scroll-snap-align: start;
   }
   .media-grid--scroll > * { flex-basis: 76%; }
@@ -1215,7 +1213,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .issue__answer { margin: 0 -6px; padding: 18px 12px; }
   .issue__steps li { grid-template-columns: 20px minmax(0, 1fr); gap: 8px; }
   .issue__step-num { width: 20px; height: 20px; line-height: 20px; font-size: 12px; margin-top: 4px; }
-  .facts { align-items: stretch; }
 }
 
 /* Serviceメニュー：お客様の立場をタブで選び、その立場のサービスだけを表示する */
@@ -1253,4 +1250,27 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .footer__service h3 { margin-bottom: 4px; }
   .footer__service li a { display: block; padding: 5px 0; line-height: 1.7; font-size: 13.5px; }
   .footer__group, .footer__group:first-child { margin-top: 18px; margin-bottom: 2px; }
+}
+
+/* スマホ：市場データ・事業紹介・関連サービスは縦並びのままコンパクトに */
+@media (max-width: 899px) {
+  .facts { gap: 12px; }
+  .fact { padding: 22px 20px; }
+  .fact__head { font-size: 12px; }
+  .fact__figure { margin-top: 10px; font-size: 52px; min-height: 0; }
+  .fact__figure--word { font-size: 24px; }
+  .fact__headline { margin-top: 14px; padding-top: 12px; font-size: 16px; }
+  .fact__compare { margin-top: 12px; }
+  .fact__foot:not(:empty) { margin-top: 8px; }
+  .persona { gap: 10px; }
+  .persona__card, .persona--2 .persona__card { padding: 20px 20px 16px; gap: 10px; }
+  .biz-card__num { font-size: 22px; }
+  .biz-card__name { margin-top: 4px; font-size: 17px; }
+  .biz-card__text { margin-top: 6px; font-size: 13px; line-height: 1.8; }
+  .related { gap: 10px; }
+  .related__card { padding: 18px 20px; gap: 10px; }
+}
+@media (max-width: 899px) {
+  .biz-card__en { display: none; }
+  .biz-card .persona__to { padding-top: 10px; margin-top: 2px; font-size: 12px; }
 }
