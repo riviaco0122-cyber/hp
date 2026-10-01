@@ -1088,6 +1088,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .who--half { background: linear-gradient(90deg, var(--c-owner) 50%, var(--c-rivia) 50%); color: #fff; }
 .who--co { background: var(--c-rivia-soft); color: var(--c-rivia); box-shadow: inset 0 0 0 1px var(--c-rivia); }
 .who--none { background: transparent; color: var(--c-muted); box-shadow: inset 0 0 0 1px var(--c-line-strong); }
+.who--share { background: linear-gradient(90deg, var(--c-owner) 50%, var(--c-rivia) 50%); color: #fff; }
 .plan__split { display: grid; gap: 8px; }
 .plan__split li { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; line-height: 1.5; }
 .plan__split-item { color: var(--c-sub); min-width: 0; }
