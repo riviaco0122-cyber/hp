@@ -51,9 +51,8 @@ body {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
-n-w { word-break: normal; line-break: strict; } /* 長い段落は通常の折り返し */
-h1, h2, h3, h4 { text-wrap: balance; }
-p, li, dd { text-wrap: pretty; }
+n-w { word-break: normal; line-break: strict; } /* 本文は行末まで詰めて折り返す */
+n-b { white-space: nowrap; } /* 文末の文節は改行しない（1〜2文字だけの行を防ぐ） */
 img { max-width: 100%; height: auto; display: block; }
 /* hidden 属性は、各要素の display 指定より常に優先して非表示にする（絞り込み・予約公開で使用） */
 [hidden] { display: none !important; }
@@ -396,14 +395,8 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .fact__bar.is-main .fact__bar-label { color: var(--c-text); }
 .fact__note { margin-top: 14px; font-size: 11px; color: var(--c-muted); line-height: 1.9; }
 .fact__source { margin-top: 16px; font-size: 11px; color: var(--c-muted); letter-spacing: 0.04em; }
-.facts-summary { display: grid; grid-template-columns: 120px 1fr auto; align-items: center; gap: 32px; margin-top: 56px; padding: 40px 48px; border: 1px solid var(--c-text); }
-.facts-summary__label { font-family: var(--font-serif); font-size: 20px; letter-spacing: 0.2em; }
-.facts-summary__text { font-family: var(--font-serif); font-weight: 300; font-size: 17px; line-height: 2.1; letter-spacing: 0.04em; }
-.facts-summary__link { display: inline-flex; align-items: center; gap: 12px; font-size: 13px; letter-spacing: 0.06em; white-space: nowrap; border-bottom: 1px solid var(--c-text); padding-bottom: 4px; }
-.facts-summary__down { width: 7px; height: 7px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-2px) rotate(45deg); }
 @media (max-width: 1099px) {
   .fact { padding: 40px 28px 44px; }
-  .facts-summary { grid-template-columns: 1fr; gap: 16px; padding: 32px; }
 }
 @media (max-width: 899px) {
   .facts { grid-template-columns: 1fr; }
@@ -413,9 +406,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .fact__figure--word { min-height: 0; }
   .fact__figure { font-size: 72px; }
   .fact__figure--word { font-size: 28px; }
-  .facts-summary { margin-top: 40px; padding: 28px 24px; }
-  .facts-summary__text { font-size: 15px; }
-  .facts-summary__link { white-space: normal; }
 }
 
 /* 経営課題 × RIVIAの貢献 */
@@ -792,7 +782,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 
 /* 共通カード */
 .persona__card, .related__card, .fact, .reason, .flow__step, .issue, .founder,
-.careers-cta, .facts-summary, .map, .keypoints, .article-cta {
+.careers-cta, .map, .keypoints, .article-cta {
   background-color: var(--c-bg);
   border: 1px solid var(--c-card-line);
   border-radius: var(--radius);
@@ -822,7 +812,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .reason, .reason + .reason { padding: 44px 36px; border-left: 1px solid var(--c-card-line); }
 .founders { gap: 24px; border-top: 0; }
 .founder, .founder + .founder { padding: 48px 44px; border-left: 1px solid var(--c-card-line); }
-.facts-summary, .issue { box-shadow: var(--shadow-md); }
+.issue { box-shadow: var(--shadow-md); }
 .issue__answer { border-radius: calc(var(--radius) - 4px); }
 
 /* ボタンにも軽い影 */
