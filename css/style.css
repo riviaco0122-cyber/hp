@@ -1334,3 +1334,6 @@ button.is-sending { opacity: .6; pointer-events: none; }
   .plan__money { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; }
   .plan__money .plan__example { align-self: start; }
 }
+
+/* 一文のリード（サービス概要・ヒーローの説明など）は、行の長さをそろえて折り返す */
+.overview__text, .hero__sub, .cta__text { text-wrap: balance; }
