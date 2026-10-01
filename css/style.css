@@ -1347,3 +1347,10 @@ button.is-sending { opacity: .6; pointer-events: none; }
 @media (max-width: 767px) { .message__lead { font-size: 18px; } }
 /* 本文中の大事な言葉：太字＋下側だけのマーカー */
 strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(transparent 62%, rgba(26, 71, 42, 0.16) 62%); }
+/* 分担の項目名が長いプランは、スマホでは全行を2行分の高さに揃えて間隔を均一にする */
+@media (max-width: 899px) {
+  .plan { padding-left: 20px; padding-right: 20px; }
+  .plan__split--tall li { min-height: 3em; }
+  .plan__split--tall .who { width: 5.6em; }
+}
+@media (max-width: 374px) { .plan__split--tall .plan__split-item { font-size: 12px; } }
