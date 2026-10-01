@@ -52,7 +52,9 @@ body {
   overflow-wrap: anywhere;
 }
 n-w { word-break: normal; line-break: strict; } /* 本文は行末まで詰めて折り返す */
-n-b { white-space: nowrap; } /* 文末の文節は改行しない（1〜2文字だけの行を防ぐ） */
+n-b { white-space: nowrap; } /* 文末の3文字は改行しない（1〜2文字だけの行を防ぐ） */
+/* 長い段落は両端揃えにして、右端のガタつきをなくす（最終行は左寄せ） */
+:is(p, li, dd, blockquote):has(> n-w) { text-align: justify; text-justify: inter-character; }
 img { max-width: 100%; height: auto; display: block; }
 /* hidden 属性は、各要素の display 指定より常に優先して非表示にする（絞り込み・予約公開で使用） */
 [hidden] { display: none !important; }
