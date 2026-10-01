@@ -51,8 +51,8 @@ body {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
-n-w { word-break: normal; line-break: strict; } /* 本文は行末まで詰めて折り返す */
-n-b { white-space: nowrap; } /* 文末の3文字は改行しない（1〜2文字だけの行を防ぐ） */
+n-w { text-wrap: pretty; } /* 本文は文節ごとに折り返し、最後の行が短くなりすぎないよう整える */
+n-b { white-space: nowrap; } /* 文末の短い文節は直前の文節とまとめて改行しない */
 /* 長い段落（60字超）は両端揃えにして、右端のガタつきをなくす（最終行は左寄せ） */
 :is(p, li, dd, blockquote):has(> n-w.j) { text-align: justify; text-justify: inter-character; }
 img { max-width: 100%; height: auto; display: block; }
