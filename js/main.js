@@ -19,6 +19,32 @@
   onScroll();
 
   /**
+   * スマホ：右上のメニューボタン（3本線）で全画面メニューを開閉
+   */
+  var menuBtn = document.querySelector('.menu-btn');
+  function setMenu(open) {
+    if (!menuBtn || !header) return;
+    header.classList.toggle('is-menu-open', open);
+    document.documentElement.classList.toggle('is-menu-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+  }
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      setMenu(!header.classList.contains('is-menu-open'));
+    });
+    document.querySelectorAll('.gnav a').forEach(function (a) {
+      a.addEventListener('click', function () { setMenu(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setMenu(false);
+    });
+    window.matchMedia('(min-width: 900px)').addEventListener('change', function (mq) {
+      if (mq.matches) setMenu(false);
+    });
+  }
+
+  /**
    * Service ドロップダウン
    * PC はホバーで開き、タップ・クリック・キーボードでも開閉できる
    */

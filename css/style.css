@@ -27,7 +27,7 @@
 @media (max-width: 899px) {
   :root {
     --gutter: 20px;
-    --header-h: 92px; /* 1段目(ロゴ) + 2段目(ナビ) */
+    --header-h: 56px;
     --section-y: 88px;
   }
 }
@@ -178,34 +178,46 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 @media (max-width: 1099px) and (min-width: 900px) {
   .gnav__list { gap: 28px; }
 }
+.menu-btn { display: none; }
 @media (max-width: 899px) {
-  .header__inner {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: 52px 40px;
-    height: auto;
-  }
+  /* スマホ：ロゴ・相談ボタン・メニューボタン（3本線）の1段。ナビは全画面メニューに集約 */
+  .header__inner { grid-template-columns: 1fr auto auto; gap: 0 10px; height: var(--header-h); }
   .logo { font-size: 22px; }
   .logo img { height: 22px; }
-  .header__cta { grid-column: 2; grid-row: 1; padding: 7px 14px; font-size: 11px; letter-spacing: 0.06em; }
+  .header__cta { padding: 7px 14px; font-size: 11px; letter-spacing: 0.06em; }
+  .menu-btn {
+    display: grid; align-content: center; justify-items: center; gap: 5px;
+    width: 40px; height: 40px; margin-right: -8px; padding: 0; background: none; border: 0; cursor: pointer; color: var(--c-text);
+  }
+  .menu-btn span { display: block; width: 22px; height: 1.5px; background: currentColor; transition: transform .3s var(--ease), opacity .2s; }
+  .header.is-menu-open .menu-btn span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .header.is-menu-open .menu-btn span:nth-child(2) { opacity: 0; }
+  .header.is-menu-open .menu-btn span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
   .gnav {
-    grid-column: 1 / -1; grid-row: 2;
-    justify-self: stretch;
-    border-top: 1px solid var(--c-line);
-    margin: 0 calc(var(--gutter) * -1);
+    position: fixed; top: var(--header-h); left: 0; right: 0; bottom: 0; z-index: 99;
+    background: #fff; border-top: 1px solid var(--c-line);
+    overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+    opacity: 0; visibility: hidden; transform: translateY(-8px);
+    transition: opacity .3s, transform .3s var(--ease), visibility .3s;
   }
-  .gnav__list { justify-content: space-around; gap: 0; height: 40px; }
-  .gnav__link { font-size: 13px; letter-spacing: 0.06em; padding: 6px 2px; }
-  .gnav__item--has-sub { position: static; }
-  .subnav {
-    position: absolute; top: 100%; left: 0; right: 0; min-width: 0;
-    transform: translateY(-6px);
-    border-left: 0; border-right: 0; padding: 8px 0;
+  .header.is-menu-open .gnav { opacity: 1; visibility: visible; transform: none; }
+  .gnav__list { display: flex; flex-direction: column; align-items: stretch; gap: 0; height: auto; padding: 4px 0 40px; }
+  .gnav__list > li { border-bottom: 1px solid var(--c-line); }
+  .gnav__link { display: block; width: 100%; padding: 18px var(--gutter); font-size: 18px; letter-spacing: 0.1em; text-align: left; }
+  .gnav__link[aria-current="page"]::after { display: none; }
+  .gnav__item--has-sub { order: -1; position: static; }
+  .gnav__item--has-sub > .gnav__link { pointer-events: none; padding-bottom: 6px; }
+  .gnav__caret { display: none; }
+  .subnav, .gnav__item--has-sub.is-open .subnav {
+    position: static; width: auto; min-width: 0; max-height: none; overflow: visible;
+    opacity: 1; visibility: visible; transform: none;
+    border: 0; box-shadow: none; padding: 0; white-space: normal; background: none;
   }
-  .gnav__item--has-sub.is-open .subnav { transform: translateY(0); }
-  .subnav { max-height: calc(100vh - var(--header-h)); max-height: calc(100dvh - var(--header-h)); overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; box-shadow: 0 16px 24px rgba(0, 0, 0, 0.06); }
   .subnav::before { display: none; }
-  .subnav { white-space: normal; }
-  .subnav a { padding: 12px var(--gutter); }
+  .subnav a { padding: 10px var(--gutter); }
+  .subnav__tabs { background: none; border-bottom: 0; padding-bottom: 4px; }
+  html.is-menu-open { overflow: hidden; }
 }
 
 /* ==========================================================================
@@ -1274,4 +1286,14 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 @media (max-width: 899px) {
   .biz-card__en { display: none; }
   .biz-card .persona__to { padding-top: 10px; margin-top: 2px; font-size: 12px; }
+}
+
+/* スマホの全画面メニュー内の Service（タブの背景・下線などを整える） */
+@media (max-width: 899px) {
+  .gnav__link::after { display: none; }
+  /* backdrop-filter があると固定配置のメニューがヘッダー内に閉じ込められるため、開いている間は外す */
+  .header.is-menu-open { backdrop-filter: none; -webkit-backdrop-filter: none; background: #fff; }
+  .gnav .subnav__tabs { background: none; border-bottom: 0; padding: 4px var(--gutter) 4px; }
+  .gnav .subnav__panel { padding-top: 10px; }
+  .gnav .subnav__foot { border-top: 0; }
 }
