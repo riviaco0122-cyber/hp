@@ -1559,3 +1559,4 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
   .about-value__num { font-size: 38px; }
   .about-values h3 { font-size: 18px; }
 }
+.about-outcomes { margin-top: 24px; text-align: left; }
