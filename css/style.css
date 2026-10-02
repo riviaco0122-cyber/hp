@@ -654,7 +654,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 @media (max-width: 899px) { .company { grid-template-columns: 1fr; gap: 40px; } }
 
 /* ==========================================================================
-   宿とまちのノート（メディア）
+   暮らす旅の手帖（メディア）
    ========================================================================== */
 .media-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; }
 .media-card { display: flex; flex-direction: column; }
