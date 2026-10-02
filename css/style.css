@@ -1358,7 +1358,69 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
 .subnav__intents { padding: 8px 0; }
 .subnav__intents a { padding-top: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--c-line); }
 .subnav__intents li:last-child a { border-bottom: 0; }
-.subnav__intent { font-size: 17px; font-weight: 500; line-height: 1.5; letter-spacing: 0.06em; color: var(--c-text); }
+.subnav__intent { font-family: var(--font-serif); font-size: 17px; font-weight: 400; line-height: 1.5; letter-spacing: 0.06em; color: var(--c-text); }
 .subnav__intents .subnav__name { font-size: 11.5px; }
 @media (min-width: 900px) { .subnav { width: 420px; } }
 @media (max-width: 899px) { .subnav__intent { font-size: 16px; } .subnav__intents a { padding-top: 12px; padding-bottom: 12px; } }
+/* しくみ：左から右へ流れるシンプルな図（スマホでは上から下へ） */
+.flow { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr) minmax(0, 150px) minmax(0, 1fr) minmax(0, 150px); align-items: center; gap: 0 12px; margin-top: 28px; }
+.flow__node { display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1; border-radius: 50%; background: var(--c-bg-soft); border: 1px solid var(--c-card-line); text-align: center; padding: 12px; }
+.flow__node--rivia { background: var(--c-rivia-soft); border-color: var(--c-accent); }
+.flow__icon svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.flow__node--rivia .flow__icon { color: var(--c-accent); }
+.flow__title { margin-top: 6px; font-family: var(--font-serif); font-size: 17px; letter-spacing: 0.06em; }
+.flow__role { font-size: 11.5px; color: var(--c-muted); line-height: 1.5; }
+.flow__link { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.flow__pill { padding: 6px 14px; border-radius: 999px; background: var(--c-accent); color: #fff; font-size: 12.5px; letter-spacing: 0.06em; }
+.flow__fwd, .flow__back { position: relative; display: block; width: 100%; font-size: 12px; color: var(--c-sub); padding-top: 12px; }
+.flow__fwd::before, .flow__back::before { content: ""; position: absolute; top: 0; left: 6px; right: 6px; height: 2px; background: var(--c-accent); }
+.flow__fwd::after, .flow__back::after { content: ""; position: absolute; top: -4px; width: 8px; height: 8px; border-top: 2px solid var(--c-accent); border-right: 2px solid var(--c-accent); }
+.flow__fwd::after { right: 6px; transform: rotate(45deg); }
+.flow__back { color: var(--c-muted); }
+.flow__back::before { height: 1px; background: var(--c-line-strong); }
+.flow__back::after { left: 6px; border-color: var(--c-line-strong); border-width: 1px; transform: rotate(-135deg); }
+.flow__note { margin-top: 24px; text-align: center; font-size: 13px; color: var(--c-accent); letter-spacing: 0.04em; }
+@media (max-width: 899px) {
+  .flow { grid-template-columns: 1fr; justify-items: center; gap: 10px; }
+  .flow__node { width: 124px; padding: 8px; }
+  .flow__role { font-size: 11px; }
+  .flow__link { width: 100%; max-width: 280px; padding: 4px 0; }
+  .flow__fwd, .flow__back { padding-top: 0; }
+  .flow__fwd::before, .flow__fwd::after, .flow__back::before, .flow__back::after { display: none; }
+  .flow__fwd::before { display: block; content: "↓"; position: static; height: auto; background: none; color: var(--c-accent); font-size: 18px; line-height: 1; margin-bottom: 4px; }
+  .flow__back::before { display: inline; content: "↑ "; position: static; height: auto; background: none; color: var(--c-muted); }
+}
+/* お悩みとRIVIAの打ち手：番号つきのシンプルなカード */
+.merits { display: grid; gap: 16px; margin-top: 8px; }
+.merit { display: grid; grid-template-columns: 120px minmax(0, 1fr); background: var(--c-bg); border: 1px solid var(--c-card-line); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; }
+.merit__num { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; background: var(--c-accent); color: #fff; font-family: var(--font-en); font-size: 48px; line-height: 1; }
+.merit__num span { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.14em; opacity: .85; }
+.merit__body { padding: 28px 32px; }
+.merit__title { font-family: var(--font-serif); font-size: 21px; font-weight: 400; line-height: 1.6; letter-spacing: 0.04em; }
+.merit__text { margin-top: 10px; font-size: 14px; line-height: 1.95; color: var(--c-sub); }
+.merit__label { display: inline-block; margin-right: 10px; padding: 1px 10px; border-radius: 999px; background: var(--c-rivia-soft); color: var(--c-accent); font-size: 11.5px; letter-spacing: 0.08em; vertical-align: 1px; }
+@media (min-width: 900px) { .merits { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 899px) {
+  .merit { grid-template-columns: 1fr; }
+  .merit__num { flex-direction: row; justify-content: flex-start; align-items: baseline; gap: 10px; padding: 10px 18px; font-size: 24px; }
+  .merit__num span { font-size: 11px; }
+  .merit__body { padding: 20px 18px; }
+  .merit__title { font-size: 17px; }
+  .merit__text { font-size: 13.5px; }
+}
+/* フッター：ロゴ・相談ボタン・主要リンクだけのシンプルな構成 */
+.footer--simple { padding: 72px 0 32px; }
+.footer__top { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+.footer--simple .footer__copy { margin-top: 14px; font-family: var(--font-serif); font-size: 15px; letter-spacing: 0.08em; color: var(--c-sub); }
+.footer__cta { display: inline-flex; align-items: center; gap: 20px; padding: 18px 32px; background: var(--c-text); color: #fff; font-size: 14px; letter-spacing: 0.1em; transition: opacity .2s; }
+.footer__cta:hover { opacity: .85; }
+.footer__links { display: flex; flex-wrap: wrap; gap: 12px 36px; margin-top: 48px; font-family: var(--font-en); font-size: 15px; letter-spacing: 0.14em; }
+.footer__links a:hover { color: var(--c-muted); }
+.footer--simple .footer__bottom { margin-top: 40px; padding-top: 24px; align-items: center; justify-content: flex-start; }
+.footer--simple .footer__address { margin: 0 auto 0 0; font-size: 12px; font-family: var(--font-sans); }
+@media (max-width: 899px) {
+  .footer--simple { padding: 56px 0 28px; }
+  .footer__cta { width: 100%; justify-content: center; }
+  .footer__links { gap: 10px 24px; margin-top: 36px; font-size: 14px; }
+  .footer--simple .footer__bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
