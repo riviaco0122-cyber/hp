@@ -1381,14 +1381,18 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
 .sflow__back::after { left: 6px; border-color: var(--c-line-strong); border-width: 1px; transform: rotate(-135deg); }
 .sflow__note { margin-top: 24px; text-align: center; font-size: 13px; color: var(--c-accent); letter-spacing: 0.04em; }
 @media (max-width: 899px) {
-  .sflow { grid-template-columns: 1fr; justify-items: center; gap: 10px; }
-  .sflow__node { width: 124px; padding: 8px; }
-  .sflow__role { font-size: 11px; }
-  .sflow__link { width: 100%; max-width: 280px; padding: 4px 0; }
-  .sflow__fwd, .sflow__back { padding-top: 0; }
+  /* スマホ：丸を横長の帯にして縦に並べ、間の線の横に契約と流れを書く（1画面に収める） */
+  .sflow { grid-template-columns: 1fr; gap: 0; margin-top: 16px; }
+  .sflow__node { flex-direction: row; justify-content: flex-start; align-items: baseline; gap: 12px; aspect-ratio: auto; border-radius: 999px; padding: 12px 20px; text-align: left; }
+  .sflow__title { font-size: 16px; }
+  .sflow__role { font-size: 11.5px; }
+  .sflow__link { position: relative; align-items: flex-start; gap: 4px; margin-left: 30px; padding: 12px 0 14px 22px; border-left: 2px solid var(--c-accent); text-align: left; }
+  .sflow__link::after { content: ""; position: absolute; left: -6px; bottom: -1px; width: 10px; height: 10px; border-right: 2px solid var(--c-accent); border-bottom: 2px solid var(--c-accent); transform: rotate(45deg); }
+  .sflow__pill { padding: 3px 12px; font-size: 11.5px; }
+  .sflow__fwd, .sflow__back { width: auto; padding-top: 0; font-size: 12.5px; }
   .sflow__fwd::before, .sflow__fwd::after, .sflow__back::before, .sflow__back::after { display: none; }
-  .sflow__fwd::before { display: block; content: "↓"; position: static; height: auto; background: none; color: var(--c-accent); font-size: 18px; line-height: 1; margin-bottom: 4px; }
-  .sflow__back::before { display: inline; content: "↑ "; position: static; height: auto; background: none; color: var(--c-muted); }
+  .sflow__back::before { display: inline; content: "↑ 戻り："; position: static; width: auto; height: auto; background: none; border: 0; transform: none; color: var(--c-muted); }
+  .sflow__note { margin-top: 16px; font-size: 12.5px; }
 }
 /* お悩みとRIVIAの打ち手：番号つきのシンプルなカード */
 .merits { display: grid; gap: 16px; margin-top: 8px; }
