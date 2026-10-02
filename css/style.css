@@ -67,7 +67,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .container { width: 100%; max-width: calc(var(--container) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter); }
 .container--narrow { max-width: calc(880px + var(--gutter) * 2); }
 .section { padding: var(--section-y) 0; }
-/* セクション間の区切り線は使わない（余白と背景色で区切る） */
+/* セクション間の区切り線は使わない。白い背景のセクションが続くときは、上の余白を詰めて間延びさせない */
+.section:not(.section--soft):not(.cta) + .section:not(.section--soft):not(.cta) { padding-top: 0; }
 .section--soft { background: var(--c-bg-soft); }
 .sp-only { display: none; }
 @media (max-width: 899px) { .sp-only { display: inline; } .pc-only { display: none; } }
