@@ -1675,3 +1675,5 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
 .fixed-cta .btn { width: min(420px, 100%); justify-content: center; gap: 20px; padding: 16px 24px; }
 body:has(.fixed-cta) { padding-bottom: 76px; }
 body:has(.header.is-menu-open) .fixed-cta { display: none; }
+/* スマホ：サービス名は全列2行分の高さにそろえ、下線と小項目の位置をそろえる */
+@media (max-width: 899px) { .footer__svc-name { min-height: calc(1.6em * 2 + 12px); } }
