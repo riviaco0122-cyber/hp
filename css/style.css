@@ -67,7 +67,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .container { width: 100%; max-width: calc(var(--container) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter); }
 .container--narrow { max-width: calc(880px + var(--gutter) * 2); }
 .section { padding: var(--section-y) 0; }
-.section + .section { border-top: 1px solid var(--c-line); }
+/* セクション間の区切り線は使わない（余白と背景色で区切る） */
 .section--soft { background: var(--c-bg-soft); }
 .sp-only { display: none; }
 @media (max-width: 899px) { .sp-only { display: inline; } .pc-only { display: none; } }
