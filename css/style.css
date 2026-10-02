@@ -1641,3 +1641,19 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
   .footer__aud:nth-child(2) ul { grid-template-columns: 1fr; }
   .footer__aud a { font-size: 14.5px; padding: 11px 0; }
 }
+/* フッター：各サービスの案内 */
+.footer__svcs { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 32px 28px; }
+.footer__svc-name { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; padding-bottom: 12px; border-bottom: 1px solid var(--c-line); font-family: var(--font-serif); font-size: 14.5px; line-height: 1.6; letter-spacing: 0.04em; }
+.footer__svc-name .arrow { flex-shrink: 0; width: 16px; margin-top: 10px; }
+.footer__svc ul { margin-top: 12px; display: grid; gap: 8px; }
+.footer__svc li a { font-size: 12.5px; color: var(--c-sub); letter-spacing: 0.04em; }
+.footer__svc li a::before { content: "— "; color: var(--c-line-strong); }
+.footer__svc a:hover { color: var(--c-accent); }
+@media (max-width: 1099px) { .footer__svcs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 899px) {
+  .footer__svcs { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+  .footer__svc-name { font-size: 13.5px; }
+  .footer__svc li a { font-size: 12px; }
+}
+.footer__svcs { display: grid; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--c-line); }
+.footer__svcs-head { grid-column: 1 / -1; font-size: 11.5px; color: var(--c-accent); letter-spacing: 0.14em; }
