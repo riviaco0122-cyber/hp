@@ -1699,3 +1699,33 @@ body:has(.fixed-cta) { padding-bottom: 54px; }
   .scenes { grid-template-columns: 1fr; gap: 40px; margin-top: 48px; }
   .scene__photo { aspect-ratio: 3 / 2; }
 }
+/* 情景に番号と矢印をつけ、宿→まち→人の流れとして見せる */
+.scene { position: relative; }
+.scene__no { margin-right: 12px; font-size: 13px; color: var(--c-accent); }
+@media (min-width: 900px) {
+  .scene:not(:last-child)::after { content: ""; position: absolute; top: calc((100% - 0px) * 0 + 38%); right: -24px; width: 14px; height: 14px; border-top: 1px solid var(--c-text); border-right: 1px solid var(--c-text); transform: rotate(45deg); }
+}
+/* 循環の流れ */
+.cycle { margin-top: 64px; padding: 32px 40px; border: 1px solid var(--c-line-strong); text-align: center; }
+.cycle__label { font-family: var(--font-serif); font-size: 18px; letter-spacing: 0.1em; }
+.cycle__flow { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 0; margin-top: 20px; font-size: 13.5px; letter-spacing: 0.06em; }
+.cycle__flow li { display: flex; align-items: center; padding: 8px 16px; background: var(--c-bg-soft); }
+.cycle__flow li + li::before { content: "→"; margin: 0 12px 0 -4px; color: var(--c-accent); position: relative; left: -12px; }
+.cycle__flow li + li { margin-left: 24px; }
+.cycle__back { background: var(--c-rivia-soft) !important; color: var(--c-accent); }
+.cycle__back::before { content: "↻" !important; }
+@media (max-width: 899px) {
+  .cycle { margin-top: 40px; padding: 24px 16px; }
+  .cycle__label { font-size: 16px; }
+  .cycle__flow { flex-direction: column; gap: 0; }
+  .cycle__flow li { width: 100%; justify-content: center; }
+  .cycle__flow li + li { margin: 26px 0 0; position: relative; }
+  .cycle__flow li + li::before { content: "↓"; position: absolute; top: -22px; left: 50%; margin: 0; transform: translateX(-50%); }
+  .cycle__back::before { content: "↓" !important; }
+}
+/* 矢印は箱の外側に置く */
+.cycle__flow li { position: relative; }
+@media (min-width: 900px) {
+  .cycle__flow li + li { margin-left: 40px; }
+  .cycle__flow li + li::before { position: absolute; left: -28px; top: 50%; margin: 0; transform: translateY(-50%); font-size: 15px; }
+}
