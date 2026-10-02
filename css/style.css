@@ -1563,3 +1563,67 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
 .vision__more { margin-top: 40px; text-align: right; }
 .vision__more a { display: inline-flex; align-items: center; gap: 14px; font-size: 13px; letter-spacing: 0.08em; color: var(--c-sub); }
 .vision__more a:hover { color: var(--c-text); }
+/* プランの図：1本の帯が段々に高く（スマホは太く）なり、丸の大きさで量を示す */
+.pd { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; column-gap: 0; margin-top: 48px; }
+.pd__plan { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
+.pd__seg { position: relative; align-self: end; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 16px 26px; text-align: center; color: #fff; }
+.pd__plan--1 .pd__seg { min-height: 170px; clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%); background: linear-gradient(90deg, #8aa591, #6f8d78); }
+.pd__plan--2 .pd__seg { min-height: 200px; clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%); background: linear-gradient(90deg, #6f8d78, #4c6f56); }
+.pd__plan--3 .pd__seg { min-height: 230px; clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%); background: linear-gradient(90deg, #4c6f56, #1a472a); }
+.pd__plan + .pd__plan .pd__seg { box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.35); }
+.pd__badge { align-self: center; margin-bottom: 10px; padding: 2px 12px; border-radius: 999px; background: #fff; color: var(--c-accent); font-size: 11px; letter-spacing: 0.08em; }
+.pd__name { font-size: 13px; letter-spacing: 0.1em; }
+.pd__label { margin-top: 12px; font-size: 11px; letter-spacing: 0.14em; opacity: .8; }
+.pd__value { margin-top: 2px; font-family: var(--font-serif); font-size: clamp(24px, 2.4vw, 32px); line-height: 1.35; letter-spacing: 0.04em; }
+.pd__body { display: flex; flex-direction: column; align-items: center; padding: 28px 24px 8px; text-align: center; }
+.pd__plan + .pd__plan .pd__body { border-left: 1px solid var(--c-line); }
+.pd__metrics { display: flex; justify-content: center; align-items: flex-end; gap: 28px; min-height: 96px; }
+.pd__metrics > div { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.pd__metrics span { font-size: 12px; color: var(--c-sub); letter-spacing: 0.06em; }
+.pd__c { display: grid; place-items: center; border-radius: 50%; color: #fff; font-family: var(--font-serif); font-weight: 400; line-height: 1; white-space: nowrap; }
+.pd__c--a { background: var(--c-accent); }
+.pd__c--b { background: #33475b; }
+.pd__c--0 { width: 44px; height: 44px; font-size: 12px; background: none; color: var(--c-muted); box-shadow: inset 0 0 0 1px var(--c-line-strong); }
+.pd__c--1 { width: 44px; height: 44px; font-size: 13px; }
+.pd__c--2 { width: 56px; height: 56px; font-size: 15px; }
+.pd__c--3 { width: 68px; height: 68px; font-size: 17px; }
+.pd__desc { margin-top: 20px; font-size: 14px; line-height: 1.85; flex: 1; }
+.pd__cta { margin-top: 18px; display: inline-flex; align-items: center; gap: 14px; padding-bottom: 4px; border-bottom: 1px solid var(--c-text); font-size: 13px; letter-spacing: 0.06em; }
+@media (max-width: 899px) {
+  /* スマホ：左に帯（下へ行くほど太くなる）、右に丸と一言 */
+  .pd { grid-template-columns: 1fr; grid-template-rows: none; margin-top: 32px; }
+  .pd__plan { grid-row: auto; grid-template-rows: none; grid-template-columns: var(--w) minmax(0, 1fr); }
+  .pd__plan--1 { --w: 36%; } .pd__plan--2 { --w: 42%; } .pd__plan--3 { --w: 48%; }
+  .pd__seg { align-self: stretch; justify-content: center; min-height: 0 !important; padding: 20px 10px; }
+  .pd__plan--1 .pd__seg { clip-path: polygon(0 0, 83% 0, 100% 100%, 0 100%); padding-right: 16px; }
+  .pd__plan--2 .pd__seg { clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%); padding-right: 16px; background: linear-gradient(180deg, #6f8d78, #4c6f56); }
+  .pd__plan--3 .pd__seg { clip-path: polygon(0 0, 87.5% 0, 100% 100%, 0 100%); padding-right: 16px; background: linear-gradient(180deg, #4c6f56, #1a472a); }
+  .pd__plan--1 .pd__seg { background: linear-gradient(180deg, #8aa591, #6f8d78); }
+  .pd__plan + .pd__plan .pd__seg { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+  .pd__name { font-size: 11.5px; letter-spacing: 0.04em; }
+  .pd__label { margin-top: 8px; font-size: 10px; letter-spacing: 0.06em; }
+  .pd__value { font-size: 18px; letter-spacing: 0; }
+  .pd__body { padding: 18px 0 18px 14px; }
+  .pd__plan + .pd__plan .pd__body { border-left: 0; border-top: 1px solid var(--c-line); }
+  .pd__metrics { gap: 14px; min-height: 76px; }
+  .pd__metrics span { font-size: 11px; }
+  .pd__c--0, .pd__c--1 { width: 36px; height: 36px; font-size: 11.5px; }
+  .pd__c--2 { width: 44px; height: 44px; font-size: 13px; }
+  .pd__c--3 { width: 52px; height: 52px; font-size: 14px; }
+  .pd__desc { margin-top: 12px; font-size: 12.5px; line-height: 1.75; }
+  .pd__cta { margin-top: 10px; font-size: 12px; gap: 10px; }
+}
+.pd__metrics { align-items: flex-start; }
+.pd__metrics > div { display: grid; grid-template-rows: auto 68px; place-items: center; gap: 6px; }
+@media (max-width: 899px) {
+  .pd__metrics > div { grid-template-rows: auto 52px; }
+  .pd__metrics { min-height: 0; }
+  .pd__cta { white-space: nowrap; font-size: 11.5px; letter-spacing: 0.02em; }
+  .pd__cta .arrow { width: 18px; }
+}
+@media (max-width: 899px) {
+  .pd__name { font-size: 11px; letter-spacing: 0; }
+  .pd__label { letter-spacing: 0; }
+  .pd__cta wbr { display: none; }
+}
+@media (max-width: 899px) { .pd__name { white-space: nowrap; font-size: 10.5px; } .pd__name wbr { display: none; } }
