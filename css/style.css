@@ -1667,3 +1667,11 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
 .footer__svc { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 0; }
 .footer__svc-name { align-self: stretch; }
 @media (max-width: 899px) { .footer__svcs { grid-template-rows: none; grid-auto-rows: auto; } }
+/* ヘッダー：相談ボタンをなくし、ナビのContactに集約 */
+.header__inner { grid-template-columns: auto 1fr auto; }
+@media (max-width: 899px) { .header__inner { grid-template-columns: 1fr auto; } }
+/* サービスページ：画面下に常に「無料で相談する」 */
+.fixed-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; display: flex; justify-content: center; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--c-line); }
+.fixed-cta .btn { width: min(420px, 100%); justify-content: center; gap: 20px; padding: 16px 24px; }
+body:has(.fixed-cta) { padding-bottom: 76px; }
+body:has(.header.is-menu-open) .fixed-cta { display: none; }
