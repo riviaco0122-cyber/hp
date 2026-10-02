@@ -1560,3 +1560,6 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
   .about-values h3 { font-size: 18px; }
 }
 .about-outcomes { margin-top: 24px; text-align: left; }
+.vision__more { margin-top: 40px; text-align: right; }
+.vision__more a { display: inline-flex; align-items: center; gap: 14px; font-size: 13px; letter-spacing: 0.08em; color: var(--c-sub); }
+.vision__more a:hover { color: var(--c-text); }
