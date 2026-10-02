@@ -1363,32 +1363,32 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
 @media (min-width: 900px) { .subnav { width: 420px; } }
 @media (max-width: 899px) { .subnav__intent { font-size: 16px; } .subnav__intents a { padding-top: 12px; padding-bottom: 12px; } }
 /* しくみ：左から右へ流れるシンプルな図（スマホでは上から下へ） */
-.flow { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr) minmax(0, 150px) minmax(0, 1fr) minmax(0, 150px); align-items: center; gap: 0 12px; margin-top: 28px; }
-.flow__node { display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1; border-radius: 50%; background: var(--c-bg-soft); border: 1px solid var(--c-card-line); text-align: center; padding: 12px; }
-.flow__node--rivia { background: var(--c-rivia-soft); border-color: var(--c-accent); }
-.flow__icon svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-.flow__node--rivia .flow__icon { color: var(--c-accent); }
-.flow__title { margin-top: 6px; font-family: var(--font-serif); font-size: 17px; letter-spacing: 0.06em; }
-.flow__role { font-size: 11.5px; color: var(--c-muted); line-height: 1.5; }
-.flow__link { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
-.flow__pill { padding: 6px 14px; border-radius: 999px; background: var(--c-accent); color: #fff; font-size: 12.5px; letter-spacing: 0.06em; }
-.flow__fwd, .flow__back { position: relative; display: block; width: 100%; font-size: 12px; color: var(--c-sub); padding-top: 12px; }
-.flow__fwd::before, .flow__back::before { content: ""; position: absolute; top: 0; left: 6px; right: 6px; height: 2px; background: var(--c-accent); }
-.flow__fwd::after, .flow__back::after { content: ""; position: absolute; top: -4px; width: 8px; height: 8px; border-top: 2px solid var(--c-accent); border-right: 2px solid var(--c-accent); }
-.flow__fwd::after { right: 6px; transform: rotate(45deg); }
-.flow__back { color: var(--c-muted); }
-.flow__back::before { height: 1px; background: var(--c-line-strong); }
-.flow__back::after { left: 6px; border-color: var(--c-line-strong); border-width: 1px; transform: rotate(-135deg); }
-.flow__note { margin-top: 24px; text-align: center; font-size: 13px; color: var(--c-accent); letter-spacing: 0.04em; }
+.sflow { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr) minmax(0, 150px) minmax(0, 1fr) minmax(0, 150px); align-items: center; gap: 0 12px; margin-top: 28px; }
+.sflow__node { display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1; border-radius: 50%; background: var(--c-bg-soft); border: 1px solid var(--c-card-line); text-align: center; padding: 12px; }
+.sflow__node--rivia { background: var(--c-rivia-soft); border-color: var(--c-accent); }
+.sflow__icon svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.sflow__node--rivia .sflow__icon { color: var(--c-accent); }
+.sflow__title { margin-top: 6px; font-family: var(--font-serif); font-size: 17px; letter-spacing: 0.06em; }
+.sflow__role { font-size: 11.5px; color: var(--c-muted); line-height: 1.5; }
+.sflow__link { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.sflow__pill { padding: 6px 14px; border-radius: 999px; background: var(--c-accent); color: #fff; font-size: 12.5px; letter-spacing: 0.06em; }
+.sflow__fwd, .sflow__back { position: relative; display: block; width: 100%; font-size: 12px; color: var(--c-sub); padding-top: 12px; }
+.sflow__fwd::before, .sflow__back::before { content: ""; position: absolute; top: 0; left: 6px; right: 6px; height: 2px; background: var(--c-accent); }
+.sflow__fwd::after, .sflow__back::after { content: ""; position: absolute; top: -4px; width: 8px; height: 8px; border-top: 2px solid var(--c-accent); border-right: 2px solid var(--c-accent); }
+.sflow__fwd::after { right: 6px; transform: rotate(45deg); }
+.sflow__back { color: var(--c-muted); }
+.sflow__back::before { height: 1px; background: var(--c-line-strong); }
+.sflow__back::after { left: 6px; border-color: var(--c-line-strong); border-width: 1px; transform: rotate(-135deg); }
+.sflow__note { margin-top: 24px; text-align: center; font-size: 13px; color: var(--c-accent); letter-spacing: 0.04em; }
 @media (max-width: 899px) {
-  .flow { grid-template-columns: 1fr; justify-items: center; gap: 10px; }
-  .flow__node { width: 124px; padding: 8px; }
-  .flow__role { font-size: 11px; }
-  .flow__link { width: 100%; max-width: 280px; padding: 4px 0; }
-  .flow__fwd, .flow__back { padding-top: 0; }
-  .flow__fwd::before, .flow__fwd::after, .flow__back::before, .flow__back::after { display: none; }
-  .flow__fwd::before { display: block; content: "↓"; position: static; height: auto; background: none; color: var(--c-accent); font-size: 18px; line-height: 1; margin-bottom: 4px; }
-  .flow__back::before { display: inline; content: "↑ "; position: static; height: auto; background: none; color: var(--c-muted); }
+  .sflow { grid-template-columns: 1fr; justify-items: center; gap: 10px; }
+  .sflow__node { width: 124px; padding: 8px; }
+  .sflow__role { font-size: 11px; }
+  .sflow__link { width: 100%; max-width: 280px; padding: 4px 0; }
+  .sflow__fwd, .sflow__back { padding-top: 0; }
+  .sflow__fwd::before, .sflow__fwd::after, .sflow__back::before, .sflow__back::after { display: none; }
+  .sflow__fwd::before { display: block; content: "↓"; position: static; height: auto; background: none; color: var(--c-accent); font-size: 18px; line-height: 1; margin-bottom: 4px; }
+  .sflow__back::before { display: inline; content: "↑ "; position: static; height: auto; background: none; color: var(--c-muted); }
 }
 /* お悩みとRIVIAの打ち手：番号つきのシンプルなカード */
 .merits { display: grid; gap: 16px; margin-top: 8px; }
