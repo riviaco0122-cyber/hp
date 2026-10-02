@@ -1684,3 +1684,6 @@ html { font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1; }
 .fixed-cta .btn { width: min(280px, 100%); padding: 8px 18px; font-size: 12.5px; gap: 12px; box-shadow: none; }
 .fixed-cta .btn .arrow { width: 24px; }
 body:has(.fixed-cta) { padding-bottom: 54px; }
+/* About：グレー背景の上でも「生まれる価値」が長方形で囲まれて見えるよう、白い箱にする */
+.about-outcomes li { background: var(--c-bg); }
+.about-outcomes { margin-top: 16px; }
