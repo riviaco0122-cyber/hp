@@ -1456,3 +1456,39 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
   .pcard__value { font-size: 26px; }
   .pcard__body { padding: 20px; }
 }
+/* プランを「段々に高くなる帯」の図として見せる（PC：右へ行くほど帯が高い／スマホ：左に帯、右に中身） */
+@media (min-width: 900px) {
+  .pcards { grid-template-rows: auto auto; row-gap: 0; align-items: stretch; }
+  .pcard { display: grid; grid-row: span 2; grid-template-rows: subgrid; overflow: visible; border: 0; box-shadow: none; background: none; }
+  .pcard__head { align-self: end; display: flex; flex-direction: column; justify-content: flex-end; border-radius: 0; padding-top: 48px; }
+  .pcards--3 .pcard:nth-child(1) .pcard__head { min-height: 170px; clip-path: polygon(0 26px, 100% 13px, 100% 100%, 0 100%); }
+  .pcards--3 .pcard:nth-child(2) .pcard__head { min-height: 200px; clip-path: polygon(0 13px, 100% 0, 100% 100%, 0 100%); padding-top: 64px; }
+  .pcards--3 .pcard:nth-child(3) .pcard__head { min-height: 230px; padding-top: 80px; }
+  .pcards--3 .pcard:nth-child(3) .pcard__head { clip-path: polygon(0 0, 100% -13px, 100% 100%, 0 100%); }
+  .pcard__body { background: var(--c-bg); border: 1px solid var(--c-card-line); border-top: 0; border-radius: 0 0 var(--radius) var(--radius); box-shadow: var(--shadow-sm); }
+  .pcard--rec .pcard__body { border-color: var(--c-accent); }
+  .pcard__badge { top: auto; bottom: calc(100% - 44px); }
+}
+@media (max-width: 899px) {
+  .pcard { display: grid; grid-template-columns: 40% minmax(0, 1fr); }
+  .pcard__head { display: flex; flex-direction: column; justify-content: center; padding: 20px 12px; }
+  .pcard__value { font-size: 21px; }
+  .pcard__name { font-size: 12px; }
+  .pcard__badge { position: static; align-self: center; margin-bottom: 8px; }
+  .pcard__body { padding: 16px; }
+  .pcard__meter li { grid-template-columns: 1fr auto; gap: 6px; font-size: 12px; }
+  .pcard__lv { display: none; }
+  .pcard__desc { margin-top: 12px; padding-top: 12px; font-size: 13px; line-height: 1.75; }
+  .pcard__cta { margin-top: 12px; padding: 10px 12px; font-size: 12px; }
+}
+@media (max-width: 899px) {
+  .pcards--3 .pcard:nth-child(1) { grid-template-columns: 38% minmax(0, 1fr); }
+  .pcards--3 .pcard:nth-child(2) { grid-template-columns: 42% minmax(0, 1fr); }
+  .pcards--3 .pcard:nth-child(3) { grid-template-columns: 46% minmax(0, 1fr); }
+}
+@media (max-width: 899px) {
+  .pcard__value { font-size: 17px; letter-spacing: 0; white-space: nowrap; }
+  .pcard__head { padding-left: 8px; padding-right: 8px; }
+  .pcard__cta { gap: 8px; letter-spacing: 0.02em; }
+  .pcard__cta .arrow { flex-shrink: 0; width: 20px; }
+}
