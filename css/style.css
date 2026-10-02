@@ -1679,3 +1679,8 @@ body:has(.header.is-menu-open) .fixed-cta { display: none; }
 @media (max-width: 899px) { .footer__svc-name { min-height: calc(1.6em * 2 + 12px); } }
 /* 英字書体の数字は、高さのそろった数字（ライニング数字）で表示する（4・3・9などが下にずれないように） */
 html { font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1; }
+/* 画面下の相談ボタンは控えめなサイズに */
+.fixed-cta { padding: 8px 16px calc(8px + env(safe-area-inset-bottom)); }
+.fixed-cta .btn { width: min(280px, 100%); padding: 8px 18px; font-size: 12.5px; gap: 12px; box-shadow: none; }
+.fixed-cta .btn .arrow { width: 24px; }
+body:has(.fixed-cta) { padding-bottom: 54px; }
