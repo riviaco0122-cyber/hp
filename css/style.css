@@ -654,7 +654,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 @media (max-width: 899px) { .company { grid-template-columns: 1fr; gap: 40px; } }
 
 /* ==========================================================================
-   RIVIA MEDIA
+   宿とまちのノート（メディア）
    ========================================================================== */
 .media-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; }
 .media-card { display: flex; flex-direction: column; }
@@ -1660,3 +1660,9 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
 /* 評価：星は数字より小さく、数字の高さの中央にそろえる */
 .project__rating strong { display: inline-flex; align-items: center; gap: 10px; }
 .project__rating .project__star { font-size: 26px; line-height: 1; color: var(--c-accent); transform: translateY(-2px); }
+.thumb__brand { font-family: var(--font-serif); letter-spacing: 0.16em; }
+/* サービス名が2行になっても、下線と小項目の位置を全列でそろえる */
+.footer__svcs { grid-template-rows: auto auto auto; }
+.footer__svc { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 0; }
+.footer__svc-name { align-self: stretch; }
+@media (max-width: 899px) { .footer__svcs { grid-template-rows: none; grid-auto-rows: auto; } }
