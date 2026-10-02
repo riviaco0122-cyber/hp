@@ -1687,3 +1687,15 @@ body:has(.fixed-cta) { padding-bottom: 54px; }
 /* About：グレー背景の上でも「生まれる価値」が長方形で囲まれて見えるよう、白い箱にする */
 .about-outcomes li { background: var(--c-bg); }
 .about-outcomes { margin-top: 16px; }
+/* TOP：「暮らすように旅する」滞在の情景（写真3枚） */
+.scenes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 88px; }
+.scene__photo { aspect-ratio: 4 / 5; overflow: hidden; background: var(--c-bg-soft); }
+.scene__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.scene:hover .scene__photo img { transform: scale(1.03); }
+.scene__en { margin-top: 22px; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--c-muted); }
+.scene__title { margin-top: 8px; font-family: var(--font-serif); font-weight: 400; font-size: 20px; letter-spacing: 0.1em; }
+.scene__text { margin-top: 10px; font-size: 13.5px; line-height: 2; color: var(--c-sub); }
+@media (max-width: 899px) {
+  .scenes { grid-template-columns: 1fr; gap: 40px; margin-top: 48px; }
+  .scene__photo { aspect-ratio: 3 / 2; }
+}
