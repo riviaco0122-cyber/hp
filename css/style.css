@@ -582,7 +582,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .flow__step { position: relative; padding: 36px 28px 32px; background: #fff; border: 1px solid var(--c-line); }
 .flow__step:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -13px; width: 10px; height: 10px; border-top: 1px solid var(--c-muted); border-right: 1px solid var(--c-muted); transform: translateY(-50%) rotate(45deg); }
-.flow__num { font-family: var(--font-en); font-size: 15px; letter-spacing: 0.14em; color: var(--c-muted); }
+.flow__num { display: block; font-family: var(--font-en); font-weight: 300; font-size: 40px; line-height: 1; letter-spacing: 0.04em; color: var(--c-accent); }
 .flow__title { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 18px; letter-spacing: 0.06em; }
 .flow__desc { margin-top: 12px; font-size: 13px; color: var(--c-sub); line-height: 2; }
 @media (max-width: 899px) {
