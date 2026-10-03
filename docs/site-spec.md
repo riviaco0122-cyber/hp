@@ -17,32 +17,34 @@
 
 ```
 rivia-hp/
-├── index.html               トップページ
-├── about.html               About Us
-├── service-operation.html   空き家再生事業
-├── service-management.html  宿泊施設 開業・運営支援事業
-├── service-partnership.html 不動産事業者様との協業
-├── service-marketing.html   WEB集客支援事業
-├── service-recruit.html     WEB採用支援事業
-├── careers.html             採用情報
-├── contact.html             お問い合わせ
-├── privacy.html             プライバシーポリシー
-├── thanks.html              送信完了ページ（検索結果には出さない設定）
-├── media.html               暮らす旅の手帖 記事一覧
-├── media/                   記事ページ（1記事＝1ファイル）
-│   ├── akiya-inherited-house-to-inn.html
-│   ├── japan-tourism-market-data.html
-│   ├── akiya-regional-revitalization.html
-│   ├── minpaku-vs-ryokan-law.html
-│   ├── airdna-revenue-simulation.html
-│   ├── small-inn-subsidies.html
-│   ├── new-build-vs-used-house-inn.html
-│   ├── shizuoka-yaizu-akiya-inn.html
-├── css/style.css            全ページ共通スタイル（実績写真は images/photos/node-shimoda.avif を参照。CSSに画像を埋め込むと全ページの表示が遅くなるため埋め込まない）
-├── js/main.js               ドロップダウン、フェードイン、絞り込み、フォーム補助など
-├── images/ogp.jpg           SNSシェア画像（1200×630）。画像を追加するときもこのフォルダへ
+├── pages/                   すべてのHTML（公開URLは今までどおり rivia-co.com/○○.html。vercel.json で振り分け）
+│   ├── index.html           トップページ
+│   ├── about.html           About Us
+│   ├── service-operation.html空き家再生事業
+│   ├── service-management.html宿泊施設 開業・運営支援事業
+│   ├── service-partnership.html不動産事業者様との協業
+│   ├── service-marketing.htmlWEB集客支援事業
+│   ├── service-recruit.html WEB採用支援事業
+│   ├── careers.html         採用情報
+│   ├── contact.html         お問い合わせ
+│   ├── privacy.html         プライバシーポリシー
+│   ├── thanks.html          送信完了ページ（検索結果には出さない設定）
+│   ├── media.html           暮らす旅の手帖 記事一覧
+│   └── media/               記事ページ（1記事＝1ファイル）
+│       ├── akiya-inherited-house-to-inn.html
+│       ├── japan-tourism-market-data.html
+│       ├── akiya-regional-revitalization.html
+│       ├── minpaku-vs-ryokan-law.html
+│       ├── airdna-revenue-simulation.html
+│       ├── small-inn-subsidies.html
+│       ├── new-build-vs-used-house-inn.html
+│       ├── shizuoka-yaizu-akiya-inn.html
+├── css/style.css            全ページ共通スタイル
+├── js/main.js               メニュー、フェードイン、絞り込み、フォーム送信など
+├── images/                  画像（ogp.jpg はSNSシェア画像 1200×630）
+├── seo/                     sitemap.xml / robots.txt（公開URLはサイト直下 /sitemap.xml・/robots.txt）
 ├── docs/site-spec.md        この指示書（公開サーバーには置かない）
-├── sitemap.xml / robots.txt 検索エンジン向け（一番上の階層に置く決まり。公開ドメインに置き換えて使用）
+├── vercel.json              pages/・seo/ の中身を、今までどおりのURLで公開するための設定
 └── .vercelignore           docs/ を Vercel の公開対象から外す設定
 ```
 
