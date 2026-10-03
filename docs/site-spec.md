@@ -90,7 +90,7 @@ rivia-hp/
 * Googleアナリティクス4（測定ID: G-RZVE2XBPQ2）の計測タグを、全ページの `<head>` の直後に設置済み。
 * フォーム（お問い合わせ・採用エントリー）は画面を移動せずに送信し、成功したら thanks.html へ移動する。thanks.html で GA4 の `generate_lead` イベント（form_type: contact / careers）を送るので、GA4 の管理画面で `generate_lead` を「キーイベント」に設定すると問い合わせ数を計測できる。
 * 運営実績の下に「ゲストの声（Airbnb のレビューより）」を表示できる。build.py の `NODE_REVIEWS` に、実際のレビューを原文のまま入れたときだけ表示される（空のときは非表示）。
-* **公開ドメイン確定後に、全HTMLの `https://example.com` を実際のURLに置き換える。**
+* **公開ドメインは https://rivia-co.com（canonical / OGP / 構造化データ / sitemap に反映済み）。**
 
 ---
 
@@ -601,12 +601,11 @@ rivia-hp/
 
 ## 9. 公開前チェックリスト
 
-- [ ] 全HTMLの `https://example.com` を公開ドメインに置き換える（canonical / OGP / 構造化データ）
 - [ ] Formspree のフォームIDを設定する（お問い合わせ・採用）
 - [ ] 市場データの出典を確認し、確認できない数値を差し替え・削除する
 - [ ] Careers の MISSION / VALUES の扱いを決める
 - [ ] プライバシーポリシーの内容を確認する
 - [x] Googleアナリティクス4の計測タグを設置する（G-RZVE2XBPQ2）
 - [ ] （任意）送信完了ページ（サンクスページ）を用意する
-- [ ] sitemap.xml / robots.txt の `https://example.com` を公開ドメインに置き換え、Google Search Console に sitemap.xml を登録する
+- [ ] Google Search Console に https://rivia-co.com/sitemap.xml を登録する
 - [ ] メディア記事の数値（訪日客数・消費額・空き家数など）を公開前に最新の公表値と照合する
