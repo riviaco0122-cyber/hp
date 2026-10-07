@@ -1687,51 +1687,42 @@ body:has(.fixed-cta) { padding-bottom: 54px; }
 /* About：グレー背景の上でも「生まれる価値」が長方形で囲まれて見えるよう、白い箱にする */
 .about-outcomes li { background: var(--c-bg); }
 .about-outcomes { margin-top: 16px; }
-/* TOP：「暮らすように旅する」滞在の情景（写真3枚） */
-.scenes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 88px; }
-.scene__photo { aspect-ratio: 4 / 5; overflow: hidden; background: var(--c-bg-soft); }
+/* TOP：「暮らすように旅する」滞在の情景。写真3枚を三角形に並べ、矢印で循環を示す */
+.scenes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 64px; row-gap: 32px; margin-top: 88px; }
+.scene { position: relative; }
+.scene:nth-child(1) { grid-column: 2; grid-row: 1; }
+.scene:nth-child(2) { grid-column: 3; grid-row: 2; }
+.scene:nth-child(3) { grid-column: 1; grid-row: 2; }
+.scene__photo { aspect-ratio: 4 / 3; overflow: hidden; background: var(--c-bg-soft); }
 .scene__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
 .scene:hover .scene__photo img { transform: scale(1.03); }
-.scene__en { margin-top: 22px; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--c-muted); }
+.scene__en { margin-top: 20px; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--c-muted); }
+.scene__no { margin-right: 12px; font-size: 13px; color: var(--c-accent); }
 .scene__title { margin-top: 8px; font-family: var(--font-serif); font-weight: 400; font-size: 20px; letter-spacing: 0.1em; }
 .scene__text { margin-top: 10px; font-size: 13.5px; line-height: 2; color: var(--c-sub); }
+.scenes__arrow { pointer-events: none; }
+.scenes__arrow svg { display: block; width: 100%; overflow: visible; }
+.scenes__arrow line, .scenes__arrow polyline { fill: none; stroke: var(--c-accent); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.scenes__arrow--down { grid-column: 3; grid-row: 1; align-self: end; justify-self: start; width: 120px; margin: 0 0 -8px 12%; }
+.scenes__arrow--up { grid-column: 1; grid-row: 1; align-self: end; justify-self: end; width: 120px; margin: 0 12% -8px 0; }
+.scenes__arrow--left { grid-column: 2; grid-row: 2; align-self: start; justify-self: stretch; aspect-ratio: 4 / 3; display: grid; place-items: center; }
+.scenes__arrow--left svg { width: 120px; }
+.scenes__notes { display: none; }
 @media (max-width: 899px) {
-  .scenes { grid-template-columns: 1fr; gap: 40px; margin-top: 48px; }
-  .scene__photo { aspect-ratio: 3 / 2; }
-}
-/* 情景に番号と矢印をつけ、宿→まち→人の流れとして見せる */
-.scene { position: relative; }
-.scene__no { margin-right: 12px; font-size: 13px; color: var(--c-accent); }
-@media (min-width: 900px) {
-  .scene:not(:last-child)::after { content: ""; position: absolute; top: calc((100% - 0px) * 0 + 38%); right: -24px; width: 14px; height: 14px; border-top: 1px solid var(--c-text); border-right: 1px solid var(--c-text); transform: rotate(45deg); }
-}
-/* 循環の流れ（三角形） */
-.cycle { margin-top: 72px; text-align: center; }
-.cycle__label { font-family: var(--font-serif); font-size: 20px; letter-spacing: 0.12em; }
-.loop { position: relative; max-width: 720px; aspect-ratio: 720 / 500; margin: 8px auto 0; }
-.loop__lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.loop__lines line { stroke: var(--c-accent); stroke-width: 1.2; }
-.loop__lines marker path { fill: var(--c-accent); }
-.loop__node { position: absolute; transform: translate(-50%, -50%); text-align: center; white-space: nowrap; }
-.loop__node--top { left: 50%; top: 18.4%; }
-.loop__node--right { left: 81.9%; top: 80%; }
-.loop__node--left { left: 18.1%; top: 80%; }
-.loop__en { display: block; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.24em; color: var(--c-muted); }
-.loop__name { font-family: var(--font-serif); font-size: 26px; letter-spacing: 0.14em; line-height: 1.5; color: var(--c-accent); }
-.loop__sub { font-size: 13px; letter-spacing: 0.04em; color: var(--c-sub); line-height: 1.6; }
-.loop__edge { position: absolute; transform: translateY(-50%); font-size: 13.5px; letter-spacing: 0.08em; color: var(--c-text); white-space: nowrap; }
-.loop__edge--right { left: 69%; top: 45%; }
-.loop__edge--left { right: 69%; top: 45%; }
-.loop__edge--bottom { left: 50%; top: 86.5%; transform: translate(-50%, -50%); }
-.loop__center { position: absolute; left: 50%; top: 59%; transform: translate(-50%, -50%); font-family: var(--font-serif); font-size: 15px; line-height: 1.9; letter-spacing: 0.08em; color: var(--c-sub); white-space: nowrap; }
-@media (max-width: 899px) {
-  .cycle { margin-top: 48px; }
-  .cycle__label { font-size: 17px; }
-  .loop { margin-top: 20px; }
-  .loop__en { font-size: 9px; letter-spacing: 0.18em; }
-  .loop__name { font-size: 17px; letter-spacing: 0.1em; }
-  .loop__sub { font-size: 10.5px; letter-spacing: 0; }
-  .loop__edge { font-size: 11px; letter-spacing: 0.02em; }
-  .loop__edge--bottom { top: 72.5%; }
-  .loop__center { top: 53%; font-size: 11.5px; line-height: 1.8; letter-spacing: 0.02em; }
+  .scenes { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 32px; row-gap: 28px; margin-top: 48px; }
+  .scene:nth-child(1) { grid-column: 2 / 4; }
+  .scene:nth-child(2) { grid-column: 3 / 5; }
+  .scene:nth-child(3) { grid-column: 1 / 3; }
+  .scene__photo { aspect-ratio: 1 / 1; }
+  .scene__en { margin-top: 10px; font-size: 9.5px; letter-spacing: 0.16em; }
+  .scene__no { margin-right: 8px; font-size: 11px; }
+  .scene__title { margin-top: 4px; font-size: 14px; letter-spacing: 0.04em; line-height: 1.6; }
+  .scene__text { display: none; }
+  .scenes__arrow--down, .scenes__arrow--up { width: 100%; margin: 0 0 -6px; }
+  .scenes__arrow--down { grid-column: 4; }
+  .scenes__arrow--up { grid-column: 1; }
+  .scenes__arrow--left { grid-column: 2 / 4; aspect-ratio: 1 / 1; }
+  .scenes__arrow--left svg { width: 26px; }
+  .scenes__notes { display: grid; gap: 12px; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--c-line); }
+  .scenes__notes li { display: grid; grid-template-columns: 28px 1fr; align-items: baseline; font-size: 13px; line-height: 1.9; color: var(--c-sub); }
 }
