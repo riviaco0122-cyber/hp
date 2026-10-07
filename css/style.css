@@ -1258,7 +1258,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 
 /* スマホ：ヘッダーが1段になった分、背景写真のファーストビューは上下の余白を詰める */
 @media (max-width: 899px) {
-  .hero--photo { min-height: 0; padding: 72px 0 64px; }
+  .hero--photo { min-height: calc(100svh - var(--header-h)); padding: 72px 0 64px; }
   .page-hero--photo { min-height: 0; padding: 64px 0 56px; }
 }
 
@@ -1705,27 +1705,33 @@ body:has(.fixed-cta) { padding-bottom: 54px; }
 @media (min-width: 900px) {
   .scene:not(:last-child)::after { content: ""; position: absolute; top: calc((100% - 0px) * 0 + 38%); right: -24px; width: 14px; height: 14px; border-top: 1px solid var(--c-text); border-right: 1px solid var(--c-text); transform: rotate(45deg); }
 }
-/* 循環の流れ */
-.cycle { margin-top: 64px; padding: 32px 40px; border: 1px solid var(--c-line-strong); text-align: center; }
-.cycle__label { font-family: var(--font-serif); font-size: 18px; letter-spacing: 0.1em; }
-.cycle__flow { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 0; margin-top: 20px; font-size: 13.5px; letter-spacing: 0.06em; }
-.cycle__flow li { display: flex; align-items: center; padding: 8px 16px; background: var(--c-bg-soft); }
-.cycle__flow li + li::before { content: "→"; margin: 0 12px 0 -4px; color: var(--c-accent); position: relative; left: -12px; }
-.cycle__flow li + li { margin-left: 24px; }
-.cycle__back { background: var(--c-rivia-soft) !important; color: var(--c-accent); }
-.cycle__back::before { content: "↻" !important; }
+/* 循環の流れ（三角形） */
+.cycle { margin-top: 72px; text-align: center; }
+.cycle__label { font-family: var(--font-serif); font-size: 20px; letter-spacing: 0.12em; }
+.loop { position: relative; max-width: 720px; aspect-ratio: 720 / 500; margin: 8px auto 0; }
+.loop__lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.loop__lines line { stroke: var(--c-accent); stroke-width: 1.2; }
+.loop__lines marker path { fill: var(--c-accent); }
+.loop__node { position: absolute; transform: translate(-50%, -50%); text-align: center; white-space: nowrap; }
+.loop__node--top { left: 50%; top: 18.4%; }
+.loop__node--right { left: 81.9%; top: 80%; }
+.loop__node--left { left: 18.1%; top: 80%; }
+.loop__en { display: block; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.24em; color: var(--c-muted); }
+.loop__name { font-family: var(--font-serif); font-size: 26px; letter-spacing: 0.14em; line-height: 1.5; color: var(--c-accent); }
+.loop__sub { font-size: 13px; letter-spacing: 0.04em; color: var(--c-sub); line-height: 1.6; }
+.loop__edge { position: absolute; transform: translateY(-50%); font-size: 13.5px; letter-spacing: 0.08em; color: var(--c-text); white-space: nowrap; }
+.loop__edge--right { left: 69%; top: 45%; }
+.loop__edge--left { right: 69%; top: 45%; }
+.loop__edge--bottom { left: 50%; top: 86.5%; transform: translate(-50%, -50%); }
+.loop__center { position: absolute; left: 50%; top: 59%; transform: translate(-50%, -50%); font-family: var(--font-serif); font-size: 15px; line-height: 1.9; letter-spacing: 0.08em; color: var(--c-sub); white-space: nowrap; }
 @media (max-width: 899px) {
-  .cycle { margin-top: 40px; padding: 24px 16px; }
-  .cycle__label { font-size: 16px; }
-  .cycle__flow { flex-direction: column; gap: 0; }
-  .cycle__flow li { width: 100%; justify-content: center; }
-  .cycle__flow li + li { margin: 26px 0 0; position: relative; }
-  .cycle__flow li + li::before { content: "↓"; position: absolute; top: -22px; left: 50%; margin: 0; transform: translateX(-50%); }
-  .cycle__back::before { content: "↓" !important; }
-}
-/* 矢印は箱の外側に置く */
-.cycle__flow li { position: relative; }
-@media (min-width: 900px) {
-  .cycle__flow li + li { margin-left: 40px; }
-  .cycle__flow li + li::before { position: absolute; left: -28px; top: 50%; margin: 0; transform: translateY(-50%); font-size: 15px; }
+  .cycle { margin-top: 48px; }
+  .cycle__label { font-size: 17px; }
+  .loop { margin-top: 20px; }
+  .loop__en { font-size: 9px; letter-spacing: 0.18em; }
+  .loop__name { font-size: 17px; letter-spacing: 0.1em; }
+  .loop__sub { font-size: 10.5px; letter-spacing: 0; }
+  .loop__edge { font-size: 11px; letter-spacing: 0.02em; }
+  .loop__edge--bottom { top: 72.5%; }
+  .loop__center { top: 53%; font-size: 11.5px; line-height: 1.8; letter-spacing: 0.02em; }
 }

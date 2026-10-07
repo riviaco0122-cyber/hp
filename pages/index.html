@@ -123,7 +123,17 @@
         </ul>
         <div class="cycle reveal">
           <p class="cycle__label">宿を起点に、<wbr>地域へ<wbr>循環する</p>
-          <ol class="cycle__flow"><li>空き家・遊休<wbr>不動産</li><li>宿</li><li>旅行者</li><li>食・風土・観光・人</li><li>再訪</li><li>地域の<wbr>収益・雇用</li><li class="cycle__back">次の空き家の<wbr>再生へ</li></ol>
+          <div class="loop">
+            <svg class="loop__lines" viewBox="0 0 720 500" aria-hidden="true">
+              <defs><marker id="loop-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z"/></marker></defs>
+              <line x1="407" y1="154" x2="548" y2="344" marker-end="url(#loop-a)"/><line x1="470" y1="400" x2="250" y2="400" marker-end="url(#loop-a)"/><line x1="172" y1="344" x2="313" y2="154" marker-end="url(#loop-a)"/>
+            </svg>
+            <div class="loop__node loop__node--top"><span class="loop__en">Stay</span><p class="loop__name">宿</p><p class="loop__sub">空き家・遊休<wbr>不動産を再生</p></div>
+            <div class="loop__node loop__node--right"><span class="loop__en">Guest</span><p class="loop__name">旅行者</p><p class="loop__sub">暮らすように滞在</p></div>
+            <div class="loop__node loop__node--left"><span class="loop__en">Local</span><p class="loop__name">地域</p><p class="loop__sub">食・風土・観光・人</p></div>
+            <span class="loop__edge loop__edge--right">泊まる</span><span class="loop__edge loop__edge--bottom">まちで<wbr>消費・出会う</span><span class="loop__edge loop__edge--left">再訪</span>
+            <p class="loop__center">収益と<wbr>雇用が、<br>次の再生へ</p>
+          </div>
         </div>
         <p class="vision__more reveal"><a href="about.html">ミッション・ビジョン・バリューを見る <span class="arrow" aria-hidden="true"></span></a></p>
       </div>
