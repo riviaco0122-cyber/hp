@@ -129,6 +129,12 @@
    */
   var now = new Date();
   var today = now.getFullYear() + '-' + ('0' + (now.getMonth() + 1)).slice(-2) + '-' + ('0' + now.getDate()).slice(-2);
+  // 公開日前の記事ページを直接開いた場合は、記事一覧へ戻す
+  var scheduled = document.querySelector('.article[data-publish]');
+  if (scheduled && scheduled.getAttribute('data-publish') > today) {
+    document.documentElement.style.visibility = 'hidden';
+    location.replace(new URL('../media.html', location.href).href);
+  }
   document.querySelectorAll('.media-card[data-date]').forEach(function (c) {
     if (c.getAttribute('data-date') > today) {
       c.setAttribute('data-future', '');
