@@ -422,7 +422,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .issue__kpi { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--c-line-strong); }
 .issue__kpi ul { display: flex; flex-wrap: wrap; gap: 6px; }
 .issue__kpi li { background: var(--c-bg); border: 1px solid var(--c-line-strong); border-radius: 999px; padding: 3px 12px; font-size: 12px; letter-spacing: 0.04em; }
-.issue__cta { display: inline-flex; align-items: center; gap: 14px; margin-top: 24px; padding-bottom: 4px; border-bottom: 1px solid var(--c-text); font-size: 13px; letter-spacing: 0.08em; }
 @media (max-width: 899px) {
   .issues { gap: 16px; }
   .issue { grid-template-columns: 1fr; padding: 28px 20px 24px; }
@@ -434,7 +433,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .issue__voice { font-size: 13px; line-height: 1.9; }
   .issue__answer { margin: 0 -8px; padding: 22px 18px; }
   .issue__steps p { font-size: 13.5px; line-height: 1.85; }
-  .issue__cta { display: flex; justify-content: center; margin-top: 20px; padding: 14px 16px; border: 1px solid var(--c-text); background: var(--c-bg); }
 }
 
 /* Timeline */
@@ -1298,8 +1296,6 @@ button.is-sending { opacity: .6; pointer-events: none; }
   .issue { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
   .issue__problem { display: contents; }
   .issue__answer { display: flex; flex-direction: column; }
-  .issue__answer .issue__cta { margin-top: auto; }
-  .issue__kpi { margin-bottom: 20px; }
 }
 
 /* 対応エリア（サービス概要の下・お問い合わせページ） */
