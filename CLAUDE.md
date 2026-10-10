@@ -19,7 +19,8 @@
 
 ## 絶対のルール
 
-1. **main に直接 push しない・マージしない。** 必ず作業ブランチ → main 向け PR。人が Vercel のプレビューを見てマージする（＝最終確認）。
+1. **本番ブランチに直接 push しない・マージしない。** 必ず作業ブランチ → 本番ブランチ向け PR。人が Vercel のプレビューを見てマージする（＝最終確認）。
+   - 本番ブランチ＝GitHub のデフォルトブランチ（2026-10-10 時点では `claude/google-drive-file-refresh-rnv3qr`。`main` は存在しない）。名前は変わりうるので、毎回 `git ls-remote --symref origin HEAD` で調べる。
 2. **事実を作らない。** 数値・制度には出典。RIVIA の体験談は `docs/brand/experience.md` にあるものだけ。他者の発信は出典（発信者名・URL）つきで要約して使う。
 3. **人の確認が必要なもの**（`docs/seo/playbook.md` 6章）は、PR の「人の確認が必要な点」に必ず書き出す。
 4. `python3 tools/seo_check.py` のエラーが 0 でない状態で PR を出さない。

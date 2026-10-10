@@ -14,4 +14,4 @@ description: 指定したテーマ（またはキーワード表の次の候補�
 5. `qa` → 採点。不合格なら writer に差し戻し（最大3回）。
 6. `engineer` → HTML 化と一覧・sitemap・site-spec への組み込み、seo_check のエラー 0 を確認
 7. `qa` → HTML の最終確認
-8. `pm` → 記録と PR 説明 → コミット・push・main 向け PR 作成（マージはしない）
+8. `pm` → 記録と PR 説明 → コミット・push・本番ブランチ（GitHub のデフォルトブランチ）向け PR 作成（マージはしない）

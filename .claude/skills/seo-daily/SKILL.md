@@ -8,10 +8,14 @@ description: 暮らす旅の手帖の日次SEO/AIOサイクル（調査→企画
 あなたは編集長です。`CLAUDE.md` のルールに従い、各部署（`.claude/agents/`）に Agent ツールで仕事を振り、結果を PR にまとめます。**毎日動くので、1回の量は少なく・確実に**。終わらなかったものは引き継ぎに回します。
 
 ## 0. 準備（ブランチの決め方）
-1. `git fetch origin` で最新を取得する。
+1. 本番ブランチ（GitHub のデフォルトブランチ）を調べ、最新を取得する。以下 `$BASE` と書く。
+   ```bash
+   BASE=$(git ls-remote --symref origin HEAD | awk '/^ref:/{sub("refs/heads/","",$2); print $2}')
+   git fetch origin "$BASE"
+   ```
 2. 作業ブランチは **`seo/daily` に固定**する。
-   - `origin/seo/daily` があり、まだ main にマージされていなければ（人の確認待ち）、それをチェックアウトし、`git merge origin/main` で main の変更を取り込んでから、その上に今日の作業を積む。PR は既存のものを使い、説明文を更新する。
-   - なければ（前回分がマージ済み）、`origin/main` から `seo/daily` を作り直す。
+   - `origin/seo/daily` があり、まだ `$BASE` にマージされていなければ（人の確認待ち）、それをチェックアウトし、`git merge origin/$BASE` で本番ブランチの変更を取り込んでから、その上に今日の作業を積む。PR は既存のものを使い、説明文を更新する。
+   - なければ（前回分がマージ済み）、`origin/$BASE` から `seo/daily` を作り直す。
 3. `pip install -q -r tools/requirements.txt`（失敗しても続行。集客データなしで進める）。
 4. `python3 tools/build_llms.py` を実行する（公開日を迎えた記事を llms.txt に反映するため。毎日必ず）。
 
@@ -30,10 +34,10 @@ description: 暮らす旅の手帖の日次SEO/AIOサイクル（調査→企画
 2. **実行**：作業ごとに担当部署へ依頼する。
    - 記事（新規・書き直し）は必ず `writer` → `qa`（差し戻し最大3回）→ `engineer` → `qa` の順。
    - 技術改善は `engineer` → `qa`。
-3. **最終チェック**：`qa` に `git diff origin/main` 全体を採点してもらい、「人の確認が必要な点」を出す。`python3 tools/seo_check.py` のエラーが 0 であること。
+3. **最終チェック**：`qa` に `git diff origin/$BASE` 全体を採点してもらい、「人の確認が必要な点」を出す。`python3 tools/seo_check.py` のエラーが 0 であること。
 4. **記録とPR**：`pm` の仕事B（カレンダー・ログ・ダッシュボード・PR説明）。
-5. コミット（「日次SEO YYYY-MM-DD: 〜」）→ `git push -u origin seo/daily` → main 向けの PR がなければ作成、あれば説明文を更新。PR タイトルは「SEO/AIO 改善（YYYY-MM-DD〜）」。
-6. **main へのマージはしない**（人の最終確認のため）。
+5. コミット（「日次SEO YYYY-MM-DD: 〜」）→ `git push -u origin seo/daily` → `$BASE` 向けの PR がなければ作成、あれば説明文を更新。PR タイトルは「SEO/AIO 改善（YYYY-MM-DD〜）」。
+6. **本番ブランチへのマージはしない**（人の最終確認のため）。
 
 ## 中断の基準
 - seo_check のエラーが直せない、品質管理部が3回差し戻しても合格しない → その作業は含めず、ログの引き継ぎに書く。
