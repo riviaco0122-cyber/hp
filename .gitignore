@@ -2,3 +2,4 @@
 # Google サービスアカウントの鍵（誤コミット防止）
 *service-account*.json
 *-credentials.json
+__pycache__/
