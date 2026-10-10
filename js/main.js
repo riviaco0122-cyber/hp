@@ -22,6 +22,20 @@
   /**
    * スマホ：右上のメニューボタン（3本線）で全画面メニューを開閉
    */
+  // アキヤド（スマホ）：ヘッダーのボタンでメニューを開閉する
+  var mmenuBtn = document.querySelector('.mmenu-btn');
+  var mheader = document.querySelector('.header--media');
+  if (mmenuBtn && mheader) {
+    var setMmenu = function (open) {
+      mheader.classList.toggle('is-mnav-open', open);
+      document.documentElement.classList.toggle('is-menu-open', open);
+      mmenuBtn.setAttribute('aria-expanded', String(open));
+      mmenuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    };
+    mmenuBtn.addEventListener('click', function () { setMmenu(!mheader.classList.contains('is-mnav-open')); });
+    mheader.querySelectorAll('.mnav a').forEach(function (a) { a.addEventListener('click', function () { setMmenu(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMmenu(false); });
+  }
   var menuBtn = document.querySelector('.menu-btn');
   function setMenu(open) {
     if (!menuBtn || !header) return;
@@ -121,6 +135,9 @@
     if (param) {
       var option = category.querySelector('option[data-key="' + param + '"]');
       if (option) option.selected = true;
+      // 資料請求から来た場合は、本文を書かなくても送れるように入れておく
+      var msg = document.getElementById('message');
+      if (param === 'document' && msg && !msg.value) msg.value = 'サービス資料を希望します。';
     }
   }
 
