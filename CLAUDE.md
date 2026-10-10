@@ -1,6 +1,6 @@
-# RIVIA&CO. コーポレートサイト ／ 暮らす旅の手帖 — 全社ルール
+# RIVIA&CO. コーポレートサイト ／ アキヤド（旧・暮らす旅の手帖） — 全社ルール
 
-このリポジトリは合同会社RIVIA&CO.のサイト（静的 HTML/CSS/JS、GitHub → Vercel で公開）。オウンドメディア「暮らす旅の手帖」の SEO/AIO 運用を、AI社員のチームで自動化している。
+このリポジトリは合同会社RIVIA&CO.のサイト（静的 HTML/CSS/JS、GitHub → Vercel で公開）。オウンドメディア「アキヤド（旧・暮らす旅の手帖）」（空き家と民泊のメディア）の SEO/AIO 運用を、AI社員のチームで自動化している。
 
 ## 組織（AI社員8部署）
 
@@ -39,11 +39,19 @@
 
 ## サイトの構造（エンジニア部向けの要点）
 
-- HTML はすべて `pages/` にある。公開URLは `vercel.json` の rewrites で `/xxx.html` → `pages/xxx.html`、`/media/xxx.html` → `pages/media/xxx.html`。ページ内のリンクは公開URL基準の相対パス（記事からは `../media.html`、`../../images/...`）。
-- `docs/`・`tools/`・`.claude/`・`CLAUDE.md` は `.vercelignore` で公開対象外。`/robots.txt`・`/sitemap.xml`・`/llms.txt` は `seo/` から配信。
-- 記事 HTML は元々リポジトリ外の生成スクリプトで作られており、`<n-w>`（改行制御）・`<wbr>` を多用している。新しい記事は **同じカテゴリの既存記事をコピーして雛形にする**。
-- 記事カードは `media.html`・`index.html`・サービスページ・全記事の「あわせて読みたい記事」に入っている。追加は `tools/add_article.py` で行う（並び順・掲載先のルールはファイル冒頭に記載）。`docs/site-spec.md` の掲載記事・公開スケジュールは手で更新する。
-- 予約公開: 現在は `js/main.js` が `data-publish`／`data-date` と今日の日付を比べて、公開日前の記事を隠している（HTML と sitemap には載っている）。
+- HTML は `pages/` にある（例外: `404.html` はリポジトリ直下。Vercel がそのまま配信し、`noindex`。どの階層の URL でも表示されるので、リンクは `/` から始める）。
+- 公開URLは `vercel.json` の rewrites で対応づける: `/` → `pages/index.html`、`/xxx.html` → `pages/xxx.html`、`/media/xxx.html` → `pages/media/xxx.html`、`/en`・`/en/` → `pages/en/index.html`、`/en/xxx.html` → `pages/en/xxx.html`、`/robots.txt`・`/sitemap.xml`・`/llms.txt` → `seo/`。ページ内のリンクは公開URL基準の相対パス（記事からは `../media.html`、`../../images/...`）。
+- `docs/`・`tools/`・`.claude/`・`CLAUDE.md` は `.vercelignore` で公開対象外。
+- メディア「アキヤド（空き家と民泊のメディア）」は `/media.html`（トップ）と `/media/` 配下。会社サイトとは別のヘッダー・フッター、title の末尾は「 | アキヤド」（ガイドは「｜アキヤド」）。
+  - 記事: `pages/media/<slug>.html`（`<article data-publish>` と構造化データ Article・FAQPage・BreadcrumbList を持つもの）。
+  - ガイド（読者の状況別）: `guide-sell.html`（空き家を売りたい）・`guide-use.html`（活かしたい）・`guide-side.html`（副業で宿をはじめたい）。Step ごとに記事を並べる（並べ方は編集の判断。構造化データは ItemList）。記事の「こんな方に」と「この記事を含むガイド」はガイドの並びから作る。
+  - カテゴリ一覧: `category-akiya`（空き家活用）・`category-market`（観光市場）・`category-chiho`（地方創生）・`category-kaigyo`（開業・制度）・`category-keiei`（収益・運営）。構造化データは BreadcrumbList。
+  - 検索: `search.html`（`noindex`。sitemap に載せない）。記事データは `js/media-index.js`（`window.MEDIA_INDEX`）。
+- 英語版（会社サイトのみ）: `pages/en/`（`<html lang="en">`、hreflang で日本語版と対応。メディアの英語版はない）。`/en/index.html` の canonical と sitemap は `https://rivia-co.com/en/`。
+- 記事 HTML は `<n-w>`（改行制御）・`<wbr>` を多用している。以前はリポジトリ外の生成スクリプトで作っていたが、今後の更新はこのリポジトリのツールと AI社員チームに一本化した（いまの HTML が正）。新しい記事は **同じカテゴリの既存記事をコピーして雛形にする**。
+- 記事カードは `media.html`（新着記事・すべての記事）・`index.html`・サービスページ・カテゴリ一覧・全記事の「あわせて読みたい記事」に入っている。カード・検索の索引（`js/media-index.js`）・`media.html` の CollectionPage・sitemap・llms.txt の更新は `tools/add_article.py` で行う（並び順・掲載先のルールはファイル冒頭に記載）。ガイドの Step への配置と、メディアトップの「よくある悩み」は手で編集する。`docs/site-spec.md` の掲載記事・公開スケジュールも手で更新する。
+- 写真: 記事トップ・OGP は `images/photos/<名前>.jpg`（原寸のまま。再圧縮しない）、カードは `images/photos/w/<名前>-800.webp`（軽量版）と原寸を srcset で使う。
+- 予約公開: `js/main.js` が `data-publish`／`data-date` と今日の日付を比べて、公開日前の記事を一覧・関連記事・ガイド・検索から隠している（HTML と sitemap には載っている。llms.txt には公開日を迎えた記事だけ）。
 - 計測: GA4（G-RZVE2XBPQ2）と Microsoft Clarity のタグが全ページの head にある。消さない。
 
 ## ツール
@@ -54,7 +62,7 @@
 | `python3 tools/analytics.py` | GA4/Search Console のレポート（要 `pip install -r tools/requirements.txt` と環境変数） |
 | `python3 tools/youtube_research.py "キーワード"` | YouTube の動画情報・概要欄・人気コメント（要 `YOUTUBE_API_KEY`） |
 | `python3 tools/build_dashboard.py` | `docs/dashboard.md` の再生成 |
-| `python3 tools/add_article.py <slug> [--dry-run]` | 新しい記事のカードを一覧・トップ・サービスページ・全記事の関連記事に組み込み、sitemap・llms.txt を更新（`--remove` で取り除く） |
+| `python3 tools/add_article.py <slug> [--dry-run]` | 新しい記事のカードを一覧・トップ・サービスページ・カテゴリ一覧・全記事の関連記事に組み込み、検索の索引・sitemap・llms.txt を更新（`--remove` で取り除く、`--sync` でガイドから作る部分だけそろえる） |
 | `python3 tools/build_llms.py` | `seo/llms.txt`（AI検索向けのサイト案内。公開日を迎えた記事だけ）を作り直す |
 
 ## 書き方

@@ -55,7 +55,7 @@ def main():
     live = [a for a in articles if a["published"] and a["published"] <= today]
     future = sorted([a for a in articles if a["published"] and a["published"] > today], key=lambda a: a["published"])
 
-    L = ["# 暮らす旅の手帖 運用ダッシュボード", "",
+    L = ["# アキヤド 運用ダッシュボード", "",
          f"> 自動生成（`python3 tools/build_dashboard.py`）／最終更新 {today}。手で編集しないでください。", "",
          "## いまの状況", "",
          "| 指標 | 値 |", "|---|---|",
