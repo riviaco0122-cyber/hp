@@ -2757,3 +2757,30 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
   .msv-band__text { font-size: 14.5px; }
   .msv-answer { font-size: 16.5px; }
 }
+/* サービスページ：ご相談からの流れ（期間・お願いすること・費用まで） */
+.dflow { position: relative; display: grid; gap: 16px; }
+.dflow::before { content: ""; position: absolute; top: 24px; bottom: 24px; left: 63px; width: 1px; background: #c9d8cd; }
+.dflow__step { position: relative; display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 24px; }
+.dflow__head { position: relative; z-index: 1; display: grid; justify-items: center; align-content: start; gap: 6px; padding-top: 22px; }
+.dflow__no { padding: 6px 12px; border-radius: 999px; background: var(--m-green); color: #fff; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.14em; }
+.dflow__term { padding: 2px 8px; background: var(--m-sand, #eef3ee); font-size: 12px; color: var(--m-sub); text-align: center; }
+.dflow__body { padding: 24px 28px; border-radius: 18px; background: #fff; box-shadow: 0 3px 12px rgba(38, 42, 39, 0.04); }
+.dflow__title { font-family: var(--font-round); font-weight: 700; font-size: 18px; }
+.dflow__text { margin-top: 8px; font-size: 14.5px; line-height: 1.9; }
+.dflow__roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.dflow__roles div { padding: 14px 16px; border-radius: 12px; background: var(--m-sand, #eef3ee); }
+.dflow__roles dt { font-size: 12px; font-weight: 700; color: var(--m-green); }
+.dflow__roles dd { margin-top: 4px; font-size: 13.5px; line-height: 1.8; }
+.dflow__cost { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--m-line); font-size: 13.5px; }
+.dflow__cost span { font-weight: 700; color: var(--m-green); }
+.dflow__notes { margin-top: 28px; padding: 20px 24px; border-radius: 14px; background: #fff; display: grid; gap: 6px; }
+.dflow__notes li { position: relative; padding-left: 20px; font-size: 13.5px; line-height: 1.8; }
+.dflow__notes li::before { content: "✓"; position: absolute; left: 0; color: var(--m-green); font-weight: 700; }
+@media (max-width: 899px) {
+  .dflow::before { left: 15px; top: 16px; }
+  .dflow__step { grid-template-columns: 1fr; gap: 8px; padding-left: 32px; }
+  .dflow__head { justify-items: start; grid-auto-flow: column; justify-content: start; align-items: center; gap: 8px; padding-top: 0; }
+  .dflow__head::before { content: ""; position: absolute; left: -22px; top: 50%; width: 11px; height: 11px; border-radius: 50%; background: var(--m-green); transform: translateY(-50%); box-shadow: 0 0 0 4px var(--m-sand, #eef3ee); }
+  .dflow__body { padding: 20px 18px; }
+  .dflow__roles { grid-template-columns: 1fr; }
+}
