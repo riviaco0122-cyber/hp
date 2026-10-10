@@ -15,8 +15,8 @@ def norm(s):
 
 def drop_media(soup):
     """アキヤド（日本語のみのメディア）の記事一覧は英語版に載せない"""
-    for g in soup.select(".media-grid"):
-        sec = g.find_parent("section")
+    for g in soup.select(".media-grid, .mintro"):
+        sec = g if g.name == "section" else g.find_parent("section")
         if sec:
             sec.decompose()
 

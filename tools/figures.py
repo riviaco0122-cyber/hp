@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""アキヤドの記事に入れる図解。文字だけの記事を、ひと目で分かるようにする。
+"""アキヤドの記事に入れる図解（記号のアイコンは使わず、番号と文字と線で見せる）。文字だけの記事を、ひと目で分かるようにする。
 図はすべてHTMLとSVGで描く（画像生成と違い、日本語が崩れず、色と線の太さをサイトにそろえられる）。"""
 from html import escape as e
 
@@ -51,7 +51,6 @@ def compare(title, cols, note=""):
     """比べる：列ごとに、アイコン・見出し・要点を並べる。cols = [(icon, 見出し, 一言, [要点])]"""
     items = "\n".join(
         f"""              <div class="fig-col{' fig-col--accent' if i == len(cols) - 1 and accent else ''}">
-                <span class="fig-col__icon">{icon(ic)}</span>
                 <p class="fig-col__name">{e(name)}</p>
                 <p class="fig-col__sub">{e(sub)}</p>
                 <ul class="fig-col__list">{''.join(f'<li>{e(p)}</li>' for p in points)}</ul>
@@ -63,7 +62,7 @@ def compare(title, cols, note=""):
 def flow(title, steps, note=""):
     """順番：アイコン・番号・見出し・一言を、矢印でつなぐ。steps = [(icon, 見出し, 一言)]"""
     items = "\n".join(
-        f"""              <li class="fig-step"><span class="fig-step__icon">{icon(ic)}</span><span class="fig-step__no">{i:02d}</span>"""
+        f"""              <li class="fig-step"><span class="fig-step__no">{i:02d}</span>"""
         f"""<p class="fig-step__name">{e(name)}</p>{f'<p class="fig-step__sub">{e(sub)}</p>' if sub else ''}</li>"""
         for i, (ic, name, sub) in enumerate(steps, 1))
     return _figure("flow", title, f'            <ol class="fig-steps fig-steps--{len(steps)}">\n{items}\n            </ol>', note)
@@ -71,7 +70,7 @@ def flow(title, steps, note=""):
 
 def cycle(title, center, nodes, note=""):
     """めぐる：4つの段階を円でつなぐ。nodes = [(icon, 見出し)]（4つ）"""
-    items = "".join(f'<li class="fig-cyc__node fig-cyc__node--{i}"><span class="fig-cyc__icon">{icon(ic)}</span><span>{e(n)}</span></li>'
+    items = "".join(f'<li class="fig-cyc__node fig-cyc__node--{i}"><span class="fig-cyc__no">{i:02d}</span><span>{e(n)}</span></li>'
                     for i, (ic, n) in enumerate(nodes, 1))
     arrows = "".join(f'<path d="M1.6 0-1.2-1.4v2.8z" transform="translate({x} {y}) rotate({r})"/>'
                      for x, y, r in [(75.5, 24.5, 45), (75.5, 75.5, 135), (24.5, 75.5, 225), (24.5, 24.5, 315)])
@@ -111,8 +110,8 @@ def bars(title, items, note=""):
 def points(title, items, note=""):
     """要点の一覧：アイコンつきのカードを並べる。items = [(icon, 見出し, 一言)]"""
     cards = "\n".join(
-        f"""              <li class="fig-point"><span class="fig-point__icon">{icon(ic)}</span><p class="fig-point__name">{e(n)}</p><p class="fig-point__sub">{e(s)}</p></li>"""
-        for ic, n, s in items)
+        f"""              <li class="fig-point"><span class="fig-point__no">{i:02d}</span><p class="fig-point__name">{e(n)}</p><p class="fig-point__sub">{e(s)}</p></li>"""
+        for i, (ic, n, s) in enumerate(items, 1))
     return _figure("points", title, f'            <ul class="fig-points fig-points--{len(items)}">\n{cards}\n            </ul>', note)
 
 

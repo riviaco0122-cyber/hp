@@ -90,7 +90,7 @@
 <a class="btn btn--ghost btn--on-photo" href="#recruit-issues">See challenges and solutions</a>
 </div>
 </div>
-<form action="https://formspree.io/f/YOUR_FORM_ID" class="qform reveal" data-delay="2" data-thanks="thanks.html?form=contact" method="POST">
+<form action="https://formspree.io/f/YOUR_FORM_ID" class="qform reveal" data-delay="2" data-thanks="thanks.html?form=contact" enctype="multipart/form-data" method="POST">
 <p class="qform__title">Free consultation: Web Recruiting Support</p>
 <p class="qform__lead">It's fine if you're still considering. We'll reply within two business days.</p>
 <input name="_subject" type="hidden" value="【RIVIA&amp;CO.】WEB採用支援事業のご相談（サービスページ・英語サイト）"/>
@@ -99,6 +99,7 @@
 <label class="qform__field"><span>Name <em>Required</em></span><input autocomplete="name" name="name" placeholder="Taro Yamada" required="" type="text"/></label>
 <label class="qform__field"><span>Email address <em>Required</em></span><input autocomplete="email" name="email" placeholder="your@email.com" required="" type="email"/></label>
 <label class="qform__field"><span>Your message <small>Optional</small></span><textarea name="message" placeholder="e.g. where the property is, or what's on your mind" rows="3"></textarea></label>
+<label class="qform__field qform__file"><span>Files <small>Optional: photos or floor plans of the property</small></span><input accept="image/*,.pdf,.doc,.docx,.xls,.xlsx" multiple="" name="attachment" type="file"/></label>
 <button class="btn qform__submit" type="submit">Free consultation <span aria-hidden="true" class="arrow"></span></button>
 <p class="qform__note">By sending, you agree to our <a href="privacy.html">Privacy Policy</a>. We never make pushy sales.</p>
 </form>

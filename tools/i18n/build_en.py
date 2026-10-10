@@ -39,6 +39,22 @@ def dictionary():
         "ご相談内容": "Your message",
         "まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。": "It's fine if you're still considering. We'll reply within two business days.",
         "物件の場所や、気になっていることなど": "e.g. where the property is, or what's on your mind",
+        # アキヤドのプラン（コース）
+        "アキヤド買取プラン": "Akiyado Buyout Plan",
+        "アキヤド借り上げプラン": "Akiyado Lease Plan",
+        "アキヤド開業・運営プラン": "Akiyado Launch & Operation Plan",
+        "おまかせコース": "Hands-off course",
+        "売上シェアコース": "Revenue-share course",
+        "伴走コース": "Partner course",
+        "運営代行コース": "Full management course",
+        "共同出資コース": "Co-investment course",
+        "このコースを相談する": "Ask about this course",
+        "相続した空き家なら「アキヤド借り上げプラン」のおまかせコースがおすすめです。": "For an inherited vacant house, we recommend the hands-off course of the Akiyado Lease Plan.",
+        "初めての民泊で、お客様との時間は自分で大切にしたいなら、開業準備と集客をプロに任せられる「アキヤド開業・運営プラン」の伴走コースがおすすめです。":
+            "If it's your first vacation rental and you want to spend time with guests yourself, we recommend the partner course of the Akiyado Launch & Operation Plan, which leaves launch preparation and marketing to professionals.",
+        "※ 金額・割合はイメージです。清掃費などの実費は別途かかります。共同出資コースの利益分配は、開業後も継続します。":
+            "* Amounts and percentages are illustrative. Actual costs such as cleaning are charged separately. Under the co-investment course, profit sharing continues after opening.",
+        "ファイル": "Files", "任意・物件の写真や図面など": "Optional: photos or floor plans of the property",
         "送信により": "By sending, you agree to our",
         "に同意したものとします。しつこい営業はしません。": ". We never make pushy sales.",
     })
