@@ -2209,7 +2209,11 @@ body.is-media .media-more__btn { border-radius: 999px; border-color: var(--m-lin
 body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(--m-green); background: #fff; }
 @media (min-width: 900px) { body.is-media .mq { grid-template-columns: 1fr; } body.is-media .mq__item { grid-template-columns: 11.5em minmax(0, 1fr) auto; padding: 20px 28px; } }
 /* TOP：コンセプトと、空き家再生から始まる地域の経済循環（円の図） */
-.vision__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 500px); gap: 40px 72px; align-items: center; }
+.vision__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 500px); grid-template-areas: "body cycle" "more cycle"; gap: 0 72px; align-items: center; }
+.vision__body { grid-area: body; align-self: end; }
+.vision__grid .cycle { grid-area: cycle; }
+.vision__grid .vision__more { grid-area: more; align-self: start; }
+.cycle__loop { position: absolute; right: 79%; top: 17%; white-space: nowrap; font-family: var(--font-serif); font-size: 12px; letter-spacing: 0.08em; color: var(--c-accent); }
 .vision__lead { margin-top: 36px; word-break: auto-phrase; }
 .cycle { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1; margin-inline: auto; }
 .cycle__ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
@@ -2227,7 +2231,10 @@ body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(
 .cycle__t { font-family: var(--font-serif); font-size: 14px; line-height: 1.6; letter-spacing: 0.06em; }
 .cycle__t span { display: block; }
 @media (max-width: 899px) {
-  .vision__grid { grid-template-columns: 1fr; }
+  .vision__grid { grid-template-columns: 1fr; grid-template-areas: "body" "cycle" "more"; gap: 0; }
+  .vision__grid .cycle { margin-top: 48px; }
+  .vision__grid .vision__more { margin-top: 32px; }
+  .cycle__loop { right: 78%; top: 16%; font-size: 10.5px; letter-spacing: 0.02em; }
   .cycle { max-width: 380px; }
   .cycle__node { width: 30%; gap: 2px; }
   .cycle__t { font-size: 12px; letter-spacing: 0.02em; }
