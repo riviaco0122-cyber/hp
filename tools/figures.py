@@ -265,9 +265,9 @@ ARTICLE_FIGURES = {
 }
 
 
-def insert_figure(slug, sid, html):
-    """節の最初の段落のあとに図を入れる（段落がなければ見出しの直後）"""
-    fig = ARTICLE_FIGURES.get(slug)
+def insert_figure(slug, sid, html, own=None):
+    """節の最初の段落のあとに図を入れる（段落がなければ見出しの直後）。own は記事データが持つ図"""
+    fig = own or ARTICLE_FIGURES.get(slug)
     if not fig or fig[0] != sid:
         return html
     i = html.find("</p>")

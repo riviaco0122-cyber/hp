@@ -3121,7 +3121,10 @@ ARTICLES += [
 from articles_sched1 import ARTICLES_SCHED1
 from articles_sched2 import ARTICLES_SCHED2
 from articles_case import ARTICLES_CASE
-for _a in ARTICLES_SCHED1 + ARTICLES_SCHED2 + ARTICLES_CASE:
+from articles_series1 import ARTICLES_SERIES1
+from articles_series2 import ARTICLES_SERIES2
+from articles_series3 import ARTICLES_SERIES3
+for _a in ARTICLES_SCHED1 + ARTICLES_SCHED2 + ARTICLES_CASE + ARTICLES_SERIES1 + ARTICLES_SERIES2 + ARTICLES_SERIES3:
     _a.setdefault("tone", "sand")
     _a.setdefault("updated", _a["date"])
     ARTICLES.append(_a)
@@ -3157,7 +3160,7 @@ ARTICLE_TOPICS = {
     "kankei-jinko-and-inns": ["trend"],
 }
 for _a in ARTICLES:
-    _a["topics"] = ARTICLE_TOPICS[_a["slug"]]
+    _a["topics"] = ARTICLE_TOPICS.get(_a["slug"]) or _a["topics"]
     _a["category"] = _a["topics"][0]
 ARTICLE_BY_SLUG = {a["slug"]: a for a in ARTICLES}
 
@@ -3194,6 +3197,10 @@ ARTICLE_PHOTOS = {
     "minpaku-investment-yield": ("mountain-dawn", "朝の光に照らされた山並み"),
     "case-rental-house-inn-first-year": ("analytics-paper", "数字の推移をまとめた資料（イメージ）"),
 }
+# 体系的に学ぶシリーズの記事は、記事データに写真（photo）と図解（figure）を持つ
+for _a in ARTICLES:
+    if "photo" in _a:
+        ARTICLE_PHOTOS[_a["slug"]] = _a["photo"]
 
 
 WEBP_WIDTHS = (800,)
@@ -4448,7 +4455,7 @@ def article_page(a):
           <h2>{e(h)}</h2>
 {html.strip()}
         </section>"""
-        for sid, h, html in [(x, y, insert_figure(a["slug"], x, tables(z))) for x, y, z in a["sections"]]
+        for sid, h, html in [(x, y, insert_figure(a["slug"], x, tables(z), a.get("figure"))) for x, y, z in a["sections"]]
     )
     sources = "".join(f"<li>{e(s)}</li>" for s in a["sources"])
     svc = a["services"][0]
