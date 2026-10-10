@@ -2854,3 +2854,5 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 .media-card__title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
 .media-grid--scroll .media-card__title, .media-grid--feature .is-lead .media-card__title { min-height: 3lh; }
 @media (min-width: 900px) { .media-grid .media-card__title { min-height: 3lh; } }
+.media-card__body { min-width: 0; } .ctags { max-width: 100%; min-width: 0; }
+@media (max-width: 899px) { .media-grid:not(.media-grid--scroll):not(.media-grid--feature) .ctag + .ctag { display: none; } }
