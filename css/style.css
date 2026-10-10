@@ -2049,3 +2049,31 @@ a.guide-step__body:hover .guide-step__thumb img { transform: scale(1.04); }
 .crumbs a { display: inline-block; padding: 4px 0; }
 .toc li a { display: inline-block; padding: 4px 0; line-height: 1.7; }
 .supervisor__links ul a { display: inline-block; padding: 6px 0; }
+/* FVの検索窓（入口ボタンの下に、同じ幅感でそろえる） */
+.msearch--fv { max-width: 685px; margin-top: 16px; }
+@media (max-width: 899px) {
+  .msearch--fv { max-width: none; margin-top: 12px; }
+  .mfv__entry { margin-top: 32px; }
+}
+/* ===== スマホで読みやすく ===== */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table td.num { white-space: nowrap; }
+.mq__q, .guide-step__title, .mhero__title, .persona-card__title { word-break: auto-phrase; }
+@media (max-width: 899px) {
+  .table-scroll { margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter); }
+  .table-scroll .table { min-width: 100%; }
+  .article__section .table th, .article__section .table td { padding: 10px 10px; font-size: 13px; line-height: 1.7; }
+  .mhero__title { font-size: 26px; letter-spacing: 0.08em; }
+  /* 記事一覧は、写真を左・タイトルを右の横並びにして、一覧性を上げる */
+  .media-grid:not(.media-grid--feature):not(.media-grid--scroll) { grid-template-columns: 1fr; gap: 0; }
+  .media-grid:not(.media-grid--feature):not(.media-grid--scroll) .media-card { flex-direction: row; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--c-line); }
+  .media-grid:not(.media-grid--feature):not(.media-grid--scroll) .media-card .thumb { flex: 0 0 38%; }
+  .media-grid:not(.media-grid--feature):not(.media-grid--scroll) .media-card__body { padding-top: 0; }
+  .media-grid:not(.media-grid--feature):not(.media-grid--scroll) .media-card__title { margin-top: 4px; font-size: 14px; line-height: 1.7; }
+  .media-grid:not(.media-grid--feature):not(.media-grid--scroll) .media-card__date { margin-top: 6px; font-size: 12px; }
+  .media-grid:not(.media-grid--feature):not(.media-grid--scroll) .media-card__cat { font-size: 11px; }
+  .mfooter__cols > div:first-child { grid-column: 1 / -1; }
+}
+/* 目次：番号と見出しを同じ行にそろえる */
+.toc li { display: grid; grid-template-columns: 2.4em minmax(0, 1fr); align-items: baseline; }
+.toc li::before { content: counter(toc, decimal-leading-zero); }
