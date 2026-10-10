@@ -40,6 +40,10 @@ def session():
     raw = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON")
     if not raw:
         sys.exit("環境変数 GOOGLE_SERVICE_ACCOUNT_JSON が未設定です（docs/seo/analytics-setup.md を参照）")
+    raw = raw.strip().strip("'\"") if not raw.strip().startswith("{") else raw.strip()
+    if not raw.startswith("{"):  # base64 で登録された場合
+        import base64
+        raw = base64.b64decode(raw).decode("utf-8")
     creds = service_account.Credentials.from_service_account_info(json.loads(raw), scopes=SCOPES)
     return AuthorizedSession(creds)
 
