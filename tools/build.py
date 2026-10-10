@@ -3594,7 +3594,7 @@ def media_plans_page():
 # ---------------------------------------------------------------- アキヤド：サービスごとのページ（読者の状況ごとに、悩み→解決→プラン→流れ→実績→質問）
 MEDIA_SERVICES = [
     dict(key="sell", slug="service-kaitori", name="アキヤド買取プラン", category="operation",
-         eyebrow="空き家を売りたい方へ", title="買い手が見つからない家も、\n宿として活かせるなら買い取れます。",
+         eyebrow="空き家を売りたい方へ", title="買い手が見つからない家も、\n宿として活かせるなら、\n買い取ります。",
          lead="相続した家、遠方で管理できない家。アキヤドは「宿として再生できるか」という目で物件を見るため、一般の仲介では値段がつきにくい家もご相談いただけます。",
          worries=["相続した実家を、どうしたらいいか決められない", "遠方に住んでいて、管理や草刈りに通うのが負担", "不動産会社に「古いので売れにくい」と言われた",
                   "固定資産税だけを払い続けている", "手放す前に、ほかの選択肢とも比べたい"],
@@ -4127,7 +4127,7 @@ def media_index_page():
             <h2 class="msec__title">アキヤドに任せると、どうなる？</h2>
             <p class="mplanband__lead">記事を運営する私たちは、実際に宿を運営しています。売る・貸す・宿をはじめる、それぞれのプランと条件の目安をまとめました。</p>
           </div>
-          <ul class="mplanband__list">{"".join(f'<li><a href="media/{MEDIA_SERVICE_BY_KEY[k]["slug"]}.html"><span class="mplanband__who">{e(l)}</span><span class="mplanband__names">{e(MEDIA_SERVICE_BY_KEY[k]["name"])}（{"・".join(e(n) for n in names)}）</span><span class="mplanband__arrow">→</span></a></li>' for k, l, _, _, names in MEDIA_PLAN_GROUPS)}</ul>
+          <ul class="mplanband__list">{"".join(f'<li><a href="media/{MEDIA_SERVICE_BY_KEY[k]["slug"]}.html"><span class="mplanband__who">{e(l)}</span><span class="mplanband__names">{e(MEDIA_SERVICE_BY_KEY[k]["name"])}{"" if names == [MEDIA_SERVICE_BY_KEY[k]["name"]] else "（" + "・".join(e(n) for n in names) + "）"}</span><span class="mplanband__arrow">→</span></a></li>' for k, l, _, _, names in MEDIA_PLAN_GROUPS)}</ul>
         </div>
       </div>
     </section>

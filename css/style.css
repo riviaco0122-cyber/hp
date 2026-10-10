@@ -2738,3 +2738,22 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
   .lcards { grid-template-columns: 1fr 1fr; gap: 10px; }
   .lcard { padding: 18px 16px; }
 }
+/* お客様・ゲストの声：引用の既定の字下げをなくし、記号と本文・名前の左端をそろえる */
+.mvoice { display: flex; flex-direction: column; }
+.mvoice__text { margin: 0; }
+.mvoice__text::before { content: "“"; display: block; height: 30px; margin: 0 0 6px -2px; font-family: Georgia, "Times New Roman", serif; font-size: 56px; line-height: 1; color: #b9cdbf; }
+.mvoice__who { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: auto; padding-top: 18px; }
+.mvoice__plan { margin-right: 0; }
+@media (max-width: 899px) {
+  .pd__name { font-size: 12px; }
+  .cycle__en { font-size: 10px; }
+  .lcard__en { font-size: 11.5px; }
+}
+/* スマホ：見出しを文節で折り返し、途中で切れないように */
+.msv-hero__title, .lcard__title, .lcourse__title, .lchap__title, .msvc__name, .mintro__copy, .msv-point__title, .mplanband__who, .mjump__who { word-break: auto-phrase; }
+@media (max-width: 899px) {
+  .msv-hero__title { font-size: 23px; line-height: 1.65; }
+  .lcard__title { font-size: 15px; }
+  .msv-band__text { font-size: 14.5px; }
+  .msv-answer { font-size: 16.5px; }
+}

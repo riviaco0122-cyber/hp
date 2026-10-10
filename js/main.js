@@ -250,11 +250,16 @@
       track('select_guide', { guide: href.match(/guide-([a-z]+)/)[1], page_path: location.pathname });
     }
   });
-  // アキヤドのトップ：FVを見ている間は、下部の相談ボタンを隠す（FVの入口・検索と重ならないように）
-  var mfv = document.querySelector('.mfv');
   var fixedMedia = document.querySelector('.fixed-cta--media');
-  if (mfv && fixedMedia && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (en) { fixedMedia.classList.toggle('is-hidden', en[0].isIntersecting); }, { threshold: 0.15 }).observe(mfv);
+  // 冒頭の入口・フォーム・相談ブロックが見えている間は、下に固定した相談ボタンを隠す（重なりを防ぐ）
+  var hideTargets = document.querySelectorAll('.mfv, .qform--media, .mcta__box, .msv-band');
+  if (hideTargets.length && fixedMedia && 'IntersectionObserver' in window) {
+    var visible = new Set();
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (x) { if (x.isIntersecting) visible.add(x.target); else visible.delete(x.target); });
+      fixedMedia.classList.toggle('is-hidden', visible.size > 0);
+    }, { threshold: 0.05 });
+    hideTargets.forEach(function (t) { io.observe(t); });
   }
   // お問い合わせフォーム：流入元（例：アキヤドの記事）を一緒に送る
   var fromField = document.getElementById('from-field');
