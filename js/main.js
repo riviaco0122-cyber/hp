@@ -207,6 +207,42 @@
   }
 
   /**
+   * Media: 記事検索（media/search.html?q=…）
+   * js/media-index.js の索引から、すべてのキーワードを含む公開済みの記事を探す
+   */
+  var results = document.getElementById('search-results');
+  if (results && window.MEDIA_INDEX) {
+    var norm = function (t) { return (t.normalize ? t.normalize('NFKC') : t).toLowerCase(); };
+    var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+    var q = (new URLSearchParams(location.search).get('q') || '').trim();
+    var words = norm(q).split(/\s+/).filter(Boolean);
+    var input = document.querySelector('.msearch__input');
+    if (input) input.value = q;
+    var hits = window.MEDIA_INDEX.filter(function (a) { return a.date <= today; }).map(function (a) {
+      var title = norm(a.title), text = norm(a.text), score = 0;
+      for (var i = 0; i < words.length; i++) {
+        if (text.indexOf(words[i]) < 0 && title.indexOf(words[i]) < 0) return null;
+        score += (title.indexOf(words[i]) >= 0 ? 10 : 0) + Math.min(text.split(words[i]).length - 1, 10);
+      }
+      return { a: a, score: score };
+    }).filter(Boolean).sort(function (x, y) { return y.score - x.score || (x.a.date < y.a.date ? 1 : -1); });
+    results.innerHTML = hits.map(function (h) {
+      var a = h.a;
+      return '<a href="' + a.slug + '.html" class="media-card is-visible">' +
+        '<div class="thumb thumb--photo"><img src="../../images/photos/thumb/' + a.thumb + '.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">' +
+        '<span class="thumb__cat">' + esc(a.cat) + '</span></div>' +
+        '<div class="media-card__body"><span class="media-card__cat">' + esc(a.cat) + '</span>' +
+        '<h3 class="media-card__title">' + esc(a.title) + '</h3>' +
+        '<time class="media-card__date" datetime="' + a.date + '">' + a.date.replace(/-/g, '.') + '</time></div></a>';
+    }).join('');
+    var status = document.querySelector('.msearch-status');
+    if (status) status.textContent = q ? '「' + q + '」の検索結果：' + hits.length + '件' : 'すべての記事：' + hits.length + '件';
+    var none = document.querySelector('.msearch-empty');
+    if (none) none.hidden = hits.length > 0;
+    if (q) document.title = '「' + q + '」の検索結果｜暮らす旅の手帖';
+  }
+
+  /**
    * Media: カテゴリの絞り込みと「もっと記事を見てみる」
    * 例) media.html?cat=akiya
    */
