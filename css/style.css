@@ -2268,3 +2268,15 @@ body.is-media .guide-link { border-radius: 14px; }
 .msearch-weak__item:hover .msearch-weak__name { color: var(--c-accent); }
 .msearch-weak__name { display: block; font-size: 15px; line-height: 1.7; transition: color .2s; }
 .msearch-weak__item .media-card__snippet { -webkit-line-clamp: 2; margin-top: 4px; }
+/* コーポレートTOP：メディア欄の見出しに「アキヤド」のロゴ */
+.section-title--logo { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; }
+.tlogo { display: inline-flex; align-items: center; gap: 12px; color: #262a27; transition: opacity .2s; }
+.tlogo:hover { opacity: 0.75; }
+.tlogo .amark { width: 44px; height: 44px; }
+.tlogo__ja { font-family: "Zen Maru Gothic", var(--font-sans); font-weight: 700; font-size: 34px; letter-spacing: 0.1em; line-height: 1; }
+.tlogo__sub { font-family: var(--font-sans); font-size: 13px; letter-spacing: 0.12em; color: var(--c-muted); }
+@media (max-width: 899px) {
+  .tlogo .amark { width: 36px; height: 36px; }
+  .tlogo__ja { font-size: 28px; }
+  .tlogo__sub { flex-basis: 100%; font-size: 12px; }
+}
