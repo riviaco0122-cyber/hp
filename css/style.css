@@ -2814,3 +2814,42 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
   .svc-hero { gap: 16px; }
   .svc-hero .qform__lead { display: none; }
 }
+/* アキヤド：無料相談・お問い合わせ */
+.mform-wrap { max-width: 760px; }
+.mform__points { justify-content: center; margin: 0 0 24px; }
+.mform { display: grid; gap: 22px; padding: 40px 44px 36px; border-radius: 24px; background: #fff; box-shadow: 0 6px 24px rgba(38, 42, 39, 0.06); }
+.mform__field { display: grid; gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
+.mform__field > label, .mform__field > legend { padding: 0; font-family: var(--font-round); font-weight: 700; font-size: 15px; }
+.mform__field > legend { margin-bottom: 8px; }
+.mform__req, .mform__opt { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 4px; font-family: var(--font-sans); font-weight: 500; font-size: 11px; vertical-align: 2px; }
+.mform__req { background: var(--m-cta); color: #fff; }
+.mform__opt { background: #eef1ee; color: var(--c-muted); }
+.mform input[type="text"], .mform input[type="email"], .mform input[type="tel"], .mform textarea, .mform select { width: 100%; padding: 12px 14px; border: 1px solid var(--m-line); border-radius: 10px; background: #fbfcfb; font: inherit; font-size: 16px; }
+.mform input:focus, .mform textarea:focus, .mform select:focus { outline: 2px solid var(--m-green); outline-offset: -1px; background: #fff; }
+.mform input[type="file"] { padding: 8px; border: 1px dashed var(--m-line); border-radius: 10px; font-size: 13px; }
+.mform__help { font-size: 12.5px; line-height: 1.7; color: var(--c-muted); }
+.mform__checks { display: grid; gap: 8px; }
+.mform__check, .mform__agree { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+.mform__check { padding: 12px 14px; border: 1px solid var(--m-line); border-radius: 10px; font-size: 14.5px; line-height: 1.6; transition: border-color .2s, background .2s; }
+.mform__check:has(input:checked) { border-color: var(--m-green); background: #eef5f0; }
+.mform__check input, .mform__agree input { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; accent-color: var(--m-green); }
+.mform__agree { justify-content: center; font-size: 14px; }
+.mform__agree a { text-decoration: underline; text-underline-offset: 3px; }
+.mform__submit { justify-self: center; width: min(100%, 440px); padding-top: 18px; padding-bottom: 18px; font-size: 16px; }
+.mform__note { text-align: center; font-size: 12.5px; color: var(--c-muted); }
+.mform__corp { margin-top: 24px; font-size: 12.5px; line-height: 1.9; color: var(--c-muted); text-align: center; }
+.mform__corp a { text-decoration: underline; text-underline-offset: 3px; }
+.mthanks__btns { justify-content: flex-start; }
+@media (max-width: 899px) {
+  .mform { padding: 26px 18px 24px; gap: 20px; border-radius: 18px; }
+  .mform__check { font-size: 14px; }
+}
+@media (max-width: 899px) { .mform__submit { padding: 16px 20px; font-size: 14.5px; gap: 10px; letter-spacing: 0.04em; } .mform__agree { justify-content: flex-start; } }
+.mform__radios { display: flex; flex-wrap: wrap; gap: 8px; }
+.mform__radio { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid var(--m-line); border-radius: 999px; font-size: 14px; cursor: pointer; }
+.mform__radio:has(input:checked) { border-color: var(--m-green); background: #eef5f0; }
+.mform__radio input { width: 16px; height: 16px; accent-color: var(--m-green); }
+.mform__group { margin-top: 6px; padding-top: 18px; border-top: 1px solid var(--m-line); font-family: var(--font-round); font-weight: 700; font-size: 16px; color: var(--m-green); }
+.mform__group span { margin-left: 8px; font-family: var(--font-sans); font-weight: 400; font-size: 12px; color: var(--c-muted); }
+.mform textarea { min-height: 180px; line-height: 1.8; }
+@media (max-width: 899px) { .mform__submit .arrow { display: none; } }

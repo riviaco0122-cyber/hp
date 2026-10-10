@@ -129,6 +129,41 @@
    * Contact: 相談ボタンから遷移した場合、ご相談カテゴリを自動選択
    * 例) contact.html?category=operation
    */
+  // アキヤドのお問い合わせ：押したボタンに合わせて「ご相談の内容」に先にチェックを入れる
+  var mchecks = document.querySelectorAll('.mform__check input[data-keys]');
+  if (mchecks.length && window.URLSearchParams) {
+    var mcat = new URLSearchParams(location.search).get('category');
+    var mmsg = document.getElementById('m-message');
+    // 選んだご相談の内容に合わせて、詳細欄に書き方の例（テンプレート）を入れる。自分で書き換えたあとは上書きしない
+    var lastTpl = '';
+    var fillTemplate = function () {
+      if (!mmsg || (mmsg.value && mmsg.value !== lastTpl)) return;
+      lastTpl = Array.prototype.filter.call(mchecks, function (c) { return c.checked; })
+        .map(function (c) { return c.getAttribute('data-template'); }).join('\n');
+      mmsg.value = lastTpl;
+    };
+    mchecks.forEach(function (c) { c.addEventListener('change', fillTemplate); });
+    if (mcat) mchecks.forEach(function (c) { if (c.getAttribute('data-keys').split(' ').indexOf(mcat) >= 0) c.checked = true; });
+    fillTemplate();
+  }
+  // コーポレートのお問い合わせ：ご相談カテゴリを選ぶと、内容欄に書き方の例を入れる（自分で書き換えたあとは上書きしない）
+  var CORP_TEMPLATES = EN ? {} : {
+    operation: '【アキヤド空き家再生について】\n・物件の所在地：\n・物件の状況（空き家・相続など）：\n・ご希望（売りたい／貸したい／まだ決めていない）：\n',
+    management: '【アキヤド開業・運営支援について】\n・物件の有無（ある／探している）：\n・はじめたい宿のイメージ：\n・任せたい範囲（開業準備のみ／運営まで）：\n',
+    partnership: '【不動産事業者様との協業について】\n・会社名・ご担当：\n・ご紹介・ご相談したい物件や案件：\n・ご希望の協業の形：\n',
+    marketing: '【WEB集客支援について】\n・事業・施設の概要：\n・いまの集客の課題：\n・ご予算の目安：\n',
+    recruit: '【WEB採用支援について】\n・募集したい職種・人数：\n・いまの採用の課題：\n・採用したい時期：\n',
+    document: 'サービス資料を希望します。\n'
+  };
+  var corpCat = document.getElementById('category'), corpMsg = document.getElementById('message'), corpLast = '';
+  var corpFill = function () {
+    if (!corpCat || !corpMsg) return;
+    var opt = corpCat.options[corpCat.selectedIndex];
+    var tpl = CORP_TEMPLATES[opt && opt.getAttribute('data-key')] || '';
+    if (corpMsg.value && corpMsg.value !== corpLast) return;
+    corpMsg.value = corpLast = tpl;
+  };
+  if (corpCat) corpCat.addEventListener('change', corpFill);
   var category = document.getElementById('category');
   if (category && window.URLSearchParams) {
     var param = new URLSearchParams(window.location.search).get('category');
@@ -136,8 +171,7 @@
       var option = category.querySelector('option[data-key="' + param + '"]');
       if (option) option.selected = true;
       // 資料請求から来た場合は、本文を書かなくても送れるように入れておく
-      var msg = document.getElementById('message');
-      if (param === 'document' && msg && !msg.value) msg.value = 'サービス資料を希望します。';
+      corpFill();
     }
   }
 
