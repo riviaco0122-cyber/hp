@@ -2113,7 +2113,7 @@ html[lang="en"] .sflow__back::before { content: "↑ Returned: "; }
    暖かい生成り色の背景・丸みのある見出し書体・テラコッタ色の相談ボタン
    ===================================================================== */
 body.is-media {
-  --m-bg: #fffcf7; --m-sand: #f5eee3; --m-line: #e9e0d3; --m-ink: #2a2724; --m-sub: #5a544c;
+  --m-bg: #fbfbf9; --m-sand: #eef3ee; --m-line: #e1e6e1; --m-ink: #262a27; --m-sub: #555b56;
   --m-green: #2e6b47; --m-cta: #cf5f37; --m-cta-h: #b44f2a;
   --font-round: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
   --c-accent: var(--m-green); --c-bg-soft: var(--m-sand); --c-line: var(--m-line); --c-rivia-soft: #eaf2ee; --radius: 16px;
@@ -2126,7 +2126,7 @@ body.is-media :is(.mfv__title, .mlogo__ja, .mcta__title) { font-weight: 700; }
 body.is-media :is(.msec__en, .mhero__en, .guide-stage__no) { color: var(--m-green); }
 body.is-media .section--soft { background: var(--m-sand); }
 /* ヘッダー */
-body.is-media .header--media { background: rgba(255, 252, 247, 0.96); }
+body.is-media .header--media { background: rgba(251, 251, 249, 0.96); }
 .amark { width: 30px; height: 30px; flex-shrink: 0; }
 body.is-media .mlogo { align-items: center; gap: 10px; }
 body.is-media .mlogo__ja { font-size: 21px; letter-spacing: 0.08em; color: var(--m-ink); }
@@ -2137,7 +2137,7 @@ body.is-media .mnav__list a[aria-current] { color: var(--m-ink); border-bottom-c
 /* ボタン */
 .mbtn, body.is-media .btn.mbtn { display: inline-flex; align-items: center; justify-content: center; gap: 14px; padding: 16px 34px; border: 0; border-radius: 999px; background: var(--m-cta); color: #fff; font-family: var(--font-round); font-weight: 700; font-size: 15px; letter-spacing: 0.08em; box-shadow: 0 8px 20px rgba(207, 95, 55, 0.24); transition: background .2s, transform .2s; }
 .mbtn:hover, body.is-media .btn.mbtn:hover { background: var(--m-cta-h); color: #fff; transform: translateY(-1px); }
-body.is-media .fixed-cta--media { background: rgba(255, 252, 247, 0.94); }
+body.is-media .fixed-cta--media { background: rgba(251, 251, 249, 0.94); }
 body.is-media .fixed-cta--media .btn { border: 0; border-radius: 999px; background: var(--m-cta); color: #fff; font-family: var(--font-round); font-weight: 700; box-shadow: 0 6px 16px rgba(207, 95, 55, 0.25); }
 /* FV：明るい2カラム */
 body.is-media .mfv { display: block; min-height: 0; padding: 64px 0 80px; color: var(--m-ink); background: linear-gradient(180deg, var(--m-sand) 0%, var(--m-bg) 100%); }
@@ -2170,7 +2170,7 @@ body.is-media .mq__who { display: inline-block; justify-self: start; white-space
 body.is-media .tag { border-radius: 999px; border-color: var(--m-line); background: #fff; }
 body.is-media :is(.keypoints, .guide-box, .supervisor, .inline-cta, .guide-worries) { border-radius: 18px; }
 body.is-media .toc { border-radius: 18px; }
-body.is-media .inline-cta { border: 0; background: #fff3ec; }
+body.is-media .inline-cta { border: 0; background: var(--m-sand); }
 body.is-media .guide-step__body { border-radius: 16px; }
 body.is-media .guide-step__thumb { border-radius: 12px; }
 body.is-media .guide-step__more { color: var(--m-green); font-weight: 700; font-family: var(--font-round); }
@@ -2205,7 +2205,7 @@ body.is-media .mfooter .mlogo__ja { color: #fff; }
   .mcta__points li { font-size: 13px; padding: 7px 14px; }
   .mbtn { width: 100%; }
 }
-body.is-media .media-more__btn { border-radius: 999px; border-color: var(--m-line, #e6dccd); background: #fff; font-family: var(--font-round); font-weight: 700; color: var(--c-text); }
+body.is-media .media-more__btn { border-radius: 999px; border-color: var(--m-line); background: #fff; font-family: var(--font-round); font-weight: 700; color: var(--c-text); }
 body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(--m-green); background: #fff; }
 @media (min-width: 900px) { body.is-media .mq { grid-template-columns: 1fr; } body.is-media .mq__item { grid-template-columns: 11.5em minmax(0, 1fr) auto; padding: 20px 28px; } }
 /* TOP：コンセプトと、空き家再生から始まる地域の経済循環（円の図） */
@@ -2249,3 +2249,15 @@ body.is-media .ttag { font-family: var(--font-round); font-weight: 500; }
 }
 body.is-media .msec--first { padding-top: 32px; }
 body.is-media .guide-link { border-radius: 14px; }
+/* アキヤド：検索結果（ヒットした箇所の抜粋と、本文で触れているだけの記事） */
+.media-card__snippet { word-break: normal; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; margin-top: 10px; font-size: 13px; line-height: 1.9; color: var(--c-sub); }
+.media-card__snippet mark { white-space: nowrap; background: #d3e6d8; color: var(--c-text); font-weight: 700; padding: 0 2px; border-radius: 3px; }
+.msearch-weak { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--c-line); }
+.msearch-weak__title { margin-bottom: 28px; font-size: 15px; font-weight: 500; letter-spacing: 0.04em; color: var(--c-sub); }
+.article__cats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.article__cats .article__cat { margin-bottom: 0; }
+.msearch-weak__list { border-top: 1px solid var(--c-line); }
+.msearch-weak__item { display: block; padding: 18px 4px; border-bottom: 1px solid var(--c-line); }
+.msearch-weak__item:hover .msearch-weak__name { color: var(--c-accent); }
+.msearch-weak__name { display: block; font-size: 15px; line-height: 1.7; transition: color .2s; }
+.msearch-weak__item .media-card__snippet { -webkit-line-clamp: 2; margin-top: 4px; }

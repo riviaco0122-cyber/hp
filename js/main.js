@@ -249,30 +249,60 @@
     var norm = function (t) { return (t.normalize ? t.normalize('NFKC') : t).toLowerCase(); };
     var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
     var q = (new URLSearchParams(location.search).get('q') || '').trim();
-    var words = norm(q).split(/\s+/).filter(Boolean);
+    var words = norm(q).split(/[\s、，,・]+/).filter(Boolean);
     var input = document.querySelector('.msearch__input');
     if (input) input.value = q;
+    var count = function (t, w) { return t.split(w).length - 1; };
+    // タイトル・要点・見出し・テーマに含む記事、または本文でくり返し扱う記事を「関連の深い記事」とし、
+    // 本文で少し触れているだけの記事は下に分けて出す
     var hits = window.MEDIA_INDEX.filter(function (a) { return a.date <= today; }).map(function (a) {
-      var title = norm(a.title), text = norm(a.text), score = 0;
+      var title = norm(a.title), key = norm(a.key), text = norm(a.text), score = 0, strong = true;
       for (var i = 0; i < words.length; i++) {
-        if (text.indexOf(words[i]) < 0 && title.indexOf(words[i]) < 0) return null;
-        score += (title.indexOf(words[i]) >= 0 ? 10 : 0) + Math.min(text.split(words[i]).length - 1, 10);
+        var w = words[i], inKey = key.indexOf(w) >= 0, n = count(text, w);
+        if (!inKey && !n) return null;
+        if (!inKey && n < 3) strong = false;
+        score += (title.indexOf(w) >= 0 ? 30 : 0) + (inKey ? 10 : 0) + Math.min(n, 10);
       }
-      return { a: a, score: score };
+      return { a: a, score: score, strong: strong };
     }).filter(Boolean).sort(function (x, y) { return y.score - x.score || (x.a.date < y.a.date ? 1 : -1); });
-    results.innerHTML = hits.map(function (h) {
+    var snippet = function (a) {
+      if (!words.length) return esc(a.desc);
+      var src = a.text, low = norm(src), at = low.indexOf(words[0]);
+      if (at < 0) { src = a.key; low = norm(src); at = low.indexOf(words[0]); }
+      if (at < 0) return esc(a.desc);
+      var from = Math.max(0, at - 12), part = src.slice(from, at + 70);
+      var html = (from ? '…' : '') + esc(part) + '…';
+      words.forEach(function (w) { html = html.split(esc(w)).join('<mark>' + esc(w) + '</mark>'); });
+      return html;
+    };
+    var card = function (h) {
       var a = h.a;
       return '<a href="' + a.slug + '.html" class="media-card is-visible">' +
         '<div class="thumb thumb--photo"><img src="../../images/photos/w/' + a.thumb + '-800.webp" alt="" loading="lazy" decoding="async" width="720" height="450">' +
         '<span class="thumb__cat">' + esc(a.cat) + '</span></div>' +
         '<div class="media-card__body"><span class="media-card__cat">' + esc(a.cat) + '</span>' +
         '<h3 class="media-card__title">' + esc(a.title) + '</h3>' +
+        (q ? '<p class="media-card__snippet">' + snippet(a) + '</p>' : '') +
         '<time class="media-card__date" datetime="' + a.date + '">' + a.date.replace(/-/g, '.') + '</time></div></a>';
-    }).join('');
+    };
+    var strong = hits.filter(function (h) { return h.strong; });
+    var weak = hits.filter(function (h) { return !h.strong; });
+    results.innerHTML = strong.map(card).join('');
+    var weakBox = document.querySelector('.msearch-weak');
+    if (weakBox) {
+      weakBox.hidden = !weak.length;
+      weakBox.querySelector('.msearch-weak__title').textContent = strong.length
+        ? '本文で「' + q + '」に触れている記事'
+        : '「' + q + '」を主に扱う記事はまだありませんが、本文で触れている記事があります';
+      weakBox.querySelector('.msearch-weak__list').innerHTML = weak.map(function (h) {
+        return '<li><a href="' + h.a.slug + '.html" class="msearch-weak__item"><span class="msearch-weak__name">' + esc(h.a.title) + '</span>' +
+          '<span class="media-card__snippet">' + snippet(h.a) + '</span></a></li>';
+      }).join('');
+    }
     var status = document.querySelector('.msearch-status');
-    if (status) status.textContent = q ? '「' + q + '」の検索結果：' + hits.length + '件' : 'すべての記事：' + hits.length + '件';
+    if (status) status.textContent = q ? '「' + q + '」の検索結果：' + strong.length + '件' : 'すべての記事：' + hits.length + '件';
     var none = document.querySelector('.msearch-empty');
-    if (none) none.hidden = hits.length > 0;
+    if (none) none.hidden = strong.length > 0;
     if (q) document.title = '「' + q + '」の検索結果｜アキヤド';
     if (q) track('search', { search_term: q, results: hits.length });
   }

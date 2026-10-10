@@ -58,5 +58,32 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/media/category-akiya.html",
+      "destination": "/media/category-house.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/category-market.html",
+      "destination": "/media/category-trend.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/category-chiho.html",
+      "destination": "/media/category-trend.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/category-kaigyo.html",
+      "destination": "/media/category-start.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/category-keiei.html",
+      "destination": "/media/category-operate.html",
+      "permanent": true
+    }
   ]
 }
