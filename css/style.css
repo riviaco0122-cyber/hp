@@ -2088,3 +2088,9 @@ a.guide-step__body:hover .guide-step__thumb img { transform: scale(1.04); }
   .mfv__entry-label { margin-top: 24px; }
   .mfv__entry { margin-top: 10px; }
 }
+/* スマホのFVは文字を絞る（説明文・見出しラベルはPCだけ） */
+@media (max-width: 899px) {
+  .mfv__lead, .mfv__entry-label { display: none; }
+  .mfv__entry { margin-top: 28px; gap: 8px; }
+  .mfv__entry a { padding: 11px 16px; }
+}
