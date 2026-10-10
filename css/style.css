@@ -2094,3 +2094,46 @@ a.guide-step__body:hover .guide-step__thumb img { transform: scale(1.04); }
   .mfv__entry { margin-top: 28px; gap: 8px; }
   .mfv__entry a { padding: 11px 16px; }
 }
+/* ナビは日本語。和文に合わせて字体・字間を調整（英語ページは英字体のまま） */
+html[lang="ja"] .gnav__link { font-family: var(--font-sans); font-size: 14px; letter-spacing: 0.1em; }
+html[lang="ja"] .gnav__list { gap: 40px; }
+html[lang="ja"] .footer__links { font-family: var(--font-sans); font-size: 13px; letter-spacing: 0.1em; }
+@media (max-width: 899px) {
+  html[lang="ja"] .gnav__link { font-size: 16px; }
+}
+/* 言語の切り替え（JP / EN） */
+.lang-switch { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 32px; margin-left: 24px; padding: 0 10px; border: 1px solid var(--c-line-strong); font-family: var(--font-en); font-size: 13px; letter-spacing: 0.14em; transition: border-color .2s; }
+.lang-switch:hover { border-color: var(--c-text); }
+.header__inner { grid-template-columns: auto 1fr auto auto; }
+@media (max-width: 899px) {
+  .lang-switch { margin-left: 0; margin-right: 12px; height: 30px; min-width: 40px; font-size: 12px; }
+}
+/* 英語ページの文字組み */
+html[lang="en"] body { word-break: normal; overflow-wrap: break-word; letter-spacing: 0.01em; }
+html[lang="en"] { --font-serif: "Cormorant Garamond", "Noto Serif JP", serif; }
+html[lang="en"] .hero__title, html[lang="en"] .page-hero__ja, html[lang="en"] .section-title { letter-spacing: 0.02em; }
+html[lang="en"] .hero__title { font-size: clamp(36px, 5vw, 64px); line-height: 1.25; }
+html[lang="en"] p, html[lang="en"] li { hyphens: auto; }
+html[lang="en"] .sflow__back::before { content: "↑ Returned: "; }
+@media (max-width: 899px) {
+  .header__inner { grid-template-columns: 1fr auto auto; }
+  .lang-switch { width: auto; justify-self: end; }
+}
+/* アキヤド：問い合わせへの導線 */
+.mheader__right { display: flex; align-items: center; gap: 24px; }
+.mheader__cta { display: inline-flex; align-items: center; height: 36px; padding: 0 18px; background: var(--c-accent); color: #fff; font-size: 13px; letter-spacing: 0.1em; transition: opacity .2s; }
+.mheader__cta:hover { opacity: 0.85; }
+.inline-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-top: 32px; padding: 24px 28px; border: 1px solid var(--c-accent); background: var(--c-rivia-soft); }
+.inline-cta__text { flex: 1 1 320px; font-size: 14px; line-height: 1.9; }
+.inline-cta .btn { flex-shrink: 0; }
+.fixed-cta--media { display: none; }
+@media (max-width: 899px) {
+  .mheader__right { gap: 0; }
+  .mheader__cta { display: none; }
+  .fixed-cta--media { display: flex; }
+  .inline-cta { padding: 20px; }
+  .inline-cta .btn { width: 100%; justify-content: center; }
+}
+@media (min-width: 900px) { body:has(.fixed-cta--media) { padding-bottom: 0; } }
+.fixed-cta { transition: transform .35s var(--ease); }
+.fixed-cta.is-hidden { transform: translateY(110%); }

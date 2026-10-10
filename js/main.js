@@ -5,6 +5,7 @@
   'use strict';
 
   window.RIVIA_READY = true;
+  var EN = document.documentElement.lang === 'en';  // 英語ページかどうか（一部の文言を切り替える）
   document.documentElement.classList.add('js');
 
   /**
@@ -27,7 +28,7 @@
     header.classList.toggle('is-menu-open', open);
     document.documentElement.classList.toggle('is-menu-open', open);
     menuBtn.setAttribute('aria-expanded', String(open));
-    menuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    menuBtn.setAttribute('aria-label', EN ? (open ? 'Close menu' : 'Open menu') : (open ? 'メニューを閉じる' : 'メニューを開く'));
     if (!open) closeSubnav();
   }
   if (menuBtn) {
@@ -212,6 +213,34 @@
   }
 
   /**
+   * 計測（GA4）：相談ボタン・ガイド・検索の利用を記録し、どこから問い合わせにつながったかを見えるようにする
+   */
+  var track = function (name, params) { if (typeof window.gtag === 'function') window.gtag('event', name, params); };
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (/contact\.html/.test(href)) {
+      track('cta_click', { cta_position: a.getAttribute('data-cta') || a.className || 'link', link_text: a.textContent.trim().slice(0, 40), page_path: location.pathname });
+    } else if (/guide-[a-z]+\.html/.test(href)) {
+      track('select_guide', { guide: href.match(/guide-([a-z]+)/)[1], page_path: location.pathname });
+    }
+  });
+  // アキヤドのトップ：FVを見ている間は、下部の相談ボタンを隠す（FVの入口・検索と重ならないように）
+  var mfv = document.querySelector('.mfv');
+  var fixedMedia = document.querySelector('.fixed-cta--media');
+  if (mfv && fixedMedia && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { fixedMedia.classList.toggle('is-hidden', en[0].isIntersecting); }, { threshold: 0.15 }).observe(mfv);
+  }
+  // お問い合わせフォーム：流入元（例：アキヤドの記事）を一緒に送る
+  var fromField = document.getElementById('from-field');
+  if (fromField && window.URLSearchParams) {
+    var from = new URLSearchParams(location.search).get('from');
+    var ref = document.referrer && document.referrer.indexOf(location.host) >= 0 ? document.referrer.replace(/^https?:\/\/[^/]+/, '') : '';
+    fromField.value = [from, ref].filter(Boolean).join(' / ');
+  }
+
+  /**
    * Media: 記事検索（media/search.html?q=…）
    * js/media-index.js の索引から、すべてのキーワードを含む公開済みの記事を探す
    */
@@ -245,6 +274,7 @@
     var none = document.querySelector('.msearch-empty');
     if (none) none.hidden = hits.length > 0;
     if (q) document.title = '「' + q + '」の検索結果｜アキヤド';
+    if (q) track('search', { search_term: q, results: hits.length });
   }
 
   /**
@@ -307,7 +337,7 @@
       box.classList.toggle('has-file', files.length > 0);
       name.textContent = files.length === 0 ? name.getAttribute('data-default')
         : files.length === 1 ? files[0].name
-        : files[0].name + ' ほか' + (files.length - 1) + '件';
+        : files[0].name + (EN ? ' and ' + (files.length - 1) + ' more' : ' ほか' + (files.length - 1) + '件');
     });
   });
 
@@ -335,7 +365,7 @@
           window.location.href = form.getAttribute('data-thanks');
         })
         .catch(function () {
-          err.textContent = '送信できませんでした。時間をおいて再度お試しいただくか、入力内容をご確認ください。';
+          err.textContent = EN ? 'Your message could not be sent. Please try again later or check your entries.' : '送信できませんでした。時間をおいて再度お試しいただくか、入力内容をご確認ください。';
           if (btn) { btn.disabled = false; btn.classList.remove('is-sending'); }
         });
     });
