@@ -157,6 +157,10 @@
     var lead = grid.querySelector('.media-card:not([hidden])');
     if (lead) lead.classList.add('is-lead');
   });
+  // よくある悩み：公開前の記事への質問は出さない
+  document.querySelectorAll('.mq li[data-date]').forEach(function (li) {
+    if (li.getAttribute('data-date') > today) li.hidden = true;
+  });
   // ガイド：公開前の記事は「公開予定」として表示し、リンクにしない
   document.querySelectorAll('.guide-step[data-date]').forEach(function (li) {
     var d = li.getAttribute('data-date');
@@ -203,7 +207,7 @@
   // 旧URL（media.html?cat=○○）はカテゴリ一覧へ
   if (window.URLSearchParams && document.querySelector('.mnav') && /media\.html$/.test(location.pathname)) {
     var oldCat = new URLSearchParams(location.search).get('cat');
-    if (oldCat && /^[a-z]+$/.test(oldCat) && document.querySelector('.mnav a[href$="category-' + oldCat + '.html"]')) location.replace(new URL('media/category-' + oldCat + '.html', location.href).href);
+    if (oldCat && /^[a-z]+$/.test(oldCat) && document.querySelector('a[href$="category-' + oldCat + '.html"]')) location.replace(new URL('media/category-' + oldCat + '.html', location.href).href);
   }
 
   /**
