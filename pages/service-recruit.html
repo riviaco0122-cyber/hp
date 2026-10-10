@@ -86,14 +86,27 @@
   <main>
     <section class="page-hero page-hero--photo">
       <img class="page-hero__bg" src="../images/photos/rural-station.jpg" alt="" width="1918" height="1080" style="object-position:50% 50%" fetchpriority="high" decoding="async">
-      <div class="container">
-        <p class="page-hero__label reveal">WEB採用支援事業</p>
-        <h1 class="page-hero__title reveal" data-delay="1">地域の<wbr>未来を<wbr>創る、<br>最適な<wbr>人材と<wbr>出会う<wbr>ために。</h1>
-        <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「人手が<wbr>足りず、<wbr>採用に<wbr>悩んでいる」</p>
-        <div class="page-hero__actions reveal" data-delay="2">
-          <a href="contact.html?category=recruit" class="btn">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
-          <a href="#recruit-issues" class="btn btn--ghost btn--on-photo">お悩みと<wbr>解決策を見る</a>
+      <div class="container svc-hero">
+        <div class="svc-hero__text">
+          <p class="page-hero__label reveal">WEB採用支援事業</p>
+          <h1 class="page-hero__title reveal" data-delay="1">地域の<wbr>未来を<wbr>創る、<br>最適な<wbr>人材と<wbr>出会う<wbr>ために。</h1>
+          <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「人手が<wbr>足りず、<wbr>採用に<wbr>悩んでいる」</p>
+          <div class="page-hero__actions reveal" data-delay="2">
+            <a href="#recruit-issues" class="btn btn--ghost btn--on-photo">お悩みと<wbr>解決策を見る</a>
+          </div>
         </div>
+        <form class="qform reveal" data-delay="2" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-thanks="thanks.html?form=contact">
+          <p class="qform__title">WEB採用支援事業の<wbr>無料相談</p>
+          <p class="qform__lead"><n-w>まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。</n-w></p>
+          <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】WEB採用支援事業のご相談（サービスページ）">
+          <input type="hidden" name="ご相談カテゴリ" value="WEB採用支援事業">
+          <input type="hidden" name="流入元" value="サービスページ：WEB採用支援事業">
+          <label class="qform__field"><span>お名前 <em>必須</em></span><input type="text" name="name" placeholder="山田 太郎" autocomplete="name" required></label>
+          <label class="qform__field"><span>メールアドレス <em>必須</em></span><input type="email" name="email" placeholder="your@email.com" autocomplete="email" required></label>
+          <label class="qform__field"><span>ご相談内容 <small>任意</small></span><textarea name="message" rows="3" placeholder="物件の場所や、気になっていることなど"></textarea></label>
+          <button type="submit" class="btn qform__submit">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></button>
+          <p class="qform__note"><n-w>送信により</n-w><a href="privacy.html"><n-w>プライバシーポリシー</n-w></a><n-w>に同意したものとします。しつこい営業はしません。</n-w></p>
+        </form>
       </div>
     </section>
 
@@ -408,7 +421,7 @@
               <span class="thumb__cat">集客・運営</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">集客・運営</span>
+              <span class="ctags"><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">集客・運営</span></span>
               <h3 class="media-card__title">小さな宿の清掃・リネン運用ガイド｜レビューを<wbr>左右する<wbr>「清潔さ」を<wbr>仕組みで<wbr>保つ方法</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -419,7 +432,7 @@
               <span class="thumb__cat">観光と地域</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">観光と地域</span>
+              <span class="ctags"><span class="ctag">観光と地域</span></span>
               <h3 class="media-card__title">観光業の<wbr>人手不足をどう乗り越える？<wbr>宿泊業の<wbr>採用と、<wbr>地域で人を育てる<wbr>仕組み</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -430,7 +443,7 @@
               <span class="thumb__cat">観光と地域</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">観光と地域</span>
+              <span class="ctags"><span class="ctag">観光と地域</span></span>
               <h3 class="media-card__title">「関係<wbr>人口」とは？<wbr>地域と<wbr>継続的に<wbr>関わる人を増やすために、<wbr>宿ができること</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -441,7 +454,7 @@
               <span class="thumb__cat">観光と地域</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">観光と地域</span>
+              <span class="ctags"><span class="ctag">観光と地域</span></span>
               <h3 class="media-card__title">データで<wbr>見る日本の<wbr>観光市場｜インバウンド拡大の裏で地方が<wbr>抱える<wbr>5つの課題</h3>
               <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
             </div>

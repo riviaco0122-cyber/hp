@@ -86,14 +86,27 @@
   <main>
     <section class="page-hero page-hero--photo page-hero--bright">
       <img class="page-hero__bg" src="../images/photos/laptop-dashboard.jpg" alt="" width="1516" height="1080" style="object-position:50% 50%" fetchpriority="high" decoding="async">
-      <div class="container">
-        <p class="page-hero__label reveal">WEB集客支援事業</p>
-        <h1 class="page-hero__title reveal" data-delay="1">事業の<wbr>魅力を、<br>WEBで<wbr>届ける。</h1>
-        <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「集客を<wbr>強化して、<wbr>売上を伸ばしたい」</p>
-        <div class="page-hero__actions reveal" data-delay="2">
-          <a href="contact.html?category=marketing" class="btn">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
-          <a href="#marketing-issues" class="btn btn--ghost btn--on-photo">お悩みと<wbr>解決策を見る</a>
+      <div class="container svc-hero">
+        <div class="svc-hero__text">
+          <p class="page-hero__label reveal">WEB集客支援事業</p>
+          <h1 class="page-hero__title reveal" data-delay="1">事業の<wbr>魅力を、<br>WEBで<wbr>届ける。</h1>
+          <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「集客を<wbr>強化して、<wbr>売上を伸ばしたい」</p>
+          <div class="page-hero__actions reveal" data-delay="2">
+            <a href="#marketing-issues" class="btn btn--ghost btn--on-photo">お悩みと<wbr>解決策を見る</a>
+          </div>
         </div>
+        <form class="qform reveal" data-delay="2" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-thanks="thanks.html?form=contact">
+          <p class="qform__title">WEB集客支援事業の<wbr>無料相談</p>
+          <p class="qform__lead"><n-w>まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。</n-w></p>
+          <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】WEB集客支援事業のご相談（サービスページ）">
+          <input type="hidden" name="ご相談カテゴリ" value="WEB集客支援事業">
+          <input type="hidden" name="流入元" value="サービスページ：WEB集客支援事業">
+          <label class="qform__field"><span>お名前 <em>必須</em></span><input type="text" name="name" placeholder="山田 太郎" autocomplete="name" required></label>
+          <label class="qform__field"><span>メールアドレス <em>必須</em></span><input type="email" name="email" placeholder="your@email.com" autocomplete="email" required></label>
+          <label class="qform__field"><span>ご相談内容 <small>任意</small></span><textarea name="message" rows="3" placeholder="物件の場所や、気になっていることなど"></textarea></label>
+          <button type="submit" class="btn qform__submit">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></button>
+          <p class="qform__note"><n-w>送信により</n-w><a href="privacy.html"><n-w>プライバシーポリシー</n-w></a><n-w>に同意したものとします。しつこい営業はしません。</n-w></p>
+        </form>
       </div>
     </section>
 
@@ -408,7 +421,7 @@
               <span class="thumb__cat">集客・運営</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">集客・運営</span>
+              <span class="ctags"><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">集客・運営</span></span>
               <h3 class="media-card__title">稼働率・客室単価・RevPARとは？<wbr>小さな宿の売上を<wbr>読み解く<wbr>3つの指標</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -419,7 +432,7 @@
               <span class="thumb__cat">観光と地域</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">観光と地域</span>
+              <span class="ctags"><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">観光と地域</span></span>
               <h3 class="media-card__title">「暮らすように<wbr>旅する」<wbr>長期滞在が<wbr>広がる<wbr>理由｜ワーケーション・<wbr>二地域居住と<wbr>小さな宿の可能性</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -430,7 +443,7 @@
               <span class="thumb__cat">集客・運営</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">集客・運営</span>
+              <span class="ctags"><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">集客・運営</span></span>
               <h3 class="media-card__title">予約サイト<wbr>（OTA）と<wbr>自社予約、<wbr>どう使い分ける？<wbr>小さな宿の集客チャネルの<wbr>考え方</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -441,7 +454,7 @@
               <span class="thumb__cat">観光と地域</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">観光と地域</span>
+              <span class="ctags"><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">観光と地域</span></span>
               <h3 class="media-card__title">訪日客を<wbr>地方へ<wbr>｜インバウンドの<wbr>地方分散が<wbr>進む背景と、<wbr>地方の<wbr>小さな宿のチャンス</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -452,7 +465,7 @@
               <span class="thumb__cat">集客・運営</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">集客・運営</span>
+              <span class="ctags"><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">集客・運営</span></span>
               <h3 class="media-card__title">予約が入る宿のページの<wbr>つくり方｜写真・紹介文・料金設定で<wbr>選ばれる<wbr>理由を<wbr>つくる</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -463,7 +476,7 @@
               <span class="thumb__cat">集客・運営</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">集客・運営</span>
+              <span class="ctags"><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">集客・運営</span></span>
               <h3 class="media-card__title">レビューの<wbr>評価を<wbr>上げる宿のゲスト対応｜予約前から<wbr>滞在後まで、<wbr>満足を<wbr>積み重ねる<wbr>ポイント</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -474,7 +487,7 @@
               <span class="thumb__cat">観光と地域</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">観光と地域</span>
+              <span class="ctags"><span class="ctag">観光と地域</span></span>
               <h3 class="media-card__title">データで<wbr>見る日本の<wbr>観光市場｜インバウンド拡大の裏で地方が<wbr>抱える<wbr>5つの課題</h3>
               <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
             </div>
@@ -485,7 +498,7 @@
               <span class="thumb__cat">お金・税金</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">お金・税金</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">お金・税金</span><span class="ctag">開業・手続き</span></span>
               <h3 class="media-card__title">小規模宿の<wbr>開業・運営で<wbr>使える<wbr>補助金・支援制度まとめ｜申請前に<wbr>知って<wbr>おきたい<wbr>注意点</h3>
               <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
             </div>

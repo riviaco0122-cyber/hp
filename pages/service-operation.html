@@ -86,14 +86,27 @@
   <main>
     <section class="page-hero page-hero--photo">
       <img class="page-hero__bg" src="../images/photos/irori-room.jpg" alt="" width="1623" height="1079" style="object-position:50% 55%" fetchpriority="high" decoding="async">
-      <div class="container">
-        <p class="page-hero__label reveal">空き家再生事業</p>
-        <h1 class="page-hero__title reveal" data-delay="1">空き家を、<br>地域を<wbr>照らす<wbr>新たな<wbr>拠点へ。</h1>
-        <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「実家・<wbr>空き家の<wbr>処分や<wbr>利活用に<wbr>悩んでいる」</p>
-        <div class="page-hero__actions reveal" data-delay="2">
-          <a href="contact.html?category=operation" class="btn">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
-          <a href="#operation-issues" class="btn btn--ghost btn--on-photo">お悩みと<wbr>解決策を見る</a>
+      <div class="container svc-hero">
+        <div class="svc-hero__text">
+          <p class="page-hero__label reveal">空き家再生事業</p>
+          <h1 class="page-hero__title reveal" data-delay="1">空き家を、<br>地域を<wbr>照らす<wbr>新たな<wbr>拠点へ。</h1>
+          <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「実家・<wbr>空き家の<wbr>処分や<wbr>利活用に<wbr>悩んでいる」</p>
+          <div class="page-hero__actions reveal" data-delay="2">
+            <a href="#operation-issues" class="btn btn--ghost btn--on-photo">お悩みと<wbr>解決策を見る</a>
+          </div>
         </div>
+        <form class="qform reveal" data-delay="2" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-thanks="thanks.html?form=contact">
+          <p class="qform__title">空き家再生事業の<wbr>無料相談</p>
+          <p class="qform__lead"><n-w>まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。</n-w></p>
+          <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】空き家再生事業のご相談（サービスページ）">
+          <input type="hidden" name="ご相談カテゴリ" value="空き家再生事業">
+          <input type="hidden" name="流入元" value="サービスページ：空き家再生事業">
+          <label class="qform__field"><span>お名前 <em>必須</em></span><input type="text" name="name" placeholder="山田 太郎" autocomplete="name" required></label>
+          <label class="qform__field"><span>メールアドレス <em>必須</em></span><input type="email" name="email" placeholder="your@email.com" autocomplete="email" required></label>
+          <label class="qform__field"><span>ご相談内容 <small>任意</small></span><textarea name="message" rows="3" placeholder="物件の場所や、気になっていることなど"></textarea></label>
+          <button type="submit" class="btn qform__submit">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></button>
+          <p class="qform__note"><n-w>送信により</n-w><a href="privacy.html"><n-w>プライバシーポリシー</n-w></a><n-w>に同意したものとします。しつこい営業はしません。</n-w></p>
+        </form>
       </div>
     </section>
 
@@ -413,11 +426,11 @@
         <div class="media-grid media-grid--scroll" data-limit="3">
           <a href="media/case-rental-house-inn-first-year.html" class="media-card reveal" data-category="operate" data-date="2026-12-11">
             <div class="thumb thumb--photo">
-              <img src="../images/photos/white-bedroom.jpg" srcset="../images/photos/w/white-bedroom-800.webp 800w, ../images/photos/white-bedroom.jpg 1620w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
+              <img src="../images/photos/analytics-paper.jpg" srcset="../images/photos/w/analytics-paper-800.webp 800w, ../images/photos/analytics-paper.jpg 1619w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
               <span class="thumb__cat">集客・運営</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">集客・運営</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">集客・運営</span><span class="ctag">お金・税金</span></span>
               <h3 class="media-card__title">【運営事例】伊豆・下田の<wbr>賃貸の<wbr>一軒家を<wbr>小さな<wbr>宿に。<wbr>開業から<wbr>約14か月で<wbr>初期投資を<wbr>ほぼ回収した<wbr>数字の推移</h3>
               <time class="media-card__date" datetime="2026-12-11">2026.12.11</time>
             </div>
@@ -428,7 +441,7 @@
               <span class="thumb__cat">物件・改修</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">物件・改修</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">物件・改修</span><span class="ctag">売る・手放す</span></span>
               <h3 class="media-card__title">空き家バンクとは？<wbr>仕組みと<wbr>使い方、<wbr>登録・購入前に<wbr>知って<wbr>おきたい<wbr>注意点</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -439,7 +452,7 @@
               <span class="thumb__cat">開業・手続き</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">開業・手続き</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">開業・手続き</span></span>
               <h3 class="media-card__title">民泊・<wbr>小さな宿の消防設備ガイド｜<wbr>自動火災報知設備・誘導灯・消防法令適合通知書の基本</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -450,7 +463,7 @@
               <span class="thumb__cat">物件・改修</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">物件・改修</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">物件・改修</span></span>
               <h3 class="media-card__title">古民家を宿に改修する<wbr>ときの<wbr>ポイント｜残す<wbr>もの・変える<wbr>もの、<wbr>断熱・<wbr>水回り・耐震の<wbr>考え方</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -461,7 +474,7 @@
               <span class="thumb__cat">観光と地域</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">観光と地域</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">観光と地域</span></span>
               <h3 class="media-card__title">宿が地域に<wbr>お金を<wbr>落とす仕組み｜旅行者の<wbr>消費が<wbr>地域経済に<wbr>広がる<wbr>「経済循環」とは</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -472,7 +485,7 @@
               <span class="thumb__cat">貸す・任せる</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">貸す・任せる</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">貸す・任せる</span></span>
               <h3 class="media-card__title">空き家を<wbr>「貸す」なら<wbr>知って<wbr>おきたい<wbr>契約の<wbr>種類｜普通借家・定期借家・借り上げの違い</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -483,7 +496,7 @@
               <span class="thumb__cat">売る・手放す</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">売る・手放す</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag">売る・手放す</span><span class="ctag">お金・税金</span></span>
               <h3 class="media-card__title">相続した<wbr>空き家を<wbr>売るなら<wbr>知って<wbr>おきたい<wbr>「3,000万円特別控除」<wbr>｜条件と<wbr>注意点</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
@@ -494,7 +507,7 @@
               <span class="thumb__cat">物件・改修</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">物件・改修</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag">物件・改修</span><span class="ctag">観光と地域</span></span>
               <h3 class="media-card__title">静岡市・焼津の<wbr>空き家は宿になる？<wbr>｜有名観光地でなくても<wbr>収益物件に<wbr>なり得る<wbr>理由と<wbr>見極め方</h3>
               <time class="media-card__date" datetime="2026-10-01">2026.10.01</time>
             </div>
@@ -505,7 +518,7 @@
               <span class="thumb__cat">売る・手放す</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">売る・手放す</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">売る・手放す</span><span class="ctag">貸す・任せる</span></span>
               <h3 class="media-card__title">実家・祖父母の家を放置すると<wbr>どうなる？<wbr>固定資産税を<wbr>払い続ける人が「小さな<wbr>宿」を<wbr>選ぶ理由</h3>
               <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
             </div>
@@ -516,7 +529,7 @@
               <span class="thumb__cat">観光と地域</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">観光と地域</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">観光と地域</span></span>
               <h3 class="media-card__title">空き家活用は<wbr>なぜ地方創生に<wbr>つながるのか？<wbr>宿泊施設への<wbr>再生が<wbr>地域にもたらす4つの循環</h3>
               <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
             </div>
@@ -527,7 +540,7 @@
               <span class="thumb__cat">開業・手続き</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">開業・手続き</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">開業・手続き</span></span>
               <h3 class="media-card__title">空き家で宿を始めるには？<wbr>民泊新法と<wbr>旅館業<wbr>（簡易宿所）の<wbr>違い・選び方を<wbr>わかりやすく解説</h3>
               <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
             </div>
@@ -538,7 +551,7 @@
               <span class="thumb__cat">集客・運営</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">集客・運営</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">集客・運営</span><span class="ctag">お金・税金</span></span>
               <h3 class="media-card__title">AirDNAで<wbr>小規模宿の<wbr>収益を<wbr>シミュレーションする<wbr>方法｜数字の<wbr>見方と<wbr>「再現性」を<wbr>高める<wbr>5つのコツ</h3>
               <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
             </div>
@@ -549,7 +562,7 @@
               <span class="thumb__cat">開業・手続き</span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">開業・手続き</span>
+              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">開業・手続き</span><span class="ctag">物件・改修</span></span>
               <h3 class="media-card__title">小規模宿は<wbr>新築と<wbr>中古どっちが<wbr>おすすめ？<wbr>費用・工期・法令・税金の<wbr>違いから<wbr>選び方を解説</h3>
               <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
             </div>
