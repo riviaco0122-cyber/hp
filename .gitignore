@@ -1,1 +1,4 @@
 .DS_Store
+# Google サービスアカウントの鍵（誤コミット防止）
+*service-account*.json
+*-credentials.json
