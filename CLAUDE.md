@@ -39,9 +39,9 @@
 ## サイトの構造（エンジニア部向けの要点）
 
 - HTML はすべて `pages/` にある。公開URLは `vercel.json` の rewrites で `/xxx.html` → `pages/xxx.html`、`/media/xxx.html` → `pages/media/xxx.html`。ページ内のリンクは公開URL基準の相対パス（記事からは `../media.html`、`../../images/...`）。
-- `docs/`・`tools/`・`.claude/`・`CLAUDE.md` は `.vercelignore` で公開対象外。
+- `docs/`・`tools/`・`.claude/`・`CLAUDE.md` は `.vercelignore` で公開対象外。`/robots.txt`・`/sitemap.xml`・`/llms.txt` は `seo/` から配信。
 - 記事 HTML は元々リポジトリ外の生成スクリプトで作られており、`<n-w>`（改行制御）・`<wbr>` を多用している。新しい記事は **同じカテゴリの既存記事をコピーして雛形にする**。
-- 記事カードは `media.html`・`index.html`・サービスページ・全記事の「あわせて読みたい記事」に入っている。追加は `tools/add_article.py`（エンジニア部が初回に作成）で行う。
+- 記事カードは `media.html`・`index.html`・サービスページ・全記事の「あわせて読みたい記事」に入っている。追加は `tools/add_article.py` で行う（並び順・掲載先のルールはファイル冒頭に記載）。`docs/site-spec.md` の掲載記事・公開スケジュールは手で更新する。
 - 予約公開: 現在は `js/main.js` が `data-publish`／`data-date` と今日の日付を比べて、公開日前の記事を隠している（HTML と sitemap には載っている）。
 - 計測: GA4（G-RZVE2XBPQ2）と Microsoft Clarity のタグが全ページの head にある。消さない。
 
@@ -53,6 +53,8 @@
 | `python3 tools/analytics.py` | GA4/Search Console のレポート（要 `pip install -r tools/requirements.txt` と環境変数） |
 | `python3 tools/youtube_research.py "キーワード"` | YouTube の動画情報・概要欄・人気コメント（要 `YOUTUBE_API_KEY`） |
 | `python3 tools/build_dashboard.py` | `docs/dashboard.md` の再生成 |
+| `python3 tools/add_article.py <slug> [--dry-run]` | 新しい記事のカードを一覧・トップ・サービスページ・全記事の関連記事に組み込み、sitemap・llms.txt を更新（`--remove` で取り除く） |
+| `python3 tools/build_llms.py` | `seo/llms.txt`（AI検索向けのサイト案内。公開日を迎えた記事だけ）を作り直す |
 
 ## 書き方
 

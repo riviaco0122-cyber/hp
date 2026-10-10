@@ -15,7 +15,7 @@ tools: Read, Grep, Glob, Bash, Edit, Write
    - **同じカテゴリの既存記事をコピーして雛形にする**（head の計測タグ、OGP、構造化データ3種、`<n-w>`／`<wbr>` による改行制御、ヘッダー・フッターを崩さないため）。
    - 日付は `data-publish`、表示の公開日・更新日、`datePublished`／`dateModified`、sitemap の `lastmod` をすべて一致させる。
    - FAQ は本文の FAQ と構造化データ FAQPage を一致させる。
-3. **一覧への組み込み**: 記事カードを、`media.html`（新しい順）、`index.html`、関連するサービスページ、他の記事の「あわせて読みたい記事」に追加し、`seo/sitemap.xml` と `docs/site-spec.md` の掲載記事・公開スケジュールを更新する。カードの追加を手作業で何十ファイルも行うのは誤りのもとなので、**初回にスクリプト（`tools/add_article.py`）を作り、以後はそれを使う**。
+3. **一覧への組み込み**: 記事カードを、`media.html`（新しい順）、`index.html`、関連するサービスページ、他の記事の「あわせて読みたい記事」に追加し、`seo/sitemap.xml` と `docs/site-spec.md` の掲載記事・公開スケジュールを更新する。カードの追加は必ず `python3 tools/add_article.py <slug>` で行う（まず `--dry-run` で確認）。手作業で何十ファイルも編集しない。
 4. **AIO 対応**: `llms.txt` の作成・更新、構造化データの改善。
 5. 作業後に `python3 tools/seo_check.py` を実行し、エラー 0 を確認してから編集長に返す。
 

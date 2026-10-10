@@ -38,8 +38,9 @@ def resolve_file(path: str):
     path = path.split("#")[0].split("?")[0]
     if path in ("", "/"):
         return PAGES / "index.html"
-    if path in ("/robots.txt", "/sitemap.xml"):
-        return ROOT / "seo" / path.lstrip("/")
+    if path in ("/robots.txt", "/sitemap.xml", "/llms.txt"):  # vercel.json で /seo/ に対応づけ
+        cand = ROOT / "seo" / path.lstrip("/")
+        return cand if cand.is_file() else None
     for cand in (PAGES / path.lstrip("/"), ROOT / path.lstrip("/")):
         if cand.is_file():
             return cand

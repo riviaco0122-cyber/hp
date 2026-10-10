@@ -13,6 +13,7 @@ description: 暮らす旅の手帖の日次SEO/AIOサイクル（調査→企画
    - `origin/seo/daily` があり、まだ main にマージされていなければ（人の確認待ち）、それをチェックアウトし、`git merge origin/main` で main の変更を取り込んでから、その上に今日の作業を積む。PR は既存のものを使い、説明文を更新する。
    - なければ（前回分がマージ済み）、`origin/main` から `seo/daily` を作り直す。
 3. `pip install -q -r tools/requirements.txt`（失敗しても続行。集客データなしで進める）。
+4. `python3 tools/build_llms.py` を実行する（公開日を迎えた記事を llms.txt に反映するため。毎日必ず）。
 
 ## 1. 曜日ごとの重点（日本時間）
 | 曜日 | 重点 |
