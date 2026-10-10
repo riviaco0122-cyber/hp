@@ -2853,3 +2853,7 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 .mform__group span { margin-left: 8px; font-family: var(--font-sans); font-weight: 400; font-size: 12px; color: var(--c-muted); }
 .mform textarea { min-height: 180px; line-height: 1.8; }
 @media (max-width: 899px) { .mform__submit .arrow { display: none; } }
+/* アキヤドのヘッダー：ロゴの行の余白で、マークが上に寄って見えないように */
+.mheader__logo { display: flex; align-items: center; line-height: 1; }
+/* スマホ：ガイドのカードは、対象の説明（小さな2行）を省いてすっきり見せる */
+@media (max-width: 899px) { .persona-card__who { display: none; } }
