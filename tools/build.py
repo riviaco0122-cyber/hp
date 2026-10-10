@@ -3415,6 +3415,7 @@ def media_footer():
           <div><p class="mfooter__label">状況から読む</p><ul>{guides}</ul></div>
           <div><p class="mfooter__label">テーマから探す</p><ul>{themes}</ul></div>
           <div><p class="mfooter__label">アキヤドについて</p><ul>
+            <li><a href="media/learn.html">基礎から学ぶ</a></li>
             <li><a href="media/search.html">記事をさがす</a></li>
             <li><a href="media/plans.html">アキヤドのプラン</a></li>
             <li><a href="media/company.html">運営会社について</a></li>
@@ -3881,10 +3882,89 @@ MEDIA_INTRO_DESC = {
 }
 
 
+# ---------------------------------------------------------------- アキヤド：基礎から学ぶ（記事を、コースと章の順に並べて体系的に学べるようにする）
+MEDIA_COURSES = [
+    dict(key="akiya", en="Course 01", title="空き家の基礎知識", lead="相続した家や使っていない家を、どうするか決めるための基本です。",
+         chapters=[("空き家を放置するとどうなるか", "税や管理の負担、法改正で高まる「放置」のリスクと、4つの選択肢。", ["akiya-inherited-house-to-inn"]),
+                   ("売るときに知っておきたいこと", "相続した家を売るときの税の特例と、空き家バンクの使い方。", ["akiya-3000man-deduction", "akiya-bank-guide"]),
+                   ("貸すときの契約", "普通借家・定期借家・借り上げの違いと、選び方。", ["akiya-lease-types"]),
+                   ("宿として活かす", "観光地でなくても宿になる理由と、古い家を改修するときの考え方。", ["shizuoka-yaizu-akiya-inn", "kominka-renovation-points"]),
+                   ("空き家と地域のこれから", "空き家の再生が、地域に人とお金の流れを生む仕組み。", ["akiya-regional-revitalization"])]),
+    dict(key="minpaku", en="Course 02", title="民泊・小さな宿の基礎知識", lead="これから宿をはじめる方が、開業までに押さえたい制度とお金の基本です。",
+         chapters=[("民泊新法と旅館業", "2つの制度の違いと、目的と物件に合った選び方。", ["minpaku-vs-ryokan-law"]),
+                   ("開業までの流れ", "届出までの7ステップと、消防の手続き。", ["minpaku-start-steps", "minpaku-fire-safety"]),
+                   ("物件の選び方", "新築と中古、それぞれの費用・工期・法令の違い。", ["new-build-vs-used-house-inn"]),
+                   ("お金の準備", "開業資金の用意の仕方、補助金、利回りの見方。", ["inn-startup-funding", "small-inn-subsidies", "minpaku-investment-yield"]),
+                   ("運営の任せ方", "住宅宿泊管理業者の役割と、管理会社の選び方。", ["minpaku-management-company"])]),
+    dict(key="operate", en="Course 03", title="宿の運営", lead="開業したあと、宿の売上と評判を育てるための知識です。",
+         chapters=[("売上を読み解く", "稼働率・客室単価・RevPARと、収益シミュレーションの考え方。", ["inn-kpi-basics", "airdna-revenue-simulation"]),
+                   ("集客の考え方", "予約サイトと自社予約の使い分けと、選ばれる予約ページのつくり方。", ["ota-vs-direct-booking", "listing-photo-tips"]),
+                   ("品質と評価", "清掃・リネンの仕組みと、レビューの評価を上げるゲスト対応。", ["cleaning-linen-operations", "guest-review-tips"]),
+                   ("運営の事例", "一軒家を小さな宿にした、開業からの数字の推移。", ["case-rental-house-inn-first-year"])]),
+    dict(key="region", en="Course 04", title="観光と地域を知る", lead="宿を取り巻く観光の動きと、地域との関わりを、データとともに読み解きます。",
+         chapters=[("日本の観光市場", "訪日客の動向と、地方が抱える課題、地方分散のチャンス。", ["japan-tourism-market-data", "inbound-regional-dispersion"]),
+                   ("旅のスタイルの変化", "「巡る旅」から「滞在する旅」へ。長期滞在が広がる理由。", ["long-stay-travel-demand"]),
+                   ("宿と地域の経済", "旅行者のお金が地域に広がる仕組みと、関係人口。", ["inn-local-economy", "kankei-jinko-and-inns"]),
+                   ("制度と担い手", "宿泊税の仕組みと、観光業の人手不足への向き合い方。", ["accommodation-tax", "tourism-labor-shortage"])]),
+]
+
+
+def media_learn_page():
+    jump = "".join(f'<li><a href="#{c["key"]}" class="ttag">{e(c["title"])}</a></li>' for c in MEDIA_COURSES)
+    courses = []
+    for c in MEDIA_COURSES:
+        chs = []
+        for i, (t, d, slugs) in enumerate(c["chapters"], 1):
+            links = "".join(f'<li data-date="{ARTICLE_BY_SLUG[sl]["date"]}"><a href="media/{sl}.html">{e(ARTICLE_BY_SLUG[sl]["title"])}</a></li>' for sl in slugs)
+            chs.append(f"""            <li class="lchap reveal">
+              <p class="lchap__no">第{i}章</p>
+              <div class="lchap__body">
+                <h3 class="lchap__title">{e(t)}</h3>
+                <p class="lchap__text">{e(d)}</p>
+                <ul class="lchap__list">{links}</ul>
+              </div>
+            </li>""")
+        courses.append(f"""        <section class="lcourse" id="{c["key"]}" aria-labelledby="course-{c["key"]}">
+          <div class="lcourse__head reveal">
+            <p class="lcourse__en">{e(c["en"])}</p>
+            <h2 class="lcourse__title" id="course-{c["key"]}">{e(c["title"])}</h2>
+            <p class="lcourse__lead">{e(c["lead"])}</p>
+          </div>
+          <ol class="lchaps">
+{chr(10).join(chs)}
+          </ol>
+        </section>""")
+    crumbs = media_crumbs([("アキヤド", "media.html"), ("基礎から学ぶ", "")])
+    body = f"""{media_hero("Learn", "空き家と民泊を、ゼロから体系的に学ぶ", "4つのコースに、記事を学ぶ順番で並べました。はじめての方は第1章から、気になるところからでも読めます。", crumbs, search_form("search.html"))}
+
+    <section class="section msec msec--first">
+      <div class="container">
+        <nav class="ttags lcourse__jump reveal" aria-label="コース"><ul>{jump}</ul></nav>
+{chr(10).join(courses[:2])}
+        <div class="msv-band reveal">
+          <p class="msv-band__text">読んで具体的に考えたくなったら、アキヤドにご相談ください。<br class="pc-only">ご相談・資料のお届けは無料です。</p>
+          <div class="msv-band__btns">
+            <a href="contact.html?from=akiyado-learn" class="mbtn" data-cta="media-learn">無料で相談する {ARROW}</a>
+            {plan_doc_link("learn")}
+          </div>
+        </div>
+{chr(10).join(courses[2:])}
+      </div>
+    </section>
+
+{media_cta()}"""
+    ld = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"},
+        {"@type": "ListItem", "position": 2, "name": "基礎から学ぶ"}]}]
+    page("media/learn.html", "空き家と民泊を、ゼロから体系的に学ぶ｜アキヤド",
+         "空き家の基礎知識、民泊・小さな宿の基礎知識、宿の運営、観光と地域。アキヤドの記事を、4つのコースと章の順に並べました。はじめての方は第1章から読めます。",
+         body, current="media", jsonld=ld, mnav="learn")
+
+
 def media_nav(current=""):
     """メディア内の共通ナビ。読者の状況（ガイド）を先に、テーマと検索を後に置く"""
     items = [("top", "media.html", "トップ")] + [(g["key"], f"media/guide-{g['key']}.html", g["label"]) for g in MEDIA_GUIDES] + \
-            [("themes", "media.html#themes", "テーマから探す"), ("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "アキヤドのプラン")]
+            [("learn", "media/learn.html", "基礎から学ぶ"), ("themes", "media.html#themes", "テーマから探す"), ("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "アキヤドのプラン")]
     cur = ' aria-current="page"'
     lis = "".join(f'<li><a href="{href}"{cur if k == current else ""}>{e(n)}</a></li>' for k, href, n in items)
     # スマホでは、ヘッダーのボタンで開くメニューにする（相談・資料請求のボタンも入れる）
@@ -4029,6 +4109,13 @@ def media_index_page():
         <ul class="mq reveal">
 {questions}
         </ul>
+      </div>
+    </section>
+
+    <section class="section msec">
+      <div class="container">
+        <div class="msec__head reveal"><div><p class="msec__en">Learn</p><h2 class="msec__title">ゼロから体系的に学ぶ</h2></div><a href="media/learn.html" class="msec__more">コースの一覧へ {ARROW}</a></div>
+        <ul class="lcards">{"".join(f'<li class="reveal"><a href="media/learn.html#{c["key"]}" class="lcard"><span class="lcard__en">{e(c["en"])}</span><span class="lcard__title">{e(c["title"])}</span><span class="lcard__text">{e(c["lead"])}</span><span class="lcard__count">全{len(c["chapters"])}章</span></a></li>' for c in MEDIA_COURSES)}</ul>
       </div>
     </section>
 
@@ -4393,7 +4480,7 @@ def llms_txt():
 
 def sitemap():
     pages = ["", "about.html"] + [f"service-{k}.html" for k, _ in SERVICES] + \
-            ["media.html"] + [f"media/category-{k}.html" for k, _ in MEDIA_CATEGORIES] + [f"media/guide-{g['key']}.html" for g in MEDIA_GUIDES] + ["media/plans.html"] + [f"media/{sv['slug']}.html" for sv in MEDIA_SERVICES] + ["media/company.html"] + [f"media/{a['slug']}.html" for a in ARTICLES] + ["careers.html", "contact.html", "privacy.html"]
+            ["media.html"] + [f"media/category-{k}.html" for k, _ in MEDIA_CATEGORIES] + [f"media/guide-{g['key']}.html" for g in MEDIA_GUIDES] + ["media/plans.html"] + [f"media/{sv['slug']}.html" for sv in MEDIA_SERVICES] + ["media/company.html", "media/learn.html"] + [f"media/{a['slug']}.html" for a in ARTICLES] + ["careers.html", "contact.html", "privacy.html"]
     pages += ["en/" + ("" if f == "index.html" else f) for f in EN_PAGES if f != "thanks.html"]
     lastmod = {f"media/{a['slug']}.html": a["updated"] for a in ARTICLES}
     urls = "\n".join(
@@ -4424,6 +4511,7 @@ if __name__ == "__main__":
     for sv in MEDIA_SERVICES:
         media_service_page(sv)
     media_company_page()
+    media_learn_page()
     for k, n in MEDIA_CATEGORIES:
         media_category_page(k, n)
     for g in MEDIA_GUIDES:

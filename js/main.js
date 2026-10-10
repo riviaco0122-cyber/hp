@@ -176,6 +176,13 @@
     if (lead) lead.classList.add('is-lead');
   });
   // よくある悩み：公開前の記事への質問は出さない
+  // 基礎から学ぶ：公開前の記事は隠し、記事がひとつもない章も隠す
+  document.querySelectorAll('.lchap__list li[data-date]').forEach(function (li) {
+    if (li.getAttribute('data-date') > today) li.hidden = true;
+  });
+  document.querySelectorAll('.lchap').forEach(function (ch) {
+    if (!ch.querySelector('.lchap__list li:not([hidden])')) ch.hidden = true;
+  });
   document.querySelectorAll('.mq li[data-date]').forEach(function (li) {
     if (li.getAttribute('data-date') > today) li.hidden = true;
   });

@@ -2708,3 +2708,33 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
   .mintro__entries li + li { border-left: 0; border-top: 1px solid var(--c-line); }
   .mintro__entry, .mintro__entries li + li .mintro__entry { padding: 20px 0; }
 }
+/* アキヤド：基礎から学ぶ */
+.lcourse__jump { margin-bottom: 56px; }
+.lcourse { scroll-margin-top: calc(var(--header-h) + 16px); }
+.lcourse + .lcourse, .msv-band + .lcourse { margin-top: 88px; }
+.lcourse__head { margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--m-line); }
+.lcourse__en { font-family: var(--font-en); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--m-green); }
+.lcourse__title { margin-top: 6px; font-family: var(--font-round); font-weight: 700; font-size: clamp(21px, 2.3vw, 26px); letter-spacing: 0.04em; }
+.lcourse__lead { margin-top: 6px; font-size: 14px; color: var(--m-sub); }
+.lchaps { display: grid; gap: 12px; }
+.lchap { display: grid; grid-template-columns: 5.5em minmax(0, 1fr); gap: 16px; padding: 22px 26px; border-radius: 16px; background: #fff; box-shadow: 0 3px 12px rgba(38, 42, 39, 0.04); }
+.lchap__no { padding-top: 2px; font-family: var(--font-round); font-weight: 700; font-size: 14px; color: var(--m-green); }
+.lchap__title { font-family: var(--font-round); font-weight: 700; font-size: 17px; }
+.lchap__text { margin-top: 4px; font-size: 13.5px; line-height: 1.9; color: var(--m-sub); }
+.lchap__list { display: grid; gap: 6px; margin-top: 12px; }
+.lchap__list a { display: block; position: relative; padding-left: 18px; font-size: 14px; line-height: 1.7; }
+.lchap__list a::before { content: ""; position: absolute; left: 2px; top: 0.75em; width: 8px; height: 1px; background: var(--m-green); }
+.lchap__list a:hover { color: var(--m-green); text-decoration: underline; text-underline-offset: 4px; }
+.msec--first .lcourse + .msv-band, .lcourse + .msv-band { margin-top: 64px; }
+.lcards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.lcard { display: grid; align-content: start; gap: 6px; height: 100%; padding: 24px 22px; border-radius: 16px; background: #fff; box-shadow: 0 3px 12px rgba(38, 42, 39, 0.04); transition: box-shadow .2s, transform .2s; }
+.lcard:hover { box-shadow: 0 10px 24px rgba(38, 42, 39, 0.09); transform: translateY(-2px); }
+.lcard__en { font-family: var(--font-en); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--m-green); }
+.lcard__title { font-family: var(--font-round); font-weight: 700; font-size: 16.5px; line-height: 1.5; }
+.lcard__text { font-size: 12.5px; line-height: 1.8; color: var(--m-sub); }
+.lcard__count { margin-top: 6px; font-size: 12px; font-weight: 700; color: var(--m-green); }
+@media (max-width: 899px) {
+  .lchap { grid-template-columns: 1fr; gap: 4px; padding: 18px; }
+  .lcards { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .lcard { padding: 18px 16px; }
+}
