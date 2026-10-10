@@ -1700,3 +1700,102 @@ body:has(.fixed-cta) { padding-bottom: 54px; }
   .scenes { grid-template-columns: 1fr; gap: 40px; margin-top: 48px; }
   .scene__photo { aspect-ratio: 3 / 2; }
 }
+/* ===== 暮らす旅の手帖（メディアトップ・カテゴリ・ガイド） ===== */
+.mhero { padding: 104px 0 56px; }
+.mhero__en { font-family: var(--font-en); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--c-muted); }
+.mhero__title { margin-top: 12px; font-family: var(--font-serif); font-weight: 400; font-size: clamp(30px, 4.2vw, 50px); line-height: 1.5; letter-spacing: 0.12em; }
+.mhero__lead { margin-top: 20px; max-width: 40em; font-size: 14.5px; line-height: 2.1; color: var(--c-sub); }
+.crumbs { display: flex; flex-wrap: wrap; align-items: center; margin-bottom: 28px; font-size: 12px; letter-spacing: 0.04em; color: var(--c-muted); }
+.crumbs a:hover { color: var(--c-text); text-decoration: underline; text-underline-offset: 4px; }
+.crumbs__sep { margin: 0 10px; }
+.article__header .crumbs { margin-bottom: 24px; }
+.mnav { border-top: 1px solid var(--c-line); border-bottom: 1px solid var(--c-line); background: var(--c-bg); }
+.mnav__list { display: flex; justify-content: center; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+.mnav__list::-webkit-scrollbar { display: none; }
+.mnav__list a { display: block; padding: 18px 22px; margin-bottom: -1px; border-bottom: 2px solid transparent; font-size: 13.5px; letter-spacing: 0.08em; color: var(--c-sub); transition: color .2s, border-color .2s; }
+.mnav__list a:hover { color: var(--c-text); }
+.mnav__list a[aria-current] { color: var(--c-text); border-bottom-color: var(--c-text); }
+.msec--first { padding-top: 72px; }
+.msec__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--c-line-strong); }
+.msec__en { font-family: var(--font-en); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--c-muted); }
+.msec__title { margin-top: 4px; font-family: var(--font-serif); font-weight: 400; font-size: 24px; letter-spacing: 0.1em; }
+.msec__more { display: inline-flex; align-items: center; gap: 12px; font-size: 13px; letter-spacing: 0.06em; white-space: nowrap; }
+.msec__more:hover { text-decoration: underline; text-underline-offset: 4px; }
+.msec__lead { margin: -8px 0 32px; font-size: 14px; line-height: 2; color: var(--c-sub); }
+/* 新着：1本を大きく、残りを横並びの小さなカードに */
+.media-grid--feature { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 32px 48px; align-items: start; }
+.media-grid--feature .is-lead { grid-row: span 2; }
+.media-grid--feature .is-lead .media-card__title { font-size: 21px; line-height: 1.75; }
+.media-grid--feature .media-card:not(.is-lead) { flex-direction: row; align-items: flex-start; gap: 20px; }
+.media-grid--feature .media-card:not(.is-lead) .thumb { flex: 0 0 46%; }
+.media-grid--feature .media-card:not(.is-lead) .media-card__body { padding-top: 0; }
+/* 目的から読む（ガイド） */
+.guide-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.guide-card { display: flex; flex-direction: column; padding: 36px 32px 32px; background: var(--c-bg); border-top: 2px solid var(--c-accent); transition: box-shadow .3s; }
+.guide-card:hover { box-shadow: var(--shadow-sm); }
+.guide-card__no { font-family: var(--font-en); font-size: 12px; letter-spacing: 0.2em; color: var(--c-accent); }
+.guide-card__title { margin-top: 14px; font-family: var(--font-serif); font-weight: 400; font-size: 20px; letter-spacing: 0.08em; line-height: 1.6; }
+.guide-card__lead { flex: 1; margin-top: 12px; font-size: 13.5px; line-height: 2; color: var(--c-sub); }
+.guide-card__more { display: inline-flex; align-items: center; gap: 12px; margin-top: 24px; font-size: 13px; letter-spacing: 0.06em; }
+.guide-link { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 48px; padding: 22px 28px; background: var(--c-bg-soft); }
+.guide-link__label { font-size: 12px; letter-spacing: 0.1em; color: var(--c-muted); }
+.guide-link__title { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-serif); font-size: 16px; letter-spacing: 0.06em; }
+.guide-link:hover .guide-link__title { text-decoration: underline; text-underline-offset: 4px; }
+.guide-steps { border-top: 1px solid var(--c-line); }
+.guide-step { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px; padding: 32px 0; border-bottom: 1px solid var(--c-line); }
+.guide-step__no { font-family: var(--font-en); font-size: 28px; line-height: 1.2; color: var(--c-muted); }
+.guide-step__body { display: flex; flex-direction: column; gap: 6px; }
+.guide-step__cat { font-size: 12px; letter-spacing: 0.1em; color: var(--c-muted); }
+.guide-step__title { font-family: var(--font-serif); font-size: 19px; line-height: 1.7; letter-spacing: 0.04em; }
+a.guide-step__body:hover .guide-step__title { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+.guide-step__desc { font-size: 13.5px; line-height: 2; color: var(--c-sub); }
+.guide-step.is-upcoming .guide-step__title, .guide-step.is-upcoming .guide-step__desc { color: var(--c-muted); }
+.guide-step__soon { margin-top: 4px; font-size: 12px; letter-spacing: 0.08em; color: var(--c-accent); }
+/* 記事ページ：ガイド内の位置・前後の記事・シェア */
+.guide-box { margin-top: 72px; padding: 32px 36px; border: 1px solid var(--c-line-strong); }
+.guide-box__label { font-size: 12px; letter-spacing: 0.14em; color: var(--c-muted); }
+.guide-box__title { display: inline-block; margin: 6px 0 16px; font-family: var(--font-serif); font-size: 18px; letter-spacing: 0.06em; }
+.guide-box__title:hover { text-decoration: underline; text-underline-offset: 4px; }
+.guide-box__list { counter-reset: gb; }
+.guide-box__list li { counter-increment: gb; position: relative; padding: 5px 0 5px 2.4em; font-size: 14px; line-height: 1.9; }
+.guide-box__list li::before { content: counter(gb, decimal-leading-zero); position: absolute; left: 0; font-family: var(--font-en); color: var(--c-muted); }
+.guide-box__list a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.guide-box__list li[aria-current] { font-weight: 500; color: var(--c-accent); }
+.guide-box__pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--c-line); }
+.guide-box__pager:empty { display: none; }
+.guide-box__pager a { font-size: 13.5px; line-height: 1.8; }
+.guide-box__pager a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.guide-box__pager span { display: block; margin-bottom: 4px; font-size: 11px; letter-spacing: 0.14em; color: var(--c-muted); }
+.guide-box__next { grid-column: 2; text-align: right; }
+.share { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 56px; }
+.share__label { font-size: 12px; letter-spacing: 0.14em; color: var(--c-muted); }
+.share__list { display: flex; flex-wrap: wrap; gap: 8px; }
+.share__list a, .share__copy { display: inline-block; padding: 8px 18px; border: 1px solid var(--c-line-strong); font-size: 13px; letter-spacing: 0.06em; transition: border-color .2s; }
+.share__list a:hover, .share__copy:hover { border-color: var(--c-text); }
+@media (max-width: 899px) {
+  .mhero { padding: 64px 0 40px; }
+  .mhero__lead { font-size: 14px; }
+  .mnav__list { justify-content: flex-start; }
+  .mnav__list a { padding: 15px 16px; font-size: 13px; }
+  .msec--first { padding-top: 48px; }
+  .msec__head { flex-wrap: wrap; margin-bottom: 24px; }
+  .msec__title { font-size: 21px; }
+  .msec__lead { margin-bottom: 24px; }
+  .media-grid--feature { grid-template-columns: 1fr; gap: 24px; }
+  .media-grid--feature .is-lead { grid-row: auto; }
+  .media-grid--feature .is-lead .media-card__title { font-size: 18px; }
+  .media-grid--feature .media-card:not(.is-lead) { gap: 16px; }
+  .media-grid--feature .media-card:not(.is-lead) .thumb { flex-basis: 40%; }
+  .media-grid--feature .media-card:not(.is-lead) .thumb__cat { display: none; }
+  .media-grid--feature .media-card:not(.is-lead) .media-card__title { font-size: 14px; line-height: 1.7; margin-top: 4px; }
+  .media-grid--feature .media-card:not(.is-lead) .media-card__date { margin-top: 6px; font-size: 12px; }
+  .guide-cards { grid-template-columns: 1fr; gap: 16px; }
+  .guide-card { padding: 28px 24px 24px; }
+  .guide-link { flex-direction: column; align-items: flex-start; gap: 6px; padding: 20px 22px; margin-bottom: 36px; }
+  .guide-step { grid-template-columns: 44px minmax(0, 1fr); padding: 24px 0; }
+  .guide-step__no { font-size: 22px; }
+  .guide-step__title { font-size: 16.5px; }
+  .guide-box { margin-top: 56px; padding: 24px 22px; }
+  .guide-box__pager { grid-template-columns: 1fr; }
+  .guide-box__next { grid-column: auto; text-align: left; }
+}

@@ -152,6 +152,60 @@
     }
   });
 
+  // 新着記事：公開済みの先頭の1本を大きく見せる
+  document.querySelectorAll('.media-grid--feature').forEach(function (grid) {
+    var lead = grid.querySelector('.media-card:not([hidden])');
+    if (lead) lead.classList.add('is-lead');
+  });
+  // ガイド：公開前の記事は「公開予定」として表示し、リンクにしない
+  document.querySelectorAll('.guide-step[data-date]').forEach(function (li) {
+    var d = li.getAttribute('data-date');
+    if (d <= today) return;
+    var link = li.querySelector('a');
+    var box = document.createElement('div');
+    box.className = link.className;
+    box.innerHTML = link.innerHTML;
+    var note = document.createElement('span');
+    note.className = 'guide-step__soon';
+    note.textContent = Number(d.slice(5, 7)) + '月' + Number(d.slice(8, 10)) + '日 公開予定';
+    box.appendChild(note);
+    li.replaceChild(box, link);
+    li.classList.add('is-upcoming');
+  });
+  // 記事ページのガイド欄：公開前の記事は出さない
+  // 前後の記事は、公開済みの記事の中で決める
+  document.querySelectorAll('.guide-box').forEach(function (box) {
+    var items = Array.prototype.slice.call(box.querySelectorAll('.guide-box__list li'));
+    items.forEach(function (li) { if (li.getAttribute('data-date') > today) li.hidden = true; });
+    var shown = items.filter(function (li) { return !li.hidden; });
+    var i = shown.findIndex(function (li) { return li.hasAttribute('aria-current'); });
+    var pager = box.querySelector('.guide-box__pager');
+    [[shown[i - 1], 'guide-box__prev', '前の記事'], [shown[i + 1], 'guide-box__next', '次の記事']].forEach(function (x) {
+      var link = x[0] && x[0].querySelector('a');
+      if (!link) return;
+      var a = document.createElement('a');
+      a.href = link.getAttribute('href');
+      a.className = x[1];
+      a.innerHTML = '<span>' + x[2] + '</span>';
+      a.appendChild(document.createTextNode(link.textContent));
+      pager.appendChild(a);
+    });
+  });
+  // シェア：リンクをコピー
+  document.querySelectorAll('.share__copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var url = btn.getAttribute('data-url');
+      var done = function () { btn.textContent = 'コピーしました'; setTimeout(function () { btn.textContent = 'リンクをコピー'; }, 2000); };
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function () { window.prompt('URLをコピーしてください', url); });
+      else window.prompt('URLをコピーしてください', url);
+    });
+  });
+  // 旧URL（media.html?cat=○○）はカテゴリ一覧へ
+  if (window.URLSearchParams && document.querySelector('.mnav') && /media\.html$/.test(location.pathname)) {
+    var oldCat = new URLSearchParams(location.search).get('cat');
+    if (oldCat && /^[a-z]+$/.test(oldCat) && document.querySelector('.mnav a[href$="category-' + oldCat + '.html"]')) location.replace(new URL('media/category-' + oldCat + '.html', location.href).href);
+  }
+
   /**
    * Media: カテゴリの絞り込みと「もっと記事を見てみる」
    * 例) media.html?cat=akiya
