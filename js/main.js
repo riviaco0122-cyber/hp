@@ -169,10 +169,11 @@
     var box = document.createElement('div');
     box.className = link.className;
     box.innerHTML = link.innerHTML;
-    var note = document.createElement('span');
-    note.className = 'guide-step__soon';
-    note.textContent = Number(d.slice(5, 7)) + '月' + Number(d.slice(8, 10)) + '日 公開予定';
-    box.appendChild(note);
+    var more = box.querySelector('.guide-step__more');
+    if (more) {
+      more.className = 'guide-step__soon';
+      more.textContent = Number(d.slice(5, 7)) + '月' + Number(d.slice(8, 10)) + '日 公開予定';
+    }
     li.replaceChild(box, link);
     li.classList.add('is-upcoming');
   });
@@ -364,6 +365,32 @@
     if (lines.length < 2) return 0;
     return lines.filter(function (l) { return l.width / fs < 5; }).length;
   }
+  function fixBlock(b) {
+    b.style.letterSpacing = '';
+    if (!b.offsetParent) return;
+    var cs = getComputedStyle(b);
+    var fs = parseFloat(cs.fontSize);
+    var base = parseFloat(cs.letterSpacing) || 0;
+    var best = shortLines(b, fs), bestStep = 0;
+    if (!best) return;
+    var steps = [-0.01, -0.02, -0.03, -0.04, -0.05];
+    for (var i = 0; i < steps.length && best; i++) {
+      b.style.letterSpacing = (base + steps[i] * fs) + 'px';
+      var n = shortLines(b, fs);
+      if (n < best) { best = n; bestStep = steps[i]; }
+    }
+    b.style.letterSpacing = bestStep ? (base + bestStep * fs) + 'px' : '';
+    // 左揃えの短い文で、まだ最後の行が短い場合は、文末の言葉（5〜9字）をまとめて改行させない
+    if (best && !b.querySelector('n-w.j')) guardTail(b, fs);
+  }
+  // 表示の負担を減らすため、画面に近づいた段落から順に整える
+  var lineObserver = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      lineObserver.unobserve(en.target);
+      fixBlock(en.target);
+    });
+  }, { rootMargin: '400px 0px' }) : null;
   function fixShortLines() {
     var blocks = [];
     document.querySelectorAll('n-w').forEach(function (el) {
@@ -372,22 +399,7 @@
     });
     unguard(document);
     blocks.forEach(function (b) {
-      b.style.letterSpacing = '';
-      if (!b.offsetParent) return;
-      var cs = getComputedStyle(b);
-      var fs = parseFloat(cs.fontSize);
-      var base = parseFloat(cs.letterSpacing) || 0;
-      var best = shortLines(b, fs), bestStep = 0;
-      if (!best) return;
-      var steps = [-0.01, -0.02, -0.03, -0.04, -0.05];
-      for (var i = 0; i < steps.length && best; i++) {
-        b.style.letterSpacing = (base + steps[i] * fs) + 'px';
-        var n = shortLines(b, fs);
-        if (n < best) { best = n; bestStep = steps[i]; }
-      }
-      b.style.letterSpacing = bestStep ? (base + bestStep * fs) + 'px' : '';
-      // 左揃えの短い文で、まだ最後の行が短い場合は、文末の言葉（5〜9字）をまとめて改行させない
-      if (best && !b.querySelector('n-w.j')) guardTail(b, fs);
+      if (lineObserver) { lineObserver.unobserve(b); lineObserver.observe(b); } else fixBlock(b);
     });
   }
   function guardTail(b, fs) {
@@ -423,8 +435,8 @@
   }
   var fixTimer;
   function scheduleFix() { clearTimeout(fixTimer); fixTimer = setTimeout(fixShortLines, 150); }
-  window.addEventListener('load', fixShortLines);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fixShortLines);
+  else window.addEventListener('load', fixShortLines);
   var lastWidth = window.innerWidth;
   window.addEventListener('resize', function () {
     if (window.innerWidth === lastWidth) return;  // スマホのスクロールでの高さ変化は無視

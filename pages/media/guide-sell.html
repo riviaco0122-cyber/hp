@@ -41,7 +41,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
   <link rel="stylesheet" href="../../css/style.css">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
@@ -55,8 +56,8 @@
 
   <header class="header header--media">
     <div class="container mheader__inner">
-      <a href="../media.html" class="mheader__logo" aria-label="アキヤド トップ"><span class="mlogo"><span class="mlogo__ja">アキヤド</span><span class="mlogo__sub">空き家と<wbr>民泊の<wbr>メディア</span></span></a>
-      <a href="../index.html" class="mheader__corp">運営：RIVIA&amp;CO.</a>
+      <a href="../media.html" class="mheader__logo"><span class="mlogo"><span class="mlogo__ja">アキヤド</span><span class="mlogo__sub">空き家と<wbr>民泊の<wbr>メディア</span></span></a>
+      <a href="../index.html" class="mheader__corp"><span>運営</span><img src="../../images/logo/logo.svg" alt="RIVIA&amp;CO." width="325" height="64"></a>
     </div>
     <nav class="mnav" aria-label="アキヤドのメニュー">
       <div class="container"><ul class="mnav__list"><li><a href="../media.html">トップ</a></li><li><a href="../media/guide-sell.html" aria-current="page">空き家を<wbr>売りたい</a></li><li><a href="../media/guide-use.html">空き家を<wbr>活かしたい</a></li><li><a href="../media/guide-side.html">副業で宿をはじめたい</a></li><li><a href="../media.html#themes">テーマから探す</a></li><li><a href="../media/search.html">記事をさがす</a></li></ul></div>
@@ -80,19 +81,25 @@
           <div class="guide-stage__head reveal"><span class="guide-stage__no">Step 1</span><h2 class="guide-stage__title">まず知って<wbr>おきたいこと</h2><p class="guide-stage__desc"><n-w>放置した場合の負担と、空き家をめぐる制度の変化。</n-w></p></div>
           <ol class="guide-steps">
             <li class="guide-step reveal" data-date="2026-09-29">
-              <span class="guide-step__no">01</span>
               <a href="../media/akiya-inherited-house-to-inn.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">空き家活用</n-w></span>
-                <span class="guide-step__title"><n-w class="j">実家・祖父母の家を放置するとどうなる？固定資産税を払い続ける人が「小さな宿」を選ぶ理由</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">相続した実家や祖父母の家を空き家のまま放置すると、固定資産税や管理の負担、法改正によるリスクが増えていきます。売却・解体・賃貸と比較しながら、小規模な宿として活用する人が増えている背景と、始める前に確認すべきポイントを解説します。</n-w></span>
+                <span class="guide-step__no">01</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/old-town-street-800.webp 800w, ../../images/photos/w/old-town-street-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/old-town-street.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w class="j">空き家活用</n-w><span class="guide-step__min"><n-w class="j">約5分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w class="j">実家・祖父母の家を放置するとどうなる？固定資産税を払い続ける人が「小さな宿」を選ぶ理由</n-w></span>
+                  <span class="guide-step__more"><n-w class="j">記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
             <li class="guide-step reveal" data-date="2026-11-03">
-              <span class="guide-step__no">02</span>
               <a href="../media/akiya-bank-guide.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">空き家活用</n-w></span>
-                <span class="guide-step__title"><n-w class="j">空き家バンクとは？仕組みと使い方、登録・購入前に知っておきたい注意点</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">空き家バンクは、自治体などが空き家の売りたい人・貸したい人と、使いたい人をつなぐ仕組みです。登録する側・探す側それぞれの使い方と、契約や改修でつまずかないための注意点を解説します。</n-w></span>
+                <span class="guide-step__no">02</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/green-hills-800.webp 800w, ../../images/photos/w/green-hills-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/green-hills.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w>空き家活用</n-w><span class="guide-step__min"><n-w>約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w>空き家バンクとは？仕組みと使い方、登録・購入前に知っておきたい注意点</n-w></span>
+                  <span class="guide-step__more"><n-w>記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
           </ol>
@@ -101,27 +108,36 @@
           <div class="guide-stage__head reveal"><span class="guide-stage__no">Step 2</span><h2 class="guide-stage__title">売る前に、<wbr>比べて<wbr>おきたいこと</h2><p class="guide-stage__desc"><n-w>売る以外に「貸す」「宿として活かす」という選択肢も。手取りと将来を比べて判断します。</n-w></p></div>
           <ol class="guide-steps">
             <li class="guide-step reveal" data-date="2026-11-23">
-              <span class="guide-step__no">03</span>
               <a href="../media/akiya-lease-types.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">空き家活用</n-w></span>
-                <span class="guide-step__title"><n-w class="j">空き家を「貸す」なら知っておきたい契約の種類｜普通借家・定期借家・借り上げの違い</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">空き家を貸して家賃を得る方法には、普通借家契約、定期借家契約、事業者による借り上げ（サブリース）などがあります。それぞれの違いと、宿として貸す場合に確認したい契約のポイントを解説します。</n-w></span>
+                <span class="guide-step__no">03</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/window-garden-800.webp 800w, ../../images/photos/w/window-garden-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/window-garden.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w>空き家活用</n-w><span class="guide-step__min"><n-w>約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w>空き家を「貸す」なら知っておきたい契約の種類｜普通借家・定期借家・借り上げの違い</n-w></span>
+                  <span class="guide-step__more"><n-w>記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
             <li class="guide-step reveal" data-date="2026-10-01">
-              <span class="guide-step__no">04</span>
               <a href="../media/shizuoka-yaizu-akiya-inn.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">空き家活用</n-w></span>
-                <span class="guide-step__title"><n-w class="j">静岡市・焼津の空き家は宿になる？｜有名観光地でなくても収益物件になり得る理由と見極め方</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">有名な観光地でなくても、空き家が宿として収益を生むケースは少なくありません。静岡市・焼津を例に、観光以外の宿泊需要の見つけ方、物件の見極め方、始める前に確認したい制度と費用を解説します。</n-w></span>
+                <span class="guide-step__no">04</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/town-railway-800.webp 800w, ../../images/photos/w/town-railway-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/town-railway.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w class="j">空き家活用</n-w><span class="guide-step__min"><n-w class="j">約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w class="j">静岡市・焼津の空き家は宿になる？｜有名観光地でなくても収益物件になり得る理由と見極め方</n-w></span>
+                  <span class="guide-step__more"><n-w class="j">記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
             <li class="guide-step reveal" data-date="2026-09-29">
-              <span class="guide-step__no">05</span>
               <a href="../media/new-build-vs-used-house-inn.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">開業・制度</n-w></span>
-                <span class="guide-step__title"><n-w class="j">小規模宿は新築と中古どっちがおすすめ？費用・工期・法令・税金の違いから選び方を解説</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">小規模な宿を始めるとき、新築で建てるか、中古の住宅や空き家を改修するかは大きな分かれ道です。初期費用・工期・法令への対応・減価償却・融資・集客上の魅力の違いを比較し、どんな人にどちらが向いているかを解説します。</n-w></span>
+                <span class="guide-step__no">05</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/thatched-house-800.webp 800w, ../../images/photos/w/thatched-house-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/thatched-house.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w>開業・制度</n-w><span class="guide-step__min"><n-w>約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w>小規模宿は新築と中古どっちがおすすめ？費用・工期・法令・税金の違いから選び方を解説</n-w></span>
+                  <span class="guide-step__more"><n-w>記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
           </ol>
@@ -130,11 +146,14 @@
           <div class="guide-stage__head reveal"><span class="guide-stage__no">Step 3</span><h2 class="guide-stage__title">お金と税金</h2><p class="guide-stage__desc">売却した<wbr>ときの<wbr>税金と、<wbr>使える<wbr>特例。</p></div>
           <ol class="guide-steps">
             <li class="guide-step reveal" data-date="2026-12-05">
-              <span class="guide-step__no">06</span>
               <a href="../media/akiya-3000man-deduction.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">空き家活用</n-w></span>
-                <span class="guide-step__title"><n-w class="j">相続した空き家を売るなら知っておきたい「3,000万円特別控除」｜条件と注意点</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">相続した実家などの空き家を売却したとき、一定の条件を満たせば、譲渡所得から最大3,000万円を控除できる特例があります。対象となる家の条件、売却の期限、2024年からの改正点、活用と売却の比べ方を解説します。</n-w></span>
+                <span class="guide-step__no">06</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/cherry-river-800.webp 800w, ../../images/photos/w/cherry-river-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/cherry-river.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w>空き家活用</n-w><span class="guide-step__min"><n-w>約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w>相続した空き家を売るなら知っておきたい「3,000万円特別控除」｜条件と注意点</n-w></span>
+                  <span class="guide-step__more"><n-w>記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
           </ol>

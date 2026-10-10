@@ -8,7 +8,7 @@
   --c-bg-soft: #f8f8f7;
   --c-text: #111111;
   --c-sub: #4a4a4a;
-  --c-muted: #8a8a8a;
+  --c-muted: #6b6b6b;  /* 白背景で文字のコントラスト比 4.5:1 以上（WCAG AA） */
   --c-line: #eeeeee;
   --c-line-strong: #d9d9d9;
   --c-accent: #1a472a;
@@ -1996,3 +1996,56 @@ body.is-media { --header-h: 117px; }
   .header--media .mnav__list { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
 }
 @media (max-width: 899px) { .mheader__corp { display: none; } }
+/* FVは引き算：ロゴと、状況別の入口だけ */
+.mfv__entry { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 56px; }
+.mfvlogo__sub { margin-top: 18px; }
+@media (max-width: 899px) {
+  .mfv { align-items: flex-end; padding-bottom: 56px; }
+  .mfv__entry { flex-direction: column; margin-top: 40px; }
+}
+/* 右上：運営会社のロゴ */
+.mheader__corp { display: inline-flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: 0.12em; }
+.mheader__corp img { width: auto; height: 26px; }
+.mheader__corp:hover img { opacity: 0.8; }
+@media (max-width: 899px) {
+  .mheader__corp { display: inline-flex; gap: 8px; font-size: 10px; }
+  .mheader__corp img { height: 20px; }
+  .header--media .mlogo__sub { display: none; }
+}
+picture { display: contents; }
+/* 新着：右の小さなカードは間を空けずに上から詰める（大きなカードの高さに引き伸ばさない） */
+.media-grid--feature { grid-template-rows: auto auto 1fr; row-gap: 28px; }
+.media-grid--feature .is-lead { grid-row: span 3; }
+@media (max-width: 899px) {
+  .media-grid--feature { grid-template-rows: none; }
+  .media-grid--feature .is-lead { grid-row: auto; }
+}
+/* ガイドの記事：写真つきのカードにして、押せることが一目で分かるように */
+.guide-step { display: block; padding: 0; border-bottom: 0; }
+.guide-steps { display: grid; gap: 12px; border-top: 0; }
+.guide-step__body { display: grid; grid-template-columns: 44px 200px minmax(0, 1fr); align-items: center; gap: 24px; padding: 16px 24px 16px 20px; border: 1px solid var(--c-line); background: var(--c-bg); transition: border-color .2s, box-shadow .3s; }
+a.guide-step__body:hover { border-color: var(--c-line-strong); box-shadow: var(--shadow-sm); }
+.guide-step__no { font-size: 24px; line-height: 1; color: var(--c-accent); }
+.guide-step__thumb { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--c-bg-soft); }
+.guide-step__thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+a.guide-step__body:hover .guide-step__thumb img { transform: scale(1.04); }
+.guide-step__text { display: flex; flex-direction: column; gap: 6px; }
+.guide-step__min { margin-left: 12px; padding-left: 12px; border-left: 1px solid var(--c-line-strong); }
+.guide-step__title { font-size: 17px; line-height: 1.75; }
+.guide-step__more { display: inline-flex; align-items: center; gap: 12px; margin-top: 4px; font-size: 13px; letter-spacing: 0.06em; color: var(--c-accent); }
+.guide-step.is-upcoming .guide-step__body { background: var(--c-bg-soft); border-style: dashed; }
+.guide-step.is-upcoming .guide-step__thumb { opacity: 0.5; filter: grayscale(0.6); }
+.guide-step.is-upcoming .guide-step__no, .guide-step.is-upcoming .guide-step__title { color: var(--c-muted); }
+.guide-step__soon { margin-top: 4px; font-size: 12.5px; letter-spacing: 0.08em; color: var(--c-accent); }
+@media (max-width: 899px) {
+  .guide-step__body { grid-template-columns: 96px minmax(0, 1fr); gap: 6px 14px; padding: 12px; }
+  .guide-step__no { grid-column: 1 / -1; font-size: 15px; }
+  .guide-step__thumb { aspect-ratio: 1 / 1; }
+  .guide-step__title { font-size: 14.5px; line-height: 1.7; }
+  .guide-step__min { display: none; }
+  .guide-step__more { font-size: 12px; }
+}
+/* タップしやすい大きさ（24px以上）を確保する */
+.crumbs a { display: inline-block; padding: 4px 0; }
+.toc li a { display: inline-block; padding: 4px 0; line-height: 1.7; }
+.supervisor__links ul a { display: inline-block; padding: 6px 0; }

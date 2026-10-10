@@ -39,7 +39,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
   <link rel="stylesheet" href="../../css/style.css">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
@@ -55,8 +56,8 @@
 
   <header class="header header--media">
     <div class="container mheader__inner">
-      <a href="../media.html" class="mheader__logo" aria-label="アキヤド トップ"><span class="mlogo"><span class="mlogo__ja">アキヤド</span><span class="mlogo__sub">空き家と<wbr>民泊の<wbr>メディア</span></span></a>
-      <a href="../index.html" class="mheader__corp">運営：RIVIA&amp;CO.</a>
+      <a href="../media.html" class="mheader__logo"><span class="mlogo"><span class="mlogo__ja">アキヤド</span><span class="mlogo__sub">空き家と<wbr>民泊の<wbr>メディア</span></span></a>
+      <a href="../index.html" class="mheader__corp"><span>運営</span><img src="../../images/logo/logo.svg" alt="RIVIA&amp;CO." width="325" height="64"></a>
     </div>
     <nav class="mnav" aria-label="アキヤドのメニュー">
       <div class="container"><ul class="mnav__list"><li><a href="../media.html">トップ</a></li><li><a href="../media/guide-sell.html">空き家を<wbr>売りたい</a></li><li><a href="../media/guide-use.html">空き家を<wbr>活かしたい</a></li><li><a href="../media/guide-side.html">副業で宿をはじめたい</a></li><li><a href="../media.html#themes">テーマから探す</a></li><li><a href="../media/search.html">記事をさがす</a></li></ul></div>
@@ -78,7 +79,7 @@
             <span><n-w>監修：石原 佑真</n-w></span>
           </p>
           <div class="article__for"><span>こんな方に</span><ul><li><a href="../media/guide-use.html">空き家を<wbr>活かしたい方へ</a></li><li><a href="../media/guide-side.html">副業で宿をはじめたい方へ</a></li></ul></div>
-          <figure class="article__photo"><img src="../../images/photos/dark-room.jpg" alt="障子越しに光の入る和室" width="1600" height="700" fetchpriority="high"></figure>
+          <figure class="article__photo"><picture><source type="image/webp" srcset="../../images/photos/w/dark-room-800.webp 800w, ../../images/photos/w/dark-room-1600.webp 1600w" sizes="(max-width: 899px) 100vw, 800px"><img src="../../images/photos/dark-room.jpg" alt="障子越しに光の入る和室" width="1600" height="700" fetchpriority="high" decoding="async"></picture></figure>
         </div>
       </header>
 
@@ -232,7 +233,7 @@
         <div class="media-grid media-grid--scroll" data-limit="3">
           <a href="../media/minpaku-vs-ryokan-law.html" class="media-card reveal" data-category="kaigyo" data-date="2026-09-29">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/temple-bridge.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/temple-bridge-800.webp 800w, ../../images/photos/w/temple-bridge-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/temple-bridge.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">開業・制度</span>
             </div>
             <div class="media-card__body">
@@ -243,7 +244,7 @@
           </a>
           <a href="../media/new-build-vs-used-house-inn.html" class="media-card reveal" data-category="kaigyo" data-date="2026-09-29">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/thatched-house.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/thatched-house-800.webp 800w, ../../images/photos/w/thatched-house-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/thatched-house.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">開業・制度</span>
             </div>
             <div class="media-card__body">
@@ -254,7 +255,7 @@
           </a>
           <a href="../media/minpaku-start-steps.html" class="media-card reveal" data-category="kaigyo" data-date="2026-11-01">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/white-bedroom.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/white-bedroom-800.webp 800w, ../../images/photos/w/white-bedroom-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/white-bedroom.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">開業・制度</span>
             </div>
             <div class="media-card__body">
@@ -265,7 +266,7 @@
           </a>
           <a href="../media/minpaku-fire-safety.html" class="media-card reveal" data-category="kaigyo" data-date="2026-11-09">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/hotel-room.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/hotel-room-800.webp 800w, ../../images/photos/w/hotel-room-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/hotel-room.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">開業・制度</span>
             </div>
             <div class="media-card__body">
@@ -276,7 +277,7 @@
           </a>
           <a href="../media/minpaku-management-company.html" class="media-card reveal" data-category="kaigyo" data-date="2026-11-21">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/lanterns.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/lanterns-800.webp 800w, ../../images/photos/w/lanterns-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/lanterns.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">開業・制度</span>
             </div>
             <div class="media-card__body">
@@ -287,7 +288,7 @@
           </a>
           <a href="../media/inn-startup-funding.html" class="media-card reveal" data-category="kaigyo" data-date="2026-11-29">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/fuji-lupin.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/fuji-lupin-800.webp 800w, ../../images/photos/w/fuji-lupin-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/fuji-lupin.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">開業・制度</span>
             </div>
             <div class="media-card__body">
@@ -298,7 +299,7 @@
           </a>
           <a href="../media/akiya-inherited-house-to-inn.html" class="media-card reveal" data-category="akiya" data-date="2026-09-29">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/old-town-street.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/old-town-street-800.webp 800w, ../../images/photos/w/old-town-street-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/old-town-street.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">空き家活用</span>
             </div>
             <div class="media-card__body">
@@ -309,7 +310,7 @@
           </a>
           <a href="../media/japan-tourism-market-data.html" class="media-card reveal" data-category="market" data-date="2026-09-29">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/fuji-lake.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/fuji-lake-800.webp 800w, ../../images/photos/w/fuji-lake-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/fuji-lake.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">観光市場</span>
             </div>
             <div class="media-card__body">
@@ -320,7 +321,7 @@
           </a>
           <a href="../media/akiya-regional-revitalization.html" class="media-card reveal" data-category="chiho" data-date="2026-09-29">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/rural-station.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/rural-station-800.webp 800w, ../../images/photos/w/rural-station-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/rural-station.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">地方創生</span>
             </div>
             <div class="media-card__body">
@@ -331,7 +332,7 @@
           </a>
           <a href="../media/airdna-revenue-simulation.html" class="media-card reveal" data-category="keiei" data-date="2026-09-29">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/koi-pond.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/koi-pond-800.webp 800w, ../../images/photos/w/koi-pond-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/koi-pond.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">収益・運営</span>
             </div>
             <div class="media-card__body">
@@ -342,7 +343,7 @@
           </a>
           <a href="../media/shizuoka-yaizu-akiya-inn.html" class="media-card reveal" data-category="akiya" data-date="2026-10-01">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/town-railway.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/town-railway-800.webp 800w, ../../images/photos/w/town-railway-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/town-railway.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">空き家活用</span>
             </div>
             <div class="media-card__body">
@@ -353,7 +354,7 @@
           </a>
           <a href="../media/inn-kpi-basics.html" class="media-card reveal" data-category="keiei" data-date="2026-11-05">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/pillow.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/pillow-800.webp 800w, ../../images/photos/w/pillow-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/pillow.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">収益・運営</span>
             </div>
             <div class="media-card__body">
@@ -364,7 +365,7 @@
           </a>
           <a href="../media/long-stay-travel-demand.html" class="media-card reveal" data-category="market" data-date="2026-11-07">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/scene-stay.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/scene-stay-800.webp 800w, ../../images/photos/w/scene-stay-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/scene-stay.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">観光市場</span>
             </div>
             <div class="media-card__body">
@@ -375,7 +376,7 @@
           </a>
           <a href="../media/ota-vs-direct-booking.html" class="media-card reveal" data-category="keiei" data-date="2026-11-11">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/onsen-town-street.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/onsen-town-street-800.webp 800w, ../../images/photos/w/onsen-town-street-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/onsen-town-street.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">収益・運営</span>
             </div>
             <div class="media-card__body">
@@ -386,7 +387,7 @@
           </a>
           <a href="../media/kominka-renovation-points.html" class="media-card reveal" data-category="akiya" data-date="2026-11-13">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/irori-room.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/irori-room-800.webp 800w, ../../images/photos/w/irori-room-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/irori-room.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">空き家活用</span>
             </div>
             <div class="media-card__body">
@@ -397,7 +398,7 @@
           </a>
           <a href="../media/cleaning-linen-operations.html" class="media-card reveal" data-category="keiei" data-date="2026-11-17">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/white-bed.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/white-bed-800.webp 800w, ../../images/photos/w/white-bed-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/white-bed.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">収益・運営</span>
             </div>
             <div class="media-card__body">
@@ -408,7 +409,7 @@
           </a>
           <a href="../media/inbound-regional-dispersion.html" class="media-card reveal" data-category="market" data-date="2026-11-19">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/fuji-train.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/fuji-train-800.webp 800w, ../../images/photos/w/fuji-train-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/fuji-train.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">観光市場</span>
             </div>
             <div class="media-card__body">
@@ -419,7 +420,7 @@
           </a>
           <a href="../media/listing-photo-tips.html" class="media-card reveal" data-category="keiei" data-date="2026-11-25">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/autumn-garden.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/autumn-garden-800.webp 800w, ../../images/photos/w/autumn-garden-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/autumn-garden.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">収益・運営</span>
             </div>
             <div class="media-card__body">
@@ -430,7 +431,7 @@
           </a>
           <a href="../media/tourism-labor-shortage.html" class="media-card reveal" data-category="chiho" data-date="2026-11-27">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/onsen-town-crowd.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/onsen-town-crowd-800.webp 800w, ../../images/photos/w/onsen-town-crowd-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/onsen-town-crowd.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">地方創生</span>
             </div>
             <div class="media-card__body">
@@ -441,7 +442,7 @@
           </a>
           <a href="../media/guest-review-tips.html" class="media-card reveal" data-category="keiei" data-date="2026-12-01">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/garden-boat.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/garden-boat-800.webp 800w, ../../images/photos/w/garden-boat-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/garden-boat.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">収益・運営</span>
             </div>
             <div class="media-card__body">
@@ -452,7 +453,7 @@
           </a>
           <a href="../media/accommodation-tax.html" class="media-card reveal" data-category="market" data-date="2026-12-03">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/scene-connect.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/scene-connect-800.webp 800w, ../../images/photos/w/scene-connect-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/scene-connect.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">観光市場</span>
             </div>
             <div class="media-card__body">
@@ -463,7 +464,7 @@
           </a>
           <a href="../media/minpaku-investment-yield.html" class="media-card reveal" data-category="keiei" data-date="2026-12-09">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/mountain-dawn.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/mountain-dawn-800.webp 800w, ../../images/photos/w/mountain-dawn-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/mountain-dawn.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">収益・運営</span>
             </div>
             <div class="media-card__body">
@@ -474,7 +475,7 @@
           </a>
           <a href="../media/akiya-bank-guide.html" class="media-card reveal" data-category="akiya" data-date="2026-11-03">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/green-hills.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/green-hills-800.webp 800w, ../../images/photos/w/green-hills-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/green-hills.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">空き家活用</span>
             </div>
             <div class="media-card__body">
@@ -485,7 +486,7 @@
           </a>
           <a href="../media/inn-local-economy.html" class="media-card reveal" data-category="chiho" data-date="2026-11-15">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/scene-walk.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/scene-walk-800.webp 800w, ../../images/photos/w/scene-walk-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/scene-walk.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">地方創生</span>
             </div>
             <div class="media-card__body">
@@ -496,7 +497,7 @@
           </a>
           <a href="../media/akiya-lease-types.html" class="media-card reveal" data-category="akiya" data-date="2026-11-23">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/window-garden.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/window-garden-800.webp 800w, ../../images/photos/w/window-garden-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/window-garden.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">空き家活用</span>
             </div>
             <div class="media-card__body">
@@ -507,7 +508,7 @@
           </a>
           <a href="../media/akiya-3000man-deduction.html" class="media-card reveal" data-category="akiya" data-date="2026-12-05">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/cherry-river.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/cherry-river-800.webp 800w, ../../images/photos/w/cherry-river-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/cherry-river.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">空き家活用</span>
             </div>
             <div class="media-card__body">
@@ -518,7 +519,7 @@
           </a>
           <a href="../media/kankei-jinko-and-inns.html" class="media-card reveal" data-category="chiho" data-date="2026-12-07">
             <div class="thumb thumb--photo">
-              <img src="../../images/photos/thumb/shrine-path.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <picture><source type="image/webp" srcset="../../images/photos/w/shrine-path-800.webp 800w, ../../images/photos/w/shrine-path-1600.webp 1600w" sizes="(max-width: 899px) 90vw, 400px"><img src="../../images/photos/thumb/shrine-path.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture>
               <span class="thumb__cat">地方創生</span>
             </div>
             <div class="media-card__body">

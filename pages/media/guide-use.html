@@ -41,7 +41,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
   <link rel="stylesheet" href="../../css/style.css">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
@@ -55,8 +56,8 @@
 
   <header class="header header--media">
     <div class="container mheader__inner">
-      <a href="../media.html" class="mheader__logo" aria-label="アキヤド トップ"><span class="mlogo"><span class="mlogo__ja">アキヤド</span><span class="mlogo__sub">空き家と<wbr>民泊の<wbr>メディア</span></span></a>
-      <a href="../index.html" class="mheader__corp">運営：RIVIA&amp;CO.</a>
+      <a href="../media.html" class="mheader__logo"><span class="mlogo"><span class="mlogo__ja">アキヤド</span><span class="mlogo__sub">空き家と<wbr>民泊の<wbr>メディア</span></span></a>
+      <a href="../index.html" class="mheader__corp"><span>運営</span><img src="../../images/logo/logo.svg" alt="RIVIA&amp;CO." width="325" height="64"></a>
     </div>
     <nav class="mnav" aria-label="アキヤドのメニュー">
       <div class="container"><ul class="mnav__list"><li><a href="../media.html">トップ</a></li><li><a href="../media/guide-sell.html">空き家を<wbr>売りたい</a></li><li><a href="../media/guide-use.html" aria-current="page">空き家を<wbr>活かしたい</a></li><li><a href="../media/guide-side.html">副業で宿をはじめたい</a></li><li><a href="../media.html#themes">テーマから探す</a></li><li><a href="../media/search.html">記事をさがす</a></li></ul></div>
@@ -80,27 +81,36 @@
           <div class="guide-stage__head reveal"><span class="guide-stage__no">Step 1</span><h2 class="guide-stage__title">活かし方を知る</h2><p class="guide-stage__desc"><n-w>空き家が宿として、地域の中でどんな価値を持つのか。</n-w></p></div>
           <ol class="guide-steps">
             <li class="guide-step reveal" data-date="2026-09-29">
-              <span class="guide-step__no">01</span>
               <a href="../media/akiya-inherited-house-to-inn.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">空き家活用</n-w></span>
-                <span class="guide-step__title"><n-w class="j">実家・祖父母の家を放置するとどうなる？固定資産税を払い続ける人が「小さな宿」を選ぶ理由</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">相続した実家や祖父母の家を空き家のまま放置すると、固定資産税や管理の負担、法改正によるリスクが増えていきます。売却・解体・賃貸と比較しながら、小規模な宿として活用する人が増えている背景と、始める前に確認すべきポイントを解説します。</n-w></span>
+                <span class="guide-step__no">01</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/old-town-street-800.webp 800w, ../../images/photos/w/old-town-street-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/old-town-street.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w class="j">空き家活用</n-w><span class="guide-step__min"><n-w class="j">約5分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w class="j">実家・祖父母の家を放置するとどうなる？固定資産税を払い続ける人が「小さな宿」を選ぶ理由</n-w></span>
+                  <span class="guide-step__more"><n-w class="j">記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
             <li class="guide-step reveal" data-date="2026-09-29">
-              <span class="guide-step__no">02</span>
               <a href="../media/akiya-regional-revitalization.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">地方創生</n-w></span>
-                <span class="guide-step__title"><n-w class="j">空き家活用はなぜ地方創生につながるのか？宿泊施設への再生が地域にもたらす4つの循環</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">空き家を宿泊施設として再生すると、観光消費・雇用・関係人口・まちなみの継承という4つの循環が地域に生まれます。人口減少が進む地方で、空き家活用が地方創生の手段として注目される理由と、成功させるためのポイントを解説します。</n-w></span>
+                <span class="guide-step__no">02</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/rural-station-800.webp 800w, ../../images/photos/w/rural-station-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/rural-station.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w>地方創生</n-w><span class="guide-step__min"><n-w>約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w>空き家活用はなぜ地方創生につながるのか？宿泊施設への再生が地域にもたらす4つの循環</n-w></span>
+                  <span class="guide-step__more"><n-w>記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
             <li class="guide-step reveal" data-date="2026-11-15">
-              <span class="guide-step__no">03</span>
               <a href="../media/inn-local-economy.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">地方創生</n-w></span>
-                <span class="guide-step__title"><n-w class="j">宿が地域にお金を落とす仕組み｜旅行者の消費が地域経済に広がる「経済循環」とは</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">宿は、旅行者を地域に迎え入れ、宿の外での食事や買い物、体験へとお金の流れを広げる起点になります。旅行者の消費が地域に広がる仕組みと、地域内でお金が循環する宿のつくり方を解説します。</n-w></span>
+                <span class="guide-step__no">03</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/scene-walk-800.webp 800w, ../../images/photos/w/scene-walk-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/scene-walk.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w>地方創生</n-w><span class="guide-step__min"><n-w>約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w>宿が地域にお金を落とす仕組み｜旅行者の消費が地域経済に広がる「経済循環」とは</n-w></span>
+                  <span class="guide-step__more"><n-w>記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
           </ol>
@@ -109,27 +119,36 @@
           <div class="guide-stage__head reveal"><span class="guide-stage__no">Step 2</span><h2 class="guide-stage__title">活かし方を選ぶ</h2><p class="guide-stage__desc"><n-w>貸す・運営を任せる・自分で営業する。契約と法令の違い。</n-w></p></div>
           <ol class="guide-steps">
             <li class="guide-step reveal" data-date="2026-11-23">
-              <span class="guide-step__no">04</span>
               <a href="../media/akiya-lease-types.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">空き家活用</n-w></span>
-                <span class="guide-step__title"><n-w class="j">空き家を「貸す」なら知っておきたい契約の種類｜普通借家・定期借家・借り上げの違い</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">空き家を貸して家賃を得る方法には、普通借家契約、定期借家契約、事業者による借り上げ（サブリース）などがあります。それぞれの違いと、宿として貸す場合に確認したい契約のポイントを解説します。</n-w></span>
+                <span class="guide-step__no">04</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/window-garden-800.webp 800w, ../../images/photos/w/window-garden-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/window-garden.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w>空き家活用</n-w><span class="guide-step__min"><n-w>約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w>空き家を「貸す」なら知っておきたい契約の種類｜普通借家・定期借家・借り上げの違い</n-w></span>
+                  <span class="guide-step__more"><n-w>記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
             <li class="guide-step reveal" data-date="2026-09-29">
-              <span class="guide-step__no">05</span>
               <a href="../media/minpaku-vs-ryokan-law.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">開業・制度</n-w></span>
-                <span class="guide-step__title"><n-w class="j">空き家で宿を始めるには？民泊新法と旅館業（簡易宿所）の違い・選び方をわかりやすく解説</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">空き家を宿泊施設にするには、住宅宿泊事業法（民泊新法）の届出か、旅館業法の許可（簡易宿所など）が必要です。営業日数・手続き・設備要件の違いを比較し、目的に合った選び方と開業までの流れを解説します。</n-w></span>
+                <span class="guide-step__no">05</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/temple-bridge-800.webp 800w, ../../images/photos/w/temple-bridge-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/temple-bridge.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w class="j">開業・制度</n-w><span class="guide-step__min"><n-w class="j">約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w class="j">空き家で宿を始めるには？民泊新法と旅館業（簡易宿所）の違い・選び方をわかりやすく解説</n-w></span>
+                  <span class="guide-step__more"><n-w class="j">記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
             <li class="guide-step reveal" data-date="2026-11-21">
-              <span class="guide-step__no">06</span>
               <a href="../media/minpaku-management-company.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">開業・制度</n-w></span>
-                <span class="guide-step__title"><n-w class="j">住宅宿泊管理業者とは？委託が必要なケースと、管理会社を選ぶときの5つのポイント</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">家主が住んでいない住宅で民泊を行う場合、原則として住宅宿泊管理業者への委託が必要です。委託が必要になるケース、管理業者が担う業務、管理会社を選ぶときに確認したいポイントを解説します。</n-w></span>
+                <span class="guide-step__no">06</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/lanterns-800.webp 800w, ../../images/photos/w/lanterns-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/lanterns.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w>開業・制度</n-w><span class="guide-step__min"><n-w>約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w>住宅宿泊管理業者とは？委託が必要なケースと、管理会社を選ぶときの5つのポイント</n-w></span>
+                  <span class="guide-step__more"><n-w>記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
           </ol>
@@ -138,27 +157,36 @@
           <div class="guide-stage__head reveal"><span class="guide-stage__no">Step 3</span><h2 class="guide-stage__title">家を整える</h2><p class="guide-stage__desc">残すもの・直す<wbr>もの、<wbr>消防設備の<wbr>基準。</p></div>
           <ol class="guide-steps">
             <li class="guide-step reveal" data-date="2026-11-13">
-              <span class="guide-step__no">07</span>
               <a href="../media/kominka-renovation-points.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">空き家活用</n-w></span>
-                <span class="guide-step__title"><n-w class="j">古民家を宿に改修するときのポイント｜残すもの・変えるもの、断熱・水回り・耐震の考え方</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">古民家を宿として再生するとき、梁や建具などの魅力を残しながら、快適性と安全性を高める改修が求められます。残すもの・変えるものの考え方と、断熱・水回り・耐震など優先して検討したいポイントを解説します。</n-w></span>
+                <span class="guide-step__no">07</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/irori-room-800.webp 800w, ../../images/photos/w/irori-room-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/irori-room.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w class="j">空き家活用</n-w><span class="guide-step__min"><n-w class="j">約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w class="j">古民家を宿に改修するときのポイント｜残すもの・変えるもの、断熱・水回り・耐震の考え方</n-w></span>
+                  <span class="guide-step__more"><n-w class="j">記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
             <li class="guide-step reveal" data-date="2026-11-09">
-              <span class="guide-step__no">08</span>
               <a href="../media/minpaku-fire-safety.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">開業・制度</n-w></span>
-                <span class="guide-step__title"><n-w class="j">民泊・小さな宿の消防設備ガイド｜自動火災報知設備・誘導灯・消防法令適合通知書の基本</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">民泊や小さな宿を始めるとき、見落としやすいのが消防設備です。家主の居住の有無や建物の規模によって、必要な設備は変わります。自動火災報知設備や誘導灯、消防法令適合通知書など、開業前に押さえたい基本を解説します。</n-w></span>
+                <span class="guide-step__no">08</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/hotel-room-800.webp 800w, ../../images/photos/w/hotel-room-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/hotel-room.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w>開業・制度</n-w><span class="guide-step__min"><n-w>約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w>民泊・小さな宿の消防設備ガイド｜自動火災報知設備・誘導灯・消防法令適合通知書の基本</n-w></span>
+                  <span class="guide-step__more"><n-w>記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
             <li class="guide-step reveal" data-date="2026-09-29">
-              <span class="guide-step__no">09</span>
               <a href="../media/new-build-vs-used-house-inn.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">開業・制度</n-w></span>
-                <span class="guide-step__title"><n-w class="j">小規模宿は新築と中古どっちがおすすめ？費用・工期・法令・税金の違いから選び方を解説</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">小規模な宿を始めるとき、新築で建てるか、中古の住宅や空き家を改修するかは大きな分かれ道です。初期費用・工期・法令への対応・減価償却・融資・集客上の魅力の違いを比較し、どんな人にどちらが向いているかを解説します。</n-w></span>
+                <span class="guide-step__no">09</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/thatched-house-800.webp 800w, ../../images/photos/w/thatched-house-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/thatched-house.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w>開業・制度</n-w><span class="guide-step__min"><n-w>約3分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w>小規模宿は新築と中古どっちがおすすめ？費用・工期・法令・税金の違いから選び方を解説</n-w></span>
+                  <span class="guide-step__more"><n-w>記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
           </ol>
@@ -167,19 +195,25 @@
           <div class="guide-stage__head reveal"><span class="guide-stage__no">Step 4</span><h2 class="guide-stage__title">お金の<wbr>見通しを<wbr>立てる</h2><p class="guide-stage__desc">補助金と、<wbr>収益の<wbr>見込みの<wbr>立て方。</p></div>
           <ol class="guide-steps">
             <li class="guide-step reveal" data-date="2026-09-29">
-              <span class="guide-step__no">10</span>
               <a href="../media/small-inn-subsidies.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">開業・制度</n-w></span>
-                <span class="guide-step__title"><n-w class="j">小規模宿の開業・運営で使える補助金・支援制度まとめ｜申請前に知っておきたい注意点</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">小規模な宿の開業・運営では、販路開拓やIT導入、空き家の改修、地方での起業などを支援する補助金を活用できる場合があります。代表的な制度の種類と対象になりやすい経費、申請前に知っておきたい注意点を解説します。</n-w></span>
+                <span class="guide-step__no">10</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/dark-room-800.webp 800w, ../../images/photos/w/dark-room-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/dark-room.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w>開業・制度</n-w><span class="guide-step__min"><n-w>約4分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w>小規模宿の開業・運営で使える補助金・支援制度まとめ｜申請前に知っておきたい注意点</n-w></span>
+                  <span class="guide-step__more"><n-w>記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
             <li class="guide-step reveal" data-date="2026-09-29">
-              <span class="guide-step__no">11</span>
               <a href="../media/airdna-revenue-simulation.html" class="guide-step__body">
-                <span class="guide-step__cat"><n-w class="j">収益・運営</n-w></span>
-                <span class="guide-step__title"><n-w class="j">AirDNAで小規模宿の収益をシミュレーションする方法｜数字の見方と「再現性」を高める5つのコツ</n-w></span>
-                <span class="guide-step__desc"><n-w class="j">民泊・一棟貸しの市場データを提供するAirDNAを使うと、エリアの稼働率や平均客室単価から、小規模宿の売上と利回りを事前に試算できます。シミュレーションの手順と具体的な計算例、データの限界を踏まえて試算の「再現性」を高めるコツを解説します。</n-w></span>
+                <span class="guide-step__no">11</span>
+                <span class="guide-step__thumb"><picture><source type="image/webp" srcset="../../images/photos/w/koi-pond-800.webp 800w, ../../images/photos/w/koi-pond-1600.webp 1600w" sizes="(max-width: 899px) 30vw, 220px"><img src="../../images/photos/thumb/koi-pond.jpg" alt="" width="720" height="450" loading="lazy" decoding="async"></picture></span>
+                <span class="guide-step__text">
+                  <span class="guide-step__cat"><n-w class="j">収益・運営</n-w><span class="guide-step__min"><n-w class="j">約5分で読める</n-w></span></span>
+                  <span class="guide-step__title"><n-w class="j">AirDNAで小規模宿の収益をシミュレーションする方法｜数字の見方と「再現性」を高める5つのコツ</n-w></span>
+                  <span class="guide-step__more"><n-w class="j">記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
+                </span>
               </a>
             </li>
           </ol>
