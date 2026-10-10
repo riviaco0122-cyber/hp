@@ -1,14 +1,21 @@
 #!/usr/bin/env python3
 """YouTube から記事ネタ・一次情報の手がかりを集める（リサーチ部が使う）。無料の YouTube Data API を使う。
 
+※ このリポジトリは公開されている。コメント本文・個人名・概要欄の全文はファイルに保存しない。
+  読者の悩みは、リサーチ部が自分の言葉で要約してリサーチメモに書く。
+
 必要な環境変数:
   YOUTUBE_API_KEY   Google Cloud で発行した API キー（docs/seo/analytics-setup.md の 6 章）
 
 使い方:
   python3 tools/youtube_research.py "民泊 開業 失敗" [--days 180] [--max 10] [--comments 20]
 
-出力: docs/sources/youtube/YYYY-MM-DD_<キーワード>.md
-  動画ごとのタイトル・チャンネル・公開日・再生数・概要欄・人気コメント（＝視聴者の生の悩み）。
+出力:
+  ファイル docs/sources/youtube/YYYY-MM-DD_<キーワード>.md
+    動画ごとのタイトル・チャンネル名・URL・公開日・再生数などの数値と、概要欄の冒頭（約100字）だけ。
+  標準出力（ファイルには残らない）
+    人気コメント（--comments 件）。一時的な分析用。読み終えたら、悩みの傾向を自分の言葉で要約して
+    リサーチメモに書く。コメントの原文・投稿者名は転記しない。
   ※ 字幕（文字起こし）は API の制約で他人の動画からは取得できない。必要なら人が要約を
     docs/sources/inbox/ に置く。
 
@@ -63,25 +70,36 @@ def main():
     today = dt.date.today().isoformat()
     L = [f"# YouTube 調査: {a.query}", "",
          f"取得日 {today} ／ 公開 {a.days} 日以内 ／ {len(videos)} 本", "",
-         "> 引用ルール: 内容は要約して使い、発言者（チャンネル名）と動画URLを出典として明記する。",
-         "> 他人の体験を RIVIA の体験として書かない。コメントは個人が特定できない形で「読者の悩み」として参考にする。", ""]
+         "> 注記: このリポジトリは公開されている。コメント本文・個人名・概要欄の全文を保存しない。",
+         "> 読者の悩みは、リサーチ部が自分の言葉で要約してリサーチメモに書く。",
+         "> 引用ルール: 動画の内容は要約して使い、発信者（チャンネル名）と動画URLを出典として明記する。"
+         "他人の体験を RIVIA の体験として書かない。", ""]
+    comment_out = []  # 標準出力にだけ出す（ファイルには保存しない）
     for v in videos:
         s, st = v["snippet"], v.get("statistics", {})
         vid = v["id"]
-        desc = re.sub(r"\n{3,}", "\n\n", s.get("description", "")).strip()
+        desc = re.sub(r"\s+", " ", s.get("description", "")).strip()
+        head = (desc[:100] + "…") if len(desc) > 100 else desc
         L += [f"## {s['title']}", "",
               f"- URL: https://www.youtube.com/watch?v={vid}",
               f"- チャンネル: {s['channelTitle']}（https://www.youtube.com/channel/{s['channelId']}）",
               f"- 公開日: {s['publishedAt'][:10]} ／ 再生 {int(st.get('viewCount', 0)):,} ／ 高評価 {int(st.get('likeCount', 0)):,} ／ コメント {int(st.get('commentCount', 0)):,}",
-              "", "### 概要欄", "", "```", desc[:3000] or "（なし）", "```", ""]
+              f"- 概要欄の冒頭（約100字・全文は保存しない）: {head or '（なし）'}", ""]
         if a.comments:
             cm = call("commentThreads", part="snippet", videoId=vid, order="relevance",
                       maxResults=min(a.comments, 100), textFormat="plainText")
             rows = [c["snippet"]["topLevelComment"]["snippet"] for c in cm.get("items", [])]
             if rows:
-                L += ["### 人気コメント（視聴者の悩み・反応）", ""]
-                L += [f"- （👍{r.get('likeCount', 0)}）" + r["textDisplay"].replace("\n", " ")[:300] for r in rows]
-                L += [""]
+                comment_out += [f"\n## {s['title']}（https://www.youtube.com/watch?v={vid}）"]
+                comment_out += [f"- （高評価 {r.get('likeCount', 0)}）" + r["textDisplay"].replace("\n", " ")[:300] for r in rows]
+
+    if comment_out:
+        print("=" * 60)
+        print("人気コメント（一時的な分析用。ファイルには保存していない。原文・投稿者名を転記せず、")
+        print("悩みの傾向を自分の言葉で要約してリサーチメモに書くこと）")
+        print("=" * 60)
+        print("\n".join(comment_out))
+        print("=" * 60)
 
     out_dir = ROOT / "docs" / "sources" / "youtube"
     out_dir.mkdir(parents=True, exist_ok=True)

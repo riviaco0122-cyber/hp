@@ -10,6 +10,14 @@
 
 原稿（Markdown）の決まった形は .claude/agents/writer.md を参照。
 終了コード: ゲート違反があれば 2、なければ 0。
+
+判定の要点:
+  - 重大NGは、直後（最初の「。」か改行まで・最大16字）に否定（〜わけではない、〜ません など）があれば除く。
+  - NG・表記ゆれは、h2 見出しも対象。かぎかっこ「」『』の中と、引用（Markdown の > 行・HTML の <blockquote>）は対象外。
+  - 参考資料（原稿）は「- 資料名（発行元・公表年）URL」の形。URL と4桁の年の両方がある行だけ数える。
+    HTML の既存記事は URL がなくても数え、根拠欄に「URLなし」と出す。公的機関は go.jp・lg.jp などのドメインか、
+    省庁・自治体の正式名称で判定する。
+  - 回帰テスト: python3 tools/tests/test_article_score.py（ケースは tools/tests/score_cases.json）
 """
 import argparse
 import html as htmllib
@@ -22,15 +30,25 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # ---- ルール（docs/brand/ng.md・glossary.md から機械判定できるものを抜き出したもの） ----
 # 重大な NG（1件でもゲート違反＝不合格）: 誇大・保証・断定
+# 直後（「。」・改行まで、最大16字）に否定があるものは除く（NEGATION を参照）。
+_P100 = r"[1１][0０][0０]\s?[%％]"
 NG_SEVERE = [
-    r"必ず(儲|稼|成功|採択|もらえ|許可が(下り|取れ))", r"確実に(儲|稼|成功)", r"絶対(に)?(儲|稼|成功|安全|大丈夫)",
-    r"(利回り|収益|家賃|元本).{0,8}保証", r"No\.?\s?1|ナンバーワン|日本一|業界初|業界No",
-    r"誰でも(簡単|すぐ)", r"手間(ゼロ|なし|いらず)", r"リスク(ゼロ|なし|は(ありません|ない))",
-    r"100%(安全|成功|稼働|満室)", r"(届出|許可)(は)?(不要|いりません)",
+    r"必ず(儲|稼|成功|採択|もらえ|許可が(下り|取れ))", r"確実に(儲|稼|成功)",
+    r"絶対(に)?(儲|稼|成功|安全|大丈夫|失敗し(ない|ません))",
+    r"(利回り|収益|家賃|元本).{0,8}保証", r"満室保証",
+    r"[NnＮｎ][OoＯｏ][.．]?\s?[1１](?![0-9０-９])|ナンバーワン|日本一|日本初|国内初|業界初|業界No",
+    r"(誰|だれ)でも(簡単|すぐ)", r"手間(ゼロ|なし|いらず)", r"リスク(ゼロ|なし|は(ありません|ない))",
+    _P100 + r"\s?の?(安全|成功|稼働|満室)", r"(稼働率?|満室率?|満室)\s?(は|が|も)?\s?" + _P100,
+    r"最安", r"唯一", r"自己資金(は|が)?\s?(ゼロ|[0０]\s?円|なし)", r"不労所得", r"放って(おいて|置いて)も",
+    r"掘り出し物|掘出物", r"格安物件",
+    r"(届出|許可)(は|が|も)?\s?(不要|いりません|要りません|必要ありません|必要ない)",
 ]
+# 否定の判定: マッチの直後から最初の「。」（または改行）までの、最大16字の中だけを見る
+NEGATION = r"わけではな|とは限ら|ではありませ|ではな[いく]|ません|ない|にくい|難しい|誤解"
+NEG_WINDOW = 16
 # 軽い NG（1件ごとに減点）: あおり・言葉づかい
 NG_MINOR = [
-    r"今すぐ(行動|始め)", r"知らないと(損|大変)", r"手遅れ", r"放置すると(必ず|確実に)",
+    r"今すぐ(行動|始め)", r"知らないと(損|大変)", r"手遅れ(です|になります|になる前に)", r"放置すると(必ず|確実に)",
     r"激安|爆益|最強|神(宿|物件)", r"弊社", r"！",
 ]
 # 表記ゆれ（使わない表記 → 統一表記）
@@ -38,11 +56,50 @@ GLOSSARY = [
     (r"ヶ月|カ月|ヵ月", "か月"), (r"下さい", "ください"), (r"出来(る|ます|ない)", "できる"),
     (r"様々", "さまざま"), (r"例えば", "たとえば"), (r"問合せ|問合わせ", "問い合わせ"),
     (r"％", "%（半角）"), (r"Web\s?サイト", "ウェブサイト"), (r"二拠点生活", "二地域居住"),
-    (r"町並み|街並み", "まちなみ"), (r"宿泊単価", "客室単価"), (r"ひとつ(?!ひとつ)", "一つ"),
+    (r"町並み|街並み", "まちなみ"), (r"宿泊単価", "客室単価"), (r"(?<!ひとつ)ひとつ(?!ひとつ|ずつ)", "一つ"),
     (r"(?<!を)わか(る|ら|り|れ)", "分かる"),
 ]
-PUBLIC_SOURCE = r"省|庁|内閣|自治体|都庁|道庁|府庁|県|市役所|区役所|町役場|村役場|[都道府県市区町村]の|法務局|国税|消防|総務|厚生|国土交通|観光庁|e-Gov|統計|白書|法律|条例"
-HEADING_FORM = r"[？?]$|とは|方法|ポイント|理由|違い|まとめ|手順|流れ|注意|選び方|費用|メリット|デメリット|比較|条件|チェック|コツ|例|場合"
+# 参考資料: 公的機関の判定（URL のドメイン、または省庁・自治体の正式名称）
+PUBLIC_DOMAIN = r"https?://(?:[\w-]+\.)*(?:go\.jp|lg\.jp|e-gov\.go\.jp|(?:pref|city|town|vill)\.[\w.-]+\.jp)(?:[/:?#]|$)"
+_PREFS = ("北海道|青森県|岩手県|宮城県|秋田県|山形県|福島県|茨城県|栃木県|群馬県|埼玉県|千葉県|東京都|神奈川県|新潟県|富山県|"
+          "石川県|福井県|山梨県|長野県|岐阜県|静岡県|愛知県|三重県|滋賀県|京都府|大阪府|兵庫県|奈良県|和歌山県|鳥取県|島根県|"
+          "岡山県|広島県|山口県|徳島県|香川県|愛媛県|高知県|福岡県|佐賀県|長崎県|熊本県|大分県|宮崎県|鹿児島県|沖縄県")
+PUBLIC_NAME = (
+    r"国土交通省|観光庁|厚生労働省|総務省|国税庁|消防庁|内閣府|内閣官房|法務省|財務省|経済産業省|中小企業庁|文化庁|"
+    r"農林水産省|環境省|金融庁|デジタル庁|気象庁|文部科学省|外務省|復興庁|スポーツ庁|林野庁|水産庁|消費者庁|"
+    r"出入国在留管理庁|資源エネルギー庁|国立社会保障・人口問題研究所|日本政府観光局|JNTO|e-Gov|法務局|"
+    # 都道府県（直後が「の」のもの＝「〇〇県の不動産会社」などは除く）
+    r"(?:" + _PREFS + r")(?:庁)?(?!の)"
+    # 市区町村は、役所・役場・公式サイト・担当課の形のときだけ
+    r"|[一-龥ァ-ヶ]{1,6}[市区町村]\s?(?:役所|役場|公式|ホームページ|ウェブサイト|[一-龥]{1,8}課)"
+)
+URL_RE = r"https?://\S+"
+YEAR_RE = r"(?<![0-9])(19|20)[0-9]{2}(?![0-9])"
+# 見出しの形: 疑問・定義・結論・まとめ／比較・やり方の型
+HEADING_FORM = r"[？?]$|とは|(です|ます|ましょう|よう|べき)$|まとめ|違い|方法|手順|選び方|ポイント"
+
+
+def remove_quotes(s):
+    """かぎかっこ「」『』の中を除く（レビュー原文などの引用を書き換えさせないため）。入れ子にも対応。"""
+    prev = None
+    while prev != s:
+        prev = s
+        s = re.sub(r"「[^「」\n]*」|『[^『』\n]*』", "「」", s)
+    return s
+
+
+def is_public(src):
+    return bool(re.search(PUBLIC_DOMAIN, src) or re.search(PUBLIC_NAME, src))
+
+
+def find_severe(text):
+    hits = []
+    for p in NG_SEVERE:
+        for m in re.finditer(p, text):
+            after = re.split(r"[。\n]", text[m.end():m.end() + NEG_WINDOW], maxsplit=1)[0]
+            if not re.search(NEGATION, after):  # 「必ず採択されるわけではありません」などの否定は除く
+                hits.append(m.group(0))
+    return hits
 
 
 def strip_tags(s):
@@ -66,6 +123,10 @@ def parse_html(text):
     body = "".join(s for _, s in body_secs)
     lead = re.search(r'<p class="article__lead">(.*?)</p>', text, re.S)
     d["body_text"] = (strip_tags(lead.group(1)) if lead else "") + "\n" + strip_tags(body)
+    # NG・表記ゆれの判定用: <blockquote>（引用）を除いた本文
+    unq = re.sub(r"<blockquote\b.*?</blockquote>", "\n", body, flags=re.S)
+    d["check_text"] = (strip_tags(lead.group(1)) if lead else "") + "\n" + strip_tags(unq)
+    d["format"] = "html"
     d["faq"] = [strip_tags(q).strip() for q in re.findall(r'<summary class="faq__q">(.*?)</summary>', text, re.S)]
     d["faq_text"] = strip_tags(" ".join(re.findall(r'<div class="faq__a">(.*?)</div>', text, re.S)))
     faq_ld = re.search(r'"@type": "FAQPage", "mainEntity": (\[.*?\])\}</script>', text, re.S)
@@ -95,7 +156,11 @@ def parse_md(text):
     fixed = ("この記事のポイント", "よくある質問", "参考資料")
     body_keys = [k for k in sec if not any(f in k for f in fixed)]
     d["h2"] = body_keys
-    d["body_text"] = parts[0] + "\n" + "\n".join(sec[k] for k in body_keys)
+    # 本文には h2 見出しも含める（見出しの NG・表記ゆれも判定するため）
+    d["body_text"] = parts[0] + "\n" + "\n".join(k + "\n" + sec[k] for k in body_keys)
+    # NG・表記ゆれの判定用: Markdown の引用（> で始まる行）を除いた本文
+    d["check_text"] = "\n".join(l for l in d["body_text"].split("\n") if not l.lstrip().startswith(">"))
+    d["format"] = "md"
     faq = next((v for k, v in sec.items() if "よくある質問" in k), "")
     d["faq"] = re.findall(r"(?m)^### (?:Q[.:：]?\s*)?(.*)$", faq)
     d["faq_ld"] = len(d["faq"])
@@ -141,9 +206,19 @@ def score(d):
     add("よくある質問（3問以上・構造化データと一致）", (2 if fq >= 3 else 0) + (2 if ok_ld and fq else 0), 4,
         f"{fq}問／構造化データ {d['faq_ld']}問")
     src = d["sources"]
-    pub = sum(1 for s in src if re.search(PUBLIC_SOURCE, s))
-    add("参考資料（3件以上・公的機関を含む）", (3 if len(src) >= 3 else len(src)) + (2 if pub else 0), 5,
-        f"{len(src)}件（うち公的機関 {pub}件）")
+    if d.get("format") == "html":
+        # 既存の HTML 記事は参考資料に URL がないものが多いので、URL なしでも数える（根拠欄に明記）
+        counted = src
+        no_url = sum(1 for s in src if not re.search(URL_RE, s))
+        extra = f"・URLなし {no_url}件" if no_url else ""
+    else:
+        # 原稿: 「- 資料名（発行元・公表年）URL」。URL と4桁の年の両方がある行だけ数える
+        counted = [s for s in src if re.search(URL_RE, s) and re.search(YEAR_RE, s)]
+        skipped = len(src) - len(counted)
+        extra = f"・URLか年がなく数えない行 {skipped}件" if skipped else ""
+    pub = sum(1 for s in counted if is_public(s))
+    add("参考資料（3件以上・公的機関を含む）", (3 if len(counted) >= 3 else len(counted)) + (2 if pub else 0), 5,
+        f"{len(counted)}件（うち公的機関 {pub}件{extra}）")
     al, sl = d["article_links"], d["service_links"]
     add("本文から他の記事へのリンク（2本以上）", 2 if len(al) >= 2 else len(al), 2, f"{len(al)}本")
     add("関連サービスへのリンク（1本以上）", 2 if sl else 0, 2, ", ".join(sl) or "なし")
@@ -157,17 +232,18 @@ def score(d):
     add("1文の平均（60字以下）", 2 if avg <= 60 else (1 if avg <= 70 else 0), 2, f"平均 {avg:.0f}字（{len(sents)}文）")
     add("80字を超える文（5%以下）", 2 if lr <= 0.05 else (1 if lr <= 0.10 else 0), 2, f"{long_}文（{lr*100:.0f}%）")
 
-    full = "\n".join([title, d["description"], *d["keypoints"], plain, *d["faq"], md_plain(d.get("faq_text", ""))])
-    negation = r"^.{0,14}?(わけではな|とは限ら|ではありませ|ではな[いく]|ません|ない)"
-    severe = [m.group(0) for p in NG_SEVERE for m in re.finditer(p, full)
-              if not re.match(negation, full[m.end():m.end() + 16])]  # 「必ず採択されるわけではありません」などの否定は除く
+    # NG・表記ゆれの判定対象: 引用（> 行・<blockquote>）とかぎかっこ「」『』の中を除く
+    check = md_plain(d.get("check_text", text))
+    faq_plain = md_plain(d.get("faq_text", ""))
+    full = remove_quotes("\n".join([title, d["description"], *d["keypoints"], check, *d["faq"], faq_plain]))
+    severe = find_severe(full)
     minor = [m.group(0) for p in NG_MINOR for m in re.finditer(p, full)]
     add("NG表現（軽微）なし", 4 - 2 * len(minor), 4, "、".join(minor) or "なし")
     if severe:
         gates.append("重大なNG表現（誇大・保証・断定）: " + "、".join(severe))
     gloss = []
     for p, right in GLOSSARY:
-        for m in re.finditer(p, plain + "\n" + "\n".join(d["keypoints"] + d["faq"]) + "\n" + md_plain(d.get("faq_text", ""))):
+        for m in re.finditer(p, remove_quotes(check + "\n" + "\n".join(d["keypoints"] + d["faq"]) + "\n" + faq_plain)):
             gloss.append(f"{m.group(0)}→{right}")
     add("表記ゆれなし（glossary）", 3 - len(gloss), 3, "、".join(gloss[:8]) or "なし")
 
