@@ -23,9 +23,10 @@
    - 本番ブランチ＝GitHub のデフォルトブランチ（2026-10-10 時点では `claude/google-drive-file-refresh-rnv3qr`。`main` は存在しない）。名前は変わりうるので、毎回 `git ls-remote --symref origin HEAD` で調べる。
 2. **事実を作らない。** 数値・制度には出典。RIVIA の体験談は `docs/brand/experience.md` にあるものだけ。他者の発信は出典（発信者名・URL）つきで要約して使う。
 3. **人の確認が必要なもの**（`docs/seo/playbook.md` 6章）は、PR の「人の確認が必要な点」に必ず書き出す。
-4. `python3 tools/seo_check.py` のエラーが 0 でない状態で PR を出さない。
-5. 既存ページの URL を変えない。公開日を過去にさかのぼって付けない。
-6. 鍵・トークンをファイルに書かない、コミットしない（環境変数から読む）。
+4. **記事は品質管理部の採点が100点満点で95点以上、かつゲート違反（事実誤り・出典なし・重大NG・法務/炎上リスク・体験の捏造）なしでなければ PR に入れない。** 届かなければ原因の工程（リサーチ／構成案／執筆／HTML化）に戻る（playbook 5章・7章）。
+5. `python3 tools/seo_check.py` のエラーが 0 でない状態で PR を出さない。
+6. 既存ページの URL を変えない。公開日を過去にさかのぼって付けない。
+7. 鍵・トークンをファイルに書かない、コミットしない（環境変数から読む）。
 
 ## 判断基準・資料
 
@@ -62,6 +63,7 @@
 | `python3 tools/analytics.py` | GA4/Search Console のレポート（要 `pip install -r tools/requirements.txt` と環境変数） |
 | `python3 tools/youtube_research.py "キーワード"` | YouTube の動画情報・概要欄・人気コメント（要 `YOUTUBE_API_KEY`） |
 | `python3 tools/build_dashboard.py` | `docs/dashboard.md` の再生成 |
+| `python3 tools/article_score.py <原稿 or HTML>` | 記事の機械採点（40点分）と重大NGのゲート判定。合格は品質管理部の60点と合わせて95点以上（playbook 5章） |
 | `python3 tools/add_article.py <slug> [--dry-run]` | 新しい記事のカードを一覧・トップ・サービスページ・カテゴリ一覧・全記事の関連記事に組み込み、検索の索引・sitemap・llms.txt を更新（`--remove` で取り除く、`--sync` でガイドから作る部分だけそろえる） |
 | `python3 tools/build_llms.py` | `seo/llms.txt`（AI検索向けのサイト案内。公開日を迎えた記事だけ）を作り直す |
 
