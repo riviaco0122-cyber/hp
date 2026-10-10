@@ -1366,7 +1366,7 @@ def quick_form(key, name):
           <input type="hidden" name="流入元" value="サービスページ：{e(name)}">
           <label class="qform__field"><span>お名前 <em>必須</em></span><input type="text" name="name" placeholder="山田 太郎" autocomplete="name" required></label>
           <label class="qform__field"><span>メールアドレス <em>必須</em></span><input type="email" name="email" placeholder="your@email.com" autocomplete="email" required></label>
-          <label class="qform__field"><span>ご相談内容 <small>任意</small></span><textarea name="message" rows="2" placeholder="物件の場所や、気になっていることなど"></textarea></label>
+          <label class="qform__field"><span>ご相談内容 <small>任意</small></span><textarea name="message" rows="3" placeholder="物件の場所や、気になっていることなど"></textarea></label>
           <label class="qform__field qform__file"><span>ファイル <small>任意・物件の写真や図面など</small></span><input type="file" name="attachment" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"></label>
           <button type="submit" class="btn qform__submit">無料で相談する {ARROW}</button>
           <p class="qform__note">送信により<a href="privacy.html">プライバシーポリシー</a>に同意したものとします。しつこい営業はしません。</p>
@@ -3594,7 +3594,7 @@ def media_plans_page():
 # ---------------------------------------------------------------- アキヤド：サービスごとのページ（読者の状況ごとに、悩み→解決→プラン→流れ→実績→質問）
 MEDIA_SERVICES = [
     dict(key="sell", slug="service-kaitori", name="アキヤド買取プラン", category="operation",
-         eyebrow="空き家を売りたい方へ", title="買い手が見つからない家も、\n宿として活かせるなら、\n買い取ります。",
+         eyebrow="空き家を売りたい方へ", title="買い手が見つからない家も、\n宿として活かせるなら買い取れます。",
          lead="相続した家、遠方で管理できない家。アキヤドは「宿として再生できるか」という目で物件を見るため、一般の仲介では値段がつきにくい家もご相談いただけます。",
          worries=["相続した実家を、どうしたらいいか決められない", "遠方に住んでいて、管理や草刈りに通うのが負担", "不動産会社に「古いので売れにくい」と言われた",
                   "固定資産税だけを払い続けている", "手放す前に、ほかの選択肢とも比べたい"],
