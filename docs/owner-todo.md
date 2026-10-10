@@ -1,5 +1,7 @@
 # お願いしたいこと（人の作業リスト）
 
+> はじめての方向けの詳しい手順は [`docs/guide-for-owner.md`](guide-for-owner.md)、共同創業者への依頼は [`docs/request-to-cofounder.md`](request-to-cofounder.md)。
+
 AI社員チームが自動で動くために、人にしかできない作業をまとめました。すべて無料でできます。
 チェックが付いたら、Claude に「終わった」と伝えてください。
 
