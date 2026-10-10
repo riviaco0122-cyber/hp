@@ -2848,3 +2848,9 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 /* スマホ：ガイドのカードは、対象の説明（小さな2行）を省いてすっきり見せる */
 @media (max-width: 899px) { .persona-card__who { display: none; } }
 .article__section a:not(.btn) { padding: 4px 0; }
+/* 記事カードの高さをそろえる：タグは1行、タイトルは3行分の高さ（長いものは省略） */
+.ctags { flex-wrap: nowrap; overflow: hidden; height: 24px; -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+.ctag { flex-shrink: 0; }
+.media-card__title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.media-grid--scroll .media-card__title, .media-grid--feature .is-lead .media-card__title { min-height: 3lh; }
+@media (min-width: 900px) { .media-grid .media-card__title { min-height: 3lh; } }

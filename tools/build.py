@@ -3264,7 +3264,7 @@ def card_tags(a):
     """記事カードのタグ：誰向けか（状況）とテーマ。ぱっと見で何の記事か分かるようにする"""
     who = [f'<span class="ctag ctag--who">{e(g["label"])}</span>' for g in guides_of(a["slug"])]
     topics = [f'<span class="ctag">{e(MEDIA_CAT_NAMES[t])}</span>' for t in a["topics"]]
-    return f'<span class="ctags">{"".join((who[:1] + topics)[:3])}</span>'
+    return f'<span class="ctags">{"".join((who[:1] + topics)[:2])}</span>'
 
 
 def article_card(a, extra_class=""):
@@ -3957,28 +3957,29 @@ MEDIA_INTRO_DESC = {
 
 # ---------------------------------------------------------------- アキヤド：基礎から学ぶ（記事を、コースと章の順に並べて体系的に学べるようにする）
 MEDIA_COURSES = [
-    dict(key="akiya", en="Course 01", title="空き家の基礎知識", lead="相続した家や使っていない家を、どうするか決めるための基本です。",
-         chapters=[("空き家を放置するとどうなるか", "税や管理の負担、法改正で高まる「放置」のリスクと、4つの選択肢。", ["akiya-inherited-house-to-inn"]),
-                   ("売るときに知っておきたいこと", "相続した家を売るときの税の特例と、空き家バンクの使い方。", ["akiya-3000man-deduction", "akiya-bank-guide"]),
-                   ("貸すときの契約", "普通借家・定期借家・借り上げの違いと、選び方。", ["akiya-lease-types"]),
-                   ("宿として活かす", "観光地でなくても宿になる理由と、古い家を改修するときの考え方。", ["shizuoka-yaizu-akiya-inn", "kominka-renovation-points"]),
-                   ("空き家と地域のこれから", "空き家の再生が、地域に人とお金の流れを生む仕組み。", ["akiya-regional-revitalization"])]),
-    dict(key="minpaku", en="Course 02", title="民泊・小さな宿の基礎知識", lead="これから宿をはじめる方が、開業までに押さえたい制度とお金の基本です。",
-         chapters=[("民泊新法と旅館業", "2つの制度の違いと、目的と物件に合った選び方。", ["minpaku-vs-ryokan-law"]),
-                   ("開業までの流れ", "届出までの7ステップと、消防の手続き。", ["minpaku-start-steps", "minpaku-fire-safety"]),
-                   ("物件の選び方", "新築と中古、それぞれの費用・工期・法令の違い。", ["new-build-vs-used-house-inn"]),
-                   ("お金の準備", "開業資金の用意の仕方、補助金、利回りの見方。", ["inn-startup-funding", "small-inn-subsidies", "minpaku-investment-yield"]),
-                   ("運営の任せ方", "住宅宿泊管理業者の役割と、管理会社の選び方。", ["minpaku-management-company"])]),
-    dict(key="operate", en="Course 03", title="宿の運営", lead="開業したあと、宿の売上と評判を育てるための知識です。",
-         chapters=[("売上を読み解く", "稼働率・客室単価・RevPARと、収益シミュレーションの考え方。", ["inn-kpi-basics", "airdna-revenue-simulation"]),
-                   ("集客の考え方", "予約サイトと自社予約の使い分けと、選ばれる予約ページのつくり方。", ["ota-vs-direct-booking", "listing-photo-tips"]),
-                   ("品質と評価", "清掃・リネンの仕組みと、レビューの評価を上げるゲスト対応。", ["cleaning-linen-operations", "guest-review-tips"]),
-                   ("運営の事例", "一軒家を小さな宿にした、開業からの数字の推移。", ["case-rental-house-inn-first-year"])]),
-    dict(key="region", en="Course 04", title="観光と地域を知る", lead="宿を取り巻く観光の動きと、地域との関わりを、データとともに読み解きます。",
-         chapters=[("日本の観光市場", "訪日客の動向と、地方が抱える課題、地方分散のチャンス。", ["japan-tourism-market-data", "inbound-regional-dispersion"]),
-                   ("旅のスタイルの変化", "「巡る旅」から「滞在する旅」へ。長期滞在が広がる理由。", ["long-stay-travel-demand"]),
-                   ("宿と地域の経済", "旅行者のお金が地域に広がる仕組みと、関係人口。", ["inn-local-economy", "kankei-jinko-and-inns"]),
-                   ("制度と担い手", "宿泊税の仕組みと、観光業の人手不足への向き合い方。", ["accommodation-tax", "tourism-labor-shortage"])]),
+    dict(key="why-akiya", en="Course 01", title="なぜ今、空き家の活用なのか", lead="空き家の今と、放置したときの負担、制度の変化。活かし方を比べて、家族で決めるまで。",
+         chapters=[("空き家の今を知る", "数字で見る空き家と、活用が注目されている理由。", ["akiya-data-9-million", "why-akiya-utilization-now"]),
+                   ("放置のリスクと制度の変化", "空家法の改正、相続登記の義務化、持ち続ける費用。", ["akiya-law-kanri-fuzen", "souzoku-touki-gimuka", "akiya-holding-costs", "akiya-inherited-house-to-inn"]),
+                   ("活かし方を比べる", "売る・貸す・宿にするの違いと、契約や税の基本。", ["akiya-utilization-options", "akiya-lease-types", "akiya-3000man-deduction", "akiya-bank-guide"]),
+                   ("家族で決める", "相続した実家を、家族でどう決めるか。", ["inherited-house-family-talk"]),
+                   ("空き家と地域", "空き家が、まちに人とお金の流れを生む仕組み。", ["akiya-local-resource", "akiya-regional-revitalization", "inn-local-economy"])]),
+    dict(key="why-minpaku", en="Course 02", title="なぜ民泊・小さな宿なのか", lead="空き家の活かし方のなかで、宿が選ばれる理由。旅の変化と、向いている家、収益の考え方。",
+         chapters=[("空き家と宿の相性", "宿が選ばれる理由と、賃貸との収入の違い。", ["why-minpaku-for-akiya", "minpaku-vs-rental-income"]),
+                   ("旅の変化と需要", "訪日客の動向、地方への分散、長期滞在の広がり。", ["japan-tourism-market-data", "inbound-regional-dispersion", "long-stay-travel-demand"]),
+                   ("古い家・地方だからこその価値", "古民家の魅力と、観光地でなくても宿になる理由。", ["kominka-stay-value", "shizuoka-yaizu-akiya-inn"]),
+                   ("向いている家を見極める", "立地・建物・法令・運営のチェックと、中古と新築の違い。", ["akiya-minpaku-suitability", "new-build-vs-used-house-inn"]),
+                   ("収益の考え方", "指標の読み方、収益の試算、投資としての見方、運営の事例。", ["inn-kpi-basics", "airdna-revenue-simulation", "minpaku-investment-yield", "case-rental-house-inn-first-year"])]),
+    dict(key="challenges", en="Course 03", title="民泊の課題と、乗り越え方", lead="「民泊は大変」と言われる理由と、実際の乗り越え方。手続き、お金、運営、集客まで。",
+         chapters=[("よく聞く課題を知る", "手続き・近隣・運営・季節・費用の5つの課題。", ["minpaku-hard-truth"]),
+                   ("制度と手続き", "民泊と旅館業の違い、開業までの流れ、消防。", ["minpaku-vs-ryokan-law", "minpaku-start-steps", "minpaku-fire-safety"]),
+                   ("お金と改修", "開業資金、補助金、改修、宿泊税。", ["inn-startup-funding", "small-inn-subsidies", "kominka-renovation-points", "accommodation-tax"]),
+                   ("運営の課題", "近隣との関係、清掃、閑散期、遠方からの運営。", ["minpaku-neighbor-rules", "cleaning-linen-operations", "minpaku-off-season", "minpaku-remote-operation"]),
+                   ("集客と評価", "予約サイトの使い方、予約ページ、レビュー。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips"]),
+                   ("人と地域", "人手不足への向き合い方と、地域との関わり。", ["tourism-labor-shortage", "kankei-jinko-and-inns"])]),
+    dict(key="akiyado", en="Course 04", title="アキヤドが支援できること", lead="買取・借り上げ・開業と運営の支援。任せる相手の選び方と、相談から開業までの流れ。",
+         chapters=[("アキヤドができること", "3つのプランと、相談すると分かること。", ["akiyado-what-we-do"]),
+                   ("任せ方を選ぶ", "相談先・委託先の選び方と、管理業者の役割。", ["minpaku-partner-choose", "minpaku-management-company"]),
+                   ("相談から開業まで", "初回の相談で聞かれること、準備しておくもの。", ["akiyado-consultation-flow"])]),
 ]
 
 
@@ -4008,7 +4009,7 @@ def media_learn_page():
           </ol>
         </section>""")
     crumbs = media_crumbs([("アキヤド", "media.html"), ("基礎から学ぶ", "")])
-    body = f"""{media_hero("Learn", "空き家と民泊を、ゼロから体系的に学ぶ", "4つのコースに、記事を学ぶ順番で並べました。はじめての方は第1章から、気になるところからでも読めます。", crumbs, search_form("search.html"))}
+    body = f"""{media_hero("Learn", "空き家と民泊を、ゼロから体系的に学ぶ", "なぜ空き家を活かすのか、なぜ宿なのか、どんな課題があるのか、アキヤドに何を任せられるのか。4つのコースに、学ぶ順番で記事を並べました。", crumbs, search_form("search.html"))}
 
     <section class="section msec msec--first">
       <div class="container">
@@ -4030,7 +4031,7 @@ def media_learn_page():
         {"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"},
         {"@type": "ListItem", "position": 2, "name": "基礎から学ぶ"}]}]
     page("media/learn.html", "空き家と民泊を、ゼロから体系的に学ぶ｜アキヤド",
-         "空き家の基礎知識、民泊・小さな宿の基礎知識、宿の運営、観光と地域。アキヤドの記事を、4つのコースと章の順に並べました。はじめての方は第1章から読めます。",
+         "なぜ今、空き家の活用なのか。なぜ民泊・小さな宿なのか。民泊の課題と乗り越え方。アキヤドが支援できること。4つのコースで、空き家と民泊を体系的に学べます。",
          body, current="media", jsonld=ld, mnav="learn")
 
 
