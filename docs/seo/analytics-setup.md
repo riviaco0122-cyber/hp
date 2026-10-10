@@ -31,7 +31,7 @@
 | 変数名 | 値 |
 |---|---|
 | `GOOGLE_SERVICE_ACCOUNT_JSON` | ダウンロードした JSON ファイルの中身（1行にしてそのまま貼る） |
-| `GA4_PROPERTY_ID` | 手順3で控えた数字 |
+| `GA4_PROPERTY_ID` | 不要（`556922741` をスクリプトの既定値に設定済み。別のプロパティを使うときだけ登録） |
 | `GSC_SITE_URL` | `https://rivia-co.com/`（ドメインプロパティに切り替えた場合は `sc-domain:rivia-co.com`） |
 
 登録後に始めた新しいセッションから使えます。動作確認は `pip install -r tools/requirements.txt && python3 tools/analytics.py`。

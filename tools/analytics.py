@@ -3,7 +3,7 @@
 
 必要な環境変数（クラウド環境の Secret に登録する）:
   GOOGLE_SERVICE_ACCOUNT_JSON  サービスアカウントの鍵（JSONの中身をそのまま）
-  GA4_PROPERTY_ID              GA4 のプロパティID（数字。測定ID G-XXXX ではない）
+  GA4_PROPERTY_ID              GA4 のプロパティID（省略時 556922741）
   GSC_SITE_URL                 Search Console のプロパティ（省略時 https://rivia-co.com/）
 
 使い方:
@@ -154,7 +154,7 @@ def main():
         }
     except RuntimeError as e:
         data["errors"].append(str(e))
-    prop = os.environ.get("GA4_PROPERTY_ID")
+    prop = os.environ.get("GA4_PROPERTY_ID", "556922741")
     if prop:
         try:
             data["ga4"] = {"pages": ga4(s, prop, f(start), f(end)),
