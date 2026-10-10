@@ -2077,3 +2077,14 @@ a.guide-step__body:hover .guide-step__thumb img { transform: scale(1.04); }
 /* 目次：番号と見出しを同じ行にそろえる */
 .toc li { display: grid; grid-template-columns: 2.4em minmax(0, 1fr); align-items: baseline; }
 .toc li::before { content: counter(toc, decimal-leading-zero); }
+/* FV：ロゴ・一言・状況別の入口・検索（多すぎず少なすぎず） */
+.mfv__copy { margin-top: 40px; }
+.mfv__lead { margin-top: 6px; }
+.mfv__entry-label { margin-top: 36px; font-size: 12px; letter-spacing: 0.14em; opacity: 0.8; }
+.mfv__entry { margin-top: 12px; }
+@media (max-width: 899px) {
+  .mfv__copy { margin-top: 28px; font-size: 18px; }
+  .mfv__lead { display: block; font-size: 13px; }
+  .mfv__entry-label { margin-top: 24px; }
+  .mfv__entry { margin-top: 10px; }
+}
