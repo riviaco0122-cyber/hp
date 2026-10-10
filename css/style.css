@@ -2527,3 +2527,102 @@ body.is-media .ctag { border-color: var(--m-line); background: #fff; font-family
 body.is-media .ctag--who { border-color: transparent; background: #e3eee6; color: var(--m-green); }
 .media-card__body .ctags + .media-card__title { margin-top: 10px; }
 @media (max-width: 899px) { .ctag { font-size: 11px; padding: 2px 8px; } }
+/* ===== アキヤド：サービスごとのページ ===== */
+.msv-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); gap: 32px 64px; align-items: center; margin-top: 28px; }
+.msv-hero__title { margin-top: 14px; font-family: var(--font-round); font-weight: 700; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.6; letter-spacing: 0.04em; }
+.msv-hero__points { justify-content: flex-start; margin: 24px 0 0; }
+.qform--media { border-radius: 20px; box-shadow: 0 12px 32px rgba(38, 42, 39, 0.1); }
+.qform--media .qform__title { font-family: var(--font-round); font-weight: 700; }
+.qform--media .qform__field em { border-radius: 4px; background: var(--m-green); }
+.qform--media input, .qform--media textarea { border-color: var(--m-line); border-radius: 10px; }
+.qform--media .qform__submit { border: 0; border-radius: 999px; background: var(--m-cta); color: #fff; font-family: var(--font-round); font-weight: 700; box-shadow: 0 8px 20px rgba(207, 95, 55, 0.24); }
+.qform--media .qform__submit:hover { background: var(--m-cta-h); }
+#msv-form { scroll-margin-top: calc(var(--header-h) + 16px); }
+.msv-worries { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.msv-worries li { position: relative; padding: 18px 20px 18px 52px; border-radius: 14px; background: #fff; font-size: 15px; line-height: 1.7; box-shadow: 0 3px 12px rgba(38, 42, 39, 0.04); }
+.msv-worries li::before { content: "✓"; position: absolute; left: 18px; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 22px; height: 22px; border-radius: 6px; background: #e3eee6; color: var(--m-green); font-size: 13px; font-weight: 700; }
+.msv-answer { margin-top: 36px; text-align: center; font-family: var(--font-round); font-weight: 700; font-size: clamp(18px, 2vw, 22px); }
+.msv-answer strong { color: var(--m-green); background: linear-gradient(transparent 70%, #d3e6d8 70%); }
+.msv-points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.msv-point { padding: 30px 26px; border-radius: 18px; background: #fff; text-align: center; }
+.msv-point__no { display: block; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.24em; color: var(--m-green); }
+.msv-point__icon { display: inline-grid; place-items: center; width: 64px; height: 64px; margin-top: 14px; border-radius: 50%; background: #e3eee6; color: var(--m-green); }
+.msv-point__icon .fig-icon { width: 30px; height: 30px; }
+.msv-point__title { margin-top: 16px; font-family: var(--font-round); font-weight: 700; font-size: 18px; line-height: 1.6; }
+.msv-point__text { margin-top: 10px; font-size: 14px; line-height: 1.9; color: var(--m-sub); text-align: left; }
+.msv-band { margin-top: 48px; padding: 32px; border-radius: 20px; background: var(--m-green); color: #fff; text-align: center; }
+.msv-band__text { font-family: var(--font-round); font-weight: 700; font-size: 16px; line-height: 1.9; }
+.msv-band__btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 16px; margin-top: 20px; }
+.msv-band .mbtn--sub { box-shadow: none; }
+.msv-flow .fig { margin: 0; background: #fff; }
+.msv-flow .fig-step { background: var(--m-sand); }
+.msv-record__lead { font-size: 15px; line-height: 2; }
+.msv-record__label { margin: 28px 0 14px; font-size: 13px; font-weight: 700; color: var(--m-green); letter-spacing: 0.06em; }
+.mplans__detail { margin-top: 14px; }
+/* 運営会社 */
+.mprofile { border-top: 1px solid var(--m-line); }
+.mprofile__row { display: grid; grid-template-columns: 11em minmax(0, 1fr); gap: 8px 24px; padding: 18px 4px; border-bottom: 1px solid var(--m-line); font-size: 14.5px; line-height: 1.9; }
+.mprofile__row dt { font-weight: 700; color: var(--m-green); }
+.msec--first .msv-band { margin: 0 0 72px; }
+.mcomp-why p { font-size: 15px; line-height: 2.1; }
+.mcomp-why p + p { margin-top: 1em; }
+.mcomp-sup { margin-top: 36px; padding: 28px; border-radius: 18px; background: #fff; }
+.mcomp-svcs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.mcomp-svc { display: grid; gap: 6px; padding: 28px 24px; border-radius: 18px; background: #fff; box-shadow: 0 3px 14px rgba(38, 42, 39, 0.05); transition: box-shadow .2s, transform .2s; }
+.mcomp-svc:hover { box-shadow: 0 10px 26px rgba(38, 42, 39, 0.09); transform: translateY(-2px); }
+.mcomp-svc__who { font-size: 12.5px; color: var(--m-green); font-weight: 700; }
+.mcomp-svc__name { font-family: var(--font-round); font-weight: 700; font-size: 19px; }
+.mcomp-svc__more { margin-top: 8px; display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: var(--m-sub); }
+@media (max-width: 899px) {
+  .msv-hero__grid { grid-template-columns: 1fr; margin-top: 16px; }
+  .msv-worries, .msv-points, .mcomp-svcs { grid-template-columns: 1fr; }
+  .msv-band { padding: 26px 18px; }
+  .msv-band .mbtn { width: 100%; }
+  .mprofile__row { grid-template-columns: 1fr; gap: 2px; padding: 14px 2px; }
+}
+/* 記事カードのサムネイルに、要点を短く載せる（バナー） */
+.thumb--photo { container-type: inline-size; }
+.thumb__banner { position: absolute; inset: auto 0 0 0; z-index: 1; display: grid; gap: 6px; padding: 28% 7% 6%; background: linear-gradient(180deg, rgba(20, 38, 28, 0) 0%, rgba(20, 38, 28, 0.55) 45%, rgba(20, 38, 28, 0.82) 100%); color: #fff; pointer-events: none; }
+.thumb__kicker { justify-self: start; padding: 2px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.92); color: #23573a; font-family: var(--font-round, var(--font-sans)); font-weight: 700; font-size: clamp(10px, 3.4cqw, 12px); letter-spacing: 0.06em; }
+.thumb__catch { font-family: var(--font-round, var(--font-sans)); font-weight: 700; font-size: clamp(13px, 6.2cqw, 26px); line-height: 1.45; letter-spacing: 0.02em; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25); }
+.media-grid--feature .is-lead .thumb__catch { font-size: clamp(16px, 5.4cqw, 32px); }
+@container (max-width: 240px) { .thumb__banner { display: none; } }
+/* アキヤド：RIVIAのサービス（一覧） */
+.mjump__label { margin-bottom: 12px; font-family: var(--font-round); font-weight: 700; font-size: 15px; color: var(--m-green); }
+.mjump { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 64px; }
+.mjump__item { display: grid; gap: 6px; height: 100%; padding: 20px 22px; border-radius: 16px; background: #fff; box-shadow: 0 3px 12px rgba(38, 42, 39, 0.04); transition: box-shadow .2s; }
+.mjump__item:hover { box-shadow: 0 8px 22px rgba(38, 42, 39, 0.09); }
+.mjump__who { font-family: var(--font-round); font-weight: 700; font-size: 15px; }
+.mjump__worry { position: relative; padding-left: 14px; font-size: 13px; line-height: 1.7; color: var(--m-sub); }
+.mjump__worry::before { content: ""; position: absolute; left: 2px; top: 0.72em; width: 5px; height: 5px; border-radius: 50%; background: var(--m-green); }
+.mjump__name { margin-top: 4px; font-size: 13px; font-weight: 700; color: var(--m-green); }
+.msvcs { display: grid; gap: 24px; }
+.msvc { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); border-radius: 24px; background: #fff; overflow: hidden; box-shadow: 0 3px 14px rgba(38, 42, 39, 0.05); scroll-margin-top: calc(var(--header-h) + 16px); }
+.msvc__visual { display: grid; place-content: center; justify-items: center; gap: 14px; padding: 36px 24px; background: linear-gradient(160deg, #e3eee6, #f2f6f1); text-align: center; }
+.msvc__icon { display: grid; place-items: center; width: 104px; height: 104px; border-radius: 50%; background: #fff; color: var(--m-green); box-shadow: 0 8px 24px rgba(46, 107, 71, 0.15); }
+.msvc__icon .fig-icon { width: 48px; height: 48px; stroke-width: 1.4; }
+.msvc__who { font-family: var(--font-round); font-weight: 700; font-size: 14px; color: var(--m-green); }
+.msvc__body { padding: 36px 40px; }
+.msvc__name { font-family: var(--font-round); font-weight: 700; font-size: 24px; letter-spacing: 0.04em; }
+.msvc__summary { margin-top: 10px; font-size: 14.5px; line-height: 1.9; color: var(--m-sub); }
+.msvc__spec { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
+.msvc__spec div { padding: 12px 16px; border-radius: 12px; background: var(--m-sand); }
+.msvc__spec dt { font-size: 12px; font-weight: 700; color: var(--m-green); }
+.msvc__spec dd { margin-top: 2px; font-size: 14.5px; font-weight: 500; }
+.msvc__plans-label { margin-top: 18px; font-size: 12px; font-weight: 700; color: var(--m-green); }
+.msvc__plans { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.msvc__plans li { padding: 3px 12px; border: 1px solid var(--m-line); border-radius: 999px; font-size: 12.5px; }
+.msvc__more { margin-top: 24px; }
+@media (max-width: 899px) {
+  .mjump { grid-template-columns: 1fr; margin-bottom: 40px; }
+  .msvc { grid-template-columns: 1fr; border-radius: 20px; }
+  .msvc__visual { padding: 24px; grid-auto-flow: column; justify-content: start; gap: 16px; }
+  .msvc__icon { width: 64px; height: 64px; }
+  .msvc__icon .fig-icon { width: 30px; height: 30px; }
+  .msvc__body { padding: 24px 20px 28px; }
+  .msvc__name { font-size: 21px; }
+  .msvc__spec { grid-template-columns: 1fr; }
+  .msvc__more { width: 100%; }
+}
+@media (max-width: 899px) { .msvc__visual { align-items: center; } }
+.qform__note a { display: inline-block; padding: 4px 0; line-height: 16px; }

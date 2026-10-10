@@ -296,7 +296,8 @@
       var a = h.a;
       return '<a href="' + a.slug + '.html" class="media-card is-visible">' +
         '<div class="thumb thumb--photo"><img src="../../images/photos/w/' + a.thumb + '-800.webp" alt="" loading="lazy" decoding="async" width="720" height="450">' +
-        '<span class="thumb__cat">' + esc(a.cat) + '</span></div>' +
+        '<span class="thumb__cat">' + esc(a.cat) + '</span>' +
+        '<span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">' + esc(a.cat) + '</span><span class="thumb__catch">' + esc(a.short || '').replace(/\n/g, '<br>') + '</span></span></div>' +
         '<div class="media-card__body"><span class="media-card__cat">' + esc(a.cat) + '</span>' +
         '<h3 class="media-card__title">' + esc(a.title) + '</h3>' +
         (q ? '<p class="media-card__snippet">' + snippet(a) + '</p>' : '') +

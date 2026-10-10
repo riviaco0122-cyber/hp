@@ -1725,6 +1725,20 @@ from urllib.parse import quote as _quote
 MAP_Q = _quote("東京都足立区青井6-8-8")
 
 
+def company_profile():
+    """会社概要（コーポレートの私たちについてと、アキヤドの運営会社ページで共通）"""
+    return [
+        ("商号", "合同会社RIVIA&amp;CO. (RIVIA&amp;CO. LLC)"),
+        ("設立", "2026年9月1日"),
+        ("資本金", "1,000,000円"),
+        ("代表社員", "片井 進太 ／ 石原 佑真"),
+        ("本店所在地", "〒121-0012<br>東京都足立区青井六丁目8番8号 Grand Maison青井201"),
+        ("事業内容", "".join(
+            f'<span class="profile__group">{e(g["name"])}</span>' + "<br>".join("・" + e(dict(SERVICES)[k]) for k in g["services"])
+            for g in GROUPS)),
+    ]
+
+
 def about_page():
     founders = [
         dict(name="石原 佑真", en="Yuma Ishihara", role="代表社員 ／ 共同創業者", origin="大阪府出身", photo="founder-ishihara.jpg", photo_type="photo",
@@ -1768,16 +1782,7 @@ def about_page():
 {sns_html(f)}          </article>"""
         for i, f in enumerate(founders)
     )
-    profile = [
-        ("商号", "合同会社RIVIA&amp;CO. (RIVIA&amp;CO. LLC)"),
-        ("設立", "2026年9月1日"),
-        ("資本金", "1,000,000円"),
-        ("代表社員", "片井 進太 ／ 石原 佑真"),
-        ("本店所在地", "〒121-0012<br>東京都足立区青井六丁目8番8号 Grand Maison青井201"),
-        ("事業内容", "".join(
-            f'<span class="profile__group">{e(g["name"])}</span>' + "<br>".join("・" + e(dict(SERVICES)[k]) for k in g["services"])
-            for g in GROUPS)),
-    ]
+    profile = company_profile()
     phtml = "\n".join(f'          <div class="profile__row"><dt>{k}</dt><dd>{v}</dd></div>' for k, v in profile)
     prose = "\n".join(
         '          <div class="about-para reveal">' + "".join(f'<p class="about-line">{e(l)}</p>' for l in para) + "</div>"
@@ -3219,7 +3224,14 @@ def thumb(a, size=""):
     return f"""<div class="thumb thumb--photo">
               {photo(name, width=720, height=450, sizes="(max-width: 899px) 90vw, 400px")}
               <span class="thumb__cat">{e(MEDIA_CAT_NAMES[a["category"]])}</span>
+              {thumb_banner(a)}
             </div>"""
+
+
+def thumb_banner(a):
+    """サムネイルの上に、記事の要点を短く載せる（ぱっと見で何の記事か分かるように）"""
+    lines = "<br>".join(e(l) for l in a["short"].split("\n"))
+    return f'<span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">{e(MEDIA_CAT_NAMES[a["category"]])}</span><span class="thumb__catch">{lines}</span></span>'
 
 
 def _thumb_text(a, size=""):
@@ -3399,8 +3411,8 @@ def media_footer():
           <div><p class="mfooter__label">テーマから探す</p><ul>{themes}</ul></div>
           <div><p class="mfooter__label">アキヤドについて</p><ul>
             <li><a href="media/search.html">記事をさがす</a></li>
-            <li><a href="media/plans.html">RIVIAのプラン</a></li>
-            <li><a href="about.html">運営会社について</a></li>
+            <li><a href="media/plans.html">RIVIAのサービス</a></li>
+            <li><a href="media/company.html">運営会社について</a></li>
             <li><a href="contact.html">ご相談・お問い合わせ</a></li>
             <li><a href="privacy.html">プライバシーポリシー</a></li>
           </ul></div>
@@ -3427,14 +3439,14 @@ def media_cta(category="operation"):
             <a href="contact.html?category={category}&amp;from=akiyado" class="mbtn" data-cta="media-bottom">無料で相談する {ARROW}</a>
             {plan_doc_link("bottom")}
           </div>
-          <p class="mcta__plans"><a href="media/plans.html">プランと条件の目安を見る {ARROW}</a></p>
+          <p class="mcta__plans"><a href="media/plans.html">RIVIAのサービスを見る {ARROW}</a></p>
           <p class="mcta__note">運営：合同会社RIVIA&amp;CO.（宿泊施設の運営・空き家再生）</p>
         </div>
       </div>
     </section>"""
 
 
-# ---------------------------------------------------------------- アキヤド：RIVIAのプラン（記事を読んだ人が「頼んだらどうなるか」を知る場所）
+# ---------------------------------------------------------------- アキヤド：RIVIAのサービス（記事を読んだ人が「頼んだらどうなるか」を知る場所）
 # 実際のお客様の声がそろうまでは公開しない（作り話の口コミは、景品表示法の優良誤認やステマ規制に触れるおそれがある）
 SHOW_SAMPLE_VOICES = os.environ.get("SHOW_SAMPLE_VOICES") == "1"
 SAMPLE_VOICES = [
@@ -3483,30 +3495,24 @@ def media_plan_card(p, key, money_label="受け取り方"):
 
 
 def media_plans_page():
+    """RIVIAのサービス一覧。まずカードで端的に紹介し、詳しくは各サービスのページへ"""
+    from figures import icon
     groups = []
-    for key, label, lead, src, names in MEDIA_PLAN_GROUPS:
-        plans = [p for p in PLANS[src]["plans"] if p["name"] in names]
-        plans.sort(key=lambda p: names.index(p["name"]))
-        money_label = "受け取り方" if src == "operation" else "費用"
-        cards = "\n".join(media_plan_card(p, key, money_label) for p in plans)
-        if len(plans) == 1:
-            # 売る前に、貸した場合の収入とも比べられることを伝える
-            cards += f"""
-            <aside class="mplans__aside">
-              <p class="mplans__aside-label">RIVIAからひとこと</p>
-              <p class="mplans__aside-text">手放す前に、貸した場合や宿にした場合の収入も一緒に試算します。比べたうえで、納得できる方法を選んでいただけます。</p>
-              <a href="#use" class="inline-cta__plan">貸す場合のプランを見る {ARROW}</a>
-            </aside>"""
-        groups.append(f"""        <section class="mplans__group reveal" id="{key}" aria-labelledby="plans-{key}">
-          <div class="mplans__head">
-            <h2 class="mplans__title" id="plans-{key}">{e(label)}</h2>
-            <p class="mplans__lead">{e(lead)}</p>
+    for sv in MEDIA_SERVICES:
+        c = MEDIA_SERVICE_CARDS[sv["key"]]
+        spec = "".join(f'<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k, v in c["spec"])
+        tags = "".join(f'<li>{e(n)}</li>' for n in c["plans"])
+        groups.append(f"""        <article class="msvc reveal" id="{sv["key"]}">
+          <div class="msvc__visual"><span class="msvc__icon">{icon(c["icon"])}</span><p class="msvc__who">{e(sv["eyebrow"])}</p></div>
+          <div class="msvc__body">
+            <h2 class="msvc__name">{e(sv["name"])}</h2>
+            <p class="msvc__summary">{e(c["summary"])}</p>
+            <dl class="msvc__spec">{spec}</dl>
+            <p class="msvc__plans-label">選べるプラン</p>
+            <ul class="msvc__plans">{tags}</ul>
+            <a href="media/{sv["slug"]}.html" class="mbtn mbtn--sub msvc__more" data-cta="media-service-card">サービスの詳細を見る {ARROW}</a>
           </div>
-          <div class="mplans__cards mplans__cards--{len(plans)}">
-{cards}
-          </div>
-          <p class="mplans__note">{e(PLANS[src]["note"])}</p>
-        </section>""")
+        </article>""")
     voices = ""
     if SHOW_SAMPLE_VOICES:
         vs = "\n".join(f"""          <figure class="mvoice reveal">
@@ -3525,14 +3531,21 @@ def media_plans_page():
 """
     flow = "\n".join(f"""          <li class="mflow__step reveal"><span class="mflow__no">{i:02d}</span><h3 class="mflow__title">{e(t)}</h3><p class="mflow__text">{e(d)}</p></li>"""
                      for i, (t, d) in enumerate(PLAN_FLOW, 1))
-    jump = "".join(f'<li><a href="#{k}" class="ttag">{e(l)}</a></li>' for k, l, *_ in MEDIA_PLAN_GROUPS)
-    crumbs = media_crumbs([("アキヤド", "media.html"), ("RIVIAのプラン", "")])
-    body = f"""{media_hero("Plans", "RIVIAのプラン", "記事を読んで、具体的に考えたくなったら。宿を運営するRIVIAに任せた場合のプランと、条件の目安をまとめました。", crumbs)}
+    def jump_item(sv):
+        worries = "".join(f'<span class="mjump__worry">{e(w)}</span>' for w in sv["worries"][:2])
+        return (f'<li><a href="#{sv["key"]}" class="mjump__item"><span class="mjump__who">{e(sv["eyebrow"])}</span>'
+                f'{worries}<span class="mjump__name">→ {e(sv["name"])}</span></a></li>')
+    jump = "".join(jump_item(sv) for sv in MEDIA_SERVICES)
+    crumbs = media_crumbs([("アキヤド", "media.html"), ("RIVIAのサービス", "")])
+    body = f"""{media_hero("Services", "RIVIAのサービス", "記事を読んで、具体的に考えたくなったら。空き家の買取・借り上げから、民泊の開業・運営まで。宿を運営するRIVIAにご相談いただけることをまとめました。", crumbs)}
 
     <section class="section msec msec--first">
       <div class="container">
-        <nav class="ttags mplans__jump" aria-label="状況から選ぶ"><ul>{jump}</ul></nav>
+        <p class="mjump__label reveal">こんなお悩みなら</p>
+        <ul class="mjump reveal">{jump}</ul>
+        <div class="msvcs">
 {chr(10).join(groups)}
+        </div>
       </div>
     </section>
 {voices}
@@ -3564,16 +3577,275 @@ def media_plans_page():
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
               {"@type": "ListItem", "position": 1, "name": "TOP", "item": f"{SITE}/"},
               {"@type": "ListItem", "position": 2, "name": "アキヤド", "item": f"{SITE}/media.html"},
-              {"@type": "ListItem", "position": 3, "name": "RIVIAのプラン"}]}]
-    page("media/plans.html", "RIVIAのプラン｜空き家の売却・活用、民泊の開業を任せるなら｜アキヤド",
+              {"@type": "ListItem", "position": 3, "name": "RIVIAのサービス"}]}]
+    page("media/plans.html", "RIVIAのサービス｜空き家の買取・借り上げ、民泊の開業・運営支援｜アキヤド",
          "空き家の買取、借り上げ（固定家賃・売上シェア）、民泊の開業・運営代行まで。宿を運営するRIVIAに任せた場合のプランと条件の目安、ご相談から開業までの流れをまとめています。",
          body, current="media", jsonld=ld, mnav="plans")
+
+
+# ---------------------------------------------------------------- アキヤド：サービスごとのページ（読者の状況ごとに、悩み→解決→プラン→流れ→実績→質問）
+MEDIA_SERVICES = [
+    dict(key="sell", slug="service-kaitori", name="空き家の買取", category="operation",
+         eyebrow="空き家を売りたい方へ", title="買い手が見つからない家も、\n宿として活かせるなら買い取れます。",
+         lead="相続した家、遠方で管理できない家。RIVIAは「宿として再生できるか」という目で物件を見るため、一般の仲介では値段がつきにくい家もご相談いただけます。",
+         worries=["相続した実家を、どうしたらいいか決められない", "遠方に住んでいて、管理や草刈りに通うのが負担", "不動産会社に「古いので売れにくい」と言われた",
+                  "固定資産税だけを払い続けている", "手放す前に、ほかの選択肢とも比べたい"],
+         strengths=[("bed", "宿として活かす目線で査定", "立地や建物を「宿になるか」で見るため、住まいとしては評価されにくい古い家でも検討できます。"),
+                    ("handshake", "売る・貸すを比べてご提案", "買取だけでなく、借り上げで家を残す場合の収入も試算します。比べたうえで選べます。"),
+                    ("doc", "売却までの段取りを一緒に", "必要な手続きや、専門家に相談する順番を一緒に整理します。")],
+         steps=[("bubble", "無料相談", "状況やご希望を伺います"), ("search", "現地を拝見・査定", "宿として活かせるかも確認"),
+                ("handshake", "売る・貸すを比べてご提案", "収支の見込みとあわせて"), ("key", "ご契約・お引き渡し", "")],
+         faq=[("古くて傷んでいても、買い取ってもらえますか？", "建物の状態や立地によります。宿として再生できるかを現地で確認したうえで、ご提案します。"),
+              ("家の中に荷物が残っていても大丈夫ですか？", "まずはそのままの状態で拝見します。片付けの進め方も含めてご相談ください。"),
+              ("査定に費用はかかりますか？", "現地の拝見と査定、ご提案までは無料です。"),
+              ("相続の手続きが終わっていなくても相談できますか？", "ご相談いただけます。売却には名義の変更が必要になるため、進め方も一緒に整理します。")]),
+    dict(key="use", slug="service-kariage", name="空き家の借り上げ", category="operation",
+         eyebrow="空き家を活かしたい方へ", title="家は持ったまま、\n宿として活かして毎月の収入に。",
+         lead="RIVIAが空き家を借り上げ、改修から宿の運営まで行います。オーナー様は運営の手間をかけずに、家賃を受け取れます。",
+         worries=["思い出のある家を、手放したくはない", "空き家のまま傷んでいくのが心配", "貸したいが、借り手が見つかる地域ではない",
+                  "改修にまとまったお金はかけられない", "宿に興味はあるが、運営する時間がない"],
+         strengths=[("yen", "初期費用をかけずに始められる", "おまかせ固定家賃プランなら、改修・家具などの費用はRIVIAがほぼ負担します（建物の構造的な補修を除く）。"),
+                    ("bed", "宿の運営はすべてRIVIA", "集客・予約・清掃・ゲスト対応まで、宿を運営している私たちが行います。"),
+                    ("heart", "家を残し、まちに人を呼ぶ", "家は持ったまま。旅行者が訪れることで、まちにも人の流れが生まれます。")],
+         steps=[("house", "オーナー様が家を貸す", "家はオーナー様のまま"), ("tool", "RIVIAが改修・開業準備", "家具・設備・許可まで"),
+                ("bed", "宿として運営", "集客・清掃・ゲスト対応"), ("yen", "毎月の家賃をお支払い", "プランに応じて上乗せも")],
+         faq=[("契約期間はどれくらいですか？", "物件ごとにご提案します。改修の費用をRIVIAが負担するため、一定の期間を前提にした契約になります。契約は更新を前提としています。"),
+              ("将来、家を使いたくなったらどうなりますか？", "契約の形（定期借家など）によっては、期間の満了で返していただくこともできます。ご希望を最初にお聞かせください。"),
+              ("どんな家でも借り上げてもらえますか？", "立地や建物の状態、法令上、宿として営業できるかによります。現地調査と収支の試算をしたうえでご提案します。"),
+              ("近所に迷惑がかからないか心配です。", "利用ルールの案内や、騒音・ごみへの対応など、周辺への配慮も運営に含めて行います。")]),
+    dict(key="side", slug="service-kaigyo", name="民泊の開業・運営支援", category="management",
+         eyebrow="副業で宿をはじめたい方へ", title="はじめての民泊を、\n開業準備から運営まで伴走します。",
+         lead="物件選び、許可や届出、写真や料金の決め方、開業後の集客まで。実際に宿を運営しているRIVIAが、任せたい範囲に合わせて支えます。",
+         worries=["何から始めればいいか分からない", "民泊と旅館業、どちらで始めるべきか迷っている", "本業が忙しく、運営に時間をかけられない",
+                  "物件が宿として収益を出せるか見通せない", "予約が入るページのつくり方が分からない"],
+         strengths=[("doc", "開業までの手続きを一緒に", "制度の選び方、消防や届出の段取りなど、つまずきやすいところを先回りして進めます。"),
+                    ("chart", "収支の見通しを数字で", "周辺の宿の料金と稼働を調べ、無理のない計画を一緒に立てます。"),
+                    ("users", "任せる範囲を選べる", "現場は自分で担う伴走から、まるごと任せる運営代行、共同出資まで選べます。")],
+         steps=[("search", "物件と制度の確認", "民泊新法か旅館業か"), ("chart", "収支の試算", "周辺の宿の料金と稼働から"),
+                ("tool", "開業準備", "設備・届出・予約ページ"), ("bed", "開業・運営", "任せる範囲はプランで選ぶ")],
+         faq=[("物件をまだ持っていなくても相談できますか？", "はい。物件選びの段階からご相談いただけます。"),
+              ("遠方の物件でも、運営を任せられますか？", "運営代行プランでは、清掃や駆けつけの体制も含めてご提案します。対応エリアはご相談ください。"),
+              ("手数料のほかに、かかる費用はありますか？", "清掃費・リネン・光熱費などの実費は別途かかります。プランごとに事前にご説明します。"),
+              ("民泊新法と旅館業、どちらがいいですか？", "営業したい日数や物件の条件で変わります。目的を伺ったうえで、おすすめをお伝えします。")]),
+]
+MEDIA_SERVICE_BY_KEY = {sv["key"]: sv for sv in MEDIA_SERVICES}
+# 一覧ページのカード：アイコン・ひとこと・条件の目安
+MEDIA_SERVICE_CARDS = {
+    "sell": dict(icon="yen", summary="宿として活かせるかという目線で、相続した家や使っていない家を買い取ります。貸した場合との比較もお出しします。",
+                 spec=[("受け取り方", "売却代金を一括で"), ("費用", "相談・査定は無料")], plans=["買取プラン"]),
+    "use": dict(icon="key", summary="家は持ったまま。RIVIAが借り上げて宿に改修・運営し、オーナー様に家賃をお支払いします。",
+                spec=[("初期費用", "ほぼなし（固定家賃プラン）"), ("受け取り方", "毎月の家賃")], plans=["おまかせ固定家賃", "売上シェア"]),
+    "side": dict(icon="bed", summary="物件選び・届出から、開業後の集客と運営まで。任せたい範囲に合わせて伴走します。",
+                 spec=[("費用", "売上の10%〜（伴走プラン）"), ("任せる範囲", "開業準備のみ〜運営まで")], plans=["伴走", "運営代行", "共同出資"]),
+}
+
+
+def media_service_page(sv):
+    from figures import icon, flow as fig_flow
+    key = sv["key"]
+    grp = next(g for g in MEDIA_PLAN_GROUPS if g[0] == key)
+    _, label, _, src, names = grp
+    money_label = "受け取り方" if src == "operation" else "費用"
+    plans = sorted((p for p in PLANS[src]["plans"] if p["name"] in names), key=lambda p: names.index(p["name"]))
+    plan_cards = "\n".join(media_plan_card(p, key, money_label) for p in plans)
+    worries = "".join(f'<li>{e(w)}</li>' for w in sv["worries"])
+    strengths = "\n".join(f"""          <li class="msv-point reveal" data-delay="{i - 1}">
+            <span class="msv-point__no">POINT {i:02d}</span>
+            <span class="msv-point__icon">{icon(ic)}</span>
+            <h3 class="msv-point__title">{e(t)}</h3>
+            <p class="msv-point__text">{e(d)}</p>
+          </li>""" for i, (ic, t, d) in enumerate(sv["strengths"], 1))
+    g = next((x for x in MEDIA_GUIDES if x["key"] == key), None)
+    related = [ARTICLE_BY_SLUG[sl] for sl in (g["slugs"] if g else [])]
+    reviews = "\n".join(f"""            <figure class="mvoice reveal"><blockquote class="mvoice__text">{e(r["text"])}</blockquote>
+              <figcaption class="mvoice__who"><span class="mvoice__plan">NODE Shimoda</span>{e(r["who"])}・{e(r["date"])}</figcaption></figure>""" for r in NODE_REVIEWS)
+    title_html = "<br>".join(e(t) for t in sv["title"].split("\n"))
+    crumbs = media_crumbs([("アキヤド", "media.html"), ("RIVIAのサービス", "media/plans.html"), (sv["name"], "")])
+    cta_band = f"""        <div class="msv-band reveal">
+          <p class="msv-band__text">まずは話を聞いてみたい方も、資料で比べたい方も。<br class="pc-only">ご相談・資料のお届けは無料です。</p>
+          <div class="msv-band__btns">
+            <a href="#msv-form" class="mbtn" data-cta="media-service-mid">無料で相談する {ARROW}</a>
+            {plan_doc_link(sv["slug"])}
+          </div>
+        </div>"""
+    body = f"""    <section class="mhero msv-hero">
+      <div class="container">{crumbs}
+        <div class="msv-hero__grid">
+          <div class="msv-hero__text">
+            <p class="mhero__en reveal">{e(sv["eyebrow"])}</p>
+            <h1 class="msv-hero__title reveal" data-delay="1">{title_html}</h1>
+            <p class="mhero__lead reveal" data-delay="2">{e(sv["lead"])}</p>
+            <ul class="mcta__points msv-hero__points reveal" data-delay="2"><li>相談・お見積りは無料</li><li>全国対応・オンライン可</li><li>しつこい営業はしません</li></ul>
+          </div>
+          <div id="msv-form">
+{quick_form(sv["category"], sv["name"]).replace('class="qform reveal"', 'class="qform qform--media reveal"').replace("from=akiyado", "from=akiyado")}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section msec msec--first">
+      <div class="container">
+        <div class="msec__head reveal"><div><p class="msec__en">Worries</p><h2 class="msec__title">こんなお悩みはありませんか？</h2></div></div>
+        <ul class="msv-worries reveal">{worries}</ul>
+        <p class="msv-answer reveal">そのお悩み、<strong>宿を運営するRIVIA</strong>にご相談ください。</p>
+      </div>
+    </section>
+
+    <section class="section section--soft msec">
+      <div class="container">
+        <div class="msec__head reveal"><div><p class="msec__en">Why RIVIA</p><h2 class="msec__title">RIVIAの{e(sv["name"])}が選ばれる理由</h2></div></div>
+        <ol class="msv-points">
+{strengths}
+        </ol>
+{cta_band}
+      </div>
+    </section>
+
+    <section class="section msec" id="plans">
+      <div class="container">
+        <div class="msec__head reveal"><div><p class="msec__en">Plans</p><h2 class="msec__title">プランと条件の目安</h2></div></div>
+        <div class="mplans__cards mplans__cards--{len(plans)} reveal">
+{plan_cards}
+        </div>
+        <p class="mplans__note">{e(PLANS[src]["note"])}</p>
+        <p class="mcta__plans"><a href="media/plans.html">ほかのサービスも見る {ARROW}</a></p>
+      </div>
+    </section>
+
+    <section class="section section--soft msec">
+      <div class="container">
+        <div class="msec__head reveal"><div><p class="msec__en">How it works</p><h2 class="msec__title">ご相談からの流れ</h2></div></div>
+        <div class="article__section msv-flow reveal">
+{fig_flow(sv["name"] + "の流れ", sv["steps"])}
+        </div>
+      </div>
+    </section>
+
+    <section class="section msec">
+      <div class="container">
+        <div class="msec__head reveal"><div><p class="msec__en">Track record</p><h2 class="msec__title">RIVIAが運営している宿</h2></div></div>
+        <div class="msv-record reveal">
+          <p class="msv-record__lead">RIVIAは、静岡県下田市で一棟貸しの宿「NODE Shimoda」を自ら運営しています。<br class="pc-only">記事やご提案は、現場で確かめた運営の知識をもとにしています。</p>
+          <p class="msv-record__label">ゲストの声（Airbnbのレビューより抜粋）</p>
+          <div class="mvoices">
+{reviews}
+          </div>
+          <p class="mcta__plans"><a href="index.html#project">運営実績を見る {ARROW}</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft msec">
+      <div class="container">
+        <div class="msec__head reveal"><div><p class="msec__en">FAQ</p><h2 class="msec__title">よくある質問</h2></div></div>
+        <div class="faq reveal">
+{faq_html(sv["faq"])}
+        </div>
+{cta_band}
+      </div>
+    </section>
+
+{media_section(related, eyebrow="Articles", title=f"{label}におすすめの記事", more=False, keep_order=True)}
+
+{media_cta(sv["category"])}"""
+    ld = [{"@context": "https://schema.org", "@type": "Service", "name": f"RIVIAの{sv['name']}", "provider": {"@type": "Organization", "name": "合同会社RIVIA&CO.", "url": SITE},
+           "areaServed": "JP", "description": sv["lead"]},
+          {"@context": "https://schema.org", "@type": "FAQPage",
+           "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in sv["faq"]]},
+          {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"},
+              {"@type": "ListItem", "position": 2, "name": "RIVIAのサービス", "item": f"{SITE}/media/plans.html"},
+              {"@type": "ListItem", "position": 3, "name": sv["name"]}]}]
+    page(f"media/{sv['slug']}.html", f"{sv['name']}｜{sv['eyebrow']}｜RIVIA（アキヤド）",
+         f"{sv['lead']}相談・お見積りは無料、全国対応です。", body, current="media", jsonld=ld, mnav="plans", cv_category=sv["category"])
+
+
+def media_company_page():
+    """アキヤドの運営会社。誰が書いているか・何を頼めるかを1ページで伝える（会社概要はコーポレートと共通）"""
+    rows = company_profile() + [("運営メディア", "アキヤド（空き家と民泊のメディア）"), ("運営している宿", "NODE Shimoda（静岡県下田市・一棟貸し）")]
+    profile = "\n".join(f'          <div class="mprofile__row"><dt>{k}</dt><dd>{v}</dd></div>' for k, v in rows)
+    services = "\n".join(f"""          <a href="media/{sv['slug']}.html" class="mcomp-svc reveal">
+            <span class="mcomp-svc__who">{e(sv['eyebrow'])}</span>
+            <span class="mcomp-svc__name">{e(sv['name'])}</span>
+            <span class="mcomp-svc__more">詳しく見る {ARROW}</span>
+          </a>""" for sv in MEDIA_SERVICES)
+    reviews = "\n".join(f"""            <figure class="mvoice reveal"><blockquote class="mvoice__text">{e(r["text"])}</blockquote>
+              <figcaption class="mvoice__who"><span class="mvoice__plan">NODE Shimoda</span>{e(r["who"])}・{e(r["date"])}</figcaption></figure>""" for r in NODE_REVIEWS)
+    band = f"""        <div class="msv-band reveal">
+          <p class="msv-band__text">サービスの内容や条件の考え方は、資料にまとめています。<br class="pc-only">ご相談・資料のお届けは無料です。</p>
+          <div class="msv-band__btns">
+            {plan_doc_link("company")}
+            <a href="contact.html?from=akiyado-company" class="mbtn" data-cta="media-company">無料で相談する {ARROW}</a>
+          </div>
+        </div>"""
+    crumbs = media_crumbs([("アキヤド", "media.html"), ("運営会社", "")])
+    body = f"""{media_hero("About us", "運営会社", "アキヤドは、宿泊施設の運営と空き家の再生を行う、合同会社RIVIA&CO.が運営しています。", crumbs)}
+
+    <section class="section msec msec--first">
+      <div class="container">
+{band}
+        <div class="msec__head reveal"><div><p class="msec__en">Company</p><h2 class="msec__title">会社概要</h2></div></div>
+        <dl class="mprofile reveal">
+{profile}
+        </dl>
+        <p class="mcta__plans"><a href="about.html">ミッション・ビジョン・バリューを見る {ARROW}</a></p>
+      </div>
+    </section>
+
+    <section class="section section--soft msec">
+      <div class="container">
+        <div class="msec__head reveal"><div><p class="msec__en">Why we write</p><h2 class="msec__title">アキヤドを運営する理由</h2></div></div>
+        <div class="mcomp-why reveal">
+          <p>私たちは、自ら宿を運営する「当事者」です。空き家を宿として再生し、旅行者を迎え、地域のお店や人とつながる。その現場で確かめたことを、空き家に悩む方や、宿をはじめたい方に届けたいと考えています。</p>
+          <p>記事は、公的な資料と、私たちの運営の経験をもとに書いています。読んで終わりではなく、具体的に考えたくなったときには、私たちが直接ご相談に乗ります。</p>
+        </div>
+        <aside class="supervisor mcomp-sup reveal">
+          <figure class="supervisor__photo"><img src="images/{SUPERVISOR["photo"]}" alt="{e(SUPERVISOR["name"])}の写真" width="600" height="600" loading="lazy" decoding="async"></figure>
+          <div>
+            <p class="author__label">記事の監修</p>
+            <p class="author__name">{e(SUPERVISOR["name"])}<span class="supervisor__role">{e(SUPERVISOR["role"])}</span></p>
+            <p class="author__text">{e(SUPERVISOR["bio"])}</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section msec">
+      <div class="container">
+        <div class="msec__head reveal"><div><p class="msec__en">Services</p><h2 class="msec__title">RIVIAにご相談いただけること</h2></div></div>
+        <div class="mcomp-svcs">
+{services}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft msec">
+      <div class="container">
+        <div class="msec__head reveal"><div><p class="msec__en">Our inn</p><h2 class="msec__title">運営している宿：NODE Shimoda</h2></div></div>
+        <p class="msv-record__label">ゲストの声（Airbnbのレビューより抜粋）</p>
+        <div class="mvoices">
+{reviews}
+        </div>
+{band}
+      </div>
+    </section>
+
+{media_cta()}"""
+    ld = [{"@context": "https://schema.org", "@type": "AboutPage", "name": "アキヤドの運営会社",
+           "about": {"@type": "Organization", "name": "合同会社RIVIA&CO.", "url": SITE, "foundingDate": "2026-09-01"}},
+          {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"},
+              {"@type": "ListItem", "position": 2, "name": "運営会社"}]}]
+    page("media/company.html", "運営会社｜空き家と民泊のメディア アキヤド",
+         "アキヤドを運営する合同会社RIVIA&CO.の会社概要です。静岡県下田市で一棟貸しの宿を運営し、空き家の買取・借り上げ、民泊の開業・運営支援を行っています。",
+         body, current="media", jsonld=ld)
 
 
 def media_nav(current=""):
     """メディア内の共通ナビ。読者の状況（ガイド）を先に、テーマと検索を後に置く"""
     items = [("top", "media.html", "トップ")] + [(g["key"], f"media/guide-{g['key']}.html", g["label"]) for g in MEDIA_GUIDES] + \
-            [("themes", "media.html#themes", "テーマから探す"), ("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "RIVIAのプラン")]
+            [("themes", "media.html#themes", "テーマから探す"), ("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "RIVIAのサービス")]
     cur = ' aria-current="page"'
     lis = "".join(f'<li><a href="{href}"{cur if k == current else ""}>{e(n)}</a></li>' for k, href, n in items)
     # スマホでは、ヘッダーのボタンで開くメニューにする（相談・資料請求のボタンも入れる）
@@ -3628,7 +3900,7 @@ def media_search_page():
                         " ".join(MEDIA_CAT_NAMES[t] for t in a["topics"])])
         text = _re.sub(r"<[^>]+>", "", " ".join(h for _, _, h in a["sections"]) + " " + " ".join(ans for _, ans in a["faq"]))
         idx.append(dict(slug=a["slug"], title=a["title"], cat=MEDIA_CAT_NAMES[a["category"]], date=a["date"],
-                        thumb=ARTICLE_PHOTOS[a["slug"]][0], desc=a["description"],
+                        thumb=ARTICLE_PHOTOS[a["slug"]][0], desc=a["description"], short=a["short"],
                         key=_re.sub(r"\s+", " ", key), text=_re.sub(r"\s+", " ", text)))
     with open(os.path.join(OUT, "js", "media-index.js"), "w", encoding="utf-8") as f:
         f.write("// アキヤドの記事検索用の索引（build で自動生成。手で編集しない）\nwindow.MEDIA_INDEX = " + json.dumps(idx, ensure_ascii=False) + ";\n")
@@ -3729,7 +4001,7 @@ def media_index_page():
             <h2 class="msec__title">RIVIAに任せると、どうなる？</h2>
             <p class="mplanband__lead">記事を運営する私たちは、実際に宿を運営しています。売る・貸す・宿をはじめる、それぞれのプランと条件の目安をまとめました。</p>
           </div>
-          <ul class="mplanband__list">{"".join(f'<li><a href="media/plans.html#{k}"><span class="mplanband__who">{e(l)}</span><span class="mplanband__names">{"・".join(e(n) for n in names)}</span><span class="mplanband__arrow">→</span></a></li>' for k, l, _, _, names in MEDIA_PLAN_GROUPS)}</ul>
+          <ul class="mplanband__list">{"".join(f'<li><a href="media/{MEDIA_SERVICE_BY_KEY[k]["slug"]}.html"><span class="mplanband__who">{e(l)}</span><span class="mplanband__names">{e(MEDIA_SERVICE_BY_KEY[k]["name"])}（{"・".join(e(n) for n in names)}）</span><span class="mplanband__arrow">→</span></a></li>' for k, l, _, _, names in MEDIA_PLAN_GROUPS)}</ul>
         </div>
       </div>
     </section>
@@ -3934,7 +4206,7 @@ def article_page(a):
           <p class="inline-cta__text">{e(CV_MESSAGES.get(g["key"] if g else "", CV_MESSAGES[""]))}</p>
           <div class="inline-cta__actions">
             <a href="contact.html?category={a["services"][0]}&amp;from=akiyado" class="btn mbtn" data-cta="media-inline">無料で相談する {ARROW}</a>
-            <a href="media/plans.html#{g["key"] if g else "use"}" class="inline-cta__plan">プランと条件を見る {ARROW}</a>
+            <a href="media/{MEDIA_SERVICE_BY_KEY[g["key"] if g else "use"]["slug"]}.html" class="inline-cta__plan">サービスとプランを見る {ARROW}</a>
           </div>
         </aside>
 
@@ -4082,7 +4354,7 @@ def llms_txt():
 
 def sitemap():
     pages = ["", "about.html"] + [f"service-{k}.html" for k, _ in SERVICES] + \
-            ["media.html"] + [f"media/category-{k}.html" for k, _ in MEDIA_CATEGORIES] + [f"media/guide-{g['key']}.html" for g in MEDIA_GUIDES] + ["media/plans.html"] + [f"media/{a['slug']}.html" for a in ARTICLES] + ["careers.html", "contact.html", "privacy.html"]
+            ["media.html"] + [f"media/category-{k}.html" for k, _ in MEDIA_CATEGORIES] + [f"media/guide-{g['key']}.html" for g in MEDIA_GUIDES] + ["media/plans.html"] + [f"media/{sv['slug']}.html" for sv in MEDIA_SERVICES] + ["media/company.html"] + [f"media/{a['slug']}.html" for a in ARTICLES] + ["careers.html", "contact.html", "privacy.html"]
     pages += ["en/" + ("" if f == "index.html" else f) for f in EN_PAGES if f != "thanks.html"]
     lastmod = {f"media/{a['slug']}.html": a["updated"] for a in ARTICLES}
     urls = "\n".join(
@@ -4110,6 +4382,9 @@ if __name__ == "__main__":
     thanks_page()
     media_index_page()
     media_plans_page()
+    for sv in MEDIA_SERVICES:
+        media_service_page(sv)
+    media_company_page()
     for k, n in MEDIA_CATEGORIES:
         media_category_page(k, n)
     for g in MEDIA_GUIDES:
