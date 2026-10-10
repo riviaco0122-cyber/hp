@@ -123,8 +123,8 @@ CLARITY_ID = "yrrji51n1y"  # Microsoft Clarity のプロジェクトID
 GA_ID = "G-RZVE2XBPQ2"  # Google アナリティクス 4 の測定ID
 
 SERVICES = [
-    ("operation", "空き家再生事業"),
-    ("management", "宿泊施設 開業・運営支援事業"),
+    ("operation", "アキヤド空き家再生"),
+    ("management", "アキヤド開業・運営支援"),
     ("partnership", "不動産事業者様との協業"),
     ("marketing", "WEB集客支援事業"),
     ("recruit", "WEB採用支援事業"),
@@ -830,7 +830,7 @@ def faq_html(items):
     )
 
 
-# ---------------------------------------------------------------- プラン例（空き家再生事業・開業コンサル）
+# ---------------------------------------------------------------- プラン例（アキヤド空き家再生・開業コンサル）
 # 数字はすべて「一例」。物件の立地・規模・改修内容により個別に設計する前提で表示する。
 PLAN_AXES = {
     "operation": ["初期費用の負担", "毎月の収入", "収益の伸びしろ"],
@@ -878,7 +878,7 @@ PLANS = {
                  cta="買取について相談する"),
         ],
         note="※ 金額・割合はイメージです。条件は物件ごとにご提案します。契約は更新を前提としています。",
-        advice="相続した空き家なら「アキヤド借り上げプラン」のおまかせコースがおすすめです。<br>ご自身で運営に関わり、より大きな利益を目指すなら<a href=\"service-management.html\">宿泊施設 開業・運営支援事業</a>がおすすめです。",
+        advice="相続した空き家なら「アキヤド借り上げプラン」のおまかせコースがおすすめです。<br>ご自身で運営に関わり、より大きな利益を目指すなら<a href=\"service-management.html\">アキヤド開業・運営支援</a>がおすすめです。",
     ),
     "management": dict(
         title="開業・運営のプラン例",
@@ -1366,7 +1366,7 @@ def quick_form(key, name):
           <input type="hidden" name="流入元" value="サービスページ：{e(name)}">
           <label class="qform__field"><span>お名前 <em>必須</em></span><input type="text" name="name" placeholder="山田 太郎" autocomplete="name" required></label>
           <label class="qform__field"><span>メールアドレス <em>必須</em></span><input type="email" name="email" placeholder="your@email.com" autocomplete="email" required></label>
-          <label class="qform__field"><span>ご相談内容 <small>任意</small></span><textarea name="message" rows="3" placeholder="物件の場所や、気になっていることなど"></textarea></label>
+          <label class="qform__field"><span>ご相談内容 <small>任意</small></span><textarea name="message" rows="2" placeholder="物件の場所や、気になっていることなど"></textarea></label>
           <label class="qform__field qform__file"><span>ファイル <small>任意・物件の写真や図面など</small></span><input type="file" name="attachment" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"></label>
           <button type="submit" class="btn qform__submit">無料で相談する {ARROW}</button>
           <p class="qform__note">送信により<a href="privacy.html">プライバシーポリシー</a>に同意したものとします。しつこい営業はしません。</p>
@@ -1948,7 +1948,7 @@ def careers_page():
 
 
 def contact_page():
-    short = {"operation": "空き家再生", "management": "開業・運営支援", "partnership": "不動産協業",
+    short = {"operation": "アキヤド空き家再生", "management": "アキヤド開業・運営支援", "partnership": "不動産協業",
              "marketing": "WEB集客", "recruit": "WEB採用"}
     ohtml = "\n".join(
         f'                <optgroup label="{e(g["name"])}">\n'
@@ -2283,7 +2283,7 @@ def spec_md():
     w("")
     w("1. **ページ見出し:** サービス名、トップメッセージ（明朝体・大）、「こんな方へ」（トップのお悩み文と同じ）、ボタン2つ（「無料で相談する」「お悩みと解決策を見る」）。写真は使わない。")
     w("2. **こんなお悩みはありませんか？:** 表面的な悩みではなく経営課題として整理する。**全サービス4件ずつ**。1件ごとに、左に「経営課題」（線画アイコン＋見出し）と「現場で起きていること」（お客様の声）、右に「RIVIAの打ち手」「改善する経営指標」（タグ）「この課題について相談する」リンク（ご相談カテゴリを自動選択してお問い合わせへ）を置き、矢印でつなぐ。")
-    w("    * 個人のお客様も対象のサービス（空き家再生事業・宿泊施設 開業・運営支援事業）は「経営課題」ではなく「お悩み」、「現場で起きていること」は「よくあるお声」、「改善する経営指標」は「変わること」と表記し、暮らしの言葉で書く。")
+    w("    * 個人のお客様も対象のサービス（アキヤド空き家再生・アキヤド開業・運営支援）は「経営課題」ではなく「お悩み」、「現場で起きていること」は「よくあるお声」、「改善する経営指標」は「変わること」と表記し、暮らしの言葉で書く。")
     w("3. **ご支援の流れ（一例）:** 「内容や期間は、お選びいただくプランや状況によって変わります。」と添えたうえで、4つのSTEPを1pxの線と丸でつないだタイムライン（PCは横、スマホは縦）。各STEPは名前・期間の目安・一行の説明だけを示す（具体的な打ち手はお悩みカード側で説明する）。")
     w("4. **運営実績（追加）:** トップと同じNODE Shimodaのカード（「運営施設の一例」と明示）。")
     w("5. **相談CTA:** 「ご相談はこちらから」ボタン（お問い合わせへ。ご相談カテゴリを自動選択）。宿泊系サービスはボタンの下に「観光地でなくても、収益物件になり得ます。お気軽にお問い合わせください。」")

@@ -58,7 +58,14 @@ def dictionary():
         "送信により": "By sending, you agree to our",
         "に同意したものとします。しつこい営業はしません。": ". We never make pushy sales.",
     })
-    for ja in ["空き家再生事業", "宿泊施設 開業・運営支援事業", "不動産事業者様との協業", "WEB集客支援事業", "WEB採用支援事業"]:
+    # 事業名を「アキヤド〇〇」に変えたため、旧名の英訳を新しい名前にも引き継ぐ
+    RENAMED = {"空き家再生事業": ("アキヤド空き家再生", "Akiyado Vacant Home Revival"),
+               "宿泊施設 開業・運営支援事業": ("アキヤド開業・運営支援", "Akiyado Inn Launch & Operation Support")}
+    for old, (new, new_en) in RENAMED.items():
+        old_en = T.get(old)
+        for k in [k for k in T if old in k]:
+            T[k.replace(old, new)] = T[k].replace(old_en, new_en) if old_en else T[k]
+    for ja in ["アキヤド空き家再生", "アキヤド開業・運営支援", "不動産事業者様との協業", "WEB集客支援事業", "WEB採用支援事業"]:
         en = T.get(ja, ja)
         T[f"{ja}の無料相談"] = f"Free consultation: {en}"
         # 社内に届く件名・流入元は日本語のまま、英語サイトからと分かるようにする

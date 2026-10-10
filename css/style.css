@@ -2784,3 +2784,39 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
   .dflow__body { padding: 20px 18px; }
   .dflow__roles { grid-template-columns: 1fr; }
 }
+/* 緑の帯の上では、プラン名を白で読めるように */
+.pd__seg .plan-brand { color: rgba(255, 255, 255, 0.92); font-weight: 500; }
+.pd__seg .plan-brand + .pd__name { margin-top: 2px; }
+/* かんたん相談フォーム：PC・スマホとも1画面に収まる大きさに */
+.qform { gap: 8px; padding: 22px 24px 18px; }
+.qform__title { font-size: 18px; line-height: 1.5; }
+.qform__lead { margin-top: -4px; font-size: 12px; line-height: 1.7; }
+.qform__field { gap: 4px; }
+.qform__field span { font-size: 12px; }
+.qform input, .qform textarea { padding: 8px 12px; font-size: 15px; line-height: 1.5; }
+.qform textarea { min-height: 0; height: 64px; }
+.qform__file input { padding: 5px 8px; font-size: 12.5px; }
+.qform__submit { margin-top: 6px; padding-top: 14px; padding-bottom: 14px; }
+.qform__note { font-size: 10.5px; line-height: 1.6; }
+.page-hero--photo:has(.svc-hero) { min-height: calc(100svh - var(--header-h)); padding: 32px 0; }
+@media (max-width: 899px) {
+  .page-hero--photo:has(.svc-hero) { min-height: 0; padding: 28px 0 32px; }
+  .svc-hero { gap: 20px; }
+  .svc-hero .page-hero__title { font-size: 26px; line-height: 1.55; }
+  .svc-hero .page-hero__actions { display: none; }
+  .svc-hero .page-hero__target { margin-top: 12px; font-size: 13px; }
+  .msv-hero__points { display: none; }
+  .msv-hero .mhero__lead { font-size: 13.5px; }
+  .qform { padding: 18px 16px 14px; }
+}
+@media (max-width: 899px) {
+  .svc-hero .page-hero__target { display: none; }
+  .svc-hero .page-hero__title { font-size: 22px; margin-top: 8px; }
+  .page-hero--photo:has(.svc-hero) { padding: 20px 0 28px; }
+  .svc-hero { gap: 16px; }
+  .msv-hero { padding-top: 20px; padding-bottom: 32px; }
+  .msv-hero .crumbs, .msv-hero .mhero__lead { display: none; }
+  .msv-hero__grid { margin-top: 0; gap: 16px; }
+  .msv-hero__title { font-size: 21px; margin-top: 6px; }
+  .qform__lead { display: none; }
+}

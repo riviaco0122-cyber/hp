@@ -250,9 +250,9 @@
       track('select_guide', { guide: href.match(/guide-([a-z]+)/)[1], page_path: location.pathname });
     }
   });
-  var fixedMedia = document.querySelector('.fixed-cta--media');
+  var fixedMedia = document.querySelector('.fixed-cta');
   // 冒頭の入口・フォーム・相談ブロックが見えている間は、下に固定した相談ボタンを隠す（重なりを防ぐ）
-  var hideTargets = document.querySelectorAll('.mfv, .qform--media, .mcta__box, .msv-band');
+  var hideTargets = document.querySelectorAll('.mfv, .qform, .mcta__box, .msv-band');
   if (hideTargets.length && fixedMedia && 'IntersectionObserver' in window) {
     var visible = new Set();
     var io = new IntersectionObserver(function (en) {
