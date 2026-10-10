@@ -41,8 +41,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
   <link rel="stylesheet" href="../../css/style.css">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
@@ -56,7 +56,7 @@
 
   <header class="header header--media">
     <div class="container mheader__inner">
-      <a href="../media.html" class="mheader__logo"><span class="mlogo"><span class="mlogo__ja">アキヤド</span><span class="mlogo__sub">空き家と<wbr>民泊の<wbr>メディア</span></span></a>
+      <a href="../media.html" class="mheader__logo"><span class="mlogo"><svg class="amark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2E6B47"/><path d="M7.5 15.6 16 8.6l8.5 7v8.6a1.3 1.3 0 0 1-1.3 1.3h-4.7v-5.7h-5v5.7H8.8a1.3 1.3 0 0 1-1.3-1.3z" fill="#fff"/></svg><span class="mlogo__ja">アキヤド</span><span class="mlogo__sub">空き家と<wbr>民泊の<wbr>メディア</span></span></a>
       <div class="mheader__right">
       <a href="../contact.html?from=akiyado" class="mheader__cta" data-cta="media-header">無料相談</a>
       <a href="../index.html" class="mheader__corp"><span>運営</span><img src="../../images/logo/logo.svg" alt="RIVIA&amp;CO." width="325" height="64"></a>
@@ -222,10 +222,10 @@
             <li class="guide-step reveal" data-date="2026-10-10">
               <a href="../media/case-rental-house-inn-first-year.html" class="guide-step__body">
                 <span class="guide-step__no">12</span>
-                <span class="guide-step__thumb"><img src="../../images/photos/riverside-town.jpg" srcset="../../images/photos/w/riverside-town-800.webp 800w, ../../images/photos/riverside-town.jpg 1620w" sizes="(max-width: 899px) 30vw, 220px" alt="" width="720" height="450" loading="lazy" decoding="async"></span>
+                <span class="guide-step__thumb"><img src="../../images/photos/white-bedroom.jpg" srcset="../../images/photos/w/white-bedroom-800.webp 800w, ../../images/photos/white-bedroom.jpg 1620w" sizes="(max-width: 899px) 30vw, 220px" alt="" width="720" height="450" loading="lazy" decoding="async"></span>
                 <span class="guide-step__text">
                   <span class="guide-step__cat"><n-w class="j">収益・運営</n-w><span class="guide-step__min"><n-w class="j">約4分で読める</n-w></span></span>
-                  <span class="guide-step__title">【運営事例】賃貸の<wbr>一軒家を<wbr>小さな<wbr>宿に。<wbr>開業から<wbr>約14か月で<wbr>初期投資を<wbr>ほぼ回収した<wbr>数字の推移</span>
+                  <span class="guide-step__title">【運営事例】伊豆・下田の<wbr>賃貸の<wbr>一軒家を<wbr>小さな<wbr>宿に。<wbr>開業から<wbr>約14か月で<wbr>初期投資を<wbr>ほぼ回収した<wbr>数字の推移</span>
                   <span class="guide-step__more"><n-w class="j">記事を読む</n-w> <span class="arrow" aria-hidden="true"></span></span>
                 </span>
               </a>
@@ -235,11 +235,16 @@
       </div>
     </section>
 
-    <section class="section cta cta--photo">
-      <img class="cta__bg" src="../../images/photos/garden-boat.jpg" alt="" width="1617" height="1079" loading="lazy" decoding="async">
-      <div class="container reveal">
-        <h2 class="cta__title">記事を<wbr>読んで、<br class="sp-only">気になることが<wbr>あれば。</h2>
-        <div class="cta__btn"><a href="../contact.html?category=operation" class="btn btn--lg">ご相談は<wbr>こちらから <span class="arrow" aria-hidden="true"></span></a></div>
+    <section class="section mcta">
+      <div class="container">
+        <div class="mcta__box reveal">
+          <p class="mcta__en">Consultation</p>
+          <h2 class="mcta__title">空き家の<wbr>こと、<br class="sp-only">まずは<wbr>気軽に<wbr>ご相談ください。</h2>
+          <p class="mcta__lead"><n-w class="j">売るか、活かすか、民泊にするか。まだ決めていない段階でも大丈夫です。</n-w><br class="pc-only"><n-w class="j">宿を運営する私たちが、物件の状況に合わせてお答えします。</n-w></p>
+          <ul class="mcta__points"><li>相談・<wbr>お見積りは無料</li><li>全国対応・オンライン可</li><li>しつこい<wbr>営業は<wbr>しません</li></ul>
+          <a href="../contact.html?category=operation&amp;from=akiyado" class="mbtn" data-cta="media-bottom">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
+          <p class="mcta__note"><n-w>運営：合同会社RIVIA&amp;CO.（宿泊施設の運営・空き家再生）</n-w></p>
+        </div>
       </div>
     </section>
   </main>
@@ -248,7 +253,7 @@
     <div class="container">
       <div class="mfooter__top">
         <div>
-          <a href="../media.html" class="mfooter__logo"><span class="mlogo"><span class="mlogo__ja">アキヤド</span><span class="mlogo__sub">空き家と<wbr>民泊の<wbr>メディア</span></span></a>
+          <a href="../media.html" class="mfooter__logo"><span class="mlogo"><svg class="amark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2E6B47"/><path d="M7.5 15.6 16 8.6l8.5 7v8.6a1.3 1.3 0 0 1-1.3 1.3h-4.7v-5.7h-5v5.7H8.8a1.3 1.3 0 0 1-1.3-1.3z" fill="#fff"/></svg><span class="mlogo__ja">アキヤド</span><span class="mlogo__sub">空き家と<wbr>民泊の<wbr>メディア</span></span></a>
           <p class="mfooter__lead"><n-w>空き家を、売る。活かす。民泊を、はじめる。</n-w><br><n-w>宿を運営する私たちが、悩みに沿ってお届けします。</n-w></p>
         </div>
         <div class="mfooter__cols">
