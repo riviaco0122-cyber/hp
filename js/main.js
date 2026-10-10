@@ -5,6 +5,7 @@
   'use strict';
 
   window.RIVIA_READY = true;
+  var EN = document.documentElement.lang === 'en';  // 英語ページかどうか（一部の文言を切り替える）
   document.documentElement.classList.add('js');
 
   /**
@@ -27,7 +28,7 @@
     header.classList.toggle('is-menu-open', open);
     document.documentElement.classList.toggle('is-menu-open', open);
     menuBtn.setAttribute('aria-expanded', String(open));
-    menuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    menuBtn.setAttribute('aria-label', EN ? (open ? 'Close menu' : 'Open menu') : (open ? 'メニューを閉じる' : 'メニューを開く'));
     if (!open) closeSubnav();
   }
   if (menuBtn) {
@@ -152,6 +153,130 @@
     }
   });
 
+  // 新着記事：公開済みの先頭の1本を大きく見せる
+  document.querySelectorAll('.media-grid--feature').forEach(function (grid) {
+    var lead = grid.querySelector('.media-card:not([hidden])');
+    if (lead) lead.classList.add('is-lead');
+  });
+  // よくある悩み：公開前の記事への質問は出さない
+  document.querySelectorAll('.mq li[data-date]').forEach(function (li) {
+    if (li.getAttribute('data-date') > today) li.hidden = true;
+  });
+  // ガイド：公開前の記事は「公開予定」として表示し、リンクにしない
+  document.querySelectorAll('.guide-step[data-date]').forEach(function (li) {
+    var d = li.getAttribute('data-date');
+    if (d <= today) return;
+    var link = li.querySelector('a');
+    var box = document.createElement('div');
+    box.className = link.className;
+    box.innerHTML = link.innerHTML;
+    var more = box.querySelector('.guide-step__more');
+    if (more) {
+      more.className = 'guide-step__soon';
+      more.textContent = Number(d.slice(5, 7)) + '月' + Number(d.slice(8, 10)) + '日 公開予定';
+    }
+    li.replaceChild(box, link);
+    li.classList.add('is-upcoming');
+  });
+  // 記事ページのガイド欄：公開前の記事は出さない
+  // 前後の記事は、公開済みの記事の中で決める
+  document.querySelectorAll('.guide-box').forEach(function (box) {
+    var items = Array.prototype.slice.call(box.querySelectorAll('.guide-box__list li'));
+    items.forEach(function (li) { if (li.getAttribute('data-date') > today) li.hidden = true; });
+    var shown = items.filter(function (li) { return !li.hidden; });
+    var i = shown.findIndex(function (li) { return li.hasAttribute('aria-current'); });
+    var pager = box.querySelector('.guide-box__pager');
+    [[shown[i - 1], 'guide-box__prev', '前の記事'], [shown[i + 1], 'guide-box__next', '次の記事']].forEach(function (x) {
+      var link = x[0] && x[0].querySelector('a');
+      if (!link) return;
+      var a = document.createElement('a');
+      a.href = link.getAttribute('href');
+      a.className = x[1];
+      a.innerHTML = '<span>' + x[2] + '</span>';
+      a.appendChild(document.createTextNode(link.textContent));
+      pager.appendChild(a);
+    });
+  });
+  // シェア：リンクをコピー
+  document.querySelectorAll('.share__copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var url = btn.getAttribute('data-url');
+      var done = function () { btn.textContent = 'コピーしました'; setTimeout(function () { btn.textContent = 'リンクをコピー'; }, 2000); };
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function () { window.prompt('URLをコピーしてください', url); });
+      else window.prompt('URLをコピーしてください', url);
+    });
+  });
+  // 旧URL（media.html?cat=○○）はカテゴリ一覧へ
+  if (window.URLSearchParams && document.querySelector('.mnav') && /media\.html$/.test(location.pathname)) {
+    var oldCat = new URLSearchParams(location.search).get('cat');
+    if (oldCat && /^[a-z]+$/.test(oldCat) && document.querySelector('a[href$="category-' + oldCat + '.html"]')) location.replace(new URL('media/category-' + oldCat + '.html', location.href).href);
+  }
+
+  /**
+   * 計測（GA4）：相談ボタン・ガイド・検索の利用を記録し、どこから問い合わせにつながったかを見えるようにする
+   */
+  var track = function (name, params) { if (typeof window.gtag === 'function') window.gtag('event', name, params); };
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (/contact\.html/.test(href)) {
+      track('cta_click', { cta_position: a.getAttribute('data-cta') || a.className || 'link', link_text: a.textContent.trim().slice(0, 40), page_path: location.pathname });
+    } else if (/guide-[a-z]+\.html/.test(href)) {
+      track('select_guide', { guide: href.match(/guide-([a-z]+)/)[1], page_path: location.pathname });
+    }
+  });
+  // アキヤドのトップ：FVを見ている間は、下部の相談ボタンを隠す（FVの入口・検索と重ならないように）
+  var mfv = document.querySelector('.mfv');
+  var fixedMedia = document.querySelector('.fixed-cta--media');
+  if (mfv && fixedMedia && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { fixedMedia.classList.toggle('is-hidden', en[0].isIntersecting); }, { threshold: 0.15 }).observe(mfv);
+  }
+  // お問い合わせフォーム：流入元（例：アキヤドの記事）を一緒に送る
+  var fromField = document.getElementById('from-field');
+  if (fromField && window.URLSearchParams) {
+    var from = new URLSearchParams(location.search).get('from');
+    var ref = document.referrer && document.referrer.indexOf(location.host) >= 0 ? document.referrer.replace(/^https?:\/\/[^/]+/, '') : '';
+    fromField.value = [from, ref].filter(Boolean).join(' / ');
+  }
+
+  /**
+   * Media: 記事検索（media/search.html?q=…）
+   * js/media-index.js の索引から、すべてのキーワードを含む公開済みの記事を探す
+   */
+  var results = document.getElementById('search-results');
+  if (results && window.MEDIA_INDEX) {
+    var norm = function (t) { return (t.normalize ? t.normalize('NFKC') : t).toLowerCase(); };
+    var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+    var q = (new URLSearchParams(location.search).get('q') || '').trim();
+    var words = norm(q).split(/\s+/).filter(Boolean);
+    var input = document.querySelector('.msearch__input');
+    if (input) input.value = q;
+    var hits = window.MEDIA_INDEX.filter(function (a) { return a.date <= today; }).map(function (a) {
+      var title = norm(a.title), text = norm(a.text), score = 0;
+      for (var i = 0; i < words.length; i++) {
+        if (text.indexOf(words[i]) < 0 && title.indexOf(words[i]) < 0) return null;
+        score += (title.indexOf(words[i]) >= 0 ? 10 : 0) + Math.min(text.split(words[i]).length - 1, 10);
+      }
+      return { a: a, score: score };
+    }).filter(Boolean).sort(function (x, y) { return y.score - x.score || (x.a.date < y.a.date ? 1 : -1); });
+    results.innerHTML = hits.map(function (h) {
+      var a = h.a;
+      return '<a href="' + a.slug + '.html" class="media-card is-visible">' +
+        '<div class="thumb thumb--photo"><img src="../../images/photos/w/' + a.thumb + '-800.webp" alt="" loading="lazy" decoding="async" width="720" height="450">' +
+        '<span class="thumb__cat">' + esc(a.cat) + '</span></div>' +
+        '<div class="media-card__body"><span class="media-card__cat">' + esc(a.cat) + '</span>' +
+        '<h3 class="media-card__title">' + esc(a.title) + '</h3>' +
+        '<time class="media-card__date" datetime="' + a.date + '">' + a.date.replace(/-/g, '.') + '</time></div></a>';
+    }).join('');
+    var status = document.querySelector('.msearch-status');
+    if (status) status.textContent = q ? '「' + q + '」の検索結果：' + hits.length + '件' : 'すべての記事：' + hits.length + '件';
+    var none = document.querySelector('.msearch-empty');
+    if (none) none.hidden = hits.length > 0;
+    if (q) document.title = '「' + q + '」の検索結果｜アキヤド';
+    if (q) track('search', { search_term: q, results: hits.length });
+  }
+
   /**
    * Media: カテゴリの絞り込みと「もっと記事を見てみる」
    * 例) media.html?cat=akiya
@@ -212,7 +337,7 @@
       box.classList.toggle('has-file', files.length > 0);
       name.textContent = files.length === 0 ? name.getAttribute('data-default')
         : files.length === 1 ? files[0].name
-        : files[0].name + ' ほか' + (files.length - 1) + '件';
+        : files[0].name + (EN ? ' and ' + (files.length - 1) + ' more' : ' ほか' + (files.length - 1) + '件');
     });
   });
 
@@ -240,7 +365,7 @@
           window.location.href = form.getAttribute('data-thanks');
         })
         .catch(function () {
-          err.textContent = '送信できませんでした。時間をおいて再度お試しいただくか、入力内容をご確認ください。';
+          err.textContent = EN ? 'Your message could not be sent. Please try again later or check your entries.' : '送信できませんでした。時間をおいて再度お試しいただくか、入力内容をご確認ください。';
           if (btn) { btn.disabled = false; btn.classList.remove('is-sending'); }
         });
     });
@@ -270,6 +395,32 @@
     if (lines.length < 2) return 0;
     return lines.filter(function (l) { return l.width / fs < 5; }).length;
   }
+  function fixBlock(b) {
+    b.style.letterSpacing = '';
+    if (!b.offsetParent) return;
+    var cs = getComputedStyle(b);
+    var fs = parseFloat(cs.fontSize);
+    var base = parseFloat(cs.letterSpacing) || 0;
+    var best = shortLines(b, fs), bestStep = 0;
+    if (!best) return;
+    var steps = [-0.01, -0.02, -0.03, -0.04, -0.05];
+    for (var i = 0; i < steps.length && best; i++) {
+      b.style.letterSpacing = (base + steps[i] * fs) + 'px';
+      var n = shortLines(b, fs);
+      if (n < best) { best = n; bestStep = steps[i]; }
+    }
+    b.style.letterSpacing = bestStep ? (base + bestStep * fs) + 'px' : '';
+    // 左揃えの短い文で、まだ最後の行が短い場合は、文末の言葉（5〜9字）をまとめて改行させない
+    if (best && !b.querySelector('n-w.j')) guardTail(b, fs);
+  }
+  // 表示の負担を減らすため、画面に近づいた段落から順に整える
+  var lineObserver = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      lineObserver.unobserve(en.target);
+      fixBlock(en.target);
+    });
+  }, { rootMargin: '400px 0px' }) : null;
   function fixShortLines() {
     var blocks = [];
     document.querySelectorAll('n-w').forEach(function (el) {
@@ -278,22 +429,7 @@
     });
     unguard(document);
     blocks.forEach(function (b) {
-      b.style.letterSpacing = '';
-      if (!b.offsetParent) return;
-      var cs = getComputedStyle(b);
-      var fs = parseFloat(cs.fontSize);
-      var base = parseFloat(cs.letterSpacing) || 0;
-      var best = shortLines(b, fs), bestStep = 0;
-      if (!best) return;
-      var steps = [-0.01, -0.02, -0.03, -0.04, -0.05];
-      for (var i = 0; i < steps.length && best; i++) {
-        b.style.letterSpacing = (base + steps[i] * fs) + 'px';
-        var n = shortLines(b, fs);
-        if (n < best) { best = n; bestStep = steps[i]; }
-      }
-      b.style.letterSpacing = bestStep ? (base + bestStep * fs) + 'px' : '';
-      // 左揃えの短い文で、まだ最後の行が短い場合は、文末の言葉（5〜9字）をまとめて改行させない
-      if (best && !b.querySelector('n-w.j')) guardTail(b, fs);
+      if (lineObserver) { lineObserver.unobserve(b); lineObserver.observe(b); } else fixBlock(b);
     });
   }
   function guardTail(b, fs) {
@@ -329,8 +465,8 @@
   }
   var fixTimer;
   function scheduleFix() { clearTimeout(fixTimer); fixTimer = setTimeout(fixShortLines, 150); }
-  window.addEventListener('load', fixShortLines);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fixShortLines);
+  else window.addEventListener('load', fixShortLines);
   var lastWidth = window.innerWidth;
   window.addEventListener('resize', function () {
     if (window.innerWidth === lastWidth) return;  // スマホのスクロールでの高さ変化は無視

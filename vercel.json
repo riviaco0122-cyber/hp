@@ -2,11 +2,61 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/", "destination": "/pages/index.html" },
-    { "source": "/robots.txt", "destination": "/seo/robots.txt" },
-    { "source": "/sitemap.xml", "destination": "/seo/sitemap.xml" },
-    { "source": "/llms.txt", "destination": "/seo/llms.txt" },
-    { "source": "/media/:file.html", "destination": "/pages/media/:file.html" },
-    { "source": "/:file.html", "destination": "/pages/:file.html" }
+    {
+      "source": "/",
+      "destination": "/pages/index.html"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/seo/robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/seo/sitemap.xml"
+    },
+    {
+      "source": "/llms.txt",
+      "destination": "/seo/llms.txt"
+    },
+    {
+      "source": "/en",
+      "destination": "/pages/en/index.html"
+    },
+    {
+      "source": "/en/",
+      "destination": "/pages/en/index.html"
+    },
+    {
+      "source": "/en/:file.html",
+      "destination": "/pages/en/:file.html"
+    },
+    {
+      "source": "/media/:file.html",
+      "destination": "/pages/media/:file.html"
+    },
+    {
+      "source": "/:file.html",
+      "destination": "/pages/:file.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(css|js)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    }
   ]
 }

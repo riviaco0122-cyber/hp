@@ -23,6 +23,9 @@
   <title>WEB採用支援事業 | 合同会社RIVIA&amp;CO.</title>
   <meta name="description" content="地方企業の「人材不足」という経営課題を、WEBマーケティングの手法で解決する採用支援事業です。業種を問わず、採用計画から採用ブランディング、母集団形成、定着までを一貫して支援します。">
   <link rel="canonical" href="https://rivia-co.com/service-recruit.html">
+  <link rel="alternate" hreflang="ja" href="https://rivia-co.com/service-recruit.html">
+  <link rel="alternate" hreflang="en" href="https://rivia-co.com/en/service-recruit.html">
+  <link rel="alternate" hreflang="x-default" href="https://rivia-co.com/service-recruit.html">
   <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../images/favicon-48.png" type="image/png" sizes="48x48">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
@@ -41,7 +44,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
   <link rel="stylesheet" href="../css/style.css">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
@@ -59,21 +63,22 @@
 
       <nav class="gnav" id="gnav" aria-label="メインナビゲーション">
         <ul class="gnav__list">
-          <li><a href="about.html" class="gnav__link">About</a></li>
+          <li><a href="about.html" class="gnav__link">私たちに<wbr>ついて</a></li>
           <li class="gnav__item--has-sub">
-            <button type="button" class="gnav__link" aria-expanded="false" aria-controls="subnav-service" aria-current="page">Service <span class="gnav__caret" aria-hidden="true"></span></button>
+            <button type="button" class="gnav__link" aria-expanded="false" aria-controls="subnav-service" aria-current="page"><n-w class="j">事業内容</n-w> <span class="gnav__caret" aria-hidden="true"></span></button>
             <ul class="subnav" id="subnav-service">
               <li class="subnav__intents"><ul><li class="subnav__aud">個人の<wbr>お客様</li><li><a href="service-operation.html"><span class="subnav__text"><span class="subnav__intent"><n-w>空き家を活かしたい・売りたい</n-w></span><span class="subnav__name"><n-w>空き家再生事業</n-w></span></span> <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-management.html"><span class="subnav__text"><span class="subnav__intent"><n-w>民泊を始めたい</n-w></span><span class="subnav__name"><n-w>宿泊施設 開業・運営支援事業</n-w></span></span> <span class="arrow" aria-hidden="true"></span></a></li><li class="subnav__aud">法人の<wbr>お客様</li><li><a href="service-management.html"><span class="subnav__text"><span class="subnav__intent"><n-w>民泊を始めたい</n-w></span><span class="subnav__name"><n-w>宿泊施設 開業・運営支援事業</n-w></span></span> <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-partnership.html"><span class="subnav__text"><span class="subnav__intent"><n-w>物件を民泊用に売りたい</n-w></span><span class="subnav__name"><n-w>不動産事業者様との協業</n-w></span></span> <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-marketing.html"><span class="subnav__text"><span class="subnav__intent">集客を伸ばしたい</span><span class="subnav__name">WEB集客支援事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-recruit.html" aria-current="page"><span class="subnav__text"><span class="subnav__intent">人材を<wbr>採用したい</span><span class="subnav__name">WEB採用支援事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li></ul></li>
               <li class="subnav__foot"><a href="index.html#service">すべての<wbr>サービスを見る <span class="arrow" aria-hidden="true"></span></a></li>
             </ul>
           </li>
-          <li><a href="index.html#project" class="gnav__link">Project</a></li>
-          <li><a href="media.html" class="gnav__link">Media</a></li>
-          <li><a href="careers.html" class="gnav__link">Careers</a></li>
-          <li><a href="contact.html?category=recruit" class="gnav__link">Contact</a></li>
+          <li><a href="index.html#project" class="gnav__link">実績</a></li>
+          <li><a href="media.html" class="gnav__link">メディア</a></li>
+          <li><a href="careers.html" class="gnav__link">採用情報</a></li>
+          <li><a href="contact.html?category=recruit" class="gnav__link">お問い合わせ</a></li>
         </ul>
       </nav>
 
+      <a href="en/service-recruit.html" class="lang-switch" hreflang="en" lang="en" aria-label="English">EN</a>
       <button type="button" class="menu-btn" aria-controls="gnav" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span><span></span></button>
     </div>
   </header>
@@ -394,12 +399,12 @@
         <div class="section-head reveal">
           <span class="eyebrow">Media</span>
           <h2 class="section-title">関連する記事</h2>
-          <p class="section-lead"><n-w>このサービスに関連するテーマを、「暮らす旅の手帖」で詳しく解説しています。</n-w></p>
+          <p class="section-lead"><n-w>このサービスに関連するテーマを、「アキヤド」で詳しく解説しています。</n-w></p>
         </div>
         <div class="media-grid media-grid--scroll" data-limit="3">
           <a href="media/kankei-jinko-and-inns.html" class="media-card reveal" data-category="chiho" data-date="2026-12-07">
             <div class="thumb thumb--photo">
-              <img src="../images/photos/thumb/onsen-town-street.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <img src="../images/photos/shrine-path.jpg" srcset="../images/photos/w/shrine-path-800.webp 800w, ../images/photos/shrine-path.jpg 1079w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
               <span class="thumb__cat">地方創生</span>
             </div>
             <div class="media-card__body">
@@ -410,7 +415,7 @@
           </a>
           <a href="media/tourism-labor-shortage.html" class="media-card reveal" data-category="chiho" data-date="2026-11-27">
             <div class="thumb thumb--photo">
-              <img src="../images/photos/thumb/onsen-town-crowd.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <img src="../images/photos/terraced-fields.jpg" srcset="../images/photos/w/terraced-fields-800.webp 800w, ../images/photos/terraced-fields.jpg 1620w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
               <span class="thumb__cat">地方創生</span>
             </div>
             <div class="media-card__body">
@@ -421,7 +426,7 @@
           </a>
           <a href="media/cleaning-linen-operations.html" class="media-card reveal" data-category="keiei" data-date="2026-11-17">
             <div class="thumb thumb--photo">
-              <img src="../images/photos/thumb/white-bedroom.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <img src="../images/photos/white-bed.jpg" srcset="../images/photos/w/white-bed-800.webp 800w, ../images/photos/white-bed.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
               <span class="thumb__cat">収益・運営</span>
             </div>
             <div class="media-card__body">
@@ -432,7 +437,7 @@
           </a>
           <a href="media/japan-tourism-market-data.html" class="media-card reveal" data-category="market" data-date="2026-09-29">
             <div class="thumb thumb--photo">
-              <img src="../images/photos/thumb/fuji-lake.jpg" alt="" loading="lazy" decoding="async" width="720" height="450">
+              <img src="../images/photos/fuji-lake.jpg" srcset="../images/photos/w/fuji-lake-800.webp 800w, ../images/photos/fuji-lake.jpg 1620w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
               <span class="thumb__cat">観光市場</span>
             </div>
             <div class="media-card__body">
@@ -492,7 +497,7 @@
         <a href="contact.html" class="footer__cta">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
       </div>
       <div class="footer__intents"><div class="footer__aud"><p>個人の<wbr>お客様</p><ul><li><a href="service-operation.html">空き家を<wbr>活かしたい・売りたい <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-management.html">民泊を<wbr>始めたい <span class="arrow" aria-hidden="true"></span></a></li></ul></div><div class="footer__aud"><p>法人の<wbr>お客様</p><ul><li><a href="service-management.html">民泊を<wbr>始めたい <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-partnership.html">物件を<wbr>民泊用に<wbr>売りたい <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-marketing.html">集客を伸ばしたい <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-recruit.html">人材を<wbr>採用したい <span class="arrow" aria-hidden="true"></span></a></li></ul></div></div>
-      <nav aria-label="フッターナビゲーション"><ul class="footer__links"><li><a href="about.html">About</a></li><li><a href="index.html#service">Service</a></li><li><a href="index.html#project">Project</a></li><li><a href="media.html">Media</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+      <nav aria-label="フッターナビゲーション"><ul class="footer__links"><li><a href="about.html">私たちに<wbr>ついて</a></li><li><a href="index.html#service">事業内容</a></li><li><a href="index.html#project">実績</a></li><li><a href="media.html">メディア</a></li><li><a href="careers.html">採用情報</a></li><li><a href="contact.html">お問い合わせ</a></li></ul></nav>
       <div class="footer__bottom">
         <address class="footer__address"><n-w>〒121-0012 東京都足立区青井六丁目8番8号 Grand Maison青井201</n-w></address>
         <a href="privacy.html">プライバシーポリシー</a>
