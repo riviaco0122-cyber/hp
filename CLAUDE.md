@@ -15,7 +15,7 @@
 | 品質管理部 | `.claude/agents/qa.md` | 採点と差し戻し（評価者） |
 | ブランド学習係 | `.claude/agents/brand-learner.md` | `docs/brand/` の作成・更新 |
 
-定型業務は `.claude/skills/`: `/seo-weekly`（週次サイクル・定期実行の入口）、`/write-article`、`/seo-audit`、`/source-intake`、`/brand-learn`。
+定型業務は `.claude/skills/`: `/seo-daily`（日次サイクル・毎朝9時の定期実行の入口）、`/write-article`、`/seo-audit`、`/source-intake`、`/brand-learn`。
 
 ## 絶対のルール
 

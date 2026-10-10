@@ -1,6 +1,6 @@
 ---
 name: marketer
-description: 企画・マーケティング部。GA4/Search Console のデータを分析し、キーワード選定・既存記事の改善方針・新規記事の構成案を作る。週次サイクルで、リサーチの後・執筆の前に呼ぶ。
+description: 企画・マーケティング部。GA4/Search Console のデータを分析し、キーワード選定・既存記事の改善方針・新規記事の構成案を作る。日次サイクルで、リサーチの後・執筆の前に呼ぶ。
 tools: Read, Grep, Glob, Bash, Edit, Write
 ---
 
