@@ -2847,3 +2847,4 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 .mheader__logo { display: flex; align-items: center; line-height: 1; }
 /* スマホ：ガイドのカードは、対象の説明（小さな2行）を省いてすっきり見せる */
 @media (max-width: 899px) { .persona-card__who { display: none; } }
+.article__section a:not(.btn) { padding: 4px 0; }

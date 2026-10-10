@@ -902,11 +902,11 @@ PLANS = {
         plans=[
             dict(split=["owner", "owner", "rivia", "rivia", "owner"], name="伴走コース", brand="アキヤド開業・運営プラン", catch="現場は自分で。開業準備と集客・価格はプロに任せる",
                  owner_share=0, init="",
-                 monthly="売上 − 手数料10%", example="例：売上30万円 → 27万円",
+                 monthly="手数料：売上の10%", example="例：売上30万円なら手数料3万円（手取り27万円）",
                  ratings=[("現場を担う", "good"), ("集客の考え方まで", "mid"), ("手数料10%", "good")], who=["お客様との時間は自分で大切にしたい", "開業準備と集客はプロに任せたい"], rec=True),
             dict(split=["owner", "owner", "rivia", "rivia", "rivia"], name="運営代行コース", brand="アキヤド開業・運営プラン", catch="開業準備から日々の運営まで、まるごと任せる",
                  owner_share=0, init="",
-                 monthly="売上 − 運営手数料20%", example="例：売上30万円 → 24万円",
+                 monthly="運営手数料：売上の20%", example="例：売上30万円なら手数料6万円（手取り24万円）",
                  ratings=[("経営の判断に集中", "mid"), ("レポートで把握", "mid"), ("手数料20%", "mid")], who=["本業が忙しく、現場に時間をかけられない", "遠方の物件や、複数の施設を持っている"], rec=False),
             dict(split=["share", "share", "rivia", "rivia", "rivia"], name="共同出資コース", brand="アキヤド開業・運営プラン", catch="物件取得と初期費用をRIVIAと共同出資し、利益を分け合う",
                  owner_share=0, init="",
