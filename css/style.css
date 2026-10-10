@@ -265,7 +265,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 @media (max-width: 899px) { .hero { padding: 80px 0 120px; } .hero__title { font-size: min(8.2vw, 48px); letter-spacing: 0.04em; } .hero__sub { margin-top: 32px; font-size: 14px; } .hero__scroll { display: none; } .hero__lines { display: none; } }
 
 /* Vision */
-.vision__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 40px 80px; align-items: end; }
 .vision__copy { font-family: var(--font-serif); font-weight: 300; font-size: clamp(26px, 3.2vw, 40px); line-height: 1.6; letter-spacing: 0.08em; }
 .vision__lead { color: var(--c-sub); line-height: 2.3; }
 .vision__label { margin-top: 96px; padding-bottom: 20px; border-bottom: 1px solid var(--c-text); font-family: var(--font-serif); font-size: 17px; letter-spacing: 0.06em; }
@@ -287,7 +286,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   .vision__step:nth-child(2)::after { display: none; }
 }
 @media (max-width: 899px) {
-  .vision__head { grid-template-columns: 1fr; gap: 24px; }
+
   .vision__label { margin-top: 64px; font-size: 15px; }
   .vision__steps { grid-template-columns: 1fr; }
   .vision__step, .vision__step + .vision__step, .vision__step:nth-child(3) { padding: 28px 0 32px; border-left: 0; border-top: 1px solid var(--c-line); }
@@ -1557,7 +1556,7 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
   .about-values h3 { font-size: 18px; }
 }
 .about-outcomes { margin-top: 24px; text-align: left; }
-.vision__more { margin-top: 40px; text-align: right; }
+.vision__more { margin-top: 40px; }
 .vision__more a { display: inline-flex; align-items: center; gap: 14px; font-size: 13px; letter-spacing: 0.08em; color: var(--c-sub); }
 .vision__more a:hover { color: var(--c-text); }
 /* プランの図：1本の帯が段々に高く（スマホは太く）なり、丸の大きさで量を示す */
@@ -2126,7 +2125,7 @@ html[lang="en"] .sflow__back::before { content: "↑ Returned: "; }
    ===================================================================== */
 body.is-media {
   --m-bg: #fffcf7; --m-sand: #f5eee3; --m-line: #e9e0d3; --m-ink: #2a2724; --m-sub: #5a544c;
-  --m-green: #2f6b5a; --m-cta: #cf5f37; --m-cta-h: #b44f2a;
+  --m-green: #2e6b47; --m-cta: #cf5f37; --m-cta-h: #b44f2a;
   --font-round: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
   --c-accent: var(--m-green); --c-bg-soft: var(--m-sand); --c-line: var(--m-line); --c-rivia-soft: #eaf2ee; --radius: 16px;
   background: var(--m-bg); color: var(--m-ink);
@@ -2135,7 +2134,7 @@ body.is-media :is(.mlogo__ja, .mfv__title, .msec__title, .mhero__title, .article
   font-family: var(--font-round); font-weight: 500; letter-spacing: 0.04em;
 }
 body.is-media :is(.mfv__title, .mlogo__ja, .mcta__title) { font-weight: 700; }
-body.is-media :is(.msec__en, .mhero__en, .guide-stage__no) { color: var(--m-cta); }
+body.is-media :is(.msec__en, .mhero__en, .guide-stage__no) { color: var(--m-green); }
 body.is-media .section--soft { background: var(--m-sand); }
 /* ヘッダー */
 body.is-media .header--media { background: rgba(255, 252, 247, 0.96); }
@@ -2145,7 +2144,7 @@ body.is-media .mlogo__ja { font-size: 21px; letter-spacing: 0.08em; color: var(-
 body.is-media .mheader__cta { height: 40px; padding: 0 22px; border-radius: 999px; background: var(--m-cta); font-family: var(--font-round); font-weight: 700; font-size: 14px; letter-spacing: 0.06em; }
 body.is-media .mheader__cta:hover { background: var(--m-cta-h); opacity: 1; }
 body.is-media .mnav__list a { font-family: var(--font-round); font-weight: 500; }
-body.is-media .mnav__list a[aria-current] { color: var(--m-ink); border-bottom-color: var(--m-cta); }
+body.is-media .mnav__list a[aria-current] { color: var(--m-ink); border-bottom-color: var(--m-green); }
 /* ボタン */
 .mbtn, body.is-media .btn.mbtn { display: inline-flex; align-items: center; justify-content: center; gap: 14px; padding: 16px 34px; border: 0; border-radius: 999px; background: var(--m-cta); color: #fff; font-family: var(--font-round); font-weight: 700; font-size: 15px; letter-spacing: 0.08em; box-shadow: 0 8px 20px rgba(207, 95, 55, 0.24); transition: background .2s, transform .2s; }
 .mbtn:hover, body.is-media .btn.mbtn:hover { background: var(--m-cta-h); color: #fff; transform: translateY(-1px); }
@@ -2161,11 +2160,11 @@ body.is-media .mfv__lead { margin-top: 14px; font-size: 15px; line-height: 2; co
 body.is-media .mfv__entry-label { margin-top: 32px; font-size: 13px; letter-spacing: 0.08em; color: var(--m-sub); opacity: 1; }
 .mfv__tiles { display: grid; gap: 10px; margin-top: 12px; max-width: 520px; }
 .mtile { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 10px 20px 10px 10px; border: 1px solid var(--m-line); border-radius: 16px; background: #fff; box-shadow: 0 4px 14px rgba(42, 39, 36, 0.05); transition: border-color .2s, box-shadow .3s, transform .2s; }
-.mtile:hover { border-color: var(--m-cta); box-shadow: 0 8px 22px rgba(42, 39, 36, 0.09); transform: translateY(-1px); }
+.mtile:hover { border-color: var(--m-green); box-shadow: 0 8px 22px rgba(42, 39, 36, 0.09); transform: translateY(-1px); }
 .mtile__img { position: relative; display: block; width: 56px; height: 56px; overflow: hidden; border-radius: 12px; }
 .mtile__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .mtile__label { font-family: var(--font-round); font-weight: 700; font-size: 16px; letter-spacing: 0.04em; }
-.mtile__arrow { color: var(--m-cta); font-size: 18px; }
+.mtile__arrow { color: var(--m-green); font-size: 18px; }
 body.is-media .msearch--fv { max-width: 520px; margin-top: 14px; border: 1px solid var(--m-line); border-radius: 999px; overflow: hidden; background: #fff; }
 body.is-media .msearch { border-radius: 999px; overflow: hidden; }
 body.is-media .msearch__btn { background: var(--m-ink); border-radius: 0 999px 999px 0; }
@@ -2173,26 +2172,26 @@ body.is-media .msearch__btn { background: var(--m-ink); border-radius: 0 999px 9
 .mfv__photo img { width: 100%; height: 100%; object-fit: cover; }
 /* カード類は角を丸く、白で浮かせる */
 body.is-media .persona-card { border: 0; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 20px rgba(42, 39, 36, 0.06); }
-body.is-media .persona-card__more { color: var(--m-cta); font-weight: 700; font-family: var(--font-round); }
+body.is-media .persona-card__more { color: var(--m-green); font-weight: 700; font-family: var(--font-round); }
 body.is-media .mq { gap: 12px; border-top: 0; }
 body.is-media .mq__item { border: 0; border-radius: 14px; background: #fff; padding: 18px 20px; box-shadow: 0 3px 12px rgba(42, 39, 36, 0.04); }
 body.is-media .mq__item:hover { box-shadow: 0 8px 20px rgba(42, 39, 36, 0.08); }
-body.is-media .mq__q::before { content: "Q"; display: inline-grid; place-items: center; width: 26px; height: 26px; margin-right: 10px; border-radius: 50%; background: var(--m-cta); color: #fff; font-size: 13px; font-weight: 700; vertical-align: 1px; }
+body.is-media .mq__q::before { content: "Q"; display: inline-grid; place-items: center; width: 26px; height: 26px; margin-right: 10px; border-radius: 50%; background: var(--m-green); color: #fff; font-size: 13px; font-weight: 700; vertical-align: 1px; }
 body.is-media .mq__who { display: inline-block; justify-self: start; white-space: nowrap; padding: 2px 10px; border-radius: 999px; background: #eaf2ee; color: var(--m-green); }
 body.is-media .theme-tile { border: 0; border-radius: 16px; background: #fff; box-shadow: 0 3px 12px rgba(42, 39, 36, 0.04); }
-body.is-media .theme-tile__en { color: var(--m-cta); }
+body.is-media .theme-tile__en { color: var(--m-green); }
 body.is-media .tag { border-radius: 999px; border-color: var(--m-line); background: #fff; }
 body.is-media :is(.keypoints, .guide-box, .supervisor, .inline-cta, .guide-worries) { border-radius: 18px; }
 body.is-media .toc { border-radius: 18px; }
 body.is-media .inline-cta { border: 0; background: #fff3ec; }
 body.is-media .guide-step__body { border-radius: 16px; }
 body.is-media .guide-step__thumb { border-radius: 12px; }
-body.is-media .guide-step__more { color: var(--m-cta); font-weight: 700; font-family: var(--font-round); }
+body.is-media .guide-step__more { color: var(--m-green); font-weight: 700; font-family: var(--font-round); }
 body.is-media .share__list a, body.is-media .share__copy { border-radius: 999px; }
 body.is-media .mhero { background: linear-gradient(180deg, var(--m-sand) 0%, var(--m-bg) 100%); }
 /* 相談ブロック */
 .mcta__box { padding: 64px 48px; border-radius: 28px; background: var(--m-sand); text-align: center; }
-.mcta__en { font-family: var(--font-en); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--m-cta); }
+.mcta__en { font-family: var(--font-en); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--m-green); }
 .mcta__title { margin-top: 10px; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.6; }
 .mcta__lead { margin-top: 16px; font-size: 15px; line-height: 2; color: var(--m-sub); }
 .mcta__points { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 24px 0 32px; }
@@ -2200,7 +2199,7 @@ body.is-media .mhero { background: linear-gradient(180deg, var(--m-sand) 0%, var
 .mcta__points li::before { content: "✓"; margin-right: 8px; color: var(--m-green); }
 .mcta__note { margin-top: 18px; font-size: 12px; color: var(--m-sub); }
 /* フッター */
-body.is-media .mfooter { background: #24433a; }
+body.is-media .mfooter { background: #1f3d2b; }
 body.is-media .mfooter .mlogo__ja { color: #fff; }
 @media (max-width: 899px) {
   body.is-media .mfv { padding: 32px 0 40px; }
@@ -2220,5 +2219,31 @@ body.is-media .mfooter .mlogo__ja { color: #fff; }
   .mbtn { width: 100%; }
 }
 body.is-media .media-more__btn { border-radius: 999px; border-color: var(--m-line, #e6dccd); background: #fff; font-family: var(--font-round); font-weight: 700; color: var(--c-text); }
-body.is-media .media-more__btn:hover { border-color: var(--m-cta); color: var(--m-cta); background: #fff; }
+body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(--m-green); background: #fff; }
 @media (min-width: 900px) { body.is-media .mq { grid-template-columns: 1fr; } body.is-media .mq__item { grid-template-columns: 11.5em minmax(0, 1fr) auto; padding: 20px 28px; } }
+/* TOP：コンセプトと、空き家再生から始まる地域の経済循環（円の図） */
+.vision__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 500px); gap: 40px 72px; align-items: center; }
+.vision__lead { margin-top: 36px; word-break: auto-phrase; }
+.cycle { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1; margin-inline: auto; }
+.cycle__ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.cycle__ring circle { fill: none; stroke: var(--c-line-strong); stroke-width: 0.25; }
+.cycle__ring path { fill: var(--c-accent); }
+.cycle__center { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; font-family: var(--font-serif); font-weight: 300; font-size: 17px; line-height: 1.9; letter-spacing: 0.1em; }
+.cycle__center span { display: block; }
+.cycle__center-en { margin-bottom: 8px; font-family: var(--font-en); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--c-accent); }
+.cycle__node { position: absolute; display: grid; place-content: center; gap: 6px; width: 28%; aspect-ratio: 1; border: 1px solid var(--c-line-strong); border-radius: 50%; background: var(--c-bg); text-align: center; transform: translate(-50%, -50%); }
+.cycle__node--1 { left: 50%; top: 14%; border-color: var(--c-accent); }
+.cycle__node--2 { left: 86%; top: 50%; }
+.cycle__node--3 { left: 50%; top: 86%; }
+.cycle__node--4 { left: 14%; top: 50%; }
+.cycle__en { font-family: var(--font-en); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-accent); }
+.cycle__t { font-family: var(--font-serif); font-size: 14px; line-height: 1.6; letter-spacing: 0.06em; }
+.cycle__t span { display: block; }
+@media (max-width: 899px) {
+  .vision__grid { grid-template-columns: 1fr; }
+  .cycle { max-width: 380px; }
+  .cycle__node { width: 30%; gap: 2px; }
+  .cycle__t { font-size: 12px; letter-spacing: 0.02em; }
+  .cycle__en { font-size: 9px; letter-spacing: 0.12em; }
+  .cycle__center { font-size: 14px; }
+}
