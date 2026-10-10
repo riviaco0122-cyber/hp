@@ -2856,3 +2856,16 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 @media (min-width: 900px) { .media-grid .media-card__title { min-height: 3lh; } }
 .media-card__body { min-width: 0; } .ctags { max-width: 100%; min-width: 0; }
 @media (max-width: 899px) { .media-grid:not(.media-grid--scroll):not(.media-grid--feature) .ctag + .ctag { display: none; } }
+/* プラン比較の図：スマホでは文字を絞り、言葉のまとまりで折り返す */
+.pd__name, .pd__desc, .pd__value { word-break: auto-phrase; }
+@media (max-width: 899px) {
+  .pd__seg .plan-brand, .pd__seg .pd__label { display: none; }
+  .pd__desc { font-size: 13.5px; line-height: 1.8; }
+}
+.pd__desc, .pd__desc n-w, .pd__name, .pd__name n-w { word-break: keep-all; overflow-wrap: anywhere; }
+@media (max-width: 899px) { .pd__name { font-size: 12.5px; line-height: 1.5; padding: 0 6px; } }
+.pd__desc { text-wrap: balance; }
+@media (max-width: 899px) { .pd__brandword { display: block; } }
+@media (max-width: 899px) { .pd__name { font-size: 11.5px; letter-spacing: 0; padding: 0 14px 0 4px; } }
+@media (max-width: 899px) { .pd__name { white-space: normal; } }
+.pd__nb { white-space: nowrap; }

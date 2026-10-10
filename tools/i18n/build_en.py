@@ -41,19 +41,27 @@ def dictionary():
         "物件の場所や、気になっていることなど": "e.g. where the property is, or what's on your mind",
         # アキヤドのプラン（コース）
         "アキヤド買取プラン": "Akiyado Buyout Plan",
+        "アキヤド": "Akiyado",
+        "プラン": "Plan", "借り上げ": "Lease", "買取": "Buyout",
+        "開業・運営": "Launch & Operation", "プラン①": "Plan 1", "プラン②": "Plan 2", "プラン③": "Plan 3",
+        "借り上げプラン①": "Lease Plan 1", "借り上げプラン②": "Lease Plan 2",
+        "開業・運営プラン①": "Launch & Operation Plan 1", "開業・運営プラン②": "Launch & Operation Plan 2", "開業・運営プラン③": "Launch & Operation Plan 3",
+        "おまかせ型": "Hands-off", "売上シェア型": "Revenue share", "伴走型": "Partner", "運営代行型": "Full management", "共同出資型": "Co-investment",
+        "共同出資して、家賃＋売上の上乗せを受け取る": "Co-invest, and receive rent plus a share of revenue",
+        "開業準備から運営まで、まるごと任せる": "Leave everything to us, from launch preparation to daily operation",
         "アキヤド借り上げプラン": "Akiyado Lease Plan",
         "アキヤド開業・運営プラン": "Akiyado Launch & Operation Plan",
-        "おまかせコース": "Hands-off course",
-        "売上シェアコース": "Revenue-share course",
-        "伴走コース": "Partner course",
-        "運営代行コース": "Full management course",
-        "共同出資コース": "Co-investment course",
-        "このコースを相談する": "Ask about this course",
-        "相続した空き家なら「アキヤド借り上げプラン」のおまかせコースがおすすめです。": "For an inherited vacant house, we recommend the hands-off course of the Akiyado Lease Plan.",
-        "初めての民泊で、お客様との時間は自分で大切にしたいなら、開業準備と集客をプロに任せられる「アキヤド開業・運営プラン」の伴走コースがおすすめです。":
-            "If it's your first vacation rental and you want to spend time with guests yourself, we recommend the partner course of the Akiyado Launch & Operation Plan, which leaves launch preparation and marketing to professionals.",
-        "※ 金額・割合はイメージです。清掃費などの実費は別途かかります。共同出資コースの利益分配は、開業後も継続します。":
-            "* Amounts and percentages are illustrative. Actual costs such as cleaning are charged separately. Under the co-investment course, profit sharing continues after opening.",
+        "アキヤド借り上げプラン①": "Akiyado Lease Plan 1 (hands-off)",
+        "アキヤド借り上げプラン②": "Akiyado Lease Plan 2 (revenue share)",
+        "アキヤド開業・運営プラン①": "Akiyado Launch & Operation Plan 1 (partner)",
+        "アキヤド開業・運営プラン②": "Akiyado Launch & Operation Plan 2 (full management)",
+        "アキヤド開業・運営プラン③": "Akiyado Launch & Operation Plan 3 (co-investment)",
+        "このプランを相談する": "Ask about this plan",
+        "相続した空き家なら「アキヤド借り上げプラン①（おまかせ型）」がおすすめです。": "For an inherited vacant house, we recommend Lease Plan 1 (hands-off).",
+        "初めての民泊で、お客様との時間は自分で大切にしたいなら、開業準備と集客をプロに任せられる「アキヤド開業・運営プラン①（伴走型）」がおすすめです。":
+            "If it's your first vacation rental and you want to spend time with guests yourself, we recommend Launch & Operation Plan 1 (partner), which leaves launch preparation and marketing to professionals.",
+        "※ 金額・割合はイメージです。清掃費などの実費は別途かかります。アキヤド開業・運営プラン③の利益分配は、開業後も継続します。":
+            "* Amounts and percentages are illustrative. Actual costs such as cleaning are charged separately. Under Launch & Operation Plan 3 (co-investment), profit sharing continues after opening.",
         "ファイル": "Files", "任意・物件の写真や図面など": "Optional: photos or floor plans of the property",
         "送信により": "By sending, you agree to our",
         "に同意したものとします。しつこい営業はしません。": ". We never make pushy sales.",
@@ -65,7 +73,7 @@ def dictionary():
         old_en = T.get(old)
         for k in [k for k in T if old in k]:
             T[k.replace(old, new)] = T[k].replace(old_en, new_en) if old_en else T[k]
-    for ja in ["アキヤド空き家再生", "アキヤド開業・運営支援", "不動産事業者様との協業", "WEB集客支援事業", "WEB採用支援事業"]:
+    for ja in ["空き家再生事業", "宿泊施設 開業・運営支援事業", "不動産事業者様との協業", "WEB集客支援事業", "WEB採用支援事業"]:
         en = T.get(ja, ja)
         T[f"{ja}の無料相談"] = f"Free consultation: {en}"
         # 社内に届く件名・流入元は日本語のまま、英語サイトからと分かるようにする
