@@ -243,7 +243,7 @@
     if (status) status.textContent = q ? '「' + q + '」の検索結果：' + hits.length + '件' : 'すべての記事：' + hits.length + '件';
     var none = document.querySelector('.msearch-empty');
     if (none) none.hidden = hits.length > 0;
-    if (q) document.title = '「' + q + '」の検索結果｜暮らす旅の手帖';
+    if (q) document.title = '「' + q + '」の検索結果｜アキヤド';
   }
 
   /**

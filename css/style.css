@@ -653,7 +653,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 @media (max-width: 899px) { .company { grid-template-columns: 1fr; gap: 40px; } }
 
 /* ==========================================================================
-   暮らす旅の手帖（メディア）
+   アキヤド（メディア）
    ========================================================================== */
 .media-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; }
 .media-card { display: flex; flex-direction: column; }
@@ -1700,7 +1700,7 @@ body:has(.fixed-cta) { padding-bottom: 54px; }
   .scenes { grid-template-columns: 1fr; gap: 40px; margin-top: 48px; }
   .scene__photo { aspect-ratio: 3 / 2; }
 }
-/* ===== 暮らす旅の手帖（メディアトップ・カテゴリ・ガイド） ===== */
+/* ===== アキヤド（メディアトップ・カテゴリ・ガイド） ===== */
 .mhero { padding: 104px 0 56px; }
 .mhero__en { font-family: var(--font-en); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--c-muted); }
 .mhero__title { margin-top: 12px; font-family: var(--font-serif); font-weight: 400; font-size: clamp(30px, 4.2vw, 50px); line-height: 1.5; letter-spacing: 0.12em; }
@@ -1897,7 +1897,7 @@ a.guide-step__body:hover .guide-step__title { text-decoration: underline; text-u
   .guide-stage + .guide-stage { margin-top: 56px; }
   .guide-stage__title { font-size: 20px; }
 }
-/* ===== 暮らす旅の手帖：独立したメディアとしての見え方（専用ヘッダー・FV・フッター） ===== */
+/* ===== アキヤド：独立したメディアとしての見え方（専用ヘッダー・FV・フッター） ===== */
 body.is-media { --header-h: 117px; }
 .header--media .mheader__inner { display: flex; justify-content: space-between; align-items: center; height: 64px; }
 .mlogo { display: inline-flex; align-items: baseline; gap: 14px; }
@@ -1976,3 +1976,23 @@ body.is-media { --header-h: 117px; }
 .mnav__list li { flex-shrink: 0; }
 .header--media .mnav__list a { padding-top: 14px; padding-bottom: 14px; }
 @media (max-width: 899px) { .header--media .mnav__list a { padding-top: 11px; padding-bottom: 11px; } }
+/* メディア名「アキヤド」のロゴ */
+.mlogo { align-items: center; }
+.mlogo__ja { letter-spacing: 0.2em; }
+.mlogo__sub { font-size: 11px; letter-spacing: 0.12em; color: var(--c-muted); }
+.mfooter .mlogo__sub { color: rgba(255, 255, 255, 0.55); }
+.mfvlogo__en { order: -1; margin: 0 0 14px; font-size: 13px; letter-spacing: 0.42em; }
+.mfvlogo__ja { font-size: clamp(48px, 7vw, 92px); letter-spacing: 0.22em; line-height: 1.2; }
+.mfvlogo__sub { margin-top: 14px; font-size: 15px; letter-spacing: 0.24em; opacity: 0.9; }
+/* 記事カード：写真はすっきり見せ、カテゴリは本文側の表記だけにする。写真の色味をそろえる */
+.media-card .thumb__cat { display: none; }
+.thumb--photo img, .article__photo img, .persona-card__photo img { filter: saturate(0.9); }
+@media (max-width: 899px) {
+  .mlogo__sub { font-size: 10px; letter-spacing: 0.06em; }
+  .mfvlogo__ja { font-size: 52px; letter-spacing: 0.16em; }
+  .mfvlogo__sub { font-size: 13px; letter-spacing: 0.16em; }
+  .mfvlogo__en { font-size: 11px; letter-spacing: 0.32em; margin-bottom: 10px; }
+  /* 横にスクロールできることが分かるよう、右端をフェードさせる */
+  .header--media .mnav__list { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+}
+@media (max-width: 899px) { .mheader__corp { display: none; } }
