@@ -19,18 +19,6 @@
       "destination": "/seo/llms.txt"
     },
     {
-      "source": "/en",
-      "destination": "/pages/en/index.html"
-    },
-    {
-      "source": "/en/",
-      "destination": "/pages/en/index.html"
-    },
-    {
-      "source": "/en/:file.html",
-      "destination": "/pages/en/:file.html"
-    },
-    {
       "source": "/media/:file.html",
       "destination": "/pages/media/:file.html"
     },
@@ -83,6 +71,21 @@
     {
       "source": "/media/category-keiei.html",
       "destination": "/media/category-operate.html",
+      "permanent": true
+    },
+    {
+      "source": "/en",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/en/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/en/:file.html",
+      "destination": "/:file.html",
       "permanent": true
     }
   ]

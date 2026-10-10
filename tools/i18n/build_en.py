@@ -42,6 +42,7 @@ def dictionary():
         # アキヤドのプラン（コース）
         "アキヤド買取プラン": "Akiyado Buyout Plan",
         "アキヤド": "Akiyado",
+        "このコースを相談する": "Ask about this course",
         "プラン": "Plan", "借り上げ": "Lease", "買取": "Buyout",
         "開業・運営": "Launch & Operation", "プラン①": "Plan 1", "プラン②": "Plan 2", "プラン③": "Plan 3",
         "借り上げプラン①": "Lease Plan 1", "借り上げプラン②": "Lease Plan 2",
@@ -53,15 +54,15 @@ def dictionary():
         "アキヤド開業・運営プラン": "Akiyado Launch & Operation Plan",
         "アキヤド借り上げプラン①": "Akiyado Lease Plan 1 (hands-off)",
         "アキヤド借り上げプラン②": "Akiyado Lease Plan 2 (revenue share)",
-        "アキヤド開業・運営プラン①": "Akiyado Launch & Operation Plan 1 (partner)",
-        "アキヤド開業・運営プラン②": "Akiyado Launch & Operation Plan 2 (full management)",
-        "アキヤド開業・運営プラン③": "Akiyado Launch & Operation Plan 3 (co-investment)",
+        "伴走コース": "Partner course",
+        "運営代行コース": "Full management course",
+        "共同出資コース": "Co-investment course",
         "このプランを相談する": "Ask about this plan",
         "相続した空き家なら「アキヤド借り上げプラン①（おまかせ型）」がおすすめです。": "For an inherited vacant house, we recommend Lease Plan 1 (hands-off).",
-        "初めての民泊で、お客様との時間は自分で大切にしたいなら、開業準備と集客をプロに任せられる「アキヤド開業・運営プラン①（伴走型）」がおすすめです。":
-            "If it's your first vacation rental and you want to spend time with guests yourself, we recommend Launch & Operation Plan 1 (partner), which leaves launch preparation and marketing to professionals.",
-        "※ 金額・割合はイメージです。清掃費などの実費は別途かかります。アキヤド開業・運営プラン③の利益分配は、開業後も継続します。":
-            "* Amounts and percentages are illustrative. Actual costs such as cleaning are charged separately. Under Launch & Operation Plan 3 (co-investment), profit sharing continues after opening.",
+        "初めての民泊で、お客様との時間は自分で大切にしたいなら、開業準備と集客をプロに任せられる「アキヤド開業・運営プラン」の伴走コースがおすすめです。":
+            "If it's your first vacation rental and you want to spend time with guests yourself, we recommend the partner course of the Akiyado Launch & Operation Plan, which leaves launch preparation and marketing to professionals.",
+        "※ 金額・割合はイメージです。清掃費などの実費は別途かかります。共同出資コースの利益分配は、開業後も継続します。":
+            "* Amounts and percentages are illustrative. Actual costs such as cleaning are charged separately. Under the co-investment course, profit sharing continues after opening.",
         "ファイル": "Files", "任意・物件の写真や図面など": "Optional: photos or floor plans of the property",
         "送信により": "By sending, you agree to our",
         "に同意したものとします。しつこい営業はしません。": ". We never make pushy sales.",
