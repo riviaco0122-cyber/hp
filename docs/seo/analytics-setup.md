@@ -17,6 +17,7 @@
 1. https://search.google.com/search-console を開き、rivia-co.com のプロパティを選ぶ。
 2. 「設定」→「ユーザーと権限」→「ユーザーを追加」→ 上のメールアドレスを入れ、権限は **制限付き** にする。
 3. プロパティの種類を確認する。ドメインプロパティなら `sc-domain:rivia-co.com`、URL プレフィックスなら `https://rivia-co.com/`。
+   - 現在は **URL プレフィックス `https://rivia-co.com/`** で登録済み（GA4 のタグで所有者を確認。DNS の設定は不要だった）。
 
 ## 3. GA4 に閲覧権限を付ける
 
@@ -31,7 +32,7 @@
 |---|---|
 | `GOOGLE_SERVICE_ACCOUNT_JSON` | ダウンロードした JSON ファイルの中身（1行にしてそのまま貼る） |
 | `GA4_PROPERTY_ID` | 手順3で控えた数字 |
-| `GSC_SITE_URL` | 手順2で確認した値（ドメインプロパティなら `sc-domain:rivia-co.com`） |
+| `GSC_SITE_URL` | `https://rivia-co.com/`（ドメインプロパティに切り替えた場合は `sc-domain:rivia-co.com`） |
 
 登録後に始めた新しいセッションから使えます。動作確認は `pip install -r tools/requirements.txt && python3 tools/analytics.py`。
 

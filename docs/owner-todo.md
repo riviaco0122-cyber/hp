@@ -5,40 +5,44 @@ AI社員チームが自動で動くために、人にしかできない作業を
 
 ---
 
-## 1. GA4・Search Console・YouTube の連携設定（所要20分・1回だけ）
+## 1. GA4・Search Console・YouTube の連携設定（1回だけ）
 
 詳しい手順は [`docs/seo/analytics-setup.md`](seo/analytics-setup.md) にあります。
 
-### 1-1. Google Cloud の準備
-- [ ] https://console.cloud.google.com/ で新しいプロジェクトを作る（例: `rivia-seo`）
-- [ ] 「API とサービス」→「ライブラリ」で次の3つを有効にする
+### ✅ 済んだこと
+- [x] Google Cloud のプロジェクトとサービスアカウントを作成（`seo-bot@rivia-seo.iam.gserviceaccount.com`）
+- [x] Search Console を URL プレフィックス（`https://rivia-co.com/`）で登録し、GA4 を使って所有者を確認
+- [x] Search Console に `seo-bot@rivia-seo.iam.gserviceaccount.com` を「制限付き」で追加
+
+### 1-1. Google Cloud（https://console.cloud.google.com/ ・プロジェクト `rivia-seo`）
+- [ ] 「API とサービス」→「ライブラリ」で次の3つを **有効にする**（済んでいれば不要）
   - Google Search Console API
   - Google Analytics Data API
-  - YouTube Data API v3（YouTube 調査を使う場合）
-- [ ] 「IAM と管理」→「サービスアカウント」で作成（例: `seo-bot`）→「キー」→「新しい鍵を作成」→ **JSON** をダウンロード
-- [ ] サービスアカウントのメールアドレス（`seo-bot@〜.iam.gserviceaccount.com`）を控える
-- [ ] 「認証情報」→「API キー」を作成し、「API の制限」で **YouTube Data API v3 のみ** に制限する
+  - YouTube Data API v3
+- [ ] 「IAM と管理」→「サービスアカウント」→ `seo-bot` →「キー」→「鍵を追加」→「新しい鍵を作成」→ **JSON** をダウンロード
+- [ ] 「API とサービス」→「認証情報」→「認証情報を作成」→「API キー」を作成し、「API の制限」で **YouTube Data API v3 のみ** に制限する
 
-### 1-2. 閲覧権限を付ける
-- [ ] **Search Console**：「設定」→「ユーザーと権限」→ 控えたメールアドレスを **制限付き** で追加
-- [ ] Search Console のプロパティの種類を確認（ドメインプロパティなら `sc-domain:rivia-co.com`）
-- [ ] **GA4**：「管理」→「プロパティのアクセス管理」→ 控えたメールアドレスを **閲覧者** で追加
-- [ ] GA4 の「プロパティの詳細」で **プロパティID（数字）** を控える（`G-RZVE2XBPQ2` とは別物）
+### 1-2. GA4（https://analytics.google.com/ ）
+- [ ] 「管理」→「プロパティのアクセス管理」→「＋」→ `seo-bot@rivia-seo.iam.gserviceaccount.com` を **閲覧者** で追加
+- [ ] 「管理」→「プロパティの詳細」で **プロパティID（数字）** を控える（`G-RZVE2XBPQ2` とは別物）
 
 ### 1-3. Claude のクラウド環境に登録する
 ⚠️ 鍵をチャットに貼らないでください。
 
 セッション画面のタイトルバーにあるクラウド環境のメニュー →「Edit」→ 環境変数に登録します。
 
-| 変数名 | 値 | 必須 |
-|---|---|---|
-| `GOOGLE_SERVICE_ACCOUNT_JSON` | ダウンロードした JSON ファイルの中身（1行にして貼る） | ✅ |
-| `GA4_PROPERTY_ID` | GA4 のプロパティID（数字） | ✅ |
-| `GSC_SITE_URL` | `sc-domain:rivia-co.com`（URLプレフィックス型なら `https://rivia-co.com/`） | ✅ |
-| `YOUTUBE_API_KEY` | 作成した API キー | 任意 |
+| 変数名 | 値 |
+|---|---|
+| `GOOGLE_SERVICE_ACCOUNT_JSON` | ダウンロードした JSON ファイルの中身（1行にして貼る） |
+| `GA4_PROPERTY_ID` | 1-2 で控えたプロパティID（数字） |
+| `GSC_SITE_URL` | `https://rivia-co.com/` |
+| `YOUTUBE_API_KEY` | 1-1 で作成した API キー |
 
-- [ ] 4つ（または3つ）を登録した
-- [ ] 登録後に **新しいセッション** を始める（いまのセッションには反映されません）
+- [ ] 4つを登録した
+- [ ] 登録後に **新しいセッション** を始め、Claude に「連携の動作確認をして」と伝える（いまのセッションには反映されません）
+
+### 後回しでよいこと
+- [ ] お名前.com のパスワードを再発行したら、Search Console にドメインプロパティ（`rivia-co.com`）も追加する（`www.` や `http://` も含めて集計できるようになる。任意）
 
 ---
 

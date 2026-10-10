@@ -4,7 +4,7 @@
 必要な環境変数（クラウド環境の Secret に登録する）:
   GOOGLE_SERVICE_ACCOUNT_JSON  サービスアカウントの鍵（JSONの中身をそのまま）
   GA4_PROPERTY_ID              GA4 のプロパティID（数字。測定ID G-XXXX ではない）
-  GSC_SITE_URL                 Search Console のプロパティ（省略時 sc-domain:rivia-co.com）
+  GSC_SITE_URL                 Search Console のプロパティ（省略時 https://rivia-co.com/）
 
 使い方:
   pip install -r tools/requirements.txt
@@ -144,7 +144,7 @@ def main():
     s = session()
     data = {"generated": f(today), "period": {"start": f(start), "end": f(end)},
             "prev_period": {"start": f(pstart), "end": f(pend)}, "errors": []}
-    site = os.environ.get("GSC_SITE_URL", "sc-domain:rivia-co.com")
+    site = os.environ.get("GSC_SITE_URL", "https://rivia-co.com/")
     try:
         data["gsc"] = {
             "pages": gsc(s, site, f(start), f(end), ["page"]),
