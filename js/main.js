@@ -492,6 +492,14 @@
         if (typeof v === 'string') { fields[k] = fields[k] ? fields[k] + '、' + v : v; }
         else if (v && v.size) { fileList.push(v); }
       });
+      // GA4 の generate_lead に付ける lead_type（document 資料請求／consult 相談／careers 採用）。thanks ページへ ?lead= で渡す
+      // 資料請求の判定は tools/forms/Code.gs の DOC_REQUEST_VALUES・DOC_REQUEST_KEYS と同じ文言にそろえる（片方を変えたらもう片方も）
+      var DOC_REQUEST_VALUES = ['サービス資料の請求', 'サービス資料がほしい'];
+      var DOC_REQUEST_KEYS = ['category', 'ご相談の内容', 'ご相談カテゴリ'];
+      var isDoc = DOC_REQUEST_KEYS.some(function (k) {
+        return String(fields[k] || '').split('、').some(function (v) { return DOC_REQUEST_VALUES.indexOf(v.trim()) >= 0; });
+      });
+      var leadType = fields._form === 'careers' ? 'careers' : (isDoc ? 'document' : 'consult');
       var total = fileList.reduce(function (n, f) { return n + f.size; }, 0);
       if (total > 10 * 1024 * 1024) { fail('添付ファイルの合計が10MBを超えています。ファイルを減らすか、小さくしてから送信してください。'); return; }
       if (fileList.length > 5) { fail('添付ファイルは5つまでです。'); return; }
@@ -513,7 +521,7 @@
             if (data && data.error === 'rate_limit') throw new Error('rate');
             throw new Error('send failed');
           }
-          window.location.href = thanks;
+          window.location.href = thanks + (thanks.indexOf('?') >= 0 ? '&' : '?') + 'lead=' + leadType;
         })
         .catch(function (e) {
           fail(e && e.message === 'rate' ? '短い時間に続けて送信されたため、受け付けを一時停止しています。10分ほどおいてから、もう一度お試しください。' : null);

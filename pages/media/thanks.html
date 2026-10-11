@@ -93,7 +93,8 @@
       </div>
     </section>
     <script>
-      if (typeof gtag === 'function') { gtag('event', 'generate_lead', { form_type: 'akiyado' }); }
+      // 相談か資料請求かを lead_type で区別（lead は js/main.js が付ける）
+      if (typeof gtag === 'function') { gtag('event', 'generate_lead', { form_type: 'akiyado', lead_type: new URLSearchParams(location.search).get('lead') || 'consult' }); }
     </script>
   </main>
 
@@ -125,6 +126,6 @@
     </div>
   </footer>
 
-  <script src="../../js/main.js?v=6909d759"></script>
+  <script src="../../js/main.js?v=96f01782"></script>
 </body>
 </html>

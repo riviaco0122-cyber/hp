@@ -1728,27 +1728,7 @@ def index_page():
         </a>
       </div>
     </section>"""
-    org_ld = {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "合同会社RIVIA&CO.",
-        "alternateName": "RIVIA&CO. LLC",
-        "url": f"{SITE}/",
-        "logo": f"{SITE}/images/logo/logo.png",
-        "foundingDate": "2026-09-01",
-        "founder": [
-            {"@type": "Person", "name": "片井 進太"},
-            {"@type": "Person", "name": "石原 佑真"},
-        ],
-        "address": {
-            "@type": "PostalAddress",
-            "postalCode": "121-0012",
-            "addressRegion": "東京都",
-            "addressLocality": "足立区",
-            "streetAddress": "青井六丁目8番8号 Grand Maison青井201",
-            "addressCountry": "JP",
-        },
-    }
+    org_ld = org_entity()
     page("index.html", "", "地域に眠る価値を、日本の活力に。空き家の再生や民泊の開業・運営から、集客・採用、まちづくりまでを担う合同会社RIVIA&CO.のコーポレートサイトです。", body, jsonld=[org_ld, {"@context": "https://schema.org", "@type": "WebSite", "name": "RIVIA&CO.", "alternateName": ["合同会社RIVIA&CO.", "リビアアンドコー"], "url": f"{SITE}/"}])
 
 
@@ -1772,25 +1752,83 @@ def company_profile():
     ]
 
 
+# 創業者（about.html の Founders と、構造化データの Person で共通。事実はここに書いてある内容だけ）
+FOUNDERS = [
+    dict(key="ishihara", name="石原 佑真", en="Yuma Ishihara", role="代表社員 ／ 共同創業者", origin="大阪府出身", photo="founder-ishihara.jpg", photo_type="photo",
+         bio="大阪府出身。新卒で株式会社リクルートに入社し、新規事業開発室にてゼロイチの事業立ち上げを経験。その後、HR Techベンチャー、サイバーセキュリティベンチャーにおいて、一貫して新規事業の創出と組織拡大を牽引。新規事業を立ち上げ、事業と組織を成長させてきた経験と、テクノロジー領域での知見を活かし、RIVIA&CO.を共同創業。",
+         career=[("株式会社リクルート", "新規事業開発室にて、ゼロイチの事業立ち上げを経験"),
+                 ("HR Techベンチャー", "新規事業の創出と組織拡大を牽引"),
+                 ("サイバーセキュリティベンチャー", "新規事業の創出と組織拡大を牽引"),
+                 ("合同会社RIVIA&CO.", "共同創業")],
+         strengths=["新規事業開発", "事業グロース", "組織拡大", "テクノロジー領域の知見"]),
+    dict(key="katai", name="片井 進太", en="Shinta Katai", role="代表社員 ／ 共同創業者", origin="静岡県出身", photo="founder-katai.jpg", photo_type="illust",
+         bio="静岡県出身。新卒で静岡県庁に入庁し、行政の視点から地域課題に向き合う。その後、大手メーカー、リクルート、HR Techベンチャーを経て、位置情報データを扱うベンチャー企業に参画。官民両方の視点と、多角的な業界知見、データ分析力を強みに持つ。現在、複数企業の経営にも携わりながらRIVIA&CO.を共同創業。",
+         career=[("静岡県庁", "行政の視点から地域課題に向き合う"),
+                 ("大手メーカー", ""),
+                 ("株式会社リクルート", ""),
+                 ("HR Techベンチャー", ""),
+                 ("位置情報データベンチャー", "位置情報データを活用した事業に参画"),
+                 ("合同会社RIVIA&CO.", "共同創業。現在、複数企業の経営にも携わる")],
+         strengths=["官民両方の視点", "多角的な業界知見", "データ分析", "企業経営"]),
+]
+
+
+# 構造化データの @id（Organization・Person は about.html で定義し、ほかのページからは @id で参照する）
+ORG_ID = f"{SITE}/about.html#organization"
+
+
+def person_id(key):
+    return f"{SITE}/about.html#{key}"
+
+
+def org_ref():
+    """ほかのページから会社を参照するときの Organization（@id ＋ 名前・ロゴ。Article の publisher にも使う）"""
+    return {"@type": "Organization", "@id": ORG_ID, "name": "合同会社RIVIA&CO.", "url": f"{SITE}/",
+            "logo": {"@type": "ImageObject", "url": f"{SITE}/images/logo/logo.png"}}
+
+
+def founder_person(f):
+    """創業者の Person（about.html で定義する本体）。sameAs は SNS を載せない方針なので付けない"""
+    return {
+        "@type": "Person",
+        "@id": person_id(f["key"]),
+        "name": f["name"],
+        "alternateName": f["en"],
+        "jobTitle": ["代表社員", "共同創業者"],
+        "description": f["bio"],
+        "knowsAbout": f["strengths"],
+        "worksFor": {"@id": ORG_ID},
+        "image": f"{SITE}/images/{f['photo']}",
+        "url": f"{SITE}/about.html#founders",
+    }
+
+
+def org_entity(full_founders=False):
+    """会社の Organization 本体。about.html では創業者の Person を中に入れ、トップでは @id で参照する"""
+    return {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": ORG_ID,
+        "name": "合同会社RIVIA&CO.",
+        "alternateName": "RIVIA&CO. LLC",
+        "url": f"{SITE}/",
+        "logo": f"{SITE}/images/logo/logo.png",
+        "foundingDate": "2026-09-01",
+        "founder": [founder_person(f) if full_founders else {"@type": "Person", "@id": person_id(f["key"]), "name": f["name"]}
+                    for f in FOUNDERS],
+        "address": {
+            "@type": "PostalAddress",
+            "postalCode": "121-0012",
+            "addressRegion": "東京都",
+            "addressLocality": "足立区",
+            "streetAddress": "青井六丁目8番8号 Grand Maison青井201",
+            "addressCountry": "JP",
+        },
+    }
+
+
 def about_page():
-    founders = [
-        dict(name="石原 佑真", en="Yuma Ishihara", role="代表社員 ／ 共同創業者", origin="大阪府出身", photo="founder-ishihara.jpg", photo_type="photo",
-             bio="大阪府出身。新卒で株式会社リクルートに入社し、新規事業開発室にてゼロイチの事業立ち上げを経験。その後、HR Techベンチャー、サイバーセキュリティベンチャーにおいて、一貫して新規事業の創出と組織拡大を牽引。新規事業を立ち上げ、事業と組織を成長させてきた経験と、テクノロジー領域での知見を活かし、RIVIA&CO.を共同創業。",
-             career=[("株式会社リクルート", "新規事業開発室にて、ゼロイチの事業立ち上げを経験"),
-                     ("HR Techベンチャー", "新規事業の創出と組織拡大を牽引"),
-                     ("サイバーセキュリティベンチャー", "新規事業の創出と組織拡大を牽引"),
-                     ("合同会社RIVIA&CO.", "共同創業")],
-             strengths=["新規事業開発", "事業グロース", "組織拡大", "テクノロジー領域の知見"]),
-        dict(name="片井 進太", en="Shinta Katai", role="代表社員 ／ 共同創業者", origin="静岡県出身", photo="founder-katai.jpg", photo_type="illust",
-             bio="静岡県出身。新卒で静岡県庁に入庁し、行政の視点から地域課題に向き合う。その後、大手メーカー、リクルート、HR Techベンチャーを経て、位置情報データを扱うベンチャー企業に参画。官民両方の視点と、多角的な業界知見、データ分析力を強みに持つ。現在、複数企業の経営にも携わりながらRIVIA&CO.を共同創業。",
-             career=[("静岡県庁", "行政の視点から地域課題に向き合う"),
-                     ("大手メーカー", ""),
-                     ("株式会社リクルート", ""),
-                     ("HR Techベンチャー", ""),
-                     ("位置情報データベンチャー", "位置情報データを活用した事業に参画"),
-                     ("合同会社RIVIA&CO.", "共同創業。現在、複数企業の経営にも携わる")],
-             strengths=["官民両方の視点", "多角的な業界知見", "データ分析", "企業経営"]),
-    ]
+    founders = FOUNDERS
     fhtml = "\n".join(
         f"""          <article class="founder reveal" data-delay="{i}">
             <div class="founder__head">
@@ -1900,7 +1938,10 @@ def about_page():
     </section>
 
 {cta()}"""
-    page("about.html", "私たちについて・会社概要", "合同会社RIVIA&CO.のミッション・ビジョン・バリュー、創業者紹介、会社概要です。", body, current="about")
+    ld = [org_entity(full_founders=True),
+          {"@context": "https://schema.org", "@type": "AboutPage", "name": "私たちについて・会社概要", "url": f"{SITE}/about.html",
+           "about": {"@id": ORG_ID}, "mainEntity": {"@id": ORG_ID}}]
+    page("about.html", "私たちについて・会社概要", "合同会社RIVIA&CO.のミッション・ビジョン・バリュー、創業者紹介、会社概要です。", body, current="about", jsonld=ld)
 
 
 # ---------------------------------------------------------------- forms
@@ -2024,7 +2065,7 @@ def contact_page():
           </div>
           <div class="form__field">
             <label for="tel">電話番号 <span class="req">必須</span></label>
-            <input type="tel" id="tel" name="tel" placeholder="090-1234-5678" autocomplete="tel" inputmode="tel" pattern="[0-9０-９+\-－ー()（） ]{10,}" title="電話番号を数字で入力してください（例：090-1234-5678）" required>
+            <input type="tel" id="tel" name="tel" placeholder="090-1234-5678" autocomplete="tel" inputmode="tel" pattern="[0-9０-９+\\-－ー\\(\\)（） ]{{10,}}" title="電話番号を数字で入力してください（例：090-1234-5678）" required>
           </div>
           <div class="form__field">
             <label for="email">メールアドレス <span class="req">必須</span></label>
@@ -2128,9 +2169,10 @@ def thanks_page():
       </div>
     </section>
     <script>
-      // フォーム送信の完了を GA4 に記録（どのフォームからかを form_type で区別）
+      // フォーム送信の完了を GA4 に記録（どのフォームからかを form_type、相談か資料請求かを lead_type で区別。lead は js/main.js が付ける）
       if (typeof gtag === 'function') {{
-        gtag('event', 'generate_lead', {{ form_type: new URLSearchParams(location.search).get('form') || 'contact' }});
+        var q = new URLSearchParams(location.search), form = q.get('form') || 'contact';
+        gtag('event', 'generate_lead', {{ form_type: form, lead_type: q.get('lead') || (form === 'careers' ? 'careers' : 'consult') }});
       }}
     </script>"""
     page("thanks.html", "送信完了", "お問い合わせを受け付けました。", body, noindex=True)
@@ -2222,7 +2264,7 @@ def spec_md():
     w("* 全ページ: 個別の title / description / canonical / OGP（og:image は ogp.jpg、1200×630）/ ファビコン（HTMLに埋め込み）。")
     w("* トップ: 会社情報の構造化データ（Organization）。サービスページ: よくある質問の構造化データ（FAQPage）。")
     w("* Googleアナリティクス4（測定ID: G-RZVE2XBPQ2）の計測タグを、全ページの `<head>` の直後に設置済み。")
-    w("* フォーム（お問い合わせ・採用エントリー）は画面を移動せずに送信し、成功したら thanks.html へ移動する。thanks.html で GA4 の `generate_lead` イベント（form_type: contact / careers）を送るので、GA4 の管理画面で `generate_lead` を「キーイベント」に設定すると問い合わせ数を計測できる。")
+    w("* フォーム（お問い合わせ・採用エントリー）は画面を移動せずに送信し、成功したら thanks.html へ移動する。thanks.html で GA4 の `generate_lead` イベント（form_type: contact / careers / akiyado、lead_type: consult 相談 / document 資料請求 / careers 採用）を送るので、GA4 の管理画面で `generate_lead` を「キーイベント」に設定すると問い合わせ数を計測できる。")
     w("* 運営実績の下に「ゲストの声（Airbnb のレビューより）」を表示できる。build.py の `NODE_REVIEWS` に、実際のレビューを原文のまま入れたときだけ表示される（空のときは非表示）。")
     w("* **公開ドメインは https://rivia-co.com（canonical / OGP / 構造化データ / sitemap に反映済み）。**")
     w("* AI検索向けのサイト案内 llms.txt（公開URL `/llms.txt`、実体は seo/llms.txt）を置く。会社・サービス・アキヤドのガイドと、公開日を迎えた記事を載せる。`tools/build.py`（llms_txt）で生成し、手で直さない（日次の定期実行で毎日作り直す）。")
@@ -3892,7 +3934,7 @@ def media_service_page(sv):
 {media_section(related, eyebrow="Articles", title=f"{label}におすすめの記事", more=False, keep_order=True)}
 
 {media_cta(sv["category"])}"""
-    ld = [{"@context": "https://schema.org", "@type": "Service", "name": sv["name"], "provider": {"@type": "Organization", "name": "合同会社RIVIA&CO.", "url": SITE},
+    ld = [{"@context": "https://schema.org", "@type": "Service", "name": sv["name"], "provider": org_ref(),
            "areaServed": "JP", "description": sv["lead"]},
           {"@context": "https://schema.org", "@type": "FAQPage",
            "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in sv["faq"]]},
@@ -3977,7 +4019,7 @@ def media_company_page():
 
 {media_cta()}"""
     ld = [{"@context": "https://schema.org", "@type": "AboutPage", "name": "アキヤドの運営会社",
-           "about": {"@type": "Organization", "name": "合同会社RIVIA&CO.", "url": SITE, "foundingDate": "2026-09-01"}},
+           "about": org_ref()},
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
               {"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"},
               {"@type": "ListItem", "position": 2, "name": "運営会社"}]}]
@@ -4156,7 +4198,7 @@ def media_contact_page():
           </div>
           <div class="mform__field">
             <label for="m-tel">電話番号 <span class="mform__req">必須</span></label>
-            <input type="tel" id="m-tel" name="tel" placeholder="090-1234-5678" autocomplete="tel" inputmode="tel" pattern="[0-9０-９+\-－ー()（） ]{10,}" title="電話番号を数字で入力してください（例：090-1234-5678）" required>
+            <input type="tel" id="m-tel" name="tel" placeholder="090-1234-5678" autocomplete="tel" inputmode="tel" pattern="[0-9０-９+\\-－ー\\(\\)（） ]{{10,}}" title="電話番号を数字で入力してください（例：090-1234-5678）" required>
             <p class="mform__help">ご連絡は、ご希望の方法（メール・お電話）でいたします。</p>
           </div>
           <fieldset class="mform__field">
@@ -4219,7 +4261,8 @@ def media_thanks_page():
       </div>
     </section>
     <script>
-      if (typeof gtag === 'function') {{ gtag('event', 'generate_lead', {{ form_type: 'akiyado' }}); }}
+      // 相談か資料請求かを lead_type で区別（lead は js/main.js が付ける）
+      if (typeof gtag === 'function') {{ gtag('event', 'generate_lead', {{ form_type: 'akiyado', lead_type: new URLSearchParams(location.search).get('lead') || 'consult' }}); }}
     </script>"""
     page("media/thanks.html", "送信完了｜アキヤド", "アキヤドへのお問い合わせを受け付けました。", body, current="media", noindex=True)
 
@@ -4243,7 +4286,7 @@ def media_nav(current=""):
 
 
 SUPERVISOR = dict(
-    name="石原 佑真", role="合同会社RIVIA&CO. 代表社員", photo="founder-ishihara.jpg",
+    key="ishihara", name="石原 佑真", role="合同会社RIVIA&CO. 代表社員", photo="founder-ishihara.jpg",
     links=[("YOUTRUST", "https://youtrust.jp/users/yumayade__2210"), ("LinkedIn", "https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b"),
            ("Wantedly", "https://www.wantedly.com/id/tasuku_ishihara_g")],
     bio="株式会社リクルートの新規事業開発室で事業の立ち上げを経験し、その後ベンチャー企業で新規事業の創出と組織の拡大を牽引。RIVIA&CO.を共同創業し、空き家の再生と宿の運営・開業支援に携わる。",
@@ -4423,7 +4466,7 @@ def media_index_page():
         "alternateName": "空き家と民泊のメディア アキヤド",
         "url": f"{SITE}/media.html",
         "inLanguage": "ja",
-        "publisher": {"@type": "Organization", "name": "合同会社RIVIA&CO.", "url": f"{SITE}/", "logo": {"@type": "ImageObject", "url": f"{SITE}/images/logo/logo.png"}},
+        "publisher": org_ref(),
     }, {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
@@ -4678,11 +4721,11 @@ def article_page(a):
             "description": a["description"],
             "datePublished": a["date"],
             "dateModified": a["updated"],
-            "image": f"{SITE}/images/ogp.jpg",
+            "image": (f"{SITE}/images/eyecatch/{a['slug']}.jpg" if has_eyecatch(a) else f"{SITE}/images/ogp.jpg"),
             "mainEntityOfPage": f"{SITE}/media/{a['slug']}.html",
-            "author": {"@type": "Organization", "name": "アキヤド編集部（合同会社RIVIA&CO.）", "url": f"{SITE}/about.html"},
-            "contributor": {"@type": "Person", "name": SUPERVISOR["name"], "jobTitle": "合同会社RIVIA&CO. 代表社員（監修）", "url": f"{SITE}/about.html#founders", "sameAs": [u for _, u in SUPERVISOR["links"]]},
-            "publisher": {"@type": "Organization", "name": "合同会社RIVIA&CO.", "logo": {"@type": "ImageObject", "url": f"{SITE}/images/logo/logo.png"}},
+            "author": {"@type": "Organization", "name": "アキヤド編集部（合同会社RIVIA&CO.）", "url": f"{SITE}/about.html", "parentOrganization": {"@id": ORG_ID}},
+            "contributor": {"@type": "Person", "@id": person_id(SUPERVISOR["key"]), "name": SUPERVISOR["name"], "jobTitle": "合同会社RIVIA&CO. 代表社員（監修）", "url": f"{SITE}/about.html#founders", "sameAs": [u for _, u in SUPERVISOR["links"]]},
+            "publisher": org_ref(),
             "articleSection": MEDIA_CAT_NAMES[a["category"]],
             "inLanguage": "ja",
         },
@@ -4769,7 +4812,13 @@ def sitemap():
 </urlset>
 """)
     with open(os.path.join(OUT, SEO_DIR, "robots.txt"), "w", encoding="utf-8") as f:
-        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+        # AI検索・生成AIのロボットも名前を挙げて明示的に許可する（noindex のページは各ページの meta robots で外す。Disallow は置かない）
+        bots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
+                "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot", "CCBot"]
+        f.write("# AI検索・生成AIのロボットも含めて、すべて許可する方針\n\n"
+                "User-agent: *\nAllow: /\n\n"
+                + "".join(f"User-agent: {b}\nAllow: /\n\n" for b in bots)
+                + f"Sitemap: {SITE}/sitemap.xml\n")
 
 if __name__ == "__main__":
     index_page()
