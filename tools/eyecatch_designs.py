@@ -63,14 +63,14 @@ DESIGNS = {
     "case-rental-house-inn-first-year": dict(layout="number", big="14", unit="か月", lines=["下田の一軒家を宿に。", "[初期投資を回収]するまで"], color="deep"),
     "minpaku-hard-truth": dict(layout="quote", lines=["「民泊は大変」", "って[本当？]"], color="sand"),
     "minpaku-neighbor-rules": dict(layout="frame", lines=["近隣トラブルを防ぐ", "[ルールづくり]"], color="mustard"),
-    "minpaku-off-season": dict(layout="mincho", lines=["閑散期を、", "どう越える"], sub="売上の波をならす工夫"),
+    "minpaku-off-season": dict(layout="mincho", lines=["閑散期を、", "どう越える"], sub="売上の波をならす工夫", photo="own-fishing-bay", pos="50% 30%"),
     "minpaku-remote-operation": dict(layout="giant", big="遠隔運営", lines=["遠方の物件でも、", "[運営できる？]"]),
     "long-stay-guest-equipment": dict(layout="marker", lines=["長期滞在のゲストに", "[選ばれる設備]"], photo="own-sofa-room", pos="60% 45%"),
 
     # ---- 観光と地域
     "japan-tourism-market-data": dict(layout="number", big="5", unit="つの課題", lines=["データで見る日本の観光市場と", "[地方が抱える課題]"], color="navy"),
-    "akiya-regional-revitalization": dict(layout="mincho", lines=["空き家活用が、", "地方創生に"], sub="つながる理由"),
-    "long-stay-travel-demand": dict(layout="mincho", lines=["暮らすように、", "旅をする"], sub="長期滞在が広がる理由"),
+    "akiya-regional-revitalization": dict(layout="mincho", lines=["空き家活用が、", "地方創生に"], sub="つながる理由", photo="own-breakwater-island", pos="50% 55%"),
+    "long-stay-travel-demand": dict(layout="mincho", lines=["暮らすように、", "旅をする"], sub="長期滞在が広がる理由", photo="own-open-sea", pos="50% 45%"),
     "inn-local-economy": dict(layout="boxes", lines=["宿が地域に", "[お金を落とす]", "仕組み"]),
     "inbound-regional-dispersion": dict(layout="giant", big="訪日客を地方へ", lines=["[インバウンドの地方分散]"]),
     "tourism-labor-shortage": dict(layout="quote", lines=["観光業の人手不足を", "[どう乗り越える？]"], color="sand"),
