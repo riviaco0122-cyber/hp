@@ -9,7 +9,7 @@ description: 指定したテーマ（またはキーワード表の次の候補�
 日次サイクル（`/seo-daily`）と同じ日には実行しない（同じ記事を二重に作らないため）。不合格のときの扱いは playbook 5-4 に従う。新規記事は週2本まで（playbook 1章）。
 
 1. 作業ブランチ `seo/article-<スラッグ>` を作る。
-2. `researcher` → リサーチメモ（YouTube 調査・一次情報・出典の確認）
+2. `researcher` → リサーチメモ（YouTube 調査・一次情報・出典の確認）。統計の数字が要るときは、先に編集長が `python3 tools/estat.py` で e-Stat から取って渡す（出典つき）
 3. `marketer` → 構成案 `docs/seo/briefs/<スラッグ>.md`。公開予定日は、予約済みの最後の記事の 2 日後（`docs/dashboard.md` 参照）。
 4. `writer` → 原稿 `docs/seo/drafts/<スラッグ>.md`（自己採点で `tools/article_score.py` の機械採点40点にしてから提出）
 5. `qa` → 100点満点で採点（playbook 5章）。**95点未満・ゲート違反なら、qa が指定した戻る工程（2 リサーチ／3 構成案／4 執筆）からやり直し、最初から採点し直す**（最大3回）。
