@@ -2974,3 +2974,12 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 }
 @media (max-width: 899px) { .mintro__grid { grid-template-columns: minmax(0, 1fr); } .mintro__copy br { display: inline; } }
 @media (max-width: 899px) { .mintro__shots { order: 0; margin-top: 8px; } }
+/* メールマガジンの受け取り（任意・オプトイン）。プライバシーポリシーの同意のすぐ下に置く */
+.form__consent { display: grid; justify-items: center; gap: 16px; }
+.form__optin { display: grid; justify-items: center; gap: 4px; }
+.form__optin .check { font-size: 13px; text-align: left; }
+.form__optin-note, .mform__optin-note { font-size: 12px; color: var(--c-muted); }
+.mform__consent { display: grid; gap: 12px; }
+.mform__optin { display: grid; justify-items: center; gap: 2px; }
+.mform__optin .mform__agree { font-size: 13px; }
+@media (max-width: 899px) { .mform__optin { justify-items: start; } .mform__optin-note { padding-left: 28px; } }

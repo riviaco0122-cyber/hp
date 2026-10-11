@@ -54,7 +54,7 @@
   - ガイド（読者の状況別）: `guide-sell`（売りたい）・`guide-use`（活かしたい）・`guide-side`（副業で宿をはじめたい）。記事データの `guides` で Step に並ぶ。
   - ほかに `learn.html`（体系的に学ぶ）、`plans.html`、`service-*.html`、`company.html`、`search.html`（noindex）、`contact.html`・`thanks.html`。
 - 英語版の公開はやめた（`tools/i18n/` は残っているが使っていない）。
-- お問い合わせフォームは全ページ **Google Apps Script**（`tools/forms/Code.gs`）に送る。自動返信・社内通知・添付ファイルのドライブ保存・スプレッドシート記録を行う。`Code.gs` を変えたら、人が Apps Script に貼り直して「新バージョン」でデプロイする必要がある（`docs/forms-setup-guide.md`）。
+- お問い合わせフォームは全ページ **Google Apps Script**（`tools/forms/Code.gs`）に送る。自動返信・社内通知・添付ファイルのドライブ保存・スプレッドシート記録を行う。`Code.gs` を変えたら、人が Apps Script に貼り直して「新バージョン」でデプロイする必要がある（`docs/forms-setup-guide.md`）。「サービス資料の請求」の自動返信にはドライブの資料 PDF（スクリプト プロパティ `DOC_FILE_ID`）を添付し、フォームのメルマガ受け取りの同意（任意・初期はチェックなし）はスプレッドシートの「メルマガ」列に記録する（配信は未実装）。
 - 写真: `images/photos/<名前>.jpg`（原寸のまま。再圧縮しない）と `images/photos/w/<名前>-800.webp`（軽量版）。記事には既存の写真だけを使う。
 - 予約公開: 記事データの `date` が公開日。`js/main.js` が公開日前の記事を一覧・関連記事・ガイド・検索から隠す（HTML と sitemap には載る。llms.txt には公開日を迎えた記事だけ）。
 - 計測: GA4（G-RZVE2XBPQ2）と Microsoft Clarity。イベント: `generate_lead`（お問い合わせ完了）・`cta_click`・`select_guide`・`search`。自動返信メールのリンクには `utm_source=autoreply` が付く。
