@@ -2943,3 +2943,12 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
   .mstory__photo { min-height: 0; aspect-ratio: 16 / 9; }
   .mstory__body { padding: 0 6px; }
 }
+/* スマホ：コースのカードは1列の横長に */
+@media (max-width: 899px) {
+  .lcards { grid-template-columns: 1fr; gap: 10px; }
+  .lcard { grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; row-gap: 4px; align-items: center; padding: 18px 18px 18px 20px; }
+  .lcard > :not(.lcard__count) { grid-column: 1; }
+  .lcard__count { grid-column: 2; grid-row: 1 / span 3; margin-top: 0; padding: 6px 12px; border-radius: 999px; background: var(--m-sand, #eef3ee); white-space: nowrap; }
+  .lcard__title { font-size: 16px; }
+  .lcard__text { font-size: 12.5px; line-height: 1.75; }
+}
