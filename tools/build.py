@@ -3139,7 +3139,8 @@ from articles_case import ARTICLES_CASE
 from articles_series1 import ARTICLES_SERIES1
 from articles_series2 import ARTICLES_SERIES2
 from articles_series3 import ARTICLES_SERIES3
-for _a in ARTICLES_SCHED1 + ARTICLES_SCHED2 + ARTICLES_CASE + ARTICLES_SERIES1 + ARTICLES_SERIES2 + ARTICLES_SERIES3:
+from articles_auto import ARTICLES_AUTO  # AI社員チームが追加する記事
+for _a in ARTICLES_SCHED1 + ARTICLES_SCHED2 + ARTICLES_CASE + ARTICLES_SERIES1 + ARTICLES_SERIES2 + ARTICLES_SERIES3 + ARTICLES_AUTO:
     _a.setdefault("tone", "sand")
     _a.setdefault("updated", _a["date"])
     ARTICLES.append(_a)
