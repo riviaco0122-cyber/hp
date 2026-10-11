@@ -27,19 +27,19 @@ class PlanTest(unittest.TestCase):
             return {"impressions": 0, "clicks": 0, "ai_sessions": 0, "seo_sessions": 500,
                     "cv": 0, "lead_types": {}}
         out = []
-        res = P.cmd_check(self.plan, dt.date(2027, 3, 20), fetch=fake, dry_run=True, out=out.append)
+        res = P.cmd_check(self.plan, dt.date(2027, 3, 30), fetch=fake, dry_run=True, out=out.append)
         self.assertEqual(res["bottleneck"]["key"], "impressions")
         self.assertIn("今日の最優先", "\n".join(out))
 
     def test_check_on_track(self):
-        target = P.plan_for_month(self.plan, "2027-03")
+        target = P.plan_for_date(self.plan, dt.date(2027, 3, 20))
         def fake(start, end, gsc_end):
             return {k: target[k] for k in ("impressions", "clicks", "ai_sessions", "seo_sessions", "cv")} | {"lead_types": {}}
-        res = P.cmd_check(self.plan, dt.date(2027, 3, 31), fetch=fake, dry_run=True, out=lambda s: None)
+        res = P.cmd_check(self.plan, target["end"], fetch=fake, dry_run=True, out=lambda s: None)
         self.assertIsNone(res["bottleneck"])
 
-    def test_first_day_of_month_has_no_data(self):
-        res = P.cmd_check(self.plan, dt.date(2027, 3, 1), fetch=None, dry_run=True, out=lambda s: None)
+    def test_first_day_has_no_data(self):
+        res = P.cmd_check(self.plan, dt.date(2026, 10, 11), fetch=None, dry_run=True, out=lambda s: None)
         self.assertIsNone(res)
 
 

@@ -31,11 +31,12 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
 | 木 | **PDCA の Do**：台帳の施策を実行する（既存記事の改善：伸びしろのあるキーワード、クリック率の低い記事、古くなった情報） |
 | 金 | テクニカルSEO/AIO（seo_check の警告、構造化データ、内部リンク、llms.txt） |
 | 土・日 | ネタ箱の処理（`researcher`）とログ・ダッシュボードの更新だけ（軽め） |
-| 毎月1日 | 上に加えて、ブランド知識の見直し（`brand-learner`）と **CV 計画の見直し**（`marketer` が前月の実績で `docs/seo/plan.json` の仮定を見直し、`python3 tools/plan.py simulate` で `docs/seo/plan.md` を作り直す。計画を下げるときは PR で人の判断を仰ぐ） |
+| 毎月1日 | 上に加えて、ブランド知識の見直し（`brand-learner`） |
+| 毎月11日（計画月の初日） | 上に加えて、**CV 計画の見直し**（`marketer` が前月の実績で `docs/seo/plan.json` の仮定を見直し、`python3 tools/plan.py simulate` で `docs/seo/plan.md` を作り直す。計画を下げるときは PR で人の判断を仰ぐ） |
 | 毎週月曜 | 上に加えて、**週次レポート**：`python3 tools/plan.py weekly` で `docs/seo/reports/weekly-YYYY-Www.md` を作り、「先週やったこと」を `docs/seo/log.md` から要約して書き足す。要点を PR と最終メッセージ（完了メール）に載せる |
 
 ## 2. 毎日の流れ
-0. **計画に対する進み具合（毎日・最初に）**：`python3 tools/plan.py check` で、今月の実績（検索の表示回数・クリック・AI検索・SEO/AIO セッション・CV）を CV 計画（`docs/seo/plan.md`）の日割りと比べる（結果は `docs/seo/plan-tracking.md` に追記される）。出力の「今日の最優先」（計画の木でいちばん上流の遅れ）を、その日の作業の1つ目にする。遅れの打ち手が施策台帳にまだなければ `marketer` に登録を依頼する。API が使えないときは、その旨をログに書いて続ける
+0. **計画に対する進み具合（毎日・最初に）**：`python3 tools/plan.py check` で、計画月（2026-10-11 を初日に1か月ごと）の実績（検索の表示回数・クリック・AI検索・SEO/AIO セッション・CV）を CV 計画（`docs/seo/plan.md`）の日割りと比べる（結果は `docs/seo/plan-tracking.md` に追記される）。出力の「今日の最優先」（計画の木でいちばん上流の遅れ）を、その日の作業の1つ目にする。遅れの打ち手が施策台帳にまだなければ `marketer` に登録を依頼する。API が使えないときは、その旨をログに書いて続ける
 1. **PDCA の Check（毎日）**：`python3 tools/pdca.py check` を実行し、測定日を迎えた施策を判定する（API を使うのは測定日を迎えた施策があるときだけ）。判定が出たら `marketer` に次の一手と学びの記録（Act）を依頼する。
 2. **洗い出し**：進行管理部 `pm` の仕事A。**0. の「今日の最優先」**・曜日の重点・引き継ぎ・台帳から、今日の作業（最大3件）を決める。1件目は計画の遅れを取り戻す作業にする（遅れがなければ曜日の重点どおり）。
 3. **実行**：作業ごとに担当部署へ依頼する。

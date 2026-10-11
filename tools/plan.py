@@ -54,12 +54,15 @@ def load_plan(path=PLAN_JSON):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
-def month_add(ym, n):
-    y, m = map(int, ym.split("-"))
-    m += n
-    y += (m - 1) // 12
-    m = (m - 1) % 12 + 1
-    return f"{y:04d}-{m:02d}"
+def add_months(d, n):
+    """d の n か月後の同じ日（月末をはみ出すときはその月の末日）"""
+    m = d.month - 1 + n
+    y, m = d.year + m // 12, m % 12 + 1
+    return dt.date(y, m, min(d.day, calendar.monthrange(y, m)[1]))
+
+
+def start_date(plan):
+    return dt.date.fromisoformat(plan["start_date"])
 
 
 def ramp(age, half, width):
@@ -74,7 +77,7 @@ def simulate(plan, scenario_key):
     cohorts = []  # (公開月の番号, 本数)
     rows, cum = [], 0.0
     for i in range(plan["months"]):
-        ym = month_add(plan["start_month"], i)
+        s0, e0 = add_months(start_date(plan), i), add_months(start_date(plan), i + 1)
         cohorts.append((i, plan["articles_at_start"] if i == 0 else plan["new_articles_per_month"]))
         articles = sum(n for _, n in cohorts)
         clicks = sum(n * sc["clicks_per_article"] * ramp(i - j, half, width) for j, n in cohorts)
@@ -83,7 +86,9 @@ def simulate(plan, scenario_key):
         seo = clicks + ai
         cv = seo * sc["cvr"]
         cum += cv
-        rows.append({"month": ym, "articles": articles, "impressions": impressions, "clicks": clicks,
+        rows.append({"month": f"{i + 1}か月目", "start": s0, "end": e0,
+                     "range": f"{s0.month}/{s0.day}〜{(e0 - dt.timedelta(days=1)).month}/{(e0 - dt.timedelta(days=1)).day}",
+                     "articles": articles, "impressions": impressions, "clicks": clicks,
                      "ai_sessions": ai, "seo_sessions": seo, "cv": cv,
                      "cv_document": cv * doc_share, "cv_consult": cv * (1 - doc_share), "cv_cum": cum})
     return rows
@@ -92,13 +97,12 @@ def simulate(plan, scenario_key):
 def first_month(rows, key, threshold):
     for r in rows:
         if r[key] >= threshold:
-            return r["month"]
-    return "（12か月以内には届かない）"
+            return f"{r['month']}（{r['start'].year}年{r['range']}）"
+    return "（計画の期間内には届かない）"
 
 
-def ym_label(ym):
-    y, m = ym.split("-")
-    return f"{y}年{int(m)}月"
+def period_label(r):
+    return f"{r['month']}（{r['start'].year}年{r['range']}）"
 
 
 def fmt(v, digits=0):
@@ -120,9 +124,9 @@ def render_plan(plan):
     w("")
     w("## 1. 結論（標準シナリオ＝目標）")
     w("")
-    w(f"- 計画の期間: {ym_label(std[0]['month'])}〜{ym_label(last['month'])}（{plan['months']}か月）。記事は {plan['articles_at_start']} 本から、毎月 {plan['new_articles_per_month']} 本ずつ増やす")
-    w(f"- **SEO/AIO 経由の CV が月1件を超えるのは {ym_label(first_month(std, 'cv', 1))}、月3件を超えるのは {ym_label(first_month(std, 'cv', 3)) if '（' not in first_month(std, 'cv', 3) else first_month(std, 'cv', 3)}**")
-    w(f"- {ym_label(last['month'])}の目標: **CV 月{fmt(last['cv'], 1)}件**（資料請求 {fmt(last['cv_document'], 1)}・相談 {fmt(last['cv_consult'], 1)}）、SEO/AIO からのセッション 月{fmt(last['seo_sessions'])}、検索の表示回数 月{fmt(last['impressions'])}")
+    w(f"- 計画の期間: {std[0]['start']}（初日）から{plan['months']}か月（〜{last['end'] - dt.timedelta(days=1)}）。初日から1か月ごとに「1か月目」「2か月目」…と数える。記事は {plan['articles_at_start']} 本から、毎月 {plan['new_articles_per_month']} 本ずつ増やす")
+    w(f"- **SEO/AIO 経由の CV が月1件を超えるのは {first_month(std, 'cv', 1)}、月3件を超えるのは {first_month(std, 'cv', 3)}**")
+    w(f"- {period_label(last)}の目標: **CV 月{fmt(last['cv'], 1)}件**（資料請求 {fmt(last['cv_document'], 1)}・相談 {fmt(last['cv_consult'], 1)}）、SEO/AIO からのセッション 月{fmt(last['seo_sessions'])}、検索の表示回数 月{fmt(last['impressions'])}")
     w(f"- 12か月の CV 累計: 保守 {fmt(res['conservative'][-1]['cv_cum'], 1)}件 ／ **標準 {fmt(last['cv_cum'], 1)}件** ／ 挑戦 {fmt(res['stretch'][-1]['cv_cum'], 1)}件")
     w("- 最初の3〜4か月は、新しいサイトが検索エンジンに評価されるまでの「立ち上がり期間」。この時期は CV ではなく、**表示回数・インデックス・記事の本数（先行指標）** で進み具合を判断する")
     w("")
@@ -155,14 +159,14 @@ def render_plan(plan):
     w("")
     w("## 4. 月別の計画（標準＝目標）")
     w("")
-    w("| 月 | 記事数 | 表示回数 | 検索クリック | AI検索 | SEO/AIOセッション | CV | うち資料請求 | うち相談 | CV累計 |")
-    w("|---|---|---|---|---|---|---|---|---|---|")
+    w("| 計画月 | 期間 | 記事数 | 表示回数 | 検索クリック | AI検索 | SEO/AIOセッション | CV | うち資料請求 | うち相談 | CV累計 |")
+    w("|---|---|---|---|---|---|---|---|---|---|---|")
     for r in std:
-        w(f"| {r['month']} | {r['articles']} | {fmt(r['impressions'])} | {fmt(r['clicks'])} | {fmt(r['ai_sessions'])} | {fmt(r['seo_sessions'])} | {fmt(r['cv'], 1)} | {fmt(r['cv_document'], 1)} | {fmt(r['cv_consult'], 1)} | {fmt(r['cv_cum'], 1)} |")
+        w(f"| {r['month']} | {r['start'].year}年{r['range']} | {r['articles']} | {fmt(r['impressions'])} | {fmt(r['clicks'])} | {fmt(r['ai_sessions'])} | {fmt(r['seo_sessions'])} | {fmt(r['cv'], 1)} | {fmt(r['cv_document'], 1)} | {fmt(r['cv_consult'], 1)} | {fmt(r['cv_cum'], 1)} |")
     w("")
     w("## 5. シナリオ別の CV（月）")
     w("")
-    w("| 月 | 保守 | 標準（目標） | 挑戦 |")
+    w("| 計画月 | 保守 | 標準（目標） | 挑戦 |")
     w("|---|---|---|---|")
     for a, b, c in zip(res["conservative"], std, res["stretch"]):
         w(f"| {b['month']} | {fmt(a['cv'], 1)} | **{fmt(b['cv'], 1)}** | {fmt(c['cv'], 1)} |")
@@ -171,7 +175,7 @@ def render_plan(plan):
     w("")
     w("- **毎日（Check→Act）**：定期実行の最初に `python3 tools/plan.py check` で今月の実績を取り、計画の日割りと比べる（順調 ≥ {:.0%}・注意 ≥ {:.0%}・遅れ）。遅れている指標のうち、計画の木の上流にあるものの打ち手を、その日の作業の1つ目にする。結果は `docs/seo/plan-tracking.md` に1行ずつ残る".format(plan["pace_thresholds"]["on_track"], plan["pace_thresholds"]["warn"]))
     w("- **毎週月曜（報告）**：`python3 tools/plan.py weekly` で先週の週次レポートを作り、定期実行の完了メールと PR に要点を載せる")
-    w("- **毎月1日（Plan の見直し）**：前月の実績で、仮定（1記事あたりのクリック・CTR・AI検索の割合・CV率）を見直す。**2か月続けて「遅れ」なら、仮定ではなく打ち手を変える**（記事のテーマ・導線・本数）。計画そのものを下げるときは、PR の「人の確認が必要な点」に理由を書いて人の判断を仰ぐ")
+    w("- **毎月11日＝計画月の初日（Plan の見直し）**：前の計画月の実績で、仮定（1記事あたりのクリック・CTR・AI検索の割合・CV率）を見直す。**2か月続けて「遅れ」なら、仮定ではなく打ち手を変える**（記事のテーマ・導線・本数）。計画そのものを下げるときは、PR の「人の確認が必要な点」に理由を書いて人の判断を仰ぐ")
     w("- 立ち上がり期間（最初の3か月）は CV の数が小さく、日割りの判定がぶれやすい。この期間は表示回数・クリックの判定を優先する")
     w("")
     return "\n".join(out) + "\n"
@@ -201,10 +205,10 @@ def fetch_actuals(start, end, gsc_end=None):
             "lead_types": lead_types}
 
 
-def plan_for_month(plan, ym):
-    rows = simulate(plan, plan["target_scenario"])
-    for r in rows:
-        if r["month"] == ym:
+def plan_for_date(plan, d):
+    """d を含む計画月の行（期間外なら None）"""
+    for r in simulate(plan, plan["target_scenario"]):
+        if r["start"] <= d < r["end"]:
             return r
     return None
 
@@ -244,26 +248,26 @@ def bottleneck(rows):
 
 
 def cmd_check(plan, today, fetch=fetch_actuals, dry_run=False, out=print):
-    ym = today.strftime("%Y-%m")
-    target = plan_for_month(plan, ym)
+    ga4_end0 = today - dt.timedelta(days=1)
+    target = plan_for_date(plan, ga4_end0) or plan_for_date(plan, today)
     if not target:
-        out(f"{ym} は計画の期間外です（docs/seo/plan.json の start_month・months を確認）")
+        out(f"{today} は計画の期間外です（docs/seo/plan.json の start_date・months を確認）")
         return None
-    first = today.replace(day=1)
-    days = calendar.monthrange(today.year, today.month)[1]
+    first = target["start"]
+    days = (target["end"] - target["start"]).days
     ga4_end = today - dt.timedelta(days=1)          # 昨日まで
     gsc_end = today - dt.timedelta(days=3)          # Search Console は約3日遅れ
     if ga4_end < first:
-        out("月初のため、今月の実績はまだありません（明日から判定します）")
+        out("計画月の初日のため、実績はまだありません（明日から判定します）")
         return None
-    frac_ga4 = ga4_end.day / days
-    frac_gsc = max(gsc_end.day, 0) / days if gsc_end >= first else 0.0
+    frac_ga4 = ((ga4_end - first).days + 1) / days
+    frac_gsc = ((gsc_end - first).days + 1) / days if gsc_end >= first else 0.0
     actual = fetch(first.isoformat(), ga4_end.isoformat(), gsc_end.isoformat() if gsc_end >= first else first.isoformat())
     rows = pace_table(plan, target, actual, frac_ga4, frac_gsc)
     b = bottleneck(rows)
-    out(f"## 計画に対する進み具合（{ym}・{ga4_end} まで）")
+    out(f"## 計画に対する進み具合（{period_label(target)}・{ga4_end} まで）")
     out("")
-    out("| 指標 | 今月の実績 | 計画（日割り） | 進み具合 | 判定 | 今月の計画 |")
+    out("| 指標 | 計画月の実績 | 計画（日割り） | 進み具合 | 判定 | この計画月の計画 |")
     out("|---|---|---|---|---|---|")
     for r in rows:
         out(f"| {r['name']} | {fmt(r['actual'], 1 if r['key'] == 'cv' else 0)} | {fmt(r['expected'], 1)} | {r['ratio']:.0%} | {r['status']} | {fmt(r['monthly'], 1 if r['key'] == 'cv' else 0)} |")
@@ -282,7 +286,7 @@ def cmd_check(plan, today, fetch=fetch_actuals, dry_run=False, out=print):
                 + " ".join(f"{r['name'][:6]}:{r['status']}" for r in rows) + f" | {b['name'] if b else '—'} |")
         if not TRACKING_MD.exists():
             TRACKING_MD.write_text("# 計画に対する毎日の記録（tools/plan.py check が追記）\n\n"
-                                   "数字は、その月の1日から前日まで（検索は約3日前まで）の累計。\n\n"
+                                   "数字は、計画月（初日から1か月ごと）の初日から前日まで（検索は約3日前まで）の累計。\n\n"
                                    "| 日付 | 表示回数 | 検索クリック | AI検索 | SEO/AIOセッション | CV | 判定 | 最優先の指標 |\n"
                                    "|---|---|---|---|---|---|---|---|\n", encoding="utf-8")
         with TRACKING_MD.open("a", encoding="utf-8") as f:
@@ -298,8 +302,8 @@ def cmd_weekly(plan, today, fetch=fetch_actuals, out=print):
     gsc_end = min(last_sun, today - dt.timedelta(days=3))
     cur = fetch(mon.isoformat(), last_sun.isoformat(), gsc_end.isoformat())
     prev = fetch(prev_mon.isoformat(), prev_sun.isoformat(), prev_sun.isoformat())
-    target = plan_for_month(plan, last_sun.strftime("%Y-%m")) or {}
-    days = calendar.monthrange(last_sun.year, last_sun.month)[1]
+    target = plan_for_date(plan, last_sun) or {}
+    days = (target["end"] - target["start"]).days if target else 30
     iso = last_sun.isocalendar()
     lines = []
     w = lines.append
@@ -323,12 +327,12 @@ def cmd_weekly(plan, today, fetch=fetch_actuals, out=print):
         w("")
         w("お問い合わせの内訳（全チャネル）: " + "、".join(f"{k or '（なし）'} {int(v)}件" for k, v in lt.items()))
     w("")
-    w("## 2. 今月の進み具合")
+    w("## 2. 計画月の進み具合")
     w("")
     res = cmd_check(plan, today, fetch=fetch, dry_run=True,
                     out=lambda s: lines.append(s) if not s.startswith("## ") else None)
     if res is None:
-        w("（月初のため、今月の判定は明日から）")
+        w("（計画月の初日のため、判定は明日から）")
     w("")
     w("## 3. 先週やったこと・今週やること")
     w("")
