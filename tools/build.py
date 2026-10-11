@@ -486,7 +486,7 @@ def page(filename, title, description, body, current="", jsonld=None, og_type=No
   <meta property="og:description" content="{e(description)}">
   <meta property="og:type" content="{og_type or ("website" if filename == "index.html" else "article")}">
   <meta property="og:url" content="{url}">
-  <meta property="og:image" content="{SITE}/{og_image}">{"" if og_image not in ("images/ogp.jpg", "images/ogp-media.jpg") else chr(10) + '  <meta property="og:image:width" content="1200">' + chr(10) + '  <meta property="og:image:height" content="630">'}
+  <meta property="og:image" content="{SITE}/{og_image}">{"" if og_image not in ("images/ogp.jpg", "images/ogp-media.jpg") and not og_image.startswith("images/eyecatch/") else chr(10) + '  <meta property="og:image:width" content="1200">' + chr(10) + '  <meta property="og:image:height" content="630">'}
   <meta property="og:site_name" content="{"アキヤド" if is_media else "合同会社RIVIA&amp;CO."}">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
@@ -3255,10 +3255,17 @@ def photo(name, cls="", alt="", width=1600, height=1000, sizes="100vw", lazy=Tru
             f'sizes="{sizes}" alt="{e(alt)}" width="{width}" height="{height}"{attrs} decoding="async">')
 
 
+def has_eyecatch(a):
+    """tools/eyecatch.py で作ったアイキャッチ（記事トップ・OGP用）があるか"""
+    return os.path.exists(os.path.join(OUT, "images", "eyecatch", a["slug"] + ".jpg"))
+
+
 def thumb(a, size=""):
     """記事のサムネイル（写真）。カードは軽量版、記事トップは原寸を使う"""
     name, alt = ARTICLE_PHOTOS[a["slug"]]
     if size == "hero":
+        if has_eyecatch(a):
+            return f"""<figure class="article__photo article__photo--eyecatch"><img src="images/eyecatch/{a["slug"]}.jpg" alt="{e(a["short"].replace(chr(10), ""))}" width="1200" height="630" fetchpriority="high" decoding="async"></figure>"""
         return f"""<figure class="article__photo">{photo(name, alt=alt, width=1600, height=700, sizes="(max-width: 899px) 100vw, 800px", lazy=False, priority=True)}</figure>"""
     return f"""<div class="thumb thumb--photo">
               {photo(name, width=720, height=450, sizes="(max-width: 899px) 90vw, 400px")}
@@ -4665,7 +4672,7 @@ def article_page(a):
         },
     ]
     page(f"media/{a['slug']}.html", a["title"], a["description"], body, current="media", jsonld=ld, cv_category=a["services"][0],
-         og_type="article", og_image=f"images/photos/{ARTICLE_PHOTOS[a['slug']][0]}.jpg")
+         og_type="article", og_image=(f"images/eyecatch/{a['slug']}.jpg" if has_eyecatch(a) else f"images/photos/{ARTICLE_PHOTOS[a['slug']][0]}.jpg"))
 
 
 def not_found_page():

@@ -2972,3 +2972,6 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 }
 @media (max-width: 899px) { .mintro__grid { grid-template-columns: minmax(0, 1fr); } .mintro__copy br { display: inline; } }
 @media (max-width: 899px) { .mintro__shots { order: 0; margin-top: 8px; } }
+/* 記事トップのアイキャッチ（文字入りの画像なので切り取らず、全体を見せる） */
+.article__photo--eyecatch, .article__photo.article__photo--eyecatch { aspect-ratio: 1200 / 630; }
+.article__photo--eyecatch img { object-fit: contain; filter: none; }

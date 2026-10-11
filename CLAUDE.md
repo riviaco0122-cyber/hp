@@ -67,6 +67,7 @@
 | `python3 tools/build_dashboard.py` | `docs/dashboard.md` の再生成 |
 | `python3 tools/article_score.py <原稿 or HTML>` | 記事の機械採点（40点分）と重大NGのゲート判定。合格は品質管理部の60点と合わせて95点以上（playbook 5章） |
 | `python3 tools/add_article.py <slug> [--dry-run]` | 新しい記事のカードを一覧・トップ・サービスページ・カテゴリ一覧・全記事の関連記事に組み込み、検索の索引・sitemap・llms.txt を更新（`--remove` で取り除く、`--sync` でガイドから作る部分だけそろえる） |
+| `python3 tools/eyecatch.py [slug ...]` | 記事のアイキャッチ（記事トップ・OGP、1200×630）を `images/eyecatch/<slug>.jpg` に作る。キャッチは記事の `short`、写真は記事の写真。「？」のある記事は文字が主役の型、それ以外は写真に文字をのせる型。作ったあと `python3 tools/build.py` で反映 |
 | `python3 tools/build_llms.py` | `seo/llms.txt`（AI検索向けのサイト案内。公開日を迎えた記事だけ）を作り直す |
 
 ## 書き方
