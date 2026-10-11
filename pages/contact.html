@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
-  <link rel="stylesheet" href="../css/style.css?v=46c4d603">
+  <link rel="stylesheet" href="../css/style.css?v=0bdfa572">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -95,14 +95,8 @@
 
     <section class="section">
       <div class="container container--narrow">
-        <!--
-          ▼ 送信先の設定（要対応）
-          1. https://formspree.io にログインし「+ New Form」でフォームを作成
-             （通知先メールアドレス: rivia.co0122@gmail.com）
-          2. 下記 action の「YOUR_FORM_ID」を、発行された ID（例: abcdwxyz）に置き換える
-          ※ Formspree でのファイル添付は有料プランのみ対応です。
-        -->
-        <form class="form reveal" action="https://formspree.io/f/mwlvbwjl" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
+        <form class="form reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】Webサイトからのお問い合わせ">
           <input type="hidden" name="流入元" id="from-field" value="">
           <div class="form__field">
@@ -114,8 +108,8 @@
             <input type="text" id="company" name="company" placeholder="個人の方は空欄で構いません" autocomplete="organization">
           </div>
           <div class="form__field">
-            <label for="tel">電話番号 <span class="opt">任意</span></label>
-            <input type="tel" id="tel" name="tel" placeholder="090-1234-5678" autocomplete="tel">
+            <label for="tel">電話番号 <span class="req">必須</span></label>
+            <input type="tel" id="tel" name="tel" placeholder="090-1234-5678" autocomplete="tel" inputmode="tel" pattern="[0-9０-９+\-－ー()（） ](10,)" title="電話番号を数字で入力してください（例：090-1234-5678）" required>
           </div>
           <div class="form__field">
             <label for="email">メールアドレス <span class="req">必須</span></label>
@@ -221,6 +215,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=3f6a7b47"></script>
+  <script src="../js/main.js?v=40a1160a"></script>
 </body>
 </html>

@@ -4,8 +4,10 @@
 採点基準の全体（機械40点＋品質管理部60点、合格95点以上）は docs/seo/playbook.md 5章。
 
 使い方:
-  python3 tools/article_score.py docs/seo/drafts/<slug>.md      # 原稿（執筆担当の Markdown）
-  python3 tools/article_score.py pages/media/<slug>.html         # HTML 化した記事
+  python3 tools/article_score.py --slug <slug>                   # 記事データ（tools/articles_*.py）の1記事（推奨）。
+                                                                 # build 済みの pages/media/<slug>.html を採点し、記事データと違えば止める
+  python3 tools/article_score.py pages/media/<slug>.html         # build 済みの記事 HTML
+  python3 tools/article_score.py docs/seo/drafts/<slug>.md      # 原稿（執筆担当の Markdown・旧形式）
   オプション: --keyword "主キーワード"（省略時は原稿の keyword: か構成案から読む） --json
 
 原稿（Markdown）の決まった形は .claude/agents/writer.md を参照。
@@ -13,6 +15,7 @@
 
 判定の要点:
   - 重大NGは、直後（最初の「。」か改行まで・最大16字）に否定（〜わけではない、〜ません など）があれば除く。
+    また、その文が「か？」「か?」で終わる質問（FAQ の「必ず儲かりますか？」など）も除く。
   - NG・表記ゆれは、h2 見出しも対象。かぎかっこ「」『』の中と、引用（Markdown の > 行・HTML の <blockquote>）は対象外。
   - 参考資料（原稿）は「- 資料名（発行元・公表年）URL」の形。URL と4桁の年の両方がある行だけ数える。
     HTML の既存記事は URL がなくても数え、根拠欄に「URLなし」と出す。公的機関は go.jp・lg.jp などのドメインか、
@@ -92,13 +95,26 @@ def is_public(src):
     return bool(re.search(PUBLIC_DOMAIN, src) or re.search(PUBLIC_NAME, src))
 
 
+# 疑問文の判定: マッチの直後から、文の終わり（。！？!?・改行）までを見て、「か？」「か?」で終わる文は質問として除く
+QUESTION_WINDOW = 40
+
+
+def is_question(text, end):
+    """text[end:] から始まる文の残りが「…か？」で終わるか（例: FAQ の「民泊のほうが必ず儲かりますか？」）"""
+    m = re.match(r"[^。！!？?\n]{0,%d}([。！!？?\n]|$)" % QUESTION_WINDOW, text[end:])
+    return bool(m and m.group(1) in ("？", "?") and m.group(0)[:-1].endswith("か"))
+
+
 def find_severe(text):
     hits = []
     for p in NG_SEVERE:
         for m in re.finditer(p, text):
             after = re.split(r"[。\n]", text[m.end():m.end() + NEG_WINDOW], maxsplit=1)[0]
-            if not re.search(NEGATION, after):  # 「必ず採択されるわけではありません」などの否定は除く
-                hits.append(m.group(0))
+            if re.search(NEGATION, after):  # 「必ず採択されるわけではありません」などの否定は除く
+                continue
+            if is_question(text, m.end()):  # 「必ず儲かりますか？」などの質問は除く
+                continue
+            hits.append(m.group(0))
     return hits
 
 
@@ -127,7 +143,8 @@ def parse_html(text):
     unq = re.sub(r"<blockquote\b.*?</blockquote>", "\n", body, flags=re.S)
     d["check_text"] = (strip_tags(lead.group(1)) if lead else "") + "\n" + strip_tags(unq)
     d["format"] = "html"
-    d["faq"] = [strip_tags(q).strip() for q in re.findall(r'<summary class="faq__q">(.*?)</summary>', text, re.S)]
+    d["faq"] = [strip_tags(re.sub(r'<span class="faq__mark">.*?</span>', "", q)).strip()  # 「Q」の印は除く
+                for q in re.findall(r'<summary class="faq__q">(.*?)</summary>', text, re.S)]
     d["faq_text"] = strip_tags(" ".join(re.findall(r'<div class="faq__a">(.*?)</div>', text, re.S)))
     faq_ld = re.search(r'"@type": "FAQPage", "mainEntity": (\[.*?\])\}</script>', text, re.S)
     d["faq_ld"] = len(json.loads(faq_ld.group(1))) if faq_ld else 0
@@ -171,6 +188,56 @@ def parse_md(text):
     d["article_links"] = sorted({l for l in links if re.search(r"media/[a-z0-9-]+\.html", l)})
     d["service_links"] = sorted({m for l in re.findall(r"\]\(([^)]+)\)", body) for m in re.findall(r"service-[a-z]+\.html", l)})
     return d
+
+
+def load_article(slug):
+    """tools/build.py の記事データ（ARTICLES。tools/articles_*.py も含む）から1記事を取り出す。
+    build.py を読み込むだけで、ページは作らない（要 pip install budoux beautifulsoup4 pillow）"""
+    sys.path.insert(0, str(ROOT / "tools"))
+    import build  # noqa: E402  build.py は __main__ でないときはページを書き出さない
+    a = build.ARTICLE_BY_SLUG.get(slug)
+    if a is None:
+        raise SystemExit(f"記事データに slug={slug} がない（tools/articles_*.py・tools/build.py の ARTICLES を確認）")
+    return a
+
+
+def parse_article(a):
+    """記事データ（dict）→ 採点用のデータ。parse_html と同じ形にする（HTML を作らずに採点できる）。
+    本文は記事データの sections の HTML、リード文は description（記事ページと同じ）"""
+    secs = [(sid, h, body) for sid, h, body in a["sections"]]
+    body_html = "".join(f"<h2>{htmllib.escape(h)}</h2>{body}" for _, h, body in secs)
+    d = {"title": a["title"], "description": a["description"], "keypoints": list(a["keypoints"]),
+         "h2": [h for _, h, _ in secs]}
+    d["body_text"] = a["description"] + "\n" + strip_tags(body_html)
+    unq = re.sub(r"<blockquote\b.*?</blockquote>", "\n", body_html, flags=re.S)
+    d["check_text"] = a["description"] + "\n" + strip_tags(unq)
+    d["format"] = "html"  # 参考資料は HTML の記事と同じ数え方（URL なしも数え、根拠欄に明記）
+    d["faq"] = [q for q, _ in a["faq"]]
+    d["faq_text"] = strip_tags(" ".join(ans for _, ans in a["faq"]))
+    d["faq_ld"] = len(a["faq"])  # 構造化データ FAQPage は同じ faq から作られる
+    d["sources"] = list(a["sources"])
+    links = re.findall(r'href="([^"]+)"', body_html)
+    d["article_links"] = sorted({l for l in links if re.search(r"media/[a-z0-9-]+\.html", l) and "category-" not in l and "guide-" not in l})
+    # 記事末尾の「この記事に関連するサービス」は services から作られる
+    d["service_links"] = sorted(set(re.findall(r'href="[^"]*(service-[a-z]+\.html)', body_html)) | {f"service-{k}.html" for k in a["services"]})
+    d["keyword"] = a.get("keyword", "")
+    return d
+
+
+def stale_fields(data, html):
+    """記事データから作った採点用データと、HTML から読んだものの食い違い（build のし忘れの検出）"""
+    norm = lambda x: re.sub(r"\s+", "", x)
+    out = []
+    for key, label in (("title", "title"), ("description", "説明文"), ("keypoints", "この記事のポイント"),
+                       ("h2", "見出し"), ("faq", "よくある質問"), ("sources", "参考資料")):
+        dv, hv = data[key], html[key]
+        if isinstance(dv, list):
+            same = [norm(x) for x in dv] == [norm(x) for x in hv]
+        else:
+            same = norm(dv) == norm(hv)
+        if not same:
+            out.append(label)
+    return out
 
 
 def md_plain(s):
@@ -256,17 +323,35 @@ def score(d):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("path")
+    ap.add_argument("path", nargs="?")
+    ap.add_argument("--slug", default="", help="記事データ（tools/articles_*.py）の1記事を採点する（build 済みの HTML を使い、記事データとの食い違いを確かめる）")
     ap.add_argument("--keyword", default="")
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args()
-    p = Path(a.path)
-    text = p.read_text(encoding="utf-8")
-    d = parse_html(text) if p.suffix == ".html" else parse_md(text)
+    if a.slug:
+        # build 済みの HTML を採点する（図解・表の加工も含めて、読者が見る本文と同じになるため）。
+        # 記事データと HTML の要素（title・説明・ポイント・見出し・FAQ・参考資料）を照らし合わせ、
+        # 違っていれば build のし忘れとして止める
+        p = ROOT / "pages" / "media" / f"{a.slug}.html"
+        stem = a.slug
+        art = load_article(a.slug)
+        if not p.is_file():
+            raise SystemExit(f"{p.relative_to(ROOT)} がない。先に python3 tools/build.py を実行する")
+        d = parse_html(p.read_text(encoding="utf-8"))
+        stale = stale_fields(parse_article(art), d)
+        if stale:
+            raise SystemExit(f"{p.relative_to(ROOT)} が記事データと違う（{'、'.join(stale)}）。先に python3 tools/build.py を実行する")
+    elif a.path:
+        p = Path(a.path)
+        text = p.read_text(encoding="utf-8")
+        d = parse_html(text) if p.suffix == ".html" else parse_md(text)
+        stem = p.stem
+    else:
+        ap.error("採点する原稿・HTML のパスか、--slug <slug> を指定する")
     if a.keyword:
         d["keyword"] = a.keyword
     if not d["keyword"]:
-        brief = ROOT / "docs/seo/briefs" / f"{p.stem}.md"
+        brief = ROOT / "docs/seo/briefs" / f"{stem}.md"
         if brief.exists():
             m = re.search(r"(?m)^(?:[-*]\s*)?(?:\*\*)?(?:主キーワード|狙うキーワード|キーワード)(?:\*\*)?[:：]\s*(.+)$", brief.read_text(encoding="utf-8"))
             d["keyword"] = m.group(1).strip().strip("「」`") if m else ""
@@ -274,7 +359,7 @@ def main():
         kw = ROOT / "docs/seo/keywords.md"
         if kw.exists():
             for line in kw.read_text(encoding="utf-8").splitlines():
-                if f"media/{p.stem}.html" in line:
+                if f"media/{stem}.html" in line:
                     first = line.strip("|").split("|")[0]
                     d["keyword"] = re.split(r"[／（(]", first)[0].strip()
                     break

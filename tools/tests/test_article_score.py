@@ -90,6 +90,28 @@ for p in articles:
     r = A.score(A.parse_html(p.read_text(encoding="utf-8")))
     check(not r["ゲート違反"], f"[existing] {p.stem}", f"→ {r['ゲート違反']}")
 
+# --slug（記事データの1記事）: build 済みの HTML と記事データが一致し、ゲート違反がないこと
+try:
+    import build as B  # noqa: E402  要 pip install budoux beautifulsoup4 pillow
+except ImportError as ex:
+    B = None
+    print(f"[slug] build.py を読み込めないため省略: {ex}")
+if B is not None:
+    for a in B.ARTICLES:
+        f = ROOT / "pages/media" / f"{a['slug']}.html"
+        check(f.is_file(), f"[slug] {a['slug']} の HTML がある")
+        if not f.is_file():
+            continue
+        h = A.parse_html(f.read_text(encoding="utf-8"))
+        stale = A.stale_fields(A.parse_article(a), h)
+        check(not stale, f"[slug] {a['slug']} の HTML と記事データが一致", f"→ {stale}（python3 tools/build.py を実行）")
+        r = A.score(A.parse_article(a))
+        check(not r["ゲート違反"], f"[slug] {a['slug']}（記事データ）", f"→ {r['ゲート違反']}")
+    # 食い違いの検出: FAQ を1問書き換えたら「よくある質問」が違うと分かること
+    a0 = dict(B.ARTICLES[0], faq=[("書き換えた質問ですか？", "回答")] + list(B.ARTICLES[0]["faq"][1:]))
+    h0 = A.parse_html((ROOT / "pages/media" / f"{a0['slug']}.html").read_text(encoding="utf-8"))
+    check(A.stale_fields(A.parse_article(a0), h0) == ["よくある質問"], "[slug] 食い違いを検出する")
+
 print("\n".join(fails))
 print(f"{count - len(fails)}/{count} 件 OK")
 sys.exit(1 if fails else 0)

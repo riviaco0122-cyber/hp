@@ -117,7 +117,7 @@ def phrase_breaks(html):
 
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # リポジトリの直下（tools/ の1つ上）
 import datetime as _dt
-BUILD_DATE = _dt.date.today().isoformat()  # llms.txt には公開済みの記事だけを載せる
+BUILD_DATE = _dt.datetime.now(_dt.timezone(_dt.timedelta(hours=9))).date().isoformat()  # 日本時間の今日。llms.txt には公開済みの記事だけを載せる
 SITE = "https://rivia-co.com"  # 公開ドメイン
 CLARITY_ID = "yrrji51n1y"  # Microsoft Clarity のプロジェクトID
 GA_ID = "G-RZVE2XBPQ2"  # Google アナリティクス 4 の測定ID
@@ -1384,9 +1384,10 @@ def area_html(key):
 
 def quick_form(key, name):
     """サービスページ冒頭の、かんたんな相談フォーム（名前とメールだけで送れる）"""
-    return f"""        <form class="qform reveal" data-delay="2" action="https://formspree.io/f/mwlvbwjl" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
+    return f"""        <form class="qform reveal" data-delay="2" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
           <p class="qform__title">{e(name)}の無料相談</p>
           <p class="qform__lead">まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。</p>
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】{e(name)}のご相談（サービスページ）">
           <input type="hidden" name="ご相談カテゴリ" value="{e(name)}">
           <input type="hidden" name="流入元" value="サービスページ：{e(name)}">
@@ -1938,12 +1939,8 @@ def careers_page():
           <span class="eyebrow">Entry</span>
           <h2 class="section-title">エントリーフォーム</h2>
         </div>
-        <!--
-          ▼ 送信先の設定（要対応）
-          Formspree で採用用のフォームを作成し、「YOUR_CAREERS_FORM_ID」を発行された ID に置き換えてください。
-          ※ Formspree でのファイル添付は有料プランのみ対応です。
-        -->
-        <form class="form reveal" action="https://formspree.io/f/YOUR_CAREERS_FORM_ID" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=careers">
+        <form class="form reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=careers">
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】採用エントリー">
           <div class="form__field">
             <label for="c-name">お名前 <span class="req">必須</span></label>
@@ -1998,14 +1995,8 @@ def contact_page():
 
     <section class="section">
       <div class="container container--narrow">
-        <!--
-          ▼ 送信先の設定（要対応）
-          1. https://formspree.io にログインし「+ New Form」でフォームを作成
-             （通知先メールアドレス: rivia.co0122@gmail.com）
-          2. 下記 action の「YOUR_FORM_ID」を、発行された ID（例: abcdwxyz）に置き換える
-          ※ Formspree でのファイル添付は有料プランのみ対応です。
-        -->
-        <form class="form reveal" action="https://formspree.io/f/mwlvbwjl" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
+        <form class="form reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】Webサイトからのお問い合わせ">
           <input type="hidden" name="流入元" id="from-field" value="">
           <div class="form__field">
@@ -2017,8 +2008,8 @@ def contact_page():
             <input type="text" id="company" name="company" placeholder="個人の方は空欄で構いません" autocomplete="organization">
           </div>
           <div class="form__field">
-            <label for="tel">電話番号 <span class="opt">任意</span></label>
-            <input type="tel" id="tel" name="tel" placeholder="090-1234-5678" autocomplete="tel">
+            <label for="tel">電話番号 <span class="req">必須</span></label>
+            <input type="tel" id="tel" name="tel" placeholder="090-1234-5678" autocomplete="tel" inputmode="tel" pattern="[0-9０-９+\-－ー()（） ]{10,}" title="電話番号を数字で入力してください（例：090-1234-5678）" required>
           </div>
           <div class="form__field">
             <label for="email">メールアドレス <span class="req">必須</span></label>
@@ -2170,10 +2161,10 @@ def spec_md():
     w("├── css/style.css            全ページ共通スタイル")
     w("├── js/main.js               メニュー、フェードイン、絞り込み、フォーム送信など")
     w("├── images/                  画像（ogp.jpg はSNSシェア画像 1200×630）")
-    w("├── seo/                     sitemap.xml / robots.txt（公開URLはサイト直下 /sitemap.xml・/robots.txt）")
+    w("├── seo/                     sitemap.xml / robots.txt / llms.txt（公開URLはサイト直下 /sitemap.xml・/robots.txt・/llms.txt。tools/build.py で生成）")
     w("├── docs/site-spec.md        この指示書（公開サーバーには置かない）")
     w("├── vercel.json              pages/・seo/ の中身を、今までどおりのURLで公開するための設定")
-    w("└── .vercelignore           docs/ を Vercel の公開対象から外す設定")
+    w("└── .vercelignore           docs/・.claude/・tools/・CLAUDE.md を Vercel の公開対象から外す設定")
     w("```")
     w("")
     w("* media/ フォルダ内の記事ページでは、ほかのページ・css・js へのリンクを ../ から始める（例: ../css/style.css）。")
@@ -2219,6 +2210,7 @@ def spec_md():
     w("* フォーム（お問い合わせ・採用エントリー）は画面を移動せずに送信し、成功したら thanks.html へ移動する。thanks.html で GA4 の `generate_lead` イベント（form_type: contact / careers）を送るので、GA4 の管理画面で `generate_lead` を「キーイベント」に設定すると問い合わせ数を計測できる。")
     w("* 運営実績の下に「ゲストの声（Airbnb のレビューより）」を表示できる。build.py の `NODE_REVIEWS` に、実際のレビューを原文のまま入れたときだけ表示される（空のときは非表示）。")
     w("* **公開ドメインは https://rivia-co.com（canonical / OGP / 構造化データ / sitemap に反映済み）。**")
+    w("* AI検索向けのサイト案内 llms.txt（公開URL `/llms.txt`、実体は seo/llms.txt）を置く。会社・サービス・アキヤドのガイドと、公開日を迎えた記事を載せる。`tools/build.py`（llms_txt）で生成し、手で直さない（日次の定期実行で毎日作り直す）。")
     w("")
     w("---")
     w("")
@@ -2413,7 +2405,7 @@ def spec_md():
     w("* **トップメッセージ:** 一緒に働く仲間を募集しています。／年齢・経験は問いません。お気軽にご連絡ください。")
     w("    * ⚠ サイト内に MISSION / VALUES の記載がないため、About に追加するか文言を調整する。")
     w("* **エントリーフォーム:** お名前*（名字 名前）／ Email*（Email@address）／ 詳細*（志望動機や希望年収、思っていることを是非教えてください。）／ 添付ファイル*（職務経歴書・履歴書：点線枠のファイル選択×2。選択後はファイル名を表示）／ プライバシーポリシーへの同意*（追加）／ [送信する]")
-    w("* 送信先: Formspree（`YOUR_CAREERS_FORM_ID` を発行IDに置き換え。ファイル添付は有料プランのみ）")
+    w("* 送信先: Google Apps Script（tools/forms/Code.gs。自動返信・添付ファイルのドライブ保存・スプレッドシート記録・社内通知）")
     w("")
     w("## 7. Contact（contact.html）")
     w("* **見出し:** Contact ／ お問い合わせ")
@@ -2422,8 +2414,8 @@ def spec_md():
     w("* **フォーム:** お名前* ／ 会社名・施設名（任意。個人の不動産投資家など一般の方からの相談も想定）／ 電話番号* ／ メールアドレス* ／ ご相談カテゴリ（【宿泊施設の運営・開業】宿泊施設運営 / 運営委託 / 開業・運営コンサル 【WEBマーケティング支援】WEB集客 / WEB採用 ／ その他）／ お問い合わせ内容* ／ プライバシーポリシーへの同意*（追加）")
     w("* **マイクロコピー:** ※無理な営業や電話勧誘は一切いたしません。／※ご入力いただいた情報は厳重に管理し、お問い合わせ対応以外には使用いたしません。")
     w("* **フォーム下（追加）:** ご相談の流れ（4ステップ）")
-    w("* 送信先: Formspree（フォームID `mwlvbwjl`。通知先 rivia.co0122@gmail.com）")
-    w("* 添付ファイル（任意・複数可）: 物件資料・写真・図面などを添付できる。PDF・画像・Word・Excel等、合計10MB目安。Formspree でのファイル添付は有料プランのみ対応")
+    w("* 送信先: Google Apps Script（tools/forms/Code.gs。通知先 rivia.co0122@gmail.com、お客様へ自動返信）")
+    w("* 添付ファイル（任意・複数可）: 物件資料・写真・図面などを添付できる。PDF・画像・Word・Excel等、合計10MB目安。ファイルは Google ドライブに保存（tools/forms/Code.gs）")
     w("")
     w("## 8. プライバシーポリシー（privacy.html・追加）")
     w("* フォームで個人情報を取得するため新設。一般的なひな形のため、公開前に内容を確認する。")
@@ -2434,7 +2426,7 @@ def spec_md():
     w("")
     w("## 9. 公開前チェックリスト")
     w("")
-    w("- [ ] Formspree のフォームIDを設定する（お問い合わせ・採用）")
+    w("- [x] フォームの送信先（Google Apps Script）を設定する（設置手順: docs/forms-setup-guide.md）")
     w("- [ ] 市場データの出典を確認し、確認できない数値を差し替え・削除する")
     w("- [ ] Careers の MISSION / VALUES の扱いを決める")
     w("- [ ] プライバシーポリシーの内容を確認する")
@@ -4122,7 +4114,8 @@ def media_contact_page():
     <section class="section msec msec--first">
       <div class="container mform-wrap">
         <ul class="mcta__points mform__points reveal"><li>相談・お見積りは無料</li><li>全国対応・オンライン可</li><li>しつこい営業はしません</li></ul>
-        <form class="mform reveal" action="https://formspree.io/f/mwlvbwjl" method="POST" enctype="multipart/form-data" data-thanks="thanks.html">
+        <form class="mform reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html">
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
           <input type="hidden" name="_subject" value="【アキヤド】無料相談・お問い合わせ">
           <input type="hidden" name="流入元" id="from-field" value="">
           <div class="mform__field">
@@ -4134,9 +4127,9 @@ def media_contact_page():
             <input type="email" id="m-email" name="email" placeholder="your@email.com" autocomplete="email" required>
           </div>
           <div class="mform__field">
-            <label for="m-tel">電話番号 <span class="mform__opt">任意</span></label>
-            <input type="tel" id="m-tel" name="tel" placeholder="090-1234-5678" autocomplete="tel">
-            <p class="mform__help">お電話でのご連絡を希望される場合のみご記入ください。</p>
+            <label for="m-tel">電話番号 <span class="mform__req">必須</span></label>
+            <input type="tel" id="m-tel" name="tel" placeholder="090-1234-5678" autocomplete="tel" inputmode="tel" pattern="[0-9０-９+\-－ー()（） ]{10,}" title="電話番号を数字で入力してください（例：090-1234-5678）" required>
+            <p class="mform__help">ご連絡は、ご希望の方法（メール・お電話）でいたします。</p>
           </div>
           <fieldset class="mform__field">
             <legend>ご相談の内容 <span class="mform__opt">複数選択可</span></legend>
@@ -4184,7 +4177,7 @@ def media_thanks_page():
 
     <section class="section msec msec--first">
       <div class="container mform-wrap">
-        <p class="mform__help">連絡が届かない場合は、迷惑メールフォルダもご確認ください。</p>
+        <p class="mform__help mthanks__note">連絡が届かない場合は、迷惑メールフォルダもご確認ください。</p>
         <div class="msv-band__btns mthanks__btns">
           <a href="media.html" class="mbtn">アキヤドのトップへ {ARROW}</a>
           <a href="media/learn.html" class="mbtn mbtn--sub">基礎から学ぶ {ARROW}</a>
