@@ -1,0 +1,47 @@
+{
+  "_説明": "SEO/AIO の CV 計画の前提（tools/plan.py が読む）。数字を変えたら python3 tools/plan.py simulate で docs/seo/plan.md を作り直す。仮定は実績が出たら毎月見直す（plan.md の「見直しのルール」）",
+  "start_month": "2026-10",
+  "months": 12,
+  "articles_at_start": 50,
+  "articles_start_month": "2026-10",
+  "new_articles_per_month": 4,
+  "ramp": {
+    "_説明": "記事が公開されてから検索で読まれるようになるまでの立ち上がり（S字）。half=最大の半分に届くまでの月数、width=立ち上がりの緩やかさ。新しいドメインは評価に時間がかかるため、半年で半分の想定",
+    "half": 6,
+    "width": 1.5
+  },
+  "other_sessions_per_month": 100,
+  "scenarios": {
+    "conservative": {
+      "label": "保守",
+      "clicks_per_article": 15,
+      "ai_share": 0.05,
+      "cvr": 0.003,
+      "ctr": 0.02
+    },
+    "standard": {
+      "label": "標準（目標）",
+      "clicks_per_article": 40,
+      "ai_share": 0.10,
+      "cvr": 0.006,
+      "ctr": 0.025
+    },
+    "stretch": {
+      "label": "挑戦",
+      "clicks_per_article": 90,
+      "ai_share": 0.20,
+      "cvr": 0.01,
+      "ctr": 0.03
+    }
+  },
+  "lead_split": {
+    "_説明": "CV（お問い合わせ完了 generate_lead）のうち資料請求の割合。残りが相談",
+    "document": 0.6
+  },
+  "target_scenario": "standard",
+  "pace_thresholds": {
+    "_説明": "月の途中の進み具合（実績 ÷ 計画を日割りした値）の判定。on_track 以上=順調、warn 以上=注意、それ未満=遅れ",
+    "on_track": 0.9,
+    "warn": 0.7
+  }
+}
