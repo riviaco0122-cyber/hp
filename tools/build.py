@@ -3751,14 +3751,21 @@ def detail_flow(key):
 NOTE_STORY_URL = "https://note.com/calm_quokka8545/n/n6de4ea4f8b5f"
 
 
-def note_story():
-    """運営メンバーが、はじめて民泊に挑戦したときの記録（note）への案内。読者に「最初は同じ初心者だった」と伝える"""
-    return f"""        <a href="{NOTE_STORY_URL}" class="mstory reveal" target="_blank" rel="noopener" data-cta="note-story">
-          <span class="mstory__en">Our story</span>
-          <span class="mstory__title">私たちも、最初は民泊の初心者でした。</span>
-          <span class="mstory__text">アキヤドの運営メンバーが、はじめて民泊に挑戦したときのことをnoteに書いています。</span>
-          <span class="mstory__link">noteで読む（別タブで開きます） {ARROW}</span>
-        </a>
+NOTE_STORY_ARTICLES = {"minpaku-start-steps", "case-rental-house-inn-first-year", "minpaku-remote-operation",
+                       "inn-startup-funding", "minpaku-vs-ryokan-law"}
+
+
+def note_story(indent="        "):
+    """代表・片井が、はじめて民泊に挑戦したときの体験記（note）への案内"""
+    return f"""{indent}<a href="{NOTE_STORY_URL}" class="mstory reveal" target="_blank" rel="noopener" data-cta="note-story">
+{indent}  <span class="mstory__photo" aria-hidden="true"></span>
+{indent}  <span class="mstory__body">
+{indent}    <span class="mstory__en">Founder's story</span>
+{indent}    <span class="mstory__title">会社員が片道2時間の下田で、民泊を始めた記録</span>
+{indent}    <span class="mstory__text">アキヤド代表の片井が、はじめて民泊に挑戦したときの体験記です。開業までのリアルと、開業後3か月の歩みをnoteにまとめています。</span>
+{indent}    <span class="mstory__link">noteで読む（有料・別タブで開きます） {ARROW}</span>
+{indent}  </span>
+{indent}</a>
 """
 
 
@@ -3946,7 +3953,7 @@ def media_company_page():
         <div class="mvoices">
 {reviews}
         </div>
-{note_story()}{band}
+{band}
       </div>
     </section>
 
@@ -4575,7 +4582,7 @@ def article_page(a):
           </div>
         </section>
 
-        <section class="sources">
+{note_story() if a["slug"] in NOTE_STORY_ARTICLES else ""}        <section class="sources">
           <h2 class="sources__title">参考資料</h2>
           <ul>{sources}</ul>
           <p class="sources__note">※ 本記事の数値・制度は公開日時点で公表されている資料にもとづきます。最新の情報は各機関の発表をご確認ください。</p>
