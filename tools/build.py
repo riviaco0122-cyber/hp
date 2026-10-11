@@ -3748,6 +3748,20 @@ def detail_flow(key):
         </ul>"""
 
 
+NOTE_STORY_URL = "https://note.com/calm_quokka8545/n/n6de4ea4f8b5f"
+
+
+def note_story():
+    """運営メンバーが、はじめて民泊に挑戦したときの記録（note）への案内。読者に「最初は同じ初心者だった」と伝える"""
+    return f"""        <a href="{NOTE_STORY_URL}" class="mstory reveal" target="_blank" rel="noopener" data-cta="note-story">
+          <span class="mstory__en">Our story</span>
+          <span class="mstory__title">私たちも、最初は民泊の初心者でした。</span>
+          <span class="mstory__text">アキヤドの運営メンバーが、はじめて民泊に挑戦したときのことをnoteに書いています。</span>
+          <span class="mstory__link">noteで読む（別タブで開きます） {ARROW}</span>
+        </a>
+"""
+
+
 def media_service_page(sv):
     from figures import icon, flow as fig_flow
     key = sv["key"]
@@ -3836,7 +3850,7 @@ def media_service_page(sv):
           <div class="mvoices">
 {reviews}
           </div>
-          <p class="mcta__plans"><a href="index.html#project">運営実績を見る {ARROW}</a></p>
+{note_story()}          <p class="mcta__plans"><a href="index.html#project">運営実績を見る {ARROW}</a></p>
         </div>
       </div>
     </section>
@@ -3932,7 +3946,7 @@ def media_company_page():
         <div class="mvoices">
 {reviews}
         </div>
-{band}
+{note_story()}{band}
       </div>
     </section>
 
