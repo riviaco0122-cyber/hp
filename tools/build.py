@@ -3980,7 +3980,7 @@ def media_company_page():
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
               {"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"},
               {"@type": "ListItem", "position": 2, "name": "運営会社"}]}]
-    page("media/company.html", "運営会社｜空き家と民泊のメディア アキヤド",
+    page("media/company.html", "運営会社｜アキヤド",
          "アキヤドを運営する合同会社RIVIA&CO.の会社概要です。静岡県下田市で一棟貸しの宿を運営し、空き家の買取・借り上げ、民泊の開業・運営支援を行っています。",
          body, current="media", jsonld=ld)
 
@@ -4198,9 +4198,9 @@ def media_contact_page():
         <p class="mform__corp reveal">アキヤドは、合同会社RIVIA&amp;CO.が運営しています。不動産会社様との協業や、WEB集客・採用のご相談は<a href="CORP_CONTACT">RIVIA&amp;CO.のお問い合わせ</a>からお願いします。</p>
       </div>
     </section>"""
-    page("media/contact.html", "無料相談・お問い合わせ｜空き家と民泊のメディア アキヤド",
+    page("media/contact.html", "無料相談・お問い合わせ｜アキヤド",
          "アキヤドへの無料相談・お問い合わせ。空き家の買取・借り上げ、民泊の開業・運営について、相談・お見積りは無料です。全国対応・オンライン可。",
-         body, current="media")
+         body, current="media", jsonld=[{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"}, {"@type": "ListItem", "position": 2, "name": "無料相談・お問い合わせ", "item": f"{SITE}/media/contact.html"}]}])
 
 
 def media_thanks_page():
@@ -4427,6 +4427,16 @@ def media_index_page():
         "name": "アキヤド",
         "url": f"{SITE}/media.html",
         "hasPart": [{"@type": "Article", "headline": a["title"], "url": f"{SITE}/media/{a['slug']}.html"} for a in ordered],
+    }, {
+        # アキヤドの主なページ（検索結果のサイトリンクの候補になるページを、名前つきで伝える）
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "アキヤドのメニュー",
+        "itemListElement": [{"@type": "SiteNavigationElement", "position": i, "name": n, "url": f"{SITE}/{u}"} for i, (n, u) in enumerate([
+            ("空き家を売りたい方へ", "media/guide-sell.html"), ("空き家を活かしたい方へ", "media/guide-use.html"),
+            ("副業で宿をはじめたい方へ", "media/guide-side.html"), ("アキヤドのプラン", "media/plans.html"),
+            ("ゼロから体系的に学ぶ", "media/learn.html"), ("無料相談・お問い合わせ", "media/contact.html"),
+            ("運営会社", "media/company.html")], 1)],
     }]
     page("media.html", "アキヤド｜空き家の売却・活用と、副業ではじめる民泊のメディア", "空き家を売りたい方、活かしたい方、副業で民泊や小さな宿をはじめたい方に向けて、宿を運営する合同会社RIVIA&CO.が悩みに沿って解説するメディアです。", body, current="media", jsonld=ld, mnav="top")
 
@@ -4470,7 +4480,7 @@ def media_category_page(k, n):
             {"@type": "ListItem", "position": 2, "name": "アキヤド", "item": f"{SITE}/media.html"},
             {"@type": "ListItem", "position": 3, "name": n},
         ]}]
-    page(f"media/category-{k}.html", f"{n}の記事一覧｜空き家と民泊のメディア アキヤド", MEDIA_CAT_INFO[k][1], body, current="media", jsonld=ld, mnav="themes")
+    page(f"media/category-{k}.html", f"{n}の記事一覧｜アキヤド", MEDIA_CAT_INFO[k][1], body, current="media", jsonld=ld, mnav="themes")
 
 
 def media_guide_page(g):
@@ -4514,6 +4524,7 @@ def media_guide_page(g):
         "@context": "https://schema.org", "@type": "ItemList", "name": g["title"],
         "itemListElement": [{"@type": "ListItem", "position": i, "url": f"{SITE}/media/{s_}.html"} for i, s_ in enumerate(g["slugs"], 1)],
     }]
+    ld.append({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"}, {"@type": "ListItem", "position": 2, "name": g["title"], "item": f"{SITE}/media/guide-{g['key']}.html"}]})
     page(f"media/guide-{g['key']}.html", f"{g['title']}｜アキヤド", g["lead"], body, current="media", jsonld=ld, mnav=g["key"])
 
 
