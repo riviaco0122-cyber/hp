@@ -3452,6 +3452,7 @@ def media_footer():
             <li><a href="media/search.html">記事をさがす</a></li>
             <li><a href="media/plans.html">アキヤドのプラン</a></li>
             <li><a href="media/company.html">運営会社について</a></li>
+            <li><a href="{NOTE_STORY_URL}" target="_blank" rel="noopener" data-cta="note-story-footer">代表・片井の体験記（note）</a></li>
             <li><a href="contact.html">ご相談・お問い合わせ</a></li>
             <li><a href="privacy.html">プライバシーポリシー</a></li>
           </ul></div>
