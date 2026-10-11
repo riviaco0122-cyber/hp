@@ -23,9 +23,6 @@
   <title>WEB採用支援事業 | 合同会社RIVIA&amp;CO.</title>
   <meta name="description" content="地方企業の「人材不足」という経営課題を、WEBマーケティングの手法で解決する採用支援事業です。業種を問わず、採用計画から採用ブランディング、母集団形成、定着までを一貫して支援します。">
   <link rel="canonical" href="https://rivia-co.com/service-recruit.html">
-  <link rel="alternate" hreflang="ja" href="https://rivia-co.com/service-recruit.html">
-  <link rel="alternate" hreflang="en" href="https://rivia-co.com/en/service-recruit.html">
-  <link rel="alternate" hreflang="x-default" href="https://rivia-co.com/service-recruit.html">
   <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../images/favicon-48.png" type="image/png" sizes="48x48">
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
@@ -46,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css?v=2b9e819c">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -78,7 +75,6 @@
         </ul>
       </nav>
 
-      <a href="en/service-recruit.html" class="lang-switch" hreflang="en" lang="en" aria-label="English">EN</a>
       <button type="button" class="menu-btn" aria-controls="gnav" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span><span></span></button>
     </div>
   </header>
@@ -86,14 +82,28 @@
   <main>
     <section class="page-hero page-hero--photo">
       <img class="page-hero__bg" src="../images/photos/rural-station.jpg" alt="" width="1918" height="1080" style="object-position:50% 50%" fetchpriority="high" decoding="async">
-      <div class="container">
-        <p class="page-hero__label reveal">WEB採用支援事業</p>
-        <h1 class="page-hero__title reveal" data-delay="1">地域の<wbr>未来を<wbr>創る、<br>最適な<wbr>人材と<wbr>出会う<wbr>ために。</h1>
-        <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「人手が<wbr>足りず、<wbr>採用に<wbr>悩んでいる」</p>
-        <div class="page-hero__actions reveal" data-delay="2">
-          <a href="contact.html?category=recruit" class="btn">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
-          <a href="#recruit-issues" class="btn btn--ghost btn--on-photo">お悩みと<wbr>解決策を見る</a>
+      <div class="container svc-hero">
+        <div class="svc-hero__text">
+          <p class="page-hero__label reveal">WEB採用支援事業</p>
+          <h1 class="page-hero__title reveal" data-delay="1">地域の<wbr>未来を<wbr>創る、<br>最適な<wbr>人材と<wbr>出会う<wbr>ために。</h1>
+          <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「人手が<wbr>足りず、<wbr>採用に<wbr>悩んでいる」</p>
+          <div class="page-hero__actions reveal" data-delay="2">
+            <a href="#recruit-issues" class="btn btn--ghost btn--on-photo">お悩みと<wbr>解決策を見る</a>
+          </div>
         </div>
+        <form class="qform reveal" data-delay="2" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
+          <p class="qform__title">WEB採用支援事業の<wbr>無料相談</p>
+          <p class="qform__lead"><n-w>まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。</n-w></p>
+          <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】WEB採用支援事業のご相談（サービスページ）">
+          <input type="hidden" name="ご相談カテゴリ" value="WEB採用支援事業">
+          <input type="hidden" name="流入元" value="サービスページ：WEB採用支援事業">
+          <label class="qform__field"><span>お名前 <em>必須</em></span><input type="text" name="name" placeholder="山田 太郎" autocomplete="name" required></label>
+          <label class="qform__field"><span>メールアドレス <em>必須</em></span><input type="email" name="email" placeholder="your@email.com" autocomplete="email" required></label>
+          <label class="qform__field"><span>ご相談内容 <small>任意</small></span><textarea name="message" rows="3" placeholder="物件の場所や、気になっていることなど"></textarea></label>
+          <label class="qform__field qform__file"><span>ファイル <small>任意・物件の<wbr>写真や<wbr>図面など</small></span><input type="file" name="attachment" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"></label>
+          <button type="submit" class="btn qform__submit">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></button>
+          <p class="qform__note"><n-w>送信により</n-w><a href="privacy.html"><n-w>プライバシーポリシー</n-w></a><n-w>に同意したものとします。しつこい営業はしません。</n-w></p>
+        </form>
       </div>
     </section>
 
@@ -402,46 +412,50 @@
           <p class="section-lead"><n-w>このサービスに関連するテーマを、「アキヤド」で詳しく解説しています。</n-w></p>
         </div>
         <div class="media-grid media-grid--scroll" data-limit="3">
-          <a href="media/kankei-jinko-and-inns.html" class="media-card reveal" data-category="trend" data-date="2026-12-07">
-            <div class="thumb thumb--photo">
-              <img src="../images/photos/shrine-path.jpg" srcset="../images/photos/w/shrine-path-800.webp 800w, ../images/photos/shrine-path.jpg 1079w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">観光と地域</span>
-            </div>
-            <div class="media-card__body">
-              <span class="media-card__cat">観光と地域</span>
-              <h3 class="media-card__title">「関係<wbr>人口」とは？<wbr>地域と<wbr>継続的に<wbr>関わる人を増やすために、<wbr>宿ができること</h3>
-              <time class="media-card__date" datetime="2026-12-07">2026.12.07</time>
-            </div>
-          </a>
-          <a href="media/tourism-labor-shortage.html" class="media-card reveal" data-category="trend" data-date="2026-11-27">
-            <div class="thumb thumb--photo">
-              <img src="../images/photos/terraced-fields.jpg" srcset="../images/photos/w/terraced-fields-800.webp 800w, ../images/photos/terraced-fields.jpg 1620w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">観光と地域</span>
-            </div>
-            <div class="media-card__body">
-              <span class="media-card__cat">観光と地域</span>
-              <h3 class="media-card__title">観光業の<wbr>人手不足をどう乗り越える？<wbr>宿泊業の<wbr>採用と、<wbr>地域で人を育てる<wbr>仕組み</h3>
-              <time class="media-card__date" datetime="2026-11-27">2026.11.27</time>
-            </div>
-          </a>
-          <a href="media/cleaning-linen-operations.html" class="media-card reveal" data-category="operate" data-date="2026-11-17">
+          <a href="media/cleaning-linen-operations.html" class="media-card reveal" data-category="operate" data-date="2026-10-11">
             <div class="thumb thumb--photo">
               <img src="../images/photos/white-bed.jpg" srcset="../images/photos/w/white-bed-800.webp 800w, ../images/photos/white-bed.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
               <span class="thumb__cat">集客・運営</span>
+              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">集客・運営</span><span class="thumb__catch">小さな宿の<br>清掃・リネン運用ガイド</span></span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">集客・運営</span>
+              <span class="ctags"><span class="ctag ctag--who">副業で宿をはじめたい</span><span class="ctag">集客・運営</span></span>
               <h3 class="media-card__title">小さな宿の清掃・リネン運用ガイド｜レビューを<wbr>左右する<wbr>「清潔さ」を<wbr>仕組みで<wbr>保つ方法</h3>
-              <time class="media-card__date" datetime="2026-11-17">2026.11.17</time>
+              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
+            </div>
+          </a>
+          <a href="media/tourism-labor-shortage.html" class="media-card reveal" data-category="trend" data-date="2026-10-11">
+            <div class="thumb thumb--photo">
+              <img src="../images/photos/terraced-fields.jpg" srcset="../images/photos/w/terraced-fields-800.webp 800w, ../images/photos/terraced-fields.jpg 1620w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
+              <span class="thumb__cat">観光と地域</span>
+              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">観光と地域</span><span class="thumb__catch">観光業の<wbr>人手不足を<br>どう乗り越える？</span></span>
+            </div>
+            <div class="media-card__body">
+              <span class="ctags"><span class="ctag">観光と地域</span></span>
+              <h3 class="media-card__title">観光業の<wbr>人手不足をどう乗り越える？<wbr>宿泊業の<wbr>採用と、<wbr>地域で人を育てる<wbr>仕組み</h3>
+              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
+            </div>
+          </a>
+          <a href="media/kankei-jinko-and-inns.html" class="media-card reveal" data-category="trend" data-date="2026-10-11">
+            <div class="thumb thumb--photo">
+              <img src="../images/photos/shrine-path.jpg" srcset="../images/photos/w/shrine-path-800.webp 800w, ../images/photos/shrine-path.jpg 1079w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
+              <span class="thumb__cat">観光と地域</span>
+              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">観光と地域</span><span class="thumb__catch">「関係<wbr>人口」と<br>宿ができること</span></span>
+            </div>
+            <div class="media-card__body">
+              <span class="ctags"><span class="ctag">観光と地域</span></span>
+              <h3 class="media-card__title">「関係<wbr>人口」とは？<wbr>地域と<wbr>継続的に<wbr>関わる人を増やすために、<wbr>宿ができること</h3>
+              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
           </a>
           <a href="media/japan-tourism-market-data.html" class="media-card reveal" data-category="trend" data-date="2026-09-29">
             <div class="thumb thumb--photo">
               <img src="../images/photos/fuji-lake.jpg" srcset="../images/photos/w/fuji-lake-800.webp 800w, ../images/photos/fuji-lake.jpg 1620w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
               <span class="thumb__cat">観光と地域</span>
+              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">観光と地域</span><span class="thumb__catch">データで<wbr>見る日本の<wbr>観光市場と<br>地方が<wbr>抱える<wbr>5つの課題</span></span>
             </div>
             <div class="media-card__body">
-              <span class="media-card__cat">観光と地域</span>
+              <span class="ctags"><span class="ctag">観光と地域</span></span>
               <h3 class="media-card__title">データで<wbr>見る日本の<wbr>観光市場｜インバウンド拡大の裏で地方が<wbr>抱える<wbr>5つの課題</h3>
               <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
             </div>
@@ -506,6 +520,6 @@
     </div>
   </footer>
   <div class="fixed-cta"><a href="contact.html?category=recruit" class="btn">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../js/main.js"></script>
+  <script src="../js/main.js?v=3f6a7b47"></script>
 </body>
 </html>

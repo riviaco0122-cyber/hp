@@ -22,6 +22,20 @@
   /**
    * スマホ：右上のメニューボタン（3本線）で全画面メニューを開閉
    */
+  // アキヤド（スマホ）：ヘッダーのボタンでメニューを開閉する
+  var mmenuBtn = document.querySelector('.mmenu-btn');
+  var mheader = document.querySelector('.header--media');
+  if (mmenuBtn && mheader) {
+    var setMmenu = function (open) {
+      mheader.classList.toggle('is-mnav-open', open);
+      document.documentElement.classList.toggle('is-menu-open', open);
+      mmenuBtn.setAttribute('aria-expanded', String(open));
+      mmenuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    };
+    mmenuBtn.addEventListener('click', function () { setMmenu(!mheader.classList.contains('is-mnav-open')); });
+    mheader.querySelectorAll('.mnav a').forEach(function (a) { a.addEventListener('click', function () { setMmenu(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMmenu(false); });
+  }
   var menuBtn = document.querySelector('.menu-btn');
   function setMenu(open) {
     if (!menuBtn || !header) return;
@@ -115,12 +129,49 @@
    * Contact: 相談ボタンから遷移した場合、ご相談カテゴリを自動選択
    * 例) contact.html?category=operation
    */
+  // アキヤドのお問い合わせ：押したボタンに合わせて「ご相談の内容」に先にチェックを入れる
+  var mchecks = document.querySelectorAll('.mform__check input[data-keys]');
+  if (mchecks.length && window.URLSearchParams) {
+    var mcat = new URLSearchParams(location.search).get('category');
+    var mmsg = document.getElementById('m-message');
+    // 選んだご相談の内容に合わせて、詳細欄に書き方の例（テンプレート）を入れる。自分で書き換えたあとは上書きしない
+    var lastTpl = '';
+    var fillTemplate = function () {
+      if (!mmsg || (mmsg.value && mmsg.value !== lastTpl)) return;
+      lastTpl = Array.prototype.filter.call(mchecks, function (c) { return c.checked; })
+        .map(function (c) { return c.getAttribute('data-template'); }).join('\n');
+      mmsg.value = lastTpl;
+    };
+    mchecks.forEach(function (c) { c.addEventListener('change', fillTemplate); });
+    if (mcat) mchecks.forEach(function (c) { if (c.getAttribute('data-keys').split(' ').indexOf(mcat) >= 0) c.checked = true; });
+    fillTemplate();
+  }
+  // コーポレートのお問い合わせ：ご相談カテゴリを選ぶと、内容欄に書き方の例を入れる（自分で書き換えたあとは上書きしない）
+  var CORP_TEMPLATES = EN ? {} : {
+    operation: '【空き家再生事業について】\n・物件の所在地：\n・物件の状況（空き家・相続など）：\n・ご希望（売りたい／貸したい／まだ決めていない）：\n',
+    management: '【宿泊施設の開業・運営支援について】\n・物件の有無（ある／探している）：\n・はじめたい宿のイメージ：\n・任せたい範囲（開業準備のみ／運営まで）：\n',
+    partnership: '【不動産事業者様との協業について】\n・会社名・ご担当：\n・ご紹介・ご相談したい物件や案件：\n・ご希望の協業の形：\n',
+    marketing: '【WEB集客支援について】\n・事業・施設の概要：\n・いまの集客の課題：\n・ご予算の目安：\n',
+    recruit: '【WEB採用支援について】\n・募集したい職種・人数：\n・いまの採用の課題：\n・採用したい時期：\n',
+    document: 'サービス資料を希望します。\n'
+  };
+  var corpCat = document.getElementById('category'), corpMsg = document.getElementById('message'), corpLast = '';
+  var corpFill = function () {
+    if (!corpCat || !corpMsg) return;
+    var opt = corpCat.options[corpCat.selectedIndex];
+    var tpl = CORP_TEMPLATES[opt && opt.getAttribute('data-key')] || '';
+    if (corpMsg.value && corpMsg.value !== corpLast) return;
+    corpMsg.value = corpLast = tpl;
+  };
+  if (corpCat) corpCat.addEventListener('change', corpFill);
   var category = document.getElementById('category');
   if (category && window.URLSearchParams) {
     var param = new URLSearchParams(window.location.search).get('category');
     if (param) {
       var option = category.querySelector('option[data-key="' + param + '"]');
       if (option) option.selected = true;
+      // 資料請求から来た場合は、本文を書かなくても送れるように入れておく
+      corpFill();
     }
   }
 
@@ -159,9 +210,33 @@
     if (lead) lead.classList.add('is-lead');
   });
   // よくある悩み：公開前の記事への質問は出さない
+  // 基礎から学ぶ：公開前の記事は隠し、記事がひとつもない章も隠す
+  document.querySelectorAll('.lchap__list li[data-date]').forEach(function (li) {
+    if (li.getAttribute('data-date') > today) li.hidden = true;
+  });
+  document.querySelectorAll('.lchap').forEach(function (ch) {
+    if (!ch.querySelector('.lchap__list li:not([hidden])')) ch.hidden = true;
+  });
   document.querySelectorAll('.mq li[data-date]').forEach(function (li) {
     if (li.getAttribute('data-date') > today) li.hidden = true;
   });
+  // スマホでは、よくある悩みを先頭の5件だけ出し、残りはボタンで開く
+  if (window.matchMedia('(max-width: 899px)').matches) {
+    document.querySelectorAll('.mq').forEach(function (list) {
+      var rest = Array.prototype.slice.call(list.querySelectorAll('li:not([hidden])')).slice(5);
+      if (!rest.length) return;
+      rest.forEach(function (li) { li.hidden = true; });
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'mq__more';
+      btn.textContent = 'ほかの悩みも見る（' + rest.length + '件）';
+      btn.addEventListener('click', function () {
+        rest.forEach(function (li) { li.hidden = false; });
+        btn.remove();
+      });
+      list.after(btn);
+    });
+  }
   // ガイド：公開前の記事は「公開予定」として表示し、リンクにしない
   document.querySelectorAll('.guide-step[data-date]').forEach(function (li) {
     var d = li.getAttribute('data-date');
@@ -226,11 +301,16 @@
       track('select_guide', { guide: href.match(/guide-([a-z]+)/)[1], page_path: location.pathname });
     }
   });
-  // アキヤドのトップ：FVを見ている間は、下部の相談ボタンを隠す（FVの入口・検索と重ならないように）
-  var mfv = document.querySelector('.mfv');
-  var fixedMedia = document.querySelector('.fixed-cta--media');
-  if (mfv && fixedMedia && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (en) { fixedMedia.classList.toggle('is-hidden', en[0].isIntersecting); }, { threshold: 0.15 }).observe(mfv);
+  var fixedMedia = document.querySelector('.fixed-cta');
+  // 冒頭の入口・フォーム・相談ブロックが見えている間は、下に固定した相談ボタンを隠す（重なりを防ぐ）
+  var hideTargets = document.querySelectorAll('.mfv, .qform, .mcta__box, .msv-band');
+  if (hideTargets.length && fixedMedia && 'IntersectionObserver' in window) {
+    var visible = new Set();
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (x) { if (x.isIntersecting) visible.add(x.target); else visible.delete(x.target); });
+      fixedMedia.classList.toggle('is-hidden', visible.size > 0);
+    }, { threshold: 0.05 });
+    hideTargets.forEach(function (t) { io.observe(t); });
   }
   // お問い合わせフォーム：流入元（例：アキヤドの記事）を一緒に送る
   var fromField = document.getElementById('from-field');
@@ -279,7 +359,8 @@
       var a = h.a;
       return '<a href="' + a.slug + '.html" class="media-card is-visible">' +
         '<div class="thumb thumb--photo"><img src="../../images/photos/w/' + a.thumb + '-800.webp" alt="" loading="lazy" decoding="async" width="720" height="450">' +
-        '<span class="thumb__cat">' + esc(a.cat) + '</span></div>' +
+        '<span class="thumb__cat">' + esc(a.cat) + '</span>' +
+        '<span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">' + esc(a.cat) + '</span><span class="thumb__catch">' + esc(a.short || '').replace(/\n/g, '<br>') + '</span></span></div>' +
         '<div class="media-card__body"><span class="media-card__cat">' + esc(a.cat) + '</span>' +
         '<h3 class="media-card__title">' + esc(a.title) + '</h3>' +
         (q ? '<p class="media-card__snippet">' + snippet(a) + '</p>' : '') +
@@ -503,4 +584,10 @@
     lastWidth = window.innerWidth;
     scheduleFix();
   });
+})();
+
+// スマホでは補足（.spfold）を閉じた状態で表示する
+(function () {
+  if (!window.matchMedia('(max-width: 899px)').matches) return;
+  document.querySelectorAll('details.spfold[open]').forEach(function (d) { d.removeAttribute('open'); });
 })();
