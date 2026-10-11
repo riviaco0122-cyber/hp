@@ -28,10 +28,10 @@ DESIGNS = {
     # ---- 物件・改修
     "akiya-bank-guide": dict(layout="marker", lines=["空き家バンクの", "[仕組みと使い方]"], sub="登録・購入の前に知っておきたいこと"),
     "shizuoka-yaizu-akiya-inn": dict(layout="boxes", lines=["静岡市・焼津の", "空き家は", "[宿になる？]"]),
-    "kominka-renovation-points": dict(layout="mincho", lines=["古民家を、", "宿に直す"], sub="残すもの・変えるもの"),
+    "kominka-renovation-points": dict(layout="mincho", lines=["古民家を、", "宿に直す"], sub="残すもの・変えるもの", photo="own-tatami-hall", pos="50% 62%"),
     "akiya-utilization-options": dict(layout="poster", big="売る？貸す？宿？", lines=["空き家の[活用方法]を比べる"], color="green"),
-    "akiya-minpaku-suitability": dict(layout="quote", lines=["その空き家は、", "[民泊に向いている？]"], color="sand"),
-    "remote-renovation-tips": dict(layout="frame", lines=["遠方からの", "[改修工事]の進め方"], color="terra"),
+    "akiya-minpaku-suitability": dict(layout="quote", lines=["その空き家は、", "[民泊に向いている？]"], color="sand", photo="own-tatami-hall", pos="50% 45%"),
+    "remote-renovation-tips": dict(layout="frame", lines=["遠方からの", "[改修工事]の進め方"], color="terra", photo="own-renovation-room", pos="50% 55%"),
     "new-build-vs-used-house-inn": dict(layout="duo", a="新築", b="中古", lines=["小さな宿は、[どっちがいい？]"]),
 
     # ---- 貸す・任せる
@@ -65,7 +65,7 @@ DESIGNS = {
     "minpaku-neighbor-rules": dict(layout="frame", lines=["近隣トラブルを防ぐ", "[ルールづくり]"], color="mustard"),
     "minpaku-off-season": dict(layout="mincho", lines=["閑散期を、", "どう越える"], sub="売上の波をならす工夫"),
     "minpaku-remote-operation": dict(layout="giant", big="遠隔運営", lines=["遠方の物件でも、", "[運営できる？]"]),
-    "long-stay-guest-equipment": dict(layout="marker", lines=["長期滞在のゲストに", "[選ばれる設備]"]),
+    "long-stay-guest-equipment": dict(layout="marker", lines=["長期滞在のゲストに", "[選ばれる設備]"], photo="own-sofa-room", pos="60% 45%"),
 
     # ---- 観光と地域
     "japan-tourism-market-data": dict(layout="number", big="5", unit="つの課題", lines=["データで見る日本の観光市場と", "[地方が抱える課題]"], color="navy"),
