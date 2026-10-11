@@ -1384,7 +1384,7 @@ def area_html(key):
 
 def quick_form(key, name):
     """サービスページ冒頭の、かんたんな相談フォーム（名前とメールだけで送れる）"""
-    return f"""        <form class="qform reveal" data-delay="2" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
+    return f"""        <form class="qform reveal" data-delay="2" action="https://formspree.io/f/mwlvbwjl" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
           <p class="qform__title">{e(name)}の無料相談</p>
           <p class="qform__lead">まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。</p>
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】{e(name)}のご相談（サービスページ）">
@@ -2005,7 +2005,7 @@ def contact_page():
           2. 下記 action の「YOUR_FORM_ID」を、発行された ID（例: abcdwxyz）に置き換える
           ※ Formspree でのファイル添付は有料プランのみ対応です。
         -->
-        <form class="form reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
+        <form class="form reveal" action="https://formspree.io/f/mwlvbwjl" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】Webサイトからのお問い合わせ">
           <input type="hidden" name="流入元" id="from-field" value="">
           <div class="form__field">
@@ -2422,7 +2422,7 @@ def spec_md():
     w("* **フォーム:** お名前* ／ 会社名・施設名（任意。個人の不動産投資家など一般の方からの相談も想定）／ 電話番号* ／ メールアドレス* ／ ご相談カテゴリ（【宿泊施設の運営・開業】宿泊施設運営 / 運営委託 / 開業・運営コンサル 【WEBマーケティング支援】WEB集客 / WEB採用 ／ その他）／ お問い合わせ内容* ／ プライバシーポリシーへの同意*（追加）")
     w("* **マイクロコピー:** ※無理な営業や電話勧誘は一切いたしません。／※ご入力いただいた情報は厳重に管理し、お問い合わせ対応以外には使用いたしません。")
     w("* **フォーム下（追加）:** ご相談の流れ（4ステップ）")
-    w("* 送信先: Formspree（`YOUR_FORM_ID` を発行IDに置き換え。通知先 rivia.co0122@gmail.com）")
+    w("* 送信先: Formspree（フォームID `mwlvbwjl`。通知先 rivia.co0122@gmail.com）")
     w("* 添付ファイル（任意・複数可）: 物件資料・写真・図面などを添付できる。PDF・画像・Word・Excel等、合計10MB目安。Formspree でのファイル添付は有料プランのみ対応")
     w("")
     w("## 8. プライバシーポリシー（privacy.html・追加）")
@@ -4119,7 +4119,7 @@ def media_contact_page():
     <section class="section msec msec--first">
       <div class="container mform-wrap">
         <ul class="mcta__points mform__points reveal"><li>相談・お見積りは無料</li><li>全国対応・オンライン可</li><li>しつこい営業はしません</li></ul>
-        <form class="mform reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data" data-thanks="thanks.html">
+        <form class="mform reveal" action="https://formspree.io/f/mwlvbwjl" method="POST" enctype="multipart/form-data" data-thanks="thanks.html">
           <input type="hidden" name="_subject" value="【アキヤド】無料相談・お問い合わせ">
           <input type="hidden" name="流入元" id="from-field" value="">
           <div class="mform__field">
