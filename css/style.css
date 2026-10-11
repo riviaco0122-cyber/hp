@@ -2952,3 +2952,23 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
   .lcard__title { font-size: 16px; }
   .lcard__text { font-size: 12.5px; line-height: 1.75; }
 }
+
+/* コーポレートTOPのアキヤド紹介：文字はコーポレートの書体にそろえ、メディアの雰囲気は画面写真で見せる */
+.mintro__copy { font-family: var(--font-serif); font-weight: 400; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.8; letter-spacing: 0.08em; color: var(--c-text, #1f1f1f); }
+.mintro__who { font-family: var(--font-serif); font-weight: 400; font-size: 17px; letter-spacing: 0.06em; color: var(--c-text, #1f1f1f); }
+.mintro__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 560px); }
+.mintro__shots { position: relative; display: block; padding: 0 0 48px 0; transition: transform .4s var(--ease, ease); }
+.mintro__shots:hover { transform: translateY(-3px); }
+.mintro__pc { display: block; overflow: hidden; border-radius: 10px; background: #fff; box-shadow: 0 20px 48px rgba(20, 30, 24, 0.14); border: 1px solid var(--c-line); }
+.mintro__bar { display: flex; gap: 6px; padding: 9px 12px; background: #f1f2f0; border-bottom: 1px solid var(--c-line); }
+.mintro__bar i { width: 8px; height: 8px; border-radius: 50%; background: #d4d7d3; }
+.mintro__pc img { display: block; width: 100%; height: auto; }
+.mintro__sp { position: absolute; right: -16px; bottom: 0; width: 26%; overflow: hidden; border: 5px solid #1f2420; border-radius: 22px; background: #fff; box-shadow: 0 18px 36px rgba(20, 30, 24, 0.22); }
+.mintro__sp img { display: block; width: 100%; height: auto; }
+@media (max-width: 899px) {
+  .mintro__shots { order: -1; margin: 4px 8px 8px 0; padding-bottom: 28px; }
+  .mintro__sp { right: -8px; width: 28%; border-width: 4px; border-radius: 16px; }
+  .mintro__who { font-size: 16px; }
+}
+@media (max-width: 899px) { .mintro__grid { grid-template-columns: minmax(0, 1fr); } .mintro__copy br { display: inline; } }
+@media (max-width: 899px) { .mintro__shots { order: 0; margin-top: 8px; } }
