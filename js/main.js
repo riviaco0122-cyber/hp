@@ -220,6 +220,23 @@
   document.querySelectorAll('.mq li[data-date]').forEach(function (li) {
     if (li.getAttribute('data-date') > today) li.hidden = true;
   });
+  // スマホでは、よくある悩みを先頭の5件だけ出し、残りはボタンで開く
+  if (window.matchMedia('(max-width: 899px)').matches) {
+    document.querySelectorAll('.mq').forEach(function (list) {
+      var rest = Array.prototype.slice.call(list.querySelectorAll('li:not([hidden])')).slice(5);
+      if (!rest.length) return;
+      rest.forEach(function (li) { li.hidden = true; });
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'mq__more';
+      btn.textContent = 'ほかの悩みも見る（' + rest.length + '件）';
+      btn.addEventListener('click', function () {
+        rest.forEach(function (li) { li.hidden = false; });
+        btn.remove();
+      });
+      list.after(btn);
+    });
+  }
   // ガイド：公開前の記事は「公開予定」として表示し、リンクにしない
   document.querySelectorAll('.guide-step[data-date]').forEach(function (li) {
     var d = li.getAttribute('data-date');
@@ -567,4 +584,10 @@
     lastWidth = window.innerWidth;
     scheduleFix();
   });
+})();
+
+// スマホでは補足（.spfold）を閉じた状態で表示する
+(function () {
+  if (!window.matchMedia('(max-width: 899px)').matches) return;
+  document.querySelectorAll('details.spfold[open]').forEach(function (d) { d.removeAttribute('open'); });
 })();

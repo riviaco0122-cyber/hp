@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=4f03b7d3">
+  <link rel="stylesheet" href="../../css/style.css?v=c1002f53">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -184,11 +184,13 @@
             <div class="dflow__body">
               <h3 class="dflow__title">無料相談</h3>
               <p class="dflow__text"><n-w>フォームからのご連絡のあと、オンラインで、始めたい宿のイメージやご予算、物件の有無を伺います。</n-w></p>
+              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>物件が決まっていれば場所を、まだなら希望のエリアやご予算をお知らせください。</n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>進め方の全体像と、最初に確認すべきことをお伝えします。</n-w></dd></div>
               </dl>
               <p class="dflow__cost"><span>費用</span>無料</p>
+              </details>
             </div>
           </li>
           <li class="dflow__step reveal">
@@ -196,11 +198,13 @@
             <div class="dflow__body">
               <h3 class="dflow__title">物件と<wbr>制度の確認</h3>
               <p class="dflow__text"><n-w>物件が宿として営業できるか、民泊新法と旅館業のどちらが合うかを確認します。</n-w></p>
+              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>物件の資料（図面・登記・管理規約など）をご用意ください。</n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>用途地域や条例、消防の条件を調べ、選ぶべき制度をご提案します。</n-w></dd></div>
               </dl>
               <p class="dflow__cost"><span>費用</span>無料</p>
+              </details>
             </div>
           </li>
           <li class="dflow__step reveal">
@@ -208,11 +212,13 @@
             <div class="dflow__body">
               <h3 class="dflow__title">収支の<wbr>試算と<wbr>プランの<wbr>ご提案</h3>
               <p class="dflow__text"><n-w>周辺の宿の料金と稼働をもとに収支を試算し、伴走・運営代行・共同出資から合うコースをご提案します。</n-w></p>
+              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>本業との両立や、どこまで自分で関わりたいかを教えてください。</n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>悲観的な場合も含めた収支の見通しと、プランごとの費用をご提示します。</n-w></dd></div>
               </dl>
               <p class="dflow__cost"><span><n-w>費用</n-w></span><n-w>無料。ここでお断りいただいても構いません</n-w></p>
+              </details>
             </div>
           </li>
           <li class="dflow__step reveal">
@@ -220,11 +226,13 @@
             <div class="dflow__body">
               <h3 class="dflow__title">開業準備</h3>
               <p class="dflow__text"><n-w>設備の準備、消防の手続き、届出や許可申請、写真撮影と予約ページの作成を進めます。</n-w></p>
+              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>プランに応じて、設備の購入や届出の名義人としての手続きをお願いします。</n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>やることの一覧と期限をお渡しし、手続きや予約ページづくりを一緒に進めます。</n-w></dd></div>
               </dl>
               <p class="dflow__cost"><span><n-w>費用</n-w></span><n-w>プランの費用は契約前にご説明します。設備などの実費は別途</n-w></p>
+              </details>
             </div>
           </li>
           <li class="dflow__step reveal">
@@ -232,11 +240,13 @@
             <div class="dflow__body">
               <h3 class="dflow__title">開業・運営</h3>
               <p class="dflow__text"><n-w>伴走コースは集客と料金の考え方を、運営代行コースは日々の運営まで、アキヤドが担います。</n-w></p>
+              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>伴走コースでは、清掃やゲスト対応など現場の運営をお願いします。</n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>予約の状況や売上を定期的にご報告し、改善の打ち手をご提案します。</n-w></dd></div>
               </dl>
               <p class="dflow__cost"><span><n-w>費用</n-w></span><n-w>売上に応じた手数料（プランにより異なります）</n-w></p>
+              </details>
             </div>
           </li>
         </ol>
@@ -714,6 +724,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=management&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=54640b11"></script>
+  <script src="../../js/main.js?v=3f6a7b47"></script>
 </body>
 </html>

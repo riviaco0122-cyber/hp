@@ -1801,12 +1801,12 @@ def about_page():
               </div>
             </div>
             <p class="founder__bio">{e(f["bio"])}</p>
-            <div class="founder__block">
+            <details class="founder__block spfold" open><summary>経歴を見る</summary>
               <span class="founder__label">経歴</span>
               <ol class="founder__career">
 {chr(10).join(f'                <li><strong>{e(c)}</strong>{("<span>" + e(d) + "</span>") if d else ""}</li>' for c, d in f["career"])}
               </ol>
-            </div>
+            </details>
             <div class="founder__block">
               <span class="founder__label">強み</span>
               <ul class="founder__tags">{"".join(f"<li>{e(t)}</li>" for t in f["strengths"])}</ul>
@@ -3729,11 +3729,13 @@ def detail_flow(key):
             <div class="dflow__body">
               <h3 class="dflow__title">{e(t)}</h3>
               <p class="dflow__text">{e(d)}</p>
+              <details class="spfold" open><summary>お願いすること・費用を見る</summary>
               <dl class="dflow__roles">
                 <div><dt>お客様にお願いすること</dt><dd>{e(you)}</dd></div>
                 <div><dt>アキヤドが行うこと</dt><dd>{e(we)}</dd></div>
               </dl>
               <p class="dflow__cost"><span>費用</span>{e(cost)}</p>
+              </details>
             </div>
           </li>""" for i, (t, term, d, you, we, cost) in enumerate(steps, 1))
     return f"""        <ol class="dflow">
@@ -3958,10 +3960,9 @@ def media_intro():
             <span class="eyebrow reveal">Media</span>
             <h2 class="section-title section-title--logo reveal"><a href="media.html" class="tlogo" aria-label="アキヤド（空き家と民泊のメディア）">{AKIYADO_MARK}<span class="tlogo__ja" translate="no">アキヤド</span></a><span class="tlogo__sub">空き家と民泊のメディア</span></h2>
             <p class="mintro__copy reveal" data-delay="1">空き家を、売る。活かす。<br>民泊を、はじめる。</p>
-            <p class="mintro__lead reveal" data-delay="1">アキヤドは、RIVIA&amp;CO.が運営する空き家と民泊のメディアです。自ら宿を運営する私たちが、相続した家をどうするか、宿として活かせるか、民泊をどう始めるかを、悩みが生まれる順にお答えしています。読んで具体的に考えたくなったら、アキヤドの買取・借り上げ・開業運営のプランでご相談いただけます。</p>
+            <p class="mintro__lead reveal" data-delay="1">自ら宿を運営する私たちが、空き家と民泊の悩みに<br class="pc-only">順を追ってお答えするメディアです。</p>
             <div class="mintro__btns reveal" data-delay="2">
               <a href="media.html" class="btn">アキヤドを見る {ARROW}</a>
-              <a href="media/plans.html" class="btn btn--ghost">アキヤドのプラン</a>
             </div>
           </div>
           <figure class="mintro__photo reveal" data-delay="1">{photo("scene-stay", width=1080, height=1350, sizes="(max-width: 899px) 100vw, 480px")}</figure>
@@ -4337,7 +4338,7 @@ def media_index_page():
             <h2 class="msec__title">アキヤドに任せると、どうなる？</h2>
             <p class="mplanband__lead">記事を運営する私たちは、実際に宿を運営しています。売る・貸す・宿をはじめる、それぞれのプランと条件の目安をまとめました。</p>
           </div>
-          <ul class="mplanband__list">{"".join(f'<li><a href="media/{MEDIA_SERVICE_BY_KEY[k]["slug"]}.html"><span class="mplanband__who">{e(l)}</span><span class="mplanband__names">{e(MEDIA_SERVICE_BY_KEY[k]["name"])}{"" if names == [MEDIA_SERVICE_BY_KEY[k]["name"]] else "（" + "・".join(e(n) for n in names) + "）"}</span><span class="mplanband__arrow">→</span></a></li>' for k, l, _, _, names in MEDIA_PLAN_GROUPS)}</ul>
+          <ul class="mplanband__list">{"".join(f'<li><a href="media/{MEDIA_SERVICE_BY_KEY[k]["slug"]}.html"><span class="mplanband__who">{e(l)}</span><span class="mplanband__names">{e(MEDIA_SERVICE_BY_KEY[k]["name"])}</span><span class="mplanband__arrow">→</span></a></li>' for k, l, _, _, names in MEDIA_PLAN_GROUPS)}</ul>
         </div>
       </div>
     </section>

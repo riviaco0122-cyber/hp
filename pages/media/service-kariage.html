@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=4f03b7d3">
+  <link rel="stylesheet" href="../../css/style.css?v=c1002f53">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -177,11 +177,13 @@
             <div class="dflow__body">
               <h3 class="dflow__title">無料相談</h3>
               <p class="dflow__text"><n-w>フォームからのご連絡のあと、メールかオンラインで、物件の状況と「家をどうしたいか」を伺います。</n-w></p>
+              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>物件の場所と、わかる範囲の状況をお知らせください。将来使う予定があるかも教えてください。</n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>ご希望に合いそうな進め方と、現地調査の日程をご提案します。</n-w></dd></div>
               </dl>
               <p class="dflow__cost"><span>費用</span>無料</p>
+              </details>
             </div>
           </li>
           <li class="dflow__step reveal">
@@ -189,11 +191,13 @@
             <div class="dflow__body">
               <h3 class="dflow__title">現地調査・収支の試算</h3>
               <p class="dflow__text"><n-w>建物の状態と、周辺の宿の料金や稼働を調べ、宿にした場合の収支を試算します。</n-w></p>
+              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>可能であれば立ち会いをお願いします。図面などの資料があればご用意ください。</n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>改修が必要な箇所、法令上の条件、見込める家賃をまとめます。</n-w></dd></div>
               </dl>
               <p class="dflow__cost"><span>費用</span>無料</p>
+              </details>
             </div>
           </li>
           <li class="dflow__step reveal">
@@ -201,11 +205,13 @@
             <div class="dflow__body">
               <h3 class="dflow__title">プランと<wbr>条件の<wbr>ご提案</h3>
               <p class="dflow__text"><n-w>おまかせプラン・売上シェアプランのうち、物件とご希望に合う条件をご提案します。</n-w></p>
+              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>家賃や契約期間、将来の使い方のご希望をお聞かせください。</n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>家賃・契約期間・改修の負担の分け方を、具体的な数字でご提示します。</n-w></dd></div>
               </dl>
               <p class="dflow__cost"><span><n-w>費用</n-w></span><n-w>無料。ここでお断りいただいても構いません</n-w></p>
+              </details>
             </div>
           </li>
           <li class="dflow__step reveal">
@@ -213,11 +219,13 @@
             <div class="dflow__body">
               <h3 class="dflow__title">ご契約・改修・開業準備</h3>
               <p class="dflow__text"><n-w>賃貸借契約を結んだあと、アキヤドが改修・家具の準備・許可の手続き・予約ページの作成まで進めます。</n-w></p>
+              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>契約内容のご確認をお願いします。改修の内容は、事前にご説明して進めます。</n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>改修、家具・設備、消防や許可の手続き、写真撮影、予約ページの準備を行います。</n-w></dd></div>
               </dl>
               <p class="dflow__cost"><span><n-w>費用</n-w></span><n-w>アキヤドおまかせプランは初期費用ほぼなし（建物の構造的な補修を除く）</n-w></p>
+              </details>
             </div>
           </li>
           <li class="dflow__step reveal">
@@ -225,11 +233,13 @@
             <div class="dflow__body">
               <h3 class="dflow__title">宿として運営・家賃の<wbr>お支払い</h3>
               <p class="dflow__text"><n-w>集客・予約・清掃・ゲスト対応はアキヤドが行い、オーナー様には毎月家賃をお支払いします。</n-w></p>
+              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>特にありません。気になることがあれば、いつでもご連絡ください。</n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>運営の状況を定期的にご報告し、近隣への配慮も含めて宿を運営します。</n-w></dd></div>
               </dl>
               <p class="dflow__cost"><span>費用</span>運営の<wbr>手間・費用は<wbr>かかりません</p>
+              </details>
             </div>
           </li>
         </ol>
@@ -647,6 +657,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=operation&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=54640b11"></script>
+  <script src="../../js/main.js?v=3f6a7b47"></script>
 </body>
 </html>
