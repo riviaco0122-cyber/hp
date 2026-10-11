@@ -84,10 +84,10 @@ rivia-hp/
 ├── css/style.css            全ページ共通スタイル
 ├── js/main.js               メニュー、フェードイン、絞り込み、フォーム送信など
 ├── images/                  画像（ogp.jpg はSNSシェア画像 1200×630）
-├── seo/                     sitemap.xml / robots.txt / llms.txt（公開URLはサイト直下 /sitemap.xml・/robots.txt・/llms.txt。llms.txt は tools/build_llms.py で生成）
+├── seo/                     sitemap.xml / robots.txt（公開URLはサイト直下 /sitemap.xml・/robots.txt）
 ├── docs/site-spec.md        この指示書（公開サーバーには置かない）
 ├── vercel.json              pages/・seo/ の中身を、今までどおりのURLで公開するための設定
-└── .vercelignore           docs/・.claude/・tools/・CLAUDE.md を Vercel の公開対象から外す設定
+└── .vercelignore           docs/ を Vercel の公開対象から外す設定
 ```
 
 * media/ フォルダ内の記事ページでは、ほかのページ・css・js へのリンクを ../ から始める（例: ../css/style.css）。
@@ -135,7 +135,6 @@ rivia-hp/
 * フォーム（お問い合わせ・採用エントリー）は画面を移動せずに送信し、成功したら thanks.html へ移動する。thanks.html で GA4 の `generate_lead` イベント（form_type: contact / careers）を送るので、GA4 の管理画面で `generate_lead` を「キーイベント」に設定すると問い合わせ数を計測できる。
 * 運営実績の下に「ゲストの声（Airbnb のレビューより）」を表示できる。build.py の `NODE_REVIEWS` に、実際のレビューを原文のまま入れたときだけ表示される（空のときは非表示）。
 * **公開ドメインは https://rivia-co.com（canonical / OGP / 構造化データ / sitemap に反映済み）。**
-* AI検索向けのサイト案内 llms.txt（公開URL `/llms.txt`、実体は seo/llms.txt）を置く。会社・サービス・アキヤドのガイドと、公開日を迎えた記事を載せる。`tools/build_llms.py` で生成し、手で直さない（日次の定期実行で毎日作り直す）。
 
 ---
 
@@ -1086,7 +1085,7 @@ rivia-hp/
 * **フォーム:** お名前* ／ 会社名・施設名（任意。個人の不動産投資家など一般の方からの相談も想定）／ 電話番号* ／ メールアドレス* ／ ご相談カテゴリ（【宿泊施設の運営・開業】宿泊施設運営 / 運営委託 / 開業・運営コンサル 【WEBマーケティング支援】WEB集客 / WEB採用 ／ その他）／ お問い合わせ内容* ／ プライバシーポリシーへの同意*（追加）
 * **マイクロコピー:** ※無理な営業や電話勧誘は一切いたしません。／※ご入力いただいた情報は厳重に管理し、お問い合わせ対応以外には使用いたしません。
 * **フォーム下（追加）:** ご相談の流れ（4ステップ）
-* 送信先: Formspree（`YOUR_FORM_ID` を発行IDに置き換え。通知先 rivia.co0122@gmail.com）
+* 送信先: Formspree（フォームID `mwlvbwjl`。通知先 rivia.co0122@gmail.com）
 * 添付ファイル（任意・複数可）: 物件資料・写真・図面などを添付できる。PDF・画像・Word・Excel等、合計10MB目安。Formspree でのファイル添付は有料プランのみ対応
 
 ## 8. プライバシーポリシー（privacy.html・追加）
