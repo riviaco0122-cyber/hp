@@ -2995,3 +2995,5 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 .lchap__ltext { flex: 1; min-width: 0; }
 .lchap__go { flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--m-green, #2e6b47); white-space: nowrap; }
 @media (max-width: 899px) { .lchap__list a.lchap__link { font-size: 13.5px; padding: 11px 12px 11px 14px; } }
+/* 運営実績が「一例」であることを示すラベル */
+.ex-badge { display: inline-block; margin: 0 10px 6px 0; padding: 2px 12px; border-radius: 999px; background: var(--m-green, #2e6b47); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .06em; vertical-align: middle; }

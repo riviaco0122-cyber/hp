@@ -3867,9 +3867,9 @@ def media_service_page(sv):
 
     <section class="section msec">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Track record</p><h2 class="msec__title">アキヤドが運営している宿</h2></div></div>
+        <div class="msec__head reveal"><div><p class="msec__en">Track record</p><h2 class="msec__title">アキヤドが運営している宿（一例）</h2></div></div>
         <div class="msv-record reveal">
-          <p class="msv-record__lead">アキヤドは、静岡県下田市で一棟貸しの宿「NODE Shimoda」を自ら運営しています。<br class="pc-only">記事やご提案は、現場で確かめた運営の知識をもとにしています。</p>
+          <p class="msv-record__lead"><span class="ex-badge">運営施設の一例</span>アキヤドは複数の宿を自ら運営しています。ここでは、その一例として静岡県下田市の一棟貸しの宿「NODE Shimoda」をご紹介します。<br class="pc-only">記事やご提案は、現場で確かめた運営の知識をもとにしています。</p>
           <p class="msv-record__label">ゲストの声（Airbnbのレビューより抜粋）</p>
           <div class="mvoices">
 {reviews}
@@ -3906,7 +3906,7 @@ def media_service_page(sv):
 
 def media_company_page():
     """アキヤドの運営会社。誰が書いているか・何を頼めるかを1ページで伝える（会社概要はコーポレートと共通）"""
-    rows = company_profile() + [("運営メディア", "アキヤド（空き家と民泊のメディア）"), ("運営している宿", "NODE Shimoda（静岡県下田市・一棟貸し）")]
+    rows = company_profile() + [("運営メディア", "アキヤド（空き家と民泊のメディア）"), ("運営している宿", "NODE Shimoda（静岡県下田市・一棟貸し）ほか")]
     profile = "\n".join(f'          <div class="mprofile__row"><dt>{k}</dt><dd>{v}</dd></div>' for k, v in rows)
     services = "\n".join(f"""          <a href="media/{sv['slug']}.html" class="mcomp-svc reveal">
             <span class="mcomp-svc__who">{e(sv['eyebrow'])}</span>
@@ -3965,7 +3965,8 @@ def media_company_page():
 
     <section class="section section--soft msec">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Our inn</p><h2 class="msec__title">運営している宿：NODE Shimoda</h2></div></div>
+        <div class="msec__head reveal"><div><p class="msec__en">Our inn</p><h2 class="msec__title">運営している宿の一例：NODE Shimoda</h2></div></div>
+        <p class="msv-record__lead"><span class="ex-badge">運営施設の一例</span>複数ある運営施設のうちの1つです。</p>
         <p class="msv-record__label">ゲストの声（Airbnbのレビューより抜粋）</p>
         <div class="mvoices">
 {reviews}
