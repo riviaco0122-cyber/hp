@@ -1749,7 +1749,7 @@ def index_page():
             "addressCountry": "JP",
         },
     }
-    page("index.html", "", "地域に眠る価値を、日本の活力に。空き家の再生や民泊の開業・運営から、集客・採用、まちづくりまでを担う合同会社RIVIA&CO.のコーポレートサイトです。", body, jsonld=[org_ld])
+    page("index.html", "", "地域に眠る価値を、日本の活力に。空き家の再生や民泊の開業・運営から、集客・採用、まちづくりまでを担う合同会社RIVIA&CO.のコーポレートサイトです。", body, jsonld=[org_ld, {"@context": "https://schema.org", "@type": "WebSite", "name": "RIVIA&CO.", "alternateName": ["合同会社RIVIA&CO.", "リビアアンドコー"], "url": f"{SITE}/"}])
 
 
 # ---------------------------------------------------------------- about
@@ -1900,7 +1900,7 @@ def about_page():
     </section>
 
 {cta()}"""
-    page("about.html", "About Us", "合同会社RIVIA&CO.のミッション・ビジョン・バリュー、創業者紹介、会社概要です。", body, current="about")
+    page("about.html", "私たちについて・会社概要", "合同会社RIVIA&CO.のミッション・ビジョン・バリュー、創業者紹介、会社概要です。", body, current="about")
 
 
 # ---------------------------------------------------------------- forms
@@ -1981,7 +1981,7 @@ def careers_page():
         </form>
       </div>
     </section>"""
-    page("careers.html", "Careers", "合同会社RIVIA&CO.の採用情報です。年齢・経験は問いません。一緒に働く仲間を募集しています。", body, current="careers")
+    page("careers.html", "採用情報", "合同会社RIVIA&CO.の採用情報です。年齢・経験は問いません。一緒に働く仲間を募集しています。", body, current="careers")
 
 
 def contact_page():
@@ -2064,7 +2064,7 @@ def contact_page():
     </section>
 
 {flow_section(soft=True)}"""
-    page("contact.html", "Contact", "合同会社RIVIA&CO.へのお問い合わせはこちらから。ご相談は無料です。2営業日以内に担当者よりご連絡いたします。", body, current="contact")
+    page("contact.html", "お問い合わせ", "合同会社RIVIA&CO.へのお問い合わせはこちらから。ご相談は無料です。2営業日以内に担当者よりご連絡いたします。", body, current="contact")
 
 
 # ---------------------------------------------------------------- privacy
