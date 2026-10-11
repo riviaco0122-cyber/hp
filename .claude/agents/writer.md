@@ -19,8 +19,9 @@ tools: Read, Grep, Glob, Edit, Write, Bash
   title: <タイトル（40字以内・主キーワードを前半に）>
   description: <リード文＝meta description（50〜140字）>
   keyword: <主キーワード（構成案と同じ）>
-  category: <akiya／market／chiho／kaigyo／keiei>
-  services: <関連サービスのファイル名をカンマ区切り>
+  topics: <テーマのキーをカンマ区切り。先頭がカテゴリ: sell／lend／house／start／money／operate／trend>
+  services: <関連サービスのキーをカンマ区切り: operation／management／partnership／marketing／recruit>
+  guides: <ガイドと Step（例: sell-2, use-1）。なければ空>
   reading_time: <分>
   ---
   <リード文>

@@ -16,7 +16,7 @@ tools: Read, Grep, Glob, Bash, WebSearch, WebFetch
    - 法務・炎上リスク: playbook 7章の表を **上から全行** 確認し、行ごとに「該当なし／該当（箇所）」を書く。
    - 体験談: RIVIA の体験・実績の記述を `docs/brand/experience.md` と照合する。
 3. **品質管理部の採点（60点）**: playbook 5-3 の減点ルールで7項目を採点する。**減点には必ず箇所と理由を書く**（根拠のない減点・加点をしない）。
-4. HTML 化の後は `python3 tools/seo_check.py` も実行する。
+4. HTML 化（`tools/build.py` での作り直し）の後は `python3 tools/seo_check.py`（エラー0）と `node tools/check/site_check.js --no-visual`（重大0）も実行する。
 5. 合計点を出し、95点未満またはゲート違反なら、playbook 5-4 の表で **戻る工程** を決める。
 
 ## 返すもの
@@ -37,7 +37,7 @@ tools: Read, Grep, Glob, Bash, WebSearch, WebFetch
 ```
 
 ## 記事以外（技術改善・ドキュメント）の評価
-採点表の代わりに、変更の目的に対して OK／NG と根拠を項目ごとに書く。公開サイトへの影響、seo_check、鍵の混入は必ず確認する。
+採点表の代わりに、変更の目的に対して OK／NG と根拠を項目ごとに書く。公開サイトへの影響（`node tools/check/site_check.js` の結果。本番との見た目の差分が大きいページは意図した変更か）、seo_check、鍵の混入は必ず確認する。
 
 ## 守ること
 - 95点未満は不合格。「惜しいので合格」にしない。

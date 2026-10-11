@@ -19,9 +19,12 @@ python3 tools/build.py
 | --- | --- |
 | `build.py` | 全ページの文言・構成・プラン・アキヤドの設定（テーマ、ガイド、よくある悩みなど） |
 | `articles_sched1.py`・`articles_sched2.py`・`articles_case.py` | アキヤドの記事（公開日は各記事の `date`） |
+| `articles_auto.py` | AI社員チーム（毎朝の日次サイクル）が追加する記事 |
 | `figures.py` | 記事の図解（`ARTICLE_FIGURES` に、記事ごとの図を書く） |
 | `i18n/` | 英語版の作成（`build_en.py`）と英訳（`en_1.py`〜`en_4.py`） |
 | `check/enchk.js` | 英語版のリンク切れ・はみ出し・訳し漏れの確認 |
+| `check/site_check.js` | サイト全体の点検（全ページ×スマホ・PC幅で、JSエラー・読み込み失敗・リンク切れ・はみ出し・本番との見た目の差分。例：`node tools/check/site_check.js --no-visual`） |
+| `forms/Code.gs` | お問い合わせフォームの受け口（Google Apps Script。自動返信・添付ファイル保存） |
 | `check/lazyshot.js` | ページ全体のスクリーンショット（例：`node tools/check/lazyshot.js media.html 390 shot.png`） |
 
 ## よく使う設定
