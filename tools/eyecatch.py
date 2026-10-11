@@ -11,7 +11,8 @@
   python3 tools/eyecatch.py <slug> ... # 指定した記事だけ
 
 必要なもの: Node.js と playwright（tools/check と同じ）、丸ゴシックの書体
-（Zen Maru Gothic を端末に入れておくか、ネットにつながる環境で実行する）。
+（Zen Maru Gothic・Zen Kaku Gothic New・Dela Gothic One・Shippori Mincho B1。
+Google Fonts から読み込むので、ネットにつながる環境で実行する）。
 画像を作り直したら python3 tools/build.py を実行してページに反映する。
 """
 import html
@@ -31,7 +32,7 @@ MARK = ('<svg viewBox="0 0 32 32" width="40" height="40"><rect width="32" height
         '<path d="M7.5 15.6 16 8.6l8.5 7v8.6a1.3 1.3 0 0 1-1.3 1.3h-4.7v-5.7h-5v5.7H8.8a1.3 1.3 0 0 1-1.3-1.3z" fill="#fff"/></svg>')
 
 BASE_CSS = """
-@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=block");
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;700;900&family=Dela+Gothic+One&family=Shippori+Mincho+B1:wght@800&display=block");
 *{box-sizing:border-box}
 body{margin:0;width:1200px;height:630px;overflow:hidden;font-family:"Zen Maru Gothic",sans-serif;-webkit-font-smoothing:antialiased}
 .kicker{display:inline-block;font-size:24px;font-weight:700;letter-spacing:.12em}

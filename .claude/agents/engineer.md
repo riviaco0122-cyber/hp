@@ -26,6 +26,7 @@ tools: Read, Grep, Glob, Bash, Edit, Write
      - `sections`：`(id, 見出し, 本文HTML)`。本文 HTML は既存記事と同じタグ（`<p>`・`<h3>`・`<ol class="steps">`・表など）だけを使う。
      - `faq`：`(質問, 答え)`。`sources`：`発行元「資料名」（公表年）`。
      - `date`：公開予定日（日本時間）。今日より前の日付にしない。
+   - **アイキャッチを作る**：`tools/eyecatch_designs.py` にその記事のデザイン（既存の記事の書き方に合わせる。なければ標準デザイン）を足し、`python3 tools/eyecatch.py <スラッグ>` で `images/eyecatch/<スラッグ>.jpg` を作る。できた画像を Read で開いて、文字の欠け・はみ出し・書体の崩れ（太い見出しが細い書体になっていないか）を目で確認する。**既存の記事のアイキャッチは作り直さない**（スラッグを指定して、新しい記事の分だけ作る）。
    - `python3 tools/build.py` で作り直す（一覧・テーマ・ガイド・関連記事・検索の索引・sitemap・llms.txt・仕様書まで自動で更新される）。
    - `python3 tools/article_score.py pages/media/<スラッグ>.html` で機械採点し、品質管理部に HTML の採点を依頼する。
 2. **既存記事の改善**（title・説明文・本文・FAQ・内部リンク）：該当する `tools/articles_*.py`（または `build.py` の `ARTICLES`）の記事データを直して作り直す。公開済み記事の `title` 変更・URL 変更は人の確認が必要（playbook 6章）。内容を直したら `updated` を今日にする。

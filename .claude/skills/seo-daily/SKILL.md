@@ -39,9 +39,10 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
 3. **実行**：作業ごとに担当部署へ依頼する。
    - 記事（新規・書き直し）は必ず次の順。**品質管理部の採点が95点以上・ゲート違反なしになるまで先へ進めない**（playbook 5章）。
      0. YouTube 調査が必要なら、編集長が `python3 tools/youtube_research.py "キーワード"` を実行し、結果を researcher に渡す
+        統計の数字（宿泊者数・外国人の割合・空き家数・空き家率など）が要る記事は、編集長が `python3 tools/estat.py lodging <都道府県>` ／ `akiya <地域>` ／ `search "キーワード"` で e-Stat から取り、結果（`docs/sources/estat/`）を researcher に渡す。**統計の数字は e-Stat から取り、出典（統計名・調査年・表の名前・e-Stat の URL）を付ける**。ほかのサイトの数字を孫引きしない
      1. `researcher`（リサーチメモ）→ `marketer`（構成案）→ `writer`（原稿。自己採点で機械40点にしてから提出）
      2. `qa` が原稿を採点。95点未満なら、`qa` が指定した **戻る工程**（リサーチ／構成案／執筆）からやり直し、最初から採点し直す
-     3. 合格したら `engineer` が記事データ（`tools/articles_auto.py`）に足して `python3 tools/build.py` で作り直す → `qa` が HTML を採点（95点以上・seo_check エラー0・site_check 重大0）。不合格なら同じく戻る
+     3. 合格したら `engineer` が記事データ（`tools/articles_auto.py`）に足し、`python3 tools/eyecatch.py <スラッグ>` でアイキャッチを作って `python3 tools/build.py` で作り直す → `qa` が HTML を採点（95点以上・seo_check エラー0・site_check 重大0）。不合格なら同じく戻る
      4. やり直しは1日最大3回。届かなければ PR に入れず、採点結果をログに残して翌日に続ける（3日続けて不合格ならテーマを保留にして人に相談）
    - 技術改善は `engineer` → `qa`。
 4. **最終チェック**：
