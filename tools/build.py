@@ -2008,8 +2008,8 @@ def contact_page():
             <input type="text" id="company" name="company" placeholder="個人の方は空欄で構いません" autocomplete="organization">
           </div>
           <div class="form__field">
-            <label for="tel">電話番号 <span class="opt">任意</span></label>
-            <input type="tel" id="tel" name="tel" placeholder="090-1234-5678" autocomplete="tel">
+            <label for="tel">電話番号 <span class="req">必須</span></label>
+            <input type="tel" id="tel" name="tel" placeholder="090-1234-5678" autocomplete="tel" inputmode="tel" pattern="[0-9０-９+\-－ー()（） ]{10,}" title="電話番号を数字で入力してください（例：090-1234-5678）" required>
           </div>
           <div class="form__field">
             <label for="email">メールアドレス <span class="req">必須</span></label>
@@ -4127,9 +4127,9 @@ def media_contact_page():
             <input type="email" id="m-email" name="email" placeholder="your@email.com" autocomplete="email" required>
           </div>
           <div class="mform__field">
-            <label for="m-tel">電話番号 <span class="mform__opt">任意</span></label>
-            <input type="tel" id="m-tel" name="tel" placeholder="090-1234-5678" autocomplete="tel">
-            <p class="mform__help">お電話でのご連絡を希望される場合のみご記入ください。</p>
+            <label for="m-tel">電話番号 <span class="mform__req">必須</span></label>
+            <input type="tel" id="m-tel" name="tel" placeholder="090-1234-5678" autocomplete="tel" inputmode="tel" pattern="[0-9０-９+\-－ー()（） ]{10,}" title="電話番号を数字で入力してください（例：090-1234-5678）" required>
+            <p class="mform__help">ご連絡は、ご希望の方法（メール・お電話）でいたします。</p>
           </div>
           <fieldset class="mform__field">
             <legend>ご相談の内容 <span class="mform__opt">複数選択可</span></legend>

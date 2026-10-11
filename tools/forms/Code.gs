@@ -75,8 +75,28 @@ var SIGNATURE = [
   '────────────────'
 ];
 
+// 自動返信メールの下部に載せる、アキヤド（メディア）の案内。リンクには GA4 で効果を測るための utm を付ける
+var PROMO = {
+  title: 'ご連絡までの間に、アキヤドもご覧ください',
+  lead: '空き家の売却・活用や、副業ではじめる民泊について、宿を運営する私たちが悩みに沿って解説しているメディアです。',
+  links: [
+    ['空き家を売りたい方へ', '/media/guide-sell.html'],
+    ['空き家を活かしたい方へ', '/media/guide-use.html'],
+    ['副業で宿をはじめたい方へ', '/media/guide-side.html'],
+    ['空き家と民泊を、ゼロから体系的に学ぶ', '/media/learn.html']
+  ],
+  top: ['アキヤドのトップへ', '/media.html']
+};
+function promoUrl(path, formType) {
+  return CONFIG.SITE_URL + path + '?utm_source=autoreply&utm_medium=email&utm_campaign=' + formType;
+}
+
 // 画面に出したくない内部用の項目
 var HIDDEN_KEYS = ['_subject', '_form', '_gotcha', 'website', '_page'];
+// お客様向けの自動返信には載せない項目（社内でだけ使う情報・お客様が入力していない項目）
+var CUSTOMER_HIDDEN_KEYS = ['流入元', 'ご相談カテゴリ', 'プライバシーポリシーへの同意', 'privacy_agree'];
+// 項目名の日本語表記
+var LABELS = { name: 'お名前', email: 'メールアドレス', tel: '電話番号', company: '会社名', category: 'ご相談の種類', message: 'お問い合わせ内容', detail: '詳細', privacy_agree: 'プライバシーポリシーへの同意' };
 
 // ===== 受け口 =====
 function doPost(e) {
@@ -168,14 +188,27 @@ function saveFiles(files, name) {
   return out;
 }
 
-function fieldLines(fields) {
-  var lines = [];
+// 入力された項目を [項目名, 値] の一覧にする（空欄は省く）
+function fieldPairs(fields, forCustomer) {
+  var out = [];
   Object.keys(fields).forEach(function (k) {
     if (HIDDEN_KEYS.indexOf(k) >= 0) return;
-    var label = { name: 'お名前', email: 'メールアドレス', tel: '電話番号', company: '会社名', category: 'ご相談の種類', message: 'お問い合わせ内容', detail: '詳細' }[k] || k;
-    lines.push('■ ' + label + '\n' + String(fields[k]));
+    if (forCustomer && CUSTOMER_HIDDEN_KEYS.indexOf(k) >= 0) return;
+    var v = String(fields[k] == null ? '' : fields[k]).trim();
+    if (!v) return;
+    out.push([LABELS[k] || k, v]);
   });
-  return lines;
+  return out;
+}
+
+function fieldLines(fields, forCustomer) {
+  return fieldPairs(fields, forCustomer).map(function (p) {
+    return p[1].indexOf('\n') >= 0 ? '■ ' + p[0] + '\n' + p[1] : '■ ' + p[0] + '：' + p[1];
+  });
+}
+
+function esc(t) {
+  return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 function record(formType, fields, saved) {
@@ -200,9 +233,42 @@ function notify(formType, fields, saved, row) {
 
 function autoReply(formType, fields) {
   var t = REPLY[formType] || REPLY.contact;
-  var summary = ['', '――― お問い合わせ内容 ―――'].concat(fieldLines(fields)).concat(['――――――――――――――']);
-  var body = t.body.concat(summary).concat(SIGNATURE).join('\n').replace(/\{name\}/g, fields.name);
-  MailApp.sendEmail({ to: fields.email, subject: t.subject, body: body, name: CONFIG.SENDER_NAME, replyTo: CONFIG.NOTIFY_TO });
+  var name = String(fields.name).trim();
+  var pairs = fieldPairs(fields, true);
+  var lines = t.body.map(function (l) { return l.replace(/\{name\}/g, name); });
+
+  // 文字だけの版（HTML を表示できないメールソフト向け）
+  var text = lines.concat(['', '【お問い合わせ内容】'])
+    .concat(pairs.map(function (p) { return p[1].indexOf('\n') >= 0 ? '・' + p[0] + '\n' + p[1] : '・' + p[0] + '：' + p[1]; }))
+    .concat(['', '――――――――――――――', '■ ' + PROMO.title, PROMO.lead])
+    .concat(PROMO.links.concat([PROMO.top]).map(function (l) { return '・' + l[0] + '\n  ' + promoUrl(l[1], formType); }))
+    .concat(SIGNATURE).join('\n');
+
+  // HTML の版（スマホでも読みやすいように、段落と表で整える）
+  var notes = lines.filter(function (l) { return l.indexOf('※') === 0; });
+  var paras = lines.filter(function (l) { return l.indexOf('※') !== 0; }).join('\n').split(/\n\s*\n/);
+  var html = '<div style="font-family:-apple-system,BlinkMacSystemFont,\'Hiragino Sans\',\'Noto Sans JP\',sans-serif;font-size:15px;line-height:1.8;color:#111;max-width:600px;">'
+    + paras.map(function (p) { return '<p style="margin:0 0 16px;">' + esc(p).replace(/\n/g, '<br>') + '</p>'; }).join('')
+    + '<p style="margin:24px 0 8px;font-weight:bold;">お問い合わせ内容</p>'
+    + '<table style="width:100%;border-collapse:collapse;font-size:14px;">'
+    + pairs.map(function (p) {
+      return '<tr><th style="text-align:left;vertical-align:top;white-space:nowrap;padding:8px 12px 8px 0;border-top:1px solid #eee;color:#555;font-weight:normal;">' + esc(p[0])
+        + '</th><td style="padding:8px 0;border-top:1px solid #eee;word-break:break-all;">' + esc(p[1]).replace(/\n/g, '<br>') + '</td></tr>';
+    }).join('')
+    + '</table>'
+    + (notes.length ? '<p style="margin:24px 0 0;font-size:13px;color:#666;">' + notes.map(esc).join('<br>') + '</p>' : '')
+    + '<div style="margin:32px 0 0;padding:20px;background:#f6f7f5;border-radius:6px;">'
+    + '<p style="margin:0 0 6px;font-weight:bold;font-size:15px;">' + esc(PROMO.title) + '</p>'
+    + '<p style="margin:0 0 12px;font-size:13px;color:#555;">' + esc(PROMO.lead) + '</p>'
+    + PROMO.links.map(function (l) {
+      return '<a href="' + promoUrl(l[1], formType) + '" style="display:block;padding:10px 0;border-top:1px solid #e3e6e1;color:#1A472A;text-decoration:none;font-size:14px;">' + esc(l[0]) + ' &rarr;</a>';
+    }).join('')
+    + '<a href="' + promoUrl(PROMO.top[1], formType) + '" style="display:inline-block;margin-top:12px;padding:10px 18px;background:#1A472A;color:#fff;text-decoration:none;border-radius:4px;font-size:14px;">' + esc(PROMO.top[0]) + '</a>'
+    + '</div>'
+    + '<p style="margin:32px 0 0;padding-top:16px;border-top:1px solid #eee;font-size:13px;color:#555;">合同会社RIVIA&amp;CO.<br><a href="' + CONFIG.SITE_URL + '" style="color:#1A472A;">' + CONFIG.SITE_URL.replace('https://', '') + '</a></p>'
+    + '</div>';
+
+  MailApp.sendEmail({ to: fields.email, subject: t.subject, body: text, htmlBody: html, name: CONFIG.SENDER_NAME, replyTo: CONFIG.NOTIFY_TO });
 }
 
 // 設置したあと、Apps Script の画面で一度だけ実行する（権限の許可と、フォルダ・スプレッドシートの作成）
