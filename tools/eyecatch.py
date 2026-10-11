@@ -21,6 +21,9 @@ import subprocess
 import sys
 import tempfile
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from eyecatch_designs import DESIGNS  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "images", "eyecatch")
 
@@ -109,6 +112,144 @@ def page_html(a, b):
             f'<body style="--fs:{font_size(a, style)}px">{body}<img id="pre" src="{photo_url}" alt="" style="display:none"></body></html>')
 
 
+
+COLORS = dict(green="#2e6b47", deep="#1f3a2b", terra="#c95a35", sand="#f4f1ea", navy="#22364a", mustard="#d7a23f", ink="#1d211f")
+DARK_TEXT = {"sand", "mustard"}
+
+# 組み方ごとの CSS。.fit の付いた要素は、枠からはみ出さないよう文字を自動で小さくする
+LAYOUT_CSS = {
+    "boxes": """
+.w{position:relative;width:1200px;height:630px;background:#222 var(--pos)/cover no-repeat}
+.w::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.45),rgba(0,0,0,.05) 60%)}
+.t{position:absolute;z-index:1;right:56px;bottom:64px;left:300px;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.t .ln{display:inline-block;padding:4px 18px 8px;background:#fff;color:#1d211f;font-family:"Zen Kaku Gothic New";font-weight:900;font-size:64px;line-height:1.15;white-space:nowrap;max-width:100%}
+.t .ln em{font-style:normal;color:#c95a35}
+.kicker{position:absolute;z-index:1;left:56px;top:48px;padding:6px 16px;background:#c95a35;color:#fff;font-size:20px}
+.logo{z-index:1;left:56px;bottom:56px;color:#fff}""",
+    "giant": """
+.w{position:relative;width:1200px;height:630px;background:#222 var(--pos)/cover no-repeat}
+.w::after{content:"";position:absolute;inset:0;background:rgba(14,22,17,.62)}
+.t{position:absolute;z-index:1;left:64px;right:64px;top:0;bottom:70px;display:flex;flex-direction:column;justify-content:center;color:#fff}
+.big{font-family:"Dela Gothic One";font-size:190px;line-height:1.05;letter-spacing:.02em;white-space:nowrap}
+.h{margin-top:18px;font-family:"Zen Kaku Gothic New";font-weight:900;font-size:50px;line-height:1.35;white-space:nowrap}
+.h em{font-style:normal;color:#f0b35a}
+.sub{margin-top:14px;font-size:24px;opacity:.85}
+.kicker{position:absolute;z-index:1;left:64px;top:46px;color:#f0b35a;font-size:22px}
+.logo{z-index:1;right:56px;bottom:46px;color:#fff}""",
+    "number": """
+.w{display:grid;grid-template-columns:560px 1fr;width:1200px;height:630px;background:var(--bg);color:var(--fg)}
+.n{position:relative;display:flex;flex-direction:column;justify-content:center;padding:0 0 40px 64px}
+.big{font-family:"Dela Gothic One";font-size:250px;line-height:.95;white-space:nowrap;letter-spacing:-.02em}
+.big small{font-family:"Dela Gothic One";font-size:64px;margin-left:10px;letter-spacing:0}
+.h{margin-top:30px;font-family:"Zen Kaku Gothic New";font-weight:900;font-size:40px;line-height:1.4;white-space:nowrap}
+.h em{font-style:normal;background:linear-gradient(transparent 60%,rgba(255,255,255,.28) 60%)}
+.p{background:#888 var(--pos)/cover no-repeat;clip-path:polygon(14% 0,100% 0,100% 100%,0 100%)}
+.kicker{position:absolute;left:64px;top:46px;font-size:22px;opacity:.9}
+.logo{left:64px;bottom:44px;color:var(--fg)}""",
+    "poster": """
+.w{position:relative;width:1200px;height:630px;background:var(--bg);color:var(--fg);overflow:hidden}
+.w::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-55deg,rgba(255,255,255,.06) 0 26px,transparent 26px 64px)}
+.p{position:absolute;right:-40px;top:70px;width:480px;height:480px;border-radius:50%;background:#888 var(--pos)/cover no-repeat;box-shadow:0 0 0 14px rgba(255,255,255,.18)}
+.t{position:absolute;left:64px;right:470px;top:0;bottom:60px;display:flex;flex-direction:column;justify-content:center}
+.big{font-family:"Dela Gothic One";font-size:150px;line-height:1.08;white-space:nowrap}
+.h{margin-top:20px;font-family:"Zen Kaku Gothic New";font-weight:900;font-size:46px;line-height:1.35;white-space:nowrap}
+.h em{font-style:normal;display:inline-block;padding:0 12px 4px;background:var(--fg);color:var(--bg)}
+.kicker{position:absolute;left:64px;top:46px;font-size:22px}
+.logo{left:64px;bottom:44px;color:var(--fg)}""",
+    "mincho": """
+.w{position:relative;width:1200px;height:630px;background:#222 var(--pos)/cover no-repeat}
+.w::after{content:"";position:absolute;inset:0;background:linear-gradient(270deg,rgba(10,14,12,.8) 0%,rgba(10,14,12,.5) 45%,rgba(10,14,12,0) 78%),linear-gradient(0deg,rgba(10,14,12,.55),rgba(10,14,12,0) 30%)}
+.t{position:absolute;z-index:1;right:72px;left:420px;top:0;bottom:40px;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;text-align:right;color:#fff}
+.v{font-family:"Shippori Mincho B1";font-weight:800;font-size:84px;line-height:1.3;letter-spacing:.08em;white-space:nowrap;max-width:100%}
+.sub{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.6);font-family:"Shippori Mincho B1";font-weight:800;font-size:28px;letter-spacing:.14em;white-space:nowrap}
+.kicker{position:absolute;z-index:1;left:56px;top:46px;color:#fff;font-size:20px;opacity:.9}
+.logo{z-index:1;left:56px;bottom:46px;color:#fff}""",
+    "frame": """
+.w{position:relative;width:1200px;height:630px;background:var(--bg);padding:34px}
+.p{position:absolute;inset:34px 34px 190px 34px;border-radius:6px;background:#888 var(--pos)/cover no-repeat}
+.t{position:absolute;left:64px;right:64px;bottom:44px;height:150px;display:flex;flex-direction:column;justify-content:center;color:var(--fg)}
+.h{font-family:"Zen Kaku Gothic New";font-weight:900;font-size:56px;line-height:1.25;white-space:nowrap}
+.h em{font-style:normal;text-decoration:underline;text-decoration-thickness:6px;text-underline-offset:10px}
+.kicker{position:absolute;left:58px;top:58px;z-index:1;padding:6px 16px;background:var(--bg);color:var(--fg);font-size:20px}
+.logo{right:64px;bottom:62px;color:var(--fg)}""",
+    "quote": """
+.w{position:relative;width:1200px;height:630px;background:#f4f1ea;color:#1d211f;display:grid;grid-template-columns:1fr 360px}
+.t{position:relative;display:flex;flex-direction:column;justify-content:center;padding:0 40px 50px 110px}
+.t::before{content:"“";position:absolute;left:40px;top:40px;font-family:"Shippori Mincho B1";font-size:260px;line-height:1;color:#c95a35;opacity:.9}
+.h{font-family:"Zen Kaku Gothic New";font-weight:900;font-size:76px;line-height:1.3;white-space:nowrap}
+.h em{font-style:normal;color:#c95a35}
+.p{margin:40px 40px 40px 0;border-radius:200px 200px 16px 16px;background:#888 var(--pos)/cover no-repeat}
+.kicker{position:absolute;left:110px;top:56px;color:#2e6b47;font-size:22px}
+.logo{left:110px;bottom:46px;color:#2e6b47}""",
+    "duo": """
+.w{position:relative;width:1200px;height:630px;display:grid;grid-template-columns:1fr 1fr;color:#fff}
+.half{position:relative;display:flex;align-items:center;justify-content:center;background:#555 var(--pos)/cover no-repeat}
+.half::after{content:"";position:absolute;inset:0}
+.half.l::after{background:rgba(31,58,43,.78)}.half.r::after{background:rgba(201,90,53,.80)}
+.half b{position:relative;z-index:1;display:block;max-width:calc(100% - 110px);text-align:center;overflow:hidden;font-family:"Dela Gothic One";font-weight:400;font-size:112px;white-space:nowrap}
+.half.l b{margin-right:40px}.half.r b{margin-left:40px}
+.vs{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);z-index:2;width:120px;height:120px;border-radius:50%;background:#fff;color:#1d211f;display:grid;place-items:center;font-family:"Dela Gothic One";font-size:50px}
+.t{position:absolute;z-index:2;left:0;right:0;bottom:92px;text-align:center}
+.h{display:inline-block;padding:8px 28px 12px;background:#fff;color:#1d211f;font-family:"Zen Kaku Gothic New";font-weight:900;font-size:46px;white-space:nowrap}
+.h em{font-style:normal;color:#c95a35}
+.kicker{position:absolute;z-index:2;left:48px;top:40px;font-size:20px}
+.logo{z-index:2;left:50%;transform:translateX(-50%);bottom:28px;color:#fff}""",
+    "marker": PHOTO_CSS.replace("--fs", "--fs0") + "\n.h{font-size:66px;white-space:nowrap;line-height:1.38;font-weight:700;margin-top:26px}\n.h em{font-style:normal;background:linear-gradient(transparent 64%,rgba(208,97,59,.9) 64%);padding:0 4px}\n.sub{margin-top:18px;font-size:26px;opacity:.9}",
+    "type": TYPE_CSS.replace("--fs", "--fs0") + "\n.h{font-size:64px;white-space:nowrap;line-height:1.42;font-weight:700;margin-top:24px}\n.h em{font-style:normal;color:#2e6b47}",
+}
+
+
+def mark_up(text):
+    """[ ] で囲んだ部分を強調にする"""
+    return html.escape(text).replace("[", "<em>").replace("]", "</em>")
+
+
+def design_html(a, b, d):
+    layout = d["layout"]
+    name = d.get("photo") or b.ARTICLE_PHOTOS[a["slug"]][0]
+    photo_url = "file://" + os.path.join(ROOT, "images", "photos", f"{name}.jpg")
+    color = d.get("color", "deep")
+    bg, fg = COLORS[color], ("#1d211f" if color in DARK_TEXT else "#fff")
+    kicker = html.escape(b.MEDIA_CAT_NAMES[a["category"]])
+    logo_color = "" if layout not in ("quote",) else ""
+    logo = f'<div class="logo">{MARK}アキヤド<small>空き家と民泊のメディア</small></div>{logo_color}'
+    lines = d.get("lines", [])
+    h = "<br>".join(mark_up(l) for l in lines)
+    sub = f'<p class="sub fit">{html.escape(d["sub"])}</p>' if d.get("sub") else ""
+    big = mark_up(d.get("big", ""))
+    ph = f"background-image:url('{photo_url}')"
+    if layout == "boxes":
+        inner = f'<div class="w" style="{ph}"><span class="kicker">{kicker}</span><div class="t">' + "".join(f'<span class="ln fit">{mark_up(l)}</span>' for l in lines) + f"</div>{logo}</div>"
+    elif layout == "giant":
+        inner = f'<div class="w" style="{ph}"><span class="kicker">{kicker}</span><div class="t"><div class="big fit">{big}</div><div class="h fit">{h}</div>{sub}</div>{logo}</div>'
+    elif layout == "number":
+        unit = f'<small>{html.escape(d.get("unit", ""))}</small>' if d.get("unit") else ""
+        inner = f'<div class="w"><div class="n"><span class="kicker">{kicker}</span><div class="big fit">{big}{unit}</div><div class="h fit">{h}</div>{logo}</div><div class="p" style="{ph}"></div></div>'
+    elif layout == "poster":
+        inner = f'<div class="w"><div class="p" style="{ph}"></div><span class="kicker">{kicker}</span><div class="t"><div class="big fit">{big}</div><div class="h fit">{h}</div></div>{logo}</div>'
+    elif layout == "mincho":
+        vs = "".join(f'<span class="v fit">{html.escape(l)}</span>' for l in lines)
+        sub_v = f'<span class="sub">{html.escape(d["sub"])}</span>' if d.get("sub") else ""
+        inner = f'<div class="w" style="{ph}"><span class="kicker">{kicker}</span><div class="t">{vs}{sub_v}</div>{logo}</div>'
+    elif layout == "frame":
+        inner = f'<div class="w"><div class="p" style="{ph}"></div><span class="kicker">{kicker}</span><div class="t"><div class="h fit">{h}</div></div>{logo}</div>'
+    elif layout == "quote":
+        inner = f'<div class="w"><div class="t"><span class="kicker">{kicker}</span><div class="h fit">{h}</div>{logo}</div><div class="p" style="{ph}"></div></div>'
+    elif layout == "duo":
+        inner = (f'<div class="w"><div class="half l" style="{ph}"><b class="fit">{html.escape(d["a"])}</b></div>'
+                 f'<div class="half r" style="{ph}"><b class="fit">{html.escape(d["b"])}</b></div><div class="vs">VS</div>'
+                 f'<span class="kicker">{kicker}</span><div class="t"><div class="h">{h}</div></div>{logo}</div>')
+    elif layout == "marker":
+        inner = f'<div class="w" style="{ph}"><div class="t"><span class="kicker">{kicker}</span><div class="h fit">{h}</div>{sub}</div>{logo}</div>'
+    else:  # type
+        inner = f'<div class="w"><div class="t"><span class="kicker">{kicker}</span><div class="h fit">{h}</div>{logo}</div><div class="p" style="{ph}"></div></div>'
+    pos = d.get("pos", "center")
+    vlen = max([len(l) for l in lines] or [1])
+    style = f"--bg:{bg};--fg:{fg};--pos:{pos};--vfs:{min(76, int(500 / (vlen * 1.12)))}px"
+    return (f'<!doctype html><html lang="ja"><head><meta charset="utf-8"><style>{BASE_CSS}{LAYOUT_CSS[layout]}</style></head>'
+            f'<body style="{style}">{inner}<img id="pre" src="{photo_url}" alt="" style="display:none"></body></html>')
+
+
 RENDER_JS = """
 const { chromium } = require('playwright');
 (async () => {
@@ -118,6 +259,16 @@ const { chromium } = require('playwright');
   for (const [src, out] of jobs) {
     await p.goto('file://' + src);
     await p.evaluate(async () => { await document.fonts.ready; await document.getElementById('pre').decode().catch(() => {}); });
+    await p.evaluate(() => {
+      // 枠からはみ出す行は、収まるまで文字を小さくする
+      document.querySelectorAll('.fit').forEach(el => {
+        let fs = parseFloat(getComputedStyle(el).fontSize);
+        const box = el.parentElement;
+        const limit = () => el.scrollWidth > el.clientWidth + 1 || el.getBoundingClientRect().right > box.getBoundingClientRect().right + 1 || el.getBoundingClientRect().right > 1200 - 40;
+        let guard = 0;
+        while (limit() && fs > 16 && guard++ < 200) { fs -= 2; el.style.fontSize = fs + 'px'; }
+      });
+    });
     await p.waitForTimeout(150);
     await p.screenshot({ path: out, type: 'jpeg', quality: 86 });
   }
@@ -135,7 +286,8 @@ def main(slugs):
         for a in arts:
             src = os.path.join(tmp, a["slug"] + ".html")
             with open(src, "w", encoding="utf-8") as f:
-                f.write(page_html(a, b))
+                d = DESIGNS.get(a["slug"])
+                f.write(design_html(a, b, d) if d else page_html(a, b))
             jobs.append([src, os.path.join(OUT_DIR, a["slug"] + ".jpg")])
         js = os.path.join(tmp, "render.js")
         with open(js, "w") as f:
@@ -150,7 +302,8 @@ def main(slugs):
         env["NODE_PATH"] = os.pathsep.join(p for p in node_paths + [env.get("NODE_PATH", "")] if p)
         subprocess.run(["node", js, json.dumps(jobs)], check=True, env=env)
     for a in arts:
-        print(f"{style_of(a):5}  images/eyecatch/{a['slug']}.jpg")
+        layout = DESIGNS[a["slug"]]["layout"] if a["slug"] in DESIGNS else "標準:" + style_of(a)
+        print(f"{layout:10}  images/eyecatch/{a['slug']}.jpg")
 
 
 if __name__ == "__main__":
