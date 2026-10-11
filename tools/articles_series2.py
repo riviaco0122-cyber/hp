@@ -1,7 +1,7 @@
 # 体系的に学ぶシリーズ その2：なぜ民泊なのか（2本）＋民泊の課題と、乗り越え方（4本）
 from figures import compare, flow, points
 
-D = "2026-10-12"
+D = "2026-10-11"
 
 ARTICLES_SERIES2 = [
     dict(

@@ -1,7 +1,7 @@
 # 体系的に学ぶシリーズ その3：アキヤドが支援できること（3本）
 from figures import compare, flow, points
 
-D = "2026-10-12"
+D = "2026-10-11"
 
 ARTICLES_SERIES3 = [
     dict(
