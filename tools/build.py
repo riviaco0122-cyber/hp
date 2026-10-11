@@ -4054,7 +4054,9 @@ def media_learn_page():
     for c in MEDIA_COURSES:
         chs = []
         for i, (t, d, slugs) in enumerate(c["chapters"], 1):
-            links = "".join(f'<li data-date="{ARTICLE_BY_SLUG[sl]["date"]}"><a href="media/{sl}.html">{e(ARTICLE_BY_SLUG[sl]["title"])}</a></li>' for sl in slugs)
+            # 記事への行は、短いキャッチ＋「読む →」で、押せることが一目で分かるようにする
+            links = "".join(f'<li data-date="{ARTICLE_BY_SLUG[sl]["date"]}"><a href="media/{sl}.html" class="lchap__link" title="{e(ARTICLE_BY_SLUG[sl]["title"])}">'
+                            f'<span class="lchap__ltext">{e(ARTICLE_BY_SLUG[sl]["short"].replace(chr(10), ""))}</span><span class="lchap__go">読む {ARROW}</span></a></li>' for sl in slugs)
             chs.append(f"""            <li class="lchap reveal">
               <p class="lchap__no">第{i}章</p>
               <div class="lchap__body">

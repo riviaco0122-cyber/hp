@@ -217,6 +217,16 @@
   document.querySelectorAll('.lchap').forEach(function (ch) {
     if (!ch.querySelector('.lchap__list li:not([hidden])')) ch.hidden = true;
   });
+  // 章を隠したあとは、残った章を第1章から数え直す（番号が飛ばないように）
+  document.querySelectorAll('.lchaps').forEach(function (list) {
+    var n = 0;
+    list.querySelectorAll('.lchap').forEach(function (ch) {
+      if (ch.hidden) return;
+      n += 1;
+      var no = ch.querySelector('.lchap__no');
+      if (no) no.textContent = '第' + n + '章';
+    });
+  });
   document.querySelectorAll('.mq li[data-date]').forEach(function (li) {
     if (li.getAttribute('data-date') > today) li.hidden = true;
   });
