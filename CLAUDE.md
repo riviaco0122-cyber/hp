@@ -38,7 +38,7 @@
 - 一次情報の置き場と扱い方: `docs/sources/README.md`（人が `docs/sources/inbox/` にメモを置く）
 - カレンダー／キーワード／ログ: `docs/seo/calendar.md`、`docs/seo/keywords.md`、`docs/seo/log.md`
 - ダッシュボード（自動生成）: `docs/dashboard.md`
-- GA4/Search Console/YouTube の設定手順: `docs/seo/analytics-setup.md`
+- GA4/Search Console/YouTube/e-Stat の設定手順: `docs/seo/analytics-setup.md`
 
 ## サイトの構造（エンジニア部向けの要点）
 
@@ -70,6 +70,7 @@
 | `python3 tools/analytics.py` | GA4/Search Console のレポート（要 `pip install -r tools/requirements.txt` と環境変数） |
 | `python3 tools/pdca.py new / baseline <ID> / check / report` | 改善施策（PDCA）の登録・ベースライン取得・効果の判定・集計（台帳は `docs/seo/experiments.md`） |
 | `python3 tools/youtube_research.py "キーワード"` | YouTube の動画情報・概要欄（要 `YOUTUBE_API_KEY`。コメント本文は保存しない） |
+| `python3 tools/estat.py lodging 静岡県` ／ `akiya 静岡県 下田市` ／ `search "キーワード"` | e-Stat（政府統計）から宿泊者数・外国人の割合（宿泊旅行統計調査）、空き家数・空き家率（住宅・土地統計調査）などを出典つきで取る（要 `ESTAT_APP_ID`。結果は `docs/sources/estat/`）。**記事の統計の数字はこれで取り、出典を付ける** |
 | `python3 tools/build_dashboard.py` | `docs/dashboard.md` の再生成 |
 | `bash tools/check_secrets.sh` | コミット前の鍵の混入チェック |
 | `python3 tools/eyecatch.py [slug ...]` | 記事のアイキャッチ（記事トップ・OGP、1200×630）を `images/eyecatch/<slug>.jpg` に作る。デザインは記事ごとに `tools/eyecatch_designs.py` に書く（なければ標準デザイン）。作ったあと `python3 tools/build.py` で反映 |
