@@ -13,7 +13,7 @@ description: 指定したテーマ（またはキーワード表の次の候補�
 3. `marketer` → 構成案 `docs/seo/briefs/<スラッグ>.md`。公開予定日は、予約済みの最後の記事の 2 日後（`docs/dashboard.md` 参照）。
 4. `writer` → 原稿 `docs/seo/drafts/<スラッグ>.md`（自己採点で `tools/article_score.py` の機械採点40点にしてから提出）
 5. `qa` → 100点満点で採点（playbook 5章）。**95点未満・ゲート違反なら、qa が指定した戻る工程（2 リサーチ／3 構成案／4 執筆）からやり直し、最初から採点し直す**（最大3回）。
-6. `engineer` → HTML 化（同じカテゴリの既存記事を雛形にする）と、`tools/add_article.py` による一覧・sitemap への組み込み、site-spec の更新、seo_check のエラー 0 を確認
-7. `qa` → HTML を採点（95点以上・ゲート違反なし）。不合格なら同じく戻る
+6. `engineer` → 記事データ（`tools/articles_auto.py`）に足して `python3 tools/build.py` で作り直す（一覧・sitemap・llms.txt・仕様書まで自動で更新）。seo_check エラー0・`node tools/check/site_check.js --no-visual` 重大0、seo_check のエラー 0 を確認
+7. `qa` → HTML を採点（95点以上・ゲート違反なし）。PR の前に `node tools/check/site_check.js`（本番との見た目の比較つき）を実行する。不合格なら同じく戻る
 8. 3回で95点に届かなければ PR に入れず、採点結果をログに残して終える
 9. `pm` → 記録と PR 説明（採点表の内訳を載せる） → コミット・push・本番ブランチ（GitHub のデフォルトブランチ）向け PR 作成（マージはしない）

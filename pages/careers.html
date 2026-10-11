@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
-  <link rel="stylesheet" href="../css/style.css?v=4a1d4ef0">
+  <link rel="stylesheet" href="../css/style.css?v=2088d6d5">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -93,12 +93,8 @@
           <span class="eyebrow">Entry</span>
           <h2 class="section-title">エントリーフォーム</h2>
         </div>
-        <!--
-          ▼ 送信先の設定（要対応）
-          Formspree で採用用のフォームを作成し、「YOUR_CAREERS_FORM_ID」を発行された ID に置き換えてください。
-          ※ Formspree でのファイル添付は有料プランのみ対応です。
-        -->
-        <form class="form reveal" action="https://formspree.io/f/YOUR_CAREERS_FORM_ID" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=careers">
+        <form class="form reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=careers">
+          <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】採用エントリー">
           <div class="form__field">
             <label for="c-name">お名前 <span class="req">必須</span></label>
@@ -161,6 +157,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=3f6a7b47"></script>
+  <script src="../js/main.js?v=40a1160a"></script>
 </body>
 </html>

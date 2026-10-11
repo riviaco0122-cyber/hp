@@ -35,14 +35,14 @@
 - 他者の一次情報は、**チャンネル・アカウントとして公に発信している運営者の発言だけ**を、出典（発信者名・URL）を明記して要約で紹介する。事実の部分は公的資料で裏を取る。視聴者コメント・一般の人の投稿は「読者の悩みの発見」にだけ使い、記事に引用・要約しない。集め方と扱い方は `docs/sources/README.md`。
 - 各 h2 の節は、**その節だけ読んでも意味が通る**ように書く（AI は段落単位で抜き出して引用するため）。「上記」「前述の」を使わず、主語と固有名詞を繰り返す。
 - 著者・監修者・運営会社の情報（E-E-A-T）を明示する。会社名・サービス名の表記は `docs/brand/glossary.md` の正式表記で統一する（AI が同じ会社として認識しやすくなる）。
-- `llms.txt` でサイトの構成と主要記事を AI に案内する（毎日 `tools/build_llms.py` で更新）。
+- `llms.txt` でサイトの構成と主要記事を AI に案内する（毎日 `tools/build.py` で作り直す）。
 - 構造化データの Organization は、全ページで同じ名称・所在地・URL を使う（追加・変更はエンジニア部が行い、人の確認）。
 - AI クローラ（GPTBot・Google-Extended など）に記事を読ませるかどうかは `seo/robots.txt` で人が決める。いまはすべて許可。変更は人の確認。
 - 記事の更新日（dateModified）は、内容を実際に直したときだけ変える。誤字の修正だけで更新日を新しくしない。
 
 ## 4. テクニカルSEO（エンジニア部）
 
-`python3 tools/seo_check.py` のエラーは必ず 0 にする。主なチェック項目:
+`python3 tools/seo_check.py` のエラーと、`node tools/check/site_check.js`（サイト全体の点検）の重大は必ず 0 にする。HTML は直接書き換えず、`tools/build.py` で作り直す。主なチェック項目:
 
 - title／meta description の有無・長さ・重複、canonical、OGP
 - h1 が1つ、画像の alt、内部リンク切れ
@@ -65,7 +65,7 @@
 | 重大な NG 表現（誇大・保証・断定）がある | `tools/article_score.py`（終了コード 2） |
 | 7章の法務・炎上リスクに1件でも当てはまる | 品質管理部が7章のチェックリストで確認 |
 | `docs/brand/experience.md` にない RIVIA の体験・実績を書いている | 品質管理部が照合 |
-| `tools/seo_check.py` のエラーが1件以上（HTML 化の後） | `tools/seo_check.py` |
+| `tools/seo_check.py` のエラー、または `tools/check/site_check.js` の重大が1件以上（作り直しの後） | 両ツール |
 | 既存記事と主キーワード、または読者の疑問の過半が重なる（共食い・量産） | 品質管理部が `keywords.md` と既存記事の title・h2 を照合 |
 
 ### 5-2. 機械採点（40点）— `python3 tools/article_score.py <原稿 or HTML>`
@@ -164,4 +164,4 @@
 - 法律・税金・補助金・統計を扱う記事は、公開から6か月ごと（または制度改正の報道があったとき）に見直す。
 - 見直しのときも 5章の採点を行い、95点未満なら改善する。
 - 検索での表示が3か月以上ほぼない記事は、統合・書き直し・現状維持を企画・マーケ部が判断する（削除と URL の変更は人の確認が必要）。
-- **統合するとき**: 記事ファイルは削除しない。旧URLは残すか、`vercel.json` の redirects で統合先へ 301 を設定する（vercel.json の変更は人の確認）。`tools/add_article.py --remove <slug>` でカード・索引・sitemap から外し、全記事の本文リンクを統合先に張り替える。
+- **統合するとき**: 記事ファイルは削除しない。旧URLは残すか、`vercel.json` の redirects で統合先へ 301 を設定する（vercel.json の変更は人の確認）。記事データ（`tools/articles_*.py`）から外して `tools/build.py` で作り直し、全記事の本文リンクを統合先に張り替える。

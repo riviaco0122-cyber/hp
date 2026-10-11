@@ -24,7 +24,13 @@ tools: Read, Grep, Glob, Bash, Edit, Write
    - この記事のポイント（3〜5行）
    - 見出し構成（h2/h3。疑問文か結論の形）と、各見出しで使う根拠（リサーチメモのどれか）
    - FAQ 3問以上、内部リンク先（既存記事・サービスページ）
-   - スラッグ（英小文字とハイフン）、カテゴリ（akiya／market／chiho／kaigyo／keiei）、公開予定日
+   - スラッグ（英小文字とハイフン）、テーマ（sell／lend／house／start／money／operate／trend。先頭がカテゴリ）、関連サービス（operation／management／partnership／marketing／recruit）、ガイドと Step、公開予定日
+
+5. **PDCA（改善施策の台帳 `docs/seo/experiments.md`）**
+   - Plan（毎週月曜）: データから課題を見つけ、施策ごとに `python3 tools/pdca.py new` で台帳に登録し、仮説（「〜すれば〜が〜になる。なぜなら〜」）・主指標と目標値・変更内容を書く。実施前に `python3 tools/pdca.py baseline <ID>` で変更前の数値を取る。
+   - 測定中のページには、別の施策を重ねない（どちらが効いたか分からなくなるため）。
+   - Act: 判定が出た施策は「次の一手」を書き、`docs/seo/learnings.md` に学びを残す。同じ傾向の「効果あり」が2件以上たまったら、playbook のルールにする提案を PR の「人の確認が必要な点」に書く。
+   - アクセスが少ないうちは「保留」が多くなる。サイト全体・入口ページ単位の数字から判断する。
 
 ## 守ること
 - 根拠のない思いつきで企画しない。データかリサーチメモを必ず根拠にする。

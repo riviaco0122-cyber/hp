@@ -470,14 +470,43 @@
       }
       err.textContent = '';
       if (btn) { btn.disabled = true; btn.classList.add('is-sending'); }
-      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-        .then(function (res) {
-          if (!res.ok) throw new Error('send failed');
-          window.location.href = form.getAttribute('data-thanks');
+      var fail = function (msg) {
+        err.textContent = msg || (EN ? 'Your message could not be sent. Please try again later or check your entries.' : '送信できませんでした。時間をおいて再度お試しいただくか、入力内容をご確認ください。');
+        if (btn) { btn.disabled = false; btn.classList.remove('is-sending'); }
+      };
+      // 送信先（Google Apps Script）が受け取れる形にする：項目は文字、添付ファイルは base64
+      var thanks = form.getAttribute('data-thanks') || '';
+      var fields = { _form: /form=careers/.test(thanks) ? 'careers' : (/\/media\//.test(location.pathname) ? 'akiyado' : 'contact'), _page: location.pathname };
+      var fileList = [];
+      new FormData(form).forEach(function (v, k) {
+        if (typeof v === 'string') { fields[k] = fields[k] ? fields[k] + '、' + v : v; }
+        else if (v && v.size) { fileList.push(v); }
+      });
+      var total = fileList.reduce(function (n, f) { return n + f.size; }, 0);
+      if (total > 10 * 1024 * 1024) { fail('添付ファイルの合計が10MBを超えています。ファイルを減らすか、小さくしてから送信してください。'); return; }
+      if (fileList.length > 5) { fail('添付ファイルは5つまでです。'); return; }
+      Promise.all(fileList.map(function (f) {
+        return new Promise(function (resolve, reject) {
+          var r = new FileReader();
+          r.onload = function () { resolve({ name: f.name, type: f.type, data: String(r.result).split(',')[1] || '' }); };
+          r.onerror = reject;
+          r.readAsDataURL(f);
+        });
+      }))
+        .then(function (files) {
+          // text/plain で送る（ブラウザの事前確認が不要な形式。Apps Script 側で JSON として読む）
+          return fetch(form.action, { method: 'POST', body: JSON.stringify({ fields: fields, files: files }) });
         })
-        .catch(function () {
-          err.textContent = EN ? 'Your message could not be sent. Please try again later or check your entries.' : '送信できませんでした。時間をおいて再度お試しいただくか、入力内容をご確認ください。';
-          if (btn) { btn.disabled = false; btn.classList.remove('is-sending'); }
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (!data || !data.ok) {
+            if (data && data.error === 'rate_limit') throw new Error('rate');
+            throw new Error('send failed');
+          }
+          window.location.href = thanks;
+        })
+        .catch(function (e) {
+          fail(e && e.message === 'rate' ? '短い時間に続けて送信されたため、受け付けを一時停止しています。10分ほどおいてから、もう一度お試しください。' : null);
         });
     });
   });

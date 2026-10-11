@@ -1262,7 +1262,9 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 /* 送信完了ページ */
 .thanks { text-align: center; }
 .thanks__lead { font-family: var(--font-serif); font-size: 18px; line-height: 2.1; letter-spacing: 0.06em; }
-.thanks__note { margin-top: 24px; font-size: 13px; color: var(--c-muted); text-align: left; }
+.thanks__note { margin-top: 24px; font-size: 13px; color: var(--c-muted); text-align: center; }
+.mthanks__note { text-align: center; }
+.hp-field { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .thanks__actions { margin-top: 48px; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
 @media (max-width: 899px) { .thanks__lead { font-size: 16px; } .thanks__actions .btn { flex: 1 1 100%; } }
 .form__error { margin-top: 16px; color: #b3261e; font-size: 13px; text-align: center; }
@@ -2975,3 +2977,12 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 /* 記事トップのアイキャッチ（文字入りの画像なので切り取らず、全体を見せる） */
 .article__photo--eyecatch, .article__photo.article__photo--eyecatch { aspect-ratio: 1200 / 630; }
 .article__photo--eyecatch img { object-fit: contain; filter: none; }
+/* メールマガジンの受け取り（任意・オプトイン）。プライバシーポリシーの同意のすぐ下に置く */
+.form__consent { display: grid; justify-items: center; gap: 16px; }
+.form__optin { display: grid; justify-items: center; gap: 4px; }
+.form__optin .check { font-size: 13px; text-align: left; }
+.form__optin-note, .mform__optin-note { font-size: 12px; color: var(--c-muted); }
+.mform__consent { display: grid; gap: 12px; }
+.mform__optin { display: grid; justify-items: center; gap: 2px; }
+.mform__optin .mform__agree { font-size: 13px; }
+@media (max-width: 899px) { .mform__optin { justify-items: start; } .mform__optin-note { padding-left: 28px; } }

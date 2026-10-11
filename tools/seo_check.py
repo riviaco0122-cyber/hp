@@ -7,6 +7,10 @@
 
 終了コード: エラーが 1 件でもあれば 1、警告だけなら 0。
 外部ライブラリは使わない（標準ライブラリのみ）。
+
+pages/・seo/ は tools/build.py が作る。エラーが出たら HTML ではなく build.py・記事データ（tools/articles_*.py）を直して作り直す。
+vercel.json の redirects（英語版 /en/ → /、旧カテゴリ → 新テーマ）をたどってリンク先を判定する。
+表示の確認（JS エラー・画像・はみ出し・見た目の変化）は node tools/check/site_check.js で行う。
 """
 import datetime
 import json
@@ -36,6 +40,38 @@ DESC_MIN_EN, DESC_MAX_EN = 50, 160
 ARTICLE_TYPES = ("Article", "BlogPosting", "NewsArticle")
 # 公開フォルダ直下に置かれ、pages/ の外にある HTML（Vercel が直接配信する）
 ROOT_HTML = ("404.html",)
+
+
+def load_redirects():
+    """vercel.json の redirects（source → destination）。:file のような名前つきの部分は正規表現にする"""
+    f = ROOT / "vercel.json"
+    if not f.is_file():
+        return []
+    try:
+        conf = json.loads(f.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return []
+    out = []
+    for r in conf.get("redirects", []):
+        src, dst = r.get("source", ""), r.get("destination", "")
+        names = re.findall(r":(\w+)", src)
+        pat = "^" + re.sub(r":(\w+)", lambda m: f"(?P<{m.group(1)}>[^/]+)", re.escape(src).replace("\\:", ":")) + "$"
+        out.append((re.compile(pat), dst, names))
+    return out
+
+
+REDIRECTS = load_redirects()
+
+
+def redirect_target(path: str):
+    """公開URLのパスが vercel.json の redirects で転送されるなら、転送先のパス。されなければ None"""
+    for pat, dst, names in REDIRECTS:
+        m = pat.match(path)
+        if m:
+            for n in names:
+                dst = dst.replace(":" + n, m.group(n))
+            return dst
+    return None
 
 
 def public_path(file: Path) -> str:
@@ -96,8 +132,9 @@ def resolve_file(path: str):
     path = path.split("#")[0].split("?")[0]
     if path in ("", "/"):
         return PAGES / "index.html"
-    if path in ("/en", "/en/"):  # vercel.json で /en・/en/ → pages/en/index.html
-        return PAGES / "en" / "index.html"
+    dst = redirect_target(path)  # vercel.json の redirects（例: 英語版 /en/ → /、旧カテゴリ → 新テーマ）
+    if dst is not None and dst != path:
+        return resolve_file(dst)
     if path in ("/robots.txt", "/sitemap.xml", "/llms.txt"):  # vercel.json で /seo/ に対応づけ
         cand = ROOT / "seo" / path.lstrip("/")
         return cand if cand.is_file() else None
@@ -125,6 +162,8 @@ class PageParser(HTMLParser):
         self.article_publish = None
         self.times = []          # (label_context, datetime)
         self._last_text = ""
+        self.faq_q = []          # 画面のよくある質問（<summary class="faq__q">）の文
+        self._faq_depth = 0
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -157,6 +196,11 @@ class PageParser(HTMLParser):
             self.article_publish = a["data-publish"]
         elif tag == "time" and a.get("datetime"):
             self.times.append((self._last_text.strip(), a["datetime"]))
+        if tag == "summary" and "faq__q" in (a.get("class") or "").split():
+            self._faq_depth = 1
+            self.faq_q.append("")
+        elif self._faq_depth and tag == "span" and "faq__mark" in (a.get("class") or "").split():
+            self._faq_depth = 2  # 「Q」の印は質問の文に含めない
 
     def handle_endtag(self, tag):
         if tag == "script" and self._in == "ld":
@@ -164,6 +208,10 @@ class PageParser(HTMLParser):
             self._in = None
         elif tag in ("title", "h1"):
             self._in = None
+        if tag == "summary":
+            self._faq_depth = 0
+        elif tag == "span" and self._faq_depth == 2:
+            self._faq_depth = 1
 
     def handle_data(self, data):
         if self._in == "title":
@@ -172,6 +220,8 @@ class PageParser(HTMLParser):
             self.h1_text.append(data)
         elif self._in == "ld":
             self._buf.append(data)
+        if self._faq_depth == 1:
+            self.faq_q[-1] += data
         if data.strip():
             self._last_text = data
 
@@ -241,6 +291,8 @@ def check():
         noindex = "noindex" in robots
         english = p.lang.lower().startswith("en")
         expected_canonical = SITE + canonical_path(pp)
+        if redirect_target(pp) is not None:
+            add("error", pp, f"vercel.json の redirects で {redirect_target(pp)} へ転送されるため、このページは表示されない（不要なら消す。英語版は公開をやめた）")
         if noindex:
             noindex_urls.add(expected_canonical)
         else:
@@ -309,6 +361,15 @@ def check():
                 if u.netloc != urlparse(SITE).netloc or resolve_file(u.path) is None:
                     add("error", pp, f"hreflang={lang} の URL が存在しない: {href}")
 
+        # よくある質問: 画面の質問と構造化データ FAQPage の質問を一致させる
+        faq_ld = ld_find(ld_objs, ("FAQPage",))
+        if faq_ld is not None or p.faq_q:
+            norm = lambda x: re.sub(r"\s+", "", x or "")
+            shown_q = [norm(q) for q in p.faq_q]
+            ld_q = [norm(q.get("name")) for q in (faq_ld or {}).get("mainEntity", []) if isinstance(q, dict)]
+            if faq_ld is not None and shown_q != ld_q:
+                add("error", pp, f"画面のよくある質問（{len(shown_q)}問）と構造化データ FAQPage（{len(ld_q)}問）の質問が一致しない")
+
         # 見出し
         if p.h1 != 1:
             add("error", pp, f"h1 が {p.h1} 個（1個にする）")
@@ -330,6 +391,8 @@ def check():
                 relative_links += 1
             if resolve_file(u.path) is None:
                 add("error", pp, f"リンク切れ: {href}")
+            elif redirect_target(u.path) is not None:
+                add("warn", pp, f"転送（リダイレクト）されるURLへのリンク: {href} → {redirect_target(u.path)}（転送先に直す）")
         if pp == "/404.html" and relative_links:
             # 404 ページはどの階層の URL でも表示されるので、相対リンクだと階層によって切れる
             add("warn", pp, f"相対パスのリンク・画像が {relative_links} 件（404 ページは / から始まるパスにする）")
@@ -362,19 +425,46 @@ def check():
     listed = media_list_slugs()
     if listed is not None:
         for slug in sorted(art_slugs - set(listed)):
-            add("error", "/media.html", f"記事 {slug} が「すべての記事」(#media-list) にない（tools/add_article.py で組み込む）")
+            add("error", "/media.html", f"記事 {slug} が「すべての記事」(#media-list) にない（python3 tools/build.py で作り直す）")
         for slug in sorted(set(listed) - art_slugs):
             add("error", "/media.html", f"「すべての記事」に、記事ファイルがない {slug} のカードがある")
     indexed = search_index_slugs()
     if indexed is not None:
         for slug in sorted(art_slugs - set(indexed)):
-            add("warn", "js/media-index.js", f"記事 {slug} が検索の索引にない（tools/add_article.py で組み込む）")
+            add("warn", "js/media-index.js", f"記事 {slug} が検索の索引にない（python3 tools/build.py で作り直す）")
         for slug in sorted(set(indexed) - art_slugs):
             add("error", "js/media-index.js", f"検索の索引に、記事ファイルがない {slug} がある")
 
-    # AIO 用ファイル
-    if resolve_file("/llms.txt") is None:
+    # 記事の掲載先（ガイド・体系的に学ぶ）。tools/build.py の記事データ guides= と MEDIA_COURSES から作られる
+    guide_text = "".join(f.read_text(encoding="utf-8") for f in sorted(PAGES.glob("media/guide-*.html")))
+    learn = PAGES / "media" / "learn.html"
+    learn_text = learn.read_text(encoding="utf-8") if learn.is_file() else None
+    for slug in sorted(art_slugs):
+        if guide_text and f"media/{slug}.html" not in guide_text:
+            add("warn", f"/media/{slug}.html", "どのガイドにも入っていない（「こんな方に」が出ない。記事データの guides= で配置する）")
+        if learn_text is not None and f"media/{slug}.html" not in learn_text:
+            add("warn", f"/media/{slug}.html", "「体系的に学ぶ」（learn.html）のどの章にも入っていない（tools/build.py の MEDIA_COURSES に足す）")
+
+    # AIO 用ファイル（llms.txt: 公開日を迎えた記事だけを載せる。tools/build.py の llms_txt() が作る）
+    llms = resolve_file("/llms.txt")
+    if llms is None:
         add("warn", "(site)", "llms.txt がない（AI検索向けのサイト案内。推奨）")
+    else:
+        ltext = llms.read_text(encoding="utf-8")
+        lurls = re.findall(r"\]\((https?://[^)\s]+)\)", ltext)
+        for u in lurls:
+            pu = urlparse(u)
+            if pu.netloc == urlparse(SITE).netloc and resolve_file(pu.path) is None:
+                add("error", "seo/llms.txt", f"リンク切れ: {u}")
+        listed_l = {u.rsplit("/", 1)[-1][:-5] for u in lurls if "/media/" in u}
+        for a in articles:
+            slug = a["path"].rsplit("/", 1)[-1][:-5]
+            if not a["published"]:
+                continue
+            if a["published"] <= TODAY and slug not in listed_l:
+                add("warn", "seo/llms.txt", f"公開済みの記事 {slug} が llms.txt にない（python3 tools/build.py で作り直す）")
+            elif a["published"] > TODAY and slug in listed_l:
+                add("warn", "seo/llms.txt", f"公開日前（{a['published']}）の記事 {slug} が llms.txt に載っている")
 
     return issues, articles
 
