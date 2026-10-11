@@ -1907,12 +1907,26 @@ def about_page():
 UPLOAD = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/></svg>'
 
 
-def consent(id_):
+# メールマガジンの受け取りの同意（任意・初期状態はチェックなし＝特定電子メール法のオプトイン）。
+# 値は tools/forms/Code.gs がスプレッドシートの「メルマガ」列に記録する（配信そのものは今後、配信サービスにつなぐ）
+NEWSLETTER_LABEL = "RIVIA&amp;CO.からのお知らせ（空き家活用・民泊のメールマガジン）を受け取る"
+NEWSLETTER_NOTE = "いつでも配信停止できます。"
+
+
+def consent(id_, newsletter=False):
+    news = f"""
+            <div class="form__optin">
+              <label class="check" for="{id_}-news">
+                <input type="checkbox" id="{id_}-news" name="newsletter" value="希望する">
+                <span>{NEWSLETTER_LABEL} <span class="opt">任意</span></span>
+              </label>
+              <p class="form__optin-note">{NEWSLETTER_NOTE}</p>
+            </div>""" if newsletter else ""
     return f"""          <div class="form__consent">
             <label class="check" for="{id_}">
               <input type="checkbox" id="{id_}" name="privacy_agree" value="同意する" required>
               <span><a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する <span class="req">必須</span></span>
-            </label>
+            </label>{news}
           </div>"""
 
 
@@ -1971,6 +1985,7 @@ def careers_page():
 
 
 def contact_page():
+    # 「サービス資料の請求」の値は tools/forms/Code.gs の DOC_REQUEST_VALUES（資料の自動添付の判定）と一致させる
     short = {"operation": "空き家再生", "management": "開業・運営支援", "partnership": "不動産協業",
              "marketing": "WEB集客", "recruit": "WEB採用"}
     ohtml = "\n".join(
@@ -2038,7 +2053,7 @@ def contact_page():
               <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）">クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）</span>
             </label>
           </fieldset>
-{consent("agree")}
+{consent("agree", newsletter=True)}
           <div class="form__notes">
             <p>※無理な営業や電話勧誘は一切いたしません。</p>
             <p>※ご入力いただいた情報は厳重に管理し、お問い合わせ対応以外には使用いたしません。</p>
@@ -2411,10 +2426,11 @@ def spec_md():
     w("* **見出し:** Contact ／ お問い合わせ")
     w("* **リード文:** まずは気軽にご相談ください。無料でご相談をお受けしています。2営業日以内に担当者よりご連絡いたします。")
     w("* **安心材料（追加）:** ご相談・お見積りは無料 ／ 無理な営業は一切なし ／ 2営業日以内にご連絡")
-    w("* **フォーム:** お名前* ／ 会社名・施設名（任意。個人の不動産投資家など一般の方からの相談も想定）／ 電話番号* ／ メールアドレス* ／ ご相談カテゴリ（【宿泊施設の運営・開業】宿泊施設運営 / 運営委託 / 開業・運営コンサル 【WEBマーケティング支援】WEB集客 / WEB採用 ／ その他）／ お問い合わせ内容* ／ プライバシーポリシーへの同意*（追加）")
+    w("* **フォーム:** お名前* ／ 会社名・施設名（任意。個人の不動産投資家など一般の方からの相談も想定）／ 電話番号* ／ メールアドレス* ／ ご相談カテゴリ（【宿泊施設の運営・開業】宿泊施設運営 / 運営委託 / 開業・運営コンサル 【WEBマーケティング支援】WEB集客 / WEB採用 ／ その他）／ お問い合わせ内容* ／ プライバシーポリシーへの同意*（追加）／ メールマガジンの受け取り（任意。初期状態はチェックなし＝オプトイン。「いつでも配信停止できます」の注記。アキヤドのお問い合わせ media/contact.html も同じ）")
     w("* **マイクロコピー:** ※無理な営業や電話勧誘は一切いたしません。／※ご入力いただいた情報は厳重に管理し、お問い合わせ対応以外には使用いたしません。")
     w("* **フォーム下（追加）:** ご相談の流れ（4ステップ）")
     w("* 送信先: Google Apps Script（tools/forms/Code.gs。通知先 rivia.co0122@gmail.com、お客様へ自動返信）")
+    w("* 「サービス資料の請求」（アキヤドは「サービス資料がほしい」）を選んだ送信には、自動返信にドライブ上の資料（PDF。スクリプト プロパティ DOC_FILE_ID）を添付する。資料を用意できないときは添付せず「担当者より追ってお送りします」と案内し、社内通知で知らせる。メルマガの同意はスプレッドシートの「メルマガ」列に記録する（配信は未実装）")
     w("* 添付ファイル（任意・複数可）: 物件資料・写真・図面などを添付できる。PDF・画像・Word・Excel等、合計10MB目安。ファイルは Google ドライブに保存（tools/forms/Code.gs）")
     w("")
     w("## 8. プライバシーポリシー（privacy.html・追加）")
@@ -4085,6 +4101,7 @@ MEDIA_CONTACT_TOPICS = [
      "【借り上げについて】\n・活かしたい物件：\n・家を残したい理由や、将来使う予定：\n・気になっていること（例：改修の費用）：\n"),
     ("side management", "アキヤド開業・運営プラン（民泊・小さな宿をはじめたい）",
      "【開業・運営について】\n・物件の有無（ある／探している）：\n・はじめたい宿のイメージ：\n・ご予算の目安：\n・自分で運営に関わりたい範囲：\n"),
+    # 「サービス資料がほしい」の文言は tools/forms/Code.gs の DOC_REQUEST_VALUES（資料の自動添付の判定）と一致させる
     ("document", "サービス資料がほしい", "【資料について】\nサービス資料を希望します。\n"),
     ("other", "まだ決めていない・その他", "【ご相談】\n・いまの状況：\n・聞いてみたいこと：\n"),
 ]
@@ -4161,7 +4178,13 @@ def media_contact_page():
             <label for="m-source">アキヤドを知ったきっかけ <span class="mform__opt">任意</span></label>
             <div class="select"><select id="m-source" name="知ったきっかけ"><option value="" selected>選択してください</option>{sources}</select></div>
           </div>
-          <label class="mform__agree"><input type="checkbox" name="プライバシーポリシーへの同意" value="同意する" required><span><a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する <span class="mform__req">必須</span></span></label>
+          <div class="mform__consent">
+            <label class="mform__agree"><input type="checkbox" name="プライバシーポリシーへの同意" value="同意する" required><span><a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する <span class="mform__req">必須</span></span></label>
+            <div class="mform__optin">
+              <label class="mform__agree"><input type="checkbox" name="newsletter" value="希望する"><span>{NEWSLETTER_LABEL} <span class="mform__opt">任意</span></span></label>
+              <p class="mform__optin-note">{NEWSLETTER_NOTE}</p>
+            </div>
+          </div>
           <button type="submit" class="mbtn mform__submit">【無料】相談・お問い合わせをする {ARROW}</button>
           <p class="mform__note">ご提案まではすべて無料です。ご相談のあと、お断りいただいても構いません。</p>
         </form>

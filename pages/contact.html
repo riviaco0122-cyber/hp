@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
-  <link rel="stylesheet" href="../css/style.css?v=0bdfa572">
+  <link rel="stylesheet" href="../css/style.css?v=03df32ec">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -153,6 +153,13 @@
               <input type="checkbox" id="agree" name="privacy_agree" value="同意する" required>
               <span><a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する <span class="req">必須</span></span>
             </label>
+            <div class="form__optin">
+              <label class="check" for="agree-news">
+                <input type="checkbox" id="agree-news" name="newsletter" value="希望する">
+                <span><n-w>RIVIA&amp;CO.からのお知らせ（空き家活用・民泊のメールマガジン）を受け取る</n-w> <span class="opt">任意</span></span>
+              </label>
+              <p class="form__optin-note">いつでも<wbr>配信停止できます。</p>
+            </div>
           </div>
           <div class="form__notes">
             <p><n-w>※無理な営業や電話勧誘は一切いたしません。</n-w></p>

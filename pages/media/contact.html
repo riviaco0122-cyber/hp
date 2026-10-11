@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=0bdfa572">
+  <link rel="stylesheet" href="../../css/style.css?v=03df32ec">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -169,7 +169,13 @@
             <label for="m-source">アキヤドを<wbr>知った<wbr>きっかけ <span class="mform__opt">任意</span></label>
             <div class="select"><select id="m-source" name="知ったきっかけ"><option value="" selected>選択してください</option><option value="検索（Google・Yahoo!など）">検索（Google・Yahoo!など）</option><option value="AI（ChatGPTなど）">AI（ChatGPTなど）</option><option value="SNS">SNS</option><option value="知人の紹介">知人の紹介</option><option value="不動産会社・専門家の紹介">不動産会社・専門家の紹介</option><option value="その他">その他</option></select></div>
           </div>
-          <label class="mform__agree"><input type="checkbox" name="プライバシーポリシーへの同意" value="同意する" required><span><a href="../privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する <span class="mform__req">必須</span></span></label>
+          <div class="mform__consent">
+            <label class="mform__agree"><input type="checkbox" name="プライバシーポリシーへの同意" value="同意する" required><span><a href="../privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する <span class="mform__req">必須</span></span></label>
+            <div class="mform__optin">
+              <label class="mform__agree"><input type="checkbox" name="newsletter" value="希望する"><span><n-w>RIVIA&amp;CO.からのお知らせ（空き家活用・民泊のメールマガジン）を受け取る</n-w> <span class="mform__opt">任意</span></span></label>
+              <p class="mform__optin-note">いつでも<wbr>配信停止できます。</p>
+            </div>
+          </div>
           <button type="submit" class="mbtn mform__submit">【無料】相談・<wbr>お問い合わせをする <span class="arrow" aria-hidden="true"></span></button>
           <p class="mform__note"><n-w>ご提案まではすべて無料です。ご相談のあと、お断りいただいても構いません。</n-w></p>
         </form>

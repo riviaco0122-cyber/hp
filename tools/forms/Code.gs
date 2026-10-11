@@ -7,6 +7,9 @@
  *   3. 内容を Google スプレッドシートに1件1行で記録する
  *   4. 社内（NOTIFY_TO）に通知メールを送る（返信すると、お客様に直接届く）
  *   5. お客様に自動返信（お礼）メールを送る
+ *   6. 「サービス資料の請求」には、ドライブ上の資料（PDF）を自動返信に添付して送る（DOC_FILE_ID）
+ *   7. メールマガジンの受け取りの同意（newsletter）をスプレッドシートの「メルマガ」列に記録する
+ *      （配信そのものはしない。今後、配信サービスにつなぐ）
  *
  * 設置方法は docs/forms-setup-guide.md を参照。
  * このファイルを変えたら、Apps Script の画面で「デプロイ」→「デプロイを管理」→ 編集 →
@@ -23,8 +26,18 @@ var CONFIG = {
   MAX_TOTAL_BYTES: 10 * 1024 * 1024,              // 添付ファイルの合計の上限（10MB）
   MAX_FILES: 5,
   ALLOWED_EXT: ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'jpg', 'jpeg', 'png', 'heic', 'gif', 'webp'],
-  RATE_LIMIT_PER_10MIN: 3                          // 同じメールアドレスから10分間に受け付ける件数
+  RATE_LIMIT_PER_10MIN: 3,                         // 同じメールアドレスから10分間に受け付ける件数
+  // 資料請求の自動返信に添付する資料（Google ドライブのファイルID）。
+  // 空のときは、スクリプト プロパティ「DOC_FILE_ID」を使う（差し替えはプロパティで行えば、プログラムの貼り直しは不要）
+  DOC_FILE_ID: '',
+  DOC_MAX_BYTES: 20 * 1024 * 1024                  // 添付できる資料の大きさの上限（Gmail の上限 25MB に余裕を持たせて 20MB）
 };
+
+// 「資料請求」と判断するフォームの値（tools/build.py のフォームの選択肢と一致させる）
+//   コーポレート（contact.html）：ご相談カテゴリ（category）＝「サービス資料の請求」
+//   アキヤド（media/contact.html）：ご相談の内容（複数選択。「、」でつながる）に「サービス資料がほしい」
+var DOC_REQUEST_VALUES = ['サービス資料の請求', 'サービス資料がほしい'];
+var DOC_REQUEST_KEYS = ['category', 'ご相談の内容', 'ご相談カテゴリ'];
 
 // フォームの種類ごとの自動返信の文面（{name} はお名前に置き換わる）
 var REPLY = {
@@ -67,6 +80,45 @@ var REPLY = {
     ]
   }
 };
+// 資料請求の自動返信の文面（{name} はお名前、{doc} は資料の案内の1文に置き換わる）
+// subject は資料を添付できたとき、subjectNoDoc は添付できなかったとき（お客様には失敗を見せない）
+var DOC_LINE = {
+  attached: '資料（PDF）をこのメールに添付しましたので、ご確認ください。',
+  later: '資料は、担当者より追ってお送りします。いましばらくお待ちください。'
+};
+var DOC_HIGHLIGHTS = [
+  '【資料の見どころ】',
+  '・サービスの全体像：空き家の再生から、宿の開業・運営まで、私たちがお手伝いできること',
+  '・プラン：ご状況に合わせて選べるプランと、それぞれの違い',
+  '・相談から開業までの流れ：ご相談のあと、どのような順番で進むか',
+  '・よくある質問：はじめての方からよくいただく質問と、その答え'
+];
+var REPLY_DOC = {
+  contact: {
+    subject: '【RIVIA&CO.】サービス資料をお送りします',
+    subjectNoDoc: '【RIVIA&CO.】資料のご請求を受け付けました',
+    body: ['{name} 様', '', 'このたびは合同会社RIVIA&CO.のサービス資料をご請求いただき、ありがとうございます。', '{doc}', '']
+      .concat(DOC_HIGHLIGHTS)
+      .concat(['', '資料をご覧になって気になることがあれば、無料相談をご利用ください。まだ考えがまとまっていない段階でも大丈夫です。',
+        '',
+        '※ このメールは、ご請求を受け付けた時点で自動でお送りしています。',
+        '※ お問い合わせ内容にご質問を書いていただいた場合は、2営業日以内に担当者よりご連絡いたします。']),
+    cta: ['無料相談を申し込む', '/contact.html?category=operation'],
+    promoTitle: '資料とあわせて、アキヤドもご覧ください'
+  },
+  akiyado: {
+    subject: '【アキヤド】サービス資料をお送りします',
+    subjectNoDoc: '【アキヤド】資料のご請求を受け付けました',
+    body: ['{name} 様', '', 'このたびはアキヤド（運営：合同会社RIVIA&CO.）のサービス資料をご請求いただき、ありがとうございます。', '{doc}', '']
+      .concat(DOC_HIGHLIGHTS)
+      .concat(['', '資料をご覧になって気になることがあれば、無料相談をご利用ください。まだ考えがまとまっていない段階でも大丈夫です。',
+        '',
+        '※ このメールは、ご請求を受け付けた時点で自動でお送りしています。',
+        '※ お問い合わせ内容にご質問を書いていただいた場合は、2営業日以内に担当者よりご連絡いたします。']),
+    cta: ['アキヤドに無料で相談する', '/media/contact.html?category=operation'],
+    promoTitle: '資料とあわせて、アキヤドの記事もご覧ください'
+  }
+};
 var SIGNATURE = [
   '',
   '────────────────',
@@ -88,7 +140,7 @@ var PROMO = {
   top: ['アキヤドのトップへ', '/media.html']
 };
 function promoUrl(path, formType) {
-  return CONFIG.SITE_URL + path + '?utm_source=autoreply&utm_medium=email&utm_campaign=' + formType;
+  return CONFIG.SITE_URL + path + (path.indexOf('?') >= 0 ? '&' : '?') + 'utm_source=autoreply&utm_medium=email&utm_campaign=' + formType;
 }
 
 // 画面に出したくない内部用の項目
@@ -96,7 +148,7 @@ var HIDDEN_KEYS = ['_subject', '_form', '_gotcha', 'website', '_hp', '_page'];
 // お客様向けの自動返信には載せない項目（社内でだけ使う情報・お客様が入力していない項目）
 var CUSTOMER_HIDDEN_KEYS = ['流入元', 'ご相談カテゴリ', 'プライバシーポリシーへの同意', 'privacy_agree'];
 // 項目名の日本語表記
-var LABELS = { name: 'お名前', email: 'メールアドレス', tel: '電話番号', company: '会社名', category: 'ご相談の種類', message: 'お問い合わせ内容', detail: '詳細', privacy_agree: 'プライバシーポリシーへの同意' };
+var LABELS = { name: 'お名前', email: 'メールアドレス', tel: '電話番号', company: '会社名', category: 'ご相談の種類', message: 'お問い合わせ内容', detail: '詳細', privacy_agree: 'プライバシーポリシーへの同意', newsletter: 'メールマガジン' };
 
 // ===== 受け口 =====
 function doPost(e) {
@@ -117,8 +169,10 @@ function doPost(e) {
     var formType = ['contact', 'akiyado', 'careers'].indexOf(fields._form) >= 0 ? fields._form : 'contact';
     var saved = saveFiles(files, name);
     var row = record(formType, fields, saved, suspected);
-    notify(formType, fields, saved, row, suspected);
-    if (!suspected) autoReply(formType, fields);
+    // 資料請求なら、自動返信に添付する資料を読み込む（迷惑の疑いのものには送らない）
+    var doc = (!suspected && formType !== 'careers' && isDocRequest(fields)) ? loadDoc() : null;
+    notify(formType, fields, saved, row, suspected, doc);
+    if (!suspected) autoReply(formType, fields, doc);
     return json({ ok: true });
   } catch (err) {
     console.error(err);
@@ -163,7 +217,7 @@ function getSheet() {
   if (!ss) {
     ss = SpreadsheetApp.create(CONFIG.SHEET_NAME);
     props.setProperty('SHEET_ID', ss.getId());
-    ss.getSheets()[0].appendRow(['受付日時', 'フォーム', 'お名前', 'メール', '内容（すべての項目）', '添付ファイル', '流入元']);
+    ss.getSheets()[0].appendRow(['受付日時', 'フォーム', 'お名前', 'メール', '内容（すべての項目）', '添付ファイル', '流入元', 'メルマガ']);
   }
   return ss.getSheets()[0];
 }
@@ -212,19 +266,78 @@ function esc(t) {
   return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+// 見出し（1行目）に title の列がなければ末尾に足し、その列番号（1から）を返す。既存のシートの列は動かさない
+function ensureColumn(sheet, title) {
+  var lastCol = sheet.getLastColumn();
+  if (lastCol > 0) {
+    var header = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+    var i = header.indexOf(title);
+    if (i >= 0) return i + 1;
+  }
+  sheet.getRange(1, lastCol + 1).setValue(title);
+  return lastCol + 1;
+}
+
 function record(formType, fields, saved, suspected) {
   var sheet = getSheet();
   var now = Utilities.formatDate(new Date(), 'Asia/Tokyo', 'yyyy/MM/dd HH:mm');
-  sheet.appendRow([now, (suspected ? '【迷惑の疑い】' : '') + formType, fields.name, fields.email, fieldLines(fields).join('\n\n'),
-    saved.map(function (s) { return s.url || (s.name + '（' + s.error + '）'); }).join('\n'), fields['流入元'] || fields._page || '']);
+  var row = [now, (suspected ? '【迷惑の疑い】' : '') + formType, fields.name, fields.email, fieldLines(fields).join('\n\n'),
+    saved.map(function (s) { return s.url || (s.name + '（' + s.error + '）'); }).join('\n'), fields['流入元'] || fields._page || ''];
+  var newsCol = ensureColumn(sheet, 'メルマガ');
+  while (row.length < newsCol) row.push('');
+  row[newsCol - 1] = String(fields.newsletter || '').trim() ? '希望する' : '';
+  sheet.appendRow(row);
   return sheet.getLastRow();
 }
 
-function notify(formType, fields, saved, row, suspected) {
+// ===== 資料請求 =====
+function isDocRequest(fields) {
+  return DOC_REQUEST_KEYS.some(function (k) {
+    return String(fields[k] || '').split('、').some(function (v) { return DOC_REQUEST_VALUES.indexOf(v.trim()) >= 0; });
+  });
+}
+
+// 資料のファイルID（CONFIG → スクリプト プロパティの順）。ドライブの URL がそのまま入っていても ID を取り出す
+function getDocFileId() {
+  var id = String(CONFIG.DOC_FILE_ID || '').trim();
+  if (!id) {
+    try { id = String(PropertiesService.getScriptProperties().getProperty('DOC_FILE_ID') || '').trim(); } catch (e) { id = ''; }
+  }
+  var m = id.match(/\/d\/([-\w]+)/);
+  return m ? m[1] : id;
+}
+
+// 資料を読み込む。成功：{ ok: true, blob, name, size }、失敗：{ ok: false, error: 理由 }
+function loadDoc() {
+  var id = getDocFileId();
+  if (!id) return { ok: false, error: 'DOC_FILE_ID が設定されていません' };
+  try {
+    var file = DriveApp.getFileById(id);
+    var size = file.getSize();
+    if (size > CONFIG.DOC_MAX_BYTES) return { ok: false, error: 'ファイルが大きすぎます（' + mb(size) + '。上限 ' + mb(CONFIG.DOC_MAX_BYTES) + '）' };
+    return { ok: true, blob: file.getBlob(), name: file.getName(), size: size };
+  } catch (e) {
+    return { ok: false, error: 'ファイルを読み込めませんでした（ID が違う・削除された など）：' + String(e && e.message || e) };
+  }
+}
+
+function mb(bytes) {
+  return (Math.round(bytes / 1024 / 1024 * 10) / 10) + 'MB';
+}
+
+function docNoticeLine(doc) {
+  if (!doc) return [];
+  return doc.ok
+    ? ['■ 資料：自動返信に「' + doc.name + '」（' + mb(doc.size) + '）を添付しました']
+    : ['■ 資料の添付に失敗（DOC_FILE_ID 未設定など）：' + doc.error + '。お客様には「担当者より追ってお送りします」と案内したので、資料を手動で送ってください。'];
+}
+
+function notify(formType, fields, saved, row, suspected, doc) {
   var label = { contact: 'お問い合わせ', akiyado: 'アキヤドのお問い合わせ', careers: '採用エントリー' }[formType];
   var subject = (suspected ? '【迷惑の疑い】' : '') + '【' + label + '】' + fields.name + ' 様' + (fields._subject ? '（' + fields._subject + '）' : '');
   var body = [label + 'がありました。このメールに返信すると、お客様に直接届きます。']
     .concat(suspected ? ['', '※ ボット対策の隠し項目に入力があったため「迷惑の疑い」としています。お客様への自動返信は送っていません。内容が本物なら、このメールから返信してください。'] : [])
+    .concat(doc ? [''].concat(docNoticeLine(doc)) : [])
     .concat([''])
     .concat(fieldLines(fields))
     .concat(['', '■ 添付ファイル'])
@@ -234,16 +347,46 @@ function notify(formType, fields, saved, row, suspected) {
   MailApp.sendEmail({ to: CONFIG.NOTIFY_TO, subject: subject, body: body, replyTo: fields.email, name: 'RIVIA フォーム通知' });
 }
 
-function autoReply(formType, fields) {
-  var t = REPLY[formType] || REPLY.contact;
+function autoReply(formType, fields, doc) {
+  var mail = buildReply(formType, fields, doc);
+  var attach = doc && doc.ok;
+  var msg = { to: fields.email, subject: mail.subject, body: mail.text, htmlBody: mail.html, name: CONFIG.SENDER_NAME, replyTo: CONFIG.NOTIFY_TO };
+  if (!attach) { MailApp.sendEmail(msg); return; }
+  try {
+    msg.attachments = [doc.blob];
+    MailApp.sendEmail(msg);
+  } catch (err) {
+    // 添付つきで送れなかったときは、添付なし（「追ってお送りします」の文面）で送り直し、社内に知らせる
+    var failed = { ok: false, error: '添付つきのメールを送れませんでした：' + String(err && err.message || err) };
+    var plain = buildReply(formType, fields, failed);
+    MailApp.sendEmail({ to: fields.email, subject: plain.subject, body: plain.text, htmlBody: plain.html, name: CONFIG.SENDER_NAME, replyTo: CONFIG.NOTIFY_TO });
+    MailApp.sendEmail({ to: CONFIG.NOTIFY_TO, subject: '【要確認】資料の添付に失敗（' + fields.name + ' 様）', body: docNoticeLine(failed).join('\n'), replyTo: fields.email, name: 'RIVIA フォーム通知' });
+  }
+}
+
+// 自動返信の件名・本文（文字の版・HTML の版）を作る。doc があれば資料請求の文面にする
+function buildReply(formType, fields, doc) {
+  var isDoc = !!doc && !!REPLY_DOC[formType];
+  var t = isDoc ? REPLY_DOC[formType] : (REPLY[formType] || REPLY.contact);
+  var subject = isDoc && !doc.ok ? t.subjectNoDoc : t.subject;
+  var promoTitle = t.promoTitle || PROMO.title;
   var name = String(fields.name).trim();
   var pairs = fieldPairs(fields, true);
-  var lines = t.body.map(function (l) { return l.replace(/\{name\}/g, name); });
+  var docLine = isDoc ? (doc.ok ? DOC_LINE.attached : DOC_LINE.later) : '';
+  var lines = t.body.map(function (l) { return l.replace(/\{name\}/g, name).replace(/\{doc\}/g, docLine); });
+  var ctaUrl = t.cta ? promoUrl(t.cta[1], formType) : '';
 
   // 文字だけの版（HTML を表示できないメールソフト向け）
-  var text = lines.concat(['', '【お問い合わせ内容】'])
+  // 相談の導線は「※」の注記より前に置く
+  var textLines = lines.slice();
+  if (t.cta) {
+    var firstNote = textLines.findIndex(function (l) { return l.indexOf('※') === 0; });
+    if (firstNote < 0) firstNote = textLines.length;
+    textLines.splice(firstNote, 0, '▶ ' + t.cta[0], '  ' + ctaUrl, '');
+  }
+  var text = textLines.concat(['', '【お問い合わせ内容】'])
     .concat(pairs.map(function (p) { return p[1].indexOf('\n') >= 0 ? '・' + p[0] + '\n' + p[1] : '・' + p[0] + '：' + p[1]; }))
-    .concat(['', '――――――――――――――', '■ ' + PROMO.title, PROMO.lead])
+    .concat(['', '――――――――――――――', '■ ' + promoTitle, PROMO.lead])
     .concat(PROMO.links.concat([PROMO.top]).map(function (l) { return '・' + l[0] + '\n  ' + promoUrl(l[1], formType); }))
     .concat(SIGNATURE).join('\n');
 
@@ -252,6 +395,7 @@ function autoReply(formType, fields) {
   var paras = lines.filter(function (l) { return l.indexOf('※') !== 0; }).join('\n').split(/\n\s*\n/);
   var html = '<div style="font-family:-apple-system,BlinkMacSystemFont,\'Hiragino Sans\',\'Noto Sans JP\',sans-serif;font-size:15px;line-height:1.8;color:#111;max-width:600px;">'
     + paras.map(function (p) { return '<p style="margin:0 0 16px;">' + esc(p).replace(/\n/g, '<br>') + '</p>'; }).join('')
+    + (t.cta ? '<p style="margin:8px 0 24px;"><a href="' + ctaUrl + '" style="display:inline-block;padding:12px 22px;background:#1A472A;color:#fff;text-decoration:none;border-radius:4px;font-size:15px;">' + esc(t.cta[0]) + ' &rarr;</a></p>' : '')
     + '<p style="margin:24px 0 8px;font-weight:bold;">お問い合わせ内容</p>'
     + '<table style="width:100%;border-collapse:collapse;font-size:14px;">'
     + pairs.map(function (p) {
@@ -261,7 +405,7 @@ function autoReply(formType, fields) {
     + '</table>'
     + (notes.length ? '<p style="margin:24px 0 0;font-size:13px;color:#666;">' + notes.map(esc).join('<br>') + '</p>' : '')
     + '<div style="margin:32px 0 0;padding:20px;background:#f6f7f5;border-radius:6px;">'
-    + '<p style="margin:0 0 6px;font-weight:bold;font-size:15px;">' + esc(PROMO.title) + '</p>'
+    + '<p style="margin:0 0 6px;font-weight:bold;font-size:15px;">' + esc(promoTitle) + '</p>'
     + '<p style="margin:0 0 12px;font-size:13px;color:#555;">' + esc(PROMO.lead) + '</p>'
     + PROMO.links.map(function (l) {
       return '<a href="' + promoUrl(l[1], formType) + '" style="display:block;padding:10px 0;border-top:1px solid #e3e6e1;color:#1A472A;text-decoration:none;font-size:14px;">' + esc(l[0]) + ' &rarr;</a>';
@@ -271,7 +415,7 @@ function autoReply(formType, fields) {
     + '<p style="margin:32px 0 0;padding-top:16px;border-top:1px solid #eee;font-size:13px;color:#555;">合同会社RIVIA&amp;CO.<br><a href="' + CONFIG.SITE_URL + '" style="color:#1A472A;">' + CONFIG.SITE_URL.replace('https://', '') + '</a></p>'
     + '</div>';
 
-  MailApp.sendEmail({ to: fields.email, subject: t.subject, body: text, htmlBody: html, name: CONFIG.SENDER_NAME, replyTo: CONFIG.NOTIFY_TO });
+  return { subject: subject, text: text, html: html };
 }
 
 // 設置したあと、Apps Script の画面で一度だけ実行する（権限の許可と、フォルダ・スプレッドシートの作成）
@@ -280,5 +424,16 @@ function setup() {
   var s = getSheet();
   console.log('フォルダ: ' + f.getUrl());
   console.log('スプレッドシート: ' + s.getParent().getUrl());
+  console.log('メルマガ列: ' + ensureColumn(s, 'メルマガ') + ' 列目');
   console.log('今日あと送れるメール数: ' + MailApp.getRemainingDailyQuota());
+  // 資料請求の自動返信に添付する資料
+  var id = getDocFileId();
+  if (!id) {
+    console.log('資料（DOC_FILE_ID）: 未設定。資料請求には添付なしでお礼を送り、社内通知で知らせます。');
+    console.log('  設定方法: 資料の PDF をドライブに入れ、URL の /d/ と /view の間の文字列（ファイルID）を、');
+    console.log('  左の歯車「プロジェクトの設定」→「スクリプト プロパティ」に、プロパティ「DOC_FILE_ID」・値「ファイルID」で保存する。');
+  } else {
+    var d = loadDoc();
+    console.log(d.ok ? '資料（DOC_FILE_ID）: 「' + d.name + '」（' + mb(d.size) + '）を添付します' : '資料（DOC_FILE_ID）: 読み込めません → ' + d.error);
+  }
 }
