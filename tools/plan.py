@@ -173,7 +173,7 @@ def render_plan(plan):
     w("")
     w("## 6. 進め方（PDCA）と見直しのルール")
     w("")
-    w("- **毎日（Check→Act）**：定期実行の最初に `python3 tools/plan.py check` で今月の実績を取り、計画の日割りと比べる（順調 ≥ {:.0%}・注意 ≥ {:.0%}・遅れ）。遅れている指標のうち、計画の木の上流にあるものの打ち手を、その日の作業の1つ目にする。結果は `docs/seo/plan-tracking.md` に1行ずつ残る".format(plan["pace_thresholds"]["on_track"], plan["pace_thresholds"]["warn"]))
+    w("- **毎日（Check→Act）**：定期実行の最初に `python3 tools/plan.py check` で計画月の実績を取り、計画の日割りと比べる（順調 ≥ {:.0%}・注意 ≥ {:.0%}・遅れ）。遅れている指標のうち、計画の木の上流にあるものの打ち手を、その日の作業の1つ目にする。結果は `docs/seo/plan-tracking.md` に1行ずつ残る".format(plan["pace_thresholds"]["on_track"], plan["pace_thresholds"]["warn"]))
     w("- **毎週月曜（報告）**：`python3 tools/plan.py weekly` で先週の週次レポートを作り、定期実行の完了メールと PR に要点を載せる")
     w("- **毎月11日＝計画月の初日（Plan の見直し）**：前の計画月の実績で、仮定（1記事あたりのクリック・CTR・AI検索の割合・CV率）を見直す。**2か月続けて「遅れ」なら、仮定ではなく打ち手を変える**（記事のテーマ・導線・本数）。計画そのものを下げるときは、PR の「人の確認が必要な点」に理由を書いて人の判断を仰ぐ")
     w("- 立ち上がり期間（最初の3か月）は CV の数が小さく、日割りの判定がぶれやすい。この期間は表示回数・クリックの判定を優先する")
