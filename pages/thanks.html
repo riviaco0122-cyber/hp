@@ -98,9 +98,10 @@
       </div>
     </section>
     <script>
-      // フォーム送信の完了を GA4 に記録（どのフォームからかを form_type で区別）
+      // フォーム送信の完了を GA4 に記録（どのフォームからかを form_type、相談か資料請求かを lead_type で区別。lead は js/main.js が付ける）
       if (typeof gtag === 'function') {
-        gtag('event', 'generate_lead', { form_type: new URLSearchParams(location.search).get('form') || 'contact' });
+        var q = new URLSearchParams(location.search), form = q.get('form') || 'contact';
+        gtag('event', 'generate_lead', { form_type: form, lead_type: q.get('lead') || (form === 'careers' ? 'careers' : 'consult') });
       }
     </script>
   </main>
@@ -124,6 +125,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=6909d759"></script>
+  <script src="../js/main.js?v=96f01782"></script>
 </body>
 </html>
