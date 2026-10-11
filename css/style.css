@@ -1262,7 +1262,9 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 /* 送信完了ページ */
 .thanks { text-align: center; }
 .thanks__lead { font-family: var(--font-serif); font-size: 18px; line-height: 2.1; letter-spacing: 0.06em; }
-.thanks__note { margin-top: 24px; font-size: 13px; color: var(--c-muted); text-align: left; }
+.thanks__note { margin-top: 24px; font-size: 13px; color: var(--c-muted); text-align: center; }
+.mthanks__note { text-align: center; }
+.hp-field { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .thanks__actions { margin-top: 48px; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
 @media (max-width: 899px) { .thanks__lead { font-size: 16px; } .thanks__actions .btn { flex: 1 1 100%; } }
 .form__error { margin-top: 16px; color: #b3261e; font-size: 13px; text-align: center; }

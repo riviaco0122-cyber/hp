@@ -84,10 +84,10 @@ rivia-hp/
 ├── css/style.css            全ページ共通スタイル
 ├── js/main.js               メニュー、フェードイン、絞り込み、フォーム送信など
 ├── images/                  画像（ogp.jpg はSNSシェア画像 1200×630）
-├── seo/                     sitemap.xml / robots.txt（公開URLはサイト直下 /sitemap.xml・/robots.txt）
+├── seo/                     sitemap.xml / robots.txt / llms.txt（公開URLはサイト直下 /sitemap.xml・/robots.txt・/llms.txt。tools/build.py で生成）
 ├── docs/site-spec.md        この指示書（公開サーバーには置かない）
 ├── vercel.json              pages/・seo/ の中身を、今までどおりのURLで公開するための設定
-└── .vercelignore           docs/ を Vercel の公開対象から外す設定
+└── .vercelignore           docs/・.claude/・tools/・CLAUDE.md を Vercel の公開対象から外す設定
 ```
 
 * media/ フォルダ内の記事ページでは、ほかのページ・css・js へのリンクを ../ から始める（例: ../css/style.css）。
@@ -135,6 +135,7 @@ rivia-hp/
 * フォーム（お問い合わせ・採用エントリー）は画面を移動せずに送信し、成功したら thanks.html へ移動する。thanks.html で GA4 の `generate_lead` イベント（form_type: contact / careers）を送るので、GA4 の管理画面で `generate_lead` を「キーイベント」に設定すると問い合わせ数を計測できる。
 * 運営実績の下に「ゲストの声（Airbnb のレビューより）」を表示できる。build.py の `NODE_REVIEWS` に、実際のレビューを原文のまま入れたときだけ表示される（空のときは非表示）。
 * **公開ドメインは https://rivia-co.com（canonical / OGP / 構造化データ / sitemap に反映済み）。**
+* AI検索向けのサイト案内 llms.txt（公開URL `/llms.txt`、実体は seo/llms.txt）を置く。会社・サービス・アキヤドのガイドと、公開日を迎えた記事を載せる。`tools/build.py`（llms_txt）で生成し、手で直さない（日次の定期実行で毎日作り直す）。
 
 ---
 
@@ -1076,7 +1077,7 @@ rivia-hp/
 * **トップメッセージ:** 一緒に働く仲間を募集しています。／年齢・経験は問いません。お気軽にご連絡ください。
     * ⚠ サイト内に MISSION / VALUES の記載がないため、About に追加するか文言を調整する。
 * **エントリーフォーム:** お名前*（名字 名前）／ Email*（Email@address）／ 詳細*（志望動機や希望年収、思っていることを是非教えてください。）／ 添付ファイル*（職務経歴書・履歴書：点線枠のファイル選択×2。選択後はファイル名を表示）／ プライバシーポリシーへの同意*（追加）／ [送信する]
-* 送信先: Formspree（`YOUR_CAREERS_FORM_ID` を発行IDに置き換え。ファイル添付は有料プランのみ）
+* 送信先: Google Apps Script（tools/forms/Code.gs。自動返信・添付ファイルのドライブ保存・スプレッドシート記録・社内通知）
 
 ## 7. Contact（contact.html）
 * **見出し:** Contact ／ お問い合わせ
@@ -1085,8 +1086,8 @@ rivia-hp/
 * **フォーム:** お名前* ／ 会社名・施設名（任意。個人の不動産投資家など一般の方からの相談も想定）／ 電話番号* ／ メールアドレス* ／ ご相談カテゴリ（【宿泊施設の運営・開業】宿泊施設運営 / 運営委託 / 開業・運営コンサル 【WEBマーケティング支援】WEB集客 / WEB採用 ／ その他）／ お問い合わせ内容* ／ プライバシーポリシーへの同意*（追加）
 * **マイクロコピー:** ※無理な営業や電話勧誘は一切いたしません。／※ご入力いただいた情報は厳重に管理し、お問い合わせ対応以外には使用いたしません。
 * **フォーム下（追加）:** ご相談の流れ（4ステップ）
-* 送信先: Formspree（フォームID `mwlvbwjl`。通知先 rivia.co0122@gmail.com）
-* 添付ファイル（任意・複数可）: 物件資料・写真・図面などを添付できる。PDF・画像・Word・Excel等、合計10MB目安。Formspree でのファイル添付は有料プランのみ対応
+* 送信先: Google Apps Script（tools/forms/Code.gs。通知先 rivia.co0122@gmail.com、お客様へ自動返信）
+* 添付ファイル（任意・複数可）: 物件資料・写真・図面などを添付できる。PDF・画像・Word・Excel等、合計10MB目安。ファイルは Google ドライブに保存（tools/forms/Code.gs）
 
 ## 8. プライバシーポリシー（privacy.html・追加）
 * フォームで個人情報を取得するため新設。一般的なひな形のため、公開前に内容を確認する。
@@ -1104,7 +1105,7 @@ rivia-hp/
 
 ## 9. 公開前チェックリスト
 
-- [ ] Formspree のフォームIDを設定する（お問い合わせ・採用）
+- [x] フォームの送信先（Google Apps Script）を設定する（設置手順: docs/forms-setup-guide.md）
 - [ ] 市場データの出典を確認し、確認できない数値を差し替え・削除する
 - [ ] Careers の MISSION / VALUES の扱いを決める
 - [ ] プライバシーポリシーの内容を確認する
