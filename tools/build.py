@@ -1387,7 +1387,7 @@ def quick_form(key, name):
     return f"""        <form class="qform reveal" data-delay="2" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
           <p class="qform__title">{e(name)}の無料相談</p>
           <p class="qform__lead">まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。</p>
-          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】{e(name)}のご相談（サービスページ）">
           <input type="hidden" name="ご相談カテゴリ" value="{e(name)}">
           <input type="hidden" name="流入元" value="サービスページ：{e(name)}">
@@ -1940,7 +1940,7 @@ def careers_page():
           <h2 class="section-title">エントリーフォーム</h2>
         </div>
         <form class="form reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=careers">
-          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】採用エントリー">
           <div class="form__field">
             <label for="c-name">お名前 <span class="req">必須</span></label>
@@ -1996,7 +1996,7 @@ def contact_page():
     <section class="section">
       <div class="container container--narrow">
         <form class="form reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
-          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】Webサイトからのお問い合わせ">
           <input type="hidden" name="流入元" id="from-field" value="">
           <div class="form__field">
@@ -4116,7 +4116,7 @@ def media_contact_page():
       <div class="container mform-wrap">
         <ul class="mcta__points mform__points reveal"><li>相談・お見積りは無料</li><li>全国対応・オンライン可</li><li>しつこい営業はしません</li></ul>
         <form class="mform reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html">
-          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
           <input type="hidden" name="_subject" value="【アキヤド】無料相談・お問い合わせ">
           <input type="hidden" name="流入元" id="from-field" value="">
           <div class="mform__field">

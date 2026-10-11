@@ -92,7 +92,7 @@ function promoUrl(path, formType) {
 }
 
 // 画面に出したくない内部用の項目
-var HIDDEN_KEYS = ['_subject', '_form', '_gotcha', 'website', '_page'];
+var HIDDEN_KEYS = ['_subject', '_form', '_gotcha', 'website', '_hp', '_page'];
 // お客様向けの自動返信には載せない項目（社内でだけ使う情報・お客様が入力していない項目）
 var CUSTOMER_HIDDEN_KEYS = ['流入元', 'ご相談カテゴリ', 'プライバシーポリシーへの同意', 'privacy_agree'];
 // 項目名の日本語表記
@@ -105,19 +105,20 @@ function doPost(e) {
     var fields = data.fields || {};
     var files = data.files || [];
 
-    // 迷惑送信の対策（人には見えない項目に入力があれば、受け付けたふりをして捨てる）
-    if (fields._gotcha || fields.website) return json({ ok: true });
+    // 迷惑送信の対策：人には見えない項目（_hp）に入力があれば「迷惑の疑い」として扱う。
+    // ブラウザの自動入力で人が誤判定されることもあるので、捨てずに記録・社内通知し、自動返信だけ送らない。
+    var suspected = !!(fields._hp || fields._gotcha || fields.website);
 
     var email = String(fields.email || '').trim();
     var name = String(fields.name || '').trim();
     if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ ok: false, error: 'invalid' });
-    if (!rateLimitOk(email)) return json({ ok: false, error: 'rate_limit' });
+    if (!suspected && !rateLimitOk(email)) return json({ ok: false, error: 'rate_limit' });
 
     var formType = ['contact', 'akiyado', 'careers'].indexOf(fields._form) >= 0 ? fields._form : 'contact';
     var saved = saveFiles(files, name);
-    var row = record(formType, fields, saved);
-    notify(formType, fields, saved, row);
-    autoReply(formType, fields);
+    var row = record(formType, fields, saved, suspected);
+    notify(formType, fields, saved, row, suspected);
+    if (!suspected) autoReply(formType, fields);
     return json({ ok: true });
   } catch (err) {
     console.error(err);
@@ -211,18 +212,20 @@ function esc(t) {
   return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-function record(formType, fields, saved) {
+function record(formType, fields, saved, suspected) {
   var sheet = getSheet();
   var now = Utilities.formatDate(new Date(), 'Asia/Tokyo', 'yyyy/MM/dd HH:mm');
-  sheet.appendRow([now, formType, fields.name, fields.email, fieldLines(fields).join('\n\n'),
+  sheet.appendRow([now, (suspected ? '【迷惑の疑い】' : '') + formType, fields.name, fields.email, fieldLines(fields).join('\n\n'),
     saved.map(function (s) { return s.url || (s.name + '（' + s.error + '）'); }).join('\n'), fields['流入元'] || fields._page || '']);
   return sheet.getLastRow();
 }
 
-function notify(formType, fields, saved, row) {
+function notify(formType, fields, saved, row, suspected) {
   var label = { contact: 'お問い合わせ', akiyado: 'アキヤドのお問い合わせ', careers: '採用エントリー' }[formType];
-  var subject = '【' + label + '】' + fields.name + ' 様' + (fields._subject ? '（' + fields._subject + '）' : '');
-  var body = [label + 'がありました。このメールに返信すると、お客様に直接届きます。', '']
+  var subject = (suspected ? '【迷惑の疑い】' : '') + '【' + label + '】' + fields.name + ' 様' + (fields._subject ? '（' + fields._subject + '）' : '');
+  var body = [label + 'がありました。このメールに返信すると、お客様に直接届きます。']
+    .concat(suspected ? ['', '※ ボット対策の隠し項目に入力があったため「迷惑の疑い」としています。お客様への自動返信は送っていません。内容が本物なら、このメールから返信してください。'] : [])
+    .concat([''])
     .concat(fieldLines(fields))
     .concat(['', '■ 添付ファイル'])
     .concat(saved.length ? saved.map(function (s) { return '- ' + s.name + '：' + (s.url || s.error); }) : ['なし'])
