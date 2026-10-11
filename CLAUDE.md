@@ -36,6 +36,7 @@
 - SEO/AIO の基準と品質の採点基準: `docs/seo/playbook.md`
 - ブランド（文体・用語・思想・体験・NG）: `docs/brand/`
 - 一次情報の置き場と扱い方: `docs/sources/README.md`（人が `docs/sources/inbox/` にメモを置く）
+- **CV 計画（目標）**: `docs/seo/plan.md`（毎日の判定・週次レポート・毎月の見直しはこの計画に対して行う）
 - カレンダー／キーワード／ログ: `docs/seo/calendar.md`、`docs/seo/keywords.md`、`docs/seo/log.md`
 - ダッシュボード（自動生成）: `docs/dashboard.md`
 - GA4/Search Console/YouTube/e-Stat の設定手順: `docs/seo/analytics-setup.md`
@@ -68,6 +69,7 @@
 | `python3 tools/seo_check.py [--json]` | 全ページの SEO/AIO チェック |
 | `python3 tools/article_score.py <原稿 or HTML>` | 記事の機械採点（40点分）と重大NGのゲート判定。合格は品質管理部の60点と合わせて95点以上（playbook 5章） |
 | `python3 tools/analytics.py` | GA4/Search Console のレポート（要 `pip install -r tools/requirements.txt` と環境変数） |
+| `python3 tools/plan.py simulate / check / weekly` | **CV 計画**（いつまでに何件の CV を見込むか）のシミュレーション、計画に対する毎日の進み具合と「今日の最優先」、週次レポート（前提は `docs/seo/plan.json`、計画は `docs/seo/plan.md`、記録は `docs/seo/plan-tracking.md`、週次は `docs/seo/reports/`） |
 | `python3 tools/pdca.py new / baseline <ID> / check / report` | 改善施策（PDCA）の登録・ベースライン取得・効果の判定・集計（台帳は `docs/seo/experiments.md`） |
 | `python3 tools/youtube_research.py "キーワード"` | YouTube の動画情報・概要欄（要 `YOUTUBE_API_KEY`。コメント本文は保存しない） |
 | `python3 tools/estat.py lodging 静岡県` ／ `akiya 静岡県 下田市` ／ `search "キーワード"` | e-Stat（政府統計）から宿泊者数・外国人の割合（宿泊旅行統計調査）、空き家数・空き家率（住宅・土地統計調査）などを出典つきで取る（要 `ESTAT_APP_ID`。結果は `docs/sources/estat/`）。**記事の統計の数字はこれで取り、出典を付ける** |
