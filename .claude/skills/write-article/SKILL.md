@@ -16,4 +16,4 @@ description: 指定したテーマ（またはキーワード表の次の候補�
 6. `engineer` → 記事データ（`tools/articles_auto.py`）に足し、`python3 tools/eyecatch.py <スラッグ>` でアイキャッチを作ってから `python3 tools/build.py` で作り直す（一覧・sitemap・llms.txt・仕様書まで自動で更新）。seo_check エラー0・`node tools/check/site_check.js --no-visual` 重大0、seo_check のエラー 0 を確認
 7. `qa` → HTML を採点（95点以上・ゲート違反なし）。PR の前に `node tools/check/site_check.js`（本番との見た目の比較つき）を実行する。不合格なら同じく戻る
 8. 5回で95点に届かなければ PR に入れず、採点結果をログに残して終える
-9. `pm` → 記録と PR 説明（採点表の内訳を載せる） → コミット・push・本番ブランチ（GitHub のデフォルトブランチ）向け PR 作成（マージはしない）
+9. `bash tools/sync_base.sh` で本番ブランチを取り込み衝突を自動解消（seo-daily と同じ）。`pm` → 記録と PR 説明（採点表の内訳を載せる） → コミット・push・本番ブランチ（GitHub のデフォルトブランチ）向け PR 作成（マージはしない）
