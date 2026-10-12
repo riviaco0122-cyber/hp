@@ -303,7 +303,7 @@ ARTICLES_SERIES2 = [
     ),
     dict(
         slug="minpaku-off-season",
-        date=D, topics=["operate", "money"], photo=("mountain-dawn", "朝焼けの山並み"),
+        date=D, updated="2026-10-13", topics=["operate", "money"], photo=("mountain-dawn", "朝焼けの山並み"),
         guides=[("side", 4)],
         title="閑散期をどう乗り越える？下田の宿の月別の稼働率と、料金・長期滞在の工夫",
         short="閑散期を\nどう乗り越える？",

@@ -343,20 +343,12 @@ ARTICLES_SCHED2 = [
 <p class="table-note">※ 審査の結果は、事業の内容や申込者の状況で変わります。「この名義なら通る」とは言えません。融資の限度額・金利・返済期間・自己資金の要件は、日本政策金融公庫の最新の案内で確かめてください。</p>
 """),
             ("share", "資金計画は、誰が改修費を持つかで、どう変わるのか？", """
-<p>同じ宿づくりでも、<strong>改修費を借り主が持つか、建物の所有者が持つか</strong>で、用意する資金は大きく変わります。下田と、開業を予定している焼津の宿で比べます。</p>
-<div class="compare">
-<div class="compare__col"><p class="compare__head">下田（開業済み）</p>
-<p class="compare__row"><span>改修</span><span>借り主が負担</span></p>
-<p class="compare__row"><span>改修工事</span><span>約410万円</span></p>
-<p class="compare__row"><span>家具・家電・備品</span><span>約240万円</span></p></div>
-<div class="compare__col compare__col--b"><p class="compare__head">焼津（2026年末に開業予定）</p>
-<p class="compare__row"><span>改修</span><span>オーナーが負担</span></p>
-<p class="compare__row"><span>借り主の初期費用</span><span>おおむね120万円</span></p>
-<p class="compare__row"><span>内容</span><span>家具・消防設備・各種申請</span></p></div>
+<p>同じ宿づくりでも、<strong>改修費を借り主が持つか、建物の所有者が持つか</strong>で、用意する資金は大きく変わります。下田の宿は他者所有の賃貸物件で、借り主である私たち創業メンバーが改修を負担しました。</p>
+<div class="stats" role="group" aria-label="下田の初期費用">
+<div class="stat stat--accent"><span class="stat__num">約410<small>万円</small></span><span class="stat__label">改修工事</span><span class="stat__note">借り主が負担</span></div>
+<div class="stat"><span class="stat__num">約240<small>万円</small></span><span class="stat__label">家具・家電・備品</span><span class="stat__note">開業前に購入</span></div>
 </div>
-<p class="table-note">※ 金額はおおむねの値です。焼津は開業前の計画の段階で、収支は載せません。家賃など契約条件の違いは、ここでは比べていません。</p>
-<p>焼津では、水回りは全面的に新しくなり、風呂場は浴槽ではなくシャワー室にしてコストを抑えました。これらの工事費は、オーナー側が持ちます。</p>
-<p>この差は、融資の考え方にも響きます。下田では、改修だけで約410万円かかり、融資200万円と補助金50万円を使っても、残りは自己資金でした。<strong>借り主の持ち出しが小さければ、融資に頼らずに始められる範囲が広がります</strong>。逆に、借り主が改修を持つ契約なら、融資が見送られた場合の穴が大きくなります。</p>
+<p>下田では、改修だけで約410万円かかり、融資200万円と補助金50万円を使っても、残りは自己資金でした。<strong>借り主が改修を持つ契約では、融資が見送られたときの穴が大きくなります</strong>。</p>
 <p>物件を借りる前に、改修を誰が持つのかを契約の条件として確かめてください。そのうえで、「融資がなくてもできる範囲」を決めます。</p>
 """),
             ("subsidy", "補助金は、開業資金としてあてにできるのか？", """
