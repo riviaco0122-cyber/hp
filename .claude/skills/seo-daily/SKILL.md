@@ -50,6 +50,7 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
    - 技術改善は `engineer` → `qa`。
 4. **最終チェック**：
    - `node tools/check/site_check.js --out /tmp/site_check.md` で **サイト全体の点検**（全ページ×スマホ・PC、本番との見た目の比較）。**重大が1件でもあれば PR を出さない**（原因を直すか、その日の変更から外す）。見た目の差分が大きいページは、意図した変更かを確かめて PR に書く。
+   - **スマホ幅のスクリーンショットを自分の目で確認する**（Playwright で幅 390px、予約公開の記事は `?preview=1`。画像を Read で開いて見る）。対象は、新規・変更した記事と、**共通 CSS（`css/style.css`・`js/main.js`・`tools/figures.py`・`tools/build.py` の部品）を変えた日は全記事**。図（fig-point・fig-col・fig-step・fig-cyc・fig-flow・計算式の枠）・表・番号つきリスト・注意枠・折りたたみ・目次・画像について、**左右の余白（番号や文字が枠の左端にくっついていないか）・文字のはみ出し・重なり・固定の相談ボタンの被り**を見る。`site_check` の「見た目の崩れ」などの警告も 0 にする（出たら css・figures.py・記事データを直して作り直す）。
    - `python3 tools/seo_check.py` のエラーが 0 であること。
    - `qa` に `git diff origin/$BASE` 全体を採点してもらい、「人の確認が必要な点」を出す。
 5. **記録とPR**：`pm` の仕事B（カレンダー・ログ・ダッシュボード・台帳・PR説明）。

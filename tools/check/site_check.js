@@ -21,7 +21,9 @@
  *           表示されない画像（naturalWidth 0）、横はみ出し（scrollWidth > 画面幅）、ヘッダー・フッター・h1 がない、ページ自体が開けない
  *   - 警告: 予約公開の記事が公開日前に一覧・ガイド・よくある悩みなどに見えている、公開日前の記事ページが一覧へ戻らない、
  *           ページ内リンク（#）の飛び先がない、転送（リダイレクト）される URL へのリンク、スマホのメニューが開かない、
- *           フェードイン（.reveal）が表示されないまま、読み込みが遅い、スマホで画像が重い
+ *           フェードイン（.reveal）が表示されないまま、読み込みが遅い、スマホで画像が重い、
+ *           見た目の崩れ（スマホ幅のみ。図・カード・囲み枠の中身が左端／右端から 10px/6px 未満でくっついている、文字が枠や画面からはみ出している、
+ *           図の中の要素の重なり）。警告が出たら css/style.css・tools/figures.py・記事データを直して 0 にする（機械では見つからない崩れは、スクリーンショットを自分の目で見る）
  *   - 参考: 外部ドメイン（Google Fonts・計測タグなど）への通信。ネットワーク制限で失敗しうるので重大に数えない（既定では遮断して速くする）
  *   - 見た目の回帰テスト: 本番ブランチを git worktree で一時フォルダに出し、主要ページのスクリーンショットを両方で撮って
  *     tools/check/img_diff.py（Pillow）で比べ、差分の割合が大きいページを一覧にする（意図した変更かを人と品質管理部が確認する）
@@ -290,6 +292,73 @@ function inspectInPage() {
   };
 }
 
+
+// スマホ幅の見た目の崩れ（図・カード・表の左端へのくっつき、枠からのはみ出し、要素の重なり）をページの中で機械的に探す
+function layoutProbe() {
+  const out = [];
+  const W = window.innerWidth;
+  const desc = e => e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + (e.className && typeof e.className === 'string' ? '.' + e.className.trim().split(/\s+/).slice(0, 2).join('.') : '');
+  const shown = e => { const r = e.getBoundingClientRect(); const s = getComputedStyle(e); return r.width > 0 && r.height > 0 && s.visibility !== 'hidden' && !e.closest('[hidden]'); };
+  const alpha = c => { const m = /rgba?\(([^)]+)\)/.exec(c); if (!m) return 0; const v = m[1].split(',').map(Number); return v.length > 3 ? v[3] : 1; };
+  const isCard = e => {
+    const s = getComputedStyle(e);
+    const pb = e.parentElement ? getComputedStyle(e.parentElement).backgroundColor : '';
+    return (alpha(s.backgroundColor) > 0.05 && s.backgroundColor !== pb) || ['Left', 'Right'].some(k => parseFloat(s['border' + k + 'Width']) > 0 && s['border' + k + 'Style'] !== 'none') || (s.boxShadow && s.boxShadow !== 'none');
+  };
+  // 要素の中身（子孫の文字・画像）が実際に占める範囲
+  const contentBox = e => {
+    let l = Infinity, r = -Infinity, any = false;
+    const add = b => { if (b.width > 0 && b.height > 0) { l = Math.min(l, b.left); r = Math.max(r, b.right); any = true; } };
+    const tw = document.createTreeWalker(e, NodeFilter.SHOW_TEXT);
+    for (let n = tw.nextNode(); n; n = tw.nextNode()) {
+      if (!n.textContent.trim() || !n.parentElement || getComputedStyle(n.parentElement).position === 'absolute') continue;
+      const rg = document.createRange(); rg.selectNodeContents(n); for (const b of rg.getClientRects()) add(b);
+    }
+    for (const im of e.querySelectorAll('img')) add(im.getBoundingClientRect());
+    return any ? { l, r } : null;
+  };
+  const inScroller = e => { for (let p = e; p && p !== document.body; p = p.parentElement) { const ox = getComputedStyle(p).overflowX; if ((ox === 'auto' || ox === 'scroll') && p.scrollWidth > p.clientWidth) return true; } return false; };
+  const area = document.querySelector('.article__body') || document.querySelector('main') || document.body;
+  const seen = new Set();
+  const push = (kind, e, msg) => { const k = kind + desc(e) + msg; if (!seen.has(k) && out.length < 12) { seen.add(k); out.push(`${kind}: ${desc(e)} ${msg}`); } };
+  // 1) 枠・背景のある要素の中身が、左端（または右端）に 10px 未満でくっついている／枠からはみ出している
+  for (const e of area.querySelectorAll('*')) {
+    if (!shown(e) || e.closest('svg, figure.photo, .media-card, .toc, nav, summary, button, .btn')) continue;
+    if (['IMG', 'SVG', 'PATH', 'A', 'SPAN', 'STRONG', 'B', 'EM', 'BR', 'TD', 'TH', 'TR'].includes(e.tagName)) continue;
+    const r = e.getBoundingClientRect();
+    if (r.width < 60 || r.height < 24 || r.width >= W - 2 || !isCard(e)) continue;
+    const s = getComputedStyle(e);
+    if (s.display === 'inline' || s.overflow !== 'visible') continue;
+    const c = contentBox(e);
+    if (!c) continue;
+    const left = c.l - r.left, right = r.right - c.r;
+    if (s.textAlign !== 'center' && left < 10) push('左端にくっつき', e, `中身が左端から ${left.toFixed(0)}px`);
+    if (s.textAlign !== 'center' && right < 6 && c.r - c.l > r.width * 0.9 && (alpha(s.backgroundColor) > 0.05 || parseFloat(s.borderRightWidth) > 0 || (s.boxShadow && s.boxShadow !== 'none'))) push('右端にくっつき', e, `中身が右端から ${right.toFixed(0)}px`);
+    if (c.r > r.right + 1 || c.l < r.left - 1) push('枠からはみ出し', e, `中身 ${Math.round(c.l)}〜${Math.round(c.r)}px が枠 ${Math.round(r.left)}〜${Math.round(r.right)}px の外`);
+  }
+  // 2) 文字が画面の外に出ている
+  for (const e of area.querySelectorAll('p, li, h2, h3, h4, dt, dd, td, th, .fig *')) {
+    if (!shown(e) || e.closest('svg, [hidden]') || inScroller(e)) continue;
+    for (const n of e.childNodes) {
+      if (n.nodeType !== 3 || !n.textContent.trim()) continue;
+      const rg = document.createRange(); rg.selectNodeContents(n);
+      const b = rg.getBoundingClientRect();
+      if (b.width > 0 && (b.right > W + 1 || b.left < -1)) { push('文字が画面外', e, `${Math.round(b.left)}〜${Math.round(b.right)}px（画面 ${W}px）`); break; }
+    }
+  }
+  // 3) 図の中の兄弟要素どうしの重なり
+  for (const par of area.querySelectorAll('.fig *')) {
+    if (par.closest('svg')) continue;
+    const kids = [...par.children].filter(k => shown(k) && !['absolute', 'fixed'].includes(getComputedStyle(k).position) && !/^(svg|br)$/i.test(k.tagName));
+    for (let i = 0; i < kids.length; i++) for (let j = i + 1; j < kids.length; j++) {
+      const a = kids[i].getBoundingClientRect(), b = kids[j].getBoundingClientRect();
+      const ox = Math.min(a.right, b.right) - Math.max(a.left, b.left), oy = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+      if (ox > 4 && oy > 4) push('重なり', par, `${desc(kids[i])} と ${desc(kids[j])}（${Math.round(ox)}×${Math.round(oy)}px）`);
+    }
+  }
+  return out;
+}
+
 // ---------------------------------------------------------------- 1ページ×1画面幅の点検
 async function checkPage(browser, srv, p, width, opts, report) {
   const isNotFound = p === '/__site_check_no_such_page__.html';
@@ -351,6 +420,7 @@ async function checkPage(browser, srv, p, width, opts, report) {
 
   await prepare(page);
   const info = await page.evaluate(inspectInPage);
+  if (width < 600) for (const m of await page.evaluate(layoutProbe)) warn('見た目の崩れ', m);
   if (info.sw > info.W) crit('横はみ出し', `ページの幅 ${info.sw}px > 画面 ${info.W}px` + (info.offenders.length ? '。はみ出している要素: ' + info.offenders.join('、') : ''));
   for (const s of info.broken) {
     const u = new URL(s, srv.origin);

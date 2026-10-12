@@ -15,6 +15,7 @@ tools: Read, Grep, Glob, Bash, Edit, Write
   1. `python3 tools/seo_check.py` → エラー 0
   2. `node tools/check/site_check.js --no-visual --out /tmp/site_check.md` → 重大 0（全ページをスマホ幅・PC幅で開き、JSエラー・読み込み失敗・リンク切れ・横はみ出し・画像の欠け等を点検）
   3. PR を出す前の最後に `node tools/check/site_check.js --out /tmp/site_check.md`（本番ブランチとの見た目の比較つき）。差分の大きいページは、意図した変更かを PR の「人の確認が必要な点」に書く
+  4. **スマホ幅（390px）のスクリーンショットを自分の目で確認する**（新規・変更した記事と、共通 CSS を変えた日は全記事。図・表・番号・左右の余白・ボタンの被り）。site_check の「見た目の崩れ」警告も 0 にする
 
 ## 仕事
 1. **新しい記事の追加**（品質管理部が原稿を合格にしたあと）
