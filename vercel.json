@@ -89,5 +89,5 @@
       "permanent": true
     }
   ],
-  "ignoreCommand": "if [ \"$VERCEL_ENV\" = \"production\" ] || [ \"$VERCEL_GIT_COMMIT_REF\" = \"seo/daily\" ]; then exit 1; else exit 0; fi"
+  "ignoreCommand": "case \"$VERCEL_GIT_COMMIT_REF\" in seo/daily) exit 1;; seo/*) exit 0;; *) exit 1;; esac"
 }
