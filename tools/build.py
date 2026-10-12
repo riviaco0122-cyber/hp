@@ -4661,12 +4661,27 @@ def article_page(a):
         html = calc_lists(html)
         html = html.replace('<table class="table">', '<div class="table-scroll"><table class="table">').replace("</table>", "</table></div>")
         return re.sub(r"<td>((?:約|―|—)?[0-9０-９.,]+(?:%|倍|か月)?(?:（[^<]{0,12}）)?)</td>", r'<td class="num">\1</td>', html)
+    def card_headings(html):
+        """カルーセル／比較カードの見出し（<p class="carousel__title"|"compare__head">）を本物の見出しにする。
+        節内の先行する h3 の下なら h4、そうでなければ h3（見た目は CSS で <p> 時代と同じに固定）。"""
+        out, pos, level = [], 0, 3
+        for m in re.finditer(r'<h3[ >]|<p class="(?:carousel__title|compare__head)">(.*?)</p>', html, re.S):
+            out.append(html[pos:m.start()])
+            if m.group(0).startswith("<h3"):
+                level = 4
+                out.append(m.group(0))
+            else:
+                cls = re.match(r'<p class="([^"]+)"', m.group(0)).group(1)
+                out.append(f'<h{level} class="{cls}">{m.group(1)}</h{level}>')
+            pos = m.end()
+        out.append(html[pos:])
+        return "".join(out)
     sections = "\n".join(
         f"""        <section class="article__section" id="{sid}">
           <h2>{e(h)}</h2>
 {lead_sentence(html.strip())}
         </section>"""
-        for sid, h, html in [(x, y, insert_figure(a["slug"], x, tables(z), a.get("figure"))) for x, y, z in a["sections"]]
+        for sid, h, html in [(x, y, insert_figure(a["slug"], x, card_headings(tables(z)), a.get("figure"))) for x, y, z in a["sections"]]
     )
     sources = "".join(f"<li>{e(s)}</li>" for s in a["sources"])
     svc = a["services"][0]
