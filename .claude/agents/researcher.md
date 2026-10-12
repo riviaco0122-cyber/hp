@@ -35,3 +35,5 @@ tools: Read, Grep, Glob, Edit, Write, WebSearch, WebFetch
 実体験を先に探す（人の方針 2026-10-12）：リサーチは、まず `docs/brand/experience.md` の確認済みの節と `docs/sources/inbox/`、公に発信している運営者の事例から始め、制度ページなど公的情報は補強に使う。実体験・一次情報が記事の主役になる量があるかを、メモの冒頭に書く（足りなければ別テーマを推奨）。playbook 5-3c の優先順位に従う。
 
 運営者・当事者の発信を主役の素材にする（人の方針 2026-10-12）：RIVIA の実体験がなくても、公に発信している運営者・当事者（空き家の解体・改修・売却・宿の開業をした人など）の事例・発言・想いを、YouTube（`python3 tools/youtube_research.py`）・ブログ・取材記事から集め、発信者名・URL・公開日つきで要約して報告する。視聴者のコメント欄は引用しない（CLAUDE.md ルール2）。
+
+公式ページの本文は、編集長が `python3 tools/fetch_text.py` で取得して /tmp/akiyado-pages/ に置いたものを Read で読んで照合する（WebFetch は使えない）。渡されたファイルにある記述だけを「本文照合済み」とし、取得日・URL を控える。
