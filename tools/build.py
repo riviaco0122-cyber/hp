@@ -3318,11 +3318,10 @@ ARTICLES += [
 """),
             ("plan", "焼津・鰯ヶ島で、どんな宿をつくろうとしているのか？", """
 <p>焼津市の鰯ヶ島（いわしがしま）で、約40㎡の木造平屋を、最大4名の一棟貸しの宿にします。2026年末の開業を予定していて、まだ運営の実績はありません。</p>
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:20px 0 6px">
-<figure style="margin:0"><img src="images/photos/w/yaizu-before-tatami-room-800.webp" alt="リフォーム前の室内。畳を上げた板張りの部屋" width="800" height="1065" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:12px"></figure>
+<div style="display:grid;grid-template-columns:minmax(0,340px);gap:8px;margin:20px 0 6px">
 <figure style="margin:0"><img src="images/photos/w/yaizu-before-floor-open-800.webp" alt="リフォーム前の室内。床下の骨組みが見える部屋" width="800" height="1065" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:12px"></figure>
 </div>
-<p class="table-note">鰯ヶ島の物件の、リフォーム前の室内です。</p>
+<p class="table-note">鰯ヶ島の物件の、リフォーム前の室内です（床を開けて骨組みが見える状態）。</p>
 <p>鰯ヶ島は、駿河湾沿いに南北約1.5kmの集落が続く「浜通り」の南端にあり、焼津の水産業の発祥の地と言われています。コンセプトは「暮らすように旅する」です。観光地を巡るのではなく、焼津の日常に溶け込む宿を目指しています。</p>
 <ul>
 <li><strong>食事</strong>：出さない（泊食分離）。町の食堂・魚屋・商店を使ってもらう</li>
