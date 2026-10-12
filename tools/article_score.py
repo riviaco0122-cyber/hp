@@ -71,6 +71,8 @@ PUBLIC_NAME = (
     r"国土交通省|観光庁|厚生労働省|総務省|国税庁|消防庁|内閣府|内閣官房|法務省|財務省|経済産業省|中小企業庁|文化庁|"
     r"農林水産省|環境省|金融庁|デジタル庁|気象庁|文部科学省|外務省|復興庁|スポーツ庁|林野庁|水産庁|消費者庁|"
     r"出入国在留管理庁|資源エネルギー庁|国立社会保障・人口問題研究所|日本政府観光局|JNTO|e-Gov|法務局|"
+    # 観光系大手企業の集計データ（人の了承 2026-10-12）
+    r"JTB(?:総合研究所)?|HIS|エイチ・アイ・エス|じゃらんリサーチセンター|日本旅行|近畿日本ツーリスト|楽天トラベル|"
     # 都道府県（直後が「の」のもの＝「〇〇県の不動産会社」などは除く）
     r"(?:" + _PREFS + r")(?:庁)?(?!の)"
     # 市区町村は、役所・役場・公式サイト・担当課の形のときだけ
@@ -284,7 +286,7 @@ def score(d):
         skipped = len(src) - len(counted)
         extra = f"・URLか年がなく数えない行 {skipped}件" if skipped else ""
     pub = sum(1 for s in counted if is_public(s))
-    add("参考資料（3件以上・公的機関を含む）", (3 if len(counted) >= 3 else len(counted)) + (2 if pub else 0), 5,
+    add("参考資料（3件以上・公的機関か観光系大手企業を含む）", (3 if len(counted) >= 3 else len(counted)) + (2 if pub else 0), 5,
         f"{len(counted)}件（うち公的機関 {pub}件{extra}）")
     al, sl = d["article_links"], d["service_links"]
     add("本文から他の記事へのリンク（2本以上）", 2 if len(al) >= 2 else len(al), 2, f"{len(al)}本")
