@@ -71,3 +71,57 @@ pref.shizuoka.jp
 ## 他県の例を使うとき
 
 県ごとに `*.<県名>.jp` を足す（例: `*.hokkaido.jp`、`*.oita.jp`）。市の公式サイトが `*.lg.jp` の場合は、すでに登録済みの `*.lg.jp` で足りる。
+
+## 全国47都道府県の自治体サイト用（`*.<県名>.jp`。コピペ用）
+
+他県の事例を使うときに、まとめて貼る。市町村のサイトは `*.lg.jp`（登録済み）か、この `*.<県名>.jp` のどちらかにあることが多い。ただし、`city.sapporo.jp` のように県名を含まない独自のドメインを使う市は入らない（足りない市が出たら個別に足す）。
+
+```
+*.hokkaido.jp
+*.aomori.jp
+*.iwate.jp
+*.miyagi.jp
+*.akita.jp
+*.yamagata.jp
+*.fukushima.jp
+*.ibaraki.jp
+*.tochigi.jp
+*.gunma.jp
+*.saitama.jp
+*.chiba.jp
+*.tokyo.jp
+*.kanagawa.jp
+*.niigata.jp
+*.toyama.jp
+*.ishikawa.jp
+*.fukui.jp
+*.yamanashi.jp
+*.nagano.jp
+*.gifu.jp
+*.shizuoka.jp
+*.aichi.jp
+*.mie.jp
+*.shiga.jp
+*.kyoto.jp
+*.osaka.jp
+*.hyogo.jp
+*.nara.jp
+*.wakayama.jp
+*.tottori.jp
+*.shimane.jp
+*.okayama.jp
+*.hiroshima.jp
+*.yamaguchi.jp
+*.tokushima.jp
+*.kagawa.jp
+*.ehime.jp
+*.kochi.jp
+*.fukuoka.jp
+*.saga.jp
+*.nagasaki.jp
+*.kumamoto.jp
+*.oita.jp
+*.miyazaki.jp
+*.kagoshima.jp
+*.okinawa.jp
+```
