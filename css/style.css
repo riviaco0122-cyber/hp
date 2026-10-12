@@ -2458,6 +2458,9 @@ body.is-media .mheader__right { gap: 10px; }
   .fig-cols--2 { grid-template-columns: 1fr 1fr; gap: 8px; }
   .fig-cols--3, .fig-cols--4 { grid-template-columns: 1fr 1fr; gap: 8px; }
   .fig-cols--3 .fig-col:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  /* 比較の図（3列・4列）は文字が多く縦に長くなるので、スマホでは横にスワイプするカルーセルにする */
+  .fig--compare .fig-cols--3, .fig--compare .fig-cols--4 { display: flex; gap: 12px; margin: 0 -16px; padding: 4px 16px 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 16px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+  .fig--compare .fig-cols--3 .fig-col, .fig--compare .fig-cols--4 .fig-col { flex: 0 0 78%; max-width: 300px; scroll-snap-align: start; grid-column: auto; }
   .fig-col { padding: 16px 12px 14px; }
   .fig-col__name { font-size: 14.5px; }
   .fig-col__list li { font-size: 12.5px; }
