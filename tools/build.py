@@ -3202,6 +3202,10 @@ for _a in ARTICLES_SCHED1 + ARTICLES_SCHED2 + ARTICLES_CASE + ARTICLES_SERIES1 +
     _a.setdefault("tone", "sand")
     _a.setdefault("updated", _a["date"])
     ARTICLES.append(_a)
+from article_blurbs import BLURBS  # 一覧カードの「小さな補足」
+for _a in ARTICLES:
+    # 一覧用の表示名（short の改行を除く）と補足。補足は記事データの blurb > article_blurbs.py > title の「｜」以降
+    _a["blurb"] = _a.get("blurb") or BLURBS.get(_a["slug"]) or (_a["title"].split("｜", 1)[1] if "｜" in _a["title"] else "")
 ARTICLE_TOPICS = {
     "akiya-inherited-house-to-inn": ["sell", "lend", "money"],
     "akiya-3000man-deduction": ["sell", "money"],
@@ -3348,12 +3352,18 @@ def card_tags(a):
     return f'<span class="ctags">{"".join((who[:1] + topics)[:2])}</span>'
 
 
+def list_name(a):
+    """一覧カードの表示名（短い。1〜2行）。元の title は変えない"""
+    return a["short"].replace("\n", "")
+
+
 def article_card(a, extra_class=""):
     return f"""          <a href="media/{a["slug"]}.html" class="media-card reveal{extra_class}" data-category="{a["category"]}" data-date="{a["date"]}">
             {thumb(a)}
             <div class="media-card__body">
               {card_tags(a)}
-              <h3 class="media-card__title">{e(a["title"])}</h3>
+              <h3 class="media-card__title">{e(list_name(a))}</h3>
+              <p class="media-card__blurb">{e(a["blurb"])}</p>
               <time class="media-card__date" datetime="{a["date"]}">{fmt_date(a["date"])}</time>
             </div>
           </a>"""
@@ -4099,7 +4109,7 @@ def media_learn_page():
         for i, (t, d, slugs) in enumerate(c["chapters"], 1):
             # 記事への行は、短いキャッチ＋「読む →」で、押せることが一目で分かるようにする
             links = "".join(f'<li data-date="{ARTICLE_BY_SLUG[sl]["date"]}"><a href="media/{sl}.html" class="lchap__link" title="{e(ARTICLE_BY_SLUG[sl]["title"])}">'
-                            f'<span class="lchap__ltext">{e(ARTICLE_BY_SLUG[sl]["short"].replace(chr(10), ""))}</span><span class="lchap__go">読む {ARROW}</span></a></li>' for sl in slugs)
+                            f'<span class="lchap__ltext"><span class="lchap__name">{e(list_name(ARTICLE_BY_SLUG[sl]))}</span><span class="lchap__blurb">{e(ARTICLE_BY_SLUG[sl]["blurb"])}</span></span><span class="lchap__go">読む {ARROW}</span></a></li>' for sl in slugs)
             chs.append(f"""            <li class="lchap reveal">
               <p class="lchap__no">第{i}章</p>
               <div class="lchap__body">
@@ -4538,19 +4548,20 @@ def media_guide_page(g):
             a = ARTICLE_BY_SLUG[slug]
             pn = ARTICLE_PHOTOS[slug][0]
             items.append(f"""            <li class="guide-step reveal" data-date="{a["date"]}">
-              <a href="media/{slug}.html" class="guide-step__body">
+              <a href="media/{slug}.html" class="guide-step__body" title="{e(a["title"])}">
                 <span class="guide-step__no">{no:02d}</span>
-                <span class="guide-step__thumb">{photo(pn, width=720, height=450, sizes="(max-width: 899px) 30vw, 220px")}</span>
+                <span class="guide-step__thumb">{photo(pn, alt="", width=720, height=450, sizes="64px")}</span>
                 <span class="guide-step__text">
-                  <span class="guide-step__cat">{e(MEDIA_CAT_NAMES[a["category"]])}<span class="guide-step__min">約{read_minutes(a)}分で読める</span></span>
-                  <span class="guide-step__title">{e(a["title"])}</span>
-                  <span class="guide-step__more">記事を読む {ARROW}</span>
+                  <span class="guide-step__title">{e(list_name(a))}</span>
+                  <span class="guide-step__blurb">{e(a["blurb"])}</span>
+                  <span class="guide-step__more">{e(MEDIA_CAT_NAMES[a["category"]])} ・ 約{read_minutes(a)}分</span>
                 </span>
+                <span class="guide-step__go" aria-hidden="true">›</span>
               </a>
             </li>""")
         stages.append(f"""        <section class="guide-stage">
           <div class="guide-stage__head reveal"><span class="guide-stage__no">Step {si}</span><h2 class="guide-stage__title">{e(label)}</h2><p class="guide-stage__desc">{e(desc)}</p></div>
-          <ol class="guide-steps">
+          <ol class="guide-steps" data-fold="3">
 {chr(10).join(items)}
           </ol>
         </section>""")
