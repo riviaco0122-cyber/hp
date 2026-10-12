@@ -3109,3 +3109,86 @@ body.is-media .toc li::before { color: var(--m-green); }
 /* PC：横に並んだ項目カードの高さをそろえる（片方だけ低くならないように） */
 .fig-points > .fig-point { align-self: stretch; }
 body.is-media .article__section .fig ul.fig-points > li.fig-point { margin-top: 0; }
+
+/* ===== 一覧を「短い表示名＋小さな補足」のカードにする（ガイド・学ぶ・記事一覧） ===== */
+body.is-media .guide-steps { gap: 8px; }
+body.is-media .guide-step__body { grid-template-columns: 28px 64px minmax(0, 1fr) 14px; align-items: center; gap: 12px; padding: 10px 14px 10px 12px; min-height: 76px; }
+body.is-media .guide-step__no { grid-column: auto; font-size: 15px; text-align: center; }
+body.is-media .guide-step__thumb { width: 64px; aspect-ratio: 1 / 1; }
+body.is-media .guide-step__text { gap: 2px; min-width: 0; }
+body.is-media .guide-step__title { font-family: var(--font-round); font-weight: 700; font-size: 15px; line-height: 1.5; letter-spacing: 0.02em; }
+body.is-media .guide-step__blurb { display: block; font-size: 12.5px; line-height: 1.6; color: var(--m-sub); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+body.is-media .guide-step__more { display: block; margin-top: 0; font-family: var(--font-body, inherit); font-weight: 400; font-size: 11px; letter-spacing: 0.04em; color: var(--c-muted); }
+body.is-media .guide-step__soon { margin-top: 0; font-size: 11px; }
+body.is-media .guide-step__go { font-size: 22px; line-height: 1; color: var(--m-green); text-align: right; }
+body.is-media a.guide-step__body:active { background: var(--m-sand); }
+@media (min-width: 900px) {
+  body.is-media .guide-step__body { grid-template-columns: 36px 96px minmax(0, 1fr) 20px; gap: 20px; padding: 12px 24px 12px 18px; }
+  body.is-media .guide-step__thumb { width: 96px; aspect-ratio: 16 / 10; }
+  body.is-media .guide-step__title { font-size: 17px; }
+  body.is-media .guide-step__blurb { font-size: 14px; }
+  body.is-media .guide-step__more { font-size: 12px; }
+}
+.guide-steps__more { display: block; width: 100%; margin-top: 8px; padding: 14px; border: 1px dashed var(--c-line-strong, #c9cfc9); border-radius: 14px; background: transparent; font-family: var(--font-round); font-weight: 700; font-size: 13.5px; color: var(--m-green, #2e6b47); cursor: pointer; }
+.guide-steps__more:hover { background: var(--m-sand); }
+/* ガイドの Step 見出しを、番号つきの区切りにする */
+body.is-media .guide-stage { margin-top: 40px; padding-top: 0; }
+body.is-media .guide-stage__head { padding: 14px 16px; margin-bottom: 14px; background: var(--m-sand); border-radius: 14px; }
+body.is-media .guide-stage__no { display: inline-block; padding: 2px 10px; border-radius: 999px; background: var(--m-green); color: #fff; font-size: 11px; letter-spacing: 0.1em; }
+body.is-media .guide-stage__title { margin-top: 6px; font-size: 18px; }
+body.is-media .guide-stage__desc { margin-top: 4px; font-size: 13px; line-height: 1.8; }
+
+/* 記事カード（一覧）：表示名＋補足 */
+.media-card__blurb { margin-top: 4px; font-size: 12.5px; line-height: 1.6; color: var(--c-sub, #555b56); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+body.is-media .media-card__title { font-family: var(--font-round); font-weight: 700; -webkit-line-clamp: 3; min-height: 0 !important; }
+.media-grid--scroll .media-card__title, .media-grid--feature .is-lead .media-card__title { min-height: 0; }
+@media (min-width: 900px) { .media-grid .media-card__title { min-height: 0; } .media-card__blurb { font-size: 13.5px; } }
+
+/* 学ぶ：章の中の記事行（表示名＋補足） */
+.lchap__ltext { display: flex; flex-direction: column; gap: 2px; }
+.lchap__name { font-size: 14px; font-weight: 700; line-height: 1.5; }
+.lchap__blurb { font-size: 12px; font-weight: 400; line-height: 1.6; color: var(--m-sub, #555b56); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 899px) { .lchap__go { font-size: 11.5px; } }
+
+/* ===== 記事の部品（使い方は docs/seo/components.md） ===== */
+/* 横スクロールのカルーセルカード：スナップ付き・右端が少し見える */
+.article__section .carousel { display: flex; gap: 12px; margin: 24px -20px; padding: 4px 20px 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 20px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+.article__section .carousel__card { flex: 0 0 78%; max-width: 300px; scroll-snap-align: start; padding: 18px 18px 16px; border: 1px solid var(--m-line); border-radius: 16px; background: #fff; box-shadow: 0 2px 8px rgba(38, 42, 39, .05); }
+.article__section .carousel__no { display: inline-block; margin: 0; font-family: var(--font-en); font-size: 12px; letter-spacing: .1em; color: var(--m-green); line-height: 1.6; }
+.article__section .carousel__title { margin: 4px 0 0; font-family: var(--font-round); font-weight: 700; font-size: 15.5px; line-height: 1.55; color: var(--m-ink); }
+.article__section .carousel__card > p.carousel__text { margin: 8px 0 0; font-size: 13.5px; line-height: 1.85; color: var(--m-sub); }
+.article__section .carousel__hint { margin: -6px 0 18px; font-size: 11.5px; line-height: 1.6; color: var(--c-muted); text-align: right; }
+@media (min-width: 900px) {
+  .article__section .carousel { margin: 24px 0; padding: 4px 0 12px; }
+  .article__section .carousel__card { flex-basis: 30%; max-width: none; }
+}
+/* 比較カード（2〜3列）：スマホは2列＝縦並び、3列＝横スワイプ */
+.article__section .compare { display: grid; gap: 12px; margin: 24px 0; }
+.article__section .compare__col { padding: 16px 16px 14px; border: 1px solid var(--m-line); border-radius: 16px; background: #fff; }
+.article__section .compare__head { margin: 0 0 8px; padding-bottom: 8px; border-bottom: 2px solid var(--m-green); font-family: var(--font-round); font-weight: 700; font-size: 15.5px; line-height: 1.5; color: var(--m-ink); }
+.article__section .compare__col--b .compare__head { border-bottom-color: var(--m-cta); }
+.article__section .compare__col--c .compare__head { border-bottom-color: #c9a227; }
+.article__section .compare__row { display: flex; justify-content: space-between; gap: 12px; margin: 0; padding: 7px 0; border-bottom: 1px dashed var(--m-line); font-size: 13.5px; line-height: 1.7; }
+.article__section .compare__row:last-child { border-bottom: 0; }
+.article__section .compare__row > span:first-child { flex: 0 0 auto; color: var(--c-muted); font-size: 12.5px; }
+.article__section .compare__row > span:last-child { text-align: right; font-weight: 700; color: var(--m-ink); }
+@media (min-width: 900px) { .article__section .compare { grid-template-columns: repeat(2, minmax(0, 1fr)); } .article__section .compare--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 899px) {
+  .article__section .compare--3 { display: flex; margin: 24px -20px; padding: 4px 20px 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 20px; }
+  .article__section .compare--3 .compare__col { flex: 0 0 78%; scroll-snap-align: start; }
+}
+/* 数字ハイライト：大きい数字＋ラベル */
+.article__section .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 24px 0; }
+.article__section .stats--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.article__section .stat { margin: 0; padding: 14px 8px 12px; border-radius: 14px; background: var(--m-sand); text-align: center; }
+.article__section .stat__num { display: block; margin: 0; font-family: var(--font-en); font-weight: 700; font-size: 30px; line-height: 1.2; color: var(--m-green); letter-spacing: 0; }
+.article__section .stat__num small { font-size: 14px; font-weight: 700; margin-left: 1px; }
+.article__section .stat__label { display: block; margin: 6px 0 0; font-size: 12px; line-height: 1.6; color: var(--m-ink); font-weight: 700; }
+.article__section .stat__note { display: block; margin: 2px 0 0; font-size: 11px; line-height: 1.5; color: var(--c-muted); }
+.article__section .stat--accent .stat__num { color: var(--m-cta); }
+@media (min-width: 900px) { .article__section .stat__num { font-size: 38px; } .article__section .stat__label { font-size: 13px; } }
+.guide-step[hidden], .media-card[hidden] { display: none !important; }
+.guide-step__blurb n-w, .lchap__blurb n-w, .media-card__blurb n-w { display: inline; white-space: nowrap; }
+body.is-media .guide-step__blurb { font-size: 12px; }
+body.is-media .guide-stage__head { padding: 12px 16px; }
+@media (max-width: 899px) { .media-card .ctags .ctag:nth-child(2) { display: none; } }

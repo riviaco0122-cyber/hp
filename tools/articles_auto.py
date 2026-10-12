@@ -40,6 +40,11 @@ ARTICLES_AUTO = [
 """),
             ('shimoda', '下田市の空き家率31.3%は、全国の何倍なのか？', """
 <p>下田市の空き家率は31.3%で、全国の13.8%の約2.3倍です。静岡県は16.7%で、下田市はその約1.9倍にあたります。</p>
+<div class="stats" role="group" aria-label="空き家率の比較">
+<div class="stat stat--accent"><span class="stat__num">31.3<small>%</small></span><span class="stat__label">下田市</span><span class="stat__note">全国の約2.3倍</span></div>
+<div class="stat"><span class="stat__num">16.7<small>%</small></span><span class="stat__label">静岡県</span><span class="stat__note">下田市は約1.9倍</span></div>
+<div class="stat"><span class="stat__num">13.8<small>%</small></span><span class="stat__label">全国</span><span class="stat__note">2023年10月時点</span></div>
+</div>
 <p>取得した数値からの計算は、次のとおりです。</p>
 <table class="table">
 <thead><tr><th>地域</th><th>空き家数（戸）</th><th>総住宅数（戸）</th><th>空き家率</th></tr></thead>
@@ -116,11 +121,12 @@ ARTICLES_AUTO = [
 </tbody>
 </table>
 <p>この数字を読むときの注意が三つあります。</p>
-<ol class="steps">
-<li>静岡県の集計値で、下田市の値ではありません。市区町村の需要は、この表からは分かりません。</li>
-<li>人泊の数が、観光庁が公表する全体の集計と一致しませんでした。範囲の詳細は確認できていないため、絶対数は載せず、割合と推移だけを使います。</li>
-<li>年の表記は、表のとおり「年度」です。</li>
-</ol>
+<div class="carousel" role="group" aria-label="数字を読むときの注意（横にスワイプ）">
+<div class="carousel__card"><span class="carousel__no">注意 1</span><p class="carousel__title">下田市の値ではない</p><p class="carousel__text">静岡県の集計値で、下田市の値ではありません。市区町村の需要は、この表からは分かりません。</p></div>
+<div class="carousel__card"><span class="carousel__no">注意 2</span><p class="carousel__title">割合と推移だけを使う</p><p class="carousel__text">人泊の数が、観光庁が公表する全体の集計と一致しませんでした。範囲の詳細は確認できていないため、絶対数は載せず、割合と推移だけを使います。</p></div>
+<div class="carousel__card"><span class="carousel__no">注意 3</span><p class="carousel__title">年ではなく「年度」</p><p class="carousel__text">年の表記は、表のとおり「年度」です。</p></div>
+</div>
+<p class="carousel__hint">横にスワイプで続きを見られます</p>
 <p>訪日客が地方に広がる動きは、<a href="media/inbound-regional-dispersion.html">訪日客の地方分散の記事</a>で扱っています。観光地ではない場所の空き家が宿になるかは、<a href="media/shizuoka-yaizu-akiya-inn.html">焼津市の空き家の記事</a>も参考になります。</p>
 """),
             ('our-case', '下田市で、私たちはどう宿を始めたのか？', """
