@@ -720,6 +720,12 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .article__section ul:not(.steps) li { padding-left: 18px; }
 .article__section ul:not(.steps) li + li { margin-top: 8px; }
 .article__section ul:not(.steps) li::before { content: ""; position: absolute; left: 0; top: 0.9em; width: 5px; height: 5px; background: var(--c-text); border-radius: 50%; }
+/* 番号つきの普通のリスト（steps 以外）: 項目の間隔と番号を出し、スマホで文字が詰まらないようにする */
+.article__section ol:not(.steps) { counter-reset: li; margin: 20px 0; }
+.article__section ol:not(.steps) li { counter-increment: li; position: relative; padding-left: 36px; font-size: 15px; line-height: 2; }
+.article__section ol:not(.steps) li + li { margin-top: 16px; }
+.article__section ol:not(.steps) li::before { content: counter(li); position: absolute; left: 0; top: 0.5em; width: 22px; height: 22px; border: 1px solid var(--c-muted); border-radius: 50%; font-family: var(--font-en); font-size: 12px; line-height: 20px; text-align: center; color: var(--c-muted); }
+.article__section p + ul:not(.steps), .article__section p + ol:not(.steps) { margin-top: 20px; }
 .article__section ol.steps { counter-reset: step; margin: 20px 0; border-top: 1px solid var(--c-line); }
 .article__section ol.steps li { counter-increment: step; padding: 18px 0 18px 48px; border-bottom: 1px solid var(--c-line); }
 .article__section ol.steps li::before { content: counter(step, decimal-leading-zero); position: absolute; left: 0; top: 18px; font-family: var(--font-en); font-size: 20px; line-height: 1.6; color: var(--c-muted); }
