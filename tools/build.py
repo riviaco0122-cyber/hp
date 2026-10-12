@@ -4148,7 +4148,7 @@ MEDIA_COURSES = [
     dict(key="why-akiya", en="Course 01", title="なぜ今、空き家の活用なのか", lead="空き家の今と、放置したときの負担、制度の変化。活かし方を比べて、家族で決めるまで。",
          chapters=[("空き家の今を知る", "数字で見る空き家と、活用が注目されている理由。", ["akiya-data-9-million", "akiya-rate-and-inn", "why-akiya-utilization-now"]),
                    ("放置のリスクと制度の変化", "空家法の改正、相続登記の義務化、持ち続ける費用。", ["akiya-law-kanri-fuzen", "souzoku-touki-gimuka", "akiya-holding-costs", "akiya-inherited-house-to-inn"]),
-                   ("活かし方を比べる", "売る・貸す・宿にするの違いと、契約や税の基本。", ["akiya-utilization-options", "akiya-lease-types", "akiya-3000man-deduction", "akiya-bank-guide"]),
+                   ("活かし方を比べる", "売る・貸す・宿にするの違いと、契約や税の基本。", ["akiya-utilization-options", "akiya-lease-types", "akiya-demolish-or-renovate", "akiya-3000man-deduction", "akiya-bank-guide"]),
                    ("家族で決める", "相続した実家を、家族でどう決めるか。", ["inherited-house-family-talk"]),
                    ("空き家と地域", "空き家が、まちに人とお金の流れを生む仕組み。", ["akiya-local-resource", "akiya-regional-revitalization", "inn-local-economy"])]),
     dict(key="why-minpaku", en="Course 02", title="なぜ民泊・小さな宿なのか", lead="空き家の活かし方のなかで、宿が選ばれる理由。旅の変化と、向いている家、収益の考え方。",

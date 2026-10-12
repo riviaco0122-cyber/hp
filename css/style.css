@@ -3205,3 +3205,14 @@ body.is-media .article__section .compare__col--c :is(h3, h4).compare__head { bor
 body.is-media .guide-step__blurb { font-size: 12px; }
 body.is-media .guide-stage__head { padding: 12px 16px; }
 @media (max-width: 899px) { .media-card .ctags .ctag:nth-child(2) { display: none; } }
+/* 列が多く文が長い表（市町ごとの補助など）は、スマホ幅では1行ずつのカードに積み替える（data-label が項目名） */
+@media (max-width: 639px) {
+  body.is-media .table-scroll--stack { margin: 24px 0; padding: 0; overflow: visible; }
+  body.is-media .table-scroll--stack .table--stack, body.is-media .table-scroll--stack .table--stack tbody, body.is-media .table-scroll--stack .table--stack tr, body.is-media .table-scroll--stack .table--stack td { display: block; width: 100%; }
+  body.is-media .table-scroll--stack .table--stack { border: 0; border-radius: 0; }
+  body.is-media .table-scroll--stack .table--stack thead { display: none; }
+  body.is-media .table-scroll--stack .table--stack tr { margin: 0 0 12px; border: 1px solid var(--m-line); border-radius: 12px; overflow: hidden; background: #fff; }
+  body.is-media .article__section .table--stack td { padding: 9px 14px; border-bottom: 0; font-size: 13.5px; }
+  body.is-media .article__section .table--stack td:first-child { min-width: 0; max-width: none; padding: 10px 14px; font-size: 15px; color: var(--m-green); background: var(--m-sand); }
+  body.is-media .article__section .table--stack td[data-label]::before { content: attr(data-label); display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--m-green); }
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """記事の機械採点（100点満点のうち40点分）と、必須条件（ゲート）の判定。品質管理部が使う。
 
-採点基準の全体（機械40点＋品質管理部60点、合格95点以上）は docs/seo/playbook.md 5章。
+採点基準の全体（機械40点＋品質管理部60点、合格90点以上）は docs/seo/playbook.md 5章。
 
 使い方:
   python3 tools/article_score.py --slug <slug>                   # 記事データ（tools/articles_*.py）の1記事（推奨）。
