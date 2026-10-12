@@ -4963,9 +4963,11 @@ def article_page(a):
         </section>
 
 {note_story() if a["slug"] in NOTE_STORY_ARTICLES else ""}        <section class="sources">
-          <h2 class="sources__title">参考資料</h2>
-          <ul>{sources}</ul>
-          <p class="sources__note">※ 本記事の数値・制度は公開日時点で公表されている資料にもとづきます。最新の情報は各機関の発表をご確認ください。</p>
+          <details class="sources__fold">
+            <summary class="sources__title">参考資料（{len(a["sources"])}件）</summary>
+            <ul>{sources}</ul>
+            <p class="sources__note">※ 本記事の数値・制度は公開日時点で公表されている資料にもとづきます。最新の情報は各機関の発表をご確認ください。</p>
+          </details>
         </section>
 
 {guide_box}
