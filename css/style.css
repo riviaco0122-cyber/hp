@@ -3086,3 +3086,7 @@ body.is-media .toc li::before { color: var(--m-green); }
   body.is-media .toc__details > summary { cursor: default; pointer-events: none; }
   body.is-media .toc__details > summary::after { display: none; }
 }
+
+/* 図の中の項目（fig-point など）の左余白が、記事本文の li の余白リセットで 0 になっていたのを戻す */
+.article__section .fig ul:not(.steps) li.fig-point { padding: 16px 16px 16px 20px; }
+.article__section .fig ul:not(.steps) li.fig-col { padding-left: 18px; }
