@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=98eaceb1">
+  <link rel="stylesheet" href="../../css/style.css?v=f2015aa8">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -100,7 +100,7 @@
 
         <section class="keypoints" aria-labelledby="keypoints-title">
           <h2 id="keypoints-title" class="keypoints__title">この記事の<wbr>ポイント</h2>
-          <ul><li><n-w>宿泊する旅行者は、日帰りの旅行者に比べて地域での滞在時間が長く、食事や買い物などの消費額も大きくなる傾向があります。</n-w></li><li><n-w>宿の運営で使う清掃・リネン・食材・修繕などを地域の事業者に依頼すると、お金が地域の中で循環します。</n-w></li><li><n-w>宿の外の店や体験を案内することで、旅行者の消費が地域全体に広がります。</n-w></li><li><n-w>空き家を宿として再生すれば、使われていなかった資産が収益と雇用を生み出す場所に変わります。</n-w></li></ul>
+          <ul><li><span class="kp__main"><n-w>宿泊する旅行者は、日帰りの旅行者に比べて地域での滞在時間が長く、食事や買い物などの消費額も大きくなる傾向があります。</n-w></span></li><li><span class="kp__main"><n-w>宿の運営で使う清掃・リネン・食材・修繕などを地域の事業者に依頼すると、お金が地域の中で循環します。</n-w></span></li><li><span class="kp__main"><n-w>宿の外の店や体験を案内することで、旅行者の消費が地域全体に広がります。</n-w></span></li><li><span class="kp__main"><n-w>空き家を宿として再生すれば、使われていなかった資産が収益と雇用を生み出す場所に変わります。</n-w></span></li></ul>
         </section>
 
         <aside class="inline-cta">
@@ -112,8 +112,10 @@
         </aside>
 
         <nav class="toc" aria-label="目次">
-          <p class="toc__title">目次</p>
-          <ol><li><a href="#stay">「泊まる」ことが<wbr>地域の<wbr>消費を<wbr>大きくする</a></li><li><a href="#flow">旅行者の<wbr>お金が<wbr>地域に<wbr>広がる流れ</a></li><li><a href="#leak">お金が<wbr>地域の外に流れていく<wbr>「漏れ」</a></li><li><a href="#guide">宿が地域の<wbr>案内役になる</a></li><li><a href="#akiya">空き家の<wbr>再生が<wbr>生む価値</a></li><li><a href="#summary">まとめ：宿は<wbr>地域の<wbr>経済循環の起点</a></li><li><a href="#faq">よくある質問</a></li></ol>
+          <details class="toc__details">
+            <summary class="toc__title">目次を開く（全7章）</summary>
+            <ol><li><a href="#stay">「泊まる」ことが<wbr>地域の<wbr>消費を<wbr>大きくする</a></li><li><a href="#flow">旅行者の<wbr>お金が<wbr>地域に<wbr>広がる流れ</a></li><li><a href="#leak">お金が<wbr>地域の外に流れていく<wbr>「漏れ」</a></li><li><a href="#guide">宿が地域の<wbr>案内役になる</a></li><li><a href="#akiya">空き家の<wbr>再生が<wbr>生む価値</a></li><li><a href="#summary">まとめ：宿は<wbr>地域の<wbr>経済循環の起点</a></li><li><a href="#faq">よくある質問</a></li></ol>
+          </details>
         </nav>
 
         <section class="article__section" id="stay">
@@ -142,17 +144,17 @@
         </section>
         <section class="article__section" id="leak">
           <h2>お金が<wbr>地域の外に流れていく<wbr>「漏れ」</h2>
-<p><n-w class="j">旅行者が地域で使ったお金も、運営に使う物品やサービスを地域の外から調達すると、その分は地域の外に流れていきます。これを</n-w><strong><n-w class="j">「漏れ」</n-w></strong><n-w class="j">と呼びます。</n-w></p>
+<p><span class="lead-s"><n-w class="j">旅行者が地域で使ったお金も、運営に使う物品やサービスを地域の外から調達すると、その分は地域の外に流れていきます。</n-w></span><n-w class="j">これを</n-w><strong><n-w class="j">「漏れ」</n-w></strong><n-w class="j">と呼びます。</n-w></p>
 <p><n-w class="j">地域の事業者に清掃や修繕を依頼する、地元の食材を使う、地域で人を雇うといった選択を積み重ねると、</n-w><strong><n-w class="j">お金が地域の中で何度も使われ、経済効果が大きくなります</n-w></strong>。</p>
         </section>
         <section class="article__section" id="guide">
           <h2>宿が地域の<wbr>案内役になる</h2>
-<p><n-w class="j">宿は、旅行者が地域で最初に接する場所です。おすすめの飲食店や商店、季節の行事、地元の人だけが知る景色などを案内することで、</n-w><strong><n-w class="j">旅行者の消費と体験を地域全体に広げる</n-w></strong><n-w class="j">ことができます。</n-w></p>
+<p><span class="lead-s"><n-w class="j">宿は、旅行者が地域で最初に接する場所です。</n-w></span><n-w class="j">おすすめの飲食店や商店、季節の行事、地元の人だけが知る景色などを案内することで、</n-w><strong><n-w class="j">旅行者の消費と体験を地域全体に広げる</n-w></strong><n-w class="j">ことができます。</n-w></p>
 <p><n-w>小さな宿ほど、地域の店や人との顔の見える関係を活かした案内ができます。</n-w></p>
         </section>
         <section class="article__section" id="akiya">
           <h2>空き家の<wbr>再生が<wbr>生む価値</h2>
-<p><n-w class="j">使われていなかった空き家を宿として再生すると、建物の所有者には収入が、地域には旅行者と雇用が生まれます。放置されていた建物が手入れされることで、</n-w><strong><n-w class="j">まちの景観や防犯の面でも良い影響</n-w></strong><n-w class="j">があります。</n-w></p>
+<p><span class="lead-s"><n-w class="j">使われていなかった空き家を宿として再生すると、建物の所有者には収入が、地域には旅行者と雇用が生まれます。</n-w></span><n-w class="j">放置されていた建物が手入れされることで、</n-w><strong><n-w class="j">まちの景観や防犯の面でも良い影響</n-w></strong><n-w class="j">があります。</n-w></p>
         </section>
         <section class="article__section" id="summary">
           <h2>まとめ：宿は<wbr>地域の<wbr>経済循環の起点</h2>
@@ -868,6 +870,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=partnership&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=748603bf"></script>
+  <script src="../../js/main.js?v=61d2cdc8"></script>
 </body>
 </html>

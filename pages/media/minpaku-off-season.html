@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=98eaceb1">
+  <link rel="stylesheet" href="../../css/style.css?v=f2015aa8">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -100,7 +100,7 @@
 
         <section class="keypoints" aria-labelledby="keypoints-title">
           <h2 id="keypoints-title" class="keypoints__title">この記事の<wbr>ポイント</h2>
-          <ul><li><n-w>宿の売上には季節の波があるため、年間を通して収支が合うかで計画を立てることが大切です。</n-w></li><li><n-w>閑散期は、料金を下げるだけでなく、連泊の割引や長期滞在の受け入れで稼働を補えます。</n-w></li><li><n-w>閑散期は、修繕や備品の入れ替え、写真の撮り直しに充てる時期にもなります。</n-w></li></ul>
+          <ul><li><span class="kp__main"><n-w>宿の売上には季節の波があるため、年間を通して収支が合うかで計画を立てることが大切です。</n-w></span></li><li><span class="kp__main"><n-w>閑散期は、料金を下げるだけでなく、連泊の割引や長期滞在の受け入れで稼働を補えます。</n-w></span></li><li><span class="kp__main"><n-w>閑散期は、修繕や備品の入れ替え、写真の撮り直しに充てる時期にもなります。</n-w></span></li></ul>
         </section>
 
         <aside class="inline-cta">
@@ -112,17 +112,19 @@
         </aside>
 
         <nav class="toc" aria-label="目次">
-          <p class="toc__title">目次</p>
-          <ol><li><a href="#wave">宿の売上には、<wbr>必ず季節の波がある</a></li><li><a href="#plan">年間で<wbr>収支が<wbr>合うかで<wbr>計画する</a></li><li><a href="#ideas">閑散期の<wbr>稼働を補う工夫</a></li><li><a href="#use">閑散期を<wbr>「整える<wbr>時期」にする</a></li><li><a href="#field"><n-w>現場から：運営している宿のひとつでの料金の考え方</n-w></a></li><li><a href="#summary">まとめ：波を<wbr>前提に、<wbr>年間で<wbr>考える</a></li><li><a href="#faq">よくある質問</a></li></ol>
+          <details class="toc__details">
+            <summary class="toc__title">目次を開く（全7章）</summary>
+            <ol><li><a href="#wave">宿の売上には、<wbr>必ず季節の波がある</a></li><li><a href="#plan">年間で<wbr>収支が<wbr>合うかで<wbr>計画する</a></li><li><a href="#ideas">閑散期の<wbr>稼働を補う工夫</a></li><li><a href="#use">閑散期を<wbr>「整える<wbr>時期」にする</a></li><li><a href="#field"><n-w>現場から：運営している宿のひとつでの料金の考え方</n-w></a></li><li><a href="#summary">まとめ：波を<wbr>前提に、<wbr>年間で<wbr>考える</a></li><li><a href="#faq">よくある質問</a></li></ol>
+          </details>
         </nav>
 
         <section class="article__section" id="wave">
           <h2>宿の売上には、<wbr>必ず季節の波がある</h2>
-<p><n-w class="j">宿の予約は、夏休みや年末年始、連休に集中し、冬や梅雨の時期には少なくなるなど、季節によって大きく変わります。地域によって波の形は違いますが、</n-w><strong><n-w class="j">毎月同じ売上にはならない</n-w></strong><n-w class="j">ことを前提に考える必要があります。</n-w></p>
+<p><span class="lead-s"><n-w class="j">宿の予約は、夏休みや年末年始、連休に集中し、冬や梅雨の時期には少なくなるなど、季節によって大きく変わります。</n-w></span><n-w class="j">地域によって波の形は違いますが、</n-w><strong><n-w class="j">毎月同じ売上にはならない</n-w></strong><n-w class="j">ことを前提に考える必要があります。</n-w></p>
         </section>
         <section class="article__section" id="plan">
           <h2>年間で<wbr>収支が<wbr>合うかで<wbr>計画する</h2>
-<p><n-w class="j">繁忙期の売上だけを見て計画すると、閑散期に赤字が続いて慌てることになります。季節を「繁忙・通常・閑散」などに分けて、月ごとの稼働と料金を見込み、</n-w><strong><n-w class="j">年間を通して収支が合うか</n-w></strong><n-w class="j">を確かめましょう。考え方は</n-w><a href="../media/airdna-revenue-simulation.html"><n-w class="j">収益シミュレーションの方法</n-w></a><n-w class="j">で解説しています。</n-w></p>
+<p><span class="lead-s"><n-w class="j">繁忙期の売上だけを見て計画すると、閑散期に赤字が続いて慌てることになります。</n-w></span><n-w class="j">季節を「繁忙・通常・閑散」などに分けて、月ごとの稼働と料金を見込み、</n-w><strong><n-w class="j">年間を通して収支が合うか</n-w></strong><n-w class="j">を確かめましょう。考え方は</n-w><a href="../media/airdna-revenue-simulation.html"><n-w class="j">収益シミュレーションの方法</n-w></a><n-w class="j">で解説しています。</n-w></p>
         </section>
         <section class="article__section" id="ideas">
           <h2>閑散期の<wbr>稼働を補う工夫</h2>
@@ -145,7 +147,7 @@
         </section>
         <section class="article__section" id="use">
           <h2>閑散期を<wbr>「整える<wbr>時期」にする</h2>
-<p><n-w class="j">予約が少ない時期は、修繕や備品の入れ替え、写真の撮り直し、予約ページの見直しに充てる時期にもなります。次の繁忙期に向けて宿を整えることで、売上の伸びにつながります。</n-w></p>
+<p><span class="lead-s"><n-w class="j">予約が少ない時期は、修繕や備品の入れ替え、写真の撮り直し、予約ページの見直しに充てる時期にもなります。</n-w></span><n-w class="j">次の繁忙期に向けて宿を整えることで、売上の伸びにつながります。</n-w></p>
         </section>
         <section class="article__section" id="field">
           <h2>現場から<wbr>：運営している宿のひとつでの<wbr>料金の<wbr>考え方</h2>
@@ -163,7 +165,7 @@
         </section>
         <section class="article__section" id="summary">
           <h2>まとめ：波を<wbr>前提に、<wbr>年間で<wbr>考える</h2>
-<p><n-w class="j">閑散期があることは、宿にとって当たり前のことです。波を前提にした計画と、稼働を補う工夫があれば、年間を通して安定した運営ができます。収入の波を避けたい場合は、決まった家賃を受け取る借り上げという形もあります。</n-w></p>
+<p><span class="lead-s"><n-w class="j">閑散期があることは、宿にとって当たり前のことです。</n-w></span><n-w class="j">波を前提にした計画と、稼働を補う工夫があれば、年間を通して安定した運営ができます。収入の波を避けたい場合は、決まった家賃を受け取る借り上げという形もあります。</n-w></p>
         </section>
 
         <section class="article__section" id="faq">
@@ -875,6 +877,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=management&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=748603bf"></script>
+  <script src="../../js/main.js?v=61d2cdc8"></script>
 </body>
 </html>

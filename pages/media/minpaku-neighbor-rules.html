@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=98eaceb1">
+  <link rel="stylesheet" href="../../css/style.css?v=f2015aa8">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -100,7 +100,7 @@
 
         <section class="keypoints" aria-labelledby="keypoints-title">
           <h2 id="keypoints-title" class="keypoints__title">この記事の<wbr>ポイント</h2>
-          <ul><li><n-w>トラブルの多くは、騒音・ごみ出し・駐車・人の出入りに関するものです。</n-w></li><li><n-w>開業前に近隣へ説明し、困ったときの連絡先を伝えておくと、安心してもらえます。</n-w></li><li><n-w>ルールは予約時・到着時・館内の3回に分けて伝えると、守ってもらいやすくなります。</n-w></li></ul>
+          <ul><li><span class="kp__main"><n-w>トラブルの多くは、騒音・ごみ出し・駐車・人の出入りに関するものです。</n-w></span></li><li><span class="kp__main"><n-w>開業前に近隣へ説明し、困ったときの連絡先を伝えておくと、安心してもらえます。</n-w></span></li><li><span class="kp__main"><n-w>ルールは予約時・到着時・館内の3回に分けて伝えると、守ってもらいやすくなります。</n-w></span></li></ul>
         </section>
 
         <aside class="inline-cta">
@@ -112,8 +112,10 @@
         </aside>
 
         <nav class="toc" aria-label="目次">
-          <p class="toc__title">目次</p>
-          <ol><li><a href="#types">よくあるトラブル</a></li><li><a href="#before">開業前：近隣への<wbr>あいさつと説明</a></li><li><a href="#rules">宿泊者への<wbr>ルールは<wbr>3回に<wbr>分けて<wbr>伝える</a></li><li><a href="#trouble">困った<wbr>ときの<wbr>連絡体制</a></li><li><a href="#field"><n-w>現場から：「よそ者」として気をつけていること</n-w></a></li><li><a href="#summary"><n-w>まとめ：トラブルは「事前の説明」で多くを防げる</n-w></a></li><li><a href="#faq">よくある質問</a></li></ol>
+          <details class="toc__details">
+            <summary class="toc__title">目次を開く（全7章）</summary>
+            <ol><li><a href="#types">よくあるトラブル</a></li><li><a href="#before">開業前：近隣への<wbr>あいさつと説明</a></li><li><a href="#rules">宿泊者への<wbr>ルールは<wbr>3回に<wbr>分けて<wbr>伝える</a></li><li><a href="#trouble">困った<wbr>ときの<wbr>連絡体制</a></li><li><a href="#field"><n-w>現場から：「よそ者」として気をつけていること</n-w></a></li><li><a href="#summary"><n-w>まとめ：トラブルは「事前の説明」で多くを防げる</n-w></a></li><li><a href="#faq">よくある質問</a></li></ol>
+          </details>
         </nav>
 
         <section class="article__section" id="types">
@@ -128,7 +130,7 @@
         </section>
         <section class="article__section" id="before">
           <h2>開業前：近隣への<wbr>あいさつと説明</h2>
-<p><n-w class="j">開業前に、両隣や向かいの家、自治会にあいさつをして、宿として使うこと、どんな人が泊まるか、困ったときの連絡先を伝えておきましょう。顔が見える関係をつくっておくと、何かあったときも直接相談してもらいやすくなります。</n-w></p>
+<p><span class="lead-s"><n-w class="j">開業前に、両隣や向かいの家、自治会にあいさつをして、宿として使うこと、どんな人が泊まるか、困ったときの連絡先を伝えておきましょう。</n-w></span><n-w class="j">顔が見える関係をつくっておくと、何かあったときも直接相談してもらいやすくなります。</n-w></p>
         </section>
         <section class="article__section" id="rules">
           <h2>宿泊者への<wbr>ルールは<wbr>3回に<wbr>分けて<wbr>伝える</h2>
@@ -149,16 +151,16 @@
         </section>
         <section class="article__section" id="trouble">
           <h2>困った<wbr>ときの<wbr>連絡体制</h2>
-<p><n-w class="j">近隣から連絡があったときに、すぐ対応できる体制が大切です。連絡先を一本にまとめ、夜間でも宿泊者に注意を伝えられるようにしておきましょう。家主が不在の民泊では、住宅宿泊管理業者が苦情への対応を担います（</n-w><a href="../media/minpaku-management-company.html"><n-w class="j">住宅宿泊管理業者とは</n-w></a>）。</p>
+<p><span class="lead-s"><n-w class="j">近隣から連絡があったときに、すぐ対応できる体制が大切です。</n-w></span><n-w class="j">連絡先を一本にまとめ、夜間でも宿泊者に注意を伝えられるようにしておきましょう。家主が不在の民泊では、住宅宿泊管理業者が苦情への対応を担います（</n-w><a href="../media/minpaku-management-company.html"><n-w class="j">住宅宿泊管理業者とは</n-w></a>）。</p>
         </section>
         <section class="article__section" id="field">
           <h2>現場から：「よそ者」として気をつけていること</h2>
-<p><n-w class="j">アキヤドが運営に関わる下田の宿では、開業前の工事のときに、工事車両の駐車について近隣の方から指摘を受けたことがありました。大きな問題にはなりませんでしたが、地域の人から見れば、外から来た事業者は「よそ者」です。</n-w><strong><n-w class="j">いかに不安にさせないか</n-w></strong><n-w class="j">を意識することが大切だと学びました。</n-w></p>
+<p><span class="lead-s"><n-w class="j">アキヤドが運営に関わる下田の宿では、開業前の工事のときに、工事車両の駐車について近隣の方から指摘を受けたことがありました。</n-w></span><n-w class="j">大きな問題にはなりませんでしたが、地域の人から見れば、外から来た事業者は「よそ者」です。</n-w><strong><n-w class="j">いかに不安にさせないか</n-w></strong><n-w class="j">を意識することが大切だと学びました。</n-w></p>
 <p><n-w class="j">ごみについても、分別のルールが複雑なため、宿泊者には「室内にまとめて置いてもらい、清掃のときに分別して出す」形にしています。宿泊者に無理をさせないことも、近隣とのトラブルを防ぐ工夫のひとつです。</n-w></p>
         </section>
         <section class="article__section" id="summary">
           <h2>まとめ：トラブルは<wbr>「事前の<wbr>説明」で<wbr>多くを<wbr>防げる</h2>
-<p><n-w class="j">近隣トラブルの多くは、事前の説明とルールの伝え方で防げます。地域の一員として受け入れてもらえることが、宿を長く続けるためのいちばんの土台です。</n-w></p>
+<p><span class="lead-s"><n-w class="j">近隣トラブルの多くは、事前の説明とルールの伝え方で防げます。</n-w></span><n-w class="j">地域の一員として受け入れてもらえることが、宿を長く続けるためのいちばんの土台です。</n-w></p>
         </section>
 
         <section class="article__section" id="faq">
@@ -870,6 +872,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=management&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=748603bf"></script>
+  <script src="../../js/main.js?v=61d2cdc8"></script>
 </body>
 </html>

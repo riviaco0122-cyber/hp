@@ -4577,14 +4577,35 @@ def media_guide_page(g):
 def article_page(a):
     names = dict(SERVICES)
     toc = "".join(f'<li><a href="#{sid}">{e(h)}</a></li>' for sid, h, _ in a["sections"])
-    keypoints = "".join(f"<li>{e(k)}</li>" for k in a["keypoints"])
+    def kp_item(k):
+        # 最初の一文を太字の要点、残りを補足（小さく・淡く）にして、短く見せる
+        m = re.match(r"(.+?。)(.+)$", k)
+        if m:
+            return f'<li><span class="kp__main">{e(m.group(1))}</span><span class="kp__sub">{e(m.group(2).strip())}</span></li>'
+        return f'<li><span class="kp__main">{e(k)}</span></li>'
+    keypoints = "".join(kp_item(k) for k in a["keypoints"])
+    def lead_sentence(html):
+        """節の最初の段落（<p>）の一文目を強調する。2文以上あり、一文目にタグを含まない段落だけ。"""
+        m = re.match(r"(\s*<p>)([^<]+?。)(?=[^<\s])", html)
+        if not m:
+            return html
+        return html[:m.end(1)] + f'<span class="lead-s">{m.group(2)}</span>' + html[m.end(2):]
+    def calc_lists(html):
+        """式が並ぶ箇条書き（÷・×・= を含む項目だけの <ul>）に calc クラスを付けて、式として見せる"""
+        def sub(m):
+            items = re.findall(r"<li>(.*?)</li>", m.group(2), re.S)
+            if items and all(re.search(r"[÷×=＝]", x) for x in items):
+                return f'<ul class="calc"{m.group(1)}>{m.group(2)}</ul>'
+            return m.group(0)
+        return re.sub(r"<ul([^>]*)>(.*?)</ul>", lambda m: sub(m) if 'class=' not in m.group(1) else m.group(0), html, flags=re.S)
     def tables(html):
+        html = calc_lists(html)
         html = html.replace('<table class="table">', '<div class="table-scroll"><table class="table">').replace("</table>", "</table></div>")
         return re.sub(r"<td>((?:約|―|—)?[0-9０-９.,]+(?:%|倍|か月)?(?:（[^<]{0,12}）)?)</td>", r'<td class="num">\1</td>', html)
     sections = "\n".join(
         f"""        <section class="article__section" id="{sid}">
           <h2>{e(h)}</h2>
-{html.strip()}
+{lead_sentence(html.strip())}
         </section>"""
         for sid, h, html in [(x, y, insert_figure(a["slug"], x, tables(z), a.get("figure"))) for x, y, z in a["sections"]]
     )
@@ -4654,8 +4675,10 @@ def article_page(a):
         </aside>
 
         <nav class="toc" aria-label="目次">
-          <p class="toc__title">目次</p>
-          <ol>{toc}<li><a href="#faq">よくある質問</a></li></ol>
+          <details class="toc__details">
+            <summary class="toc__title">目次を開く（全{len(a["sections"]) + 1}章）</summary>
+            <ol>{toc}<li><a href="#faq">よくある質問</a></li></ol>
+          </details>
         </nav>
 
 {sections}

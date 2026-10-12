@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=98eaceb1">
+  <link rel="stylesheet" href="../../css/style.css?v=f2015aa8">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -100,7 +100,7 @@
 
         <section class="keypoints" aria-labelledby="keypoints-title">
           <h2 id="keypoints-title" class="keypoints__title">この記事の<wbr>ポイント</h2>
-          <ul><li><n-w>旅行者は、まず写真で宿を選びます。最初の数枚で「どんな滞在ができるか」が伝わることが大切です。</n-w></li><li><n-w>写真は、明るい時間帯に、広さと光が伝わる構図で撮影します。</n-w></li><li><n-w>紹介文では、設備の説明より先に「この宿で過ごす時間」を伝え、必要な情報は分かりやすく整理します。</n-w></li><li><n-w>料金は、周辺の宿や曜日・季節の需要を見ながら、こまめに見直します。</n-w></li></ul>
+          <ul><li><span class="kp__main"><n-w>旅行者は、まず写真で宿を選びます。</n-w></span><span class="kp__sub"><n-w>最初の数枚で「どんな滞在ができるか」が伝わることが大切です。</n-w></span></li><li><span class="kp__main"><n-w>写真は、明るい時間帯に、広さと光が伝わる構図で撮影します。</n-w></span></li><li><span class="kp__main"><n-w>紹介文では、設備の説明より先に「この宿で過ごす時間」を伝え、必要な情報は分かりやすく整理します。</n-w></span></li><li><span class="kp__main"><n-w>料金は、周辺の宿や曜日・季節の需要を見ながら、こまめに見直します。</n-w></span></li></ul>
         </section>
 
         <aside class="inline-cta">
@@ -112,8 +112,10 @@
         </aside>
 
         <nav class="toc" aria-label="目次">
-          <p class="toc__title">目次</p>
-          <ol><li><a href="#photo"><n-w>写真：最初の数枚で「滞在のイメージ」を伝える</n-w></a></li><li><a href="#order">写真の<wbr>並べ方</a></li><li><a href="#text"><n-w>紹介文：「設備」より先に「過ごす時間」を伝える</n-w></a></li><li><a href="#price">料金：周辺と<wbr>需要を<wbr>見て、<wbr>こまめに<wbr>見直す</a></li><li><a href="#review">レビューへの<wbr>返信も<wbr>「ページの<wbr>一部」</a></li><li><a href="#summary"><n-w>まとめ：ページは宿の「顔」。定期的に見直す</n-w></a></li><li><a href="#faq">よくある質問</a></li></ol>
+          <details class="toc__details">
+            <summary class="toc__title">目次を開く（全7章）</summary>
+            <ol><li><a href="#photo"><n-w>写真：最初の数枚で「滞在のイメージ」を伝える</n-w></a></li><li><a href="#order">写真の<wbr>並べ方</a></li><li><a href="#text"><n-w>紹介文：「設備」より先に「過ごす時間」を伝える</n-w></a></li><li><a href="#price">料金：周辺と<wbr>需要を<wbr>見て、<wbr>こまめに<wbr>見直す</a></li><li><a href="#review">レビューへの<wbr>返信も<wbr>「ページの<wbr>一部」</a></li><li><a href="#summary"><n-w>まとめ：ページは宿の「顔」。定期的に見直す</n-w></a></li><li><a href="#faq">よくある質問</a></li></ol>
+          </details>
         </nav>
 
         <section class="article__section" id="photo">
@@ -160,11 +162,11 @@
         </section>
         <section class="article__section" id="review">
           <h2>レビューへの<wbr>返信も<wbr>「ページの<wbr>一部」</h2>
-<p><n-w class="j">レビューへの返信は、次に宿を探す旅行者も読んでいます。感謝の言葉とともに、指摘には改善の内容を具体的に伝えることで、</n-w><strong><n-w class="j">誠実に運営している宿だという印象</n-w></strong><n-w class="j">を与えられます。</n-w></p>
+<p><span class="lead-s"><n-w class="j">レビューへの返信は、次に宿を探す旅行者も読んでいます。</n-w></span><n-w class="j">感謝の言葉とともに、指摘には改善の内容を具体的に伝えることで、</n-w><strong><n-w class="j">誠実に運営している宿だという印象</n-w></strong><n-w class="j">を与えられます。</n-w></p>
         </section>
         <section class="article__section" id="summary">
           <h2>まとめ：ページは宿の「顔」。<wbr>定期的に<wbr>見直す</h2>
-<p><n-w class="j">宿のページは、旅行者が最初に出会う宿の「顔」です。写真・紹介文・料金・レビューへの返信を、</n-w><strong><n-w class="j">季節や予約の状況に合わせて定期的に見直す</n-w></strong><n-w class="j">ことで、予約につながるページに育っていきます。</n-w></p>
+<p><span class="lead-s"><n-w class="j">宿のページは、旅行者が最初に出会う宿の「顔」です。</n-w></span><n-w class="j">写真・紹介文・料金・レビューへの返信を、</n-w><strong><n-w class="j">季節や予約の状況に合わせて定期的に見直す</n-w></strong><n-w class="j">ことで、予約につながるページに育っていきます。</n-w></p>
         </section>
 
         <section class="article__section" id="faq">
@@ -876,6 +878,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=marketing&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=748603bf"></script>
+  <script src="../../js/main.js?v=61d2cdc8"></script>
 </body>
 </html>

@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=98eaceb1">
+  <link rel="stylesheet" href="../../css/style.css?v=f2015aa8">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -100,7 +100,7 @@
 
         <section class="keypoints" aria-labelledby="keypoints-title">
           <h2 id="keypoints-title" class="keypoints__title">この記事の<wbr>ポイント</h2>
-          <ul><li><n-w>宿泊税は、宿泊者に課され、宿泊施設の運営者が宿泊者から預かって自治体に納める税です。</n-w></li><li><n-w>東京都・大阪府・京都市・金沢市・福岡県などが導入しており、導入や検討を進める自治体が広がっています。</n-w></li><li><n-w>税収は、観光地の受け入れ環境の整備や、混雑への対策などに使われます。</n-w></li><li><n-w>民泊も対象になる自治体が多く、運営者には徴収・申告・納付と、料金表示での配慮が求められます。</n-w></li></ul>
+          <ul><li><span class="kp__main"><n-w>宿泊税は、宿泊者に課され、宿泊施設の運営者が宿泊者から預かって自治体に納める税です。</n-w></span></li><li><span class="kp__main"><n-w>東京都・大阪府・京都市・金沢市・福岡県などが導入しており、導入や検討を進める自治体が広がっています。</n-w></span></li><li><span class="kp__main"><n-w>税収は、観光地の受け入れ環境の整備や、混雑への対策などに使われます。</n-w></span></li><li><span class="kp__main"><n-w>民泊も対象になる自治体が多く、運営者には徴収・申告・納付と、料金表示での配慮が求められます。</n-w></span></li></ul>
         </section>
 
         <aside class="inline-cta">
@@ -112,13 +112,15 @@
         </aside>
 
         <nav class="toc" aria-label="目次">
-          <p class="toc__title">目次</p>
-          <ol><li><a href="#what">宿泊税の<wbr>仕組み</a></li><li><a href="#where">導入している主な自治体</a></li><li><a href="#why">導入が<wbr>広がる背景</a></li><li><a href="#operator">宿の運営者が<wbr>すべきこと</a></li><li><a href="#price">料金表示での配慮</a></li><li><a href="#summary"><n-w>まとめ：制度を確認し、旅行者に分かりやすく伝える</n-w></a></li><li><a href="#faq">よくある質問</a></li></ol>
+          <details class="toc__details">
+            <summary class="toc__title">目次を開く（全7章）</summary>
+            <ol><li><a href="#what">宿泊税の<wbr>仕組み</a></li><li><a href="#where">導入している主な自治体</a></li><li><a href="#why">導入が<wbr>広がる背景</a></li><li><a href="#operator">宿の運営者が<wbr>すべきこと</a></li><li><a href="#price">料金表示での配慮</a></li><li><a href="#summary"><n-w>まとめ：制度を確認し、旅行者に分かりやすく伝える</n-w></a></li><li><a href="#faq">よくある質問</a></li></ol>
+          </details>
         </nav>
 
         <section class="article__section" id="what">
           <h2>宿泊税の<wbr>仕組み</h2>
-<p><n-w class="j">宿泊税は、ホテル・旅館・民泊などに宿泊する人に課される税です。宿泊者が直接納めるのではなく、</n-w><strong><n-w class="j">宿泊施設の運営者が宿泊者から預かり、まとめて自治体に申告・納付</n-w></strong><n-w class="j">する仕組み（特別徴収）が一般的です。</n-w></p>
+<p><span class="lead-s"><n-w class="j">宿泊税は、ホテル・旅館・民泊などに宿泊する人に課される税です。</n-w></span><n-w class="j">宿泊者が直接納めるのではなく、</n-w><strong><n-w class="j">宿泊施設の運営者が宿泊者から預かり、まとめて自治体に申告・納付</n-w></strong><n-w class="j">する仕組み（特別徴収）が一般的です。</n-w></p>
           <figure class="fig fig--flow">
             <p class="fig__title">宿泊税のしくみ</p>
             <ol class="fig-steps fig-steps--4">
@@ -133,12 +135,12 @@
         </section>
         <section class="article__section" id="where">
           <h2>導入している主な自治体</h2>
-<p><n-w class="j">宿泊税は、東京都が2002年に導入したのを皮切りに、大阪府、京都市、金沢市、北海道倶知安町、福岡県・福岡市・北九州市、長崎市などに広がっています。近年は、観光客の増加を受けて</n-w><strong><n-w class="j">導入や税額の見直しを検討する自治体が増えています</n-w></strong>。</p>
+<p><span class="lead-s"><n-w class="j">宿泊税は、東京都が2002年に導入したのを皮切りに、大阪府、京都市、金沢市、北海道倶知安町、福岡県・福岡市・北九州市、長崎市などに広がっています。</n-w></span><n-w class="j">近年は、観光客の増加を受けて</n-w><strong><n-w class="j">導入や税額の見直しを検討する自治体が増えています</n-w></strong>。</p>
 <p class="table-note"><n-w class="j">※ 対象となる宿泊料金の範囲、税額、免除の条件は自治体ごとに異なり、改正されることもあります。最新の情報は各自治体の発表をご確認ください。</n-w></p>
         </section>
         <section class="article__section" id="why">
           <h2>導入が<wbr>広がる背景</h2>
-<p><n-w class="j">観光客が増えると、交通の混雑、ごみ、公衆トイレや案内表示の整備など、地域の負担も増えます。宿泊税は、こうした</n-w><strong><n-w class="j">観光の受け入れに必要な費用を、観光客にも分担してもらう</n-w></strong><n-w class="j">ための財源として位置づけられています。</n-w></p>
+<p><span class="lead-s"><n-w class="j">観光客が増えると、交通の混雑、ごみ、公衆トイレや案内表示の整備など、地域の負担も増えます。</n-w></span><n-w class="j">宿泊税は、こうした</n-w><strong><n-w class="j">観光の受け入れに必要な費用を、観光客にも分担してもらう</n-w></strong><n-w class="j">ための財源として位置づけられています。</n-w></p>
 <p><n-w>税収は、観光案内の多言語化、景観の保全、混雑への対策、観光情報の発信などに使われています。</n-w></p>
         </section>
         <section class="article__section" id="operator">
@@ -156,7 +158,7 @@
         </section>
         <section class="article__section" id="summary">
           <h2>まとめ：制度を<wbr>確認し、<wbr>旅行者に<wbr>分かりやすく<wbr>伝える</h2>
-<p><n-w class="j">宿泊税は、観光と地域が持続的に共存していくための仕組みの一つです。宿の運営者は、</n-w><strong><n-w class="j">所在地の制度を確認して正しく徴収・納付し、旅行者に分かりやすく伝える</n-w></strong><n-w class="j">ことが求められます。</n-w></p>
+<p><span class="lead-s"><n-w class="j">宿泊税は、観光と地域が持続的に共存していくための仕組みの一つです。</n-w></span><n-w class="j">宿の運営者は、</n-w><strong><n-w class="j">所在地の制度を確認して正しく徴収・納付し、旅行者に分かりやすく伝える</n-w></strong><n-w class="j">ことが求められます。</n-w></p>
         </section>
 
         <section class="article__section" id="faq">
@@ -868,6 +870,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=management&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=748603bf"></script>
+  <script src="../../js/main.js?v=61d2cdc8"></script>
 </body>
 </html>
