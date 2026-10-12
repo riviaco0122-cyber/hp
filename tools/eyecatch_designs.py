@@ -32,6 +32,7 @@ DESIGNS = {
     "akiya-utilization-options": dict(layout="poster", big="売る？貸す？宿？", lines=["空き家の[活用方法]を比べる"], color="green"),
     "akiya-minpaku-suitability": dict(layout="quote", lines=["その空き家は、", "[民泊に向いている？]"], color="sand", photo="own-tatami-hall", pos="50% 45%"),
     "remote-renovation-tips": dict(layout="frame", lines=["遠方からの", "[改修工事]の進め方"], color="terra", photo="own-renovation-room", pos="50% 55%"),
+    "akiya-rate-and-inn": dict(layout="number", big="31.3", unit="%", lines=["下田市の空き家率を、", "[内訳]で読む"], color="deep"),
     "new-build-vs-used-house-inn": dict(layout="duo", a="新築", b="中古", lines=["小さな宿は、[どっちがいい？]"]),
 
     # ---- 貸す・任せる
