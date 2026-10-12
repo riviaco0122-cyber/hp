@@ -1,4 +1,5 @@
 # 予約公開する記事（2026-11-01 から1日おき）その2：11/21〜12/09
+from figures import compare
 ARTICLES_SCHED2 = [
     dict(
         slug="minpaku-management-company",
@@ -178,7 +179,7 @@ ARTICLES_SCHED2 = [
         ],
         sections=[
             ("photo", "写真と紹介文は、どう作ればよいか？", """
-<p><strong>1枚目の写真で興味を持ってもらい、続く数枚と紹介文の冒頭で、どんな時間を過ごせるかを伝える</strong>のが基本です。予約サイトの検索結果では、写真が最初に目に入りやすいと考えます。撮るときのポイントは4つです。</p>
+<p><strong>1枚目の写真で興味を持ってもらい、続く写真と紹介文で過ごす時間を伝える</strong>のが基本です。検索結果では、写真が最初に目に入りやすいと考えます。撮るときのポイントは4つです。</p>
 <div class="carousel" role="group" aria-label="写真を撮るポイント（横にスワイプ）">
 <div class="carousel__card"><span class="carousel__no">ポイント 1</span><p class="carousel__title">明るい時間帯に撮る</p><p class="carousel__text">自然光が入る時間に、照明もすべてつけて撮影します。</p></div>
 <div class="carousel__card"><span class="carousel__no">ポイント 2</span><p class="carousel__title">広さが伝わる構図</p><p class="carousel__text">部屋の角から、低めの位置で撮ると広さが伝わります。</p></div>
@@ -325,6 +326,11 @@ ARTICLES_SCHED2 = [
             ("業務の効率化は、何から始めればよいですか？", "毎回発生して時間がかかる作業から見直します。下田では、清掃の外注、スマートロックのセルフチェックイン、AIチャットボットの順に仕組みにしました。"),
             ("特定技能の外国人材は雇えますか？", "宿の種類や条件によります。出入国在留管理庁の案内で受け入れの対象になるかを確認し、雇用の条件は社会保険労務士に相談してください。"),
         ],
+        figure=("summary", compare("小さな宿の人手を減らす、3つの仕事", [
+            ("sparkle", "清掃", "近隣の事業者に外注", ["手順書と写真報告で品質をそろえる", "開業2か月目に自走"]),
+            ("key", "チェックイン", "スマートロック", ["セルフチェックインで待機をなくす"]),
+            ("bubble", "問い合わせ", "定型文とAIチャットボット", ["日英の定型文と自動翻訳", "FAQを読み込ませたチャットボット"]),
+        ])),
         sources=[
             "アキヤド「【運営事例】下田の賃貸一軒家を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
             "出入国在留管理庁「特定技能制度」 https://www.moj.go.jp/isa/policies/ssw/nyuukokukanri07_00202.html",
