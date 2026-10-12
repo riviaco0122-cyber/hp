@@ -43,6 +43,8 @@
 
 ### 2-1. 一覧
 
+> **適用済み（2026-10-12）**: 下の表の title 案は `title-and-links-2026-10.md` の案に置き換えて、10 本すべて適用した（#1 airdna・#7 long-stay-travel-demand・#10 guest-review-tips は意味が変わらない範囲の別案。#8 minpaku-fire-safety・#9 kominka-renovation-points は新案どおり）。この表の「新しい案」は使わない。
+
 | # | 記事（URL） | 公開日 | 状態 | 現在（文字数） | 判断 | 新しい案（文字数） |
 |---|---|---|---|---|---|---|
 | 1 | `/media/airdna-revenue-simulation.html` | 2026-09-29 | 公開済み | AirDNAで小規模宿の収益をシミュレーションする方法｜数字の見方と「再現性」を高める5つのコツ（48） | **おすすめ** | AirDNAで小規模宿の収益をシミュレーションする方法と5つのコツ（33） |
