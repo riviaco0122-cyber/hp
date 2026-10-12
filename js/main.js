@@ -271,6 +271,24 @@
     li.replaceChild(box, link);
     li.classList.add('is-upcoming');
   });
+  // ガイド：1つの Step に記事が多いときは、先頭の3件だけ見せて「残りを見る」で開く
+  document.querySelectorAll('.guide-steps[data-fold]').forEach(function (list) {
+    var keep = parseInt(list.getAttribute('data-fold'), 10) || 3;
+    var items = Array.prototype.slice.call(list.querySelectorAll('.guide-step')).slice();
+    if (items.length <= keep + 1) return;
+    var rest = items.slice(keep);
+    rest.forEach(function (li) { li.hidden = true; });
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'guide-steps__more';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.textContent = '残りの' + rest.length + '本を見る ＋';
+    btn.addEventListener('click', function () {
+      rest.forEach(function (li) { li.hidden = false; });
+      btn.remove();
+    });
+    list.after(btn);
+  });
   // 記事ページのガイド欄：公開前の記事は出さない
   // 前後の記事は、公開済みの記事の中で決める
   document.querySelectorAll('.guide-box').forEach(function (box) {

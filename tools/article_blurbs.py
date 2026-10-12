@@ -4,7 +4,7 @@
 BLURBS = {
     "akiya-inherited-house-to-inn": "固定資産税を払い続ける前に",
     "japan-tourism-market-data": "インバウンド拡大の裏の課題",
-    "akiya-regional-revitalization": "宿への再生がもたらす4つの循環",
+    "akiya-regional-revitalization": "宿への再生と4つの循環",
     "minpaku-vs-ryokan-law": "民泊新法と簡易宿所の違い",
     "airdna-revenue-simulation": "数字の見方と5つのコツ",
     "small-inn-subsidies": "申請前の注意点つき",
