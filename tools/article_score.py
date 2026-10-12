@@ -142,6 +142,7 @@ def parse_html(text):
     secs = re.findall(r'<section class="article__section" id="([^"]*)">(.*?)</section>', text, re.S)
     body_secs = [(i, s) for i, s in secs if i != "faq"]
     d["h2"] = [strip_tags(h).strip() for _, s in body_secs for h in re.findall(r"<h2[^>]*>(.*?)</h2>", s, re.S)]
+    d["sec_lens"] = [len(strip_tags(re.sub(r"<h2[^>]*>.*?</h2>", "", s, flags=re.S)).strip()) for _, s in body_secs]
     body = "".join(s for _, s in body_secs)
     lead = re.search(r'<p class="article__lead">(.*?)</p>', text, re.S)
     d["body_text"] = (strip_tags(lead.group(1)) if lead else "") + "\n" + strip_tags(body)
@@ -214,7 +215,8 @@ def parse_article(a):
     secs = [(sid, h, body) for sid, h, body in a["sections"]]
     body_html = "".join(f"<h2>{htmllib.escape(h)}</h2>{body}" for _, h, body in secs)
     d = {"title": a["title"], "description": a["description"], "keypoints": list(a["keypoints"]),
-         "h2": [h for _, h, _ in secs]}
+         "h2": [h for _, h, _ in secs],
+         "sec_lens": [len(strip_tags(body).strip()) for _, _, body in secs]}
     d["body_text"] = a["description"] + "\n" + strip_tags(body_html)
     unq = re.sub(r"<blockquote\b.*?</blockquote>", "\n", body_html, flags=re.S)
     d["check_text"] = a["description"] + "\n" + strip_tags(unq)
@@ -272,7 +274,12 @@ def score(d):
     add("この記事のポイント（3〜5項目）", 4 if 3 <= kp <= 5 else (2 if kp in (2, 6) else 0), 4, f"{kp}項目")
     h2 = d["h2"]
     form = sum(1 for h in h2 if re.search(HEADING_FORM, h))
-    add("見出し h2 の数（4〜8個）", 2 if 4 <= len(h2) <= 8 else (1 if 3 <= len(h2) <= 10 else 0), 2, f"{len(h2)}個")
+    # 薄い節（本文250字未満）が4割を超えるときは減点（playbook 5-3h。薄い話は節に分けず、前後の節にまとめる）
+    sl = d.get("sec_lens", [])
+    thin = sum(1 for n in sl if n < 250)
+    thin_ok = not sl or thin / len(sl) <= 0.4
+    hp = 2 if 4 <= len(h2) <= 8 else (1 if 3 <= len(h2) <= 10 else 0)
+    add("見出し h2 の数（4〜8個）と、薄い節（250字未満）が4割以下", hp if thin_ok else 0, 2, f"{len(h2)}個、薄い節 {thin}/{len(sl)}")
     ratio = form / len(h2) if h2 else 0
     add("見出しが疑問・結論の形（60%以上）", 2 if ratio >= 0.6 else (1 if ratio >= 0.4 else 0), 2, f"{form}/{len(h2)}")
     fq = len(d["faq"])
