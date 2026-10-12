@@ -296,17 +296,21 @@
     items.forEach(function (li) { if (li.getAttribute('data-date') > today) li.hidden = true; });
     var shown = items.filter(function (li) { return !li.hidden; });
     var i = shown.findIndex(function (li) { return li.hasAttribute('aria-current'); });
-    var pager = box.querySelector('.guide-box__pager');
-    [[shown[i - 1], 'guide-box__prev', '前の記事'], [shown[i + 1], 'guide-box__next', '次の記事']].forEach(function (x) {
-      var link = x[0] && x[0].querySelector('a');
-      if (!link) return;
-      var a = document.createElement('a');
-      a.href = link.getAttribute('href');
-      a.className = x[1];
-      a.innerHTML = '<span>' + x[2] + '</span>';
-      a.appendChild(document.createTextNode(link.textContent));
-      pager.appendChild(a);
+    // 5件を超えるときは、この記事とその前後の3件だけ見せ、残りは「ほかの◯本を見る」で開く
+    if (shown.length <= 5 || i < 0) return;
+    var rest = shown.filter(function (li, k) { return Math.abs(k - i) > 1; });
+    if (rest.length < 2) return;
+    rest.forEach(function (li) { li.hidden = true; });
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'guide-steps__more guide-box__more';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.textContent = 'ほかの' + rest.length + '本を見る ＋';
+    btn.addEventListener('click', function () {
+      rest.forEach(function (li) { li.hidden = false; });
+      btn.remove();
     });
+    box.querySelector('.guide-box__list').after(btn);
   });
   // シェア：リンクをコピー
   document.querySelectorAll('.share__copy').forEach(function (btn) {
