@@ -4066,7 +4066,7 @@ MEDIA_INTRO_DESC = {
 # ---------------------------------------------------------------- アキヤド：基礎から学ぶ（記事を、コースと章の順に並べて体系的に学べるようにする）
 MEDIA_COURSES = [
     dict(key="why-akiya", en="Course 01", title="なぜ今、空き家の活用なのか", lead="空き家の今と、放置したときの負担、制度の変化。活かし方を比べて、家族で決めるまで。",
-         chapters=[("空き家の今を知る", "数字で見る空き家と、活用が注目されている理由。", ["akiya-data-9-million", "why-akiya-utilization-now"]),
+         chapters=[("空き家の今を知る", "数字で見る空き家と、活用が注目されている理由。", ["akiya-data-9-million", "akiya-rate-and-inn", "why-akiya-utilization-now"]),
                    ("放置のリスクと制度の変化", "空家法の改正、相続登記の義務化、持ち続ける費用。", ["akiya-law-kanri-fuzen", "souzoku-touki-gimuka", "akiya-holding-costs", "akiya-inherited-house-to-inn"]),
                    ("活かし方を比べる", "売る・貸す・宿にするの違いと、契約や税の基本。", ["akiya-utilization-options", "akiya-lease-types", "akiya-3000man-deduction", "akiya-bank-guide"]),
                    ("家族で決める", "相続した実家を、家族でどう決めるか。", ["inherited-house-family-talk"]),
