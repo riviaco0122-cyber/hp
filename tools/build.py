@@ -4557,7 +4557,7 @@ def media_search_page():
         <p class="msearch-status" aria-live="polite"></p>
         <div class="media-grid" id="search-results"></div>
         <div class="msearch-empty" hidden>
-          <p>ぴったりの記事が見つかりませんでした。別のキーワードで試すか、状況に合ったガイドから読んでみてください。具体的なご相談には、宿を運営する私たちが無料でお答えします。</p>
+          <p>ぴったりの記事が見つかりませんでした。別のキーワードで試すか、状況に合ったガイドから読んでみてください。具体的なご相談には、アキヤドが無料でお答えします。</p>
           <ul>{"".join(f'<li><a href="media/guide-{g["key"]}.html">{e(g["title"])} {ARROW}</a></li>' for g in MEDIA_GUIDES)}</ul>
         </div>
         <div class="msearch-weak" hidden>
