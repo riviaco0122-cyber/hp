@@ -25,6 +25,8 @@ DESIGNS = {
     "akiya-holding-costs": dict(layout="giant", big="維持費", lines=["空き家、持っているだけで", "[毎年いくらかかる？]"]),
     "inherited-house-family-talk": dict(layout="mincho", lines=["相続した実家を", "家族で決める"], sub="話し合いの順番と、決めておくこと"),
 
+    "akiya-demolish-or-renovate": dict(layout="duo", a="解体", b="改修", lines=["空き家は、[壊す？残す？]"]),
+
     # ---- 物件・改修
     "akiya-bank-guide": dict(layout="marker", lines=["空き家バンクの", "[仕組みと使い方]"], sub="登録・購入の前に知っておきたいこと"),
     "shizuoka-yaizu-akiya-inn": dict(layout="boxes", lines=["静岡市・焼津の", "空き家は", "[宿になる？]"]),

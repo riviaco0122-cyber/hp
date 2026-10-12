@@ -23,7 +23,7 @@ BLURBS = {
     "minpaku-management-company": "選ぶときの5つのポイント",
     "akiya-lease-types": "普通借家・定期借家・借り上げ",
     "listing-photo-tips": "写真・紹介文・料金設定",
-    "tourism-labor-shortage": "採用と、地域で人を育てる仕組み",
+    "tourism-labor-shortage": "清掃の外注・スマートロックで回す",
     "inn-startup-funding": "自己資金・融資・補助金の組み合わせ",
     "guest-review-tips": "予約前から滞在後まで",
     "accommodation-tax": "運営者が知っておくべきこと",

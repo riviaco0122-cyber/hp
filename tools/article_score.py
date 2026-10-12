@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """記事の機械採点（100点満点のうち40点分）と、必須条件（ゲート）の判定。品質管理部が使う。
 
-採点基準の全体（機械40点＋品質管理部60点、合格95点以上）は docs/seo/playbook.md 5章。
+採点基準の全体（機械40点＋品質管理部60点、合格90点以上）は docs/seo/playbook.md 5章。
 
 使い方:
   python3 tools/article_score.py --slug <slug>                   # 記事データ（tools/articles_*.py）の1記事（推奨）。
@@ -53,6 +53,10 @@ NEG_WINDOW = 16
 NG_MINOR = [
     r"今すぐ(行動|始め)", r"知らないと(損|大変)", r"手遅れ(です|になります|になる前に)", r"放置すると(必ず|確実に)",
     r"激安|爆益|最強|神(宿|物件)", r"弊社", r"！",
+    # AI が書いたような文章（playbook 5-3f）と、調査の裏側の説明（5-3e）
+    r"いかがでし(たか|ょうか)", r"参考になれば幸い", r"ぜひ参考にして", r"(言|い)えるでしょう", r"ではないでしょうか",
+    r"見逃せません", r"重要なポイントです", r"結論から言うと", r"することが(大切|重要)です",
+    r"接続できず", r"本文を読めて", r"本文を取得", r"本文未照合", r"確認できませんでした", r"確認できていません",
 ]
 # 表記ゆれ（使わない表記 → 統一表記）
 GLOSSARY = [
@@ -138,6 +142,7 @@ def parse_html(text):
     secs = re.findall(r'<section class="article__section" id="([^"]*)">(.*?)</section>', text, re.S)
     body_secs = [(i, s) for i, s in secs if i != "faq"]
     d["h2"] = [strip_tags(h).strip() for _, s in body_secs for h in re.findall(r"<h2[^>]*>(.*?)</h2>", s, re.S)]
+    d["sec_lens"] = [len(strip_tags(re.sub(r"<h2[^>]*>.*?</h2>", "", s, flags=re.S)).strip()) for _, s in body_secs]
     body = "".join(s for _, s in body_secs)
     lead = re.search(r'<p class="article__lead">(.*?)</p>', text, re.S)
     d["body_text"] = (strip_tags(lead.group(1)) if lead else "") + "\n" + strip_tags(body)
@@ -151,7 +156,8 @@ def parse_html(text):
     faq_ld = re.search(r'"@type": "FAQPage", "mainEntity": (\[.*?\])\}</script>', text, re.S)
     d["faq_ld"] = len(json.loads(faq_ld.group(1))) if faq_ld else 0
     m = re.search(r'<section class="sources">.*?</section>', text, re.S)
-    d["sources"] = [strip_tags(x).strip() for x in re.findall(r"<li>(.*?)</li>", m.group(0), re.S)] if m else []
+    # リンクの href（資料名がリンクになっている参考資料）も、URL ありと数える
+    d["sources"] = [(strip_tags(x).strip() + " " + " ".join(re.findall(r'href="(https?://[^"]+)"', x))).strip() for x in re.findall(r"<li>(.*?)</li>", m.group(0), re.S)] if m else []
     links = re.findall(r'href="([^"]+)"', body)
     d["article_links"] = sorted({l for l in links if re.search(r"media/[a-z0-9-]+\.html", l) and "category-" not in l and "guide-" not in l})
     cta = re.search(r'<aside class="article-cta">.*?</aside>', text, re.S)
@@ -209,7 +215,8 @@ def parse_article(a):
     secs = [(sid, h, body) for sid, h, body in a["sections"]]
     body_html = "".join(f"<h2>{htmllib.escape(h)}</h2>{body}" for _, h, body in secs)
     d = {"title": a["title"], "description": a["description"], "keypoints": list(a["keypoints"]),
-         "h2": [h for _, h, _ in secs]}
+         "h2": [h for _, h, _ in secs],
+         "sec_lens": [len(strip_tags(body).strip()) for _, _, body in secs]}
     d["body_text"] = a["description"] + "\n" + strip_tags(body_html)
     unq = re.sub(r"<blockquote\b.*?</blockquote>", "\n", body_html, flags=re.S)
     d["check_text"] = a["description"] + "\n" + strip_tags(unq)
@@ -267,7 +274,12 @@ def score(d):
     add("この記事のポイント（3〜5項目）", 4 if 3 <= kp <= 5 else (2 if kp in (2, 6) else 0), 4, f"{kp}項目")
     h2 = d["h2"]
     form = sum(1 for h in h2 if re.search(HEADING_FORM, h))
-    add("見出し h2 の数（4〜8個）", 2 if 4 <= len(h2) <= 8 else (1 if 3 <= len(h2) <= 10 else 0), 2, f"{len(h2)}個")
+    # 薄い節（本文250字未満）が4割を超えるときは減点（playbook 5-3h。薄い話は節に分けず、前後の節にまとめる）
+    sl = d.get("sec_lens", [])
+    thin = sum(1 for n in sl if n < 250)
+    thin_ok = not sl or thin / len(sl) <= 0.4
+    hp = 2 if 4 <= len(h2) <= 8 else (1 if 3 <= len(h2) <= 10 else 0)
+    add("見出し h2 の数（4〜8個）と、薄い節（250字未満）が4割以下", hp if thin_ok else 0, 2, f"{len(h2)}個、薄い節 {thin}/{len(sl)}")
     ratio = form / len(h2) if h2 else 0
     add("見出しが疑問・結論の形（60%以上）", 2 if ratio >= 0.6 else (1 if ratio >= 0.4 else 0), 2, f"{form}/{len(h2)}")
     fq = len(d["faq"])

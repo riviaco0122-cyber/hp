@@ -11,6 +11,7 @@
 | — | 技術改善 | 予約公開の方式を見直す（公開日前の記事を HTML・sitemap に出さない） | エンジニア部 | 企画 |
 | — | 改善 | title が40文字を超える記事・description が短いページの見直し（seo_check の警告） | 企画・マーケ部 | 企画 |
 | 2026-10-13 | 新規記事 | 空き家率 高い 地域（`media/akiya-rate-and-inn.html`） | エンジニア部 | 予約中（品質管理部 95点以上・人の確認待ち） |
+| — | 新規記事 | 空き家 解体か残すか（保留。補助・税の具体は公式ページの本文を照合できず、体験だけでは薄いため PR から外した。原稿は `docs/seo/drafts/akiya-demolish-or-renovate.md`） | 編集長 | 保留 |
 
 ## 完了
 
@@ -18,3 +19,19 @@
 |---|---|---|---|
 | 2026-10-10 | 技術改善 | llms.txt の作成、記事追加ツール（tools/add_article.py） | 作業ブランチ |
 | 2026-10-10 | 基盤 | ブランド知識の初版（docs/brand/） | 作業ブランチ |
+
+## 既存記事の底上げの待ち行列（playbook 5-5。人の方針 2026-10-12・目標85点）
+
+機械採点（40点満点）が低い順（2026-10-12 時点）。品質管理部の採点（60点分）は、書き直しの前に1本ずつ行う。上から順に一度に直せるだけ（1つの PR は5〜8本ほど。人の方針 2026-10-12）。
+
+| 優先 | 記事（slug） | 機械採点 | 状態 |
+|---|---|---|---|
+| 1 | akiya-data-9-million | 32 | 待ち（数字の表記を直した記事。具体の一次情報を足す） |
+| 2 | akiya-utilization-options | 32 | 待ち |
+| 3 | akiya-local-resource | 33 | 待ち |
+| 4 | akiya-minpaku-suitability | 33 | 待ち |
+| 5 | case-rental-house-inn-first-year | 33 | 待ち（確認済みの体験が使える） |
+| 6 | guest-review-tips | 33 | 待ち |
+| 7 | akiya-holding-costs | 34 | 待ち |
+| 8 | akiya-law-kanri-fuzen | 34 | 待ち |
+| 9〜 | akiyado-what-we-do、inherited-house-family-talk、inn-local-economy、kominka-stay-value、listing-photo-tips、long-stay-guest-equipment、minpaku-hard-truth、minpaku-neighbor-rules、minpaku-off-season、remote-renovation-tips、why-minpaku-for-akiya（各34） | 34 | 待ち |
