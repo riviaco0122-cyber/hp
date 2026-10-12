@@ -181,11 +181,14 @@
    */
   var now = new Date();
   var today = now.getFullYear() + '-' + ('0' + (now.getMonth() + 1)).slice(-2) + '-' + ('0' + now.getDate()).slice(-2);
-  // 確認用: URL に ?preview=1 を付けると、公開日前の記事も表示する（そのタブの中だけ有効。人がプレビューで新記事を確かめるため）
+  // 確認用: URL に ?preview=1 を付けると、公開日前の記事も表示する（人がプレビューで新記事を確かめるため）。
+  // スマホのアプリ内ブラウザなどで sessionStorage が使えなくても、URL に付いていれば必ず効く
+  var previewOn = /[?&]preview=1(&|$)/.test(location.search);
   try {
-    if (/[?&]preview=1(&|$)/.test(location.search)) sessionStorage.setItem('akiyadoPreview', '1');
-    if (sessionStorage.getItem('akiyadoPreview') === '1') today = '2999-12-31';
+    if (previewOn) sessionStorage.setItem('akiyadoPreview', '1');
+    else if (sessionStorage.getItem('akiyadoPreview') === '1') previewOn = true;
   } catch (e) {}
+  if (previewOn) today = '2999-12-31';
   // 公開日前の記事ページを直接開いた場合は、記事一覧へ戻す
   var scheduled = document.querySelector('.article[data-publish]');
   if (scheduled && scheduled.getAttribute('data-publish') > today) {
