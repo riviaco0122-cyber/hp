@@ -548,10 +548,10 @@ ARTICLES_SCHED1 = [
         sections=[
             ("now", "訪日客は増え続けている。ただし宿泊は都市に集中", """
 <p>訪日客は過去最高を更新していますが、外国人の宿泊は大都市圏に集中しています。</p>
-<div class="stats stats--2" role="group" aria-label="訪日外国人旅行者数">
+<div class="stats stats--1" role="group" aria-label="訪日外国人旅行者数">
 <div class="stat stat--accent"><span class="stat__num">3,687<small>万人</small></span><span class="stat__label">訪日客数</span><span class="stat__note">2024年・過去最高</span></div>
-<div class="stat"><span class="stat__num">大都市圏</span><span class="stat__label">宿泊が集中</span><span class="stat__note">東京・大阪・京都など</span></div>
 </div>
+<div class="callout"><p class="callout__label">宿泊が集中しているのは</p><p>東京・大阪・京都などの大都市圏です。</p></div>
 <p>日本政府観光局によると、2024年の訪日外国人旅行者数は<strong>約3,687万人</strong>でした。混雑や地域による偏りが課題になっています。</p>
 """),
             ("policy", "国が地方への誘客を重視する理由", """

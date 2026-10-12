@@ -2709,9 +2709,9 @@ ARTICLES = [
             ("background", "人口減少と空き家の増加は、同じ問題の表と裏", """
 <p>人が減れば、住む人のいない家が増えるのは自然な流れです。</p>
 <div class="stats" role="group" aria-label="人口と空き家の数字">
-<div class="stat stat--accent"><span class="stat__num">約900<small>万戸</small></span><span class="stat__label">空き家数</span><span class="stat__note">2023年・過去最高</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small>約</small>900<small>万戸</small></span><span class="stat__label">空き家数</span><span class="stat__note">2023年・過去最高</span></div>
 <div class="stat"><span class="stat__num">13.8<small>%</small></span><span class="stat__label">空き家率</span><span class="stat__note">2023年・過去最高</span></div>
-<div class="stat"><span class="stat__num">約8,700<small>万人</small></span><span class="stat__label">総人口</span><span class="stat__note">2070年の推計</span></div>
+<div class="stat"><span class="stat__num"><small>約</small>8,700<small>万人</small></span><span class="stat__label">総人口</span><span class="stat__note">2070年の推計</span></div>
 </div>
 <p>国立社会保障・人口問題研究所の推計（令和5年推計）では、日本の総人口は2070年に約8,700万人まで減少するとされています。総務省「令和5年住宅・土地統計調査」では、全国の空き家数は<strong>約900万戸</strong>、空き家率は<strong>13.8%</strong>で、いずれも過去最高でした。</p>
 <p>特に地方では、かつて町の中心だった地域でも空き家が目立つようになっています。</p>
@@ -2731,7 +2731,7 @@ ARTICLES = [
 <div class="carousel" role="group" aria-label="4つの循環（横にスワイプ）">
 <div class="carousel__card"><span class="carousel__no">循環 1</span><p class="carousel__title">観光消費の循環</p><p class="carousel__text">泊まる旅行者は、夕食・朝食・散策・体験・お土産と、地域でお金を使う時間が長くなります。</p></div>
 <div class="carousel__card"><span class="carousel__no">循環 2</span><p class="carousel__title">雇用と仕事の循環</p><p class="carousel__text">清掃・リネン・修繕・ゲスト対応の仕事が生まれ、地元事業者への依頼で仕事とお金が回ります。</p></div>
-<div class="carousel__card"><span class="carousel__no">循環 3</span><p class="carousel__title">関係人口の循環</p><p class="carousel__text">暮らすように過ごした旅行者は、再訪や二拠点生活、移住を検討する関係人口になり得ます。</p></div>
+<div class="carousel__card"><span class="carousel__no">循環 3</span><p class="carousel__title">関係人口の循環</p><p class="carousel__text">暮らすように過ごした旅行者は、再訪や二地域居住、移住を検討する関係人口になり得ます。</p></div>
 <div class="carousel__card"><span class="carousel__no">循環 4</span><p class="carousel__title">まちなみ・文化の継承</p><p class="carousel__text">古民家や町家を壊さず使い続けると、建築文化と地元の職人の技術が次世代へ受け継がれます。</p></div>
 </div>
 <p class="carousel__hint">横にスワイプで続きを見られます</p>
@@ -3150,7 +3150,7 @@ ARTICLES += [
         keypoints=[
             "宿の需要は観光だけではありません。出張・工事・帰省・家族の集まり・合宿・長期滞在など、「暮らしの用事」による宿泊は観光地以外にもあります。",
             "静岡市は新幹線の停車駅、焼津は漁港と温泉の町です。静岡市はビジネスや帰省、イベントでの来訪が見込めます。焼津は食を目的にした来訪や、工事・業務での滞在もあります。",
-            "取得費や家賃を抑えやすい一方、ビジネスホテルとは比べられます。一棟貸しならではの広さ・キッチン・駐車場が差別化のポイントです。",
+            "観光地に比べて取得費や家賃を抑えやすい一方、ビジネスホテルとの比較は避けられません。一棟貸しならではの広さ・キッチン・駐車場が差別化のポイントです。",
             "始める前に、法律と条例を確認します。旅館業法か住宅宿泊事業法（民泊新法）か、自治体の条例による制限、消防設備などを確認する必要があります。",
         ],
         sections=[
@@ -3183,8 +3183,12 @@ ARTICLES += [
 <p>東海道新幹線の停車駅があり、東京・名古屋方面との行き来がしやすい街です。県庁所在地として出張での来訪があるほか、帰省や家族の集まり、スポーツやコンサートなどのイベントでの宿泊も見込めます。</p>
 <p>富士山の世界文化遺産の構成資産である三保松原や、富士山と駿河湾を望む日本平は、日帰りで回られがちです。「泊まる理由」をつくれれば、滞在型の観光につなげられる余地があると考えます。</p>
 <h3>焼津：漁港と温泉、食を目的にした来訪</h3>
-<p>かつおやまぐろの水揚げで知られる漁港の町です。海の幸や温泉、港周辺の散策を目的にした来訪に加え、工事や業務で一定期間滞在する人の需要もあります。</p>
-<p>東名高速道路のインターチェンジがあり、車での来訪がしやすいのも特徴です。</p>
+<ul>
+<li>かつおやまぐろの水揚げで知られる漁港の町</li>
+<li>海の幸・温泉・港周辺の散策を目的にした来訪</li>
+<li>工事や業務で一定期間滞在する人の需要</li>
+<li>東名高速道路のインターチェンジがあり、車で来やすい</li>
+</ul>
 <p class="table-note">※ 需要の大きさは、エリアや時期によって大きく異なります。実際の判断には、物件ごとの調査が必要です。</p>
 """),
             ("merit", "観光地以外で宿を始めるメリットと注意点", """

@@ -731,6 +731,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .table th { background: var(--c-bg-soft); font-weight: 500; white-space: nowrap; }
 .table td:first-child { font-weight: 500; white-space: nowrap; }
 .table-note { font-size: 12px !important; color: var(--c-muted); margin-top: -12px !important; }
+.article__section p:not(.table-note) + .table-note, .article__section ul + .table-note { margin-top: 20px !important; }
 .callout { margin: 28px 0; padding: 24px 28px; background: var(--c-bg-soft); border-left: 2px solid var(--c-text); }
 .callout__label { font-size: 12px !important; color: var(--c-muted); letter-spacing: 0.12em; margin-bottom: 6px; }
 @media (max-width: 899px) {
@@ -3180,12 +3181,14 @@ body.is-media .media-card__title { font-family: var(--font-round); font-weight: 
 /* 数字ハイライト：大きい数字＋ラベル */
 .article__section .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 24px 0; }
 .article__section .stats--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.article__section .stats--1 { grid-template-columns: minmax(0, 1fr); }
 .article__section .stat { margin: 0; padding: 14px 8px 12px; border-radius: 14px; background: var(--m-sand); text-align: center; }
-.article__section .stat__num { display: block; margin: 0; font-family: var(--font-en); font-weight: 700; font-size: 30px; line-height: 1.2; color: var(--m-green); letter-spacing: 0; }
+.article__section .stat__num { display: block; margin: 0; font-family: var(--font-en); font-weight: 700; font-size: 30px; line-height: 1.2; color: var(--m-green); letter-spacing: 0; white-space: nowrap; }
 .article__section .stat__num small { font-size: 14px; font-weight: 700; margin-left: 1px; }
 .article__section .stat__label { display: block; margin: 6px 0 0; font-size: 12px; line-height: 1.6; color: var(--m-ink); font-weight: 700; }
 .article__section .stat__note { display: block; margin: 2px 0 0; font-size: 11px; line-height: 1.5; color: var(--c-muted); }
 .article__section .stat--accent .stat__num { color: var(--m-cta); }
+@media (max-width: 480px) { .article__section .stat { padding: 14px 4px 12px; } .article__section .stat__num { font-size: 21px; } .article__section .stat__num small { font-size: 12px; } .article__section .stats--1 .stat__num { font-size: 30px; } }
 @media (min-width: 900px) { .article__section .stat__num { font-size: 38px; } .article__section .stat__label { font-size: 13px; } }
 .guide-step[hidden], .media-card[hidden] { display: none !important; }
 .guide-step__blurb n-w, .lchap__blurb n-w, .media-card__blurb n-w { display: inline; white-space: nowrap; }
