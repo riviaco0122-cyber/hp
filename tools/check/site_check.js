@@ -332,6 +332,8 @@ function layoutProbe() {
     const c = contentBox(e);
     if (!c) continue;
     const left = c.l - r.left, right = r.right - c.r;
+    // 横スワイプのカルーセル（overflow-x が auto/scroll の子孫）を含む枠は、中身が枠より広いのが仕様なので除く
+    if ((c.r > r.right + 1 || c.l < r.left - 1 || right < 6) && [...e.querySelectorAll('*')].some(d => ['auto', 'scroll'].includes(getComputedStyle(d).overflowX))) continue;
     if (s.textAlign !== 'center' && left < 10) push('左端にくっつき', e, `中身が左端から ${left.toFixed(0)}px`);
     if (s.textAlign !== 'center' && right < 6 && c.r - c.l > r.width * 0.9 && (alpha(s.backgroundColor) > 0.05 || parseFloat(s.borderRightWidth) > 0 || (s.boxShadow && s.boxShadow !== 'none'))) push('右端にくっつき', e, `中身が右端から ${right.toFixed(0)}px`);
     if (c.r > r.right + 1 || c.l < r.left - 1) push('枠からはみ出し', e, `中身 ${Math.round(c.l)}〜${Math.round(c.r)}px が枠 ${Math.round(r.left)}〜${Math.round(r.right)}px の外`);
