@@ -21,7 +21,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>稼働率・客室単価・RevPARとは？小さな宿の売上を読み解く3つの指標 | アキヤド</title>
-  <meta name="description" content="稼働率（部屋が埋まっている割合）・客室単価（1泊の平均料金）・RevPAR（空き部屋も含めた1日あたりの売上）の意味と計算を、下田の宿の実データで解説。全国平均29.6%との比べ方や、値下げで利益が減る理由も紹介します。">
+  <meta name="description" content="稼働率・客室単価・RevPAR（空き部屋も含めた1室あたりの1日の売上）の意味と計算を、下田の宿の実データで解説。全国平均29.6%との比べ方や、値下げで利益が減る理由も紹介します。">
   <link rel="canonical" href="https://rivia-co.com/media/inn-kpi-basics.html">
   <link rel="icon" href="../../images/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../../images/favicon-48.png" type="image/png" sizes="48x48">
@@ -29,7 +29,7 @@
 
   <!-- OGP（SNSやLINEでシェアされたときの表示。画像は横長 1200×630） -->
   <meta property="og:title" content="稼働率・客室単価・RevPARとは？小さな宿の売上を読み解く3つの指標 | アキヤド">
-  <meta property="og:description" content="稼働率（部屋が埋まっている割合）・客室単価（1泊の平均料金）・RevPAR（空き部屋も含めた1日あたりの売上）の意味と計算を、下田の宿の実データで解説。全国平均29.6%との比べ方や、値下げで利益が減る理由も紹介します。">
+  <meta property="og:description" content="稼働率・客室単価・RevPAR（空き部屋も含めた1室あたりの1日の売上）の意味と計算を、下田の宿の実データで解説。全国平均29.6%との比べ方や、値下げで利益が減る理由も紹介します。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://rivia-co.com/media/inn-kpi-basics.html">
   <meta property="og:image" content="https://rivia-co.com/images/eyecatch/inn-kpi-basics.jpg">
@@ -50,7 +50,7 @@
     document.documentElement.classList.add('js');
     setTimeout(function () { if (!window.RIVIA_READY) document.documentElement.classList.remove('js'); }, 2000);
   </script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "稼働率・客室単価・RevPARとは？小さな宿の売上を読み解く3つの指標", "description": "稼働率（部屋が埋まっている割合）・客室単価（1泊の平均料金）・RevPAR（空き部屋も含めた1日あたりの売上）の意味と計算を、下田の宿の実データで解説。全国平均29.6%との比べ方や、値下げで利益が減る理由も紹介します。", "datePublished": "2026-10-11", "dateModified": "2026-10-13", "image": "https://rivia-co.com/images/eyecatch/inn-kpi-basics.jpg", "mainEntityOfPage": "https://rivia-co.com/media/inn-kpi-basics.html", "author": {"@type": "Organization", "name": "アキヤド編集部（合同会社RIVIA&CO.）", "url": "https://rivia-co.com/about.html", "parentOrganization": {"@id": "https://rivia-co.com/about.html#organization"}}, "contributor": {"@type": "Person", "@id": "https://rivia-co.com/about.html#ishihara", "name": "石原 佑真", "jobTitle": "合同会社RIVIA&CO. 代表社員（監修）", "url": "https://rivia-co.com/about.html#founders", "sameAs": ["https://youtrust.jp/users/yumayade__2210", "https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b", "https://www.wantedly.com/id/tasuku_ishihara_g"]}, "publisher": {"@type": "Organization", "@id": "https://rivia-co.com/about.html#organization", "name": "合同会社RIVIA&CO.", "url": "https://rivia-co.com/", "logo": {"@type": "ImageObject", "url": "https://rivia-co.com/images/logo/logo.png"}}, "articleSection": "集客・運営", "inLanguage": "ja"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "稼働率・客室単価・RevPARとは？小さな宿の売上を読み解く3つの指標", "description": "稼働率・客室単価・RevPAR（空き部屋も含めた1室あたりの1日の売上）の意味と計算を、下田の宿の実データで解説。全国平均29.6%との比べ方や、値下げで利益が減る理由も紹介します。", "datePublished": "2026-10-11", "dateModified": "2026-10-13", "image": "https://rivia-co.com/images/eyecatch/inn-kpi-basics.jpg", "mainEntityOfPage": "https://rivia-co.com/media/inn-kpi-basics.html", "author": {"@type": "Organization", "name": "アキヤド編集部（合同会社RIVIA&CO.）", "url": "https://rivia-co.com/about.html", "parentOrganization": {"@id": "https://rivia-co.com/about.html#organization"}}, "contributor": {"@type": "Person", "@id": "https://rivia-co.com/about.html#ishihara", "name": "石原 佑真", "jobTitle": "合同会社RIVIA&CO. 代表社員（監修）", "url": "https://rivia-co.com/about.html#founders", "sameAs": ["https://youtrust.jp/users/yumayade__2210", "https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b", "https://www.wantedly.com/id/tasuku_ishihara_g"]}, "publisher": {"@type": "Organization", "@id": "https://rivia-co.com/about.html#organization", "name": "合同会社RIVIA&CO.", "url": "https://rivia-co.com/", "logo": {"@type": "ImageObject", "url": "https://rivia-co.com/images/logo/logo.png"}}, "articleSection": "集客・運営", "inLanguage": "ja"}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "稼働率はどのくらいあれば良いですか？", "acceptedAnswer": {"@type": "Answer", "text": "立地・季節・宿の種類で大きく異なり、一律の目安はありません。参考値として、2025年の簡易宿所の客室稼働率は全国平均が29.6%、静岡県が24.6%でした（観光庁）。収支が合う稼働率から逆算して、目標を決める方法もあります。"}}, {"@type": "Question", "name": "一棟貸しでもRevPARは使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "使えます。一棟を1室とみなし、月の売上を日数で割れば、1日あたりの売上力として比較できます。"}}, {"@type": "Question", "name": "料金はどのくらいの頻度で見直すべきですか？", "acceptedAnswer": {"@type": "Answer", "text": "少なくとも月に一度は、先々の予約状況を見ながら見直します。下田の宿では、開業直後は安めに設定し、高評価のレビューが5件ほどたまってから段階的に上げました。"}}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "TOP", "item": "https://rivia-co.com/"}, {"@type": "ListItem", "position": 2, "name": "アキヤド", "item": "https://rivia-co.com/media.html"}, {"@type": "ListItem", "position": 3, "name": "集客・運営", "item": "https://rivia-co.com/media/category-operate.html"}, {"@type": "ListItem", "position": 4, "name": "稼働率・客室単価・RevPARとは？小さな宿の売上を読み解く3つの指標"}]}</script>
 </head>
@@ -96,11 +96,11 @@
       </header>
 
       <div class="container container--article article__body">
-        <p class="article__lead"><n-w class="j">稼働率（部屋が埋まっている割合）・客室単価（1泊の平均料金）・RevPAR（空き部屋も含めた1日あたりの売上）の意味と計算を、下田の宿の実データで解説。全国平均29.6%との比べ方や、値下げで利益が減る理由も紹介します。</n-w></p>
+        <p class="article__lead"><n-w class="j">稼働率・客室単価・RevPAR（空き部屋も含めた1室あたりの1日の売上）の意味と計算を、下田の宿の実データで解説。全国平均29.6%との比べ方や、値下げで利益が減る理由も紹介します。</n-w></p>
 
         <section class="keypoints" aria-labelledby="keypoints-title">
           <h2 id="keypoints-title" class="keypoints__title">この記事の<wbr>ポイント</h2>
-          <ul><li><span class="kp__main"><n-w>RevPAR（空き部屋も含めた1室あたりの1日の売上）は、稼働率×客室単価で出ます。</n-w></span></li><li><span class="kp__main"><n-w class="j">2025年の簡易宿所（小規模な宿の区分）の稼働率は、全国平均で29.6%。</n-w></span><span class="kp__sub"><n-w class="j">10日のうち約3日しか埋まっていません。下田の宿の1年目は約53%でした。</n-w></span></li><li><span class="kp__main"><n-w class="j">下田の宿の2年目上半期は、RevPARが1年目の約1.74倍。</n-w></span><span class="kp__sub"><n-w class="j">部屋が埋まる割合が約1.25倍、1泊の料金が約1.4倍でした。</n-w></span></li><li><span class="kp__main"><n-w>予約サイトの手数料は売上の約14〜15%、清掃の委託は1年目で約16%でした。</n-w></span><span class="kp__sub"><n-w>泊数が増えるほど増える費用です。</n-w></span></li></ul>
+          <ul><li><span class="kp__main"><n-w>RevPAR（空き部屋も含めた1室あたりの1日の売上）は、稼働率×客室単価で出ます。</n-w></span></li><li><span class="kp__main"><n-w class="j">2025年の簡易宿所（旅館業の許可の種類のひとつ）の稼働率は、全国平均で29.6%。</n-w></span><span class="kp__sub"><n-w class="j">10日のうち約3日しか埋まっていません。下田の宿の1年目は約53%でした。</n-w></span></li><li><span class="kp__main"><n-w class="j">下田の宿の2年目上半期は、RevPARが1年目の約1.74倍。</n-w></span><span class="kp__sub"><n-w class="j">部屋が埋まる割合が約1.25倍、1泊の料金が約1.4倍でした。</n-w></span></li><li><span class="kp__main"><n-w>予約サイトの手数料は売上の約14〜15%、清掃の委託は1年目で約16%でした。</n-w></span><span class="kp__sub"><n-w>泊数が増えるほど増える費用です。</n-w></span></li></ul>
         </section>
 
         <aside class="inline-cta">
@@ -151,7 +151,7 @@
         </section>
         <section class="article__section" id="benchmark">
           <h2>稼働率は<wbr>何%あれば<wbr>良い？<wbr>全国の<wbr>簡易宿所と<wbr>下田の宿を並べる</h2>
-<p><span class="lead-s"><n-w class="j">一律の目標はありませんが、比べる物差しはあります。</n-w></span><n-w class="j">2025年の簡易宿所（旅館業のうち、小規模な宿の区分）の客室稼働率は、全国平均が29.6%でした。下田の宿の1年目は約53%です。</n-w></p>
+<p><span class="lead-s"><n-w class="j">一律の目標はありませんが、比べる物差しはあります。</n-w></span><n-w class="j">2025年の簡易宿所（旅館業の許可の種類のひとつ。客室を共用する造りも含み、小さな宿が多い）の客室稼働率は、全国平均が29.6%でした。下田の宿の1年目は約53%です。</n-w></p>
 <div class="stats" role="group" aria-label="客室稼働率の比較">
 <div class="stat"><span class="stat__num">29.6<small>%</small></span><span class="stat__label">全国平均</span><span class="stat__note">簡易宿所・2025年</span></div>
 <div class="stat"><span class="stat__num">24.6<small>%</small></span><span class="stat__label">静岡県</span><span class="stat__note">簡易宿所・2025年</span></div>
