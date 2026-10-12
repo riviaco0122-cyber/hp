@@ -271,7 +271,9 @@ def score(d):
     dl = len(d["description"])
     add("meta description（50〜140字）", 3 if 50 <= dl <= 140 else (1 if 40 <= dl <= 160 else 0), 3, f"{dl}字")
     kp = len(d["keypoints"])
-    add("この記事のポイント（3〜5項目）", 4 if 3 <= kp <= 5 else (2 if kp in (2, 6) else 0), 4, f"{kp}項目")
+    # 各項目の最初の一文（太字で出る）は短く（45字以内）。長い項目は補足に回す（playbook 13-8）
+    kp_long = [k for k in d["keypoints"] if len(re.split(r"。", k, 1)[0]) > 45]
+    add("この記事のポイント（3〜5項目。各項目の最初の一文は45字以内）", max(0, (4 if 3 <= kp <= 5 else (2 if kp in (2, 6) else 0)) - (1 if kp_long else 0)), 4, f"{kp}項目、長い最初の一文 {len(kp_long)}件")
     h2 = d["h2"]
     form = sum(1 for h in h2 if re.search(HEADING_FORM, h))
     # 薄い節（本文250字未満）が4割を超えるときは減点（playbook 5-3h。薄い話は節に分けず、前後の節にまとめる）
