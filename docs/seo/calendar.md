@@ -11,7 +11,7 @@
 | — | 技術改善 | 予約公開の方式を見直す（公開日前の記事を HTML・sitemap に出さない） | エンジニア部 | 企画 |
 | — | 改善 | title が40文字を超える記事・description が短いページの見直し（seo_check の警告） | 企画・マーケ部 | 企画 |
 | 2026-10-13 | 新規記事 | 空き家率 高い 地域（`media/akiya-rate-and-inn.html`） | エンジニア部 | 予約中（品質管理部 95点以上・人の確認待ち） |
-| 2026-10-13 | 新規記事 | 空き家 解体か残すか（`media/akiya-demolish-or-renovate.html`。HTML 97点） | エンジニア部 | PR待ち（人の確認待ち） |
+| — | 新規記事 | 空き家 解体か残すか（保留。補助・税の具体は公式ページの本文を照合できず、体験だけでは薄いため PR から外した。原稿は `docs/seo/drafts/akiya-demolish-or-renovate.md`） | 編集長 | 保留 |
 
 ## 完了
 

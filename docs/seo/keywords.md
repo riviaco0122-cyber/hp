@@ -40,7 +40,7 @@
 | 関係人口 とは（地域と関わる人を増やす宿の役割） | chiho | WEB採用、不動産協業 | `media/kankei-jinko-and-inns.html` | 予約中 | 2026-12-07 公開予定 |
 | 民泊 投資 利回り／民泊 賃貸 違い（不動産投資としての見方） | keiei | 不動産協業、開業・運営支援 | `media/minpaku-investment-yield.html` | 予約中 | 2026-12-09 公開予定 |
 | 空き家率 高い 地域（空き家率の読み方と、下田市31.3%の内訳） | akiya | 空き家再生 | `media/akiya-rate-and-inn.html` | 予約中 | 2026-10-13 公開予定。共食い確認は `akiya-data-9-million`（全国の空き家数）との意図の違い（本記事は市区町村の内訳の読み方）。統計は e-Stat（令和5年住宅・土地統計調査）、2026-10-11 取得 |
-| 空き家 解体 リフォーム 迷う（解体か残すかを4つの軸で比べる） | akiya | 空き家再生 | `media/akiya-demolish-or-renovate.html` | 予約中 | 2026-10-13 公開予定。解体費用・補助・更地の税の金額は書かず、判断の軸と体験に絞る（補助・税は確認先の案内のみ）。重なり確認: `akiya-inherited-house-to-inn`、`akiya-3000man-deduction`、`remote-renovation-tips` |
+| 空き家 解体 リフォーム 迷う（解体か残すかを4つの軸で比べる） | akiya | 空き家再生 | `media/akiya-demolish-or-renovate.html` | 候補（保留） | 公式ページの本文を照合できる環境、または人が置いた一次情報（解体・補助・売却の実体験）が揃ったら記事化 |
 
 ## 2. 新規記事の候補（10件）
 
