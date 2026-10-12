@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=98eaceb1">
+  <link rel="stylesheet" href="../../css/style.css?v=f2015aa8">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -100,7 +100,7 @@
 
         <section class="keypoints" aria-labelledby="keypoints-title">
           <h2 id="keypoints-title" class="keypoints__title">この記事の<wbr>ポイント</h2>
-          <ul><li><n-w>稼働率は「販売できた客室の割合」、客室単価（ADR）は「販売できた1室あたりの平均価格」です。</n-w></li><li><n-w>RevPAR（販売可能な1室あたりの売上）は、稼働率×客室単価で求められ、宿の売上力を一つの数字で表します。</n-w></li><li><n-w>稼働率だけを追って値下げすると、清掃などの費用が増えて利益が減ることがあります。</n-w></li><li><n-w>曜日・季節ごとに指標を分けて見ることで、価格の見直しや集客の打ち手が見えてきます。</n-w></li></ul>
+          <ul><li><span class="kp__main"><n-w>稼働率は「販売できた客室の割合」、客室単価（ADR）は「販売できた1室あたりの平均価格」です。</n-w></span></li><li><span class="kp__main"><n-w>RevPAR（販売可能な1室あたりの売上）は、稼働率×客室単価で求められ、宿の売上力を一つの数字で表します。</n-w></span></li><li><span class="kp__main"><n-w>稼働率だけを追って値下げすると、清掃などの費用が増えて利益が減ることがあります。</n-w></span></li><li><span class="kp__main"><n-w>曜日・季節ごとに指標を分けて見ることで、価格の見直しや集客の打ち手が見えてきます。</n-w></span></li></ul>
         </section>
 
         <aside class="inline-cta">
@@ -112,8 +112,10 @@
         </aside>
 
         <nav class="toc" aria-label="目次">
-          <p class="toc__title">目次</p>
-          <ol><li><a href="#three">宿の売上を表す3つの指標</a></li><li><a href="#example">計算例：一棟貸しの宿の1か月</a></li><li><a href="#trap">稼働率だけを<wbr>追うと、<wbr>利益が減ることがある</a></li><li><a href="#use">指標を<wbr>使って<wbr>打ち手を<wbr>考える</a></li><li><a href="#summary"><n-w>まとめ：3つの指標を、毎月同じ形で記録する</n-w></a></li><li><a href="#faq">よくある質問</a></li></ol>
+          <details class="toc__details">
+            <summary class="toc__title">目次を開く（全6章）</summary>
+            <ol><li><a href="#three">宿の売上を表す3つの指標</a></li><li><a href="#example">計算例：一棟貸しの宿の1か月</a></li><li><a href="#trap">稼働率だけを<wbr>追うと、<wbr>利益が減ることがある</a></li><li><a href="#use">指標を<wbr>使って<wbr>打ち手を<wbr>考える</a></li><li><a href="#summary"><n-w>まとめ：3つの指標を、毎月同じ形で記録する</n-w></a></li><li><a href="#faq">よくある質問</a></li></ol>
+          </details>
         </nav>
 
         <section class="article__section" id="three">
@@ -136,7 +138,7 @@
         <section class="article__section" id="example">
           <h2>計算例：一棟貸しの宿の1か月</h2>
 <p><n-w>30日のうち18泊の予約があり、宿泊料金の合計が54万円だった場合を考えます。</n-w></p>
-<ul>
+<ul class="calc">
 <li>稼働率：18 ÷ 30 ＝ <strong>60%</strong></li>
 <li>客室単価：54万円 ÷ 18泊 ＝ <strong>3万円</strong></li>
 <li><n-w>RevPAR：54万円 ÷ 30日 ＝</n-w> <strong><n-w>1万8,000円</n-w></strong><n-w>（＝60%×3万円）</n-w></li>
@@ -159,7 +161,7 @@
         </section>
         <section class="article__section" id="summary">
           <h2>まとめ：<wbr>3つの<wbr>指標を、<wbr>毎月同じ形で<wbr>記録する</h2>
-<p><n-w class="j">稼働率・客室単価・RevPARは、宿の売上を読み解く基本の指標です。大切なのは、</n-w><strong><n-w class="j">毎月同じ形で記録し、変化を追うこと</n-w></strong><n-w class="j">です。数字の変化から原因を考え、価格や集客の打ち手を調整していくことで、宿の収益は少しずつ安定していきます。</n-w></p>
+<p><span class="lead-s"><n-w class="j">稼働率・客室単価・RevPARは、宿の売上を読み解く基本の指標です。</n-w></span><n-w class="j">大切なのは、</n-w><strong><n-w class="j">毎月同じ形で記録し、変化を追うこと</n-w></strong><n-w class="j">です。数字の変化から原因を考え、価格や集客の打ち手を調整していくことで、宿の収益は少しずつ安定していきます。</n-w></p>
         </section>
 
         <section class="article__section" id="faq">
@@ -871,6 +873,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=management&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=748603bf"></script>
+  <script src="../../js/main.js?v=61d2cdc8"></script>
 </body>
 </html>

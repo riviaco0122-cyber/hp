@@ -319,9 +319,12 @@
       track('select_guide', { guide: href.match(/guide-([a-z]+)/)[1], page_path: location.pathname });
     }
   });
+  // 記事の目次：スマホでは折りたたみ（既定）、PC幅では開いておく
+  var tocDetails = document.querySelector('.toc__details');
+  if (tocDetails && window.matchMedia('(min-width: 900px)').matches) tocDetails.open = true;
   var fixedMedia = document.querySelector('.fixed-cta');
   // 冒頭の入口・フォーム・相談ブロックが見えている間は、下に固定した相談ボタンを隠す（重なりを防ぐ）
-  var hideTargets = document.querySelectorAll('.mfv, .qform, .mcta__box, .msv-band');
+  var hideTargets = document.querySelectorAll('.mfv, .qform, .mcta__box, .msv-band, .inline-cta, .article-cta');
   if (hideTargets.length && fixedMedia && 'IntersectionObserver' in window) {
     var visible = new Set();
     var io = new IntersectionObserver(function (en) {

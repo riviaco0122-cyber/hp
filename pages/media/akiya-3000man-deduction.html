@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=98eaceb1">
+  <link rel="stylesheet" href="../../css/style.css?v=f2015aa8">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -100,7 +100,7 @@
 
         <section class="keypoints" aria-labelledby="keypoints-title">
           <h2 id="keypoints-title" class="keypoints__title">この記事の<wbr>ポイント</h2>
-          <ul><li><n-w>相続した空き家を売ったとき、一定の条件を満たすと譲渡所得から最大3,000万円が控除されます。</n-w></li><li><n-w class="j">主な条件は、1981年5月31日以前に建てられた家であること、相続から3年を経過する日の属する年の12月31日までに売ること、売却価格が1億円以下であることなどです。</n-w></li><li><n-w>2024年1月以降の売却からは、売った後に買主が耐震改修や解体を行う場合も対象になりました。</n-w></li><li><n-w>相続人が3人以上の場合は、1人あたりの控除額が2,000万円になります。</n-w></li></ul>
+          <ul><li><span class="kp__main"><n-w>相続した空き家を売ったとき、一定の条件を満たすと譲渡所得から最大3,000万円が控除されます。</n-w></span></li><li><span class="kp__main"><n-w class="j">主な条件は、1981年5月31日以前に建てられた家であること、相続から3年を経過する日の属する年の12月31日までに売ること、売却価格が1億円以下であることなどです。</n-w></span></li><li><span class="kp__main"><n-w>2024年1月以降の売却からは、売った後に買主が耐震改修や解体を行う場合も対象になりました。</n-w></span></li><li><span class="kp__main"><n-w>相続人が3人以上の場合は、1人あたりの控除額が2,000万円になります。</n-w></span></li></ul>
         </section>
 
         <aside class="inline-cta">
@@ -112,13 +112,15 @@
         </aside>
 
         <nav class="toc" aria-label="目次">
-          <p class="toc__title">目次</p>
-          <ol><li><a href="#what">「空き家の<wbr>3,000万円特別控除」とは</a></li><li><a href="#conditions">主な適用条件</a></li><li><a href="#change">2024年からの主な改正点</a></li><li><a href="#caution">注意したい<wbr>ポイント</a></li><li><a href="#compare">「売る」と<wbr>「活かす」をどう比べるか</a></li><li><a href="#summary"><n-w>まとめ：期限内に「売る・活かす」の方針を決める</n-w></a></li><li><a href="#faq">よくある質問</a></li></ol>
+          <details class="toc__details">
+            <summary class="toc__title">目次を開く（全7章）</summary>
+            <ol><li><a href="#what">「空き家の<wbr>3,000万円特別控除」とは</a></li><li><a href="#conditions">主な適用条件</a></li><li><a href="#change">2024年からの主な改正点</a></li><li><a href="#caution">注意したい<wbr>ポイント</a></li><li><a href="#compare">「売る」と<wbr>「活かす」をどう比べるか</a></li><li><a href="#summary"><n-w>まとめ：期限内に「売る・活かす」の方針を決める</n-w></a></li><li><a href="#faq">よくある質問</a></li></ol>
+          </details>
         </nav>
 
         <section class="article__section" id="what">
           <h2>「空き家の<wbr>3,000万円特別控除」とは</h2>
-<p><n-w class="j">相続した家を売却して利益が出ると、譲渡所得に対して所得税・住民税がかかります。この特例は、</n-w><strong><n-w class="j">相続した空き家を売ったときに、譲渡所得から最大3,000万円を差し引ける</n-w></strong><n-w class="j">制度です。空き家の放置を防ぎ、流通を促すことを目的としています。</n-w></p>
+<p><span class="lead-s"><n-w class="j">相続した家を売却して利益が出ると、譲渡所得に対して所得税・住民税がかかります。</n-w></span><n-w class="j">この特例は、</n-w><strong><n-w class="j">相続した空き家を売ったときに、譲渡所得から最大3,000万円を差し引ける</n-w></strong><n-w class="j">制度です。空き家の放置を防ぎ、流通を促すことを目的としています。</n-w></p>
         </section>
         <section class="article__section" id="conditions">
           <h2>主な適用条件</h2>
@@ -165,12 +167,12 @@
         </section>
         <section class="article__section" id="compare">
           <h2>「売る」と<wbr>「活かす」をどう比べるか</h2>
-<p><n-w class="j">この特例を使って売却すれば、税の負担を抑えて現金化できます。一方で、立地や建物に魅力があれば、</n-w><strong><n-w class="j">宿として活用して、所有したまま収入を得る</n-w></strong><n-w class="j">選択肢もあります。</n-w></p>
+<p><span class="lead-s"><n-w class="j">この特例を使って売却すれば、税の負担を抑えて現金化できます。</n-w></span><n-w class="j">一方で、立地や建物に魅力があれば、</n-w><strong><n-w class="j">宿として活用して、所有したまま収入を得る</n-w></strong><n-w class="j">選択肢もあります。</n-w></p>
 <p><n-w class="j">売却した場合の手取り額と、活用した場合の長期的な収入・費用を並べて比べることで、ご家族にとって納得のいく判断がしやすくなります。</n-w></p>
         </section>
         <section class="article__section" id="summary">
           <h2>まとめ：期限内に<wbr>「売る<wbr>・活かす」の<wbr>方針を<wbr>決める</h2>
-<p><n-w class="j">空き家の3,000万円特別控除は、条件を満たせば大きな節税効果がある制度です。ただし、期限や使い方の制約があるため、</n-w><strong><n-w class="j">相続後なるべく早く、売却と活用の両方を検討して方針を決める</n-w></strong><n-w class="j">ことが大切です。</n-w></p>
+<p><span class="lead-s"><n-w class="j">空き家の3,000万円特別控除は、条件を満たせば大きな節税効果がある制度です。</n-w></span><n-w class="j">ただし、期限や使い方の制約があるため、</n-w><strong><n-w class="j">相続後なるべく早く、売却と活用の両方を検討して方針を決める</n-w></strong><n-w class="j">ことが大切です。</n-w></p>
         </section>
 
         <section class="article__section" id="faq">
@@ -882,6 +884,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=partnership&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=748603bf"></script>
+  <script src="../../js/main.js?v=61d2cdc8"></script>
 </body>
 </html>

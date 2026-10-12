@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=98eaceb1">
+  <link rel="stylesheet" href="../../css/style.css?v=f2015aa8">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -100,7 +100,7 @@
 
         <section class="keypoints" aria-labelledby="keypoints-title">
           <h2 id="keypoints-title" class="keypoints__title">この記事の<wbr>ポイント</h2>
-          <ul><li><n-w>立地：旅行者が泊まる理由があるか。観光地でなくても、仕事やイベント、自然が理由になります。</n-w></li><li><n-w>建物：雨漏り・シロアリ・水回りなど、改修費が大きくなる要因がないか。</n-w></li><li><n-w>法令：用途地域、自治体の条例、消防の基準を満たせるか。</n-w></li><li><n-w>運営：清掃や緊急時の対応を、誰がどう担うか。</n-w></li></ul>
+          <ul><li><span class="kp__main"><n-w>立地：旅行者が泊まる理由があるか。</n-w></span><span class="kp__sub"><n-w>観光地でなくても、仕事やイベント、自然が理由になります。</n-w></span></li><li><span class="kp__main"><n-w>建物：雨漏り・シロアリ・水回りなど、改修費が大きくなる要因がないか。</n-w></span></li><li><span class="kp__main"><n-w>法令：用途地域、自治体の条例、消防の基準を満たせるか。</n-w></span></li><li><span class="kp__main"><n-w>運営：清掃や緊急時の対応を、誰がどう担うか。</n-w></span></li></ul>
         </section>
 
         <aside class="inline-cta">
@@ -112,8 +112,10 @@
         </aside>
 
         <nav class="toc" aria-label="目次">
-          <p class="toc__title">目次</p>
-          <ol><li><a href="#place">立地：泊まる<wbr>理由が<wbr>あるか</a></li><li><a href="#building">建物：改修費が<wbr>大きくならないか</a></li><li><a href="#law">法令：営業できる<wbr>場所と<wbr>建物か</a></li><li><a href="#ops">運営：誰が、<wbr>どう担うか</a></li><li><a href="#summary">まとめ：<wbr>4つが<wbr>そろえば、<wbr>宿として活かせる</a></li><li><a href="#faq">よくある質問</a></li></ol>
+          <details class="toc__details">
+            <summary class="toc__title">目次を開く（全6章）</summary>
+            <ol><li><a href="#place">立地：泊まる<wbr>理由が<wbr>あるか</a></li><li><a href="#building">建物：改修費が<wbr>大きくならないか</a></li><li><a href="#law">法令：営業できる<wbr>場所と<wbr>建物か</a></li><li><a href="#ops">運営：誰が、<wbr>どう担うか</a></li><li><a href="#summary">まとめ：<wbr>4つが<wbr>そろえば、<wbr>宿として活かせる</a></li><li><a href="#faq">よくある質問</a></li></ol>
+          </details>
         </nav>
 
         <section class="article__section" id="place">
@@ -143,15 +145,15 @@
         </section>
         <section class="article__section" id="law">
           <h2>法令：営業できる<wbr>場所と<wbr>建物か</h2>
-<p><n-w class="j">民泊（住宅宿泊事業法）か旅館業（簡易宿所）かによって、条件が変わります。用途地域、自治体の条例による区域や営業日の制限、マンションの管理規約、消防設備の基準を確認しましょう。制度の違いは</n-w><a href="../media/minpaku-vs-ryokan-law.html"><n-w class="j">民泊新法と旅館業の違い</n-w></a><n-w class="j">で解説しています。</n-w></p>
+<p><span class="lead-s"><n-w class="j">民泊（住宅宿泊事業法）か旅館業（簡易宿所）かによって、条件が変わります。</n-w></span><n-w class="j">用途地域、自治体の条例による区域や営業日の制限、マンションの管理規約、消防設備の基準を確認しましょう。制度の違いは</n-w><a href="../media/minpaku-vs-ryokan-law.html"><n-w class="j">民泊新法と旅館業の違い</n-w></a><n-w class="j">で解説しています。</n-w></p>
         </section>
         <section class="article__section" id="ops">
           <h2>運営：誰が、<wbr>どう担うか</h2>
-<p><n-w class="j">宿は、開業してからが本番です。清掃、リネン、鍵の受け渡し、ゲストからの問い合わせ、緊急時の駆けつけを、誰が担うかを決めておく必要があります。遠方の物件なら、運営を任せる体制が欠かせません。</n-w></p>
+<p><span class="lead-s"><n-w class="j">宿は、開業してからが本番です。</n-w></span><n-w class="j">清掃、リネン、鍵の受け渡し、ゲストからの問い合わせ、緊急時の駆けつけを、誰が担うかを決めておく必要があります。遠方の物件なら、運営を任せる体制が欠かせません。</n-w></p>
         </section>
         <section class="article__section" id="summary">
           <h2>まとめ：<wbr>4つが<wbr>そろえば、<wbr>宿として活かせる</h2>
-<p><n-w class="j">立地・建物・法令・運営の4つがそろえば、空き家は宿として活かせる可能性が高くなります。ひとつでも不安がある場合は、現地を見て収支を試算してから判断しましょう。</n-w></p>
+<p><span class="lead-s"><n-w class="j">立地・建物・法令・運営の4つがそろえば、空き家は宿として活かせる可能性が高くなります。</n-w></span><n-w class="j">ひとつでも不安がある場合は、現地を見て収支を試算してから判断しましょう。</n-w></p>
         </section>
 
         <section class="article__section" id="faq">
@@ -863,6 +865,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=operation&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=748603bf"></script>
+  <script src="../../js/main.js?v=61d2cdc8"></script>
 </body>
 </html>

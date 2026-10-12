@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=98eaceb1">
+  <link rel="stylesheet" href="../../css/style.css?v=f2015aa8">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -100,7 +100,7 @@
 
         <section class="keypoints" aria-labelledby="keypoints-title">
           <h2 id="keypoints-title" class="keypoints__title">この記事の<wbr>ポイント</h2>
-          <ul><li><n-w>空き家には、固定資産税・都市計画税、火災保険、電気や水道の基本料金、修繕費などが毎年かかります。</n-w></li><li><n-w>遠方の場合は、見回りのための交通費や時間も、見落としがちな負担です。</n-w></li><li><n-w>傷みが進むほど修繕費は大きくなるため、使い道を早めに決めることが負担を抑える近道です。</n-w></li></ul>
+          <ul><li><span class="kp__main"><n-w>空き家には、固定資産税・都市計画税、火災保険、電気や水道の基本料金、修繕費などが毎年かかります。</n-w></span></li><li><span class="kp__main"><n-w>遠方の場合は、見回りのための交通費や時間も、見落としがちな負担です。</n-w></span></li><li><span class="kp__main"><n-w>傷みが進むほど修繕費は大きくなるため、使い道を早めに決めることが負担を抑える近道です。</n-w></span></li></ul>
         </section>
 
         <aside class="inline-cta">
@@ -112,8 +112,10 @@
         </aside>
 
         <nav class="toc" aria-label="目次">
-          <p class="toc__title">目次</p>
-          <ol><li><a href="#items">毎年かかる主な費用</a></li><li><a href="#hidden">見落としがちな費用と負担</a></li><li><a href="#grow">傷みが<wbr>進むほど、<wbr>費用は<wbr>大きくなる</a></li><li><a href="#reduce">負担を<wbr>減らすための<wbr>考え方</a></li><li><a href="#summary">まとめ：維持費は<wbr>「出ていくだけ」の費用</a></li><li><a href="#faq">よくある質問</a></li></ol>
+          <details class="toc__details">
+            <summary class="toc__title">目次を開く（全6章）</summary>
+            <ol><li><a href="#items">毎年かかる主な費用</a></li><li><a href="#hidden">見落としがちな費用と負担</a></li><li><a href="#grow">傷みが<wbr>進むほど、<wbr>費用は<wbr>大きくなる</a></li><li><a href="#reduce">負担を<wbr>減らすための<wbr>考え方</a></li><li><a href="#summary">まとめ：維持費は<wbr>「出ていくだけ」の費用</a></li><li><a href="#faq">よくある質問</a></li></ol>
+          </details>
         </nav>
 
         <section class="article__section" id="items">
@@ -151,7 +153,7 @@
         </section>
         <section class="article__section" id="grow">
           <h2>傷みが<wbr>進むほど、<wbr>費用は<wbr>大きくなる</h2>
-<p><n-w class="j">人が住まない家は、換気や通水がされないため、湿気やカビ、配管の傷みが進みやすくなります。小さな雨漏りを放っておくと、柱や床まで傷み、直すための費用が大きくなります。</n-w></p>
+<p><span class="lead-s"><n-w class="j">人が住まない家は、換気や通水がされないため、湿気やカビ、配管の傷みが進みやすくなります。</n-w></span><n-w class="j">小さな雨漏りを放っておくと、柱や床まで傷み、直すための費用が大きくなります。</n-w></p>
 <p><n-w>「いつか考えよう」と先送りしている間にも、家の価値は下がり、維持費は積み重なっていきます。</n-w></p>
         </section>
         <section class="article__section" id="reduce">
@@ -166,7 +168,7 @@
         </section>
         <section class="article__section" id="summary">
           <h2>まとめ：維持費は<wbr>「出ていくだけ」の費用</h2>
-<p><n-w class="j">空き家の維持費は、家を使わない限り、収入を生まずに出ていくだけの費用です。家の状態と家族の意向を確かめ、早めに方針を決めることが、負担を抑えるいちばんの方法です。</n-w></p>
+<p><span class="lead-s"><n-w class="j">空き家の維持費は、家を使わない限り、収入を生まずに出ていくだけの費用です。</n-w></span><n-w class="j">家の状態と家族の意向を確かめ、早めに方針を決めることが、負担を抑えるいちばんの方法です。</n-w></p>
         </section>
 
         <section class="article__section" id="faq">
@@ -878,6 +880,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=operation&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=748603bf"></script>
+  <script src="../../js/main.js?v=61d2cdc8"></script>
 </body>
 </html>
