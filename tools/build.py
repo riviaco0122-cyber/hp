@@ -2415,7 +2415,7 @@ def spec_md():
     w("* ガイド（media/guide-○○.html）：" + " ／ ".join(g["title"] for g in MEDIA_GUIDES) + "。読者の状況ごとに、悩みが生まれる順の「段階（Step）」に分けて記事を並べる。公開前の記事は「○月○日公開予定」と表示し、リンクにしない。")
     for g in MEDIA_GUIDES:
         w(f"    * {g['title']}：" + " → ".join(f"{lb}（{len(xs)}本）" for lb, _, xs in g["stages"]))
-    w("* メディアトップの順：検索窓 → あなたの状況から読む（ガイド3つ）→ よくある悩みから探す（読者の言葉の質問から記事へ）→ 新着記事 → すべての記事（上にテーマのタグ5つ）。カテゴリページにも同じタグを置き、いま見ているテーマを強調して他のテーマへ移れるようにする。")
+    w("* メディアトップの順：検索窓 → ご自身の状況から読む（ガイド3つ）→ よくある悩みから探す（読者の言葉の質問から記事へ）→ 新着記事 → すべての記事（上にテーマのタグ5つ）。カテゴリページにも同じタグを置き、いま見ているテーマを強調して他のテーマへ移れるようにする。")
     w("* 記事ページの冒頭に「こんな方に」として、その記事を含むガイドを表示する。")
     w("* 記事ページ：パンくず（TOP ／ アキヤド ／ カテゴリ）、ガイドに含まれる記事は「この記事を含むガイド」と前後の記事、シェア（X ／ LINE ／ Facebook ／ リンクをコピー）を表示。")
     w("* 旧URL（media.html?cat=○○）はカテゴリ一覧へ移動する。")
@@ -4604,8 +4604,8 @@ def media_index_page():
         <div class="mfv__text">
           <p class="mfv__eyebrow reveal">空き家と民泊のメディア「アキヤド」</p>
           <h1 class="mfv__title reveal" data-delay="1">空き家を、売る。活かす。<br>民泊を、はじめる。</h1>
-          <p class="mfv__lead reveal" data-delay="1">宿を運営する私たちが、悩みの順にお答えします。</p>
-          <p class="mfv__entry-label reveal" data-delay="2">あなたの状況から読む</p>
+          <p class="mfv__lead reveal" data-delay="1">アキヤドが、悩みの順にお答えします。</p>
+          <p class="mfv__entry-label reveal" data-delay="2">ご自身の状況から読む</p>
           <ul class="mfv__tiles reveal" data-delay="2">{tiles}</ul>{search_form("media/search.html").replace('class="msearch reveal"', 'class="msearch msearch--fv reveal" data-delay="3"').replace('placeholder="キーワード（例：相続、補助金）"', 'placeholder="キーワードで記事をさがす"')}
         </div>
         <figure class="mfv__photo reveal" data-delay="1">{photo("scene-stay", width=1080, height=1350, sizes="(max-width: 899px) 100vw, 520px", lazy=False, priority=True, alt="縁側の向こうに山と町並みを望む和室")}</figure>
@@ -4614,7 +4614,7 @@ def media_index_page():
 
     <section class="section msec msec--first">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">For you</p><h2 class="msec__title">あなたの状況から読む</h2></div></div>
+        <div class="msec__head reveal"><div><p class="msec__en">For you</p><h2 class="msec__title">ご自身の状況から読む</h2></div></div>
         <p class="msec__lead">いまの状況に近いものを選んでください。知っておきたいことを、悩みが生まれる順に並べたガイドをご用意しています。</p>
         <div class="persona-cards">
 {guides}
