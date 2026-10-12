@@ -264,5 +264,10 @@ def insert_figure(slug, sid, html, own=None):
     fig = own or ARTICLE_FIGURES.get(slug)
     if not fig or fig[0] != sid:
         return html
+    if html.lstrip().startswith('<div class="callout'):
+        # 冒頭が「結論」の枠なら、枠の中ではなく枠の次に図を置く（結論の文を先に読ませる）
+        j = html.find("</div>")
+        if j >= 0:
+            return html[:j + 6] + "\n" + fig[1] + "\n" + html[j + 6:]
     i = html.find("</p>")
     return (html[:i + 4] + "\n" + fig[1] + "\n" + html[i + 4:]) if i >= 0 else fig[1] + "\n" + html

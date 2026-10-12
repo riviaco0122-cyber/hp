@@ -4678,16 +4678,23 @@ def article_page(a):
     guide_box = ""
     if g:
         idx = g["slugs"].index(a["slug"])
-        lis = "".join(
-            (f'<li data-date="{ARTICLE_BY_SLUG[s_]["date"]}" aria-current="page"><span>{e(ARTICLE_BY_SLUG[s_]["title"])}</span></li>' if s_ == a["slug"] else
-             f'<li data-date="{ARTICLE_BY_SLUG[s_]["date"]}"><a href="media/{s_}.html">{e(ARTICLE_BY_SLUG[s_]["title"])}</a></li>')
-            for s_ in g["slugs"])
+        def _gb_item(n_, s_):
+            x = ARTICLE_BY_SLUG[s_]
+            inner = (f'<span class="guide-box__no">{n_:02d}</span>'
+                     f'<span class="guide-box__text"><span class="guide-box__name">{e(list_name(x))}</span>'
+                     f'<span class="guide-box__blurb">{e(x["blurb"])}</span></span>')
+            if s_ == a["slug"]:
+                return (f'<li data-date="{x["date"]}" aria-current="page"><span class="guide-box__item">{inner}'
+                        f'<span class="guide-box__here">この記事</span></span></li>')
+            return (f'<li data-date="{x["date"]}"><a href="media/{s_}.html" class="guide-box__item" title="{e(x["title"])}">{inner}'
+                    f'<span class="guide-box__go" aria-hidden="true">›</span></a></li>')
+        lis = "".join(_gb_item(n_, s_) for n_, s_ in enumerate(g["slugs"], 1))
         guide_box = f"""
         <nav class="guide-box" aria-label="この記事を含むガイド">
           <p class="guide-box__label">この記事を含むガイド</p>
           <a href="media/guide-{g["key"]}.html" class="guide-box__title">{e(g["title"])}</a>
           <ol class="guide-box__list">{lis}</ol>
-          <div class="guide-box__pager"></div>
+          <a href="media/guide-{g["key"]}.html" class="guide-box__all">ガイドを全部見る {ARROW}</a>
         </nav>
 """
     body = f"""    <article class="article" data-publish="{a["date"]}">
