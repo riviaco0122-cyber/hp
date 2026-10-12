@@ -4847,6 +4847,25 @@ def article_page(a):
             out.append("</tbody></table>")
             return "".join(out)
         return re.sub(r'<table class="table">.*?</table>', conv, html, flags=re.S)
+    def thin_strong(html):
+        """強調（太字）を絞る（playbook 13-4。人の方針 2026-10-12）。段落（<p>）の中の太字は、節の最初の太字（結論の1文）だけ残し、
+        あとは太字を外す。箇条書きの項目名・表・注意枠の見出しの太字は、構造なので残す。"""
+        first = [True]
+        def p_fix(m):
+            inner = m.group(2)
+            if "<strong>" not in inner:
+                return m.group(0)
+            if first[0]:
+                first[0] = False
+                n = inner.count("<strong>")
+                if n <= 1:
+                    return m.group(0)
+                head, _, rest = inner.partition("</strong>")
+                rest = rest.replace("<strong>", "").replace("</strong>", "")
+                return m.group(1) + head + "</strong>" + rest + "</p>"
+            inner = inner.replace("<strong>", "").replace("</strong>", "")
+            return m.group(1) + inner + "</p>"
+        return re.sub(r"(<p(?: [^>]*)?>)(.*?)</p>", p_fix, html, flags=re.S)
     def tables(html):
         html = calc_lists(html)
         html = auto_stack_tables(html)
@@ -4872,7 +4891,7 @@ def article_page(a):
           <h2>{e(h)}</h2>
 {lead_sentence(html.strip())}
         </section>"""
-        for sid, h, html in [(x, y, insert_figure(a["slug"], x, card_headings(tables(z)), a.get("figure"))) for x, y, z in a["sections"]]
+        for sid, h, html in [(x, y, insert_figure(a["slug"], x, card_headings(tables(thin_strong(z))), a.get("figure"))) for x, y, z in a["sections"]]
     )
     sources = "".join(source_li(s) for s in a["sources"])
     svc = a["services"][0]
