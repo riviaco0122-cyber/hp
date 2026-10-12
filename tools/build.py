@@ -2969,7 +2969,7 @@ ARTICLES += [
         keypoints=[
             "検討しやすい制度は、大きく5種類。①販路開拓（小規模事業者持続化補助金など）、②IT・DX導入、③空き家・古民家の改修（自治体の補助）、④地方での起業・移住の支援、⑤観光庁などの宿泊業向け事業です。",
             "多くは後払いで、交付決定前の発注は対象外。補助金の多くは「後払い（精算払い）」で、交付決定の前に発注・契約した経費は対象外になるのが原則です。",
-            "名称・上限額・補助率・対象経費は毎年変わる。年度や公募回ごとに変わるため、必ず最新の公募要領を確認してください。",
+            "名称・上限額・補助率・対象経費は年度や公募回ごとに変わる。必ず最新の公募要領を確認してください。",
             "補助金ありきの計画は避ける。「採択されなくても成り立つ事業計画」に上乗せする考え方が安全です。",
         ],
         sections=[
@@ -3013,9 +3013,9 @@ ARTICLES += [
 """),
             ("caution", "申請前に知っておきたい5つの注意点", """
 <div class="carousel" role="group" aria-label="申請前の5つの注意点（横にスワイプ）">
-<div class="carousel__card"><span class="carousel__no">注意 1</span><p class="carousel__title">原則として後払い</p><p class="carousel__text">事業を実施して経費を支払い、報告を経て受け取るのが一般的です。いったんは自己資金や融資で立て替えます。</p></div>
+<div class="carousel__card"><span class="carousel__no">注意 1</span><p class="carousel__title">原則として後払い</p><p class="carousel__text">事業を実施して経費を支払い、報告を経て受け取るのが一般的です。いったんは自己資金や融資で立て替える必要があります。</p></div>
 <div class="carousel__card"><span class="carousel__no">注意 2</span><p class="carousel__title">交付決定前の発注は対象外</p><p class="carousel__text">採択・交付決定の前に契約・発注した経費は、原則として対象外です。工事や購入の時期に注意しましょう。</p></div>
-<div class="carousel__card"><span class="carousel__no">注意 3</span><p class="carousel__title">採択は不確実</p><p class="carousel__text">募集は期間限定で、申請しても必ず採択されるわけではありません。</p></div>
+<div class="carousel__card"><span class="carousel__no">注意 3</span><p class="carousel__title">公募期間と採択の不確実性</p><p class="carousel__text">募集は期間限定で、申請しても必ず採択されるわけではありません。</p></div>
 <div class="carousel__card"><span class="carousel__no">注意 4</span><p class="carousel__title">対象者の要件</p><p class="carousel__text">開業届を出していない個人や、業種・規模の要件を満たさない場合は対象外になることがあります。</p></div>
 <div class="carousel__card"><span class="carousel__no">注意 5</span><p class="carousel__title">事業後の報告義務</p><p class="carousel__text">補助を受けた後も、一定期間の報告や、取得した設備を処分しないことなどが求められる場合があります。</p></div>
 </div>
