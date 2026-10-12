@@ -16,7 +16,7 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
 2. 作業ブランチは **`seo/daily` に固定**する。
    - `origin/seo/daily` があり、まだ `$BASE` にマージされていなければ（人の確認待ち）、それをチェックアウトし、`git merge origin/$BASE` で本番ブランチの変更を取り込んでから、その上に今日の作業を積む。PR は既存のものを使い、説明文を更新する。
    - なければ（前回分がマージ済み）、`origin/$BASE` から `seo/daily` を作り直す。
-3. `python3 -m pip install -q -r tools/requirements.txt budoux beautifulsoup4 pillow`（集客データの取得と生成スクリプト用。`pip` と `python3` の版が違う環境があるので、必ず `python3 -m pip` で入れる。失敗しても続行）。集客データの取得で `cryptography`・`cffi` のエラーが出たら `python3 -m pip install -q -U cffi cryptography` で入れ直してからやり直す。`GOOGLE_SERVICE_ACCOUNT_JSON` などの環境変数がない場合は、ルーティンの実行環境が「アキヤド」（鍵を登録した環境）になっているかを人に確認してもらうよう、要約に書く。
+3. `python3 -m pip install -q -r tools/requirements.txt budoux beautifulsoup4 pillow`（集客データの取得と生成スクリプト用。`pip` と `python3` の版が違う環境があるので、必ず `python3 -m pip` で入れる。失敗しても続行）。集客データの取得で `cryptography`・`cffi` のエラーが出たら `python3 -m pip install -q -U cffi cryptography` で入れ直してからやり直す（Debian 版が入っていて `-U` が失敗するときは `python3 -m pip install -q --ignore-installed cffi cryptography`。2026-10-12 に動作確認済み）。`GOOGLE_SERVICE_ACCOUNT_JSON` などの環境変数がない場合は、ルーティンの実行環境が「アキヤド」（鍵を登録した環境）になっているかを人に確認してもらうよう、要約に書く。
 4. `python3 tools/build.py` でサイトを作り直す（公開日を迎えた記事を llms.txt・sitemap に反映するため。毎日必ず。差分が出たらその日の PR に含める）。
    - 作り直しは毎回、記事データ（`tools/articles_*.py`）と `tools/build.py` から行う。**HTML を直接書き換えない。**
 5. **未マージの記事の公開日を確認する**：`seo/daily` に入っている新規記事で、公開予定日が今日以前になったものは、公開予定日を「今日＋2日以降」に付け直す（過去の日付で公開しないため）。
@@ -60,3 +60,5 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
 ## 中断の基準
 - seo_check のエラー・site_check の重大が直せない、品質管理部の採点が3回やり直しても95点に届かない → その作業は含めず、採点結果と原因をログの引き継ぎに書く。
 - 変更がなかった日は、ログとダッシュボードの更新だけをコミットする。
+- GitHub の mcp ツールが切れて PR を作れないときは、push したうえで compare URL と PR 説明文を最終メッセージに載せる（ルーティンの指示 4）。
+- リサーチで公的ページ（国交省・総務省など）が WebFetch で開けず、制度・税・補助の数値を本文で照合できないときは、その数値を記事に書かず、PR の「人の確認が必要な点」に載せる。
