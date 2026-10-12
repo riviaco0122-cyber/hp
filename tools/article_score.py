@@ -155,7 +155,8 @@ def parse_html(text):
     faq_ld = re.search(r'"@type": "FAQPage", "mainEntity": (\[.*?\])\}</script>', text, re.S)
     d["faq_ld"] = len(json.loads(faq_ld.group(1))) if faq_ld else 0
     m = re.search(r'<section class="sources">.*?</section>', text, re.S)
-    d["sources"] = [strip_tags(x).strip() for x in re.findall(r"<li>(.*?)</li>", m.group(0), re.S)] if m else []
+    # リンクの href（資料名がリンクになっている参考資料）も、URL ありと数える
+    d["sources"] = [(strip_tags(x).strip() + " " + " ".join(re.findall(r'href="(https?://[^"]+)"', x))).strip() for x in re.findall(r"<li>(.*?)</li>", m.group(0), re.S)] if m else []
     links = re.findall(r'href="([^"]+)"', body)
     d["article_links"] = sorted({l for l in links if re.search(r"media/[a-z0-9-]+\.html", l) and "category-" not in l and "guide-" not in l})
     cta = re.search(r'<aside class="article-cta">.*?</aside>', text, re.S)

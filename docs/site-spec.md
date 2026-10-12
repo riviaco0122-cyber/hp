@@ -785,8 +785,8 @@ rivia-hp/
     * 法人名義での融資相談は見送られ、個人名義での相談で融資が決まりました。担当者によって対応が変わり得ると感じました。
     * 補助金の要項には「市内の工務店との契約」の条件があり、相見積もりの結果と照らして判断しました。
     * 伊豆の西伊豆町と松崎町には、空き家の改修に最大50万円の補助がありますが、対象は空き家バンク登録物件の居住部分です。
-* 見出し構成: 小さな宿の開業に、実際いくらかかったのか？ → その資金は、どこから出したのか？ → 法人名義と個人名義で、融資の結果は違ったのか？ → 補助金は、開業資金としてあてにできるのか？ → 融資の相談に持っていく事業計画には、何を書くのか？ → 結局、どう計画すればよいのか？ → よくある質問
-* 参考資料: 創業メンバー本人による開業記録（2025年11月執筆）にもとづく、RIVIA&CO.の経験の要約 ／ RIVIA&CO.「アキヤド【運営事例】下田の賃貸一軒家を小さな宿に」 https://rivia-co.com/media/case-rental-house-inn-first-year.html ／ 西伊豆町「空き家改修等補助金」 https://www.town.nishiizu.shizuoka.jp/kakuka/machizukuri/kikaku/akiyahojo.html ／ 松崎町「空き家改修等補助金」 https://www.town.matsuzaki.shizuoka.jp/docs/2018060500048 ／ 日本政策金融公庫「創業をお考えの方へ」 https://www.jfc.go.jp/
+* 見出し構成: 小さな宿の開業に、実際いくらかかったのか？ → その資金は、どこから出したのか？ → 法人名義と個人名義で、融資の結果は違ったのか？ → 資金計画は、誰が改修費を持つかで、どう変わるのか？ → 補助金は、開業資金としてあてにできるのか？ → 融資の相談に持っていく事業計画には、何を書くのか？ → 結局、どう計画すればよいのか？ → よくある質問
+* 参考資料: 創業メンバー本人による開業記録（2025年11月執筆）にもとづく、RIVIA&CO.の経験の要約 ／ RIVIA&CO.「アキヤド【運営事例】下田の賃貸一軒家を小さな宿に」 https://rivia-co.com/media/case-rental-house-inn-first-year.html ／ 西伊豆町「空き家改修等補助金」 https://www.town.nishiizu.shizuoka.jp/kakuka/machizukuri/kikaku/akiyahojo.html ／ 松崎町「空き家改修等補助金」 https://www.town.matsuzaki.shizuoka.jp/docs/2018060500048 ／ 日本政策金融公庫「新規開業・スタートアップ支援資金」 https://www.jfc.go.jp/n/finance/search/01_sinkikaigyou_m.html
 
 #### レビューの評価を上げる宿のゲスト対応｜予約前から滞在後までのポイント（`media/guest-review-tips.html`）
 * カテゴリ: 集客・運営 ／ 公開日: 2026-10-11 ／ 関連サービス: 宿泊施設 開業・運営支援事業、WEB集客支援事業
