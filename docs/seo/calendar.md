@@ -35,3 +35,10 @@
 | 7 | akiya-holding-costs | 34 | 待ち |
 | 8 | akiya-law-kanri-fuzen | 34 | 待ち |
 | 9〜 | akiyado-what-we-do、inherited-house-family-talk、inn-local-economy、kominka-stay-value、listing-photo-tips、long-stay-guest-equipment、minpaku-hard-truth、minpaku-neighbor-rules、minpaku-off-season、remote-renovation-tips、why-minpaku-for-akiya（各34） | 34 | 待ち |
+
+
+## 新規記事の候補（2026-10-12 追加。プロの整理の共有から。Buy・Do を優先。詳細は `docs/sources/research/2026-10-12-pro-minpaku-roadmap.md`）
+- 稼働率が何%なら黒字になるのか（損益分岐点）: 下田の運営費・月別稼働率が一次情報（確認済み）。**最優先の候補**。
+- 民泊の物件選び: 地域の需要を公式の統計で調べる手順（e-Stat・観光庁）。
+- ふるさと納税の返礼品に宿泊券を出すには（総務省・自治体の公式で確認してから）。
+- 小さな宿の事業を売るとき、何が見られるのか（数字は使わず、見られる点だけを出典つきで）。
