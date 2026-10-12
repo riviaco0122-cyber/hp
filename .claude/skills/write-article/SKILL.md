@@ -10,7 +10,7 @@ description: 指定したテーマ（またはキーワード表の次の候補�
 
 1. 作業ブランチ `seo/article-<スラッグ>` を作る。
 2. `researcher` → リサーチメモ（YouTube 調査・一次情報・出典の確認）。統計の数字が要るときは、先に編集長が `python3 tools/estat.py` で e-Stat から取って渡す（出典つき）
-3. `marketer` → 構成案 `docs/seo/briefs/<スラッグ>.md`。公開予定日は、予約済みの最後の記事の 2 日後（`docs/dashboard.md` 参照）。
+3. `marketer` → 構成案 `docs/seo/briefs/<スラッグ>.md`。公開予定日は **今日（日本時間）の翌日**（人が確認してマージした日の翌日に公開するため。人の方針 2026-10-12）。マージが遅れたら日次サイクルが付け直す。
 4. `writer` → 原稿 `docs/seo/drafts/<スラッグ>.md`（自己採点で `tools/article_score.py` の機械採点40点にしてから提出）
 5. `qa` → 100点満点で採点（playbook 5章）。**95点未満・ゲート違反なら、qa が指定した戻る工程（2 リサーチ／3 構成案／4 執筆）からやり直し、最初から採点し直す**（最大5回）。
 6. `engineer` → 記事データ（`tools/articles_auto.py`）に足し、`python3 tools/eyecatch.py <スラッグ>` でアイキャッチを作ってから `python3 tools/build.py` で作り直す（一覧・sitemap・llms.txt・仕様書まで自動で更新）。seo_check エラー0・`node tools/check/site_check.js --no-visual` 重大0、seo_check のエラー 0 を確認
