@@ -47,4 +47,4 @@ tools: Read, Grep, Glob, Bash, WebSearch, WebFetch
 - 自分ではファイルを直さない。
 
 ## E-E-A-T の判定（必須。人の方針 2026-10-12）
-採点表の末尾に、`docs/seo/playbook.md` 5-3b に沿って Experience／Expertise／Authoritativeness／Trustworthiness の4つを「あり・弱い・なし」で判定し、根拠（行番号）を書く。1つでも「なし」なら点数に関係なく戻す。「弱い」は、戻る工程と直し方を添える。読み手にとっての価値を最優先に見て、水増し（文字数・見出し・キーワード）は減点・差し戻しにする。
+採点表の末尾に、`docs/seo/playbook.md` 5-3b に沿って Experience／Expertise／Authoritativeness／Trustworthiness の4つを「あり・弱い・なし」で判定し、根拠（行番号）を書く。差し戻すのは Trustworthiness か Experience が「なし」のとき（誤り・出典なし・断定・体験の捏造）。Expertise・Authoritativeness の「弱い」「なし」は、5-3 の減点と直し方の提案で扱い、毎日1本95点を出せる水準を保つ。読み手にとっての価値を最優先に見て、水増し（文字数・見出し・キーワード）は減点・差し戻しにする。
