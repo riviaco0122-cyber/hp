@@ -4655,6 +4655,15 @@ def media_guide_page(g):
     page(f"media/guide-{g['key']}.html", f"{g['title']}｜アキヤド", g["lead"], body, current="media", jsonld=ld, mnav=g["key"])
 
 
+
+def source_li(s):
+    """参考資料の1行。末尾に URL があれば、その資料名をリンクにする（URL は画面に出さない）。"""
+    m = re.match(r"^(.*?)\s*(https?://\S+)$", s)
+    if not m:
+        return f"<li>{e(s)}</li>"
+    return f'<li><a href="{e(m.group(2))}" target="_blank" rel="noopener noreferrer">{e(m.group(1))}</a></li>'
+
+
 def article_page(a):
     names = dict(SERVICES)
     toc = "".join(f'<li><a href="#{sid}">{e(h)}</a></li>' for sid, h, _ in a["sections"])
@@ -4705,7 +4714,7 @@ def article_page(a):
         </section>"""
         for sid, h, html in [(x, y, insert_figure(a["slug"], x, card_headings(tables(z)), a.get("figure"))) for x, y, z in a["sections"]]
     )
-    sources = "".join(f"<li>{e(s)}</li>" for s in a["sources"])
+    sources = "".join(source_li(s) for s in a["sources"])
     svc = a["services"][0]
     svc_links = "".join(
         f'<li><a href="service-{k}.html">{e(names[k])} {ARROW}</a></li>' for k in a["services"]
