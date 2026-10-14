@@ -4809,6 +4809,10 @@ def media_guide_page(g):
         </section>""")
     crumbs = media_crumbs([("アキヤド", "media.html"), (g["title"], "")])
     worries = "".join(f"<li>{e(w)}</li>" for w in g["worries"])
+    _gc = {"use": ["case-owner-diy-cottage", "case-owner-subsidy-akiya", "case-owner-fishing-port", "case-owner-licensed-akiya"],
+           "side": ["case-owner-pricing-mistake", "case-owner-rental-side-business", "case-owner-licensed-akiya", "case-owner-subsidy-akiya"],
+           "sell": ["case-owner-diy-cottage"]}.get(g["key"], [])
+    guide_cases = media_section([ARTICLE_BY_SLUG[x] for x in _gc if x in ARTICLE_BY_SLUG], eyebrow="Cases", title="近い事例を読む", lead="実際に民泊を運営しているオーナーへの取材です。", more=False, limit=4, keep_order=True) if _gc else ""
     body = f"""{media_hero("Guide", e(g["title"]), g["lead"], crumbs)}
 
     <section class="section msec msec--first">
@@ -4817,6 +4821,8 @@ def media_guide_page(g):
 {chr(10).join(stages)}
       </div>
     </section>
+
+{guide_cases}
 
 {media_cta(g["service"])}"""
     ld = [{
@@ -4942,6 +4948,13 @@ def article_page(a):
         (x for x in ARTICLES if x["slug"] != a["slug"]),
         key=lambda x: (x["category"] != a["category"], not set(x["services"]) & set(a["services"])),
     )
+    # 事例（オーナー取材）を、近いテーマのものから1本、先頭に出す
+    if not a["slug"].startswith("case-owner-") and a["slug"] != "minpaku-case-list":
+        _ct = {"money": "case-owner-subsidy-akiya", "operate": "case-owner-pricing-mistake", "start": "case-owner-licensed-akiya",
+               "house": "case-owner-diy-cottage", "sell": "case-owner-diy-cottage", "lend": "case-owner-fishing-port", "trend": "case-owner-fishing-port"}
+        _c = ARTICLE_BY_SLUG.get(_ct.get((a.get("topics") or ["start"])[0], "case-owner-licensed-akiya"))
+        if _c:
+            related = [_c] + [x for x in related if x["slug"] != _c["slug"]]
     from urllib.parse import quote
     share_url = quote(f"{SITE}/media/{a['slug']}.html", safe="")
     share_text = quote(f"{a['title']}｜アキヤド", safe="")
