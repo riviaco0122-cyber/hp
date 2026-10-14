@@ -407,10 +407,10 @@ ARTICLES_SCHED2 = [
 <p class="compare__row"><span>登記場所</span><span>静岡市外の代表者の自宅。相談した窓口は静岡市。見送りの際、登記場所について指摘を受けた記憶がある（内容は覚えていない）</span></p>
 <p class="compare__row"><span>公庫の案内</span><span>対象は、計画を遂行する能力が十分あると認められる方</span></p></div>
 <div class="compare__col compare__col--b"><p class="compare__head">私たちの考え（推測）</p>
-<p class="compare__row"><span>1</span><span>設立直後の法人には事業の実績がなく、見られるのは代表者個人の経歴になりやすい</span></p>
-<p class="compare__row"><span>2</span><span>個人名義は、申込者の経歴と計画が一人の話として伝わりやすい</span></p>
-<p class="compare__row"><span>3</span><span>登記場所と窓口の所在地が違っていたことも、影響したかもしれない</span></p>
-<p class="compare__row"><span>4</span><span>同じ経歴でも、面談での説明や担当者の受け止めで変わり得る</span></p></div>
+<p class="compare__row compare__row--n"><span>1</span><span>設立直後の法人には事業の実績がなく、見られるのは代表者個人の経歴になりやすい</span></p>
+<p class="compare__row compare__row--n"><span>2</span><span>個人名義は、申込者の経歴と計画が一人の話として伝わりやすい</span></p>
+<p class="compare__row compare__row--n"><span>3</span><span>登記場所と窓口の所在地が違っていたことも、影響したかもしれない</span></p>
+<p class="compare__row compare__row--n"><span>4</span><span>同じ経歴でも、面談での説明や担当者の受け止めで変わり得る</span></p></div>
 </div>
 <p>公庫の案内には、新規開業・スタートアップ支援資金の対象を「新たに営もうとする事業について、適正な事業計画を策定しており、当該計画を遂行する能力が十分あると認められる方」とする記載があります。創業計画書を出して、計画の内容を確かめる流れです。</p>
 <p>私たちの考えでは、「計画を遂行する能力」は、事業の見通しだけでなく、<strong>それをやる人の経験や準備の中身</strong>で測られます。法人は設立したばかりだと、会社としての実績がありません。そのぶん、代表者個人の経歴が判断の中心になり、宿泊業の経験がないことが前面に出たのかもしれません。個人名義なら、同じ経歴でも、計画と申込者を一つの話として説明できた可能性があります。登記場所が理由で断られたとは言い切れません。見送りの理由として説明されたのは、経験がないことだけです。これらは、公庫から説明を受けた理由ではありません。</p>
