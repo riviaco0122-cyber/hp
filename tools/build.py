@@ -647,7 +647,7 @@ def project_card(compact=False):
 SERVICE_DATA = {
     "operation": dict(
         message=["空き家を、", "地域を照らす新たな拠点へ。"],
-        description="地方に眠る空き家や遊休不動産を、自社で企画・リノベーションし、宿泊施設として運営する事業です。",
+        description="地方に眠る空き家や遊休不動産を、自社で企画・リノベーションし、宿泊施設として運営する事業です。買取・借り上げから改修、運営までを担います。",
         overview="地方の空き家を自社で改修し、「暮らすように旅する」宿として再生・運営する事業です。",
         issues_lead="空き家は、放置するほど費用と建物の傷みが増えていきます。",
         issues=[
@@ -1941,7 +1941,7 @@ def about_page():
     ld = [org_entity(full_founders=True),
           {"@context": "https://schema.org", "@type": "AboutPage", "name": "私たちについて・会社概要", "url": f"{SITE}/about.html",
            "about": {"@id": ORG_ID}, "mainEntity": {"@id": ORG_ID}}]
-    page("about.html", "私たちについて・会社概要", "合同会社RIVIA&CO.のミッション・ビジョン・バリュー、創業者紹介、会社概要です。", body, current="about", jsonld=ld)
+    page("about.html", "私たちについて・会社概要", "合同会社RIVIA&CO.のミッション・ビジョン・バリュー、創業者紹介、会社概要です。空き家の再生と宿の運営を担う会社の考え方を紹介します。", body, current="about", jsonld=ld)
 
 
 # ---------------------------------------------------------------- forms
@@ -2022,7 +2022,7 @@ def careers_page():
         </form>
       </div>
     </section>"""
-    page("careers.html", "採用情報", "合同会社RIVIA&CO.の採用情報です。年齢・経験は問いません。一緒に働く仲間を募集しています。", body, current="careers")
+    page("careers.html", "採用情報", "合同会社RIVIA&CO.の採用情報です。年齢・経験は問いません。空き家の再生や宿の運営に、一緒に関わる仲間を募集しています。", body, current="careers")
 
 
 def contact_page():
@@ -2147,7 +2147,7 @@ def privacy_page():
         <p class="policy__date">制定日：2026年9月1日</p>
       </div>
     </section>"""
-    page("privacy.html", "プライバシーポリシー", "合同会社RIVIA&CO.のプライバシーポリシー（個人情報の取扱いについて）です。", body)
+    page("privacy.html", "プライバシーポリシー", "合同会社RIVIA&CO.のプライバシーポリシー（個人情報の取扱いについて）です。お問い合わせなどで取得する個人情報の扱いを定めています。", body)
 
 def thanks_page():
     """フォーム送信後の完了ページ。GA4 では generate_lead イベントを「キーイベント（コンバージョン）」に設定して計測する"""
@@ -3433,6 +3433,14 @@ DELETED_ARTICLES = {
     "minpaku-partner-choose": "minpaku-management-company"
 }
 ARTICLES = [_a for _a in ARTICLES if _a["slug"] not in DELETED_ARTICLES]
+from case_mixins import MIXINS  # 取材事例・内部リンクの差し込み（節の末尾へ）
+for _a in ARTICLES:
+    _mx = MIXINS.get(_a["slug"])
+    if _mx:
+        _secs = []
+        for _sid, _h, _body in _a["sections"]:
+            _secs.append((_sid, _h, _body + "\n" + _mx[_sid] if _sid in _mx else _body))
+        _a["sections"] = _secs
 from article_blurbs import BLURBS  # 一覧カードの「小さな補足」
 for _a in ARTICLES:
     # 一覧用の表示名（short の改行を除く）と補足。補足は記事データの blurb > article_blurbs.py > title の「｜」以降
@@ -4510,7 +4518,7 @@ def media_thanks_page():
 def media_nav(current=""):
     """メディア内の共通ナビ。読者の状況（ガイド）を先に、テーマと検索を後に置く"""
     items = [("top", "media.html", "トップ")] + [(g["key"], f"media/guide-{g['key']}.html", g["label"]) for g in MEDIA_GUIDES] + \
-            [("learn", "media/learn.html", "基礎から学ぶ"), ("themes", "media.html#themes", "テーマから探す"), ("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "アキヤドのプラン")]
+            [("learn", "media/learn.html", "基礎から学ぶ"), ("cases", "media/minpaku-case-list.html", "事例から探す"), ("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "アキヤドのプラン")]
     cur = ' aria-current="page"'
     lis = "".join(f'<li><a href="{href}"{cur if k == current else ""}>{e(n)}</a></li>' for k, href, n in items)
     # スマホでは、ヘッダーのボタンで開くメニューにする（相談・資料請求のボタンも入れる）
@@ -4809,6 +4817,10 @@ def media_guide_page(g):
         </section>""")
     crumbs = media_crumbs([("アキヤド", "media.html"), (g["title"], "")])
     worries = "".join(f"<li>{e(w)}</li>" for w in g["worries"])
+    _gc = {"use": ["case-owner-diy-cottage", "case-owner-subsidy-akiya", "case-owner-fishing-port", "case-owner-licensed-akiya"],
+           "side": ["case-owner-pricing-mistake", "case-owner-rental-side-business", "case-owner-licensed-akiya", "case-owner-subsidy-akiya"],
+           "sell": ["case-owner-diy-cottage"]}.get(g["key"], [])
+    guide_cases = media_section([ARTICLE_BY_SLUG[x] for x in _gc if x in ARTICLE_BY_SLUG], eyebrow="Cases", title="近い事例を読む", lead="実際に民泊を運営しているオーナーへの取材です。", more=False, limit=4, keep_order=True) if _gc else ""
     body = f"""{media_hero("Guide", e(g["title"]), g["lead"], crumbs)}
 
     <section class="section msec msec--first">
@@ -4817,6 +4829,8 @@ def media_guide_page(g):
 {chr(10).join(stages)}
       </div>
     </section>
+
+{guide_cases}
 
 {media_cta(g["service"])}"""
     ld = [{
@@ -4942,6 +4956,13 @@ def article_page(a):
         (x for x in ARTICLES if x["slug"] != a["slug"]),
         key=lambda x: (x["category"] != a["category"], not set(x["services"]) & set(a["services"])),
     )
+    # 事例（オーナー取材）を、近いテーマのものから1本、先頭に出す
+    if not a["slug"].startswith("case-owner-") and a["slug"] != "minpaku-case-list":
+        _ct = {"money": "case-owner-subsidy-akiya", "operate": "case-owner-pricing-mistake", "start": "case-owner-licensed-akiya",
+               "house": "case-owner-diy-cottage", "sell": "case-owner-diy-cottage", "lend": "case-owner-fishing-port", "trend": "case-owner-fishing-port"}
+        _c = ARTICLE_BY_SLUG.get(_ct.get((a.get("topics") or ["start"])[0], "case-owner-licensed-akiya"))
+        if _c:
+            related = [_c] + [x for x in related if x["slug"] != _c["slug"]]
     from urllib.parse import quote
     share_url = quote(f"{SITE}/media/{a['slug']}.html", safe="")
     share_text = quote(f"{a['title']}｜アキヤド", safe="")

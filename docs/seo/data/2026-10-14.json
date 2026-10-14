@@ -1,0 +1,1557 @@
+{
+ "generated": "2026-10-14",
+ "period": {
+  "start": "2026-09-14",
+  "end": "2026-10-11"
+ },
+ "prev_period": {
+  "start": "2026-08-17",
+  "end": "2026-09-13"
+ },
+ "errors": [],
+ "gsc": {
+  "pages": [
+   {
+    "page": "https://rivia-co.com/",
+    "clicks": 4,
+    "impressions": 5,
+    "ctr": 0.8,
+    "position": 1
+   }
+  ],
+  "pages_prev": [],
+  "queries": [],
+  "page_queries": [],
+  "daily": [
+   {
+    "date": "2026-10-09",
+    "clicks": 0,
+    "impressions": 0,
+    "ctr": 0,
+    "position": 0
+   },
+   {
+    "date": "2026-10-10",
+    "clicks": 3,
+    "impressions": 3,
+    "ctr": 1,
+    "position": 1
+   },
+   {
+    "date": "2026-10-11",
+    "clicks": 1,
+    "impressions": 2,
+    "ctr": 0.5,
+    "position": 1
+   }
+  ]
+ },
+ "ga4": {
+  "pages": [
+   {
+    "page": "/",
+    "screenPageViews": 68.0,
+    "sessions": 50.0,
+    "engagementRate": 0.56,
+    "averageSessionDuration": 107.13835171999999,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/contact.html",
+    "screenPageViews": 44.0,
+    "sessions": 23.0,
+    "engagementRate": 0.9130434782608695,
+    "averageSessionDuration": 149.30867695652174,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media.html",
+    "screenPageViews": 44.0,
+    "sessions": 21.0,
+    "engagementRate": 0.9047619047619048,
+    "averageSessionDuration": 127.22054061904763,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/index.html",
+    "screenPageViews": 39.0,
+    "sessions": 22.0,
+    "engagementRate": 0.9545454545454546,
+    "averageSessionDuration": 185.49117995454546,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/about.html",
+    "screenPageViews": 30.0,
+    "sessions": 20.0,
+    "engagementRate": 0.95,
+    "averageSessionDuration": 114.23852,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/contact.html",
+    "screenPageViews": 19.0,
+    "sessions": 5.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 199.3071872,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/service-operation.html",
+    "screenPageViews": 19.0,
+    "sessions": 14.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 131.59798800000002,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/service-management.html",
+    "screenPageViews": 14.0,
+    "sessions": 11.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 40.248373,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/thanks.html",
+    "screenPageViews": 8.0,
+    "sessions": 4.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 372.1137095,
+    "keyEvents": 14.0
+   },
+   {
+    "page": "/media/plans.html",
+    "screenPageViews": 7.0,
+    "sessions": 5.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 719.1143554,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/service-marketing.html",
+    "screenPageViews": 7.0,
+    "sessions": 6.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 19.572496,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/service-recruit.html",
+    "screenPageViews": 7.0,
+    "sessions": 6.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 23.671494666666664,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/careers.html",
+    "screenPageViews": 5.0,
+    "sessions": 4.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 9.752209,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/guide-sell.html",
+    "screenPageViews": 5.0,
+    "sessions": 5.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 12.65388,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/guide-side.html",
+    "screenPageViews": 5.0,
+    "sessions": 4.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 13.16006225,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/learn.html",
+    "screenPageViews": 5.0,
+    "sessions": 5.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 74.09937479999999,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/privacy.html",
+    "screenPageViews": 5.0,
+    "sessions": 4.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 1.67157075,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/service-partnership.html",
+    "screenPageViews": 5.0,
+    "sessions": 5.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 19.8529732,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiya-bank-guide.html",
+    "screenPageViews": 3.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 21.3688775,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/guide-use.html",
+    "screenPageViews": 3.0,
+    "sessions": 3.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 4.719553,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/kominka-renovation-points.html",
+    "screenPageViews": 3.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 3.5561375,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/search.html",
+    "screenPageViews": 3.0,
+    "sessions": 3.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 252.89959766666666,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/service-kaitori.html",
+    "screenPageViews": 3.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 650.51756,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media",
+    "screenPageViews": 2.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 3.244861,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiya-inherited-house-to-inn.html",
+    "screenPageViews": 2.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 143.0869995,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/company.html",
+    "screenPageViews": 2.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 28.765272,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/minpaku-fire-safety.html",
+    "screenPageViews": 2.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 3.536335,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/about",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.611314,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/access",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.058154,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/base",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.284902,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/branch",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 1.135799,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/company",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.655261,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/en/index.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 4.635872,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/locations",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.180674,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/map",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 1.013485,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiya-3000man-deduction.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 1.492036,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiya-data-9-million.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 2.786251,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiya-law-kanri-fuzen.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.323964,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiya-lease-types.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.761059,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiya-minpaku-suitability.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.361843,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiya-regional-revitalization.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 5.510378,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiya-utilization-options.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 3.736751,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiyado-what-we-do.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 2.591836,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/case-rental-house-inn-first-year.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 4.124739,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/cleaning-linen-operations.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 9.055089,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/inherited-house-family-talk.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.009219,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/inn-local-economy.html",
+    "screenPageViews": 1.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 2.2033905,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/japan-tourism-market-data.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 7.042664,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/kominka-stay-value.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 1.614604,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/long-stay-travel-demand.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 3.953488,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/minpaku-partner-choose.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 2.216669,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/minpaku-start-steps.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 13.648318,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/minpaku-vs-rental-income.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.227363,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/service-kariage.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 238.741906,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/shizuoka-yaizu-akiya-inn.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 488.997015,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/souzoku-touki-gimuka.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 1.004092,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/thanks.html",
+    "screenPageViews": 1.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.07264,
+    "keyEvents": 1.0
+   },
+   {
+    "page": "/media/why-minpaku-for-akiya.html",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 1.28538,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/network",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 1.207746,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/shops",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 1.293379,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/tenpo",
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.054385,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/access.html",
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 3.369393,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/bases",
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.047521,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/branches",
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.225632,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiya-holding-costs.html",
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.211944,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiya-local-resource.html",
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 2.154077,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/akiyado-consultation-flow.html",
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.276528,
+    "keyEvents": 0.0
+   },
+   {
+    "page": "/media/why-akiya-utilization-now.html",
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "averageSessionDuration": 0.47078,
+    "keyEvents": 0.0
+   }
+  ],
+  "channels": [
+   {
+    "channel": "Direct",
+    "sessions": 36.0,
+    "keyEvents": 6.0
+   },
+   {
+    "channel": "Organic Search",
+    "sessions": 27.0,
+    "keyEvents": 9.0
+   },
+   {
+    "channel": "Referral",
+    "sessions": 3.0,
+    "keyEvents": 0.0
+   },
+   {
+    "channel": "Email",
+    "sessions": 2.0,
+    "keyEvents": 0.0
+   },
+   {
+    "channel": "Unassigned",
+    "sessions": 1.0,
+    "keyEvents": 0.0
+   }
+  ],
+  "pages_detail": [
+   {
+    "screenPageViews": 68.0,
+    "sessions": 50.0,
+    "engagementRate": 0.56,
+    "userEngagementDuration": 1186.0,
+    "activeUsers": 30.0,
+    "keyEvents": 0.0,
+    "page": "/",
+    "avgEngagementTime": 39.5,
+    "leadEvents": 0,
+    "ctaClicks": 2.0
+   },
+   {
+    "screenPageViews": 44.0,
+    "sessions": 23.0,
+    "engagementRate": 0.9130434782608695,
+    "userEngagementDuration": 565.0,
+    "activeUsers": 15.0,
+    "keyEvents": 0.0,
+    "page": "/contact.html",
+    "avgEngagementTime": 37.7,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 44.0,
+    "sessions": 21.0,
+    "engagementRate": 0.9047619047619048,
+    "userEngagementDuration": 669.0,
+    "activeUsers": 7.0,
+    "keyEvents": 0.0,
+    "page": "/media.html",
+    "avgEngagementTime": 95.6,
+    "leadEvents": 0,
+    "ctaClicks": 5.0
+   },
+   {
+    "screenPageViews": 39.0,
+    "sessions": 22.0,
+    "engagementRate": 0.9545454545454546,
+    "userEngagementDuration": 491.0,
+    "activeUsers": 9.0,
+    "keyEvents": 0.0,
+    "page": "/index.html",
+    "avgEngagementTime": 54.6,
+    "leadEvents": 0,
+    "ctaClicks": 2.0
+   },
+   {
+    "screenPageViews": 30.0,
+    "sessions": 20.0,
+    "engagementRate": 0.95,
+    "userEngagementDuration": 759.0,
+    "activeUsers": 10.0,
+    "keyEvents": 0.0,
+    "page": "/about.html",
+    "avgEngagementTime": 75.9,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 19.0,
+    "sessions": 5.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 177.0,
+    "activeUsers": 3.0,
+    "keyEvents": 0.0,
+    "page": "/media/contact.html",
+    "avgEngagementTime": 59.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 19.0,
+    "sessions": 14.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 401.0,
+    "activeUsers": 5.0,
+    "keyEvents": 0.0,
+    "page": "/service-operation.html",
+    "avgEngagementTime": 80.2,
+    "leadEvents": 0,
+    "ctaClicks": 1.0
+   },
+   {
+    "screenPageViews": 14.0,
+    "sessions": 11.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 331.0,
+    "activeUsers": 6.0,
+    "keyEvents": 0.0,
+    "page": "/service-management.html",
+    "avgEngagementTime": 55.2,
+    "leadEvents": 0,
+    "ctaClicks": 2.0
+   },
+   {
+    "screenPageViews": 8.0,
+    "sessions": 4.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 77.0,
+    "activeUsers": 2.0,
+    "keyEvents": 14.0,
+    "page": "/thanks.html",
+    "avgEngagementTime": 38.5,
+    "leadEvents": 15.0,
+    "ctaClicks": 1.0
+   },
+   {
+    "screenPageViews": 7.0,
+    "sessions": 5.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 165.0,
+    "activeUsers": 2.0,
+    "keyEvents": 0.0,
+    "page": "/media/plans.html",
+    "avgEngagementTime": 82.5,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 7.0,
+    "sessions": 6.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 73.0,
+    "activeUsers": 6.0,
+    "keyEvents": 0.0,
+    "page": "/service-marketing.html",
+    "avgEngagementTime": 12.2,
+    "leadEvents": 0,
+    "ctaClicks": 1.0
+   },
+   {
+    "screenPageViews": 7.0,
+    "sessions": 6.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 222.0,
+    "activeUsers": 6.0,
+    "keyEvents": 0.0,
+    "page": "/service-recruit.html",
+    "avgEngagementTime": 37.0,
+    "leadEvents": 0,
+    "ctaClicks": 1.0
+   },
+   {
+    "screenPageViews": 5.0,
+    "sessions": 4.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 35.0,
+    "activeUsers": 4.0,
+    "keyEvents": 0.0,
+    "page": "/careers.html",
+    "avgEngagementTime": 8.8,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 5.0,
+    "sessions": 5.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 58.0,
+    "activeUsers": 4.0,
+    "keyEvents": 0.0,
+    "page": "/media/guide-sell.html",
+    "avgEngagementTime": 14.5,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 5.0,
+    "sessions": 4.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 50.0,
+    "activeUsers": 4.0,
+    "keyEvents": 0.0,
+    "page": "/media/guide-side.html",
+    "avgEngagementTime": 12.5,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 5.0,
+    "sessions": 5.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 238.0,
+    "activeUsers": 3.0,
+    "keyEvents": 0.0,
+    "page": "/media/learn.html",
+    "avgEngagementTime": 79.3,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 5.0,
+    "sessions": 4.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 6.0,
+    "activeUsers": 4.0,
+    "keyEvents": 0.0,
+    "page": "/privacy.html",
+    "avgEngagementTime": 1.5,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 5.0,
+    "sessions": 5.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 51.0,
+    "activeUsers": 4.0,
+    "keyEvents": 0.0,
+    "page": "/service-partnership.html",
+    "avgEngagementTime": 12.8,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 3.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 42.0,
+    "activeUsers": 2.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiya-bank-guide.html",
+    "avgEngagementTime": 21.0,
+    "leadEvents": 0,
+    "ctaClicks": 1.0
+   },
+   {
+    "screenPageViews": 3.0,
+    "sessions": 3.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 7.0,
+    "activeUsers": 3.0,
+    "keyEvents": 0.0,
+    "page": "/media/guide-use.html",
+    "avgEngagementTime": 2.3,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 3.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 7.0,
+    "activeUsers": 2.0,
+    "keyEvents": 0.0,
+    "page": "/media/kominka-renovation-points.html",
+    "avgEngagementTime": 3.5,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 3.0,
+    "sessions": 3.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 140.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/search.html",
+    "avgEngagementTime": 140.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 3.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 125.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/service-kaitori.html",
+    "avgEngagementTime": 125.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 2.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 2.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media",
+    "avgEngagementTime": 2.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 2.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 166.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiya-inherited-house-to-inn.html",
+    "avgEngagementTime": 166.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 2.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 56.0,
+    "activeUsers": 2.0,
+    "keyEvents": 0.0,
+    "page": "/media/company.html",
+    "avgEngagementTime": 28.0,
+    "leadEvents": 0,
+    "ctaClicks": 1.0
+   },
+   {
+    "screenPageViews": 2.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 7.0,
+    "activeUsers": 2.0,
+    "keyEvents": 0.0,
+    "page": "/media/minpaku-fire-safety.html",
+    "avgEngagementTime": 3.5,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 9.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/about",
+    "avgEngagementTime": 9.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/access",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/base",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/branch",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/company",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 4.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/en/index.html",
+    "avgEngagementTime": 4.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/locations",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 0.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/map",
+    "avgEngagementTime": 0.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 2.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiya-3000man-deduction.html",
+    "avgEngagementTime": 2.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 2.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiya-data-9-million.html",
+    "avgEngagementTime": 2.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 2.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiya-law-kanri-fuzen.html",
+    "avgEngagementTime": 2.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiya-lease-types.html",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiya-minpaku-suitability.html",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 5.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiya-regional-revitalization.html",
+    "avgEngagementTime": 5.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 0.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiya-utilization-options.html",
+    "avgEngagementTime": 0.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 0.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiyado-what-we-do.html",
+    "avgEngagementTime": 0.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 2.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/case-rental-house-inn-first-year.html",
+    "avgEngagementTime": 2.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 8.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/cleaning-linen-operations.html",
+    "avgEngagementTime": 8.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/inherited-house-family-talk.html",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 5.0,
+    "activeUsers": 2.0,
+    "keyEvents": 0.0,
+    "page": "/media/inn-local-economy.html",
+    "avgEngagementTime": 2.5,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 6.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/japan-tourism-market-data.html",
+    "avgEngagementTime": 6.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/kominka-stay-value.html",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 3.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/long-stay-travel-demand.html",
+    "avgEngagementTime": 3.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 2.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/minpaku-partner-choose.html",
+    "avgEngagementTime": 2.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 13.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/minpaku-start-steps.html",
+    "avgEngagementTime": 13.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 0.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/minpaku-vs-rental-income.html",
+    "avgEngagementTime": 0.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 12.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/service-kariage.html",
+    "avgEngagementTime": 12.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 40.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/shizuoka-yaizu-akiya-inn.html",
+    "avgEngagementTime": 40.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/souzoku-touki-gimuka.html",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 0.0,
+    "activeUsers": 1.0,
+    "keyEvents": 1.0,
+    "page": "/media/thanks.html",
+    "avgEngagementTime": 0.0,
+    "leadEvents": 1.0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/why-minpaku-for-akiya.html",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/network",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/shops",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 1.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/tenpo",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/access.html",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/bases",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/branches",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiya-holding-costs.html",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiya-local-resource.html",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/akiyado-consultation-flow.html",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   },
+   {
+    "screenPageViews": 0.0,
+    "sessions": 1.0,
+    "engagementRate": 1.0,
+    "userEngagementDuration": 1.0,
+    "activeUsers": 1.0,
+    "keyEvents": 0.0,
+    "page": "/media/why-akiya-utilization-now.html",
+    "avgEngagementTime": 1.0,
+    "leadEvents": 0,
+    "ctaClicks": 0
+   }
+  ],
+  "landing": [
+   {
+    "sessions": 45.0,
+    "engagementRate": 0.5333333333333333,
+    "keyEvents": 0.0,
+    "leadSessions": 0.0,
+    "leadEvents": 0.0,
+    "page": "/"
+   },
+   {
+    "sessions": 9.0,
+    "engagementRate": 0.8888888888888888,
+    "keyEvents": 0.0,
+    "leadSessions": 1.0,
+    "leadEvents": 1.0,
+    "page": "/index.html"
+   },
+   {
+    "sessions": 4.0,
+    "engagementRate": 0.5,
+    "keyEvents": 6.0,
+    "leadSessions": 1.0,
+    "leadEvents": 6.0,
+    "page": "/contact.html"
+   },
+   {
+    "sessions": 4.0,
+    "engagementRate": 1.0,
+    "keyEvents": 0.0,
+    "leadSessions": 0.0,
+    "leadEvents": 0.0,
+    "page": "/service-recruit.html"
+   },
+   {
+    "sessions": 3.0,
+    "engagementRate": 0.0,
+    "keyEvents": 0.0,
+    "leadSessions": 0.0,
+    "leadEvents": 0.0,
+    "page": "(not set)"
+   },
+   {
+    "sessions": 2.0,
+    "engagementRate": 0.5,
+    "keyEvents": 0.0,
+    "leadSessions": 0.0,
+    "leadEvents": 0.0,
+    "page": "/about.html"
+   },
+   {
+    "sessions": 2.0,
+    "engagementRate": 1.0,
+    "keyEvents": 9.0,
+    "leadSessions": 1.0,
+    "leadEvents": 9.0,
+    "page": "/media.html"
+   }
+  ],
+  "article_to_service": [],
+  "ai": {
+   "sessions": [],
+   "referrers": []
+  },
+  "form_type": [
+   {
+    "value": "(not set)",
+    "eventCount": 8.0
+   },
+   {
+    "value": "contact",
+    "eventCount": 7.0
+   },
+   {
+    "value": "akiyado",
+    "eventCount": 1.0
+   }
+  ],
+  "cta_position": [
+   {
+    "value": "(not set)",
+    "eventCount": 5.0
+   },
+   {
+    "value": "gnav__link",
+    "eventCount": 4.0
+   },
+   {
+    "value": "link",
+    "eventCount": 2.0
+   },
+   {
+    "value": "btn",
+    "eventCount": 1.0
+   },
+   {
+    "value": "media-doc",
+    "eventCount": 1.0
+   },
+   {
+    "value": "media-header",
+    "eventCount": 1.0
+   },
+   {
+    "value": "media-inline",
+    "eventCount": 1.0
+   },
+   {
+    "value": "pd__cta",
+    "eventCount": 1.0
+   },
+   {
+    "value": "plan__cta",
+    "eventCount": 1.0
+   }
+  ]
+ }
+}
