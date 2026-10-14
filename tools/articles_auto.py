@@ -34,7 +34,7 @@ ARTICLES_AUTO = [
         sections=[
             ('rate', '空き家率とは、何を表す数字なのか？', """
 <p>空き家率が高くても、宿の需要があるとは限りません。空き家率とは、総住宅数のうち空き家が占める割合のことで、「空き家数 ÷ 総住宅数」で求めます。調査時点の住宅の余り具合を表す数字で、その家がどう使われているか、需要があるかまでは表しません。</p>
-<p>出典は、総務省「令和5年住宅・土地統計調査」（調査時点は2023年10月1日、e-Stat 統計表ID 0004021421）です。全国の数字は<a href="media/akiya-data-9-million.html">日本の空き家は約900万戸</a>で扱っているため、この記事は市区町村の内訳の読み方に絞ります。</p>
+<p>出典は、総務省「令和5年住宅・土地統計調査」（調査時点は2023年10月1日、e-Stat 統計表ID 0004021421）です。</p>
 <div class="callout callout--note">
 <p class="callout__label">読む前の注意</p>
 <p>この調査は標本調査で、数値は推計値です。端数が丸められているため、内訳を足しても総数と合わないことがあります。</p>
@@ -129,7 +129,7 @@ ARTICLES_AUTO = [
 <div class="carousel__card"><span class="carousel__no">注意 3</span><p class="carousel__title">年ではなく「年度」</p><p class="carousel__text">年の表記は、表のとおり「年度」です。</p></div>
 </div>
 <p class="carousel__hint">横にスワイプで続きを見られます</p>
-<p>訪日客が地方に広がる動きは、<a href="media/inbound-regional-dispersion.html">訪日客の地方分散の記事</a>で扱っています。観光地ではない場所の空き家が宿になるかは、<a href="media/shizuoka-yaizu-akiya-inn.html">焼津市の空き家の記事</a>も参考になります。</p>
+<p>観光地ではない場所の空き家が宿になるかは、<a href="media/shizuoka-yaizu-akiya-inn.html">焼津市の空き家の記事</a>も参考になります。</p>
 """),
             ('our-case', '下田市で、私たちはどう宿を始めたのか？', """
 <p>私たち創業メンバーは、下田市で賃貸物件を改修して宿を始めました。</p>

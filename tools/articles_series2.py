@@ -373,7 +373,7 @@ ARTICLES_SERIES2 = [
 <li><strong>閑散期は整える時期にする</strong>：修繕、備品の入れ替え、写真の撮り直しに充てます。清掃・リネンの仕組みは「<a href="media/cleaning-linen-operations.html">小さな宿の清掃・リネン運用ガイド</a>」へ。</li>
 <li>収入の波そのものを避けたいときは、家賃を受け取る借り上げ（事業者が家を借りて、宿として運営する形）もあります。</li>
 </ul>
-<p>閑散期の波に備えた運営や、家賃を受け取る借り上げの相談は、<a href="service-management.html">運営サポート</a>で受けています。年間の収支の見込み方は「<a href="media/airdna-revenue-simulation.html">収益シミュレーションの方法</a>」、長期滞在の需要は「<a href="media/long-stay-travel-demand.html">長期滞在が広がる理由</a>」で説明しています。</p>
+<p>閑散期の波に備えた運営や、家賃を受け取る借り上げの相談は、<a href="service-management.html">運営サポート</a>で受けています。</p>
 """),
         ],
         figure=("action", points("閑散期の手の打ち方（下田の宿）", [

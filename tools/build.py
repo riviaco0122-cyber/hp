@@ -2533,7 +2533,7 @@ ARTICLES = [
         sections=[
             ("why", "実家の空き家で悩むのは、珍しいことなのか", """
 <p>実家の空き家で悩むのは、珍しいことではありません。総務省「令和5年住宅・土地統計調査」によると、2023年10月時点の全国の空き家数は<strong>約900万戸</strong>、住宅全体に占める空き家率は<strong>13.8%</strong>で、いずれも過去最高を更新しました。5年前の調査から約51万戸増えています。</p>
-<p>このうち、賃貸用・売却用・別荘などに当てはまらない<strong>「使用目的のない空き家」が約386万戸</strong>です。これは賃貸用・売却用・別荘のどれにも当てはまらない空き家をまとめた統計上の区分で、放置されている家という意味ではありません。数字の読み方は「<a href="media/akiya-data-9-million.html">空き家900万戸のデータの読み方</a>」で説明しています。</p>
+<p>このうち、賃貸用・売却用・別荘などに当てはまらない<strong>「使用目的のない空き家」が約386万戸</strong>です。これは賃貸用・売却用・別荘のどれにも当てはまらない空き家をまとめた統計上の区分で、放置されている家という意味ではありません。</p>
 <div class="callout"><p class="callout__label">よくある状況</p><p>「実家は地方にあり、自分は都市部に住んでいる」「兄弟の誰も住む予定がない」「思い出があって手放す決心がつかない」。そのまま判断を先送りにして、何年も経ってしまう家は珍しくありません。</p></div>
 """),
             ("cost", "誰も住まなくても、毎年どんなお金と手間がかかるのか", """
@@ -2647,7 +2647,6 @@ ARTICLES = [
 </table>
 <p class="table-note">※ 2026年10月時点。出典：観光庁「観光立国推進基本計画（第5次）」（2026年3月27日閣議決定）の実績値。2025年の訪日客数は2026年3月発表の暫定値、消費額と1人あたりは2026年1月発表の速報値です。</p>
 <p>2025年の人数は2019年の約1.3倍、消費額は約2倍です。差が出たのは、1人あたりの消費額が15.9万円から22.9万円へ、約44%増えたためです。観光庁は、円安や物価上昇、訪日市場が多様になったことを要因に挙げています。</p>
-<p>訪日客を地方へ呼ぶ動きは、「<a href="media/inbound-regional-dispersion.html">訪日客を地方へ</a>」で説明しています。</p>
 """),
             ("regional", "増えた訪日客は地方に泊まっている？地方の宿に伸びる余地はあるのか", """
 <p>地方の宿には、まだ伸びる余地があります。2025年の訪日客の延べ宿泊（のべ宿泊者数）のうち、地方部は34%で、66%は三大都市圏に泊まっています。</p>
@@ -2676,7 +2675,7 @@ ARTICLES = [
 <li>関係人口の創出と、二地域居住の促進</li>
 <li>民間都市開発推進機構のまちづくりファンドによる、宿泊施設の整備への金融支援（リノベーションなども対象）</li>
 </ul>
-<p>地方に空き家を使った宿が増えることは、この方向と重なると考えます。関係人口の考え方は、「<a href="media/kankei-jinko-and-inns.html">「関係人口」と宿ができること</a>」で説明しています。</p>
+<p>地方に空き家を使った宿が増えることは、この方向と重なると考えます。</p>
 """),
             ("issues", "地方で宿を始める前に、知っておきたい5つの課題は何か？", """
 <p>地方で宿を始める前に、5つの課題を知っておくと備えやすくなります。課題は、都市への集中、人手不足、受け皿の不足、デジタル化の遅れ、人口減少です。</p>
@@ -2692,7 +2691,6 @@ ARTICLES = [
 </table>
 <p class="table-note">※ 2026年10月時点。出典：観光庁「観光立国推進基本計画（第5次）」、国立社会保障・人口問題研究所「日本の将来推計人口（令和5年推計）」。</p>
 <p>5つは別々の問題ではなく、つながっています。泊まる場所が少ないと消費が地域に落ちず、収益が小さいと人を雇えず、人が足りないと受け入れを増やせません。</p>
-<p>人手不足は、「<a href="media/tourism-labor-shortage.html">観光業の人手不足をどう乗り越える？</a>」で詳しく説明しています。</p>
 """),
             ("action", "空き家の宿は、地方の受け皿不足を埋められるのか？", """
 <p>空き家の宿は、地方の受け皿不足を埋める一つの方法になります。受け皿・集客・人手の課題に、小さな規模から取り組める形です。下田の「NODE Shimoda」（RIVIA&amp;CO.が運営する施設の一例）は、創業メンバーが開業し、次のように運営してきました。</p>
@@ -2767,7 +2765,6 @@ ARTICLES = [
 <p class="table-note">※ 出典：総務省「令和5年住宅・土地統計調査」（2023年10月1日時点。e-Stat 統計表ID 0004021421）。標本調査の推計値で、端数を丸めています。</p>
 <p>人口も減っていきます。国立社会保障・人口問題研究所の推計（令和5年推計）では、総人口は2070年に約8,700万人になります。使われない家は、今後も増えると見込まれます。</p>
 <p>放置が続くと、地域の負担になります。国土交通省によると、「管理不全空家」（放置すると危険になりそうな空き家）や「特定空家」（傷みがひどく危険な空き家）への指導に従わず勧告を受けると、固定資産税が安くなる決まり（住宅用地特例）が受けられなくなります。一方で空き家は、すでに建っていて、地域の歴史や暮らしが刻まれた資源でもあります。</p>
-<p>数字の詳しい読み方は、「<a href="media/akiya-data-9-million.html">データで見る日本の空き家</a>」で説明しています。</p>
 """),
             ("cycles", "宿に再生すると、地域にどんな循環が生まれるのか？", """
 <p>宿に変えると、町にお金と仕事と人がめぐりやすくなります。流れは、泊まる人の消費、地元への仕事、関係人口、まちなみの継承の4つです。</p>
@@ -2781,7 +2778,6 @@ ARTICLES = [
 <p>仕事の循環は、発注先で決まります。創業メンバーが下田で宿を開業したとき、利用した自治体の補助金の要項には、市内の工務店との契約が求められていました。清掃は、近隣の個人事業主・複業人材に頼んでいます。</p>
 <p>消費の循環は、宿の設計で決まります。焼津・鰯ヶ島で準備している宿は、食事を出さない泊食分離（宿泊と食事を分ける形）で、町の食堂・魚屋・商店を使ってもらう計画です。</p>
 <p>関係人口とは、移住した定住人口でも、観光に来た交流人口でもない、地域と多様に関わる人々のことです（総務省）。国の観光立国推進基本計画（2026年3月）も、関係人口の創出や二地域居住の促進、古民家などの歴史的建築物を宿泊施設として使う取組を施策に挙げています。</p>
-<p>お金の流れの詳しい仕組みは、「<a href="media/inn-local-economy.html">宿が地域にお金を落とす仕組み</a>」で説明しています。</p>
 """),
             ("design", "循環を回すには、何を決めておけばよいのか？", """
 <p>清掃を誰に頼むかで、仕事が地元に残るかが変わります。下田の宿では、清掃を近所の個人事業主や副業の人に頼んでいます。決めておくのは、コンセプト、地域の人との連携、少人数で続く運営の3つです。下田の宿（RIVIA&amp;CO.が運営する施設の一例）での経験をもとに説明します。</p>
@@ -3338,7 +3334,7 @@ ARTICLES += [
 <li><strong>地元の人と仕事をつくる</strong>：清掃は地元の清掃パートナーに、食事や買い物は町の店に任せます。</li>
 </ol>
 <p>下田で運営している宿（RIVIA&amp;CO.が運営する施設の一例）でも、日常の便利さが選ばれる理由になっています。物件は駅から徒歩10分ほどで、飲食店・コンビニ・スーパーが徒歩圏にあります。ゲストのレビューの一つです。「海も近く初日の出も見ることができ、スーパーも近かったのでとても便利で快適な時間を過ごすことができました！」（Airbnbゲスト・数泊・2026年1月）観光名所の中ではなく、日常の中にあることが、喜ばれる場合があります。</p>
-<p>創業メンバーは、移住する人を増やすことだけが答えではないと考えます。住んでいなくても、何度も訪れてお金を使い、町の人と顔見知りになる関係人口が増えれば、人とお金と新しい挑戦が町に入ります。考え方は、「<a href="media/kankei-jinko-and-inns.html">「関係人口」と宿ができること</a>」で説明しています。</p>
+<p>創業メンバーは、移住する人を増やすことだけが答えではないと考えます。住んでいなくても、何度も訪れてお金を使い、町の人と顔見知りになる関係人口が増えれば、人とお金と新しい挑戦が町に入ります。</p>
 """),
             ("demand", "観光地でなくても、外国人の宿泊は増え、宿の需要はあるのか？", """
 <p>外国人の宿泊が増えていて、観光地でなくても需要を見込める場合があります。泊まる理由は観光だけではなく、仕事や帰省といった「暮らしの用事」と、その町の日常そのものを味わう滞在があるためです。</p>
@@ -3356,7 +3352,7 @@ ARTICLES += [
 <div class="stat stat--accent"><span class="stat__num">8.7<small>%</small></span><span class="stat__label">2024年度</span><span class="stat__note">静岡県の外国人割合</span></div>
 </div>
 <p>地方でも、外国人の宿泊は増えています。静岡県の延べ宿泊者に占める外国人の割合は、2023年度の5.0%から2024年度の8.7%に上がりました。出典は、観光庁「宿泊旅行統計調査」の総務省「社会・人口統計体系」収録値（e-Stat）です。観光庁の全体集計とは対象の施設が異なる可能性があるため、割合の動きを見る目的で使っています。</p>
-<p>国の観光立国推進基本計画（2026年3月）も、訪日客の延べ宿泊を、三大都市圏以外の地方部で増やす目標を置いています。静岡県は地方部です。地方への誘客の動きは、「<a href="media/inbound-regional-dispersion.html">訪日客を地方へ</a>」で説明しています。</p>
+<p>国の観光立国推進基本計画（2026年3月）も、訪日客の延べ宿泊を、三大都市圏以外の地方部で増やす目標を置いています。静岡県は地方部です。</p>
 """),
             ("area", "静岡市と焼津では、宿の候補になる空き家はどれくらいあるのか？", """
 <p>空き家は多いので、宿にできる家を探せる場合があります。賃貸用・売却用・二次的住宅を除く、貸しにも売りにも出ていない空き家は、焼津市に約3,300戸、静岡市に約17,500戸あります（2023年）。こうした家が、宿の候補になり得ます。</p>
@@ -3370,7 +3366,7 @@ ARTICLES += [
 </tbody>
 </table>
 <p class="table-note">※ 出典：総務省「令和5年住宅・土地統計調査」（2023年10月1日時点。e-Stat）。「貸し・売りに出ていない空き家」は、賃貸用・売却用・二次的住宅を除く空き家です。標本調査の推計値です。</p>
-<p>空き家率は住宅の余り具合を表す数字で、宿の需要は表しません。読み方は、「<a href="media/akiya-rate-and-inn.html">空き家率が高い地域は宿に向く？</a>」で説明しています。</p>
+<p>空き家率は住宅の余り具合を表す数字で、宿の需要は表しません。</p>
 <p>空き家の数は、宿の需要の大きさを表しません。泊まる理由があるかは、物件の周辺ごとに調べます。収益は保証しません。収支は物件ごとの調査が必要です。</p>
 """),
             ("check", "宿にできるかを、どう見極めるか？", """
@@ -3421,6 +3417,22 @@ for _a in ARTICLES_SCHED1 + ARTICLES_SCHED2 + ARTICLES_CASE + ARTICLES_SERIES1 +
     _a.setdefault("tone", "sand")
     _a.setdefault("updated", _a["date"])
     ARTICLES.append(_a)
+# 削除した記事（2026-10-14 人の依頼。読み手の必要度が低い・専門的すぎる記事）。旧URLは vercel.json で近い記事へ 301
+DELETED_ARTICLES = {
+    "akiya-rate-and-inn": "why-akiya-utilization-now",
+    "japan-tourism-market-data": "long-stay-travel-demand",
+    "akiya-regional-revitalization": "why-akiya-utilization-now",
+    "airdna-revenue-simulation": "inn-kpi-basics",
+    "inbound-regional-dispersion": "long-stay-travel-demand",
+    "tourism-labor-shortage": "cleaning-linen-operations",
+    "kankei-jinko-and-inns": "why-minpaku-for-akiya",
+    "akiya-local-resource": "why-akiya-utilization-now",
+    "inn-local-economy": "why-minpaku-for-akiya",
+    "akiya-data-9-million": "why-akiya-utilization-now",
+    "kominka-stay-value": "kominka-renovation-points",
+    "minpaku-partner-choose": "minpaku-management-company"
+}
+ARTICLES = [_a for _a in ARTICLES if _a["slug"] not in DELETED_ARTICLES]
 from article_blurbs import BLURBS  # 一覧カードの「小さな補足」
 for _a in ARTICLES:
     # 一覧用の表示名（short の改行を除く）と補足。補足は記事データの blurb > article_blurbs.py > title の「｜」以降
@@ -3637,18 +3649,18 @@ MEDIA_GUIDES = [
          worries=["古い家でも宿にできる？", "貸す？任せる？自分でやる？", "改修にいくらかかる？"],
          lead="思い出のある家を手放さずに、収入や地域の役に立つ形で活かしたい。活用の選び方から改修、お金のことまでを順番に。",
          stages=[
-             ("活かし方を知る", "空き家が宿として、地域の中でどんな価値を持つのか。", ["akiya-inherited-house-to-inn", "akiya-regional-revitalization", "inn-local-economy"]),
+             ("活かし方を知る", "空き家が宿として、地域の中でどんな価値を持つのか。", ["akiya-inherited-house-to-inn"]),
              ("活かし方を選ぶ", "貸す・運営を任せる・自分で営業する。契約と法令の違い。", ["akiya-lease-types", "minpaku-vs-ryokan-law", "minpaku-management-company"]),
              ("家を整える", "残すもの・直すもの、消防設備の基準。", ["kominka-renovation-points", "minpaku-fire-safety", "new-build-vs-used-house-inn"]),
-             ("お金の見通しを立てる", "補助金と、収益の見込みの立て方。", ["small-inn-subsidies", "airdna-revenue-simulation"]),
+             ("お金の見通しを立てる", "補助金と、収益の見込みの立て方。", ["small-inn-subsidies"]),
          ]),
     dict(key="side", label="副業で宿をはじめたい", title="副業で宿をはじめたい方へ", service="management", photo="white-bedroom",
          who="本業を続けながら、民泊や小さな宿に挑戦してみたい方",
          worries=["副業でも民泊はできる？", "資金はいくら必要？", "本業があっても運営できる？"],
          lead="本業を続けながら、民泊や小さな宿に挑戦してみたい。市場の見方から開業の手続き、資金、運営を任せる方法までを順番に。",
          stages=[
-             ("市場と可能性を知る", "どんな旅行者が、どんな宿を求めているのか。投資としての考え方。", ["long-stay-travel-demand", "inbound-regional-dispersion", "minpaku-investment-yield"]),
-             ("物件とお金を準備する", "物件の探し方、収益の見込み、資金の集め方。", ["akiya-bank-guide", "airdna-revenue-simulation", "inn-startup-funding", "small-inn-subsidies"]),
+             ("市場と可能性を知る", "どんな旅行者が、どんな宿を求めているのか。投資としての考え方。", ["long-stay-travel-demand", "minpaku-investment-yield"]),
+             ("物件とお金を準備する", "物件の探し方、収益の見込み、資金の集め方。", ["akiya-bank-guide", "inn-startup-funding", "small-inn-subsidies"]),
              ("開業の手続きを進める", "民泊か旅館業か、消防、管理を任せる体制。", ["minpaku-start-steps", "minpaku-vs-ryokan-law", "minpaku-fire-safety", "minpaku-management-company"]),
              ("運営して、育てる", "数字の読み方、集客、レビュー、清掃、宿泊税。", ["inn-kpi-basics", "ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips", "cleaning-linen-operations", "accommodation-tax"]),
          ]),
@@ -3675,7 +3687,7 @@ MEDIA_QUESTIONS = [
     ("side", "本業があっても、宿の運営はできる？", "minpaku-management-company"),
     ("side", "開業資金は、どう用意する？", "inn-startup-funding"),
     ("side", "実際、初期投資はどれくらいで回収できる？", "case-rental-house-inn-first-year"),
-    ("side", "宿の収益は、どれくらい見込める？", "airdna-revenue-simulation"),
+    ("side", "宿の収益は、どれくらい見込める？", "inn-kpi-basics"),
 ]
 MEDIA_LEAD = "空き家を売りたい、活かしたい。副業で民泊をはじめたい。その悩みに、宿を運営する私たちが順を追ってお答えします。"
 
@@ -4295,27 +4307,25 @@ MEDIA_INTRO_DESC = {
 # ---------------------------------------------------------------- アキヤド：基礎から学ぶ（記事を、コースと章の順に並べて体系的に学べるようにする）
 MEDIA_COURSES = [
     dict(key="why-akiya", en="Course 01", title="なぜ今、空き家の活用なのか", lead="空き家の今と、放置したときの負担、制度の変化。活かし方を比べて、家族で決めるまで。",
-         chapters=[("空き家の今を知る", "数字で見る空き家と、活用が注目されている理由。", ["akiya-data-9-million", "akiya-rate-and-inn", "why-akiya-utilization-now"]),
+         chapters=[("空き家の今を知る", "数字で見る空き家と、活用が注目されている理由。", ["why-akiya-utilization-now"]),
                    ("放置のリスクと制度の変化", "空家法の改正、相続登記の義務化、持ち続ける費用。", ["akiya-law-kanri-fuzen", "souzoku-touki-gimuka", "akiya-holding-costs", "akiya-inherited-house-to-inn"]),
                    ("活かし方を比べる", "売る・貸す・宿にするの違いと、契約や税の基本。", ["akiya-utilization-options", "akiya-lease-types", "akiya-demolish-or-renovate", "akiya-3000man-deduction", "akiya-bank-guide"]),
-                   ("家族で決める", "相続した実家を、家族でどう決めるか。", ["inherited-house-family-talk"]),
-                   ("空き家と地域", "空き家が、まちに人とお金の流れを生む仕組み。", ["akiya-local-resource", "akiya-regional-revitalization", "inn-local-economy"])]),
+                   ("家族で決める", "相続した実家を、家族でどう決めるか。", ["inherited-house-family-talk"])]),
     dict(key="why-minpaku", en="Course 02", title="なぜ民泊・小さな宿なのか", lead="空き家の活かし方のなかで、宿が選ばれる理由。旅の変化と、向いている家、収益の考え方。",
          chapters=[("空き家と宿の相性", "宿が選ばれる理由と、賃貸との収入の違い。", ["why-minpaku-for-akiya", "minpaku-vs-rental-income"]),
-                   ("旅の変化と需要", "訪日客の動向、地方への分散、長期滞在の広がり。", ["japan-tourism-market-data", "inbound-regional-dispersion", "long-stay-travel-demand"]),
-                   ("古い家・地方だからこその価値", "古民家の魅力と、観光地でなくても宿になる理由。", ["kominka-stay-value", "shizuoka-yaizu-akiya-inn"]),
+                   ("旅の変化と需要", "訪日客の動向、地方への分散、長期滞在の広がり。", ["long-stay-travel-demand"]),
+                   ("古い家・地方だからこその価値", "古民家の魅力と、観光地でなくても宿になる理由。", ["shizuoka-yaizu-akiya-inn"]),
                    ("向いている家を見極める", "立地・建物・法令・運営のチェックと、中古と新築の違い。", ["akiya-minpaku-suitability", "new-build-vs-used-house-inn"]),
-                   ("収益の考え方", "指標の読み方、収益の試算、投資としての見方、運営の事例。", ["inn-kpi-basics", "airdna-revenue-simulation", "minpaku-investment-yield", "case-rental-house-inn-first-year"])]),
+                   ("収益の考え方", "指標の読み方、収益の試算、投資としての見方、運営の事例。", ["inn-kpi-basics", "minpaku-investment-yield", "case-rental-house-inn-first-year"])]),
     dict(key="challenges", en="Course 03", title="民泊の課題と、乗り越え方", lead="「民泊は大変」と言われる理由と、実際の乗り越え方。手続き、お金、運営、集客まで。",
          chapters=[("よく聞く課題を知る", "手続き・近隣・運営・季節・費用の5つの課題。", ["minpaku-hard-truth"]),
                    ("制度と手続き", "民泊と旅館業の違い、開業までの流れ、消防。", ["minpaku-vs-ryokan-law", "minpaku-start-steps", "minpaku-fire-safety"]),
                    ("お金と改修", "開業資金、補助金、改修の進め方、宿泊税。", ["inn-startup-funding", "small-inn-subsidies", "kominka-renovation-points", "remote-renovation-tips", "accommodation-tax"]),
                    ("運営の課題", "近隣との関係、設備、清掃、閑散期、遠方からの運営。", ["minpaku-neighbor-rules", "long-stay-guest-equipment", "cleaning-linen-operations", "minpaku-off-season", "minpaku-remote-operation"]),
-                   ("集客と評価", "予約サイトの使い方、予約ページ、レビュー。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips"]),
-                   ("人と地域", "人手不足への向き合い方と、地域との関わり。", ["tourism-labor-shortage", "kankei-jinko-and-inns"])]),
+                   ("集客と評価", "予約サイトの使い方、予約ページ、レビュー。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips"])]),
     dict(key="akiyado", en="Course 04", title="アキヤドが支援できること", lead="買取・借り上げ・開業と運営の支援。任せる相手の選び方と、相談から開業までの流れ。",
          chapters=[("アキヤドができること", "3つのプランと、相談すると分かること。", ["akiyado-what-we-do"]),
-                   ("任せ方を選ぶ", "相談先・委託先の選び方と、管理業者の役割。", ["minpaku-partner-choose", "minpaku-management-company"]),
+                   ("任せ方を選ぶ", "相談先・委託先の選び方と、管理業者の役割。", ["minpaku-management-company"]),
                    ("相談から開業まで", "初回の相談で聞かれること、準備しておくもの。", ["akiyado-consultation-flow"])]),
 ]
 
