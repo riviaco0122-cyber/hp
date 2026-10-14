@@ -4618,6 +4618,8 @@ def guide_card(g, i):
 def media_index_page():
     ordered = sorted(ARTICLES, key=lambda a: a["date"], reverse=True)
     cards = "\n".join(article_card(a) for a in ordered)
+    _case_order = ["case-owner-pricing-mistake", "case-owner-diy-cottage", "case-owner-subsidy-akiya", "case-owner-fishing-port", "case-owner-rental-side-business", "case-owner-licensed-akiya"]
+    case_cards = "\n".join(article_card(ARTICLE_BY_SLUG[sl]) for sl in _case_order if sl in ARTICLE_BY_SLUG)
     guides = "\n".join(guide_card(g, i) for i, g in enumerate(MEDIA_GUIDES))
     labels = {g["key"]: g["label"] for g in MEDIA_GUIDES}
     questions = "\n".join(f"""          <li data-date="{ARTICLE_BY_SLUG[slug]["date"]}"><a href="media/{slug}.html" class="mq__item">
@@ -4645,6 +4647,16 @@ def media_index_page():
         <p class="msec__lead">いまの状況に近いものを選んでください。知っておきたいことを、悩みが生まれる順に並べたガイドをご用意しています。</p>
         <div class="persona-cards">
 {guides}
+        </div>
+      </div>
+    </section>
+
+    <section class="section msec">
+      <div class="container">
+        <div class="msec__head reveal"><div><p class="msec__en">Cases</p><h2 class="msec__title">民泊オーナーの事例</h2></div><a href="media/minpaku-case-list.html" class="msec__more">事例6選を比べる {ARROW}</a></div>
+        <p class="msec__lead">実際に民泊を運営している6人への取材です。初期費用・月商・純利益と、うまくいかなかったことまで、自分に近い事例から読めます。</p>
+        <div class="media-grid media-grid--scroll" data-limit="6">
+{case_cards}
         </div>
       </div>
     </section>
