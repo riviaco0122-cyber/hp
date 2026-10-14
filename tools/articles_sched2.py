@@ -288,7 +288,7 @@ ARTICLES_SCHED2 = [
 <li><strong>チェックイン</strong>：到着時間がばらばらで、待機が必要になる。</li>
 <li><strong>問い合わせ</strong>：外国人ゲストが中心だと、時間帯も言語もまちまちになる。</li>
 </ul>
-<p>創業メンバーは、宿泊業・民泊の経験がない会社員で、住まいの静岡市から車で片道約2時間の下田で宿を始めました。常駐のスタッフを置けない条件で、3つの仕事をどう手放すかが、運営の中心の課題になりました。</p>
+<p>創業メンバーは、宿泊業・民泊の経験がない会社員で、開業のころ住んでいた静岡市から、車で片道約2時間の下田で宿を始めました。いまは東京から運営しています。常駐のスタッフを置けない条件で、3つの仕事をどう手放すかが、運営の中心の課題になりました。</p>
 <p>地域と関わる人を増やす考え方は、「<a href="media/kankei-jinko-and-inns.html">「関係人口」と宿ができること</a>」で説明しています。</p>
 """),
             ("hire", "清掃は、誰に、どう任せたのか？", """
@@ -814,9 +814,9 @@ ARTICLES_SCHED2 = [
 <p>空き家活用と地方創生は、「<a href="media/akiya-regional-revitalization.html">空き家活用が地方創生につながる理由</a>」で説明しています。</p>
 """),
             ("practice", "住まずに関わる、とは具体的にどういうことか？", """
-<p><strong>遠くに住んだままでも、宿の運営で地域に関わり続けられます。</strong>創業メンバー自身が、住まいのある静岡市から離れた下田で宿を運営し、焼津でも宿を計画している関係人口です。住まいは静岡市で、宿は車で片道約2時間の下田市にあり、<strong>現地へ行くのは月1回ほど</strong>に収めています。</p>
+<p><strong>遠くに住んだままでも、宿の運営で地域に関わり続けられます。</strong>創業メンバー自身が、宿のある下田に住まず、遠くから運営している関係人口です。開業したころは静岡市に住んでいて、いまは東京から運営しています。<strong>現地へ行くのは月1回ほど</strong>に収めています。</p>
 <div class="stats" role="group" aria-label="下田での関わり方">
-<div class="stat stat--accent"><span class="stat__num">約2<small>時間</small></span><span class="stat__label">静岡市から下田まで</span><span class="stat__note">車で片道</span></div>
+<div class="stat stat--accent"><span class="stat__num">約2<small>時間</small></span><span class="stat__label">開業のころの住まい（静岡市）から下田まで</span><span class="stat__note">車で片道</span></div>
 <div class="stat"><span class="stat__num">月1<small>回</small></span><span class="stat__label">現地に行く頻度</span><span class="stat__note">スマートロック等で運営</span></div>
 <div class="stat"><span class="stat__num">2<small>か月目</small></span><span class="stat__label">清掃が自走した時期</span><span class="stat__note">近隣の事業者に外注</span></div>
 </div>
