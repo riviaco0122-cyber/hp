@@ -87,6 +87,56 @@
       "source": "/en/:file.html",
       "destination": "/:file.html",
       "permanent": true
+    },
+    {
+      "source": "/media/akiya-rate-and-inn.html",
+      "destination": "/media/why-akiya-utilization-now.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/akiya-regional-revitalization.html",
+      "destination": "/media/why-akiya-utilization-now.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/inbound-regional-dispersion.html",
+      "destination": "/media/long-stay-travel-demand.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/tourism-labor-shortage.html",
+      "destination": "/media/cleaning-linen-operations.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/kankei-jinko-and-inns.html",
+      "destination": "/media/why-minpaku-for-akiya.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/akiya-local-resource.html",
+      "destination": "/media/why-akiya-utilization-now.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/inn-local-economy.html",
+      "destination": "/media/why-minpaku-for-akiya.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/akiya-data-9-million.html",
+      "destination": "/media/why-akiya-utilization-now.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/kominka-stay-value.html",
+      "destination": "/media/kominka-renovation-points.html",
+      "permanent": true
+    },
+    {
+      "source": "/media/minpaku-partner-choose.html",
+      "destination": "/media/minpaku-management-company.html",
+      "permanent": true
     }
   ],
   "ignoreCommand": "case \"$VERCEL_GIT_COMMIT_REF\" in seo/daily) exit 1;; seo/*) exit 0;; *) exit 1;; esac"

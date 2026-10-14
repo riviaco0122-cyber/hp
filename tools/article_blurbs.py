@@ -2,6 +2,13 @@
 記事データに blurb="..." を書けばそちらが優先される。無ければここ、それも無ければ title の「｜」以降を使う。
 元の title（SEO 用の title タグ・見出し）は変えない。"""
 BLURBS = {
+    "case-owner-pricing-mistake": "単価1.9倍で清掃は月7回に",
+    "case-owner-diy-cottage": "改修費80万円・月の利益35万円",
+    "case-owner-subsidy-akiya": "補助金150万円＋公庫200万円",
+    "case-owner-fishing-port": "公庫400万円・月商60〜70万円",
+    "case-owner-rental-side-business": "初期費用200万円・週1〜2時間",
+    "case-owner-licensed-akiya": "初期費用400万円・月の利益25万円",
+    "minpaku-case-list": "初期費用・月商・純利益を一覧で",
     "akiya-inherited-house-to-inn": "固定資産税を払い続ける前に",
     "japan-tourism-market-data": "インバウンド拡大の裏の課題",
     "akiya-regional-revitalization": "宿への再生と4つの循環",
