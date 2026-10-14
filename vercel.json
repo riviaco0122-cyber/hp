@@ -94,18 +94,8 @@
       "permanent": true
     },
     {
-      "source": "/media/japan-tourism-market-data.html",
-      "destination": "/media/long-stay-travel-demand.html",
-      "permanent": true
-    },
-    {
       "source": "/media/akiya-regional-revitalization.html",
       "destination": "/media/why-akiya-utilization-now.html",
-      "permanent": true
-    },
-    {
-      "source": "/media/airdna-revenue-simulation.html",
-      "destination": "/media/inn-kpi-basics.html",
       "permanent": true
     },
     {
