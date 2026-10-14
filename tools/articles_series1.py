@@ -508,7 +508,7 @@ ARTICLES_SERIES1 = [
             "二本松市「空家の管理をサポートします」（シルバー人材センターの見回り料金、2021年公開） https://www.city.nihonmatsu.lg.jp/data/doc/1622611248_doc_66_0.pdf",
             "国土交通省「空き家対策特設サイト」（2024年） https://www.mlit.go.jp/jutakukentiku/house/akiya-taisaku/articles/2024020105.html",
             "国土交通省住宅局「『空家法』と『2023改正空家法』」リーフレット（2024年） https://www.mlit.go.jp/jutakukentiku/house/content/001753652.pdf",
-            "e-Gov法令検索「空家等対策の推進に関する特別措置法」第5条（所有者等の責務）、「民法」第717条（土地の工作物の所有者の責任） https://laws.e-gov.go.jp/",
+            "e-Gov法令検索「空家等対策の推進に関する特別措置法」第3条（所有者等の責務）、「民法」第717条（土地の工作物の所有者の責任） https://laws.e-gov.go.jp/",
         ],
     ),
     dict(
