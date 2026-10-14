@@ -22,9 +22,9 @@ LOGO = f'<div class="logo">{MARK}<span>アキヤド</span><small>空き家と民
 SCENES = [
     (5.0, "old-town-street", '<div class="big">空き家を、売る。<br>活かす。<br><em>民泊を、はじめる。</em></div>'),
     (5.0, "riverside-town", '<div class="mid">空き家と民泊のメディア</div><div class="big">アキヤド</div><div class="sub">悩みの順に、お答えします。</div>'),
-    (5.6, "thatched-house", '<div class="tag">空き家を売りたい方へ</div><div class="big s">アキヤド買取プラン</div><div class="sub">「宿として再生できるか」という目で、物件を見ます。<br>一般の仲介では値段がつきにくい家も、ご相談ください。</div>'),
+    (5.6, "thatched-house", '<div class="tag">空き家を売りたい方へ</div><div class="big s">アキヤド買取プラン</div><div class="sub">「宿として再生できるか」という目で、物件を見ます。<br>一般の仲介では値段がつきにくい家も、<br>ご相談ください。</div>'),
     (5.6, "irori-room", '<div class="tag">空き家を活かしたい方へ</div><div class="big s">アキヤド借り上げプラン</div><div class="sub">アキヤドが借り上げ、改修から宿の運営まで行います。<br>運営の手間をかけず、家賃を受け取れます。</div>'),
-    (5.6, "white-bedroom", '<div class="tag">副業で宿をはじめたい方へ</div><div class="big s">アキヤド開業・運営プラン</div><div class="sub">物件選び、許可や届出、集客まで。<br>実際に宿を運営しているアキヤドが、任せたい範囲に合わせて支えます。</div>'),
+    (5.6, "white-bedroom", '<div class="tag">副業で宿をはじめたい方へ</div><div class="big s">アキヤド開業・運営プラン</div><div class="sub">物件選び、許可や届出、集客まで。<br>実際に宿を運営しているアキヤドが、<br>任せたい範囲に合わせて支えます。</div>'),
     (4.8, "#1f3a2b", '<div class="mid light">取材した、6人のオーナーの事例も公開中</div><div class="avs">{AVS}</div><div class="sub light">初期費用・月商・純利益を、オーナーの申告の数字で。</div>'),
     (4.8, "#f4f1ea", '<div class="big dark">まずは、<em>無料</em>でご相談ください。</div><div class="sub dark">相談・お見積りは無料、全国対応です。</div><div class="url">rivia-co.com</div>'),
 ]
@@ -34,7 +34,7 @@ CSS = """
 *{box-sizing:border-box}html,body{margin:0;width:1920px;height:1080px;background:transparent;overflow:hidden;font-family:"Zen Maru Gothic",sans-serif;-webkit-font-smoothing:antialiased}
 .f{position:relative;width:1920px;height:1080px;color:#fff}
 .f.photo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,24,18,.86) 0%,rgba(14,24,18,.68) 46%,rgba(14,24,18,.10) 90%)}
-.t{position:absolute;left:150px;top:0;bottom:150px;width:1300px;display:flex;flex-direction:column;justify-content:center}
+.t{position:absolute;left:150px;top:0;bottom:150px;width:1560px;display:flex;flex-direction:column;justify-content:center}
 .f.center .t{left:0;right:0;width:auto;align-items:center;text-align:center}
 .big{font-family:"Shippori Mincho B1",serif;font-weight:800;font-size:128px;line-height:1.28;letter-spacing:.06em}
 .big.s{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;font-size:92px;letter-spacing:.03em;margin-top:26px}
