@@ -17,6 +17,16 @@
 """
 
 DESIGNS = {
+    # ---- オーナーの事例（取材）: 専用デザイン。顔アイコンと、費用・月商・利益の数字を見せる（数字は各記事の本文にあるものだけ）
+    "minpaku-case-list": dict(layout="case", avatars=[1, 2, 3, 6, 4, 5], lines=["民泊の事例[6選]", "いくらかかり、いくら残る？"], chips=[("初期費用", "約80〜500万円"), ("月商", "約27〜70万円"), ("取材", "6人のオーナー")]),
+    "case-owner-pricing-mistake": dict(layout="case", avatar=1, who="Aさん", lines=["ほぼ満室でも[赤字]。", "単価を戻して立て直した"], chips=[("稼働率", "92%→58%"), ("客室単価", "9,800→18,500円"), ("月の売上", "約27→32万円")]),
+    "case-owner-diy-cottage": dict(layout="case", avatar=2, who="Bさんご夫婦", lines=["築古の別荘を", "[週末DIY]で民泊に"], chips=[("改修費", "約80万円"), ("月商", "約55万円"), ("月の純利益", "約35万円")]),
+    "case-owner-subsidy-akiya": dict(layout="case", avatar=3, who="Cさん", lines=["空き家を買って民泊に", "[補助金と融資]を組み合わせ"], chips=[("改装の予算", "約450万円"), ("月商", "約45万円"), ("月の純利益", "15〜18万円")]),
+    "case-owner-fishing-port": dict(layout="case", avatar=6, who="Dさんご夫婦", lines=["元・仕出し屋を民泊に", "[漁港の体験]で高単価"], chips=[("工事費用", "約500万円"), ("月商", "60〜70万円"), ("月の純利益", "20〜30万円")]),
+    "case-owner-rental-side-business": dict(layout="case", avatar=4, who="Eさん", lines=["会社員の[民泊副業]", "賃貸で始めた事例"], chips=[("初期費用", "約200万円"), ("月商", "約40万円"), ("月の純利益", "12〜15万円")]),
+    "case-owner-licensed-akiya": dict(layout="case", avatar=5, who="Fさん", lines=["空き家を[旅館業]で", "民泊にした事例"], chips=[("初期費用", "約400万円"), ("月商", "平均約55万円"), ("月の純利益", "平均約25万円")]),
+    "minpaku-kakutei-shinkoku": dict(layout="poster", big="確定申告", lines=["新法民泊の", "[所得区分と経費]"], color="mustard"),
+
     # ---- 売る・手放す
     "akiya-inherited-house-to-inn": dict(layout="boxes", lines=["放置された実家が", "[「小さな宿」]に変わる", "理由"]),
     "akiya-3000man-deduction": dict(layout="number", big="3,000", unit="万円", lines=["相続した空き家を売るときの", "[特別控除]"], color="deep"),
