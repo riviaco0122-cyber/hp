@@ -195,9 +195,28 @@ LAYOUT_CSS = {
 .h em{font-style:normal;color:#c95a35}
 .kicker{position:absolute;z-index:2;left:48px;top:40px;font-size:20px}
 .logo{z-index:2;left:50%;transform:translateX(-50%);bottom:28px;color:#fff}""",
+    "case": """
+.w{position:relative;width:1200px;height:630px;background:#f4f1ea;color:#1d211f;overflow:hidden}
+.w::before{content:"";position:absolute;right:0;top:0;width:560px;height:630px;background:#1f3a2b;clip-path:polygon(18% 0,100% 0,100% 100%,0 100%)}
+.av{position:absolute;z-index:2;right:112px;top:150px;width:330px;height:330px;border-radius:50%;background:#fff center/cover no-repeat;box-shadow:0 0 0 8px #fff}
+.who{position:absolute;z-index:3;right:112px;top:506px;width:330px;box-sizing:border-box;text-align:center;padding:8px 0 10px;border-radius:8px;background:#c95a35;color:#fff;font-family:"Zen Kaku Gothic New";font-weight:900;font-size:30px;letter-spacing:.06em;white-space:nowrap}
+.tag{position:absolute;z-index:2;left:64px;top:48px;padding:7px 20px 9px;background:#c95a35;color:#fff;font-family:"Zen Kaku Gothic New";font-weight:900;font-size:24px;letter-spacing:.1em}
+.left{position:absolute;z-index:2;left:64px;top:112px;bottom:112px;width:560px;display:flex;flex-direction:column;justify-content:center;gap:44px}
+.t{position:relative;width:520px}
+.h{font-family:"Zen Kaku Gothic New";font-weight:900;font-size:56px;line-height:1.3;white-space:nowrap}
+.h em{font-style:normal;color:#c95a35}
+.chips{position:relative;display:flex;gap:12px;max-width:560px}
+.chip{padding:10px 14px 12px;background:#fff;border-radius:14px;border:2px solid #1f3a2b}
+.chip small{display:block;font-size:19px;color:#555;letter-spacing:.04em}
+.chip b{display:block;margin-top:2px;font-family:"Zen Kaku Gothic New";font-weight:900;font-size:26px;color:#1f3a2b;white-space:nowrap}
+.logo{z-index:3;left:64px;bottom:40px;color:#1f3a2b}
+.kicker{display:none}
+.avs{position:absolute;z-index:2;right:110px;top:50%;transform:translateY(-50%);width:360px;display:grid;grid-template-columns:repeat(3,108px);gap:18px}
+.avs i{display:block;width:108px;height:108px;border-radius:50%;background:#fff center/cover no-repeat;box-shadow:0 0 0 4px #fff}""",
     "marker": PHOTO_CSS.replace("--fs", "--fs0") + "\n.h{font-size:66px;white-space:nowrap;line-height:1.38;font-weight:700;margin-top:26px}\n.h em{font-style:normal;background:linear-gradient(transparent 64%,rgba(208,97,59,.9) 64%);padding:0 4px}\n.sub{margin-top:18px;font-size:26px;opacity:.9}",
     "type": TYPE_CSS.replace("--fs", "--fs0") + "\n.h{font-size:64px;white-space:nowrap;line-height:1.42;font-weight:700;margin-top:24px}\n.h em{font-style:normal;color:#2e6b47}",
 }
+
 
 
 def mark_up(text):
@@ -240,6 +259,19 @@ def design_html(a, b, d):
         inner = (f'<div class="w"><div class="half l" style="{ph}"><b class="fit">{html.escape(d["a"])}</b></div>'
                  f'<div class="half r" style="{ph}"><b class="fit">{html.escape(d["b"])}</b></div><div class="vs">VS</div>'
                  f'<span class="kicker">{kicker}</span><div class="t"><div class="h">{h}</div></div>{logo}</div>')
+    elif layout == "case":
+        av = os.path.join(ROOT, "images", "portraits", "circle", f"user_0{d.get('avatar', 1)}.png")
+        chips = "".join(f'<div class="chip"><small>{html.escape(k)}</small><b>{html.escape(v)}</b></div>' for k, v in d.get("chips", []))
+        if d.get("avatars"):
+            ava = "".join(f'<i style="background-image:url(\'file://{os.path.join(ROOT, "images", "portraits", "circle", f"user_0{n}.png")}\')"></i>' for n in d["avatars"])
+            av_html = f'<div class="avs">{ava}</div>'
+            who_html = ""
+        else:
+            av_html = f'<div class="av" style="background-image:url(\'file://{av}\')"></div>'
+            who_html = f'<span class="who">{html.escape(d.get("who", ""))}</span>'
+        inner = (f'<div class="w">{av_html}'
+                 f'{who_html}<span class="tag">OWNER\'S CASE｜オーナーの事例</span>'
+                 f'<div class="left"><div class="t"><div class="h fit">{h}</div></div><div class="chips">{chips}</div></div>{logo}</div>')
     elif layout == "marker":
         inner = f'<div class="w" style="{ph}"><div class="t"><span class="kicker">{kicker}</span><div class="h fit">{h}</div>{sub}</div>{logo}</div>'
     else:  # type
