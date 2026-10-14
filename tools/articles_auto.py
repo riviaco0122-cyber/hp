@@ -171,7 +171,7 @@ ARTICLES_AUTO = [
     ),
     dict(
         slug="akiya-demolish-or-renovate",
-        date="2026-10-13", topics=["house", "sell"], photo=("own-renovation-room", "改修した和室に置かれた木のテーブルと椅子"),
+        date="2026-10-13", topics=["house", "sell"], photo=("old-town-street", "古い家が並ぶ町の通り"),
         guides=[("use", 2)],
         title='空き家を解体するか残すか｜費用・税金・補助で比べる',
         short='空き家は解体か、\n残して直すか',
