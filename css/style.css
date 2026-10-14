@@ -3234,3 +3234,11 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 }
 
 .article__section .compare__row--n > span:first-child { flex-basis: 1.4em; }
+
+/* 取材記事の対話（顔アイコンつき） */
+.article__section .talk { display: flex; gap: 12px; align-items: flex-start; margin: 14px 0; }
+.article__section .talk__img { flex: 0 0 44px; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.article__section .talk__body { flex: 1 1 0; min-width: 0; padding: 10px 14px; border-radius: 14px; background: #f3f6f2; }
+.article__section .talk__body p { margin: 0; font-size: 15px; line-height: 1.9; }
+.article__section .talk__body .talk__name { margin-bottom: 2px; font-size: 12px; font-weight: 700; color: var(--m-green, #2e6b47); }
+.article__section .talk__q { margin: 22px 0 4px; font-size: 13.5px; color: var(--c-muted); }

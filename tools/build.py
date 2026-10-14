@@ -3414,7 +3414,8 @@ from articles_series1 import ARTICLES_SERIES1
 from articles_series2 import ARTICLES_SERIES2
 from articles_series3 import ARTICLES_SERIES3
 from articles_auto import ARTICLES_AUTO  # AI社員チームが追加する記事
-for _a in ARTICLES_SCHED1 + ARTICLES_SCHED2 + ARTICLES_CASE + ARTICLES_SERIES1 + ARTICLES_SERIES2 + ARTICLES_SERIES3 + ARTICLES_AUTO:
+from articles_interviews import ARTICLES_INTERVIEWS  # 民泊オーナーへの取材をもとにした事例（人から受け取った一次情報）
+for _a in ARTICLES_SCHED1 + ARTICLES_SCHED2 + ARTICLES_CASE + ARTICLES_SERIES1 + ARTICLES_SERIES2 + ARTICLES_SERIES3 + ARTICLES_AUTO + ARTICLES_INTERVIEWS:
     _a.setdefault("tone", "sand")
     _a.setdefault("updated", _a["date"])
     ARTICLES.append(_a)
@@ -4323,7 +4324,8 @@ MEDIA_COURSES = [
                    ("制度と手続き", "民泊と旅館業の違い、開業までの流れ、消防。", ["minpaku-vs-ryokan-law", "minpaku-start-steps", "minpaku-fire-safety"]),
                    ("お金と改修", "開業資金、補助金、改修の進め方、宿泊税。", ["inn-startup-funding", "small-inn-subsidies", "kominka-renovation-points", "remote-renovation-tips", "accommodation-tax"]),
                    ("運営の課題", "近隣との関係、設備、清掃、閑散期、遠方からの運営。", ["minpaku-neighbor-rules", "long-stay-guest-equipment", "cleaning-linen-operations", "minpaku-off-season", "minpaku-remote-operation"]),
-                   ("集客と評価", "予約サイトの使い方、予約ページ、レビュー。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips"])]),
+                   ("集客と評価", "予約サイトの使い方、予約ページ、レビュー。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips"]),
+                   ("オーナーの事例", "5人のオーナーの取材。費用、収支、うまくいかなかったこと。", ["minpaku-case-list", "case-owner-pricing-mistake", "case-owner-diy-cottage", "case-owner-subsidy-akiya", "case-owner-fishing-port", "case-owner-rental-side-business"])]),
     dict(key="akiyado", en="Course 04", title="アキヤドが支援できること", lead="買取・借り上げ・開業と運営の支援。任せる相手の選び方と、相談から開業までの流れ。",
          chapters=[("アキヤドができること", "3つのプランと、相談すると分かること。", ["akiyado-what-we-do"]),
                    ("任せ方を選ぶ", "相談先・委託先の選び方と、管理業者の役割。", ["minpaku-management-company"]),
