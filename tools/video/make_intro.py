@@ -76,68 +76,54 @@ const { chromium } = require('playwright');
 
 
 def synth_bgm(path, dur):
-    """やわらかい和音（パッド）と、ゆっくりしたアルペジオ。約80BPM。"""
+    """やわらかい和音（パッド）と、ゆっくりしたアルペジオ。約78BPM。numpy で合成する。"""
+    import numpy as np
     sr = 32000
     n = int(dur * sr)
-    L = [0.0] * n
-    R = [0.0] * n
+    L = np.zeros(n); R = np.zeros(n)
     hz = lambda m: 440.0 * 2 ** ((m - 69) / 12)
     beat = 60 / 78
     chords = [[48, 52, 55, 59], [45, 48, 52, 55], [41, 45, 48, 52], [43, 47, 50, 53]]  # Cmaj7 Am7 Fmaj7 G7(軽く)
     bar = beat * 4
-    t_end = dur
-    c = 0
-    t = 0.0
-    while t < t_end:
+    t, c = 0.0, 0
+    while t < dur:
         ch = chords[c % 4]
-        # パッド
+        ln = int(min(bar + 1.2, dur - t + 1.2) * sr)
+        tt = np.arange(ln) / sr
+        env = np.minimum(1.0, tt / 0.9) * np.where(tt < bar, 1.0, np.clip(1 - (tt - bar) / 1.2, 0, 1))
+        s0 = int(t * sr)
         for m in ch:
             f = hz(m)
-            s0 = int(t * sr)
-            ln = int(min(bar + 1.2, t_end - t + 1.2) * sr)
-            for k in range(ln):
-                i = s0 + k
-                if i >= n:
-                    break
-                tt = k / sr
-                env = min(1.0, tt / 0.9) * (1.0 if tt < bar else max(0.0, 1 - (tt - bar) / 1.2))
-                v = (math.sin(2 * math.pi * f * tt) + 0.35 * math.sin(2 * math.pi * f * 2 * tt + 0.3) + 0.12 * math.sin(2 * math.pi * f * 3 * tt)) * env * 0.045
-                L[i] += v
-                R[i] += v
-        # アルペジオ（上の音をやさしく）
+            v = (np.sin(2 * np.pi * f * tt) + 0.35 * np.sin(2 * np.pi * f * 2 * tt + 0.3) + 0.12 * np.sin(2 * np.pi * f * 3 * tt)) * env * 0.045
+            e = min(n, s0 + ln)
+            L[s0:e] += v[: e - s0]; R[s0:e] += v[: e - s0]
         arp = [ch[1] + 12, ch[2] + 12, ch[3] + 12, ch[2] + 12, ch[1] + 12, ch[3] + 12, ch[2] + 12, ch[0] + 24]
         for j, m in enumerate(arp):
             f = hz(m)
-            s0 = int((t + j * beat / 2) * sr)
-            ln = int(1.4 * sr)
+            a0 = int((t + j * beat / 2) * sr)
+            ln2 = int(1.4 * sr)
+            tt2 = np.arange(ln2) / sr
+            env2 = np.exp(-tt2 * 3.2) * np.minimum(1.0, tt2 / 0.01)
+            v = (np.sin(2 * np.pi * f * tt2) + 0.3 * np.sin(2 * np.pi * f * 2 * tt2)) * env2 * 0.05
             pan = 0.35 + 0.3 * (j % 2)
-            for k in range(ln):
-                i = s0 + k
-                if i >= n:
-                    break
-                tt = k / sr
-                env = math.exp(-tt * 3.2) * min(1.0, tt / 0.01)
-                v = (math.sin(2 * math.pi * f * tt) + 0.3 * math.sin(2 * math.pi * f * 2 * tt)) * env * 0.05
-                L[i] += v * (1 - pan) * 1.4
-                R[i] += v * pan * 1.4
-        t += bar
-        c += 1
-    # 簡単なエコー（空間感）
+            e = min(n, a0 + ln2)
+            if a0 < n:
+                L[a0:e] += v[: e - a0] * (1 - pan) * 1.4; R[a0:e] += v[: e - a0] * pan * 1.4
+        t += bar; c += 1
     d1, d2 = int(0.31 * sr), int(0.47 * sr)
-    for i in range(n - 1, d2, -1):
-        L[i] += 0.28 * L[i - d1] + 0.16 * R[i - d2]
-        R[i] += 0.28 * R[i - d1] + 0.16 * L[i - d2]
-    peak = max(max(abs(x) for x in L), max(abs(x) for x in R)) or 1.0
+    L2, R2 = L.copy(), R.copy()
+    L2[d1:] += 0.28 * L[:-d1]; R2[d1:] += 0.28 * R[:-d1]
+    L2[d2:] += 0.16 * R[:-d2]; R2[d2:] += 0.16 * L[:-d2]
+    peak = max(np.abs(L2).max(), np.abs(R2).max()) or 1.0
     g = 0.7 / peak
-    fade_in, fade_out = int(1.5 * sr), int(2.5 * sr)
-    out = array.array("h")
-    for i in range(n):
-        e = min(1.0, i / fade_in, (n - i) / fade_out)
-        out.append(int(max(-1, min(1, L[i] * g * e)) * 32767))
-        out.append(int(max(-1, min(1, R[i] * g * e)) * 32767))
+    idx = np.arange(n)
+    e = np.minimum(1.0, np.minimum(idx / int(1.5 * sr), (n - idx) / int(2.5 * sr)))
+    st = np.empty(n * 2, dtype=np.int16)
+    st[0::2] = np.clip(L2 * g * e, -1, 1) * 32767
+    st[1::2] = np.clip(R2 * g * e, -1, 1) * 32767
     with wave.open(path, "wb") as w:
         w.setnchannels(2); w.setsampwidth(2); w.setframerate(sr)
-        w.writeframes(out.tobytes())
+        w.writeframes(st.tobytes())
 
 
 def main():
@@ -162,7 +148,7 @@ def main():
                 inputs = ["-f", "lavfi", "-t", f"{dur}", "-i", f"color=c={bg}:s=1920x1080:r={FPS}"]
                 base = "[0:v]format=yuv420p[b]"
             else:
-                inputs = ["-loop", "1", "-t", f"{dur}", "-i", os.path.join(ROOT, "images", "photos", bg + ".jpg")]
+                inputs = ["-i", os.path.join(ROOT, "images", "photos", bg + ".jpg")]
                 base = (f"[0:v]scale=2200:-1,crop=2200:1238,zoompan=z='1+0.00035*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={frames}:s=1920x1080:fps={FPS},format=yuv420p[b]")
             fl = (f"{base};[1:v]format=rgba,fade=t=in:st=0.5:d=0.9:alpha=1[o];[b][o]overlay=0:0:format=auto,format=yuv420p[v]")
             cmd = ["ffmpeg", "-y", "-loglevel", "error"] + inputs + ["-loop", "1", "-t", f"{dur}", "-i", ov[i], "-filter_complex", fl, "-map", "[v]", "-r", str(FPS), "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", clip]
