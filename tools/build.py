@@ -4510,7 +4510,7 @@ def media_thanks_page():
 def media_nav(current=""):
     """メディア内の共通ナビ。読者の状況（ガイド）を先に、テーマと検索を後に置く"""
     items = [("top", "media.html", "トップ")] + [(g["key"], f"media/guide-{g['key']}.html", g["label"]) for g in MEDIA_GUIDES] + \
-            [("learn", "media/learn.html", "基礎から学ぶ"), ("themes", "media.html#themes", "テーマから探す"), ("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "アキヤドのプラン")]
+            [("learn", "media/learn.html", "基礎から学ぶ"), ("cases", "media/minpaku-case-list.html", "事例から探す"), ("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "アキヤドのプラン")]
     cur = ' aria-current="page"'
     lis = "".join(f'<li><a href="{href}"{cur if k == current else ""}>{e(n)}</a></li>' for k, href, n in items)
     # スマホでは、ヘッダーのボタンで開くメニューにする（相談・資料請求のボタンも入れる）
