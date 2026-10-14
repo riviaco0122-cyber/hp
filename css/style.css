@@ -3242,3 +3242,5 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .article__section .talk__body p { margin: 0; font-size: 15px; line-height: 1.9; }
 .article__section .talk__body .talk__name { margin-bottom: 2px; font-size: 12px; font-weight: 700; color: var(--m-green, #2e6b47); }
 .article__section .talk__q { margin: 22px 0 4px; font-size: 13.5px; color: var(--c-muted); }
+.lchaps, .lchap, .lchap__body, .lchap__list { min-width: 0; }
+.lchap__list a { overflow-wrap: anywhere; }
