@@ -3530,3 +3530,4 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 @media (max-width: 899px) { .reasons-sec .reason__num { font-size: 44px; } .is-corp .biz-card__num { font-size: 52px; } }
 .is-corp .flow__num { white-space: nowrap; }
 @media (max-width: 899px) { .is-corp .flow__num { font-size: 36px; } .is-corp .cta__title { font-size: clamp(24px, 7.2vw, 34px); } }
+.is-corp .overview .section-title { font-size: clamp(28px, 3vw, 40px); white-space: nowrap; }
