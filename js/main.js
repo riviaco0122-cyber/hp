@@ -728,13 +728,14 @@
   }
 
   // 数字のカウントアップ（data-count。画面に入ったら0から数える）
+  // （動きを減らす設定でも数える。小さな数字の変化だけで、画面は動かないため）
   var nums = document.querySelectorAll('[data-count]');
-  if (nums.length && !reduce && 'IntersectionObserver' in window) {
+  if (nums.length && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
         io.unobserve(en.target);
-        var el = en.target, to = parseFloat(el.getAttribute('data-count'));
+        var el = en.target.matches('[data-count]') ? en.target : en.target.querySelector('[data-count]'), to = parseFloat(el.getAttribute('data-count'));
         var dec = (el.getAttribute('data-count').split('.')[1] || '').length;
         var t0 = performance.now(), dur = 1400;
         var step = function (t) {
@@ -744,7 +745,40 @@
         };
         requestAnimationFrame(step);
       });
-    }, { threshold: 0.6 });
-    nums.forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.3 });
+    nums.forEach(function (el) {
+      // まだ画面の下にあるときだけ 0 にしておく（見えている数字は書き換えない）
+      if (el.getBoundingClientRect().top > window.innerHeight) el.textContent = (0).toFixed((el.getAttribute('data-count').split('.')[1] || '').length);
+      io.observe(el.closest('.project__rating') || el);
+    });
   }
+})();
+
+// TOPの事業紹介（スマホ）：カルーセルで画面の中央に来たカードに色を付ける（ホバーの代わり）
+(function () {
+  'use strict';
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(hover: none)').matches) return;
+  document.querySelectorAll('.vrow__list').forEach(function (list) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { en.target.classList.toggle('is-current', en.intersectionRatio >= 0.75); });
+    }, { root: list.scrollWidth > list.clientWidth ? list : null, threshold: [0, 0.75, 1], rootMargin: '0px 0px -25% 0px' });
+    list.querySelectorAll('.vsvc').forEach(function (c) { io.observe(c); });
+  });
+})();
+
+// コーポレート：見出しの英字を大きな透かし文字に（装飾のみ）、図やカードが画面に入ったら .is-in を付けて動かす
+(function () {
+  'use strict';
+  if (!document.body.classList.contains('is-corp')) return;
+  document.querySelectorAll('.section-head .eyebrow, .news .eyebrow').forEach(function (eb) {
+    var head = eb.closest('.section-head') || eb.parentElement;
+    if (head && !head.hasAttribute('data-en')) head.setAttribute('data-en', eb.textContent.trim());
+  });
+  var targets = document.querySelectorAll('.timeline, .issue, .flow, .sflow, .faq__list, .overview');
+  if (!('IntersectionObserver' in window)) { targets.forEach(function (t) { t.classList.add('is-in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+  }, { threshold: 0.25 });
+  targets.forEach(function (t) { io.observe(t); });
 })();

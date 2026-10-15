@@ -3524,3 +3524,138 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .reason__career { margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.14); font-size: 12.5px; line-height: 1.8; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.9); }
 .reason__career span { display: block; margin-bottom: 4px; font-family: var(--font-en); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-shu-light); }
 .reason__career n-w { word-break: keep-all; }
+
+/* ---------- TOP：事業紹介（左に「届ける価値」、右にその価値を届ける事業） ---------- */
+.vrow { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); background: #fff; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md); }
+.vrow + .vrow { margin-top: 28px; }
+.vrow__head { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; min-height: 260px; padding: 40px 36px; color: #fff; overflow: hidden; }
+.vrow__bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform 1.6s var(--ease); }
+.vrow.is-visible .vrow__bg { transform: none; }
+.vrow__head::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(160deg, rgba(15, 38, 24, 0.55) 0%, rgba(15, 38, 24, 0.9) 100%); }
+.vrow__en { font-family: var(--font-en); font-size: 14px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-shu-light); }
+.vrow__value { font-family: var(--font-serif); font-weight: 400; font-size: clamp(26px, 2.6vw, 34px); line-height: 1.5; letter-spacing: 0.06em; }
+.vrow__name { font-size: 13px; letter-spacing: 0.12em; color: rgba(255, 255, 255, 0.78); }
+.vrow__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.vrow--3 .vrow__list .vsvc:first-child { grid-column: 1 / -1; }
+.vsvc { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1fr) 48px; grid-template-rows: auto auto 1fr; column-gap: 20px; align-content: start; padding: 32px 36px; overflow: hidden; border-left: 1px solid var(--c-line); border-top: 1px solid var(--c-line); margin: -1px 0 0 -1px; }
+.vsvc::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--c-forest); transform: translateX(-101%); transition: transform .6s var(--ease); }
+.vsvc__num { position: absolute; right: 28px; top: 18px; font-family: var(--font-en); font-size: 52px; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(217, 80, 43, 0.35); transition: -webkit-text-stroke-color .5s; }
+.vsvc__catch { grid-column: 1; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; color: var(--c-shu); transition: color .5s; }
+.vsvc__name { grid-column: 1; margin-top: 8px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; line-height: 1.5; letter-spacing: 0.04em; transition: color .5s; }
+.vsvc__text { grid-column: 1; margin-top: 10px; font-size: 14px; line-height: 1.95; color: var(--c-sub); transition: color .5s; }
+.vsvc__go { grid-column: 2; grid-row: 1 / 4; align-self: center; width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--c-shu); position: relative; transition: background .5s, border-color .5s, transform .5s var(--ease); }
+.vsvc__go::before { content: ""; position: absolute; left: 14px; top: 50%; width: 18px; height: 1.5px; background: var(--c-shu); transition: background .5s; }
+.vsvc__go::after { content: ""; position: absolute; left: 24px; top: calc(50% - 4px); width: 8px; height: 8px; border-top: 1.5px solid var(--c-shu); border-right: 1.5px solid var(--c-shu); transform: rotate(45deg); transition: border-color .5s; }
+/* ホバー（PC）・画面の中央に来たカード（スマホ）で、緑が満ちる */
+.vsvc:is(:hover, .is-current)::before { transform: none; }
+.vsvc:is(:hover, .is-current) :is(.vsvc__name) { color: #fff; }
+.vsvc:is(:hover, .is-current) .vsvc__text { color: rgba(255, 255, 255, 0.82); }
+.vsvc:is(:hover, .is-current) .vsvc__catch { color: var(--c-shu-light); }
+.vsvc:is(:hover, .is-current) .vsvc__num { -webkit-text-stroke-color: rgba(255, 138, 92, 0.6); }
+.vsvc:is(:hover, .is-current) .vsvc__go { background: var(--c-shu); border-color: var(--c-shu); transform: translateX(4px); }
+.vsvc:is(:hover, .is-current) .vsvc__go::before { background: #fff; }
+.vsvc:is(:hover, .is-current) .vsvc__go::after { border-color: #fff; }
+@media (hover: hover) { .vsvc.is-current:not(:hover)::before { transform: translateX(-101%); } .vsvc.is-current:not(:hover) .vsvc__name { color: inherit; } .vsvc.is-current:not(:hover) .vsvc__text { color: var(--c-sub); } .vsvc.is-current:not(:hover) .vsvc__catch { color: var(--c-shu); } .vsvc.is-current:not(:hover) .vsvc__go { background: none; border-color: var(--c-shu); transform: none; } .vsvc.is-current:not(:hover) .vsvc__go::before { background: var(--c-shu); } .vsvc.is-current:not(:hover) .vsvc__go::after { border-color: var(--c-shu); } }
+@media (max-width: 899px) {
+  .vrow { grid-template-columns: 1fr; overflow: visible; background: none; box-shadow: none; border-radius: 0; }
+  .vrow + .vrow { margin-top: 40px; }
+  .vrow__head { min-height: 200px; padding: 28px 24px; border-radius: 14px; }
+  .vrow__value { font-size: 26px; }
+  /* 事業は横スワイプのカルーセル（次のカードを少し見せる） */
+  .vrow__list { display: flex; gap: 12px; margin: 14px calc(var(--gutter) * -1) 0; padding: 6px var(--gutter) 18px; scroll-padding-inline: var(--gutter); overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; }
+  .vrow__list::-webkit-scrollbar { display: none; }
+  .vsvc { flex: 0 0 84%; scroll-snap-align: start; margin: 0; padding: 26px 22px; border: 1px solid var(--c-card-line); border-radius: 14px; background: #fff; box-shadow: var(--shadow-sm); grid-template-columns: minmax(0, 1fr) 40px; column-gap: 12px; }
+  .vsvc__go { width: 40px; height: 40px; }
+  .vsvc__go::before { left: 11px; width: 16px; }
+  .vsvc__go::after { left: 19px; }
+  .vsvc__name { font-size: 20px; }
+  .vsvc__num { font-size: 40px; right: 18px; top: 14px; }
+}
+/* 選ばれる理由：前のセクションに続いても上の余白を詰めない */
+.is-corp .reasons-sec { padding-top: var(--section-y) !important; }
+
+/* ==========================================================================
+   サービスページ・下層ページにも、TOPと同じ遊び心を
+   ========================================================================== */
+/* 見出しの英字を、背景の大きな透かし文字に（JS が data-en を付ける） */
+.is-corp .section-head[data-en] { position: relative; }
+.is-corp .section-head[data-en]::after {
+  content: attr(data-en); position: absolute; right: 0; top: -0.62em; z-index: -1; pointer-events: none;
+  font-family: var(--font-en); font-size: clamp(56px, 10vw, 150px); line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; white-space: nowrap;
+  color: transparent; -webkit-text-stroke: 1px rgba(26, 71, 42, 0.1);
+}
+.is-corp .section-head--center[data-en]::after { right: 50%; transform: translateX(50%); }
+.is-corp .reasons-sec .section-head[data-en]::after { -webkit-text-stroke-color: rgba(255, 255, 255, 0.1); }
+.is-corp .section { position: relative; isolation: isolate; overflow-x: clip; }
+@media (max-width: 899px) { .is-corp .section-head[data-en]::after { display: none; } }
+
+/* 写真の見出し：ゆっくり寄る写真、1行ずつせり上がる見出し、大きな英字 */
+.is-corp .page-hero--photo .page-hero__bg { animation: kenburns 14s cubic-bezier(.2, .6, .2, 1) both; }
+@keyframes kenburns { from { transform: scale(1.14); } to { transform: scale(1); } }
+.page-hero__mark { position: absolute; left: -0.04em; bottom: -0.2em; z-index: -1; pointer-events: none; font-family: var(--font-en); font-size: clamp(64px, 12vw, 190px); line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; white-space: nowrap; color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.28); }
+.ttl-x .ln { display: block; overflow: hidden; padding-bottom: 0.06em; }
+.ttl-x .ln > span { display: inline-block; }
+.js .ttl-x.reveal { opacity: 1; transform: none; }
+.js .ttl-x .ln > span { transform: translateY(110%); transition: transform 1.2s var(--ease) .1s; }
+.js .ttl-x.is-visible .ln > span { transform: none; }
+.js .ttl-x.is-visible .ln:nth-child(2) > span { transition-delay: .24s; }
+.js .ttl-x.is-visible .ln:nth-child(3) > span { transition-delay: .38s; }
+
+/* サービス概要：朱の太い線 */
+.is-corp .overview__text { border-left: 3px solid var(--c-shu); }
+
+/* お悩みと解決策：番号を大きく、矢印が流れる、カードが浮く */
+.is-corp .issue { position: relative; overflow: hidden; transition: translate .5s var(--ease), box-shadow .5s var(--ease); }
+.is-corp .issue::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c-shu); transform: scaleY(0); transform-origin: top; transition: transform .9s var(--ease) .2s; }
+.is-corp .issue.is-in::before { transform: none; }
+@media (hover: hover) { .is-corp .issue:hover { translate: 0 -6px; box-shadow: var(--shadow-lg); } }
+.is-corp .issue__num { font-size: 22px; color: var(--c-shu); letter-spacing: 0.12em; }
+.is-corp .issue__step-num { background: var(--c-shu); }
+.is-corp .issue__bridge span { height: 2px; background: linear-gradient(90deg, var(--c-shu) 50%, rgba(217, 80, 43, 0.2) 50%) 0 0 / 16px 2px repeat-x; }
+.is-corp .issue.is-in .issue__bridge span { animation: dash-flow 1.2s linear infinite; }
+.is-corp .issue__bridge span::after { border-color: var(--c-shu); border-width: 2px 2px 0 0; }
+@keyframes dash-flow { to { background-position: 16px 0; } }
+
+/* ご支援の流れ：線が朱で引かれ、点が順に灯る */
+.is-corp .timeline__step::before { background: var(--c-line-strong); }
+.is-corp .timeline__step > .timeline__num { color: var(--c-shu); font-weight: 500; }
+.is-corp .timeline { position: relative; }
+.is-corp .timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 2px; margin-top: -0.5px; z-index: 1; background: var(--c-shu); transform: scaleX(0); transform-origin: left; transition: transform 1.8s var(--ease); }
+.is-corp .timeline.is-in::before { transform: none; }
+.is-corp .timeline__step::after { z-index: 2; transition: background .4s, border-color .4s, transform .4s var(--ease); }
+.is-corp .timeline.is-in .timeline__step::after { background: var(--c-shu); border-color: var(--c-shu); transform: scale(1.25); }
+.is-corp .timeline.is-in .timeline__step:nth-child(1)::after { transition-delay: .1s; }
+.is-corp .timeline.is-in .timeline__step:nth-child(2)::after { transition-delay: .5s; }
+.is-corp .timeline.is-in .timeline__step:nth-child(3)::after { transition-delay: .9s; }
+.is-corp .timeline.is-in .timeline__step:nth-child(4)::after { transition-delay: 1.3s; }
+.is-corp .timeline__term { border-radius: 999px; border-color: var(--c-forest); color: var(--c-forest); }
+@media (max-width: 899px) { .is-corp .timeline::before { display: none; } }
+
+/* ご相談の流れ（TOP・お問い合わせ）：画面に入ると番号が順にはねる */
+.is-corp .flow.is-in .flow__num { animation: pop .7s var(--ease) both; }
+.is-corp .flow.is-in .flow__step:nth-child(2) .flow__num { animation-delay: .15s; }
+.is-corp .flow.is-in .flow__step:nth-child(3) .flow__num { animation-delay: .3s; }
+.is-corp .flow.is-in .flow__step:nth-child(4) .flow__num { animation-delay: .45s; }
+@keyframes pop { 0% { transform: translateY(14px) scale(.7); opacity: 0; } 60% { transform: translateY(-4px) scale(1.08); opacity: 1; } 100% { transform: none; } }
+
+/* よくあるご質問：Q を朱に */
+.is-corp .faq__mark { color: var(--c-shu); font-weight: 400; }
+
+/* そのほかのサービス：ホバーで緑が満ちる */
+.is-corp .related__card { position: relative; isolation: isolate; overflow: hidden; }
+.is-corp .related__card::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--c-forest); transform: translateY(101%); transition: transform .6s var(--ease); }
+.is-corp .related__card, .is-corp .related__card * { transition: color .5s; }
+@media (hover: hover) {
+  .is-corp .related__card:hover { background: var(--c-bg); }
+  .is-corp .related__card:hover::before { transform: none; }
+  .is-corp .related__card:hover, .is-corp .related__card:hover * { color: #fff; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-corp .page-hero--photo .page-hero__bg { animation: none; }
+  .js .ttl-x .ln > span { transform: none; transition: none; }
+  .is-corp .issue.is-in .issue__bridge span, .is-corp .flow.is-in .flow__num { animation: none; }
+}
+/* 事業紹介の左の面：文字を上下中央に置き、上に空きを作らない */
+.vrow__head { justify-content: center; min-height: 0; }
+@media (max-width: 899px) { .vrow__head { min-height: 0; padding: 32px 24px; } }

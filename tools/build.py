@@ -233,6 +233,21 @@ STATEMENT = dict(
 )
 
 
+# TOPの事業紹介：事業の括りごとに「届ける価値」を大きく見せる
+TOP_VALUES = {
+    "hospitality": dict(en="Revive & Run", value="眠る空き家を、<br>稼ぐ宿に変える", photo="own-renovation-room", w=1502, h=2000),
+    "webmarketing": dict(en="Reach & Hire", value="地域の魅力を、<br>人に届ける", photo="laptop-dashboard", w=1516, h=1080),
+}
+# 事業ごとのひとこと（何をしてくれる事業か）
+SERVICE_CATCH = {
+    "operation": "空き家を、宿として再生・運営",
+    "management": "開業から日々の運営まで伴走",
+    "partnership": "民泊向きの物件選びから運営まで",
+    "marketing": "問い合わせと売上を伸ばす",
+    "recruit": "地方企業の人材確保を支援",
+}
+
+
 # ---------------------------------------------------------------- layout
 
 import json
@@ -1497,10 +1512,11 @@ def service_page(key, name):
     ph, pw, phh, ppos, *bright = SERVICE_PHOTOS[key]
     body = f"""    <section class="page-hero page-hero--photo{" page-hero--bright" if bright else ""}">
       <img class="page-hero__bg" src="images/photos/{ph}.jpg" alt="" width="{pw}" height="{phh}" style="object-position:{ppos}" fetchpriority="high" decoding="async">
+      <span class="page-hero__mark" aria-hidden="true">{e(SERVICE_INTRO[key][0])}</span>
       <div class="container svc-hero">
         <div class="svc-hero__text">
           <p class="page-hero__label reveal">{e(name)}</p>
-          <h1 class="page-hero__title reveal" data-delay="1">{br(d["message"])}</h1>
+          <h1 class="page-hero__title ttl-x reveal" data-delay="1">{"".join(f'<span class="ln"><span>{e(l)}</span></span>' for l in d["message"])}</h1>
           <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「{e(PERSONAS[key])}」</p>
           <div class="page-hero__actions reveal" data-delay="2">
             <a href="#{key}-issues" class="btn btn--ghost btn--on-photo">お悩みと解決策を見る</a>
@@ -1640,25 +1656,28 @@ def index_page():
     names = dict(SERVICES)
     num = 0
     groups_html = []
+    # どんな価値を届けるために、どの事業をしているか（左に価値、右に事業。スマホは事業を横スワイプ）
     for g in GROUPS:
+        v = TOP_VALUES[g["key"]]
         cards = []
         for i, k in enumerate(g["services"]):
             num += 1
             en, summary, ic = SERVICE_INTRO[k]
-            cards.append(f"""            <a href="service-{k}.html" class="persona__card biz-card reveal" data-delay="{i % 3}">
-              <span class="biz-card__num">{num:02d}</span>
-              <div class="biz-card__body">
-                <span class="biz-card__en">{e(en)}</span>
-                <h3 class="biz-card__name">{e(names[k])}</h3>
-                <p class="biz-card__text">{e(summary)}</p>
-              </div>
-              <span class="persona__to">詳しく見る {ARROW}</span>
+            cards.append(f"""            <a href="service-{k}.html" class="vsvc">
+              <span class="vsvc__num" aria-hidden="true">{num:02d}</span>
+              <span class="vsvc__catch">{e(SERVICE_CATCH[k])}</span>
+              <h3 class="vsvc__name">{e(names[k])}</h3>
+              <p class="vsvc__text">{e(summary)}</p>
+              <span class="vsvc__go" aria-hidden="true"></span>
             </a>""")
-        groups_html.append(f"""        <div class="persona-group">
-          <div class="persona-group__head reveal">
-            <p class="group-label"><span>{e(g["en"])}</span>{e(g["name"])}</p>
+        groups_html.append(f"""        <div class="vrow vrow--{len(g["services"])} reveal">
+          <div class="vrow__head">
+            {photo(v["photo"], cls="vrow__bg", width=v["w"], height=v["h"], sizes="(max-width: 899px) 100vw, 420px")}
+            <span class="vrow__en">{e(v["en"])}</span>
+            <p class="vrow__value">{v["value"]}</p>
+            <p class="vrow__name">{e(g["name"])}</p>
           </div>
-          <div class="persona persona--{len(g["services"])}">
+          <div class="vrow__list">
 {chr(10).join(cards)}
           </div>
         </div>""")
