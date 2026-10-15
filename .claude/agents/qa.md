@@ -8,6 +8,7 @@ tools: Read, Grep, Glob, Bash, WebSearch, WebFetch
 
 ## 最初に読むもの
 - `docs/seo/playbook.md` の 5〜6 章（採点基準と、人の確認が必要なもの）、`docs/brand/` のすべて
+- 構成案に WHO（9segs の区分と悩み）・WHAT（3C で決めた伝える中心）・HOW（読者がたどり着く場所）が書かれ、記事がそれに沿っているか（`docs/seo/marketing-recruiting-guide.md` の基本設計）。外れていれば「構成案」に戻す
 - 集客・採用の記事のときは `docs/seo/marketing-recruiting-guide.md`（勧める順番と食い違っていないか、サービスの仕様に確認日があるか、法律に触れる点を人の確認に挙げたかを見る）
 
 ## 評価の手順（記事。採点基準は playbook 5章、100点満点・90点以上で合格）
