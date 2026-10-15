@@ -1704,7 +1704,6 @@ def index_page():
       </div>
       <div class="container hero__inner">
         <h1 class="hero__title hero__title--x reveal"><span class="ln"><span>地域に眠る</span></span><span class="ln"><span>価値を、</span></span><span class="ln"><span>日本の<em>活力</em>に。</span></span></h1>
-        <p class="hero__sub reveal" data-delay="3">「暮らすように旅する」滞在を軸に、<br>宿の再生から集客・採用、まちづくりまで。</p>
         <div class="hero__actions reveal" data-delay="3">
           <a href="contact.html" class="btn">無料で相談する {ARROW}</a>
           <a href="#service" class="btn btn--ghost btn--on-photo">事業紹介を見る</a>

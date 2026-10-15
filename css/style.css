@@ -3377,7 +3377,6 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 
 /* ---------- 不動産の「型」を破る ---------- */
 .statement { position: relative; overflow: hidden; padding: var(--section-y) 0; background: var(--c-kinari); }
-.statement::after { content: "BREAK THE MOLD"; position: absolute; right: -0.06em; bottom: -0.2em; font-family: var(--font-en); font-size: clamp(80px, 15vw, 240px); line-height: 1; letter-spacing: 0.02em; color: transparent; -webkit-text-stroke: 1px rgba(26, 71, 42, 0.16); white-space: nowrap; pointer-events: none; }
 .statement .container { position: relative; z-index: 1; }
 .statement__lead { margin-top: 12px; font-family: var(--font-serif); font-size: clamp(18px, 2vw, 24px); letter-spacing: 0.1em; color: var(--c-sub); }
 .statement__strikes { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 4px 40px; }
