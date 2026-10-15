@@ -226,7 +226,7 @@ HERO_SLIDES = [
 # 「不動産の型を破る」宣言（TOPのファーストビューのすぐ下）
 STATEMENT = dict(
     en="Break the mold",
-    lead="不動産の「型」は、いつも",
+    lead="空き家の話は、たいてい",
     strikes=["売って、終わり。", "貸して、終わり。", "仲介して、終わり。"],
     title='<n-b>その「終わり」を、</n-b><br><em>まちの始まり</em>に。',
     text="空き家を自らの手で宿に再生し、運営し、旅行者をまちへ送り出す。眠っていた家を、人とお金がめぐる地域の拠点に変えていきます。",
@@ -1704,7 +1704,6 @@ def index_page():
       </div>
       <div class="container hero__inner">
         <h1 class="hero__title hero__title--x reveal"><span class="ln"><span>地域に眠る</span></span><span class="ln"><span>価値を、</span></span><span class="ln"><span>日本の<em>活力</em>に。</span></span></h1>
-        <p class="hero__sub reveal" data-delay="3">「暮らすように旅する」滞在を軸に、<br>宿の再生から集客・採用、まちづくりまで。</p>
         <div class="hero__actions reveal" data-delay="3">
           <a href="contact.html" class="btn">無料で相談する {ARROW}</a>
           <a href="#service" class="btn btn--ghost btn--on-photo">事業紹介を見る</a>
