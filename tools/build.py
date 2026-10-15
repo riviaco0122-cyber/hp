@@ -547,7 +547,7 @@ def relative_to_root(html, filename):
         if url.startswith("../"):
             return m.group(0) if is_page else f'{attr}="../{url}"'
         return f'{attr}="{(page_prefix if is_page else asset_prefix)}{url}"'
-    html = _re.sub(r'\b(href|src)="([^"]*)"', fix, html)
+    html = _re.sub(r'\b(href|src|poster)="([^"]*)"', fix, html)
     # srcset（"画像 幅w, 画像 幅w"）の各画像にも同じ直しをかける
     def fix_srcset(m):
         parts = []
@@ -2422,6 +2422,7 @@ def spec_md():
     w("* サムネイルは記事ごとの写真（images/photos/w/ の WebP 軽量版。大きな表示では元の写真）。記事トップは原寸の写真を使い、OGP画像にも同じ写真を設定する。割り当ては build 内の ARTICLE_PHOTOS。")
     w("* 写真の配置：TOPヒーロー（素材⑧・暗めのグラデーションを重ねて白文字）、相談CTA（全ページ共通）、各サービスページTOPの背景写真、代表者の顔写真。写真は原寸のまま格納し再圧縮しない。")
     w("* トップページ（運営実績の下）と、各サービスページ（よくある質問の下）にも関連記事を3件まで表示する。")
+    w("* 解説動画「1分半でわかる、アキヤドへのご相談」（videos/akiyado-guide.mp4・1920×1080・ナレーションと字幕入り）を、アキヤドのプラン（media/plans.html）の冒頭と、メディアトップの「アキヤドに任せると、どうなる？」の帯に置く。押したときだけ読み込む。動画は tools/video/make_explainer.py で作る。GA4 に video_play・video_complete を送る。")
     w("")
     w("### 記事ページの構成（SEO・AIO対策）")
     w("1. カテゴリ・タイトル（検索されるキーワードを前半に）・公開日・更新日・読了目安・執筆者")
@@ -3890,6 +3891,7 @@ def media_plans_page():
 
     <section class="section msec msec--first">
       <div class="container">
+        {guide_video()}
         <p class="mjump__label reveal">こんなお悩みなら</p>
         <ul class="mjump reveal">{jump}</ul>
         <div class="msvcs">
@@ -3926,10 +3928,31 @@ def media_plans_page():
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
               {"@type": "ListItem", "position": 1, "name": "TOP", "item": f"{SITE}/"},
               {"@type": "ListItem", "position": 2, "name": "アキヤド", "item": f"{SITE}/media.html"},
-              {"@type": "ListItem", "position": 3, "name": "アキヤドのプラン"}]}]
+              {"@type": "ListItem", "position": 3, "name": "アキヤドのプラン"}]},
+          guide_video_ld(f"{SITE}/media/plans.html")]
     page("media/plans.html", "アキヤドのプラン｜空き家の買取・借り上げ、民泊の開業・運営支援｜アキヤド",
          "空き家の買取、借り上げ（固定家賃・売上シェア）、民泊の開業・運営代行まで。宿を運営するアキヤドに任せた場合のプランと条件の目安、ご相談から開業までの流れをまとめています。",
          body, current="media", jsonld=ld, mnav="plans")
+
+
+# ---------------------------------------------------------------- アキヤド：ご相談の解説動画（tools/video/make_explainer.py で作り、videos/ に軽量版を置く）
+GUIDE_VIDEO = dict(src="videos/akiyado-guide.mp4", poster="images/video/akiyado-guide-poster.jpg", duration="PT1M34S", upload="2026-10-15T00:00:00+09:00",
+                   title="1分半でわかる、アキヤドへのご相談",
+                   lead="空き家を放っておくと、何が起きるのか。売る・貸す・宿をはじめる、どの道があるのか。無料相談で分かることまで、アニメで紹介します。")
+
+
+def guide_video(compact=False):
+    """解説動画のブロック。押したときだけ読み込む（preload="none"）。字幕は映像に入っている"""
+    v = GUIDE_VIDEO
+    head = "" if compact else f"""<div class="mvideo__text"><p class="msec__en">Movie</p><h2 class="msec__title">{e(v["title"])}</h2><p class="mvideo__lead">{e(v["lead"])}</p></div>"""
+    return f"""<div class="mvideo{' mvideo--compact' if compact else ''} reveal">{head}<div class="mvideo__frame"><video class="mvideo__player" controls playsinline preload="none" poster="{v["poster"]}" width="1920" height="1080" data-video="akiyado-guide"><source src="{v["src"]}" type="video/mp4"></video></div></div>"""
+
+
+def guide_video_ld(page_url):
+    v = GUIDE_VIDEO
+    return {"@context": "https://schema.org", "@type": "VideoObject", "name": v["title"], "description": v["lead"],
+            "thumbnailUrl": f"{SITE}/{v['poster']}", "contentUrl": f"{SITE}/{v['src']}", "uploadDate": v["upload"], "duration": v["duration"],
+            "inLanguage": "ja", "url": page_url}
 
 
 # ---------------------------------------------------------------- アキヤド：サービスごとのページ（読者の状況ごとに、悩み→解決→プラン→流れ→実績→質問）
@@ -4694,6 +4717,7 @@ def media_index_page():
             <p class="mplanband__lead">記事を運営する私たちは、実際に宿を運営しています。売る・貸す・宿をはじめる、それぞれのプランと条件の目安をまとめました。</p>
           </div>
           <ul class="mplanband__list">{"".join(f'<li><a href="media/{MEDIA_SERVICE_BY_KEY[k]["slug"]}.html"><span class="mplanband__who">{e(l)}</span><span class="mplanband__names">{e(MEDIA_SERVICE_BY_KEY[k]["name"])}</span><span class="mplanband__arrow">→</span></a></li>' for k, l, _, _, names in MEDIA_PLAN_GROUPS)}</ul>
+          <div class="mplanband__video"><p class="mplanband__video-label">{e(GUIDE_VIDEO["title"])}</p>{guide_video(compact=True)}</div>
         </div>
       </div>
     </section>
