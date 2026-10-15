@@ -32,23 +32,23 @@ function person(x,y,s,o){ // o:{shirt,hair,pose,t,flip,tag}
   const bob=Math.sin(t*3)*3;
   let arms='';
   const arm=(x1,y1,x2,y2,c=sh)=>`<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${c}" stroke-width="30" stroke-linecap="round"/><circle cx="${x2}" cy="${y2}" r="17" fill="${SKIN}"/>`;
-  if(pose==='think'){arms=arm(-34,-190,-70,-110)+arm(34,-190,18,-290-bob*0)}
-  else if(pose==='cheer'){const w=Math.sin(t*6)*12;arms=arm(-34,-190,-95,-290+w)+arm(34,-190,95,-290-w)}
-  else if(pose==='point'){arms=arm(-34,-190,-62,-110)+arm(34,-190,140,-250)}
-  else if(pose==='type'){arms=arm(-34,-190,-20,-130)+arm(34,-190,40,-130)}
-  else {arms=arm(-34,-190,-62,-110)+arm(34,-190,62,-110)}
-  const mouth=(o.mood==='worry')?`<path d="M-14 -317 q14 -10 28 0" stroke="#7a3b2e" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<path d="M-16 -322 q16 16 32 0" stroke="#7a3b2e" stroke-width="5" fill="none" stroke-linecap="round"/>`;
-  const brow=(o.mood==='worry')?`<path d="M-30 -352 l16 -7M30 -352 l-16 -7" stroke="${hair}" stroke-width="5" stroke-linecap="round"/>`:'';
+  if(pose==='think'){arms=arm(-34,-200,-70,-110)+arm(34,-200,26,-238)}
+  else if(pose==='cheer'){const w=Math.sin(t*6)*12;arms=arm(-34,-205,-95,-300+w)+arm(34,-205,95,-300-w)}
+  else if(pose==='point'){arms=arm(-34,-200,-62,-110)+arm(34,-200,140,-250)}
+  else if(pose==='type'){arms=arm(-34,-200,-20,-130)+arm(34,-200,40,-130)}
+  else {arms=arm(-34,-200,-62,-110)+arm(34,-200,62,-110)}
+  const mouth=(o.mood==='worry')?`<path d="M-14 -289 q14 -10 28 0" stroke="#7a3b2e" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<path d="M-16 -294 q16 16 32 0" stroke="#7a3b2e" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+  const brow=(o.mood==='worry')?`<path d="M-30 -324 l16 -7M30 -324 l-16 -7" stroke="${hair}" stroke-width="5" stroke-linecap="round"/>`:'';
   const tag=o.tag?`<g transform="translate(0,-170)"><rect x="-58" y="0" width="116" height="40" rx="10" fill="#fff" opacity=".95"/><text x="0" y="29" text-anchor="middle" font-size="26" font-weight="900" fill="${DG}">${o.tag}</text></g>`:'';
   return `<g transform="translate(${x},${y+bob}) scale(${o.flip?-s:s},${s})">
   <ellipse cx="0" cy="8" rx="95" ry="16" fill="#000" opacity=".12"/>
   <rect x="-38" y="-130" width="30" height="125" rx="14" fill="${pants}"/><rect x="8" y="-130" width="30" height="125" rx="14" fill="${pants}"/>
-  <rect x="-48" y="-235" width="96" height="125" rx="34" fill="${sh}"/>
+  <rect x="-13" y="-258" width="26" height="30" rx="10" fill="${SKIN}"/>
+  <rect x="-48" y="-238" width="96" height="128" rx="34" fill="${sh}"/>
+  <circle cx="0" cy="-300" r="52" fill="${SKIN}"/>
+  <path d="M-54 -304 q4 -62 54 -62 q54 0 54 62 q-18 -34 -56 -36 q-38 0 -52 36z" fill="${hair}"/>
+  <circle cx="-19" cy="-304" r="5.5" fill="#2b2b33"/><circle cx="19" cy="-304" r="5.5" fill="#2b2b33"/>${brow}${mouth}
   ${arms}
-  <rect x="-13" y="-262" width="26" height="30" rx="10" fill="${SKIN}"/>
-  <circle cx="0" cy="-328" r="52" fill="${SKIN}"/>
-  <path d="M-54 -332 q4 -62 54 -62 q54 0 54 62 q-18 -34 -56 -36 q-38 0 -52 36z" fill="${hair}"/>
-  <circle cx="-19" cy="-332" r="5.5" fill="#2b2b33"/><circle cx="19" cy="-332" r="5.5" fill="#2b2b33"/>${brow}${mouth}
   ${o.tag?`</g><g transform="translate(${x},${y+bob}) scale(${s})">${tag}`:''}</g>`;
 }
 function house(x,y,s,k,o={}){ // k:0=古い空き家 1=再生した宿
@@ -146,8 +146,8 @@ function scene(i,t,lt){
     s+=sub(['初期費用・月商・純利益を、オーナーの申告の数字で。','事例も公開しています。'],seg(lt,2.4,3.1));
   }
   if(i===6){ // CTA
-    s+=person(300,800,1.3,{pose:'cheer',t:lt,shirt:G});
-    s+=person(1620,800,1.3,{pose:'cheer',t:lt+1,shirt:T,hair:'#4a3328',tag:'アキヤド'});
+    s+=person(230,800,1.3,{pose:'cheer',t:lt,shirt:G});
+    s+=person(1690,800,1.3,{pose:'cheer',t:lt+1,shirt:T,hair:'#4a3328',tag:'アキヤド'});
     s+=bubble(960,400,980,230,'まずは、無料でご相談ください',68,bk(seg(lt,.3,1.1)));
     s+=`<g opacity="${eo(seg(lt,1.3,2))}"><rect x="700" y="560" width="520" height="100" rx="50" fill="${T}"/><text x="960" y="630" text-anchor="middle" font-size="56" font-weight="900" fill="#fff" letter-spacing="4">rivia-co.com</text></g>`;
     s+=sub(['相談・お見積りは無料、全国対応です。'],seg(lt,2,2.7));
