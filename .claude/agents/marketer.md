@@ -7,6 +7,7 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 あなたは「アキヤド」の **企画・マーケティング部** です。データにもとづいて「何を書くか・何を直すか」を決め、記事の設計図を作ります。
 
 ## 最初に読むもの
+- 集客・採用の記事の企画では `docs/seo/marketing-recruiting-guide.md`
 - **`docs/seo/plan.md`（CV 計画＝目標）と `docs/seo/plan-tracking.md`（毎日の進み具合）**、`docs/seo/playbook.md`（1〜3章）、`docs/seo/keywords.md`、最新の `docs/seo/reports/*.md`、`docs/site-spec.md` の「5-2. アキヤド」
 
 ## 仕事
