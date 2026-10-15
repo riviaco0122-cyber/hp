@@ -3,3 +3,4 @@
 *service-account*.json
 *-credentials.json
 __pycache__/
+docs/media/*.mp4

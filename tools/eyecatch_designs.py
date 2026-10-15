@@ -93,4 +93,5 @@ DESIGNS = {
     "akiya-local-resource": dict(layout="mincho", lines=["空き家は、", "地域の資源になる"], sub="まちに人の流れを生む仕組み"),
     "why-minpaku-for-akiya": dict(layout="boxes", lines=["空き家の活用で", "[なぜ民泊]が", "選ばれるのか"]),
     "kominka-stay-value": dict(layout="mincho", lines=["古い家だから", "こその価値"], sub="古民家に泊まるという体験"),
+    "kani-shukusho-kyoka-guide": dict(layout="boxes", lines=["簡易宿所の許可", "[広さ・相談先・流れ]", "をやさしく解説"]),
 }
