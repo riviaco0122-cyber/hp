@@ -44,7 +44,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700&text=%E3%82%A2%E3%82%AD%E3%83%A4%E3%83%89&display=swap" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="../css/style.css?v=fff9a377">
+  <link rel="stylesheet" href="../css/style.css?v=89033c00">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -54,11 +54,12 @@
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://rivia-co.com/about.html#organization", "name": "合同会社RIVIA&CO.", "alternateName": "RIVIA&CO. LLC", "url": "https://rivia-co.com/", "logo": "https://rivia-co.com/images/logo/logo.png", "foundingDate": "2026-09-01", "founder": [{"@type": "Person", "@id": "https://rivia-co.com/about.html#ishihara", "name": "石原 佑真"}, {"@type": "Person", "@id": "https://rivia-co.com/about.html#katai", "name": "片井 進太"}], "address": {"@type": "PostalAddress", "postalCode": "121-0012", "addressRegion": "東京都", "addressLocality": "足立区", "streetAddress": "青井六丁目8番8号 Grand Maison青井201", "addressCountry": "JP"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "RIVIA&CO.", "alternateName": ["合同会社RIVIA&CO.", "リビアアンドコー"], "url": "https://rivia-co.com/"}</script>
 </head>
-<body>
+<body class="is-corp is-top">
+  <div class="progress" aria-hidden="true"><span></span></div>
 
   <header class="header">
     <div class="container header__inner">
-      <a href="index.html" class="logo" aria-label="RIVIA&amp;CO. トップページ"><img src="../images/logo/logo.svg" alt="RIVIA&amp;CO." width="325" height="64"></a>
+      <a href="/" class="logo" aria-label="RIVIA&amp;CO. トップページ"><img src="../images/logo/logo.svg" alt="RIVIA&amp;CO." width="325" height="64"><img class="logo__on-photo" src="../images/logo/logo-white.svg" alt="" width="325" height="64" aria-hidden="true"></a>
 
       <nav class="gnav" id="gnav" aria-label="メインナビゲーション">
         <ul class="gnav__list">
@@ -67,10 +68,10 @@
             <button type="button" class="gnav__link" aria-expanded="false" aria-controls="subnav-service"><n-w class="j">事業内容</n-w> <span class="gnav__caret" aria-hidden="true"></span></button>
             <ul class="subnav" id="subnav-service">
               <li class="subnav__intents"><ul><li class="subnav__aud">個人の<wbr>お客様</li><li><a href="service-operation.html"><span class="subnav__text"><span class="subnav__intent"><n-w>空き家を活かしたい・売りたい</n-w></span><span class="subnav__name"><n-w>空き家再生事業</n-w></span></span> <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-management.html"><span class="subnav__text"><span class="subnav__intent"><n-w>民泊を始めたい・任せたい</n-w></span><span class="subnav__name"><n-w>宿泊施設 開業・運営支援事業</n-w></span></span> <span class="arrow" aria-hidden="true"></span></a></li><li class="subnav__aud">法人の<wbr>お客様</li><li><a href="service-management.html"><span class="subnav__text"><span class="subnav__intent"><n-w>民泊を始めたい・任せたい</n-w></span><span class="subnav__name"><n-w>宿泊施設 開業・運営支援事業</n-w></span></span> <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-partnership.html"><span class="subnav__text"><span class="subnav__intent"><n-w>物件を民泊用に売りたい</n-w></span><span class="subnav__name"><n-w>不動産事業者様との協業</n-w></span></span> <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-marketing.html"><span class="subnav__text"><span class="subnav__intent">集客を伸ばしたい</span><span class="subnav__name">WEB集客支援事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-recruit.html"><span class="subnav__text"><span class="subnav__intent">人材を<wbr>採用したい</span><span class="subnav__name">WEB採用支援事業</span></span> <span class="arrow" aria-hidden="true"></span></a></li></ul></li>
-              <li class="subnav__foot"><a href="index.html#service">すべての<wbr>サービスを見る <span class="arrow" aria-hidden="true"></span></a></li>
+              <li class="subnav__foot"><a href="/#service">すべての<wbr>サービスを見る <span class="arrow" aria-hidden="true"></span></a></li>
             </ul>
           </li>
-          <li><a href="index.html#project" class="gnav__link">実績</a></li>
+          <li><a href="/#project" class="gnav__link">実績</a></li>
           <li><a href="media.html" class="gnav__link">メディア</a></li>
           <li><a href="careers.html" class="gnav__link">採用情報</a></li>
           <li><a href="contact.html" class="gnav__link">お問い合わせ</a></li>
@@ -82,17 +83,45 @@
   </header>
 
   <main>
-    <section class="hero hero--photo">
-      <img class="hero__bg" src="../images/photos/autumn-garden.jpg" alt="" width="1616" height="1079" fetchpriority="high" decoding="async">
-      <div class="container">
-        <h1 class="hero__title reveal">地域に眠る価値を、<br>日本の<wbr>活力に。</h1>
-        <p class="hero__sub reveal" data-delay="2">「暮らすように<wbr>旅する」<wbr>滞在を<wbr>軸に、<br>宿の再生から<wbr>集客・採用、<wbr>まちづくりまで。</p>
+    <section class="hero hero--photo hero--x">
+      <div class="hero__slides" aria-hidden="true">
+        <img class="hero__bg is-active" src="../images/photos/autumn-garden.jpg" alt="" width="1616" height="1079" style="object-position:50% 45%" fetchpriority="high" decoding="async">
+        <img class="hero__bg" src="../images/photos/thatched-house.jpg" alt="" width="1920" height="1080" style="object-position:50% 60%" loading="lazy" decoding="async">
+        <img class="hero__bg" src="../images/photos/riverside-town.jpg" alt="" width="1620" height="1080" style="object-position:50% 55%" loading="lazy" decoding="async">
+        <img class="hero__bg" src="../images/photos/fuji-lake.jpg" alt="" width="1620" height="1080" style="object-position:50% 40%" loading="lazy" decoding="async">
+      </div>
+      <div class="container hero__inner">
+        <p class="hero__kicker reveal"><span>まちづくり</span><i aria-hidden="true">×</i><span>観光づくり</span></p>
+        <h1 class="hero__title hero__title--x reveal"><span class="ln"><span>地域に眠る</span></span><span class="ln"><span>価値を、</span></span><span class="ln"><span>日本の<em>活力</em>に。</span></span></h1>
+        <p class="hero__sub reveal" data-delay="3">「暮らすように<wbr>旅する」<wbr>滞在を<wbr>軸に、<br>宿の再生から<wbr>集客・採用、<wbr>まちづくりまで。</p>
         <div class="hero__actions reveal" data-delay="3">
           <a href="contact.html" class="btn">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
           <a href="#service" class="btn btn--ghost btn--on-photo">事業紹介を見る</a>
         </div>
       </div>
-      <span class="hero__scroll" aria-hidden="true">Scroll</span>
+      <a href="#statement" class="hero__badge" aria-label="次のセクションへ">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="hero-badge-path" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#hero-badge-path" textLength="284" lengthAdjust="spacing">LOCAL VALUE ✳ JAPAN'S ENERGY ✳ RIVIA&amp;CO. ✳</textPath></text></svg>
+        <span class="hero__badge-arrow" aria-hidden="true"></span>
+      </a>
+      <div class="hero__count" aria-hidden="true"><span class="hero__count-n">01</span><i><b></b></i><span>04</span></div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track"><div class="marquee__group"><span>Revive</span><i aria-hidden="true">✳</i><span>空き家を、<wbr>宿に</span><i aria-hidden="true">✳</i><span>Visit</span><i aria-hidden="true">✳</i><span>まちを<wbr>訪れる</span><i aria-hidden="true">✳</i><span>Spend</span><i aria-hidden="true">✳</i><span>まちで<wbr>食べて買う</span><i aria-hidden="true">✳</i><span>Return</span><i aria-hidden="true">✳</i><span>また訪れる</span><i aria-hidden="true">✳</i></div><div class="marquee__group"><span>Revive</span><i aria-hidden="true">✳</i><span>空き家を、<wbr>宿に</span><i aria-hidden="true">✳</i><span>Visit</span><i aria-hidden="true">✳</i><span>まちを<wbr>訪れる</span><i aria-hidden="true">✳</i><span>Spend</span><i aria-hidden="true">✳</i><span>まちで<wbr>食べて買う</span><i aria-hidden="true">✳</i><span>Return</span><i aria-hidden="true">✳</i><span>また訪れる</span><i aria-hidden="true">✳</i></div></div>
+    </div>
+
+    <section class="statement" id="statement">
+      <div class="container">
+        <span class="eyebrow reveal">Break the mold</span>
+        <p class="statement__lead reveal">不動産の<wbr>「型」は、<wbr>いつも</p>
+        <ul class="statement__strikes">
+          <li class="statement__strike reveal" data-delay="0"><s>売って、<wbr>終わり。</s></li>
+          <li class="statement__strike reveal" data-delay="1"><s>貸して、<wbr>終わり。</s></li>
+          <li class="statement__strike reveal" data-delay="2"><s>仲介して、<wbr>終わり。</s></li>
+        </ul>
+        <h2 class="statement__title reveal">私たちは、<br class="sp-only">そこから<em>始める</em>。</h2>
+        <p class="statement__text reveal" data-delay="1"><n-w class="j">空き家を自らの手で宿に再生し、運営し、旅行者をまちへ送り出す。眠っていた家を、人とお金がめぐる地域の拠点に変えていきます。</n-w></p>
+      </div>
     </section>
 
     <section class="section vision" id="vision">
@@ -107,6 +136,7 @@
           </div>
           <div class="cycle reveal" data-delay="1" role="img" aria-label="空き家を宿に再生し、旅行者がまちを訪れ、まちで食べて買い、ファンになって再び訪れる。その収益で次の空き家を再生する、地域の経済循環">
             <svg class="cycle__ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="36"/><path d="M1.5 0-1.2-1.3v2.6z" transform="translate(75.46 24.54) rotate(45)"/><path d="M1.5 0-1.2-1.3v2.6z" transform="translate(75.46 75.46) rotate(135)"/><path d="M1.5 0-1.2-1.3v2.6z" transform="translate(24.54 75.46) rotate(225)"/><path d="M1.5 0-1.2-1.3v2.6z" transform="translate(24.54 24.54) rotate(315)"/></svg>
+            <span class="cycle__orbit" aria-hidden="true"><i></i></span>
             <p class="cycle__center" aria-hidden="true"><span class="cycle__center-en">Local cycle</span><span><n-w>地域に、</n-w></span><span><n-w>人とお金がめぐる</n-w></span></p>
             <ol class="cycle__nodes" aria-hidden="true">
             <li class="cycle__node cycle__node--1"><span class="cycle__en">01 Revive</span><span class="cycle__t"><span>空き家を、</span><span>宿に再生</span></span></li>
@@ -205,7 +235,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section reasons-sec">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Why RIVIA</span>
@@ -246,7 +276,7 @@
             <h3 class="project__name">NODE Shimoda</h3>
             <p class="project__meta"><n-w>静岡県下田市 ｜ 一棟貸しバケーションレンタル</n-w></p>
             <p class="project__desc"><n-w>下田市旧町内の空き家を改修した滞在型アパート。RIVIAが運営・集客・DX化を担っています。</n-w></p>
-            <div class="project__rating"><strong><span class="project__star" aria-hidden="true">★</span>4.88</strong><span>Airbnb評価<wbr>（51件）</span></div>
+            <div class="project__rating"><strong><span class="project__star" aria-hidden="true">★</span><span data-count="4.88">4.88</span></strong><span>Airbnb評価<wbr>（51件）</span></div>
             <span class="project__link">施設サイトを見る（別タブで<wbr>開きます）<wbr> <span class="arrow" aria-hidden="true"></span></span>
           </div>
         </a>
@@ -352,21 +382,22 @@
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
-          <a href="index.html" class="logo"><img src="../images/logo/logo.svg" alt="RIVIA&amp;CO." width="325" height="64" loading="lazy"></a>
+          <a href="/" class="logo"><img src="../images/logo/logo-white.svg" alt="RIVIA&amp;CO." width="325" height="64" loading="lazy"></a>
           <p class="footer__copy">地域に眠る価値を、<wbr>日本の<wbr>活力に。</p>
         </div>
         <a href="contact.html" class="footer__cta">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
       </div>
       <div class="footer__intents"><div class="footer__aud"><p>個人の<wbr>お客様</p><ul><li><a href="service-operation.html">空き家を<wbr>活かしたい・売りたい <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-management.html">民泊を<wbr>始めたい・任せたい <span class="arrow" aria-hidden="true"></span></a></li></ul></div><div class="footer__aud"><p>法人の<wbr>お客様</p><ul><li><a href="service-management.html">民泊を<wbr>始めたい・任せたい <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-partnership.html">物件を<wbr>民泊用に<wbr>売りたい <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-marketing.html">集客を伸ばしたい <span class="arrow" aria-hidden="true"></span></a></li><li><a href="service-recruit.html">人材を<wbr>採用したい <span class="arrow" aria-hidden="true"></span></a></li></ul></div></div>
-      <nav aria-label="フッターナビゲーション"><ul class="footer__links"><li><a href="about.html">私たちに<wbr>ついて</a></li><li><a href="index.html#service">事業内容</a></li><li><a href="index.html#project">実績</a></li><li><a href="media.html">メディア</a></li><li><a href="careers.html">採用情報</a></li><li><a href="contact.html">お問い合わせ</a></li></ul></nav>
+      <nav aria-label="フッターナビゲーション"><ul class="footer__links"><li><a href="about.html">私たちに<wbr>ついて</a></li><li><a href="/#service">事業内容</a></li><li><a href="/#project">実績</a></li><li><a href="media.html">メディア</a></li><li><a href="careers.html">採用情報</a></li><li><a href="contact.html">お問い合わせ</a></li></ul></nav>
       <div class="footer__bottom">
         <address class="footer__address"><n-w>〒121-0012 東京都足立区青井六丁目8番8号 Grand Maison青井201</n-w></address>
         <a href="privacy.html">プライバシーポリシー</a>
         <p>© 2026 合同会社RIVIA&amp;CO.</p>
       </div>
     </div>
+    <p class="footer__mark" aria-hidden="true">RIVIA&amp;CO.</p>
   </footer>
 
-  <script src="../js/main.js?v=b3dc6901"></script>
+  <script src="../js/main.js?v=23065dd8"></script>
 </body>
 </html>

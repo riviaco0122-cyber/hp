@@ -216,6 +216,25 @@ def br(lines):
     return "<br>".join(e(l) for l in lines)
 
 
+# TOPのファーストビュー：写真を切り替えながら、ゆっくり寄っていく（ファイル名, 幅, 高さ, 見せる位置）
+HERO_SLIDES = [
+    ("autumn-garden", 1616, 1079, "50% 45%"),
+    ("thatched-house", 1920, 1080, "50% 60%"),
+    ("riverside-town", 1620, 1080, "50% 55%"),
+    ("fuji-lake", 1620, 1080, "50% 40%"),
+]
+# ファーストビューの下を流れる言葉（地域の循環: 再生 → 訪れる → 使う → また来る）
+MARQUEE_WORDS = ["Revive", "空き家を、宿に", "Visit", "まちを訪れる", "Spend", "まちで食べて買う", "Return", "また訪れる"]
+# 「不動産の型を破る」宣言（TOPのファーストビューのすぐ下）
+STATEMENT = dict(
+    en="Break the mold",
+    lead="不動産の「型」は、いつも",
+    strikes=["売って、終わり。", "貸して、終わり。", "仲介して、終わり。"],
+    title='私たちは、<br class="sp-only">そこから<em>始める</em>。',
+    text="空き家を自らの手で宿に再生し、運営し、旅行者をまちへ送り出す。眠っていた家を、人とお金がめぐる地域の拠点に変えていきます。",
+)
+
+
 # ---------------------------------------------------------------- layout
 
 import json
@@ -330,7 +349,7 @@ def header(current):
     service_cur = ' aria-current="page"' if current in SERVICE_NAMES else ""
     return f"""  <header class="header">
     <div class="container header__inner">
-      <a href="index.html" class="logo" aria-label="RIVIA&amp;CO. トップページ"><img src="images/logo/logo.svg" alt="RIVIA&amp;CO." width="325" height="64"></a>
+      <a href="index.html" class="logo" aria-label="RIVIA&amp;CO. トップページ"><img src="images/logo/logo.svg" alt="RIVIA&amp;CO." width="325" height="64"><img class="logo__on-photo" src="images/logo/logo-white.svg" alt="" width="325" height="64" aria-hidden="true"></a>
 
       <nav class="gnav" id="gnav" aria-label="メインナビゲーション">
         <ul class="gnav__list">
@@ -376,7 +395,7 @@ def footer():
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
-          <a href="index.html" class="logo"><img src="images/logo/logo.svg" alt="RIVIA&amp;CO." width="325" height="64" loading="lazy"></a>
+          <a href="index.html" class="logo"><img src="images/logo/logo-white.svg" alt="RIVIA&amp;CO." width="325" height="64" loading="lazy"></a>
           <p class="footer__copy">地域に眠る価値を、日本の活力に。</p>
         </div>
         <a href="contact.html" class="footer__cta">無料で相談する {ARROW}</a>
@@ -389,6 +408,7 @@ def footer():
         <p>&copy; 2026 合同会社RIVIA&amp;CO.</p>
       </div>
     </div>
+    <p class="footer__mark" aria-hidden="true">RIVIA&amp;CO.</p>
   </footer>"""
 
 
@@ -503,8 +523,8 @@ def page(filename, title, description, body, current="", jsonld=None, og_type=No
     setTimeout(function () {{ if (!window.RIVIA_READY) document.documentElement.classList.remove('js'); }}, 2000);
   </script>
 {ld}</head>
-<body{' class="is-media"' if is_media else ""}>
-
+<body class="{"is-media" if is_media else "is-corp"}{" is-top" if filename == "index.html" else ""}">
+{"" if is_media else '  <div class="progress" aria-hidden="true"><span></span></div>' + chr(10)}
 {media_header(mnav) if is_media else header(current).replace('<button type="button" class="menu-btn"', lang_switch + '<button type="button" class="menu-btn"', 1)}
 
   <main>
@@ -555,7 +575,10 @@ def relative_to_root(html, filename):
             url, _, w = item.strip().partition(" ")
             parts.append(fix(_re.match(r'(src)="([^"]*)"', f'src="{url}"')).split('"')[1] + (" " + w if w else ""))
         return f'srcset="{", ".join(parts)}"'
-    return _re.sub(r'\bsrcset="([^"]*)"', fix_srcset, html)
+    html = _re.sub(r'\bsrcset="([^"]*)"', fix_srcset, html)
+    # トップページへのリンクは、正規のURL（/）にそろえる。/index.html へのリンクは
+    # 同じ中身の別URLとして検索エンジンに見つかり、インデックス登録の妨げになるため
+    return _re.sub(r'\bhref="(?:\.\./)*index\.html(?=[#"])', 'href="/', html)
 
 
 # 空き家・物件をお持ちの方に向けた、相談のハードルを下げる一言（対応エリアとは別に、相談の呼びかけとして置く）
@@ -639,7 +662,7 @@ def project_card(compact=False):
             <h3 class="project__name">NODE Shimoda</h3>
             <p class="project__meta">静岡県下田市 ｜ 一棟貸しバケーションレンタル</p>
             <p class="project__desc">下田市旧町内の空き家を改修した滞在型アパート。RIVIAが運営・集客・DX化を担っています。</p>
-            <div class="project__rating"><strong><span class="project__star" aria-hidden="true">★</span>4.88</strong><span>Airbnb評価（51件）</span></div>
+            <div class="project__rating"><strong><span class="project__star" aria-hidden="true">★</span><span data-count="4.88">4.88</span></strong><span>Airbnb評価（51件）</span></div>
             <span class="project__link">施設サイトを見る（別タブで開きます） {ARROW}</span>
           </div>
         </a>"""
@@ -1601,6 +1624,7 @@ def index_page():
           </div>
           <div class="cycle reveal" data-delay="1" role="img" aria-label="空き家を宿に再生し、旅行者がまちを訪れ、まちで食べて買い、ファンになって再び訪れる。その収益で次の空き家を再生する、地域の経済循環">
             <svg class="cycle__ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="36"/>{arrows}</svg>
+            <span class="cycle__orbit" aria-hidden="true"><i></i></span>
             <p class="cycle__center" aria-hidden="true"><span class="cycle__center-en">Local cycle</span><span>地域に、</span><span>人とお金がめぐる</span></p>
             <ol class="cycle__nodes" aria-hidden="true">
 {nodes}
@@ -1645,17 +1669,48 @@ def index_page():
           </li>"""
         for i, (t, d) in enumerate(REASONS, 1)
     )
-    body = f"""    <section class="hero hero--photo">
-      <img class="hero__bg" src="images/photos/autumn-garden.jpg" alt="" width="1616" height="1079" fetchpriority="high" decoding="async">
-      <div class="container">
-        <h1 class="hero__title reveal">地域に眠る価値を、<br>日本の活力に。</h1>
-        <p class="hero__sub reveal" data-delay="2">「暮らすように旅する」滞在を軸に、<br>宿の再生から集客・採用、まちづくりまで。</p>
+    slides = "\n".join(
+        f'        <img class="hero__bg{" is-active" if i == 0 else ""}" src="images/photos/{n}.jpg" alt="" width="{w}" height="{h}" style="object-position:{pos}"'
+        + (' fetchpriority="high"' if i == 0 else ' loading="lazy"') + ' decoding="async">'
+        for i, (n, w, h, pos) in enumerate(HERO_SLIDES))
+    marquee_words = "".join(f'<span>{e(w)}</span><i aria-hidden="true">✳</i>' for w in MARQUEE_WORDS)
+    strikes = "\n".join(
+        f'          <li class="statement__strike reveal" data-delay="{i}"><s>{e(t)}</s></li>'
+        for i, t in enumerate(STATEMENT["strikes"]))
+    body = f"""    <section class="hero hero--photo hero--x">
+      <div class="hero__slides" aria-hidden="true">
+{slides}
+      </div>
+      <div class="container hero__inner">
+        <p class="hero__kicker reveal"><span>まちづくり</span><i aria-hidden="true">×</i><span>観光づくり</span></p>
+        <h1 class="hero__title hero__title--x reveal"><span class="ln"><span>地域に眠る</span></span><span class="ln"><span>価値を、</span></span><span class="ln"><span>日本の<em>活力</em>に。</span></span></h1>
+        <p class="hero__sub reveal" data-delay="3">「暮らすように旅する」滞在を軸に、<br>宿の再生から集客・採用、まちづくりまで。</p>
         <div class="hero__actions reveal" data-delay="3">
           <a href="contact.html" class="btn">無料で相談する {ARROW}</a>
           <a href="#service" class="btn btn--ghost btn--on-photo">事業紹介を見る</a>
         </div>
       </div>
-      <span class="hero__scroll" aria-hidden="true">Scroll</span>
+      <a href="#statement" class="hero__badge" aria-label="次のセクションへ">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="hero-badge-path" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#hero-badge-path" textLength="284" lengthAdjust="spacing">LOCAL VALUE ✳ JAPAN'S ENERGY ✳ RIVIA&amp;CO. ✳</textPath></text></svg>
+        <span class="hero__badge-arrow" aria-hidden="true"></span>
+      </a>
+      <div class="hero__count" aria-hidden="true"><span class="hero__count-n">01</span><i><b></b></i><span>{len(HERO_SLIDES):02d}</span></div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track"><div class="marquee__group">{marquee_words}</div><div class="marquee__group">{marquee_words}</div></div>
+    </div>
+
+    <section class="statement" id="statement">
+      <div class="container">
+        <span class="eyebrow reveal">{e(STATEMENT["en"])}</span>
+        <p class="statement__lead reveal">{e(STATEMENT["lead"])}</p>
+        <ul class="statement__strikes">
+{strikes}
+        </ul>
+        <h2 class="statement__title reveal">{STATEMENT["title"]}</h2>
+        <p class="statement__text reveal" data-delay="1">{e(STATEMENT["text"])}</p>
+      </div>
     </section>
 
 {vision}
@@ -1686,7 +1741,7 @@ def index_page():
       </div>
     </section>
 
-    <section class="section">
+    <section class="section reasons-sec">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Why RIVIA</span>
@@ -2191,7 +2246,8 @@ def spec_md():
     w("")
     w("* **目的:** 宿泊施設・空き家・地方ビジネスに課題を持つ方が、自分の悩みに合うサービスを見つけ、無料相談（お問い合わせ）に進むこと。")
     w("* **ターゲットデザイン:** 株式会社SUMUS（https://sumus-inc.co.jp/）のような、スタイリッシュで情報が整理されたモダン・ミニマルなデザイン。大きな余白、洗練されたタイポグラフィ、スクロールに応じた上品なフェードイン。")
-    w("* **トーン＆マナー:** 全ページ共通で白基調（#FFFFFF）・黒文字（#111111）。罫線は1pxの極細グレー（#EEEEEE）。アクセントカラー（深緑 #1A472A）はロゴの「&」のみに限定。")
+    w("* **トーン＆マナー（2026-10-15 改定）:** 「不動産会社の型を破る」をデザインでも表す。白基調・黒文字をベースに、深い森の緑（#1A472A／面は #0F2618）・朱（#D9502B、強調と遊び）・生成り（#F4EFE4、やわらかい面）の3色を加える。見出しは大きく（TOPのキャッチは最大148px）、英字ラベルは朱の短い線つき。ボタンは丸く、ホバーで色が満ちる。コーポレートページ（body.is-corp）だけに効かせ、アキヤド（body.is-media）は独自の見た目のまま。")
+    w("* **動き:** TOPのファーストビューは写真4枚がゆっくり寄りながら切り替わり（6秒ごと）、キャッチは1行ずつせり上がる。右下に回るバッジ（次のセクションへ）。下に「Revive・Visit・Spend・Return」が流れる帯。続く「Break the mold」で「売って、終わり。」「貸して、終わり。」「仲介して、終わり。」に朱の線が引かれ、「私たちは、そこから始める。」。循環の図は光の点が回り、順に緑に光る。評価の数字はカウントアップ。画面上端にスクロールの進み具合の線。フッターは深い緑に大きな社名。動きを減らす設定（prefers-reduced-motion）では自動で動くものを止める。")
     w("* **フォント:** 見出し＝Noto Serif JP（Light）、本文＝Noto Sans JP、英字・数字＝Cormorant Garamond（Light）。")
     w("* **除外要素:** 「Seminar & Event」「マガジン」「SNSへのリンク」は置かない。")
     w("* **技術スタック:** HTML / CSS / JavaScript（外部ライブラリなし）。GitHub → Vercel で公開。")
@@ -5206,6 +5262,16 @@ def sitemap():
             ["media.html"] + [f"media/category-{k}.html" for k, _ in MEDIA_CATEGORIES] + [f"media/guide-{g['key']}.html" for g in MEDIA_GUIDES] + ["media/plans.html"] + [f"media/{sv['slug']}.html" for sv in MEDIA_SERVICES] + ["media/company.html", "media/learn.html", "media/contact.html"] + [f"media/{a['slug']}.html" for a in ARTICLES] + ["careers.html", "contact.html", "privacy.html"]
     pages += ["en/" + ("" if f == "index.html" else f) for f in EN_PAGES if f != "thanks.html"]
     lastmod = {f"media/{a['slug']}.html": a["updated"] for a in ARTICLES}
+    # 記事の一覧ページにも、載せている記事のいちばん新しい更新日を付ける（クロールの優先度の手がかり）
+    published = [a for a in ARTICLES if a["date"] <= BUILD_DATE]
+    if published:
+        newest = max(a["updated"] for a in published)
+        for hub in ["media.html", "media/learn.html"] + [f"media/guide-{g['key']}.html" for g in MEDIA_GUIDES]:
+            lastmod[hub] = newest
+        for k, _ in MEDIA_CATEGORIES:
+            ds = [a["updated"] for a in published if k in a.get("topics", [a["category"]])]
+            if ds:
+                lastmod[f"media/category-{k}.html"] = max(ds)
     urls = "\n".join(
         f"  <url><loc>{SITE}/{p}</loc>" + (f"<lastmod>{lastmod[p]}</lastmod>" if p in lastmod else "") + "</url>"
         for p in pages
