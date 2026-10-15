@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""アキヤドの、見た人が相談したくなる解説アニメ（約76秒・1920×1080・字幕・BGM・効果音つき）を作る。
+"""アキヤドの、見た人が相談したくなる解説アニメ（約80秒・1920×1080・ナレーション・字幕・BGM・効果音つき）を作る。
 
 - 流れ: 悩みのつかみ → 放置の負担 → 宿に変わる → あなたはどれ？ → 無料相談で比べられること
   → 借り上げのしくみ → 開業・運営の分担と手数料 → 運営実績 → 不安を消す → 問い合わせフォーム。
 - 絵はすべて SVG を JS で組み、時刻 t ごとに描く（フラットなイラスト。人物は肩・ひじで曲がる腕、表情・まばたきつき）。
 - 背景は場面ごとの色の町並み（山・家並み・木）を重ね、ゆっくり横に流す。場面の切り替えは丸く広がるワイプ。
+- ナレーションは Microsoft Edge の読み上げ（edge-tts、要ネットワーク: speech.platform.bing.com）。文ごとに作って長さを測り、
+  場面の長さと字幕をナレーションに合わせる。
 - 各フレームを Playwright で画像にして ffmpeg でつなぐ。BGM と効果音は tools/video/pop_audio.py で合成する。
 - 文言・数字は、サイトに載っているサービスの説明・実績・フォームの項目だけ。数字を作らない。
 使い方: python3 tools/video/make_explainer.py [出力.mp4] [--preview 秒 ...]   # --preview は、その秒の静止画だけ書き出す
@@ -14,8 +16,57 @@ import json, os, subprocess, sys, tempfile
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 FPS = 24
-SC = [(0, 5), (5, 12), (12, 19), (19, 26), (26, 35), (35, 45), (45, 56), (56, 62), (62, 69), (69, 76)]
-DUR = float(SC[-1][1])
+
+# ナレーション: 場面ごとの文。| は字幕の改行。(字幕, 読み上げ用の文) の組は、読み方を変えるとき
+NARR = [
+    ["その空き家、このままで大丈夫ですか？", "売るか、貸すか。|決められずにいませんか。"],
+    ["空き家は、放置するほど|負担が増えていきます。", "固定資産税に、草刈り、建物の傷み。", "使っていない間も、|費用と手間はかかり続けます。"],
+    ["でも、古い空き家も、宿として生まれ変われば、", "旅行者が泊まりに来る、|収入を生む家になります。", "観光地でなくても、|収益物件になり得るんです。"],
+    ["あなたは、どれですか？", "売りたい、活かしたい、宿をはじめたい。|それぞれに合うプランがあります。"],
+    ["無料相談では、解体・売却・活用の|費用と収入、手間を比べられます。", "そのうえで、負担がいちばん小さい方法を|ご提案します。"],
+    ["たとえば借り上げプランなら、家は持ったまま。", "アキヤドが改修から宿の運営まで行い、|オーナー様には、毎月家賃をお支払いします。"],
+    ["副業で宿をはじめたいなら、|任せる範囲を選べるコースもあります。", "手数料は、売上の10%からです。"],
+    ["アキヤドは、自ら宿を運営している当事者です。", ("下田の「NODE Shimoda」は、|Airbnbで4.88の評価をいただいています。", "下田の、ノード下田は、エアビーアンドビーで、4.88の評価をいただいています。")],
+    ["まだ決めていなくても、大丈夫です。", "相談と査定は無料。|ご納得いただけた場合のみ、ご契約となります。"],
+    ["まずは、フォームから無料でご相談ください。", "まだ考えがまとまっていない段階でも、|構いません。"],
+]
+VOICE = "ja-JP-NanamiNeural"
+MIN_DUR = [5, 7, 7, 7, 9, 10, 11, 6, 7, 7.5]   # 場面のアニメに必要な最低の長さ（秒）
+LEAD, GAP, TAIL = 0.4, 0.25, 0.6                # 場面の頭の間・文と文の間・場面の終わりの間
+
+
+def tts(text, cache):
+    """Microsoft Edge の読み上げ（edge-tts）で文を音声にする。同じ文は作り直さない"""
+    import hashlib
+    os.makedirs(cache, exist_ok=True)
+    f = os.path.join(cache, hashlib.sha1((VOICE + text).encode()).hexdigest()[:16] + "_r14.mp3")
+    if not os.path.exists(f) or os.path.getsize(f) == 0:
+        cmd = ["edge-tts", "--voice", VOICE, "--rate=+14%", "--text", text, "--write-media", f]
+        if os.environ.get("HTTPS_PROXY"):
+            cmd[1:1] = ["--proxy", os.environ["HTTPS_PROXY"]]
+        subprocess.run(cmd, check=True, capture_output=True)
+    w = f[:-4] + ".wav"   # 前後の無音を切る
+    if not os.path.exists(w):
+        trim = "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f, "-af", f"{trim},areverse,{trim},areverse", "-ar", "44100", "-ac", "1", w], check=True)
+    d = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", w], capture_output=True, text=True, check=True).stdout)
+    return w, d
+
+
+def timeline(cache):
+    """ナレーションの長さから、場面の区切り・字幕・声の置き場所を決める"""
+    sc, subs, voices, t0 = [], [], [], 0.0
+    for i, lines in enumerate(NARR):
+        t = t0 + LEAD
+        for ln in lines:
+            disp, say = ln if isinstance(ln, tuple) else (ln, ln)
+            f, d = tts(say.replace("|", ""), cache)
+            voices.append((t, f)); subs.append([round(t, 3), round(t + d, 3), disp.split("|")])
+            t += d + GAP
+        end = max(t0 + MIN_DUR[i], t - GAP + TAIL)
+        sc.append((round(t0, 3), round(end, 3))); t0 = end
+    return sc, subs, voices
+
 
 # 効果音: (場面の番号, 場面の中の秒, 種類)。アニメの動き（JS の seg の開始）に合わせる
 SFX = [
@@ -33,7 +84,7 @@ SFX = [
     (8, .2, "pop"), (8, .8, "ding"), (8, 1.4, "ding"), (8, 2.0, "ding"),
     (9, .2, "pop"), (9, .5, "whoosh"), *[(9, 1.0 + k * .07, "tick") for k in range(60) if (1.0 + k * .07) < 5.0 and k % 2 == 0],
     (9, 5.6, "click"), (9, 5.9, "chime"), (9, 6.1, "pop"),
-] + [(i, 0.0, "whoosh") for i in range(1, len(SC))]
+] + [(i, 0.0, "whoosh") for i in range(1, 10)]
 
 HTML = r"""<!doctype html><html lang="ja"><head><meta charset="utf-8"><style>
 @import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@700;900&display=block");
@@ -62,14 +113,15 @@ function ik(sx,sy,hx,hy,side,L1=98,L2=92){
   const c1=[sx+Math.cos(b+a)*L1,sy+Math.sin(b+a)*L1],c2=[sx+Math.cos(b-a)*L1,sy+Math.sin(b-a)*L1];
   const sc=e=>e[1]+0.6*e[0]*side;const e=sc(c1)>sc(c2)?c1:c2;return [e,[hx,hy]];
 }
-function arm(c,side,hx,hy){
-  const sx=side*54,sy=-432,[[ex,ey],[x,y]]=ik(sx,sy,hx,hy,side),sl=c.jacket?c.top:c.top;
+function arm(c,side,hx,hy,el){ // el: ひじの位置（指定しなければ自動で決める）
+  const sx=side*54,sy=-432,[[ex,ey],[x,y]]=(el?[el,[hx,hy]]:ik(sx,sy,hx,hy,side)),sl=c.top;
   return `<path d="M${sx} ${sy} L${ex} ${ey}" stroke="${sl}" stroke-width="38" stroke-linecap="round"/><path d="M${ex} ${ey} L${x} ${y}" stroke="${sl}" stroke-width="33" stroke-linecap="round"/><path d="M${ex} ${ey} L${x} ${y}" stroke="${c.top2}" stroke-width="10" stroke-linecap="round" opacity=".45" transform="translate(${side*6},0)"/><circle cx="${x}" cy="${y}" r="13" fill="${c.inner||c.collar||'#fff'}"/><ellipse cx="${x+(x-ex)*.12}" cy="${y+(y-ey)*.12}" rx="17" ry="18" fill="${c.skin}"/>`;
 }
 const POSES={
   stand:(t)=>[[-82,-262],[82,-262]],
   hips:(t)=>[[-92,-300],[92,-300]],
-  think:(t)=>[[34,-322],[20,-492]],
+  think:(t)=>[[50,-350,[-74,-338]],[20,-470,[58,-372]]],   // 左手で右ひじを支え、右手をあごに
+  present:(t)=>[[-82,-262],[186,-382+Math.sin(t*3)*6,[100,-344]]],   // 右手を差し出して案内する
   cheer:(t)=>{const w=Math.sin(t*7)*14;return [[-128,-640+w],[128,-640-w]]},
   wave:(t)=>[[-82,-262],[150+Math.sin(t*8)*18,-610]],
   point:(t)=>[[-82,-262],[232,-470]],
@@ -122,7 +174,7 @@ function person(x,y,s,o){
   <rect x="-62" y="-272" width="124" height="26" rx="8" fill="${c.pants}"/>
   ${torso}${tag}
   ${head(c,mood,t,o.seed||0)}
-  ${arm(c,-1,Lh[0],Lh[1])}${arm(c,1,Rh[0],Rh[1])}</g>`;
+  ${arm(c,-1,Lh[0],Lh[1],Lh[2])}${arm(c,1,Rh[0],Rh[1],Rh[2])}</g>`;
 }
 // ---------- 建物・小物 ----------
 function house(x,y,s,k){ // k:0=古い空き家 1=再生した宿
@@ -216,6 +268,7 @@ function sub(lines,p){ // 下の字幕
 }
 const AV=[1,2,3,6,4,5];
 const SC=__SC__;
+const SUBS=__SUBS__; // [開始秒, 終了秒, [行...]]（ナレーションの文ごと）
 const THEME=['dusk','dusk','yellow','mint','sky','yellow','mint','peach','sky','yellow'];
 // ---------- 場面 ----------
 function scene(i,t,lt){
@@ -225,7 +278,6 @@ function scene(i,t,lt){
     s+=person(600,GROUND,.92,{c:'owner',pose:'think',mood:'worry',t:lt});
     s+=[[440,430,90,0],[760,380,70,1.5],[1010,330,80,3]].map(([x,y,z,ph],k)=>pop(x,y-30,seg(lt,.6+k*.3,1.2+k*.3),q(x,y,z,lt,ph))).join('');
     s+=caption('その空き家、このままで大丈夫？',seg(lt,.1,.7));
-    s+=sub(['相続した実家、遠くて通えない。','売るか、貸すか、決められないまま…。'],seg(lt,1.4,2.1));
   }
   if(i===1){ // 放置するほど負担が増える
     s+=house(700,GROUND,.78,0);
@@ -239,7 +291,6 @@ function scene(i,t,lt){
     g+=[[.3,'固定資産税'],[.6,'草刈り・管理'],[.9,'建物の傷み']].map(([u,l],j)=>chip(1150+600*u,735-300*u*u-62,l,30,T,'#fff',seg(lt,2.2+j*.7,2.8+j*.7))).join('');
     s+=pop(1450,530,pp,g);
     s+=caption('放置するほど、負担は増える',seg(lt,.1,.7));
-    s+=sub(['固定資産税、草刈り、建物の傷み。','使っていない間も、費用と手間はかかり続けます。'],seg(lt,2.4,3.1));
   }
   if(i===2){ // 見方を変える：古い家が宿に
     const k=eo(seg(lt,1,2.8));
@@ -253,7 +304,6 @@ function scene(i,t,lt){
     s+=arrow(650,560,450,560,eo(seg(lt,4.4,5)),T,10)+`<g opacity="${eo(seg(lt,4.5,5.1))}">${coin(550,500-Math.abs(Math.sin(lt*4))*14,30)}</g>`;
     s+=chip(330,215,'家が、収入を生む',34,T,'#fff',seg(lt,4.8,5.4));
     s+=caption('古い空き家が、宿に変わる',seg(lt,.1,.7));
-    s+=sub(['観光地でなくても、収益物件になり得ます。'],seg(lt,1.6,2.3));
   }
   if(i===3){ // 自分ごとにする
     s+=person(250,GROUND,.84,{c:'owner',pose:'think',mood:'smile',t:lt});
@@ -280,7 +330,6 @@ function scene(i,t,lt){
     });
     s+=pop(960,800,seg(lt,5.4,6),`<rect x="430" y="768" width="1060" height="84" rx="42" fill="#000" opacity=".12"/><rect x="430" y="760" width="1060" height="84" rx="42" fill="${T}"/>${TX(960,816,'負担がいちばん小さい方法を、ご提案',44,'#fff')}`);
     s+=caption('無料相談で、比べられます',seg(lt,.1,.7));
-    s+=sub(['現地と周辺の宿を調べ、改修費と見込める収入を試算します。'],seg(lt,1.8,2.5));
   }
   if(i===5){ // 借り上げのしくみ
     const A=[640,410],O=[250,740],Gu=[1030,740],R=74;
@@ -299,7 +348,6 @@ function scene(i,t,lt){
     s+=card(290,'アキヤドおまかせプラン','改修・家具の費用はアキヤドがほぼ負担','毎月、決まった額の家賃',seg(lt,6.4,7),true);
     s+=card(560,'アキヤド売上シェアプラン','補修・内装をアキヤドと共同出資','家賃＋売上に応じた上乗せ',seg(lt,7.1,7.7),false);
     s+=caption('家は持ったまま、毎月の収入に',seg(lt,.1,.7));
-    s+=sub(['アキヤドが借り上げ、改修から宿の運営まで行います。'],seg(lt,1.8,2.5));
   }
   if(i===6){ // 開業・運営：分担表 → 手数料の例
     const ph=clamp((lt-6.2)/.5),gA=1-ph;
@@ -329,7 +377,6 @@ function scene(i,t,lt){
     }
     s+=caption('副業で、宿をはじめたい方も',seg(lt,.1,.7),40,64);
     s+=pill('アキヤド開業・運営プラン',seg(lt,.4,1.0),700);
-    s+=sub(['実際に宿を運営しているアキヤドが、','任せたい範囲に合わせて支えます。'],seg(lt,2,2.7));
   }
   if(i===7){ // 実績
     s+=person(1790,GROUND,.66,{c:'staff',pose:'point',t:lt,flip:true});
@@ -337,16 +384,14 @@ function scene(i,t,lt){
     s+=AV.map((n,k)=>{const p=bk(seg(lt,1.4+k*.18,2+k*.18)),x=1100+(k%3)*215,y=400+Math.floor(k/3)*215;return `<g transform="translate(${x},${y}) scale(${p})"><circle r="96" fill="#fff"/><clipPath id="c${k}"><circle r="86"/></clipPath><image href="file://__ROOT__/images/portraits/circle/user_0${n}.png" x="-86" y="-86" width="172" height="172" clip-path="url(#c${k})"/><circle r="86" fill="none" stroke="${T}" stroke-width="6"/></g>`}).join('');
     s+=chip(1315,790,'取材した6人のオーナーの事例も公開',30,'#fff',DG,seg(lt,2.6,3.2));
     s+=caption('宿を運営している、当事者です',seg(lt,.1,.7));
-    s+=sub(['自ら宿を運営し、現場で確かめたノウハウでお手伝いします。'],seg(lt,2,2.7));
   }
   if(i===8){ // 不安を消す
-    s+=person(270,GROUND,.86,{c:'staff',pose:'open',t:lt,mood:'happy'});
+    s+=person(300,GROUND,.86,{c:'staff',pose:'present',t:lt,mood:'happy'});
     const items=[['chat','相談・査定は無料','費用はかかりません'],['search','2営業日以内にご連絡','フォームは24時間受付'],['check','ご納得いただけた場合のみ契約','比べてから決められます']];
     items.forEach(([ic,a,b],k)=>{const y=350+k*160,p=seg(lt,.8+k*.6,1.4+k*.6);
       s+=pop(1140,y,p,`${box(560,y-64,1260,128,64)}${icon(640,y,48,ic,k===2?T:G,'#fff',.75)}${TX(716,y+15,a,44,DG,900,'start')}${TX(1780,y+12,b,28,'#4a5a52',700,'end')}`);
     });
     s+=caption('まだ決めていなくても、大丈夫',seg(lt,.1,.7));
-    s+=sub(['売る・貸す・活かす、どれにするかは相談してから。'],seg(lt,2.6,3.3));
   }
   if(i===9){ // 最初の一歩：問い合わせフォーム
     const fields=[['お名前','山田 太郎',1.0,1.7],['電話番号','090-1234-5678',1.8,2.6],['メールアドレス','your@email.com',2.7,3.6],['お問い合わせ内容','相続した実家の活かし方を相談したい',3.7,5.0]];
@@ -364,7 +409,6 @@ function scene(i,t,lt){
     s+=`<g opacity="${eo(seg(lt,1.8,2.4))}">${LOGO(1180,610,1.2)}</g>`;
     s+=person(1790,GROUND,.62,{c:'staff',pose:lt>5.8?'cheer':'wave',mood:'happy',t:lt,flip:true});
     s+=caption('フォームから、無料でご相談',seg(lt,.1,.7));
-    s+=sub(['まだ考えがまとまっていない段階でも構いません。'],seg(lt,2.2,2.9));
   }
   return s;
 }
@@ -374,9 +418,11 @@ window.draw=function(t){
   let out=`${bg(t,THEME[i])}${scene(i,t,t-a)}`;
   if(i>0&&t-a<TR){const k=eo((t-a)/TR),r=k*1150,pa=SC[i-1][0];
     out=`${bg(t,THEME[i-1])}${scene(i-1,t,t-pa)}<clipPath id="iris"><circle cx="960" cy="540" r="${r}"/></clipPath><g clip-path="url(#iris)">${out}</g><circle cx="960" cy="540" r="${r}" fill="none" stroke="#fff" stroke-width="${26*(1-k)}" opacity="${1-k}"/>`;}
+  const cur=SUBS.find(([a,b])=>t>=a-.05&&t<b+.25);
+  if(cur)out+=sub(cur[2],Math.min(seg(t,cur[0]-.05,cur[0]+.3),seg(cur[1]+.25,cur[1]-.05,cur[1]+.25)>0?1:1));
   document.getElementById('s').innerHTML=out.replaceAll('__ROOT__',window.ROOT);
 };
-</script></body></html>""".replace("__SC__", json.dumps([list(x) for x in SC]))
+</script></body></html>"""
 
 RENDER_JS = """
 const { chromium } = require('playwright');
@@ -406,21 +452,24 @@ def main():
     out = args[0] if args else os.path.join(ROOT, "docs", "media", "akiyado-service-intro-anime.mp4")
     env = dict(os.environ); env["ROOT_DIR"] = ROOT
     env["NODE_PATH"] = os.pathsep.join(p for p in ["/opt/node-tools/node_modules", os.path.join(ROOT, "tools", "check", "node_modules"), env.get("NODE_PATH", "")] if p)
+    sc, subs, voices = timeline(os.path.join(tempfile.gettempdir(), "akiyado_tts"))
+    dur = sc[-1][1]
+    html = HTML.replace("__SC__", json.dumps([list(x) for x in sc])).replace("__SUBS__", json.dumps(subs, ensure_ascii=False))
     with tempfile.TemporaryDirectory() as tmp:
-        h = os.path.join(tmp, "a.html"); open(h, "w", encoding="utf-8").write(HTML)
+        h = os.path.join(tmp, "a.html"); open(h, "w", encoding="utf-8").write(html)
         js = os.path.join(tmp, "r.js"); open(js, "w").write(RENDER_JS)
         if prev is not None:
             od = os.path.join(tempfile.gettempdir(), "explainer_preview"); os.makedirs(od, exist_ok=True)
             subprocess.run(["node", js, h, od, "preview", json.dumps(prev)], check=True, env=env); print("preview", od); return
         fr = os.path.join(tmp, "fr"); os.makedirs(fr)
-        n = int(DUR * FPS)
+        n = int(dur * FPS)
         subprocess.run(["node", js, h, fr, "video", str(n)], check=True, env=env)
         import pop_audio
-        events = [(SC[i][0] + dt, kind) for i, dt, kind in SFX]
-        wav = os.path.join(tmp, "audio.wav"); pop_audio.write(wav, DUR, events)
+        events = [(sc[i][0] + dt, kind) for i, dt, kind in SFX]
+        wav = os.path.join(tmp, "audio.wav"); pop_audio.write(wav, dur, events, voices=voices)
         os.makedirs(os.path.dirname(out), exist_ok=True)
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", os.path.join(fr, "f%05d.jpg"), "-i", wav, "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out], check=True)
-    print(out, DUR, "秒")
+    print(out, round(dur, 1), "秒")
 
 
 if __name__ == "__main__":

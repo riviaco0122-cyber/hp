@@ -176,12 +176,28 @@ def sfx(events, dur):
     return L, R
 
 
-def write(path, dur, events, bgm_gain=0.55):
+def load(path):
+    """音声ファイルを 44.1kHz・モノラルの配列で読む（ffmpeg を使う）"""
+    import subprocess
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-f", "s16le", "-ac", "1", "-ar", str(SR), "-"], capture_output=True, check=True).stdout
+    return np.frombuffer(raw, dtype=np.int16).astype(np.float64) / 32768
+
+
+def write(path, dur, events, bgm_gain=0.55, voices=(), voice_gain=0.9, duck=0.4):
+    """BGM・効果音・ナレーション（voices: (秒, ファイル) の並び）を混ぜる。声が出ている間は BGM を duck 倍に下げる"""
     bl, br = bgm(dur)
     pk = max(np.abs(bl).max(), np.abs(br).max()) or 1
     sl, sr_ = sfx(events, dur)
-    L = bl / pk * bgm_gain + sl
-    R = br / pk * bgm_gain + sr_
+    n = len(bl)
+    vo = np.zeros(n); mask = np.zeros(n)
+    for t0, f in voices:
+        v = load(f); _add(vo, t0, v / (np.abs(v).max() or 1) * voice_gain)
+        a = int(t0 * SR); mask[a:min(n, a + len(v))] = 1
+    k = int(0.25 * SR)
+    sm = np.convolve(mask, np.ones(k) / k, mode="same")
+    g = bgm_gain * (1 - (1 - duck) * np.clip(sm * 1.5, 0, 1))
+    L = bl / pk * g + sl * (0.8 if len(voices) else 1) + vo
+    R = br / pk * g + sr_ * (0.8 if len(voices) else 1) + vo
     pk2 = max(np.abs(L).max(), np.abs(R).max(), 1.0)
     st = np.empty(len(L) * 2, dtype=np.int16)
     st[0::2] = np.clip(L / pk2 * 0.95, -1, 1) * 32767
