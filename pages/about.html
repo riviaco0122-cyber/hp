@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
-  <link rel="stylesheet" href="../css/style.css?v=68358000">
+  <link rel="stylesheet" href="../css/style.css?v=e577297e">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -82,11 +82,17 @@
   </header>
 
   <main>
-    <section class="page-hero page-hero--photo page-hero--about">
-      <img class="page-hero__bg" src="../images/photos/irori-room.jpg" alt="" width="1623" height="1079" style="object-position:50% 60%" fetchpriority="high" decoding="async">
-      <div class="container">
-        <p class="page-hero__en ttl-x reveal"><span class="ln"><span>About Us</span></span></p>
-        <h1 class="page-hero__ja reveal" data-delay="1">私たちに<wbr>ついて</h1>
+    <section class="page-hero page-hero--about page-hero--map">
+      <div class="container about-hero">
+        <div class="about-hero__text">
+          <p class="page-hero__en ttl-x reveal"><span class="ln"><span>About Us</span></span></p>
+          <h1 class="page-hero__ja reveal" data-delay="1">私たちに<wbr>ついて</h1>
+          <p class="about-hero__lead reveal" data-delay="2"><n-w>東京と静岡を拠点に、</n-w><br><n-w>全国のまちづくり・地方創生へ。</n-w></p>
+        </div>
+        <div class="jmap reveal" data-delay="1">
+          <img class="jmap__dots" src="../images/about/japan-dots.svg" alt="" width="908" height="948" fetchpriority="high" decoding="async">
+          <svg class="jmap__over" viewBox="0 0 908 948" aria-hidden="true"><path class="jmap__arc" style="--i:0" pathLength="1" d="M592 607Q729 403 672 164"/><circle class="jmap__dot" style="--i:0" cx="672" cy="164" r="5"/><path class="jmap__arc" style="--i:1" pathLength="1" d="M528 649Q632 577 649 452"/><circle class="jmap__dot" style="--i:1" cx="649" cy="452" r="5"/><path class="jmap__arc" style="--i:2" pathLength="1" d="M592 607Q655 490 612 365"/><circle class="jmap__dot" style="--i:2" cx="612" cy="365" r="5"/><path class="jmap__arc" style="--i:3" pathLength="1" d="M528 649Q507 583 445 554"/><circle class="jmap__dot" style="--i:3" cx="445" cy="554" r="5"/><path class="jmap__arc" style="--i:4" pathLength="1" d="M592 607Q488 585 401 647"/><circle class="jmap__dot" style="--i:4" cx="401" cy="647" r="5"/><path class="jmap__arc" style="--i:5" pathLength="1" d="M528 649Q377 603 241 684"/><circle class="jmap__dot" style="--i:5" cx="241" cy="684" r="5"/><path class="jmap__arc" style="--i:6" pathLength="1" d="M592 607Q414 605 293 734"/><circle class="jmap__dot" style="--i:6" cx="293" cy="734" r="5"/><path class="jmap__arc" style="--i:7" pathLength="1" d="M528 649Q316 606 141 733"/><circle class="jmap__dot" style="--i:7" cx="141" cy="733" r="5"/><path class="jmap__arc" style="--i:8" pathLength="1" d="M592 607Q316 632 149 852"/><circle class="jmap__dot" style="--i:8" cx="149" cy="852" r="5"/><path class="jmap__arc" style="--i:9" pathLength="1" d="M528 649Q546 597 519 549"/><circle class="jmap__dot" style="--i:9" cx="519" cy="549" r="5"/><g class="jmap__base" transform="translate(592 607)"><circle class="jmap__pulse" r="12"/><circle r="8"/><text x="18" y="-14" text-anchor="start">TOKYO</text></g><g class="jmap__base" transform="translate(528 649)"><circle class="jmap__pulse" r="12"/><circle r="8"/><text x="-18" y="30" text-anchor="end">SHIZUOKA</text></g></svg>
+        </div>
       </div>
     </section>
 

@@ -1935,11 +1935,18 @@ def about_page():
     values = "\n".join(
         f"""          <li class="reveal" data-delay="{(i - 1) % 2}"><span class="about-value__num">{i:02d}</span><div><h3>{e(t)}</h3><p>{e(d)}</p></div></li>"""
         for i, (t, d) in enumerate(VALUES, 1))
-    body = f"""    <section class="page-hero page-hero--photo page-hero--about">
-      <img class="page-hero__bg" src="images/photos/irori-room.jpg" alt="" width="1623" height="1079" style="object-position:50% 60%" fetchpriority="high" decoding="async">
-      <div class="container">
-        <p class="page-hero__en ttl-x reveal"><span class="ln"><span>About Us</span></span></p>
-        <h1 class="page-hero__ja reveal" data-delay="1">私たちについて</h1>
+    import japan_map
+    body = f"""    <section class="page-hero page-hero--about page-hero--map">
+      <div class="container about-hero">
+        <div class="about-hero__text">
+          <p class="page-hero__en ttl-x reveal"><span class="ln"><span>About Us</span></span></p>
+          <h1 class="page-hero__ja reveal" data-delay="1">私たちについて</h1>
+          <p class="about-hero__lead reveal" data-delay="2">東京と静岡を拠点に、<br>全国のまちづくり・地方創生へ。</p>
+        </div>
+        <div class="jmap reveal" data-delay="1">
+          <img class="jmap__dots" src="images/about/japan-dots.svg" alt="" width="{japan_map.W}" height="{japan_map.H}" fetchpriority="high" decoding="async">
+          {japan_map.overlay_svg()}
+        </div>
       </div>
     </section>
 
@@ -2263,7 +2270,7 @@ def spec_md():
     w("* **目的:** 宿泊施設・空き家・地方ビジネスに課題を持つ方が、自分の悩みに合うサービスを見つけ、無料相談（お問い合わせ）に進むこと。")
     w("* **ターゲットデザイン:** 株式会社SUMUS（https://sumus-inc.co.jp/）のような、スタイリッシュで情報が整理されたモダン・ミニマルなデザイン。大きな余白、洗練されたタイポグラフィ、スクロールに応じた上品なフェードイン。")
     w("* **トーン＆マナー（2026-10-15 改定）:** 「不動産会社の型を破る」をデザインでも表す。白基調・黒文字をベースに、深い森の緑（#1A472A／面は #0F2618）・朱（#D9502B、強調と遊び）・生成り（#F4EFE4、やわらかい面）の3色を加える。見出しは大きく（TOPのキャッチは最大148px）、英字ラベルは朱の短い線つき。ボタンは丸く、ホバーで色が満ちる。コーポレートページ（body.is-corp）だけに効かせ、アキヤド（body.is-media）は独自の見た目のまま。")
-    w("* **動き:** TOPのファーストビューは写真4枚がゆっくり寄りながら切り替わり（6秒ごと）、キャッチは1行ずつせり上がる。右下に回るバッジ（次のセクションへ）。続く「Break the mold」で「売って、終わり。」「貸して、終わり。」「仲介して、終わり。」に朱の線が引かれ、「その『終わり』を、まちの始まりに。」。循環の図は光の点が回り、順に緑に光る。評価の数字はカウントアップ。画面上端にスクロールの進み具合の線。フッターは深い緑に大きな社名。私たちについては、MISSION などの大きな英字が輪郭線で広がり、ミッションの文が1行ずつ浮かぶ。ビジョンは深い緑の面に線が引かれ、バリューはホバーで緑が満ちるカード、創業者の写真のまわりを朱の点線が回る。動きを減らす設定（prefers-reduced-motion）では自動で動くものを止める。")
+    w("* **動き:** TOPのファーストビューは写真4枚がゆっくり寄りながら切り替わり（6秒ごと）、キャッチは1行ずつせり上がる。右下に回るバッジ（次のセクションへ）。続く「Break the mold」で「売って、終わり。」「貸して、終わり。」「仲介して、終わり。」に朱の線が引かれ、「その『終わり』を、まちの始まりに。」。循環の図は光の点が回り、順に緑に光る。評価の数字はカウントアップ。画面上端にスクロールの進み具合の線。フッターは深い緑に大きな社名。私たちについての見出しは写真ではなく、点で描いた日本地図に東京・静岡の拠点が脈打ち、全国へ朱の線が伸びる（tools/japan_map.py。地図は Natural Earth）。続くMISSION などの大きな英字が輪郭線で広がり、ミッションの文が1行ずつ浮かぶ。ビジョンは深い緑の面に線が引かれ、バリューはホバーで緑が満ちるカード、創業者の写真のまわりを朱の点線が回る。動きを減らす設定（prefers-reduced-motion）では自動で動くものを止める。")
     w("* **フォント:** 見出し＝Noto Serif JP（Light）、本文＝Noto Sans JP、英字・数字＝Cormorant Garamond（Light）。")
     w("* **除外要素:** 「Seminar & Event」「マガジン」「SNSへのリンク」は置かない。")
     w("* **技術スタック:** HTML / CSS / JavaScript（外部ライブラリなし）。GitHub → Vercel で公開。")

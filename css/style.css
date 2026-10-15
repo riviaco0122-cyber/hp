@@ -3742,3 +3742,38 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .is-corp .founder__photo::after { animation: none; }
   .js .is-corp .about-para .about-line { opacity: 1; transform: none; transition: none; }
 }
+.is-corp .founder__photo { padding: 4px; background: transparent; box-shadow: none; } .is-corp .founder__photo::after { inset: -4px; }
+
+/* 私たちについて：見出しは写真をやめ、東京・静岡から全国へ線が伸びる日本地図に */
+.page-hero--map { position: relative; overflow: hidden; isolation: isolate; min-height: min(86vh, 760px); display: flex; align-items: center; padding: 72px 0; border-bottom: 0; color: #fff;
+  background: radial-gradient(120% 90% at 78% 40%, #1f5a35 0%, var(--c-forest-deep) 62%); }
+.about-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 560px); align-items: center; gap: 40px; }
+.page-hero--map .page-hero__en { color: #fff; font-size: clamp(60px, 9.5vw, 148px); }
+.page-hero--map .page-hero__ja { margin-top: 18px; color: rgba(255, 255, 255, 0.85); letter-spacing: 0.3em; }
+.about-hero__lead { margin-top: 36px; font-family: var(--font-serif); font-size: clamp(18px, 1.9vw, 24px); line-height: 1.9; letter-spacing: 0.08em; }
+.about-hero__lead::before { content: ""; display: block; width: 40px; height: 3px; margin-bottom: 20px; background: var(--c-shu-light); }
+.jmap { position: relative; width: 100%; aspect-ratio: 908 / 948; }
+.jmap__dots, .jmap__over { position: absolute; inset: 0; width: 100%; height: 100%; }
+.jmap__over { overflow: visible; }
+.jmap__arc { fill: none; stroke: var(--c-shu-light); stroke-width: 1.6; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .85; }
+.jmap.is-visible .jmap__arc { animation: arc-draw 1.6s var(--ease) both, arc-glow 6s ease-in-out infinite; animation-delay: calc(.6s + var(--i) * .18s), calc(2.4s + var(--i) * .4s); }
+.jmap__dot { fill: var(--c-shu-light); opacity: 0; transform-box: fill-box; transform-origin: center; }
+.jmap.is-visible .jmap__dot { animation: dot-pop .6s var(--ease) both; animation-delay: calc(1.6s + var(--i) * .18s); }
+.jmap__base circle { fill: var(--c-shu); stroke: #fff; stroke-width: 3; }
+.jmap__base .jmap__pulse { fill: var(--c-shu-light); stroke: none; opacity: .5; transform-box: fill-box; transform-origin: center; animation: base-pulse 2.4s ease-out infinite; }
+.jmap__base text { font-family: var(--font-en); font-size: 30px; letter-spacing: 0.16em; fill: #fff; }
+@keyframes arc-draw { to { stroke-dashoffset: 0; } }
+@keyframes arc-glow { 0%, 100% { opacity: .85; } 50% { opacity: .45; } }
+@keyframes dot-pop { 0% { opacity: 0; transform: scale(0); } 70% { opacity: 1; transform: scale(1.6); } 100% { opacity: 1; transform: none; } }
+@keyframes base-pulse { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(3.2); opacity: 0; } }
+@media (max-width: 899px) {
+  .page-hero--map { min-height: 0; padding: 56px 0 40px; }
+  .about-hero { grid-template-columns: 1fr; gap: 8px; }
+  .jmap { width: min(100%, 420px); margin: 0 auto; }
+  .about-hero__lead { margin-top: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jmap__arc { stroke-dashoffset: 0; }
+  .jmap__dot { opacity: 1; }
+  .jmap.is-visible .jmap__arc, .jmap.is-visible .jmap__dot, .jmap__base .jmap__pulse { animation: none; }
+}
