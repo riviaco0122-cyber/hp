@@ -295,6 +295,8 @@ def check():
             add("error", pp, f"vercel.json の redirects で {redirect_target(pp)} へ転送されるため、このページは表示されない（不要なら消す。英語版は公開をやめた）")
         if noindex:
             noindex_urls.add(expected_canonical)
+        elif p.article_publish and p.article_publish > TODAY:
+            pass  # 公開日前の記事は sitemap に載せない（公開日を迎えてから作り直すと載る）
         else:
             indexable_urls.add(expected_canonical)
 

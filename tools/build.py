@@ -223,14 +223,12 @@ HERO_SLIDES = [
     ("riverside-town", 1620, 1080, "50% 55%"),
     ("fuji-lake", 1620, 1080, "50% 40%"),
 ]
-# ファーストビューの下を流れる言葉（地域の循環: 再生 → 訪れる → 使う → また来る）
-MARQUEE_WORDS = ["Revive", "空き家を、宿に", "Visit", "まちを訪れる", "Spend", "まちで食べて買う", "Return", "また訪れる"]
 # 「不動産の型を破る」宣言（TOPのファーストビューのすぐ下）
 STATEMENT = dict(
     en="Break the mold",
     lead="不動産の「型」は、いつも",
     strikes=["売って、終わり。", "貸して、終わり。", "仲介して、終わり。"],
-    title='私たちは、<br class="sp-only">そこから<em>始める</em>。',
+    title='RIVIAは、宿に変えて、<br><em>運営まで</em>担う。',
     text="空き家を自らの手で宿に再生し、運営し、旅行者をまちへ送り出す。眠っていた家を、人とお金がめぐる地域の拠点に変えていきます。",
 )
 
@@ -320,11 +318,15 @@ FLOW = [
     ("ご支援開始", "ご納得いただけた場合のみご契約。現場に入り、成果が出るまで伴走します。"),
 ]
 
-# RIVIAが選ばれる理由
+# RIVIAが選ばれる理由（創業メンバーの経歴にもとづく。経歴は FOUNDERS と一致させる）
+REASONS_LEAD = "官・大手・ベンチャーで経験を積んだ2人の創業者が、自ら宿を運営する現場の知見とあわせて支援します。"
 REASONS = [
-    ("自ら宿を運営する「当事者」", "下田市の「NODE Shimoda」など、自ら宿を運営。現場で検証したノウハウをお届けします。"),
-    ("運営・集客・採用をワンストップで", "運営・集客・人材は、すべてつながっています。窓口をひとつにまとめ、一貫して支援します。"),
-    ("事業づくりとデータ分析の経験", "新規事業開発、行政、データ分析のキャリアを持つ創業メンバーが、数字にもとづいて意思決定を支援します。"),
+    ("リクルート出身の、事業をつくる力", "代表の2人は、ともにリクルート出身。新規事業開発室でのゼロイチの立ち上げや、ベンチャーでの事業創出・組織拡大の経験を、宿と地域の事業づくりに活かします。",
+     "リクルート ／ HR Tech・サイバーセキュリティベンチャー"),
+    ("県庁出身の、地域と行政を知る視点", "代表の片井は静岡県庁の出身。行政の立場で地域課題に向き合ってきた経験から、自治体や地域の方々との対話を、官民両方の視点で進めます。",
+     "静岡県庁 ／ 大手メーカー"),
+    ("データにもとづく、根拠のある判断", "位置情報データを扱うベンチャーやテクノロジー企業での経験を活かし、需要や収支を数字で見極めます。感覚に頼らない意思決定を支えます。",
+     "位置情報データベンチャー ／ 複数企業の経営"),
 ]
 
 
@@ -1666,14 +1668,14 @@ def index_page():
             <span class="reason__num">{i:02d}</span>
             <h3 class="reason__title">{e(t)}</h3>
             <p class="reason__text">{e(d)}</p>
+            <p class="reason__career"><span>Career</span>{e(c)}</p>
           </li>"""
-        for i, (t, d) in enumerate(REASONS, 1)
+        for i, (t, d, c) in enumerate(REASONS, 1)
     )
     slides = "\n".join(
         f'        <img class="hero__bg{" is-active" if i == 0 else ""}" src="images/photos/{n}.jpg" alt="" width="{w}" height="{h}" style="object-position:{pos}"'
         + (' fetchpriority="high"' if i == 0 else ' loading="lazy"') + ' decoding="async">'
         for i, (n, w, h, pos) in enumerate(HERO_SLIDES))
-    marquee_words = "".join(f'<span>{e(w)}</span><i aria-hidden="true">✳</i>' for w in MARQUEE_WORDS)
     strikes = "\n".join(
         f'          <li class="statement__strike reveal" data-delay="{i}"><s>{e(t)}</s></li>'
         for i, t in enumerate(STATEMENT["strikes"]))
@@ -1682,7 +1684,6 @@ def index_page():
 {slides}
       </div>
       <div class="container hero__inner">
-        <p class="hero__kicker reveal"><span>まちづくり</span><i aria-hidden="true">×</i><span>観光づくり</span></p>
         <h1 class="hero__title hero__title--x reveal"><span class="ln"><span>地域に眠る</span></span><span class="ln"><span>価値を、</span></span><span class="ln"><span>日本の<em>活力</em>に。</span></span></h1>
         <p class="hero__sub reveal" data-delay="3">「暮らすように旅する」滞在を軸に、<br>宿の再生から集客・採用、まちづくりまで。</p>
         <div class="hero__actions reveal" data-delay="3">
@@ -1696,10 +1697,6 @@ def index_page():
       </a>
       <div class="hero__count" aria-hidden="true"><span class="hero__count-n">01</span><i><b></b></i><span>{len(HERO_SLIDES):02d}</span></div>
     </section>
-
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track"><div class="marquee__group">{marquee_words}</div><div class="marquee__group">{marquee_words}</div></div>
-    </div>
 
     <section class="statement" id="statement">
       <div class="container">
@@ -1746,6 +1743,7 @@ def index_page():
         <div class="section-head reveal">
           <span class="eyebrow">Why RIVIA</span>
           <h2 class="section-title">RIVIAが選ばれる理由</h2>
+          <p class="section-lead">{e(REASONS_LEAD)}</p>
         </div>
         <ol class="reasons">
 {reasons}
@@ -2247,7 +2245,7 @@ def spec_md():
     w("* **目的:** 宿泊施設・空き家・地方ビジネスに課題を持つ方が、自分の悩みに合うサービスを見つけ、無料相談（お問い合わせ）に進むこと。")
     w("* **ターゲットデザイン:** 株式会社SUMUS（https://sumus-inc.co.jp/）のような、スタイリッシュで情報が整理されたモダン・ミニマルなデザイン。大きな余白、洗練されたタイポグラフィ、スクロールに応じた上品なフェードイン。")
     w("* **トーン＆マナー（2026-10-15 改定）:** 「不動産会社の型を破る」をデザインでも表す。白基調・黒文字をベースに、深い森の緑（#1A472A／面は #0F2618）・朱（#D9502B、強調と遊び）・生成り（#F4EFE4、やわらかい面）の3色を加える。見出しは大きく（TOPのキャッチは最大148px）、英字ラベルは朱の短い線つき。ボタンは丸く、ホバーで色が満ちる。コーポレートページ（body.is-corp）だけに効かせ、アキヤド（body.is-media）は独自の見た目のまま。")
-    w("* **動き:** TOPのファーストビューは写真4枚がゆっくり寄りながら切り替わり（6秒ごと）、キャッチは1行ずつせり上がる。右下に回るバッジ（次のセクションへ）。下に「Revive・Visit・Spend・Return」が流れる帯。続く「Break the mold」で「売って、終わり。」「貸して、終わり。」「仲介して、終わり。」に朱の線が引かれ、「私たちは、そこから始める。」。循環の図は光の点が回り、順に緑に光る。評価の数字はカウントアップ。画面上端にスクロールの進み具合の線。フッターは深い緑に大きな社名。動きを減らす設定（prefers-reduced-motion）では自動で動くものを止める。")
+    w("* **動き:** TOPのファーストビューは写真4枚がゆっくり寄りながら切り替わり（6秒ごと）、キャッチは1行ずつせり上がる。右下に回るバッジ（次のセクションへ）。続く「Break the mold」で「売って、終わり。」「貸して、終わり。」「仲介して、終わり。」に朱の線が引かれ、「RIVIAは、宿に変えて、運営まで担う。」。循環の図は光の点が回り、順に緑に光る。評価の数字はカウントアップ。画面上端にスクロールの進み具合の線。フッターは深い緑に大きな社名。動きを減らす設定（prefers-reduced-motion）では自動で動くものを止める。")
     w("* **フォント:** 見出し＝Noto Serif JP（Light）、本文＝Noto Sans JP、英字・数字＝Cormorant Garamond（Light）。")
     w("* **除外要素:** 「Seminar & Event」「マガジン」「SNSへのリンク」は置かない。")
     w("* **技術スタック:** HTML / CSS / JavaScript（外部ライブラリなし）。GitHub → Vercel で公開。")
@@ -2373,8 +2371,9 @@ def spec_md():
         w(f"    * **{dict(SERVICES)[k]}** — " + " ／ ".join(("★" if pl["rec"] else "") + pl["name"] for pl in PLANS[k]["plans"]))
     w("")
     w("### RIVIAが選ばれる理由（追加）")
-    for i, (t, d) in enumerate(REASONS, 1):
-        w(f"    {i}. **{t}** — {d}")
+    w(f"    {REASONS_LEAD}")
+    for i, (t, d, c) in enumerate(REASONS, 1):
+        w(f"    {i}. **{t}** — {d}（経歴: {c}）")
     w("")
     w("### Project（運営実績）")
     w("* お悩み別導線より下に1か所だけ配置。カード全体がリンクで、施設サイト（https://nodeshimoda.com/）を別タブで開く。ホバーで写真が少し拡大。")
@@ -5259,7 +5258,9 @@ def llms_txt():
 
 def sitemap():
     pages = ["", "about.html"] + [f"service-{k}.html" for k, _ in SERVICES] + \
-            ["media.html"] + [f"media/category-{k}.html" for k, _ in MEDIA_CATEGORIES] + [f"media/guide-{g['key']}.html" for g in MEDIA_GUIDES] + ["media/plans.html"] + [f"media/{sv['slug']}.html" for sv in MEDIA_SERVICES] + ["media/company.html", "media/learn.html", "media/contact.html"] + [f"media/{a['slug']}.html" for a in ARTICLES] + ["careers.html", "contact.html", "privacy.html"]
+            ["media.html"] + [f"media/category-{k}.html" for k, _ in MEDIA_CATEGORIES] + [f"media/guide-{g['key']}.html" for g in MEDIA_GUIDES] + ["media/plans.html"] + [f"media/{sv['slug']}.html" for sv in MEDIA_SERVICES] + ["media/company.html", "media/learn.html", "media/contact.html"] + [f"media/{a['slug']}.html" for a in ARTICLES if a["date"] <= BUILD_DATE] + ["careers.html", "contact.html", "privacy.html"]
+    # 公開日前の記事は sitemap に載せない。公開日前の記事ページは js/main.js が記事一覧（media.html）へ
+    # 転送するため、Google がその転送を「リダイレクト」として扱い、記事一覧の登録の妨げになりうる
     pages += ["en/" + ("" if f == "index.html" else f) for f in EN_PAGES if f != "thanks.html"]
     lastmod = {f"media/{a['slug']}.html": a["updated"] for a in ARTICLES}
     # 記事の一覧ページにも、載せている記事のいちばん新しい更新日を付ける（クロールの優先度の手がかり）

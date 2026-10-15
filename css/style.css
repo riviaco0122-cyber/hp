@@ -3334,8 +3334,6 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
     linear-gradient(90deg, rgba(10, 18, 12, 0.72) 0%, rgba(10, 18, 12, 0.38) 55%, rgba(10, 18, 12, 0.1) 100%),
     linear-gradient(0deg, rgba(10, 18, 12, 0.6) 0%, rgba(10, 18, 12, 0) 50%);
 }
-.hero__kicker { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 28px; padding: 8px 18px; border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 999px; font-size: 13px; letter-spacing: 0.16em; color: #fff; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); background: rgba(255, 255, 255, 0.06); }
-.hero__kicker i { font-style: normal; color: var(--c-shu-light); }
 .hero__title--x { font-family: var(--font-serif); font-weight: 400; font-size: clamp(46px, 9.2vw, 148px); line-height: 1.12; letter-spacing: 0.02em; }
 .hero__title--x .ln { display: block; overflow: hidden; padding-bottom: 0.06em; }
 .hero__title--x .ln > span { display: inline-block; }
@@ -3367,7 +3365,6 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .hero--x { padding: 104px 0 120px; }
   .hero--x::before { background: linear-gradient(0deg, rgba(10, 18, 12, 0.78) 0%, rgba(10, 18, 12, 0.45) 60%, rgba(10, 18, 12, 0.3) 100%); }
   .hero__title--x { font-size: clamp(38px, 12vw, 76px); line-height: 1.16; }
-  .hero__kicker { font-size: 11px; padding: 6px 14px; margin-bottom: 20px; }
   .hero--x .hero__sub { margin-top: 22px; font-size: 14px; }
   .hero--x .hero__actions { margin-top: 26px; gap: 10px; }
   .hero--x .hero__actions .btn { padding: 14px 24px; }
@@ -3377,16 +3374,6 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .hero__badge-arrow::before { top: 10px; height: 16px; }
   .hero__badge-arrow::after { top: 17px; width: 7px; height: 7px; }
 }
-
-/* ---------- 流れる言葉の帯 ---------- */
-.marquee { overflow: hidden; background: var(--c-forest); color: var(--c-kinari); padding: 22px 0; }
-.marquee__track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
-.marquee__group { display: flex; align-items: center; flex-shrink: 0; }
-.marquee span { padding: 0 28px; font-family: var(--font-en); font-size: clamp(26px, 3.4vw, 46px); font-weight: 400; letter-spacing: 0.06em; line-height: 1.2; white-space: nowrap; }
-.marquee span:nth-child(4n+3) { font-family: var(--font-serif); font-weight: 300; font-size: clamp(18px, 2.2vw, 28px); letter-spacing: 0.12em; opacity: .85; }
-.marquee i { font-style: normal; color: var(--c-shu-light); font-size: clamp(18px, 2vw, 26px); }
-@keyframes marquee { to { transform: translateX(-50%); } }
-@media (max-width: 899px) { .marquee { padding: 14px 0; } .marquee span { padding: 0 16px; } }
 
 /* ---------- 不動産の「型」を破る ---------- */
 .statement { position: relative; overflow: hidden; padding: var(--section-y) 0; background: var(--c-kinari); }
@@ -3505,7 +3492,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 
 /* ---------- 動きを減らす設定のときは、自動で動くものを止める ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .marquee__track, .hero__badge svg, .cycle__orbit, .is-corp .cycle__node { animation: none; }
+  .hero__badge svg, .cycle__orbit, .is-corp .cycle__node { animation: none; }
   .cycle__orbit { display: none; }
   .hero--x .hero__bg { transition: opacity .01s; transform: none; }
   .js .hero__title--x .ln > span { transform: none; transition: none; }
@@ -3531,3 +3518,9 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .is-corp .flow__num { white-space: nowrap; }
 @media (max-width: 899px) { .is-corp .flow__num { font-size: 36px; } .is-corp .cta__title { font-size: clamp(24px, 7.2vw, 34px); } }
 .is-corp .overview .section-title { font-size: clamp(28px, 3vw, 40px); white-space: nowrap; }
+.reasons-sec .section-lead { color: rgba(255, 255, 255, 0.78); }
+.reasons-sec .reason { display: flex; flex-direction: column; }
+.reasons-sec .reason__text { flex-grow: 1; }
+.reason__career { margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.14); font-size: 12.5px; line-height: 1.8; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.9); }
+.reason__career span { display: block; margin-bottom: 4px; font-family: var(--font-en); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-shu-light); }
+.reason__career n-w { word-break: keep-all; }
