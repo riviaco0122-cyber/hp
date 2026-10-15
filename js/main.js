@@ -677,3 +677,74 @@
   if (!window.matchMedia('(max-width: 899px)').matches) return;
   document.querySelectorAll('details.spfold[open]').forEach(function (d) { d.removeAttribute('open'); });
 })();
+
+// コーポレート：スクロールの進み具合・TOPの写真の切り替え・数字のカウントアップ
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 画面上端の細い線で、ページのどこまで読んだかを示す
+  var bar = document.querySelector('.progress');
+  if (bar) {
+    var tick = false;
+    var update = function () {
+      tick = false;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.setProperty('--p', max > 0 ? Math.min(1, window.scrollY / max).toFixed(4) : 0);
+    };
+    window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  // TOPのファーストビュー：写真をゆっくり寄りながら切り替える（動きを減らす設定のときは1枚目のまま）
+  var slides = document.querySelectorAll('.hero--x .hero__bg');
+  var count = document.querySelector('.hero__count');
+  if (slides.length) {
+    var cur = 0, ms = 6000;
+    slides[0].classList.add('is-active');
+    if (!reduce && slides.length > 1) {
+      var num = count && count.querySelector('.hero__count-n');
+      var run = function () {
+        if (!count) return;
+        count.classList.remove('is-running');
+        void count.offsetWidth;  // アニメーションを最初からやり直す
+        count.style.setProperty('--slide-ms', ms + 'ms');
+        count.classList.add('is-running');
+      };
+      run();
+      setInterval(function () {
+        if (document.hidden) return;
+        var next = (cur + 1) % slides.length;
+        var img = slides[next];
+        if (!img.complete) return;  // 次の写真が読み込めるまで待つ
+        slides[cur].classList.remove('is-active');
+        img.classList.add('is-active');
+        cur = next;
+        if (num) num.textContent = ('0' + (cur + 1)).slice(-2);
+        run();
+      }, ms);
+    }
+  }
+
+  // 数字のカウントアップ（data-count。画面に入ったら0から数える）
+  var nums = document.querySelectorAll('[data-count]');
+  if (nums.length && !reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        var el = en.target, to = parseFloat(el.getAttribute('data-count'));
+        var dec = (el.getAttribute('data-count').split('.')[1] || '').length;
+        var t0 = performance.now(), dur = 1400;
+        var step = function (t) {
+          var k = Math.min(1, (t - t0) / dur);
+          el.textContent = (to * (1 - Math.pow(1 - k, 3))).toFixed(dec);
+          if (k < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.6 });
+    nums.forEach(function (el) { io.observe(el); });
+  }
+})();
