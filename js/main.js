@@ -331,6 +331,12 @@
    * 計測（GA4）：相談ボタン・ガイド・検索の利用を記録し、どこから問い合わせにつながったかを見えるようにする
    */
   var track = function (name, params) { if (typeof window.gtag === 'function') window.gtag('event', name, params); };
+  // 解説動画の再生（最初の1回だけ）と、最後まで見たか
+  document.querySelectorAll('video[data-video]').forEach(function (v) {
+    var started = false;
+    v.addEventListener('play', function () { if (!started) { started = true; track('video_play', { video_name: v.getAttribute('data-video'), page_path: location.pathname }); } });
+    v.addEventListener('ended', function () { track('video_complete', { video_name: v.getAttribute('data-video'), page_path: location.pathname }); });
+  });
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a) return;
