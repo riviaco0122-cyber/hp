@@ -3550,6 +3550,12 @@ def photo(name, cls="", alt="", width=1600, height=1000, sizes="100vw", lazy=Tru
             f'sizes="{sizes}" alt="{e(alt)}" width="{width}" height="{height}"{attrs} decoding="async">')
 
 
+def eyecatch_path(a):
+    """アイキャッチの URL。画像は30日キャッシュされるので、中身が変わったら版番号も変わるようにする"""
+    rel = f"images/eyecatch/{a['slug']}.jpg"
+    return f"{rel}?v={asset_version(rel)}"
+
+
 def has_eyecatch(a):
     """tools/eyecatch.py で作ったアイキャッチ（記事トップ・OGP用）があるか"""
     return os.path.exists(os.path.join(OUT, "images", "eyecatch", a["slug"] + ".jpg"))
@@ -3560,7 +3566,7 @@ def thumb(a, size=""):
     name, alt = ARTICLE_PHOTOS[a["slug"]]
     if size == "hero":
         if has_eyecatch(a):
-            return f"""<figure class="article__photo article__photo--eyecatch"><img src="images/eyecatch/{a["slug"]}.jpg" alt="{e(a["short"].replace(chr(10), ""))}" width="1200" height="630" fetchpriority="high" decoding="async"></figure>"""
+            return f"""<figure class="article__photo article__photo--eyecatch"><img src="{eyecatch_path(a)}" alt="{e(a["short"].replace(chr(10), ""))}" width="1200" height="630" fetchpriority="high" decoding="async"></figure>"""
         return f"""<figure class="article__photo">{photo(name, alt=alt, width=1600, height=700, sizes="(max-width: 899px) 100vw, 800px", lazy=False, priority=True)}</figure>"""
     return f"""<div class="thumb thumb--photo">
               {photo(name, width=720, height=450, sizes="(max-width: 899px) 90vw, 400px")}
@@ -5121,7 +5127,7 @@ def article_page(a):
             "description": a["description"],
             "datePublished": a["date"],
             "dateModified": a["updated"],
-            "image": (f"{SITE}/images/eyecatch/{a['slug']}.jpg" if has_eyecatch(a) else f"{SITE}/images/ogp.jpg"),
+            "image": (f"{SITE}/{eyecatch_path(a)}" if has_eyecatch(a) else f"{SITE}/images/ogp.jpg"),
             "mainEntityOfPage": f"{SITE}/media/{a['slug']}.html",
             "author": {"@type": "Organization", "name": "アキヤド編集部（合同会社RIVIA&CO.）", "url": f"{SITE}/about.html", "parentOrganization": {"@id": ORG_ID}},
             "contributor": {"@type": "Person", "@id": person_id(SUPERVISOR["key"]), "name": SUPERVISOR["name"], "jobTitle": "合同会社RIVIA&CO. 代表社員（監修）", "url": f"{SITE}/about.html#founders", "sameAs": [u for _, u in SUPERVISOR["links"]]},
@@ -5146,7 +5152,7 @@ def article_page(a):
         },
     ]
     page(f"media/{a['slug']}.html", a["title"], a["description"], body, current="media", jsonld=ld, cv_category=a["services"][0],
-         og_type="article", og_image=(f"images/eyecatch/{a['slug']}.jpg" if has_eyecatch(a) else f"images/photos/{ARTICLE_PHOTOS[a['slug']][0]}.jpg"))
+         og_type="article", og_image=(eyecatch_path(a) if has_eyecatch(a) else f"images/photos/{ARTICLE_PHOTOS[a['slug']][0]}.jpg"))
 
 
 def not_found_page():
