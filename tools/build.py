@@ -2114,23 +2114,27 @@ def contact_page():
         f'<button type="button" class="catpick__tab" role="tab" data-who="{who_keys[i]}" aria-selected="{"true" if i == 0 else "false"}">'
         f'<span class="catpick__tab-en">{"Personal" if i == 0 else "Business"}</span>{e(aud)}</button>'
         for i, (aud, _its) in enumerate(NAV_INTENTS))
+    # 物件をどうするか決まっていない相談がいちばん多いので、どちらの立場にも先頭に置く（値は「物件の相談」）
+    property_card = {"personal": ("持っている物件について相談したい", "売る・貸す・宿にする、どれが良いかから一緒に考えます"),
+                     "corporate": ("保有物件について相談したい", "活かし方・売り方・運営の任せ方から一緒に考えます")}
+    def card(value, key, intent, sub, extra=""):
+        return (f'<label class="catpick__card{extra}"><input type="radio" name="category" value="{value}" data-key="{key}">'
+                f'<span class="catpick__body"><span class="catpick__intent">{e(intent)}</span><span class="catpick__svc">{e(sub)}</span></span>'
+                f'<span class="catpick__check" aria-hidden="true"></span></label>')
     panels = "\n".join(
         f'            <div class="catpick__panel" role="tabpanel" data-who="{who_keys[i]}" aria-label="{e(aud)}">'
-        + "".join(
-            f'<label class="catpick__card"><input type="radio" name="category" value="{short[k]}" data-key="{k}">'
-            f'<span class="catpick__body"><span class="catpick__intent">{e(t)}</span><span class="catpick__svc">{e(names[k])}</span></span>'
-            f'<span class="catpick__check" aria-hidden="true"></span></label>'
-            for k, t in its)
+        + card("物件の相談", "property", *property_card[who_keys[i]], extra=" catpick__card--wide")
+        + "".join(card(short[k], k, t, names[k]) for k, t in its)
         + "</div>"
         for i, (aud, its) in enumerate(NAV_INTENTS))
-    more = "".join(
-        f'<label class="catpick__chip"><input type="radio" name="category" value="{v}" data-key="{k}"><span>{e(t)}</span></label>'
-        for k, v, t in [("document", "サービス資料の請求", "サービス資料がほしい"), ("other", "その他", "その他・まだ決まっていない")])
+    more = (card("サービス資料の請求", "document", "まずは資料がほしい", "サービス資料をメールでお送りします", extra=" catpick__card--sub")
+            + card("その他", "other", "その他のご相談", "取材・ご提案・そのほかのお問い合わせ", extra=" catpick__card--sub"))
     catpick = f"""          <fieldset class="form__field form__fieldset catpick">
             <legend class="form__legend">ご相談カテゴリ <span class="opt">任意</span></legend>
             <p class="form__notes form__notes--above">あてはまるものを選ぶと、お問い合わせ内容に書き出しが入ります。</p>
             <div class="catpick__tabs" role="tablist" aria-label="お客様の立場">{tabs}</div>
 {panels}
+            <p class="catpick__more-label">ほかのご用件</p>
             <div class="catpick__more">{more}</div>
           </fieldset>"""
     body = f"""    <section class="page-hero page-hero--contact">
@@ -2572,7 +2576,7 @@ def spec_md():
     w("* **見出し:** Contact ／ お問い合わせ")
     w("* **リード文:** まずは気軽にご相談ください。無料でご相談をお受けしています。2営業日以内に担当者よりご連絡いたします。")
     w("* **安心材料（追加）:** ご相談・お見積りは無料 ／ 無理な営業は一切なし ／ 2営業日以内にご連絡")
-    w("* **フォーム:** いちばん上に「ご相談カテゴリ」（任意）。個人のお客様／法人のお客様のタブを選び、その立場の「〜したい」（ナビと同じ NAV_INTENTS）をアイコンつきのカードで選ぶ。下に「サービス資料がほしい」「その他・まだ決まっていない」のチップ。選ぶとお問い合わせ内容に書き出しが入る。送る値は従来どおり（空き家再生／開業・運営支援／不動産協業／WEB集客／WEB採用／サービス資料の請求／その他）。続けて お名前* ／ 会社名・施設名（任意。個人の不動産投資家など一般の方からの相談も想定）／ 電話番号* ／ メールアドレス* ／ お問い合わせ内容* ／ プライバシーポリシーへの同意*（追加）／ メールマガジンの受け取り（任意。初期状態はチェックなし＝オプトイン。「いつでも配信停止できます」の注記。アキヤドのお問い合わせ media/contact.html も同じ）")
+    w("* **フォーム:** いちばん上に「ご相談カテゴリ」（任意）。個人のお客様／法人のお客様のタブを選び、先頭の「持っている（保有）物件について相談したい」（値は「物件の相談」）と、その立場の「〜したい」（ナビと同じ NAV_INTENTS）をカードで選ぶ。下の「ほかのご用件」に「まずは資料がほしい」「その他のご相談」のカード。選ぶとお問い合わせ内容に書き出しが入る。送る値は従来どおり（物件の相談／空き家再生／開業・運営支援／不動産協業／WEB集客／WEB採用／サービス資料の請求／その他）。続けて お名前* ／ 会社名・施設名（任意。個人の不動産投資家など一般の方からの相談も想定）／ 電話番号* ／ メールアドレス* ／ お問い合わせ内容* ／ プライバシーポリシーへの同意*（追加）／ メールマガジンの受け取り（任意。初期状態はチェックなし＝オプトイン。「いつでも配信停止できます」の注記。アキヤドのお問い合わせ media/contact.html も同じ）")
     w("* **マイクロコピー:** ※無理な営業や電話勧誘は一切いたしません。／※ご入力いただいた情報は厳重に管理し、お問い合わせ対応以外には使用いたしません。")
     w("* **フォーム下（追加）:** ご相談の流れ（4ステップ）")
     w("* 送信先: Google Apps Script（tools/forms/Code.gs。通知先 rivia.co0122@gmail.com、お客様へ自動返信）")
