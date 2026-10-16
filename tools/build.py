@@ -973,8 +973,7 @@ PLANS = {
             dict(split=["rivia", "rivia", "rivia", "rivia", "rivia"], name="アキヤド買取プラン", catch="物件をアキヤドが買い取り、管理や相続の手間をなくす",
                  owner_share=0, init="", money_label="受け取り方",
                  monthly="売却代金をまとめて受け取る", example="例：現地を拝見して査定",
-                 ratings=[("なし", "good"), ("なし（一括で受取）", "low"), ("売却代金のみ", "low")], who=["将来使う予定がない", "管理や相続の手間をなくしたい"], rec=False,
-                 cta="買取について相談する"),
+                 ratings=[("なし", "good"), ("なし（一括で受取）", "low"), ("売却代金のみ", "low")], who=["将来使う予定がない", "管理や相続の手間をなくしたい"], rec=False),
         ],
         note="※ 金額・割合はイメージです。条件は物件ごとにご提案します。契約は更新を前提としています。",
         advice="相続した空き家なら「アキヤドおまかせプラン」がおすすめです。<br>ご自身で運営に関わり、より大きな利益を目指すなら<a href=\"service-management.html\">宿泊施設 開業・運営支援事業</a>がおすすめです。",
@@ -1172,7 +1171,7 @@ def plan_diagram(key):
                 <div><span>{e(m2)}</span><b class="pd__c pd__c--b pd__c--{s2}">{e(w2)}</b></div>
               </div>
               <p class="pd__desc">{e(desc)}</p>
-              <a href="contact.html?category={key}" class="pd__cta">{"買取を相談する" if p.get("cta") else ("このコースを相談する" if p["name"].endswith("コース") else "このプランを相談する")} {ARROW}</a>
+              <a href="contact.html?category={key}" class="pd__cta">{"このコースを相談する" if p["name"].endswith("コース") else "このプランを相談する"} {ARROW}</a>
             </div>
           </div>""")
     return '        <div class="pd reveal">\n' + "\n".join(cols) + "\n        </div>"
@@ -1469,7 +1468,7 @@ def area_html(key):
 
 
 def quick_form(key, name):
-    """サービスページ冒頭の、かんたんな相談フォーム（名前とメールだけで送れる）"""
+    """かんたんな相談フォーム（名前とメールだけで送れる。アキヤドのサービス紹介ページで使う）"""
     return f"""        <form class="qform reveal" data-delay="2" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
           <p class="qform__title">{e(name)}の無料相談</p>
           <p class="qform__lead">まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。</p>
@@ -1569,17 +1568,6 @@ def service_page(key, name):
           <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「{e(PERSONAS[key])}」</p>
           {area_html(key)}
         </div>
-      </div>
-    </section>
-
-    <section class="qband">
-      <div class="container qband__inner">
-        <div class="qband__text reveal">
-          <span class="eyebrow">Free Consultation</span>
-          <h2 class="qband__title">まずは、無料で<br>ご相談ください。</h2>
-          <p class="qband__lead">お名前とメールアドレスだけで送れます。まだ検討中の段階でも大丈夫です。</p>
-        </div>
-{quick_form(key, name)}
       </div>
     </section>
 
