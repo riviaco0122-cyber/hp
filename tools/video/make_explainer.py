@@ -106,6 +106,7 @@ const CAST={
   owner:{skin:'#f1c7a1',hair:'#3b302a',style:'side',top:'#2e6b47',top2:'#24573a',collar:'#f4efe6',pants:'#3b4a5a',shoes:'#2a2a30'},
   staff:{skin:'#f3cba8',hair:'#2b2422',style:'bob',top:'#c95a35',top2:'#a94a2a',inner:'#ffffff',jacket:true,pants:'#2f3b4a',shoes:'#2a2a30',tag:true},
   guest1:{skin:'#e3b089',hair:'#1f1f24',style:'short',top:'#3d6a8a',top2:'#30566f',inner:'#f4efe6',jacket:true,pants:'#c9bfae',shoes:'#5a4636'},
+  umai:{skin:'#efc29a',hair:'#141414',style:'side',top:'#5b2d7a',top2:'#45215e',inner:'#f5b8c8',jacket:true,pants:'#2a2238',shoes:'#c9a227',sunglasses:true,chain:true,tie:'#e8b950'},
   guest2:{skin:'#f6d2b4',hair:'#7a4a2a',style:'pony',top:'#f0b35a',top2:'#d89a3e',collar:'#ffffff',pants:'#2f3b4a',shoes:'#c95a35'},
 };
 function ik(sx,sy,hx,hy,side,L1=98,L2=92){
@@ -128,8 +129,10 @@ const POSES={
   point:(t)=>[[-82,-262],[232,-470]],
   open:(t)=>[[-136,-296+Math.sin(t*4)*6],[136,-296-Math.sin(t*4)*6]],
   walk:(t)=>[[-70+Math.sin(t*9)*26,-262],[70-Math.sin(t*9)*26,-262]],
+  phone:(t)=>[[-82,-262],[34,-452,[86,-352]]],   // 右手でスマホを顔の前に
+  shake:(t)=>[[-82,-262],[96+Math.sin(t*40)*5,-330,[92,-372]]],   // ペンを持つ手がぷるぷる
 };
-function head(c,mood,t,seed){
+function head(c,mood,t,seed,talk){
   const blink=((t*0.8+seed)%3.1)<0.1;
   const hb={short:`M-47 -536 Q-50 -594 0 -596 Q50 -594 47 -536 Q42 -562 22 -566 Q-6 -556 -30 -568 Q-44 -558 -47 -536Z`,
     side:`M-49 -530 Q-54 -598 4 -598 Q54 -596 49 -534 Q44 -568 24 -572 Q-4 -548 -38 -562 Q-48 -552 -49 -530Z`,
@@ -140,9 +143,11 @@ function head(c,mood,t,seed){
   if(c.style==='pony')back=`<ellipse cx="52" cy="-540" rx="20" ry="40" fill="${c.hair}" transform="rotate(${18+Math.sin(t*5)*6} 46 -570)"/><circle cx="44" cy="-572" r="9" fill="${T}"/>`;
   const eyeRy=blink?1:6.5;
   const brow=mood==='worry'?`<path d="M-26 -546 l15 -6 M26 -546 l-15 -6" stroke="${c.hair}" stroke-width="5" stroke-linecap="round"/>`:`<path d="M-26 -547 q9 -6 18 -1 M26 -547 q-9 -6 -18 -1" stroke="${c.hair}" stroke-width="5" fill="none" stroke-linecap="round"/>`;
-  const mouth=mood==='worry'?`<path d="M-11 -496 q11 -7 22 0" stroke="#7a3b2e" stroke-width="4.5" fill="none" stroke-linecap="round"/>`
+  const mouth=(talk&&Math.sin(t*19)>-.3)?`<ellipse cx="0" cy="-497" rx="${mood==='worry'?8:11}" ry="${6+Math.abs(Math.sin(t*13))*5}" fill="#8a3a2e"/>`
+    :mood==='worry'?`<path d="M-11 -496 q11 -7 22 0" stroke="#7a3b2e" stroke-width="4.5" fill="none" stroke-linecap="round"/>`
     :mood==='happy'?`<path d="M-15 -503 q15 0 30 0 q-2 17 -15 17 q-13 0 -15 -17z" fill="#8a3a2e"/><path d="M-9 -490 q9 5 18 0" stroke="#e97a6a" stroke-width="5" stroke-linecap="round"/>`
     :`<path d="M-13 -501 q13 11 26 0" stroke="#7a3b2e" stroke-width="4.5" fill="none" stroke-linecap="round"/>`;
+  const shades=c.sunglasses?`<g><path d="M-36 -536 h30 q2 0 1 3 l-4 14 q-1 5 -7 5 h-12 q-6 0 -7 -5 l-3 -14 q-1 -3 2 -3z M6 -536 h30 q3 0 2 3 l-3 14 q-1 5 -7 5 h-12 q-6 0 -7 -5 l-4 -14 q-1 -3 1 -3z" fill="#14141c"/><path d="M-6 -532 h12" stroke="#14141c" stroke-width="4"/><path d="M-30 -532 l6 0 M12 -532 l6 0" stroke="#fff" stroke-width="3" opacity=".6" stroke-linecap="round"/></g>`:'';
   const glasses=c.glasses?`<g fill="none" stroke="#2b2b33" stroke-width="3.5"><rect x="-31" y="-534" width="25" height="20" rx="7"/><rect x="6" y="-534" width="25" height="20" rx="7"/><path d="M-6 -526 h12"/></g>`:'';
   return `${back}<rect x="-13" y="-486" width="26" height="40" rx="10" fill="${c.skin}"/><rect x="-13" y="-486" width="26" height="16" fill="#000" opacity=".08"/>
   <circle cx="-45" cy="-524" r="10" fill="${c.skin}"/><circle cx="45" cy="-524" r="10" fill="${c.skin}"/>
@@ -150,7 +155,7 @@ function head(c,mood,t,seed){
   <path d="${hb[c.style]}" fill="${c.hair}"/>
   ${brow}<ellipse cx="-17" cy="-524" rx="5" ry="${eyeRy}" fill="#2b2b33"/><ellipse cx="17" cy="-524" rx="5" ry="${eyeRy}" fill="#2b2b33"/>
   <circle cx="-27" cy="-507" r="8" fill="#ef8b78" opacity=".28"/><circle cx="27" cy="-507" r="8" fill="#ef8b78" opacity=".28"/>
-  <path d="M0 -518 q-5 11 3 13" stroke="${mix(c.skin,'#7a4a33',.45)}" stroke-width="3.5" fill="none" stroke-linecap="round"/>${mouth}${glasses}`;
+  <path d="M0 -518 q-5 11 3 13" stroke="${mix(c.skin,'#7a4a33',.45)}" stroke-width="3.5" fill="none" stroke-linecap="round"/>${mouth}${glasses}${shades}`;
 }
 function person(x,y,s,o){
   const c=CAST[o.c||'owner'],t=o.t||0,pose=o.pose||'stand',mood=o.mood||'smile';
@@ -173,9 +178,9 @@ function person(x,y,s,o){
   <ellipse cx="0" cy="${-bob+4}" rx="92" ry="14" fill="#000" opacity=".13"/>
   ${leg(-1,lg)}${leg(1,-lg)}
   <rect x="-62" y="-272" width="124" height="26" rx="8" fill="${c.pants}"/>
-  ${torso}${tag}
-  ${head(c,mood,t,o.seed||0)}
-  ${arm(c,-1,Lh[0],Lh[1],Lh[2])}${arm(c,1,Rh[0],Rh[1],Rh[2])}</g>`;
+  ${torso}${tag}${c.tie?`<path d="M-7 -452 h14 l5 70 l-12 16 l-12 -16z" fill="${c.tie}"/>`:''}${c.chain?`<path d="M-26 -462 q26 46 52 0" stroke="#e8b950" stroke-width="6" fill="none"/><circle cx="0" cy="-428" r="8" fill="#e8b950"/>`:''}
+  ${head(c,mood,t,o.seed||0,o.talk)}${o.disguise?`<g><path d="M-18 -488 q9 -9 18 -2 q9 -7 18 2 q-9 4 -18 0 q-9 4 -18 0z" fill="#2b2422"/><ellipse cx="0" cy="-578" rx="78" ry="14" fill="#3b3027"/><path d="M-46 -580 q0 -52 46 -52 q46 0 46 52z" fill="#5a4636"/><rect x="-46" y="-596" width="92" height="12" fill="#c95a35"/></g>`:''}
+  ${arm(c,-1,Lh[0],Lh[1],Lh[2])}${arm(c,1,Rh[0],Rh[1],Rh[2])}${pose==='phone'?`<g transform="translate(${Rh[0]-4},${Rh[1]-6}) rotate(-8)"><rect x="-20" y="-34" width="40" height="68" rx="8" fill="#2b2b33"/><rect x="-16" y="-28" width="32" height="54" rx="4" fill="#9fd5f0"/></g>`:''}${pose==='shake'?`<path d="M${Rh[0]+6} ${Rh[1]-4} l26 -40" stroke="#1f3a52" stroke-width="7" stroke-linecap="round"/>`:''}</g>`;
 }
 // ---------- 建物・小物 ----------
 function house(x,y,s,k){ // k:0=古い空き家 1=再生した宿
@@ -206,6 +211,7 @@ const THEMES={
   yellow:{sky:'#f6c45c',sun:'#fde6ad',far:'#f3bb52',mid:'#f8d27f',win:'#fbe3b0',near:'#e7a23a',gr:'#eeb04a',gr2:'#e5a23b'},
   mint:{sky:'#cdeedb',sun:'#f5fad6',far:'#b4e1c6',mid:'#a2d8b8',win:'#dcf3e5',near:'#82c59d',gr:'#9bd2b0',gr2:'#8bc8a3'},
   sky:{sky:'#cde5f6',sun:'#fff3cc',far:'#b6d5ee',mid:'#a3c8e6',win:'#e0eef9',near:'#7fb1d9',gr:'#a6cbe6',gr2:'#95bfdf'},
+  night:{sky:'#26314f',sun:'#f3e9b5',far:'#2f3c60',mid:'#3a4970',win:'#f3c96b',near:'#2c395c',gr:'#34415f',gr2:'#2b3753'},
   peach:{sky:'#f8d4c4',sun:'#fff1dc',far:'#f3c1ad',mid:'#ecad94',win:'#fce3d8',near:'#df937a',gr:'#eaa992',gr2:'#e29a83'},
 };
 const TOWN=(()=>{let x=0,i=0,a=[];while(x<2400){const r=rnd(i++),w=r<.6?150+rnd(i++)*90:120+rnd(i++)*70,h=r<.6?110+rnd(i++)*80:230+rnd(i++)*150;a.push([x,w,h,r<.6?'house':'bldg']);x+=w+10+rnd(i++)*40}return a})();
