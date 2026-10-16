@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
-  <link rel="stylesheet" href="../css/style.css?v=b6e4716b">
+  <link rel="stylesheet" href="../css/style.css?v=fef4975f">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -84,10 +84,11 @@
     <section class="page-hero page-hero--collage">
       <div class="container svc-hero">
         <div class="collage reveal" aria-hidden="true"><img style="object-position:55% 55%" class="collage__img collage__img--0" src="../images/photos/thatched-house.jpg" srcset="../images/photos/w/thatched-house-800.webp 800w, ../images/photos/thatched-house.jpg 1920w" sizes="(max-width: 899px) 60vw, 420px" alt="" width="1920" height="1080" fetchpriority="high" decoding="async"><img style="object-position:50% 40%" class="collage__img collage__img--1" src="../images/photos/gassho-village.jpg" srcset="../images/photos/w/gassho-village-800.webp 800w, ../images/photos/gassho-village.jpg 1080w" sizes="(max-width: 899px) 60vw, 420px" alt="" width="1080" height="1620" decoding="async"><img style="object-position:50% 50%" class="collage__img collage__img--2" src="../images/photos/window-garden.jpg" srcset="../images/photos/w/window-garden-800.webp 800w, ../images/photos/window-garden.jpg 1079w" sizes="(max-width: 899px) 60vw, 420px" alt="" width="1079" height="1349" decoding="async"><p class="collage__v"><n-b>空き家を、灯す。</n-b></p></div>
-        <div class="svc-hero__text">
-          <p class="svc-name reveal"><span class="svc-name__no">Service 01</span><span class="svc-name__ja">空き家再生事業</span></p>
-          <h1 class="page-hero__title ttl-x reveal" data-delay="1"><span class="ln"><span>空き家を、</span></span><span class="ln"><span>宿に再生する。</span></span></h1>
+        <div class="svc-hero__text" data-no="01">
+          <div class="svc-name reveal"><span class="svc-name__no">Service 01</span><h1 class="svc-name__ja"><span class="nw">空き家再生事業</span></h1></div>
+          <p class="page-hero__lead svc-hero__lead reveal" data-delay="1">地方の<wbr>空き家を<wbr>自社で<wbr>改修し、<wbr>「暮らすように<wbr>旅する」宿として<wbr>再生・運営する<wbr>事業です。</p>
           <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「実家・<wbr>空き家の<wbr>処分や<wbr>利活用に<wbr>悩んでいる」</p>
+          <p class="area-note reveal" data-delay="2"><span>対応エリア</span>全国可</p>
         </div>
       </div>
     </section>
@@ -113,19 +114,6 @@
           <button type="submit" class="btn qform__submit">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></button>
           <p class="qform__note"><n-w>送信により</n-w><a href="privacy.html"><n-w>プライバシーポリシー</n-w></a><n-w>に同意したものとします。しつこい営業は<n-b>しません。</n-b></n-w></p>
         </form>
-      </div>
-    </section>
-
-    <section class="section section--overview">
-      <div class="container overview">
-        <div class="reveal">
-          <span class="eyebrow">Overview</span>
-          <h2 class="section-title">サービス概要</h2>
-        </div>
-        <div>
-          <p class="overview__text reveal" data-delay="1">地方の<wbr>空き家を<wbr>自社で<wbr>改修し、<wbr>「暮らすように<wbr>旅する」宿として<wbr>再生・運営する<wbr>事業です。</p>
-          <p class="area-note reveal" data-delay="2"><span>対応エリア</span>全国可</p>
-        </div>
       </div>
     </section>
 
@@ -237,25 +225,25 @@
             <span class="timeline__num">STEP 01</span>
             <h3 class="timeline__title">物件調査・ポテンシャル診断</h3>
             <span class="timeline__term"><n-w>1〜2週間</n-w></span>
-            <p class="timeline__desc"><n-w>現地と周辺の宿を調べ、宿にできるかを<n-b>判断します。</n-b></n-w></p>
+            <p class="timeline__desc">現地と<wbr>周辺の宿を調べ、<wbr>宿にできるかを<wbr>判断します。</p>
           </li>
           <li class="timeline__step reveal" data-delay="1">
             <span class="timeline__num">STEP 02</span>
             <h3 class="timeline__title">事業計画・コンセプト策定</h3>
             <span class="timeline__term"><n-w>2〜3週間</n-w></span>
-            <p class="timeline__desc"><n-w>宿のコンセプトと収支の見通しを<n-b>つくります。</n-b></n-w></p>
+            <p class="timeline__desc">宿のコンセプトと<wbr>収支の<wbr>見通しを<wbr>つくります。</p>
           </li>
           <li class="timeline__step reveal" data-delay="2">
             <span class="timeline__num">STEP 03</span>
             <h3 class="timeline__title">空間デザイン・リノベーション</h3>
             <span class="timeline__term"><n-w>1〜2ヶ月</n-w></span>
-            <p class="timeline__desc"><n-w>改修・家具の手配から予約の仕組みまで<n-b>整えます。</n-b></n-w></p>
+            <p class="timeline__desc">改修・家具の<wbr>手配から<wbr>予約の<wbr>仕組みまで<wbr>整えます。</p>
           </li>
           <li class="timeline__step reveal" data-delay="3">
             <span class="timeline__num">STEP 04</span>
             <h3 class="timeline__title">運営開始・地域連携</h3>
             <span class="timeline__term"><n-w>継続</n-w></span>
-            <p class="timeline__desc"><n-w>運営を始め、地域と連携した滞在体験を<n-b>つくります。</n-b></n-w></p>
+            <p class="timeline__desc">運営を<wbr>始め、<wbr>地域と<wbr>連携した<wbr>滞在体験を<wbr>つくります。</p>
           </li>
         </ol>
       </div>
@@ -292,7 +280,7 @@
             </div>
           </div>
           <p class="sflow__note"><n-w>改修費はRIVIAが負担する<n-b>ことも可能です</n-b></n-w></p>
-          <p class="scheme__summary"><n-w>「貸す」か「売る」かを選ぶだけ。運営の手間は<n-b>かかりません。</n-b></n-w></p>
+          <p class="scheme__summary">「貸す」か<wbr>「売る」かを<wbr>選ぶだけ。<wbr>運営の<wbr>手間は<wbr>かかりません。</p>
         </div>
 
         <div class="pd reveal">
@@ -307,7 +295,7 @@
                 <div><span>毎月の収入</span><b class="pd__c pd__c--a pd__c--1">一括</b></div>
                 <div><span>物件</span><b class="pd__c pd__c--b pd__c--0">売却</b></div>
               </div>
-              <p class="pd__desc"><n-w>物件をアキヤドが買い取り、管理や相続の<n-b>手間をなくす</n-b></n-w></p>
+              <p class="pd__desc">物件を<wbr>アキヤドが<wbr>買い取り、<wbr>管理や<wbr>相続の<wbr><n-b>手間をなくす</n-b></p>
               <a href="contact.html?category=operation" class="pd__cta">買取を<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
             </div>
           </div>
@@ -322,7 +310,7 @@
                 <div><span>毎月の収入</span><b class="pd__c pd__c--a pd__c--2">一定</b></div>
                 <div><span>物件</span><b class="pd__c pd__c--b pd__c--2">残る</b></div>
               </div>
-              <p class="pd__desc"><n-w>初期費用をかけず、毎月決まった<n-b>家賃を受け取る</n-b></n-w></p>
+              <p class="pd__desc">初期費用を<wbr>かけず、<wbr>毎月決まった<wbr>家賃を<wbr>受け取る</p>
               <a href="contact.html?category=operation" class="pd__cta">このプランを<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
             </div>
           </div>
@@ -337,7 +325,7 @@
                 <div><span>毎月の収入</span><b class="pd__c pd__c--a pd__c--3">上乗せ</b></div>
                 <div><span>物件</span><b class="pd__c pd__c--b pd__c--2">残る</b></div>
               </div>
-              <p class="pd__desc"><n-w>補修・内装をアキヤドと共同出資し、家賃＋売上に応じた<n-b>上乗せを受け取る</n-b></n-w></p>
+              <p class="pd__desc">補修・内装を<wbr>アキヤドと<wbr>共同出資し、<wbr>家賃＋売上に<wbr>応じた<wbr>上乗せを<wbr>受け取る</p>
               <a href="contact.html?category=operation" class="pd__cta">このプランを<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
             </div>
           </div>

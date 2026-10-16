@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
-  <link rel="stylesheet" href="../css/style.css?v=b6e4716b">
+  <link rel="stylesheet" href="../css/style.css?v=fef4975f">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -84,10 +84,11 @@
     <section class="page-hero page-hero--collage">
       <div class="container svc-hero">
         <div class="collage reveal" aria-hidden="true"><img style="object-position:50% 50%" class="collage__img collage__img--0" src="../images/photos/riverside-town.jpg" srcset="../images/photos/w/riverside-town-800.webp 800w, ../images/photos/riverside-town.jpg 1620w" sizes="(max-width: 899px) 60vw, 420px" alt="" width="1620" height="1080" fetchpriority="high" decoding="async"><img style="object-position:50% 50%" class="collage__img collage__img--1" src="../images/photos/old-town-street.jpg" srcset="../images/photos/w/old-town-street-800.webp 800w, ../images/photos/old-town-street.jpg 1080w" sizes="(max-width: 899px) 60vw, 420px" alt="" width="1080" height="1437" decoding="async"><img style="object-position:50% 50%" class="collage__img collage__img--2" src="../images/photos/white-bedroom.jpg" srcset="../images/photos/w/white-bedroom-800.webp 800w, ../images/photos/white-bedroom.jpg 1620w" sizes="(max-width: 899px) 60vw, 420px" alt="" width="1620" height="1080" decoding="async"><p class="collage__v"><n-b>物件を、宿に。</n-b></p></div>
-        <div class="svc-hero__text">
-          <p class="svc-name reveal"><span class="svc-name__no">Service 03</span><span class="svc-name__ja"><n-w>不動産事業者様との協業</n-w></span></p>
-          <h1 class="page-hero__title ttl-x reveal" data-delay="1"><span class="ln"><span>保有物件を、</span></span><span class="ln"><span>民泊用に<wbr>販売する。</span></span></h1>
+        <div class="svc-hero__text" data-no="03">
+          <div class="svc-name reveal"><span class="svc-name__no">Service 03</span><h1 class="svc-name__ja"><span class="nw">不動産事業者様との協業</span></h1></div>
+          <p class="page-hero__lead svc-hero__lead reveal" data-delay="1">不動産会社様の<wbr>保有物件を<wbr>民泊の<wbr>投資物件として<wbr>販売できるよう、<wbr>選定から<wbr>購入後の<wbr>運営まで<wbr>担います。</p>
           <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「保有物件を、<wbr>民泊用に<wbr>販売したい」</p>
+          <p class="area-note reveal" data-delay="2"><span>対応エリア</span>全国可</p>
         </div>
       </div>
     </section>
@@ -113,19 +114,6 @@
           <button type="submit" class="btn qform__submit">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></button>
           <p class="qform__note"><n-w>送信により</n-w><a href="privacy.html"><n-w>プライバシーポリシー</n-w></a><n-w>に同意したものとします。しつこい営業は<n-b>しません。</n-b></n-w></p>
         </form>
-      </div>
-    </section>
-
-    <section class="section section--overview">
-      <div class="container overview">
-        <div class="reveal">
-          <span class="eyebrow">Overview</span>
-          <h2 class="section-title">サービス概要</h2>
-        </div>
-        <div>
-          <p class="overview__text reveal" data-delay="1">不動産会社様の<wbr>保有物件を<wbr>民泊の<wbr>投資物件として<wbr>販売できるよう、<wbr>選定から<wbr>購入後の<wbr>運営まで<wbr>担います。</p>
-          <p class="area-note reveal" data-delay="2"><span>対応エリア</span>全国可</p>
-        </div>
       </div>
     </section>
 
@@ -237,25 +225,25 @@
             <span class="timeline__num">STEP 01<span class="timeline__for timeline__for--re"><n-w class="j">不動産会社様へのご支援</n-w></span></span>
             <h3 class="timeline__title">物件の<wbr>選定・<wbr>利回りの算出</h3>
             <span class="timeline__term"><n-w class="j">2〜3週間</n-w></span>
-            <p class="timeline__desc"><n-w>保有物件から民泊向きの物件を選び、根拠のある利回りを<n-b>出します。</n-b></n-w></p>
+            <p class="timeline__desc">保有物件から<wbr>民泊向きの<wbr>物件を<wbr>選び、<wbr>根拠のある利回りを<wbr>出します。</p>
           </li>
           <li class="timeline__step reveal" data-delay="1">
             <span class="timeline__num">STEP 02<span class="timeline__for timeline__for--re"><n-w class="j">不動産会社様へのご支援</n-w></span></span>
             <h3 class="timeline__title">販売資料・説明会の<wbr>サポート</h3>
             <span class="timeline__term"><n-w class="j">販売期間中</n-w></span>
-            <p class="timeline__desc"><n-w>販売資料をご用意し、ご要望に応じて投資家様向けの説明会にも<n-b>登壇します。</n-b></n-w></p>
+            <p class="timeline__desc">販売資料を<wbr>ご用意し、<wbr>ご要望に<wbr>応じて<wbr>投資家様向けの<wbr>説明会にも<wbr>登壇します。</p>
           </li>
           <li class="timeline__step reveal" data-delay="2">
             <span class="timeline__num">STEP 03<span class="timeline__for timeline__for--inv"><n-w class="j">投資家様へのご支援</n-w></span></span>
             <h3 class="timeline__title">購入後の<wbr>開業準備</h3>
             <span class="timeline__term"><n-w class="j">1〜3ヶ月</n-w></span>
-            <p class="timeline__desc"><n-w>物件を購入された投資家様に代わり、許可申請・改修・予約サイト掲載まで<n-b>進めます。</n-b></n-w></p>
+            <p class="timeline__desc">物件を<wbr>購入された<wbr>投資家様に<wbr>代わり、<wbr>許可申請・改修・予約サイト掲載まで<wbr>進めます。</p>
           </li>
           <li class="timeline__step reveal" data-delay="3">
             <span class="timeline__num">STEP 04<span class="timeline__for timeline__for--inv"><n-w class="j">投資家様へのご支援</n-w></span></span>
             <h3 class="timeline__title"><n-b>運営・収益のお返し</n-b></h3>
             <span class="timeline__term"><n-w class="j">開業後〜</n-w></span>
-            <p class="timeline__desc"><n-w>運営はRIVIAが担い、投資家様へ収益と月次レポートを<n-b>お届けします。</n-b></n-w></p>
+            <p class="timeline__desc">運営は<wbr>RIVIAが<wbr>担い、<wbr>投資家様へ<wbr>収益と<wbr>月次レポートを<wbr>お届けします。</p>
           </li>
         </ol>
       </div>
@@ -292,7 +280,7 @@
           <p class="sflow__note"><n-w>販売しにくかった物件も、民泊としての利回りを示すことで売れる<n-b>商品になります</n-b></n-w></p>
         </div>
         <p class="plans__note"><n-w>※ 投資家様向けの説明会は、ご要望に応じてRIVIAも<n-b>登壇・実施します。</n-b></n-w></p>
-        <p class="scheme__summary reveal"><n-w>不動産会社様・投資家様・RIVIAの三者それぞれにメリットのある<n-b>協業です。</n-b></n-w></p>
+        <p class="scheme__summary reveal">不動産会社様・投資家様・RIVIAの<wbr>三者それぞれに<wbr>メリットのある<wbr>協業です。</p>
       </div>
     </section>
 
@@ -454,7 +442,7 @@
           <p class="group-label"><span>Hospitality</span><n-w><n-b>宿泊施設の運営・開業</n-b></n-w></p>
           <div class="related">
             <a href="service-operation.html" class="related__card reveal">
-              <span class="related__worry"><n-w>「実家・空き家の処分や利活用に悩んでいる」</n-w></span>
+              <span class="related__worry">「実家・<wbr>空き家の<wbr>処分や<wbr>利活用に<wbr>悩んでいる」</span>
               <span class="related__name">空き家再生事業 <span class="arrow" aria-hidden="true"></span></span>
             </a>
             <a href="service-management.html" class="related__card reveal">
