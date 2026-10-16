@@ -1510,9 +1510,9 @@ def service_page(key, name):
     related_groups.sort(key=lambda t: t[0])
     related = "\n".join(h for _, h in related_groups)
 
-    ph, pw, phh, ppos, *bright = SERVICE_PHOTOS[key]
-    body = f"""    <section class="page-hero page-hero--photo{" page-hero--bright" if bright else ""}">
-      <img class="page-hero__bg" src="images/photos/{ph}.jpg" alt="" width="{pw}" height="{phh}" style="object-position:{ppos}" fetchpriority="high" decoding="async">
+    import hero_art
+    body = f"""    <section class="page-hero page-hero--photo page-hero--art">
+      {hero_art.art_svg(key)}
       <span class="page-hero__mark" aria-hidden="true">{e(SERVICE_INTRO[key][0])}</span>
       <div class="container svc-hero">
         <div class="svc-hero__text">
@@ -2528,7 +2528,7 @@ def spec_md():
     w("* 記事ページ：パンくず（TOP ／ アキヤド ／ カテゴリ）、ガイドに含まれる記事は「この記事を含むガイド」と前後の記事、シェア（X ／ LINE ／ Facebook ／ リンクをコピー）を表示。")
     w("* 旧URL（media.html?cat=○○）はカテゴリ一覧へ移動する。")
     w("* サムネイルは記事ごとの写真（images/photos/w/ の WebP 軽量版。大きな表示では元の写真）。記事トップは原寸の写真を使い、OGP画像にも同じ写真を設定する。割り当ては build 内の ARTICLE_PHOTOS。")
-    w("* 写真の配置：TOPヒーロー（素材⑧・暗めのグラデーションを重ねて白文字）、相談CTA（全ページ共通）、各サービスページTOPの背景写真、代表者の顔写真。写真は原寸のまま格納し再圧縮しない。")
+    w("* 写真の配置：TOPヒーロー（素材⑧・暗めのグラデーションを重ねて白文字）、相談CTA（全ページ共通）、代表者の顔写真。各サービスページTOPは写真ではなく、深い緑の面に事業ごとの線画（tools/hero_art.py：空き家再生＝窓に灯りがともる家並み、開業・運営支援＝埋まっていく予約カレンダー、不動産協業＝物件・RIVIA・ゲスト・事業者を結ぶ線を光が行き来、WEB集客＝伸びる線グラフと灯る人の点、WEB採用＝人のつながりの網）。写真は原寸のまま格納し再圧縮しない。")
     w("* トップページ（運営実績の下）と、各サービスページ（よくある質問の下）にも関連記事を3件まで表示する。")
     w("* 解説動画「1分半でわかる、アキヤドへのご相談」（videos/akiyado-guide.mp4・1920×1080・ナレーションと字幕入り）を、アキヤドのプラン（media/plans.html）の冒頭と、メディアトップの「アキヤドに任せると、どうなる？」の帯に置く。押したときだけ読み込む。動画は tools/video/make_explainer.py で作る。GA4 に video_play・video_complete を送る。")
     w("")
@@ -3393,14 +3393,6 @@ def read_minutes(a):
     return max(3, round(len(text) / 500))
 
 
-SERVICE_PHOTOS = {
-    # サービスページTOPの背景（全面に敷くため、横長で解像度の高い写真を使う）
-    "operation": ("irori-room", 1623, 1079, "50% 55%"),
-    "management": ("thatched-house", 1920, 1080, "50% 50%"),
-    "marketing": ("laptop-dashboard", 1516, 1080, "50% 50%", True),
-    "recruit": ("rural-station", 1918, 1080, "50% 50%"),
-    "partnership": ("analytics-paper", 1619, 1080, "50% 50%", True),
-}
 ARTICLES += [
     dict(
         slug="shizuoka-yaizu-akiya-inn",
@@ -4489,7 +4481,7 @@ def media_learn_page():
         for i, (t, d, slugs) in enumerate(c["chapters"], 1):
             # 記事への行は、短いキャッチ＋「読む →」で、押せることが一目で分かるようにする
             links = "".join(f'<li data-date="{ARTICLE_BY_SLUG[sl]["date"]}"><a href="media/{sl}.html" class="lchap__link" title="{e(ARTICLE_BY_SLUG[sl]["title"])}">'
-                            f'<span class="lchap__ltext"><span class="lchap__name">{e(list_name(ARTICLE_BY_SLUG[sl]))}</span><span class="lchap__blurb">{e(ARTICLE_BY_SLUG[sl]["blurb"])}</span></span><span class="lchap__go">読む {ARROW}</span></a></li>' for sl in slugs)
+                            f'<span class="lchap__ltext"><span class="lchap__name">{e(list_name(ARTICLE_BY_SLUG[sl]))}</span></span><span class="lchap__go">読む {ARROW}</span></a></li>' for sl in slugs)
             chs.append(f"""            <li class="lchap reveal">
               <p class="lchap__no">第{i}章</p>
               <div class="lchap__body">
@@ -4946,7 +4938,6 @@ def media_guide_page(g):
                 <span class="guide-step__thumb">{photo(pn, alt="", width=720, height=450, sizes="64px")}</span>
                 <span class="guide-step__text">
                   <span class="guide-step__title">{e(list_name(a))}</span>
-                  <span class="guide-step__blurb">{e(a["blurb"])}</span>
                   <span class="guide-step__more">{e(MEDIA_CAT_NAMES[a["category"]])} ・ 約{read_minutes(a)}分</span>
                 </span>
                 <span class="guide-step__go" aria-hidden="true">›</span>
