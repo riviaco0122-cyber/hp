@@ -4086,3 +4086,24 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 /* 両端揃えの段落は行の長さをそろえない（balance と両端揃えが重なると字間が大きく空く） */
 :is(p, li, dd, blockquote):has(> n-w.j) { text-wrap: pretty; }
 .vsvc__text { word-break: keep-all; overflow-wrap: anywhere; }
+/* PC：サービスページ冒頭の左右のバランス（文字側に重みを持たせる。番号は大きな白抜き数字で遊び心を） */
+@media (min-width: 900px) {
+  .page-hero--collage .svc-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px 72px; align-items: center; }
+  .page-hero--collage .svc-hero__text { position: relative; padding-top: 24px; }
+  .page-hero--collage .svc-hero__text::before { content: attr(data-no); position: absolute; z-index: -1; top: -0.42em; left: -0.06em; font-family: var(--font-en); font-size: clamp(150px, 14vw, 220px); line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(26, 71, 42, 0.16); pointer-events: none; }
+  .page-hero--collage .svc-name { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .page-hero--collage .svc-name__ja { font-size: clamp(32px, 3vw, 46px); font-weight: 400; line-height: 1.4; letter-spacing: 0.06em; word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance; }
+  .page-hero--collage .svc-hero__lead { margin-top: 28px; padding-top: 28px; border-top: 0; position: relative; font-size: clamp(16px, 1.25vw, 18px); line-height: 2.1; }
+  .page-hero--collage .svc-hero__lead::before { content: ""; position: absolute; top: 0; left: 0; width: 48px; height: 2px; background: var(--c-shu); }
+  .page-hero--collage .page-hero__target { margin-top: 32px; }
+}
+@media (min-width: 900px) {
+  .page-hero--collage .svc-hero__text { isolation: isolate; }
+  .page-hero--collage .svc-name__ja .nw { white-space: nowrap; }
+}
+/* PC：番号は白抜きの大きな数字だけで見せる（TOP の 01・02… と同じ表現。バッジと重ねない） */
+@media (min-width: 900px) {
+  .page-hero--collage .svc-hero__text { padding-top: 0; }
+  .page-hero--collage .svc-hero__text::before { position: static; z-index: auto; display: block; margin: 0 0 18px -0.04em; font-size: clamp(88px, 7.2vw, 112px); line-height: 0.8; -webkit-text-stroke: 1px var(--c-shu); }
+  .page-hero--collage .svc-name__no { display: none; }
+}
