@@ -4041,3 +4041,12 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .page-hero--collage .svc-name { margin-bottom: 20px; }
   .page-hero--collage .page-hero__target { margin-top: 26px; }
 }
+/* スマホのプラン比較：帯の上側が細く、「手数料10%」「出資して貸す」が斜めの線で切れていた。帯を少し太く・斜めをゆるくし、文字をひとまわり小さく */
+@media (max-width: 899px) {
+  .pd__plan--1 { --w: 41%; } .pd__plan--2 { --w: 46%; } .pd__plan--3 { --w: 51%; }
+  .pd__plan--1 .pd__seg { clip-path: polygon(0 0, 89% 0, 100% 100%, 0 100%); }
+  .pd__plan--2 .pd__seg { clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%); }
+  .pd__plan--3 .pd__seg { clip-path: polygon(0 0, 91% 0, 100% 100%, 0 100%); }
+  .pd__value { font-size: clamp(18px, 5.4vw, 22px); }
+}
+@media (max-width: 899px) { .pd__desc { word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance; } }
