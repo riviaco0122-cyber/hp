@@ -248,16 +248,6 @@ SERVICE_CATCH = {
 }
 
 
-# サービスページの見出しの写真（自然な色のまま、左を暗くして文字を読みやすくする。css の .page-hero--tone）
-SERVICE_HERO = {
-    "operation": ("thatched-house", 1920, 1080, "50% 60%"),
-    "management": ("dark-room", 1080, 1620, "50% 55%"),
-    "partnership": ("riverside-town", 1620, 1080, "50% 50%"),
-    "marketing": ("mountain-dawn", 1442, 1080, "50% 60%"),
-    "recruit": ("rural-station", 1918, 1080, "50% 50%"),
-}
-
-
 # ---------------------------------------------------------------- layout
 
 import json
@@ -1520,9 +1510,8 @@ def service_page(key, name):
     related_groups.sort(key=lambda t: t[0])
     related = "\n".join(h for _, h in related_groups)
 
-    ph, pw, phh, ppos = SERVICE_HERO[key]
-    body = f"""    <section class="page-hero page-hero--photo page-hero--tone">
-      {photo(ph, cls="page-hero__bg", width=pw, height=phh, sizes="100vw", lazy=False, priority=True).replace("<img ", f'<img style="object-position:{ppos}" ', 1)}
+    import hero_dots
+    body = f"""    <section class="page-hero page-hero--photo page-hero--dots">
       <span class="page-hero__mark" aria-hidden="true">{e(SERVICE_INTRO[key][0])}</span>
       <div class="container svc-hero">
         <div class="svc-hero__text">
@@ -1532,6 +1521,17 @@ def service_page(key, name):
           <div class="page-hero__actions reveal" data-delay="2">
             <a href="#{key}-issues" class="btn btn--ghost btn--on-photo">お悩みと解決策を見る</a>
           </div>
+        </div>
+        <div class="svc-hero__art reveal" data-delay="1">{hero_dots.art_svg(key)}</div>
+      </div>
+    </section>
+
+    <section class="qband">
+      <div class="container qband__inner">
+        <div class="qband__text reveal">
+          <span class="eyebrow">Free Consultation</span>
+          <h2 class="qband__title">まずは、無料で<br>ご相談ください。</h2>
+          <p class="qband__lead">お名前とメールアドレスだけで送れます。まだ検討中の段階でも大丈夫です。</p>
         </div>
 {quick_form(key, name)}
       </div>
@@ -2538,49 +2538,7 @@ def spec_md():
     w("* 記事ページ：パンくず（TOP ／ アキヤド ／ カテゴリ）、ガイドに含まれる記事は「この記事を含むガイド」と前後の記事、シェア（X ／ LINE ／ Facebook ／ リンクをコピー）を表示。")
     w("* 旧URL（media.html?cat=○○）はカテゴリ一覧へ移動する。")
     w("* サムネイルは記事ごとの写真（images/photos/w/ の WebP 軽量版。大きな表示では元の写真）。記事トップは原寸の写真を使い、OGP画像にも同じ写真を設定する。割り当ては build 内の ARTICLE_PHOTOS。")
-    w("* 写真の配置：TOPヒーロー（素材⑧・暗めのグラデーションを重ねて白文字）、相談CTA（全ページ共通）、代表者の顔写真。各サービスページTOPの写真は自然な色のまま（彩度を少し落とす）、左側を黒に近い影で暗くして文字を読みやすくする（SERVICE_HERO。緑の色かぶせはくすんで見えるためしない）。写真は原寸のまま格納し再圧縮しない。")
-    w("* トップページ（運営実績の下）と、各サービスページ（よくある質問の下）にも関連記事を3件まで表示する。")
-    w("* 解説動画「1分半でわかる、アキヤドへのご相談」（videos/akiyado-guide.mp4・1920×1080・ナレーションと字幕入り）を、アキヤドのプラン（media/plans.html）の冒頭と、メディアトップの「アキヤドに任せると、どうなる？」の帯に置く。押したときだけ読み込む。動画は tools/video/make_explainer.py で作る。GA4 に video_play・video_complete を送る。")
-    w("")
-    w("### 記事ページの構成（SEO・AIO対策）")
-    w("1. カテゴリ・タイトル（検索されるキーワードを前半に）・公開日・更新日・読了目安・執筆者")
-    w("2. リード文（meta description と同じ要約）")
-    w("3. **この記事のポイント**：結論を3〜5行の箇条書きで先に示す（AIの要約・引用に使われやすい）")
-    w("4. 目次（ページ内リンク）")
-    w("5. 本文：見出しは検索される疑問文・結論型にし、表・手順リストで整理。数値には必ず出典を明記")
-    w("6. よくある質問（FAQ。構造化データ FAQPage を設定）")
-    w("7. 参考資料（公的機関の資料名）と「公開日時点の情報」である旨の注記")
-    w("8. 執筆者情報（E-E-A-T。監修者を立てる場合はここに追加）")
-    w("9. 関連サービスへのリンクと相談ボタン、あわせて読みたい記事")
-    w("* 構造化データ: Article ／ FAQPage ／ BreadcrumbList。sitemap.xml に全記事を登録。")
-    w("")
-    w("### 公開日の扱い（予約公開）")
-    w("* 記事ごとに実際の公開日を設定し、公開日を迎えた記事だけを一覧・トップ・関連記事に表示する（main.js が日付を判定）。")
-    w("* ファイルは先にまとめてアップロードしてよい。表示される公開日と、実際に読めるようになる日が一致するため、日付を偽らずに「別々の日に公開された」見せ方になる。")
-    w("* 公開日より前の日付（過去の日付）を付けることはしない。公開予定を変える場合は、記事データの date / updated を変更する。")
-    w("* 公開スケジュール: " + " ／ ".join(f"{a['date']} {a['title'][:18]}…" for a in sorted(ARTICLES, key=lambda x: x['date'])))
-    w("")
-    w("### 掲載記事")
-    for a in ARTICLES:
-        w("")
-        w(f"#### {a['title']}（`media/{a['slug']}.html`）")
-        w(f"* カテゴリ: {MEDIA_CAT_NAMES[a['category']]} ／ 公開日: {a['date']} ／ 関連サービス: " + "、".join(dict(SERVICES)[k] for k in a['services']))
-        w(f"* 説明文: {a['description']}")
-        w("* この記事のポイント:")
-        for k in a["keypoints"]:
-            w(f"    * {k}")
-        w("* 見出し構成: " + " → ".join(h for _, h, _ in a["sections"]) + " → よくある質問")
-        w("* 参考資料: " + " ／ ".join(a["sources"]))
-    w("")
-    w("> ⚠ 記事内の数値は公的機関の公表資料にもとづいて記載しているが、公開前に各資料の最新値を確認する。記事を追加するときも、数値には必ず出典を付ける。")
-    w("")
-    w("---")
-    w("")
-    w("## 6. Careers（careers.html）")
-    w("* **ファーストビュー:** 写真は使わず、ほかの下層ページと同じ白基調の見出し（Careers ／ 採用情報）。")
-    w("* **トップメッセージ:** 一緒に働く仲間を募集しています。／年齢・経験は問いません。お気軽にご連絡ください。")
-    w("    * ⚠ サイト内に MISSION / VALUES の記載がないため、About に追加するか文言を調整する。")
-    w("* **エントリーフォーム:** お名前*（名字 名前）／ Email*（Email@address）／ 詳細*（志望動機や希望年収、思っていることを是非教えてください。）／ 添付ファイル*（職務経歴書・履歴書：点線枠のファイル選択×2。選択後はファイル名を表示）／ プライバシーポリシーへの同意*（追加）／ [送信する]")
+    w("* 写真の配置：TOPヒーロー（素材⑧・暗めのグラデーションを重ねて白文字）、相談CTA（全ページ共通）、代表者の顔写真。各サービスページTOPは、私たちについての日本地図と同じく、深い緑の面に白い点で事業を象徴する形を描き、朱の点を灯す（tools/hero_dots.py：空き家再生＝古民家と窓の灯り、開業・運営支援＝埋まった日が朱の予約カレンダー、不動産協業＝重なる3つの円、WEB集客＝広がる波紋、WEB採用＝並んだ人と出会えた人）。／ 添付ファイル*（職務経歴書・履歴書：点線枠のファイル選択×2。選択後はファイル名を表示）／ プライバシーポリシーへの同意*（追加）／ [送信する]")
     w("* 送信先: Google Apps Script（tools/forms/Code.gs。自動返信・添付ファイルのドライブ保存・スプレッドシート記録・社内通知）")
     w("")
     w("## 7. Contact（contact.html）")

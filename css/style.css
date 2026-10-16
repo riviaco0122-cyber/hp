@@ -3911,16 +3911,31 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 }
 
 
-/* サービスページの見出し：写真は自然な色のまま（彩度だけ少し落とす）、左を黒に近い影で暗くして文字を読みやすく。緑の色かぶせはしない（くすんで見えるため） */
-.page-hero--tone { background: #0d0f0e; }
-.page-hero--tone .page-hero__bg { filter: saturate(.88) contrast(1.06) brightness(.92); }
-.page-hero--tone::before {
-  background:
-    linear-gradient(90deg, rgba(8, 10, 9, 0.84) 0%, rgba(8, 10, 9, 0.58) 45%, rgba(8, 10, 9, 0.12) 100%),
-    linear-gradient(0deg, rgba(8, 10, 9, 0.55) 0%, rgba(8, 10, 9, 0) 45%);
-}
-.page-hero--tone .page-hero__label { color: var(--c-shu-light); }
-.page-hero--tone .page-hero__title { text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35); }
+/* サービスページの見出し：私たちについての日本地図と同じ「点で描く」図（tools/hero_dots.py）。左に文字、右に図 */
+.page-hero--dots { background: radial-gradient(120% 100% at 75% 40%, #1f5a35 0%, var(--c-forest-deep) 62%); }
+.page-hero--dots::before { content: none; }
+.page-hero--dots .svc-hero { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 40px 48px; }
+.svc-hero__art { width: 100%; }
+.sdots { display: block; width: 100%; height: auto; overflow: visible; }
+.sdots__base { fill: rgba(255, 255, 255, 0.36); }
+.sdots__accent { fill: var(--c-shu-light); }
+.sdots__accent circle { animation: sdot-glow 4.8s ease-in-out infinite; animation-delay: calc(var(--d) * -1); }
+@keyframes sdot-glow { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+.page-hero--dots .page-hero__label { color: var(--c-shu-light); }
 @media (max-width: 899px) {
-  .page-hero--tone::before { background: linear-gradient(180deg, rgba(8, 10, 9, 0.5) 0%, rgba(8, 10, 9, 0.8) 100%); }
+  .page-hero--dots .svc-hero { grid-template-columns: 1fr; }
+  .svc-hero__art { width: min(78%, 340px); margin: 0 auto -8px; }
 }
+@media (prefers-reduced-motion: reduce) { .sdots__accent circle { animation: none; } }
+
+/* 見出しのすぐ下：かんたんな相談フォームの帯（PCのみ。スマホは下の固定ボタンから） */
+.qband { padding: 72px 0; background: var(--c-kinari); }
+.qband__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 40px 80px; align-items: center; }
+.qband__title { margin-top: 8px; font-family: var(--font-serif); font-weight: 400; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.5; letter-spacing: 0.06em; }
+.qband__lead { margin-top: 20px; color: var(--c-sub); line-height: 2; }
+.qband .qform { border-radius: 18px; box-shadow: 0 24px 50px rgba(15, 38, 24, 0.1); }
+.qband .qform input, .qband .qform textarea { border-radius: 10px; }
+.qband .qform .qform__submit { background: var(--c-shu); border-color: var(--c-shu); color: #fff; }
+.qband .qform__field em { border-radius: 999px; background: var(--c-shu); }
+@media (max-width: 899px) { .qband { display: none; } }
+@media (min-width: 900px) { .page-hero--dots .page-hero__title { font-size: clamp(32px, 3.6vw, 52px); } .page-hero--dots .ttl-x .ln > span { white-space: nowrap; } }
