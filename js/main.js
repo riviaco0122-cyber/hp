@@ -803,7 +803,7 @@
   var pds = document.querySelectorAll('.pd');
   if (!pds.length) return;
   var mq = window.matchMedia('(max-width: 899px)');
-  var TOP = 0.82; // 一番上の帯の上端の幅（帯の列幅に対する割合）。下端で 100% になる
+  var TOP = 0.7; // 一番上の帯の上端の幅（帯の列幅に対する割合）。下端で 100% になる
   function shape() {
     pds.forEach(function (pd) {
       var segs = Array.prototype.slice.call(pd.querySelectorAll('.pd__seg'));
