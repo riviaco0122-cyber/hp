@@ -9,7 +9,8 @@
   場面の長さと字幕をナレーションに合わせる。
 - 各フレームを Playwright で画像にして ffmpeg でつなぐ。BGM と効果音は tools/video/pop_audio.py で合成する。
 - 文言・数字は、サイトに載っているサービスの説明・実績・フォームの項目だけ。数字を作らない。
-使い方: python3 tools/video/make_explainer.py [出力.mp4] [--preview 秒 ...]   # --preview は、その秒の静止画だけ書き出す
+使い方: python3 tools/video/make_explainer.py [出力.mp4] [--hq] [--preview 秒 ...]   # --hq は YouTube 用の 1440p 高画質版
+         # --preview は、その秒の静止画だけ書き出す
 """
 import json, os, subprocess, sys, tempfile
 
@@ -429,7 +430,7 @@ const { chromium } = require('playwright');
 (async () => {
   const [html, outdir, mode, arg] = process.argv.slice(2);
   const b = await chromium.launch();
-  const p = await b.newPage({ viewport: { width: 1920, height: 1080 } });
+  const p = await b.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: parseFloat(process.env.SCALE || '1') });
   await p.goto('file://' + html);
   await p.evaluate(async () => { await document.fonts.ready; });
   await p.evaluate((r) => { window.ROOT = r; }, process.env.ROOT_DIR);
@@ -437,7 +438,7 @@ const { chromium } = require('playwright');
     for (const t of JSON.parse(arg)) { await p.evaluate((t) => window.draw(t), t); await p.waitForTimeout(80); await p.screenshot({ path: outdir + '/p_' + t + '.png' }); }
   } else {
     const n = parseInt(arg);
-    for (let i = 0; i < n; i++) { await p.evaluate((t) => window.draw(t), i / %FPS%); await p.screenshot({ path: outdir + '/f' + String(i).padStart(5, '0') + '.jpg', type: 'jpeg', quality: 90 }); }
+    for (let i = 0; i < n; i++) { await p.evaluate((t) => window.draw(t), i / %FPS%); await p.screenshot({ path: outdir + '/f' + String(i).padStart(5, '0') + '.jpg', type: 'jpeg', quality: parseInt(process.env.JPEG_Q || '90') }); }
   }
   await b.close();
 })();
@@ -447,10 +448,14 @@ const { chromium } = require('playwright');
 def main():
     args = sys.argv[1:]
     prev = None
+    hq = "--hq" in args   # YouTube 用の高画質版（2560×1440・高ビットレート）。YouTube は 1440p 以上だと画質のよい圧縮方式を使う
+    args = [a for a in args if a != "--hq"]
     if "--preview" in args:
         k = args.index("--preview"); prev = [float(x) for x in args[k + 1:]]; args = args[:k]
     out = args[0] if args else os.path.join(ROOT, "docs", "media", "akiyado-service-intro-anime.mp4")
     env = dict(os.environ); env["ROOT_DIR"] = ROOT
+    if hq:
+        env["SCALE"] = str(4 / 3); env["JPEG_Q"] = "97"
     env["NODE_PATH"] = os.pathsep.join(p for p in ["/opt/node-tools/node_modules", os.path.join(ROOT, "tools", "check", "node_modules"), env.get("NODE_PATH", "")] if p)
     sc, subs, voices = timeline(os.path.join(tempfile.gettempdir(), "akiyado_tts"))
     dur = sc[-1][1]
@@ -468,7 +473,7 @@ def main():
         events = [(sc[i][0] + dt, kind) for i, dt, kind in SFX]
         wav = os.path.join(tmp, "audio.wav"); pop_audio.write(wav, dur, events, voices=voices)
         os.makedirs(os.path.dirname(out), exist_ok=True)
-        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", os.path.join(fr, "f%05d.jpg"), "-i", wav, "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out], check=True)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", os.path.join(fr, "f%05d.jpg"), "-i", wav, "-c:v", "libx264", "-preset", "slow" if hq else "veryfast", "-crf", "14" if hq else "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "256k" if hq else "192k", "-shortest", "-movflags", "+faststart", out], check=True)
     print(out, round(dur, 1), "秒")
 
 
