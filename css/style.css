@@ -3783,3 +3783,8 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .hero__badge { top: calc(var(--header-h) + 20px); bottom: auto; right: 16px; width: 88px; height: 88px; }
   .hero__count { bottom: 28px; }
 }
+/* 見出しの背景の大きな英字は、長い言葉で切れて読めなくなるため出さない */
+.is-corp .section-head[data-en]::after { content: none; display: none; }
+/* サービスページの写真の上の英字：画面幅に収まる大きさに、スマホでは出さない */
+.page-hero__mark { font-size: clamp(56px, 8.4vw, 150px); }
+@media (max-width: 899px) { .page-hero__mark { display: none; } }
