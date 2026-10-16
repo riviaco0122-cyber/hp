@@ -235,7 +235,7 @@ STATEMENT = dict(
 
 # TOPの事業紹介：事業の括りごとに「届ける価値」を大きく見せる
 TOP_VALUES = {
-    "hospitality": dict(en="Revive & Run", value="眠る空き家を、<br>稼ぐ宿に変える", photo="own-renovation-room", w=1502, h=2000),
+    "hospitality": dict(en="Revive & Run", value="眠る空き家を、<br>稼ぐ宿に変える", photo="dark-room", w=1080, h=1620),
     "webmarketing": dict(en="Reach & Hire", value="地域の魅力を、<br>人に届ける", photo="laptop-dashboard", w=1516, h=1080),
 }
 # 事業ごとのひとこと（何をしてくれる事業か）
@@ -248,9 +248,12 @@ SERVICE_CATCH = {
 }
 
 
+# サービスページの見出しで、写真に食い込ませる縦書きの言葉
+SERVICE_VERTICAL = {"operation": "空き家を、灯す。", "management": "宿を、事業に。", "partnership": "物件を、宿に。",
+                    "marketing": "魅力を、届ける。", "recruit": "人と、出会う。"}
 # サービスページの見出しの写真3枚（大きな横長・右上の縦長・右下）。(ファイル名, 幅, 高さ, 見せる位置)
 SERVICE_COLLAGE = {
-    "operation": [("thatched-house", 1920, 1080, "55% 55%"), ("own-tatami-hall", 1502, 2000, "50% 50%"), ("window-garden", 1079, 1349, "50% 50%")],
+    "operation": [("thatched-house", 1920, 1080, "55% 55%"), ("gassho-village", 1080, 1620, "50% 40%"), ("window-garden", 1079, 1349, "50% 50%")],
     "management": [("irori-room", 1623, 1079, "50% 55%"), ("scene-stay", 1080, 1350, "50% 50%"), ("pillow", 1619, 1079, "50% 50%")],
     "partnership": [("riverside-town", 1620, 1080, "50% 50%"), ("old-town-street", 1080, 1437, "50% 50%"), ("white-bedroom", 1620, 1080, "50% 50%")],
     "marketing": [("laptop-dashboard", 1516, 1080, "50% 50%"), ("scene-walk", 901, 1350, "50% 50%"), ("fuji-lake", 1620, 1080, "50% 50%")],
@@ -1527,7 +1530,7 @@ def service_page(key, name):
         for i, (n, w, h, pos) in enumerate(shots))
     body = f"""    <section class="page-hero page-hero--collage">
       <div class="container svc-hero">
-        <div class="collage reveal" aria-hidden="true">{collage}</div>
+        <div class="collage reveal" aria-hidden="true">{collage}<p class="collage__v">{e(SERVICE_VERTICAL[key])}</p></div>
         <div class="svc-hero__text">
           <p class="page-hero__label reveal">{e(name)}</p>
           <h1 class="page-hero__title ttl-x reveal" data-delay="1">{"".join(f'<span class="ln"><span>{e(l)}</span></span>' for l in d["message"])}</h1>
@@ -2551,7 +2554,7 @@ def spec_md():
     w("* 記事ページ：パンくず（TOP ／ アキヤド ／ カテゴリ）、ガイドに含まれる記事は「この記事を含むガイド」と前後の記事、シェア（X ／ LINE ／ Facebook ／ リンクをコピー）を表示。")
     w("* 旧URL（media.html?cat=○○）はカテゴリ一覧へ移動する。")
     w("* サムネイルは記事ごとの写真（images/photos/w/ の WebP 軽量版。大きな表示では元の写真）。記事トップは原寸の写真を使い、OGP画像にも同じ写真を設定する。割り当ては build 内の ARTICLE_PHOTOS。")
-    w("* 写真の配置：TOPヒーロー（素材⑧・暗めのグラデーションを重ねて白文字）、相談CTA（全ページ共通）、代表者の顔写真。各サービスページTOPは、白地に緑の大きな見出しと、事業に合う写真3枚のコラージュ（SERVICE_COLLAGE。PCは右、スマホは見出しの上）。／ 添付ファイル*（職務経歴書・履歴書：点線枠のファイル選択×2。選択後はファイル名を表示）／ プライバシーポリシーへの同意*（追加）／ [送信する]")
+    w("* 写真の配置：TOPヒーロー（素材⑧・暗めのグラデーションを重ねて白文字）、相談CTA（全ページ共通）、代表者の顔写真。各サービスページTOPは、白地に緑の大きな見出しと、事業に合う写真3枚のコラージュ（SERVICE_COLLAGE。少し傾けて重ね、縦書きの大きな言葉 SERVICE_VERTICAL を写真に食い込ませる。PCは右、スマホは見出しの上）。写真は自社撮影の物件写真ではなく高画質の写真を使う。／ 添付ファイル*（職務経歴書・履歴書：点線枠のファイル選択×2。選択後はファイル名を表示）／ プライバシーポリシーへの同意*（追加）／ [送信する]")
     w("* 送信先: Google Apps Script（tools/forms/Code.gs。自動返信・添付ファイルのドライブ保存・スプレッドシート記録・社内通知）")
     w("")
     w("## 7. Contact（contact.html）")
