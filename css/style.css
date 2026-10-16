@@ -4031,3 +4031,5 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .page-hero--collage .page-hero__target { margin-top: 20px; }
   .page-hero--collage .page-hero__actions { margin-top: 28px; }
 }
+/* スマホ：冒頭の「お悩みと解決策を見る」は出さない（固定ボタンの縁から線がのぞくため。すぐ下にお悩みの節が続く） */
+@media (max-width: 899px) { .page-hero--collage .page-hero__actions { display: none; } }
