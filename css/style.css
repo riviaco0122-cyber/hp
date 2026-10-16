@@ -4115,3 +4115,18 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .statement__text { margin-top: 28px; font-size: 16px; line-height: 2; letter-spacing: 0.04em; }
 }
 .statement__strike s { font-size: clamp(28px, 3.9vw, 56px); }
+/* PC：プランの帯。「おすすめ」は帯のふちに乗せたバッジにして高さに含めない（帯は左から右へきれいに段々に高く） */
+@media (min-width: 900px) {
+  .pd__seg { clip-path: none !important; background: none !important; isolation: isolate; }
+  .pd__seg::before { content: ""; position: absolute; inset: 0; z-index: -1; clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%); }
+  .pd__plan--1 .pd__seg::before { background: linear-gradient(90deg, #8aa591, #6f8d78); }
+  .pd__plan--2 .pd__seg::before { background: linear-gradient(90deg, #6f8d78, #4c6f56); }
+  .pd__plan--3 .pd__seg::before { background: linear-gradient(90deg, #4c6f56, #1a472a); }
+  .pd__plan + .pd__plan .pd__seg::after { content: ""; position: absolute; left: 0; bottom: 0; top: 30px; width: 1px; background: rgba(255, 255, 255, 0.35); }
+  .pd__plan + .pd__plan .pd__seg { box-shadow: none; }
+  .pd__seg .pd__badge { position: absolute; z-index: 1; top: 15px; left: 50%; margin: 0; padding: 5px 16px; transform: translate(-50%, -50%) rotate(-4deg); background: var(--c-shu); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; box-shadow: 0 6px 16px rgba(217, 80, 43, 0.28); }
+  .pd__plan--1 .pd__seg { min-height: 0; }
+}
+@media (min-width: 900px) {
+  .pd__plan--1 .pd__seg { min-height: 190px; } .pd__plan--2 .pd__seg { min-height: 220px; } .pd__plan--3 .pd__seg { min-height: 250px; }
+}
