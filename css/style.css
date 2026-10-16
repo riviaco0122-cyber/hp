@@ -4002,3 +4002,32 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .page-hero--collage .page-hero__target { margin-top: 12px; gap: 6px 10px; font-size: 14px; }
   .page-hero--collage .page-hero__actions { margin-top: 20px; }
 }
+/* スマホ：写真と文字の両方にゆとりを持たせつつ、「こんな方へ」までは1画面に */
+@media (max-width: 899px) {
+  .page-hero--collage { padding: 16px 0 44px; }
+  .page-hero--collage .svc-hero { gap: 22px; }
+  .page-hero--collage .collage { aspect-ratio: 1 / 0.68; width: 94%; }
+  .collage__img--0 { top: 8%; width: 66%; height: 64%; }
+  .collage__img--1 { width: 36%; height: 56%; }
+  .collage__img--2 { right: 10%; width: 46%; height: 44%; }
+  .collage__v { font-size: 18px; }
+  .page-hero--collage .svc-name { gap: 8px 12px; margin-bottom: 14px; }
+  .page-hero--collage .svc-name__no { padding: 3px 11px; font-size: 11.5px; }
+  .page-hero--collage .svc-name__ja { font-size: 16px; }
+  .page-hero--collage .page-hero__title { font-size: clamp(24px, 6.9vw, 30px); line-height: 1.6; letter-spacing: 0.06em; }
+  .page-hero--collage .page-hero__target { margin-top: 18px; gap: 8px 10px; font-size: 14px; line-height: 1.8; }
+  .page-hero--collage .page-hero__actions { margin-top: 24px; }
+}
+/* スマホ：写真をやや縦に戻し、余白をたっぷり取る（「お悩みと解決策を見る」は固定ボタンに隠れてよい） */
+@media (max-width: 899px) {
+  .page-hero--collage { padding: 18px 0 48px; }
+  .page-hero--collage .svc-hero { gap: 26px; }
+  .page-hero--collage .collage { aspect-ratio: 1 / 0.8; }
+  .collage__img--0 { top: 8%; width: 66%; height: 60%; }
+  .collage__img--1 { width: 37%; height: 54%; }
+  .collage__img--2 { right: 9%; width: 48%; height: 44%; }
+  .page-hero--collage .svc-name { margin-bottom: 16px; }
+  .page-hero--collage .page-hero__title { line-height: 1.65; }
+  .page-hero--collage .page-hero__target { margin-top: 20px; }
+  .page-hero--collage .page-hero__actions { margin-top: 28px; }
+}
