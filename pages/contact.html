@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
-  <link rel="stylesheet" href="../css/style.css?v=e577297e">
+  <link rel="stylesheet" href="../css/style.css?v=b8806eb2">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -80,9 +80,9 @@
   </header>
 
   <main>
-    <section class="page-hero">
+    <section class="page-hero page-hero--contact">
       <div class="container">
-        <p class="page-hero__en reveal">Contact</p>
+        <p class="page-hero__en ttl-x reveal"><span class="ln"><span>Contact</span></span></p>
         <h1 class="page-hero__ja reveal" data-delay="1">お問い合わせ</h1>
         <p class="page-hero__lead reveal" data-delay="2">観光地でなくても、<wbr>収益物件に<wbr>なり得ます。<br>お気軽に<wbr>お問い合わせ<wbr>ください。</p>
         <p class="page-hero__area reveal" data-delay="2"><span>対応エリア</span>全国可</p>
@@ -96,10 +96,25 @@
 
     <section class="section">
       <div class="container container--narrow">
-        <form class="form reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
+        <form class="form form--steps reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
           <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】Webサイトからのお問い合わせ">
           <input type="hidden" name="流入元" id="from-field" value="">
+          <div class="form__step">
+            <p class="form__step-head"><span>01</span>ご相談の内容</p>
+          <fieldset class="form__field form__fieldset catpick">
+            <legend class="form__legend">ご相談カテゴリ <span class="opt">任意</span></legend>
+            <p class="form__notes form__notes--above"><n-w>あてはまるものを選ぶと、お問い合わせ内容に書き出しが入ります。</n-w></p>
+            <div class="catpick__tabs" role="tablist" aria-label="お客様の立場"><button type="button" class="catpick__tab" role="tab" data-who="personal" aria-selected="true"><span class="catpick__tab-en">Personal</span>個人の<wbr>お客様</button><button type="button" class="catpick__tab" role="tab" data-who="corporate" aria-selected="false"><span class="catpick__tab-en">Business</span>法人の<wbr>お客様</button></div>
+            <div class="catpick__panel" role="tabpanel" data-who="personal" aria-label="個人のお客様"><label class="catpick__card catpick__card--wide"><input type="radio" name="category" value="物件の相談" data-key="property"><span class="catpick__body"><span class="catpick__intent">持っている<wbr>物件に<wbr>ついて<wbr>相談したい</span><span class="catpick__svc"><n-w>売る・貸す・宿にする、どれが良いかから一緒に考えます</n-w></span></span><span class="catpick__check" aria-hidden="true"></span></label><label class="catpick__card"><input type="radio" name="category" value="空き家再生" data-key="operation"><span class="catpick__body"><span class="catpick__intent">空き家を<wbr>活かしたい・売りたい</span><span class="catpick__svc">空き家再生事業</span></span><span class="catpick__check" aria-hidden="true"></span></label><label class="catpick__card"><input type="radio" name="category" value="開業・運営支援" data-key="management"><span class="catpick__body"><span class="catpick__intent">民泊を<wbr>始めたい・任せたい</span><span class="catpick__svc">宿泊施設 開業・運営支援事業</span></span><span class="catpick__check" aria-hidden="true"></span></label></div>
+            <div class="catpick__panel" role="tabpanel" data-who="corporate" aria-label="法人のお客様"><label class="catpick__card catpick__card--wide"><input type="radio" name="category" value="物件の相談" data-key="property"><span class="catpick__body"><span class="catpick__intent">保有物件に<wbr>ついて<wbr>相談したい</span><span class="catpick__svc"><n-w>活かし方・売り方・運営の任せ方から一緒に考えます</n-w></span></span><span class="catpick__check" aria-hidden="true"></span></label><label class="catpick__card"><input type="radio" name="category" value="開業・運営支援" data-key="management"><span class="catpick__body"><span class="catpick__intent">民泊を<wbr>始めたい・任せたい</span><span class="catpick__svc">宿泊施設 開業・運営支援事業</span></span><span class="catpick__check" aria-hidden="true"></span></label><label class="catpick__card"><input type="radio" name="category" value="不動産協業" data-key="partnership"><span class="catpick__body"><span class="catpick__intent">物件を<wbr>民泊用に<wbr>売りたい</span><span class="catpick__svc">不動産事業者様との協業</span></span><span class="catpick__check" aria-hidden="true"></span></label><label class="catpick__card"><input type="radio" name="category" value="WEB集客" data-key="marketing"><span class="catpick__body"><span class="catpick__intent">集客を伸ばしたい</span><span class="catpick__svc">WEB集客支援事業</span></span><span class="catpick__check" aria-hidden="true"></span></label><label class="catpick__card"><input type="radio" name="category" value="WEB採用" data-key="recruit"><span class="catpick__body"><span class="catpick__intent">人材を<wbr>採用したい</span><span class="catpick__svc">WEB採用支援事業</span></span><span class="catpick__check" aria-hidden="true"></span></label></div>
+            <p class="catpick__more-label">ほかの<wbr>ご用件</p>
+            <div class="catpick__more"><label class="catpick__card catpick__card--sub"><input type="radio" name="category" value="サービス資料の請求" data-key="document"><span class="catpick__body"><span class="catpick__intent">まずは<wbr>資料が<wbr>ほしい</span><span class="catpick__svc">サービス資料を<wbr>メールで<wbr>お送りします</span></span><span class="catpick__check" aria-hidden="true"></span></label><label class="catpick__card catpick__card--sub"><input type="radio" name="category" value="その他" data-key="other"><span class="catpick__body"><span class="catpick__intent">その他のご相談</span><span class="catpick__svc">取材・ご提案・そのほかの<wbr>お問い合わせ</span></span><span class="catpick__check" aria-hidden="true"></span></label></div>
+          </fieldset>
+          </div>
+          <div class="form__step">
+            <p class="form__step-head"><span>02</span>ご連絡先</p>
+            <div class="form__grid">
           <div class="form__field">
             <label for="name">お名前 <span class="req">必須</span></label>
             <input type="text" id="name" name="name" placeholder="山田 太郎" autocomplete="name" required>
@@ -116,25 +131,10 @@
             <label for="email">メールアドレス <span class="req">必須</span></label>
             <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
           </div>
-          <div class="form__field">
-            <label for="category">ご相談カテゴリ <span class="opt">任意</span></label>
-            <div class="select">
-              <select id="category" name="category">
-                <option value="" selected>選択してください</option>
-                <optgroup label="宿泊施設の運営・開業">
-                  <option value="空き家再生" data-key="operation">空き家再生</option>
-                  <option value="開業・運営支援" data-key="management">開業・運営支援</option>
-                  <option value="不動産協業" data-key="partnership">不動産協業</option>
-                </optgroup>
-                <optgroup label="WEBマーケティング支援">
-                  <option value="WEB集客" data-key="marketing">WEB集客</option>
-                  <option value="WEB採用" data-key="recruit">WEB採用</option>
-                </optgroup>
-                <option value="サービス資料の請求" data-key="document">サービス資料の請求</option>
-                <option value="その他" data-key="other">その他</option>
-              </select>
             </div>
           </div>
+          <div class="form__step">
+            <p class="form__step-head"><span>03</span>くわしく<wbr>教えてください</p>
           <div class="form__field">
             <label for="message">お問い合わせ内容 <span class="req">必須</span></label>
             <textarea id="message" name="message" placeholder="ご相談内容をご記入ください。まだ考えがまとまっていない段階でも構いません。" required></textarea>
@@ -149,6 +149,7 @@
               <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）"><n-w>クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）</n-w></span>
             </label>
           </fieldset>
+          </div>
           <div class="form__consent">
             <label class="check" for="agree">
               <input type="checkbox" id="agree" name="privacy_agree" value="同意する" required>
@@ -224,6 +225,6 @@
     <p class="footer__mark" aria-hidden="true">RIVIA&amp;CO.</p>
   </footer>
 
-  <script src="../js/main.js?v=d6c3c6b4"></script>
+  <script src="../js/main.js?v=2e2da202"></script>
 </body>
 </html>

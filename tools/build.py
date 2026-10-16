@@ -318,7 +318,7 @@ MISSION_PROSE = [
     ["地域が元気になることが、", "日本が元気になること。", "私たちは、そう信じています。"],
 ]
 VALUES = [
-    ("圧倒的当事者であれ", "自ら宿を運営し、現場で確かめたことだけを提案する。"),
+    ("圧倒的当事者であれ", "お客様の課題を、第三者としてではなく自分ごととして捉え、主体的に動く。"),
     ("自ら機会をつくれ", "指示を待たず、自ら課題を見つけて動き、次の機会を生み出す。"),
     ("想いを、成果で示す", "想いだけで終わらせず、数字と結果で応える。"),
     ("続く仕組みをつくる", "一過性で終わらせず、地域に残り、循環する形を選ぶ。"),
@@ -605,7 +605,8 @@ OPEN_MSG = "観光地でなくても、収益物件になり得ます。お気�
 def cta(category="", title="まずは、現状をお聞かせください。", text=""):
     q = f"?category={category}" if category else ""
     # 見出しは読点の後で改行（スマホ）。一言は文ごとに改行して、変な位置で折り返さないようにする
-    title_html = e(title).replace("、", '、<br class="sp-only">', 1)
+    head_, sep_, rest_ = e(title).partition("、")
+    title_html = f'{head_}{sep_}<br class="sp-only"><n-b>{rest_}</n-b>' if sep_ else e(title)
     sub = ("\n        " + f'<p class="cta__text">{"<br>".join(e(t) + "。" for t in text.split("。") if t)}</p>') if text else ""
     return f"""    <section class="section cta cta--photo">
       <img class="cta__bg" src="images/photos/garden-boat.jpg" alt="" width="1617" height="1079" loading="lazy" decoding="async">
@@ -1705,8 +1706,8 @@ def index_page():
       <div class="container hero__inner">
         <h1 class="hero__title hero__title--x reveal"><span class="ln"><span>地域に眠る</span></span><span class="ln"><span>価値を、</span></span><span class="ln"><span>日本の<em>活力</em>に。</span></span></h1>
         <div class="hero__actions reveal" data-delay="3">
-          <a href="contact.html" class="btn">無料で相談する {ARROW}</a>
-          <a href="#service" class="btn btn--ghost btn--on-photo">事業紹介を見る</a>
+          <a href="#service" class="btn">事業紹介を見る {ARROW}</a>
+          <a href="about.html" class="btn btn--ghost btn--on-photo">私たちについて</a>
         </div>
       </div>
       <a href="#statement" class="hero__badge" aria-label="次のセクションへ">
@@ -2058,9 +2059,9 @@ def careers_page():
               <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択">クリックまたはドラッグ&amp;ドロップでファイルを選択</span>
             </label>"""
 
-    body = f"""    <section class="page-hero">
+    body = f"""    <section class="page-hero page-hero--contact">
       <div class="container">
-        <p class="page-hero__en reveal">Careers</p>
+        <p class="page-hero__en ttl-x reveal"><span class="ln"><span>Careers</span></span></p>
         <h1 class="page-hero__ja reveal" data-delay="1">採用情報</h1>
         <p class="page-hero__lead reveal" data-delay="2">一緒に働く仲間を募集しています。<br>年齢・経験は問いません。お気軽にご連絡ください。</p>
       </div>
@@ -2072,7 +2073,7 @@ def careers_page():
           <span class="eyebrow">Entry</span>
           <h2 class="section-title">エントリーフォーム</h2>
         </div>
-        <form class="form reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=careers">
+        <form class="form form--steps reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=careers">
           <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】採用エントリー">
           <div class="form__field">
@@ -2107,15 +2108,39 @@ def contact_page():
     # 「サービス資料の請求」の値は tools/forms/Code.gs の DOC_REQUEST_VALUES（資料の自動添付の判定）と一致させる
     short = {"operation": "空き家再生", "management": "開業・運営支援", "partnership": "不動産協業",
              "marketing": "WEB集客", "recruit": "WEB採用"}
-    ohtml = "\n".join(
-        f'                <optgroup label="{e(g["name"])}">\n'
-        + "\n".join(f'                  <option value="{short[k]}" data-key="{k}">{short[k]}</option>' for k in g["services"])
-        + "\n                </optgroup>"
-        for g in GROUPS
-    ) + '\n                <option value="サービス資料の請求" data-key="document">サービス資料の請求</option>' + '\n                <option value="その他" data-key="other">その他</option>'
-    body = f"""    <section class="page-hero">
+    # ご相談カテゴリ：まずお客様の立場（個人／法人）を選び、その立場の「〜したい」から選ぶ（ナビと同じ NAV_INTENTS）
+    names = dict(SERVICES)
+    who_keys = ["personal", "corporate"]
+    tabs = "".join(
+        f'<button type="button" class="catpick__tab" role="tab" data-who="{who_keys[i]}" aria-selected="{"true" if i == 0 else "false"}">'
+        f'<span class="catpick__tab-en">{"Personal" if i == 0 else "Business"}</span>{e(aud)}</button>'
+        for i, (aud, _its) in enumerate(NAV_INTENTS))
+    # 物件をどうするか決まっていない相談がいちばん多いので、どちらの立場にも先頭に置く（値は「物件の相談」）
+    property_card = {"personal": ("持っている物件について相談したい", "売る・貸す・宿にする、どれが良いかから一緒に考えます"),
+                     "corporate": ("保有物件について相談したい", "活かし方・売り方・運営の任せ方から一緒に考えます")}
+    def card(value, key, intent, sub, extra=""):
+        return (f'<label class="catpick__card{extra}"><input type="radio" name="category" value="{value}" data-key="{key}">'
+                f'<span class="catpick__body"><span class="catpick__intent">{e(intent)}</span><span class="catpick__svc">{e(sub)}</span></span>'
+                f'<span class="catpick__check" aria-hidden="true"></span></label>')
+    panels = "\n".join(
+        f'            <div class="catpick__panel" role="tabpanel" data-who="{who_keys[i]}" aria-label="{e(aud)}">'
+        + card("物件の相談", "property", *property_card[who_keys[i]], extra=" catpick__card--wide")
+        + "".join(card(short[k], k, t, names[k]) for k, t in its)
+        + "</div>"
+        for i, (aud, its) in enumerate(NAV_INTENTS))
+    more = (card("サービス資料の請求", "document", "まずは資料がほしい", "サービス資料をメールでお送りします", extra=" catpick__card--sub")
+            + card("その他", "other", "その他のご相談", "取材・ご提案・そのほかのお問い合わせ", extra=" catpick__card--sub"))
+    catpick = f"""          <fieldset class="form__field form__fieldset catpick">
+            <legend class="form__legend">ご相談カテゴリ <span class="opt">任意</span></legend>
+            <p class="form__notes form__notes--above">あてはまるものを選ぶと、お問い合わせ内容に書き出しが入ります。</p>
+            <div class="catpick__tabs" role="tablist" aria-label="お客様の立場">{tabs}</div>
+{panels}
+            <p class="catpick__more-label">ほかのご用件</p>
+            <div class="catpick__more">{more}</div>
+          </fieldset>"""
+    body = f"""    <section class="page-hero page-hero--contact">
       <div class="container">
-        <p class="page-hero__en reveal">Contact</p>
+        <p class="page-hero__en ttl-x reveal"><span class="ln"><span>Contact</span></span></p>
         <h1 class="page-hero__ja reveal" data-delay="1">お問い合わせ</h1>
         <p class="page-hero__lead reveal" data-delay="2">観光地でなくても、収益物件になり得ます。<br>お気軽にお問い合わせください。</p>
         <p class="page-hero__area reveal" data-delay="2"><span>対応エリア</span>全国可</p>
@@ -2129,10 +2154,17 @@ def contact_page():
 
     <section class="section">
       <div class="container container--narrow">
-        <form class="form reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
+        <form class="form form--steps reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
           <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】Webサイトからのお問い合わせ">
           <input type="hidden" name="流入元" id="from-field" value="">
+          <div class="form__step">
+            <p class="form__step-head"><span>01</span>ご相談の内容</p>
+{catpick}
+          </div>
+          <div class="form__step">
+            <p class="form__step-head"><span>02</span>ご連絡先</p>
+            <div class="form__grid">
           <div class="form__field">
             <label for="name">お名前 <span class="req">必須</span></label>
             <input type="text" id="name" name="name" placeholder="山田 太郎" autocomplete="name" required>
@@ -2149,15 +2181,10 @@ def contact_page():
             <label for="email">メールアドレス <span class="req">必須</span></label>
             <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
           </div>
-          <div class="form__field">
-            <label for="category">ご相談カテゴリ <span class="opt">任意</span></label>
-            <div class="select">
-              <select id="category" name="category">
-                <option value="" selected>選択してください</option>
-{ohtml}
-              </select>
             </div>
           </div>
+          <div class="form__step">
+            <p class="form__step-head"><span>03</span>くわしく教えてください</p>
           <div class="form__field">
             <label for="message">お問い合わせ内容 <span class="req">必須</span></label>
             <textarea id="message" name="message" placeholder="ご相談内容をご記入ください。まだ考えがまとまっていない段階でも構いません。" required></textarea>
@@ -2172,6 +2199,7 @@ def contact_page():
               <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）">クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）</span>
             </label>
           </fieldset>
+          </div>
 {consent("agree", newsletter=True)}
           <div class="form__notes">
             <p>※無理な営業や電話勧誘は一切いたしません。</p>
@@ -2549,7 +2577,7 @@ def spec_md():
     w("* **見出し:** Contact ／ お問い合わせ")
     w("* **リード文:** まずは気軽にご相談ください。無料でご相談をお受けしています。2営業日以内に担当者よりご連絡いたします。")
     w("* **安心材料（追加）:** ご相談・お見積りは無料 ／ 無理な営業は一切なし ／ 2営業日以内にご連絡")
-    w("* **フォーム:** お名前* ／ 会社名・施設名（任意。個人の不動産投資家など一般の方からの相談も想定）／ 電話番号* ／ メールアドレス* ／ ご相談カテゴリ（【宿泊施設の運営・開業】宿泊施設運営 / 運営委託 / 開業・運営コンサル 【WEBマーケティング支援】WEB集客 / WEB採用 ／ その他）／ お問い合わせ内容* ／ プライバシーポリシーへの同意*（追加）／ メールマガジンの受け取り（任意。初期状態はチェックなし＝オプトイン。「いつでも配信停止できます」の注記。アキヤドのお問い合わせ media/contact.html も同じ）")
+    w("* **フォーム:** いちばん上に「ご相談カテゴリ」（任意）。個人のお客様／法人のお客様のタブを選び、先頭の「持っている（保有）物件について相談したい」（値は「物件の相談」）と、その立場の「〜したい」（ナビと同じ NAV_INTENTS）をカードで選ぶ。下の「ほかのご用件」に「まずは資料がほしい」「その他のご相談」のカード。選ぶとお問い合わせ内容に書き出しが入る。送る値は従来どおり（物件の相談／空き家再生／開業・運営支援／不動産協業／WEB集客／WEB採用／サービス資料の請求／その他）。続けて お名前* ／ 会社名・施設名（任意。個人の不動産投資家など一般の方からの相談も想定）／ 電話番号* ／ メールアドレス* ／ お問い合わせ内容* ／ プライバシーポリシーへの同意*（追加）／ メールマガジンの受け取り（任意。初期状態はチェックなし＝オプトイン。「いつでも配信停止できます」の注記。アキヤドのお問い合わせ media/contact.html も同じ）")
     w("* **マイクロコピー:** ※無理な営業や電話勧誘は一切いたしません。／※ご入力いただいた情報は厳重に管理し、お問い合わせ対応以外には使用いたしません。")
     w("* **フォーム下（追加）:** ご相談の流れ（4ステップ）")
     w("* 送信先: Google Apps Script（tools/forms/Code.gs。通知先 rivia.co0122@gmail.com、お客様へ自動返信）")
@@ -3681,7 +3709,12 @@ def card_tags(a):
 
 def list_name(a):
     """一覧カードの表示名（短い。1〜2行）。元の title は変えない"""
-    return a["short"].replace("\n", "")
+    # 2行に分けた短い名前は、1行目が句読点で終わっていなければ「｜」でつなぐ（「〜の取り方広さ…」のように続けて読めてしまうため）
+    lines = [l.strip() for l in a["short"].split("\n") if l.strip()]
+    out = lines[0] if lines else ""
+    for l in lines[1:]:
+        out += l if out[-1:] in "。、！？」』）" else "｜" + l
+    return out
 
 
 def article_card(a, extra_class=""):
@@ -3689,8 +3722,7 @@ def article_card(a, extra_class=""):
             {thumb(a)}
             <div class="media-card__body">
               {card_tags(a)}
-              <h3 class="media-card__title">{e(list_name(a))}</h3>
-              <p class="media-card__blurb">{e(a["blurb"])}</p>
+              <h3 class="media-card__title">{"<br>".join(e(l) for l in a["short"].split(chr(10)) if l.strip())}</h3>
               <time class="media-card__date" datetime="{a["date"]}">{fmt_date(a["date"])}</time>
             </div>
           </a>"""

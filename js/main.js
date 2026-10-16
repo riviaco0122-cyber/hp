@@ -153,25 +153,42 @@
     partnership: '【不動産事業者様との協業について】\n・会社名・ご担当：\n・ご紹介・ご相談したい物件や案件：\n・ご希望の協業の形：\n',
     marketing: '【WEB集客支援について】\n・事業・施設の概要：\n・いまの集客の課題：\n・ご予算の目安：\n',
     recruit: '【WEB採用支援について】\n・募集したい職種・人数：\n・いまの採用の課題：\n・採用したい時期：\n',
+    property: '【物件についてのご相談】\n・物件の所在地：\n・物件の種類・状況（空き家・相続・賃貸中など）：\n・気になっていること：\n',
+    other: '',
     document: 'サービス資料を希望します。\n'
   };
-  var corpCat = document.getElementById('category'), corpMsg = document.getElementById('message'), corpLast = '';
-  var corpFill = function () {
-    if (!corpCat || !corpMsg) return;
-    var opt = corpCat.options[corpCat.selectedIndex];
-    var tpl = CORP_TEMPLATES[opt && opt.getAttribute('data-key')] || '';
+  // ご相談カテゴリ（カードで選ぶ）：立場のタブ切り替え、選んだカテゴリに合わせた書き出し、URL の ?category= で選んだ状態にする
+  var picker = document.querySelector('.catpick');
+  var corpMsg = document.getElementById('message'), corpLast = '';
+  var corpFill = function (key) {
+    if (!corpMsg) return;
+    var tpl = CORP_TEMPLATES[key] || '';
     if (corpMsg.value && corpMsg.value !== corpLast) return;
     corpMsg.value = corpLast = tpl;
   };
-  if (corpCat) corpCat.addEventListener('change', corpFill);
-  var category = document.getElementById('category');
-  if (category && window.URLSearchParams) {
-    var param = new URLSearchParams(window.location.search).get('category');
-    if (param) {
-      var option = category.querySelector('option[data-key="' + param + '"]');
-      if (option) option.selected = true;
-      // 資料請求から来た場合は、本文を書かなくても送れるように入れておく
-      corpFill();
+  if (picker) {
+    var tabs = picker.querySelectorAll('.catpick__tab'), panels = picker.querySelectorAll('.catpick__panel');
+    var showWho = function (who) {
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.getAttribute('data-who') === who)); });
+      panels.forEach(function (p) { p.hidden = p.getAttribute('data-who') !== who; });
+    };
+    tabs.forEach(function (t) { t.addEventListener('click', function () { showWho(t.getAttribute('data-who')); }); });
+    picker.addEventListener('change', function (ev) {
+      if (ev.target.name === 'category') corpFill(ev.target.getAttribute('data-key'));
+    });
+    showWho('personal');
+    var param = window.URLSearchParams ? new URLSearchParams(window.location.search).get('category') : '';
+    if (param && /^[a-z]+$/.test(param)) {
+      // 個人向けにもある事業は個人のタブで、法人向けだけの事業は法人のタブで選ぶ
+      var radio = picker.querySelector('.catpick__panel[data-who="personal"] input[data-key="' + param + '"]') ||
+                  picker.querySelector('input[data-key="' + param + '"]');
+      if (radio) {
+        radio.checked = true;
+        var panel = radio.closest('.catpick__panel');
+        if (panel) showWho(panel.getAttribute('data-who'));
+        // 資料請求から来た場合は、本文を書かなくても送れるように入れておく
+        corpFill(param);
+      }
     }
   }
 
@@ -767,14 +784,10 @@
   });
 })();
 
-// コーポレート：見出しの英字を大きな透かし文字に（装飾のみ）、図やカードが画面に入ったら .is-in を付けて動かす
+// コーポレート：図やカードが画面に入ったら .is-in を付けて動かす
 (function () {
   'use strict';
   if (!document.body.classList.contains('is-corp')) return;
-  document.querySelectorAll('.section-head .eyebrow, .news .eyebrow').forEach(function (eb) {
-    var head = eb.closest('.section-head') || eb.parentElement;
-    if (head && !head.hasAttribute('data-en')) head.setAttribute('data-en', eb.textContent.trim());
-  });
   var targets = document.querySelectorAll('.timeline, .issue, .flow, .sflow, .faq__list, .overview');
   if (!('IntersectionObserver' in window)) { targets.forEach(function (t) { t.classList.add('is-in'); }); return; }
   var io = new IntersectionObserver(function (entries) {
