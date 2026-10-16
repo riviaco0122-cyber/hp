@@ -973,8 +973,7 @@ PLANS = {
             dict(split=["rivia", "rivia", "rivia", "rivia", "rivia"], name="アキヤド買取プラン", catch="物件をアキヤドが買い取り、管理や相続の手間をなくす",
                  owner_share=0, init="", money_label="受け取り方",
                  monthly="売却代金をまとめて受け取る", example="例：現地を拝見して査定",
-                 ratings=[("なし", "good"), ("なし（一括で受取）", "low"), ("売却代金のみ", "low")], who=["将来使う予定がない", "管理や相続の手間をなくしたい"], rec=False,
-                 cta="買取について相談する"),
+                 ratings=[("なし", "good"), ("なし（一括で受取）", "low"), ("売却代金のみ", "low")], who=["将来使う予定がない", "管理や相続の手間をなくしたい"], rec=False),
         ],
         note="※ 金額・割合はイメージです。条件は物件ごとにご提案します。契約は更新を前提としています。",
         advice="相続した空き家なら「アキヤドおまかせプラン」がおすすめです。<br>ご自身で運営に関わり、より大きな利益を目指すなら<a href=\"service-management.html\">宿泊施設 開業・運営支援事業</a>がおすすめです。",
@@ -1172,7 +1171,7 @@ def plan_diagram(key):
                 <div><span>{e(m2)}</span><b class="pd__c pd__c--b pd__c--{s2}">{e(w2)}</b></div>
               </div>
               <p class="pd__desc">{e(desc)}</p>
-              <a href="contact.html?category={key}" class="pd__cta">{"買取を相談する" if p.get("cta") else ("このコースを相談する" if p["name"].endswith("コース") else "このプランを相談する")} {ARROW}</a>
+              <a href="contact.html?category={key}" class="pd__cta">{"このコースを相談する" if p["name"].endswith("コース") else "このプランを相談する"} {ARROW}</a>
             </div>
           </div>""")
     return '        <div class="pd reveal">\n' + "\n".join(cols) + "\n        </div>"
