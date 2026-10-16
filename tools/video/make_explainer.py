@@ -262,7 +262,7 @@ function node(id,x,y,r,inner,label,p,ring,labelY){
   const ly=labelY??(y+r+22);
   return pop(x,y,p,`<circle cx="${x}" cy="${y+8}" r="${r+8}" fill="#000" opacity=".1"/><circle cx="${x}" cy="${y}" r="${r+8}" fill="${ring}"/><clipPath id="${id}"><circle cx="${x}" cy="${y}" r="${r}"/></clipPath><circle cx="${x}" cy="${y}" r="${r}" fill="#fff"/><g clip-path="url(#${id})">${inner}</g>${box(x-label.length*21-30,ly,label.length*42+60,62,31)}${TX(x,ly+45,label,40)}`);
 }
-const face=(id,x,y,r,c,ring,mood='smile',t=0)=>`<circle cx="${x}" cy="${y}" r="${r+7}" fill="${ring}"/><clipPath id="${id}"><circle cx="${x}" cy="${y}" r="${r}"/></clipPath><circle cx="${x}" cy="${y}" r="${r}" fill="#fff"/><g clip-path="url(#${id})">${person(x,y-r*.12+525*r/88,r/88,{c,mood,t})}</g>`;
+const face=(id,x,y,r,c,ring,mood='smile',t=0,talk=false)=>`<circle cx="${x}" cy="${y}" r="${r+7}" fill="${ring}"/><clipPath id="${id}"><circle cx="${x}" cy="${y}" r="${r}"/></clipPath><circle cx="${x}" cy="${y}" r="${r}" fill="#fff"/><g clip-path="url(#${id})">${person(x,y-r*.12+525*r/88,r/88,{c,mood,t,talk})}</g>`;
 const chip=(x,y,s,fs,bgc,fc,p)=>{const w=s.length*fs+fs*1.2,h=fs*1.8;return pop(x,y,p,`<rect x="${x-w/2}" y="${y-h/2+5}" width="${w}" height="${h}" rx="${h/2}" fill="#000" opacity=".1"/><rect x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="${h/2}" fill="${bgc}"/>${TX(x,y+fs*.36,s,fs,fc)}`)};
 const pill=(txt,p,w)=>pop(960,253,p,`<rect x="${960-w/2}" y="218" width="${w}" height="76" rx="38" fill="${T}"/><text x="960" y="272" text-anchor="middle" font-size="46" font-weight="900" fill="#fff" letter-spacing="3">${txt}</text>`);
 function caption(txt,p,y=56,fs=72){ // 上の見出し（白い丸みのある帯）

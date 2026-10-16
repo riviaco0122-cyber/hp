@@ -173,6 +173,11 @@ def sfx_sound(kind, rng):
     if kind == "boing":    # 驚き・ショック（ボヨン）
         v, t = _sweep(300, 90, 0.4, 0.7)
         return v * np.exp(-t * 7) * 0.4 * (1 + 0.3 * np.sin(2 * np.pi * 14 * t))
+    if kind == "rewind":   # 巻き戻し（ギュルルル）
+        t = np.arange(int(1.2 * SR)) / SR
+        f = 900 - 600 * t / 1.2
+        v = np.sign(np.sin(2 * np.pi * np.cumsum(f) / SR)) * 0.08 * (1 + np.sin(2 * np.pi * 18 * t)) / 2
+        return v * np.minimum(1, t / 0.05) * np.minimum(1, (1.2 - t) / 0.2)
     if kind == "rise":
         v, t = _sweep(220, 660, 1.4, 1.2)
         return v * np.sin(np.pi * t / 1.4) * 0.12
