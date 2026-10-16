@@ -47,6 +47,8 @@ SCENES = [
         ("Y", "おっ、無料セミナーだって！ 行ってみよう。", dict(sfx=[(0, "alert")])),
         ("U", "民泊はねぇ、誰でも、簡単に、すぐ稼げるんですよ〜！", dict(sfx=[(0, "bling")])),
         ("U", "私のサポートを受ければ、もう安心！", {}),
+        ("U", "ほら見て！ 成功した人たちの声です！", dict(sfx=[(0.3, "bling")])),
+        ("Y", "月収アップ…！？ みんな、稼いでる…！", {}),
         ("Y", "すごい！ でも、僕、何も知らないんですけど…。", {}),
         ("U", "だいじょ〜ぶ！ 全部教えます。サポート代は少しかかりますが、すぐに元が取れますから！", {}),
         ("Y", "い、いくらなんですか？", {}),
@@ -64,9 +66,18 @@ SCENES = [
         ("M", "1つめ。「誰でも簡単に、すぐ稼げる」。本当に簡単なら、高いお金を払って教わる必要はありませんよね。", dict(say="ひとつめ。誰でも簡単に、すぐ稼げる。本当に簡単なら、高いお金を払って教わる必要はありませんよね。", sfx=[(0, "pop")])),
         ("M", "2つめ。「お金がなければ、借りればいい」。借金をしてまで契約するのは、やめましょう。", dict(say="ふたつめ。お金がなければ、借りればいい。借金をしてまで契約するのは、やめましょう。", sfx=[(0, "pop")])),
         ("M", "3つめ。「今日だけ」「今すぐ決めて」。急がせるのは、考える時間をなくすため。その場では、契約しないことです。", dict(say="みっつめ。今日だけ、今すぐ決めて。急がせるのは、考える時間をなくすため。その場では、契約しないことです。", sfx=[(0, "pop")])),
+        ("M", "それから、広告やSNSの「成功した人の声」も、本当かどうか分かりません。うのみにしないでくださいね。", dict(say="それから、広告やエスエヌエスの、成功した人の声も、本当かどうか分かりません。うのみにしないでくださいね。", sfx=[(0, "pop")])),
         ("M", "実際に、「すぐ元が取れる」と言われて契約したのに稼げず、やめたいと言っても応じてもらえない、という相談が寄せられています。", {}),
         ("Y", "あ、危なかった…！", {}),
         ("M", "困ったときは、消費者ホットライン「188（いやや）」に電話すれば、近くの相談窓口につながりますよ。", dict(say="困ったときは、消費者ホットライン、いち、はち、はち、いややに電話すれば、近くの相談窓口につながりますよ。", sfx=[(0.5, "ding")])),
+    ]),
+    ("mint", 0.9, [
+        ("M", "ここでクイズです！", dict(sfx=[(0, "chime")])),
+        ("M", "ウマイ先生のセリフで、危ない言葉はどれでしょう？", {}),
+        ("M", "A、「すぐに元が取れる」。B、「借りればいい」。C、「今日だけ」。", dict(say="エー、すぐに元が取れる。ビー、借りればいい。シー、今日だけ。", sfx=[(0.1, "pop"), (2.0, "pop"), (3.6, "pop")])),
+        ("M", "正解は…、ぜんぶです！", dict(pre=3.4, sfx=[(-3.4, "tick"), (-2.4, "tick"), (-1.4, "tick"), (0.9, "ding")])),
+        ("Y", "ぜ、ぜんぶ…！？", dict(sfx=[(0, "boing")])),
+        ("M", "どれか1つでも出てきたら、要注意。その場では決めないでくださいね。", dict(say="どれかひとつでも出てきたら、要注意。その場では決めないでくださいね。")),
     ]),
     ("peach", 0.9, [
         ("N", "落とし穴その2。「この物件、民泊できますよ」。", dict(say="落とし穴、その二。この物件、民泊できますよ。", sfx=[(0, "boing")])),
@@ -104,6 +115,16 @@ SCENES = [
         ("M", "1つめ。「急いで！」と言うメッセージのリンクは、押さない。", dict(say="ひとつめ。急いで！と言うメッセージのリンクは、押さない。", sfx=[(0, "pop")])),
         ("M", "2つめ。予約の確認は、いつも使っている公式のアプリやサイトから。", dict(say="ふたつめ。予約の確認は、いつも使っている公式のアプリやサイトから。", sfx=[(0, "pop")])),
         ("M", "3つめ。メッセージでカード番号を聞かれたら、入力しない。", dict(say="みっつめ。メッセージでカード番号を聞かれたら、入力しない。", sfx=[(0, "pop")])),
+    ]),
+    ("mint", 0.9, [
+        ("M", "最後に、ふりかえりの〇✕クイズです！", dict(say="最後に、ふりかえりの、マルバツクイズです！", sfx=[(0, "chime")])),
+        ("M", "第1問。「今日だけ」と言われたら、すぐ契約したほうがお得。〇か、✕か？", dict(say="第一問。今日だけと言われたら、すぐ契約したほうがお得。マルか、バツか？")),
+        ("M", "正解は✕！ 急がせるのは、考える時間をなくすためでしたね。", dict(say="正解はバツ！ 急がせるのは、考える時間をなくすためでしたね。", pre=3.0, sfx=[(-3.0, "tick"), (-2.0, "tick"), (-1.0, "tick"), (0, "ding")])),
+        ("M", "第2問。「民泊できます」と言われた物件は、役所とマンションのルールで確かめる。〇か、✕か？", dict(say="第二問。民泊できますと言われた物件は、役所とマンションのルールで確かめる。マルか、バツか？")),
+        ("M", "正解は〇！ 自分の目で確かめるのがいちばんです。", dict(say="正解はマル！ 自分の目で確かめるのがいちばんです。", pre=3.0, sfx=[(-3.0, "tick"), (-2.0, "tick"), (-1.0, "tick"), (0, "ding")])),
+        ("M", "第3問。「24時間以内に確認を」というメッセージが来たら、リンクからすぐ確認する。〇か、✕か？", dict(say="第三問。二十四時間以内に確認を、というメッセージが来たら、リンクからすぐ確認する。マルか、バツか？")),
+        ("M", "正解は✕！ 確認は、いつも使っている公式のアプリやサイトからでしたね。", dict(say="正解はバツ！ 確認は、いつも使っている公式のアプリやサイトからでしたね。", pre=3.0, sfx=[(-3.0, "tick"), (-2.0, "tick"), (-1.0, "tick"), (0, "ding")])),
+        ("Y", "ぜんぶ正解！ もう、だまされないぞ！", dict(sfx=[(0, "chime")])),
     ]),
     ("yellow", 5.0, [
         ("Y", "ミナさんのおかげで、3つの落とし穴、ぜんぶ避けられました！", dict(say="ミナさんのおかげで、みっつの落とし穴、ぜんぶ避けられました！")),
@@ -218,33 +239,35 @@ function scene(i,t,lt){
     if(!inHall){s+=bg(t,'night');s+=P(520,GROUND,.92,{c:'owner',who:'Y',pose:'phone',mood:'happy'},t);
       s+=phoneUI(1150,480,.92,`<rect x="-172" y="-300" width="344" height="610" fill="#fff4d6"/><text x="0" y="-200" text-anchor="middle" font-size="40" font-weight="900" fill="${T}">民泊で月収アップ！</text><text x="0" y="-130" text-anchor="middle" font-size="34" font-weight="900" fill="${DG}">初心者でも簡単！</text>${coin(-80,0,50)}${coin(70,-20,40)}${coin(10,80,34)}<rect x="-140" y="180" width="280" height="80" rx="40" fill="${T}"/><text x="0" y="234" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">無料セミナー</text>`,at(1,.5));}
     else{
-      const fr=lt>=L[12]-.7,fz=clamp((lt-(L[12]-.7))/.25);
-      let g=hall(fr?L[12]-.7:lt);
-      const tu=fr?L[12]-.7:lt;
-      g+=P(1180,750,.9,{c:'umai',who:'U',pose:on(7)?'point':(on(9)?'open':'cheer'),mood:'happy'},tu);
+      const fr=lt>=L[14]-.7,fz=clamp((lt-(L[14]-.7))/.25);
+      let g=hall(fr?L[14]-.7:lt);
+      const tu=fr?L[14]-.7:lt;
+      g+=P(1180,750,.9,{c:'umai',who:'U',pose:on(9)?'point':(on(11)?'open':'cheer'),mood:'happy'},tu);
       [[900,320],[1460,300],[1300,520],[980,560]].forEach(([x,y],k)=>{g+=sparkle(x,y,1.2,tu,k)});
-      g+=P(330,GROUND+80,.9,{c:'owner',who:'Y',pose:on(11)?'shake':(on(8)?'think':'stand'),mood:on(8)?'worry':'happy'},tu);
-      g+=pop(1500,420,at(7,.5,.2),`<g transform="rotate(${-6+Math.sin(tu*3)*2} 1500 420)">${box(1310,250,380,340,16)}<text x="1500" y="320" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">サポート代</text><text x="1500" y="440" text-anchor="middle" font-size="88" font-weight="900" fill="${T}">数十万円</text><text x="1500" y="520" text-anchor="middle" font-size="28" font-weight="700" fill="#4a5a52">※今日だけの特別価格</text></g>`);
-      g+=pop(800,300,at(10,.4,.5),`<g transform="rotate(-10 800 300)"><rect x="620" y="240" width="360" height="120" rx="20" fill="#e53935"/><text x="800" y="322" text-anchor="middle" font-size="64" font-weight="900" fill="#fff">今日だけ！</text></g>`);
-      if(on(9))g+=fade(at(9,.5,.5),chip(740,580,'借りればいい',40,'#6b3fa0','#fff',1),0);
+      g+=P(330,GROUND+80,.9,{c:'owner',who:'Y',pose:on(13)?'shake':(on(10)?'think':'stand'),mood:on(10)?'worry':'happy'},tu);
+      g+=pop(1500,420,at(9,.5,.2),`<g transform="rotate(${-6+Math.sin(tu*3)*2} 1500 420)">${box(1310,250,380,340,16)}<text x="1500" y="320" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">サポート代</text><text x="1500" y="440" text-anchor="middle" font-size="88" font-weight="900" fill="${T}">数十万円</text><text x="1500" y="520" text-anchor="middle" font-size="28" font-weight="700" fill="#4a5a52">※今日だけの特別価格</text></g>`);
+      g+=pop(760,380,at(4,.5,.2)*(1-seg(lt,L[6],L[6]+.4)),`<g transform="rotate(-4 760 380)">${box(500,200,520,380,18)}<text x="760" y="262" text-anchor="middle" font-size="36" font-weight="900" fill="#6b3fa0">成功者の声</text>${[['月収アップ！','Aさん'],['副業で大成功！','Bさん'],['人生が変わりました','Cさん']].map(([a,b],k)=>`<circle cx="560" cy="${325+k*85}" r="28" fill="#d9cbe6"/><text x="600" y="${336+k*85}" font-size="32" font-weight="900" fill="${DG}">「${a}」</text><text x="990" y="${336+k*85}" text-anchor="end" font-size="24" font-weight="700" fill="#777">${b}</text>`).join('')}<text x="760" y="560" text-anchor="middle" font-size="22" font-weight="700" fill="#999">※個人の感想です（？）</text></g>`);
+      g+=pop(800,300,at(12,.4,.5),`<g transform="rotate(-10 800 300)"><rect x="620" y="240" width="360" height="120" rx="20" fill="#e53935"/><text x="800" y="322" text-anchor="middle" font-size="64" font-weight="900" fill="#fff">今日だけ！</text></g>`);
+      if(on(11))g+=fade(at(11,.5,.5),chip(740,580,'借りればいい',40,'#6b3fa0','#fff',1),0);
       s+=fr?`<g filter="url(#gray)">${g}</g><rect width="1920" height="1080" fill="#000" opacity="${.25*fz}"/>`:g;
       if(fr){s+=pop(960,170,fz,`<g opacity=".9"><rect x="880" y="110" width="50" height="120" rx="10" fill="#fff"/><rect x="990" y="110" width="50" height="120" rx="10" fill="#fff"/></g>`);
-        const mx=760+900*(1-eo(at(12,.45)));s+=speedLines(mx,700,1-at(12,.8,.5))+P(mx,GROUND+60,.95,{c:'staff',who:'M',pose:'point',mood:'happy',flip:true},t);}
+        const mx=760+900*(1-eo(at(14,.45)));s+=speedLines(mx,700,1-at(14,.8,.5))+P(mx,GROUND+60,.95,{c:'staff',who:'M',pose:'point',mood:'happy',flip:true},t);}
     }
     s+=chapter('①','「誰でも簡単に稼げる」',seg(lt,L[0]-.2,E[0]+.4));
   }
   if(i===3){
     s+=P(240,GROUND,.84,{c:'staff',who:'M',pose:'present',mood:'happy'},t);
-    const fadeRows=1-seg(lt,L[6],L[6]+.4);
+    const fadeRows=1-seg(lt,L[7],L[7]+.4);
     let g=fade(at(0),`<text x="1180" y="250" text-anchor="middle" font-size="50" font-weight="900" fill="${DG}">こんな言葉が出たら、立ち止まる</text>`,0);
     g+=checkRow(520,380,1340,'1','「誰でも簡単に、すぐ稼げる」','本当に簡単なら、高いお金を払って教わる必要はない',at(1),T);
     g+=checkRow(520,540,1340,'2','「お金がなければ、借りればいい」','借金をしてまで契約しない',at(2),T);
     g+=checkRow(520,700,1340,'3','「今日だけ」「今すぐ決めて」','急がせるのは、考える時間をなくすため',at(3),T);
+    g+=pop(1190,830,at(4,.5),`<rect x="560" y="790" width="1260" height="76" rx="38" fill="#6b3fa0"/><text x="1190" y="840" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">＋ 広告やSNSの「成功した人の声」も、うのみにしない</text>`);
     s+=`<g opacity="${fadeRows}">${g}</g>`;
-    s+=pop(1660,170,at(5,.4),`${face('yf',1660,170,64,'owner',G,'worry',lt)}`)+(on(5)?'':'');
-    s+=pop(1180,520,at(6,.5),`${box(640,330,1080,380,40)}<text x="1180" y="420" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">困ったときは</text><text x="1180" y="550" text-anchor="middle" font-size="120" font-weight="900" fill="${T}">188</text><text x="1180" y="640" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">消費者ホットライン（いやや）</text>`);
+    s+=pop(1660,170,at(6,.4),`${face('yf',1660,170,64,'owner',G,'worry',lt)}`)+(on(5)?'':'');
+    s+=pop(1180,520,at(7,.5),`${box(640,330,1080,380,40)}<text x="1180" y="420" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">困ったときは</text><text x="1180" y="550" text-anchor="middle" font-size="120" font-weight="900" fill="${T}">188</text><text x="1180" y="640" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">消費者ホットライン（いやや）</text>`);
   }
-  if(i===4){
+  if(i===5){
     const umaiIn=at(2,.6),umaiOut=seg(lt,L[10],L[10]+1.2),diag=at(6,.5)*(1-seg(lt,L[11]-.2,L[11]+.3));
     s+=house(1260,GROUND,.95,.35);
     s+=pop(1520,500,at(1,.5),`<rect x="1490" y="440" width="10" height="420" fill="#6a5646"/><rect x="1430" y="440" width="230" height="110" rx="12" fill="#fff"/><text x="1545" y="512" text-anchor="middle" font-size="46" font-weight="900" fill="${T}">売り物件</text>`);
@@ -259,9 +282,9 @@ function scene(i,t,lt){
       s+=`<g opacity="${diag}">${g}</g>`;}
     s+=chapter('②','「この物件、民泊できますよ」',seg(lt,L[0]-.2,E[0]+.4));
   }
-  if(i===5||i===7){
+  if(i===6||i===8){
     s+=P(240,GROUND,.84,{c:'staff',who:'M',pose:'present',mood:'happy'},t);
-    if(i===5){s+=fade(at(0),`<text x="1180" y="270" text-anchor="middle" font-size="50" font-weight="900" fill="${DG}">買う前・借りる前に、確かめる</text>`,0);
+    if(i===6){s+=fade(at(0),`<text x="1180" y="270" text-anchor="middle" font-size="50" font-weight="900" fill="${DG}">買う前・借りる前に、確かめる</text>`,0);
       s+=checkRow(520,420,1340,'1','役所に聞く','「この場所で民泊できますか？」',at(1));
       s+=checkRow(520,600,1340,'2','マンションのルールを見る','管理規約で、民泊が禁止されていないか',at(2));
       s+=pop(1180,770,at(3,.5),`<rect x="760" y="730" width="840" height="80" rx="40" fill="${T}"/><text x="1180" y="784" text-anchor="middle" font-size="38" font-weight="900" fill="#fff">「できます」でも、自分の目で確かめる</text>`);}
@@ -270,7 +293,7 @@ function scene(i,t,lt){
       s+=checkRow(520,540,1340,'2','確認は、いつもの公式アプリ・サイトから','',at(2));
       s+=checkRow(520,700,1340,'3','カード番号を聞かれたら、入力しない','',at(3),T);}
   }
-  if(i===6){
+  if(i===7){
     const k=eo(at(1,1.6,.3)),showPhone=at(3,.4,-.4)*(1-at(5,.4,.3)),fake=at(6,.5,.4)*(1-seg(lt,E[8]-.2,E[8]+.3));
     s+=house(1180,GROUND,1.0,k);
     s+=[[1000,360],[1380,330],[1300,520]].map(([x,y],j)=>`<g opacity="${k}">${sparkle(x,y,1.3,lt,j)}</g>`).join('');
@@ -283,7 +306,32 @@ function scene(i,t,lt){
     if(fake>0)s+=`<g opacity="${fake}">${phoneUI(1000,480,1.02,`<rect x="-172" y="-300" width="344" height="70" fill="#e9eef5"/><text x="0" y="-254" text-anchor="middle" font-size="26" font-weight="900" fill="#2c3a33">予約サイト（？）</text><text x="-140" y="-170" font-size="26" font-weight="900" fill="${DG}">カード番号</text><rect x="-140" y="-150" width="280" height="56" rx="10" fill="#f2f6f3" stroke="#b9cfc1" stroke-width="3"/><text x="-140" y="-50" font-size="26" font-weight="900" fill="${DG}">有効期限・セキュリティコード</text><rect x="-140" y="-30" width="280" height="56" rx="10" fill="#f2f6f3" stroke="#b9cfc1" stroke-width="3"/>`,1)}${pop(1000,470,at(6,.4,1.6),`<g transform="rotate(-14 1000 470)"><circle cx="1000" cy="470" r="120" fill="none" stroke="#d32f2f" stroke-width="16"/><text x="1000" y="510" text-anchor="middle" font-size="120" font-weight="900" fill="#d32f2f">偽</text></g>`)}</g>`;
     s+=chapter('③','開業したのに…',seg(lt,L[0]-.2,E[0]+.4));
   }
-  if(i===8){
+  if(i===4){ // クイズ①
+    s+=P(250,GROUND,.84,{c:'staff',who:'M',pose:'present',mood:'happy'},t);
+    s+=P(1800,GROUND+60,.62,{c:'owner',who:'Y',pose:on(4)?'cheer':'think',mood:on(4)?'worry':'smile',flip:true},t);
+    s+=pop(1120,180,at(0,.5),`<rect x="920" y="130" width="400" height="96" rx="48" fill="${T}"/><text x="1120" y="196" text-anchor="middle" font-size="54" font-weight="900" fill="#fff">クイズ</text>`);
+    s+=fade(at(1,.5),`<text x="1120" y="320" text-anchor="middle" font-size="48" font-weight="900" fill="${DG}">ウマイ先生のセリフ、危ない言葉はどれ？</text>`,0);
+    [['A','すぐに元が取れる'],['B','借りればいい'],['C','今日だけ']].forEach(([k2,w],k)=>{const x=620+k*440,y=540,p=at(2,.5,[0.1,2.0,3.6][k]);
+      s+=pop(x,y,p,`${box(x-200,y-130,400,260,30)}<circle cx="${x}" cy="${y-60}" r="44" fill="${G}"/><text x="${x}" y="${y-44}" text-anchor="middle" font-size="50" font-weight="900" fill="#fff">${k2}</text><text x="${x}" y="${y+60}" text-anchor="middle" font-size="${w.length>6?38:44}" font-weight="900" fill="${DG}">「${w}」</text>${pop(x,y,seg(lt,L[3]+.9+k*.15,L[3]+1.3+k*.15),`<circle cx="${x}" cy="${y}" r="150" fill="none" stroke="#e53935" stroke-width="16"/>`)}`)});
+    const cd=lt-(L[3]-3.4);if(cd>0&&cd<3.4){const n=3-Math.floor(cd);s+=pop(1120,800,clamp((cd%1)*4),`<circle cx="1120" cy="800" r="70" fill="${Y}"/><text x="1120" y="830" text-anchor="middle" font-size="84" font-weight="900" fill="${DG}">${Math.max(1,n)}</text>`)}
+    s+=pop(1060,810,at(3,.4,.8),`<rect x="780" y="760" width="560" height="100" rx="50" fill="#e53935"/><text x="1060" y="828" text-anchor="middle" font-size="56" font-weight="900" fill="#fff">ぜんぶ危ない！</text>`);
+  }
+  if(i===9){ // ふりかえり〇✕クイズ
+    s+=P(250,GROUND,.84,{c:'staff',who:'M',pose:'present',mood:'happy'},t);
+    s+=P(1800,GROUND+60,.62,{c:'owner',who:'Y',pose:on(7)?'cheer':'think',mood:'happy',flip:true},t);
+    s+=pop(1120,170,at(0,.5),`<rect x="830" y="120" width="580" height="96" rx="48" fill="${T}"/><text x="1120" y="186" text-anchor="middle" font-size="52" font-weight="900" fill="#fff">〇✕クイズ</text>`);
+    const QS=[['今日だけと言われたら、','すぐ契約したほうがお得','✕'],['「民泊できます」の物件は、','役所とマンションのルールで確かめる','〇'],['「24時間以内に確認を」が来たら、','リンクからすぐ確認する','✕']];
+    QS.forEach(([a,b,ans],k)=>{const qi=1+k*2,ai=qi+1;if(!on(qi)||on(qi+2))return;
+      const p=at(qi,.5);
+      let g=`${box(560,280,1120,400,36)}<text x="1120" y="360" text-anchor="middle" font-size="40" font-weight="900" fill="${T}">第${k+1}問</text><text x="1120" y="450" text-anchor="middle" font-size="44" font-weight="900" fill="${DG}">${a}</text><text x="1120" y="520" text-anchor="middle" font-size="${b.length>14?40:48}" font-weight="900" fill="${DG}">${b}</text>`;
+      const rev=on(ai),okO=ans==='〇';
+      g+=`<g opacity="${rev&&!okO?.3:1}"><circle cx="900" cy="610" r="0"/></g>`;
+      ['〇','✕'].forEach((m2,j)=>{const x=920+j*400,hit=rev&&m2===ans;g+=`<g opacity="${rev&&!hit?.25:1}" transform="translate(${x},770) scale(${hit?1+.08*Math.sin(lt*8):1}) translate(${-x},-770)"><circle cx="${x}" cy="770" r="80" fill="${m2==='〇'?'#e53935':'#1e6fd9'}"/><text x="${x}" y="800" text-anchor="middle" font-size="84" font-weight="900" fill="#fff">${m2}</text></g>`});
+      const cd=lt-(L[ai]-3.0);if(cd>0&&cd<3.0)g+=pop(1120,770,clamp((cd%1)*4),`<circle cx="1120" cy="770" r="56" fill="${Y}"/><text x="1120" y="796" text-anchor="middle" font-size="64" font-weight="900" fill="${DG}">${3-Math.floor(cd)}</text>`);
+      s+=fade(p,g,20);});
+    s+=pop(1120,480,at(7,.5),`${box(700,360,840,220,40)}<text x="1120" y="500" text-anchor="middle" font-size="64" font-weight="900" fill="${T}">ぜんぶ正解！</text>`);
+  }
+  if(i===10){
     s+=house(1000,GROUND,.95,1)+sparkle(800,330,1.3,lt,0)+sparkle(1220,300,1.1,lt,2);
     s+=P(400,GROUND,.9,{c:'owner',who:'Y',pose:'cheer',mood:'happy'},t)+P(1560,GROUND,.86,{c:'staff',who:'M',pose:on(4)?'present':'wave',mood:'happy',flip:true},t);
     s+=P(1790,GROUND,.66,{c:'guest2',pose:'wave',mood:'happy',flip:true,seed:2},t);
