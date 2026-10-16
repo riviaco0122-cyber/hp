@@ -3968,3 +3968,8 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 @media (prefers-reduced-motion: reduce) { .js .collage .collage__v { opacity: 1; translate: none; transition: none; } }
 .collage__v { white-space: nowrap; font-size: clamp(30px, 3.4vw, 52px); letter-spacing: 0.1em; padding: 0.45em 0.28em; background: #fff; text-shadow: none; box-shadow: 0 14px 30px rgba(15, 38, 24, 0.14); }
 @media (max-width: 899px) { .collage__v { font-size: 22px; right: 0; bottom: auto; top: 6%; } }
+/* サービスページの見出し：どのサービスかがひと目で分かるよう、サービス名を大きく */
+.svc-name { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 22px; }
+.svc-name__no { padding: 4px 12px; border-radius: 999px; background: var(--c-shu); color: #fff; font-family: var(--font-en); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+.svc-name__ja { font-family: var(--font-serif); font-size: clamp(18px, 1.6vw, 22px); font-weight: 500; letter-spacing: 0.08em; color: var(--c-forest); }
+@media (max-width: 899px) { .svc-name { margin-bottom: 14px; } .svc-name__ja { font-size: 17px; } }
