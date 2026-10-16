@@ -3868,3 +3868,12 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .form__step-head span { width: 36px; height: 36px; font-size: 15px; }
   .form--steps .form__submit .btn { min-width: 0; width: 100%; }
 }
+/* ご相談カテゴリ：先頭の「物件について相談したい」は横いっぱい、下の「ほかのご用件」は小さめのカード */
+.catpick__card--wide { grid-column: 1 / -1; }
+.catpick__card--wide .catpick__intent { font-size: 17px; }
+.catpick__more-label { margin-top: 18px; font-size: 12px; letter-spacing: 0.1em; color: var(--c-muted); }
+.catpick__more { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.form__field .catpick__card--sub, .catpick__card--sub { padding: 14px 18px; border-style: dashed; }
+.catpick__card--sub .catpick__intent { font-size: 15px; }
+.catpick__card--sub:has(input:checked) { border-style: solid; }
+@media (max-width: 899px) { .catpick__more { grid-template-columns: 1fr; gap: 10px; } }
