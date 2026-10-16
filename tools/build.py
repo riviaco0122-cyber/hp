@@ -20,7 +20,7 @@ def _merge_short(chunks):
     sticky = False
     for c in chunks:
         joinable = out and not re.search(r"[、。」）!?！？]$", out[-1])
-        if joinable and (sticky or len(c) <= 2 or len(out[-1]) <= 2):
+        if joinable and ((sticky and len(out[-1] + c) <= 9) or len(c) <= 2 or len(out[-1]) <= 2):
             out[-1] += c
         else:
             out.append(c)
@@ -102,8 +102,13 @@ def phrase_breaks(html):
         text = unescape(p)
         if skip or not _JA.search(text):
             continue
+        ends_block = i + 1 < len(parts) and re.match(r"</(p|li|dd|blockquote|figcaption|h[1-6])>", parts[i + 1]) is not None
         if heading or lead or block_len.get(i, len(text.strip())) <= 20:
-            parts[i] = "<wbr>".join(e(c, quote=False) for c in _merge_short(_budoux.parse(text)))
+            chunks = _merge_short(_budoux.parse(text))
+            # 最後の文節が短い（4文字未満）ときは、1つ前の文節とつなげて最終行に1〜3文字だけ残らないようにする
+            if ends_block and len(chunks) >= 2 and len(chunks[-1].strip()) < 4 and len(chunks[-2] + chunks[-1]) <= 9:
+                chunks[-2:] = [f"\x00{chunks[-2]}{chunks[-1]}\x01"]
+            parts[i] = "<wbr>".join(e(c, quote=False) for c in chunks).replace("\x00", "<n-b>").replace("\x01", "</n-b>")
             continue
         body_text = text.rstrip()
         trail = text[len(body_text):]
@@ -111,8 +116,35 @@ def phrase_breaks(html):
         # 最後の行が短くなる場合は、表示時に js/main.js が字間をわずかに調整して整える
         # 60字を超える長い段落だけ両端揃え（短い文は字間を一定に保つため左揃え）
         tag = '<n-w class="j">' if block_len.get(i, len(body_text.strip())) > 60 else "<n-w>"
-        parts[i] = f'{tag}{e(body_text, quote=False)}</n-w>{e(trail, quote=False)}'
-    return head + sep + "".join(parts)
+        # 段落の終わりは、最後の文節（5〜10文字）をひとまとまりにして、最終行に「す。」だけが残らないようにする
+        tail = ""
+        if ends_block and len(body_text.strip()) <= 16:
+            tail = body_text  # 太字などの後ろに続く短い文末は、まるごと1つにまとめる
+        elif ends_block:
+            phrases = _budoux.parse(body_text)
+            while phrases and len(tail) < 5 and len(tail + phrases[-1]) <= 10:
+                tail = phrases.pop() + tail
+            if len(tail) < 5:
+                tail = body_text[-5:]
+        head_text = body_text[: len(body_text) - len(tail)]
+        tail_html = f"<n-b>{e(tail, quote=False)}</n-b>" if tail else ""
+        parts[i] = f'{tag}{e(head_text, quote=False)}{tail_html}</n-w>{e(trail, quote=False)}'
+    body = "".join(parts)
+    # 段落が太字（マーカー）で終わるときは、太字の最後の文節と文末をひとまとまりにする（「〜しま／す。」を防ぐ）
+    def _glue(m):
+        attrs, txt, after = m.group(1), m.group(2), m.group(3) or ""
+        after_txt = re.sub(r"</?n-[wb][^>]*>", "", after)
+        raw = unescape(txt)
+        ph = _budoux.parse(raw)
+        last = ""
+        while ph and len(last) < 3 and len(last + ph[-1]) <= 7:
+            last = ph.pop() + last
+        if not last or len(last) >= len(raw):
+            return m.group(0)
+        return (f'<strong class="hl"><n-w{attrs}>{e(raw[: -len(last)], quote=False)}</n-w></strong>'
+                f'<n-b><strong class="hl">{e(last, quote=False)}</strong>{after_txt}</n-b>')
+    body = re.sub(r'<strong class="hl"><n-w([^>]*)>([^<]+)</n-w></strong>((?:<n-w>)?(?:<n-b>)?[^<]{0,8}(?:</n-b>)?(?:</n-w>)?)(?=</(?:p|li|dd)>)', _glue, body)
+    return head + sep + body
 
 
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # リポジトリの直下（tools/ の1つ上）
@@ -240,7 +272,7 @@ TOP_VALUES = {
 }
 # 事業ごとのひとこと（何をしてくれる事業か）
 SERVICE_CATCH = {
-    "operation": "空き家を、宿として再生・運営",
+    "operation": "空き家を宿に再生・運営",
     "management": "開業から日々の運営まで伴走",
     "partnership": "民泊向きの物件選びから運営まで",
     "marketing": "問い合わせと売上を伸ばす",

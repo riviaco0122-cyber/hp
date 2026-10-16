@@ -3973,3 +3973,16 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .svc-name__no { padding: 4px 12px; border-radius: 999px; background: var(--c-shu); color: #fff; font-family: var(--font-en); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
 .svc-name__ja { font-family: var(--font-serif); font-size: clamp(18px, 1.6vw, 22px); font-weight: 500; letter-spacing: 0.08em; color: var(--c-forest); }
 @media (max-width: 899px) { .svc-name { margin-bottom: 14px; } .svc-name__ja { font-size: 17px; } }
+/* スマホ：狭い幅で見出しが変な位置で折れないように */
+.pd__value { white-space: nowrap; }
+@media (max-width: 899px) {
+  .vsvc__name { font-size: clamp(16px, 4.6vw, 20px); }
+  .issue__title { font-size: clamp(17px, 5vw, 21px); }
+  .pd__value { font-size: clamp(20px, 6vw, 24px); }
+}
+@media (max-width: 899px) {
+  .vsvc { grid-template-columns: minmax(0, 1fr); }
+  .vsvc__go { grid-column: 1; grid-row: auto; justify-self: end; margin-top: 12px; }
+}
+/* 短い文は行の長さをそろえ、最終行に1〜2文字だけ残らないように */
+.related__worry, .founder__career span, .vsvc__catch, .vsvc__text, .reason__text, .flow__desc, .timeline__desc { text-wrap: balance; }
