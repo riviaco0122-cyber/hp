@@ -3091,6 +3091,7 @@ ARTICLES += [
 <p>同じ物件でも、悲観と楽観で稼働率が25ポイント違うと、回収年数は約6年変わります。<strong>「平均的な稼働率」を一つだけ置いた計画は危うい</strong>、ということです。</p>
 <p>なお、同じ条件を民泊新法（年間180日上限）で運営する場合、仮に180日すべて埋まっても年間売上は450万円が上限です。制度の選択が売上の上限を決めます。試算の段階で織り込んでおきましょう。</p>
 <p>稼働率や客室単価の意味は、「<a href="media/inn-kpi-basics.html">稼働率・客室単価・RevPARとは？</a>」で説明しています。</p>
+<p>実績の費用から赤字にならない稼働率を出す方法は、「<a href="media/minpaku-break-even.html">民泊は稼働率何%で黒字？損益分岐点を自分で計算するやり方</a>」で説明しています。</p>
 """),
             ("limits", "AirDNAの数字を信じすぎると、何が危ないのか", """
 <p>AirDNAの数字を信じすぎると、収支が甘くなりやすくなります。数字はあくまで推計で、平均値をそのまま使うと甘くなりがちです。自社サイトなどの直接予約は入っていません。限界は次の4点です。</p>
@@ -4465,7 +4466,7 @@ MEDIA_COURSES = [
                    ("旅の変化と需要", "訪日客の動向、地方への分散、長期滞在の広がり。", ["japan-tourism-market-data", "long-stay-travel-demand"]),
                    ("古い家・地方だからこその価値", "古民家の魅力と、観光地でなくても宿になる理由。", ["shizuoka-yaizu-akiya-inn"]),
                    ("向いている家を見極める", "立地・建物・法令・運営のチェックと、中古と新築の違い。", ["akiya-minpaku-suitability", "new-build-vs-used-house-inn"]),
-                   ("収益の考え方", "指標の読み方、収益の試算、投資としての見方、運営の事例。", ["inn-kpi-basics", "airdna-revenue-simulation", "minpaku-investment-yield", "case-rental-house-inn-first-year"])]),
+                   ("収益の考え方", "指標の読み方、収益の試算、投資としての見方、運営の事例。", ["inn-kpi-basics", "minpaku-break-even", "airdna-revenue-simulation", "minpaku-investment-yield", "case-rental-house-inn-first-year"])]),
     dict(key="challenges", en="Course 03", title="民泊の課題と、乗り越え方", lead="「民泊は大変」と言われる理由と、実際の乗り越え方。手続き、お金、運営、集客まで。",
          chapters=[("よく聞く課題を知る", "手続き・近隣・運営・季節・費用の5つの課題。", ["minpaku-hard-truth"]),
                    ("制度と手続き", "民泊と旅館業の違い、開業までの流れ、消防。", ["minpaku-vs-ryokan-law", "minpaku-start-steps", "kani-shukusho-kyoka-guide", "minpaku-fire-safety"]),
