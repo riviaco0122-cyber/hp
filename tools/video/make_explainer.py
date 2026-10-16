@@ -106,7 +106,11 @@ const CAST={
   owner:{skin:'#f1c7a1',hair:'#3b302a',style:'side',top:'#2e6b47',top2:'#24573a',collar:'#f4efe6',pants:'#3b4a5a',shoes:'#2a2a30'},
   staff:{skin:'#f3cba8',hair:'#2b2422',style:'bob',top:'#c95a35',top2:'#a94a2a',inner:'#ffffff',jacket:true,pants:'#2f3b4a',shoes:'#2a2a30',tag:true},
   guest1:{skin:'#e3b089',hair:'#1f1f24',style:'short',top:'#3d6a8a',top2:'#30566f',inner:'#f4efe6',jacket:true,pants:'#c9bfae',shoes:'#5a4636'},
-  umai:{skin:'#efc29a',hair:'#141414',style:'side',top:'#5b2d7a',top2:'#45215e',inner:'#f5b8c8',jacket:true,pants:'#2a2238',shoes:'#c9a227',sunglasses:true,chain:true,tie:'#e8b950'},
+  umai:{skin:'#efc29a',hair:'#141414',style:'side',top:'#5b2d7a',top2:'#45215e',inner:'#f5b8c8',jacket:true,pants:'#2a2238',shoes:'#c9a227',sunglasses:true,chain:true,tie:'#e8b950',mole:true},
+  // ウマイ先生の変装（成功者の「生徒さん」）。金のネックレスとほくろは同じ（伏線）
+  umaiA:{skin:'#efc29a',hair:'#8a5a3c',style:'bob',top:'#3d8a6a',top2:'#30705a',collar:'#fff',chain:true,mole:true},
+  umaiB:{skin:'#efc29a',hair:'#2b2422',style:'pony',top:'#d98a3d',top2:'#c0782f',collar:'#fff',chain:true,mole:true},
+  umaiC:{skin:'#efc29a',hair:'#6d6d6d',style:'short',glasses:true,top:'#3d6a8a',top2:'#30566f',collar:'#fff',chain:true,mole:true},
   guest2:{skin:'#f6d2b4',hair:'#7a4a2a',style:'pony',top:'#f0b35a',top2:'#d89a3e',collar:'#ffffff',pants:'#2f3b4a',shoes:'#c95a35'},
 };
 function ik(sx,sy,hx,hy,side,L1=98,L2=92){
@@ -155,7 +159,7 @@ function head(c,mood,t,seed,talk){
   <path d="${hb[c.style]}" fill="${c.hair}"/>
   ${brow}<ellipse cx="-17" cy="-524" rx="5" ry="${eyeRy}" fill="#2b2b33"/><ellipse cx="17" cy="-524" rx="5" ry="${eyeRy}" fill="#2b2b33"/>
   <circle cx="-27" cy="-507" r="8" fill="#ef8b78" opacity=".28"/><circle cx="27" cy="-507" r="8" fill="#ef8b78" opacity=".28"/>
-  <path d="M0 -518 q-5 11 3 13" stroke="${mix(c.skin,'#7a4a33',.45)}" stroke-width="3.5" fill="none" stroke-linecap="round"/>${mouth}${glasses}${shades}`;
+  <path d="M0 -518 q-5 11 3 13" stroke="${mix(c.skin,'#7a4a33',.45)}" stroke-width="3.5" fill="none" stroke-linecap="round"/>${mouth}${glasses}${shades}${c.mole?`<circle cx="24" cy="-506" r="4.5" fill="#5a3a2a"/>`:''}`;
 }
 function person(x,y,s,o){
   const c=CAST[o.c||'owner'],t=o.t||0,pose=o.pose||'stand',mood=o.mood||'smile';
