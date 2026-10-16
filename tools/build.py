@@ -248,6 +248,16 @@ SERVICE_CATCH = {
 }
 
 
+# サービスページの見出しの写真3枚（大きな横長・右上の縦長・右下）。(ファイル名, 幅, 高さ, 見せる位置)
+SERVICE_COLLAGE = {
+    "operation": [("thatched-house", 1920, 1080, "55% 55%"), ("own-tatami-hall", 1502, 2000, "50% 50%"), ("window-garden", 1079, 1349, "50% 50%")],
+    "management": [("irori-room", 1623, 1079, "50% 55%"), ("scene-stay", 1080, 1350, "50% 50%"), ("pillow", 1619, 1079, "50% 50%")],
+    "partnership": [("riverside-town", 1620, 1080, "50% 50%"), ("old-town-street", 1080, 1437, "50% 50%"), ("white-bedroom", 1620, 1080, "50% 50%")],
+    "marketing": [("laptop-dashboard", 1516, 1080, "50% 50%"), ("scene-walk", 901, 1350, "50% 50%"), ("fuji-lake", 1620, 1080, "50% 50%")],
+    "recruit": [("rural-station", 1918, 1080, "50% 50%"), ("town-railway", 1080, 1620, "50% 50%"), ("green-hills", 1620, 1080, "50% 50%")],
+}
+
+
 # ---------------------------------------------------------------- layout
 
 import json
@@ -687,7 +697,7 @@ def project_card(compact=False):
 
 SERVICE_DATA = {
     "operation": dict(
-        message=["空き家を、", "地域を照らす新たな拠点へ。"],
+        message=["眠る空き家に、", "もう一度、灯りを。"],
         description="地方に眠る空き家や遊休不動産を、自社で企画・リノベーションし、宿泊施設として運営する事業です。買取・借り上げから改修、運営までを担います。",
         overview="地方の空き家を自社で改修し、「暮らすように旅する」宿として再生・運営する事業です。",
         issues_lead="空き家は、放置するほど費用と建物の傷みが増えていきます。",
@@ -723,7 +733,7 @@ SERVICE_DATA = {
         ],
     ),
     "marketing": dict(
-        message=["事業の魅力を、", "WEBで届ける。"],
+        message=["いいものを、", "見つかるものに。"],
         description="業種を問わず、地方の事業者様の集客をWEBマーケティングで支援する事業です。自社サイト、SEO、Googleマップ、WEB広告、SNS、予約・ECサイトなど手段を限定せず、問い合わせと売上が伸びる集客の仕組みをつくります。",
         overview="業種を問わず、自社サイトから広告・SNSまで、問い合わせと売上が伸びる集客を設計します。",
         issues_lead="集客の悩みは手段ではなく、自社で集客をコントロールできていない経営構造の問題です。",
@@ -760,7 +770,7 @@ SERVICE_DATA = {
         ],
     ),
     "recruit": dict(
-        message=["地域の未来を創る、", "最適な人材と出会うために。"],
+        message=["「地方は採れない」を、", "終わらせる。"],
         description="地方企業の「人材不足」という経営課題を、WEBマーケティングの手法で解決する採用支援事業です。業種を問わず、採用計画から採用ブランディング、母集団形成、定着までを一貫して支援します。",
         overview="業種を問わず、地方企業の人材不足を、採用計画から発信・定着まで一貫して解決します。",
         issues_lead="「応募が来ない」「すぐ辞める」は、事業計画・組織・発信の問題。採用を経営から設計し直します。",
@@ -797,7 +807,7 @@ SERVICE_DATA = {
         ],
     ),
     "management": dict(
-        message=["理想の小規模宿を、", "確かな事業へ。"],
+        message=["泊まりたくなる宿は、", "つくれる。"],
         description="個人・法人を問わず、宿泊施設の開業から運営代行までを支援する事業です。立地選定・許認可・開業準備から、日々の運営・収益管理まで、必要な範囲でRIVIAが担います。",
         overview="民泊・小規模宿の開業から運営まで、オーナー様と共同で取り組み、事業を一緒に育てます。",
         issues_lead="開業前の不安から、開業後の運営の負担まで。一つの窓口で解決します。",
@@ -835,7 +845,7 @@ SERVICE_DATA = {
         ],
     ),
     "partnership": dict(
-        message=["保有する不動産を、", "選ばれる投資商品へ。"],
+        message=["仲介で終わらせない、", "不動産の売り方を。"],
         description="不動産会社様との協業事業です。保有物件の中から民泊に適した物件をRIVIAが選定・利回りを算出し、不動産会社様が投資家様へ販売。購入後はRIVIAが開業・運営を担い、家賃や収益を投資家様へお返しします。",
         overview="不動産会社様の保有物件を民泊の投資物件として販売できるよう、選定から購入後の運営まで担います。",
         issues_lead="売れない理由は価格だけではありません。投資商品としての魅力を一緒につくります。",
@@ -1510,19 +1520,22 @@ def service_page(key, name):
     related_groups.sort(key=lambda t: t[0])
     related = "\n".join(h for _, h in related_groups)
 
-    import hero_dots
-    body = f"""    <section class="page-hero page-hero--photo page-hero--dots">
-      <span class="page-hero__mark" aria-hidden="true">{e(SERVICE_INTRO[key][0])}</span>
+    shots = SERVICE_COLLAGE[key]
+    collage = "".join(
+        photo(n, cls=f"collage__img collage__img--{i}", width=w, height=h, sizes="(max-width: 899px) 60vw, 420px",
+              lazy=False, priority=(i == 0)).replace("<img ", f'<img style="object-position:{pos}" ', 1)
+        for i, (n, w, h, pos) in enumerate(shots))
+    body = f"""    <section class="page-hero page-hero--collage">
       <div class="container svc-hero">
+        <div class="collage reveal" aria-hidden="true">{collage}</div>
         <div class="svc-hero__text">
           <p class="page-hero__label reveal">{e(name)}</p>
           <h1 class="page-hero__title ttl-x reveal" data-delay="1">{"".join(f'<span class="ln"><span>{e(l)}</span></span>' for l in d["message"])}</h1>
           <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「{e(PERSONAS[key])}」</p>
           <div class="page-hero__actions reveal" data-delay="2">
-            <a href="#{key}-issues" class="btn btn--ghost btn--on-photo">お悩みと解決策を見る</a>
+            <a href="#{key}-issues" class="btn btn--ghost">お悩みと解決策を見る</a>
           </div>
         </div>
-        <div class="svc-hero__art reveal" data-delay="1">{hero_dots.art_svg(key)}</div>
       </div>
     </section>
 
@@ -2538,7 +2551,7 @@ def spec_md():
     w("* 記事ページ：パンくず（TOP ／ アキヤド ／ カテゴリ）、ガイドに含まれる記事は「この記事を含むガイド」と前後の記事、シェア（X ／ LINE ／ Facebook ／ リンクをコピー）を表示。")
     w("* 旧URL（media.html?cat=○○）はカテゴリ一覧へ移動する。")
     w("* サムネイルは記事ごとの写真（images/photos/w/ の WebP 軽量版。大きな表示では元の写真）。記事トップは原寸の写真を使い、OGP画像にも同じ写真を設定する。割り当ては build 内の ARTICLE_PHOTOS。")
-    w("* 写真の配置：TOPヒーロー（素材⑧・暗めのグラデーションを重ねて白文字）、相談CTA（全ページ共通）、代表者の顔写真。各サービスページTOPは、私たちについての日本地図と同じく、深い緑の面に白い点で事業を象徴する形を描き、朱の点を灯す（tools/hero_dots.py：空き家再生＝古民家と窓の灯り、開業・運営支援＝埋まった日が朱の予約カレンダー、不動産協業＝重なる3つの円、WEB集客＝広がる波紋、WEB採用＝並んだ人と出会えた人）。／ 添付ファイル*（職務経歴書・履歴書：点線枠のファイル選択×2。選択後はファイル名を表示）／ プライバシーポリシーへの同意*（追加）／ [送信する]")
+    w("* 写真の配置：TOPヒーロー（素材⑧・暗めのグラデーションを重ねて白文字）、相談CTA（全ページ共通）、代表者の顔写真。各サービスページTOPは、白地に緑の大きな見出しと、事業に合う写真3枚のコラージュ（SERVICE_COLLAGE。PCは右、スマホは見出しの上）。／ 添付ファイル*（職務経歴書・履歴書：点線枠のファイル選択×2。選択後はファイル名を表示）／ プライバシーポリシーへの同意*（追加）／ [送信する]")
     w("* 送信先: Google Apps Script（tools/forms/Code.gs。自動返信・添付ファイルのドライブ保存・スプレッドシート記録・社内通知）")
     w("")
     w("## 7. Contact（contact.html）")
