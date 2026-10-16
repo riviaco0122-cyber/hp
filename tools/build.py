@@ -1469,7 +1469,7 @@ def area_html(key):
 
 
 def quick_form(key, name):
-    """サービスページ冒頭の、かんたんな相談フォーム（名前とメールだけで送れる）"""
+    """かんたんな相談フォーム（名前とメールだけで送れる。アキヤドのサービス紹介ページで使う）"""
     return f"""        <form class="qform reveal" data-delay="2" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
           <p class="qform__title">{e(name)}の無料相談</p>
           <p class="qform__lead">まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。</p>
@@ -1569,17 +1569,6 @@ def service_page(key, name):
           <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「{e(PERSONAS[key])}」</p>
           {area_html(key)}
         </div>
-      </div>
-    </section>
-
-    <section class="qband">
-      <div class="container qband__inner">
-        <div class="qband__text reveal">
-          <span class="eyebrow">Free Consultation</span>
-          <h2 class="qband__title">まずは、無料で<br>ご相談ください。</h2>
-          <p class="qband__lead">お名前とメールアドレスだけで送れます。まだ検討中の段階でも大丈夫です。</p>
-        </div>
-{quick_form(key, name)}
       </div>
     </section>
 
