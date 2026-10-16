@@ -3890,9 +3890,6 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 }
 /* TOPのファーストビュー：相談ボタンは置かず、事業紹介への白いボタンと「私たちについて」の文字リンク */
 .hero__actions { align-items: center; }
-.hero__link { display: inline-flex; align-items: center; gap: 14px; padding: 8px 4px; color: #fff; font-size: 14px; letter-spacing: 0.12em; border-bottom: 1px solid rgba(255, 255, 255, 0.5); transition: border-color .3s, gap .4s var(--ease); }
-.hero__link:hover { border-color: var(--c-shu-light); gap: 20px; }
-@media (max-width: 899px) { .hero--x .hero__actions { flex-direction: row; flex-wrap: wrap; gap: 14px 22px; } .hero--x .hero__actions .btn { width: auto; } }
 
 /* 私たちについて：セクションの上下の余白を必ず取り、大きな英字と見出しを重ねない・行間を広く */
 .is-corp .about-sec, .is-corp .about-sec + .section { padding-top: var(--section-y) !important; }
@@ -3903,4 +3900,12 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .is-corp .about-sec { padding-bottom: 96px; }
   .is-corp .about-big { font-size: clamp(52px, 15vw, 72px); }
   .is-corp .about-copy { margin-top: 8px; font-size: clamp(24px, 6.6vw, 30px); line-height: 1.8; }
+}
+
+/* TOPのファーストビュー：2つのボタンを同じ大きさで横に並べる（スマホも） */
+.hero--x .hero__actions { display: grid; grid-template-columns: repeat(2, max-content); gap: 14px; }
+@media (max-width: 899px) {
+  .hero--x .hero__actions { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hero--x .hero__actions .btn { width: 100%; padding: 15px 8px; font-size: 13px; letter-spacing: 0.06em; gap: 8px; }
+  .hero--x .hero__actions .btn .arrow { width: 18px; }
 }

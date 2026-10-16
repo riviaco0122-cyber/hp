@@ -1707,7 +1707,7 @@ def index_page():
         <h1 class="hero__title hero__title--x reveal"><span class="ln"><span>地域に眠る</span></span><span class="ln"><span>価値を、</span></span><span class="ln"><span>日本の<em>活力</em>に。</span></span></h1>
         <div class="hero__actions reveal" data-delay="3">
           <a href="#service" class="btn">事業紹介を見る {ARROW}</a>
-          <a href="about.html" class="hero__link">私たちについて {ARROW}</a>
+          <a href="about.html" class="btn btn--ghost btn--on-photo">私たちについて</a>
         </div>
       </div>
       <a href="#statement" class="hero__badge" aria-label="次のセクションへ">
