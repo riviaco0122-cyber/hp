@@ -605,7 +605,8 @@ OPEN_MSG = "観光地でなくても、収益物件になり得ます。お気�
 def cta(category="", title="まずは、現状をお聞かせください。", text=""):
     q = f"?category={category}" if category else ""
     # 見出しは読点の後で改行（スマホ）。一言は文ごとに改行して、変な位置で折り返さないようにする
-    title_html = e(title).replace("、", '、<br class="sp-only">', 1)
+    head_, sep_, rest_ = e(title).partition("、")
+    title_html = f'{head_}{sep_}<br class="sp-only"><n-b>{rest_}</n-b>' if sep_ else e(title)
     sub = ("\n        " + f'<p class="cta__text">{"<br>".join(e(t) + "。" for t in text.split("。") if t)}</p>') if text else ""
     return f"""    <section class="section cta cta--photo">
       <img class="cta__bg" src="images/photos/garden-boat.jpg" alt="" width="1617" height="1079" loading="lazy" decoding="async">
@@ -2058,9 +2059,9 @@ def careers_page():
               <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択">クリックまたはドラッグ&amp;ドロップでファイルを選択</span>
             </label>"""
 
-    body = f"""    <section class="page-hero">
+    body = f"""    <section class="page-hero page-hero--contact">
       <div class="container">
-        <p class="page-hero__en reveal">Careers</p>
+        <p class="page-hero__en ttl-x reveal"><span class="ln"><span>Careers</span></span></p>
         <h1 class="page-hero__ja reveal" data-delay="1">採用情報</h1>
         <p class="page-hero__lead reveal" data-delay="2">一緒に働く仲間を募集しています。<br>年齢・経験は問いません。お気軽にご連絡ください。</p>
       </div>
@@ -2072,7 +2073,7 @@ def careers_page():
           <span class="eyebrow">Entry</span>
           <h2 class="section-title">エントリーフォーム</h2>
         </div>
-        <form class="form reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=careers">
+        <form class="form form--steps reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=careers">
           <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】採用エントリー">
           <div class="form__field">

@@ -3877,3 +3877,14 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .catpick__card--sub .catpick__intent { font-size: 15px; }
 .catpick__card--sub:has(input:checked) { border-style: solid; }
 @media (max-width: 899px) { .catpick__more { grid-template-columns: 1fr; gap: 10px; } }
+/* スマホの違和感の調整（2026-10-16） */
+@media (max-width: 899px) {
+  .is-corp .cta__title { font-size: clamp(22px, 6.4vw, 30px); }
+  .page-hero--photo:has(.svc-hero) { min-height: min(72svh, 620px); padding: 48px 0; }
+  .is-corp .about-sec { padding-top: 104px; }
+}
+.form--steps .form__field:not(.catpick) > label .req, .form--steps .form__legend .req { border: 0; }
+@media (max-width: 899px) {
+  .is-corp .page-hero--photo .page-hero__title { font-size: clamp(22px, 6.6vw, 32px); }
+  .is-corp .page-hero__target span { border-radius: 999px; }
+}
