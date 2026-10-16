@@ -3788,3 +3788,83 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 /* サービスページの写真の上の英字：画面幅に収まる大きさに、スマホでは出さない */
 .page-hero__mark { font-size: clamp(56px, 8.4vw, 150px); }
 @media (max-width: 899px) { .page-hero__mark { display: none; } }
+
+/* ==========================================================================
+   お問い合わせ：ご相談カテゴリをカードで選ぶ（個人／法人のタブ → 「〜したい」のカード）
+   ========================================================================== */
+.catpick { margin-bottom: 8px; }
+.catpick__tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; border-radius: 999px; background: var(--c-kinari); }
+.catpick__tab { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 10px; border-radius: 999px; font-size: 14px; letter-spacing: 0.06em; color: var(--c-sub); transition: background .4s var(--ease), color .4s, box-shadow .4s; }
+.catpick__tab-en { font-family: var(--font-en); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-shu); transition: color .4s; }
+.catpick__tab[aria-selected="true"] { background: var(--c-forest); color: #fff; box-shadow: 0 6px 16px rgba(15, 38, 24, 0.25); }
+.catpick__tab[aria-selected="true"] .catpick__tab-en { color: var(--c-shu-light); }
+.catpick__panel { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.js .catpick__panel:not([hidden]) { animation: catpick-in .5s var(--ease); }
+@keyframes catpick-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.form__field .catpick__card, .catpick__card { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 24px; align-items: center; gap: 14px; margin: 0; padding: 18px 18px; border: 1.5px solid var(--c-line-strong); border-radius: 14px; background: #fff; cursor: pointer; letter-spacing: 0.04em; transition: border-color .3s, background .3s, box-shadow .3s, translate .3s var(--ease); }
+.catpick__card input, .catpick__chip input { position: absolute; opacity: 0; pointer-events: none; }
+.catpick__body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.catpick__intent { font-family: var(--font-serif); font-size: 16px; line-height: 1.5; color: var(--c-text); }
+.catpick__svc { font-size: 12px; color: var(--c-muted); }
+.catpick__check { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--c-line-strong); position: relative; transition: background .3s, border-color .3s, transform .3s var(--ease); }
+.catpick__check::after { content: ""; position: absolute; left: 7px; top: 3px; width: 6px; height: 11px; border-right: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(45deg) scale(0); transition: transform .3s var(--ease); }
+@media (hover: hover) { .catpick__card:hover { border-color: var(--c-forest); translate: 0 -2px; box-shadow: var(--shadow-sm); } }
+.catpick__card:has(input:checked) { border-color: var(--c-forest); background: #f3f7f2; box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.12); }
+.catpick__card:has(input:checked) .catpick__check { background: var(--c-shu); border-color: var(--c-shu); transform: scale(1.1); }
+.catpick__card:has(input:checked) .catpick__check::after { transform: rotate(45deg) scale(1); }
+.catpick__card:has(input:focus-visible), .catpick__chip:has(input:focus-visible) span { outline: 2px solid var(--c-shu); outline-offset: 2px; }
+.catpick__more { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.form__field .catpick__chip, .catpick__chip { position: relative; margin: 0; display: inline-flex; cursor: pointer; }
+.catpick__chip span { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 1.5px dashed var(--c-line-strong); border-radius: 999px; font-size: 13px; color: var(--c-sub); background: #fff; transition: border-color .3s, background .3s, color .3s; }
+@media (hover: hover) { .catpick__chip:hover span { border-color: var(--c-forest); color: var(--c-forest); } }
+.catpick__chip:has(input:checked) span { border-style: solid; border-color: var(--c-shu); background: var(--c-shu); color: #fff; }
+@media (max-width: 899px) {
+  .catpick__panel { grid-template-columns: 1fr; gap: 10px; }
+  .catpick__tab { font-size: 13px; padding: 10px 6px; }
+  .form__field .catpick__card, .catpick__card { gap: 12px; padding: 16px 18px; }
+  .catpick__intent { font-size: 15px; }
+}
+
+/* ---------- お問い合わせ：フォーム全体 ---------- */
+.page-hero--contact { position: relative; overflow: hidden; isolation: isolate; color: #fff; border-bottom: 0;
+  background: radial-gradient(110% 120% at 85% 10%, #1f5a35 0%, var(--c-forest-deep) 60%); }
+.page-hero--contact::after { content: ""; position: absolute; right: -120px; top: -120px; width: 420px; height: 420px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 0 0 60px rgba(255, 255, 255, 0.03), 0 0 0 140px rgba(255, 255, 255, 0.02); z-index: -1; }
+.page-hero--contact .page-hero__en { color: #fff; }
+.page-hero--contact .page-hero__ja { color: rgba(255, 255, 255, 0.8); letter-spacing: 0.3em; }
+.page-hero--contact .page-hero__lead { color: rgba(255, 255, 255, 0.9); font-family: var(--font-serif); font-size: clamp(16px, 1.6vw, 20px); }
+.page-hero--contact .page-hero__area span { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.page-hero--contact .page-hero__area { color: rgba(255, 255, 255, 0.85); }
+.page-hero--contact .assure li { border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 999px; background: rgba(255, 255, 255, 0.06); color: #fff; }
+.page-hero--contact .assure li::before { border-color: var(--c-shu-light); }
+.page-hero--contact + .section { background: var(--c-kinari); padding-top: 72px; }
+
+.form--steps { gap: 28px; padding: 56px; border-radius: 24px; background: #fff; box-shadow: 0 30px 60px rgba(15, 38, 24, 0.08), 0 2px 6px rgba(15, 38, 24, 0.04); }
+.form__step { display: grid; gap: 22px; padding-bottom: 32px; border-bottom: 1px solid var(--c-line); }
+.form__step-head { display: flex; align-items: center; gap: 14px; font-family: var(--font-serif); font-size: 20px; letter-spacing: 0.08em; }
+.form__step-head span { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--c-forest); color: #fff; font-family: var(--font-en); font-size: 17px; letter-spacing: 0.04em; }
+.form__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 20px; }
+.form--steps .form__field label, .form--steps .form__legend { font-size: 13px; color: var(--c-sub); margin-bottom: 8px; }
+.form--steps .req, .form--steps .opt { border-radius: 999px; padding: 1px 9px; font-size: 10.5px; }
+.form--steps .req { background: var(--c-shu); border-color: var(--c-shu); color: #fff; }
+.form--steps input[type="text"], .form--steps input[type="email"], .form--steps input[type="tel"], .form--steps textarea {
+  border: 1.5px solid transparent; border-radius: 12px; background: #f6f4ee; padding: 16px 18px; transition: border-color .3s, background .3s, box-shadow .3s; }
+.form--steps input:hover, .form--steps textarea:hover { background: #f1eee5; }
+.form--steps input:focus, .form--steps textarea:focus { background: #fff; border-color: var(--c-forest); box-shadow: 0 0 0 4px rgba(26, 71, 42, 0.1); }
+.form--steps input:user-invalid, .form--steps textarea:user-invalid { border-color: var(--c-shu); }
+.form--steps .file { border-radius: 14px; border: 1.5px dashed var(--c-line-strong); background: #fbfaf6; }
+.form--steps .file:hover, .form--steps .file:focus-within { border-color: var(--c-forest); background: #f3f7f2; }
+.form--steps .file svg { stroke: var(--c-forest); }
+.form--steps .form__consent { padding: 8px 0 0; }
+.form--steps .check input { accent-color: var(--c-forest); }
+.form--steps .form__submit .btn { min-width: 360px; padding: 22px 48px; font-size: 16px; background: var(--c-shu); border-color: var(--c-shu); box-shadow: 0 14px 30px rgba(217, 80, 43, 0.3); }
+.form--steps .form__submit .btn::before { background: var(--c-forest); }
+.form--steps .form__submit .btn:hover { border-color: var(--c-forest); }
+@media (max-width: 899px) {
+  .page-hero--contact + .section { padding-top: 32px; }
+  .form--steps { padding: 28px 18px; border-radius: 18px; margin: 0 -6px; gap: 22px; }
+  .form__grid { grid-template-columns: 1fr; gap: 18px; }
+  .form__step { gap: 18px; padding-bottom: 24px; }
+  .form__step-head { font-size: 17px; }
+  .form__step-head span { width: 36px; height: 36px; font-size: 15px; }
+  .form--steps .form__submit .btn { min-width: 0; width: 100%; }
+}
