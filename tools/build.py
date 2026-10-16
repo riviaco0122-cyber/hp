@@ -2107,15 +2107,35 @@ def contact_page():
     # 「サービス資料の請求」の値は tools/forms/Code.gs の DOC_REQUEST_VALUES（資料の自動添付の判定）と一致させる
     short = {"operation": "空き家再生", "management": "開業・運営支援", "partnership": "不動産協業",
              "marketing": "WEB集客", "recruit": "WEB採用"}
-    ohtml = "\n".join(
-        f'                <optgroup label="{e(g["name"])}">\n'
-        + "\n".join(f'                  <option value="{short[k]}" data-key="{k}">{short[k]}</option>' for k in g["services"])
-        + "\n                </optgroup>"
-        for g in GROUPS
-    ) + '\n                <option value="サービス資料の請求" data-key="document">サービス資料の請求</option>' + '\n                <option value="その他" data-key="other">その他</option>'
-    body = f"""    <section class="page-hero">
+    # ご相談カテゴリ：まずお客様の立場（個人／法人）を選び、その立場の「〜したい」から選ぶ（ナビと同じ NAV_INTENTS）
+    names = dict(SERVICES)
+    who_keys = ["personal", "corporate"]
+    tabs = "".join(
+        f'<button type="button" class="catpick__tab" role="tab" data-who="{who_keys[i]}" aria-selected="{"true" if i == 0 else "false"}">'
+        f'<span class="catpick__tab-en">{"Personal" if i == 0 else "Business"}</span>{e(aud)}</button>'
+        for i, (aud, _its) in enumerate(NAV_INTENTS))
+    panels = "\n".join(
+        f'            <div class="catpick__panel" role="tabpanel" data-who="{who_keys[i]}" aria-label="{e(aud)}">'
+        + "".join(
+            f'<label class="catpick__card"><input type="radio" name="category" value="{short[k]}" data-key="{k}">'
+            f'<span class="catpick__body"><span class="catpick__intent">{e(t)}</span><span class="catpick__svc">{e(names[k])}</span></span>'
+            f'<span class="catpick__check" aria-hidden="true"></span></label>'
+            for k, t in its)
+        + "</div>"
+        for i, (aud, its) in enumerate(NAV_INTENTS))
+    more = "".join(
+        f'<label class="catpick__chip"><input type="radio" name="category" value="{v}" data-key="{k}"><span>{e(t)}</span></label>'
+        for k, v, t in [("document", "サービス資料の請求", "サービス資料がほしい"), ("other", "その他", "その他・まだ決まっていない")])
+    catpick = f"""          <fieldset class="form__field form__fieldset catpick">
+            <legend class="form__legend">ご相談カテゴリ <span class="opt">任意</span></legend>
+            <p class="form__notes form__notes--above">あてはまるものを選ぶと、お問い合わせ内容に書き出しが入ります。</p>
+            <div class="catpick__tabs" role="tablist" aria-label="お客様の立場">{tabs}</div>
+{panels}
+            <div class="catpick__more">{more}</div>
+          </fieldset>"""
+    body = f"""    <section class="page-hero page-hero--contact">
       <div class="container">
-        <p class="page-hero__en reveal">Contact</p>
+        <p class="page-hero__en ttl-x reveal"><span class="ln"><span>Contact</span></span></p>
         <h1 class="page-hero__ja reveal" data-delay="1">お問い合わせ</h1>
         <p class="page-hero__lead reveal" data-delay="2">観光地でなくても、収益物件になり得ます。<br>お気軽にお問い合わせください。</p>
         <p class="page-hero__area reveal" data-delay="2"><span>対応エリア</span>全国可</p>
@@ -2129,10 +2149,17 @@ def contact_page():
 
     <section class="section">
       <div class="container container--narrow">
-        <form class="form reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
+        <form class="form form--steps reveal" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html?form=contact">
           <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
           <input type="hidden" name="_subject" value="【RIVIA&amp;CO.】Webサイトからのお問い合わせ">
           <input type="hidden" name="流入元" id="from-field" value="">
+          <div class="form__step">
+            <p class="form__step-head"><span>01</span>ご相談の内容</p>
+{catpick}
+          </div>
+          <div class="form__step">
+            <p class="form__step-head"><span>02</span>ご連絡先</p>
+            <div class="form__grid">
           <div class="form__field">
             <label for="name">お名前 <span class="req">必須</span></label>
             <input type="text" id="name" name="name" placeholder="山田 太郎" autocomplete="name" required>
@@ -2149,15 +2176,10 @@ def contact_page():
             <label for="email">メールアドレス <span class="req">必須</span></label>
             <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
           </div>
-          <div class="form__field">
-            <label for="category">ご相談カテゴリ <span class="opt">任意</span></label>
-            <div class="select">
-              <select id="category" name="category">
-                <option value="" selected>選択してください</option>
-{ohtml}
-              </select>
             </div>
           </div>
+          <div class="form__step">
+            <p class="form__step-head"><span>03</span>くわしく教えてください</p>
           <div class="form__field">
             <label for="message">お問い合わせ内容 <span class="req">必須</span></label>
             <textarea id="message" name="message" placeholder="ご相談内容をご記入ください。まだ考えがまとまっていない段階でも構いません。" required></textarea>
@@ -2172,6 +2194,7 @@ def contact_page():
               <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）">クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）</span>
             </label>
           </fieldset>
+          </div>
 {consent("agree", newsletter=True)}
           <div class="form__notes">
             <p>※無理な営業や電話勧誘は一切いたしません。</p>
@@ -2549,7 +2572,7 @@ def spec_md():
     w("* **見出し:** Contact ／ お問い合わせ")
     w("* **リード文:** まずは気軽にご相談ください。無料でご相談をお受けしています。2営業日以内に担当者よりご連絡いたします。")
     w("* **安心材料（追加）:** ご相談・お見積りは無料 ／ 無理な営業は一切なし ／ 2営業日以内にご連絡")
-    w("* **フォーム:** お名前* ／ 会社名・施設名（任意。個人の不動産投資家など一般の方からの相談も想定）／ 電話番号* ／ メールアドレス* ／ ご相談カテゴリ（【宿泊施設の運営・開業】宿泊施設運営 / 運営委託 / 開業・運営コンサル 【WEBマーケティング支援】WEB集客 / WEB採用 ／ その他）／ お問い合わせ内容* ／ プライバシーポリシーへの同意*（追加）／ メールマガジンの受け取り（任意。初期状態はチェックなし＝オプトイン。「いつでも配信停止できます」の注記。アキヤドのお問い合わせ media/contact.html も同じ）")
+    w("* **フォーム:** いちばん上に「ご相談カテゴリ」（任意）。個人のお客様／法人のお客様のタブを選び、その立場の「〜したい」（ナビと同じ NAV_INTENTS）をアイコンつきのカードで選ぶ。下に「サービス資料がほしい」「その他・まだ決まっていない」のチップ。選ぶとお問い合わせ内容に書き出しが入る。送る値は従来どおり（空き家再生／開業・運営支援／不動産協業／WEB集客／WEB採用／サービス資料の請求／その他）。続けて お名前* ／ 会社名・施設名（任意。個人の不動産投資家など一般の方からの相談も想定）／ 電話番号* ／ メールアドレス* ／ お問い合わせ内容* ／ プライバシーポリシーへの同意*（追加）／ メールマガジンの受け取り（任意。初期状態はチェックなし＝オプトイン。「いつでも配信停止できます」の注記。アキヤドのお問い合わせ media/contact.html も同じ）")
     w("* **マイクロコピー:** ※無理な営業や電話勧誘は一切いたしません。／※ご入力いただいた情報は厳重に管理し、お問い合わせ対応以外には使用いたしません。")
     w("* **フォーム下（追加）:** ご相談の流れ（4ステップ）")
     w("* 送信先: Google Apps Script（tools/forms/Code.gs。通知先 rivia.co0122@gmail.com、お客様へ自動返信）")
