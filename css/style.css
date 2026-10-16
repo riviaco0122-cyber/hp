@@ -3910,32 +3910,26 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .hero--x .hero__actions .btn .arrow { width: 18px; }
 }
 
-/* サービスページの見出し：写真をやめ、深い緑の面に事業ごとの線画（tools/hero_art.py）。文字の読みやすさを優先して線は控えめに */
-.page-hero--art { background: radial-gradient(120% 100% at 80% 30%, #1f5a35 0%, var(--c-forest-deep) 62%); }
-.page-hero--art::before { background: linear-gradient(90deg, rgba(15, 38, 24, 0.85) 0%, rgba(15, 38, 24, 0.35) 55%, rgba(15, 38, 24, 0) 100%); }
-.hart { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; }
-.hart__line { fill: none; stroke: rgba(255, 255, 255, 0.16); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
-.hart__grid { fill: none; stroke: rgba(255, 255, 255, 0.07); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.hart__win { fill: rgba(255, 255, 255, 0.06); }
-.hart__win.is-lit { fill: var(--c-shu-light); animation: hart-blink 7s ease-in-out infinite; animation-delay: calc(var(--i) * -0.6s); }
-.hart__cell { fill: none; stroke: rgba(255, 255, 255, 0.08); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.hart__cell.is-booked { fill: rgba(255, 138, 92, 0.38); stroke: none; animation: hart-blink 9s ease-in-out infinite; animation-delay: calc(var(--i) * -0.4s); }
-.hart__ring { fill: none; stroke: rgba(255, 255, 255, 0.22); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
-.hart__ring.is-main { stroke: var(--c-shu-light); stroke-dasharray: 4 6; }
-.hart__node { fill: rgba(255, 255, 255, 0.7); }
-.hart__node.is-main { fill: var(--c-shu); }
-.hart__spark { fill: var(--c-shu-light); }
-.hart__label { font-family: var(--font-en); font-size: 20px; letter-spacing: 0.24em; fill: rgba(255, 255, 255, 0.3); }
-.hart__chart { fill: none; stroke: var(--c-shu-light); stroke-width: 2.2; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; animation: arc-draw 3.2s var(--ease) .4s forwards; }
-.hart__person { fill: rgba(255, 255, 255, 0.4); }
-.hart__person.is-lit, .hart--marketing .hart__person { animation: hart-blink 6s ease-in-out infinite; animation-delay: calc(var(--i) * -0.45s); }
-.hart__person.is-lit { fill: var(--c-shu-light); }
-@keyframes hart-blink { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
-@media (max-width: 899px) {
-  .page-hero--art::before { background: linear-gradient(180deg, rgba(15, 38, 24, 0.55) 0%, rgba(15, 38, 24, 0.8) 100%); }
+
+/* サービスページの見出し：写真をブランドの深い緑に寄せて落ち着かせ、左を暗くして文字を読みやすく。細かな粒子で質感を出す */
+.page-hero--tone { background: var(--c-forest-deep); }
+.page-hero--tone .page-hero__bg { filter: grayscale(1) contrast(1.12) brightness(.82); }
+.page-hero--tone::before {
+  background:
+    linear-gradient(90deg, rgba(10, 26, 16, 0.92) 0%, rgba(10, 26, 16, 0.72) 42%, rgba(10, 26, 16, 0.25) 100%),
+    linear-gradient(0deg, rgba(10, 26, 16, 0.6) 0%, rgba(10, 26, 16, 0) 45%),
+    linear-gradient(rgba(26, 71, 42, 0.55), rgba(26, 71, 42, 0.55));
 }
-@media (prefers-reduced-motion: reduce) {
-  .hart * { animation: none !important; }
-  .hart__chart { stroke-dashoffset: 0; }
-  .hart animateMotion { display: none; }
+.page-hero--tone::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .18; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.page-hero--tone .page-hero__label { color: var(--c-shu-light); }
+.page-hero--tone .page-hero__title { text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35); }
+@media (max-width: 899px) {
+  .page-hero--tone::before {
+    background:
+      linear-gradient(180deg, rgba(10, 26, 16, 0.55) 0%, rgba(10, 26, 16, 0.85) 100%),
+      linear-gradient(rgba(26, 71, 42, 0.5), rgba(26, 71, 42, 0.5));
+  }
 }
