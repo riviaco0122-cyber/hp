@@ -3708,7 +3708,12 @@ def card_tags(a):
 
 def list_name(a):
     """一覧カードの表示名（短い。1〜2行）。元の title は変えない"""
-    return a["short"].replace("\n", "")
+    # 2行に分けた短い名前は、1行目が句読点で終わっていなければ「｜」でつなぐ（「〜の取り方広さ…」のように続けて読めてしまうため）
+    lines = [l.strip() for l in a["short"].split("\n") if l.strip()]
+    out = lines[0] if lines else ""
+    for l in lines[1:]:
+        out += l if out[-1:] in "。、！？」』）" else "｜" + l
+    return out
 
 
 def article_card(a, extra_class=""):
@@ -3716,8 +3721,7 @@ def article_card(a, extra_class=""):
             {thumb(a)}
             <div class="media-card__body">
               {card_tags(a)}
-              <h3 class="media-card__title">{e(list_name(a))}</h3>
-              <p class="media-card__blurb">{e(a["blurb"])}</p>
+              <h3 class="media-card__title">{"<br>".join(e(l) for l in a["short"].split(chr(10)) if l.strip())}</h3>
               <time class="media-card__date" datetime="{a["date"]}">{fmt_date(a["date"])}</time>
             </div>
           </a>"""
