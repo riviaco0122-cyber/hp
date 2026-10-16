@@ -66,7 +66,7 @@
 | **暮らす旅の手帖編集部** | 記事の執筆者名 | 各記事の著者欄 |
 | **NODE Shimoda** | 「NODE」と「Shimoda」の間は半角スペース。所在地は「静岡県下田市」 | `index.html` 運営実績 |
 | **空き家再生事業** | サービス名 | `service-operation.html` |
-| **宿泊施設 開業・運営支援事業** | 「宿泊施設」と「開業」の間は半角スペース | `service-management.html` |
+| **開業・運営支援事業** | 「宿泊施設」は付けない（2026-10-17 改称）。中黒は全角 | `service-management.html` |
 | **不動産事業者様との協業** | 「様」まで含めてサービス名 | `service-partnership.html` |
 | **WEB集客支援事業**／**WEB採用支援事業** | WEB は大文字 | `service-marketing.html`、`service-recruit.html` |
 | **宿泊施設の運営・開業（Hospitality）**／**WEBマーケティング支援（Web Marketing）** | 事業の2つの軸 | site-spec 2章 |
