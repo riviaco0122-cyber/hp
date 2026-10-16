@@ -700,7 +700,7 @@ def project_card(compact=False):
 
 SERVICE_DATA = {
     "operation": dict(
-        message=["眠る空き家に、", "もう一度、灯りを。"],
+        message=["空き家は、", "まだ終わっていない。"],
         description="地方に眠る空き家や遊休不動産を、自社で企画・リノベーションし、宿泊施設として運営する事業です。買取・借り上げから改修、運営までを担います。",
         overview="地方の空き家を自社で改修し、「暮らすように旅する」宿として再生・運営する事業です。",
         issues_lead="空き家は、放置するほど費用と建物の傷みが増えていきます。",
@@ -736,7 +736,7 @@ SERVICE_DATA = {
         ],
     ),
     "marketing": dict(
-        message=["いいものを、", "見つかるものに。"],
+        message=["知られていないは、", "ないのと同じ。"],
         description="業種を問わず、地方の事業者様の集客をWEBマーケティングで支援する事業です。自社サイト、SEO、Googleマップ、WEB広告、SNS、予約・ECサイトなど手段を限定せず、問い合わせと売上が伸びる集客の仕組みをつくります。",
         overview="業種を問わず、自社サイトから広告・SNSまで、問い合わせと売上が伸びる集客を設計します。",
         issues_lead="集客の悩みは手段ではなく、自社で集客をコントロールできていない経営構造の問題です。",
@@ -773,7 +773,7 @@ SERVICE_DATA = {
         ],
     ),
     "recruit": dict(
-        message=["「地方は採れない」を、", "終わらせる。"],
+        message=["求人票だけでは、", "人は来ない。"],
         description="地方企業の「人材不足」という経営課題を、WEBマーケティングの手法で解決する採用支援事業です。業種を問わず、採用計画から採用ブランディング、母集団形成、定着までを一貫して支援します。",
         overview="業種を問わず、地方企業の人材不足を、採用計画から発信・定着まで一貫して解決します。",
         issues_lead="「応募が来ない」「すぐ辞める」は、事業計画・組織・発信の問題。採用を経営から設計し直します。",
@@ -810,7 +810,7 @@ SERVICE_DATA = {
         ],
     ),
     "management": dict(
-        message=["泊まりたくなる宿は、", "つくれる。"],
+        message=["宿は、", "開けてからが本番。"],
         description="個人・法人を問わず、宿泊施設の開業から運営代行までを支援する事業です。立地選定・許認可・開業準備から、日々の運営・収益管理まで、必要な範囲でRIVIAが担います。",
         overview="民泊・小規模宿の開業から運営まで、オーナー様と共同で取り組み、事業を一緒に育てます。",
         issues_lead="開業前の不安から、開業後の運営の負担まで。一つの窓口で解決します。",
@@ -848,7 +848,7 @@ SERVICE_DATA = {
         ],
     ),
     "partnership": dict(
-        message=["仲介で終わらせない、", "不動産の売り方を。"],
+        message=["売れない物件に、", "泊まる理由を。"],
         description="不動産会社様との協業事業です。保有物件の中から民泊に適した物件をRIVIAが選定・利回りを算出し、不動産会社様が投資家様へ販売。購入後はRIVIAが開業・運営を担い、家賃や収益を投資家様へお返しします。",
         overview="不動産会社様の保有物件を民泊の投資物件として販売できるよう、選定から購入後の運営まで担います。",
         issues_lead="売れない理由は価格だけではありません。投資商品としての魅力を一緒につくります。",
@@ -1532,7 +1532,7 @@ def service_page(key, name):
       <div class="container svc-hero">
         <div class="collage reveal" aria-hidden="true">{collage}<p class="collage__v">{e(SERVICE_VERTICAL[key])}</p></div>
         <div class="svc-hero__text">
-          <p class="page-hero__label reveal">{e(name)}</p>
+          <p class="svc-name reveal"><span class="svc-name__no">Service {[k for k, _ in SERVICES].index(key) + 1:02d}</span><span class="svc-name__ja">{e(name)}</span></p>
           <h1 class="page-hero__title ttl-x reveal" data-delay="1">{"".join(f'<span class="ln"><span>{e(l)}</span></span>' for l in d["message"])}</h1>
           <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「{e(PERSONAS[key])}」</p>
           <div class="page-hero__actions reveal" data-delay="2">
