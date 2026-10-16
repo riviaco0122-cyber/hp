@@ -86,7 +86,7 @@ def phrase_breaks(html):
     lead = False  # 一文のリード（サービス概要など）も見出しと同じく文節で改行する
     for i, p in enumerate(parts):
         if p.startswith("<"):
-            m_lead = re.match(r'<(p|span) class="(overview__text|hero__sub|cta__text|page-hero__lead|page-hero__target|about-line|mq__q|guide-step__title|mhero__lead|pd__desc|scheme__summary|related__worry|timeline__desc|flow__desc|vsvc__text)\b', p)
+            m_lead = re.match(r'<(p|span) class="(overview__text|hero__sub|cta__text|page-hero__lead|page-hero__target|about-line|mq__q|guide-step__title|mhero__lead|pd__desc|scheme__summary|related__worry|timeline__desc|flow__desc|vsvc__text|statement__text)\b', p)
             if m_lead:
                 lead = m_lead.group(1)
             elif lead and p == f"</{lead}>":
