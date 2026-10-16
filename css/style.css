@@ -4071,3 +4071,12 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .page-hero--collage .collage { width: 84%; }
   .page-hero--collage .svc-hero__lead { line-height: 1.9; text-wrap: balance; }
 }
+/* サービスページ冒頭：番号とサービス名を1行に（サービス名を見出しに）。説明文との大きさの差を控えめにして、まとまりよく */
+.page-hero--collage .svc-name { margin-bottom: 0; gap: 10px 16px; }
+.page-hero--collage .svc-name__ja { margin: 0; font-family: var(--font-serif); font-weight: 500; font-size: clamp(20px, 1.8vw, 26px); line-height: 1.5; letter-spacing: 0.08em; color: var(--c-forest); }
+.page-hero--collage .svc-hero__lead { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--c-line); }
+@media (max-width: 899px) {
+  .page-hero--collage .svc-name { gap: 8px 12px; }
+  .page-hero--collage .svc-name__ja { font-size: 18px; letter-spacing: 0.05em; }
+  .page-hero--collage .svc-hero__lead { margin-top: 16px; padding-top: 16px; }
+}

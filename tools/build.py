@@ -1564,8 +1564,7 @@ def service_page(key, name):
       <div class="container svc-hero">
         <div class="collage reveal" aria-hidden="true">{collage}<p class="collage__v">{e(SERVICE_VERTICAL[key])}</p></div>
         <div class="svc-hero__text">
-          <p class="svc-name reveal"><span class="svc-name__no">Service {[k for k, _ in SERVICES].index(key) + 1:02d}</span></p>
-          <h1 class="svc-hero__title reveal" data-delay="1">{e(name)}</h1>
+          <div class="svc-name reveal"><span class="svc-name__no">Service {[k for k, _ in SERVICES].index(key) + 1:02d}</span><h1 class="svc-name__ja">{e(name)}</h1></div>
           <p class="page-hero__lead svc-hero__lead reveal" data-delay="1">{e(d["overview"])}</p>
           <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「{e(PERSONAS[key])}」</p>
           {area_html(key)}
