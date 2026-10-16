@@ -1567,9 +1567,6 @@ def service_page(key, name):
           <p class="svc-name reveal"><span class="svc-name__no">Service {[k for k, _ in SERVICES].index(key) + 1:02d}</span><span class="svc-name__ja">{e(name)}</span></p>
           <h1 class="page-hero__title ttl-x reveal" data-delay="1">{"".join(f'<span class="ln"><span>{e(l)}</span></span>' for l in d["message"])}</h1>
           <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「{e(PERSONAS[key])}」</p>
-          <div class="page-hero__actions reveal" data-delay="2">
-            <a href="#{key}-issues" class="btn btn--ghost">お悩みと解決策を見る</a>
-          </div>
         </div>
       </div>
     </section>
