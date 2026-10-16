@@ -1564,9 +1564,11 @@ def service_page(key, name):
       <div class="container svc-hero">
         <div class="collage reveal" aria-hidden="true">{collage}<p class="collage__v">{e(SERVICE_VERTICAL[key])}</p></div>
         <div class="svc-hero__text">
-          <p class="svc-name reveal"><span class="svc-name__no">Service {[k for k, _ in SERVICES].index(key) + 1:02d}</span><span class="svc-name__ja">{e(name)}</span></p>
-          <h1 class="page-hero__title ttl-x reveal" data-delay="1">{"".join(f'<span class="ln"><span>{e(l)}</span></span>' for l in d["message"])}</h1>
+          <p class="svc-name reveal"><span class="svc-name__no">Service {[k for k, _ in SERVICES].index(key) + 1:02d}</span></p>
+          <h1 class="svc-hero__title reveal" data-delay="1">{e(name)}</h1>
+          <p class="page-hero__lead svc-hero__lead reveal" data-delay="1">{e(d["overview"])}</p>
           <p class="page-hero__target reveal" data-delay="2"><span>こんな方へ</span>「{e(PERSONAS[key])}」</p>
+          {area_html(key)}
         </div>
       </div>
     </section>
@@ -1579,19 +1581,6 @@ def service_page(key, name):
           <p class="qband__lead">お名前とメールアドレスだけで送れます。まだ検討中の段階でも大丈夫です。</p>
         </div>
 {quick_form(key, name)}
-      </div>
-    </section>
-
-    <section class="section section--overview">
-      <div class="container overview">
-        <div class="reveal">
-          <span class="eyebrow">Overview</span>
-          <h2 class="section-title">サービス概要</h2>
-        </div>
-        <div>
-          <p class="overview__text reveal" data-delay="1">{e(d["overview"])}</p>
-          {area_html(key)}
-        </div>
       </div>
     </section>
 
