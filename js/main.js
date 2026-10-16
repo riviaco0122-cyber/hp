@@ -767,14 +767,10 @@
   });
 })();
 
-// コーポレート：見出しの英字を大きな透かし文字に（装飾のみ）、図やカードが画面に入ったら .is-in を付けて動かす
+// コーポレート：図やカードが画面に入ったら .is-in を付けて動かす
 (function () {
   'use strict';
   if (!document.body.classList.contains('is-corp')) return;
-  document.querySelectorAll('.section-head .eyebrow, .news .eyebrow').forEach(function (eb) {
-    var head = eb.closest('.section-head') || eb.parentElement;
-    if (head && !head.hasAttribute('data-en')) head.setAttribute('data-en', eb.textContent.trim());
-  });
   var targets = document.querySelectorAll('.timeline, .issue, .flow, .sflow, .faq__list, .overview');
   if (!('IntersectionObserver' in window)) { targets.forEach(function (t) { t.classList.add('is-in'); }); return; }
   var io = new IntersectionObserver(function (entries) {
