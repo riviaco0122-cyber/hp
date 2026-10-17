@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""アキヤド劇場 第1話のサムネイル（1280×720 PNG）を作る。型は docs/youtube/manual.md 5章。
+"""アキヤド劇場 第1話「民泊副業詐欺の仕組み」のサムネイル（解説と同じシリーズの型）（1280×720 PNG）を作る。型は docs/youtube/manual.md 5章。
 使い方: python3 tools/video/thumb_theater_ep1.py 出力.png（要 Playwright。NODE_PATH は Playwright のある場所）
 """
 import json, os, subprocess, sys, tempfile
@@ -8,16 +8,23 @@ import make_explainer as m
 OUT = sys.argv[1]
 html = m.HTML.replace("__SC__", "[[0,1]]").replace("__SUBS__", "[]")
 CODE = r"""(()=>{
-const big=(x,y,s,fs,c,a='start')=>`<text x="${x}" y="${y}" text-anchor="${a}" font-size="${fs}" font-weight="900" fill="${c}" stroke="#fff" stroke-width="${fs*.17}" stroke-linejoin="round" paint-order="stroke">${s}</text>`;
-let s=`<rect width="1920" height="1080" fill="#3a2a4f"/><path d="M760 0 L460 1080 L1760 1080 L1460 0Z" fill="#fff6c9" opacity=".14"/>`;
-for(let k=0;k<10;k++){s+=sparkle(200+rnd(k)*1600,80+rnd(k+20)*900,1.1,k,k)}
-s+=`<g transform="translate(60,50)"><rect width="430" height="80" rx="40" fill="${G}"/>${MARK(46,40,.9)}<text x="96" y="56" font-size="40" font-weight="900" fill="#fff">アキヤド劇場</text></g>`;
-s+=`<g transform="rotate(-3 300 215)"><rect x="60" y="175" width="480" height="84" rx="16" fill="${Y}"/><text x="300" y="235" text-anchor="middle" font-size="54" font-weight="900" fill="#3a2a4f">アニメでわかる</text></g>`;
-s+=big(60,440,'民泊副業',145,DG);
-s+=big(60,680,'詐欺',200,'#e53935');
-s+=big(480,680,'の',110,DG);
-s+=big(60,900,'仕組み',145,DG);
-[['umaiA',1170,290],['umaiB',1650,450],['umaiC',1230,770]].forEach(([c,x,y],k)=>{s+=face('f'+k,x,y,195,c,'#e8b950','happy',.3);s+=`<g transform="rotate(${[-6,5,-4][k]} ${x} ${y+230})"><rect x="${x-170}" y="${y+190}" width="340" height="86" rx="43" fill="#fff"/><text x="${x}" y="${y+250}" text-anchor="middle" font-size="50" font-weight="900" fill="#e53935">月100万円！</text></g>`});
+// 劇場の舞台（夜のセミナー会場）
+let s=`<rect width="1920" height="1080" fill="#2c2140"/><rect y="960" width="1920" height="120" fill="#221a33"/>`;
+s+=`<path d="M560 0 L260 960 L1660 960 L1360 0Z" fill="#fff6c9" opacity=".16"/>`;
+s+=`<path d="M0 0 H280 Q240 460 280 960 H0Z" fill="#a23b3b"/><path d="M1920 0 H1640 Q1680 460 1640 960 H1920Z" fill="#a23b3b"/><path d="M60 0 v960 M140 0 v960 M210 0 v960 M1710 0 v960 M1780 0 v960 M1860 0 v960" stroke="#8a2f2f" stroke-width="12"/>`;
+s+=`<rect x="280" y="900" width="1360" height="64" rx="10" fill="#6b4a8a"/><rect x="280" y="892" width="1360" height="18" rx="8" fill="#8a66ad"/>`;
+for(let k=0;k<9;k++)s+=`<circle cx="${420+k*135}" cy="${380+(k%2)*14}" r="9" fill="#fff6c9" opacity="${.5+.4*(k%3)/2}"/>`;
+// 生徒さん3人（月100万円！）。正体は伏せる
+[['umaiA',590,610],['umaiB',960,590],['umaiC',1330,610]].forEach(([c,x,y],k)=>{
+  s+=face('f'+k,x,y,170,c,'#e8b950','happy',.3);
+  s+=`<g transform="rotate(${[-5,4,-3][k]} ${x} ${y+190})"><rect x="${x-140}" y="${y+168}" width="280" height="76" rx="38" fill="#fff"/><text x="${x}" y="${y+220}" text-anchor="middle" font-size="40" font-weight="900" fill="#e53935">月100万円！</text></g>`;
+  s+=`<text x="${x+130}" y="${y-126}" font-size="86" font-weight="900" fill="${Y}" stroke="#2c2140" stroke-width="8" paint-order="stroke">?</text>`;
+});
+for(let k=0;k<6;k++)s+=sparkle([380,1540,400,1520,720,1210][k],[360,380,820,810,370,360][k],1,k,k);
+// シリーズの枠：アキヤド劇場 第1話＋問いのカード（中央）
+s+=`<rect x="40" y="44" width="400" height="84" rx="42" fill="#2e6b47"/><text x="240" y="102" text-anchor="middle" font-size="42" font-weight="900" fill="#fff">アキヤド劇場 第1話</text>`;
+s+=`<rect x="472" y="74" width="1000" height="250" rx="10" fill="#000" opacity=".25"/><rect x="460" y="60" width="1000" height="250" rx="10" fill="#fff"/><rect x="460" y="60" width="1000" height="14" rx="7" fill="#2e6b47"/>`;
+s+=`<text x="960" y="168" text-anchor="middle" font-size="76" font-weight="900" fill="#1f3a2b">民泊副業<tspan fill="#c95a35">詐欺</tspan>の仕組み</text><text x="960" y="272" text-anchor="middle" font-size="64" font-weight="900" fill="#1f3a2b">この3人の正体、わかる？</text>`;
 document.getElementById('s').innerHTML=s;})()"""
 JS = """
 const { chromium } = require('playwright');
