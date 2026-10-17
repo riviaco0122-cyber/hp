@@ -227,7 +227,13 @@ python3 tools/video/make_scam_ep1.py --preview 秒 秒 ...  # 指定した秒の
 
 - **毎週水曜の朝に、定期実行（`/youtube-weekly`）が解説動画1本とリール1本を作り、完成版を人に通知する**（人の方針 2026-10-17。2026-10-21 から）。手順は `.claude/skills/youtube-weekly/SKILL.md`、担当は YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwriter.md`・`yt-video-engineer.md`・`yt-reviewer.md`）。
 - 公開は人が行う（定期実行は公開しない）。台本などの変更は `youtube/weekly` ブランチの PR（マージは人）。
-- **改善は数字から**: 分析担当が `python3 tools/youtube_analytics.py report` と `retention <動画ID>`（YouTube Studio と同じ数字。鍵は `docs/seo/analytics-setup.md` 8章）で、クリック率・平均再生率・離れた場所・視聴の入口を見て、次の回で変えることを1〜3つに絞る。結果は `docs/youtube/log.md` に記録し、次の回で判定する。
+- **改善は数字から**（2026-10-18 に接続を確認済み。チャンネル「アキヤド編集部ー地方民泊攻略channel」）:
+  - 鍵: 環境「アキヤド」の環境変数 `YT_CLIENT_ID`・`YT_CLIENT_SECRET`・`YT_REFRESH_TOKEN`（登録手順は `docs/seo/analytics-setup.md` 8章）。つながっているかは `python3 tools/youtube_analytics.py check`。
+  - 取れる数字: `report --days 28` で動画ごとの再生回数・平均視聴時間・平均再生率・登録者の増減・高評価・コメント数と、チャンネル全体の視聴の入口（検索・おすすめ・関連動画・外部など）。`retention <動画ID>` で視聴者維持（どこで離れたか。落ちこみの大きい時間の上位5つ）。
+  - **取れない数字: サムネイルの表示回数とクリック率**（API が返さない）。YouTube Studio の「アナリティクス → リーチ」で人が見る。人から数字をもらったら `docs/youtube/log.md` に書き足して判定に使う。
+  - **数字は2〜3日遅れて出る**。公開直後は0になるので、判定は公開から7日以上たった動画で行う。再生が100未満の動画は参考にとどめ、大きな結論を出さない。
+  - 分析担当が、前の回の数字と改善施策の結果を判定し、次の回で変えることを1〜3つに絞る（1回に変えるのは少しだけ。どれが効いたか分かるように）。結果は `docs/youtube/log.md` に記録し、次の回で判定する。
+  - 収益の金額、コメントの本文・投稿者名はリポジトリに書かない（公開されているため）。数字のレポート（`docs/youtube/reports/`）は、定期実行の PR にだけ入れる。
 
 ## 7. 学んだこと（作りながら追記）
 
