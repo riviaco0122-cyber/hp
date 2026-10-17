@@ -3746,6 +3746,16 @@ MEDIA_CAT_INFO = {
     "operate": ("Operation", "稼働率と客室単価、予約サイトの使い方、清掃、レビュー。開業したあとに宿の売上と評判を育てる、運営の知識をまとめています。"),
     "trend": ("Trend", "訪日客の動向、長期滞在の広がり、関係人口。観光と地域の変化を公的なデータをもとに読み解き、地方の小さな宿の可能性を考えます。"),
 }
+# テーマ一覧ページの title。検索結果ではタイトルしか見られないことが多いので、何の話か（民泊・空き家・宿）を前に置く
+MEDIA_CAT_TITLE = {
+    "sell": "空き家を売る・手放すときの記事一覧｜アキヤド",
+    "lend": "空き家を貸す・管理を任せるときの記事一覧｜アキヤド",
+    "house": "民泊・宿にする物件選びと改修の記事一覧｜アキヤド",
+    "start": "民泊・小さな宿の開業と手続きの記事一覧｜アキヤド",
+    "money": "民泊・空き家活用のお金と税金の記事一覧｜アキヤド",
+    "operate": "民泊・宿の集客と運営の記事一覧｜アキヤド",
+    "trend": "民泊・宿から見る観光と地域の記事一覧｜アキヤド",
+}
 # 読者の状況（ペルソナ）別のガイド。悩みが生まれる順に「段階」を分け、記事を並べる
 MEDIA_GUIDES = [
     dict(key="sell", label="空き家を売りたい", title="空き家を売りたい方へ", service="operation", photo="old-town-street",
@@ -4914,7 +4924,7 @@ def media_category_page(k, n):
             {"@type": "ListItem", "position": 2, "name": "アキヤド", "item": f"{SITE}/media.html"},
             {"@type": "ListItem", "position": 3, "name": n},
         ]}]
-    page(f"media/category-{k}.html", f"{n}の記事一覧｜アキヤド", MEDIA_CAT_INFO[k][1], body, current="media", jsonld=ld, mnav="themes")
+    page(f"media/category-{k}.html", MEDIA_CAT_TITLE[k], MEDIA_CAT_INFO[k][1], body, current="media", jsonld=ld, mnav="themes")
 
 
 def media_guide_page(g):
@@ -5187,13 +5197,13 @@ def article_page(a):
           </ul>
         </div>
 
-        <aside class="author">
+        <aside class="author" data-nosnippet>
           <p class="author__label">この記事を書いた人</p>
           <p class="author__name">アキヤド編集部</p>
           <p class="author__text">合同会社RIVIA&amp;CO.のメディア編集部。空き家の再生から宿泊施設の運営・開業支援、WEB集客・採用支援まで、自ら宿を運営する当事者の視点で、地域の価値を活かすための情報をお届けします。</p>
         </aside>
 
-        <aside class="supervisor">
+        <aside class="supervisor" data-nosnippet>
           <figure class="supervisor__photo"><img src="images/{SUPERVISOR["photo"]}" alt="{e(SUPERVISOR["name"])}の写真" width="600" height="600" loading="lazy" decoding="async"></figure>
           <div>
             <p class="author__label">この記事の監修者</p>

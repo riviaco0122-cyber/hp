@@ -36,6 +36,9 @@ DESC_MIN, DESC_MAX = 50, 140
 TITLE_MAX_EN = 60       # サフィックス込みのタイトル全体の文字数
 DESC_MIN_EN, DESC_MAX_EN = 50, 160
 
+# アキヤドの title の「｜」より前に入れたい主題の語
+TOPIC_WORDS = ("民泊", "空き家", "空家", "宿", "旅館", "簡易宿所", "実家", "古民家", "別荘", "インバウンド", "観光")
+
 # 記事の構造化データとして扱う型
 ARTICLE_TYPES = ("Article", "BlogPosting", "NewsArticle")
 # 公開フォルダ直下に置かれ、pages/ の外にある HTML（Vercel が直接配信する）
@@ -326,6 +329,12 @@ def check():
                 add("warn", pp, f"title が長い（{len(title)}字・英語の目安{TITLE_MAX_EN}字以内）: {title}")
             elif not english and len(core) > TITLE_MAX:
                 add("warn", pp, f"title が長い（{len(core)}文字・目安{TITLE_MAX}文字以内）: {core}")
+        # アキヤドの記事・一覧：検索結果でタイトルだけ見ても何の話か分かるよう、「｜」より前に主題の語を入れる（playbook 2章）
+        if title and not noindex and pp.startswith("/media/") and not english:
+            head = core.split("｜")[0].split(" | ")[0]
+            # 会社・プラン・お問い合わせなど「アキヤド」の名前で探されるページは除く
+            if "アキヤド" not in head and not pp.endswith(("/contact.html", "/thanks.html")) and not any(w in head for w in TOPIC_WORDS):
+                add("warn", pp, f"title の「｜」より前に、民泊・空き家・宿などの主題の語がない（検索結果で何の話か伝わりにくい）: {core}")
         if title and not noindex:
             if title in seen_titles:
                 add("error", pp, f"title が {seen_titles[title]} と重複")
