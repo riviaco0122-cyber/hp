@@ -12,19 +12,19 @@ CAST.aki={skin:'#f1c7a1',hair:'#2b2422',style:'short',top:'#23395b',top2:'#1a2c4
 THEMES.teal={sky:'#86d6d8',sun:'#c9f1f0',far:'#72c8cb',mid:'#62bdc1',win:'#b2e6e7',near:'#4aa9ae',gr:'#5cb7bb',gr2:'#4fadb1'};
 let s=bg(3,'teal');
 // 宿と、積み上がるコイン・伸びるグラフ・飛行機（旅行者）
-s+=house(560,GROUND,1.0,1);
+s+=house(470,GROUND,1.0,1);
 const stack=(x,n)=>{let g='';for(let k=0;k<n;k++)g+=`<ellipse cx="${x}" cy="${GROUND-10-k*22}" rx="54" ry="16" fill="#d09a2f"/><ellipse cx="${x}" cy="${GROUND-16-k*22}" rx="54" ry="16" fill="#f2c14e"/>`;return g};
-s+=stack(860,5)+stack(970,8)+stack(250,3);
-s+=coin(970,GROUND-215,40);
-[[1500,620,60],[1580,560,110],[1660,500,170],[1740,440,240]].forEach(([x,y,h],k)=>{s+=`<rect x="${x}" y="${GROUND-h}" width="56" height="${h}" rx="6" fill="#fff" opacity=".85"/>`});
-s+=`<path d="M1490 ${GROUND-90} L1590 ${GROUND-150} L1670 ${GROUND-200} L1790 ${GROUND-300}" stroke="#e53935" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M1790 ${GROUND-300} l-46 6 l30 34z" fill="#e53935"/>`;
-s+=`<g transform="translate(1720,330) rotate(-14)"><path d="M-70 0 L60 -8 Q86 -8 86 0 Q86 8 60 8 L-70 0Z" fill="#fff"/><path d="M-10 -4 L-50 -50 L-26 -50 L20 -4Z M-10 4 L-50 50 L-26 50 L20 4Z" fill="#fff"/><path d="M-66 -2 L-86 -26 L-74 -26 L-56 -2Z" fill="#fff"/></g>`;
-s+=`<path d="M1500 420 Q1600 380 1660 360" stroke="#fff" stroke-width="5" stroke-dasharray="12 12" fill="none" opacity=".8"/>`;
-s+=person(1270,GROUND,1.05,{c:'aki',pose:'point',mood:'happy',t:.3,flip:true});
+s+=stack(770,5)+stack(880,8)+stack(160,3);
+s+=coin(880,GROUND-215,40);
+[[1050,0,60],[1130,0,110],[1210,0,170],[1290,0,240]].forEach(([x,y,h],k)=>{s+=`<rect x="${x}" y="${GROUND-h}" width="56" height="${h}" rx="6" fill="#fff" opacity=".85"/>`});
+s+=`<path d="M1040 ${GROUND-90} L1140 ${GROUND-150} L1220 ${GROUND-200} L1340 ${GROUND-300}" stroke="#e53935" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M1340 ${GROUND-300} l-46 6 l30 34z" fill="#e53935"/>`;
+s+=`<g transform="translate(330,420) rotate(-14)"><path d="M-70 0 L60 -8 Q86 -8 86 0 Q86 8 60 8 L-70 0Z" fill="#fff"/><path d="M-10 -4 L-50 -50 L-26 -50 L20 -4Z M-10 4 L-50 50 L-26 50 L20 4Z" fill="#fff"/><path d="M-66 -2 L-86 -26 L-74 -26 L-56 -2Z" fill="#fff"/></g>`;
+s+=`<path d="M110 510 Q200 470 270 450" stroke="#fff" stroke-width="5" stroke-dasharray="12 12" fill="none" opacity=".8"/>`;
+s+=person(1640,GROUND,1.05,{c:'aki',pose:'point',mood:'happy',t:.3,flip:true});
 // シリーズの枠：第1回＋問いのカード
-s+=`<text x="58" y="96" font-size="62" font-weight="900" fill="#1f2a33">第1回</text>`;
-s+=`<rect x="232" y="88" width="900" height="250" rx="10" fill="#000" opacity=".12"/><rect x="220" y="74" width="900" height="250" rx="10" fill="#fff"/>`;
-s+=`<text x="670" y="180" text-anchor="middle" font-size="78" font-weight="900" fill="#1f2a33">民泊はなぜ</text><text x="670" y="286" text-anchor="middle" font-size="78" font-weight="900" fill="#1f2a33">「<tspan fill="#c95a35">第3の資産</tspan>」なのか？</text>`;
+s+=`<text x="64" y="104" font-size="60" font-weight="900" fill="#1f2a33">第1回</text>`;
+s+=`<rect x="522" y="80" width="900" height="250" rx="10" fill="#000" opacity=".12"/><rect x="510" y="66" width="900" height="250" rx="10" fill="#fff"/>`;
+s+=`<text x="960" y="172" text-anchor="middle" font-size="78" font-weight="900" fill="#1f2a33">民泊はなぜ</text><text x="960" y="278" text-anchor="middle" font-size="78" font-weight="900" fill="#1f2a33">「<tspan fill="#c95a35">第3の資産</tspan>」なのか？</text>`;
 document.getElementById('s').innerHTML=s;})()"""
 JS = """
 const { chromium } = require('playwright');
