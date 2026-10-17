@@ -36,7 +36,7 @@ SCENES = [
         ("A", "結論から言います。民泊は、株や預金とはちがう動きをする「第3の資産」になります。", dict(sfx=[(0.2, "pop"), (1.6, "pop"), (3.2, "bling")])),
         ("A", "ただし、入れ方をまちがえると、ただの重荷です。", dict(sfx=[(1.4, "boing")])),
         ("A", "今日は、民泊を資産に入れる5つの理由と、始める前に確かめること。そして最後に、失敗しない入れ方を1つだけお話しします。", dict(sfx=[(0.6, "pop"), (1.0, "pop"), (1.4, "pop"), (1.8, "pop"), (2.2, "pop"), (4.6, "pop"), (6.4, "chime")])),
-        ("A", "アキヤドの民泊戦略家、アキです。自分たちで宿を運営しながら、空き家と民泊の情報を発信しています。専門的な話も、できるだけわかりやすくお話しします。", dict(pre=4.6, call=(-3.75, "K", "アキヤド、みんぱくスクール！"), sfx=[(-4.5, "whoosh"), (-4.1, "pop"), (-3.4, "rise"), (-2.6, "bling"), (-1.6, "chime"), (-0.5, "whoosh")])),
+        ("A", "アキヤドの民泊戦略家、アキです。自分たちで宿を運営しながら、空き家と民泊の情報を発信しています。専門的な話も、できるだけわかりやすくお話しします。", dict(pre=3.6, call=(-2.9, "K", "アキヤド、みんぱくスクール！"), sfx=[(-3.5, "whoosh"), (-3.1, "pop"), (-2.6, "bling"), (-0.5, "whoosh")])),
     ]),
     # 1 理由① 分散
     ("light", 0.8, [
@@ -176,17 +176,15 @@ function scene(i,t,lt){
     if(on(2)&&!on(3)&&lt<E[2]+.3){s+=reasonGrid(2,.6);
       s+=pop(1000,660,at(2,.4,4.6),`<rect x="660" y="620" width="680" height="84" rx="42" fill="#fff"/><text x="1000" y="676" text-anchor="middle" font-size="40" font-weight="900" fill="${G}">始める前に、確かめること</text>`);
       s+=pop(1560,660,at(2,.4,6.4),`<rect x="1370" y="620" width="380" height="84" rx="42" fill="${Y}"/><text x="1560" y="676" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">最後に：入れ方</text>`);}
-    // オープニング（約4秒）：緑の幕 → ロゴ → シリーズ名 → 今回のタイトル → はける
+    // オープニング（約3秒）：緑の幕 → ロゴ → 「アキヤド 民泊school」（呼び込みの声）→ はける
     {const q=lt-(E[2]+.15),D=L[3]-.35-(E[2]+.15);if(q>0&&q<D){
       const out=seg(q,D-.5,D),wipe=eo(seg(q,0,.45));
       let o=`<g opacity="${1-out}"><rect width="${1920*wipe}" height="1080" fill="${G}"/>`;
       for(let k=0;k<12;k++){const x=((k*220+q*260)%2600)-400;o+=`<path d="M${x} 1080 L${x+500} 0" stroke="#fff" stroke-width="40" opacity="${.06*wipe}"/>`}
       o+=`<rect x="0" y="0" width="${1920*eo(seg(q,.15,.6))}" height="22" fill="${T}"/><rect x="${1920*(1-eo(seg(q,.15,.6)))}" y="1058" width="1920" height="22" fill="${Y}"/>`;
-      o+=pop(960,250,seg(q,.35,.85),`<circle cx="960" cy="250" r="96" fill="#fff"/>${MARK(960,250,2.1)}`);
-      o+=pop(960,425,seg(q,1.05,1.45),`<g transform="rotate(-3 960 425)"><rect x="560" y="370" width="800" height="110" rx="55" fill="#fff"/><text x="960" y="448" text-anchor="middle" font-size="62" font-weight="900" fill="${G}" letter-spacing="2">アキヤド <tspan fill="${T}">民泊school</tspan></text></g>`);
-      o+=pop(960,610,seg(q,2.0,2.4),`<text x="960" y="590" text-anchor="middle" font-size="84" font-weight="900" fill="#fff">民泊を資産に入れる</text><text x="960" y="730" text-anchor="middle" font-size="120" font-weight="900" fill="${Y}">5つの理由</text>`);
-      o+=fade(seg(q,2.4,2.8),`<text x="960" y="850" text-anchor="middle" font-size="26" font-weight="700" fill="#dfe9e3">${NOTE}</text>`,0);
-      [[220,180],[1700,200],[160,560],[1760,600],[300,920],[1620,940]].forEach(([x,y],k)=>{o+=`<g opacity="${wipe}">${sparkle(x,y,1,lt,k)}</g>`});
+      o+=pop(960,400,seg(q,.35,.85),`<circle cx="960" cy="400" r="120" fill="#fff"/>${MARK(960,400,2.6)}`);
+      o+=pop(960,640,seg(q,.9,1.3),`<g transform="rotate(-3 960 640)"><rect x="500" y="575" width="920" height="130" rx="65" fill="#fff"/><text x="960" y="665" text-anchor="middle" font-size="74" font-weight="900" fill="${G}" letter-spacing="2">アキヤド <tspan fill="${T}">民泊school</tspan></text></g>`);
+            [[220,180],[1700,200],[160,560],[1760,600],[300,920],[1620,940]].forEach(([x,y],k)=>{o+=`<g opacity="${wipe}">${sparkle(x,y,1,lt,k)}</g>`});
       s+=o+`</g>`;}}
     if(on(3)){s+=pop(1150,430,at(3,.5),`${box(620,250,1060,360,36)}<rect x="660" y="290" width="380" height="64" rx="32" fill="${G}"/><text x="850" y="334" text-anchor="middle" font-size="32" font-weight="900" fill="#fff">アキヤドの民泊戦略家</text><text x="680" y="460" font-size="110" font-weight="900" fill="${DG}">アキ</text>`);
       [['宿を運営',G],['空き家と民泊を発信',T],['わかりやすく解説',Y]].forEach(([w,c],k)=>{s+=tag(1400,330+k*90,w,at(3,.4,2+k*1.2),c,k===2?DG:'#fff')});}
