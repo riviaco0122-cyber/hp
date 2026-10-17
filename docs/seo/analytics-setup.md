@@ -70,3 +70,23 @@ python3 tools/estat.py search "空き家" --stats 00200522 --year 2023   # ほ�
 - 宿泊者数は、e-Stat のデータベースに観光庁の表が 2016 年分しか入っていないため、総務省「社会・人口統計体系」に収録された値を使う。この値は観光庁が発表する全施設の年間値より小さい（全国で約8割。従業者数10人以上の施設の集計とみられる）。県どうしの比較・推移・外国人の割合に使い、絶対数を記事に書くときは観光庁の表で確かめる。
 - API で取った数字を記事などで公開するときは、e-Stat の利用規約に沿って出典を書く（ツールの出力のとおり）。
 - アプリケーションIDは表示・保存しない。ツールのエラー文からも消している。
+
+## 8. YouTube アナリティクス（チャンネルの数字・任意・無料）
+
+週1回の YouTube の定期実行（`/youtube-weekly`）が、YouTube Studio と同じ数字（再生回数・平均再生率・視聴者維持・登録者の増減・視聴の入口など）を API で取り、次の動画の改善に使うためのものです。**チャンネルの持ち主の Google アカウントでの許可（OAuth）** が必要です（サービスアカウントでは取れません）。費用はかかりません。
+
+1. 手順1と同じ Google Cloud プロジェクトで、「API とサービス」→「ライブラリ」から **YouTube Analytics API** と **YouTube Data API v3** を有効にする。
+2. 「API とサービス」→「OAuth 同意画面」を作る（ユーザーの種類「外部」、アプリ名は「アキヤド 分析」など、サポートメールは自分）。スコープは追加しなくてよい。**作ったら「アプリを公開」で「本番環境」にする**（「テスト」のままだと、許可が7日で切れて毎週やり直しになる。自分だけで使うので Google の審査は不要。許可するときに「確認されていないアプリ」と出たら「詳細」→「（安全ではないページ）に移動」で進む）。
+3. 「認証情報」→「認証情報を作成」→「OAuth クライアント ID」→ 種類「ウェブ アプリケーション」。「承認済みのリダイレクト URI」に `https://developers.google.com/oauthplayground` を追加して作成し、**クライアント ID** と **クライアント シークレット** を控える。
+4. ブラウザ（スマホでも可）で https://developers.google.com/oauthplayground を開く。
+   - 右上の歯車 →「Use your own OAuth credentials」にチェック → 3 のクライアント ID とシークレットを入れる。
+   - 左の「Input your own scopes」に次の2つを空白区切りで入れて「Authorize APIs」:
+     `https://www.googleapis.com/auth/yt-analytics.readonly https://www.googleapis.com/auth/youtube.readonly`
+   - **アキヤドのチャンネルを持っている Google アカウント**（ブランドアカウントならそのチャンネル）を選んで許可する。
+   - 「Exchange authorization code for tokens」を押し、表示された **Refresh token** を控える。
+5. 手順4と同じ場所（クラウド環境の環境変数）に、`YT_CLIENT_ID`・`YT_CLIENT_SECRET`・`YT_REFRESH_TOKEN` の3つを登録する。**ファイルやチャットには書かない。**
+6. ネットワークの許可ドメインに `oauth2.googleapis.com`・`youtubeanalytics.googleapis.com`・`www.googleapis.com` があるか確かめる（なければ追加）。
+7. 確認: `python3 tools/youtube_analytics.py check` で「接続できました」と出れば完了。
+
+- 読み取り専用の許可です（動画の公開・削除・編集はできません）。
+- 不要になったら、Google アカウントの「セキュリティ → サードパーティのアクセス」から許可を取り消せば、すぐに無効になります。

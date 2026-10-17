@@ -157,6 +157,27 @@ def sfx_sound(kind, rng):
         for j, m in enumerate((84, 88, 91, 96)):
             g = glock(hz(m), 1.0) * 0.16; a = int(j * 0.07 * SR); out[a:a + len(g)] += g[: len(out) - a]
         return out
+    if kind == "freeze":   # レコードを止めたような「キュッ」
+        v, t = _sweep(900, 120, 0.35, 0.5)
+        return (v * 0.6 + _hp(rng.uniform(-1, 1, len(t))) * 0.25) * np.exp(-t * 6) * 0.5
+    if kind == "alert":    # スマホの通知音（ピロン×2）
+        out = np.zeros(int(0.6 * SR))
+        for j, m in enumerate((88, 93)):
+            g = glock(hz(m), 0.3) * 0.3; a = int(j * 0.14 * SR); out[a:a + len(g)] += g[: len(out) - a]
+        return out
+    if kind == "bling":    # キラキラ（あやしい業者の登場）
+        out = np.zeros(int(1.2 * SR))
+        for j, m in enumerate((91, 95, 98, 103, 98, 103)):
+            g = glock(hz(m), 0.5) * 0.12; a = int(j * 0.05 * SR); out[a:a + len(g)] += g[: len(out) - a]
+        return out
+    if kind == "boing":    # 驚き・ショック（ボヨン）
+        v, t = _sweep(300, 90, 0.4, 0.7)
+        return v * np.exp(-t * 7) * 0.4 * (1 + 0.3 * np.sin(2 * np.pi * 14 * t))
+    if kind == "rewind":   # 巻き戻し（ギュルルル）
+        t = np.arange(int(1.2 * SR)) / SR
+        f = 900 - 600 * t / 1.2
+        v = np.sign(np.sin(2 * np.pi * np.cumsum(f) / SR)) * 0.08 * (1 + np.sin(2 * np.pi * 18 * t)) / 2
+        return v * np.minimum(1, t / 0.05) * np.minimum(1, (1.2 - t) / 0.2)
     if kind == "rise":
         v, t = _sweep(220, 660, 1.4, 1.2)
         return v * np.sin(np.pi * t / 1.4) * 0.12
