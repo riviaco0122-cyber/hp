@@ -9,7 +9,7 @@ OUT = sys.argv[1]
 html = m.HTML.replace("__SC__", "[[0,1]]").replace("__SUBS__", "[]")
 CODE = r"""(()=>{
 CAST.aki={skin:'#f1c7a1',hair:'#2b2422',style:'short',top:'#23395b',top2:'#1a2c47',inner:'#ffffff',jacket:true,pants:'#2a3140',shoes:'#3a2a20',glasses:true,tie:'#c95a35'};
-THEMES.teal={sky:'#86d6d8',sun:'#c9f1f0',far:'#72c8cb',mid:'#62bdc1',win:'#b2e6e7',near:'#4aa9ae',gr:'#5cb7bb',gr2:'#4fadb1'};
+THEMES.teal={sky:'#cfe6d6',sun:'#fbe6c4',far:'#b7d9c2',mid:'#a3ceb2',win:'#e3f1e7',near:'#7fb894',gr:'#9fcaae',gr2:'#8fbf9f'};
 let s=bg(3,'teal');
 // 宿と、積み上がるコイン・伸びるグラフ・飛行機（旅行者）
 s+=house(470,GROUND,1.0,1);
@@ -22,9 +22,9 @@ s+=`<g transform="translate(330,420) rotate(-14)"><path d="M-70 0 L60 -8 Q86 -8 
 s+=`<path d="M110 510 Q200 470 270 450" stroke="#fff" stroke-width="5" stroke-dasharray="12 12" fill="none" opacity=".8"/>`;
 s+=person(1640,GROUND,1.05,{c:'aki',pose:'point',mood:'happy',t:.3,flip:true});
 // シリーズの枠：第1回＋問いのカード
-s+=`<text x="64" y="104" font-size="60" font-weight="900" fill="#1f2a33">第1回</text>`;
-s+=`<rect x="522" y="80" width="900" height="250" rx="10" fill="#000" opacity=".12"/><rect x="510" y="66" width="900" height="250" rx="10" fill="#fff"/>`;
-s+=`<text x="960" y="172" text-anchor="middle" font-size="78" font-weight="900" fill="#1f2a33">民泊はなぜ</text><text x="960" y="278" text-anchor="middle" font-size="78" font-weight="900" fill="#1f2a33">「<tspan fill="#c95a35">第3の資産</tspan>」なのか？</text>`;
+s+=`<rect x="40" y="44" width="180" height="84" rx="42" fill="#2e6b47"/><text x="130" y="106" text-anchor="middle" font-size="54" font-weight="900" fill="#fff">第1回</text>`;
+s+=`<rect x="522" y="80" width="900" height="250" rx="10" fill="#000" opacity=".12"/><rect x="510" y="66" width="900" height="250" rx="10" fill="#fff"/><rect x="510" y="66" width="900" height="14" rx="7" fill="#2e6b47"/>`;
+s+=`<text x="960" y="172" text-anchor="middle" font-size="78" font-weight="900" fill="#1f3a2b">民泊はなぜ</text><text x="960" y="278" text-anchor="middle" font-size="78" font-weight="900" fill="#1f3a2b">「<tspan fill="#c95a35">第3の資産</tspan>」なのか？</text>`;
 document.getElementById('s').innerHTML=s;})()"""
 JS = """
 const { chromium } = require('playwright');
