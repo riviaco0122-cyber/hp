@@ -4395,7 +4395,7 @@ def media_company_page():
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
               {"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"},
               {"@type": "ListItem", "position": 2, "name": "運営会社"}]}]
-    page("media/company.html", "運営会社｜アキヤド",
+    page("media/company.html", "アキヤドの運営会社｜合同会社RIVIA&CO.",
          "アキヤドを運営する合同会社RIVIA&CO.の会社概要です。静岡県下田市で一棟貸しの宿を運営し、空き家の買取・借り上げ、民泊の開業・運営支援を行っています。",
          body, current="media", jsonld=ld)
 
