@@ -9,6 +9,7 @@
   宿の数字は記事「不動産投資として見る小さな宿・民泊」と同じ、創業メンバーが運営する下田の宿の実績（試運転3か月。docs/brand/experience.md の確認済みの節）。
 - 部品・書き出しは make_explainer.py / make_scam_ep1.py と共通。声は VOICEVOX（クレジットは最後の画面と説明欄）。
 使い方: python3 tools/video/make_strategy_ep1.py [出力.mp4] [--hq] [--preview 秒 ...] [--no-check]
+分けて書き出す: --work <フォルダ> --part 1 / --part 2 … を「残り 0 区切り」まで → 最後に --work <フォルダ>（--part なし）で mp4 にする（--hq は全部の回で付ける）
 書き出しの前に layout_check.py の自動点検が走り、問題があれば止まる。
 """
 import json, os, subprocess, sys, tempfile
@@ -21,6 +22,7 @@ from make_scam_ep1 import wrap
 from voicevox_tts import tts
 
 FPS = 24
+PART_FRAMES = 1200  # 分けて書き出すときの1区切りのコマ数（高画質でも1区切り8分ほど）
 VOICES = {
     "A": dict(name="戦略家 アキ", style=83, speed=1.12, intonation=1.2, pitch=0.0),   # 青山龍星（喜び）。明るく、テンポよく
     "K": dict(name="ジングル", style=1, speed=1.0, intonation=1.6, pitch=0.04),         # ずんだもん（あまあま）。オープニングの呼び込み
@@ -386,8 +388,16 @@ def main():
     if "--preview" in args:
         k = args.index("--preview"); prev = [float(x) for x in args[k + 1:]]; args = args[:k]
     nocheck = "--no-check" in args; args = [x for x in args if x != "--no-check"]
+    # 分けて書き出す（定期実行では1回の命令が10分までなので）:
+    #   --work <フォルダ> --part k  … 全コマのうち k 番目の区切り（PART_FRAMES コマずつ）だけを、フォルダに描く。残りの数を表示する
+    #   --work <フォルダ>（--part なし）… フォルダのコマと音声から mp4 を作る（全部そろっていないと止まる）
+    work = None; part = None
+    if "--work" in args:
+        k = args.index("--work"); work = args[k + 1]; del args[k:k + 2]
+    if "--part" in args:
+        k = args.index("--part"); part = int(args[k + 1]); del args[k:k + 2]
     out = args[0] if args else os.path.join(tempfile.gettempdir(), "akiyado-strategy-ep1.mp4")
-    if prev is None and not nocheck:  # 書き出しの前に、文字の重なり・はみ出しを自動点検（layout_check.py）
+    if prev is None and not nocheck and not (work and part and part > 1) and not (work and part is None):  # 書き出しの前に、文字の重なり・はみ出しを自動点検（layout_check.py）
         r = subprocess.run([sys.executable, os.path.join(HERE, "layout_check.py"), "make_strategy_ep1", "--step", "0.5"])
         if r.returncode:
             sys.exit("自動点検で問題が見つかったため、書き出しを止めました（直してから再実行。点検を飛ばすなら --no-check）")
@@ -405,8 +415,24 @@ def main():
             od = os.path.join(tempfile.gettempdir(), "strategy_preview"); os.makedirs(od, exist_ok=True)
             subprocess.run(["node", js, h, od, "preview", json.dumps(prev)], check=True, env=env)
             print("preview", od, "長さ", round(dur, 1), "秒", [round(a, 1) for a, _ in sc]); return
-        fr = os.path.join(tmp, "fr"); os.makedirs(fr)
-        subprocess.run(["node", js, h, fr, "video", str(int(dur * FPS))], check=True, env=env)
+        total = int(dur * FPS)
+        if work:
+            fr = os.path.join(work, "fr"); os.makedirs(fr, exist_ok=True)
+            if part is not None:
+                n = (total + PART_FRAMES - 1) // PART_FRAMES
+                a0, a1 = (part - 1) * PART_FRAMES, min(total, part * PART_FRAMES)
+                if a0 >= total:
+                    print(f"区切り {part} はありません（全 {n} 区切り）"); return
+                js2 = js + ".part.js"
+                open(js2, "w").write(base.RENDER_JS.replace("for (let i = 0; i < n; i++)", f"for (let i = {a0}; i < Math.min(n, {a1}); i++)"))
+                subprocess.run(["node", js2, h, fr, "video", str(total)], check=True, env=env)
+                print(f"区切り {part}/{n} を描きました（コマ {a0}〜{a1 - 1}）。残り {n - part} 区切り"); return
+            miss = [i for i in range(total) if not os.path.exists(os.path.join(fr, f"f{i:05d}.jpg"))]
+            if miss:
+                sys.exit(f"まだ描いていないコマがあります（{len(miss)} コマ。最初は {miss[0]}）。--part で描いてから、もう一度実行してください")
+        else:
+            fr = os.path.join(tmp, "fr"); os.makedirs(fr)
+            subprocess.run(["node", js, h, fr, "video", str(total)], check=True, env=env)
         import pop_audio
         wav = os.path.join(tmp, "audio.wav"); pop_audio.write(wav, dur, sfx, bgm_gain=0.22, voices=voices, duck=0.3)
         os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
