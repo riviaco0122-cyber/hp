@@ -22,7 +22,7 @@ from voicevox_tts import tts
 
 FPS = 24
 VOICES = {
-    "A": dict(name="戦略家 アキ", style=13, speed=1.0, intonation=1.15, pitch=0.0),   # 青山龍星（ノーマル）
+    "A": dict(name="戦略家 アキ", style=83, speed=1.12, intonation=1.2, pitch=0.0),   # 青山龍星（喜び）。明るく、テンポよく
     "Y": dict(name="ユウタ", style=11, speed=1.08, intonation=1.15, pitch=0.0),        # 玄野武宏
 }
 MODELS = [4, 15]
@@ -128,7 +128,7 @@ SCENES = [
         ("A", "あなたの家や地域で、民泊が成り立つか知りたい方は、アキヤドの無料相談へ。概要欄のリンクからどうぞ。", dict(sfx=[(0.4, "chime")])),
     ]),
 ]
-LEAD, GAP = 0.6, 0.45
+LEAD, GAP = 0.5, 0.32
 
 SCENE_JS = r"""
 CAST.aki={skin:'#f1c7a1',hair:'#2b2422',style:'short',top:'#23395b',top2:'#1a2c47',inner:'#ffffff',jacket:true,pants:'#2a3140',shoes:'#3a2a20',glasses:true,tie:'#c95a35'};
@@ -160,7 +160,7 @@ function qbubble(id,txt,p,t){ // ユウタの質問
 function stampX(x,y,txt,p,c=RED,fs=72,rot=-8){return pop(x,y,p,`<g transform="rotate(${rot} ${x} ${y})"><rect x="${x-txt.length*fs*.5-34}" y="${y-fs*.8}" width="${txt.length*fs+68}" height="${fs*1.45}" rx="14" fill="#fff" fill-opacity=".92" stroke="${c}" stroke-width="10"/><text x="${x}" y="${y+fs*.33}" text-anchor="middle" font-size="${fs}" font-weight="900" fill="${c}">${txt}</text></g>`)}
 const REASONS=[['1','分散',G],['2','稼ぎ方',T],['3','観光需要','#3d8a6a'],['4','税金','#b8862f'],['5','社会課題',DG]];
 function scene(i,t,lt){
-  const L=SL[i],E=SE[i],at=(k,d=.5,o=0)=>seg(lt,L[k]+o,L[k]+o+d),on=k=>lt>=L[k],win=(k,j)=>clamp(seg(lt,L[k],L[k]+.4))*(j==null?1:1-seg(lt,L[j]-.1,L[j]+.3));
+  const K=.89,L=SL[i],E=SE[i],at=(k,d=.5,o=0)=>seg(lt,L[k]+o*K,L[k]+o*K+d)  /* K: 話す速さを上げたぶん、絵の出るタイミングも詰める */,on=k=>lt>=L[k],win=(k,j)=>clamp(seg(lt,L[k],L[k]+.4))*(j==null?1:1-seg(lt,L[j]-.1,L[j]+.3));
   let s='';
   const aki=(pose,mood='happy',x=250)=>P(x,GROUND,.92,{c:'aki',who:'A',pose,mood},t);
   const tag=(x,y,txt,p,c=Y,fc=DG)=>pop(x,y,p,`<rect x="${x-txt.length*17-24}" y="${y-30}" width="${txt.length*34+48}" height="60" rx="30" fill="${c}"/><text x="${x}" y="${y+12}" text-anchor="middle" font-size="34" font-weight="900" fill="${fc}">${txt}</text>`);
@@ -232,7 +232,7 @@ function scene(i,t,lt){
     s+=hdr('③','世界の観光需要を取り込む',at(0,.4),'#3d8a6a');
     if(on(1)&&!on(4)){const data=[['2024年',3687,'#9fc7b0'],['2025年',4268,'#3d8a6a'],['2030年 目標',6000,'#fff']];const sc=.07;
       s+=card(600,250,1200,580,`<text x="1200" y="310" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">日本に来た外国人旅行者</text><path d="M700 760 H1700" stroke="#9fb5a8" stroke-width="5"/>`+data.map(([y,v,c],k)=>{const p=k<2?eo(at(1,.9,.4+k*.9)):(on(3)?eo(at(3,.9,.4)):0);if(p<=0)return '';const h=v*sc*p;return `<rect x="${780+k*320}" y="${760-h}" width="220" height="${h}" rx="8" fill="${c}" ${k===2?`stroke="#3d8a6a" stroke-width="6" stroke-dasharray="16 10"`:''}/><text x="${890+k*320}" y="${740-h}" text-anchor="middle" font-size="40" font-weight="900" fill="#2f6e55">${v.toLocaleString()}万人</text><text x="${890+k*320}" y="808" text-anchor="middle" font-size="32" font-weight="900" fill="${DG}">${y}</text>`}).join(''),at(1,.4));
-      if(lt>L[1]+3)s+=stampX(1010,380,'過去最多',at(1,.3,3.4),RED,52,-6);
+      if(lt>L[1]+2.7)s+=stampX(1010,380,'過去最多',at(1,.3,3.4),RED,52,-6);
       if(on(2))s+=pop(1050,560,at(2,.4,2.6),`<rect x="960" y="520" width="190" height="70" rx="35" fill="${T}"/><text x="1055" y="567" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">+約16%</text>`);}
     if(on(4)&&!on(5)){s+=card(560,250,1280,560,`<rect x="600" y="280" width="200" height="64" rx="32" fill="${Y}"/><text x="700" y="324" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">クイズ</text><text x="1200" y="410" text-anchor="middle" font-size="44" font-weight="900" fill="${DG}">外国人の宿泊のうち、地方の割合は？</text>`+[['A','1割'],['B','3割'],['C','5割']].map(([k2,w],k)=>{const x=760+k*440;return `<g opacity="${at(4,.3,[4.4,5.6,6.6][k])}"><rect x="${x-170}" y="500" width="340" height="220" rx="30" fill="#eef3ee"/><circle cx="${x}" cy="560" r="40" fill="${[G,T,'#3d8a6a'][k]}"/><text x="${x}" y="576" text-anchor="middle" font-size="44" font-weight="900" fill="#fff">${k2}</text><text x="${x}" y="680" text-anchor="middle" font-size="64" font-weight="900" fill="${DG}">${w}</text></g>`}).join(''),at(4,.4));}
     const cd=lt-(L[5]-3.2);if(cd>0&&cd<3.2)s+=pop(1200,880,clamp((cd%1)*4),`<circle cx="1200" cy="880" r="60" fill="${Y}"/><text x="1200" y="905" text-anchor="middle" font-size="72" font-weight="900" fill="${DG}">${Math.max(1,3-Math.floor(cd))}</text>`);
@@ -248,7 +248,7 @@ function scene(i,t,lt){
     s+=hdr('④','税金：正しく知る',at(0,.4),'#b8862f');
     if(on(1)&&!on(2)){s+=card(560,250,1280,560,`<rect x="620" y="300" width="300" height="140" rx="20" fill="${G}"/><text x="770" y="385" text-anchor="middle" font-size="48" font-weight="900" fill="#fff">売上</text><text x="980" y="390" text-anchor="middle" font-size="64" font-weight="900" fill="${DG}">−</text><rect x="1040" y="300" width="300" height="140" rx="20" fill="#b9c3cc"/><text x="1190" y="385" text-anchor="middle" font-size="48" font-weight="900" fill="${DG}">経費</text><text x="1400" y="390" text-anchor="middle" font-size="64" font-weight="900" fill="${DG}">=</text><rect x="1460" y="300" width="320" height="140" rx="20" fill="#b8862f"/><text x="1620" y="385" text-anchor="middle" font-size="48" font-weight="900" fill="#fff">所得</text>
         <text x="1190" y="490" text-anchor="middle" font-size="30" font-weight="900" fill="#4a5a52">清掃・手数料・光熱費など</text>`,at(1,.4));
-      const dp=at(1,.4,4.2);if(dp>0)s+=fade(dp,`<text x="700" y="600" font-size="34" font-weight="900" fill="#b8862f">減価償却：家具・改修の費用を、何年かに分けて経費に</text>${[0,1,2,3,4].map(k=>`<rect x="${700+k*210}" y="640" width="180" height="${100*eo(seg(lt,L[1]+4.6+k*.25,L[1]+5+k*.25))}" rx="10" fill="#ecd6a8"/><text x="${790+k*210}" y="775" text-anchor="middle" font-size="26" font-weight="900" fill="#4a5a52">${k+1}年目</text>`).join('')}`,0);}
+      const dp=at(1,.4,4.2);if(dp>0)s+=fade(dp,`<text x="700" y="600" font-size="34" font-weight="900" fill="#b8862f">減価償却：家具・改修の費用を、何年かに分けて経費に</text>${[0,1,2,3,4].map(k=>`<rect x="${700+k*210}" y="640" width="180" height="${100*eo(seg(lt,L[1]+4.1+k*.22,L[1]+4.5+k*.22))}" rx="10" fill="#ecd6a8"/><text x="${790+k*210}" y="775" text-anchor="middle" font-size="26" font-weight="900" fill="#4a5a52">${k+1}年目</text>`).join('')}`,0);}
     if(on(2)&&!on(3)){s+=card(620,260,1160,520,`<text x="1200" y="330" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">民泊新法の宿の所得は、原則</text><rect x="980" y="360" width="440" height="110" rx="55" fill="#b8862f"/><text x="1200" y="435" text-anchor="middle" font-size="54" font-weight="900" fill="#fff">雑所得</text>
         <rect x="700" y="530" width="360" height="120" rx="20" fill="#fbf1de"/><text x="880" y="605" text-anchor="middle" font-size="40" font-weight="900" fill="#b8862f">宿の赤字</text><rect x="1340" y="530" width="360" height="120" rx="20" fill="#eef3ee"/><text x="1520" y="605" text-anchor="middle" font-size="40" font-weight="900" fill="${G}">給料</text><path d="M1080 590 H1320" stroke="#9fb5a8" stroke-width="8" stroke-dasharray="14 10"/>`,at(2,.4));
       s+=stampX(1200,590,'相殺できない',at(2,.3,5.4),RED,48,-6);}
@@ -267,7 +267,7 @@ function scene(i,t,lt){
     if(on(1)){const lit=on(2)?eo(at(2,1,.4)):0;
       s+=card(560,250,1280,580,`<text x="1200" y="320" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">空き家 約900万戸（住宅の約7軒に1軒）</text>${[0,1,2,3,4,5,6].map(k=>`<g opacity="${eo(at(1,.3,.3+k*.2))}">${house(700+k*167,660,.32,k===3?lit:1)}</g>`).join('')}${on(2)?'':`<text x="1201" y="720" text-anchor="middle" font-size="34" font-weight="900" fill="${RED}">空き家</text>`}`,at(1,.4));
       if(on(2)){[['カフェ',1000],['お店',1400]].forEach(([w,x],k)=>{s+=pop(x,780,at(2,.4,2+k*.6),`<rect x="${x-110}" y="745" width="220" height="70" rx="35" fill="${Y}"/><text x="${x}" y="792" text-anchor="middle" font-size="34" font-weight="900" fill="${DG}">${w}</text>`)});
-        for(let c=0;c<3;c++){const f=((lt*.7+c/3)%1);if(lt>L[2]+2)s+=`<g opacity="${Math.sin(f*Math.PI)}">${coin(1201+(c%2?200:-200)*f,580+180*f,22)}</g>`}}
+        for(let c=0;c<3;c++){const f=((lt*.7+c/3)%1);if(lt>L[2]+1.8)s+=`<g opacity="${Math.sin(f*Math.PI)}">${coin(1201+(c%2?200:-200)*f,580+180*f,22)}</g>`}}
       if(on(3))s+=pop(1200,430,at(3,.4),`<rect x="760" y="370" width="880" height="120" rx="60" fill="${G}"/><text x="1200" y="448" text-anchor="middle" font-size="46" font-weight="900" fill="#fff">増やしながら、町の役に立つ</text>`);}
   }
   if(i===6){ // 始め方は3つ
