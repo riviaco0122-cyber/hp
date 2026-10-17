@@ -28,6 +28,7 @@ VOICES = {
 }
 MODELS = [0, 4, 15]
 CREDIT = "VOICEVOX:青山龍星　VOICEVOX:玄野武宏　VOICEVOX:ずんだもん"
+EP_TITLE = "民泊を資産に入れる5つの理由"  # オープニングのあと、左上に出す今回のタイトル
 NOTE = "※ 情報提供を目的とした動画で、特定の投資を勧めるものではありません。数字は公表資料と、運営する宿の実績（一例）です。"
 
 SCENES = [
@@ -328,6 +329,10 @@ window.draw=function(t){
   let out=`${B(i)}${scene(i,t,t-a)}`;
   if(i>0&&t-a<TR){const k=eo((t-a)/TR),r=k*1150,pa=SC[i-1][0];
     out=`${B(i-1)}${scene(i-1,t,t-pa)}<clipPath id="iris"><circle cx="960" cy="540" r="${r}"/></clipPath><g clip-path="url(#iris)">${out}</g><circle cx="960" cy="540" r="${r}" fill="none" stroke="#fff" stroke-width="${26*(1-k)}" opacity="${1-k}"/>`;}
+  { // オープニングのあと、左上に今回の動画のタイトル（ずっと出しておく）
+    const t0=SL[0][0]-.3,p=seg(t,t0,t0+.5),e=1-seg(t,SC[SC.length-1][1]-6,SC[SC.length-1][1]-5.4);
+    if(p>0)out+=`<g opacity="${p*e}"><rect x="24" y="20" width="${EP_TITLE.length*30+92}" height="56" rx="28" fill="#fff" opacity=".94"/><circle cx="52" cy="48" r="16" fill="${G}"/>${MARK(52,48,.42)}<text x="78" y="58" font-size="28" font-weight="900" fill="${DG}">${EP_TITLE}</text></g>`;
+  }
   const cur=LINES.find(l=>t>=l[0]-.05&&t<l[1]+.3);
   if(cur)out+=subtitle(cur,t);
   document.getElementById('s').innerHTML=out.replaceAll('__ROOT__',window.ROOT);
@@ -365,7 +370,7 @@ def build_html(sc, lines):
     sl = [[round(l[0] - sc[l[4]][0], 3) for l in lines if l[4] == i] for i in range(len(sc))]
     se = [[round(l[1] - sc[l[4]][0], 3) for l in lines if l[4] == i] for i in range(len(sc))]
     head = (f"const SC={json.dumps(sc)};const LINES={json.dumps(lines, ensure_ascii=False)};const SL={json.dumps(sl)};const SE={json.dumps(se)};"
-            f"const THEME={json.dumps([s[0] for s in SCENES])};const CREDIT={json.dumps(CREDIT, ensure_ascii=False)};const NOTE={json.dumps(NOTE, ensure_ascii=False)};")
+            f"const THEME={json.dumps([s[0] for s in SCENES])};const CREDIT={json.dumps(CREDIT, ensure_ascii=False)};const NOTE={json.dumps(NOTE, ensure_ascii=False)};const EP_TITLE={json.dumps(EP_TITLE, ensure_ascii=False)};")
     return h[:a] + head + SCENE_JS + h[b:]
 
 
