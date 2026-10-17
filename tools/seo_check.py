@@ -37,7 +37,7 @@ TITLE_MAX_EN = 60       # サフィックス込みのタイトル全体の文字
 DESC_MIN_EN, DESC_MAX_EN = 50, 160
 
 # アキヤドの title の「｜」より前に入れたい主題の語
-TOPIC_WORDS = ("民泊", "空き家", "空家", "宿", "旅館", "簡易宿所", "実家", "古民家", "別荘", "インバウンド", "観光")
+TOPIC_WORDS = ("民泊", "空き家", "空家", "宿", "旅館", "簡易宿所", "実家", "古民家", "別荘")
 
 # 記事の構造化データとして扱う型
 ARTICLE_TYPES = ("Article", "BlogPosting", "NewsArticle")
