@@ -118,14 +118,15 @@ SCENES = [
         ("M", "ヒントは、首元と、ほっぺた。", dict(pre=3.2, sfx=[(-3.2, "tick"), (-2.2, "tick"), (-1.2, "tick"), (0.2, "ding")])),
         ("Y", "あれ…？ 3人とも、同じ貝殻のネックレスに、同じほくろ…？", dict(say="あれ…？ さんにんとも、同じ貝殻のネックレスに、同じほくろ…？")),
         ("M", "そう。実は…。", dict(sfx=[(0.6, "whoosh")])),
-        ("N", "生徒さんは、全員、カツラをかぶったウマイ先生だったのだ！", dict(pre=0.2, sfx=[(0, "boing"), (0.3, "bling")])),
-        ("U", "バ、バレちゃった〜！", {}),
-        ("Y", "ぜ、全員…！？", {}),
+        ("N", "生徒さんは全員、ウマイ先生がAIで顔と声を変えて作った、ニセモノだったのだ！", dict(pre=0.2, say="生徒さんは全員、ウマイ先生が、エーアイで顔と声を変えて作った、ニセモノだったのだ！", sfx=[(0, "boing"), (0.3, "bling")])),
+        ("U", "バ、バレちゃった〜！ AIって、便利なんだもん〜！", dict(say="バ、バレちゃった〜！ エーアイって、便利なんだもん〜！")),
+        ("Y", "ぜ、全員…！？ あのインタビューも、ぜんぶAI…！？", dict(say="ぜ、全員…！？ あのインタビューも、ぜんぶエーアイ…！？")),
+        ("M", "顔や声は変えられても、ほくろとネックレスは、消し忘れたみたいですね。", {}),
     ]),
     # 9 エンディング（覚えておきたい3つ → お知らせ → ウマイ先生が逃げる）
     ("yellow", 0.9, [
         ("Y", "危なかった…。ミナさん、ありがとう！", {}),
-        ("M", "覚えておいてね。うますぎる話は、まず疑う。", dict(sfx=[(0.2, "pop")])),
+        ("M", "今は、AIで、成功者の顔も声も作れる時代。うますぎる話は、まず疑う。", dict(say="今は、エーアイで、成功者の顔も声も作れる時代。うますぎる話は、まず疑う。", sfx=[(0.2, "pop")])),
         ("M", "お金を借りさせる話や、画面の共有は、そこでストップ。", dict(sfx=[(0, "pop")])),
         ("M", "そして、その場で決めずに、家族や友達に相談！", dict(sfx=[(0, "pop")])),
         ("M", "民泊は、手間はかかるけど、旅行者にも地域にも喜ばれる、すてきな仕事。正しく始めましょうね！", dict(sfx=[(0.2, "chime")])),
@@ -135,7 +136,7 @@ SCENES = [
     # 10 最後のオチ：ウマイ先生にも「先生」がいた
     ("night", 4.6, [
         ("N", "その夜…。", {}),
-        ("N", "ちなみに、ウマイ先生の「南の島」は、AIで作った背景画像だった。", dict(say="ちなみに、ウマイ先生の南の島は、エーアイで作った背景画像だった。", sfx=[(0.3, "boing")])),
+        ("N", "ちなみに、ウマイ先生の「南の島」も、AIで作った背景画像だった。", dict(say="ちなみに、ウマイ先生の南の島も、エーアイで作った背景画像だった。", sfx=[(0.3, "boing")])),
         ("N", "そこへ、1通の広告が…。", dict(say="そこへ、いっつうの広告が…。", sfx=[(0.6, "alert")])),
         ("U", "ん？ 「あなたも先生になって、月1000万円」…？ 今日だけ！？", dict(say="ん？ あなたも先生になって、月一千万円…？ 今日だけ！？")),
         ("U", "申し込みま〜す！", dict(sfx=[(0.1, "click"), (0.4, "bling")])),
@@ -349,13 +350,15 @@ function scene(i,t,lt){
     X.forEach((x,k)=>{const c2=['umaiA','umaiB','umaiC'][k],p=at(0,.4,.6+k*.4);
       let g=`<g opacity="${1-rev}">${face('tw'+k,x,Y0,Rr,c2,'#7a4a9a','happy',t)}</g>`;
       if(rev>0)g+=`<g opacity="${rev}">${face('tu'+k,x,Y0,Rr,'umai','#7a4a9a',on(5)?'happy':'worry',t,talking('U',t))}</g>`;
-      if(rev>0&&rev<1){const hc=['#8a5a3c','#2b2422','#6d6d6d'][k];g+=`<g transform="translate(${x+(k-1)*120*rev},${Y0-130-420*rev}) rotate(${(k-1)*160*rev+40*rev})" opacity="${1-rev}"><ellipse rx="110" ry="60" fill="${hc}"/></g>`}
+      const gl=Math.sin(Math.PI*clamp(rev*1.15))*(rev<1?1:0)+(on(3)&&!on(4)?.35*Math.max(0,Math.sin(lt*23+k*2)):0);
+      if(gl>0.02)for(let q=0;q<7;q++){const yy=Y0-Rr+rnd(q*7+k+Math.floor(lt*12))*Rr*2,hh=6+rnd(q+k*3+Math.floor(lt*12))*18,dx=(rnd(q*3+Math.floor(lt*15))-.5)*60*gl;g+=`<rect x="${x-Rr+dx}" y="${yy}" width="${Rr*2}" height="${hh}" fill="${q%2?'#00e5ff':'#ff2d95'}" opacity="${.55*gl}"/>`}
+      if(rev>.6)g+=pop(x+Rr*.72,Y0-Rr*.72,clamp((rev-.6)*2.5),`<circle cx="${x+Rr*.72}" cy="${Y0-Rr*.72}" r="40" fill="#111"/><text x="${x+Rr*.72}" y="${Y0-Rr*.72+15}" text-anchor="middle" font-size="40" font-weight="900" fill="#00e5ff">AI</text>`);
       g+=`<rect x="${x-130}" y="${Y0+Rr+20}" width="260" height="${rev>0?70:110}" rx="20" fill="#fff"/>`+(rev>0?`<text x="${x}" y="${Y0+Rr+68}" text-anchor="middle" font-size="36" font-weight="900" fill="#6b3fa0">ウマイ先生</text>`:`<text x="${x}" y="${Y0+Rr+62}" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">生徒${'ABC'[k]}さん</text><text x="${x}" y="${Y0+Rr+104}" text-anchor="middle" font-size="30" font-weight="900" fill="${T}">月100万円！</text>`);
       if(on(1)&&!on(4)){const pu=.6+.4*Math.abs(Math.sin(lt*5));g+=`<circle cx="${x}" cy="${Y0+Rr*.86}" r="${Rr*.3}" fill="none" stroke="${Y}" stroke-width="8" opacity="${pu*at(1,.3,.2)}"/><circle cx="${x+Rr*.27}" cy="${Y0+Rr*.1}" r="${Rr*.14}" fill="none" stroke="${Y}" stroke-width="7" opacity="${pu*at(1,.3,.5)}"/>`}
       s+=pop(x,Y0,p,g);});
     const cd=lt-(L[1]-3.2);if(cd>0&&cd<3.2)s+=pop(1010,170,clamp((cd%1)*4),`<circle cx="1010" cy="170" r="66" fill="${Y}"/><text x="1010" y="198" text-anchor="middle" font-size="80" font-weight="900" fill="${DG}">${Math.max(1,3-Math.floor(cd))}</text>`);
     if(lt<L[1]-3.3)s+=fade(at(0,.4),`<text x="1010" y="200" text-anchor="middle" font-size="52" font-weight="900" fill="#fff">3人の正体は？</text>`,0);
-    if(on(4))s+=pop(1010,180,at(4,.4,.3),`<g transform="rotate(-4 1010 180)"><rect x="560" y="110" width="900" height="130" rx="30" fill="#e53935"/><text x="1010" y="200" text-anchor="middle" font-size="72" font-weight="900" fill="#fff">全員、ウマイ先生！</text></g>`);
+    if(on(4))s+=pop(1010,180,at(4,.4,.3),`<g transform="rotate(-4 1010 180)"><rect x="560" y="110" width="900" height="130" rx="30" fill="#e53935"/><text x="1010" y="200" text-anchor="middle" font-size="64" font-weight="900" fill="#fff">全員、AIのウマイ先生！</text></g>`);
     if(on(2)&&!on(4))s+=pop(1780,180,at(2,.4),face('yt',1780,180,80,'owner',G,'worry',t,talking('Y',t)));
     if(on(6))s+=pop(1780,180,at(6,.3),face('yt2',1780,180,80,'owner',G,'worry',t,talking('Y',t)));
   }
