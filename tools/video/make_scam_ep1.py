@@ -125,7 +125,7 @@ SCENES = [
     # 10 最後のオチ：ウマイ先生にも「先生」がいた
     ("night", 4.6, [
         ("N", "その夜…。", {}),
-        ("N", "ちなみに、ウマイ先生の「南の島」は、ただの背景画像だった。", dict(sfx=[(0.3, "boing")])),
+        ("N", "ちなみに、ウマイ先生の「南の島」は、AIで作った背景画像だった。", dict(say="ちなみに、ウマイ先生の南の島は、エーアイで作った背景画像だった。", sfx=[(0.3, "boing")])),
         ("N", "そこへ、1通の広告が…。", dict(say="そこへ、いっつうの広告が…。", sfx=[(0.6, "alert")])),
         ("U", "ん？ 「あなたも先生になって、月100万円」…？ 今日だけ！？", dict(say="ん？ あなたも先生になって、月百万円…？ 今日だけ！？")),
         ("U", "申し込みま〜す！", dict(sfx=[(0.1, "click"), (0.4, "bling")])),
@@ -333,8 +333,8 @@ function scene(i,t,lt){
   }
   if(i===10){ // 最後のオチ
     s+=`<rect width="1920" height="1080" fill="#4a4458"/><rect y="${GROUND-10}" width="1920" height="${1090-GROUND}" fill="#5e4a3c"/><rect x="1500" y="140" width="300" height="220" rx="10" fill="#2a2638"/><path d="M1650 140 v220 M1500 250 h300" stroke="#4a4458" stroke-width="10"/>${[0,1,2].map(k=>`<circle cx="${1560+k*90}" cy="${190+rnd(k)*30}" r="2.5" fill="#fff" opacity=".8"/>`).join('')}`;
-    s+=`<rect x="140" y="140" width="660" height="470" fill="#ddd"/>${beach(150,150,640,450,t)}<rect x="465" y="610" width="10" height="${GROUND-610}" fill="#888"/><rect x="380" y="${GROUND-20}" width="180" height="16" rx="8" fill="#777"/>`;
-    s+=pop(470,200,at(1,.4,.3),`<g transform="rotate(-6 470 200)"><rect x="300" y="150" width="340" height="96" rx="20" fill="#e53935"/><text x="470" y="216" text-anchor="middle" font-size="50" font-weight="900" fill="#fff">ただの背景</text></g>`);
+    s+=`<rect x="140" y="140" width="660" height="470" fill="#ddd"/><clipPath id="bclip"><rect x="150" y="150" width="640" height="450"/></clipPath><g clip-path="url(#bclip)">${beach(150,150,640,450,t)}</g><rect x="465" y="610" width="10" height="${GROUND-610}" fill="#888"/><rect x="380" y="${GROUND-20}" width="180" height="16" rx="8" fill="#777"/>`;
+    s+=pop(470,200,at(1,.4,.3),`<g transform="rotate(-6 470 200)"><rect x="250" y="150" width="440" height="96" rx="20" fill="#e53935"/><text x="470" y="216" text-anchor="middle" font-size="50" font-weight="900" fill="#fff">AIで作った背景</text></g>`);
     s+=`<rect x="860" y="${GROUND-150}" width="260" height="150" fill="#8a6a4c"/><rect x="850" y="${GROUND-165}" width="280" height="20" rx="6" fill="#a2805c"/><path d="M930 ${GROUND-165} l8 -70 h64 l8 70z" fill="#fff"/><rect x="936" y="${GROUND-222}" width="68" height="20" fill="#e53935"/>`;
     s+=P(560,GROUND,.92,{c:'umai',who:'U',pose:on(4)&&!on(5)?'cheer':(on(2)?'phone':'stand'),mood:on(1)&&!on(2)?'worry':'happy'},t);
     const ad=`<rect x="-172" y="-300" width="344" height="60" fill="#fff"/><text x="0" y="-260" text-anchor="middle" font-size="26" font-weight="900" fill="#2c3a33">SNS</text><rect x="-160" y="-230" width="320" height="520" rx="16" fill="#fff4d6" stroke="${Y}" stroke-width="4"/><text x="-140" y="-200" font-size="18" font-weight="700" fill="#999">広告</text>${face('sg0',0,-120,62,'sugoi','#c9a227','happy',t)}<text x="0" y="-22" text-anchor="middle" font-size="22" font-weight="900" fill="#4a5a52">スゴイ先生</text><text x="0" y="30" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">あなたも先生に！</text><text x="0" y="90" text-anchor="middle" font-size="44" font-weight="900" fill="${T}">月100万円</text><rect x="-110" y="120" width="220" height="50" rx="12" fill="#e53935"/><text x="0" y="155" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">今日だけ！</text><g transform="translate(0,225) scale(${1-.12*Math.sin(Math.PI*seg(lt,L[4],L[4]+.2))})"><rect x="-110" y="-32" width="220" height="64" rx="32" fill="${on(4)?'#7a4a9a':G}"/><text x="0" y="10" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">${on(4)?'申し込み完了':'申し込む'}</text></g>`;
