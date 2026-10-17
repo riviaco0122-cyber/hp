@@ -8,7 +8,8 @@
   管理不全空家等の勧告で住宅用地特例が外れる（国土交通省・総務省）、営業日数は年180日以内（住宅宿泊事業法）。
   宿の数字は記事「不動産投資として見る小さな宿・民泊」と同じ、創業メンバーが運営する下田の宿の実績（試運転3か月。docs/brand/experience.md の確認済みの節）。
 - 部品・書き出しは make_explainer.py / make_scam_ep1.py と共通。声は VOICEVOX（クレジットは最後の画面と説明欄）。
-使い方: python3 tools/video/make_strategy_ep1.py [出力.mp4] [--hq] [--preview 秒 ...]
+使い方: python3 tools/video/make_strategy_ep1.py [出力.mp4] [--hq] [--preview 秒 ...] [--no-check]
+書き出しの前に layout_check.py の自動点検が走り、問題があれば止まる。
 """
 import json, os, subprocess, sys, tempfile
 
@@ -171,7 +172,7 @@ function scene(i,t,lt){
       s+=pop(1620,720,at(0,.4,3.2),`<rect x="1450" y="680" width="340" height="80" rx="40" fill="${Y}"/><text x="1620" y="735" text-anchor="middle" font-size="42" font-weight="900" fill="${DG}">第3の資産</text>`);
       s+=fade(at(0,.4,3.2),`<rect x="1442" y="292" width="356" height="356" rx="36" fill="none" stroke="${Y}" stroke-width="10"/>`,0);}
     if(on(1)&&!on(2)){s+=pop(1190,480,at(1,.4),`${icon(1190,480,150,'home',T,'#fff',2)}<rect x="1100" y="250" width="180" height="110" rx="14" fill="#3a3e46"/><text x="1190" y="322" text-anchor="middle" font-size="44" font-weight="900" fill="#fff">重い</text>`)+stampX(1190,720,'ただの重荷',at(1,.3,1.3));}
-    if(on(2)&&!on(3)){s+=reasonGrid(2,.6);
+    if(on(2)&&!on(3)&&lt<E[2]+.3){s+=reasonGrid(2,.6);
       s+=pop(1000,660,at(2,.4,4.6),`<rect x="660" y="620" width="680" height="84" rx="42" fill="#fff"/><text x="1000" y="676" text-anchor="middle" font-size="40" font-weight="900" fill="${G}">始める前に、確かめること</text>`);
       s+=pop(1560,660,at(2,.4,6.4),`<rect x="1370" y="620" width="380" height="84" rx="42" fill="${Y}"/><text x="1560" y="676" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">最後に：入れ方</text>`);}
     const tp=seg(lt,E[2]+.3,E[2]+1.0)*(1-seg(lt,L[3]-.4,L[3]+.1));
@@ -220,7 +221,7 @@ function scene(i,t,lt){
     if(on(10)&&!on(11)){const g=eo(at(10,1.2,1.6));const pie=(cx,f,c,lab,val)=>{const a=2*Math.PI*f,R=130;return `<circle cx="${cx}" cy="510" r="${R}" fill="#eef3ee"/><path d="M${cx} 510 L${cx} ${510-R} A${R} ${R} 0 ${a>Math.PI?1:0} 1 ${cx+R*Math.sin(a)} ${510-R*Math.cos(a)}Z" fill="${c}"/><circle cx="${cx}" cy="510" r="${R*.55}" fill="#fff"/><text x="${cx}" y="525" text-anchor="middle" font-size="44" font-weight="900" fill="${c}">${val}</text><text x="${cx}" y="710" text-anchor="middle" font-size="34" font-weight="900" fill="${DG}">${lab}</text>`};
       s+=card(600,260,1200,520,`<text x="1200" y="330" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">売上に占める、家賃の割合</text>${pie(900,.3,'#8a8f98','1年目','約30%')}${g>0?pie(1500,.3-.18*g,G,'2年目の上半期','約'+Math.round(30-18*g)+'%'):''}<text x="1200" y="525" text-anchor="middle" font-size="70" font-weight="900" fill="${DG}">→</text>`,at(10,.4));}
     if(on(11)&&!on(12)){const M=[['8月',58],['9月',60],['10月',52],['11月',33],['12月',71],['1月',39],['2月',57],['3月',61]];
-      s+=card(580,250,1240,560,`<text x="1200" y="315" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">1年目の月別の稼働率</text><path d="M660 720 H1760" stroke="#9fb5a8" stroke-width="5"/><path d="M660 ${720-53*4.6} H1760" stroke="${T}" stroke-width="4" stroke-dasharray="14 10"/><text x="1760" y="${720-53*4.6-14}" text-anchor="end" font-size="28" font-weight="900" fill="${T}">平均 約53%</text>`+M.map(([m,v],k)=>{const g=eo(at(11,.6,.3+k*.12)),x=690+k*132,hi=v===71||v===33;return `<rect x="${x}" y="${720-v*4.6*g}" width="96" height="${v*4.6*g}" rx="6" fill="${hi?(v===71?G:RED):'#b9d3c2'}"/><text x="${x+48}" y="765" text-anchor="middle" font-size="28" font-weight="900" fill="${DG}">${m}</text>${hi&&g>.9?`<text x="${x+48}" y="${720-v*4.6-16}" text-anchor="middle" font-size="34" font-weight="900" fill="${v===71?G:RED}">${v}%</text>`:''}`}).join(''),at(11,.4));}
+      s+=card(580,250,1240,560,`<text x="1200" y="315" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">1年目の月別の稼働率</text><path d="M660 720 H1760" stroke="#9fb5a8" stroke-width="5"/><path d="M660 ${720-53*4.6} H1760" stroke="${T}" stroke-width="4" stroke-dasharray="14 10"/><rect x="1600" y="262" width="190" height="46" rx="23" fill="${T}"/><text x="1695" y="295" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">平均 約53%</text>`+M.map(([m,v],k)=>{const g=eo(at(11,.6,.3+k*.12)),x=690+k*132,hi=v===71||v===33;return `<rect x="${x}" y="${720-v*4.6*g}" width="96" height="${v*4.6*g}" rx="6" fill="${hi?(v===71?G:RED):'#b9d3c2'}"/><text x="${x+48}" y="765" text-anchor="middle" font-size="28" font-weight="900" fill="${DG}">${m}</text>${hi&&g>.9?`<text x="${x+48}" y="${720-v*4.6-16}" text-anchor="middle" font-size="34" font-weight="900" fill="${v===71?G:RED}">${v}%</text>`:''}`}).join(''),at(11,.4));}
     if(on(12)&&!on(13)){const g=eo(at(12,1,.8)),g2=eo(at(12,1,4.2));s+=card(640,250,1120,560,`<text x="1200" y="315" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">稼働率をくらべる</text><path d="M760 720 H1640" stroke="#9fb5a8" stroke-width="5"/>
       <rect x="840" y="${720-29.6*6*g}" width="240" height="${29.6*6*g}" rx="8" fill="#b9c3cc"/><text x="960" y="${720-29.6*6*g-20}" text-anchor="middle" font-size="42" font-weight="900" fill="#5a6068">29.6%</text><text x="960" y="765" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">全国の簡易宿所（2025年）</text>
       <rect x="1320" y="${720-53*6*g2}" width="240" height="${53*6*g2}" rx="8" fill="${G}"/>${g2>0?`<text x="1440" y="${720-53*6*g2-20}" text-anchor="middle" font-size="42" font-weight="900" fill="${G}">約53%</text>`:''}<text x="1440" y="765" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">私たちの宿（1年目）</text>`,at(12,.4));}
@@ -361,7 +362,12 @@ def main():
     prev = None
     if "--preview" in args:
         k = args.index("--preview"); prev = [float(x) for x in args[k + 1:]]; args = args[:k]
+    nocheck = "--no-check" in args; args = [x for x in args if x != "--no-check"]
     out = args[0] if args else os.path.join(tempfile.gettempdir(), "akiyado-strategy-ep1.mp4")
+    if prev is None and not nocheck:  # 書き出しの前に、文字の重なり・はみ出しを自動点検（layout_check.py）
+        r = subprocess.run([sys.executable, os.path.join(HERE, "layout_check.py"), "make_strategy_ep1", "--step", "0.5"])
+        if r.returncode:
+            sys.exit("自動点検で問題が見つかったため、書き出しを止めました（直してから再実行。点検を飛ばすなら --no-check）")
     sc, lines, voices, sfx = timeline(os.path.join(tempfile.gettempdir(), "akiyado_vv"))
     dur = sc[-1][1]
     html = build_html(sc, lines)
