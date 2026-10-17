@@ -106,11 +106,11 @@ const CAST={
   owner:{skin:'#f1c7a1',hair:'#3b302a',style:'side',top:'#2e6b47',top2:'#24573a',collar:'#f4efe6',pants:'#3b4a5a',shoes:'#2a2a30'},
   staff:{skin:'#f3cba8',hair:'#2b2422',style:'bob',top:'#c95a35',top2:'#a94a2a',inner:'#ffffff',jacket:true,pants:'#2f3b4a',shoes:'#2a2a30',tag:true},
   guest1:{skin:'#e3b089',hair:'#1f1f24',style:'short',top:'#3d6a8a',top2:'#30566f',inner:'#f4efe6',jacket:true,pants:'#c9bfae',shoes:'#5a4636'},
-  umai:{skin:'#efc29a',hair:'#141414',style:'side',top:'#5b2d7a',top2:'#45215e',inner:'#f5b8c8',jacket:true,pants:'#2a2238',shoes:'#c9a227',sunglasses:true,chain:true,tie:'#e8b950',mole:true},
-  // ウマイ先生の変装（成功者の「生徒さん」）。金のネックレスとほくろは同じ（伏線）
-  umaiA:{skin:'#efc29a',hair:'#8a5a3c',style:'bob',top:'#3d8a6a',top2:'#30705a',collar:'#fff',chain:true,mole:true},
-  umaiB:{skin:'#efc29a',hair:'#2b2422',style:'pony',top:'#d98a3d',top2:'#c0782f',collar:'#fff',chain:true,mole:true},
-  umaiC:{skin:'#efc29a',hair:'#6d6d6d',style:'short',glasses:true,top:'#3d6a8a',top2:'#30566f',collar:'#fff',chain:true,mole:true},
+  umai:{skin:'#d9a47a',hair:'#2b2422',style:'side',top:'#2f9aa0',top2:'#257f84',inner:'#ffffff',jacket:true,print:'#f7f1e1',pants:'#cdbb96',shoes:'#f2f2f2',sunglasses:true,shell:true,mole:true},  // 旅する自由人ふう（アロハに貝殻のネックレス）
+  // ウマイ先生の変装（成功者の「生徒さん」）。貝殻のネックレスとほくろは同じ（伏線）
+  umaiA:{skin:'#d9a47a',hair:'#8a5a3c',style:'bob',top:'#3d8a6a',top2:'#30705a',collar:'#fff',shell:true,mole:true},
+  umaiB:{skin:'#d9a47a',hair:'#2b2422',style:'pony',top:'#d98a3d',top2:'#c0782f',collar:'#fff',shell:true,mole:true},
+  umaiC:{skin:'#d9a47a',hair:'#6d6d6d',style:'short',glasses:true,top:'#3d6a8a',top2:'#30566f',collar:'#fff',shell:true,mole:true},
   guest2:{skin:'#f6d2b4',hair:'#7a4a2a',style:'pony',top:'#f0b35a',top2:'#d89a3e',collar:'#ffffff',pants:'#2f3b4a',shoes:'#c95a35'},
 };
 function ik(sx,sy,hx,hy,side,L1=98,L2=92){
@@ -172,7 +172,7 @@ function person(x,y,s,o){
     torso=`<path d="M-34 -460 L34 -460 L30 -258 L-30 -258Z" fill="${c.inner}"/>
     <path d="M-66 -456 Q-78 -452 -78 -430 L-66 -250 L-6 -250 L-6 -330 L-30 -462Z" fill="${c.top}"/><path d="M66 -456 Q78 -452 78 -430 L66 -250 L6 -250 L6 -330 L30 -462Z" fill="${c.top2}"/>
     <path d="M-30 -462 L-6 -330 L-22 -400 L-42 -430Z" fill="${c.top2}" opacity=".7"/><path d="M30 -462 L6 -330 L22 -400 L42 -430Z" fill="#000" opacity=".12"/>
-    <path d="M-20 -466 L0 -440 L20 -466 L12 -472 L0 -456 L-12 -472Z" fill="${c.inner}"/>`;
+    <path d="M-20 -466 L0 -440 L20 -466 L12 -472 L0 -456 L-12 -472Z" fill="${c.inner}"/>`+(c.print?[[-56,-410],[-44,-330],[-60,-280],[52,-420],[46,-340],[58,-286]].map(([fx,fy])=>`<g transform="translate(${fx},${fy})">${[0,72,144,216,288].map(r=>`<ellipse cx="0" cy="-6" rx="4" ry="7" fill="${c.print}" transform="rotate(${r})"/>`).join('')}<circle r="3" fill="#ffe08a"/></g>`).join(''):'');
   }else{
     torso=`<path d="M-62 -458 Q-76 -454 -76 -432 L-64 -250 L64 -250 L76 -432 Q76 -454 62 -458Z" fill="${c.top}"/><path d="M4 -458 L62 -458 Q76 -454 76 -432 L64 -250 L4 -250Z" fill="${c.top2}" opacity=".55"/>
     <path d="M-64 -270 h128 v20 h-128z" fill="#000" opacity=".1"/><path d="M-24 -464 L0 -436 L24 -464 L14 -472 L0 -452 L-14 -472Z" fill="${c.collar}"/>`;
@@ -182,7 +182,7 @@ function person(x,y,s,o){
   <ellipse cx="0" cy="${-bob+4}" rx="92" ry="14" fill="#000" opacity=".13"/>
   ${leg(-1,lg)}${leg(1,-lg)}
   <rect x="-62" y="-272" width="124" height="26" rx="8" fill="${c.pants}"/>
-  ${torso}${tag}${c.tie?`<path d="M-7 -452 h14 l5 70 l-12 16 l-12 -16z" fill="${c.tie}"/>`:''}${c.chain?`<path d="M-26 -462 q26 46 52 0" stroke="#e8b950" stroke-width="6" fill="none"/><circle cx="0" cy="-428" r="8" fill="#e8b950"/>`:''}
+  ${torso}${tag}${c.tie?`<path d="M-7 -452 h14 l5 70 l-12 16 l-12 -16z" fill="${c.tie}"/>`:''}${c.chain?`<path d="M-26 -462 q26 46 52 0" stroke="#e8b950" stroke-width="6" fill="none"/><circle cx="0" cy="-428" r="8" fill="#e8b950"/>`:''}${c.shell?`<path d="M-26 -462 q26 46 52 0" stroke="#7a5a3c" stroke-width="3.5" fill="none"/>${[-16,0,16].map((k,j)=>`<path transform="translate(${k},${-440+(j===1?12:2)}) scale(${j===1?1.25:.9})" d="M0 -8 q9 0 9 8 q0 5 -9 9 q-9 -4 -9 -9 q0 -8 9 -8z" fill="#fff4e6" stroke="#e0b48a" stroke-width="2"/>`).join('')}`:''}
   ${head(c,mood,t,o.seed||0,o.talk)}${o.disguise?`<g><path d="M-18 -488 q9 -9 18 -2 q9 -7 18 2 q-9 4 -18 0 q-9 4 -18 0z" fill="#2b2422"/><ellipse cx="0" cy="-578" rx="78" ry="14" fill="#3b3027"/><path d="M-46 -580 q0 -52 46 -52 q46 0 46 52z" fill="#5a4636"/><rect x="-46" y="-596" width="92" height="12" fill="#c95a35"/></g>`:''}
   ${arm(c,-1,Lh[0],Lh[1],Lh[2])}${arm(c,1,Rh[0],Rh[1],Rh[2])}${pose==='phone'?`<g transform="translate(${Rh[0]-4},${Rh[1]-6}) rotate(-8)"><rect x="-20" y="-34" width="40" height="68" rx="8" fill="#2b2b33"/><rect x="-16" y="-28" width="32" height="54" rx="4" fill="#9fd5f0"/></g>`:''}${pose==='shake'?`<path d="M${Rh[0]+6} ${Rh[1]-4} l26 -40" stroke="#1f3a52" stroke-width="7" stroke-linecap="round"/>`:''}</g>`;
 }
