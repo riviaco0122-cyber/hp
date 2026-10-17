@@ -26,9 +26,10 @@ VOICES = {
     "A": dict(name="生徒Aさん", style=79, speed=1.05, intonation=1.2, pitch=0.0),    # もち子さん（喜び）
     "B": dict(name="生徒Bさん", style=46, speed=1.05, intonation=1.2, pitch=0.0),    # 小夜/SAYO
     "C": dict(name="生徒Cさん", style=53, speed=1.0, intonation=1.1, pitch=0.0),     # 麒ヶ島宗麟
+    "S": dict(name="スゴイ先生", style=52, speed=1.05, intonation=1.4, pitch=0.0),    # 雀松朱司
 }
 MODELS = [4, 6, 12, 15]
-CREDIT = "VOICEVOX:青山龍星　VOICEVOX:玄野武宏　VOICEVOX:No.7　VOICEVOX:剣崎雌雄　VOICEVOX:もち子(cv 明日葉よもぎ)　VOICEVOX:小夜/SAYO　VOICEVOX:麒ヶ島宗麟"
+CREDIT = "VOICEVOX:青山龍星　VOICEVOX:玄野武宏　VOICEVOX:No.7　VOICEVOX:剣崎雌雄　VOICEVOX:もち子(cv 明日葉よもぎ)　VOICEVOX:小夜/SAYO　VOICEVOX:麒ヶ島宗麟　VOICEVOX:雀松朱司"
 
 # 場面: (背景のテーマ, 場面の最後に足す秒, セリフの並び)。セリフ: (話す人, 字幕, {say: 読み, pre: 前の間, sfx: [(秒, 種類)]})
 SCENES = [
@@ -133,14 +134,16 @@ SCENES = [
         ("M", "民泊の始め方は、アキヤドの記事でも紹介しています。ご相談も無料ですよ！", dict(sfx=[(0.4, "pop")])),
         ("U", "くっ…覚えてなさ〜い！", dict(sfx=[(0, "whoosh")])),
     ]),
-    # 10 最後のオチ：ウマイ先生にも「先生」がいた
+    # 10 最後のオチ：ウマイ先生も、じつは上の先生の「生徒さん」だった（お金は下から上へ）
     ("night", 4.6, [
         ("N", "その夜…。", {}),
         ("N", "ちなみに、ウマイ先生の「南の島」も、AIで作った背景画像だった。", dict(say="ちなみに、ウマイ先生の南の島も、エーアイで作った背景画像だった。", sfx=[(0.3, "boing")])),
-        ("N", "そこへ、1通の広告が…。", dict(say="そこへ、いっつうの広告が…。", sfx=[(0.6, "alert")])),
-        ("U", "ん？ 「あなたも先生になって、月1000万円」…？ 今日だけ！？", dict(say="ん？ あなたも先生になって、月一千万円…？ 今日だけ！？")),
-        ("U", "申し込みま〜す！", dict(sfx=[(0.1, "click"), (0.4, "bling")])),
-        ("N", "ウマイ先生もまた、だれかの「生徒さん」だったのだ…。", dict(pre=0.4, sfx=[(0, "boing")])),
+        ("N", "そこへ、1通のメッセージが…。", dict(say="そこへ、いっつうのメッセージが…。", sfx=[(0.6, "alert")])),
+        ("S", "ウマイくん、今月のサポート代、まだ？ 生徒さん、あと3人連れてきてね〜。", dict(say="ウマイくん、今月のサポート代、まだ？ 生徒さん、あと三人連れてきてね〜。")),
+        ("U", "ス、スゴイ先生…！ すみません、今月はまだ、ひとりも…！", dict(sfx=[(0, "boing")])),
+        ("N", "そう。ウマイ先生も、じつはスゴイ先生の生徒さん。生徒を集めては、上の先生にお金を払い続けていたのだ。", dict(sfx=[(0.3, "whoosh")])),
+        ("N", "お金は、下から上へ。得をするのは、いちばん上の人だけ…。", dict(sfx=[(0.4, "coin"), (1.6, "coin")])),
+        ("U", "僕だって、本当は月100万円なんて、稼いでないんだよ〜！", dict(say="僕だって、本当は月百万円なんて、稼いでないんだよ〜！")),
     ]),
 ]
 LEAD, GAP = 0.6, 0.35
@@ -189,7 +192,7 @@ def timeline(cache):
 
 SCENE_JS = r"""
 CAST.sugoi=Object.assign({},CAST.umai,{hair:'#e8d9a8',top:'#e8b950',top2:'#d09a2f',print:'#fff'});
-const VNAME={N:'ナレーション',Y:'ユウタ',M:'ミナ',U:'ウマイ先生',A:'生徒Aさん',B:'生徒Bさん',C:'生徒Cさん'},VCOL={N:'#5d6b64',Y:G,M:T,U:'#6b3fa0',A:'#3d8a6a',B:'#c0782f',C:'#3d6a8a'};
+const VNAME={N:'ナレーション',Y:'ユウタ',M:'ミナ',U:'ウマイ先生',A:'生徒Aさん',B:'生徒Bさん',C:'生徒Cさん',S:'スゴイ先生'},VCOL={N:'#5d6b64',Y:G,M:T,U:'#6b3fa0',A:'#3d8a6a',B:'#c0782f',C:'#3d6a8a',S:'#9a7a1a'};
 const talking=(s,t)=>LINES.some(l=>l[2]===s&&t>=l[0]&&t<l[1]);
 function subtitle(l,t){
   const lines=l[3],fs=42,h=lines.length*fs*1.45+40,w=1560,y=1048-h,o=clamp((t-l[0]+.05)/.2)*clamp((l[1]+.3-t)/.2);
@@ -375,17 +378,21 @@ function scene(i,t,lt){
     s+=`<rect x="140" y="140" width="660" height="470" fill="#ddd"/><clipPath id="bclip"><rect x="150" y="150" width="640" height="450"/></clipPath><g clip-path="url(#bclip)">${beach(150,150,640,450,t)}</g><rect x="465" y="610" width="10" height="${GROUND-610}" fill="#888"/><rect x="380" y="${GROUND-20}" width="180" height="16" rx="8" fill="#777"/>`;
     s+=pop(470,200,at(1,.4,.3),`<g transform="rotate(-6 470 200)"><rect x="250" y="150" width="440" height="96" rx="20" fill="#e53935"/><text x="470" y="216" text-anchor="middle" font-size="50" font-weight="900" fill="#fff">AIで作った背景</text></g>`);
     s+=`<rect x="860" y="${GROUND-150}" width="260" height="150" fill="#8a6a4c"/><rect x="850" y="${GROUND-165}" width="280" height="20" rx="6" fill="#a2805c"/><path d="M930 ${GROUND-165} l8 -70 h64 l8 70z" fill="#fff"/><rect x="936" y="${GROUND-222}" width="68" height="20" fill="#e53935"/>`;
-    s+=P(560,GROUND,.92,{c:'umai',who:'U',pose:on(4)&&!on(5)?'cheer':(on(2)?'phone':'stand'),mood:on(1)&&!on(2)?'worry':'happy'},t);
-    const ad=`<rect x="-172" y="-300" width="344" height="60" fill="#fff"/><text x="0" y="-260" text-anchor="middle" font-size="26" font-weight="900" fill="#2c3a33">SNS</text><rect x="-160" y="-230" width="320" height="520" rx="16" fill="#fff4d6" stroke="${Y}" stroke-width="4"/><text x="-140" y="-200" font-size="18" font-weight="700" fill="#999">広告</text>${face('sg0',0,-120,62,'sugoi','#c9a227','happy',t)}<text x="0" y="-22" text-anchor="middle" font-size="22" font-weight="900" fill="#4a5a52">スゴイ先生</text><text x="0" y="30" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">あなたも先生に！</text><text x="0" y="90" text-anchor="middle" font-size="44" font-weight="900" fill="${T}">月1000万円</text><rect x="-110" y="120" width="220" height="50" rx="12" fill="#e53935"/><text x="0" y="155" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">今日だけ！</text><g transform="translate(0,225) scale(${1-.12*Math.sin(Math.PI*seg(lt,L[4],L[4]+.2))})"><rect x="-110" y="-32" width="220" height="64" rx="32" fill="${on(4)?'#7a4a9a':G}"/><text x="0" y="10" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">${on(4)?'申し込み完了':'申し込む'}</text></g>`;
-    if(on(2))s+=phoneUI(1350,490,.95,ad,at(2,.4)*(1-at(5,.4)));
+    s+=P(560,GROUND,.92,{c:'umai',who:'U',pose:on(7)?'open':(on(4)?'think':(on(2)?'phone':'stand')),mood:(on(1)&&!on(2))||on(4)?'worry':'happy'},t);
+    const msg=`<rect x="-172" y="-300" width="344" height="610" fill="#dfe8ef"/><rect x="-172" y="-300" width="344" height="60" fill="#c9a227"/><text x="0" y="-260" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">スゴイ先生</text>${face('sgm',-130,-170,30,'sugoi','#c9a227','happy',t)}<rect x="-90" y="-210" width="250" height="150" rx="20" fill="#fff"/><text x="-74" y="-170" font-size="22" font-weight="900" fill="${DG}">今月のサポート代、</text><text x="-74" y="-136" font-size="22" font-weight="900" fill="${DG}">まだ？</text><text x="-74" y="-96" font-size="22" font-weight="900" fill="#e53935">あと3人、連れてきてね</text>${on(4)?`<rect x="-150" y="0" width="290" height="100" rx="20" fill="#9fe3a6"/><text x="-130" y="42" font-size="22" font-weight="900" fill="${DG}">すみません…</text><text x="-130" y="76" font-size="22" font-weight="900" fill="${DG}">今月はまだ…</text>`:''}`;
+    if(on(2))s+=phoneUI(1350,490,.95,msg,at(2,.4)*(1-at(5,.4)));
     if(on(5)){const q=at(5,.5);
-      s+=pop(1220,480,q,`${box(800,150,840,700,36)}<text x="840" y="205" font-size="30" font-weight="900" fill="#4a5a52">お金の流れ（イメージ）</text>
-      ${face('sg1',1220,330,80,'sugoi','#c9a227','happy',t)}<rect x="1100" y="420" width="240" height="44" rx="22" fill="#c9a227"/><text x="1220" y="452" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">スゴイ先生</text>
-      ${face('um1',1220,580,64,'umai','#7a4a9a','worry',t)}<rect x="1100" y="652" width="240" height="44" rx="22" fill="#7a4a9a"/><text x="1220" y="684" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">ウマイ先生</text>
-      ${['guest1','owner','guest2'].map((c2,k)=>face('gs'+k,1010+k*210,770,40,c2,G,'worry',t)).join('')}<text x="1220" y="838" text-anchor="middle" font-size="24" font-weight="900" fill="${DG}">生徒さんたち</text>
-      ${[0,1].map(k=>{const y0=[730,500][k],y1=[650,420][k],f=((lt*1.2+k*.5)%1);return `<path d="M1390 ${y0} L1390 ${y1}" stroke="#c9a227" stroke-width="6" stroke-dasharray="10 8"/>${coin(1390,y0-(y0-y1)*f,20)}`}).join('')}`);
-      s+=pop(1400,300,at(5,.4,1.2),`<circle cx="1420" cy="290" r="44" fill="${Y}"/><text x="1420" y="312" text-anchor="middle" font-size="60" font-weight="900" fill="${DG}">？</text>`);}
-    s+=fade(seg(lt,E[5]+.6,E[5]+1.3),`<rect width="1920" height="1080" fill="#1f2a24"/><text x="960" y="400" text-anchor="middle" font-size="60" font-weight="900" fill="#fff">最後まで見てくれて、ありがとう！</text><text x="960" y="510" text-anchor="middle" font-size="34" font-weight="700" fill="#dfe9e3">この物語はフィクションです。登場する人物・団体は架空のものです。</text>${[CREDIT.split('　').slice(0,4),CREDIT.split('　').slice(4)].map((r,k)=>`<text x="960" y="${620+k*42}" text-anchor="middle" font-size="28" font-weight="700" fill="#b8c9bf">${r.join('　')}</text>`).join('')}<rect x="780" y="715" width="360" height="100" rx="50" fill="#fff"/>${LOGO(810,730,1.1)}`,0);
+      const T1=[[1220,250,'sugoi','#c9a227','スゴイ先生']],T2=[[960,480,'guest1','#7a4a9a','ほかの先生'],[1220,480,'umai','#7a4a9a','ウマイ先生'],[1480,480,'guest2','#7a4a9a','ほかの先生']];
+      let d=`${box(780,130,880,740,36)}<text x="820" y="185" font-size="30" font-weight="900" fill="#4a5a52">お金の流れ（イメージ）</text>`;
+      T2.forEach(([x,y])=>{d+=`<path d="M${x} ${y-70} L1220 ${330}" stroke="#e8d9a8" stroke-width="6"/>`;[-90,0,90].forEach(dx=>{d+=`<path d="M${x+dx*.9} ${700} L${x} ${y+70}" stroke="#e8d9a8" stroke-width="5"/>`})});
+      T2.forEach(([x,y],k)=>{[-90,0,90].forEach((dx,j)=>{d+=face('lw'+k+j,x+dx*.9,730,34,['owner','guest1','guest2'][(k+j)%3],G,'worry',t)})});
+      // コインが下から上へ
+      if(on(6))T2.forEach(([x,y],k)=>{for(let c=0;c<2;c++){const f=((lt*.9+k*.33+c*.5)%1);d+=f<.5?coin(x+(-90+c*180)*.9*(1-f*2),700-(700-(y+70))*f*2,18):coin(x+(1220-x)*(f*2-1),y-70-(y-70-330)*(f*2-1),18)}});
+      T1.concat(T2).forEach(([x,y,c2,rc,nm],k)=>{const r=k===0?78:(k===2?66:52);d+=face('py'+k,x,y,r,c2,rc,k===2?'worry':'happy',t)+`<rect x="${x-90}" y="${y+r+6}" width="180" height="40" rx="20" fill="${rc}"/><text x="${x}" y="${y+r+35}" text-anchor="middle" font-size="24" font-weight="900" fill="#fff">${nm}</text>`});
+      d+=`<text x="1220" y="830" text-anchor="middle" font-size="26" font-weight="900" fill="${DG}">生徒さんたち</text>`;
+      s+=pop(1220,500,q,d);
+      if(on(6))s+=pop(1430,220,at(6,.4,2),`<circle cx="1430" cy="220" r="44" fill="${Y}"/><text x="1430" y="242" text-anchor="middle" font-size="60" font-weight="900" fill="${DG}">？</text>`);}
+    s+=fade(seg(lt,E[7]+.6,E[7]+1.3),`<rect width="1920" height="1080" fill="#1f2a24"/><text x="960" y="400" text-anchor="middle" font-size="60" font-weight="900" fill="#fff">最後まで見てくれて、ありがとう！</text><text x="960" y="510" text-anchor="middle" font-size="34" font-weight="700" fill="#dfe9e3">この物語はフィクションです。登場する人物・団体は架空のものです。</text>${[CREDIT.split('　').slice(0,4),CREDIT.split('　').slice(4)].map((r,k)=>`<text x="960" y="${620+k*42}" text-anchor="middle" font-size="28" font-weight="700" fill="#b8c9bf">${r.join('　')}</text>`).join('')}<rect x="780" y="715" width="360" height="100" rx="50" fill="#fff"/>${LOGO(810,730,1.1)}`,0);
   }
   return s;
 }
