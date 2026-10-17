@@ -15,7 +15,9 @@
 | 品質管理部 | `.claude/agents/qa.md` | 採点と差し戻し（評価者） |
 | ブランド学習係 | `.claude/agents/brand-learner.md` | `docs/brand/` の作成・更新 |
 
-定型業務は `.claude/skills/`: `/seo-daily`（日次サイクル・毎朝9時の定期実行の入口）、`/write-article`、`/seo-audit`、`/source-intake`、`/brand-learn`。
+YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwriter.md`・`yt-video-engineer.md`・`yt-reviewer.md`）は、YouTube「アキヤド 民泊school」の動画を作る（手順・決まりは `docs/youtube/manual.md`）。
+
+定型業務は `.claude/skills/`: `/seo-daily`（日次サイクル・毎朝9時の定期実行の入口）、`/youtube-weekly`（YouTube の週次サイクル・毎週水曜の定期実行の入口）、`/write-article`、`/seo-audit`、`/source-intake`、`/brand-learn`。
 
 ## 基本姿勢（人の方針 2026-10-12）
 
@@ -82,6 +84,8 @@
 | `python3 tools/estat.py lodging 静岡県` ／ `akiya 静岡県 下田市` ／ `search "キーワード"` | e-Stat（政府統計）から宿泊者数・外国人の割合（宿泊旅行統計調査）、空き家数・空き家率（住宅・土地統計調査）などを出典つきで取る（要 `ESTAT_APP_ID`。結果は `docs/sources/estat/`）。**記事の統計の数字はこれで取り、出典を付ける** |
 | `python3 tools/build_dashboard.py` | `docs/dashboard.md` の再生成 |
 | `bash tools/check_secrets.sh` | コミット前の鍵の混入チェック |
+| `python3 tools/youtube_analytics.py report / retention <動画ID>` | YouTube のチャンネルの数字（再生・平均再生率・視聴者維持・入口）。要 `YT_CLIENT_ID`・`YT_CLIENT_SECRET`・`YT_REFRESH_TOKEN`（analytics-setup.md 8章） |
+| `python3 tools/video/make_strategy_ep<N>.py [出力] [--hq]` ／ `make_reel.py` ／ `layout_check.py` | YouTube の解説動画・リール（縦長）の書き出しと自動点検（`docs/youtube/manual.md` 4章） |
 | `python3 tools/eyecatch.py [slug ...]` | 記事のアイキャッチ（記事トップ・OGP、1200×630）を `images/eyecatch/<slug>.jpg` に作る。デザインは記事ごとに `tools/eyecatch_designs.py` に書く（なければ標準デザイン）。作ったあと `python3 tools/build.py` で反映 |
 
 ## 書き方
