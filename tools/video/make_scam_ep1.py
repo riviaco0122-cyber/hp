@@ -22,6 +22,10 @@ VOICES = {
     "Y": dict(name="ユウタ", style=11, speed=1.08, intonation=1.15, pitch=0.0),       # 玄野武宏
     "M": dict(name="ミナ", style=29, speed=1.08, intonation=1.15, pitch=0.0),         # No.7
     "U": dict(name="ウマイ先生", style=21, speed=1.12, intonation=1.6, pitch=0.02),    # 剣崎雌雄
+    # 生徒さん（じつはウマイ先生の変装なので、同じ声の高さを変えただけ＝伏線）
+    "A": dict(name="生徒Aさん", style=21, speed=1.05, intonation=1.3, pitch=0.10),
+    "B": dict(name="生徒Bさん", style=21, speed=1.08, intonation=1.4, pitch=0.14),
+    "C": dict(name="生徒Cさん", style=21, speed=0.98, intonation=1.2, pitch=-0.04),
 }
 MODELS = [4, 6, 15]
 CREDIT = "VOICEVOX:青山龍星　VOICEVOX:玄野武宏　VOICEVOX:No.7　VOICEVOX:剣崎雌雄"
@@ -63,8 +67,11 @@ SCENES = [
         ("N", "そして、オンラインの個別相談の日。", dict(sfx=[(0.2, "alert")])),
         ("U", "こんばんは〜、ウマイです！ 今日は、南の島から失礼しま〜す。民泊なら、物件がなくてもOK。スマホだけで、すぐ始められて、いつでも好きなところに行けますよ〜！", dict(say="こんばんは〜、ウマイです！ 今日は、南の島から失礼しま〜す。民泊なら、物件がなくてもオーケー。スマホだけで、すぐ始められて、いつでも好きなところに行けますよ〜！", sfx=[(0, "bling")])),
         ("Y", "本当ですか！？", {}),
-        ("U", "ほら、うちの生徒さんたち。Aさん、Bさん、Cさん。みんな、月100万円稼いで、旅しながら暮らしてます！", dict(say="ほら、うちの生徒さんたち。エーさん、ビーさん、シーさん。みんな、月百万円稼いで、旅しながら暮らしてます！", sfx=[(1.2, "pop"), (1.9, "pop"), (2.6, "pop")])),
-        ("Y", "すごい…！", dict(say="すっごーい！")),
+        ("U", "うちの生徒さんたちのインタビュー動画、見てください！", dict(sfx=[(0.3, "chime")])),
+        ("A", "会社員だったけど、半年で月100万円！ 今は、南の島で暮らしてます♪", dict(say="会社員だったけど、半年で月百万円！ 今は、南の島で暮らしてます。", sfx=[(0, "pop")])),
+        ("B", "子育てしながら、スマホだけで月100万円。昨日は、温泉宿にいました〜！", dict(say="子育てしながら、スマホだけで月百万円。昨日は、温泉宿にいました〜！", sfx=[(0, "pop")])),
+        ("C", "定年後に始めて、月100万円。今は、海外を旅してます！", dict(say="定年後に始めて、月百万円。今は、海外を旅してます！", sfx=[(0, "pop")])),
+        ("Y", "すごい…！ 3人とも、旅しながら月100万円…！", dict(say="すっごーい！ さんにんとも、旅しながら月百万円…！")),
         ("U", "ただし、ノウハウを全部教えるサポートは、80万円。", dict(say="ただし、ノウハウを全部教えるサポートは、八十万円。", sfx=[(2.2, "boing")])),
         ("Y", "は、80万円！？ そんなお金、ないです…。", dict(say="は、八十万円！？ そんなお金、ないです…。")),
         ("U", "大丈夫！ カードローンで借りれば、すぐに返せますから。申し込みも、画面を共有してくれれば、私が手伝いますよ。", {}),
@@ -109,7 +116,7 @@ SCENES = [
     ("hall", 1.4, [
         ("N", "さあ、最初の問題。生徒のAさん、Bさん、Cさん。3人の正体、わかったかな？", dict(say="さあ、最初の問題。生徒のエーさん、ビーさん、シーさん。三人の正体、わかったかな？")),
         ("M", "ヒントは、首元と、ほっぺた。", dict(pre=3.2, sfx=[(-3.2, "tick"), (-2.2, "tick"), (-1.2, "tick"), (0.2, "ding")])),
-        ("Y", "あれ…？ 3人とも、同じ貝殻のネックレスに、同じほくろ…？", dict(say="あれ…？ さんにんとも、同じ貝殻のネックレスに、同じほくろ…？")),
+        ("Y", "あれ…？ 3人とも、同じ貝殻のネックレスに、同じほくろ…。それに、インタビューの声も…？", dict(say="あれ…？ さんにんとも、同じ貝殻のネックレスに、同じほくろ…。それに、インタビューの声も…？")),
         ("M", "そう。実は…。", dict(sfx=[(0.6, "whoosh")])),
         ("N", "生徒さんは、全員、カツラをかぶったウマイ先生だったのだ！", dict(pre=0.2, sfx=[(0, "boing"), (0.3, "bling")])),
         ("U", "バ、バレちゃった〜！", {}),
@@ -181,7 +188,7 @@ def timeline(cache):
 
 SCENE_JS = r"""
 CAST.sugoi=Object.assign({},CAST.umai,{hair:'#e8d9a8',top:'#e8b950',top2:'#d09a2f',print:'#fff'});
-const VNAME={N:'ナレーション',Y:'ユウタ',M:'ミナ',U:'ウマイ先生'},VCOL={N:'#5d6b64',Y:G,M:T,U:'#6b3fa0'};
+const VNAME={N:'ナレーション',Y:'ユウタ',M:'ミナ',U:'ウマイ先生',A:'生徒Aさん',B:'生徒Bさん',C:'生徒Cさん'},VCOL={N:'#5d6b64',Y:G,M:T,U:'#6b3fa0',A:'#3d8a6a',B:'#c0782f',C:'#3d6a8a'};
 const talking=(s,t)=>LINES.some(l=>l[2]===s&&t>=l[0]&&t<l[1]);
 function subtitle(l,t){
   const lines=l[3],fs=42,h=lines.length*fs*1.45+40,w=1560,y=1048-h,o=clamp((t-l[0]+.05)/.2)*clamp((l[1]+.3-t)/.2);
@@ -213,6 +220,11 @@ function roomNight(t){ // 夜の部屋
 function beach(x,y,w,h,t){ // ウマイ先生の「南の島」（じつは背景画像）
   return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#8fd3f0"/><circle cx="${x+w*.78}" cy="${y+h*.2}" r="${h*.1}" fill="#fff3b0"/><rect x="${x}" y="${y+h*.5}" width="${w}" height="${h*.22}" fill="#3aa6c8"/><path d="M${x} ${y+h*.56} h${w}" stroke="#fff" stroke-width="3" opacity=".5"/><rect x="${x}" y="${y+h*.72}" width="${w}" height="${h*.28}" fill="#f0d8a0"/>
   <path d="M${x+w*.86} ${y+h} Q${x+w*.8} ${y+h*.6} ${x+w*.9} ${y+h*.25}" stroke="#8a5a3c" stroke-width="${w*.03}" fill="none"/>${[-60,-20,20,60,100].map(a=>`<ellipse cx="${x+w*.9}" cy="${y+h*.25}" rx="${w*.1}" ry="${w*.025}" fill="#3f9a5a" transform="rotate(${a} ${x+w*.9} ${y+h*.25}) translate(${w*.08},0)"/>`).join('')}`;
+}
+function place(k,x,y,w,h,t){ // 旅先の景色 0:南の島 1:温泉 2:夜景の街
+  if(k===0)return beach(x,y,w,h,t);
+  if(k===1)return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#cfe3f0"/><path d="M${x} ${y+h*.7} L${x+w*.35} ${y+h*.25} L${x+w*.6} ${y+h*.55} L${x+w*.8} ${y+h*.35} L${x+w} ${y+h*.7}z" fill="#8fb39a"/><rect x="${x}" y="${y+h*.7}" width="${w}" height="${h*.3}" fill="#7ab8d6"/>${[0,1,2].map(q=>`<path d="M${x+w*(.3+q*.19)} ${y+h*.68} q${-w*.06} ${-h*.11} 0 ${-h*.22} q${w*.06} ${-h*.11} 0 ${-h*.22}" stroke="#fff" stroke-width="${Math.max(3,w*.03)}" fill="none" opacity=".8"/>`).join('')}`;
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#26304a"/>${[0,1,2,3,4].map(q=>`<rect x="${x+w*(.06+q*.19)}" y="${y+h*(.35-(q%2)*.16)}" width="${w*.14}" height="${h}" fill="#3a4766"/>`).join('')}${[0,1,2,3,4,5,6,7].map(q=>`<rect x="${x+w*(.09+q*.107)}" y="${y+h*(.5+(q%3)*.11)}" width="${w*.04}" height="${w*.04}" fill="${Y}"/>`).join('')}`;
 }
 function laptop(x,y,s,inner){return `<g transform="translate(${x},${y}) scale(${s})"><rect x="-470" y="-300" width="940" height="600" rx="26" fill="#22252b"/><rect x="-446" y="-276" width="892" height="552" rx="10" fill="#e9eef5"/>${inner}<path d="M-560 300 h1120 l-50 40 h-1020z" fill="#c9d1d9"/></g>`}
 function callUI(t,umaiTalk,umaiMood,yuMood,extra=''){ // オンライン相談の画面
@@ -256,9 +268,7 @@ function scene(i,t,lt){
     s+=P(400,GROUND,.92,{c:'owner',who:'Y',pose:'phone',mood:on(4)&&lt>L[4]+3.2?'worry':(on(6)?'smile':'happy')},t);
     if(!on(3)){
       const th=(k,x,y)=>{const w=130,h=88;let g=`<clipPath id="yt${k}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8"/></clipPath><g clip-path="url(#yt${k})">`;
-        if(k===0)g+=beach(x,y,w,h,t);
-        if(k===1)g+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#cfe3f0"/><path d="M${x} ${y+h*.7} L${x+w*.35} ${y+h*.25} L${x+w*.6} ${y+h*.55} L${x+w*.8} ${y+h*.35} L${x+w} ${y+h*.7}z" fill="#8fb39a"/><rect x="${x}" y="${y+h*.7}" width="${w}" height="${h*.3}" fill="#7ab8d6"/>${[0,1,2].map(q=>`<path d="M${x+40+q*25} ${y+h*.68} q-8 -10 0 -20 q8 -10 0 -20" stroke="#fff" stroke-width="4" fill="none" opacity=".8"/>`).join('')}`;
-        if(k===2)g+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#26304a"/>${[0,1,2,3,4].map(q=>`<rect x="${x+8+q*25}" y="${y+h*.35-(q%2)*14}" width="18" height="${h}" fill="#3a4766"/>`).join('')}${[0,1,2,3,4,5,6,7].map(q=>`<rect x="${x+12+q*14}" y="${y+h*.5+(q%3)*10}" width="5" height="5" fill="${Y}"/>`).join('')}`;
+        g+=place(k,x,y,w,h,t);
         g+=`</g><circle cx="${x+w-26}" cy="${y+h-24}" r="20" fill="#fff"/>`+`<g transform="translate(${x+w-26},${y+h-24})">${face('ytf'+k,0,0,18,'umai','#2f9aa0','happy',t)}</g>`;
         return g};
       const items=[['今日は南の島から！','12万回'],['温泉で、のんびり','9.8万回'],['夜景の街で乾杯','15万回']];
@@ -276,14 +286,20 @@ function scene(i,t,lt){
   }
 
   if(i===3){
-    s+=P(260,GROUND,.86,{c:'owner',who:'Y',pose:on(9)?'shake':(on(6)?'think':'stand'),mood:on(6)?'worry':'happy'},t);
+    s+=P(260,GROUND,.86,{c:'owner',who:'Y',pose:on(12)?'shake':(on(9)?'think':'stand'),mood:on(9)?'worry':'happy'},t);
     let extra='';
-    if(on(3))extra+=`<g opacity="${win(3,5)}"><rect x="-430" y="-210" width="600" height="420" rx="12" fill="#1f2a24" opacity=".82"/><text x="-130" y="-170" text-anchor="middle" font-size="28" font-weight="900" fill="${Y}">生徒さんの声</text>${['umaiA','umaiB','umaiC'].map((c2,k)=>{const cx=-320+k*190,p=seg(lt,L[3]+1.2+k*.7,L[3]+1.6+k*.7);return p>0?`<g opacity="${p}" transform="translate(${cx},0) scale(${.8+.2*bk(p)}) translate(${-cx},0)"><rect x="${cx-88}" y="-145" width="176" height="340" rx="16" fill="#fff"/>${face('st'+k,cx,-60,62,c2,'#7a4a9a','happy',t)}<text x="${cx}" y="40" text-anchor="middle" font-size="24" font-weight="900" fill="${DG}">生徒${'ABC'[k]}さん</text><text x="${cx}" y="80" text-anchor="middle" font-size="20" font-weight="700" fill="#4a5a52">${['南の島から','温泉宿から','海外から'][k]}</text><text x="${cx}" y="130" text-anchor="middle" font-size="27" font-weight="900" fill="${T}">月100万円！</text></g>`:''}).join('')}</g>`;
-    if(on(5))extra+=pop(310,-120,at(5,.4,.35)*(1-seg(lt,L[7]-.1,L[7]+.3)),`<g transform="rotate(4 310 -120)"><rect x="180" y="-200" width="260" height="160" rx="14" fill="#fff" stroke="${T}" stroke-width="6"/><text x="310" y="-150" text-anchor="middle" font-size="26" font-weight="900" fill="${DG}">フルサポート</text><text x="310" y="-80" text-anchor="middle" font-size="56" font-weight="900" fill="${T}">80万円</text></g>`);
-    if(on(7))extra+=pop(310,-120,at(7,.4,.35)*(1-seg(lt,L[8]-.1,L[8]+.3)),`<rect x="180" y="-210" width="260" height="70" rx="35" fill="#6b3fa0"/><text x="310" y="-164" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">カードローン</text><rect x="180" y="-120" width="260" height="70" rx="35" fill="#2f3b4a"/><text x="310" y="-74" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">画面を共有</text>`);
-    if(on(8))extra+=pop(310,-120,at(8,.4,1.4),`<g transform="rotate(-8 310 -120)"><rect x="170" y="-180" width="280" height="110" rx="18" fill="#e53935"/><text x="310" y="-108" text-anchor="middle" font-size="54" font-weight="900" fill="#fff">今日だけ！</text></g>`);
-    s+=pop(1180,470,at(0,.5),laptop(1180,470,1.08,callUI(t,talking('U',t),'happy',on(6)?'worry':'happy',extra)));
+    // 生徒さんのインタビュー動画（ひとりずつ、通話画面いっぱいに）
+    [4,5,6].forEach((ln,k)=>{if(on(ln)&&!on(ln+1)){const c2=['umaiA','umaiB','umaiC'][k],p=at(ln,.35);
+      extra+=`<g opacity="${p}"><clipPath id="iv${k}"><rect x="-430" y="-210" width="600" height="420" rx="12"/></clipPath><g clip-path="url(#iv${k})">${place(k,-430,-210,600,420,t)}${person(-130,-40+525*170/88,170/88,{c:c2,mood:'happy',t,talk:talking('ABC'[k],t)})}</g>
+      <rect x="-418" y="-198" width="170" height="44" rx="8" fill="#e53935"/><text x="-333" y="-166" text-anchor="middle" font-size="24" font-weight="900" fill="#fff">インタビュー</text>
+      <rect x="-418" y="120" width="300" height="78" rx="12" fill="#fff" opacity=".95"/><text x="-400" y="152" font-size="24" font-weight="900" fill="${DG}">生徒${'ABC'[k]}さん（${['元・会社員','子育て中','定年後'][k]}）</text><text x="-400" y="186" font-size="26" font-weight="900" fill="${T}">月100万円！</text></g>`;}});
+    if(on(7))extra+=`<g opacity="${win(7,8)}"><rect x="-430" y="-210" width="600" height="420" rx="12" fill="#1f2a24" opacity=".85"/><text x="-130" y="-170" text-anchor="middle" font-size="28" font-weight="900" fill="${Y}">生徒さんの声</text>${['umaiA','umaiB','umaiC'].map((c2,k)=>{const cx=-320+k*190;return `<rect x="${cx-88}" y="-145" width="176" height="340" rx="16" fill="#fff"/>${face('st'+k,cx,-60,62,c2,'#7a4a9a','happy',t)}<text x="${cx}" y="40" text-anchor="middle" font-size="24" font-weight="900" fill="${DG}">生徒${'ABC'[k]}さん</text><text x="${cx}" y="80" text-anchor="middle" font-size="20" font-weight="700" fill="#4a5a52">${['南の島から','温泉宿から','海外から'][k]}</text><text x="${cx}" y="130" text-anchor="middle" font-size="27" font-weight="900" fill="${T}">月100万円！</text>`}).join('')}</g>`;
+    if(on(8))extra+=pop(310,-120,at(8,.4,.35)*(1-seg(lt,L[10]-.1,L[10]+.3)),`<g transform="rotate(4 310 -120)"><rect x="180" y="-200" width="260" height="160" rx="14" fill="#fff" stroke="${T}" stroke-width="6"/><text x="310" y="-150" text-anchor="middle" font-size="26" font-weight="900" fill="${DG}">フルサポート</text><text x="310" y="-80" text-anchor="middle" font-size="56" font-weight="900" fill="${T}">80万円</text></g>`);
+    if(on(10))extra+=pop(310,-120,at(10,.4,.35)*(1-seg(lt,L[11]-.1,L[11]+.3)),`<rect x="180" y="-210" width="260" height="70" rx="35" fill="#6b3fa0"/><text x="310" y="-164" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">カードローン</text><rect x="180" y="-120" width="260" height="70" rx="35" fill="#2f3b4a"/><text x="310" y="-74" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">画面を共有</text>`);
+    if(on(11))extra+=pop(310,-120,at(11,.4,1.4),`<g transform="rotate(-8 310 -120)"><rect x="170" y="-180" width="280" height="110" rx="18" fill="#e53935"/><text x="310" y="-108" text-anchor="middle" font-size="54" font-weight="900" fill="#fff">今日だけ！</text></g>`);
+    s+=pop(1180,470,at(0,.5),laptop(1180,470,1.08,callUI(t,talking('U',t),'happy',on(9)?'worry':'happy',extra)));
   }
+
   if(i===4){
     s+=fade(at(0,.5),`<text x="960" y="230" text-anchor="middle" font-size="64" font-weight="900" fill="${DG}">あなたなら、どうする？</text>`,0);
     [['A','その場で契約する',T],['B','「考えます」と言って、いったん切る',G]].forEach(([k2,w,c],k)=>{const x=560+k*800,p=at(1,.5,[0.1,2.6][k]),hit=on(2)&&k===0;
