@@ -33,7 +33,7 @@ NOTE = "※ 情報提供を目的とした動画で、特定の投資を勧め�
 SCENES = [
     # 0 つかみ：結論 → 今日の話 → 自己紹介
     ("dark", 0.8, [
-        ("A", "結論から言います。民泊は、株や預金とはちがう動きをする「第3の資産」になります。", dict(pre=2.9, call=(-2.75, "K", "アキヤド、みんぱくスクール！"), sfx=[(-2.9, "bling"), (-0.35, "whoosh"), (0.2, "pop"), (1.6, "pop"), (3.2, "bling")])),
+        ("A", "結論から言います。民泊は、株や預金とはちがう動きをする「第3の資産」になります。", dict(pre=3.4, call=(-3.0, "K", "アキヤド、みんぱくスクール！"), sfx=[(-3.9, "whoosh"), (-3.55, "pop"), (-2.9, "bling"), (-0.4, "whoosh"), (0.2, "pop"), (1.6, "pop"), (3.2, "bling")])),
         ("A", "ただし、入れ方をまちがえると、ただの重荷です。", dict(sfx=[(1.4, "boing")])),
         ("A", "今日は、民泊を資産に入れる5つの理由と、始める前に確かめること。そして最後に、失敗しない入れ方を1つだけお話しします。", dict(sfx=[(0.6, "pop"), (1.0, "pop"), (1.4, "pop"), (1.8, "pop"), (2.2, "pop"), (4.6, "pop"), (6.4, "chime")])),
         ("A", "アキヤドの民泊戦略家、アキです。自分たちで宿を運営しながら、空き家と民泊の情報を発信しています。専門的な話も、できるだけわかりやすくお話しします。", dict(pre=0.4, sfx=[(-0.3, "bling")])),
@@ -167,7 +167,7 @@ function scene(i,t,lt){
   const tag=(x,y,txt,p,c=Y,fc=DG)=>pop(x,y,p,`<rect x="${x-txt.length*17-24}" y="${y-30}" width="${txt.length*34+48}" height="60" rx="30" fill="${c}"/><text x="${x}" y="${y+12}" text-anchor="middle" font-size="34" font-weight="900" fill="${fc}">${txt}</text>`);
   const reasonGrid=(k0,base)=>{let g='';REASONS.forEach(([n,w,c],k)=>{const x=640+(k%3)*420,y=k<3?300:470;g+=pop(x+180,y,at(k0,.35,base+k*.4),`${box(x,y-62,360,124,30)}<circle cx="${x+66}" cy="${y}" r="42" fill="${c}"/><text x="${x+66}" y="${y+16}" text-anchor="middle" font-size="44" font-weight="900" fill="#fff">${n}</text><text x="${x+128}" y="${y+17}" font-size="46" font-weight="900" fill="${DG}">${w}</text>`)});return g};
   if(i===0){
-    s+=aki(on(1)&&!on(2)?'open':(on(3)?'wave':'present'));
+    if(lt>L[0]-.6)s+=aki(on(1)&&!on(2)?'open':(on(3)?'wave':'present'));
     if(!on(1)&&lt>L[0]-.5){[['預金','yen','#8a8f98'],['株','chart','#3d6a8a'],['民泊','home',T]].forEach(([w,ic,c],k)=>{const x=760+k*430,p=at(0,.4,.2+k*1.4);
       s+=pop(x,470,p,`${box(x-170,300,340,340,30)}${icon(x,430,78,ic,c,'#fff',1.1)}<text x="${x}" y="590" text-anchor="middle" font-size="52" font-weight="900" fill="${DG}">${w}</text>`)});
       s+=pop(1620,720,at(0,.4,3.2),`<rect x="1450" y="680" width="340" height="80" rx="40" fill="${Y}"/><text x="1620" y="735" text-anchor="middle" font-size="42" font-weight="900" fill="${DG}">第3の資産</text>`);
@@ -176,16 +176,15 @@ function scene(i,t,lt){
     if(on(2)&&!on(3)&&lt<E[2]+.3){s+=reasonGrid(2,.6);
       s+=pop(1000,660,at(2,.4,4.6),`<rect x="660" y="620" width="680" height="84" rx="42" fill="#fff"/><text x="1000" y="676" text-anchor="middle" font-size="40" font-weight="900" fill="${G}">始める前に、確かめること</text>`);
       s+=pop(1560,660,at(2,.4,6.4),`<rect x="1370" y="620" width="380" height="84" rx="42" fill="${Y}"/><text x="1560" y="676" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">最後に：入れ方</text>`);}
-    // オープニング（動画の頭の約3秒）：最初から「ロゴ＋アキヤド 民泊school」の完成した画面で始め、呼び込みの声のあと、はける
-    {const D=L[0]-.3;if(lt<D){
-      const out=seg(lt,D-.45,D);
-      let o=`<g opacity="${1-out}"><rect width="1920" height="1080" fill="${G}"/>`;
-      for(let k=0;k<12;k++){const x=((k*220+lt*260)%2600)-400;o+=`<path d="M${x} 1080 L${x+500} 0" stroke="#fff" stroke-width="40" opacity=".06"/>`}
-      o+=`<rect x="0" y="0" width="1920" height="22" fill="${T}"/><rect x="0" y="1058" width="1920" height="22" fill="${Y}"/>`;
-      const b=1+.04*Math.sin(Math.PI*seg(lt,.15,.6));
-      o+=`<g transform="translate(960,400) scale(${b}) translate(-960,-400)"><circle cx="960" cy="400" r="120" fill="#fff"/>${MARK(960,400,2.6)}</g>`;
-      o+=`<g transform="rotate(-3 960 640)"><rect x="500" y="575" width="920" height="130" rx="65" fill="#fff"/><text x="960" y="665" text-anchor="middle" font-size="74" font-weight="900" fill="${G}" letter-spacing="2">アキヤド <tspan fill="${T}">民泊school</tspan></text></g>`;
-      [[220,180],[1700,200],[160,560],[1760,600],[300,920],[1620,940]].forEach(([x,y],k)=>{o+=sparkle(x,y,1,lt,k)});
+    // オープニング（動画の頭の約3.5秒）：緑の幕が入る → ロゴ → 「アキヤド 民泊school」（呼び込みの声）→ はける
+    {const q=lt,D=L[0]-.3;if(q<D){
+      const out=seg(q,D-.45,D),wipe=eo(seg(q,0,.45));
+      let o=`<g opacity="${1-out}"><rect width="${1920*wipe}" height="1080" fill="${G}"/>`;
+      for(let k=0;k<12;k++){const x=((k*220+q*260)%2600)-400;o+=`<path d="M${x} 1080 L${x+500} 0" stroke="#fff" stroke-width="40" opacity="${.06*wipe}"/>`}
+      o+=`<rect x="0" y="0" width="${1920*eo(seg(q,.15,.6))}" height="22" fill="${T}"/><rect x="${1920*(1-eo(seg(q,.15,.6)))}" y="1058" width="1920" height="22" fill="${Y}"/>`;
+      o+=pop(960,400,seg(q,.35,.85),`<circle cx="960" cy="400" r="120" fill="#fff"/>${MARK(960,400,2.6)}`);
+      o+=pop(960,640,seg(q,.9,1.3),`<g transform="rotate(-3 960 640)"><rect x="500" y="575" width="920" height="130" rx="65" fill="#fff"/><text x="960" y="665" text-anchor="middle" font-size="74" font-weight="900" fill="${G}" letter-spacing="2">アキヤド <tspan fill="${T}">民泊school</tspan></text></g>`);
+      [[220,180],[1700,200],[160,560],[1760,600],[300,920],[1620,940]].forEach(([x,y],k)=>{o+=`<g opacity="${wipe}">${sparkle(x,y,1,lt,k)}</g>`});
       s+=o+`</g>`;}}
     if(on(3)){s+=pop(1150,430,at(3,.5),`${box(620,250,1060,360,36)}<rect x="660" y="290" width="380" height="64" rx="32" fill="${G}"/><text x="850" y="334" text-anchor="middle" font-size="32" font-weight="900" fill="#fff">アキヤドの民泊戦略家</text><text x="680" y="460" font-size="110" font-weight="900" fill="${DG}">アキ</text>`);
       [['宿を運営',G],['空き家と民泊を発信',T],['わかりやすく解説',Y]].forEach(([w,c],k)=>{s+=tag(1400,330+k*90,w,at(3,.4,2+k*1.2),c,k===2?DG:'#fff')});}
