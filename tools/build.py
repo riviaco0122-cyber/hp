@@ -4450,7 +4450,7 @@ MEDIA_COURSES = [
                    ("収益の考え方", "指標の読み方、収益の試算、投資としての見方、運営の事例。", ["inn-kpi-basics", "minpaku-break-even", "airdna-revenue-simulation", "minpaku-investment-yield", "case-rental-house-inn-first-year"])]),
     dict(key="challenges", en="Course 03", title="民泊の課題と、乗り越え方", lead="「民泊は大変」と言われる理由と、実際の乗り越え方。手続き、お金、運営、集客まで。",
          chapters=[("よく聞く課題を知る", "手続き・近隣・運営・季節・費用の5つの課題。", ["minpaku-hard-truth"]),
-                   ("制度と手続き", "民泊と旅館業の違い、開業までの流れ、消防。", ["minpaku-vs-ryokan-law", "minpaku-start-steps", "kani-shukusho-kyoka-guide", "minpaku-fire-safety"]),
+                   ("制度と手続き", "民泊と旅館業の違い、開業までの流れ、会社員の副業の確認、消防。", ["minpaku-vs-ryokan-law", "minpaku-start-steps", "kaishain-minpaku-fukugyo", "kani-shukusho-kyoka-guide", "minpaku-fire-safety"]),
                    ("お金と改修", "開業資金、補助金、改修の進め方、宿泊税。", ["inn-startup-funding", "small-inn-subsidies", "kominka-renovation-points", "remote-renovation-tips", "accommodation-tax"]),
                    ("運営の課題", "近隣との関係、設備、清掃、閑散期、遠方からの運営。", ["minpaku-neighbor-rules", "long-stay-guest-equipment", "cleaning-linen-operations", "minpaku-off-season", "minpaku-remote-operation"]),
                    ("集客と評価", "予約サイトの使い方、予約ページ、レビュー。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips"]),
