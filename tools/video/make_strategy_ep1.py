@@ -131,6 +131,8 @@ SCENES = [
     ]),
 ]
 LEAD, GAP = 0.5, 0.32
+# 読みまちがえやすい言葉は、音声を作る前にひらがなに置きかえる（字幕はそのまま）
+READ_FIX = [("知りたい方", "知りたいかた"), ("入れ方", "入れかた"), ("稼ぎ方", "稼ぎかた"), ("使い方", "使いかた"), ("始め方", "始めかた")]
 
 SCENE_JS = r"""
 CAST.aki={skin:'#f1c7a1',hair:'#2b2422',style:'short',top:'#23395b',top2:'#1a2c47',inner:'#ffffff',jacket:true,pants:'#2a3140',shoes:'#3a2a20',glasses:true,tie:'#c95a35'};
@@ -349,7 +351,10 @@ def timeline(cache):
         for k, (spk, disp, opt) in enumerate(ls):
             v = VOICES[spk]
             t += opt.get("pre", 0)
-            f, d = tts(opt.get("say", disp), v["style"], MODELS, cache, v["speed"], v["pitch"], v["intonation"])
+            say = opt.get("say", disp)
+            for a_, b_ in READ_FIX:
+                say = say.replace(a_, b_)
+            f, d = tts(say, v["style"], MODELS, cache, v["speed"], v["pitch"], v["intonation"])
             voices.append((t, f)); lines.append([round(t, 3), round(t + d, 3), spk, wrap(disp), i, k])
             if "call" in opt:  # 字幕を出さない呼び込みの声（オープニングなど）
                 off, cs, ctext = opt["call"]; cv = VOICES[cs]
