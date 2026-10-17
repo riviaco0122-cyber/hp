@@ -822,7 +822,7 @@ ARTICLES_AUTO = [
         sources=[
             '住宅宿泊事業法（平成29年法律第65号）第2条第3項（e-Gov 法令検索、2026年10月確認） https://laws.e-gov.go.jp/law/429AC0000000065',
             'RIVIA&CO.「下田の賃貸一軒家を宿に｜約14か月で家具・家電の投資をほぼ回収」（2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html',
-            'RIVIA&CO.「ほぼ満室なのに赤字｜価格設定の失敗から、単価1.9倍で立て直した民泊の事例」（取材したオーナー本人の申告、2026年） https://rivia-co.com/media/case-owner-pricing-mistake.html',
+            'RIVIA&CO.「民泊の価格設定で失敗した事例｜ほぼ満室でも赤字から、単価1.9倍で立て直すまで」（取材したオーナー本人の申告、2026年） https://rivia-co.com/media/case-owner-pricing-mistake.html',
             'RIVIA&CO.「宿の稼働率・客室単価の基本」（2026年） https://rivia-co.com/media/inn-kpi-basics.html',
             '創業メンバーによる下田での開業記録（2025年11月執筆）',
         ],
