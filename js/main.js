@@ -796,3 +796,33 @@
   targets.forEach(function (t) { io.observe(t); });
 })();
 
+
+// スマホのプラン比較：3本の帯の右側の斜めの線を、帯の高さにかかわらず1本のまっすぐな線につなげる
+(function () {
+  'use strict';
+  var pds = document.querySelectorAll('.pd');
+  if (!pds.length) return;
+  var mq = window.matchMedia('(max-width: 899px)');
+  var TOP = 0.7; // 一番上の帯の上端の幅（帯の列幅に対する割合）。下端で 100% になる
+  function shape() {
+    pds.forEach(function (pd) {
+      var segs = Array.prototype.slice.call(pd.querySelectorAll('.pd__seg'));
+      if (!mq.matches) { segs.forEach(function (s) { s.style.clipPath = ''; }); return; }
+      var top = segs[0].getBoundingClientRect().top;
+      var h = segs[segs.length - 1].getBoundingClientRect().bottom - top;
+      if (h <= 0) return;
+      segs.forEach(function (s) {
+        var r = s.getBoundingClientRect();
+        var ft = TOP + (1 - TOP) * (r.top - top) / h;
+        var fb = TOP + (1 - TOP) * (r.bottom - top) / h;
+        s.style.clipPath = 'polygon(0 0, ' + (ft * 100).toFixed(2) + '% 0, ' + (fb * 100).toFixed(2) + '% 100%, 0 100%)';
+      });
+    });
+  }
+  var t;
+  function later() { clearTimeout(t); t = setTimeout(shape, 100); }
+  shape();
+  window.addEventListener('load', shape);
+  window.addEventListener('resize', later);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(shape);
+})();

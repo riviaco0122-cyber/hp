@@ -3615,6 +3615,48 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .is-corp .issue__bridge span::after { border-color: var(--c-shu); border-width: 2px 2px 0 0; }
 @keyframes dash-flow { to { background-position: 16px 0; } }
 
+/* お悩みカード（2026-10-17）：左は「見出し→お客様の声（吹き出し）」を上下いっぱいに置いて余白の偏りをなくす。
+   大きな番号の透かし、打ち手が順に現れる、マーカーが引かれる、変わることにチェック */
+.is-corp .issue__problem { position: relative; display: flex; flex-direction: column; align-self: stretch; padding: 8px 0; }
+.is-corp .issue__head { gap: 16px; margin-bottom: 18px; }
+.is-corp .issue__mark { font-family: var(--font-en); font-size: 76px; font-weight: 300; line-height: .8; letter-spacing: 0.02em; color: transparent; -webkit-text-stroke: 1px var(--c-shu); }
+.is-corp .issue__meta { flex-direction: column; align-items: flex-start; gap: 4px; }
+.is-corp .issue__num { font-size: 13px; letter-spacing: 0.24em; }
+.is-corp .issue__label { padding-left: 0; border-left: 0; }
+.is-corp .issue__n { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.is-corp .issue__title { font-size: 24px; line-height: 1.55; }
+.is-corp .issue__scene { margin-top: auto; padding-top: 28px; }
+.is-corp .issue__voice { position: relative; margin-top: 4px; padding: 20px 22px 18px 52px; border: 0; border-radius: 14px; background: var(--c-kinari); font-size: 14px; line-height: 1.9; color: var(--c-text); }
+.is-corp .issue__voice::before { content: "\201C"; position: absolute; left: 16px; top: 6px; font-family: var(--font-en); font-size: 54px; line-height: 1; color: var(--c-shu); }
+.is-corp .issue__voice::after { content: ""; position: absolute; left: 30px; top: -9px; border: 0 solid transparent; border-width: 0 9px 10px; border-bottom-color: var(--c-kinari); }
+.is-corp .issue__answer { position: relative; }
+.is-corp .issue__sublabel--accent { font-size: 13px; color: var(--c-forest); letter-spacing: 0.18em; }
+.is-corp .issue__kpi li { display: inline-flex; align-items: center; gap: 6px; border-color: rgba(26, 71, 42, 0.28); color: var(--c-forest); }
+.is-corp .issue__kpi li::before { content: ""; width: 9px; height: 5px; margin-top: -3px; border: solid var(--c-shu); border-width: 0 0 2px 2px; transform: rotate(-45deg); }
+.is-corp .issue strong.hl { background: linear-gradient(transparent 60%, rgba(217, 80, 43, 0.22) 60%) no-repeat 0 0 / 100% 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .is-corp .issue__voice, .js .is-corp .issue__steps li, .js .is-corp .issue__kpi li { opacity: 0; transform: translateY(12px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+  .js .is-corp .issue.is-in .issue__voice, .js .is-corp .issue.is-in .issue__steps li, .js .is-corp .issue.is-in .issue__kpi li { opacity: 1; transform: none; }
+  .js .is-corp .issue.is-in .issue__voice { transition-delay: .25s; }
+  .js .is-corp .issue.is-in .issue__steps li:nth-child(1) { transition-delay: .55s; }
+  .js .is-corp .issue.is-in .issue__steps li:nth-child(2) { transition-delay: .8s; }
+  .js .is-corp .issue.is-in .issue__steps li:nth-child(3) { transition-delay: 1.05s; }
+  .js .is-corp .issue.is-in .issue__kpi li { transition-delay: 1.2s; }
+  .js .is-corp .issue.is-in .issue__kpi li:nth-child(2) { transition-delay: 1.3s; }
+  .js .is-corp .issue.is-in .issue__kpi li:nth-child(3) { transition-delay: 1.4s; }
+  .js .is-corp .issue.is-in .issue__kpi li:nth-child(n+4) { transition-delay: 1.5s; }
+  .js .is-corp .issue strong.hl { background-size: 0 100%; transition: background-size 1s var(--ease) 1.2s; }
+  .js .is-corp .issue.is-in strong.hl { background-size: 100% 100%; }
+}
+@media (max-width: 899px) {
+  .is-corp .issue__problem { display: contents; }
+  .is-corp .issue__mark { font-size: 56px; }
+  .is-corp .issue__title { font-size: 19px; }
+  .is-corp .issue__scene { padding-top: 16px; }
+  .is-corp .issue__voice { padding: 16px 16px 14px 42px; font-size: 13px; }
+  .is-corp .issue__voice::before { left: 12px; font-size: 44px; }
+}
+
 /* ご支援の流れ：線が朱で引かれ、点が順に灯る */
 .is-corp .timeline__step::before { background: var(--c-line-strong); }
 .is-corp .timeline__step > .timeline__num { color: var(--c-shu); font-weight: 500; }
@@ -4131,3 +4173,9 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .pd__plan--1 .pd__seg { min-height: 190px; } .pd__plan--2 .pd__seg { min-height: 220px; } .pd__plan--3 .pd__seg { min-height: 250px; }
 }
 @media (min-width: 900px) { .pd__seg .pd__badge { transform: translate(-50%, -50%); } }
+/* スマホのプラン比較：3本の帯は同じ幅にし、右側の斜めの線は js/main.js で1本につなげる */
+@media (max-width: 899px) {
+  .pd__plan--1, .pd__plan--2, .pd__plan--3 { --w: 50%; }
+  .pd__plan + .pd__plan .pd__seg { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+}
+@media (max-width: 899px) { .pd__value { font-size: clamp(17px, 5vw, 22px); } }

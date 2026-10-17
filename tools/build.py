@@ -156,7 +156,7 @@ GA_ID = "G-RZVE2XBPQ2"  # Google アナリティクス 4 の測定ID
 
 SERVICES = [
     ("operation", "空き家再生事業"),
-    ("management", "宿泊施設 開業・運営支援事業"),
+    ("management", "開業・運営支援事業"),
     ("partnership", "不動産事業者様との協業"),
     ("marketing", "WEB集客支援事業"),
     ("recruit", "WEB採用支援事業"),
@@ -976,7 +976,7 @@ PLANS = {
                  ratings=[("なし", "good"), ("なし（一括で受取）", "low"), ("売却代金のみ", "low")], who=["将来使う予定がない", "管理や相続の手間をなくしたい"], rec=False),
         ],
         note="※ 金額・割合はイメージです。条件は物件ごとにご提案します。契約は更新を前提としています。",
-        advice="相続した空き家なら「アキヤドおまかせプラン」がおすすめです。<br>ご自身で運営に関わり、より大きな利益を目指すなら<a href=\"service-management.html\">宿泊施設 開業・運営支援事業</a>がおすすめです。",
+        advice="相続した空き家なら「アキヤドおまかせプラン」がおすすめです。<br>ご自身で運営に関わり、より大きな利益を目指すなら<a href=\"service-management.html\">開業・運営支援事業</a>がおすすめです。",
     ),
     "management": dict(
         title="開業・運営のプラン例",
@@ -1500,7 +1500,8 @@ def service_page(key, name):
         issues.append(f"""          <article class="issue reveal">
             <div class="issue__problem">
               <div class="issue__head">
-                <p class="issue__meta"><span class="issue__num">ISSUE {i:02d}</span><span class="issue__label">{lbl["label"]}</span></p>
+                <span class="issue__mark" aria-hidden="true">{i:02d}</span>
+                <p class="issue__meta"><span class="issue__num">ISSUE<span class="issue__n"> {i:02d}</span></span><span class="issue__label">{lbl["label"]}</span></p>
               </div>
               <h3 class="issue__title">{e(it["title"])}</h3>
               <div class="issue__scene">
@@ -2496,8 +2497,8 @@ def spec_md():
     w("### 共通のデザイン指定")
     w("")
     w("1. **ページ見出し:** サービス名、トップメッセージ（明朝体・大）、「こんな方へ」（トップのお悩み文と同じ）、ボタン2つ（「無料で相談する」「お悩みと解決策を見る」）。写真は使わない。")
-    w("2. **こんなお悩みはありませんか？:** 表面的な悩みではなく経営課題として整理する。**全サービス4件ずつ**。1件ごとに、左に「経営課題」（線画アイコン＋見出し）と「現場で起きていること」（お客様の声）、右に「RIVIAの打ち手」「改善する経営指標」（タグ）「この課題について相談する」リンク（ご相談カテゴリを自動選択してお問い合わせへ）を置き、矢印でつなぐ。")
-    w("    * 個人のお客様も対象のサービス（空き家再生事業・宿泊施設 開業・運営支援事業）は「経営課題」ではなく「お悩み」、「現場で起きていること」は「よくあるお声」、「改善する経営指標」は「変わること」と表記し、暮らしの言葉で書く。")
+    w("2. **こんなお悩みはありませんか？:** 表面的な悩みではなく経営課題として整理する。**全サービス4件ずつ**。1件ごとに、左に「経営課題」（線画アイコン＋見出し）と「現場で起きていること」（お客様の声）、右に「RIVIAの打ち手」「改善する経営指標」（タグ）「この課題について相談する」リンク（ご相談カテゴリを自動選択してお問い合わせへ）を置き、矢印でつなぐ。見た目（2026-10-17）: 左上に朱の線で描いた大きな番号（01〜04）、お客様の声は生成りの吹き出し（朱の引用符）で、左の列を右の箱と同じ高さに上下いっぱいに置く。画面に入ると、吹き出し→打ち手→変わること（朱のチェック付き）の順に現れ、強調語に朱のマーカーが引かれる（動きを減らす設定の端末では動かさない）。")
+    w("    * 個人のお客様も対象のサービス（空き家再生事業・開業・運営支援事業）は「経営課題」ではなく「お悩み」、「現場で起きていること」は「よくあるお声」、「改善する経営指標」は「変わること」と表記し、暮らしの言葉で書く。")
     w("3. **ご支援の流れ（一例）:** 「内容や期間は、お選びいただくプランや状況によって変わります。」と添えたうえで、4つのSTEPを1pxの線と丸でつないだタイムライン（PCは横、スマホは縦）。各STEPは名前・期間の目安・一行の説明だけを示す（具体的な打ち手はお悩みカード側で説明する）。")
     w("4. **運営実績（追加）:** トップと同じNODE Shimodaのカード（「運営施設の一例」と明示）。")
     w("5. **相談CTA:** 「ご相談はこちらから」ボタン（お問い合わせへ。ご相談カテゴリを自動選択）。宿泊系サービスはボタンの下に「観光地でなくても、収益物件になり得ます。お気軽にお問い合わせください。」")
@@ -4395,7 +4396,7 @@ def media_company_page():
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
               {"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"},
               {"@type": "ListItem", "position": 2, "name": "運営会社"}]}]
-    page("media/company.html", "運営会社｜アキヤド",
+    page("media/company.html", "アキヤドの運営会社｜合同会社RIVIA&CO.",
          "アキヤドを運営する合同会社RIVIA&CO.の会社概要です。静岡県下田市で一棟貸しの宿を運営し、空き家の買取・借り上げ、民泊の開業・運営支援を行っています。",
          body, current="media", jsonld=ld)
 
@@ -4450,7 +4451,7 @@ MEDIA_COURSES = [
                    ("収益の考え方", "指標の読み方、収益の試算、投資としての見方、運営の事例。", ["inn-kpi-basics", "minpaku-break-even", "airdna-revenue-simulation", "minpaku-investment-yield", "case-rental-house-inn-first-year"])]),
     dict(key="challenges", en="Course 03", title="民泊の課題と、乗り越え方", lead="「民泊は大変」と言われる理由と、実際の乗り越え方。手続き、お金、運営、集客まで。",
          chapters=[("よく聞く課題を知る", "手続き・近隣・運営・季節・費用の5つの課題。", ["minpaku-hard-truth"]),
-                   ("制度と手続き", "民泊と旅館業の違い、開業までの流れ、消防。", ["minpaku-vs-ryokan-law", "minpaku-start-steps", "kani-shukusho-kyoka-guide", "minpaku-fire-safety"]),
+                   ("制度と手続き", "民泊と旅館業の違い、開業までの流れ、会社員の副業の確認、消防。", ["minpaku-vs-ryokan-law", "minpaku-start-steps", "kaishain-minpaku-fukugyo", "kani-shukusho-kyoka-guide", "minpaku-fire-safety"]),
                    ("お金と改修", "開業資金、補助金、改修の進め方、宿泊税。", ["inn-startup-funding", "small-inn-subsidies", "kominka-renovation-points", "remote-renovation-tips", "accommodation-tax"]),
                    ("運営の課題", "近隣との関係、設備、清掃、閑散期、遠方からの運営。", ["minpaku-neighbor-rules", "long-stay-guest-equipment", "cleaning-linen-operations", "minpaku-off-season", "minpaku-remote-operation"]),
                    ("集客と評価", "予約サイトの使い方、予約ページ、レビュー。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips"]),
