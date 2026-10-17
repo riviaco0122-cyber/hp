@@ -50,8 +50,8 @@ SCENES = [
     ]),
     # 2 ウマイ先生の旅動画 → お試しマニュアル
     ("night", 0.9, [
-        ("N", "まずは、ウマイ先生のYouTubeをチェック。", dict(say="まずは、ウマイ先生のユーチューブをチェック。", sfx=[(0.2, "pop")])),
-        ("Y", "うわぁ…。今日は南の島、昨日は温泉、その前は夜景の街。毎日、旅してる！", dict(sfx=[(0.6, "pop"), (1.8, "pop"), (3.0, "pop")])),
+        ("N", "まずは、ウマイ先生のYouTubeをチェック。", dict(say="まずは、ウマイ先生のユーチューブをチェック。", sfx=[(0.6, "pop"), (1.4, "pop"), (2.2, "pop")])),
+        ("Y", "うわぁ…。今日は南の島、昨日は温泉、その前は夜景の街。毎日、旅してる！", {}),
         ("Y", "コメント欄も「月30万円いきました！」ばっかり…。僕も、こうなりたい！", dict(say="コメント欄も、月三十万円いきました、ばっかり…。僕も、こうなりたい！")),
         ("N", "そこで、おすすめされた「民泊スタートマニュアル」を、2,980円で買ってみた。", dict(say="そこで、おすすめされた、民泊スタートマニュアルを、二千九百八十円で買ってみた。", sfx=[(3.0, "coin")])),
         ("Y", "どれどれ…。「まずは、物件を探しましょう」…。えっ、それだけ！？", dict(sfx=[(3.4, "boing")])),
@@ -263,7 +263,7 @@ function scene(i,t,lt){
         return g};
       const items=[['今日は南の島から！','12万回'],['温泉で、のんびり','9.8万回'],['夜景の街で乾杯','15万回']];
       let ui=`<rect x="-172" y="-300" width="344" height="610" fill="#fff"/><rect x="-172" y="-300" width="344" height="60" fill="#e53935"/><text x="0" y="-260" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">ウマイの旅チャンネル</text>`;
-      items.forEach(([ti,vw],k)=>{const y=-225+k*112;ui+=fade(at(1,.3,[.6,1.8,3.0][k]),`${th(k,-160,y)}<text x="-20" y="${y+34}" font-size="21" font-weight="900" fill="${DG}">${ti}</text><text x="-20" y="${y+66}" font-size="19" font-weight="700" fill="#888">${vw} 再生</text>`,0)});
+      items.forEach(([ti,vw],k)=>{const y=-225+k*112;ui+=fade(at(0,.3,[.6,1.4,2.2][k]),`${th(k,-160,y)}<text x="-20" y="${y+34}" font-size="21" font-weight="900" fill="${DG}">${ti}</text><text x="-20" y="${y+66}" font-size="19" font-weight="700" fill="#888">${vw} 再生</text>`,0)});
       ui+=fade(at(2,.3),`<rect x="-160" y="118" width="320" height="2" fill="#e5e5e5"/><text x="-150" y="150" font-size="19" font-weight="900" fill="#888">コメント</text>${[['umaiC','月30万円いきました！'],['umaiA','先生のおかげです♪']].map(([c2,m2],k)=>`${face('ytc'+k,-135,190+k*64,22,c2,'#ccc','happy',t)}<text x="-102" y="${197+k*64}" font-size="21" font-weight="700" fill="${DG}">${m2}</text>`).join('')}`,0);
       s+=phoneUI(1180,500,1.0,ui,at(0,.4));
       if(on(2))s+=pop(1600,760,at(2,.4,2.4),`<g transform="rotate(-6 1600 760)"><rect x="1420" y="700" width="360" height="110" rx="55" fill="${Y}"/><text x="1600" y="775" text-anchor="middle" font-size="46" font-weight="900" fill="${DG}">あこがれる…！</text></g>`);
