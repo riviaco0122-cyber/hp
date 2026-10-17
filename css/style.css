@@ -1306,9 +1306,9 @@ button.is-sending { opacity: .6; pointer-events: none; }
 @media (max-width: 899px) {
   .issues {
     display: grid; grid-auto-flow: column; grid-auto-columns: 88%;
-    grid-template-rows: repeat(5, auto); column-gap: 14px; row-gap: 0;
+    grid-template-rows: repeat(4, auto); column-gap: 14px; row-gap: 0;
   }
-  .issue { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
+  .issue { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; }
   .issue__problem { display: contents; }
   .issue__answer { display: flex; flex-direction: column; }
 }
@@ -3604,7 +3604,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .is-corp .overview__text { border-left: 3px solid var(--c-shu); }
 
 /* お悩みカード（2026-10-17 作り直し）：お客様と RIVIA の「会話」として見せる。
-   上＝大きな番号＋見出し、左＝お客様の吹き出し、「…」（入力中）、右＝RIVIA の返事、その下に変わること。高さは中身なり */
+   上＝大きな番号＋見出し、お客様の吹き出し、RIVIA の返事、その下に変わること。高さは中身なり */
 .is-corp .issue { position: relative; display: block; padding: 44px 48px 40px; overflow: hidden; transition: translate .5s var(--ease), box-shadow .5s var(--ease); }
 @media (hover: hover) { .is-corp .issue:hover { translate: 0 -6px; box-shadow: var(--shadow-lg); } }
 .is-corp .issue__problem { display: block; }
@@ -3624,10 +3624,6 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .is-corp .issue__avatar--guest { background: var(--c-kinari); border: 1px solid rgba(26, 71, 42, 0.14); }
 .is-corp .issue__avatar--guest svg { width: 24px; height: 24px; fill: none; stroke: var(--c-forest); stroke-width: 1.4; stroke-linecap: round; }
 .is-corp .issue__voice { grid-column: 2; grid-row: 2; justify-self: start; margin: 0; padding: 16px 22px; border: 0; border-radius: 4px 20px 20px 20px; background: var(--c-kinari); font-size: 14.5px; line-height: 1.9; color: var(--c-text); }
-.is-corp .issue__bridge { display: flex; justify-content: flex-start; height: 40px; margin: 8px 0 4px 58px; }
-.is-corp .issue__bridge span { display: inline-flex; align-items: center; gap: 5px; width: auto; height: 34px; padding: 0 14px; border-radius: 17px; background: rgba(26, 71, 42, 0.08); }
-.is-corp .issue__bridge span::after { display: none; }
-.is-corp .issue__bridge i { width: 6px; height: 6px; border-radius: 50%; background: var(--c-forest); opacity: .35; }
 .is-corp .issue__avatar--rivia { background: var(--c-forest); color: #fff; font-family: var(--font-en); font-size: 22px; line-height: 1; }
 .is-corp .issue__reply { grid-column: 2; grid-row: 2; justify-self: start; padding: 18px 24px 16px; border-radius: 4px 20px 20px 20px; background: rgba(26, 71, 42, 0.07); }
 .is-corp .issue__sublabel--accent { font-size: 13px; color: var(--c-forest); font-weight: 600; letter-spacing: 0.18em; }
@@ -3640,43 +3636,34 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 
 /* PC：左＝番号と見出し（細い線で区切る）、右＝会話。吹き出しは右の列の幅いっぱいに */
 @media (min-width: 900px) {
-  .is-corp .issue { display: grid; grid-template-columns: 250px minmax(0, 1fr); grid-template-rows: auto auto auto; column-gap: 48px; }
-  .is-corp .issue__problem { grid-column: 1; grid-row: 1 / span 3; align-self: stretch; padding-right: 40px; border-right: 1px solid var(--c-line); }
+  .is-corp .issue { display: grid; grid-template-columns: 250px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 48px; }
+  .is-corp .issue__problem { grid-column: 1; grid-row: 1 / span 2; align-self: stretch; padding-right: 40px; border-right: 1px solid var(--c-line); }
   .is-corp .issue__head { flex-direction: column; align-items: flex-start; gap: 12px; }
   .is-corp .issue__mark { font-size: 104px; }
   .is-corp .issue__meta { flex-direction: row; align-items: center; gap: 10px; }
   .is-corp .issue__title { margin-top: 20px; font-size: 22px; line-height: 1.7; }
-  .is-corp .issue__scene, .is-corp .issue__bridge, .is-corp .issue__answer { grid-column: 2; }
+  .is-corp .issue__scene, .is-corp .issue__answer { grid-column: 2; }
   .is-corp .issue__scene { grid-row: 1; margin-top: 0; max-width: none; }
-  .is-corp .issue__bridge { grid-row: 2; }
-  .is-corp .issue__answer { grid-row: 3; max-width: none; }
+  .is-corp .issue__answer { grid-row: 2; max-width: none; }
   .is-corp .issue__voice, .is-corp .issue__reply { justify-self: stretch; }
 }
 
-/* 動き：お客様の吹き出し→「…」→RIVIA の返事→変わること。ポンと出る */
+/* 動き：お客様の吹き出し→RIVIA の返事→変わること。すぐポンと出る */
 @media (prefers-reduced-motion: no-preference) {
   .js .is-corp .issue__voice, .js .is-corp .issue__avatar--guest { opacity: 0; transform: translateY(12px) scale(.92); transform-origin: left top; }
   .js .is-corp .issue__reply, .js .is-corp .issue__avatar--rivia, .js .is-corp .issue__answer > .issue__sublabel { opacity: 0; transform: translateY(12px) scale(.92); transform-origin: left top; }
   .js .is-corp .issue__kpi li { opacity: 0; transform: translateY(8px); }
-  .js .is-corp .issue__bridge span { opacity: 0; }
   .js .is-corp .issue.is-in .issue__avatar--guest, .js .is-corp .issue.is-in .issue__voice { animation: chat-pop .5s var(--ease) .05s both; }
-  .js .is-corp .issue.is-in .issue__bridge span { animation: chat-typing .6s ease .35s both; }
-  .js .is-corp .issue.is-in .issue__bridge i { animation: chat-dot .5s ease-in-out .35s 1 both; }
-  .js .is-corp .issue.is-in .issue__bridge i:nth-child(2) { animation-delay: .43s; }
-  .js .is-corp .issue.is-in .issue__bridge i:nth-child(3) { animation-delay: .51s; }
-  .js .is-corp .issue.is-in .issue__avatar--rivia, .js .is-corp .issue.is-in .issue__reply, .js .is-corp .issue.is-in .issue__answer > .issue__sublabel { animation: chat-pop .5s var(--ease) .9s both; }
-  .js .is-corp .issue.is-in .issue__kpi li { animation: chat-rise .4s var(--ease) 1.2s both; }
-  .js .is-corp .issue.is-in .issue__kpi li:nth-child(2) { animation-delay: 1.28s; }
-  .js .is-corp .issue.is-in .issue__kpi li:nth-child(3) { animation-delay: 1.36s; }
-  .js .is-corp .issue.is-in .issue__kpi li:nth-child(n+4) { animation-delay: 1.44s; }
-  .js .is-corp .issue strong.hl { background-size: 0 100%; transition: background-size .8s var(--ease) 1.2s; }
+  .js .is-corp .issue.is-in .issue__avatar--rivia, .js .is-corp .issue.is-in .issue__reply, .js .is-corp .issue.is-in .issue__answer > .issue__sublabel { animation: chat-pop .5s var(--ease) .3s both; }
+  .js .is-corp .issue.is-in .issue__kpi li { animation: chat-rise .4s var(--ease) .6s both; }
+  .js .is-corp .issue.is-in .issue__kpi li:nth-child(2) { animation-delay: .68s; }
+  .js .is-corp .issue.is-in .issue__kpi li:nth-child(3) { animation-delay: .76s; }
+  .js .is-corp .issue.is-in .issue__kpi li:nth-child(n+4) { animation-delay: .84s; }
+  .js .is-corp .issue strong.hl { background-size: 0 100%; transition: background-size .8s var(--ease) .7s; }
   .js .is-corp .issue.is-in strong.hl { background-size: 100% 100%; }
 }
-@media (prefers-reduced-motion: reduce) { .is-corp .issue__bridge span { visibility: hidden; } }
 @keyframes chat-pop { 0% { opacity: 0; transform: translateY(12px) scale(.92); } 70% { opacity: 1; transform: translateY(-2px) scale(1.02); } 100% { opacity: 1; transform: none; } }
 @keyframes chat-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-@keyframes chat-typing { 0% { opacity: 0; } 15%, 80% { opacity: 1; } 100% { opacity: 0; } }
-@keyframes chat-dot { 0%, 100% { transform: none; opacity: .35; } 40% { transform: translateY(-4px); opacity: 1; } }
 
 /* スマホ（カルーセル）：段は subgrid でカード間をそろえる。アイコンは小さく */
 @media (max-width: 899px) {
@@ -3692,27 +3679,20 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .is-corp .issue__avatar--rivia { font-size: 14px; }
   .is-corp .issue__voice, .is-corp .issue__reply { grid-column: 1 / -1; justify-self: stretch; margin-top: 8px; }
   .is-corp .issue__voice { padding: 12px 16px; font-size: 13.5px; line-height: 1.85; }
-  .is-corp .issue__bridge { height: 30px; margin: 6px 0 2px 0; }
-  .is-corp .issue__bridge span { height: 26px; padding: 0 10px; }
   .is-corp .issue__reply { padding: 14px 16px 12px; }
   .is-corp .issue__kpi { grid-column: 1 / -1; justify-content: flex-start; margin-top: 12px; }
   .is-corp .issue__kpi ul { flex: 1 1 100%; gap: 6px; }
 }
 
 /* 余白をそろえる：ラベル→吹き出し 8px、声→打ち手 28px（スマホ 20px）、打ち手→変わること 14px。
-   「…」（入力中）は場所を取らず、RIVIA の返事が出る位置に重ねて出す */
+ */
 .is-corp .issue__scene .issue__sublabel, .is-corp .issue__answer > .issue__sublabel { margin-bottom: 8px; }
 .is-corp .issue__answer { margin-top: 28px; }
-.is-corp .issue__bridge { position: relative; z-index: 1; height: auto; margin: 0; pointer-events: none; align-self: start; }
 @media (min-width: 900px) {
-  .is-corp .issue__bridge { grid-row: 3; margin: 56px 0 0 58px; }
 }
 @media (max-width: 899px) {
   .is-corp .issue__answer { margin-top: 20px; }
-  .is-corp .issue__bridge { height: 0; margin: 0; }
-  .is-corp .issue__bridge span { position: absolute; left: 0; top: 56px; }
 }
-@media (prefers-reduced-motion: reduce) { .is-corp .issue__bridge { display: none; } }
 
 /* ご支援の流れ：線が朱で引かれ、点が順に灯る */
 .is-corp .timeline__step::before { background: var(--c-line-strong); }
@@ -3752,7 +3732,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 @media (prefers-reduced-motion: reduce) {
   .is-corp .page-hero--photo .page-hero__bg { animation: none; }
   .js .ttl-x .ln > span { transform: none; transition: none; }
-  .is-corp .issue.is-in .issue__bridge span, .is-corp .flow.is-in .flow__num { animation: none; }
+  .is-corp .flow.is-in .flow__num { animation: none; }
 }
 /* 事業紹介の左の面：文字を上下中央に置き、上に空きを作らない */
 .vrow__head { justify-content: center; min-height: 0; }
