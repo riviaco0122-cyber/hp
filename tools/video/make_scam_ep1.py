@@ -214,7 +214,7 @@ function callUI(t,umaiTalk,umaiMood,yuMood,extra=''){ // オンライン相談�
   <rect x="190" y="70" width="240" height="140" rx="10" fill="#cfe3d6"/>${face('cy',310,140,58,'owner',G,yuMood,t)}${extra}`;
 }
 function chatBubble(x,y,txt,p){return fade(p,`<circle cx="${x-130}" cy="${y}" r="22" fill="#7a4a9a"/><text x="${x-130}" y="${y+9}" text-anchor="middle" font-size="24" font-weight="900" fill="#fff">ウ</text><rect x="${x-100}" y="${y-30}" width="${txt.length*24+36}" height="60" rx="20" fill="#fff" stroke="#d6dbe2" stroke-width="2"/><text x="${x-82}" y="${y+9}" font-size="24" font-weight="700" fill="${DG}">${txt}</text>`,10)}
-function stamp(x,y,txt,p,c='#e53935',fs=96,rot=-10){return pop(x,y,p,`<g transform="rotate(${rot} ${x} ${y})"><rect x="${x-txt.length*fs*.5-40}" y="${y-fs*.8}" width="${txt.length*fs+80}" height="${fs*1.5}" rx="16" fill="none" stroke="${c}" stroke-width="12"/><text x="${x}" y="${y+fs*.35}" text-anchor="middle" font-size="${fs}" font-weight="900" fill="${c}">${txt}</text></g>`)}
+function stamp(x,y,txt,p,c='#e53935',fs=96,rot=-10){return pop(x,y,p,`<g transform="rotate(${rot} ${x} ${y})"><rect x="${x-txt.length*fs*.5-40}" y="${y-fs*.8}" width="${txt.length*fs+80}" height="${fs*1.5}" rx="16" fill="#fff" fill-opacity=".92" stroke="${c}" stroke-width="12"/><text x="${x}" y="${y+fs*.35}" text-anchor="middle" font-size="${fs}" font-weight="900" fill="${c}">${txt}</text></g>`)}
 function rewindFX(p){if(p<=0||p>=1)return '';const a=Math.sin(p*Math.PI);let s=`<rect width="1920" height="1080" fill="#0b1020" opacity="${.45*a}"/>`;
   for(let k=0;k<14;k++){const y=((k*83+p*2600)%1080);s+=`<rect x="0" y="${y}" width="1920" height="${6+k%3*4}" fill="#fff" opacity="${.18*a}"/>`}
   return s+`<g opacity="${a}"><path d="M860 470 l-80 50 l80 50z M960 470 l-80 50 l80 50z" fill="#fff"/><text x="1000" y="540" font-size="60" font-weight="900" fill="#fff">巻き戻し</text></g>`;}
@@ -224,7 +224,7 @@ function scene(i,t,lt){
   if(i===0){
     s+=`<rect x="760" y="${GROUND-40}" width="840" height="40" rx="8" fill="#6a5646"/>`;
     const bad=at(3,.3);
-    s+=laptop(1180,520,.8,callUI(t,talking('U',t),'happy','happy',`<rect x="-150" y="230" width="300" height="0"/>`)+`<g opacity="${1-bad}"><rect x="-120" y="150" width="240" height="70" rx="35" fill="${T}"/><text x="0" y="198" text-anchor="middle" font-size="32" font-weight="900" fill="#fff">契約する</text></g>`+(bad>0?`<g opacity="${bad}"><rect x="-446" y="-276" width="892" height="552" fill="#b71c1c" opacity=".55"/><path d="M-200 -276 L-120 -60 L-220 60 L-80 276 M120 -276 L60 -100 L180 40 L90 276" stroke="#fff" stroke-width="8" fill="none"/></g>`:''));
+    s+=laptop(1180,520,.8,callUI(t,talking('U',t),'happy','happy',`<rect x="-150" y="230" width="300" height="0"/>`)+`<g opacity="${1-bad}"><rect x="190" y="-130" width="240" height="70" rx="35" fill="${T}"/><text x="310" y="-82" text-anchor="middle" font-size="32" font-weight="900" fill="#fff">契約する</text></g>`+(bad>0?`<g opacity="${bad}"><rect x="-446" y="-276" width="892" height="552" fill="#b71c1c" opacity=".55"/><path d="M-200 -276 L-120 -60 L-220 60 L-80 276 M120 -276 L60 -100 L180 40 L90 276" stroke="#fff" stroke-width="8" fill="none"/></g>`:''));
     if(on(1)&&!on(2)){const fp=at(1,1.2,1.2);s+=`<path transform="translate(${1500-260*fp},${830-150*fp})" d="M0 0 L0 46 L12 34 L22 56 L32 51 L22 30 L38 30z" fill="#fff" stroke="${DG}" stroke-width="4" stroke-linejoin="round"/>`}
     s+=P(430,GROUND,.92,{c:'owner',who:'Y',pose:on(2)&&!on(3)?'cheer':(on(3)?'think':'stand'),mood:on(3)?'worry':'happy'},t);
     s+=pop(960,200,win(4,5),`<rect x="560" y="140" width="800" height="110" rx="55" fill="#1f1530" opacity=".85"/><text x="960" y="212" text-anchor="middle" font-size="48" font-weight="900" fill="${Y}">最後に、驚きの秘密が…？</text>`);
@@ -234,7 +234,7 @@ function scene(i,t,lt){
     s+=fade(seg(lt,.2,.6)*(1-seg(lt,5,5.5)),`<rect x="40" y="40" width="760" height="56" rx="28" fill="#000" opacity=".4"/><text x="70" y="78" font-size="26" font-weight="700" fill="#fff">※ この物語はフィクションです。人物・団体は架空です</text>`,0);
   }
   if(i===1){
-    s+=pop(960,300,win(0,1),`<rect x="760" y="240" width="400" height="110" rx="55" fill="#fff"/><text x="960" y="318" text-anchor="middle" font-size="60" font-weight="900" fill="${DG}">1週間前</text>`);
+    s+=pop(740,190,win(0,1),`<rect x="540" y="135" width="400" height="110" rx="55" fill="#fff"/><text x="740" y="213" text-anchor="middle" font-size="60" font-weight="900" fill="${DG}">1週間前</text>`);
     s+=P(420,GROUND,.92,{c:'owner',who:'Y',pose:on(1)?'phone':'stand',mood:on(5)||(on(3)&&!on(4))?'happy':'smile'},t);
     const chat=on(4);
     let ui;
@@ -247,7 +247,7 @@ function scene(i,t,lt){
   if(i===2){ // お試しマニュアル
     s+=P(400,GROUND,.92,{c:'owner',who:'Y',pose:'phone',mood:on(1)&&lt>L[1]+3.2?'worry':(on(3)?'smile':'happy')},t);
     s+=pop(1180,470,at(0,.5),`${box(900,200,560,600,20)}<rect x="900" y="200" width="560" height="130" rx="20" fill="${T}"/><text x="1180" y="262" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">民泊スタート</text><text x="1180" y="310" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">マニュアル</text>`+(on(1)?`<text x="1180" y="440" text-anchor="middle" font-size="34" font-weight="900" fill="${DG}">第1章</text><text x="1180" y="520" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">まずは、物件を</text><text x="1180" y="580" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">探しましょう。</text>`:`<text x="1180" y="560" text-anchor="middle" font-size="72" font-weight="900" fill="${T}">2,980円</text>`)+(on(1)?`<text x="1180" y="720" text-anchor="middle" font-size="28" font-weight="700" fill="#999">（以上）</text>`:''));
-    s+=stamp(1180,640,'うすっ！',at(1,.4,3.4),'#6b3fa0',70,-12);
+    s+=stamp(1560,150,'うすっ！',at(1,.4,3.4),'#6b3fa0',70,-12);
     if(on(3))s+=pop(1180,820,at(3,.4,.4),`<rect x="900" y="770" width="560" height="90" rx="45" fill="#7a4a9a"/><text x="1180" y="828" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">続きは個別相談で！</text>`);
   }
   if(i===9){ // あやしい言葉、いくつ見つけた？
@@ -255,7 +255,7 @@ function scene(i,t,lt){
     if(on(6))s+=pop(1760,200,at(6,.4),face('yf2',1760,200,80,'owner',G,'worry',t,talking('Y',t)));
     s+=fade(at(0,.5),`<text x="1060" y="230" text-anchor="middle" font-size="50" font-weight="900" fill="${DG}">ウマイ先生のあやしい言葉、いくつ見つけた？</text>`,0);
     const W=['スマホだけで月30万円','物件がなくてもOK','みんな稼いでます','借りれば、すぐに返せます','今日だけですよ'];
-    W.forEach((w,k)=>{const x=k<3?660+k*505:912+(k-3)*505,y=k<3?400:590;s+=pop(x,y,at(1+k,.4),`${box(x-245,y-70,490,140,26)}<circle cx="${x-200}" cy="${y}" r="34" fill="#e53935"/><text x="${x-200}" y="${y+13}" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">${k+1}</text><text x="${x-150}" y="${y+11}" font-size="${w.length>10?28:33}" font-weight="900" fill="${DG}">「${w}」</text>`)});
+    W.forEach((w,k)=>{const x=k<3?660+k*505:912+(k-3)*505,y=k<3?400:590;if(!on(1+k))s+=fade(at(0,.4,.3+k*.15),`<rect x="${x-245}" y="${y-70}" width="490" height="140" rx="26" fill="#fff" opacity=".45" stroke="#fff" stroke-width="4" stroke-dasharray="14 12"/><text x="${x}" y="${y+24}" text-anchor="middle" font-size="64" font-weight="900" fill="${G}" opacity=".7">？</text>`,0);s+=pop(x,y,at(1+k,.4),`${box(x-245,y-70,490,140,26)}<circle cx="${x-200}" cy="${y}" r="34" fill="#e53935"/><text x="${x-200}" y="${y+13}" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">${k+1}</text><text x="${x-150}" y="${y+11}" font-size="${w.length>10?28:33}" font-weight="900" fill="${DG}">「${w}」</text>`)});
     let n=0;for(let k=1;k<=5;k++)if(on(k))n=k;
     if(n)s+=pop(1060,800,at(6,.4),`<rect x="840" y="745" width="440" height="110" rx="55" fill="#e53935"/><text x="1060" y="820" text-anchor="middle" font-size="60" font-weight="900" fill="#fff">ぜんぶで ${n}つ！</text>`);
   }
@@ -263,8 +263,8 @@ function scene(i,t,lt){
     s+=P(260,GROUND,.86,{c:'owner',who:'Y',pose:on(9)?'shake':(on(6)?'think':'stand'),mood:on(6)?'worry':'happy'},t);
     let extra='';
     if(on(3))extra+=`<g opacity="${win(3,5)}">${['umaiA','umaiB','umaiC'].map((c2,k)=>{const cy=-180+k*92,p=seg(lt,L[3]+1.2+k*.7,L[3]+1.6+k*.7);return p>0?`<g opacity="${p}"><rect x="186" y="${cy-42}" width="244" height="84" rx="12" fill="#fff"/>${face('st'+k,232,cy,36,c2,'#7a4a9a','happy',t)}<text x="278" y="${cy-6}" font-size="20" font-weight="900" fill="${DG}">生徒${'ABC'[k]}さん</text><text x="278" y="${cy+24}" font-size="24" font-weight="900" fill="${T}">月30万円！</text></g>`:''}).join('')}</g>`;
-    if(on(5))extra+=pop(310,-120,win(5,7),`<g transform="rotate(4 310 -120)"><rect x="180" y="-200" width="260" height="160" rx="14" fill="#fff" stroke="${T}" stroke-width="6"/><text x="310" y="-150" text-anchor="middle" font-size="26" font-weight="900" fill="${DG}">フルサポート</text><text x="310" y="-80" text-anchor="middle" font-size="56" font-weight="900" fill="${T}">80万円</text></g>`);
-    if(on(7))extra+=pop(310,-120,win(7,8),`<rect x="180" y="-210" width="260" height="70" rx="35" fill="#6b3fa0"/><text x="310" y="-164" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">カードローン</text><rect x="180" y="-120" width="260" height="70" rx="35" fill="#2f3b4a"/><text x="310" y="-74" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">画面を共有</text>`);
+    if(on(5))extra+=pop(310,-120,at(5,.4,.35)*(1-seg(lt,L[7]-.1,L[7]+.3)),`<g transform="rotate(4 310 -120)"><rect x="180" y="-200" width="260" height="160" rx="14" fill="#fff" stroke="${T}" stroke-width="6"/><text x="310" y="-150" text-anchor="middle" font-size="26" font-weight="900" fill="${DG}">フルサポート</text><text x="310" y="-80" text-anchor="middle" font-size="56" font-weight="900" fill="${T}">80万円</text></g>`);
+    if(on(7))extra+=pop(310,-120,at(7,.4,.35)*(1-seg(lt,L[8]-.1,L[8]+.3)),`<rect x="180" y="-210" width="260" height="70" rx="35" fill="#6b3fa0"/><text x="310" y="-164" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">カードローン</text><rect x="180" y="-120" width="260" height="70" rx="35" fill="#2f3b4a"/><text x="310" y="-74" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">画面を共有</text>`);
     if(on(8))extra+=pop(310,-120,at(8,.4,1.4),`<g transform="rotate(-8 310 -120)"><rect x="170" y="-180" width="280" height="110" rx="18" fill="#e53935"/><text x="310" y="-108" text-anchor="middle" font-size="54" font-weight="900" fill="#fff">今日だけ！</text></g>`);
     s+=pop(1180,470,at(0,.5),laptop(1180,470,1.08,callUI(t,talking('U',t),'happy',on(6)?'worry':'happy',extra)));
   }
@@ -319,7 +319,7 @@ function scene(i,t,lt){
       if(on(1)&&!on(4)){const pu=.6+.4*Math.abs(Math.sin(lt*5));g+=`<circle cx="${x}" cy="${Y0+Rr*.86}" r="${Rr*.3}" fill="none" stroke="${Y}" stroke-width="8" opacity="${pu*at(1,.3,.2)}"/><circle cx="${x+Rr*.27}" cy="${Y0+Rr*.1}" r="${Rr*.14}" fill="none" stroke="${Y}" stroke-width="7" opacity="${pu*at(1,.3,.5)}"/>`}
       s+=pop(x,Y0,p,g);});
     const cd=lt-(L[1]-3.2);if(cd>0&&cd<3.2)s+=pop(1010,170,clamp((cd%1)*4),`<circle cx="1010" cy="170" r="66" fill="${Y}"/><text x="1010" y="198" text-anchor="middle" font-size="80" font-weight="900" fill="${DG}">${Math.max(1,3-Math.floor(cd))}</text>`);
-    if(!on(1))s+=fade(at(0,.4),`<text x="1010" y="200" text-anchor="middle" font-size="52" font-weight="900" fill="#fff">何か、気づきませんか？</text>`,0);
+    if(lt<L[1]-3.3)s+=fade(at(0,.4),`<text x="1010" y="200" text-anchor="middle" font-size="52" font-weight="900" fill="#fff">何か、気づきませんか？</text>`,0);
     if(on(4))s+=pop(1010,180,at(4,.4,.3),`<g transform="rotate(-4 1010 180)"><rect x="560" y="110" width="900" height="130" rx="30" fill="#e53935"/><text x="1010" y="200" text-anchor="middle" font-size="72" font-weight="900" fill="#fff">全員、ウマイ先生！</text></g>`);
     if(on(2)&&!on(4))s+=pop(1780,180,at(2,.4),face('yt',1780,180,80,'owner',G,'worry',t,talking('Y',t)));
     if(on(6))s+=pop(1780,180,at(6,.3),face('yt2',1780,180,80,'owner',G,'worry',t,talking('Y',t)));
@@ -333,7 +333,7 @@ function scene(i,t,lt){
   }
   if(i===11){
     s+=house(1000,GROUND,.95,1)+sparkle(800,330,1.3,lt,0)+sparkle(1220,300,1.1,lt,2);
-    s+=P(400,GROUND,.9,{c:'owner',who:'Y',pose:'cheer',mood:'happy'},t)+P(1560,GROUND,.86,{c:'staff',who:'M',pose:on(3)?'present':'wave',mood:'happy',flip:true},t);
+    s+=P(330,GROUND,.9,{c:'owner',who:'Y',pose:'cheer',mood:'happy'},t)+P(1620,GROUND,.86,{c:'staff',who:'M',pose:on(3)?'present':'wave',mood:'happy',flip:true},t);
     if(on(2)&&!on(3)){const rx=-200+2400*at(2,2.4);s+=speedLines(rx-500,700,1)+P(rx,GROUND+80,.8,{c:'umai',who:'U',pose:'walk',mood:'worry',disguise:true},t*2);}
     s+=pop(960,420,at(3,.5),`${box(500,250,920,330,36)}${LOGO(760,290,1.2)}<rect x="620" y="400" width="680" height="92" rx="46" fill="${T}"/><text x="960" y="460" text-anchor="middle" font-size="44" font-weight="900" fill="#fff">民泊の始め方・無料相談</text><text x="960" y="545" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">rivia-co.com/media.html</text>`);
     s+=fade(seg(lt,E[3]+.5,E[3]+1.2),`<rect width="1920" height="1080" fill="#1f2a24"/><text x="960" y="400" text-anchor="middle" font-size="60" font-weight="900" fill="#fff">最後まで見てくれて、ありがとう！</text><text x="960" y="510" text-anchor="middle" font-size="34" font-weight="700" fill="#dfe9e3">この物語はフィクションです。登場する人物・団体は架空のものです。</text><text x="960" y="650" text-anchor="middle" font-size="30" font-weight="700" fill="#b8c9bf">${CREDIT}</text><rect x="780" y="715" width="360" height="100" rx="50" fill="#fff"/>${LOGO(810,730,1.1)}`,0);
