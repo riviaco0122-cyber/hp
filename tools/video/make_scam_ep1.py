@@ -22,13 +22,13 @@ VOICES = {
     "Y": dict(name="ユウタ", style=11, speed=1.08, intonation=1.15, pitch=0.0),       # 玄野武宏
     "M": dict(name="ミナ", style=29, speed=1.08, intonation=1.15, pitch=0.0),         # No.7
     "U": dict(name="ウマイ先生", style=21, speed=1.12, intonation=1.6, pitch=0.02),    # 剣崎雌雄
-    # 生徒さん（じつはウマイ先生の変装なので、同じ声の高さを変えただけ＝伏線）
-    "A": dict(name="生徒Aさん", style=21, speed=1.05, intonation=1.3, pitch=0.10),
-    "B": dict(name="生徒Bさん", style=21, speed=1.08, intonation=1.4, pitch=0.14),
-    "C": dict(name="生徒Cさん", style=21, speed=0.98, intonation=1.2, pitch=-0.04),
+    # 生徒さん（じつはウマイ先生の変装。声は別の人に聞こえるように変えている）
+    "A": dict(name="生徒Aさん", style=79, speed=1.05, intonation=1.2, pitch=0.0),    # もち子さん（喜び）
+    "B": dict(name="生徒Bさん", style=46, speed=1.05, intonation=1.2, pitch=0.0),    # 小夜/SAYO
+    "C": dict(name="生徒Cさん", style=53, speed=1.0, intonation=1.1, pitch=0.0),     # 麒ヶ島宗麟
 }
-MODELS = [4, 6, 15]
-CREDIT = "VOICEVOX:青山龍星　VOICEVOX:玄野武宏　VOICEVOX:No.7　VOICEVOX:剣崎雌雄"
+MODELS = [4, 6, 12, 15]
+CREDIT = "VOICEVOX:青山龍星　VOICEVOX:玄野武宏　VOICEVOX:No.7　VOICEVOX:剣崎雌雄　VOICEVOX:もち子(cv 明日葉よもぎ)　VOICEVOX:小夜/SAYO　VOICEVOX:麒ヶ島宗麟"
 
 # 場面: (背景のテーマ, 場面の最後に足す秒, セリフの並び)。セリフ: (話す人, 字幕, {say: 読み, pre: 前の間, sfx: [(秒, 種類)]})
 SCENES = [
@@ -116,7 +116,7 @@ SCENES = [
     ("hall", 1.4, [
         ("N", "さあ、最初の問題。生徒のAさん、Bさん、Cさん。3人の正体、わかったかな？", dict(say="さあ、最初の問題。生徒のエーさん、ビーさん、シーさん。三人の正体、わかったかな？")),
         ("M", "ヒントは、首元と、ほっぺた。", dict(pre=3.2, sfx=[(-3.2, "tick"), (-2.2, "tick"), (-1.2, "tick"), (0.2, "ding")])),
-        ("Y", "あれ…？ 3人とも、同じ貝殻のネックレスに、同じほくろ…。それに、インタビューの声も…？", dict(say="あれ…？ さんにんとも、同じ貝殻のネックレスに、同じほくろ…。それに、インタビューの声も…？")),
+        ("Y", "あれ…？ 3人とも、同じ貝殻のネックレスに、同じほくろ…？", dict(say="あれ…？ さんにんとも、同じ貝殻のネックレスに、同じほくろ…？")),
         ("M", "そう。実は…。", dict(sfx=[(0.6, "whoosh")])),
         ("N", "生徒さんは、全員、カツラをかぶったウマイ先生だったのだ！", dict(pre=0.2, sfx=[(0, "boing"), (0.3, "bling")])),
         ("U", "バ、バレちゃった〜！", {}),
@@ -382,7 +382,7 @@ function scene(i,t,lt){
       ${['guest1','owner','guest2'].map((c2,k)=>face('gs'+k,1010+k*210,770,40,c2,G,'worry',t)).join('')}<text x="1220" y="838" text-anchor="middle" font-size="24" font-weight="900" fill="${DG}">生徒さんたち</text>
       ${[0,1].map(k=>{const y0=[730,500][k],y1=[650,420][k],f=((lt*1.2+k*.5)%1);return `<path d="M1390 ${y0} L1390 ${y1}" stroke="#c9a227" stroke-width="6" stroke-dasharray="10 8"/>${coin(1390,y0-(y0-y1)*f,20)}`}).join('')}`);
       s+=pop(1400,300,at(5,.4,1.2),`<circle cx="1420" cy="290" r="44" fill="${Y}"/><text x="1420" y="312" text-anchor="middle" font-size="60" font-weight="900" fill="${DG}">？</text>`);}
-    s+=fade(seg(lt,E[5]+.6,E[5]+1.3),`<rect width="1920" height="1080" fill="#1f2a24"/><text x="960" y="400" text-anchor="middle" font-size="60" font-weight="900" fill="#fff">最後まで見てくれて、ありがとう！</text><text x="960" y="510" text-anchor="middle" font-size="34" font-weight="700" fill="#dfe9e3">この物語はフィクションです。登場する人物・団体は架空のものです。</text><text x="960" y="650" text-anchor="middle" font-size="30" font-weight="700" fill="#b8c9bf">${CREDIT}</text><rect x="780" y="715" width="360" height="100" rx="50" fill="#fff"/>${LOGO(810,730,1.1)}`,0);
+    s+=fade(seg(lt,E[5]+.6,E[5]+1.3),`<rect width="1920" height="1080" fill="#1f2a24"/><text x="960" y="400" text-anchor="middle" font-size="60" font-weight="900" fill="#fff">最後まで見てくれて、ありがとう！</text><text x="960" y="510" text-anchor="middle" font-size="34" font-weight="700" fill="#dfe9e3">この物語はフィクションです。登場する人物・団体は架空のものです。</text>${[CREDIT.split('　').slice(0,4),CREDIT.split('　').slice(4)].map((r,k)=>`<text x="960" y="${620+k*42}" text-anchor="middle" font-size="28" font-weight="700" fill="#b8c9bf">${r.join('　')}</text>`).join('')}<rect x="780" y="715" width="360" height="100" rx="50" fill="#fff"/>${LOGO(810,730,1.1)}`,0);
   }
   return s;
 }
