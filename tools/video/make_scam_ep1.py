@@ -35,7 +35,7 @@ SCENES = [
         ("U", "はい、ご契約、おめでとうございま〜す！", dict(pre=0.5, sfx=[(-0.45, "click"), (0.1, "bling")])),
         ("Y", "やった！ これで僕も、民泊でお金持ちだ…！", {}),
         ("N", "このあとユウタは、とんでもないことになる。", dict(sfx=[(0.2, "boing")])),
-        ("N", "ところで、月30万円稼いだという、この3人の生徒さん。実は、とんでもない正体がある。", dict(say="ところで、月三十万円稼いだという、この三人の生徒さん。実は、とんでもない正体がある。", sfx=[(0.2, "whoosh")])),
+        ("N", "ところで、月100万円稼いだという、この3人の生徒さん。実は、とんでもない正体がある。", dict(say="ところで、月百万円稼いだという、この三人の生徒さん。実は、とんでもない正体がある。", sfx=[(0.2, "whoosh")])),
         ("N", "ヒントは、ずっと画面の中に。最後まで見て、見抜けるかな？", dict(sfx=[(0.2, "chime")])),
         ("N", "時間を少し、戻してみよう。", dict(sfx=[(0.6, "rewind")])),
     ]),
@@ -43,7 +43,7 @@ SCENES = [
     ("night", 0.9, [
         ("N", "1週間前。", dict(say="一週間前。")),
         ("Y", "はぁ…給料、上がらないなぁ。", {}),
-        ("Y", "ん？ 「旅しながら、民泊で月30万円」…？", dict(say="ん？ 旅しながら、民泊で月三十万円…？", sfx=[(0, "alert")])),
+        ("Y", "ん？ 「旅しながら、民泊で月100万円」…？", dict(say="ん？ 旅しながら、民泊で月百万円…？", sfx=[(0, "alert")])),
         ("Y", "スマホだけで、物件がなくてもOK！？ 無料なら、登録してみよう。", dict(say="スマホだけで、物件がなくてもオーケー！？ 無料なら、登録してみよう。", sfx=[(3.2, "click")])),
         ("N", "メッセージアプリに登録すると、次々にメッセージが届いた。", dict(sfx=[(0.4, "alert"), (1.6, "alert"), (2.8, "alert"), (4.0, "alert")])),
         ("Y", "個別相談も無料！？ でも、その前に…。", {}),
@@ -52,7 +52,7 @@ SCENES = [
     ("night", 0.9, [
         ("N", "まずは、ウマイ先生のYouTubeをチェック。", dict(say="まずは、ウマイ先生のユーチューブをチェック。", sfx=[(0.6, "pop"), (1.4, "pop"), (2.2, "pop")])),
         ("Y", "うわぁ…。今日は南の島、昨日は温泉、その前は夜景の街。毎日、旅してる！", {}),
-        ("Y", "コメント欄も「月30万円いきました！」ばっかり…。僕も、こうなりたい！", dict(say="コメント欄も、月三十万円いきました、ばっかり…。僕も、こうなりたい！")),
+        ("Y", "コメント欄も「月100万円いきました！」ばっかり…。僕も、こうなりたい！", dict(say="コメント欄も、月百万円いきました、ばっかり…。僕も、こうなりたい！")),
         ("N", "そこで、おすすめされた「民泊スタートマニュアル」を、2,980円で買ってみた。", dict(say="そこで、おすすめされた、民泊スタートマニュアルを、二千九百八十円で買ってみた。", sfx=[(3.0, "coin")])),
         ("Y", "どれどれ…。「まずは、物件を探しましょう」…。えっ、それだけ！？", dict(sfx=[(3.4, "boing")])),
         ("N", "中身は、ネットで調べれば分かることばかり。", {}),
@@ -61,9 +61,9 @@ SCENES = [
     # 3 オンライン個別相談（生徒さんの顔＝伏線）
     ("night", 1.0, [
         ("N", "そして、オンラインの個別相談の日。", dict(sfx=[(0.2, "alert")])),
-        ("U", "こんばんは〜、ウマイです！ 今日は、南の島から失礼しま〜す。民泊なら、スマホひとつで、いつでも好きなところに行けますよ〜！", dict(sfx=[(0, "bling")])),
+        ("U", "こんばんは〜、ウマイです！ 今日は、南の島から失礼しま〜す。民泊なら、物件がなくてもOK。スマホだけで、すぐ始められて、いつでも好きなところに行けますよ〜！", dict(say="こんばんは〜、ウマイです！ 今日は、南の島から失礼しま〜す。民泊なら、物件がなくてもオーケー。スマホだけで、すぐ始められて、いつでも好きなところに行けますよ〜！", sfx=[(0, "bling")])),
         ("Y", "本当ですか！？", {}),
-        ("U", "ほら、うちの生徒さんたち。Aさん、Bさん、Cさん。みんな、月30万円、稼いでます！", dict(say="ほら、うちの生徒さんたち。エーさん、ビーさん、シーさん。みんな、月三十万円、稼いでます！", sfx=[(1.2, "pop"), (1.9, "pop"), (2.6, "pop")])),
+        ("U", "ほら、うちの生徒さんたち。Aさん、Bさん、Cさん。みんな、月100万円稼いで、旅しながら暮らしてます！", dict(say="ほら、うちの生徒さんたち。エーさん、ビーさん、シーさん。みんな、月百万円稼いで、旅しながら暮らしてます！", sfx=[(1.2, "pop"), (1.9, "pop"), (2.6, "pop")])),
         ("Y", "すごい…！", dict(say="すっごーい！")),
         ("U", "ただし、ノウハウを全部教えるサポートは、80万円。", dict(say="ただし、ノウハウを全部教えるサポートは、八十万円。", sfx=[(2.2, "boing")])),
         ("Y", "は、80万円！？ そんなお金、ないです…。", dict(say="は、八十万円！？ そんなお金、ないです…。")),
@@ -130,7 +130,7 @@ SCENES = [
         ("N", "その夜…。", {}),
         ("N", "ちなみに、ウマイ先生の「南の島」は、AIで作った背景画像だった。", dict(say="ちなみに、ウマイ先生の南の島は、エーアイで作った背景画像だった。", sfx=[(0.3, "boing")])),
         ("N", "そこへ、1通の広告が…。", dict(say="そこへ、いっつうの広告が…。", sfx=[(0.6, "alert")])),
-        ("U", "ん？ 「あなたも先生になって、月100万円」…？ 今日だけ！？", dict(say="ん？ あなたも先生になって、月百万円…？ 今日だけ！？")),
+        ("U", "ん？ 「あなたも先生になって、月1000万円」…？ 今日だけ！？", dict(say="ん？ あなたも先生になって、月一千万円…？ 今日だけ！？")),
         ("U", "申し込みま〜す！", dict(sfx=[(0.1, "click"), (0.4, "bling")])),
         ("N", "ウマイ先生もまた、だれかの「生徒さん」だったのだ…。", dict(pre=0.4, sfx=[(0, "boing")])),
     ]),
@@ -235,7 +235,7 @@ function scene(i,t,lt){
     s+=laptop(1180,520,.8,callUI(t,talking('U',t),'happy','happy')+`<g opacity="${1-bad}">${btn}</g>`+(bad>0?`<g opacity="${bad}"><rect x="-446" y="-276" width="892" height="552" fill="#b71c1c" opacity=".55"/><path d="M-200 -276 L-120 -60 L-220 60 L-80 276 M120 -276 L60 -100 L180 40 L90 276" stroke="#fff" stroke-width="8" fill="none"/></g>`:''));
     if(on(1)&&lt<ck+.9){const fp=eo(at(1,1.8,.3)),cs=1-.15*Math.sin(Math.PI*seg(lt,ck-.05,ck+.15));s+=`<path transform="translate(${1640-225*fp},${880-424*fp}) scale(${cs})" d="M0 0 L0 46 L12 34 L22 56 L32 51 L22 30 L38 30z" fill="#fff" stroke="${DG}" stroke-width="4" stroke-linejoin="round"/>`}
     s+=P(430,GROUND,.92,{c:'owner',who:'Y',pose:on(3)&&!on(4)?'cheer':(on(4)?'think':'stand'),mood:on(4)?'worry':'happy'},t);
-    if(on(5)){const q=win(5,7);s+=fade(q,`<rect width="1920" height="1080" fill="#120c1c" opacity=".72"/>`,0)+pop(960,500,q,`${box(330,170,1260,660,40)}<text x="960" y="265" text-anchor="middle" font-size="58" font-weight="900" fill="${DG}">この3人の正体は？</text>${['umaiA','umaiB','umaiC'].map((c2,k)=>{const x=560+k*400;return `${face('q'+k,x,470,120,c2,'#7a4a9a','happy',t)}<text x="${x}" y="660" text-anchor="middle" font-size="34" font-weight="900" fill="${DG}">生徒${'ABC'[k]}さん</text><text x="${x}" y="712" text-anchor="middle" font-size="34" font-weight="900" fill="${T}">月30万円！</text>`}).join('')}`)+pop(960,800,at(6,.4)*q,`<rect x="610" y="760" width="700" height="84" rx="42" fill="${Y}"/><text x="960" y="816" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">ヒントは、画面のどこかに…</text>`);}
+    if(on(5)){const q=win(5,7);s+=fade(q,`<rect width="1920" height="1080" fill="#120c1c" opacity=".72"/>`,0)+pop(960,500,q,`${box(330,170,1260,660,40)}<text x="960" y="265" text-anchor="middle" font-size="58" font-weight="900" fill="${DG}">この3人の正体は？</text>${['umaiA','umaiB','umaiC'].map((c2,k)=>{const x=560+k*400;return `${face('q'+k,x,470,120,c2,'#7a4a9a','happy',t)}<text x="${x}" y="660" text-anchor="middle" font-size="34" font-weight="900" fill="${DG}">生徒${'ABC'[k]}さん</text><text x="${x}" y="712" text-anchor="middle" font-size="34" font-weight="900" fill="${T}">月100万円！</text>`}).join('')}`)+pop(960,800,at(6,.4)*q,`<rect x="610" y="760" width="700" height="84" rx="42" fill="${Y}"/><text x="960" y="816" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">ヒントは、画面のどこかに…</text>`);}
     s+=rewindFX(seg(lt,L[7]+.5,E[7]+.4));
     const tp=seg(lt,E[7]+.4,E[7]+1.1);
     s+=pop(960,470,tp,`<rect width="1920" height="1080" fill="#000" opacity=".4"/><rect x="290" y="300" width="1340" height="330" rx="40" fill="#fff"/><rect x="760" y="262" width="400" height="76" rx="38" fill="${G}"/><text x="960" y="314" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">アキヤド劇場</text><text x="960" y="470" text-anchor="middle" font-size="92" font-weight="900" fill="${DG}">その民泊副業、</text><text x="960" y="590" text-anchor="middle" font-size="92" font-weight="900" fill="${T}">本当に「簡単」？</text>`);
@@ -247,9 +247,9 @@ function scene(i,t,lt){
     const chat=on(4);
     let ui;
     if(!chat){ui=`<rect x="-172" y="-300" width="344" height="60" fill="#fff"/><text x="0" y="-260" text-anchor="middle" font-size="26" font-weight="900" fill="#2c3a33">SNS</text>${[0,1].map(k=>`<rect x="-150" y="${-220+k*90}" width="300" height="70" rx="10" fill="#eef1f4"/>`).join('')}`+
-      (on(2)?`<g opacity="${at(2,.4)}"><rect x="-160" y="-50" width="320" height="330" rx="16" fill="#fff4d6" stroke="${Y}" stroke-width="4"/><text x="-140" y="-18" font-size="18" font-weight="700" fill="#999">広告</text><text x="0" y="40" text-anchor="middle" font-size="34" font-weight="900" fill="${T}">旅しながら！</text><text x="0" y="90" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">民泊で月30万円</text><text x="0" y="140" text-anchor="middle" font-size="24" font-weight="900" fill="#6b3fa0">スマホだけ・物件なしOK</text><rect x="-120" y="180" width="240" height="64" rx="32" fill="${G}" stroke="#fff" stroke-width="${on(3)&&lt>L[3]+2.4?8:0}"/><text x="0" y="222" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">無料で登録</text></g>`:'');}
+      (on(2)?`<g opacity="${at(2,.4)}"><rect x="-160" y="-50" width="320" height="330" rx="16" fill="#fff4d6" stroke="${Y}" stroke-width="4"/><text x="-140" y="-18" font-size="18" font-weight="700" fill="#999">広告</text><text x="0" y="40" text-anchor="middle" font-size="34" font-weight="900" fill="${T}">旅しながら！</text><text x="0" y="90" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">民泊で月100万円</text><text x="0" y="140" text-anchor="middle" font-size="24" font-weight="900" fill="#6b3fa0">スマホだけ・物件なしOK</text><rect x="-120" y="180" width="240" height="64" rx="32" fill="${G}" stroke="#fff" stroke-width="${on(3)&&lt>L[3]+2.4?8:0}"/><text x="0" y="222" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">無料で登録</text></g>`:'');}
     else{ui=`<rect x="-172" y="-300" width="344" height="610" fill="#dfe8ef"/><rect x="-172" y="-300" width="344" height="60" fill="#7a4a9a"/><text x="0" y="-260" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">ウマイ先生（公式）</text>`+
-      [['ご登録ありがとうございます！',.4],['無料動画をプレゼント！',1.6],['今なら個別相談も無料！',2.8],['生徒です！私も月30万円♪',4.0]].map(([m2,o],k)=>chatBubble(-10,-200+k*100,m2,at(4,.3,o),k===3?face('cbB',-140,-200+k*100,24,'umaiB','#7a4a9a','happy',t):'')).join('').replace(/font-size="24"/g,'font-size="21"');}
+      [['ご登録ありがとうございます！',.4],['無料動画をプレゼント！',1.6],['今なら個別相談も無料！',2.8],['私も月100万円♪',4.0]].map(([m2,o],k)=>chatBubble(-10,-200+k*100,m2,at(4,.3,o),k===3?face('cbB',-140,-200+k*100,24,'umaiB','#7a4a9a','happy',t):'')).join('').replace(/font-size="24"/g,'font-size="21"');}
     s+=phoneUI(1180,500,1.0,ui,1);
   }
   if(i===2){ // ウマイ先生の旅動画 → お試しマニュアル
@@ -264,7 +264,7 @@ function scene(i,t,lt){
       const items=[['今日は南の島から！','12万回'],['温泉で、のんびり','9.8万回'],['夜景の街で乾杯','15万回']];
       let ui=`<rect x="-172" y="-300" width="344" height="610" fill="#fff"/><rect x="-172" y="-300" width="344" height="60" fill="#e53935"/><text x="0" y="-260" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">ウマイの旅チャンネル</text>`;
       items.forEach(([ti,vw],k)=>{const y=-225+k*112;ui+=fade(at(0,.3,[.6,1.4,2.2][k]),`${th(k,-160,y)}<text x="-20" y="${y+34}" font-size="21" font-weight="900" fill="${DG}">${ti}</text><text x="-20" y="${y+66}" font-size="19" font-weight="700" fill="#888">${vw} 再生</text>`,0)});
-      ui+=fade(at(2,.3),`<rect x="-160" y="118" width="320" height="2" fill="#e5e5e5"/><text x="-150" y="150" font-size="19" font-weight="900" fill="#888">コメント</text>${[['umaiC','月30万円いきました！'],['umaiA','先生のおかげです♪']].map(([c2,m2],k)=>`${face('ytc'+k,-135,190+k*64,22,c2,'#ccc','happy',t)}<text x="-102" y="${197+k*64}" font-size="21" font-weight="700" fill="${DG}">${m2}</text>`).join('')}`,0);
+      ui+=fade(at(2,.3),`<rect x="-160" y="118" width="320" height="2" fill="#e5e5e5"/><text x="-150" y="150" font-size="19" font-weight="900" fill="#888">コメント</text>${[['umaiC','月100万円いきました！'],['umaiA','先生のおかげです♪']].map(([c2,m2],k)=>`${face('ytc'+k,-135,190+k*64,22,c2,'#ccc','happy',t)}<text x="-102" y="${197+k*64}" font-size="21" font-weight="700" fill="${DG}">${m2}</text>`).join('')}`,0);
       s+=phoneUI(1180,500,1.0,ui,at(0,.4));
       if(on(2))s+=pop(1600,760,at(2,.4,2.4),`<g transform="rotate(-6 1600 760)"><rect x="1420" y="700" width="360" height="110" rx="55" fill="${Y}"/><text x="1600" y="775" text-anchor="middle" font-size="46" font-weight="900" fill="${DG}">あこがれる…！</text></g>`);
     }
@@ -278,7 +278,7 @@ function scene(i,t,lt){
   if(i===3){
     s+=P(260,GROUND,.86,{c:'owner',who:'Y',pose:on(9)?'shake':(on(6)?'think':'stand'),mood:on(6)?'worry':'happy'},t);
     let extra='';
-    if(on(3))extra+=`<g opacity="${win(3,5)}">${['umaiA','umaiB','umaiC'].map((c2,k)=>{const cy=-180+k*92,p=seg(lt,L[3]+1.2+k*.7,L[3]+1.6+k*.7);return p>0?`<g opacity="${p}"><rect x="186" y="${cy-42}" width="244" height="84" rx="12" fill="#fff"/>${face('st'+k,232,cy,36,c2,'#7a4a9a','happy',t)}<text x="278" y="${cy-6}" font-size="20" font-weight="900" fill="${DG}">生徒${'ABC'[k]}さん</text><text x="278" y="${cy+24}" font-size="24" font-weight="900" fill="${T}">月30万円！</text></g>`:''}).join('')}</g>`;
+    if(on(3))extra+=`<g opacity="${win(3,5)}"><rect x="-430" y="-210" width="600" height="420" rx="12" fill="#1f2a24" opacity=".82"/><text x="-130" y="-170" text-anchor="middle" font-size="28" font-weight="900" fill="${Y}">生徒さんの声</text>${['umaiA','umaiB','umaiC'].map((c2,k)=>{const cx=-320+k*190,p=seg(lt,L[3]+1.2+k*.7,L[3]+1.6+k*.7);return p>0?`<g opacity="${p}" transform="translate(${cx},0) scale(${.8+.2*bk(p)}) translate(${-cx},0)"><rect x="${cx-88}" y="-145" width="176" height="340" rx="16" fill="#fff"/>${face('st'+k,cx,-60,62,c2,'#7a4a9a','happy',t)}<text x="${cx}" y="40" text-anchor="middle" font-size="24" font-weight="900" fill="${DG}">生徒${'ABC'[k]}さん</text><text x="${cx}" y="80" text-anchor="middle" font-size="20" font-weight="700" fill="#4a5a52">${['南の島から','温泉宿から','海外から'][k]}</text><text x="${cx}" y="130" text-anchor="middle" font-size="27" font-weight="900" fill="${T}">月100万円！</text></g>`:''}).join('')}</g>`;
     if(on(5))extra+=pop(310,-120,at(5,.4,.35)*(1-seg(lt,L[7]-.1,L[7]+.3)),`<g transform="rotate(4 310 -120)"><rect x="180" y="-200" width="260" height="160" rx="14" fill="#fff" stroke="${T}" stroke-width="6"/><text x="310" y="-150" text-anchor="middle" font-size="26" font-weight="900" fill="${DG}">フルサポート</text><text x="310" y="-80" text-anchor="middle" font-size="56" font-weight="900" fill="${T}">80万円</text></g>`);
     if(on(7))extra+=pop(310,-120,at(7,.4,.35)*(1-seg(lt,L[8]-.1,L[8]+.3)),`<rect x="180" y="-210" width="260" height="70" rx="35" fill="#6b3fa0"/><text x="310" y="-164" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">カードローン</text><rect x="180" y="-120" width="260" height="70" rx="35" fill="#2f3b4a"/><text x="310" y="-74" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">画面を共有</text>`);
     if(on(8))extra+=pop(310,-120,at(8,.4,1.4),`<g transform="rotate(-8 310 -120)"><rect x="170" y="-180" width="280" height="110" rx="18" fill="#e53935"/><text x="310" y="-108" text-anchor="middle" font-size="54" font-weight="900" fill="#fff">今日だけ！</text></g>`);
@@ -334,7 +334,7 @@ function scene(i,t,lt){
       let g=`<g opacity="${1-rev}">${face('tw'+k,x,Y0,Rr,c2,'#7a4a9a','happy',t)}</g>`;
       if(rev>0)g+=`<g opacity="${rev}">${face('tu'+k,x,Y0,Rr,'umai','#7a4a9a',on(5)?'happy':'worry',t,talking('U',t))}</g>`;
       if(rev>0&&rev<1){const hc=['#8a5a3c','#2b2422','#6d6d6d'][k];g+=`<g transform="translate(${x+(k-1)*120*rev},${Y0-130-420*rev}) rotate(${(k-1)*160*rev+40*rev})" opacity="${1-rev}"><ellipse rx="110" ry="60" fill="${hc}"/></g>`}
-      g+=`<rect x="${x-130}" y="${Y0+Rr+20}" width="260" height="${rev>0?70:110}" rx="20" fill="#fff"/>`+(rev>0?`<text x="${x}" y="${Y0+Rr+68}" text-anchor="middle" font-size="36" font-weight="900" fill="#6b3fa0">ウマイ先生</text>`:`<text x="${x}" y="${Y0+Rr+62}" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">生徒${'ABC'[k]}さん</text><text x="${x}" y="${Y0+Rr+104}" text-anchor="middle" font-size="30" font-weight="900" fill="${T}">月30万円！</text>`);
+      g+=`<rect x="${x-130}" y="${Y0+Rr+20}" width="260" height="${rev>0?70:110}" rx="20" fill="#fff"/>`+(rev>0?`<text x="${x}" y="${Y0+Rr+68}" text-anchor="middle" font-size="36" font-weight="900" fill="#6b3fa0">ウマイ先生</text>`:`<text x="${x}" y="${Y0+Rr+62}" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">生徒${'ABC'[k]}さん</text><text x="${x}" y="${Y0+Rr+104}" text-anchor="middle" font-size="30" font-weight="900" fill="${T}">月100万円！</text>`);
       if(on(1)&&!on(4)){const pu=.6+.4*Math.abs(Math.sin(lt*5));g+=`<circle cx="${x}" cy="${Y0+Rr*.86}" r="${Rr*.3}" fill="none" stroke="${Y}" stroke-width="8" opacity="${pu*at(1,.3,.2)}"/><circle cx="${x+Rr*.27}" cy="${Y0+Rr*.1}" r="${Rr*.14}" fill="none" stroke="${Y}" stroke-width="7" opacity="${pu*at(1,.3,.5)}"/>`}
       s+=pop(x,Y0,p,g);});
     const cd=lt-(L[1]-3.2);if(cd>0&&cd<3.2)s+=pop(1010,170,clamp((cd%1)*4),`<circle cx="1010" cy="170" r="66" fill="${Y}"/><text x="1010" y="198" text-anchor="middle" font-size="80" font-weight="900" fill="${DG}">${Math.max(1,3-Math.floor(cd))}</text>`);
@@ -357,7 +357,7 @@ function scene(i,t,lt){
     s+=pop(470,200,at(1,.4,.3),`<g transform="rotate(-6 470 200)"><rect x="250" y="150" width="440" height="96" rx="20" fill="#e53935"/><text x="470" y="216" text-anchor="middle" font-size="50" font-weight="900" fill="#fff">AIで作った背景</text></g>`);
     s+=`<rect x="860" y="${GROUND-150}" width="260" height="150" fill="#8a6a4c"/><rect x="850" y="${GROUND-165}" width="280" height="20" rx="6" fill="#a2805c"/><path d="M930 ${GROUND-165} l8 -70 h64 l8 70z" fill="#fff"/><rect x="936" y="${GROUND-222}" width="68" height="20" fill="#e53935"/>`;
     s+=P(560,GROUND,.92,{c:'umai',who:'U',pose:on(4)&&!on(5)?'cheer':(on(2)?'phone':'stand'),mood:on(1)&&!on(2)?'worry':'happy'},t);
-    const ad=`<rect x="-172" y="-300" width="344" height="60" fill="#fff"/><text x="0" y="-260" text-anchor="middle" font-size="26" font-weight="900" fill="#2c3a33">SNS</text><rect x="-160" y="-230" width="320" height="520" rx="16" fill="#fff4d6" stroke="${Y}" stroke-width="4"/><text x="-140" y="-200" font-size="18" font-weight="700" fill="#999">広告</text>${face('sg0',0,-120,62,'sugoi','#c9a227','happy',t)}<text x="0" y="-22" text-anchor="middle" font-size="22" font-weight="900" fill="#4a5a52">スゴイ先生</text><text x="0" y="30" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">あなたも先生に！</text><text x="0" y="90" text-anchor="middle" font-size="44" font-weight="900" fill="${T}">月100万円</text><rect x="-110" y="120" width="220" height="50" rx="12" fill="#e53935"/><text x="0" y="155" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">今日だけ！</text><g transform="translate(0,225) scale(${1-.12*Math.sin(Math.PI*seg(lt,L[4],L[4]+.2))})"><rect x="-110" y="-32" width="220" height="64" rx="32" fill="${on(4)?'#7a4a9a':G}"/><text x="0" y="10" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">${on(4)?'申し込み完了':'申し込む'}</text></g>`;
+    const ad=`<rect x="-172" y="-300" width="344" height="60" fill="#fff"/><text x="0" y="-260" text-anchor="middle" font-size="26" font-weight="900" fill="#2c3a33">SNS</text><rect x="-160" y="-230" width="320" height="520" rx="16" fill="#fff4d6" stroke="${Y}" stroke-width="4"/><text x="-140" y="-200" font-size="18" font-weight="700" fill="#999">広告</text>${face('sg0',0,-120,62,'sugoi','#c9a227','happy',t)}<text x="0" y="-22" text-anchor="middle" font-size="22" font-weight="900" fill="#4a5a52">スゴイ先生</text><text x="0" y="30" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">あなたも先生に！</text><text x="0" y="90" text-anchor="middle" font-size="44" font-weight="900" fill="${T}">月1000万円</text><rect x="-110" y="120" width="220" height="50" rx="12" fill="#e53935"/><text x="0" y="155" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">今日だけ！</text><g transform="translate(0,225) scale(${1-.12*Math.sin(Math.PI*seg(lt,L[4],L[4]+.2))})"><rect x="-110" y="-32" width="220" height="64" rx="32" fill="${on(4)?'#7a4a9a':G}"/><text x="0" y="10" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">${on(4)?'申し込み完了':'申し込む'}</text></g>`;
     if(on(2))s+=phoneUI(1350,490,.95,ad,at(2,.4)*(1-at(5,.4)));
     if(on(5)){const q=at(5,.5);
       s+=pop(1220,480,q,`${box(800,150,840,700,36)}<text x="840" y="205" font-size="30" font-weight="900" fill="#4a5a52">お金の流れ（イメージ）</text>
