@@ -46,6 +46,7 @@
 - カレンダー／キーワード／ログ: `docs/seo/calendar.md`、`docs/seo/keywords.md`、`docs/seo/log.md`
 - ダッシュボード（自動生成）: `docs/dashboard.md`
 - GA4/Search Console/YouTube/e-Stat の設定手順: `docs/seo/analytics-setup.md`
+- **YouTube 制作マニュアル**（アキヤド劇場の作り方・点検・サムネイル・アップロード）: `docs/youtube/manual.md`（作りながら学んだことを追記する）
 
 ## サイトの構造（エンジニア部向けの要点）
 
