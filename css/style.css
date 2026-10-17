@@ -3699,6 +3699,21 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .is-corp .issue__kpi ul { flex: 1 1 100%; gap: 6px; }
 }
 
+/* 余白をそろえる：ラベル→吹き出し 8px、声→打ち手 28px（スマホ 20px）、打ち手→変わること 14px。
+   「…」（入力中）は場所を取らず、RIVIA の返事が出る位置に重ねて出す */
+.is-corp .issue__scene .issue__sublabel, .is-corp .issue__answer > .issue__sublabel { margin-bottom: 8px; }
+.is-corp .issue__answer { margin-top: 28px; }
+.is-corp .issue__bridge { position: relative; z-index: 1; height: auto; margin: 0; pointer-events: none; align-self: start; }
+@media (min-width: 900px) {
+  .is-corp .issue__bridge { grid-row: 3; margin: 56px 0 0 58px; }
+}
+@media (max-width: 899px) {
+  .is-corp .issue__answer { margin-top: 20px; }
+  .is-corp .issue__bridge { height: 0; margin: 0; }
+  .is-corp .issue__bridge span { position: absolute; left: 0; top: 56px; }
+}
+@media (prefers-reduced-motion: reduce) { .is-corp .issue__bridge { display: none; } }
+
 /* ご支援の流れ：線が朱で引かれ、点が順に灯る */
 .is-corp .timeline__step::before { background: var(--c-line-strong); }
 .is-corp .timeline__step > .timeline__num { color: var(--c-shu); font-weight: 500; }
