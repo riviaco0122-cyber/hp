@@ -30,29 +30,36 @@ function reelWrap(s,n){ // 縦長の字幕は1行 n 文字までで、句読点�
   if(cur){if(cur.length<=2&&out.length)out[out.length-1]+=cur;else out.push(cur)}
   return out;
 }
+function SKY(){ // 下の飾りの町並み（アプリの説明が重なる所なので、情報は置かない。空っぽに見えないように）
+  let g=`<path d="M0 1760 Q270 1700 540 1740 T1080 1730 V1920 H0Z" fill="${DG}" opacity=".35"/>`;
+  [[60,1,0],[200,.8,1],[330,1.15,0],[500,.9,1],[640,1.05,0],[790,.85,1],[930,1.1,0],[1050,.8,1]].forEach(([x,k,f])=>{const w=110*k,h=90*k,y=1800;
+    g+=`<g opacity=".5"><rect x="${x-w/2}" y="${y-h}" width="${w}" height="${h+120}" fill="${DG}"/><path d="M${x-w/2-14} ${y-h} L${x} ${y-h-62*k} L${x+w/2+14} ${y-h}Z" fill="${DG}"/>`+(f?'':`<rect x="${x-14*k}" y="${y-h+22*k}" width="${28*k}" height="${28*k}" rx="4" fill="${Y}" opacity=".7"/>`)+`</g>`});
+  return g+`<rect y="1860" width="1080" height="60" fill="${DG}" opacity=".5"/>`;
+}
 function REEL(out,t,cur){
-  // 各アプリの文字・ボタンが重なる所には何も置かない（安全な範囲: 上210〜下1430、字幕とエンディングは右のボタン列をよけて x 40〜920）
+  // 各アプリの文字・ボタンが重なる所には大事なものを置かない（安全な範囲: 上210〜下1430。字幕とエンディングは左右対称の x 140〜940 にして右のボタン列をよける）
   // 下（約1440より下）はアプリのチャンネル名・説明・関連動画、右はいいね等のボタン、上は再生ボタン類が重なる
-  const VY=500,S=1080/1920,CH=880,CX=480;  // CH: 本編のうち見せる高さ（下の字幕帯の部分は切る）
+  const VY=500,S=1080/1920,CH=880,CX=540;  // CH: 本編のうち見せる高さ（下の字幕帯の部分は切る）
   let r=`<rect width="1080" height="1920" fill="${G}"/>`;
   for(let k=0;k<10;k++){const x=((k*240+t*60)%2600)-500;r+=`<path d="M${x} 1920 L${x+700} 0" stroke="#fff" stroke-width="44" opacity=".05"/>`}
+  r+=SKY();
   r+=`<rect width="1080" height="16" fill="${T}"/><rect y="1904" width="1080" height="16" fill="${Y}"/>`;
   r+=`<g transform="translate(540,256)"><rect x="-300" y="-46" width="600" height="92" rx="46" fill="#fff"/>${MARK(-238,0,.95)}<text x="22" y="17" text-anchor="middle" font-size="46" font-weight="900" fill="${G}">アキヤド <tspan fill="${T}">民泊school</tspan></text></g>`;
   REEL_TITLE.split('\n').forEach((ln,k,a)=>{r+=`<text x="540" y="${388+k*94-(a.length-1)*14}" text-anchor="middle" font-size="84" font-weight="900" fill="#fff" stroke="${DG}" stroke-width="14" paint-order="stroke" stroke-linejoin="round">${ln}</text>`});
   r+=`<rect x="0" y="${VY-6}" width="1080" height="${CH*S+12}" fill="#fff"/><clipPath id="reelclip"><rect x="0" y="${VY}" width="1080" height="${CH*S}"/></clipPath><g clip-path="url(#reelclip)"><g transform="translate(0,${VY}) scale(${S})">${out}</g></g>`;
-  if(cur){const o=clamp((t-cur[0]+.05)/.15)*clamp((cur[1]+.25-t)/.15),lines=REEL_SUBS[LINES.indexOf(cur)]||reelWrap(cur[3].join(''),13),y0=1072,LH=Math.min(76,336/Math.max(1,lines.length)),FS=Math.min(56,LH*.74);  // 字幕の箱は下1430まで。行が多いときは字を小さくして収める
+  if(cur){const o=clamp((t-cur[0]+.05)/.15)*clamp((cur[1]+.25-t)/.15),lines=REEL_SUBS[LINES.indexOf(cur)]||reelWrap(cur[3].join(''),13),y0=1072,LH=Math.min(76,336/Math.max(1,lines.length)),FS=Math.min(52,LH*.7,740/Math.max(...lines.map(l=>l.length)));  // 字幕の箱は下1430まで。行が多いときは字を小さくして収める
     const nm=VNAME[cur[2]]||'';
-    r+=`<g opacity="${o}"><rect x="40" y="${y0-40}" width="880" height="${lines.length*LH+64}" rx="36" fill="#fff"/>`+(nm?`<rect x="66" y="${y0-72}" width="${nm.length*36+60}" height="64" rx="32" fill="${VCOL[cur[2]]||T}"/><text x="${96+nm.length*18}" y="${y0-29}" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">${nm}</text>`:'')+lines.map((s,i)=>`<text x="${CX}" y="${y0+48+i*LH}" text-anchor="middle" font-size="${FS}" font-weight="900" fill="${DG}">${s}</text>`).join('')+`</g>`;}
+    r+=`<g opacity="${o}"><rect x="140" y="${y0-40}" width="800" height="${lines.length*LH+64}" rx="36" fill="#fff"/>`+(nm?`<rect x="166" y="${y0-72}" width="${nm.length*36+60}" height="64" rx="32" fill="${VCOL[cur[2]]||T}"/><text x="${196+nm.length*18}" y="${y0-29}" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">${nm}</text>`:'')+lines.map((s,i)=>`<text x="${CX}" y="${y0+48+i*LH}" text-anchor="middle" font-size="${FS}" font-weight="900" fill="${DG}">${s}</text>`).join('')+`</g>`;}
   // エンディング（最後の約3秒）：「続きは本編で」
   const e=clamp((t-REEL_T1)/.35);
   if(e>0){const ep=(typeof EP_TITLE!=='undefined'?EP_TITLE:REEL_TITLE.replace('\n',''));
     r+=`<g opacity="${e}"><rect width="1080" height="1920" fill="${G}"/>`;
     for(let k=0;k<10;k++){const x=((k*240+t*60)%2600)-500;r+=`<path d="M${x} 1920 L${x+700} 0" stroke="#fff" stroke-width="44" opacity=".06"/>`}
-    r+=`<rect width="1080" height="16" fill="${T}"/><rect y="1904" width="1080" height="16" fill="${Y}"/>`;
+    r+=SKY()+`<rect width="1080" height="16" fill="${T}"/><rect y="1904" width="1080" height="16" fill="${Y}"/>`;
     r+=pop(CX,560,clamp((t-REEL_T1-.1)/.5),`<circle cx="${CX}" cy="560" r="130" fill="#fff"/>${MARK(CX,560,2.9)}`);
     r+=pop(CX,830,clamp((t-REEL_T1-.35)/.5),`<text x="${CX}" y="860" text-anchor="middle" font-size="110" font-weight="900" fill="#fff" stroke="${DG}" stroke-width="14" paint-order="stroke" stroke-linejoin="round">続きは本編で</text>`);
-    r+=pop(CX,1040,clamp((t-REEL_T1-.6)/.5),`<rect x="40" y="950" width="880" height="190" rx="40" fill="#fff"/><text x="${CX}" y="1022" text-anchor="middle" font-size="40" font-weight="900" fill="${T}">YouTube「アキヤド 民泊school」</text><text x="${CX}" y="1094" text-anchor="middle" font-size="${ep.length>14?38:46}" font-weight="900" fill="${DG}">${ep}</text>`);
-    r+=pop(CX,1230,clamp((t-REEL_T1-.85)/.5),`<rect x="${CX-320}" y="1175" width="640" height="110" rx="55" fill="${T}"/><text x="${CX}" y="1248" text-anchor="middle" font-size="52" font-weight="900" fill="#fff">▶ 本編を見る</text>`);
+    r+=pop(CX,1040,clamp((t-REEL_T1-.6)/.5),`<rect x="140" y="950" width="800" height="190" rx="40" fill="#fff"/><text x="${CX}" y="1022" text-anchor="middle" font-size="40" font-weight="900" fill="${T}">YouTube「アキヤド 民泊school」</text><text x="${CX}" y="1094" text-anchor="middle" font-size="${ep.length>16?34:ep.length>14?38:44}" font-weight="900" fill="${DG}">${ep}</text>`);
+    r+=pop(CX,1230,clamp((t-REEL_T1-.85)/.5),`<rect x="${CX-300}" y="1175" width="600" height="110" rx="55" fill="${T}"/><text x="${CX}" y="1248" text-anchor="middle" font-size="52" font-weight="900" fill="#fff">▶ 本編を見る</text>`);
     r+=fade(clamp((t-REEL_T1-1.1)/.5),`<text x="${CX}" y="1360" text-anchor="middle" font-size="38" font-weight="900" fill="#fff">プロフィール・概要欄のリンクから</text>`,0);
     r+=`</g>`;}
   return r;
