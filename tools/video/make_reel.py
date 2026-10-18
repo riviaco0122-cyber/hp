@@ -10,7 +10,7 @@
 本編の盛り上がる部分（45〜60秒）を、台本の「場面・セリフ番号」で指定して切り出す。音声も同じ部分を切り出す。
 
 使い方:
-  python3 tools/video/make_reel.py <台本スクリプト名> <開始: 場面.セリフ> <終了: 場面.セリフ> "<見出し>" 出力.mp4 [--cover 秒] [--preview 秒 ...]
+  python3 tools/video/make_reel.py <台本スクリプト名> <開始: 場面.セリフ> <終了: 場面.セリフ> "<見出し>" 出力.mp4 [--cover 秒] [--cover-only] [--preview 秒 ...]
   例: python3 tools/video/make_reel.py make_strategy_ep1 2.3 2.6 "家賃5万円の家を\\n宿にしたら？" reel.mp4
   見出しの改行は \\n。終了は、そのセリフの終わりまで入る。--preview は切り出した中での秒（PNG を /tmp/reel_preview に）。
 """
@@ -44,12 +44,15 @@ function REEL(out,t,cur){
   for(let k=0;k<10;k++){const x=((k*240+t*60)%2600)-500;r+=`<path d="M${x} 1920 L${x+700} 0" stroke="#fff" stroke-width="44" opacity=".05"/>`}
   r+=SKY();
   r+=`<rect width="1080" height="16" fill="${T}"/><rect y="1904" width="1080" height="16" fill="${Y}"/>`;
+  const B0=r.length;  // ここから前景（表紙では下にずらす）
   r+=`<g transform="translate(540,256)"><rect x="-300" y="-46" width="600" height="92" rx="46" fill="#fff"/>${MARK(-238,0,.95)}<text x="22" y="17" text-anchor="middle" font-size="46" font-weight="900" fill="${G}">アキヤド <tspan fill="${T}">民泊school</tspan></text></g>`;
   REEL_TITLE.split('\n').forEach((ln,k,a)=>{r+=`<text x="540" y="${388+k*94-(a.length-1)*14}" text-anchor="middle" font-size="84" font-weight="900" fill="#fff" stroke="${DG}" stroke-width="14" paint-order="stroke" stroke-linejoin="round">${ln}</text>`});
   r+=`<rect x="0" y="${VY-6}" width="1080" height="${CH*S+12}" fill="#fff"/><clipPath id="reelclip"><rect x="0" y="${VY}" width="1080" height="${CH*S}"/></clipPath><g clip-path="url(#reelclip)"><g transform="translate(0,${VY}) scale(${S})">${out}</g></g>`;
   if(cur){const o=clamp((t-cur[0]+.05)/.15)*clamp((cur[1]+.25-t)/.15),lines=REEL_SUBS[LINES.indexOf(cur)]||reelWrap(cur[3].join(''),13),y0=1072,LH=Math.min(76,336/Math.max(1,lines.length)),FS=Math.min(52,LH*.7,740/Math.max(...lines.map(l=>l.length)));  // 字幕の箱は下1430まで。行が多いときは字を小さくして収める
     const nm=VNAME[cur[2]]||'';
     r+=`<g opacity="${o}"><rect x="140" y="${y0-40}" width="800" height="${lines.length*LH+64}" rx="36" fill="#fff"/>`+(nm?`<rect x="166" y="${y0-72}" width="${nm.length*36+60}" height="64" rx="32" fill="${VCOL[cur[2]]||T}"/><text x="${196+nm.length*18}" y="${y0-29}" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">${nm}</text>`:'')+lines.map((s,i)=>`<text x="${CX}" y="${y0+48+i*LH}" text-anchor="middle" font-size="${FS}" font-weight="900" fill="${DG}">${s}</text>`).join('')+`</g>`;}
+  // 表紙: Instagram のプロフィール一覧は縦長の上下を切って 3:4（y 240〜1680）で見せるので、前景を 110 下げて、見出し〜字幕を y 320〜1570 に収める
+  if(typeof REEL_COVER!=='undefined')r=r.slice(0,B0)+`<g transform="translate(0,110)">`+r.slice(B0)+`</g>`;
   // エンディング（最後の約3秒）：「続きは本編で」
   const e=clamp((t-REEL_T1)/.35);
   if(e>0){const ep=(typeof EP_TITLE!=='undefined'?EP_TITLE:REEL_TITLE.replace('\n',''));
@@ -99,6 +102,9 @@ def main():
     cover_t = 0.8
     if "--cover" in args:  # 表紙にするコマ（切り出した中での秒）。見出しと、いちばん「へえ」となる図が出ている瞬間を選ぶ
         k = args.index("--cover"); cover_t = float(args[k + 1]); del args[k:k + 2]
+    cover_only = "--cover-only" in args  # 表紙だけ作り直す（動画は書き出さない）
+    if cover_only:
+        args.remove("--cover-only")
     if "--preview" in args:
         k = args.index("--preview"); prev = [float(x) for x in args[k + 1:]]; args = args[:k]
     modname, a, b, title, out = args[:5]
@@ -124,6 +130,16 @@ def main():
     with tempfile.TemporaryDirectory() as tmp:
         h = os.path.join(tmp, "a.html"); open(h, "w", encoding="utf-8").write(html)
         j = os.path.join(tmp, "r.js"); open(j, "w").write(js)
+        def make_cover(tmp):
+            # 表紙（--cover の秒のコマ）。動画のコマをそのまま使わず、Instagram の一覧（3:4 に切られる）でも見出しが切れない配置で別に描く
+            cover = os.path.splitext(out)[0] + "-cover.jpg"
+            hc = os.path.join(tmp, "c.html"); open(hc, "w", encoding="utf-8").write(html.replace("const REEL_TITLE=", "const REEL_COVER=true;const REEL_TITLE=", 1))
+            cd = os.path.join(tmp, "cover"); os.makedirs(cd)
+            subprocess.run(["node", j, hc, cd, "preview", json.dumps([cover_t, cover_t])], check=True, env=env)  # 2回描く（1回目で文字の読み込みを済ませる）
+            png = [os.path.join(cd, f) for f in os.listdir(cd) if f.endswith(".png")][0]
+            subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-i", png, "-q:v", "2", cover], check=True)
+        if cover_only:
+            make_cover(tmp); print(os.path.splitext(out)[0] + "-cover.jpg"); return
         if prev is not None:
             od = os.path.join(tempfile.gettempdir(), "reel_preview"); os.makedirs(od, exist_ok=True)
             subprocess.run(["node", j, h, od, "preview", json.dumps(prev)], check=True, env=env)
@@ -142,8 +158,7 @@ def main():
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", os.path.join(fr, "f%05d.jpg"), "-i", audio,
                         "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
                         "-shortest", "-movflags", "+faststart", out], check=True)
-        cover = os.path.splitext(out)[0] + "-cover.jpg"  # リールの表紙（--cover の秒のコマ：見出しと図が出ている）
-        subprocess.run(["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-ss", str(cover_t), "-i", out, "-frames:v", "1", "-q:v", "2", cover], check=True)
+        make_cover(tmp)
     print(out, round(t1 - t0 + END, 1), "秒")
 
 
