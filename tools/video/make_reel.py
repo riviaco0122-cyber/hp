@@ -5,7 +5,7 @@
   上: 「アキヤド 民泊school」とリールの見出し（最初の1秒で何の話かわかる、気になる問い）
   中: 本編の場面（字幕なし）
   下: 大きな字幕（話している人の名前つき）。「フル版は YouTube で」のボタンは置かない（アプリの関連動画・説明と重なるため）
-  各アプリの文字・ボタンが重なる所（下の約480px・右の約160px・上の約200px）には何も置かない
+  各アプリの文字・ボタンが重なる所（上 y 270 まで・下 y 1600 から・右のボタン列と左右の切れ＝字幕は x 190〜890 に）には何も置かない（2026-10-18 実測）
   最後の約3秒: エンディング「続きは本編で」（ロゴ・番組名・本編のタイトル・▶本編を見る）。表紙の画像（-cover.jpg）も一緒に作る
 本編の盛り上がる部分（45〜60秒）を、台本の「場面・セリフ番号」で指定して切り出す。音声も同じ部分を切り出す。
 
@@ -37,22 +37,23 @@ function SKY(){ // 下の飾りの町並み（アプリの説明が重なる所�
   return g+`<rect y="1860" width="1080" height="60" fill="${DG}" opacity=".5"/>`;
 }
 function REEL(out,t,cur){
-  // 各アプリの文字・ボタンが重なる所には大事なものを置かない（安全な範囲: 上210〜下1430。部品どうし（ロゴ・見出し・場面・名前・字幕）は 20px 以上あけて重ねない。字幕とエンディングは左右対称の x 140〜940 にして右のボタン列をよける）
+  // 各アプリの文字・ボタンが重なる所には大事なものを置かない（安全な範囲: 上270〜下1600。実際の画面で測った値（2026-10-18）: TikTok は上の検索欄が y 250 まで、どのアプリも下のアカウント名・説明が y 1670 あたりから、右のボタン列が x 900 から。さらに縦長のスマホでは左右が約50pxずつ切れる。
+  // 部品どうし（ロゴ・見出し・場面・名前・字幕）は 20px 以上あけて重ねない。字幕とエンディングは左右対称の x 190〜890 にして、右のボタン列と左右の切れをよける）
   // 下（約1440より下）はアプリのチャンネル名・説明・関連動画、右はいいね等のボタン、上は再生ボタン類が重なる
-  const VY=530,S=1080/1920,CH=880,CX=540;  // CH: 本編のうち見せる高さ（下の字幕帯の部分は切る）
+  const VY=610,S=1080/1920,CH=880,CX=540;  // CH: 本編のうち見せる高さ（下の字幕帯の部分は切る）
   let r=`<rect width="1080" height="1920" fill="${G}"/>`;
   for(let k=0;k<10;k++){const x=((k*240+t*60)%2600)-500;r+=`<path d="M${x} 1920 L${x+700} 0" stroke="#fff" stroke-width="44" opacity=".05"/>`}
   r+=SKY();
   r+=`<rect width="1080" height="16" fill="${T}"/><rect y="1904" width="1080" height="16" fill="${Y}"/>`;
   const B0=r.length;  // ここから前景（表紙では下にずらす）
-  r+=`<g data-reel="ロゴ" transform="translate(540,250)"><rect x="-300" y="-46" width="600" height="92" rx="46" fill="#fff"/>${MARK(-238,0,.95)}<text x="22" y="17" text-anchor="middle" font-size="46" font-weight="900" fill="${G}">アキヤド <tspan fill="${T}">民泊school</tspan></text></g>`;
-  r+=`<g data-reel="見出し" data-text="1">`;REEL_TITLE.split('\n').forEach((ln,k,a)=>{r+=`<text x="540" y="${400+k*92-(a.length-1)*0}" text-anchor="middle" font-size="80" font-weight="900" fill="#fff" stroke="${DG}" stroke-width="14" paint-order="stroke" stroke-linejoin="round">${ln}</text>`});r+=`</g>`;
+  r+=`<g data-reel="ロゴ" transform="translate(540,320)"><rect x="-300" y="-46" width="600" height="92" rx="46" fill="#fff"/>${MARK(-238,0,.95)}<text x="22" y="17" text-anchor="middle" font-size="46" font-weight="900" fill="${G}">アキヤド <tspan fill="${T}">民泊school</tspan></text></g>`;
+  r+=`<g data-reel="見出し" data-text="1">`;REEL_TITLE.split('\n').forEach((ln,k,a)=>{r+=`<text x="540" y="${470+k*92}" text-anchor="middle" font-size="80" font-weight="900" fill="#fff" stroke="${DG}" stroke-width="14" paint-order="stroke" stroke-linejoin="round">${ln}</text>`});r+=`</g>`;
   r+=`<rect data-reel="場面" x="0" y="${VY-6}" width="1080" height="${CH*S+12}" fill="#fff"/><clipPath id="reelclip"><rect x="0" y="${VY}" width="1080" height="${CH*S}"/></clipPath><g clip-path="url(#reelclip)"><g transform="translate(0,${VY}) scale(${S})">${out}</g></g>`;
-  if(cur){const o=clamp((t-cur[0]+.05)/.15)*clamp((cur[1]+.25-t)/.15),lines=REEL_SUBS[LINES.indexOf(cur)]||reelWrap(cur[3].join(''),13),y0=1124,LH=Math.min(76,282/Math.max(1,lines.length)),FS=Math.min(52,LH*.7,740/Math.max(...lines.map(l=>l.length)));  // 字幕の箱は下1430まで。行が多いときは字を小さくして収める
+  if(cur){const o=clamp((t-cur[0]+.05)/.15)*clamp((cur[1]+.25-t)/.15),lines=REEL_SUBS[LINES.indexOf(cur)]||reelWrap(cur[3].join(''),13),y0=1203,LH=Math.min(76,373/Math.max(1,lines.length)),FS=Math.min(52,LH*.7,640/Math.max(...lines.map(l=>l.length)));  // 字幕の箱は下1600まで。行が多いときは字を小さくして収める
     const nm=VNAME[cur[2]]||'';
-    r+=`<g opacity="${o}"><rect data-reel="字幕" x="140" y="${y0-40}" width="800" height="${lines.length*LH+64}" rx="36" fill="#fff"/>`+(nm?`<rect data-reel="名前" x="166" y="${y0-72}" width="${nm.length*36+60}" height="64" rx="32" fill="${VCOL[cur[2]]||T}"/><text x="${196+nm.length*18}" y="${y0-29}" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">${nm}</text>`:'')+lines.map((s,i)=>`<text x="${CX}" y="${y0+48+i*LH}" text-anchor="middle" font-size="${FS}" font-weight="900" fill="${DG}">${s}</text>`).join('')+`</g>`;}
-  // 表紙: Instagram のプロフィール一覧は縦長の上下を切って 3:4（y 240〜1680）で見せるので、前景を 110 下げて、見出し〜字幕を y 320〜1570 に収める
-  if(typeof REEL_COVER!=='undefined')r=r.slice(0,B0)+`<g transform="translate(0,110)">`+r.slice(B0)+`</g>`;
+    r+=`<g opacity="${o}"><rect data-reel="字幕" x="190" y="${y0-40}" width="700" height="${lines.length*LH+64}" rx="36" fill="#fff"/>`+(nm?`<rect data-reel="名前" x="216" y="${y0-72}" width="${nm.length*36+60}" height="64" rx="32" fill="${VCOL[cur[2]]||T}"/><text x="${246+nm.length*18}" y="${y0-29}" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">${nm}</text>`:'')+lines.map((s,i)=>`<text x="${CX}" y="${y0+48+i*LH}" text-anchor="middle" font-size="${FS}" font-weight="900" fill="${DG}">${s}</text>`).join('')+`</g>`;}
+  // 表紙: Instagram のプロフィール一覧は縦長の上下を切って 3:4（y 240〜1680）で見せるので、見出し〜字幕は y 274〜1600 に収めてある（REEL_COVER で前景をずらせる）
+  if(typeof REEL_COVER!=='undefined')r=r.slice(0,B0)+`<g transform="translate(0,0)">`+r.slice(B0)+`</g>`;  // いまの配置（y 274〜1600）は 3:4 の範囲にそのまま収まるので、ずらさない
   // エンディング（最後の約3秒）：「続きは本編で」
   const e=clamp((t-REEL_T1)/.35);
   if(e>0){const ep=(typeof EP_TITLE!=='undefined'?EP_TITLE:REEL_TITLE.replace('\n',''));
@@ -61,7 +62,7 @@ function REEL(out,t,cur){
     r+=SKY()+`<rect width="1080" height="16" fill="${T}"/><rect y="1904" width="1080" height="16" fill="${Y}"/>`;
     r+=pop(CX,560,clamp((t-REEL_T1-.1)/.5),`<circle cx="${CX}" cy="560" r="130" fill="#fff"/>${MARK(CX,560,2.9)}`);
     r+=pop(CX,830,clamp((t-REEL_T1-.35)/.5),`<text x="${CX}" y="860" text-anchor="middle" font-size="110" font-weight="900" fill="#fff" stroke="${DG}" stroke-width="14" paint-order="stroke" stroke-linejoin="round">続きは本編で</text>`);
-    r+=pop(CX,1040,clamp((t-REEL_T1-.6)/.5),`<rect x="140" y="950" width="800" height="190" rx="40" fill="#fff"/><text x="${CX}" y="1022" text-anchor="middle" font-size="40" font-weight="900" fill="${T}">YouTube「アキヤド 民泊school」</text><text x="${CX}" y="1094" text-anchor="middle" font-size="${ep.length>16?34:ep.length>14?38:44}" font-weight="900" fill="${DG}">${ep}</text>`);
+    r+=pop(CX,1040,clamp((t-REEL_T1-.6)/.5),`<rect x="190" y="950" width="700" height="190" rx="40" fill="#fff"/><text x="${CX}" y="1022" text-anchor="middle" font-size="40" font-weight="900" fill="${T}">YouTube「アキヤド 民泊school」</text><text x="${CX}" y="1094" text-anchor="middle" font-size="${ep.length>16?34:ep.length>14?38:44}" font-weight="900" fill="${DG}">${ep}</text>`);
     r+=pop(CX,1230,clamp((t-REEL_T1-.85)/.5),`<rect x="${CX-300}" y="1175" width="600" height="110" rx="55" fill="${T}"/><text x="${CX}" y="1248" text-anchor="middle" font-size="52" font-weight="900" fill="#fff">▶ 本編を見る</text>`);
     r+=fade(clamp((t-REEL_T1-1.1)/.5),`<text x="${CX}" y="1360" text-anchor="middle" font-size="38" font-weight="900" fill="#fff">プロフィール・概要欄のリンクから</text>`,0);
     r+=`</g>`;}
@@ -124,12 +125,13 @@ def main():
     html = html[:i] + f"const REEL_TITLE={json.dumps(title, ensure_ascii=False)};const REEL_SUBS={json.dumps(subs, ensure_ascii=False)};const REEL_T1={t1};const REEL_TS={ts};" + REEL_JS + html[i:]
     assert "REEL(out,t,cur)" in html and 'viewBox="0 0 1080 1920"' in html, "台本スクリプトの形が想定とちがいます"
     js = base.RENDER_JS.replace("await p.evaluate((r) => { window.ROOT = r; }, process.env.ROOT_DIR);", "await p.evaluate((r) => { window.ROOT = r; }, process.env.ROOT_DIR); await p.evaluate(() => window.draw(%s)); await p.waitForTimeout(1500); await p.evaluate(async () => { await document.fonts.ready; });" % t0)
-    js = js.replace("if (mode === 'preview') {", """if (mode === 'check') {  // 部品どうしの重なり（20px 未満の近さも）と、安全な範囲（上200〜下1440）からのはみ出しを調べる
+    js = js.replace("if (mode === 'preview') {", """if (mode === 'check') {  // 部品どうしの重なり（20px 未満の近さも）と、安全な範囲（上270〜下1600。右のボタン列の高さ（y 900 より下）では x 190〜890）からのはみ出しを調べる
     const bad = [];
     for (const t of JSON.parse(arg)) { await p.evaluate((t) => window.draw(t), t); await p.waitForTimeout(30);
       bad.push(...await p.evaluate((t) => { const el = [...document.querySelectorAll('[data-reel]')].filter(e => e.closest('[opacity="0"]') === null).map(e => { const r = e.getBoundingClientRect(); return { k: e.dataset.reel, tx: !!e.dataset.text, x0: r.left, y0: r.top, x1: r.right, y1: r.bottom }; });
         const out = [];
-        for (let i = 0; i < el.length; i++) { const a = el[i]; if (a.y0 < 200 || a.y1 > 1440) out.push(t.toFixed(1) + '秒: ' + a.k + ' が安全な範囲の外（y ' + Math.round(a.y0) + '〜' + Math.round(a.y1) + '）');
+        for (let i = 0; i < el.length; i++) { const a = el[i]; if (a.y0 < 270 || a.y1 > 1600) out.push(t.toFixed(1) + '秒: ' + a.k + ' が安全な範囲の外（y ' + Math.round(a.y0) + '〜' + Math.round(a.y1) + '）');
+          if (a.k !== '場面' && a.y1 > 900 && (a.x0 < 190 || a.x1 > 890)) out.push(t.toFixed(1) + '秒: ' + a.k + ' が右のボタン列・左右の切れにかかる（x ' + Math.round(a.x0) + '〜' + Math.round(a.x1) + '）');
           for (let j = i + 1; j < el.length; j++) { const b = el[j]; if (a.k === '字幕' && b.k === '名前' || a.k === '名前' && b.k === '字幕') continue;
             const g = (a.tx || b.tx) ? 0 : 20;  /* 文字は行の高さの余白を含むので、重ならなければよい。箱どうしは 20px あける */ if (a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 + g && b.y0 < a.y1 + g) out.push(t.toFixed(1) + '秒: ' + a.k + ' と ' + b.k + ' が近すぎる・重なっている'); } }
         return out; }, t)); }
