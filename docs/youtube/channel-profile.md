@@ -53,3 +53,12 @@ YouTube Studio の「カスタマイズ → プロフィール」に貼る文面
 
 - 体験として書いてよいのは `docs/brand/experience.md` の「人が確認済み」の節だけ（下田の宿＝創業メンバーが開業・運営）。ほかの施設名・数・取引先は書かない。
 - 省庁・機関の名前は、説明でも前に出さない（出典は各動画の説明欄の下にだけ書く）。
+
+## ほかの SNS のプロフィールのリンク（GA4 で計測できる URL）
+
+プロフィールのリンクは1つの固定の URL にして、毎回の投稿で変えない。`utm_medium=social` にすると、GA4 の「集客 → トラフィック獲得」で「Organic Social」にまとまり、参照元が instagram／tiktok と分かれて見える。
+
+| SNS | プロフィールに貼る URL |
+|---|---|
+| Instagram | https://rivia-co.com/media.html?utm_source=instagram&utm_medium=social&utm_campaign=profile |
+| TikTok | https://rivia-co.com/media.html?utm_source=tiktok&utm_medium=social&utm_campaign=profile |
