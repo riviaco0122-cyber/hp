@@ -25,6 +25,7 @@ DESIGNS = {
     "case-owner-fishing-port": dict(layout="case", avatar=6, who="Dさんご夫婦", lines=["実績ゼロで[融資400万円]", "元・仕出し屋が宿に"], chips=[("工事費用", "約500万円"), ("月商", "60〜70万円"), ("月の純利益", "20〜30万円")]),
     "case-owner-rental-side-business": dict(layout="case", avatar=4, who="Eさん", lines=["[週1〜2時間]で民泊副業", "会社員のまま始めた"], chips=[("初期費用", "約200万円"), ("月商", "約40万円"), ("月の純利益", "12〜15万円")]),
     "case-owner-licensed-akiya": dict(layout="case", avatar=5, who="Fさん", lines=["空き家を[旅館業]で宿に", "初期費用400万円の内訳"], chips=[("初期費用", "約400万円"), ("月商", "平均約55万円"), ("月の純利益", "平均約25万円")]),
+    "minpaku-chintai-start": dict(layout="poster", big="転貸", lines=["賃貸で民泊を始める", "[承諾書と管理規約]"], color="mustard"),
     "kaishain-minpaku-fukugyo": dict(layout="number", big="20", unit="万円", lines=["会社員の民泊副業", "[就業規則と20万円ルール]"], color="deep"),
     "minpaku-kakutei-shinkoku": dict(layout="poster", big="確定申告", lines=["新法民泊の", "[所得区分と経費]"], color="mustard"),
 
