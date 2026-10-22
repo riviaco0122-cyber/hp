@@ -64,7 +64,7 @@
 - 話している間も、画面が止まらないように図・数字・キーワードを出し続ける（1画面に文字を詰めない）。
 - 図は `make_explainer.py` の部品（家・コイン・矢印・グラフ・アイコン・キャラ）を使う。
 
-**テーマの探し方:** `docs/seo/keywords.md`・Search Console の検索語・YouTube の検索候補（`tools/youtube_research.py`）・ネタ箱（`docs/sources/inbox/`）。記事と同じテーマで作り、記事へリンクする。
+**テーマの探し方:** `docs/seo/keywords.md`・Search Console の検索語・YouTube の検索候補（`tools/youtube_research.py`）・**伸びている動画と X・ネットの話題（`/trend-research`。`tools/yt_trend.py`）**・ネタ箱（`docs/sources/inbox/`）。記事と同じテーマで作り、記事へリンクする。
 
 **テーマ案（人と相談して決める）**
 

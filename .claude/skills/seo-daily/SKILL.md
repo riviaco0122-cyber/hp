@@ -22,7 +22,7 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
 2. 作業ブランチは **`seo/daily` に固定**する。
    - `origin/seo/daily` があり、まだ `$BASE` にマージされていなければ（人の確認待ち）、それをチェックアウトし、`git merge origin/$BASE` で本番ブランチの変更を取り込んでから、その上に今日の作業を積む。PR は既存のものを使い、説明文を更新する。
    - なければ（前回分がマージ済み）、`origin/$BASE` から `seo/daily` を作り直す。
-3. `python3 -m pip install -q -r tools/requirements.txt budoux beautifulsoup4 pillow`（集客データの取得と生成スクリプト用。`pip` と `python3` の版が違う環境があるので、必ず `python3 -m pip` で入れる。失敗しても続行）。集客データの取得で `cryptography`・`cffi` のエラーが出たら `python3 -m pip install -q -U cffi cryptography` で入れ直してからやり直す（Debian 版が入っていて `-U` が失敗するときは `python3 -m pip install -q --ignore-installed cffi cryptography`。2026-10-12 に動作確認済み）。`GOOGLE_SERVICE_ACCOUNT_JSON` などの環境変数がない場合は、ルーティンの実行環境が「アキヤド」（鍵を登録した環境）になっているかを人に確認してもらうよう、要約に書く。
+3. `python3 -m pip install -q -r tools/requirements.txt budoux beautifulsoup4 pillow yt-dlp`（集客データの取得と生成スクリプト用。`pip` と `python3` の版が違う環境があるので、必ず `python3 -m pip` で入れる。失敗しても続行）。集客データの取得で `cryptography`・`cffi` のエラーが出たら `python3 -m pip install -q -U cffi cryptography` で入れ直してからやり直す（Debian 版が入っていて `-U` が失敗するときは `python3 -m pip install -q --ignore-installed cffi cryptography`。2026-10-12 に動作確認済み）。`GOOGLE_SERVICE_ACCOUNT_JSON` などの環境変数がない場合は、ルーティンの実行環境が「アキヤド」（鍵を登録した環境）になっているかを人に確認してもらうよう、要約に書く。
 4. `python3 tools/build.py` でサイトを作り直す（公開日を迎えた記事を llms.txt・sitemap に反映するため。毎日必ず。差分が出たらその日の PR に含める）。
    - 作り直しは毎回、記事データ（`tools/articles_*.py`）と `tools/build.py` から行う。**HTML を直接書き換えない。**
 5. **未マージの記事の公開日を確認する**：**新規記事の公開日は「人が確認してマージした日の翌日」にする（人の方針 2026-10-12）**。人は実行の当日にマージするので、`seo/daily` に入っている未マージの新規記事は、毎回「今日（日本時間）＋1日」に付け直す（過去の日付で公開しないため。前回の予約記事と日付が重なっても、1日2本までは可）。既にマージ済みの予約記事は変えない。
@@ -49,7 +49,7 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
 2. **洗い出し**：進行管理部 `pm` の仕事A。新規記事のテーマは、playbook 1章の**テーマの柱の配分**（1週間で ③宿の集客 2本以上・④宿の人材・採用 1本以上）を守るように選ぶ（`marketer` が直近7日を数える）。**0. の「今日の最優先」**・曜日の重点・引き継ぎ・台帳から、今日の作業（最大3件）を決める。1件目は計画の遅れを取り戻す作業にする（遅れがなければ曜日の重点どおり）。
 3. **実行**：作業ごとに担当部署へ依頼する。
    - 記事（新規・書き直し）は必ず次の順。**品質管理部の採点が90点以上・ゲート違反なしになるまで先へ進めない**（playbook 5章）。
-     0. YouTube 調査が必要なら、編集長が `python3 tools/youtube_research.py "キーワード"` を実行し、結果を researcher に渡す
+     0. **ネタ収集（毎回。人の方針 2026-10-22）**：`.claude/skills/trend-research/SKILL.md` の3経路で集める。編集長が `python3 tools/yt_trend.py "テーマの語" --transcripts 3`（伸びている動画と上位の字幕・概要欄。Bash の timeout 600000・前景）を実行し、必要なら `python3 tools/youtube_research.py "キーワード"`（コメントの傾向）も実行して、結果を researcher に渡す。researcher は X（WebSearch を x.com に絞る）とネット検索（ディープリサーチ）を自分で行い、X の投稿 URL は編集長が `python3 tools/x_post_date.py <URL...> --days 180` で日付を出して返す。集めた「読者の声」（一般の人の投稿・コメントを名前なしで要約）は、記事の悩み・事例の肉付けに使う（公的な話だけの記事にしない）
         統計の数字（宿泊者数・外国人の割合・空き家数・空き家率など）が要る記事は、編集長が `python3 tools/estat.py lodging <都道府県>` ／ `akiya <地域>` ／ `search "キーワード"` で e-Stat から取り、結果（`docs/sources/estat/`）を researcher に渡す。**統計の数字は e-Stat から取り、出典（統計名・調査年・表の名前・e-Stat の URL）を付ける**。ほかのサイトの数字を孫引きしない
      1. `researcher`（リサーチメモ）→ `marketer`（構成案）→ `writer`（原稿。自己採点で機械40点にしてから提出）
      2. `qa` が原稿を採点。90点未満なら、`qa` が指定した **戻る工程**（リサーチ／構成案／執筆）からやり直し、最初から採点し直す
@@ -89,7 +89,7 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
 
 ## テーマは必ず需要を確かめてから決める（人の方針 2026-10-15）
 - **需要が確認できたテーマだけを採用する。** 素材（体験・条文・データ）が揃っているだけでは採用しない。順番は「①需要の確認 → ②素材が取れるか → ③既存記事との重なり」。
-- 需要の確認は playbook 14-1・15章どおり、次を順に使い、**根拠を `docs/seo/calendar.md` に1行（使った語・結果）書く**: ① Search Console（表示・クエリ） ②サジェスト（`python3 tools/suggest.py`。**候補のテーマの語で、その日にもう一度取る**。昔のファイルの流用はしない） ③YouTube（`youtube_research.py`） ④相談フォーム・GA4 ⑤取材・一次情報。
+- 需要の確認は playbook 14-1・15章どおり、次を順に使い、**根拠を `docs/seo/calendar.md` に1行（使った語・結果）書く**: ① Search Console（表示・クエリ） ②サジェスト（`python3 tools/suggest.py`。**候補のテーマの語で、その日にもう一度取る**。昔のファイルの流用はしない） ③YouTube（`yt_trend.py`・`youtube_research.py`）と X（WebSearch を x.com に絞る。`/trend-research`） ④相談フォーム・GA4 ⑤取材・一次情報。
 - **採用の目安は、候補の主な語がサジェストに複数出る、または Search Console に表示がある、のどちらか。** どれでも確かめられないテーマは「需要未確認」として見送り、別のテーマを探す（見送った理由は通知に書く）。
 - 需要の確認結果（使った語・サジェストの件数・判断）は、記事を採用してもしなくても、最終メッセージと PR の説明に書く。
 

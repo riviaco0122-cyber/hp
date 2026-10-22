@@ -11,13 +11,14 @@ description: アキヤドの YouTube（アキヤド 民泊school）の週次サ�
 
 ## 0. 準備
 1. 本番ブランチを調べて最新を取る（`git ls-remote --symref origin HEAD`）。作業ブランチは **`youtube/weekly`**。前回分が未マージなら、それに本番ブランチを取り込んで続ける。マージ済みなら本番ブランチから作り直す。
-2. `bash tools/video/setup_voicevox.sh`（声の準備）、`python3 -m pip install -q pillow`。Playwright の Chromium は入っている（`NODE_PATH=/opt/node-tools/node_modules`）。
+2. `bash tools/video/setup_voicevox.sh`（声の準備）、`python3 -m pip install -q pillow yt-dlp`。Playwright の Chromium は入っている（`NODE_PATH=/opt/node-tools/node_modules`）。
 3. 今回の回の番号 N ＝ `tools/video/make_strategy_ep*.py` の数 ＋ 1。
 
 ## 1. 分析（`yt-analyst`）
 前の動画の数字を読み、今回変えることを1〜3つに決める。鍵がなく数字が取れないときは、そのことを要約に書き、マニュアルの法則だけで進める（止まらない）。
 
 ## 2. 企画（`yt-planner`）→ 3. 台本（`yt-scriptwriter`）→ 品質（`yt-reviewer` が台本を採点）
+- **企画の前にネタ収集（人の方針 2026-10-22）**：`.claude/skills/trend-research/SKILL.md` の3経路で集める。編集長が候補のテーマの語で `python3 tools/yt_trend.py "語" --transcripts 3`（Bash の timeout 600000・前景）を実行し、結果（`docs/sources/youtube/` のファイルと `/tmp/akiyado-yt/` の字幕・概要欄）を `yt-planner` に渡す。X とネット検索は `yt-planner` が WebSearch で行う（X の投稿日は `python3 tools/x_post_date.py`）。企画書に「ネタ収集の結果」（伸びていた動画の切り口・拾った声と、その活かし方）を書かせる。
 - 台本の採点が 90 点未満・不合格の条件ありなら、指定された工程（企画／台本）に戻す。やり直しは最大3回。
 
 ## 4. 動画（`yt-video-engineer`）
