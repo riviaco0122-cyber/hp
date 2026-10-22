@@ -10,6 +10,7 @@ BLURBS = {
     "case-owner-licensed-akiya": "初期費用400万円・月の利益25万円",
     "case-owner-setouchi-cycling": "総予算400万円・月の利益12〜15万円",
     "case-owner-castle-town-nagaya": "公庫300万円・融資の3つの関門",
+    "case-owner-satoyama-airdna": "AirDNAのデータで公庫250万円",
     "akiya-inherited-house-to-inn": "固定資産税を払い続ける前に",
     "japan-tourism-market-data": "インバウンド拡大の裏の課題",
     "akiya-regional-revitalization": "宿への再生と4つの循環",

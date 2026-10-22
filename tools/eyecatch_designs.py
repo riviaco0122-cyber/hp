@@ -26,6 +26,7 @@ DESIGNS = {
     "case-owner-licensed-akiya": dict(layout="case", avatar=5, who="Fさん", lines=["空き家を[旅館業]で宿に", "初期費用400万円の内訳"], chips=[("初期費用", "約400万円"), ("月商", "平均約55万円"), ("月の純利益", "平均約25万円")]),
     "case-owner-setouchi-cycling": dict(layout="case", avatar=1, who="Gさんご夫婦", lines=["空き店舗を", "[サイクリスト]の宿に"], chips=[("総予算", "約400万円"), ("月商", "40〜45万円"), ("月の純利益", "12〜15万円")]),
     "case-owner-castle-town-nagaya": dict(layout="case", avatar=3, who="Hさんご夫婦", lines=["城下町の[古い長屋]を宿に", "融資の3つの関門"], chips=[("総予算", "約450万円"), ("月商", "45〜55万円"), ("月の純利益", "15〜18万円")]),
+    "case-owner-satoyama-airdna": dict(layout="case", avatar=2, who="Iさんご夫婦", lines=["里山の古民家を宿に", "[データ]で融資を通す"], chips=[("総予算", "約350万円"), ("月商", "45〜50万円"), ("月の純利益", "15〜18万円")]),
     "minpaku-chintai-start": dict(layout="poster", big="転貸", lines=["賃貸で民泊を始める", "[承諾書と管理規約]"], color="mustard"),
     "kaishain-minpaku-fukugyo": dict(layout="number", big="20", unit="万円", lines=["会社員の民泊副業", "[就業規則と20万円ルール]"], color="deep"),
     "minpaku-kakutei-shinkoku": dict(layout="poster", big="確定申告", lines=["新法民泊の", "[所得区分と経費]"], color="mustard"),
