@@ -4845,19 +4845,21 @@ def media_index_page():
           <li class="mfeat reveal" data-delay="2">
             <p class="mfeat__head"><span class="mfeat__no">03</span>遠方の家でも<br>回る運営の仕組み</p>
             <div class="mfeat__fig">
+              <p class="mfeat-big"><span>現地に行くのは</span><b>月1回</b><span>ほど</span></p>
               <ul class="mfeat-rows">
-                <li><span class="mfeat-rows__body"><span class="mfeat-rows__worry">毎回、現地に通う</span><b>現地は月1回ほど</b></span></li>
-                <li><span class="mfeat-rows__body"><span class="mfeat-rows__worry">清掃の質が見えない</span><b>近隣に外注し、写真で確認</b></span></li>
-                <li><span class="mfeat-rows__body"><span class="mfeat-rows__worry">鍵の受け渡しが必要</span><b>スマートロックで受付なし</b></span></li>
+                <li><span class="mfeat-rows__k">清掃</span><b>手順書と写真確認で、近隣の方に任せる</b></li>
+                <li><span class="mfeat-rows__k">入室</span><b>スマートロックで、受付なしで入室</b></li>
+                <li><span class="mfeat-rows__k">問い合わせ</span><b>自動翻訳・定型文・AIチャットで対応</b></li>
+                <li><span class="mfeat-rows__k">価格</span><b>レビューと時期に合わせて段階的に調整</b></li>
               </ul>
             </div>
-            <p class="mfeat__text">清掃は手順書をつくって近隣の方に任せ、終わったら写真で確かめます。</p>
+            <p class="mfeat__text">清掃・入室・問い合わせ・価格まで仕組みをつくり、開業2か月目には、自分が行かなくても回る体制にしました。</p>
           </li>
         </ul>
       </div>
     </section>
 
-    <section class="section msec msec--first">
+    <section class="section msec">
       <div class="container">
         <div class="msec__head reveal"><div><p class="msec__en">For you</p><h2 class="msec__title">ご自身の状況から読む</h2></div></div>
         <p class="msec__lead">いまの状況に近いものを選んでください。知っておきたいことを、悩みが生まれる順に並べたガイドをご用意しています。</p>
@@ -5044,22 +5046,36 @@ def source_li(s):
     return f'<li><a href="{e(m.group(2))}" target="_blank" rel="noopener noreferrer">{e(m.group(1))}</a></li>'
 
 
+def first_sentence_end(text):
+    """一文目の終わり（「。」の直後の位置）。かっこ（）「」の中の「。」では切らない。見つからなければ 0"""
+    depth = 0
+    for i, ch in enumerate(text):
+        if ch in "（「『(":
+            depth += 1
+        elif ch in "）」』)":
+            depth = max(depth - 1, 0)
+        elif ch == "。" and depth == 0:
+            return i + 1
+    return 0
+
+
 def article_page(a):
     names = dict(SERVICES)
     toc = "".join(f'<li><a href="#{sid}">{e(h)}</a></li>' for sid, h, _ in a["sections"])
     def kp_item(k):
         # 最初の一文を太字の要点、残りを補足（小さく・淡く）にして、短く見せる
-        m = re.match(r"(.+?。)(.+)$", k)
-        if m:
-            return f'<li><span class="kp__main">{e(m.group(1))}</span><span class="kp__sub">{e(m.group(2).strip())}</span></li>'
+        n = first_sentence_end(k)
+        if n and k[n:].strip():
+            return f'<li><span class="kp__main">{e(k[:n])}</span><span class="kp__sub">{e(k[n:].strip())}</span></li>'
         return f'<li><span class="kp__main">{e(k)}</span></li>'
     keypoints = "".join(kp_item(k) for k in a["keypoints"])
     def lead_sentence(html):
         """節の最初の段落（<p>）の一文目を強調する。2文以上あり、一文目にタグを含まない段落だけ。"""
-        m = re.match(r"(\s*<p>)([^<]+?。)(?=[^<\s])", html)
-        if not m:
+        m = re.match(r"(\s*<p>)([^<]+)", html)
+        n = first_sentence_end(m.group(2)) if m else 0
+        if not n or not html[m.start(2) + n:].lstrip()[:1] or html[m.start(2) + n:][:1] in ("<", " ", "\n"):
             return html
-        return html[:m.end(1)] + f'<span class="lead-s">{m.group(2)}</span>' + html[m.end(2):]
+        return html[:m.end(1)] + f'<span class="lead-s">{m.group(2)[:n]}</span>' + html[m.start(2) + n:]
     def calc_lists(html):
         """式が並ぶ箇条書き（÷・×・= を含む項目だけの <ul>）に calc クラスを付けて、式として見せる"""
         def sub(m):
@@ -5113,7 +5129,12 @@ def article_page(a):
             inner = inner.replace("<strong>", "").replace("</strong>", "")
             return m.group(1) + inner + "</p>"
         return re.sub(r"(<p(?: [^>]*)?>)(.*?)</p>", p_fix, html, flags=re.S)
+    def talk_lists(html):
+        """会話の吹き出しの直後の箇条書きは、話している人の言葉の続きとして吹き出しの中に入れる"""
+        return re.sub(r'(<div class="talk__body">(?:(?!</div>).)*?)</div></div>\s*(<(ul|ol)>.*?</\3>)',
+                      lambda m: m.group(1) + m.group(2).replace(f"<{m.group(3)}>", f'<{m.group(3)} class="talk__list">', 1) + "</div></div>", html, flags=re.S)
     def tables(html):
+        html = talk_lists(html)
         html = calc_lists(html)
         html = auto_stack_tables(html)
         html = html.replace('<table class="table">', '<div class="table-scroll"><table class="table">').replace("</table>", "</table></div>")
