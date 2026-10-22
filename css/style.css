@@ -2238,6 +2238,7 @@ body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(
 .vision__grid .vision__more { grid-area: more; align-self: start; }
 .cycle__loop { position: absolute; right: 79%; top: 17%; white-space: nowrap; font-family: var(--font-serif); font-size: 12px; letter-spacing: 0.08em; color: var(--c-accent); }
 .vision__lead { margin-top: 36px; word-break: auto-phrase; }
+.vision__lead:has(> n-w.j) { text-align: left; }
 .cycle { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1; margin-inline: auto; }
 .cycle__ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .cycle__ring circle { fill: none; stroke: var(--c-line-strong); stroke-width: 0.25; }
@@ -2921,7 +2922,6 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 
 /* スマホ：長く見える箇所を詰める */
 @media (max-width: 899px) {
-  .vision__lead n-w:nth-of-type(2), .vision__lead br:nth-of-type(2) { display: none; }
   .reason, .reason + .reason { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 6px 14px; padding: 22px 20px; }
   .reason__num { grid-row: span 2; font-size: 30px; }
   .reason__title { margin-top: 0; font-size: 17px; }
