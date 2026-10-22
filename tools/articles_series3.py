@@ -240,7 +240,7 @@ ARTICLES_SERIES3 += [
         slug="remote-renovation-tips",
         date=D, updated="2026-10-13", topics=["house", "start"], photo=("dark-room", "改修された和室"),
         guides=[("use", 3), ("side", 3)],
-        title="空き家を宿に改修する進め方｜遠方でも追加費用を防ぐ相見積もり・記録・配線確認",
+        title="空き家を民泊に改修する進め方｜遠方でも追加費用を防ぐ相見積もり・記録・配線確認",
         short="遠方からの\n改修工事の進め方",
         description="空き家を宿に改修するとき、遠方に住んでいると工事の進み具合を確かめにくく、追加費用や行き違いが起きがちです。アキヤドが運営に関わる宿の経験をもとに、相見積もり、打ち合わせの記録、古い電気配線の確認など、改修工事を進めるコツを紹介します。",
         services=["operation", "management"],

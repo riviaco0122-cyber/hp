@@ -19,7 +19,7 @@
  *   - sitemap.xml の全 URL と pages/ 以下の全 HTML（noindex も）、存在しない URL（404 ページ）を、幅 390px と 1280px で開く
  *   - 重大: JS のエラー（pageerror・console.error）、内部のリソースの読み込み失敗（4xx/5xx）、内部リンク切れ、
  *           表示されない画像（naturalWidth 0）、横はみ出し（scrollWidth > 画面幅）、ヘッダー・フッター・h1 がない、ページ自体が開けない
- *   - 警告: 予約公開の記事が公開日前に一覧・ガイド・よくある悩みなどに見えている、公開日前の記事ページが一覧へ戻らない、
+ *   - 警告: 予約公開の記事が公開日前に一覧・ガイド・よくある悩みなどに見えている、公開日前の記事ページが転送される、
  *           ページ内リンク（#）の飛び先がない、転送（リダイレクト）される URL へのリンク、スマホのメニューが開かない、
  *           フェードイン（.reveal）が表示されないまま、読み込みが遅い、スマホで画像が重い、
  *           見た目の崩れ（スマホ幅のみ。図・カード・囲み枠の中身が左端／右端から 10px/6px 未満でくっついている、文字が枠や画面からはみ出している、
@@ -29,7 +29,7 @@
  *     tools/check/img_diff.py（Pillow）で比べ、差分の割合が大きいページを一覧にする（意図した変更かを人と品質管理部が確認する）
  *
  * 終了コード: 重大な問題が 1 件でもあれば 1、なければ 0（警告・見た目の差分だけなら 0）。
- * 予約公開: 公開日前の記事ページは、その記事の公開日の時計にして中身を点検し、別に「今日」の時計で一覧へ戻ることを確かめる。
+ * 予約公開: 公開日前の記事ページは、その記事の公開日の時計にして中身を点検し、別に「今日」の時計で開いても転送されないことを確かめる。
  */
 'use strict';
 const fs = require('fs');
@@ -381,7 +381,7 @@ async function checkPage(browser, srv, p, width, opts, report) {
   const future = pub && pub > opts.today;
   const ctx = await browser.newContext({ viewport: { width, height: 900 }, timezoneId: 'Asia/Tokyo', locale: 'ja-JP' });
   const page = await ctx.newPage();
-  // 予約公開の記事は、その記事の公開日の時計で中身を点検する（今日の時計だと一覧へ戻るため）。ほかは --date の日付
+  // 予約公開の記事は、その記事の公開日の時計で中身を点検する（今日の時計だと一覧などから隠れるため）。ほかは --date の日付
   const clockDate = future ? pub : opts.date;
   if (clockDate) await page.clock.setFixedTime(new Date(clockDate + 'T10:00:00+09:00'));
   const host = new URL(srv.origin).host;
@@ -480,7 +480,7 @@ async function checkPage(browser, srv, p, width, opts, report) {
   return { p, width, info, loadMs };
 }
 
-// 公開日前の記事ページを「今日」の時計で開くと、一覧（media.html）へ戻ること（main.js の動作）
+// 公開日前の記事ページを「今日」の時計で開いても、転送されないこと（転送すると Google に「ページにリダイレクトがあります」と記録されるため。2026-10-22）
 async function checkScheduledRedirect(browser, srv, p, opts, report) {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 900 }, timezoneId: 'Asia/Tokyo', locale: 'ja-JP' });
   const page = await ctx.newPage();
@@ -488,9 +488,10 @@ async function checkScheduledRedirect(browser, srv, p, opts, report) {
   await ctx.route('**/*', r => (new URL(r.request().url()).host === new URL(srv.origin).host ? r.continue() : r.abort('blockedbyclient')));
   try {
     await page.goto(srv.origin + p, { waitUntil: 'load', timeout: 30000 });
-    await page.waitForURL(u => new URL(u).pathname === '/media.html', { timeout: 5000 });
+    await page.waitForTimeout(1500);
+    if (new URL(page.url()).pathname !== p) report.add('warn', p, 390, '予約公開', `公開日前（今日 ${opts.today}）の記事ページが ${new URL(page.url()).pathname} へ転送される（Google に「ページにリダイレクトがあります」と記録される。main.js）`);
   } catch (e) {
-    report.add('warn', p, 390, '予約公開', `公開日前（今日 ${opts.today}）に記事ページを開いても一覧へ戻らない（main.js）`);
+    report.add('warn', p, 390, '予約公開', `公開日前の記事ページを開けない: ${String(e.message).split('\n')[0]}`);
   }
   await ctx.close();
 }

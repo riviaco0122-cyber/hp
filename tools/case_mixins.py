@@ -31,7 +31,7 @@ MIXINS = {
     "long-stay-travel-demand": {"summary": '<p>訪日客数などの全体のデータは、「<a href="media/japan-tourism-market-data.html">データで見る日本の観光市場</a>」で紹介しています。</p>'},
     "why-minpaku-for-akiya": {"caution": '<p>市場の全体像は、「<a href="media/japan-tourism-market-data.html">データで見る日本の観光市場</a>」で紹介しています。</p>'},
     "kominka-renovation-points": {"summary": '<p>新築と中古のどちらにするかは、「<a href="media/new-build-vs-used-house-inn.html">小規模宿は新築と中古どっち？</a>」で比べています。</p>'},
-    "akiya-holding-costs": {"summary": '<p>活用が注目されている背景は、「<a href="media/why-akiya-utilization-now.html">なぜ今「空き家の活用」が注目されているのか</a>」で紹介しています。</p>'},
-    "akiya-inherited-house-to-inn": {"summary": '<p>活用が注目されている背景は、「<a href="media/why-akiya-utilization-now.html">なぜ今「空き家の活用」が注目されているのか</a>」で紹介しています。</p>'},
-    "inherited-house-family-talk": {"split": '<p>活用が注目されている背景は、「<a href="media/why-akiya-utilization-now.html">なぜ今「空き家の活用」が注目されているのか</a>」で紹介しています。</p>'},
+    "akiya-holding-costs": {"summary": '<p>活用が注目されている背景は、「<a href="media/why-akiya-utilization-now.html">なぜ今「空き家の活用」が注目されるのか</a>」で紹介しています。</p>'},
+    "akiya-inherited-house-to-inn": {"summary": '<p>活用が注目されている背景は、「<a href="media/why-akiya-utilization-now.html">なぜ今「空き家の活用」が注目されるのか</a>」で紹介しています。</p>'},
+    "inherited-house-family-talk": {"split": '<p>活用が注目されている背景は、「<a href="media/why-akiya-utilization-now.html">なぜ今「空き家の活用」が注目されるのか</a>」で紹介しています。</p>'},
 }
