@@ -28,8 +28,16 @@ from eyecatch_designs import DESIGNS  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "images", "eyecatch")
 
-MARK = ('<svg viewBox="0 0 32 32" width="40" height="40"><rect width="32" height="32" rx="9" fill="#2E6B47"/>'
-        '<path d="M7.5 15.6 16 8.6l8.5 7v8.6a1.3 1.3 0 0 1-1.3 1.3h-4.7v-5.7h-5v5.7H8.8a1.3 1.3 0 0 1-1.3-1.3z" fill="#fff"/></svg>')
+# アキヤドのマーク（ヤドカリ。tools/build.py の AKIYADO_MARK と同じ形）。家は文字色（.logo の color）に合わせる
+MARK = ('<svg viewBox="0 0 67 64" width="44" height="42" style="overflow:visible">'
+        '<g stroke="#CF5F37" stroke-width="3.6" stroke-linecap="round" fill="none"><path d="M14 52l-4 7M21 54l-1 7M28 53l2 6M14 40l-2-9M22 40v-9"/></g>'
+        '<ellipse cx="22" cy="46" rx="13" ry="9" fill="#CF5F37"/>'
+        '<path d="M3 46a8 8 0 1 1 13-6.5l-6.5 1.5 4 5.5A8 8 0 0 1 3 46z" fill="#CF5F37"/>'
+        '<circle cx="12" cy="27" r="4.6" fill="#fff" stroke="#262a27" stroke-width="1.6"/><circle cx="22" cy="27" r="4.6" fill="#fff" stroke="#262a27" stroke-width="1.6"/>'
+        '<circle cx="13.2" cy="27.4" r="2.1" fill="#262a27"/><circle cx="23.2" cy="27.4" r="2.1" fill="#262a27"/>'
+        '<path d="M30 28 45 14l15 14v18a4 4 0 0 1-4 4H34a4 4 0 0 1-4-4z" fill="currentColor"/>'
+        '<path d="M26.5 30.5 45 12.5l18.5 18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>'
+        '<rect x="40" y="30" width="10" height="10" rx="2" fill="#F4C65A"/></svg>')
 
 BASE_CSS = """
 @import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;700;900&family=Dela+Gothic+One&family=Shippori+Mincho+B1:wght@800&display=block");
