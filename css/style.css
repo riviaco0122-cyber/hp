@@ -2238,7 +2238,8 @@ body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(
 .vision__grid .vision__more { grid-area: more; align-self: start; }
 .cycle__loop { position: absolute; right: 79%; top: 17%; white-space: nowrap; font-family: var(--font-serif); font-size: 12px; letter-spacing: 0.08em; color: var(--c-accent); }
 .vision__lead { margin-top: 36px; word-break: auto-phrase; }
-.vision__lead:has(> n-w.j) { text-align: left; }
+.vision__sent { display: block; }
+.vision__sent > span { display: inline-block; }
 .cycle { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1; margin-inline: auto; }
 .cycle__ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .cycle__ring circle { fill: none; stroke: var(--c-line-strong); stroke-width: 0.25; }
