@@ -334,9 +334,9 @@ VISION = dict(
 )
 TOP_CONCEPT = dict(
     copy="日本の魅力を、暮らすように味わう。",
-    lead=["私たちは、単なる宿泊施設を提供するのではありません。",
-          "地域に眠る資源（空き家や遊休不動産）を、デザインとテクノロジーの力で「その土地の日常を体験できる居場所」へとアップデートします。",
-          "旅行者には新しい滞在価値を、地域には持続可能な経済循環を。"],
+    lead=["この家、どうしよう。そう迷ったまま、思い出ごと眠っている空き家が、地方にはたくさんあります。",
+          "私たちはその家を自分たちの手で宿に再生し、運営しています。",
+          "泊まった人がまちで食べ、買い、また帰ってくる。一軒の家から、地域に経済の循環を生み出します。"],
 )
 # 宿を起点に、地域へ人とお金がめぐる循環（TOPのコンセプト横の図）
 TOP_CYCLE = [
@@ -3816,9 +3816,16 @@ def guides_of(slug):
     return [g for g in MEDIA_GUIDES if slug in g["slugs"]]
 
 
-# アキヤドのマーク（角の丸い四角に、家のかたち）
-AKIYADO_MARK = ('<svg class="amark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2E6B47"/>'
-                '<path d="M7.5 15.6 16 8.6l8.5 7v8.6a1.3 1.3 0 0 1-1.3 1.3h-4.7v-5.7h-5v5.7H8.8a1.3 1.3 0 0 1-1.3-1.3z" fill="#fff"/></svg>')
+# アキヤドのマーク（空き家を宿にして住みつくヤドカリ。2026-10-22 人が選んだ案）
+AKIYADO_MARK = ('<svg class="amark" viewBox="0 0 67 64" aria-hidden="true">'
+                '<g stroke="#CF5F37" stroke-width="3.6" stroke-linecap="round" fill="none"><path d="M14 52l-4 7M21 54l-1 7M28 53l2 6M14 40l-2-9M22 40v-9"/></g>'
+                '<ellipse cx="22" cy="46" rx="13" ry="9" fill="#CF5F37"/>'
+                '<path d="M3 46a8 8 0 1 1 13-6.5l-6.5 1.5 4 5.5A8 8 0 0 1 3 46z" fill="#CF5F37"/>'
+                '<circle cx="12" cy="27" r="4.6" fill="#fff" stroke="#262a27" stroke-width="1.6"/><circle cx="22" cy="27" r="4.6" fill="#fff" stroke="#262a27" stroke-width="1.6"/>'
+                '<circle cx="13.2" cy="27.4" r="2.1" fill="#262a27"/><circle cx="23.2" cy="27.4" r="2.1" fill="#262a27"/>'
+                '<path class="amark__gap amark__house" d="M30 28 45 14l15 14v18a4 4 0 0 1-4 4H34a4 4 0 0 1-4-4z" stroke-width="2.6" stroke-linejoin="round"/>'
+                '<path class="amark__roof" d="M26.5 30.5 45 12.5l18.5 18" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>'
+                '<rect x="40" y="30" width="10" height="10" rx="2" fill="#F4C65A"/></svg>')
 
 
 def media_logo(cls="mlogo"):
@@ -4816,12 +4823,8 @@ def media_index_page():
                 <div class="mfeat-stat"><svg class="mfeat-donut" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16" pathLength="100"/><circle class="mfeat-donut__v" cx="21" cy="21" r="16" pathLength="100" stroke-dasharray="53 47"/></svg><p class="mfeat-stat__n">約53<small>%</small></p><p class="mfeat-stat__k">1年目の稼働率</p></div>
                 <div class="mfeat-stat"><p class="mfeat-stat__n mfeat-stat__n--top">約14<small>か月</small></p><span class="mfeat-bar" aria-hidden="true"><i></i></span><p class="mfeat-stat__k">開業費用をほぼ回収</p></div>
               </div>
-              <div class="mfeat-flow" aria-label="運営の記録から、記事の数字とご提案の見込みを出しています">
-                <span class="mfeat-chip mfeat-chip--src">運営の記録</span><span class="mfeat-flow__to" aria-hidden="true"></span>
-                <span class="mfeat-flow__out"><span class="mfeat-chip">記事の数字</span><span class="mfeat-chip">ご提案の見込み</span></span>
-              </div>
             </div>
-            <p class="mfeat__text">稼働率の月ごとの波や、清掃・手数料の費用まで、自分たちで宿を運営した記録をもとにお伝えします。</p>
+            <p class="mfeat__text">記事の数字も、ご提案の見込みも、こうした自分たちの運営の記録から出しています。稼働率の月ごとの波や、清掃・手数料の費用までお伝えします。</p>
           </li>
           <li class="mfeat reveal" data-delay="1">
             <p class="mfeat__head"><span class="mfeat__no">02</span>売る・貸す・はじめるを<br>並べて比べられる</p>
