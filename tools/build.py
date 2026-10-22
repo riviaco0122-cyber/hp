@@ -86,7 +86,7 @@ def phrase_breaks(html):
     lead = False  # 一文のリード（サービス概要など）も見出しと同じく文節で改行する
     for i, p in enumerate(parts):
         if p.startswith("<"):
-            m_lead = re.match(r'<(p|span) class="(overview__text|hero__sub|cta__text|page-hero__lead|page-hero__target|about-line|mq__q|guide-step__title|mhero__lead|pd__desc|scheme__summary|related__worry|timeline__desc|flow__desc|vsvc__text|statement__text)\b', p)
+            m_lead = re.match(r'<(p|span) class="(overview__text|hero__sub|cta__text|page-hero__lead|page-hero__target|about-line|mq__q|guide-step__title|mhero__lead|pd__desc|scheme__summary|related__worry|timeline__desc|flow__desc|vsvc__text)\b', p)
             if m_lead:
                 lead = m_lead.group(1)
             elif lead and p == f"</{lead}>":
@@ -255,14 +255,6 @@ HERO_SLIDES = [
     ("riverside-town", 1620, 1080, "50% 55%"),
     ("fuji-lake", 1620, 1080, "50% 40%"),
 ]
-# 「不動産の型を破る」宣言（TOPのファーストビューのすぐ下）
-STATEMENT = dict(
-    en="Break the mold",
-    lead="空き家の話は、たいてい",
-    strikes=["売って、終わり。", "貸して、終わり。", "仲介して、終わり。"],
-    title='<n-b>その「終わり」を、</n-b><br><em>まちの始まり</em>に。',
-    text="空き家を自らの手で宿に再生し、運営し、旅行者をまちへ送り出す。眠っていた家を、人とお金がめぐる地域の拠点に変えていきます。",
-)
 
 
 # TOPの事業紹介：事業の括りごとに「届ける価値」を大きく見せる
@@ -1731,9 +1723,6 @@ def index_page():
         f'        <img class="hero__bg{" is-active" if i == 0 else ""}" src="images/photos/{n}.jpg" alt="" width="{w}" height="{h}" style="object-position:{pos}"'
         + (' fetchpriority="high"' if i == 0 else ' loading="lazy"') + ' decoding="async">'
         for i, (n, w, h, pos) in enumerate(HERO_SLIDES))
-    strikes = "\n".join(
-        f'          <li class="statement__strike reveal" data-delay="{i}"><s>{e(t)}</s></li>'
-        for i, t in enumerate(STATEMENT["strikes"]))
     body = f"""    <section class="hero hero--photo hero--x">
       <div class="hero__slides" aria-hidden="true">
 {slides}
@@ -1745,23 +1734,11 @@ def index_page():
           <a href="about.html" class="btn btn--ghost btn--on-photo">私たちについて</a>
         </div>
       </div>
-      <a href="#statement" class="hero__badge" aria-label="次のセクションへ">
+      <a href="#vision" class="hero__badge" aria-label="次のセクションへ">
         <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="hero-badge-path" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#hero-badge-path" textLength="284" lengthAdjust="spacing">LOCAL VALUE ✳ JAPAN'S ENERGY ✳ RIVIA&amp;CO. ✳</textPath></text></svg>
         <span class="hero__badge-arrow" aria-hidden="true"></span>
       </a>
       <div class="hero__count" aria-hidden="true"><span class="hero__count-n">01</span><i><b></b></i><span>{len(HERO_SLIDES):02d}</span></div>
-    </section>
-
-    <section class="statement" id="statement">
-      <div class="container">
-        <span class="eyebrow reveal">{e(STATEMENT["en"])}</span>
-        <p class="statement__lead reveal">{e(STATEMENT["lead"])}</p>
-        <ul class="statement__strikes">
-{strikes}
-        </ul>
-        <h2 class="statement__title reveal">{STATEMENT["title"]}</h2>
-        <p class="statement__text reveal" data-delay="1">{e(STATEMENT["text"])}</p>
-      </div>
     </section>
 
 {vision}
@@ -2333,7 +2310,7 @@ def spec_md():
     w("* **目的:** 宿泊施設・空き家・地方ビジネスに課題を持つ方が、自分の悩みに合うサービスを見つけ、無料相談（お問い合わせ）に進むこと。")
     w("* **ターゲットデザイン:** 株式会社SUMUS（https://sumus-inc.co.jp/）のような、スタイリッシュで情報が整理されたモダン・ミニマルなデザイン。大きな余白、洗練されたタイポグラフィ、スクロールに応じた上品なフェードイン。")
     w("* **トーン＆マナー（2026-10-15 改定）:** 「不動産会社の型を破る」をデザインでも表す。白基調・黒文字をベースに、深い森の緑（#1A472A／面は #0F2618）・朱（#D9502B、強調と遊び）・生成り（#F4EFE4、やわらかい面）の3色を加える。見出しは大きく（TOPのキャッチは最大148px）、英字ラベルは朱の短い線つき。ボタンは丸く、ホバーで色が満ちる。コーポレートページ（body.is-corp）だけに効かせ、アキヤド（body.is-media）は独自の見た目のまま。")
-    w("* **動き:** TOPのファーストビューは写真4枚がゆっくり寄りながら切り替わり（6秒ごと）、キャッチは1行ずつせり上がる。右下に回るバッジ（次のセクションへ）。続く「Break the mold」で「売って、終わり。」「貸して、終わり。」「仲介して、終わり。」に朱の線が引かれ、「その『終わり』を、まちの始まりに。」。循環の図は光の点が回り、順に緑に光る。評価の数字はカウントアップ。画面上端にスクロールの進み具合の線。フッターは深い緑に大きな社名。私たちについての見出しは写真ではなく、点で描いた日本地図に東京・静岡の拠点が脈打ち、全国へ朱の線が伸びる（tools/japan_map.py。地図は Natural Earth）。続くMISSION などの大きな英字が輪郭線で広がり、ミッションの文が1行ずつ浮かぶ。ビジョンは深い緑の面に線が引かれ、バリューはホバーで緑が満ちるカード、創業者の写真のまわりを朱の点線が回る。動きを減らす設定（prefers-reduced-motion）では自動で動くものを止める。")
+    w("* **動き:** TOPのファーストビューは写真4枚がゆっくり寄りながら切り替わり（6秒ごと）、キャッチは1行ずつせり上がる。右下に回るバッジ（次のセクションへ）。循環の図は光の点が回り、順に緑に光る。評価の数字はカウントアップ。画面上端にスクロールの進み具合の線。フッターは深い緑に大きな社名。私たちについての見出しは写真ではなく、点で描いた日本地図に東京・静岡の拠点が脈打ち、全国へ朱の線が伸びる（tools/japan_map.py。地図は Natural Earth）。続くMISSION などの大きな英字が輪郭線で広がり、ミッションの文が1行ずつ浮かぶ。ビジョンは深い緑の面に線が引かれ、バリューはホバーで緑が満ちるカード、創業者の写真のまわりを朱の点線が回る。動きを減らす設定（prefers-reduced-motion）では自動で動くものを止める。")
     w("* **フォント:** 見出し＝Noto Serif JP（Light）、本文＝Noto Sans JP、英字・数字＝Cormorant Garamond（Light）。")
     w("* **除外要素:** 「Seminar & Event」「マガジン」「SNSへのリンク」は置かない。")
     w("* **技術スタック:** HTML / CSS / JavaScript（外部ライブラリなし）。GitHub → Vercel で公開。")
