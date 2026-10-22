@@ -4313,7 +4313,7 @@ body.is-media .mcenter-head__title { margin-top: 6px; font-family: var(--font-ro
 .mfeat-goal b { color: var(--m-cta); }
 /* 03 遠方でも：心配 → アキヤドでは */
 .mfeat-big { display: flex; align-items: baseline; justify-content: center; gap: 4px; font-size: 13px; color: var(--m-sub); }
-.mfeat-big b { color: var(--m-cta); font-family: var(--font-round); font-weight: 700; font-size: 30px; line-height: 1.1; }
+.mfeat-big b { color: var(--m-cta); font-family: var(--font-round); font-weight: 700; font-size: 26px; line-height: 1.1; }
 .mfeat-rows { display: flex; flex-direction: column; width: 100%; border-top: 1px solid var(--m-line); text-align: left; }
 .mfeat-rows li { display: grid; grid-template-columns: 84px minmax(0, 1fr); align-items: center; gap: 12px; padding: 11px 2px; border-bottom: 1px solid var(--m-line); }
 .mfeat-rows__k { justify-self: stretch; text-align: center; padding: 3px 4px; border-radius: 999px; background: var(--m-sand); color: var(--m-green); font-size: 12px; font-weight: 700; white-space: nowrap; }
