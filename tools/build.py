@@ -214,6 +214,9 @@ ICONS = {
     "doc": '<path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h4"/>',
     "book": '<path d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"/>',
     "compass": '<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 13.5 13.5 8.5 15.5 10.5 10.5z"/>',
+    "bed": '<path d="M3 6v13M3 15h18v4M21 15v-3a3 3 0 0 0-3-3h-7v6"/><circle cx="7" cy="11.5" r="1.8"/>',
+    "car": '<path d="M3 16v-3l2.5-5h13l2.5 5v3z"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/>',
+    "lock": '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3M12 15v2"/>',
 }
 
 
@@ -4806,32 +4809,45 @@ def media_index_page():
         <div class="mcenter-head reveal"><p class="msec__en">Features</p><h2 class="mcenter-head__title">アキヤドの特徴</h2></div>
         <ul class="mfeat-cards">
           <li class="mfeat reveal">
-            <p class="mfeat__head">自分たちで宿を運営する<br>当事者の目線で答える</p>
-            <div class="mfeat__fig" aria-hidden="true">
-              <div class="mfeat-box"><p class="mfeat-box__k">静岡県下田市の一棟貸しの宿</p><p class="mfeat-box__v">1年目の稼働率 <b>約53%</b></p><p class="mfeat-box__v">開業費用を <b>約14か月</b>でほぼ回収</p></div>
-              <p class="mfeat-arrow">▼</p>
-              <p class="mfeat-hl">記事の数字も、ご提案の見込みも<br><b>運営の記録</b>から出しています</p>
+            <p class="mfeat__head"><span class="mfeat__no">01</span>宿を運営する<br>当事者が答える</p>
+            <div class="mfeat__fig">
+              <p class="mfeat-case">運営している宿の一例<span>静岡県下田市・一棟貸し</span></p>
+              <div class="mfeat-stats">
+                <div class="mfeat-stat"><svg class="mfeat-donut" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16" pathLength="100"/><circle class="mfeat-donut__v" cx="21" cy="21" r="16" pathLength="100" stroke-dasharray="53 47"/></svg><p class="mfeat-stat__n">約53<small>%</small></p><p class="mfeat-stat__k">1年目の稼働率</p></div>
+                <div class="mfeat-stat"><p class="mfeat-stat__n mfeat-stat__n--top">約14<small>か月</small></p><span class="mfeat-bar" aria-hidden="true"><i></i></span><p class="mfeat-stat__k">開業費用をほぼ回収</p></div>
+              </div>
+              <div class="mfeat-flow" aria-label="運営の記録から、記事の数字とご提案の見込みを出しています">
+                <span class="mfeat-chip mfeat-chip--src">運営の記録</span><span class="mfeat-flow__to" aria-hidden="true"></span>
+                <span class="mfeat-flow__out"><span class="mfeat-chip">記事の数字</span><span class="mfeat-chip">ご提案の見込み</span></span>
+              </div>
             </div>
-            <p class="mfeat__text">静岡県下田市で、家を1棟まるごと貸す宿を運営しています。月ごとの稼働率の波や、清掃・手数料の費用まで、自分たちの記録をもとにお伝えします。</p>
+            <p class="mfeat__text">稼働率の月ごとの波や、清掃・手数料の費用まで、自分たちで宿を運営した記録をもとにお伝えします。</p>
           </li>
           <li class="mfeat reveal" data-delay="1">
-            <p class="mfeat__head">売る・貸す・はじめるを<br>同じ土俵で比べられる</p>
-            <div class="mfeat__fig" aria-hidden="true">
+            <p class="mfeat__head"><span class="mfeat__no">02</span>売る・貸す・はじめるを<br>並べて比べられる</p>
+            <div class="mfeat__fig">
               <p class="mfeat-pill">あなたの空き家</p>
-              <p class="mfeat-arrow">▼</p>
-              <div class="mfeat-three"><p><b>売る</b>売った場合の目安</p><p><b>借り上げ</b>家を残した場合の収入</p><p><b>自分で運営</b>宿の収支の見込み</p></div>
-              <p class="mfeat-arrow">▼</p>
-              <p class="mfeat-hl">ご家族が<b>納得できる方法</b>を選べる</p>
+              <svg class="mfeat-branch" viewBox="0 0 300 36" preserveAspectRatio="none" aria-hidden="true"><path d="M150 0v12M50 36V22a10 10 0 0 1 10-10h180a10 10 0 0 1 10 10v14M150 12v24"/></svg>
+              <div class="mfeat-three">
+                <p><span class="mfeat-three__no">1</span><b>売る</b>売った場合の目安</p>
+                <p><span class="mfeat-three__no">2</span><b>借り上げ</b>家を残して収入</p>
+                <p><span class="mfeat-three__no">3</span><b>自分で運営</b>宿の収支見込み</p>
+              </div>
+              <svg class="mfeat-branch mfeat-branch--in" viewBox="0 0 300 36" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0v14a10 10 0 0 0 10 10h180a10 10 0 0 0 10-10V0M150 0v36"/></svg>
+              <p class="mfeat-goal"><span>ご家族が<b>納得できる方法</b>を選べる</span></p>
             </div>
-            <p class="mfeat__text">売った場合の目安だけでなく、借り上げで家を残した場合や、自分で宿をはじめた場合の見込みも、あわせてお出しします（収益を保証するものではありません）。</p>
+            <p class="mfeat__text">売った場合の目安と、家を残した場合・自分で宿をはじめた場合の見込みを、あわせてお出しします（収益を保証するものではありません）。</p>
           </li>
           <li class="mfeat reveal" data-delay="2">
-            <p class="mfeat__head">遠方からでも回る<br>運営の仕組みがある</p>
-            <div class="mfeat__fig mfeat__fig--compare" aria-hidden="true">
-              <div class="mfeat-col mfeat-col--ours"><p class="mfeat-col__t">アキヤドの運営</p><ul><li>現地は月1回ほど</li><li>清掃は近隣に外注し、写真で確認</li><li>スマートロックで受付なしの入室</li></ul></div>
-              <div class="mfeat-col"><p class="mfeat-col__t">よくある心配</p><ul><li>毎回、現地に通う</li><li>清掃の質が見えない</li><li>鍵の受け渡しが必要</li></ul></div>
+            <p class="mfeat__head"><span class="mfeat__no">03</span>遠方の家でも<br>回る運営の仕組み</p>
+            <div class="mfeat__fig">
+              <ul class="mfeat-rows">
+                <li><span class="mfeat-rows__body"><span class="mfeat-rows__worry">毎回、現地に通う</span><b>現地は月1回ほど</b></span></li>
+                <li><span class="mfeat-rows__body"><span class="mfeat-rows__worry">清掃の質が見えない</span><b>近隣に外注し、写真で確認</b></span></li>
+                <li><span class="mfeat-rows__body"><span class="mfeat-rows__worry">鍵の受け渡しが必要</span><b>スマートロックで受付なし</b></span></li>
+              </ul>
             </div>
-            <p class="mfeat__text">清掃は手順書をつくって近隣の方に任せ、終わったら写真で確かめます。遠方の家でも、通う回数を減らして運営できる仕組みをつくっています。</p>
+            <p class="mfeat__text">清掃は手順書をつくって近隣の方に任せ、終わったら写真で確かめます。</p>
           </li>
         </ul>
       </div>
