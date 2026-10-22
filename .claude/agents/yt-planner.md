@@ -13,7 +13,8 @@ tools: Read, Grep, Glob, Bash, Edit, Write, WebSearch, WebFetch
 
 ## テーマの決め方
 - マニュアル 1-2 章の「テーマ案」・ネタ帳（8章）、`docs/seo/keywords.md`、Search Console でよく見られている記事のテーマから、**まだ作っていないもの** を選ぶ。アキヤドの記事（`tools/articles_*.py`）に同じテーマの記事があるものを優先する（数字の出典がそろっていて、説明欄から記事へ送れる）。
-- 必要なら `python3 tools/youtube_research.py "キーワード"` で、YouTube で何が見られているかを確かめる（他人の動画の中身は写さない）。
+- **テーマを決める前に、`.claude/skills/trend-research/SKILL.md` の手順でネタを集める（人の方針 2026-10-22）**: `python3 tools/yt_trend.py "キーワード" --transcripts 3` で「最近・登録者が少ないのに伸びている動画」を探し、上位の字幕・概要欄（`/tmp/akiyado-yt/`）から**なぜ伸びたか（切り口・つかみ・見せ方）**を読む。X（WebSearch を x.com に絞る）とネット検索で、いま話題のこと・視聴者の声を拾う。他人の動画の中身・台本は写さない（切り口を学び、中身は自分たちの出典つきの数字で作る）。
+- 企画書（`docs/youtube/plans/ep<N>.md`）に「ネタ収集の結果」（伸びていた動画の切り口の上位3つ・拾った声の上位3つ・それをどう活かすか）を書く。一般の人の声は名前・URL なしの要約で、台本の「よくある悩み」に使ってよい。
 
 ## 作るもの（`docs/youtube/plans/ep<N>.md` に書く）
 1. タイトル案（検索される言葉を前に。例「〇〇は本当に儲かる？｜…【民泊戦略】」）と、左上に出す短いタイトル（`EP_TITLE`、15字以内）
