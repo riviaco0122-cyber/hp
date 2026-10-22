@@ -2621,7 +2621,7 @@ ARTICLES = [
         tone="sand",
         date="2026-09-29",
         updated="2026-10-13",
-        title="実家を放置するとどうなる？固定資産税の負担と「小さな宿」という選択",
+        title="実家を放置するとどうなる？固定資産税の負担と「民泊」という選択",
         short="放置された実家が\n「小さな宿」に変わる理由",
         description="住んでいない実家は、そのままにしても毎年の税金や管理の手間がなくなりません。法律も変わり、放置しにくくなりました。売る・壊す・貸すと並べて、小さな宿にする道と、始める前の確認点を紹介します。",
         services=["operation", "management"],
@@ -2721,7 +2721,7 @@ ARTICLES = [
         tone="mist",
         date="2026-09-29",
         updated="2026-10-13",
-        title="データで見る日本の観光市場｜インバウンド拡大の裏で地方が抱える5つの課題",
+        title="データで見る日本の観光市場｜インバウンド拡大と地方の民泊・宿の5つの課題",
         short="データで見る日本の観光市場と\n地方が抱える5つの課題",
         description="訪日外国人は2025年に過去最高の約4,268万人、旅行消費額は約9.5兆円。一方で、訪日客の延べ宿泊のうち地方部は34%です。観光庁・JNTOのデータで、地方の5つの課題と、空き家の宿でできることを整理します。",
         guides=[("side", 1)],
@@ -3029,7 +3029,7 @@ ARTICLES += [
         tone="mist",
         date="2026-09-29",
         updated="2026-10-13",
-        title="AirDNAで小規模宿の収益をシミュレーション｜再現性を高める5つのコツ",
+        title="AirDNAで民泊の収益をシミュレーション｜再現性を高める5つのコツ",
         short="AirDNAで読む\n小規模宿の収益と再現性",
         description="宿を始める前に、「その町で1年にいくら売れそうか」を調べられるデータサービスがAirDNAです。部屋の埋まり具合と1泊の値段から売上と利益を試算する手順、計算例、数字を信じすぎないコツを紹介します。",
         services=["management", "operation"],
@@ -3132,7 +3132,7 @@ ARTICLES += [
         tone="sand",
         date="2026-09-29",
         updated="2026-10-13",
-        title="小規模宿の開業・運営で使える補助金・支援制度まとめ｜申請前に知っておきたい注意点",
+        title="民泊・小規模宿で使える補助金・支援制度まとめ｜申請前に知っておきたい注意点",
         short="小規模宿で使える\n補助金・支援制度まとめ",
         description="小さな宿の開業資金のうち、補助金で賄えた額は大きくありません。下田の宿の事例、国と静岡県内の自治体の制度、予算切れの早さ、申請前の条件を、2026年10月時点の公式情報で整理します。",
         services=["management", "marketing"],
@@ -3254,7 +3254,7 @@ ARTICLES += [
         tone="sage",
         date="2026-09-29",
         updated="2026-10-13",
-        title="小規模宿は新築と中古どっち？費用・工期・法令・税金の違いと選び方",
+        title="民泊・小規模宿は新築と中古どっち？費用・工期・法令・税金の違いと選び方",
         short="小規模宿は\n新築と中古、どっちがいい？",
         figure=("none", ""),  # 比較は表で見せる（図と同じ内容のため図は置かない）
         description="小さな宿は、新しく建てるのと、空き家を直して使うのと、どちらがよいか。下田の宿づくりでかかった費用と手間、焼津の計画、買う前に確かめる古い家の弱点、建物の費用を何年かに分けて経費にする計算を比べます。",
@@ -3393,7 +3393,7 @@ ARTICLES += [
         tone="sand",
         date="2026-10-01",
         updated="2026-10-13",
-        title="観光地でなくても空き家が収益物件になり得る理由｜焼津の宿の計画を例に",
+        title="観光地でなくても空き家の民泊は成り立つ？焼津の宿の計画を例に",
         short="観光地でなくても\n収益物件になり得る理由",
         figure=("none", ""),  # 5つのチェックは本文のリストで見せる（図と同じ内容のため図は置かない）
         description="有名な観光地でなくても、空き家が宿になる場合があります。観光以外の宿泊需要、静岡市・焼津の空き家の数字、焼津・鰯ヶ島で準備中の宿の計画、始める前の確認点を整理します。",
@@ -3501,7 +3501,7 @@ ARTICLES += [
     ),
 ]
 
-# 予約公開の記事（2026-11-01 から1日おきに公開。公開日前は一覧に出さず、記事ページは一覧へ戻す）
+# 予約公開の記事（2026-11-01 から1日おきに公開。公開日前は一覧に出さない。記事ページは転送せずそのまま表示）
 from articles_sched1 import ARTICLES_SCHED1
 from articles_sched2 import ARTICLES_SCHED2
 from articles_case import ARTICLES_CASE
@@ -3525,9 +3525,13 @@ DELETED_ARTICLES = {
     "inn-local-economy": "why-minpaku-for-akiya",
     "akiya-data-9-million": "why-akiya-utilization-now",
     "kominka-stay-value": "kominka-renovation-points",
-    "minpaku-partner-choose": "minpaku-management-company"
+    "minpaku-partner-choose": "minpaku-management-company",
+    # 2026-10-22 人の依頼。事例は増え続けるため、項目をそろえて比べる一覧記事は持たない（事例はアキヤドのトップの「民泊オーナーの事例」に自動で並ぶ）。旧URLは /media.html へ 301
+    "minpaku-case-list": "",
 }
 ARTICLES = [_a for _a in ARTICLES if _a["slug"] not in DELETED_ARTICLES]
+# 民泊オーナーへの取材事例（slug が case-owner- で始まる記事）。新しい順に自動で並ぶので、事例を足しても一覧の手直しは要らない
+CASE_SLUGS = [_a["slug"] for _a in sorted(ARTICLES, key=lambda x: x["date"], reverse=True) if _a["slug"].startswith("case-owner-")]
 from case_mixins import MIXINS  # 取材事例・内部リンクの差し込み（節の末尾へ）
 for _a in ARTICLES:
     _mx = MIXINS.get(_a["slug"])
@@ -4468,7 +4472,7 @@ MEDIA_COURSES = [
                    ("お金と改修", "開業資金、補助金、改修の進め方、宿泊税。", ["inn-startup-funding", "small-inn-subsidies", "kominka-renovation-points", "remote-renovation-tips", "accommodation-tax"]),
                    ("運営の課題", "近隣との関係、設備、清掃、閑散期、遠方からの運営。", ["minpaku-neighbor-rules", "long-stay-guest-equipment", "cleaning-linen-operations", "minpaku-off-season", "minpaku-remote-operation"]),
                    ("集客と評価", "予約サイトの使い方、予約ページ、レビュー。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips"]),
-                   ("オーナーの事例", "6人のオーナーの取材。費用、収支、うまくいかなかったこと。", ["minpaku-case-list", "case-owner-pricing-mistake", "case-owner-diy-cottage", "case-owner-subsidy-akiya", "case-owner-fishing-port", "case-owner-rental-side-business", "case-owner-licensed-akiya"])]),
+                   ("オーナーの事例", "民泊オーナーへの取材。費用、収支、うまくいかなかったこと。", CASE_SLUGS)]),
     dict(key="akiyado", en="Course 04", title="アキヤドが支援できること", lead="買取・借り上げ・開業と運営の支援。任せる相手の選び方と、相談から開業までの流れ。",
          chapters=[("アキヤドができること", "3つのプランと、相談すると分かること。", ["akiyado-what-we-do"]),
                    ("任せ方を選ぶ", "相談先・委託先の選び方と、管理業者の役割。", ["minpaku-management-company"]),
@@ -4655,7 +4659,7 @@ def media_thanks_page():
 def media_nav(current=""):
     """メディア内の共通ナビ。読者の状況（ガイド）を先に、テーマと検索を後に置く"""
     items = [("top", "media.html", "トップ")] + [(g["key"], f"media/guide-{g['key']}.html", g["label"]) for g in MEDIA_GUIDES] + \
-            [("learn", "media/learn.html", "基礎から学ぶ"), ("cases", "media/minpaku-case-list.html", "事例から探す"), ("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "アキヤドのプラン")]
+            [("learn", "media/learn.html", "基礎から学ぶ"), ("cases", "media.html#cases", "事例から探す"), ("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "アキヤドのプラン")]
     cur = ' aria-current="page"'
     lis = "".join(f'<li><a href="{href}"{cur if k == current else ""}>{e(n)}</a></li>' for k, href, n in items)
     # スマホでは、ヘッダーのボタンで開くメニューにする（相談・資料請求のボタンも入れる）
@@ -4763,8 +4767,19 @@ def guide_card(g, i):
 def media_index_page():
     ordered = sorted(ARTICLES, key=lambda a: a["date"], reverse=True)
     cards = "\n".join(article_card(a) for a in ordered)
-    _case_order = ["case-owner-pricing-mistake", "case-owner-diy-cottage", "case-owner-subsidy-akiya", "case-owner-fishing-port", "case-owner-rental-side-business", "case-owner-licensed-akiya"]
-    case_cards = "\n".join(article_card(ARTICLE_BY_SLUG[sl]) for sl in _case_order if sl in ARTICLE_BY_SLUG)
+    case_cards = "\n".join(article_card(ARTICLE_BY_SLUG[sl]) for sl in CASE_SLUGS)
+    # ファーストビューの「主な事例」: 自分たちの運営事例と、オーナー取材の事例（新しい順）。アイキャッチの画像で見せる
+    top_cases = [ARTICLE_BY_SLUG[sl] for sl in ["case-rental-house-inn-first-year"] + CASE_SLUGS if sl in ARTICLE_BY_SLUG]
+    top_case_cards = "\n".join(f'''            <a href="media/{a["slug"]}.html" class="mtop-case" data-date="{a["date"]}">
+              <span class="mtop-case__img"><img src="{eyecatch_path(a)}" alt="" width="1200" height="630" loading="{"eager" if i < 2 else "lazy"}" decoding="async"></span>
+              <span class="mtop-case__body"><span class="mtop-case__tag">{"運営事例" if not a["slug"].startswith("case-owner-") else "オーナー取材"}</span><span class="mtop-case__title">{e(a["title"])}</span></span>
+            </a>''' for i, a in enumerate(top_cases))
+    _guide = {g["key"]: g for g in MEDIA_GUIDES}
+    service_cards = "".join(f'''<li class="reveal" data-delay="{i}"><a href="media/{sv["slug"]}.html" class="mservice">
+          <span class="mservice__img">{photo(_guide[sv["key"]]["photo"], width=720, height=450, sizes="(max-width: 899px) 100vw, 360px")}</span>
+          <span class="mservice__who">{e(sv["eyebrow"])}</span><span class="mservice__name">{e(sv["name"])}</span>
+          <span class="mservice__text">{e(sv["lead"])}</span>
+          <span class="mservice__more">詳しく見る <span aria-hidden="true">›</span></span></a></li>''' for i, sv in enumerate(MEDIA_SERVICES))
     guides = "\n".join(guide_card(g, i) for i, g in enumerate(MEDIA_GUIDES))
     labels = {g["key"]: g["label"] for g in MEDIA_GUIDES}
     questions = "\n".join(f"""          <li data-date="{ARTICLE_BY_SLUG[slug]["date"]}"><a href="media/{slug}.html" class="mq__item">
@@ -4773,16 +4788,75 @@ def media_index_page():
     tiles = "".join(
         f'<li><a href="media/guide-{g["key"]}.html" class="mtile"><span class="mtile__img">{photo(g["photo"], width=720, height=450, sizes="72px")}</span>'
         f'<span class="mtile__label">{e(g["label"])}</span><span class="mtile__arrow" aria-hidden="true">→</span></a></li>' for g in MEDIA_GUIDES)
-    body = f"""    <section class="mfv">
-      <div class="container mfv__inner">
-        <div class="mfv__text">
-          <p class="mfv__eyebrow reveal">空き家と民泊のメディア「アキヤド」</p>
-          <h1 class="mfv__title reveal" data-delay="1">空き家を、売る。活かす。<br>民泊を、はじめる。</h1>
-          <p class="mfv__lead reveal" data-delay="1">アキヤドが、悩みの順にお答えします。</p>
-          <p class="mfv__entry-label reveal" data-delay="2">ご自身の状況から読む</p>
-          <ul class="mfv__tiles reveal" data-delay="2">{tiles}</ul>{search_form("media/search.html").replace('class="msearch reveal"', 'class="msearch msearch--fv reveal" data-delay="3"').replace('placeholder="キーワード（例：相続、補助金）"', 'placeholder="キーワードで記事をさがす"')}
+    body = f"""    <section class="mtop">
+      <div class="container mtop__inner">
+        <div class="mtop__text">
+          <p class="mtop__eyebrow reveal">空き家と民泊のメディア「アキヤド」</p>
+          <h1 class="mtop__title reveal" data-delay="1"><span class="mtop__line">空き家を、</span><span class="mtop__line"><em>売る。活かす。</em></span><span class="mtop__line"><em>民泊</em>を、はじめる。</span></h1>
+          <p class="mtop__lead reveal" data-delay="1">宿を運営する私たちが、空き家と民泊の悩みに、実際の数字でお答えします。</p>
+          <div class="mtop__btns reveal" data-delay="2">
+            <a href="contact.html?category=operation&amp;from=akiyado-fv" class="mbtn mtop__btn" data-cta="media-fv">無料で相談する {ARROW}</a>
+            <a href="contact.html?category=document&amp;from=akiyado-fv" class="mtop__btn mtop__btn--sub" data-cta="media-fv-doc">資料をダウンロード</a>
+          </div>{search_form("media/search.html").replace('class="msearch reveal"', 'class="msearch msearch--top reveal" data-delay="3"').replace('placeholder="キーワード（例：相続、補助金）"', 'placeholder="キーワードで記事をさがす"')}
+          <ul class="mtop__chips reveal" data-delay="3">{"".join(f'<li><a href="media/guide-{g["key"]}.html">{e(g["label"])}</a></li>' for g in MEDIA_GUIDES)}</ul>
         </div>
-        <figure class="mfv__photo reveal" data-delay="1">{photo("scene-stay", width=1080, height=1350, sizes="(max-width: 899px) 100vw, 520px", lazy=False, priority=True, alt="縁側の向こうに山と町並みを望む和室")}</figure>
+        <div class="mtop__cases reveal" data-delay="2" data-carousel>
+          <div class="mtop__cases-head">
+            <p class="mtop__cases-label">取材した<b>主な事例</b></p>
+            <div class="mtop__nav">
+              <button type="button" class="mtop__arrow" data-dir="-1" aria-label="前の事例">‹</button>
+              <span class="mtop__count" aria-live="polite"><span data-cur>1</span> / <span data-total>{len(top_cases)}</span></span>
+              <button type="button" class="mtop__arrow" data-dir="1" aria-label="次の事例">›</button>
+            </div>
+          </div>
+          <div class="mtop__track" tabindex="0" aria-label="主な事例（横にスワイプ）">
+{top_case_cards}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section msec mservices" id="services">
+      <div class="container">
+        <div class="mcenter-head reveal"><p class="msec__en">Services</p><h2 class="mcenter-head__title">アキヤドのサービス</h2><p class="mcenter-head__lead">空き家の状況とご希望に合わせて、個別にご提案しています。</p></div>
+        <ul class="mservice-cards">{service_cards}</ul>
+        <p class="mservices__more reveal">プランごとの条件の目安は「<a href="media/plans.html">アキヤドのプラン</a>」、相談から開業までの流れは「<a href="media/akiyado-consultation-flow.html">相談から開業までの流れ</a>」で紹介しています。</p>
+      </div>
+    </section>
+
+    <section class="section msec mfeatures">
+      <div class="container">
+        <div class="mcenter-head reveal"><p class="msec__en">Features</p><h2 class="mcenter-head__title">アキヤドの特徴</h2></div>
+        <ul class="mfeat-cards">
+          <li class="mfeat reveal">
+            <p class="mfeat__head">自分たちで宿を運営する<br>当事者の目線で答える</p>
+            <div class="mfeat__fig" aria-hidden="true">
+              <div class="mfeat-box"><p class="mfeat-box__k">静岡県下田市の一棟貸しの宿</p><p class="mfeat-box__v">1年目の稼働率 <b>約53%</b></p><p class="mfeat-box__v">開業費用を <b>約14か月</b>でほぼ回収</p></div>
+              <p class="mfeat-arrow">▼</p>
+              <p class="mfeat-hl">記事の数字も、ご提案の見込みも<br><b>運営の記録</b>から出しています</p>
+            </div>
+            <p class="mfeat__text">静岡県下田市で、家を1棟まるごと貸す宿を運営しています。月ごとの稼働率の波や、清掃・手数料の費用まで、自分たちの記録をもとにお伝えします。</p>
+          </li>
+          <li class="mfeat reveal" data-delay="1">
+            <p class="mfeat__head">売る・貸す・はじめるを<br>同じ土俵で比べられる</p>
+            <div class="mfeat__fig" aria-hidden="true">
+              <p class="mfeat-pill">あなたの空き家</p>
+              <p class="mfeat-arrow">▼</p>
+              <div class="mfeat-three"><p><b>売る</b>売った場合の目安</p><p><b>借り上げ</b>家を残した場合の収入</p><p><b>自分で運営</b>宿の収支の見込み</p></div>
+              <p class="mfeat-arrow">▼</p>
+              <p class="mfeat-hl">ご家族が<b>納得できる方法</b>を選べる</p>
+            </div>
+            <p class="mfeat__text">売った場合の目安だけでなく、借り上げで家を残した場合や、自分で宿をはじめた場合の見込みも、あわせてお出しします（収益を保証するものではありません）。</p>
+          </li>
+          <li class="mfeat reveal" data-delay="2">
+            <p class="mfeat__head">遠方からでも回る<br>運営の仕組みがある</p>
+            <div class="mfeat__fig mfeat__fig--compare" aria-hidden="true">
+              <div class="mfeat-col mfeat-col--ours"><p class="mfeat-col__t">アキヤドの運営</p><ul><li>現地は月1回ほど</li><li>清掃は近隣に外注し、写真で確認</li><li>スマートロックで受付なしの入室</li></ul></div>
+              <div class="mfeat-col"><p class="mfeat-col__t">よくある心配</p><ul><li>毎回、現地に通う</li><li>清掃の質が見えない</li><li>鍵の受け渡しが必要</li></ul></div>
+            </div>
+            <p class="mfeat__text">清掃は手順書をつくって近隣の方に任せ、終わったら写真で確かめます。遠方の家でも、通う回数を減らして運営できる仕組みをつくっています。</p>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -4796,11 +4870,11 @@ def media_index_page():
       </div>
     </section>
 
-    <section class="section msec">
+    <section class="section msec" id="cases">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Cases</p><h2 class="msec__title">民泊オーナーの事例</h2></div><a href="media/minpaku-case-list.html" class="msec__more">事例6選を比べる {ARROW}</a></div>
-        <p class="msec__lead">実際に民泊を運営している6人への取材です。初期費用・月商・純利益と、うまくいかなかったことまで、自分に近い事例から読めます。</p>
-        <div class="media-grid media-grid--scroll" data-limit="6">
+        <div class="msec__head reveal"><div><p class="msec__en">Cases</p><h2 class="msec__title">民泊オーナーの事例</h2></div></div>
+        <p class="msec__lead">実際に民泊を運営しているオーナーへの取材です。初期費用・月商・純利益と、うまくいかなかったことまで、自分に近い事例から読めます。</p>
+        <div class="media-grid media-grid--scroll" data-limit="{len(CASE_SLUGS)}">
 {case_cards}
         </div>
       </div>
@@ -4819,20 +4893,6 @@ def media_index_page():
       <div class="container">
         <div class="msec__head reveal"><div><p class="msec__en">Learn</p><h2 class="msec__title">ゼロから体系的に学ぶ</h2></div><a href="media/learn.html" class="msec__more">コースの一覧へ {ARROW}</a></div>
         <ul class="lcards">{"".join(f'<li class="reveal"><a href="media/learn.html#{c["key"]}" class="lcard"><span class="lcard__en">{e(c["en"])}</span><span class="lcard__title">{e(c["title"])}</span><span class="lcard__text">{e(c["lead"])}</span><span class="lcard__count">全{len(c["chapters"])}章</span></a></li>' for c in MEDIA_COURSES)}</ul>
-      </div>
-    </section>
-
-    <section class="section msec mplanband">
-      <div class="container">
-        <div class="mplanband__box reveal">
-          <div class="mplanband__text">
-            <p class="msec__en">Plans</p>
-            <h2 class="msec__title">アキヤドに任せると、どうなる？</h2>
-            <p class="mplanband__lead">記事を運営する私たちは、実際に宿を運営しています。売る・貸す・宿をはじめる、それぞれのプランと条件の目安をまとめました。</p>
-          </div>
-          <ul class="mplanband__list">{"".join(f'<li><a href="media/{MEDIA_SERVICE_BY_KEY[k]["slug"]}.html"><span class="mplanband__who">{e(l)}</span><span class="mplanband__names">{e(MEDIA_SERVICE_BY_KEY[k]["name"])}</span><span class="mplanband__arrow">→</span></a></li>' for k, l, _, _, names in MEDIA_PLAN_GROUPS)}</ul>
-          <div class="mplanband__video"><p class="mplanband__video-label">{e(GUIDE_VIDEO["title"])}</p>{guide_video(compact=True)}</div>
-        </div>
       </div>
     </section>
 
@@ -5094,7 +5154,7 @@ def article_page(a):
         key=lambda x: (x["category"] != a["category"], not set(x["services"]) & set(a["services"])),
     )
     # 事例（オーナー取材）を、近いテーマのものから1本、先頭に出す
-    if not a["slug"].startswith("case-owner-") and a["slug"] != "minpaku-case-list":
+    if not a["slug"].startswith("case-owner-"):
         _ct = {"money": "case-owner-subsidy-akiya", "operate": "case-owner-pricing-mistake", "start": "case-owner-licensed-akiya",
                "house": "case-owner-diy-cottage", "sell": "case-owner-diy-cottage", "lend": "case-owner-fishing-port", "trend": "case-owner-fishing-port"}
         _c = ARTICLE_BY_SLUG.get(_ct.get((a.get("topics") or ["start"])[0], "case-owner-licensed-akiya"))
@@ -5311,8 +5371,8 @@ def llms_txt():
 def sitemap():
     pages = ["", "about.html"] + [f"service-{k}.html" for k, _ in SERVICES] + \
             ["media.html"] + [f"media/category-{k}.html" for k, _ in MEDIA_CATEGORIES] + [f"media/guide-{g['key']}.html" for g in MEDIA_GUIDES] + ["media/plans.html"] + [f"media/{sv['slug']}.html" for sv in MEDIA_SERVICES] + ["media/company.html", "media/learn.html", "media/contact.html"] + [f"media/{a['slug']}.html" for a in ARTICLES if a["date"] <= BUILD_DATE] + ["careers.html", "contact.html", "privacy.html"]
-    # 公開日前の記事は sitemap に載せない。公開日前の記事ページは js/main.js が記事一覧（media.html）へ
-    # 転送するため、Google がその転送を「リダイレクト」として扱い、記事一覧の登録の妨げになりうる
+    # 公開日前の記事は sitemap に載せない（公開日を迎えて作り直すと載る）。
+    # 記事ページは JS で転送しない（転送すると Google に「ページにリダイレクトがあります」と記録されるため。2026-10-22）
     pages += ["en/" + ("" if f == "index.html" else f) for f in EN_PAGES if f != "thanks.html"]
     lastmod = {f"media/{a['slug']}.html": a["updated"] for a in ARTICLES}
     # 記事の一覧ページにも、載せている記事のいちばん新しい更新日を付ける（クロールの優先度の手がかり）

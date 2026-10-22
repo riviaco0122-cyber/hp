@@ -206,17 +206,38 @@
     else if (sessionStorage.getItem('akiyadoPreview') === '1') previewOn = true;
   } catch (e) {}
   if (previewOn) today = '2999-12-31';
-  // 公開日前の記事ページを直接開いた場合は、記事一覧へ戻す
-  var scheduled = document.querySelector('.article[data-publish]');
-  if (scheduled && scheduled.getAttribute('data-publish') > today) {
-    document.documentElement.style.visibility = 'hidden';
-    location.replace(new URL('../media.html', location.href).href);
-  }
+  // 公開日前の記事ページを直接開いた場合も、転送はしない（記事はそのまま表示する）。
+  // 以前は記事一覧へ JS で転送していたが、Google が記事内のリンクからページを見つけて開くと
+  // 「ページにリダイレクトがあります」と記録され、公開日を過ぎてもインデックスされにくくなるため（2026-10-22）
   document.querySelectorAll('.media-card[data-date]').forEach(function (c) {
     if (c.getAttribute('data-date') > today) {
       c.setAttribute('data-future', '');
       c.hidden = true;
     }
+  });
+  // アキヤドのトップ「主な事例」のカルーセル: 公開日前の事例を隠し、前後ボタンと「n / 全体」を動かす
+  document.querySelectorAll('[data-carousel]').forEach(function (box) {
+    var track = box.querySelector('.mtop__track');
+    var slides = Array.prototype.slice.call(box.querySelectorAll('.mtop-case')).filter(function (c) {
+      if (c.getAttribute('data-date') > today) { c.hidden = true; return false; }
+      return true;
+    });
+    var cur = box.querySelector('[data-cur]'), total = box.querySelector('[data-total]');
+    var prev = box.querySelector('[data-dir="-1"]'), next = box.querySelector('[data-dir="1"]');
+    if (!track || !slides.length) return;
+    total.textContent = slides.length;
+    var index = function () {
+      var x = track.scrollLeft, best = 0;
+      slides.forEach(function (c, i) { if (Math.abs(c.offsetLeft - track.offsetLeft - x) < Math.abs(slides[best].offsetLeft - track.offsetLeft - x)) best = i; });
+      if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 4) best = slides.length - 1;
+      return best;
+    };
+    var update = function () { var i = index(); cur.textContent = i + 1; prev.disabled = i === 0; next.disabled = i === slides.length - 1; };
+    var go = function (d) { var i = Math.max(0, Math.min(slides.length - 1, index() + d)); track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: 'smooth' }); };
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    var t; track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(update, 60); }, { passive: true });
+    update();
   });
   // トップ・サービス・記事下の記事一覧: 公開済みの先頭 N 件だけ表示
   document.querySelectorAll('.media-grid[data-limit]').forEach(function (grid) {
