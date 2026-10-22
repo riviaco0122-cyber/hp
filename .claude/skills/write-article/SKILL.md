@@ -12,11 +12,11 @@ description: 指定したテーマ（またはキーワード表の次の候補�
 2. `researcher` → リサーチメモ（YouTube 調査・一次情報・出典の確認）。統計の数字が要るときは、先に編集長が `python3 tools/estat.py` で e-Stat から取って渡す（出典つき）
 3. `marketer` → 構成案 `docs/seo/briefs/<スラッグ>.md`。公開予定日は **今日（日本時間）の翌日**（人が確認してマージした日の翌日に公開するため。人の方針 2026-10-12）。マージが遅れたら日次サイクルが付け直す。
 4. `writer` → 原稿 `docs/seo/drafts/<スラッグ>.md`（自己採点で `tools/article_score.py` の機械採点40点にしてから提出）
-5. `qa` → 100点満点で採点（playbook 5章）。**90点未満・ゲート違反なら、qa が指定した戻る工程（2 リサーチ／3 構成案／4 執筆）からやり直し、最初から採点し直す**（最大5回）。
+5. `qa` → 100点満点で採点（playbook 5章）。**90点未満・ゲート違反なら、qa が指定した戻る工程（2 リサーチ／3 構成案／4 執筆）からやり直し、最初から採点し直す**（最大3回。人の方針 2026-10-23）。
 6. `engineer` → 記事データ（`tools/articles_auto.py`）に足し、`python3 tools/eyecatch.py <スラッグ>` でアイキャッチを作ってから `python3 tools/build.py` で作り直す（一覧・sitemap・llms.txt・仕様書まで自動で更新）。seo_check エラー0・`node tools/check/site_check.js --no-visual` 重大0、seo_check のエラー 0 を確認
 7. `qa` → HTML を採点（90点以上・ゲート違反なし）。PR の前に `node tools/check/site_check.js`（本番との見た目の比較つき）を実行する。不合格なら同じく戻る
    - 最終チェック：**スマホ幅のスクリーンショットを自分の目で確認する**（Playwright で幅 390px、予約公開の記事は `?preview=1`。画像を Read で開いて見る）。対象は、新規・変更した記事と、**共通 CSS（`css/style.css`・`js/main.js`・`tools/figures.py`・`tools/build.py` の部品）を変えた日は全記事**。図（fig-point・fig-col・fig-step・fig-cyc・fig-flow・計算式の枠）・表・番号つきリスト・注意枠・折りたたみ・目次・画像について、**左右の余白（番号や文字が枠の左端にくっついていないか）・文字のはみ出し・重なり・固定の相談ボタンの被り**を見る。`site_check` の「見た目の崩れ」などの警告も 0 にする（出たら css・figures.py・記事データを直して作り直す）。
-8. 5回で90点に届かなければ PR に入れず、採点結果をログに残して終える
+8. 3回で90点に届かなければ PR に入れず、採点結果をログに残して終える
 9. `bash tools/sync_base.sh` で本番ブランチを取り込み衝突を自動解消（seo-daily と同じ）。`pm` → 記録と PR 説明（採点表の内訳を載せる） → コミット・push・本番ブランチ（GitHub のデフォルトブランチ）向け PR 作成（マージはしない）
 10. PR の説明の冒頭に確認用リンク（`/media/<スラッグ>.html?preview=1`）を書く（予約公開の記事は `?preview=1` がないとプレビューで見えない。seo-daily と同じ）
 
