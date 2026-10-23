@@ -8,8 +8,8 @@
   営業日数は年180日以内・民泊新法の正式名称と施行（2018年6月）（住宅宿泊事業法）、
   旅館業の許可・簡易宿所の広さ（10人未満は1人3.3㎡、10人以上は33㎡以上）（旅館業法・同施行令）、
   宿に使う部分が200㎡を超えると用途変更の確認申請（建築基準法）、
-  簡易宿所の稼働率の全国平均 29.6%（宿泊旅行統計調査 2025年）、180÷365＝約49%（計算）、
-  1年目の稼働率 約53%（創業メンバーが運営する下田の宿。運営事例の記事。docs/brand/experience.md 3-2 の確認済みの節）、
+  （簡易宿所の全国平均の稼働率は一次出典を照合できなかったため、使っていない）、180÷365＝約49%（計算）、
+  開業から約8.5か月の平均の稼働率 約53%（創業メンバーが運営する下田の宿。運営事例の記事。experience.md 3-2）。この水準が1年続くと 0.53×365＝約193日（計算）、
   消防設備 約40万円→約60万円（取材事例の記事。2025年12月・本人申告。個人の事例）。
 - 部品・書き出しは make_explainer.py / make_scam_ep1.py と共通。声は VOICEVOX（クレジットは最後の画面と説明欄）。
 使い方: python3 tools/video/make_strategy_ep2.py [出力.mp4] [--hq] [--preview 秒 ...] [--no-check]
@@ -42,7 +42,7 @@ SCENES = [
     ("sunset", 0.8, [
         ("A", "結論から言います。同じ空き家でも、届出で始めると、泊められるのは年180日まで。許可なら、365日です。", dict(pre=3.4, say="結論から言います。同じ空き家でも、届出で始めると、泊められるのは、ねん ひゃくはちじゅうにちまで。許可なら、さんびゃくろくじゅうごにちです。", call=(-3.0, "K", "アキヤド、みんぱくスクール！"), sfx=[(-3.9, "whoosh"), (-3.55, "pop"), (-2.9, "bling"), (-0.4, "whoosh"), (0.2, "pop"), (1.6, "pop"), (3.2, "bling"), (5.6, "boing")])),
         ("A", "この差を、稼働率に直すと、約49%。これが、売上の天井になります。", dict(say="この差を、稼働率に直すと、やく よんじゅうきゅうパーセント。これが、売上の天井になります。", sfx=[(2.4, "rise"), (4.4, "ding")])),
-        ("A", "実は私たちの宿は、1年目の稼働率が約53%。もし届出で始めていたら、この天井にぶつかっていました。これは、1つの例です。", dict(say="実は私たちの宿は、いちねんめの稼働率が、やく ごじゅうさんパーセント。もし届出で始めていたら、この天井にぶつかっていました。これは、ひとつの例です。", sfx=[(1.4, "pop"), (3.2, "rise"), (7.0, "alert")])),
+        ("A", "実は私たちの宿は、開業から約8.5か月の平均で、稼働率が約53%。この水準が1年続けば、年180日の天井を超える計算です。これは、1つの例です。", dict(say="実は私たちの宿は、開業から、やく はってんご かげつの平均で、稼働率が、やく ごじゅうさんパーセント。この水準がいちねん続けば、ねん ひゃくはちじゅうにちの天井を超える計算です。これは、ひとつの例です。", sfx=[(1.4, "pop"), (4.6, "rise"), (8.0, "alert")])),
         ("A", "最後まで見ると、あなたの家がどちらに向くか、3つの質問で決められるようになります。", dict(say="最後まで見ると、あなたの家がどちらに向くか、みっつの質問で決められるようになります。", sfx=[(0.3, "chime"), (3.0, "pop")])),
         ("A", "今日わかるのは、3つ。2つの制度の違い。天井が変わる仕組み。そして、失敗しない選び方です。", dict(say="今日わかるのは、みっつ。ふたつの制度の違い。天井が変わる仕組み。そして、失敗しない選びかたです。", sfx=[(1.4, "pop"), (3.4, "pop"), (6.0, "pop"), (8.0, "chime")])),
     ]),
@@ -66,9 +66,10 @@ SCENES = [
         ("A", "ここでクイズです。年180日は、1年の何割でしょう？ A、3割。B、5割。C、7割。", dict(say="ここでクイズです。ねん ひゃくはちじゅうにちは、いちねんの何割でしょう？ エー、さんわり。ビー、ごわり。シー、ななわり。", sfx=[(0, "chime")])),
         ("A", "正解は、B。約5割、49%です。", dict(pre=3.2, say="正解は、ビー。やく ごわり、よんじゅうきゅうパーセントです。", sfx=[(-3.2, "tick"), (-2.2, "tick"), (-1.2, "tick"), (0, "ding"), (1.2, "bling")])),
         ("Y", "ちょうど半分くらいなんですね…！ 思ったより、少ない。", dict(sfx=[(0, "pop")])),
-        ("A", "ただ、全国の簡易宿所の稼働率の平均は、2025年で29.6%。平均的な宿なら、天井には届きません。", dict(say="ただ、全国の簡易宿所の稼働率の平均は、二千二十五ねんで、にじゅうきゅうてんろくパーセント。平均的な宿なら、天井には届きません。", sfx=[(0.4, "pop"), (4.6, "pop")])),
+        ("A", "たとえば、稼働率が49%の宿は、1年で約180日、泊まる計算です。これが、届出の天井に、ちょうど重なります。", dict(say="たとえば、稼働率が、よんじゅうきゅうパーセントの宿は、いちねんで、やく ひゃくはちじゅうにち、泊まる計算です。これが、届出の天井に、ちょうど重なります。", sfx=[(0.4, "pop"), (3.6, "pop"), (5.6, "ding")])),
         ("A", "でも、混む時期に強い宿や、1年中営業する宿ほど、天井に先にぶつかります。", dict(say="でも、混む時期に強い宿や、いちねんじゅう営業する宿ほど、天井に先にぶつかります。", sfx=[(0.4, "rise"), (4.6, "boing")])),
-        ("A", "私たちの宿は、1年目の稼働率が約53%。49%の天井を、超えています。ただし、これは一例で、どの宿でも同じではありません。", dict(say="私たちの宿は、いちねんめの稼働率が、やく ごじゅうさんパーセント。よんじゅうきゅうパーセントの天井を、超えています。ただし、これは一例で、どの宿でも同じではありません。", sfx=[(1.0, "pop"), (3.6, "bling"), (6.4, "alert")])),
+        ("A", "私たちの宿は、開業から約8.5か月の平均で、稼働率が約53%。この水準が1年続くと、365日かける0.53で、約193日。", dict(say="私たちの宿は、開業から、やく はってんご かげつの平均で、稼働率が、やく ごじゅうさんパーセント。この水準がいちねん続くと、さんびゃくろくじゅうごにち かける れいてんごさんで、やく ひゃくきゅうじゅうさんにち。", sfx=[(1.0, "pop"), (5.6, "rise"), (9.0, "bling")])),
+        ("A", "180日を超える計算です。ただし、これは一例で、どの宿でも同じではありません。", dict(say="ひゃくはちじゅうにちを超える計算です。ただし、これは一例で、どの宿でも同じではありません。", sfx=[(0.3, "alert")])),
         ("A", "だから私たちは、年180日の制限を避けて、1年中営業するために、旅館業の簡易宿所の許可を選びました。", dict(say="だから私たちは、ねん ひゃくはちじゅうにちの制限を避けて、いちねんじゅう営業するために、旅館業の簡易宿所の許可を選びました。", sfx=[(2.6, "pop"), (6.6, "ding")])),
         ("A", "逆に、ときどき使う家や、まず小さく試す場合は、天井は気になりません。", dict(sfx=[(0.4, "pop"), (3.6, "pop")])),
         ("A", "届出で足りる宿も、あります。大事なのは、自分の宿がどちらに入りそうかを、先に考えることです。", dict(sfx=[(0.4, "pop"), (3.8, "ding")])),
@@ -105,7 +106,7 @@ SCENES = [
     # 5 落とし穴 4つ
     ("twilight", 0.8, [
         ("A", "ここからは、落とし穴を4つ。", dict(say="ここからは、落とし穴をよっつ。", sfx=[(0, "alert")])),
-        ("A", "失敗の多くは、買ったあとに気づくことです。買ったあとでは、選べる道が、かぎられます。", dict(sfx=[(0.4, "pop")])),
+        ("A", "失敗しやすいのは、買ったあとに気づくことです。買ったあとでは、選べる道が、かぎられます。", dict(sfx=[(0.4, "pop")])),
         ("A", "1つめ、買ってから、許可が取れないと知る。もう遅い、という状態です。", dict(say="ひとつめ、買ってから、許可が取れないと知る。もう遅い、という状態です。", sfx=[(0, "boing")])),
         ("A", "2つめ、消防設備の費用の見落とし。ある会社員オーナーさんの例では、想定約40万円が、約60万円、約1.5倍になりました。", dict(say="ふたつめ、消防設備の費用の見落とし。ある会社員オーナーさんの例では、想定、やく よんじゅうまんえんが、やく ろくじゅうまんえん、やく いってんごばいになりました。", sfx=[(0, "boing"), (5.8, "pop"), (8.0, "rise")])),
         ("A", "ただし、これは個人の事例です。どの家でもそうなる、という話ではありません。", dict(sfx=[(0.3, "alert")])),
@@ -119,7 +120,7 @@ SCENES = [
         ("A", "質問その1。何日泊めたいか。年180日、約49%で足りるなら、届出も候補です。足りないなら、許可です。", dict(say="質問そのいち。なんにち泊めたいか。ねん ひゃくはちじゅうにち、やく よんじゅうきゅうパーセントで足りるなら、届出も候補です。足りないなら、許可です。", sfx=[(0, "pop"), (3.6, "pop"), (7.0, "pop")])),
         ("A", "質問その2。家の立地と広さ。住居専用地域なら、許可は原則むずかしい。広さが基準を超えるなら、窓口に相談です。", dict(say="質問そのに。家の立地と広さ。住居専用地域なら、許可は原則むずかしい。広さが基準を超えるなら、窓口に相談です。", sfx=[(0, "pop"), (3.6, "pop"), (7.0, "pop")])),
         ("A", "質問その3。誰が運営するか。家主が不在になるなら、届出は、管理業者への委託が必要。許可は、自前の管理体制です。", dict(say="質問そのさん。誰が運営するか。家主が不在になるなら、届出は、管理業者への委託が必要。許可は、自前の管理体制です。", sfx=[(0, "pop"), (3.6, "pop"), (7.0, "pop")])),
-        ("A", "まとめます。日数、立地、運営。この3つに答えれば、候補は絞れます。迷ったら、家を買う前に、窓口へ。", dict(sfx=[(0.4, "pop"), (1.2, "pop"), (2.0, "pop"), (5.4, "ding")])),
+        ("A", "まとめます。日数、立地、運営。この3つに答えれば、候補は絞れます。迷ったら、家を買う前に、窓口へ。", dict(say="まとめます。日数、立地、運営。このみっつに答えれば、候補は絞れます。迷ったら、家を買う前に、窓口へ。", sfx=[(0.4, "pop"), (1.2, "pop"), (2.0, "pop"), (5.4, "ding")])),
         ("A", "制度の比較表は、概要欄の記事に。許可の取り方の記事と、無料相談も、概要欄のリンクからどうぞ。", dict(sfx=[(0.4, "pop"), (2.8, "pop"), (5.0, "chime")])),
         ("A", "次に見る動画は、第1回「民泊は第3の資産」。天井が49%と知ったうえで、宿を資産に入れる理由を見ると、制度選びの意味がわかります。", dict(say="次に見る動画は、だいいっかい、「民泊は、だいさんの資産」。天井が、よんじゅうきゅうパーセントと知ったうえで、宿を資産に入れる理由を見ると、制度選びの意味がわかります。", sfx=[(0.4, "chime"), (4.0, "pop"), (7.0, "ding")])),
         ("A", "あなたの家は、届出と許可のどちらに向きそうですか？ ぜひ、コメントで教えてください。", dict(sfx=[(0.4, "pop"), (3.4, "chime")])),
@@ -288,7 +289,7 @@ function gauge(x,y,W,prog){ // 0〜100%のものさし。天井（約49%）と�
   s+=`<path d="M${cx} ${y-52} V${y+92}" stroke="${RED}" stroke-width="6" stroke-dasharray="14 9"/>`;
   [[0,'0%'],[50,'50%'],[100,'100%']].forEach(([v,l])=>{s+=`<text x="${x+W*v/100}" y="${y+112}" text-anchor="middle" font-size="28" font-weight="900" fill="#4a5a52">${l}</text>`});
   s+=`<rect x="${cx-190}" y="${y-110}" width="380" height="56" rx="28" fill="${RED}"/><text x="${cx}" y="${y-72}" text-anchor="middle" font-size="32" font-weight="900" fill="#fff">届出の天井 約49%</text>`;
-  if(prog>.99){const fx=x+W*.53;s+=`<path d="M${fx} ${y+64} V${y+150}" stroke="${DG}" stroke-width="6"/><path d="M${fx} ${y+150} h330 l-26 26 l26 26 h-330z" fill="${G}"/><text x="${fx+165}" y="${y+190}" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">私たちの宿 約53%</text>`}
+  if(prog>.99){const fx=x+W*.53;s+=`<path d="M${fx} ${y+64} V${y+150}" stroke="${DG}" stroke-width="6"/><path d="M${fx} ${y+150} h500 l-26 26 l26 26 h-500z" fill="${G}"/><text x="${fx+255}" y="${y+190}" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">開業から約8.5か月の平均 約53%</text>`}
   return s;
 }
 function formulaChip(x,y,w,txt,c,fc,fs=40){return `<rect x="${x}" y="${y+6}" width="${w}" height="${fs*1.9}" rx="${fs*.95}" fill="#000" opacity=".12"/><rect x="${x}" y="${y}" width="${w}" height="${fs*1.9}" rx="${fs*.95}" fill="${c}"/><text x="${x+w/2}" y="${y+fs*1.3}" text-anchor="middle" font-size="${fs}" font-weight="900" fill="${fc}">${txt}</text>`}
@@ -404,11 +405,13 @@ function scene(i,t,lt){
         <rect x="1240" y="420" width="40" height="40" rx="8" fill="${G}"/><text x="1300" y="453" font-size="38" font-weight="900" fill="${DG}">泊められる日 約49%</text><rect x="1240" y="520" width="40" height="40" rx="8" fill="#f6d9b0"/><text x="1300" y="553" font-size="38" font-weight="900" fill="${T}">残り 約51%</text>`,at(5,.4));
       if(p>.9)s+=sparkle(1210,360,1.2,t,0)+sparkle(760,380,1,t,2);
       if(on(6))s+=qbubble('q2','半分くらい！',at(6,.4),t);}
-    if(on(7)&&!on(8)){const sc=6.4,g=eo(at(7,1,.4)),base=740;
-      s+=card(600,250,1240,560,`<text x="1220" y="312" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">稼働率をくらべる</text><path d="M720 ${base} H1720" stroke="#9fb5a8" stroke-width="5"/>
-        <path d="M720 ${base-49*sc} H1720" stroke="${RED}" stroke-width="6" stroke-dasharray="16 10"/><rect x="1380" y="${base-49*sc-62}" width="330" height="50" rx="25" fill="${RED}"/><text x="1545" y="${base-49*sc-27}" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">届出の天井 約49%</text>
-        <rect x="900" y="${base-29.6*sc*g}" width="260" height="${29.6*sc*g}" rx="10" fill="url(#gG)"/><rect x="900" y="${base-29.6*sc*g}" width="70" height="${29.6*sc*g}" rx="10" fill="#fff" opacity=".14"/>${g>.9?`<text x="1030" y="${base-29.6*sc-20}" text-anchor="middle" font-size="48" font-weight="900" fill="${G}">29.6%</text>`:''}<text x="1030" y="${base+48}" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">全国の簡易宿所（2025年）</text>`,at(7,.4));
-      s+=tag(1400,560,'平均なら、天井に届かない',at(7,.4,3.6),Y,DG,30);}
+    if(on(7)&&!on(8)){
+      s+=card(600,250,1240,540,`<text x="1220" y="322" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">たとえば、稼働率が49%の宿は</text>`,at(7,.4));
+      s+=pop(900,470,at(7,.4,.8),formulaChip(700,420,400,'365日',G,'#fff',44));
+      s+=fade(at(7,.3,1.4),`<text x="1180" y="490" text-anchor="middle" font-size="64" font-weight="900" fill="${DG}">×</text>`);
+      s+=pop(1420,470,at(7,.4,1.8),formulaChip(1260,420,320,'49%',T,'#fff',44));
+      s+=pop(1220,650,at(7,.5,3.4),`<rect x="760" y="590" width="920" height="110" rx="55" fill="url(#gO)"/><text x="1220" y="665" text-anchor="middle" font-size="52" font-weight="900" fill="#fff">＝ 約180日（届出の天井）</text>`);
+      s+=sparkle(1640,430,1,t,0);}
     if(on(8)&&!on(9)){
       const months=['1','2','3','4','5','6','7','8','9','10','11','12'];
       const rowsM=[['ゆっくりの宿',0.5,G],['混む宿・1年中の宿',1.0,T]];
@@ -419,36 +422,37 @@ function scene(i,t,lt){
         s+=r;
         if(k===1&&done)s+=pop(1220,y+120,seg(lt,L[8]+5.8*K,L[8]+6.3*K),`<rect x="900" y="${y+96}" width="640" height="56" rx="28" fill="${RED}"/><text x="1220" y="${y+136}" text-anchor="middle" font-size="32" font-weight="900" fill="#fff">180日に着いたら、そこで終わり</text>`)});
       s+=stampX(1690,720,'イメージ',at(8,.3,.6),'#8a8f98',34,6);}
-    if(on(9)&&!on(10)){const g=eo(at(9,1.6,.9));
-      s+=card(600,250,1240,540,`<text x="1220" y="335" text-anchor="middle" font-size="46" font-weight="900" fill="${DG}">私たちの宿：1年目の稼働率</text>${gauge(700,480,1040,g)}`,at(9,.4));
-      s+=stampX(1640,330,'一例',at(9,.3,5.8),T,44,6);
-      if(g>.99)s+=sparkle(1320,500,1.1,t,0)+sparkle(1500,470,.8,t,3);}
-    if(on(10)&&!on(11)){
-      s+=cardGround(600,250,1240,560,728,'#cfe0c8',at(10,.4));
-      s+=pop(1000,560,at(10,.5,.4),inn(1000,728,.74,{sign:'許可',roof:'#2e6b47',noren:T,t,lit:.85,case:1,post:1,signc:'#2f2a22'}));
-      const rot=-40+Math.min(1,seg(lt,L[10]+2.6*K,L[10]+3.4*K))*90;
-      s+=pop(1560,520,at(10,.5,1.6),`<g transform="translate(1560,520)"><circle r="104" fill="#000" opacity=".1" transform="translate(5,8)"/><circle r="104" fill="url(#gD)"/><circle r="84" fill="#e8ece6"/><circle r="84" fill="none" stroke="#fff" stroke-width="5" opacity=".6"/><circle r="22" fill="#2a2f2c"/><rect x="-6" y="0" width="12" height="40" rx="5" fill="#2a2f2c"/>${keyp(0,0,.85,rot)}</g>`);
-      s+=tag(1560,690,'1年中、営業',at(10,.4,4.2),G,'#fff',38);
-      s+=tag(1200,330,'簡易宿所の許可を選んだ',at(10,.4,6),Y,DG,40);}
+    if(on(9)&&!on(11)){const g=eo(at(9,1.6,.9));
+      s+=card(600,250,1240,540,`<text x="1220" y="335" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">私たちの宿：開業から約8.5か月の平均</text>${gauge(700,480,1040,g)}`,at(9,.4));
+      s+=stampX(1700,330,'一例',at(9,.3,5.8),T,44,6);
+      if(g>.99)s+=sparkle(1320,500,1.1,t,0)+sparkle(1500,470,.8,t,3);
+      s+=fade(at(9,.5,6.2),`<text x="1220" y="760" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">この水準が1年続くと：365日 × 0.53 ＝ 約193日</text>`);}
     if(on(11)&&!on(12)){
       s+=cardGround(600,250,1240,560,728,'#cfe0c8',at(11,.4));
-      s+=pop(880,560,at(11,.5,.3),inn(880,728,.66,{sign:'届出',t,lit:.65,case:1}));
-      s+=fade(at(11,.5,.8),`<text x="1420" y="400" text-anchor="middle" font-size="44" font-weight="900" fill="${DG}">ときどき使う家</text><text x="1420" y="470" text-anchor="middle" font-size="44" font-weight="900" fill="${DG}">まず小さく試す</text>`);
-      s+=pop(1420,590,at(11,.5,3.2),`<rect x="1150" y="540" width="540" height="100" rx="50" fill="url(#gG)"/><text x="1420" y="606" text-anchor="middle" font-size="46" font-weight="900" fill="#fff">天井は気にならない</text>`);
-      s+=sparkle(1600,420,1,t,0);}
+      s+=pop(1000,560,at(11,.5,.4),inn(1000,728,.74,{sign:'許可',roof:'#2e6b47',noren:T,t,lit:.85,case:1,post:1,signc:'#2f2a22'}));
+      const rot=-40+Math.min(1,seg(lt,L[11]+2.6*K,L[11]+3.4*K))*90;
+      s+=pop(1560,520,at(11,.5,1.6),`<g transform="translate(1560,520)"><circle r="104" fill="#000" opacity=".1" transform="translate(5,8)"/><circle r="104" fill="url(#gD)"/><circle r="84" fill="#e8ece6"/><circle r="84" fill="none" stroke="#fff" stroke-width="5" opacity=".6"/><circle r="22" fill="#2a2f2c"/><rect x="-6" y="0" width="12" height="40" rx="5" fill="#2a2f2c"/>${keyp(0,0,.85,rot)}</g>`);
+      s+=tag(1560,690,'1年中、営業',at(11,.4,4.2),G,'#fff',38);
+      s+=tag(1200,330,'簡易宿所の許可を選んだ',at(11,.4,6),Y,DG,40);}
     if(on(12)&&!on(13)){
       s+=cardGround(600,250,1240,560,728,'#cfe0c8',at(12,.4));
-      s+=pop(860,560,at(12,.5,.3),inn(860,728,.6,{sign:'届出',t,lit:.65,case:1}));
-      s+=pop(1440,560,at(12,.5,.8),inn(1440,728,.68,{sign:'許可',t,lit:.85,roof:'#2e6b47',noren:T,post:1,signc:'#2f2a22'}));
-      s+=q(1150,540,130,t,0);
-      s+=tag(1150,330,'自分の宿は、どっち？',at(12,.4,1.6),Y,DG,44);}
+      s+=pop(880,560,at(12,.5,.3),inn(880,728,.66,{sign:'届出',t,lit:.65,case:1}));
+      s+=fade(at(12,.5,.8),`<text x="1420" y="400" text-anchor="middle" font-size="44" font-weight="900" fill="${DG}">ときどき使う家</text><text x="1420" y="470" text-anchor="middle" font-size="44" font-weight="900" fill="${DG}">まず小さく試す</text>`);
+      s+=pop(1420,590,at(12,.5,3.2),`<rect x="1150" y="540" width="540" height="100" rx="50" fill="url(#gG)"/><text x="1420" y="606" text-anchor="middle" font-size="46" font-weight="900" fill="#fff">天井は気にならない</text>`);
+      s+=sparkle(1600,420,1,t,0);}
     if(on(13)&&!on(14)){
-      s+=card(620,250,1200,540,`<text x="1220" y="322" text-anchor="middle" font-size="42" font-weight="900" fill="${DG}">売上の天井 ＝ 日数 × 1泊の料金</text>`,at(13,.4));
-      s+=pop(900,470,at(13,.4,.4),formulaChip(700,420,400,'泊められる日数',G,'#fff',40));
-      s+=fade(at(13,.3,1),`<text x="1180" y="486" text-anchor="middle" font-size="64" font-weight="900" fill="${DG}">×</text>`);
-      s+=pop(1440,470,at(13,.4,1.2),formulaChip(1260,420,360,'1泊の料金',T,'#fff',40));
-      s+=pop(1220,660,at(13,.4,3.4),`<rect x="800" y="600" width="840" height="96" rx="48" fill="url(#gO)"/><text x="1220" y="667" text-anchor="middle" font-size="44" font-weight="900" fill="#fff">まず、何日泊めたいか</text>`);}
-    if(on(14))s+=pop(1200,500,at(14,.4),`<rect x="640" y="388" width="1120" height="240" rx="120" fill="#000" opacity=".14"/><rect x="640" y="380" width="1120" height="240" rx="120" fill="url(#gO)"/><rect x="700" y="394" width="1000" height="50" rx="25" fill="#fff" opacity=".18"/><text x="1200" y="480" text-anchor="middle" font-size="56" font-weight="900" fill="#fff">天井は、日数で決まる</text><text x="1200" y="570" text-anchor="middle" font-size="46" font-weight="900" fill="#fff">制度選びは、ここから</text>`)+sparkle(700,380,1,t,0)+sparkle(1720,620,1.1,t,2);
+      s+=cardGround(600,250,1240,560,728,'#cfe0c8',at(13,.4));
+      s+=pop(860,560,at(13,.5,.3),inn(860,728,.6,{sign:'届出',t,lit:.65,case:1}));
+      s+=pop(1440,560,at(13,.5,.8),inn(1440,728,.68,{sign:'許可',t,lit:.85,roof:'#2e6b47',noren:T,post:1,signc:'#2f2a22'}));
+      s+=q(1150,540,130,t,0);
+      s+=tag(1150,330,'自分の宿は、どっち？',at(13,.4,1.6),Y,DG,44);}
+    if(on(14)&&!on(15)){
+      s+=card(620,250,1200,540,`<text x="1220" y="322" text-anchor="middle" font-size="42" font-weight="900" fill="${DG}">売上の天井 ＝ 日数 × 1泊の料金</text>`,at(14,.4));
+      s+=pop(900,470,at(14,.4,.4),formulaChip(700,420,400,'泊められる日数',G,'#fff',40));
+      s+=fade(at(14,.3,1),`<text x="1180" y="486" text-anchor="middle" font-size="64" font-weight="900" fill="${DG}">×</text>`);
+      s+=pop(1440,470,at(14,.4,1.2),formulaChip(1260,420,360,'1泊の料金',T,'#fff',40));
+      s+=pop(1220,660,at(14,.4,3.4),`<rect x="800" y="600" width="840" height="96" rx="48" fill="url(#gO)"/><text x="1220" y="667" text-anchor="middle" font-size="44" font-weight="900" fill="#fff">まず、何日泊めたいか</text>`);}
+    if(on(15))s+=pop(1200,500,at(15,.4),`<rect x="640" y="388" width="1120" height="240" rx="120" fill="#000" opacity=".14"/><rect x="640" y="380" width="1120" height="240" rx="120" fill="url(#gO)"/><rect x="700" y="394" width="1000" height="50" rx="25" fill="#fff" opacity=".18"/><text x="1200" y="480" text-anchor="middle" font-size="56" font-weight="900" fill="#fff">天井は、日数で決まる</text><text x="1200" y="570" text-anchor="middle" font-size="46" font-weight="900" fill="#fff">制度選びは、ここから</text>`)+sparkle(700,380,1,t,0)+sparkle(1720,620,1.1,t,2);
   }
   if(i===3){ // 違い② 手続きと建物
     s+=aki(on(10)&&!on(11)?'point':(on(7)&&!on(8)?'think':(on(3)?'point':'present')),on(7)&&!on(8)?'worry':'happy');
@@ -533,8 +537,8 @@ function scene(i,t,lt){
         <rect x="${x0}" y="${y0}" width="${hl==1?640:0}" height="${h}" fill="none"/>${hl==2?`<rect x="${x0}" y="${y0}" width="630" height="${h}" fill="#fff" opacity=".5"/>`:`<rect x="1190" y="${y0}" width="670" height="${h}" fill="#fff" opacity=".5"/>`}</g>`);
       s+=g;
       const L1=[['ときどき使う家',.4],['まず試す',2.2],['住居専用地域',4]],R1=[['通年',.4],['稼働日数で回収',2.4],['一棟貸しを本格運営',4.4]];
-      L1.forEach(([w,o],k)=>{if(on(1))s+=tag(730,400+k*80,w,at(1,.4,o),G,'#fff',30)});
-      R1.forEach(([w,o],k)=>{if(on(2))s+=tag(1680,400+k*80,w,at(2,.4,o),T,'#fff',30)});}
+      L1.forEach(([w,o],k)=>{if(on(1))s+=tag(735,636+k*58,w,at(1,.4,o),G,'#fff',30)});
+      R1.forEach(([w,o],k)=>{if(on(2))s+=tag(1675,636+k*58,w,at(2,.4,o),T,'#fff',30)});}
     if(on(3)&&!on(4))s+=qbubble('q4','あとで変えられる？',at(3,.4),t);
     if(on(4)&&!on(5)){
       s+=cardGround(600,250,1240,560,730,'#cfe0c8',at(4,.4));
@@ -602,7 +606,7 @@ function scene(i,t,lt){
       s+=card(1200,330,640,300,`<text x="1240" y="410" font-size="40" font-weight="900" fill="${DG}">天井が49%と知ったうえで</text><text x="1240" y="480" font-size="40" font-weight="900" fill="${DG}">宿を資産に入れる理由を見る</text><text x="1240" y="550" font-size="40" font-weight="900" fill="${T}">制度選びの意味がわかる</text>`,at(6,.5,2.2));}
     if(on(7)){
       s+=pop(1200,470,at(7,.5),`${bx(660,270,1080,380,40)}${icon(940,380,70,'chat',G,'#fff',1.3)}<text x="1280" y="400" text-anchor="middle" font-size="46" font-weight="900" fill="${DG}">あなたの家は、どちら？</text>${formulaChip(900,480,300,'届出',G,'#fff',46)}${formulaChip(1260,480,300,'許可',T,'#fff',46)}<text x="1200" y="620" text-anchor="middle" font-size="34" font-weight="900" fill="${T}">コメントで教えてください</text>`);}
-    s+=fade(seg(lt,E[7]+.5,E[7]+1.2),`<rect width="1920" height="1080" fill="#16301f"/><circle cx="960" cy="200" r="260" fill="url(#glow)" opacity=".25"/><text x="960" y="380" text-anchor="middle" font-size="60" font-weight="900" fill="#fff">最後まで見てくれて、ありがとうございます</text><text x="960" y="480" text-anchor="middle" font-size="30" font-weight="700" fill="#dfe9e3">${NOTE}</text><text x="960" y="530" text-anchor="middle" font-size="30" font-weight="700" fill="#dfe9e3">宿の数字は、運営する宿の実績（一例）です。出典は概要欄に記載しています。</text><text x="960" y="630" text-anchor="middle" font-size="30" font-weight="700" fill="#b8c9bf">${CREDIT}</text><rect x="780" y="700" width="360" height="100" rx="50" fill="#fff"/>${LOGO(810,715,1.1)}`,0);
+    s+=fade(seg(lt,E[7]+.5,E[7]+1.2),`<rect width="1920" height="1080" fill="#16301f"/><circle cx="960" cy="200" r="260" fill="url(#glow)" opacity=".25"/><text x="960" y="380" text-anchor="middle" font-size="60" font-weight="900" fill="#fff">最後まで見てくれて、ありがとうございます</text><text x="960" y="480" text-anchor="middle" font-size="30" font-weight="700" fill="#dfe9e3">${NOTE}</text><text x="960" y="530" text-anchor="middle" font-size="30" font-weight="700" fill="#dfe9e3">宿の稼働率は、開業から約8.5か月の平均で、一例です。出典は概要欄に記載しています。</text><text x="960" y="630" text-anchor="middle" font-size="30" font-weight="700" fill="#b8c9bf">${CREDIT}</text><rect x="780" y="700" width="360" height="100" rx="50" fill="#fff"/>${LOGO(810,715,1.1)}`,0);
   }
   const TT={2:['違い ①','泊められる日数',G],3:['違い ②','手続きと建物','#3d8a6a'],4:['違い ③','向く人は誰か',T],5:['知っておく','落とし穴 4つ',RED],6:['さいごに','あなたの家はどっち？',DG]};
   if(TT[i]&&L.length>1&&lt<L[1]){const [a,b,c]=TT[i],p=at(0,.4,.1)*(1-seg(lt,L[1]-.35,L[1]-.05)),fs=b.length>8?72:b.length>6?88:120;s+=pop(1180,480,p,`${bx(640,300,1080,360,40)}<rect x="${1180-140}" y="270" width="280" height="76" rx="38" fill="${c}"/><text x="1180" y="322" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">${a}</text><text x="1180" y="${fs>100?560:540}" text-anchor="middle" font-size="${fs}" font-weight="900" fill="${c}">${b}</text>${sparkle(760,380,1,t,1)}${sparkle(1620,560,.9,t,3)}`);}
