@@ -22,7 +22,7 @@
   /**
    * スマホ：右上のメニューボタン（3本線）で全画面メニューを開閉
    */
-  // アキヤド（スマホ）：ヘッダーのボタンでメニューを開閉する
+  // アキヤド：ヘッダーのボタン（3本線）でメニューを開閉する（PC・スマホ共通）
   var mmenuBtn = document.querySelector('.mmenu-btn');
   var mheader = document.querySelector('.header--media');
   if (mmenuBtn && mheader) {
@@ -35,6 +35,8 @@
     mmenuBtn.addEventListener('click', function () { setMmenu(!mheader.classList.contains('is-mnav-open')); });
     mheader.querySelectorAll('.mnav a').forEach(function (a) { a.addEventListener('click', function () { setMmenu(false); }); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMmenu(false); });
+    // PC：メニューの外をクリックしたら閉じる
+    document.addEventListener('click', function (e) { if (mheader.classList.contains('is-mnav-open') && !mheader.contains(e.target)) setMmenu(false); });
   }
   var menuBtn = document.querySelector('.menu-btn');
   function setMenu(open) {
