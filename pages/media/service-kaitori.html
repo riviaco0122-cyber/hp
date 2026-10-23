@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=dcdfd2e2">
+  <link rel="stylesheet" href="../../css/style.css?v=3563b46f">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -86,53 +86,29 @@
         <div class="mlp-hero__grid">
           <div class="mlp-hero__text">
             <p class="mlp-hero__eyebrow reveal">空き家を<wbr>売りたい方へ<wbr>｜アキヤド買取プラン</p>
-            <h1 class="mlp-hero__title reveal" data-delay="1">「古いから<wbr>売れない」と<br>言われた<wbr>家も、<em>宿の目</em>で査定します。</h1>
+            <h1 class="mlp-hero__title reveal" data-delay="1">「古くて<wbr>売れない」家も、<br><em>宿として<wbr>活かせるなら</em><br>買い取ります。</h1>
             <p class="mlp-hero__sub reveal" data-delay="2"><n-w>相続した家、遠方で管理できない家。住まいとしては値段がつきにくい家も、宿として活かせるなら<n-b>買い取れます。</n-b></n-w></p>
-            <ul class="mlp-hero__promise reveal" data-delay="2"><li><strong>0円</strong>相談・試算</li><li><strong>2営業日</strong><n-b>以内にご連絡</n-b></li><li><strong>全国</strong>オンライン可</li></ul>
+            <ul class="mlp-hero__promise reveal" data-delay="2"><li><strong>無料</strong>相談・試算</li><li><strong>2営業日</strong><n-b>以内にご連絡</n-b></li><li><strong>全国</strong>オンライン可</li></ul>
             <picture class="mlp-hero__photo reveal" data-delay="3"><source srcset="../../images/photos/w/old-town-street-800.webp" type="image/webp"><img src="../../images/photos/old-town-street.jpg" alt="" width="800" height="533" loading="eager" decoding="async"></picture>
           </div>
-          <div class="mdiag" id="diag"><span id="diag-doc" class="mdiag__anchor"></span>
-            <div class="mdiag__step mdiag__step--1">
-              <p class="mdiag__badge">STEP 1 / 2</p>
-              <p class="mdiag__title">30秒で<wbr>答えられる、<wbr>3つの質問</p>
-              <p class="mdiag__lead"><n-w>答えると、ご相談か資料の請求に進めます。答えは、ご提案や資料のご案内に<n-b>使います。</n-b></n-w></p>
-            <fieldset class="mdiag__q">
-              <legend><span>Q1</span>物件のある場所は？</legend>
-              <div class="mdiag__opts"><button type="button" class="mdiag__opt" data-v="都市部" aria-pressed="false">都市部</button><button type="button" class="mdiag__opt" data-v="地方の町" aria-pressed="false">地方の町</button><button type="button" class="mdiag__opt" data-v="観光地・海や山の近く" aria-pressed="false">観光地・海や山の近く</button><button type="button" class="mdiag__opt" data-v="わからない" aria-pressed="false">わからない</button></div>
-            </fieldset>
-            <fieldset class="mdiag__q">
-              <legend><span>Q2</span>建物の<wbr>状態は？</legend>
-              <div class="mdiag__opts"><button type="button" class="mdiag__opt" data-v="すぐ使える" aria-pressed="false">すぐ使える</button><button type="button" class="mdiag__opt" data-v="手入れが必要" aria-pressed="false">手入れが必要</button><button type="button" class="mdiag__opt" data-v="傷みが激しい" aria-pressed="false">傷みが<wbr>激しい</button><button type="button" class="mdiag__opt" data-v="わからない" aria-pressed="false">わからない</button></div>
-            </fieldset>
-            <fieldset class="mdiag__q">
-              <legend><span>Q3</span>家への<wbr>気持ちに<wbr>近いのは？</legend>
-              <div class="mdiag__opts"><button type="button" class="mdiag__opt" data-v="手放したい" aria-pressed="false">手放したい</button><button type="button" class="mdiag__opt" data-v="迷っている" aria-pressed="false">迷っている</button><button type="button" class="mdiag__opt" data-v="できれば残したい" aria-pressed="false">できれば<wbr>残したい</button></div>
-            </fieldset>
-              <button type="button" class="mbtn mdiag__go" disabled>次へ <span class="arrow" aria-hidden="true"></span></button>
-              <p class="mdiag__skip"><a href="#diag-form" data-diag-skip>質問に<wbr>答えずに進む</a></p>
+          <div class="mform2" id="diag"><span id="diag-doc" class="mform2__anchor"></span>
+            <p class="mform2__title">アキヤド買取プランに<wbr>ついて</p>
+            <div class="mform2__modes" role="radiogroup" aria-label="ご希望">
+              <button type="button" class="mform2__mode" role="radio" aria-checked="true" data-mode="consult"><strong>無料で<wbr>相談する</strong><span>2営業日以内に<wbr>ご連絡します</span></button>
+              <button type="button" class="mform2__mode" role="radio" aria-checked="false" data-mode="doc"><strong>資料を<wbr>もらう</strong><span>プランの<wbr>資料を<wbr>メールで<wbr>お送りします</span></button>
             </div>
-            <div class="mdiag__step mdiag__step--2" id="diag-form" hidden>
-              <p class="mdiag__badge">STEP 2 / 2</p>
-              <p class="mdiag__title">ご希望を<wbr>選んで、<wbr>連絡先を入力</p>
-              <div class="mdiag__modes" role="radiogroup" aria-label="ご希望">
-                <button type="button" class="mdiag__mode" role="radio" aria-checked="true" data-mode="consult"><strong>無料で<wbr>相談する</strong><span>2営業日以内に<wbr>ご連絡します</span></button>
-                <button type="button" class="mdiag__mode" role="radio" aria-checked="false" data-mode="doc"><strong>資料を<wbr>もらう</strong><span>プランの<wbr>資料を<wbr>メールで<wbr>お送りします</span></button>
-              </div>
-        <form class="qform qform--media mdiag__form" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html">
-                    <input type="hidden" name="かんたん診断" value="" class="mdiag__answers">
-          <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
+        <form class="qform qform--media mform2__form" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html">
+                              <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
           <input type="hidden" name="_subject" value="【アキヤド】アキヤド買取プランのご相談（サービスページ）">
           <input type="hidden" name="ご相談カテゴリ" value="アキヤド買取プラン" data-consult="アキヤド買取プラン" data-doc="サービス資料の請求">
           <input type="hidden" name="流入元" value="サービスページ：アキヤド買取プラン">
           <label class="qform__field"><span>お名前 <em>必須</em></span><input type="text" name="name" placeholder="山田 太郎" autocomplete="name" required></label>
           <label class="qform__field"><span>メールアドレス <em>必須</em></span><input type="email" name="email" placeholder="your@email.com" autocomplete="email" required></label>
-          <label class="qform__field mdiag__consult-only"><span>ご相談内容 <small>任意</small></span><textarea name="message" rows="3" placeholder="物件の場所や、気になっていることなど"></textarea></label>
-          <label class="qform__field qform__file mdiag__consult-only"><span>ファイル <small>任意・物件の<wbr>写真や<wbr>図面など</small></span><input type="file" name="attachment" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"></label>
-          <button type="submit" class="btn qform__submit"><span class="mdiag__submit-t">無料で<wbr>相談する</span> <span class="arrow" aria-hidden="true"></span></button>
+          <label class="qform__field mform2__consult-only"><span>ご相談内容 <small>任意</small></span><textarea name="message" rows="3" placeholder="物件の場所や、気になっていることなど"></textarea></label>
+          <label class="qform__field qform__file mform2__consult-only"><span>ファイル <small>任意・物件の<wbr>写真や<wbr>図面など</small></span><input type="file" name="attachment" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"></label>
+          <button type="submit" class="btn qform__submit"><span class="mform2__submit-t">無料で<wbr>相談する</span> <span class="arrow" aria-hidden="true"></span></button>
           <p class="qform__note"><n-w>送信により</n-w><a href="../privacy.html"><n-w>プライバシーポリシー</n-w></a><n-w>に同意したものとします。しつこい営業は<n-b>しません。</n-b></n-w></p>
         </form>
-              <p class="mdiag__back"><button type="button" class="mdiag__reset">← 質問に戻る</button></p>
-            </div>
           </div>
         </div>
       </div>
@@ -151,8 +127,8 @@
         <h2 class="mlp-title reveal">買取価格は、<wbr>「宿として<wbr>稼げるか」で<wbr>決まります</h2>
         <p class="mlp-lead reveal"><n-w class="j">一般の査定は「住まいとして売れるか」で見ます。アキヤドは、宿にしたときの収益から考えるため、古い家・地方の家でも金額をお出しできる<n-b>ことがあります。</n-b></n-w></p>
         <div class="mprice__formula reveal"><div class="mprice__term"><span class="mprice__term-t">宿にしたときに<wbr>見込める収益</span><span class="mprice__term-n">周辺の宿の料金と<wbr>稼働から</span></div><span class="mprice__op" aria-hidden="true">−</span><div class="mprice__term"><span class="mprice__term-t">宿にするための<wbr>改修の費用</span><span class="mprice__term-n">建物の<wbr>状態と<wbr>法令の<wbr>条件から</span></div><span class="mprice__op" aria-hidden="true">＝</span><div class="mprice__term is-result"><span class="mprice__term-t">買取価格の<wbr>めやす</span><span class="mprice__term-n">根拠と<wbr>あわせて<wbr>書面で</span></div></div>
-        <ul class="mprice__facts reveal"><li><span class="mprice__fact-big">0円</span><span class="mprice__fact-l">相談・現地の<wbr>拝見・査定</span></li><li><span class="mprice__fact-big"><n-w>2〜4週間</n-w></span><span class="mprice__fact-l"><n-w>現地の拝見から、金額のご提示まで（目安）</n-w></span></li><li><span class="mprice__fact-big"><n-w>不要</n-w></span><span class="mprice__fact-l"><n-w>仲介手数料（アキヤドが直接買い取るため）</n-w></span></li></ul>
-        <p class="mprice__note"><n-w>※ 金額は、物件の状態・立地・法令上の条件で変わります。現地を拝見したうえで、根拠とあわせて<n-b>ご提示します。</n-b></n-w></p>
+        <ul class="mprice__facts reveal"><li><span class="mprice__fact-big">無料</span><span class="mprice__fact-l">相談・現地の<wbr>拝見・査定</span></li><li><span class="mprice__fact-big"><n-w>2〜4週間</n-w></span><span class="mprice__fact-l"><n-w>現地の拝見から、金額のご提示まで（目安）</n-w></span></li><li><span class="mprice__fact-big">不要</span><span class="mprice__fact-l">仲介手数料</span></li></ul>
+        <p class="mprice__note"><n-w class="j">※ 金額は、物件の状態・立地・法令上の条件で変わります。現地を拝見したうえで、根拠とあわせてご提示します。アキヤドが直接買い取るため、仲介手数料は<n-b>かかりません。</n-b></n-w></p>
       </div>
     </section>
 
@@ -196,7 +172,7 @@
             <div><h3 class="mpoint__title">売却までの<wbr><n-b>段取りを一緒に</n-b></h3><p class="mpoint__text"><n-w>必要な手続きや、専門家に相談する順番を一緒に<n-b>整理します。</n-b></n-w></p></div>
           </li>
         </ol>
-        <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-mid">30秒の<wbr>質問から<wbr>相談する <span class="arrow" aria-hidden="true"></span></a><a href="#diag-doc" class="mbtn mbtn--sub" data-cta="media-service-mid-doc">資料を<wbr>もらう<wbr>（無料）<wbr> <span class="arrow" aria-hidden="true"></span></a></div>
+        <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-mid">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a><a href="#diag-doc" class="mbtn mbtn--sub" data-cta="media-service-mid-doc">資料を<wbr>もらう<wbr>（無料）<wbr> <span class="arrow" aria-hidden="true"></span></a></div>
       </div>
     </section>
 
@@ -211,15 +187,15 @@
             <p><n-w class="j">私たちは宿泊業の経験がない会社員として、住まいから離れた静岡県下田市で、借りた家を宿にしました。準備に約7か月。法人での融資の相談が見送られたこと、工事のあとの想定外の請求、古い配線で家電が同時に使えないこと。つまずきは、ひと通り<n-b>経験しました。</n-b></n-w></p>
             <p><n-w class="j">それでも、清掃を地域の方にお願いし、セルフチェックインなどの仕組みを整えたことで、いまは現地に行くのは数か月に1回ほどで宿が<n-b>回っています。</n-b></n-w></p>
             <p><n-w class="j">空き家は、手を入れれば旅をする人の滞在先になり、まちに人の流れを生みます。手放すと決める前に、宿として活かす道があるかを、一緒に確かめさせて<n-b>ください。</n-b></n-w></p>
-            <p class="mletter__sign"><n-w>合同会社RIVIA&amp;CO. 代表社員　石原 佑真・<n-b>片井 進太</n-b></n-w></p>
+            <p class="mletter__sign"><n-w>合同会社RIVIA&amp;CO. 代表社員</n-w><br><n-w><n-b>石原 佑真・片井 進太</n-b></n-w></p>
           </div>
           <ul class="msv-stats">
             <li><span class="msv-stats__num"><n-w>約14</n-w><small><n-w>か月</n-w></small></span><span class="msv-stats__label"><n-w>初期投資の約98%を回収</n-w></span><span class="msv-stats__note"><n-w>購入費を基準にした割合</n-w></span></li>
             <li><span class="msv-stats__num">約53<small>%</small></span><span class="msv-stats__label">1年目の<wbr>稼働率</span><span class="msv-stats__note">計画の<wbr>約1.3倍</span></li>
             <li><span class="msv-stats__num">★4.88</span><span class="msv-stats__label"><n-w>Airbnb の評価</n-w></span><span class="msv-stats__note"><n-w>51件・掲載時点</n-w></span></li>
           </ul>
-          <figure class="mletter__voice"><blockquote><n-w>和モダンな室内がとてもオシャレで、快適でした！お部屋の居心地がよく、下田旅行の素敵な思い出に<n-b>なりました。</n-b></n-w></blockquote><figcaption><n-w>NODE Shimoda のゲスト（Airbnbゲスト・1泊・202<n-b>6年9月）</n-b></n-w></figcaption></figure>
-          <p class="mletter__more"><a href="../media/case-rental-house-inn-first-year.html"><n-w>下田の宿の運営データを見る</n-w> <span class="arrow" aria-hidden="true"></span></a>　<a href="https://note.com/calm_quokka8545/n/n6de4ea4f8b5f" target="_blank" rel="noopener" data-cta="note-story"><n-w>開業の体験記（note・有料）</n-w> <span class="arrow" aria-hidden="true"></span></a></p>
+          <figure class="mletter__voice"><blockquote><p class="mletter__q">和モダンな<wbr>室内が<wbr>とても<wbr>オシャレで、<wbr>快適でした！<wbr>お部屋の<wbr>居心地が<wbr>よく、<wbr>下田旅行の<wbr>素敵な<wbr>思い出に<wbr>なりました。</p></blockquote><figcaption><n-w>NODE Shimoda のゲスト（Airbnbゲスト・1泊・202<n-b>6年9月）</n-b></n-w></figcaption></figure>
+          <p class="mletter__more"><a href="../media/case-rental-house-inn-first-year.html"><n-w>下田の宿の運営データを見る</n-w> <span class="arrow" aria-hidden="true"></span></a><a href="https://note.com/calm_quokka8545/n/n6de4ea4f8b5f" target="_blank" rel="noopener" data-cta="note-story"><n-w>開業の体験記（note・有料）</n-w> <span class="arrow" aria-hidden="true"></span></a></p>
         </div>
       </div>
     </section>
@@ -264,8 +240,8 @@
       <div class="container">
         <p class="mlp-en reveal">Flow</p>
         <h2 class="mlp-title reveal">ご相談から<wbr>3ステップ。<wbr>ご提案までは<wbr>無料です</h2>
-        <ol class="mflow3 reveal"><li><span class="mflow3__no">1</span><p class="mflow3__t">3つの<wbr>質問・ご相談</p><p class="mflow3__d"><n-w>フォームのあと、2営業日以内にご連絡。メールか<n-b>オンラインで伺います</n-b></n-w></p></li><li><span class="mflow3__no">2</span><p class="mflow3__t">現地調査・ご提案</p><p class="mflow3__d"><n-w>物件を拝見し、数字と根拠をそろえてご提案。<n-b>ここまで無料です</n-b></n-w></p></li><li><span class="mflow3__no">3</span><p class="mflow3__t">ご契約・スタート</p><p class="mflow3__d"><n-w>内容にご納得いただけたら、ご契約。準備は<n-b>アキヤドが進めます</n-b></n-w></p></li></ol>
-        <details class="mlp-fold mlp-fold--flow reveal"><summary><n-w>各ステップの期間・お願いすること・費用を見る</n-w></summary>
+        <ol class="mflow3 reveal"><li><span class="mflow3__no">1</span><p class="mflow3__t">ご相談・資料の<wbr>お届け</p><p class="mflow3__d"><n-w>フォームのあと、2営業日以内にご連絡。メールか<n-b>オンラインで伺います</n-b></n-w></p></li><li><span class="mflow3__no">2</span><p class="mflow3__t">現地調査・ご提案</p><p class="mflow3__d"><n-w>物件を拝見し、数字と根拠をそろえてご提案。<n-b>ここまで無料です</n-b></n-w></p></li><li><span class="mflow3__no">3</span><p class="mflow3__t">ご契約・スタート</p><p class="mflow3__d"><n-w>内容にご納得いただけたら、ご契約。準備は<n-b>アキヤドが進めます</n-b></n-w></p></li></ol>
+        <details class="mlp-fold mlp-fold--flow reveal"><summary>期間・費用など、<wbr>くわしい<wbr>流れを見る</summary>
         <ol class="dflow">
           <li class="dflow__step reveal">
             <div class="dflow__head"><span class="dflow__no">STEP 01</span><span class="dflow__term"><n-w class="j">当日〜数日</n-w></span></div>
@@ -339,35 +315,35 @@
         <h2 class="mlp-title reveal">よくある質問</h2>
         <div class="faq reveal">
           <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span><n-w>古くて傷んでいても、買い取ってもらえますか？</n-w></span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">古くて<wbr>傷んでいても、<wbr>買い取って<wbr>もらえますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
             <div class="faq__a"><span class="faq__mark">A</span><p><n-w>建物の状態や立地によります。宿として再生できるかを現地で確認したうえで、<n-b>ご提案します。</n-b></n-w></p><span></span></div>
           </details>
           <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>家の中に荷物が<wbr>残っていても<wbr>大丈夫ですか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">家の中に荷物が<wbr>残っていても<wbr>大丈夫ですか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
             <div class="faq__a"><span class="faq__mark">A</span><p><n-w>まずはそのままの状態で拝見します。片付けの進め方も含めて<n-b>ご相談ください。</n-b></n-w></p><span></span></div>
           </details>
           <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>査定に<wbr>費用は<wbr>かかりますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">査定に<wbr>費用は<wbr>かかりますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
             <div class="faq__a"><span class="faq__mark">A</span><p>現地の<wbr>拝見と<wbr>査定、<wbr>ご提案までは<wbr>無料です。</p><span></span></div>
           </details>
           <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span><n-w>相続の手続きが終わっていなくても相談できますか？</n-w></span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">相続の<wbr>手続きが<wbr>終わっていなくても<wbr>相談できますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
             <div class="faq__a"><span class="faq__mark">A</span><p><n-w>ご相談いただけます。売却には名義の変更が必要になるため、進め方も一緒に<n-b>整理します。</n-b></n-w></p><span></span></div>
           </details>
           <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>相談したら、<wbr>売らないと<wbr>いけませんか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">相談したら、<wbr>売らないと<wbr>いけませんか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
             <div class="faq__a"><span class="faq__mark">A</span><p><n-w>いいえ。ご提案までは無料で、売るかどうかはご提案を見てから<n-b>決めていただけます。</n-b></n-w></p><span></span></div>
           </details>
           <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>ほかの<wbr>不動産会社と<wbr>比べても<wbr>いいですか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">ほかの<wbr>不動産会社と<wbr>比べても<wbr>いいですか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
             <div class="faq__a"><span class="faq__mark">A</span><p><n-w>はい。比べたうえで決めてください。比べやすいよう、査定の根拠も<n-b>お出しします。</n-b></n-w></p><span></span></div>
           </details>
           <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span><n-w>家族の意見がまとまっていなくても相談できますか？</n-w></span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">家族の<wbr>意見が<wbr>まとまっていなくても<wbr>相談できますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
             <div class="faq__a"><span class="faq__mark">A</span><p><n-w>ご相談いただけます。ご家族に見せられる比較の資料を<n-b>お渡しします。</n-b></n-w></p><span></span></div>
           </details>
           <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>遠方の<wbr>物件でも<wbr>大丈夫ですか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">遠方の<wbr>物件でも<wbr>大丈夫ですか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
             <div class="faq__a"><span class="faq__mark">A</span><p><n-w>全国の物件のご相談をお受けしています。初回はオンラインでお話しでき、現地の拝見は鍵の受け渡しの方法も<n-b>ご相談ください。</n-b></n-w></p><span></span></div>
           </details>
         </div>
@@ -378,7 +354,7 @@
       <div class="container mlp-narrow">
         <h2 class="mlp-title reveal">決めるのは、<wbr>比べてからで<wbr>大丈夫です</h2>
         <p class="mlp-lead reveal"><n-w class="j">相続登記や税の特例には期限があります。売ると決めていなくても、まずは今の家の値段と、残した場合の収入を知っておくと、ご家族で話し合いやすく<n-b>なります。</n-b></n-w></p>
-        <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-bottom">30秒の<wbr>質問から<wbr>相談する <span class="arrow" aria-hidden="true"></span></a><a href="#diag-doc" class="mbtn mbtn--sub" data-cta="media-service-bottom-doc">資料を<wbr>もらう<wbr>（無料）<wbr> <span class="arrow" aria-hidden="true"></span></a></div>
+        <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-bottom">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a><a href="#diag-doc" class="mbtn mbtn--sub" data-cta="media-service-bottom-doc">資料を<wbr>もらう<wbr>（無料）<wbr> <span class="arrow" aria-hidden="true"></span></a></div>
         <p class="mlp-final__note"><n-w>相談・試算は無料。しつこい営業は<n-b>しません。</n-b></n-w></p>
       </div>
     </section>
@@ -459,6 +435,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=operation&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=be1c1cac"></script>
+  <script src="../../js/main.js?v=818056ee"></script>
 </body>
 </html>

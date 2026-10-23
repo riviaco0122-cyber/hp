@@ -4370,27 +4370,18 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mlp-hero__promise strong { display: block; font-family: var(--font-round); font-size: 20px; color: var(--m-green); }
 .mlp-hero__photo { display: block; margin-top: 24px; border-radius: 20px; overflow: hidden; }
 .mlp-hero__photo img { width: 100%; height: 260px; object-fit: cover; }
-/* かんたん診断 */
-.mdiag { position: relative; scroll-margin-top: calc(var(--header-h) + 12px); padding: 26px 24px 22px; border-radius: 22px; background: #fff; box-shadow: 0 20px 48px rgba(38, 42, 39, 0.14); }
-.mdiag__badge { display: inline-block; padding: 3px 10px; border-radius: 999px; background: var(--m-sand); font-family: var(--font-en); font-size: 11px; letter-spacing: 0.14em; color: var(--m-green); }
-.mdiag__title { margin-top: 10px; font-family: var(--font-round); font-weight: 700; font-size: 20px; line-height: 1.5; }
-.mdiag__lead { margin-top: 6px; font-size: 13px; line-height: 1.8; color: var(--m-sub); }
-.mdiag__q { margin-top: 18px; border: 0; padding: 0; }
-.mdiag__q legend { display: flex; gap: 8px; align-items: center; font-weight: 700; font-size: 15px; }
-.mdiag__q legend span { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--m-green); color: #fff; font-family: var(--font-en); font-size: 12px; }
-.mdiag__opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-.mdiag__opt { padding: 10px 14px; border-radius: 999px; border: 1.5px solid var(--m-line); background: #fff; font: inherit; font-size: 14px; color: var(--m-ink); cursor: pointer; transition: border-color .15s, background .15s, color .15s; }
-.mdiag__opt:hover { border-color: var(--m-green); }
-.mdiag__opt[aria-pressed="true"] { border-color: var(--m-green); background: var(--m-green); color: #fff; font-weight: 700; }
-.mdiag__go { width: 100%; margin-top: 22px; }
-.mdiag__go:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
-.mdiag__skip, .mdiag__back { margin-top: 12px; text-align: center; font-size: 12.5px; }
-.mdiag__skip a, .mdiag__reset { color: var(--m-sub); text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; font: inherit; cursor: pointer; }
-.mdiag__result { margin: 14px 0 6px; padding: 16px 18px; border-radius: 16px; background: var(--m-sand); }
-.mdiag__result-label { font-size: 12px; color: var(--m-sub); }
-.mdiag__result-name { margin-top: 2px; font-family: var(--font-round); font-weight: 700; font-size: 19px; color: var(--m-green); }
-.mdiag__result-text { margin-top: 6px; font-size: 13px; line-height: 1.8; }
-.mdiag .mdiag__form { padding: 8px 0 0; box-shadow: none; background: transparent; }
+/* サービスページのフォーム：最初に「相談／資料」を選ぶ */
+.mform2 { position: relative; scroll-margin-top: calc(var(--header-h) + 12px); padding: 26px 24px 18px; border-radius: 22px; background: #fff; box-shadow: 0 20px 48px rgba(38, 42, 39, 0.14); }
+.mform2 [hidden] { display: none !important; }
+.mform2__anchor { position: absolute; top: 0; }
+.mform2__title { font-family: var(--font-round); font-weight: 700; font-size: 18px; line-height: 1.5; text-align: center; }
+.mform2__modes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
+.mform2__mode { display: flex; flex-direction: column; gap: 2px; padding: 12px 10px; border-radius: 14px; border: 1.5px solid var(--m-line); background: #fff; font: inherit; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
+.mform2__mode strong { font-family: var(--font-round); font-size: 15px; color: var(--m-ink); }
+.mform2__mode span { font-size: 11.5px; line-height: 1.5; color: var(--m-sub); }
+.mform2__mode[aria-checked="true"] { border-color: var(--m-green); background: var(--m-sand); box-shadow: inset 0 0 0 1px var(--m-green); }
+.mform2__mode[aria-checked="true"] strong { color: var(--m-green); }
+.mform2 .mform2__form { padding: 14px 0 0; box-shadow: none; background: transparent; }
 /* 節の共通 */
 .mlp-sec { padding: 88px 0; }
 .mlp-sec--soft { background: var(--m-sand); }
@@ -4462,8 +4453,8 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mletter .msv-stats { margin-top: 28px; }
 .mletter .msv-stats li { background: var(--m-sand); }
 .mletter__voice { margin-top: 18px; padding: 18px 20px; border-radius: 16px; background: var(--m-sand); }
-.mletter__voice blockquote { font-size: 14px; line-height: 1.9; }
-.mletter__voice blockquote::before { content: "“"; margin-right: 4px; color: var(--m-green); font-weight: 700; }
+.mletter__voice blockquote { margin: 0; font-size: 14px; line-height: 1.9; }
+.mletter__voice blockquote p::before { content: "“"; margin-right: 4px; color: var(--m-green); font-weight: 700; }
 .mletter__voice figcaption { margin-top: 6px; font-size: 12px; color: var(--m-sub); }
 .mletter__more { margin-top: 16px; text-align: center; font-size: 13px; font-weight: 700; }
 .mletter__more a { color: var(--m-green); }
@@ -4485,7 +4476,7 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .mlp-hero__grid { grid-template-columns: 1fr; gap: 24px; margin-top: 16px; }
   .mlp-hero__sub { font-size: 14.5px; }
   .mlp-hero__photo { display: none; }
-  .mdiag { padding: 22px 18px 18px; }
+  .mform2 { padding: 22px 18px 16px; }
   .mlp-sec { padding: 64px 0; }
   .mlp-sec--worry { padding: 44px 0 48px; }
   .mlp-worries, .mprice__cards--2, .mprice__cards--3, .mrisks, .mpoints, .mflow3 { grid-template-columns: 1fr; gap: 12px; }
@@ -4505,11 +4496,19 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .mlp-ctarow .mbtn { width: 100%; }
 }
 .mlp-sec .mplans__cards { margin-top: 40px; }
-/* かんたん診断の2段目：相談か資料かを選ぶ */
-.mdiag [hidden] { display: none !important; }
-.mdiag__modes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
-.mdiag__mode { display: flex; flex-direction: column; gap: 2px; padding: 12px 10px; border-radius: 14px; border: 1.5px solid var(--m-line); background: #fff; font: inherit; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
-.mdiag__mode strong { font-family: var(--font-round); font-size: 15px; color: var(--m-ink); }
-.mdiag__mode span { font-size: 11.5px; line-height: 1.5; color: var(--m-sub); }
-.mdiag__mode[aria-checked="true"] { border-color: var(--m-green); background: var(--m-sand); box-shadow: inset 0 0 0 1px var(--m-green); }
-.mdiag__mode[aria-checked="true"] strong { color: var(--m-green); }
+.mlp-sec .mplans__cards--1 { grid-template-columns: minmax(0, 600px); justify-content: center; }
+.mlp-sec .mplans__cards--1 ~ .mplans__note { text-align: center; }
+/* サービスページ：改行と字間の整え */
+.mletter__body p { text-align: left !important; }
+.mletter__more { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; }
+.msv-stats__num { white-space: nowrap; }
+@media (max-width: 899px) {
+  .msv-stats__num { font-size: 22px; }
+  .msv-stats__label { font-size: 11.5px; line-height: 1.5; }
+  .mletter__more { flex-direction: column; align-items: center; }
+}
+/* LP の文章は両端揃えにしない（字間が空きすぎるのを防ぐ） */
+.mlp-hero :is(p, li):has(> n-w.j), .mlp-sec :is(p, li, dd):has(> n-w.j) { text-align: left !important; }
+.mlp-sec .mlp-lead, .mlp-sec .mlp-lead:has(> n-w.j) { text-align: center !important; }
+.mprice__note a { white-space: nowrap; }
+@media (max-width: 899px) { .mlp-sec .mlp-lead, .mlp-sec .mlp-lead:has(> n-w.j) { text-align: left !important; } }
