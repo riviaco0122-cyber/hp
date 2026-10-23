@@ -2532,7 +2532,8 @@ def spec_md():
     w("")
     w("### メディアの構成（URLは rivia-co.com/media/ 配下。サブドメインは使わない）")
     w("* カテゴリ一覧（media/category-○○.html）：" + " ／ ".join(n for _, n in MEDIA_CATEGORIES) + "。カテゴリの説明文、関連するガイドへの導線、記事一覧（12件ずつ追加表示）。検索結果に出る独立したページにする。")
-    w("* 見え方：URLは会社サイトの一部（rivia-co.com/media/）のまま、ヘッダー・フッターはメディア専用（ロゴ「アキヤド」、状況別ガイド・テーマ・検索のナビ、運営会社への小さなリンク）にして、独立したメディアとして見せる。タイトルの末尾・OGPのサイト名も「アキヤド」。")
+    w("* 見え方：URLは会社サイトの一部（rivia-co.com/media/）のまま、ヘッダー・フッターはメディア専用（ロゴ「アキヤド」、運営会社への小さなリンク）にして、独立したメディアとして見せる。タイトルの末尾・OGPのサイト名も「アキヤド」。")
+    w("* ヘッダーのナビ：PC（幅900px以上）はヘッダーの下に、状況別ガイド4つと「記事をさがす」のタブだけを置く（数を絞り、はみ出して文字が切れないようにする）。右上のメニューボタン（3本線）はPC・スマホ共通で、ガイド4つ・基礎から学ぶ・事例から探す・記事をさがす・アキヤドのプラン・相談と資料請求のボタン・運営会社へのリンクを開く（PCは右上の小さなパネル、スマホは全幅）。トップへはロゴから戻る。")
     w("* メディアトップのFV：写真を全面に敷き、ロゴ・一言・状況別の入口（3つ）・検索窓を1画面に置いて、最初の画面から次の行動を選べるようにする（離脱を防ぐ）。")
     w("* 想定する読者（ペルソナ）：① 空き家を売りたい方 ② 空き家を活かしたい方 ③ 副業で宿をはじめたい方。記事は、この3者が悩む順番をもとに企画する。")
     w("* 記事を追加するとき：記事データに guides=[(\"sell\", 2)] のように「ガイド（sell／use／side）とStep番号」を書けば、ガイドの該当Stepに自動で並ぶ。公開日前は「公開予定」と表示される。よくある悩みの一覧（MEDIA_QUESTIONS）にも、読者の言葉の質問を1行足すと入口が増える。")
@@ -3873,6 +3874,7 @@ def media_header(current=""):
       <button type="button" class="mmenu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button>
       </div>
     </div>
+{media_tabs(current)}
 {media_nav(current)}
   </header>"""
 
@@ -4683,13 +4685,23 @@ def media_thanks_page():
     page("media/thanks.html", "送信完了｜アキヤド", "アキヤドへのお問い合わせを受け付けました。", body, current="media", noindex=True)
 
 
+def media_tabs(current=""):
+    """PC のヘッダー下のタブ。読者の状況（ガイド）と記事検索だけに絞る（残りは右上のメニューに入れる）"""
+    items = [(g["key"], f"media/guide-{g['key']}.html", g["label"]) for g in MEDIA_GUIDES] + [("search", "media/search.html", "記事をさがす")]
+    cur = ' aria-current="page"'
+    lis = "".join(f'<li><a href="{href}"{cur if k == current else ""}>{e(n)}</a></li>' for k, href, n in items)
+    return f"""    <nav class="mtabs" aria-label="アキヤドのガイド">
+      <div class="container"><ul class="mtabs__list">{lis}</ul></div>
+    </nav>"""
+
+
 def media_nav(current=""):
-    """メディア内の共通ナビ。読者の状況（ガイド）を先に、テーマと検索を後に置く"""
-    items = [("top", "media.html", "トップ")] + [(g["key"], f"media/guide-{g['key']}.html", g["label"]) for g in MEDIA_GUIDES] + \
+    """右上のメニューボタン（3本線）で開くメニュー。ガイドを先に、学ぶ・事例・検索・プランを後に置く（トップへはロゴから戻る）"""
+    items = [(g["key"], f"media/guide-{g['key']}.html", g["label"]) for g in MEDIA_GUIDES] + \
             [("learn", "media/learn.html", "基礎から学ぶ"), ("cases", "media.html#cases", "事例から探す"), ("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "アキヤドのプラン")]
     cur = ' aria-current="page"'
     lis = "".join(f'<li><a href="{href}"{cur if k == current else ""}>{e(n)}</a></li>' for k, href, n in items)
-    # スマホでは、ヘッダーのボタンで開くメニューにする（相談・資料請求のボタンも入れる）
+    # 相談・資料請求のボタンも入れる
     return f"""    <nav class="mnav" id="mnav" aria-label="アキヤドのメニュー">
       <div class="container"><ul class="mnav__list">{lis}</ul>
         <div class="mnav__ctas">
