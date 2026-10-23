@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=76e7ecd3">
+  <link rel="stylesheet" href="../../css/style.css?v=6a2a2a20">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -85,9 +85,10 @@
         <nav class="crumbs" aria-label="パンくずリスト"><a href="../media.html">アキヤド</a><span class="crumbs__sep">/</span><a href="../media/plans.html">アキヤドの<wbr>プラン</a><span class="crumbs__sep">/</span><span aria-current="page">アキヤド買取プラン</span></nav>
         <div class="mlp-hero__grid">
           <div class="mlp-hero__text">
-            <p class="mlp-hero__eyebrow reveal">空き家を<wbr>売りたい方へ<wbr>｜アキヤド買取プラン</p>
+            <p class="mlp-hero__eyebrow reveal">空き家を<wbr>売りたい方へ<span class="pc-only">｜アキヤド買取プラン</span></p>
             <h1 class="mlp-hero__title reveal" data-delay="1">古くて<wbr>売れない<wbr>家も、<br><em>宿として<wbr>活かせるなら</em><br>買い取ります。</h1>
-            <p class="mlp-hero__sub reveal" data-delay="2"><n-w>相続した家、遠方で管理できない家。住まいとしては値段がつきにくい家も、宿として活かせるなら<n-b>買い取れます。</n-b></n-w></p>
+            <p class="mlp-hero__sub pc-only reveal" data-delay="2"><n-w>相続した家、遠方で管理できない家。住まいとしては値段がつきにくい家も、宿として活かせるなら<n-b>買い取れます。</n-b></n-w></p>
+            <p class="mlp-hero__sub mlp-hero__sub--sp sp-only reveal" data-delay="2"><n-w>値段がつきにくい家も、宿として活かせるなら<n-b>買い取れます。</n-b></n-w></p>
             <ul class="mlp-hero__promise reveal" data-delay="2"><li><strong>無料</strong>相談・試算</li><li><strong>2営業日</strong><n-b>以内にご連絡</n-b></li><li><strong>全国</strong>オンライン可</li></ul>
             <picture class="mlp-hero__photo reveal" data-delay="3"><source srcset="../../images/photos/w/old-town-street-800.webp" type="image/webp"><img src="../../images/photos/old-town-street.jpg" alt="" width="800" height="533" loading="eager" decoding="async"></picture>
           </div>
@@ -126,7 +127,8 @@
         <p class="mlp-en reveal">How much?</p>
         <h2 class="mlp-title reveal">買取価格は、<wbr>宿として稼げるかで<wbr>決まります</h2>
         <p class="mlp-lead reveal"><n-w class="j">一般の査定は「住まいとして売れるか」で見ます。アキヤドは、宿にしたときの収益から考えるため、古い家・地方の家でも金額をお出しできる<n-b>ことがあります。</n-b></n-w></p>
-        <div class="mprice__formula reveal"><div class="mprice__term"><span class="mprice__term-t">宿にしたときに<wbr>見込める収益</span><span class="mprice__term-n">周辺の宿の料金と<wbr>稼働から</span></div><span class="mprice__op" aria-hidden="true">−</span><div class="mprice__term"><span class="mprice__term-t">宿にするための<wbr>改修の費用</span><span class="mprice__term-n">建物の<wbr>状態と<wbr>法令の<wbr>条件から</span></div><span class="mprice__op" aria-hidden="true">＝</span><div class="mprice__term is-result"><span class="mprice__term-t">買取価格の<wbr>めやす</span><span class="mprice__term-n">根拠と<wbr>あわせて<wbr>書面で</span></div></div>
+        <div class="mprice__formula reveal"><div class="mprice__term"><span class="mprice__term-t"><span class="pc-only">宿にしたときに<wbr>見込める収益</span><span class="sp-only">宿の収益</span></span><span class="mprice__term-n pc-only">周辺の宿の料金と<wbr>稼働から</span></div><span class="mprice__op" aria-hidden="true">−</span><div class="mprice__term"><span class="mprice__term-t"><span class="pc-only">宿にするための<wbr>改修の費用</span><span class="sp-only">改修費</span></span><span class="mprice__term-n pc-only">建物の<wbr>状態と<wbr>法令の<wbr>条件から</span></div><span class="mprice__op" aria-hidden="true">＝</span><div class="mprice__term is-result"><span class="mprice__term-t"><span class="pc-only">買取価格の<wbr>めやす</span><span class="sp-only">買取価格</span></span><span class="mprice__term-n pc-only">根拠と<wbr>あわせて<wbr>書面で</span></div></div>
+        <dl class="mprice__fnotes sp-only reveal"><div><dt>宿の収益</dt><dd><n-w>宿にしたときに見込める収益。周辺の宿の<n-b>料金と稼働から</n-b></n-w></dd></div><div><dt>改修費</dt><dd><n-w>宿にするための改修の費用。建物の状態と<n-b>法令の条件から</n-b></n-w></dd></div><div><dt>買取価格</dt><dd>買取価格の<wbr>めやす。<wbr>根拠と<wbr><n-b>あわせて書面で</n-b></dd></div></dl>
         <ul class="mprice__facts reveal"><li><span class="mprice__fact-big">無料</span><span class="mprice__fact-l">相談・現地の<wbr>拝見・査定</span></li><li><span class="mprice__fact-big"><n-w>2〜4週間</n-w></span><span class="mprice__fact-l"><n-w>現地の拝見から、金額のご提示まで（目安）</n-w></span></li><li><span class="mprice__fact-big">不要</span><span class="mprice__fact-l">仲介手数料</span></li></ul>
         <p class="mprice__note"><n-w class="j">※ 金額は、物件の状態・立地・法令上の条件で変わります。現地を拝見したうえで、根拠とあわせてご提示します。アキヤドが直接買い取るため、仲介手数料は<n-b>かかりません。</n-b></n-w></p>
       </div>
@@ -185,10 +187,11 @@
           <div class="mletter__body">
             <p><n-w>はじめまして。アキヤドを運営する合同会社RIVIA&amp;CO.の、石原と<n-b>片井です。</n-b></n-w></p>
             <p><n-w class="j">私たちは宿泊業の経験がない会社員として、住まいから離れた静岡県下田市で、借りた家を宿にしました。準備に約7か月。法人での融資の相談が見送られたこと、工事のあとの想定外の請求、古い配線で家電が同時に使えないこと。つまずきは、ひと通り<n-b>経験しました。</n-b></n-w></p>
-            <p><n-w class="j">それでも、清掃を地域の方にお願いし、セルフチェックインなどの仕組みを整えたことで、いまは現地に行くのは数か月に1回ほどで宿が<n-b>回っています。</n-b></n-w></p>
-            <p><n-w class="j">空き家は、手を入れれば旅をする人の滞在先になり、まちに人の流れを生みます。手放すと決める前に、宿として活かす道があるかを、一緒に確かめさせて<n-b>ください。</n-b></n-w></p>
+            <p><n-w class="j">それでも、清掃を地域の方にお願いし、セルフチェックインなどの仕組みを整えたことで、いまは</n-w><strong class="hl"><n-w class="j">現地に行くのは数か月に1回ほどで宿が</n-w></strong><n-b><strong class="hl">回っています</strong>。</n-b></p>
+            <p><n-w class="j">空き家は、手を入れれば旅をする人の滞在先になり、まちに人の流れを生みます。手放すと決める前に、</n-w><strong class="hl"><n-w class="j">宿として活かす道があるか</n-w></strong><n-w class="j"><n-b>を、一緒に確かめさせてください。</n-b></n-w></p>
             <p class="mletter__sign"><n-w>合同会社RIVIA&amp;CO. 代表社員</n-w><br><n-w><n-b>石原 佑真・片井 進太</n-b></n-w></p>
           </div>
+          <p class="msv-stats__cap"><n-w>運営する宿の一例</n-w><span><n-w>NODE Shimoda（静岡県下田市）</n-w></span></p>
           <ul class="msv-stats">
             <li><p class="msv-stats__num"><small class="msv-stats__pre">約</small>14<small>か月</small></p><p class="msv-stats__label">初期投資を回収</p><p class="msv-stats__note">約98%<wbr><n-b>（購入費が基準）</n-b></p></li>
             <li><p class="msv-stats__num"><small class="msv-stats__pre">約</small>53<small>%</small></p><p class="msv-stats__label"><n-b>1年目の稼働率</n-b></p><p class="msv-stats__note">計画の<wbr>約1.3倍</p></li>
@@ -204,15 +207,15 @@
       <div class="container">
         <p class="mlp-en reveal">Compare</p>
         <h2 class="mlp-title reveal">ほかの<wbr>方法と、<wbr>ここが<wbr>違います</h2>
-        <p class="mcmp__legend" aria-hidden="true"><span><b class="mcmp__mark mcmp__mark--good">◎</b>とてもよい</span><span><b class="mcmp__mark mcmp__mark--ok">○</b>よい</span><span><b class="mcmp__mark mcmp__mark--bad">△</b>負担・注意</span><span><b class="mcmp__mark mcmp__mark--none">×</b>なし</span></p>
+        <p class="mcmp__legend" aria-hidden="true"><span><b class="mcmp__mark mcmp__mark--good"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></b>とてもよい</span><span><b class="mcmp__mark mcmp__mark--ok"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/></svg></b>よい</span><span><b class="mcmp__mark mcmp__mark--bad"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></b>負担・注意</span><span><b class="mcmp__mark mcmp__mark--none"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 4.8l10.4 10.4M15.2 4.8 4.8 15.2"/></svg></b>なし</span></p>
         <div class="msv-compare reveal">
           <table>
             <thead><tr><th scope="col">選択肢</th><th scope="col">現金に<wbr>なるまで</th><th scope="col">古い家の<wbr>評価</th><th scope="col">売る以外の<wbr>提案</th></tr></thead>
             <tbody>
-              <tr><th scope="row">仲介で<wbr>売る</th><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意">△</span><span class="mcmp__t">時期が<wbr>読めない</span></td><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意">△</span><span class="mcmp__t">値段が<wbr>つきにくい</span></td><td><span class="mcmp__mark mcmp__mark--none" role="img" aria-label="なし">×</span><span class="mcmp__t">なし</span></td></tr>
-              <tr><th scope="row">一般的な<wbr>買取</th><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">早い</span></td><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意">△</span><span class="mcmp__t">改修費を<wbr>差し引く</span></td><td><span class="mcmp__mark mcmp__mark--none" role="img" aria-label="なし">×</span><span class="mcmp__t">なし</span></td></tr>
-              <tr class="is-us"><th scope="row">アキヤド<wbr>買取</th><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">早い</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">宿として<wbr>評価</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">貸す案も<wbr>比べる</span></td></tr>
-              <tr class="is-us"><th scope="row">アキヤド<wbr>借り上げ</th><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">毎月の<wbr>家賃</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">家を<wbr>残せる</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">売る案も<wbr>比べる</span></td></tr>
+              <tr><th scope="row">仲介で<wbr>売る</th><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></span><span class="mcmp__t">時期が<wbr>読めない</span></td><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></span><span class="mcmp__t">値段が<wbr>つきにくい</span></td><td><span class="mcmp__mark mcmp__mark--none" role="img" aria-label="なし"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 4.8l10.4 10.4M15.2 4.8 4.8 15.2"/></svg></span><span class="mcmp__t">なし</span></td></tr>
+              <tr><th scope="row">一般的な<wbr>買取</th><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">早い</span></td><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></span><span class="mcmp__t">改修費を<wbr>差し引く</span></td><td><span class="mcmp__mark mcmp__mark--none" role="img" aria-label="なし"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 4.8l10.4 10.4M15.2 4.8 4.8 15.2"/></svg></span><span class="mcmp__t">なし</span></td></tr>
+              <tr class="is-us"><th scope="row">アキヤド<wbr>買取</th><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">早い</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">宿として<wbr>評価</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">貸す案も<wbr>比べる</span></td></tr>
+              <tr class="is-us"><th scope="row">アキヤド<wbr>借り上げ</th><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">毎月の<wbr>家賃</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">家を<wbr>残せる</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">売る案も<wbr>比べる</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -249,7 +252,7 @@
             <div class="dflow__body">
               <h3 class="dflow__title">無料相談</h3>
               <p class="dflow__text"><n-w>フォームからのご連絡のあと、メールかオンラインで状況とご希望を伺います。まだ売ると決めていなくても<n-b>大丈夫です。</n-b></n-w></p>
-              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
+              <details class="spfold" open><summary><n-w class="j">お願いすること</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>物件の場所と、わかる範囲の状況（築年数・空き家になった時期など）をお知らせ<n-b>ください。</n-b></n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>ご相談内容を確認し、現地調査の日程を<n-b>ご提案します。</n-b></n-w></dd></div>
@@ -263,7 +266,7 @@
             <div class="dflow__body">
               <h3 class="dflow__title">現地を<wbr>拝見・査定</h3>
               <p class="dflow__text"><n-w>建物の状態や周辺の環境を確認し、宿として活かせるかも含めて<n-b>査定します。</n-b></n-w></p>
-              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
+              <details class="spfold" open><summary><n-w class="j">お願いすること</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>立ち会いが難しい場合は、鍵の受け渡し方法をご相談ください。図面や固定資産税の通知書があれば<n-b>ご用意ください。</n-b></n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>建物・立地・法令上の条件を調べ、査定額と根拠を<n-b>まとめます。</n-b></n-w></dd></div>
@@ -277,7 +280,7 @@
             <div class="dflow__body">
               <h3 class="dflow__title">売る・貸すを<wbr><n-b>比べてご提案</n-b></h3>
               <p class="dflow__text"><n-w>買取の金額に加えて、借り上げで家を残した場合の収入の見込みも<n-b>お出しします。</n-b></n-w></p>
-              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
+              <details class="spfold" open><summary><n-w class="j">お願いすること</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>ご提案を見て、ご家族とも相談のうえで、<n-b>ご検討ください。</n-b></n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>それぞれの手取りや手間の違いを、わかりやすく比べて<n-b>ご説明します。</n-b></n-w></dd></div>
@@ -291,7 +294,7 @@
             <div class="dflow__body">
               <h3 class="dflow__title">ご契約・<wbr>お引き渡し</h3>
               <p class="dflow__text"><n-w>条件にご納得いただけたら、売買契約を結び、代金のお支払いと物件のお引き渡しを<n-b>行います。</n-b></n-w></p>
-              <details class="spfold" open><summary><n-w class="j">お願いすること・費用を見る</n-w></summary>
+              <details class="spfold" open><summary><n-w class="j">お願いすること</n-w></summary>
               <dl class="dflow__roles">
                 <div><dt><n-w class="j">お客様にお願いすること</n-w></dt><dd><n-w>契約書の内容のご確認と、登記に必要な書類のご準備を<n-b>お願いします。</n-b></n-w></dd></div>
                 <div><dt><n-w class="j">アキヤドが行うこと</n-w></dt><dd><n-w>契約から登記までの段取りを進めます。必要に応じて司法書士などの専門家とも<n-b>連携します。</n-b></n-w></dd></div>
