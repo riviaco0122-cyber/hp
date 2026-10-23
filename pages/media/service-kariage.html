@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=9e3b1592">
+  <link rel="stylesheet" href="../../css/style.css?v=52680064">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -149,6 +149,42 @@
           </li></ul>
         <div class="mprice__factors reveal"><p>家賃が<wbr>決まる<wbr>4つのこと</p><ul><li>立地（周辺の宿の<wbr><n-b>料金と稼働）</n-b></li><li>広さ・<wbr>泊まれる人数</li><li>建物の状態（改修の<wbr>費用）</li><li>契約期間</li></ul></div>
         <p class="mprice__note"><n-w>※ 金額はイメージです。物件によって変わります。現地調査のうえ、根拠とあわせて<n-b>ご提示します。</n-b></n-w></p>
+      </div>
+    </section>
+
+    <section class="mlp-sec mlp-sec--sim">
+      <div class="container">
+        <p class="mlp-en reveal">Simulation</p>
+        <h2 class="mlp-title reveal">借り上げなら、<wbr>10年で<wbr>どれだけ<wbr>変わる？</h2>
+        <p class="mlp-lead reveal"><n-w>空き家のままにした場合と、アキヤドが借り上げた場合を、モデル物件で<n-b>比べました。</n-b></n-w></p>
+        <div class="msim reveal" role="img" aria-label="1年の家賃 36万円のゆくえ（おまかせプラン）：土地の固定資産税 2.7万円、オーナー様の手元 33.3万円。10年間で、手元に残るお金：空き家のまま -63万円、アキヤドおまかせプラン 333万円">
+          <div class="msim__model">
+            <p class="msim__badge">モデル物件<wbr>（架空）</p>
+            <span class="msim__house" aria-hidden="true"><svg class="fig-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
+            <ul class="msim__specs"><li>築45年・木造2階建て</li><li>4LDK・約100㎡</li><li>観光地まで車で<wbr>15分ほど</li><li>相続から<wbr>5年、<wbr>空き家のまま</li></ul>
+          </div>
+          <div class="msim__split">
+            <p class="msim__h"><n-w>1年の家賃 36万円のゆくえ（おまかせプラン）</n-w><span><n-w>計 36万円</n-w></span></p>
+            <div class="msim__bar" aria-hidden="true"><i class="msim__seg msim__seg--c1" style="flex-grow:2.7"></i><i class="msim__seg msim__seg--keep" style="flex-grow:33.3"></i></div>
+            <ul class="msim__legend" aria-hidden="true"><li class="msim__li msim__li--c1"><span class="msim__sw" aria-hidden="true"></span><span class="msim__li-name"><n-w>土地の固定資産税</n-w><small><n-w>オーナー様の負担のまま</n-w></small></span><b>−2.7<small><n-w>万円</n-w></small></b></li><li class="msim__li msim__li--keep"><span class="msim__sw" aria-hidden="true"></span><span class="msim__li-name"><n-w>オーナー様の手元</n-w><small><n-w>見回りの費用もかからなくなります</n-w></small></span><b>33.3<small><n-w>万円</n-w></small></b></li></ul>
+          </div>
+        </div>
+        <div class="msim__future reveal" aria-hidden="true">
+          <p class="msim__h msim__h--c">10年間で、<wbr>手元に残るお金</p>
+          <ul class="msim__rows"><li class="msim__row is-minus">
+            <p class="msim__row-name"><n-w>空き家のまま</n-w><small><n-w>土地の税と見回りがかかり続ける</n-w></small></p>
+            <div class="msim__row-bar"><i style="width:18.9%"></i></div>
+            <p class="msim__row-num">−63<small>万円</small></p>
+          </li><li class="msim__row is-us">
+            <p class="msim__row-name"><n-w>アキヤドおまかせプラン</n-w><small><n-w>初期費用はアキヤドがほぼ全額を負担</n-w></small></p>
+            <div class="msim__row-bar"><i style="width:100.0%"></i></div>
+            <p class="msim__row-num">＋333<small>万円</small></p>
+          </li></ul>
+          <p class="msim__big"><span>空き家の<wbr>ままとの差</span><b><small>約</small>396<small>万円</small></b></p>
+        </div>
+        <p class="msim__extra reveal"><n-w class="j">売上シェアプランなら、売上が月平均30万円のとき、受け取りは年66万円です（最低保証2.5万円×12か月＋売上の10%。補修・内装の<n-b>共同出資は別）。</n-b></n-w></p>
+        <details class="mlp-fold msim__fold reveal"><summary>試算の前提</summary><ul><li><n-w>モデル物件は、説明のための架空の<n-b>物件です。</n-b></n-w></li><li><n-w>家賃は月3万円（おまかせプランの例）で、10年間同じと仮定しています。家賃・期間は、物件と契約で<n-b>決まります。</n-b></n-w></li><li><n-w class="j">土地の固定資産税は年26,600円（評価額1,200万円の住宅の敷地。大津市の計算例）。建物の分・都市計画税・保険は<n-b>含みません。</n-b></n-w></li><li><n-w>空き家のままの見回りは月1回3,000円（二本松市のシルバー人材センターの例）。草刈り・修繕は<n-b>含みません。</n-b></n-w></li><li><n-w>家賃にかかる所得税などの税金を引く前の<n-b>金額です。</n-b></n-w></li></ul><p class="msim__srcs"><a href="../media/akiya-holding-costs.html"><n-w class="j">空き家の維持費はいくら？税金・見回りの内訳と、民泊・賃貸で賄う考え方</n-w> <span class="arrow" aria-hidden="true"></span></a><a href="../media/akiya-lease-types.html"><n-w class="j">空き家を貸す契約の種類｜普通借家・定期借家と、民泊の借り上げの違い</n-w> <span class="arrow" aria-hidden="true"></span></a></p></details>
+        <p class="mprice__note"><n-w class="j">※ 試算は、架空のモデル物件での目安です。収益や金額を保証するものではありません。実際の物件は、現地を拝見したうえで<n-b>試算します。</n-b></n-w></p>
       </div>
     </section>
 

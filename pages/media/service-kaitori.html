@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=9e3b1592">
+  <link rel="stylesheet" href="../../css/style.css?v=52680064">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -140,6 +140,42 @@
         <dl class="mprice__fnotes sp-only reveal"><div><dt>宿の収益</dt><dd><n-w>宿にしたときに見込める収益。周辺の宿の<n-b>料金と稼働から</n-b></n-w></dd></div><div><dt>改修費</dt><dd><n-w>宿にするための改修の費用。建物の状態と<n-b>法令の条件から</n-b></n-w></dd></div><div><dt>買取価格</dt><dd>買取価格の<wbr>めやす。<wbr>根拠と<wbr><n-b>あわせて書面で</n-b></dd></div></dl>
         <ul class="mprice__facts reveal"><li><span class="mprice__fact-big">無料</span><span class="mprice__fact-l">相談・現地の<wbr>拝見・査定</span></li><li><span class="mprice__fact-big"><n-w>2〜4週間</n-w></span><span class="mprice__fact-l"><n-w>現地の拝見から、金額のご提示まで（目安）</n-w></span></li><li><span class="mprice__fact-big">不要</span><span class="mprice__fact-l">仲介手数料</span></li></ul>
         <p class="mprice__note"><n-w class="j">※ 金額は、物件の状態・立地・法令上の条件で変わります。現地を拝見したうえで、根拠とあわせてご提示します。アキヤドが直接買い取るため、仲介手数料は<n-b>かかりません。</n-b></n-w></p>
+      </div>
+    </section>
+
+    <section class="mlp-sec mlp-sec--sim">
+      <div class="container">
+        <p class="mlp-en reveal">Simulation</p>
+        <h2 class="mlp-title reveal">売ったら、<wbr>手元に<wbr>いくら残る？</h2>
+        <p class="mlp-lead reveal"><n-w>持ち続けた場合と、アキヤドに売った場合を、モデル物件で比べました。買取価格は、説明のための仮の<n-b>金額です。</n-b></n-w></p>
+        <div class="msim reveal" role="img" aria-label="持ち続けると、10年でかかるお金：土地の固定資産税 26.6万円、見回り 36万円。10年間で、手元に残るお金：持ち続ける -63万円、アキヤドに売る 300万円">
+          <div class="msim__model">
+            <p class="msim__badge">モデル物件<wbr>（架空）</p>
+            <span class="msim__house" aria-hidden="true"><svg class="fig-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
+            <ul class="msim__specs"><li>築45年・木造2階建て</li><li>4LDK・約100㎡</li><li>観光地まで車で<wbr>15分ほど</li><li>相続から<wbr>5年、<wbr>空き家のまま</li></ul>
+          </div>
+          <div class="msim__split">
+            <p class="msim__h"><n-w>持ち続けると、10年でかかるお金</n-w><span><n-w>計 −62.6万円</n-w></span></p>
+            <div class="msim__bar" aria-hidden="true"><i class="msim__seg msim__seg--c1" style="flex-grow:26.6"></i><i class="msim__seg msim__seg--c2" style="flex-grow:36.0"></i></div>
+            <ul class="msim__legend" aria-hidden="true"><li class="msim__li msim__li--c1"><span class="msim__sw" aria-hidden="true"></span><span class="msim__li-name"><n-w>土地の固定資産税</n-w><small><n-w>年2.66万円×10年</n-w></small></span><b>−26.6<small><n-w>万円</n-w></small></b></li><li class="msim__li msim__li--c2"><span class="msim__sw" aria-hidden="true"></span><span class="msim__li-name"><n-w>見回り</n-w><small><n-w>月1回3,000円×10年</n-w></small></span><b>−36<small><n-w>万円</n-w></small></b></li></ul>
+          </div>
+        </div>
+        <div class="msim__future reveal" aria-hidden="true">
+          <p class="msim__h msim__h--c">10年間で、<wbr>手元に残るお金</p>
+          <ul class="msim__rows"><li class="msim__row is-minus">
+            <p class="msim__row-name">持ち続ける<small>土地の税と見回りが<wbr>かかり続ける</small></p>
+            <div class="msim__row-bar"><i style="width:21.0%"></i></div>
+            <p class="msim__row-num">−63<small>万円</small></p>
+          </li><li class="msim__row is-us">
+            <p class="msim__row-name"><n-w>アキヤドに売る</n-w><small><n-w>買取価格を300万円と仮定・仲介手数料は不要</n-w></small></p>
+            <div class="msim__row-bar"><i style="width:100.0%"></i></div>
+            <p class="msim__row-num">＋300<small>万円</small></p>
+          </li></ul>
+          <p class="msim__big"><span>持ち続けた<wbr>場合との差</span><b><small>約</small>363<small>万円</small></b></p>
+        </div>
+        <p class="msim__extra reveal"><n-w class="j">売ったお金にかかる税金（譲渡所得税）は別です。相続した空き家は、条件を満たすと3,000万円の特別控除を使える場合が<n-b>あります。</n-b></n-w></p>
+        <details class="mlp-fold msim__fold reveal"><summary>試算の前提</summary><ul><li><n-w>モデル物件は、説明のための架空の<n-b>物件です。</n-b></n-w></li><li><n-w class="j">買取価格の300万円は仮の金額です。実際の価格は、物件の状態・立地・法令上の条件で変わり、この金額を約束する<n-b>ものではありません。</n-b></n-w></li><li><n-w class="j">土地の固定資産税は年26,600円（評価額1,200万円の住宅の敷地。大津市の計算例）。建物の分・都市計画税・保険は<n-b>含みません。</n-b></n-w></li><li><n-w>見回りは月1回3,000円（二本松市のシルバー人材センターの例）。草刈り・修繕は<n-b>含みません。</n-b></n-w></li><li><n-w>10年間、同じ金額がかかると<n-b>仮定しています。</n-b></n-w></li></ul><p class="msim__srcs"><a href="../media/akiya-holding-costs.html"><n-w class="j">空き家の維持費はいくら？税金・見回りの内訳と、民泊・賃貸で賄う考え方</n-w> <span class="arrow" aria-hidden="true"></span></a><a href="../media/akiya-3000man-deduction.html"><n-w class="j">相続した空き家の3,000万円特別控除｜民泊・賃貸にする前の条件と期限</n-w> <span class="arrow" aria-hidden="true"></span></a></p></details>
+        <p class="mprice__note"><n-w class="j">※ 試算は、架空のモデル物件での目安です。収益や金額を保証するものではありません。実際の物件は、現地を拝見したうえで<n-b>試算します。</n-b></n-w></p>
       </div>
     </section>
 

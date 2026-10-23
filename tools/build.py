@@ -4303,6 +4303,108 @@ def scheme_html(key):
 """
 
 
+# サービスページの「未来の手元」の試算（モデル物件で、オーナー様の手元に残るお金を図で見せる）
+# 数字はすべて「前提」に書いた仮定・出典から計算する。モデル物件は架空。実績物件（下田・焼津）とプランを結びつけない
+# split: (見出し, [(名前, 万円, "cost"|"keep", 添え書き)])  future: (見出し, [(名前, 万円, 添え書き, アキヤドか)])
+# big: (ラベル, 前置き, 数字, 単位)  extra: 補足の1文  srcs: 根拠の記事
+MEDIA_SIM_MODEL = ["築45年・木造2階建て", "4LDK・約100㎡", "観光地まで車で15分ほど", "相続から5年、空き家のまま"]
+MEDIA_SIM = {
+    "sell": dict(title="売ったら、手元にいくら残る？",
+                 lead="持ち続けた場合と、アキヤドに売った場合を、モデル物件で比べました。買取価格は、説明のための仮の金額です。",
+                 split=("持ち続けると、10年でかかるお金", [("土地の固定資産税", 26.6, "cost", "年2.66万円×10年"), ("見回り", 36.0, "cost", "月1回3,000円×10年")]),
+                 future=("10年間で、手元に残るお金", [("持ち続ける", -63, "土地の税と見回りがかかり続ける", False), ("アキヤドに売る", 300, "買取価格を300万円と仮定・仲介手数料は不要", True)]),
+                 big=("持ち続けた場合との差", "約", "363", "万円"),
+                 extra="売ったお金にかかる税金（譲渡所得税）は別です。相続した空き家は、条件を満たすと3,000万円の特別控除を使える場合があります。",
+                 assumptions=["モデル物件は、説明のための架空の物件です。",
+                              "買取価格の300万円は仮の金額です。実際の価格は、物件の状態・立地・法令上の条件で変わり、この金額を約束するものではありません。",
+                              "土地の固定資産税は年26,600円（評価額1,200万円の住宅の敷地。大津市の計算例）。建物の分・都市計画税・保険は含みません。",
+                              "見回りは月1回3,000円（二本松市のシルバー人材センターの例）。草刈り・修繕は含みません。",
+                              "10年間、同じ金額がかかると仮定しています。"],
+                 srcs=["akiya-holding-costs", "akiya-3000man-deduction"]),
+    "use": dict(title="借り上げなら、10年でどれだけ変わる？",
+                lead="空き家のままにした場合と、アキヤドが借り上げた場合を、モデル物件で比べました。",
+                split=("1年の家賃 36万円のゆくえ（おまかせプラン）", [("土地の固定資産税", 2.7, "cost", "オーナー様の負担のまま"), ("オーナー様の手元", 33.3, "keep", "見回りの費用もかからなくなります")]),
+                future=("10年間で、手元に残るお金", [("空き家のまま", -63, "土地の税と見回りがかかり続ける", False), ("アキヤドおまかせプラン", 333, "初期費用はアキヤドがほぼ全額を負担", True)]),
+                big=("空き家のままとの差", "約", "396", "万円"),
+                extra="売上シェアプランなら、売上が月平均30万円のとき、受け取りは年66万円です（最低保証2.5万円×12か月＋売上の10%。補修・内装の共同出資は別）。",
+                assumptions=["モデル物件は、説明のための架空の物件です。",
+                             "家賃は月3万円（おまかせプランの例）で、10年間同じと仮定しています。家賃・期間は、物件と契約で決まります。",
+                             "土地の固定資産税は年26,600円（評価額1,200万円の住宅の敷地。大津市の計算例）。建物の分・都市計画税・保険は含みません。",
+                             "空き家のままの見回りは月1回3,000円（二本松市のシルバー人材センターの例）。草刈り・修繕は含みません。",
+                             "家賃にかかる所得税などの税金を引く前の金額です。"],
+                srcs=["akiya-holding-costs", "akiya-lease-types"]),
+    "side": dict(title="宿を始めたら、5年でいくら残る？",
+                 lead="持ち家の空き家を一棟貸しの宿にした場合を、モデル物件で試算しました。費用の割合には、私たちの下田の宿の1年目の数字を当てはめています。",
+                 split=("1か月の売上 30万円のゆくえ（標準ケース）", [("予約サイトの手数料", 4.5, "cost", "売上の約15%"), ("清掃の委託", 4.8, "cost", "売上の約16%"), ("光熱水費・Wi-Fi・消耗品", 3.0, "cost", "月3万円"), ("アキヤドの手数料", 3.0, "cost", "伴走コース・売上の10%"), ("あなたの手元", 14.7, "keep", "")]),
+                 future=("5年間で、手元に残るお金（初期費用500万円を引いたあと）", [("控えめ（稼働率35%）", 63, "月の手元 約9.4万円・回収まで約53か月", False), ("標準（稼働率50%）", 382, "月の手元 約14.7万円・回収まで約34か月", True)]),
+                 big=("初期費用の回収まで（標準）", "約", "34", "か月"),
+                 extra="悲観的な場合も含めて試算し、赤字にならない計画かを一緒に確かめてから始めます。",
+                 assumptions=["モデル物件は、説明のための架空の物件で、持ち家（家賃なし）とします。",
+                              "1泊の料金は2万円（一棟貸し・6人ほどまで）と仮定。稼働率は、標準50%・控えめ35%（下田の宿の1年目は約53%）。",
+                              "予約サイトの手数料（売上の約15%）と清掃の委託（約16%）は、下田の宿の1年目の割合。光熱水費・Wi-Fi・消耗品の月3万円は、下田の宿の開業時の資料の値です。",
+                              "アキヤドの手数料は、伴走コースの売上の10%です。",
+                              "初期費用は500万円（改修・家具・家電・消防設備・申請など）と仮定。物件の状態で大きく変わります（下田の宿は、改修と家具などで約650万円）。",
+                              "毎月同じ売上と仮定しています（実際は季節で大きく変わります）。固定資産税・所得税などの税金、保険、修繕や設備の買い替え、ご自身の手間は含みません。"],
+                 srcs=["case-rental-house-inn-first-year", "minpaku-vs-rental-income"]),
+}
+
+
+def sim_html(key):
+    from figures import icon
+    sm = MEDIA_SIM[key]
+    fmt = lambda v: f"{v:,.1f}".removesuffix(".0")
+    split_t, parts = sm["split"]
+    total = sum(v for _, v, _, _ in parts)
+    n_cost = 0
+    segs, legend = [], []
+    for name, v, kind, note in parts:
+        if kind == "cost":
+            n_cost += 1
+        cls = "keep" if kind == "keep" else f"c{n_cost}"
+        segs.append(f'<i class="msim__seg msim__seg--{cls}" style="flex-grow:{v}"></i>')
+        legend.append(f'<li class="msim__li msim__li--{cls}"><span class="msim__sw" aria-hidden="true"></span><span class="msim__li-name">{e(name)}{f"<small>{e(note)}</small>" if note else ""}</span><b>{"" if kind == "keep" else "−"}{fmt(v)}<small>万円</small></b></li>')
+    fut_t, rows = sm["future"]
+    mx = max(abs(v) for _, v, _, _ in rows)
+    rows_html = "".join(f"""<li class="msim__row{" is-us" if us else ""}{" is-minus" if v < 0 else ""}">
+            <p class="msim__row-name">{e(n)}<small>{e(nt)}</small></p>
+            <div class="msim__row-bar"><i style="width:{max(abs(v) / mx * 100, 3):.1f}%"></i></div>
+            <p class="msim__row-num">{"−" if v < 0 else "＋"}{abs(v):,}<small>万円</small></p>
+          </li>""" for n, v, nt, us in rows)
+    bl, bpre, bnum, bunit = sm["big"]
+    specs = "".join(f"<li>{e(x)}</li>" for x in MEDIA_SIM_MODEL)
+    assum = "".join(f"<li>{e(x)}</li>" for x in sm["assumptions"])
+    srcs = "".join(f'<a href="media/{sl}.html">{e(ARTICLE_BY_SLUG[sl]["title"])} {ARROW}</a>' for sl in sm["srcs"])
+    alt = f"{split_t}：" + "、".join(f"{n} {fmt(v)}万円" for n, v, _, _ in parts) + f"。{fut_t}：" + "、".join(f"{n} {v}万円" for n, v, _, _ in rows)
+    return f"""    <section class="mlp-sec mlp-sec--sim">
+      <div class="container">
+        <p class="mlp-en reveal">Simulation</p>
+        <h2 class="mlp-title reveal">{e(sm["title"])}</h2>
+        <p class="mlp-lead reveal">{e(sm["lead"])}</p>
+        <div class="msim reveal" role="img" aria-label="{e(alt)}">
+          <div class="msim__model">
+            <p class="msim__badge">モデル物件（架空）</p>
+            <span class="msim__house" aria-hidden="true">{icon("house")}</span>
+            <ul class="msim__specs">{specs}</ul>
+          </div>
+          <div class="msim__split">
+            <p class="msim__h">{e(split_t)}<span>{"計 " if any(k == "keep" for _, _, k, _ in parts) else "計 −"}{fmt(total)}万円</span></p>
+            <div class="msim__bar" aria-hidden="true">{"".join(segs)}</div>
+            <ul class="msim__legend" aria-hidden="true">{"".join(legend)}</ul>
+          </div>
+        </div>
+        <div class="msim__future reveal" aria-hidden="true">
+          <p class="msim__h msim__h--c">{e(fut_t)}</p>
+          <ul class="msim__rows">{rows_html}</ul>
+          <p class="msim__big"><span>{e(bl)}</span><b><small>{e(bpre)}</small>{e(bnum)}<small>{e(bunit)}</small></b></p>
+        </div>
+        <p class="msim__extra reveal">{e(sm["extra"])}</p>
+        <details class="mlp-fold msim__fold reveal"><summary>試算の前提</summary><ul>{assum}</ul><p class="msim__srcs">{srcs}</p></details>
+        <p class="mprice__note">※ 試算は、架空のモデル物件での目安です。収益や金額を保証するものではありません。実際の物件は、現地を拝見したうえで試算します。</p>
+      </div>
+    </section>
+"""
+
+
 # letter：創業者からの一言の、サービスごとの最後の一文
 MEDIA_SERVICE_LP = {
     "sell": dict(
@@ -4552,6 +4654,7 @@ def media_service_page(sv):
       </div>
     </section>
 
+{sim_html(key)}
     <section class="mlp-sec">
       <div class="container">
         <p class="mlp-en reveal">Risk</p>
