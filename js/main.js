@@ -542,6 +542,57 @@
   });
 
   /**
+   * アキヤドのサービスページ：かんたん診断（3問）→ 連絡先のフォーム、の2段
+   * 答えはフォームの「かんたん診断」の項目に入れて一緒に送る
+   */
+  document.querySelectorAll('.mdiag').forEach(function (box) {
+    var rec = {};
+    try { rec = JSON.parse(box.getAttribute('data-rec') || '{}'); } catch (err) { rec = {}; }
+    var qs = Array.prototype.slice.call(box.querySelectorAll('.mdiag__q'));
+    var go = box.querySelector('.mdiag__go');
+    var step1 = box.querySelector('.mdiag__step--1');
+    var step2 = box.querySelector('.mdiag__step--2');
+    var answers = box.querySelector('.mdiag__answers');
+    var picked = function (q) { var b = q.querySelector('.mdiag__opt[aria-pressed="true"]'); return b ? b.getAttribute('data-v') : ''; };
+    qs.forEach(function (q) {
+      q.querySelectorAll('.mdiag__opt').forEach(function (b) {
+        b.addEventListener('click', function () {
+          q.querySelectorAll('.mdiag__opt').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+          go.disabled = !qs.every(picked);
+        });
+      });
+    });
+    var show2 = function (diagnosed) {
+      var name = box.querySelector('.mdiag__result-name');
+      var text = box.querySelector('.mdiag__result-text');
+      var result = box.querySelector('.mdiag__result');
+      if (diagnosed && rec.map) {
+        var q = qs[rec.q];
+        var opts = q ? Array.prototype.slice.call(q.querySelectorAll('.mdiag__opt')) : [];
+        var i = opts.indexOf(q.querySelector('.mdiag__opt[aria-pressed="true"]'));
+        var m = rec.map[Math.max(0, Math.min(i, rec.map.length - 1))] || ['', ''];
+        name.textContent = m[0];
+        text.textContent = m[1] + '（診断は目安です。正式には現地調査のうえでご提案します）';
+        result.hidden = false;
+        answers.value = qs.map(function (q) { return q.querySelector('legend').textContent.replace(/^Q\d+/, '') + '：' + picked(q); }).join(' ／ ') + ' → ' + m[0];
+        track('diag_complete', { diag_result: m[0], page_path: location.pathname });
+      } else {
+        result.hidden = true;
+        answers.value = '';
+      }
+      step1.hidden = true;
+      step2.hidden = false;
+      var first = step2.querySelector('input[name="name"]');
+      box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 400);
+    };
+    go.addEventListener('click', function () { show2(true); });
+    var skip = box.querySelector('[data-diag-skip]');
+    if (skip) skip.addEventListener('click', function (e) { e.preventDefault(); show2(false); });
+    box.querySelector('.mdiag__reset').addEventListener('click', function () { step2.hidden = true; step1.hidden = false; box.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  });
+
+  /**
    * フォーム送信：画面を移動せずに送信し、成功したら送信完了ページ（thanks.html）へ移動する
    * （JS が使えない環境では、通常の送信にそのまま切り替わる）
    */
