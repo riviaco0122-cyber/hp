@@ -4348,15 +4348,15 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .msv-stats li { padding: 18px 6px; }
   .msv-stats__label { font-size: 12px; }
   .msv-stats__note { font-size: 10.5px; }
-  /* スマホは、比較の表を選択肢ごとのカードにする */
-  .msv-compare { overflow: visible; background: transparent; box-shadow: none; }
-  .msv-compare thead { display: none; }
-  .msv-compare table, .msv-compare tbody, .msv-compare tr, .msv-compare th, .msv-compare td { display: block; width: auto; }
-  .msv-compare tr { margin-bottom: 10px; border-radius: 14px; background: #fff; overflow: hidden; box-shadow: 0 3px 12px rgba(38, 42, 39, 0.05); }
-  .msv-compare tbody th { width: auto; padding: 14px 16px 6px; border: 0; font-size: 15px; }
-  .msv-compare td { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 10px; padding: 6px 16px; border: 0; font-size: 13.5px; }
-  .msv-compare td:last-child { padding-bottom: 14px; }
-  .msv-compare td::before { content: attr(data-label); font-size: 12px; color: var(--c-muted); }
+  /* スマホは、文字を小さくしすぎず、表を横にスクロールして見せる（1列目＝選択肢の名前は固定） */
+  .msv-compare { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .msv-compare table { min-width: 600px; font-size: 14px; line-height: 1.65; }
+  .msv-compare th, .msv-compare td { padding: 14px 12px; }
+  .msv-compare thead th { font-size: 12.5px; }
+  .msv-compare tbody th { width: 128px; }
+  .msv-compare th:first-child { position: sticky; left: 0; z-index: 1; background: #fff; box-shadow: 1px 0 0 var(--m-line); }
+  .msv-compare thead th:first-child { background: var(--m-sand); }
+  .msv-compare tr.is-us th:first-child { background: #eef5f0; }
 }
 /* ===== アキヤド：サービスページ（LP）。「いくら？」に先に答え、数字は大きく、文章は短く ===== */
 .mlp-hero { position: relative; padding: 28px 0 64px; background: linear-gradient(180deg, var(--m-sand) 0%, var(--m-bg) 100%); }
@@ -4512,3 +4512,23 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mlp-sec .mlp-lead, .mlp-sec .mlp-lead:has(> n-w.j) { text-align: center !important; }
 .mprice__note a { white-space: nowrap; }
 @media (max-width: 899px) { .mlp-sec .mlp-lead, .mlp-sec .mlp-lead:has(> n-w.j) { text-align: left !important; } }
+/* TOPのコンセプト：スマホは短い文章に切りかえる */
+.vision__lead--sp { display: none; }
+@media (max-width: 899px) { .vision__lead--pc { display: none; } .vision__lead--sp { display: block; } }
+/* 創業者の写真：幅と高さを明示して、Safari でも正円にする（aspect-ratio だけだと縦に伸びることがある） */
+.founder__photo { width: 136px; height: 136px; margin: 0; flex-shrink: 0; }
+.founder__photo img { display: block; width: 100%; height: 100%; aspect-ratio: 1 / 1; }
+@media (max-width: 899px) { .founder__photo { width: 96px; height: 96px; } }
+.mrisk__num small.mrisk__pre { margin: 0 2px 0 0; }
+.msv-stats__num small.msv-stats__pre { margin: 0 2px 0 0; }
+@media (max-width: 374px) { .msv-stats { gap: 6px; } .msv-stats li { padding: 16px 4px; } .msv-stats__label { font-size: 11px; letter-spacing: 0; } }
+.mlp-sec .msv-compare { margin-top: 36px; }
+@media (max-width: 899px) { .mlp-sec .msv-compare { margin-top: 28px; } }
+.msv-compare th, .msv-compare td { word-break: keep-all; overflow-wrap: normal; }
+/* サービスページの本文は、行末まで詰めて自然に折り返す（文末のまとめ・行の長さの調整をしない） */
+.mlp-hero p n-w, .mlp-sec p n-w, .mlp-sec li n-w, .mlp-sec dd n-w { text-wrap: wrap; }
+.mlp-hero p n-b, .mlp-sec p n-b, .mlp-sec li n-b, .mlp-sec dd n-b { white-space: normal; }
+/* 緑の帯の中の強調は、白い太字だけにする（緑のマーカーは背景と重なって見えにくい） */
+.mlp-sec--green strong.hl, .mlp-sec--green strong { color: #fff; background: none; font-weight: 700; }
+.msv-compare__hint { display: none; }
+@media (max-width: 899px) { .msv-compare__hint { display: block; margin-top: 24px; font-size: 12px; color: var(--m-sub); text-align: right; } .mlp-sec .msv-compare__hint + .msv-compare { margin-top: 8px; } }

@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=3563b46f">
+  <link rel="stylesheet" href="../../css/style.css?v=2654c695">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -147,7 +147,7 @@
         <p class="mlp-en reveal">Risk</p>
         <h2 class="mlp-title reveal">使っていない<wbr>家にも、<wbr>お金と<wbr>手間は<wbr>かかり続けます</h2>
         <ul class="mrisks reveal"><li class="mrisk">
-            <p class="mrisk__num">最大6<small>倍</small></p>
+            <p class="mrisk__num"><small class="mrisk__pre">最大</small>6<small>倍</small></p>
             <p class="mrisk__label">勧告後の、<wbr>土地の税の<wbr>計算のもと</p>
             <p class="mrisk__text"><n-w>管理が行き届かず市の勧告を受けると、住宅用地の特例が外れ、撤回されない限り<n-b>そのまま。</n-b></n-w></p>
             <a class="mrisk__link" href="../media/akiya-law-kanri-fuzen.html"><n-w class="j">くわしく</n-w> <span class="arrow" aria-hidden="true"></span></a>
@@ -200,11 +200,11 @@
             <p class="mletter__sign"><n-w>合同会社RIVIA&amp;CO. 代表社員</n-w><br><n-w><n-b>石原 佑真・片井 進太</n-b></n-w></p>
           </div>
           <ul class="msv-stats">
-            <li><span class="msv-stats__num"><n-w>約14</n-w><small><n-w>か月</n-w></small></span><span class="msv-stats__label"><n-w>初期投資の約98%を回収</n-w></span><span class="msv-stats__note"><n-w>購入費を基準にした割合</n-w></span></li>
-            <li><span class="msv-stats__num">約53<small>%</small></span><span class="msv-stats__label">1年目の<wbr>稼働率</span><span class="msv-stats__note">計画の<wbr>約1.3倍</span></li>
-            <li><span class="msv-stats__num">★4.88</span><span class="msv-stats__label"><n-w>Airbnb の評価</n-w></span><span class="msv-stats__note"><n-w>51件・掲載時点</n-w></span></li>
+            <li><p class="msv-stats__num"><small class="msv-stats__pre">約</small>14<small>か月</small></p><p class="msv-stats__label">初期投資を回収</p><p class="msv-stats__note">約98%<wbr><n-b>（購入費が基準）</n-b></p></li>
+            <li><p class="msv-stats__num"><small class="msv-stats__pre">約</small>53<small>%</small></p><p class="msv-stats__label"><n-b>1年目の稼働率</n-b></p><p class="msv-stats__note">計画の<wbr>約1.3倍</p></li>
+            <li><p class="msv-stats__num">★4.88</p><p class="msv-stats__label">Airbnb の評価</p><p class="msv-stats__note">51件・掲載時点</p></li>
           </ul>
-          <figure class="mletter__voice"><blockquote><p class="mletter__q">和モダンな<wbr>室内が<wbr>とても<wbr>オシャレで、<wbr>快適でした！<wbr>お部屋の<wbr>居心地が<wbr>よく、<wbr>下田旅行の<wbr>素敵な<wbr>思い出に<wbr>なりました。</p></blockquote><figcaption><n-w>NODE Shimoda のゲスト（Airbnbゲスト・1泊・202<n-b>6年9月）</n-b></n-w></figcaption></figure>
+          <figure class="mletter__voice"><blockquote><p class="mletter__q">和モダンな<wbr>室内が<wbr>とても<wbr>オシャレで、<wbr>快適でした！<wbr>お部屋の<wbr>居心地が<wbr>よく、<wbr>下田旅行の<wbr>素敵な<wbr>思い出に<wbr>なりました。</p></blockquote><figcaption><n-w>NODE Shimoda のゲスト</n-w><br><n-w>Airbnbゲスト・1泊・20<n-b>26年9月</n-b></n-w></figcaption></figure>
           <p class="mletter__more"><a href="../media/case-rental-house-inn-first-year.html"><n-w>下田の宿の運営データを見る</n-w> <span class="arrow" aria-hidden="true"></span></a><a href="https://note.com/calm_quokka8545/n/n6de4ea4f8b5f" target="_blank" rel="noopener" data-cta="note-story"><n-w>開業の体験記（note・有料）</n-w> <span class="arrow" aria-hidden="true"></span></a></p>
         </div>
       </div>
@@ -214,18 +214,20 @@
       <div class="container">
         <p class="mlp-en reveal">Compare</p>
         <h2 class="mlp-title reveal">ほかの<wbr>方法と、<wbr>ここが<wbr>違います</h2>
-        <div class="msv-compare reveal">
+        <p class="msv-compare__hint" aria-hidden="true">表は横に<wbr>スクロールできます →</p>
+        <div class="msv-compare reveal" tabindex="0" role="region" aria-label="ほかの方法との比較（横にスクロールできます）">
           <table>
             <thead><tr><th scope="col">選択肢</th><th scope="col">初期費用</th><th scope="col">手間</th><th scope="col">収入</th></tr></thead>
             <tbody>
-              <tr><th scope="row">そのまま<wbr>持っておく</th><td data-label="初期費用">かからない</td><td data-label="手間">見回り・草刈り・換気</td><td data-label="収入">なし（税と<wbr>維持費が<wbr>かかる）</td></tr>
-              <tr><th scope="row">住まいとして貸す</th><td data-label="初期費用">物件の<wbr>状態による</td><td data-label="手間">管理会社に<wbr>任せられる</td><td data-label="収入">家賃（借り手が<wbr>見つかる<wbr>地域なら）</td></tr>
-              <tr><th scope="row">自分で<wbr>民泊を<wbr>運営する</th><td data-label="初期費用">改修・家具・許可の費用</td><td data-label="手間">集客・清掃・ゲスト対応</td><td data-label="収入">売上から<wbr>経費を<wbr>引いた分</td></tr>
-              <tr class="is-us"><th scope="row">アキヤドおまかせプラン</th><td data-label="初期費用">ほぼなし<wbr>（建物の<wbr>構造的な<wbr>補修を<wbr>除く）</td><td data-label="手間">ほぼなし</td><td data-label="収入">毎月、<wbr>決まった額の家賃</td></tr>
-              <tr class="is-us"><th scope="row">アキヤド売上シェアプラン</th><td data-label="初期費用">補修・内装を<wbr>アキヤドと<wbr>共同出資</td><td data-label="手間">ほぼなし</td><td data-label="収入">最低保証の<wbr>家賃＋売上に<wbr>応じた<wbr>上乗せ</td></tr>
+              <tr><th scope="row">そのまま<wbr>持つ</th><td>なし</td><td>見回り・<wbr>草刈り</td><td>なし<wbr>（税は<wbr>かかる）</td></tr>
+              <tr><th scope="row">住まいと<wbr>して貸す</th><td>物件に<wbr>よる</td><td>管理会社に<wbr>任せられる</td><td>家賃<wbr>（借り手<wbr>しだい）</td></tr>
+              <tr><th scope="row">自分で<wbr>民泊</th><td>改修・<wbr>家具・<wbr>許可</td><td>集客・<wbr>清掃・<wbr>対応</td><td>売上から<wbr>経費を<wbr>引いた分</td></tr>
+              <tr class="is-us"><th scope="row">おまかせ<wbr>プラン</th><td>ほぼなし※</td><td>ほぼなし</td><td>毎月一定の<wbr>家賃</td></tr>
+              <tr class="is-us"><th scope="row">売上シェア<wbr>プラン</th><td>補修・<wbr>内装を<wbr>共同出資</td><td>ほぼなし</td><td>最低保証<wbr>＋上乗せ</td></tr>
             </tbody>
           </table>
         </div>
+        <p class="msv-compare__note"><n-w class="j">※ 一般的な傾向です。実際の条件は物件や契約によって変わります。 ※ おまかせプランの初期費用は、建物の構造的な補修を<n-b>除きます。</n-b></n-w></p>
         <details class="mlp-fold reveal"><summary>ほかの<wbr>方法が<wbr>合うかもしれない方</summary><ul><li><n-w>近いうちに売る可能性が高い（貸すと3,000万円特別控除が使えなくなる場合があるため、先に比べることを<n-b>おすすめします）</n-b></n-w></li><li><n-w>数年のうちに、ご自身やご家族が住む<n-b>予定がある</n-b></n-w></li></ul></details>
       </div>
     </section>
@@ -467,6 +469,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=operation&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=818056ee"></script>
+  <script src="../../js/main.js?v=4b8fe9c4"></script>
 </body>
 </html>

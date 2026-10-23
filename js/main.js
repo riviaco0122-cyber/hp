@@ -669,6 +669,8 @@
   function fixBlock(b) {
     b.style.letterSpacing = '';
     if (!b.offsetParent) return;
+    // サービスページ（LP）の本文は、行末まで詰めて自然に折り返す（字間や文末の調整をしない）
+    if (b.closest && b.closest('.mlp-sec, .mlp-hero')) return;
     var cs = getComputedStyle(b);
     var fs = parseFloat(cs.fontSize);
     var base = parseFloat(cs.letterSpacing) || 0;
