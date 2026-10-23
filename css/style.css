@@ -4520,3 +4520,5 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .founder__photo img { display: block; width: 100%; height: 100%; aspect-ratio: 1 / 1; }
 @media (max-width: 899px) { .founder__photo { width: 96px; height: 96px; } }
 .mrisk__num small.mrisk__pre { margin: 0 2px 0 0; }
+.msv-stats__num small.msv-stats__pre { margin: 0 2px 0 0; }
+@media (max-width: 374px) { .msv-stats { gap: 6px; } .msv-stats li { padding: 16px 4px; } .msv-stats__label { font-size: 11px; letter-spacing: 0; } }

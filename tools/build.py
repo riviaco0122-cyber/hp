@@ -4514,11 +4514,11 @@ def media_service_page(sv):
             <p class="mletter__sign">合同会社RIVIA&amp;CO. 代表社員<br>石原 佑真・片井 進太</p>
           </div>
           <ul class="msv-stats">
-            <li><span class="msv-stats__num">約14<small>か月</small></span><span class="msv-stats__label">初期投資の約98%を回収</span><span class="msv-stats__note">購入費を基準にした割合</span></li>
-            <li><span class="msv-stats__num">約53<small>%</small></span><span class="msv-stats__label">1年目の稼働率</span><span class="msv-stats__note">計画の約1.3倍</span></li>
-            <li><span class="msv-stats__num">★4.88</span><span class="msv-stats__label">Airbnb の評価</span><span class="msv-stats__note">51件・掲載時点</span></li>
+            <li><p class="msv-stats__num"><small class="msv-stats__pre">約</small>14<small>か月</small></p><p class="msv-stats__label">初期投資を回収</p><p class="msv-stats__note">約98%（購入費が基準）</p></li>
+            <li><p class="msv-stats__num"><small class="msv-stats__pre">約</small>53<small>%</small></p><p class="msv-stats__label">1年目の稼働率</p><p class="msv-stats__note">計画の約1.3倍</p></li>
+            <li><p class="msv-stats__num">★4.88</p><p class="msv-stats__label">Airbnb の評価</p><p class="msv-stats__note">51件・掲載時点</p></li>
           </ul>
-          <figure class="mletter__voice"><blockquote><p class="mletter__q">{e(review["text"])}</p></blockquote><figcaption>NODE Shimoda のゲスト（{e(review["who"])}・{e(review["date"])}）</figcaption></figure>
+          <figure class="mletter__voice"><blockquote><p class="mletter__q">{e(review["text"])}</p></blockquote><figcaption>NODE Shimoda のゲスト<br>{e(review["who"])}・{e(review["date"])}</figcaption></figure>
           <p class="mletter__more"><a href="media/case-rental-house-inn-first-year.html">下田の宿の運営データを見る {ARROW}</a><a href="{NOTE_STORY_URL}" target="_blank" rel="noopener" data-cta="note-story">開業の体験記（note・有料） {ARROW}</a></p>
         </div>
       </div>
