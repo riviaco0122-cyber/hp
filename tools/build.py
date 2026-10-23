@@ -4465,8 +4465,8 @@ def media_intro():
             </div>
           </div>
           <a href="media.html" class="mintro__shots reveal" data-delay="1" aria-label="アキヤドを見る">
-            <span class="mintro__pc"><span class="mintro__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="images/media-preview-pc.webp" alt="アキヤドのトップページ（パソコン表示）" width="1440" height="900" loading="lazy" decoding="async"></span>
-            <span class="mintro__sp"><img src="images/media-preview-sp.webp" alt="アキヤドのトップページ（スマホ表示）" width="520" height="1040" loading="lazy" decoding="async"></span>
+            <span class="mintro__pc"><span class="mintro__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="images/media-preview-pc.webp?v={asset_version("images/media-preview-pc.webp")}" alt="アキヤドのトップページ（パソコン表示）" width="1440" height="900" loading="lazy" decoding="async"></span>
+            <span class="mintro__sp"><img src="images/media-preview-sp.webp?v={asset_version("images/media-preview-sp.webp")}" alt="アキヤドのトップページ（スマホ表示）" width="520" height="1040" loading="lazy" decoding="async"></span>
           </a>
         </div>
         <ul class="mintro__entries reveal">{entries}</ul>
@@ -4831,7 +4831,7 @@ def media_index_page():
       <div class="container mtop__inner">
         <div class="mtop__text">
           <p class="mtop__eyebrow reveal">空き家と民泊のメディア「アキヤド」</p>
-          <h1 class="mtop__title reveal" data-delay="1"><span class="mtop__line">空き家を、</span><span class="mtop__line"><em>売る。活かす。</em></span><span class="mtop__line"><em>民泊</em>をはじめる。</span></h1>
+          <h1 class="mtop__title reveal" data-delay="1"><span class="mtop__line">空き家を</span><span class="mtop__line"><em>売る。活かす。</em></span><span class="mtop__line"><em>民泊</em>をはじめる。</span></h1>
           <p class="mtop__lead reveal" data-delay="1">宿を運営する私たちが、空き家と民泊の悩みに、実際の数字でお答えします。</p>
           <div class="mtop__btns reveal" data-delay="2">
             <a href="contact.html?category=operation&amp;from=akiyado-fv" class="mbtn mtop__btn" data-cta="media-fv">無料で相談する {ARROW}</a>
