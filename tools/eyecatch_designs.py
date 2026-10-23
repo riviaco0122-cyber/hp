@@ -81,6 +81,7 @@ DESIGNS = {
     "minpaku-hard-truth": dict(layout="quote", lines=["「民泊は大変」", "って[本当？]"], color="sand"),
     "minpaku-neighbor-rules": dict(layout="frame", lines=["近隣トラブルを防ぐ", "[ルールづくり]"], color="mustard"),
     "minpaku-off-season": dict(layout="mincho", lines=["閑散期を、", "どう越える"], sub="売上の波をならす工夫", photo="own-fishing-bay", pos="50% 30%"),
+    "minpaku-shukyaku-first-steps": dict(layout="boxes", lines=["民泊の集客は何から？", "[誰に・何を・どこで]", "インスタの前に決める"]),
     "minpaku-remote-operation": dict(layout="giant", big="遠隔運営", lines=["遠方の物件でも、", "[運営できる？]"]),
     "long-stay-guest-equipment": dict(layout="marker", lines=["長期滞在のゲストに", "[選ばれる設備]"], photo="hotel-room", pos="60% 45%"),
 

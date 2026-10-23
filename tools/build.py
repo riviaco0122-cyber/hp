@@ -4459,7 +4459,7 @@ MEDIA_COURSES = [
                    ("制度と手続き", "民泊と旅館業の違い、開業までの流れ、会社員の副業の確認、消防。", ["minpaku-vs-ryokan-law", "minpaku-start-steps", "kaishain-minpaku-fukugyo", "minpaku-chintai-start", "kani-shukusho-kyoka-guide", "minpaku-fire-safety"]),
                    ("お金と改修", "開業資金、補助金、改修の進め方、宿泊税。", ["inn-startup-funding", "small-inn-subsidies", "kominka-renovation-points", "remote-renovation-tips", "accommodation-tax"]),
                    ("運営の課題", "近隣との関係、設備、清掃、閑散期、遠方からの運営。", ["minpaku-neighbor-rules", "long-stay-guest-equipment", "cleaning-linen-operations", "minpaku-off-season", "minpaku-remote-operation"]),
-                   ("集客と評価", "予約サイトの使い方、予約ページ、レビュー。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips"]),
+                   ("集客と評価", "予約サイトの使い方、予約ページ、レビュー。", ["minpaku-shukyaku-first-steps", "ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips"]),
                    ("オーナーの事例", "民泊オーナーへの取材。費用、収支、うまくいかなかったこと。", CASE_SLUGS)]),
     dict(key="akiyado", en="Course 04", title="アキヤドが支援できること", lead="買取・借り上げ・開業と運営の支援。任せる相手の選び方と、相談から開業までの流れ。",
          chapters=[("アキヤドができること", "3つのプランと、相談すると分かること。", ["akiyado-what-we-do"]),
