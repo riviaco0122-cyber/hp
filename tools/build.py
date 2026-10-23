@@ -2539,7 +2539,7 @@ def spec_md():
     w("### メディアの構成（URLは rivia-co.com/media/ 配下。サブドメインは使わない）")
     w("* カテゴリ一覧（media/category-○○.html）：" + " ／ ".join(n for _, n in MEDIA_CATEGORIES) + "。カテゴリの説明文、関連するガイドへの導線、記事一覧（12件ずつ追加表示）。検索結果に出る独立したページにする。")
     w("* 見え方：URLは会社サイトの一部（rivia-co.com/media/）のまま、ヘッダー・フッターはメディア専用（ロゴ「アキヤド」、運営会社への小さなリンク）にして、独立したメディアとして見せる。タイトルの末尾・OGPのサイト名も「アキヤド」。")
-    w("* サービスのページ（media/service-kaitori・service-kariage・service-kaigyo）：問い合わせの直前に読むページ。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く、長い説明は折りたたむ。並びは、ヒーロー（読み手の得を言い切る見出し・3つの約束・写真）と「かんたん診断」→お悩み→いくら？（借り上げは家賃の例、買取は価格の決まり方、開業は下田の宿の数字）→放っておくと（大きな数字のタイル。出典の記事へリンク）→違い→創業者からの手紙と実績の数字・ゲストの声→ほかの方法との比較→プラン→ご相談からの流れ（期間・お願いすること・費用つき）→よくある質問→締めのCTA→取材した事例。中身は tools/build.py の MEDIA_SERVICES・MEDIA_SERVICE_LP・MEDIA_SERVICE_MORE。")
+    w("* サービスのページ（media/service-kaitori・service-kariage・service-kaigyo）：問い合わせの直前に読むページ。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く、長い説明は折りたたむ。並びは、ヒーロー（読み手の得を言い切る見出し・3つの約束・写真）と「かんたん診断」→お悩み→しくみの図（誰が何をして、お金がどう流れるか。写真を2枚添える）→いくら？（借り上げは家賃の例、買取は価格の決まり方、開業は下田の宿の数字）→放っておくと（大きな数字のタイル。出典の記事へリンク）→違い→創業者からの手紙と実績の数字・ゲストの声→ほかの方法との比較→プラン→ご相談からの流れ（期間・お願いすること・費用つき）→よくある質問→締めのCTA→取材した事例。中身は tools/build.py の MEDIA_SERVICES・MEDIA_SERVICE_LP・MEDIA_SERVICE_MORE。")
     w("* サービスページのフォーム：最初に「無料で相談する」か「資料をもらう」を選び、名前とメールを送る（相談のときだけ、相談内容とファイルの欄を出す）。資料を選ぶと「ご相談カテゴリ」が「サービス資料の請求」になり、自動返信に資料が付く（Apps Script の変更は不要）。ページ内の「資料をもらう」ボタンは、資料を選んだ状態でこのフォームへ移る。CTA に「断ってもかまいません」のような言い回しは使わない。")
     w("* ヘッダーのナビ：PC（幅900px以上）はヘッダーの下に、状況別ガイド4つと「記事をさがす」「アキヤドのプラン」のタブだけを置く（数を絞り、はみ出して文字が切れないようにする）。右上のメニューボタン（3本線）はPC・スマホ共通で、ガイド4つ・基礎から学ぶ・事例から探す・記事をさがす・アキヤドのプラン・相談と資料請求のボタン・運営会社へのリンクを開く（PCは右上の小さなパネル、スマホは全幅）。トップへはロゴから戻る。")
     w("* メディアトップのFV：写真を全面に敷き、ロゴ・一言・状況別の入口（3つ）・検索窓を1画面に置いて、最初の画面から次の行動を選べるようにする（離脱を防ぐ）。")
@@ -4255,6 +4255,48 @@ MEDIA_FLOWS = {
 # サービスページ（LP）の見せ方。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く。
 # hero：読み手の得を言い切る見出し／price：いくら？の目安（金額はイメージ。物件ごとに変わることを必ず添える）
 # risk：大きな数字のタイル（出典の記事へリンク）
+# サービスページの「しくみ」の図（文字を読まなくても、誰が何をして、お金がどう流れるかがわかるように）
+# nodes: (アイコン, 名前, していること)  arrows: 左から順の矢印の言葉  ret: (戻りの矢印の起点, 終点, 言葉)
+# photos: (写真, 添える言葉)。自社物件の写真は、どのプランかと結びつけない（docs/brand/experience.md）
+MEDIA_SCHEME = {
+    "sell": dict(title="売っていただいた家は、アキヤドが宿として活かします",
+                 nodes=[("house", "オーナー様", "家を売る"), ("key", "アキヤド", "改修して宿に"), ("users", "旅行者", "まちに泊まる")],
+                 arrows=["買取", "宿を運営"], ret=(1, 0, "代金をお支払い"),
+                 photos=[("yaizu-before-engawa-garden", "改修前の空き家（例）"), ("scene-stay", "宿として活かす（イメージ）")]),
+    "use": dict(title="家を貸すだけで、毎月の家賃が届くしくみです",
+                nodes=[("house", "オーナー様", "家を貸す"), ("key", "アキヤド", "改修・運営"), ("users", "旅行者", "宿に泊まる")],
+                arrows=["借り上げ", "宿を運営"], ret=(1, 0, "毎月の家賃"),
+                photos=[("yaizu-before-floor-open", "改修前の空き家（例）"), ("scene-stay", "宿にしたあと（イメージ）")]),
+    "side": dict(title="宿の主役はあなた。アキヤドは裏方で支援します",
+                 nodes=[("compass", "アキヤド", "開業を支援"), ("house", "あなたの宿", "開業・運営"), ("users", "旅行者", "宿に泊まる")],
+                 arrows=["支援", "予約"], ret=(2, 1, "宿泊の売上"),
+                 photos=[("scene-walk", "泊まった人が、まちを歩く（イメージ）"), ("irori-room", "宿のしつらえ（イメージ）")]),
+}
+
+
+def scheme_html(key):
+    sc = MEDIA_SCHEME[key]
+    parts = []
+    for i, (ic, name, role) in enumerate(sc["nodes"]):
+        if i:
+            parts.append(f'<span class="mscheme__arrow" aria-hidden="true"><span>{e(sc["arrows"][i - 1])}</span><i></i></span>')
+        parts.append(f'<div class="mscheme__node{" is-us" if "アキヤド" in name else ""}"><span class="mscheme__icon">{icon(ic)}</span><b>{e(name)}</b><small>{e(role)}</small></div>')
+    a, b, lbl = sc["ret"]
+    lo, hi = sorted((a, b))
+    ret = f'<p class="mscheme__ret mscheme__ret--{lo}{hi}{" is-left" if b < a else ""}" aria-hidden="true"><span>{e(lbl)}</span></p>'
+    alt = "、".join(f"{n}が{r}" for _, n, r in sc["nodes"]) + f"。{sc['nodes'][a][1]}から{sc['nodes'][b][1]}へ{lbl}"
+    photos = "".join(f'<figure class="mscheme__photo"><picture><source srcset="images/photos/w/{ph}-800.webp" type="image/webp"><img src="images/photos/{ph}.jpg" alt="" width="800" height="533" loading="lazy" decoding="async"></picture><figcaption>{e(cap)}</figcaption></figure>' for ph, cap in sc["photos"])
+    return f"""    <section class="mlp-sec mlp-sec--scheme">
+      <div class="container mlp-narrow">
+        <p class="mlp-en reveal">How it works</p>
+        <h2 class="mlp-title reveal">{e(sc["title"])}</h2>
+        <div class="mscheme reveal" role="img" aria-label="{e(alt)}"><div class="mscheme__row">{"".join(parts)}</div>{ret}</div>
+        <div class="mscheme__photos reveal">{photos}</div>
+      </div>
+    </section>
+"""
+
+
 # letter：創業者からの一言の、サービスごとの最後の一文
 MEDIA_SERVICE_LP = {
     "sell": dict(
@@ -4493,6 +4535,7 @@ def media_service_page(sv):
       </div>
     </section>
 
+{scheme_html(key)}
     <section class="mlp-sec mlp-sec--soft">
       <div class="container">
         <p class="mlp-en reveal">How much?</p>
@@ -4508,6 +4551,7 @@ def media_service_page(sv):
         <p class="mlp-en reveal">Risk</p>
         <h2 class="mlp-title reveal">{e(lp["risk_title"])}</h2>
         <ul class="mrisks reveal">{risks}</ul>
+        <p class="mrisks__hint" aria-hidden="true">横にスワイプして、{len(lp["risk"])}つ見られます →</p>
       </div>
     </section>
 
@@ -4571,6 +4615,7 @@ def media_service_page(sv):
         <div class="mplans__cards mplans__cards--{len(plans)} reveal">
 {plan_cards}
         </div>
+        {f'<p class="mrisks__hint" aria-hidden="true">横にスワイプして、{len(plans)}つ見比べられます →</p>' if len(plans) > 1 else ""}
         <p class="mplans__note">{e(PLANS[src]["note"])}</p>
       </div>
     </section>
