@@ -4270,7 +4270,7 @@ MEDIA_SCHEME = {
     "side": dict(title="宿の主役はあなた。アキヤドは裏方で支援します",
                  nodes=[("compass", "アキヤド", "開業を支援"), ("house", "あなたの宿", "開業・運営"), ("users", "旅行者", "宿に泊まる")],
                  arrows=["支援", "予約"], ret=(2, 1, "宿泊の売上"),
-                 photos=[("scene-walk", "旅行者がまちで食べ、買う。|地域にお金がめぐる（イメージ）"), ("irori-room", "空き家が宿になり、|古いまちなみが残る（イメージ）")]),
+                 photos=[("scene-walk", "地域にお金がめぐる（イメージ）"), ("irori-room", "古いまちなみが残る（イメージ）")]),
 }
 
 
@@ -4286,7 +4286,12 @@ def scheme_html(key):
     lo, hi = sorted((a, b))
     ret = f'<p class="mscheme__ret mscheme__ret--{lo}{hi}{" is-left" if b < a else ""}" aria-hidden="true"><span>{e(lbl)}</span></p>'
     alt = "、".join(f"{n}が{r}" for _, n, r in sc["nodes"]) + f"。{sc['nodes'][a][1]}から{sc['nodes'][b][1]}へ{lbl}"
-    photos = "".join(f'<figure class="mscheme__photo"><picture><source srcset="images/photos/w/{ph}-800.webp" type="image/webp"><img src="images/photos/{ph}.jpg" alt="" width="800" height="533" loading="lazy" decoding="async"></picture><figcaption>{"<br>".join(e(c) for c in cap.split("|"))}</figcaption></figure>' for ph, cap in sc["photos"])
+    def photo(ph, cap):
+        # 「（イメージ）」は添え書きから外して写真の隅に小さく載せ、添え書きを1行に収める
+        tag = '<span class="mscheme__tag">イメージ</span>' if cap.endswith("（イメージ）") else ""
+        cap = cap.removesuffix("（イメージ）")
+        return (f'<figure class="mscheme__photo">{tag}<picture><source srcset="images/photos/w/{ph}-800.webp" type="image/webp"><img src="images/photos/{ph}.jpg" alt="" width="800" height="533" loading="lazy" decoding="async"></picture><figcaption>{"<br>".join(e(c) for c in cap.split("|"))}</figcaption></figure>')
+    photos = "".join(photo(ph, cap) for ph, cap in sc["photos"])
     return f"""    <section class="mlp-sec mlp-sec--scheme">
       <div class="container mlp-narrow">
         <p class="mlp-en reveal">How it works</p>
