@@ -86,7 +86,7 @@ def phrase_breaks(html):
     lead = False  # 一文のリード（サービス概要など）も見出しと同じく文節で改行する
     for i, p in enumerate(parts):
         if p.startswith("<"):
-            m_lead = re.match(r'<(p|span) class="(overview__text|hero__sub|cta__text|page-hero__lead|page-hero__target|about-line|mq__q|guide-step__title|mhero__lead|pd__desc|scheme__summary|related__worry|timeline__desc|flow__desc|vsvc__text)\b', p)
+            m_lead = re.match(r'<(p|span) class="(overview__text|hero__sub|cta__text|page-hero__lead|page-hero__target|about-line|mq__q|guide-step__title|mhero__lead|pd__desc|scheme__summary|related__worry|timeline__desc|flow__desc|vsvc__text|faq__qt|mletter__q|msv-cmp__t)\b', p)
             if m_lead:
                 lead = m_lead.group(1)
             elif lead and p == f"</{lead}>":
@@ -338,6 +338,10 @@ TOP_CONCEPT = dict(
     lead=["この家、どうしよう。|そう迷ったまま、|思い出ごと眠っている空き家が、|地方にはたくさんあります。",
           "私たちはその家を|自分たちの手で宿に再生し、|運営しています。",
           "泊まった人がまちで食べ、|買い、また帰ってくる。|一軒の家から、|地域に経済の循環を生み出します。"],
+    # スマホは短く（循環の図が続くので、文章は要点だけ）
+    lead_sp=["宿をつくることは、|ゴールではなく始まり。",
+             "空き家がひらき、|人が訪れ、|まちが潤い、|また次の空き家が目を覚ます。",
+             "私たちは、|地域に続いていく|循環をつくります。"],
 )
 # 宿を起点に、地域へ人とお金がめぐる循環（TOPのコンセプト横の図）
 TOP_CYCLE = [
@@ -378,7 +382,7 @@ FLOW = [
 REASONS_LEAD = "官・大手・ベンチャーで経験を積んだ2人の創業者が、自ら宿を運営する現場の知見とあわせて支援します。"
 REASONS = [
     ("リクルート出身の、事業をつくる力", "代表の2人は、ともにリクルート出身。新規事業開発室でのゼロイチの立ち上げや、ベンチャーでの事業創出・組織拡大の経験を、宿と地域の事業づくりに活かします。",
-     "リクルート ／ HR Tech・サイバーセキュリティベンチャー"),
+     "リクルート\u00a0／\u00a0HR\u00a0Tech・|サイバーセキュリティベンチャー"),
     ("県庁出身の、地域と行政を知る視点", "代表の片井は静岡県庁の出身。行政の立場で地域課題に向き合ってきた経験から、自治体や地域の方々との対話を、官民両方の視点で進めます。",
      "静岡県庁 ／ 大手メーカー"),
     ("データにもとづく、根拠のある判断", "位置情報データを扱うベンチャーやテクノロジー企業での経験を活かし、需要や収支を数字で見極めます。感覚に頼らない意思決定を支えます。",
@@ -918,7 +922,7 @@ SERVICE_DATA = {
 def faq_html(items):
     return "\n".join(
         f"""          <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>{e(q)}</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">{e(q)}</span><span class="faq__toggle" aria-hidden="true"></span></summary>
             <div class="faq__a"><span class="faq__mark">A</span><p>{e(a)}</p><span></span></div>
           </details>"""
         for q, a in items
@@ -945,7 +949,7 @@ PLANS = {
         title="オーナー様の収益プラン例",
         lead="改修から運営までRIVIAが担います。「貸す」なら2つ、「手放す」なら買取の、3つのプラン例から選べます。",
         scheme=dict(
-            owner=("key", "オーナー様", "物件を貸す・売る", ["建物をRIVIAに貸す、または売る", "建物の構造部分の補修（貸す場合）"]),
+            owner=("key", "オーナー様", "物件を貸す・売る", ["建物をRIVIAに貸す、または売る"]),
             prop=("house", "空き家", "宿泊施設に再生"),
             rivia=("sparkle", "RIVIA", "改修・運営", ["改修・家具など開業準備", "集客・予約・清掃・接客"]),
             left="賃貸借契約", right="改修・運営",
@@ -959,7 +963,7 @@ PLANS = {
         ),
         plans=[
             dict(split=["rivia", "rivia", "rivia", "rivia", "rivia"], name="アキヤドおまかせプラン", catch="初期費用をかけず、毎月決まった家賃を受け取る",
-                 owner_share=10, init="改修・家具などの初期費用は、アキヤドがほぼ全額を負担します（建物の構造的な補修のみオーナー様）。",
+                 owner_share=10, init="改修・家具などの初期費用は、アキヤドがほぼ全額を負担します。",
                  monthly="毎月、決まった額の家賃", example="例：毎月 3万円（一定）",
                  ratings=[("ほぼなし", "good"), ("毎月一定", "good"), ("控えめ", "low")], who=["手間もお金もかけずに空き家を活かしたい", "毎月の収入を安定させたい"], rec=True),
             dict(split=["share", "share", "rivia", "rivia", "rivia"], name="アキヤド売上シェアプラン", catch="補修・内装をアキヤドと共同出資し、家賃＋売上に応じた上乗せを受け取る",
@@ -1670,12 +1674,13 @@ def index_page():
               <span class="eyebrow">Concept</span>
               <h2 class="vision__copy">{e(TOP_CONCEPT["copy"]).replace("、", "、<br>", 1)}</h2>
             </div>
-            <p class="vision__lead reveal" data-delay="1">{"".join("<span class=\"vision__sent\">" + "".join(f"<span>{e(c)}</span>" for c in l.split("|")) + "</span>" for l in TOP_CONCEPT["lead"])}</p>
+            <p class="vision__lead vision__lead--pc reveal" data-delay="1">{"".join("<span class=\"vision__sent\">" + "".join(f"<span>{e(c)}</span>" for c in l.split("|")) + "</span>" for l in TOP_CONCEPT["lead"])}</p>
+            <p class="vision__lead vision__lead--sp reveal" data-delay="1">{"".join("<span class=\"vision__sent\">" + "".join(f"<span>{e(c)}</span>" for c in l.split("|")) + "</span>" for l in TOP_CONCEPT["lead_sp"])}</p>
           </div>
           <div class="cycle reveal" data-delay="1" role="img" aria-label="空き家を宿に再生し、旅行者がまちを訪れ、まちで食べて買い、ファンになって再び訪れる。その収益で次の空き家を再生する、地域の経済循環">
             <svg class="cycle__ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="36"/>{arrows}</svg>
             <span class="cycle__orbit" aria-hidden="true"><i></i></span>
-            <p class="cycle__center" aria-hidden="true"><span class="cycle__center-en">Local cycle</span><span>地域に、</span><span>人とお金がめぐる</span></p>
+            <p class="cycle__center" aria-hidden="true"><span class="cycle__center-en">Local cycle</span><span>地域に、</span><span>循環をつくる</span></p>
             <ol class="cycle__nodes" aria-hidden="true">
 {nodes}
             </ol>
@@ -1719,7 +1724,7 @@ def index_page():
             <span class="reason__num">{i:02d}</span>
             <h3 class="reason__title">{e(t)}</h3>
             <p class="reason__text">{e(d)}</p>
-            <p class="reason__career"><span>Career</span>{e(c)}</p>
+            <p class="reason__career"><span>Career</span>{e(c).replace("|", "<wbr>")}</p>
           </li>"""
         for i, (t, d, c) in enumerate(REASONS, 1)
     )
@@ -2404,6 +2409,7 @@ def spec_md():
     w("")
     w("### Mission / Vision / Values")
     w(f"* **ミッション:** {MISSION['copy']} — " + "".join(MISSION["lead"]))
+    w(f"* **TOPのコンセプト:** {TOP_CONCEPT['copy']} — PC: " + "".join(TOP_CONCEPT["lead"]).replace("|", "") + " ／ スマホ（短い版）: " + "".join(TOP_CONCEPT["lead_sp"]).replace("|", ""))
     w(f"* **ビジョン:** {VISION['copy']}")
     for i, (t, en, d) in enumerate(VISION["steps"], 1):
         w(f"    {i}. **{t}（{en}）** — {d}")
@@ -2532,7 +2538,10 @@ def spec_md():
     w("")
     w("### メディアの構成（URLは rivia-co.com/media/ 配下。サブドメインは使わない）")
     w("* カテゴリ一覧（media/category-○○.html）：" + " ／ ".join(n for _, n in MEDIA_CATEGORIES) + "。カテゴリの説明文、関連するガイドへの導線、記事一覧（12件ずつ追加表示）。検索結果に出る独立したページにする。")
-    w("* 見え方：URLは会社サイトの一部（rivia-co.com/media/）のまま、ヘッダー・フッターはメディア専用（ロゴ「アキヤド」、状況別ガイド・テーマ・検索のナビ、運営会社への小さなリンク）にして、独立したメディアとして見せる。タイトルの末尾・OGPのサイト名も「アキヤド」。")
+    w("* 見え方：URLは会社サイトの一部（rivia-co.com/media/）のまま、ヘッダー・フッターはメディア専用（ロゴ「アキヤド」、運営会社への小さなリンク）にして、独立したメディアとして見せる。タイトルの末尾・OGPのサイト名も「アキヤド」。")
+    w("* サービスのページ（media/service-kaitori・service-kariage・service-kaigyo）：問い合わせの直前に読むページ。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く、長い説明は折りたたむ。並びは、ヒーロー（読み手の得を言い切る見出し・3つの約束・写真）と「かんたん診断」→お悩み→しくみの図（誰が何をして、お金がどう流れるか。写真を2枚添える）→いくら？（借り上げは家賃の例、買取は価格の決まり方、開業は下田の宿の数字）→放っておくと（大きな数字のタイル。出典の記事へリンク）→違い→創業者からの手紙と実績の数字・ゲストの声→ほかの方法との比較→プラン→ご相談からの流れ（期間・お願いすること・費用つき）→よくある質問→締めのCTA→取材した事例。中身は tools/build.py の MEDIA_SERVICES・MEDIA_SERVICE_LP・MEDIA_SERVICE_MORE。")
+    w("* サービスページのフォーム：最初に「無料で相談する」か「資料をもらう」を選び、名前とメールを送る（相談のときだけ、相談内容とファイルの欄を出す）。資料を選ぶと「ご相談カテゴリ」が「サービス資料の請求」になり、自動返信に資料が付く（Apps Script の変更は不要）。ページ内の「資料をもらう」ボタンは、資料を選んだ状態でこのフォームへ移る。CTA に「断ってもかまいません」のような言い回しは使わない。")
+    w("* ヘッダーのナビ：PC（幅900px以上）はヘッダーの下に、状況別ガイド4つと「記事をさがす」「アキヤドのプラン」のタブだけを置く（数を絞り、はみ出して文字が切れないようにする）。右上のメニューボタン（3本線）はPC・スマホ共通で、ガイド4つ・基礎から学ぶ・事例から探す・記事をさがす・アキヤドのプラン・相談と資料請求のボタン・運営会社へのリンクを開く（PCは右上の小さなパネル、スマホは全幅）。トップへはロゴから戻る。")
     w("* メディアトップのFV：写真を全面に敷き、ロゴ・一言・状況別の入口（3つ）・検索窓を1画面に置いて、最初の画面から次の行動を選べるようにする（離脱を防ぐ）。")
     w("* 想定する読者（ペルソナ）：① 空き家を売りたい方 ② 空き家を活かしたい方 ③ 副業で宿をはじめたい方。記事は、この3者が悩む順番をもとに企画する。")
     w("* 記事を追加するとき：記事データに guides=[(\"sell\", 2)] のように「ガイド（sell／use／side）とStep番号」を書けば、ガイドの該当Stepに自動で並ぶ。公開日前は「公開予定」と表示される。よくある悩みの一覧（MEDIA_QUESTIONS）にも、読者の言葉の質問を1行足すと入口が増える。")
@@ -3772,6 +3781,16 @@ MEDIA_GUIDES = [
              ("開業の手続きを進める", "民泊か旅館業か、消防、管理を任せる体制。", ["minpaku-start-steps", "minpaku-vs-ryokan-law", "minpaku-fire-safety", "minpaku-management-company"]),
              ("運営して、育てる", "数字の読み方、集客、レビュー、清掃、宿泊税。", ["inn-kpi-basics", "ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips", "cleaning-linen-operations", "accommodation-tax"]),
          ]),
+    # すでに宿を運営している方向け。集客・採用の記事の受け皿（記事データに guides=[("run", 2)] のように書く）
+    dict(key="run", label="宿の運営を伸ばしたい", title="宿の運営を伸ばしたい方へ", service="marketing", photo="laptop-dashboard",
+         who="すでに民泊や小さな宿を運営していて、予約や人手に悩んでいる方",
+         worries=["予約がなかなか増えない", "予約サイトの手数料が重い", "清掃や運営の人手が足りない"],
+         lead="民泊や小さな宿を運営していて、予約や人手に悩んでいる。数字の見方から、予約の増やし方、人手と運営の整え方までを順番に。",
+         stages=[
+             ("数字で今を知る", "稼働率・客室単価の読み方と、赤字にならない線。", ["inn-kpi-basics", "minpaku-break-even"]),
+             ("予約を増やす", "予約サイトと自社予約の使い分け、掲載ページ、レビュー、料金、閑散期。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips", "case-owner-pricing-mistake", "minpaku-off-season"]),
+             ("人手と運営を整える", "清掃の仕組み、離れた場所からの運営、近隣との関係、任せる先。", ["cleaning-linen-operations", "minpaku-remote-operation", "minpaku-neighbor-rules", "minpaku-management-company"]),
+         ]),
 ]
 # 記事は今後も増える前提。記事データに guides=[("sell", 2)]（ガイドのkey, Stepの番号）と書けば、
 # そのガイドの該当Stepの末尾に自動で並ぶ（ここのリストを書き換えなくてよい）
@@ -3782,7 +3801,7 @@ for _a in ARTICLES:
             _st.append(_a["slug"])
 for _g in MEDIA_GUIDES:
     _g["slugs"] = list(dict.fromkeys(x for _, _, xs in _g["stages"] for x in xs))
-MEDIA_GUIDE_FOR_CAT = {"sell": "sell", "lend": "use", "house": "use", "start": "side", "money": "side", "operate": "side", "trend": "use"}
+MEDIA_GUIDE_FOR_CAT = {"sell": "sell", "lend": "use", "house": "use", "start": "side", "money": "side", "operate": "run", "trend": "use"}
 # よくある悩みから記事へ（読者の言葉で書く）
 MEDIA_QUESTIONS = [
     ("sell", "相続した実家、放置するとどうなる？", "akiya-inherited-house-to-inn"),
@@ -3805,8 +3824,27 @@ CV_MESSAGES = {
     "sell": "売るか、活かすか。物件の状況をうかがい、いちばん負担の少ない方法を無料でご提案します。",
     "use": "その家、宿として活かせるか。現地と周辺の宿を調べ、収支の見込みを無料で試算します。",
     "side": "物件選び、許可、収支の見通し。民泊を始める前の疑問に、アキヤドが無料でお答えします。",
+    "run": "予約の伸ばし方、人手の確保。運営中の宿の悩みに、アキヤドを運営するRIVIA&CO.が無料でお答えします。",
     "": "空き家の売却・活用、民泊の開業について、アキヤドが無料でご相談に乗ります。",
 }
+
+
+# 集客・採用の記事は、相談の案内をコーポレートの支援事業に向ける（ガイドより優先）
+CV_SERVICE = {
+    "marketing": ("予約サイト、掲載ページ、自社予約。宿の集客の見直しに、アキヤドを運営するRIVIA&CO.が無料でお答えします。", "service-marketing.html"),
+    "recruit": ("清掃や運営の人手、求人の出し方。宿の採用の悩みに、アキヤドを運営するRIVIA&CO.が無料でお答えします。", "service-recruit.html"),
+}
+# ガイドごとの「サービスとプランを見る」の行き先（アキヤドのサービスがないガイド）
+GUIDE_PLAN_PAGE = {"run": "service-marketing.html"}
+
+
+def inline_cta_parts(a, g):
+    """記事の途中に置く相談の案内の、文言と「サービスとプランを見る」の行き先"""
+    if a["services"][0] in CV_SERVICE:
+        return CV_SERVICE[a["services"][0]]
+    k = g["key"] if g else ""
+    href = GUIDE_PLAN_PAGE.get(k) or f'media/{MEDIA_SERVICE_BY_KEY[k or "use"]["slug"]}.html'
+    return CV_MESSAGES.get(k, CV_MESSAGES[""]), href
 
 
 def guide_of(slug):
@@ -3844,6 +3882,7 @@ def media_header(current=""):
       <button type="button" class="mmenu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button>
       </div>
     </div>
+{media_tabs(current)}
 {media_nav(current)}
   </header>"""
 
@@ -3856,7 +3895,7 @@ def media_footer():
       <div class="mfooter__top">
         <div>
           <a href="media.html" class="mfooter__logo">{media_logo()}</a>
-          <p class="mfooter__lead">空き家を、売る。活かす。民泊をはじめる。<br>宿を運営する私たちが、悩みに沿ってお届けします。</p>
+          <p class="mfooter__lead">空き家を売る。活かす。民泊をはじめる。<br>宿を運営する私たちが、悩みに沿ってお届けします。</p>
         </div>
         <div class="mfooter__cols">
           <div><p class="mfooter__label">状況から読む</p><ul>{guides}</ul></div>
@@ -3880,14 +3919,23 @@ def media_footer():
   </footer>"""
 
 
+MEDIA_CTA_TEXT = {
+    "": ('空き家のこと、<br class="sp-only">まずは気軽にご相談ください。',
+         '売るか、活かすか、民泊にするか。まだ決めていない段階でも大丈夫です。<br class="pc-only">宿を運営する私たちが、物件の状況に合わせてお答えします。'),
+    "marketing": ('宿の集客や人手のこと、<br class="sp-only">まずは気軽にご相談ください。',
+                  '予約が伸びない、手数料が重い、人が足りない。原因がはっきりしない段階でも大丈夫です。<br class="pc-only">宿を運営する私たちが、いまの状況に合わせてお答えします。'),
+}
+
+
 def media_cta(category="operation"):
     """アキヤドの相談ブロック。気軽さ（無料・全国・営業なし）を先に伝える"""
+    title, lead = MEDIA_CTA_TEXT.get(category, MEDIA_CTA_TEXT[""])
     return f"""    <section class="section mcta">
       <div class="container">
         <div class="mcta__box reveal">
           <p class="mcta__en">Consultation</p>
-          <h2 class="mcta__title">空き家のこと、<br class="sp-only">まずは気軽にご相談ください。</h2>
-          <p class="mcta__lead">売るか、活かすか、民泊にするか。まだ決めていない段階でも大丈夫です。<br class="pc-only">宿を運営する私たちが、物件の状況に合わせてお答えします。</p>
+          <h2 class="mcta__title">{title}</h2>
+          <p class="mcta__lead">{lead}</p>
           <ul class="mcta__points"><li>相談・お見積りは無料</li><li>全国対応・オンライン可</li><li>しつこい営業はしません</li></ul>
           <div class="mcta__btns">
             <a href="contact.html?category={category}&amp;from=akiyado" class="mbtn" data-cta="media-bottom">無料で相談する {ARROW}</a>
@@ -3919,11 +3967,11 @@ MEDIA_PLAN_GROUPS = [
 PLAN_FLOW = [
     ("無料相談・資料請求", "フォームから、物件や状況を気軽にお知らせください。オンラインでもお話しできます。"),
     ("現地調査・収支の試算", "物件と周辺の宿を調べ、売る・貸す・宿にする場合の見込みを無料でお出しします。"),
-    ("プランのご提案", "物件とご希望に合わせて、条件を具体的にご提案します。ここで断っていただいても構いません。"),
+    ("プランのご提案", "物件とご希望に合わせて、条件を具体的にご提案します。ご提案を見てから、進めるかどうかを決めていただけます。"),
     ("ご契約・開業準備", "改修や許可、写真や予約ページの準備まで、アキヤドが進めます。"),
 ]
 PLAN_FAQ = [
-    ("相談だけでも大丈夫ですか？", "はい。売るか活かすか決めていない段階でも、お気軽にご相談ください。ご提案を聞いたうえで、お断りいただいても構いません。"),
+    ("相談だけでも大丈夫ですか？", "はい。売るか活かすか決めていない段階でも、お気軽にご相談ください。ご提案を聞いてから、進めるかどうかを決めていただけます。"),
     ("相談や見積りに費用はかかりますか？", "ご相談、現地調査、収支の試算、プランのご提案までは無料です。"),
     ("遠方の物件でも相談できますか？", "全国の物件のご相談をお受けしています。初回はオンラインでお話しできます。"),
     ("資料には何が書いてありますか？", "各プランの仕組みと条件の考え方、ご相談から開業までの流れ、アキヤドが運営している宿の実績をまとめています。"),
@@ -4082,7 +4130,7 @@ MEDIA_SERVICES = [
          lead="アキヤドが空き家を借り上げ、改修から宿の運営まで行います。オーナー様は運営の手間をかけずに、家賃を受け取れます。",
          worries=["思い出のある家を、手放したくはない", "空き家のまま傷んでいくのが心配", "貸したいが、借り手が見つかる地域ではない",
                   "改修にまとまったお金はかけられない", "宿に興味はあるが、運営する時間がない"],
-         strengths=[("yen", "初期費用をかけずに始められる", "アキヤドおまかせプランなら、改修・家具などの費用はアキヤドがほぼ負担します（建物の構造的な補修を除く）。"),
+         strengths=[("yen", "初期費用をかけずに始められる", "アキヤドおまかせプランなら、改修・家具などの費用はアキヤドがほぼ負担します。"),
                     ("bed", "宿の運営はすべてアキヤド", "集客・予約・清掃・ゲスト対応まで、宿を運営している私たちが行います。"),
                     ("heart", "家を残し、まちに人を呼ぶ", "家は持ったまま。旅行者が訪れることで、まちにも人の流れが生まれます。")],
          steps=[("house", "オーナー様が家を貸す", "家はオーナー様のまま"), ("tool", "アキヤドが改修・開業準備", "家具・設備・許可まで"),
@@ -4093,7 +4141,7 @@ MEDIA_SERVICES = [
               ("近所に迷惑がかからないか心配です。", "利用ルールの案内や、騒音・ごみへの対応など、周辺への配慮も運営に含めて行います。")]),
     dict(key="side", slug="service-kaigyo", name="アキヤド開業・運営プラン", category="management",
          eyebrow="副業で宿をはじめたい方へ", title="はじめての民泊を、\n開業準備から運営まで伴走します。",
-         lead="物件選び、許可や届出、写真や料金の決め方、開業後の集客まで。実際に宿を運営しているアキヤドが、任せたい範囲に合わせて支えます。",
+         lead="物件選び、許可や届出、写真や料金の決め方、開業後の集客まで。実際に宿を運営しているアキヤドが、任せたい範囲に合わせて支援します。",
          worries=["何から始めればいいか分からない", "民泊と旅館業、どちらで始めるべきか迷っている", "本業が忙しく、運営に時間をかけられない",
                   "物件が宿として収益を出せるか見通せない", "予約が入るページのつくり方が分からない"],
          strengths=[("doc", "開業までの手続きを一緒に", "制度の選び方、消防や届出の段取りなど、つまずきやすいところを先回りして進めます。"),
@@ -4117,6 +4165,51 @@ MEDIA_SERVICE_CARDS = {
                  spec=[("費用", "手数料：売上の10%〜（伴走コース）"), ("任せる範囲", "開業準備のみ〜運営まで")], plans=["伴走コース", "運営代行コース", "共同出資コース"]),
 }
 
+# サービスページの読み物（相談の前に、読者が判断できるだけの材料を出す）
+# compare：ほかの選択肢との比べ方（アキヤドの行は us=True）／fit_no：ほかの方法が合うかもしれない方／cases：取材した事例
+# 体験談・数字は docs/brand/experience.md の「人が確認済み」の節と、公開済みの記事にあるものだけを使う
+MEDIA_SERVICE_MORE = {
+    "sell": dict(
+        compare=dict(cols=["現金に|なるまで", "古い家の|評価", "売る以外の|提案"], note="", rows=[
+            ("仲介で|売る", ["△時期が|読めない", "△値段が|つきにくい", "×なし"], False),
+            ("一般的な|買取", ["◎早い", "△改修費を|差し引く", "×なし"], False),
+            ("アキヤド|買取", ["◎早い", "◎宿として|評価", "◎貸す案も|比べる"], True),
+            ("アキヤド|借り上げ", ["◎毎月の|家賃", "◎家を|残せる", "◎売る案も|比べる"], True)]),
+        fit_no=["時間をかけてでも、少しでも高く売りたい（仲介が合う場合があります）", "宿として営業できない条件の物件（法令や建物の状態によっては、お受けできない場合があります）"],
+        cases=["akiya-inherited-house-to-inn", "akiya-holding-costs", "akiya-3000man-deduction"], cases_title="手放す前に読んでおきたい記事",
+        faq_more=[("相談したら、売らないといけませんか？", "いいえ。ご提案までは無料で、売るかどうかはご提案を見てから決めていただけます。"),
+                  ("ほかの不動産会社と比べてもいいですか？", "はい。比べたうえで決めてください。比べやすいよう、査定の根拠もお出しします。"),
+                  ("家族の意見がまとまっていなくても相談できますか？", "ご相談いただけます。ご家族に見せられる比較の資料をお渡しします。"),
+                  ("遠方の物件でも大丈夫ですか？", "全国の物件のご相談をお受けしています。初回はオンラインでお話しでき、現地の拝見は鍵の受け渡しの方法もご相談ください。")],
+        closing=("決めるのは、比べてからで大丈夫です", "相続登記や税の特例には期限があります。売ると決めていなくても、まずは今の家の値段と、残した場合の収入を知っておくと、ご家族で話し合いやすくなります。")),
+    "use": dict(
+        compare=dict(cols=["初期費用", "手間", "収入"], note="", rows=[
+            ("そのまま|持つ", ["◎なし", "△見回り・|草刈り", "×なし"], False),
+            ("住まいと|して貸す", ["△改修が|要ることも", "○管理会社に|任せる", "○借り手|しだい"], False),
+            ("自分で|民泊", ["△改修・|家具・許可", "△集客・|清掃・対応", "○売上−|経費"], False),
+            ("おまかせ|プラン", ["◎ほぼ|なし", "◎ほぼ|なし", "◎毎月|一定"], True),
+            ("売上シェア|プラン", ["○補修を|共同出資", "◎ほぼ|なし", "◎保証＋|上乗せ"], True)]),
+        fit_no=["近いうちに売る可能性が高い（貸すと3,000万円特別控除が使えなくなる場合があるため、先に比べることをおすすめします）", "数年のうちに、ご自身やご家族が住む予定がある"],
+        cases=["case-rental-house-inn-first-year", "case-owner-subsidy-akiya", "case-owner-licensed-akiya"], cases_title="空き家が宿になった事例",
+        faq_more=[("家賃はどうやって決まりますか？", "周辺の宿の料金と稼働、改修にかかる費用、契約期間をもとに試算し、根拠とあわせてご提示します。"),
+                  ("将来、売ることになったら？", "ご希望があれば最初にお聞かせください。相続した家は、貸すと3,000万円特別控除が使えなくなる場合があるため、売る場合との比較もお出しします。"),
+                  ("宿の運営の様子は分かりますか？", "運営の状況を定期的にご報告します。近隣への配慮も含めて宿を運営します。"),
+                  ("相談したら、契約しないといけませんか？", "いいえ。ご提案までは無料で、条件を見てから決めていただけます。")],
+        closing=("家を残すかどうかは、数字を見てから決められます", "空き家は、使わない時間が長いほど傷み、手を入れる費用もかさみます。まずは、宿にした場合の家賃の見込みを知るところから始めてみてください。")),
+    "side": dict(
+        compare=dict(cols=["自分の|手間", "開業・集客の|ノウハウ", "初期投資"], note="※ 初期投資は、物件の取得・改修・家具などの費用です。", rows=[
+            ("すべて|自分で", ["△すべて", "△手探り", "△全額|自分で"], False),
+            ("伴走|コース", ["○清掃・|ゲスト対応", "◎プロが|伴走", "△自分で|用意"], True),
+            ("運営代行|コース", ["◎経営の|判断だけ", "◎プロが|運営", "△自分で|用意"], True),
+            ("共同出資|コース", ["◎経営の|判断だけ", "◎プロと|一緒に", "◎アキヤドと|分担"], True)]),
+        fit_no=["短期間で確実にもうかる方法を探している（収益は物件や運営で変わり、保証はできません）", "宿として営業できない条件の物件で始めたい"],
+        cases=["case-owner-rental-side-business", "case-owner-diy-cottage", "case-owner-pricing-mistake"], cases_title="副業で宿を始めた人の事例",
+        faq_more=[("会社員でも、本当に運営できますか？", "私たちも会社員として、住まいから離れた下田で宿を始めました。いまは現地に行くのは数か月に1回ほどです。清掃の外注やセルフチェックインなど、離れて運営する仕組みづくりからお手伝いします。"),
+                  ("どのコースにするか、相談してから決められますか？", "はい。収支の試算を見ながら、本業との両立やご予算に合うコースをご提案します。"),
+                  ("相談したら、契約しないといけませんか？", "いいえ。ご提案までは無料で、試算と条件を見てから決めていただけます。")],
+        closing=("始めるかどうかは、試算を見てから決めて大丈夫です", "宿づくりは、物件選びと制度選びで結果が大きく変わります。物件を決める前、契約する前にご相談いただくほど、選べる道が広がります。")),
+}
+
 
 
 # サービスページの「ご相談からの流れ」。顧客が不安にならないよう、期間・お願いすること・費用まで書く
@@ -4128,7 +4221,7 @@ MEDIA_FLOWS = {
         ("現地を拝見・査定", "1〜2週間", "建物の状態や周辺の環境を確認し、宿として活かせるかも含めて査定します。",
          "立ち会いが難しい場合は、鍵の受け渡し方法をご相談ください。図面や固定資産税の通知書があればご用意ください。", "建物・立地・法令上の条件を調べ、査定額と根拠をまとめます。", "無料"),
         ("売る・貸すを比べてご提案", "調査から1〜2週間", "買取の金額に加えて、借り上げで家を残した場合の収入の見込みもお出しします。",
-         "ご提案を見て、ご家族とも相談のうえで、ご検討ください。", "それぞれの手取りや手間の違いを、わかりやすく比べてご説明します。", "無料。ここでお断りいただいても構いません"),
+         "ご提案を見て、ご家族とも相談のうえで、ご検討ください。", "それぞれの手取りや手間の違いを、わかりやすく比べてご説明します。", "無料（ご提案を見てから、進めるかどうかを決めていただけます）"),
         ("ご契約・お引き渡し", "1〜2か月", "条件にご納得いただけたら、売買契約を結び、代金のお支払いと物件のお引き渡しを行います。",
          "契約書の内容のご確認と、登記に必要な書類のご準備をお願いします。", "契約から登記までの段取りを進めます。必要に応じて司法書士などの専門家とも連携します。", "登記などの実費は、契約前にご説明します"),
     ],
@@ -4138,9 +4231,9 @@ MEDIA_FLOWS = {
         ("現地調査・収支の試算", "2〜3週間", "建物の状態と、周辺の宿の料金や稼働を調べ、宿にした場合の収支を試算します。",
          "可能であれば立ち会いをお願いします。図面などの資料があればご用意ください。", "改修が必要な箇所、法令上の条件、見込める家賃をまとめます。", "無料"),
         ("プランと条件のご提案", "調査から1〜2週間", "おまかせプラン・売上シェアプランのうち、物件とご希望に合う条件をご提案します。",
-         "家賃や契約期間、将来の使い方のご希望をお聞かせください。", "家賃・契約期間・改修の負担の分け方を、具体的な数字でご提示します。", "無料。ここでお断りいただいても構いません"),
+         "家賃や契約期間、将来の使い方のご希望をお聞かせください。", "家賃・契約期間・改修の負担の分け方を、具体的な数字でご提示します。", "無料（ご提案を見てから、進めるかどうかを決めていただけます）"),
         ("ご契約・改修・開業準備", "2〜4か月", "賃貸借契約を結んだあと、アキヤドが改修・家具の準備・許可の手続き・予約ページの作成まで進めます。",
-         "契約内容のご確認をお願いします。改修の内容は、事前にご説明して進めます。", "改修、家具・設備、消防や許可の手続き、写真撮影、予約ページの準備を行います。", "アキヤドおまかせプランは初期費用ほぼなし（建物の構造的な補修を除く）"),
+         "契約内容のご確認をお願いします。改修の内容は、事前にご説明して進めます。", "改修、家具・設備、消防や許可の手続き、写真撮影、予約ページの準備を行います。", "アキヤドおまかせプランは初期費用ほぼなし"),
         ("宿として運営・家賃のお支払い", "開業後、毎月", "集客・予約・清掃・ゲスト対応はアキヤドが行い、オーナー様には毎月家賃をお支払いします。",
          "特にありません。気になることがあれば、いつでもご連絡ください。", "運営の状況を定期的にご報告し、近隣への配慮も含めて宿を運営します。", "運営の手間・費用はかかりません"),
     ],
@@ -4150,12 +4243,123 @@ MEDIA_FLOWS = {
         ("物件と制度の確認", "1〜3週間", "物件が宿として営業できるか、民泊新法と旅館業のどちらが合うかを確認します。",
          "物件の資料（図面・登記・管理規約など）をご用意ください。", "用途地域や条例、消防の条件を調べ、選ぶべき制度をご提案します。", "無料"),
         ("収支の試算とプランのご提案", "1〜2週間", "周辺の宿の料金と稼働をもとに収支を試算し、伴走・運営代行・共同出資から合うコースをご提案します。",
-         "本業との両立や、どこまで自分で関わりたいかを教えてください。", "悲観的な場合も含めた収支の見通しと、プランごとの費用をご提示します。", "無料。ここでお断りいただいても構いません"),
+         "本業との両立や、どこまで自分で関わりたいかを教えてください。", "悲観的な場合も含めた収支の見通しと、プランごとの費用をご提示します。", "無料（ご提案を見てから、進めるかどうかを決めていただけます）"),
         ("開業準備", "1〜3か月", "設備の準備、消防の手続き、届出や許可申請、写真撮影と予約ページの作成を進めます。",
          "プランに応じて、設備の購入や届出の名義人としての手続きをお願いします。", "やることの一覧と期限をお渡しし、手続きや予約ページづくりを一緒に進めます。", "プランの費用は契約前にご説明します。設備などの実費は別途"),
         ("開業・運営", "開業後", "伴走コースは集客と料金の考え方を、運営代行コースは日々の運営まで、アキヤドが担います。",
          "伴走コースでは、清掃やゲスト対応など現場の運営をお願いします。", "予約の状況や売上を定期的にご報告し、改善の打ち手をご提案します。", "売上に応じた手数料（プランにより異なります）"),
     ],
+}
+
+
+# サービスページ（LP）の見せ方。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く。
+# hero：読み手の得を言い切る見出し／price：いくら？の目安（金額はイメージ。物件ごとに変わることを必ず添える）
+# risk：大きな数字のタイル（出典の記事へリンク）
+# サービスページの「しくみ」の図（文字を読まなくても、誰が何をして、お金がどう流れるかがわかるように）
+# nodes: (アイコン, 名前, していること)  arrows: 左から順の矢印の言葉  ret: (戻りの矢印の起点, 終点, 言葉)
+# photos: (写真, 添える言葉。| で改行)。自社物件の写真は、どのプランかと結びつけない（docs/brand/experience.md）
+MEDIA_SCHEME = {
+    "sell": dict(title="売っていただいた家は、アキヤドが宿として活かします",
+                 nodes=[("house", "オーナー様", "家を売る"), ("key", "アキヤド", "改修して宿に"), ("users", "旅行者", "まちに泊まる")],
+                 arrows=["買取", "宿を運営"], ret=(1, 0, "代金をお支払い"),
+                 photos=[("yaizu-before-engawa-garden", "改修前の空き家（例）"), ("scene-stay", "宿として活かす（イメージ）")]),
+    "use": dict(title="家を貸すだけで、毎月の家賃が届くしくみです",
+                nodes=[("house", "オーナー様", "家を貸す"), ("key", "アキヤド", "改修・運営"), ("users", "旅行者", "宿に泊まる")],
+                arrows=["借り上げ", "宿を運営"], ret=(1, 0, "毎月の家賃"),
+                photos=[("yaizu-before-floor-open", "改修前の空き家（例）"), ("scene-stay", "宿にしたあと（イメージ）")]),
+    "side": dict(title="宿の主役はあなた。アキヤドは裏方で支援します",
+                 nodes=[("compass", "アキヤド", "開業を支援"), ("house", "あなたの宿", "開業・運営"), ("users", "旅行者", "宿に泊まる")],
+                 arrows=["支援", "予約"], ret=(2, 1, "宿泊の売上"),
+                 photos=[("scene-walk", "地域にお金がめぐる（イメージ）"), ("irori-room", "古いまちなみが残る（イメージ）")]),
+}
+
+
+def scheme_html(key):
+    sc = MEDIA_SCHEME[key]
+    parts = []
+    for i, (ic, name, role) in enumerate(sc["nodes"]):
+        if i:
+            parts.append(f'<span class="mscheme__arrow" aria-hidden="true"><span>{e(sc["arrows"][i - 1])}</span><i></i></span>')
+        us = "アキヤド" in name  # アキヤドの丸には、アイコンの代わりにアキヤドのロゴ（マーク）を入れる
+        parts.append(f'<div class="mscheme__node{" is-us" if us else ""}"><span class="mscheme__icon">{AKIYADO_MARK if us else icon(ic)}</span><b>{e(name)}</b><small>{e(role)}</small></div>')
+    a, b, lbl = sc["ret"]
+    lo, hi = sorted((a, b))
+    ret = f'<p class="mscheme__ret mscheme__ret--{lo}{hi}{" is-left" if b < a else ""}" aria-hidden="true"><span>{e(lbl)}</span></p>'
+    alt = "、".join(f"{n}が{r}" for _, n, r in sc["nodes"]) + f"。{sc['nodes'][a][1]}から{sc['nodes'][b][1]}へ{lbl}"
+    def photo(ph, cap):
+        # 「（イメージ）」は添え書きから外して写真の隅に小さく載せ、添え書きを1行に収める
+        tag = '<span class="mscheme__tag">イメージ</span>' if cap.endswith("（イメージ）") else ""
+        cap = cap.removesuffix("（イメージ）")
+        return (f'<figure class="mscheme__photo">{tag}<picture><source srcset="images/photos/w/{ph}-800.webp" type="image/webp"><img src="images/photos/{ph}.jpg" alt="" width="800" height="533" loading="lazy" decoding="async"></picture><figcaption>{"<br>".join(e(c) for c in cap.split("|"))}</figcaption></figure>')
+    photos = "".join(photo(ph, cap) for ph, cap in sc["photos"])
+    return f"""    <section class="mlp-sec mlp-sec--scheme">
+      <div class="container mlp-narrow">
+        <p class="mlp-en reveal">How it works</p>
+        <h2 class="mlp-title reveal">{e(sc["title"])}</h2>
+        <div class="mscheme reveal" role="img" aria-label="{e(alt)}"><div class="mscheme__row">{"".join(parts)}</div>{ret}</div>
+        <div class="mscheme__photos reveal">{photos}</div>
+      </div>
+    </section>
+"""
+
+
+# letter：創業者からの一言の、サービスごとの最後の一文
+MEDIA_SERVICE_LP = {
+    "sell": dict(
+        photo="old-town-street",
+        hero="古くて売れない家も、<br><em>宿として活かせるなら</em><br>買い取ります。",
+        hero_sub="相続した家、遠方で管理できない家。住まいとしては値段がつきにくい家も、宿として活かせるなら買い取れます。",
+        hero_sub_sp="値段がつきにくい家も、|宿として活かせるなら買い取れます。",
+        worries_title="こんなお悩み、ひとりで抱えていませんか？",
+        price=dict(title="買取価格は、宿として稼げるかで決まります",
+                   lead="一般の査定は「住まいとして売れるか」で見ます。アキヤドは、宿にしたときの収益から考えるため、古い家・地方の家でも金額をお出しできることがあります。",
+                   # (式の言葉, 補足, スマホで式に書く短い言葉)
+                   formula=[("宿にしたときに見込める収益", "周辺の宿の料金と稼働から", "宿の収益"), ("宿にするための改修の費用", "建物の状態と法令の条件から", "改修費"), ("買取価格のめやす", "根拠とあわせて書面で", "買取価格")],
+                   facts=[("無料", "相談・現地の拝見・査定"), ("2〜4週間", "現地の拝見から、金額のご提示まで（目安）"), ("不要", "仲介手数料")],
+                   note="金額は、物件の状態・立地・法令上の条件で変わります。現地を拝見したうえで、根拠とあわせてご提示します。アキヤドが直接買い取るため、仲介手数料はかかりません。"),
+        risk_title="放っておくほど、選べる道は減っていきます",
+        risk=[("3", "年以内", "相続登記の期限", "相続を知った日から3年以内に名義変更が義務に（2024年4月から）。怠ると10万円以下の過料の対象になる場合も。", "souzoku-touki-gimuka"),
+              ("最大6", "倍", "空き家の土地の固定資産税（計算のもと）", "管理が行き届かず市の勧告を受けると、税を軽くする住宅用地の特例が外れます。", "akiya-law-kanri-fuzen"),
+              ("2027", "年末", "3,000万円特別控除の売却期限", "相続から3年後の年末までが原則。貸したり宿にしたりすると対象外に。", "akiya-3000man-deduction")],
+        points_title="売るだけでなく、家を残す道も一緒に比べます",
+        letter="手放すと決める前に、[[宿として活かす道があるか]]を、一緒に確かめさせてください。"),
+    "use": dict(
+        photo="irori-room",
+        hero="初期費用は<em>ほぼ0円</em>。<br>空き家を、毎月の家賃に。",
+        hero_sub="アキヤドが借り上げ、改修から宿の運営まで行います。家は持ったまま、手間をかけずに家賃を受け取れます。",
+        hero_sub_sp="家は持ったまま、|手間をかけずに家賃を受け取れます。",
+        worries_title="こんなお悩み、ひとりで抱えていませんか？",
+        price=dict(title="家賃は、いくらになる？",
+                   lead="周辺の宿の料金と稼働、広さ、改修にかかる費用から、物件ごとに試算します。受け取り方は2つから選べます。",
+                   cards=[("アキヤドおまかせプラン", "毎月", "3", "万円", "決まった額の家賃（例）", "改修・家具などの初期費用は、アキヤドがほぼ全額を負担します"),
+                          ("アキヤド売上シェアプラン", "最低保証", "2.5", "万円＋売上の10%", "（例）売上40万円の月なら 6.5万円", "補修・内装はオーナー様とアキヤドで共同出資。繁忙期の上振れも受け取れます")],
+                   factors=["立地（周辺の宿の料金と稼働）", "広さ・泊まれる人数", "建物の状態（改修の費用）", "契約期間"],
+                   note="金額はイメージです。物件によって変わります。現地調査のうえ、根拠とあわせてご提示します。"),
+        risk_title="使っていない家にも、お金と手間はかかり続けます",
+        risk=[("最大6", "倍", "空き家の土地の固定資産税（計算のもと）", "管理が行き届かず市の勧告を受けると、税を軽くする住宅用地の特例が外れ、撤回されない限りそのまま。", "akiya-law-kanri-fuzen"),
+              ("3,000", "円〜", "見回りを頼む費用（1回）", "月1回なら年36,000円の例。草刈りや、建物の分の税も別にかかります。", "akiya-holding-costs"),
+              ("3", "年以内", "相続登記の期限", "相続した家は名義変更が義務に。昔の相続でも2027年3月31日までに申請が必要です。", "souzoku-touki-gimuka")],
+        points_title="改修から宿の運営まで、すべてアキヤドが行います",
+        letter="思い出のある家を、[[壊さず、手放さずに活かす]]。その道があるかを、数字でお見せします。"),
+    "side": dict(
+        photo="scene-stay",
+        hero="はじめての民泊を、<br><em>宿を運営する私たち</em>が伴走します。",
+        hero_sub="物件選び、許可や届出、料金の決め方、開業後の集客まで。会社員のまま宿を始めた私たちが、任せたい範囲に合わせて支援します。",
+        hero_sub_sp="物件選びから集客まで、|任せたい範囲だけ支援します。",
+        worries_title="こんなところで、止まっていませんか？",
+        price=dict(title="いくらかかって、いくら残る？ 私たちの宿の数字です",
+                   lead="創業メンバーが下田（静岡県）で、借りた家を一棟貸しの宿にしたときの数字です。物件や運営で変わりますが、計画を立てるときの目安になります。",
+                   cards=[("初期費用", "約", "650", "万円", "改修 約410万円＋家具・家電・備品 約240万円", "物件は賃貸のため、取得費はかかっていません"),
+                          ("月の手残り", "売上の約", "67", "%", "2年目上半期の営業利益率", "清掃を自分たちで行った期間の値（自分たちの人件費は含みません）。融資の返済・税金の前です"),
+                          ("投資の回収", "約", "14", "か月", "初期投資の約98%を回収", "営業利益で回収（2026年9月時点）。家具・家電・設備工事などの購入費を基準にした割合です")],
+                   fee="アキヤドの手数料は、伴走コースで売上の10%（例：売上30万円の月なら3万円）。運営代行コースは20%です。",
+                   note="数字は一つの宿の実績で、収益を保証するものではありません。くわしくは運営事例の記事をご覧ください。", src="case-rental-house-inn-first-year"),
+        risk_title="自己流で始めると、ここでつまずきます",
+        risk=[("180", "日", "民泊新法で営業できる、年の上限", "通年で営業するなら旅館業の許可が必要。番号がないと予約サイトで予約を受けられません。", "minpaku-vs-ryokan-law"),
+              ("2", "か月以上", "Wi-Fi工事にかかった期間（私たちの開業）", "古い家の配線で家電が同時に使えない、工事後の想定外の請求なども経験しました。", "case-rental-house-inn-first-year"),
+              ("稼働率92", "%でも赤字", "取材したオーナーの宿の例", "清掃が月25回以上かかり、実質赤字でした。1泊の料金を9,800円から18,500円に上げると、売上が増え、清掃は月7回前後に減りました。", "case-owner-pricing-mistake")],
+        points_title="私たちがつまずいたところを、あなたは先回りできます",
+        letter="[[私たちがつまずいたところは、先回りできます。]]始めるかどうかは、試算を見てから決めてください。"),
 }
 
 
@@ -4166,7 +4370,7 @@ def detail_flow(key):
             <div class="dflow__body">
               <h3 class="dflow__title">{e(t)}</h3>
               <p class="dflow__text">{e(d)}</p>
-              <details class="spfold" open><summary>お願いすること・費用を見る</summary>
+              <details class="spfold" open><summary>お願いすること</summary>
               <dl class="dflow__roles">
                 <div><dt>お客様にお願いすること</dt><dd>{e(you)}</dd></div>
                 <div><dt>アキヤドが行うこと</dt><dd>{e(we)}</dd></div>
@@ -4179,7 +4383,7 @@ def detail_flow(key):
 {items}
         </ol>
         <ul class="dflow__notes reveal">
-          <li>ご提案まではすべて無料です。どの段階でも、お断りいただけます。</li>
+          <li>ご提案まではすべて無料です。内容を見てから、進めるかどうかを決めていただけます。</li>
           <li>しつこい営業や、ご希望のない電話はいたしません。</li>
           <li>期間は目安です。物件の状態や手続きの状況によって前後します。</li>
         </ul>"""
@@ -4200,122 +4404,262 @@ def note_story(indent="        "):
 {indent}    <span class="mstory__en">Founder's story</span>
 {indent}    <span class="mstory__title">会社員が片道2時間の下田で、民泊を始めた記録</span>
 {indent}    <span class="mstory__text">合同会社RIVIA&CO.の代表社員の片井が、はじめて民泊に挑戦したときの体験記です。開業までのリアルと、開業後3か月の歩みをnoteにまとめています。</span>
-{indent}    <span class="mstory__link">noteで読む（有料・別タブで開きます） {ARROW}</span>
+{indent}    <span class="mstory__link">noteで読む（別タブで開きます） {ARROW}</span>
 {indent}  </span>
 {indent}</a>
 """
 
 
+def media_form(sv):
+    """サービスページのフォーム。最初に「無料で相談する／資料をもらう」を選び、名前とメールを送る。
+    資料を選ぶと「ご相談カテゴリ」を「サービス資料の請求」にする（tools/forms/Code.gs が資料の請求と判定し、自動返信に資料を付ける）"""
+    reps = [('class="qform reveal" data-delay="2"', 'class="qform qform--media mform2__form"'),
+            ('data-thanks="thanks.html?form=contact"', 'data-thanks="thanks.html"'),
+            ("【RIVIA&amp;CO.】", "【アキヤド】"),
+            (f'<p class="qform__title">{e(sv["name"])}の無料相談</p>\n', ''),
+            ('<p class="qform__lead">まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。</p>\n', ''),
+            (f'<input type="hidden" name="ご相談カテゴリ" value="{e(sv["name"])}">',
+             f'<input type="hidden" name="ご相談カテゴリ" value="{e(sv["name"])}" data-consult="{e(sv["name"])}" data-doc="サービス資料の請求">'),
+            ('<label class="qform__field"><span>ご相談内容', '<label class="qform__field mform2__consult-only"><span>ご相談内容'),
+            ('<label class="qform__field qform__file">', '<label class="qform__field qform__file mform2__consult-only">'),
+            (f'<button type="submit" class="btn qform__submit">無料で相談する {ARROW}</button>',
+             f'<button type="submit" class="btn qform__submit"><span class="mform2__submit-t">無料で相談する</span> {ARROW}</button>')]
+    form = quick_form(sv["category"], sv["name"])
+    for old, rep in reps:
+        assert old in form, old
+        form = form.replace(old, rep)
+    return f"""          <div class="mform2" id="diag"><span id="diag-doc" class="mform2__anchor"></span>
+            <p class="mform2__title">{e(sv["name"])}について</p>
+            <div class="mform2__modes" role="radiogroup" aria-label="ご希望">
+              <button type="button" class="mform2__mode" role="radio" aria-checked="true" data-mode="consult"><strong>無料で相談する</strong><span>2営業日以内にご連絡します</span></button>
+              <button type="button" class="mform2__mode" role="radio" aria-checked="false" data-mode="doc"><strong>資料をもらう</strong><span>プランの資料をメールでお送りします</span></button>
+            </div>
+{form}
+          </div>"""
+
+
 def media_service_page(sv):
-    from figures import icon, flow as fig_flow
+    from figures import icon
     key = sv["key"]
+    lp = MEDIA_SERVICE_LP[key]
+    more = MEDIA_SERVICE_MORE[key]
     grp = next(g for g in MEDIA_PLAN_GROUPS if g[0] == key)
     _, label, _, src, names = grp
     money_label = "受け取り方" if src == "operation" else "費用"
     plans = sorted((p for p in PLANS[src]["plans"] if p["name"] in names), key=lambda p: names.index(p["name"]))
     plan_cards = "\n".join(media_plan_card(p, key, money_label) for p in plans)
-    worries = "".join(f'<li>{e(w)}</li>' for w in sv["worries"])
-    strengths = "\n".join(f"""          <li class="msv-point reveal" data-delay="{i - 1}">
-            <span class="msv-point__no">POINT {i:02d}</span>
-            <h3 class="msv-point__title">{e(t)}</h3>
-            <p class="msv-point__text">{e(d)}</p>
-          </li>""" for i, (ic, t, d) in enumerate(sv["strengths"], 1))
-    g = next((x for x in MEDIA_GUIDES if x["key"] == key), None)
-    related = [ARTICLE_BY_SLUG[sl] for sl in (g["slugs"] if g else [])]
-    reviews = "\n".join(f"""            <figure class="mvoice reveal"><blockquote class="mvoice__text">{e(r["text"])}</blockquote>
-              <figcaption class="mvoice__who"><span class="mvoice__plan">NODE Shimoda</span>{e(r["who"])}・{e(r["date"])}</figcaption></figure>""" for r in NODE_REVIEWS)
-    title_html = "<br>".join(e(t) for t in sv["title"].split("\n"))
     crumbs = media_crumbs([("アキヤド", "media.html"), ("アキヤドのプラン", "media/plans.html"), (sv["name"], "")])
-    cta_band = f"""        <div class="msv-band reveal">
-          <p class="msv-band__text">まずは話を聞いてみたい方も、資料で比べたい方も。<br class="pc-only">ご相談・資料のお届けは無料です。</p>
-          <div class="msv-band__btns">
-            <a href="#msv-form" class="mbtn" data-cta="media-service-mid">無料で相談する {ARROW}</a>
-            {plan_doc_link(sv["slug"])}
-          </div>
-        </div>"""
-    body = f"""    <section class="mhero msv-hero">
+    worries = "".join(f'<li>{e(w)}</li>' for w in sv["worries"])
+
+    # いくら？
+    pr = lp["price"]
+    if "formula" in pr:
+        steps = []
+        # スマホは「宿の収益 − 改修費 ＝ 買取価格」と短い言葉の式にして、言葉の説明は式の下に並べる（縦に積むと式に見えず、長い言葉を横に並べると窮屈）
+        notes = []
+        for i, (t, n, sh) in enumerate(pr["formula"]):
+            op = ["", '<span class="mprice__op" aria-hidden="true">−</span>', '<span class="mprice__op" aria-hidden="true">＝</span>'][i]
+            steps.append(f'{op}<div class="mprice__term{" is-result" if i == 2 else ""}"><span class="mprice__term-t"><span class="pc-only">{e(t)}</span><span class="sp-only">{e(sh)}</span></span><span class="mprice__term-n pc-only">{e(n)}</span></div>')
+            notes.append(f'<div><dt>{e(sh)}</dt><dd>{e(t)}。{e(n)}</dd></div>')
+        facts = "".join(f'<li><span class="mprice__fact-big">{e(b)}</span><span class="mprice__fact-l">{e(l)}</span></li>' for b, l in pr["facts"])
+        price_body = f"""        <div class="mprice__formula reveal">{"".join(steps)}</div>
+        <dl class="mprice__fnotes sp-only reveal">{"".join(notes) if "formula" in pr else ""}</dl>
+        <ul class="mprice__facts reveal">{facts}</ul>"""
+    else:
+        cards = "".join(f"""<li class="mprice__card">
+            <p class="mprice__card-label">{e(lbl)}</p>
+            <p class="mprice__card-num"><small>{e(pre)}</small>{e(num)}<small>{e(unit)}</small></p>
+            <p class="mprice__card-ex">{e(ex)}</p>
+            <p class="mprice__card-note">{e(nt)}</p>
+          </li>""" for lbl, pre, num, unit, ex, nt in pr["cards"])
+        extra = ""
+        if pr.get("factors"):
+            extra += '<div class="mprice__factors reveal"><p>家賃が決まる4つのこと</p><ul>' + "".join(f"<li>{e(f)}</li>" for f in pr["factors"]) + "</ul></div>"
+        if pr.get("fee"):
+            extra += f'<p class="mprice__fee reveal">{e(pr["fee"])}</p>'
+        price_body = f"""        <ul class="mprice__cards mprice__cards--{len(pr["cards"])} reveal">{cards}</ul>
+        {extra}"""
+    src_link = f' <a href="media/{pr["src"]}.html">運営事例の記事 {ARROW}</a>' if pr.get("src") else ""
+
+    risks = "".join(f"""<li class="mrisk">
+            <p class="mrisk__num">{(lambda m: (f'<small class="mrisk__pre">{e(m.group(1))}</small>' if m.group(1) else "") + e(m.group(2)))(re.match(r"(\D*)(.*)", n))}<small>{e(u)}</small></p>
+            <p class="mrisk__label">{e(l)}</p>
+            <p class="mrisk__text">{e(t)}</p>
+            <a class="mrisk__link" href="media/{sl}.html">くわしく {ARROW}</a>
+          </li>""" for n, u, l, t, sl in lp["risk"])
+
+    points = "\n".join(f"""          <li class="mpoint reveal">
+            <span class="mpoint__icon" aria-hidden="true">{icon(ic)}</span>
+            <div><h3 class="mpoint__title">{e(t)}</h3><p class="mpoint__text">{e(d)}</p></div>
+          </li>""" for ic, t, d in sv["strengths"])
+
+    founders = "".join(f'<figure class="mletter__face"><img src="images/{f["photo"]}" alt="{e(f["name"])}" width="96" height="96" loading="lazy" decoding="async"><figcaption>{e(f["name"])}<small>代表社員</small></figcaption></figure>'
+                       for f in FOUNDERS)
+    review = NODE_REVIEWS[0]
+    cmp = more["compare"]
+    wb = lambda t: e(t).replace("|", "<wbr>")  # 「|」は改行してよい位置
+    # 各マスの先頭の記号（◎○△×）を、色つきの大きな評価マークにする。言葉は小さく添える
+    marks = {"◎": ("good", "とてもよい"), "○": ("ok", "よい"), "△": ("bad", "負担・注意"), "×": ("none", "なし")}
+    # 記号は文字ではなく図形で描く（文字だとフォントによって丸の中心から上下にずれるため）
+    _mk = '<svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">{}</svg>'
+    mark_svg = {"◎": _mk.format('<circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/>'),
+                "○": _mk.format('<circle cx="10" cy="10" r="6.5"/>'),
+                "△": _mk.format('<path d="M10 3.6 17 15.6H3z"/>'),
+                "×": _mk.format('<path d="M4.8 4.8l10.4 10.4M15.2 4.8 4.8 15.2"/>')}
+    def cmp_cell(c):
+        m = marks.get(c[:1])
+        if not m:
+            return f"<td>{wb(c)}</td>"
+        return f'<td><span class="mcmp__mark mcmp__mark--{m[0]}" role="img" aria-label="{m[1]}">{mark_svg[c[:1]]}</span><span class="mcmp__t">{wb(c[1:])}</span></td>'
+    cmp_head = "".join(f"<th scope=\"col\">{wb(c)}</th>" for c in cmp["cols"])
+    cmp_rows = "\n".join(f"""              <tr{' class="is-us"' if us else ""}><th scope="row">{wb(n)}</th>{"".join(cmp_cell(c) for c in cells)}</tr>"""
+                         for n, cells, us in cmp["rows"])
+    fit_no = "".join(f"<li>{e(x)}</li>" for x in more["fit_no"])
+    cases = [ARTICLE_BY_SLUG[sl] for sl in more["cases"]]
+    closing_t, closing_d = more["closing"]
+
+    body = f"""    <section class="mlp-hero">
       <div class="container">{crumbs}
-        <div class="msv-hero__grid">
-          <div class="msv-hero__text">
-            <p class="mhero__en reveal">{e(sv["eyebrow"])}</p>
-            <h1 class="msv-hero__title reveal" data-delay="1">{title_html}</h1>
-            <p class="mhero__lead reveal" data-delay="2">{e(sv["lead"])}</p>
-            <ul class="mcta__points msv-hero__points reveal" data-delay="2"><li>相談・お見積りは無料</li><li>全国対応・オンライン可</li><li>しつこい営業はしません</li></ul>
+        <div class="mlp-hero__grid">
+          <div class="mlp-hero__text">
+            <p class="mlp-hero__eyebrow reveal">{e(sv["eyebrow"])}<span class="pc-only">｜{e(sv["name"])}</span></p>
+            <h1 class="mlp-hero__title reveal" data-delay="1">{lp["hero"]}</h1>
+            <p class="mlp-hero__sub pc-only reveal" data-delay="2">{e(lp["hero_sub"])}</p>
+            <p class="mlp-hero__sub mlp-hero__sub--sp sp-only reveal" data-delay="2">{e(lp["hero_sub_sp"]).replace("|", "<br>")}</p>
+            <ul class="mlp-hero__promise reveal" data-delay="2"><li><strong>無料</strong>相談・試算</li><li><strong>2営業日</strong>以内にご連絡</li><li><strong>全国</strong>オンライン可</li></ul>
+            <picture class="mlp-hero__photo reveal" data-delay="3"><source srcset="images/photos/w/{lp["photo"]}-800.webp" type="image/webp"><img src="images/photos/{lp["photo"]}.jpg" alt="" width="800" height="533" loading="eager" decoding="async"></picture>
           </div>
-          <div id="msv-form">
-{quick_form(sv["category"], sv["name"]).replace('class="qform reveal"', 'class="qform qform--media reveal"').replace('data-thanks="thanks.html?form=contact"', 'data-thanks="thanks.html"').replace("【RIVIA&amp;CO.】", "【アキヤド】")}
-          </div>
+{media_form(sv)}
         </div>
       </div>
     </section>
 
-    <section class="section msec msec--first">
-      <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Worries</p><h2 class="msec__title">こんなお悩みはありませんか？</h2></div></div>
-        <ul class="msv-worries reveal">{worries}</ul>
-        <p class="msv-answer reveal">そのお悩み、<strong>宿を運営するアキヤド</strong>にご相談ください。</p>
+    <section class="mlp-sec mlp-sec--worry">
+      <div class="container mlp-narrow">
+        <h2 class="mlp-title reveal">{e(lp["worries_title"])}</h2>
+        <ul class="mlp-worries reveal">{worries}</ul>
       </div>
     </section>
 
-    <section class="section section--soft msec">
+{scheme_html(key)}
+    <section class="mlp-sec mlp-sec--soft">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Why Akiyado</p><h2 class="msec__title">{e(sv["name"])}が選ばれる理由</h2></div></div>
-        <ol class="msv-points">
-{strengths}
+        <p class="mlp-en reveal">How much?</p>
+        <h2 class="mlp-title reveal">{e(pr["title"])}</h2>
+        <p class="mlp-lead reveal">{e(pr["lead"])}</p>
+{price_body}
+        <p class="mprice__note">※ {e(pr["note"])}{src_link}</p>
+      </div>
+    </section>
+
+    <section class="mlp-sec">
+      <div class="container">
+        <p class="mlp-en reveal">Risk</p>
+        <h2 class="mlp-title reveal">{e(lp["risk_title"])}</h2>
+        <ul class="mrisks reveal">{risks}</ul>
+        <p class="mrisks__hint" aria-hidden="true">横にスワイプして、{len(lp["risk"])}つ見られます →</p>
+      </div>
+    </section>
+
+    <section class="mlp-sec mlp-sec--green">
+      <div class="container">
+        <h2 class="mlp-title mlp-title--light reveal">{e(lp["points_title"])}</h2>
+        <ol class="mpoints">
+{points}
         </ol>
-{cta_band}
+        <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-mid">無料で相談する {ARROW}</a><a href="#diag-doc" class="mbtn mbtn--sub" data-cta="media-service-mid-doc">資料をもらう（無料） {ARROW}</a></div>
       </div>
     </section>
 
-    <section class="section msec" id="plans">
+    <section class="mlp-sec">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Plans</p><h2 class="msec__title">プランと条件の目安</h2></div></div>
+        <div class="mletter reveal">
+          <p class="mlp-en">Message</p>
+          <h2 class="mletter__title">会社員から宿を始めた私たちが、<br class="pc-only">ご相談をお受けします</h2>
+          <div class="mletter__faces">{founders}</div>
+          <div class="mletter__body">
+            <p>はじめまして。アキヤドを運営する合同会社RIVIA&amp;CO.の、石原と片井です。</p>
+            <p>私たちは宿泊業の経験がない会社員として、住まいから離れた静岡県下田市で、借りた家を宿にしました。準備に約7か月。法人での融資の相談が見送られたこと、工事のあとの想定外の請求、古い配線で家電が同時に使えないこと。つまずきは、ひと通り経験しました。</p>
+            <p>それでも、清掃を地域の方にお願いし、セルフチェックインなどの仕組みを整えたことで、いまは<strong class="hl">現地に行くのは数か月に1回ほどで宿が回っています</strong>。</p>
+            <p>空き家は、手を入れれば旅をする人の滞在先になり、まちに人の流れを生みます。{e(lp["letter"]).replace("[[", "<strong class=\"hl\">").replace("]]", "</strong>")}</p>
+            <p class="mletter__sign">合同会社RIVIA&amp;CO. 代表社員<br>石原 佑真・片井 進太</p>
+          </div>
+          <p class="msv-stats__cap">運営する宿の一例<span>NODE Shimoda（静岡県下田市）</span></p>
+          <ul class="msv-stats">
+            <li><p class="msv-stats__num"><small class="msv-stats__pre">約</small>14<small>か月</small></p><p class="msv-stats__label">初期投資を回収</p><p class="msv-stats__note">約98%（購入費が基準）</p></li>
+            <li><p class="msv-stats__num"><small class="msv-stats__pre">約</small>53<small>%</small></p><p class="msv-stats__label">1年目の稼働率</p><p class="msv-stats__note">計画の約1.3倍</p></li>
+            <li><p class="msv-stats__num">★4.88</p><p class="msv-stats__label">Airbnb の評価</p><p class="msv-stats__note">51件・掲載時点</p></li>
+          </ul>
+          <figure class="mletter__voice"><blockquote><p class="mletter__q">{e(review["text"])}</p></blockquote><figcaption>NODE Shimoda のゲスト<br>{e(review["who"])}・{e(review["date"])}</figcaption></figure>
+          <p class="mletter__more"><a href="media/case-rental-house-inn-first-year.html">下田の宿の運営データを見る {ARROW}</a><a href="{NOTE_STORY_URL}" target="_blank" rel="noopener" data-cta="note-story">開業の体験記（note） {ARROW}</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mlp-sec mlp-sec--soft">
+      <div class="container">
+        <p class="mlp-en reveal">Compare</p>
+        <h2 class="mlp-title reveal">ほかの方法と、ここが違います</h2>
+        <p class="mcmp__legend" aria-hidden="true"><span><b class="mcmp__mark mcmp__mark--good">{mark_svg["◎"]}</b>とてもよい</span><span><b class="mcmp__mark mcmp__mark--ok">{mark_svg["○"]}</b>よい</span><span><b class="mcmp__mark mcmp__mark--bad">{mark_svg["△"]}</b>負担・注意</span><span><b class="mcmp__mark mcmp__mark--none">{mark_svg["×"]}</b>なし</span></p>
+        <div class="msv-compare reveal">
+          <table>
+            <thead><tr><th scope="col">選択肢</th>{cmp_head}</tr></thead>
+            <tbody>
+{cmp_rows}
+            </tbody>
+          </table>
+        </div>
+        <p class="msv-compare__note">※ 読み手から見た一般的な傾向の目安です。実際の条件は物件や契約によって変わります。{(" " + e(cmp["note"])) if cmp.get("note") else ""}</p>
+        <details class="mlp-fold reveal"><summary>ほかの方法が合うかもしれない方</summary><ul>{fit_no}</ul></details>
+      </div>
+    </section>
+
+    <section class="mlp-sec" id="plans">
+      <div class="container">
+        <p class="mlp-en reveal">Plans</p>
+        <h2 class="mlp-title reveal">プランと条件の目安</h2>
         <div class="mplans__cards mplans__cards--{len(plans)} reveal">
 {plan_cards}
         </div>
+        {f'<p class="mrisks__hint" aria-hidden="true">横にスワイプして、{len(plans)}つ見比べられます →</p>' if len(plans) > 1 else ""}
         <p class="mplans__note">{e(PLANS[src]["note"])}</p>
-        <p class="mcta__plans"><a href="media/plans.html">ほかのサービスも見る {ARROW}</a></p>
       </div>
     </section>
 
-    <section class="section section--soft msec">
+    <section class="mlp-sec mlp-sec--soft">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">How it works</p><h2 class="msec__title">ご相談からの流れ</h2></div></div>
+        <p class="mlp-en reveal">Flow</p>
+        <h2 class="mlp-title reveal">ご相談からの流れ。<br>ご提案までは無料です</h2>
+        <div class="mlp-flow">
 {detail_flow(key)}
-      </div>
-    </section>
-
-    <section class="section msec">
-      <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Track record</p><h2 class="msec__title">アキヤドが運営している宿（一例）</h2></div></div>
-        <div class="msv-record reveal">
-          <p class="msv-record__lead"><span class="ex-badge">運営施設の一例</span>アキヤドは複数の宿を自ら運営しています。ここでは、その一例として静岡県下田市の一棟貸しの宿「NODE Shimoda」をご紹介します。<br class="pc-only">記事やご提案は、現場で確かめた運営の知識をもとにしています。</p>
-          <p class="msv-record__label">ゲストの声（Airbnbのレビューより抜粋）</p>
-          <div class="mvoices">
-{reviews}
-          </div>
-{note_story()}          <p class="mcta__plans"><a href="index.html#project">運営実績を見る {ARROW}</a></p>
         </div>
       </div>
     </section>
 
-    <section class="section section--soft msec">
-      <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">FAQ</p><h2 class="msec__title">よくある質問</h2></div></div>
+    <section class="mlp-sec">
+      <div class="container mlp-narrow">
+        <p class="mlp-en reveal">FAQ</p>
+        <h2 class="mlp-title reveal">よくある質問</h2>
         <div class="faq reveal">
-{faq_html(sv["faq"])}
+{faq_html(sv["faq"] + more["faq_more"])}
         </div>
-{cta_band}
       </div>
     </section>
 
-{media_section(related, eyebrow="Articles", title=f"{label}におすすめの記事", more=False, keep_order=True)}
+    <section class="mlp-sec mlp-sec--final">
+      <div class="container mlp-narrow">
+        <h2 class="mlp-title reveal">{e(closing_t)}</h2>
+        <p class="mlp-lead reveal">{e(closing_d)}</p>
+        <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-bottom">無料で相談する {ARROW}</a><a href="#diag-doc" class="mbtn mbtn--sub" data-cta="media-service-bottom-doc">資料をもらう（無料） {ARROW}</a></div>
+        <p class="mlp-final__note">相談・試算は無料。しつこい営業はしません。</p>
+      </div>
+    </section>
 
-{media_cta(sv["category"])}"""
+{media_section(cases, eyebrow="Cases", title=more["cases_title"], more=False, keep_order=True)}"""
     ld = [{"@context": "https://schema.org", "@type": "Service", "name": sv["name"], "provider": org_ref(),
            "areaServed": "JP", "description": sv["lead"]},
           {"@context": "https://schema.org", "@type": "FAQPage",
-           "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in sv["faq"]]},
+           "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in sv["faq"] + more["faq_more"]]},
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
               {"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"},
               {"@type": "ListItem", "position": 2, "name": "アキヤドのプラン", "item": f"{SITE}/media/plans.html"},
@@ -4418,15 +4762,15 @@ def media_intro():
           <div class="mintro__text">
             <span class="eyebrow reveal">Media</span>
             <h2 class="section-title section-title--logo reveal"><a href="media.html" class="tlogo" aria-label="アキヤド（空き家と民泊のメディア）">{AKIYADO_MARK}<span class="tlogo__ja" translate="no">アキヤド</span></a><span class="tlogo__sub">空き家と民泊のメディア</span></h2>
-            <p class="mintro__copy reveal" data-delay="1">空き家を、売る。活かす。<br>民泊をはじめる。</p>
+            <p class="mintro__copy reveal" data-delay="1">空き家を売る。活かす。<br>民泊をはじめる。</p>
             <p class="mintro__lead reveal" data-delay="1">自ら宿を運営する私たちが、空き家と民泊の悩みに<br class="pc-only">順を追ってお答えするメディアです。</p>
             <div class="mintro__btns reveal" data-delay="2">
               <a href="media.html" class="btn">アキヤドを見る {ARROW}</a>
             </div>
           </div>
           <a href="media.html" class="mintro__shots reveal" data-delay="1" aria-label="アキヤドを見る">
-            <span class="mintro__pc"><span class="mintro__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="images/media-preview-pc.webp" alt="アキヤドのトップページ（パソコン表示）" width="1440" height="900" loading="lazy" decoding="async"></span>
-            <span class="mintro__sp"><img src="images/media-preview-sp.webp" alt="アキヤドのトップページ（スマホ表示）" width="520" height="1040" loading="lazy" decoding="async"></span>
+            <span class="mintro__pc"><span class="mintro__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="images/media-preview-pc.webp?v={asset_version("images/media-preview-pc.webp")}" alt="アキヤドのトップページ（パソコン表示）" width="1440" height="900" loading="lazy" decoding="async"></span>
+            <span class="mintro__sp"><img src="images/media-preview-sp.webp?v={asset_version("images/media-preview-sp.webp")}" alt="アキヤドのトップページ（スマホ表示）" width="520" height="1040" loading="lazy" decoding="async"></span>
           </a>
         </div>
         <ul class="mintro__entries reveal">{entries}</ul>
@@ -4438,6 +4782,7 @@ MEDIA_INTRO_DESC = {
     "sell": "相続した家を手放すときの流れ、税金の特例、放置したときのリスク",
     "use": "家を残したまま宿として活かす方法、貸す契約、改修の考え方",
     "side": "民泊の始め方、制度と届出、開業資金、集客と運営",
+    "run": "運営中の宿の数字の見方、予約の増やし方、人手と運営の整え方",
 }
 
 
@@ -4615,7 +4960,7 @@ def media_contact_page():
             </div>
           </div>
           <button type="submit" class="mbtn mform__submit">【無料】相談・お問い合わせをする {ARROW}</button>
-          <p class="mform__note">ご提案まではすべて無料です。ご相談のあと、お断りいただいても構いません。</p>
+          <p class="mform__note">ご提案まではすべて無料です。内容を見てから、進めるかどうかを決めていただけます。</p>
         </form>
         <p class="mform__corp reveal">アキヤドは、合同会社RIVIA&amp;CO.が運営しています。不動産会社様との協業や、WEB集客・採用のご相談は<a href="CORP_CONTACT">RIVIA&amp;CO.のお問い合わせ</a>からお願いします。</p>
       </div>
@@ -4644,13 +4989,23 @@ def media_thanks_page():
     page("media/thanks.html", "送信完了｜アキヤド", "アキヤドへのお問い合わせを受け付けました。", body, current="media", noindex=True)
 
 
+def media_tabs(current=""):
+    """PC のヘッダー下のタブ。読者の状況（ガイド）・記事検索・プランに絞る（残りは右上のメニューに入れる）"""
+    items = [(g["key"], f"media/guide-{g['key']}.html", g["label"]) for g in MEDIA_GUIDES] + [("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "アキヤドのプラン")]
+    cur = ' aria-current="page"'
+    lis = "".join(f'<li><a href="{href}"{cur if k == current else ""}>{e(n)}</a></li>' for k, href, n in items)
+    return f"""    <nav class="mtabs" aria-label="アキヤドのガイド">
+      <div class="container"><ul class="mtabs__list">{lis}</ul></div>
+    </nav>"""
+
+
 def media_nav(current=""):
-    """メディア内の共通ナビ。読者の状況（ガイド）を先に、テーマと検索を後に置く"""
-    items = [("top", "media.html", "トップ")] + [(g["key"], f"media/guide-{g['key']}.html", g["label"]) for g in MEDIA_GUIDES] + \
+    """右上のメニューボタン（3本線）で開くメニュー。ガイドを先に、学ぶ・事例・検索・プランを後に置く（トップへはロゴから戻る）"""
+    items = [(g["key"], f"media/guide-{g['key']}.html", g["label"]) for g in MEDIA_GUIDES] + \
             [("learn", "media/learn.html", "基礎から学ぶ"), ("cases", "media.html#cases", "事例から探す"), ("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "アキヤドのプラン")]
     cur = ' aria-current="page"'
     lis = "".join(f'<li><a href="{href}"{cur if k == current else ""}>{e(n)}</a></li>' for k, href, n in items)
-    # スマホでは、ヘッダーのボタンで開くメニューにする（相談・資料請求のボタンも入れる）
+    # 相談・資料請求のボタンも入れる
     return f"""    <nav class="mnav" id="mnav" aria-label="アキヤドのメニュー">
       <div class="container"><ul class="mnav__list">{lis}</ul>
         <div class="mnav__ctas">
@@ -4780,7 +5135,7 @@ def media_index_page():
       <div class="container mtop__inner">
         <div class="mtop__text">
           <p class="mtop__eyebrow reveal">空き家と民泊のメディア「アキヤド」</p>
-          <h1 class="mtop__title reveal" data-delay="1"><span class="mtop__line">空き家を、</span><span class="mtop__line"><em>売る。活かす。</em></span><span class="mtop__line"><em>民泊</em>をはじめる。</span></h1>
+          <h1 class="mtop__title reveal" data-delay="1"><span class="mtop__line">空き家を</span><span class="mtop__line"><em>売る。活かす。</em></span><span class="mtop__line"><em>民泊</em>をはじめる。</span></h1>
           <p class="mtop__lead reveal" data-delay="1">宿を運営する私たちが、空き家と民泊の悩みに、実際の数字でお答えします。</p>
           <div class="mtop__btns reveal" data-delay="2">
             <a href="contact.html?category=operation&amp;from=akiyado-fv" class="mbtn mtop__btn" data-cta="media-fv">無料で相談する {ARROW}</a>
@@ -5015,7 +5370,8 @@ def media_guide_page(g):
     worries = "".join(f"<li>{e(w)}</li>" for w in g["worries"])
     _gc = {"use": ["case-owner-diy-cottage", "case-owner-subsidy-akiya", "case-owner-fishing-port", "case-owner-licensed-akiya"],
            "side": ["case-owner-pricing-mistake", "case-owner-rental-side-business", "case-owner-licensed-akiya", "case-owner-subsidy-akiya"],
-           "sell": ["case-owner-diy-cottage"]}.get(g["key"], [])
+           "sell": ["case-owner-diy-cottage"],
+           "run": ["case-owner-pricing-mistake", "case-owner-rental-side-business"]}.get(g["key"], [])
     guide_cases = media_section([ARTICLE_BY_SLUG[x] for x in _gc if x in ARTICLE_BY_SLUG], eyebrow="Cases", title="近い事例を読む", lead="実際に民泊を運営しているオーナーへの取材です。", more=False, limit=4, keep_order=True) if _gc else ""
     body = f"""{media_hero("Guide", e(g["title"]), g["lead"], crumbs)}
 
@@ -5184,6 +5540,7 @@ def article_page(a):
     for_links = "".join(f'<li><a href="media/guide-{x["key"]}.html">{e(x["title"])}</a></li>' for x in guides_of(a["slug"]))
     for_html = f'<div class="article__for"><span>こんな方に</span><ul>{for_links}</ul></div>' if for_links else ""
     g = guide_of(a["slug"])
+    cv_text, cv_href = inline_cta_parts(a, g)
     guide_box = ""
     if g:
         idx = g["slugs"].index(a["slug"])
@@ -5233,10 +5590,10 @@ def article_page(a):
         </section>
 
         <aside class="inline-cta">
-          <p class="inline-cta__text">{e(CV_MESSAGES.get(g["key"] if g else "", CV_MESSAGES[""]))}</p>
+          <p class="inline-cta__text">{e(cv_text)}</p>
           <div class="inline-cta__actions">
             <a href="contact.html?category={a["services"][0]}&amp;from=akiyado" class="btn mbtn" data-cta="media-inline">無料で相談する {ARROW}</a>
-            <a href="media/{MEDIA_SERVICE_BY_KEY[g["key"] if g else "use"]["slug"]}.html" class="inline-cta__plan">サービスとプランを見る {ARROW}</a>
+            <a href="{cv_href}" class="inline-cta__plan">サービスとプランを見る {ARROW}</a>
           </div>
         </aside>
 

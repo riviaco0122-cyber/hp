@@ -22,7 +22,7 @@
   /**
    * スマホ：右上のメニューボタン（3本線）で全画面メニューを開閉
    */
-  // アキヤド（スマホ）：ヘッダーのボタンでメニューを開閉する
+  // アキヤド：ヘッダーのボタン（3本線）でメニューを開閉する（PC・スマホ共通）
   var mmenuBtn = document.querySelector('.mmenu-btn');
   var mheader = document.querySelector('.header--media');
   if (mmenuBtn && mheader) {
@@ -35,6 +35,8 @@
     mmenuBtn.addEventListener('click', function () { setMmenu(!mheader.classList.contains('is-mnav-open')); });
     mheader.querySelectorAll('.mnav a').forEach(function (a) { a.addEventListener('click', function () { setMmenu(false); }); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMmenu(false); });
+    // PC：メニューの外をクリックしたら閉じる
+    document.addEventListener('click', function (e) { if (mheader.classList.contains('is-mnav-open') && !mheader.contains(e.target)) setMmenu(false); });
   }
   var menuBtn = document.querySelector('.menu-btn');
   function setMenu(open) {
@@ -540,6 +542,40 @@
   });
 
   /**
+   * アキヤドのサービスページのフォーム：最初に「無料で相談する／資料をもらう」を選ぶ
+   * 資料を選ぶと、ご相談カテゴリを「サービス資料の請求」にする
+   * （tools/forms/Code.gs と下のフォーム送信が、この文言で資料の請求と判定する）
+   */
+  document.querySelectorAll('.mform2').forEach(function (box) {
+    var form = box.querySelector('form');
+    var cat = form.querySelector('input[name="ご相談カテゴリ"]');
+    var subject = form.querySelector('input[name="_subject"]');
+    var subjectBase = subject ? subject.value : '';
+    var submitT = form.querySelector('.mform2__submit-t');
+    var setMode = function (mode) {
+      box.querySelectorAll('.mform2__mode').forEach(function (m) { m.setAttribute('aria-checked', String(m.getAttribute('data-mode') === mode)); });
+      var doc = mode === 'doc';
+      cat.value = cat.getAttribute(doc ? 'data-doc' : 'data-consult');
+      if (subject) subject.value = doc ? subjectBase.replace('のご相談', 'の資料請求') : subjectBase;
+      if (submitT) submitT.textContent = doc ? '資料をもらう（無料）' : '無料で相談する';
+      form.querySelectorAll('.mform2__consult-only').forEach(function (el) { el.hidden = doc; });
+    };
+    box.querySelectorAll('.mform2__mode').forEach(function (m) {
+      m.addEventListener('click', function () { setMode(m.getAttribute('data-mode')); });
+    });
+    // ページ内のボタン：#diag は相談、#diag-doc は資料を選んだ状態でフォームへ
+    document.querySelectorAll('a[href="#diag"], a[href="#diag-doc"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        setMode(a.getAttribute('href') === '#diag-doc' ? 'doc' : 'consult');
+        box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        var first = form.querySelector('input[name="name"]');
+        if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 500);
+      });
+    });
+  });
+
+  /**
    * フォーム送信：画面を移動せずに送信し、成功したら送信完了ページ（thanks.html）へ移動する
    * （JS が使えない環境では、通常の送信にそのまま切り替わる）
    */
@@ -633,6 +669,8 @@
   function fixBlock(b) {
     b.style.letterSpacing = '';
     if (!b.offsetParent) return;
+    // サービスページ（LP）の本文は、行末まで詰めて自然に折り返す（字間や文末の調整をしない）
+    if (b.closest && b.closest('.mlp-sec, .mlp-hero')) return;
     var cs = getComputedStyle(b);
     var fs = parseFloat(cs.fontSize);
     var base = parseFloat(cs.letterSpacing) || 0;
