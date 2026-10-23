@@ -338,6 +338,10 @@ TOP_CONCEPT = dict(
     lead=["この家、どうしよう。|そう迷ったまま、|思い出ごと眠っている空き家が、|地方にはたくさんあります。",
           "私たちはその家を|自分たちの手で宿に再生し、|運営しています。",
           "泊まった人がまちで食べ、|買い、また帰ってくる。|一軒の家から、|地域に経済の循環を生み出します。"],
+    # スマホは短く（循環の図が続くので、文章は要点だけ）
+    lead_sp=["思い出ごと眠る空き家を、|私たちの手で宿に。",
+             "泊まった人がまちで食べ、|また訪れる。",
+             "一軒の家から、|地域にお金がめぐります。"],
 )
 # 宿を起点に、地域へ人とお金がめぐる循環（TOPのコンセプト横の図）
 TOP_CYCLE = [
@@ -1670,7 +1674,8 @@ def index_page():
               <span class="eyebrow">Concept</span>
               <h2 class="vision__copy">{e(TOP_CONCEPT["copy"]).replace("、", "、<br>", 1)}</h2>
             </div>
-            <p class="vision__lead reveal" data-delay="1">{"".join("<span class=\"vision__sent\">" + "".join(f"<span>{e(c)}</span>" for c in l.split("|")) + "</span>" for l in TOP_CONCEPT["lead"])}</p>
+            <p class="vision__lead vision__lead--pc reveal" data-delay="1">{"".join("<span class=\"vision__sent\">" + "".join(f"<span>{e(c)}</span>" for c in l.split("|")) + "</span>" for l in TOP_CONCEPT["lead"])}</p>
+            <p class="vision__lead vision__lead--sp reveal" data-delay="1">{"".join("<span class=\"vision__sent\">" + "".join(f"<span>{e(c)}</span>" for c in l.split("|")) + "</span>" for l in TOP_CONCEPT["lead_sp"])}</p>
           </div>
           <div class="cycle reveal" data-delay="1" role="img" aria-label="空き家を宿に再生し、旅行者がまちを訪れ、まちで食べて買い、ファンになって再び訪れる。その収益で次の空き家を再生する、地域の経済循環">
             <svg class="cycle__ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="36"/>{arrows}</svg>
@@ -2404,6 +2409,7 @@ def spec_md():
     w("")
     w("### Mission / Vision / Values")
     w(f"* **ミッション:** {MISSION['copy']} — " + "".join(MISSION["lead"]))
+    w(f"* **TOPのコンセプト:** {TOP_CONCEPT['copy']} — PC: " + "".join(TOP_CONCEPT["lead"]).replace("|", "") + " ／ スマホ（短い版）: " + "".join(TOP_CONCEPT["lead_sp"]).replace("|", ""))
     w(f"* **ビジョン:** {VISION['copy']}")
     for i, (t, en, d) in enumerate(VISION["steps"], 1):
         w(f"    {i}. **{t}（{en}）** — {d}")

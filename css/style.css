@@ -4512,3 +4512,6 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mlp-sec .mlp-lead, .mlp-sec .mlp-lead:has(> n-w.j) { text-align: center !important; }
 .mprice__note a { white-space: nowrap; }
 @media (max-width: 899px) { .mlp-sec .mlp-lead, .mlp-sec .mlp-lead:has(> n-w.j) { text-align: left !important; } }
+/* TOPのコンセプト：スマホは短い文章に切りかえる */
+.vision__lead--sp { display: none; }
+@media (max-width: 899px) { .vision__lead--pc { display: none; } .vision__lead--sp { display: block; } }
