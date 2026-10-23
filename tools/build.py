@@ -382,7 +382,7 @@ FLOW = [
 REASONS_LEAD = "官・大手・ベンチャーで経験を積んだ2人の創業者が、自ら宿を運営する現場の知見とあわせて支援します。"
 REASONS = [
     ("リクルート出身の、事業をつくる力", "代表の2人は、ともにリクルート出身。新規事業開発室でのゼロイチの立ち上げや、ベンチャーでの事業創出・組織拡大の経験を、宿と地域の事業づくりに活かします。",
-     "リクルート ／ HR\u00a0Tech・サイバーセキュリティベンチャー"),
+     "リクルート\u00a0／\u00a0HR\u00a0Tech・|サイバーセキュリティベンチャー"),
     ("県庁出身の、地域と行政を知る視点", "代表の片井は静岡県庁の出身。行政の立場で地域課題に向き合ってきた経験から、自治体や地域の方々との対話を、官民両方の視点で進めます。",
      "静岡県庁 ／ 大手メーカー"),
     ("データにもとづく、根拠のある判断", "位置情報データを扱うベンチャーやテクノロジー企業での経験を活かし、需要や収支を数字で見極めます。感覚に頼らない意思決定を支えます。",
@@ -1724,7 +1724,7 @@ def index_page():
             <span class="reason__num">{i:02d}</span>
             <h3 class="reason__title">{e(t)}</h3>
             <p class="reason__text">{e(d)}</p>
-            <p class="reason__career"><span>Career</span>{e(c).replace("|", "<br class=\"sp-only\">")}</p>
+            <p class="reason__career"><span>Career</span>{e(c).replace("|", "<wbr>")}</p>
           </li>"""
         for i, (t, d, c) in enumerate(REASONS, 1)
     )
@@ -4141,7 +4141,7 @@ MEDIA_SERVICES = [
               ("近所に迷惑がかからないか心配です。", "利用ルールの案内や、騒音・ごみへの対応など、周辺への配慮も運営に含めて行います。")]),
     dict(key="side", slug="service-kaigyo", name="アキヤド開業・運営プラン", category="management",
          eyebrow="副業で宿をはじめたい方へ", title="はじめての民泊を、\n開業準備から運営まで伴走します。",
-         lead="物件選び、許可や届出、写真や料金の決め方、開業後の集客まで。実際に宿を運営しているアキヤドが、任せたい範囲に合わせて支えます。",
+         lead="物件選び、許可や届出、写真や料金の決め方、開業後の集客まで。実際に宿を運営しているアキヤドが、任せたい範囲に合わせて支援します。",
          worries=["何から始めればいいか分からない", "民泊と旅館業、どちらで始めるべきか迷っている", "本業が忙しく、運営に時間をかけられない",
                   "物件が宿として収益を出せるか見通せない", "予約が入るページのつくり方が分からない"],
          strengths=[("doc", "開業までの手続きを一緒に", "制度の選び方、消防や届出の段取りなど、つまずきやすいところを先回りして進めます。"),
@@ -4261,7 +4261,7 @@ MEDIA_SERVICE_LP = {
         photo="old-town-street",
         hero="古くて売れない家も、<br><em>宿として活かせるなら</em><br>買い取ります。",
         hero_sub="相続した家、遠方で管理できない家。住まいとしては値段がつきにくい家も、宿として活かせるなら買い取れます。",
-        hero_sub_sp="値段がつきにくい家も、宿として活かせるなら買い取れます。",
+        hero_sub_sp="値段がつきにくい家も、|宿として活かせるなら買い取れます。",
         worries_title="こんなお悩み、ひとりで抱えていませんか？",
         price=dict(title="買取価格は、宿として稼げるかで決まります",
                    lead="一般の査定は「住まいとして売れるか」で見ます。アキヤドは、宿にしたときの収益から考えるため、古い家・地方の家でも金額をお出しできることがあります。",
@@ -4279,7 +4279,7 @@ MEDIA_SERVICE_LP = {
         photo="irori-room",
         hero="初期費用は<em>ほぼ0円</em>。<br>空き家を、毎月の家賃に。",
         hero_sub="アキヤドが借り上げ、改修から宿の運営まで行います。家は持ったまま、手間をかけずに家賃を受け取れます。",
-        hero_sub_sp="家は持ったまま、手間をかけずに家賃を受け取れます。",
+        hero_sub_sp="家は持ったまま、|手間をかけずに家賃を受け取れます。",
         worries_title="こんなお悩み、ひとりで抱えていませんか？",
         price=dict(title="家賃は、いくらになる？",
                    lead="周辺の宿の料金と稼働、広さ、改修にかかる費用から、物件ごとに試算します。受け取り方は2つから選べます。",
@@ -4296,8 +4296,8 @@ MEDIA_SERVICE_LP = {
     "side": dict(
         photo="scene-stay",
         hero="はじめての民泊を、<br><em>宿を運営する私たち</em>が伴走します。",
-        hero_sub="物件選び、許可や届出、料金の決め方、開業後の集客まで。会社員のまま宿を始めた私たちが、任せたい範囲に合わせて支えます。",
-        hero_sub_sp="物件選びから集客まで、任せたい範囲だけ支えます。",
+        hero_sub="物件選び、許可や届出、料金の決め方、開業後の集客まで。会社員のまま宿を始めた私たちが、任せたい範囲に合わせて支援します。",
+        hero_sub_sp="物件選びから集客まで、|任せたい範囲だけ支援します。",
         worries_title="こんなところで、止まっていませんか？",
         price=dict(title="いくらかかって、いくら残る？ 私たちの宿の数字です",
                    lead="創業メンバーが下田（静岡県）で、借りた家を一棟貸しの宿にしたときの数字です。物件や運営で変わりますが、計画を立てるときの目安になります。",
@@ -4477,7 +4477,7 @@ def media_service_page(sv):
             <p class="mlp-hero__eyebrow reveal">{e(sv["eyebrow"])}<span class="pc-only">｜{e(sv["name"])}</span></p>
             <h1 class="mlp-hero__title reveal" data-delay="1">{lp["hero"]}</h1>
             <p class="mlp-hero__sub pc-only reveal" data-delay="2">{e(lp["hero_sub"])}</p>
-            <p class="mlp-hero__sub mlp-hero__sub--sp sp-only reveal" data-delay="2">{e(lp["hero_sub_sp"])}</p>
+            <p class="mlp-hero__sub mlp-hero__sub--sp sp-only reveal" data-delay="2">{e(lp["hero_sub_sp"]).replace("|", "<br>")}</p>
             <ul class="mlp-hero__promise reveal" data-delay="2"><li><strong>無料</strong>相談・試算</li><li><strong>2営業日</strong>以内にご連絡</li><li><strong>全国</strong>オンライン可</li></ul>
             <picture class="mlp-hero__photo reveal" data-delay="3"><source srcset="images/photos/w/{lp["photo"]}-800.webp" type="image/webp"><img src="images/photos/{lp["photo"]}.jpg" alt="" width="800" height="533" loading="eager" decoding="async"></picture>
           </div>
