@@ -3772,6 +3772,16 @@ MEDIA_GUIDES = [
              ("開業の手続きを進める", "民泊か旅館業か、消防、管理を任せる体制。", ["minpaku-start-steps", "minpaku-vs-ryokan-law", "minpaku-fire-safety", "minpaku-management-company"]),
              ("運営して、育てる", "数字の読み方、集客、レビュー、清掃、宿泊税。", ["inn-kpi-basics", "ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips", "cleaning-linen-operations", "accommodation-tax"]),
          ]),
+    # すでに宿を運営している方向け。集客・採用の記事の受け皿（記事データに guides=[("run", 2)] のように書く）
+    dict(key="run", label="宿の運営を伸ばしたい", title="宿の運営を伸ばしたい方へ", service="marketing", photo="laptop-dashboard",
+         who="すでに民泊や小さな宿を運営していて、予約や人手に悩んでいる方",
+         worries=["予約がなかなか増えない", "予約サイトの手数料が重い", "清掃や運営の人手が足りない"],
+         lead="民泊や小さな宿を運営していて、予約や人手に悩んでいる。数字の見方から、予約の増やし方、人手と運営の整え方までを順番に。",
+         stages=[
+             ("数字で今を知る", "稼働率・客室単価の読み方と、赤字にならない線。", ["inn-kpi-basics", "minpaku-break-even"]),
+             ("予約を増やす", "予約サイトと自社予約の使い分け、掲載ページ、レビュー、料金、閑散期。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips", "case-owner-pricing-mistake", "minpaku-off-season"]),
+             ("人手と運営を整える", "清掃の仕組み、離れた場所からの運営、近隣との関係、任せる先。", ["cleaning-linen-operations", "minpaku-remote-operation", "minpaku-neighbor-rules", "minpaku-management-company"]),
+         ]),
 ]
 # 記事は今後も増える前提。記事データに guides=[("sell", 2)]（ガイドのkey, Stepの番号）と書けば、
 # そのガイドの該当Stepの末尾に自動で並ぶ（ここのリストを書き換えなくてよい）
@@ -3782,7 +3792,7 @@ for _a in ARTICLES:
             _st.append(_a["slug"])
 for _g in MEDIA_GUIDES:
     _g["slugs"] = list(dict.fromkeys(x for _, _, xs in _g["stages"] for x in xs))
-MEDIA_GUIDE_FOR_CAT = {"sell": "sell", "lend": "use", "house": "use", "start": "side", "money": "side", "operate": "side", "trend": "use"}
+MEDIA_GUIDE_FOR_CAT = {"sell": "sell", "lend": "use", "house": "use", "start": "side", "money": "side", "operate": "run", "trend": "use"}
 # よくある悩みから記事へ（読者の言葉で書く）
 MEDIA_QUESTIONS = [
     ("sell", "相続した実家、放置するとどうなる？", "akiya-inherited-house-to-inn"),
@@ -3805,8 +3815,27 @@ CV_MESSAGES = {
     "sell": "売るか、活かすか。物件の状況をうかがい、いちばん負担の少ない方法を無料でご提案します。",
     "use": "その家、宿として活かせるか。現地と周辺の宿を調べ、収支の見込みを無料で試算します。",
     "side": "物件選び、許可、収支の見通し。民泊を始める前の疑問に、アキヤドが無料でお答えします。",
+    "run": "予約の伸ばし方、人手の確保。運営中の宿の悩みに、アキヤドを運営するRIVIA&CO.が無料でお答えします。",
     "": "空き家の売却・活用、民泊の開業について、アキヤドが無料でご相談に乗ります。",
 }
+
+
+# 集客・採用の記事は、相談の案内をコーポレートの支援事業に向ける（ガイドより優先）
+CV_SERVICE = {
+    "marketing": ("予約サイト、掲載ページ、自社予約。宿の集客の見直しに、アキヤドを運営するRIVIA&CO.が無料でお答えします。", "service-marketing.html"),
+    "recruit": ("清掃や運営の人手、求人の出し方。宿の採用の悩みに、アキヤドを運営するRIVIA&CO.が無料でお答えします。", "service-recruit.html"),
+}
+# ガイドごとの「サービスとプランを見る」の行き先（アキヤドのサービスがないガイド）
+GUIDE_PLAN_PAGE = {"run": "service-marketing.html"}
+
+
+def inline_cta_parts(a, g):
+    """記事の途中に置く相談の案内の、文言と「サービスとプランを見る」の行き先"""
+    if a["services"][0] in CV_SERVICE:
+        return CV_SERVICE[a["services"][0]]
+    k = g["key"] if g else ""
+    href = GUIDE_PLAN_PAGE.get(k) or f'media/{MEDIA_SERVICE_BY_KEY[k or "use"]["slug"]}.html'
+    return CV_MESSAGES.get(k, CV_MESSAGES[""]), href
 
 
 def guide_of(slug):
@@ -3880,14 +3909,23 @@ def media_footer():
   </footer>"""
 
 
+MEDIA_CTA_TEXT = {
+    "": ('空き家のこと、<br class="sp-only">まずは気軽にご相談ください。',
+         '売るか、活かすか、民泊にするか。まだ決めていない段階でも大丈夫です。<br class="pc-only">宿を運営する私たちが、物件の状況に合わせてお答えします。'),
+    "marketing": ('宿の集客や人手のこと、<br class="sp-only">まずは気軽にご相談ください。',
+                  '予約が伸びない、手数料が重い、人が足りない。原因がはっきりしない段階でも大丈夫です。<br class="pc-only">宿を運営する私たちが、いまの状況に合わせてお答えします。'),
+}
+
+
 def media_cta(category="operation"):
     """アキヤドの相談ブロック。気軽さ（無料・全国・営業なし）を先に伝える"""
+    title, lead = MEDIA_CTA_TEXT.get(category, MEDIA_CTA_TEXT[""])
     return f"""    <section class="section mcta">
       <div class="container">
         <div class="mcta__box reveal">
           <p class="mcta__en">Consultation</p>
-          <h2 class="mcta__title">空き家のこと、<br class="sp-only">まずは気軽にご相談ください。</h2>
-          <p class="mcta__lead">売るか、活かすか、民泊にするか。まだ決めていない段階でも大丈夫です。<br class="pc-only">宿を運営する私たちが、物件の状況に合わせてお答えします。</p>
+          <h2 class="mcta__title">{title}</h2>
+          <p class="mcta__lead">{lead}</p>
           <ul class="mcta__points"><li>相談・お見積りは無料</li><li>全国対応・オンライン可</li><li>しつこい営業はしません</li></ul>
           <div class="mcta__btns">
             <a href="contact.html?category={category}&amp;from=akiyado" class="mbtn" data-cta="media-bottom">無料で相談する {ARROW}</a>
@@ -4438,6 +4476,7 @@ MEDIA_INTRO_DESC = {
     "sell": "相続した家を手放すときの流れ、税金の特例、放置したときのリスク",
     "use": "家を残したまま宿として活かす方法、貸す契約、改修の考え方",
     "side": "民泊の始め方、制度と届出、開業資金、集客と運営",
+    "run": "運営中の宿の数字の見方、予約の増やし方、人手と運営の整え方",
 }
 
 
@@ -5015,7 +5054,8 @@ def media_guide_page(g):
     worries = "".join(f"<li>{e(w)}</li>" for w in g["worries"])
     _gc = {"use": ["case-owner-diy-cottage", "case-owner-subsidy-akiya", "case-owner-fishing-port", "case-owner-licensed-akiya"],
            "side": ["case-owner-pricing-mistake", "case-owner-rental-side-business", "case-owner-licensed-akiya", "case-owner-subsidy-akiya"],
-           "sell": ["case-owner-diy-cottage"]}.get(g["key"], [])
+           "sell": ["case-owner-diy-cottage"],
+           "run": ["case-owner-pricing-mistake", "case-owner-rental-side-business"]}.get(g["key"], [])
     guide_cases = media_section([ARTICLE_BY_SLUG[x] for x in _gc if x in ARTICLE_BY_SLUG], eyebrow="Cases", title="近い事例を読む", lead="実際に民泊を運営しているオーナーへの取材です。", more=False, limit=4, keep_order=True) if _gc else ""
     body = f"""{media_hero("Guide", e(g["title"]), g["lead"], crumbs)}
 
@@ -5184,6 +5224,7 @@ def article_page(a):
     for_links = "".join(f'<li><a href="media/guide-{x["key"]}.html">{e(x["title"])}</a></li>' for x in guides_of(a["slug"]))
     for_html = f'<div class="article__for"><span>こんな方に</span><ul>{for_links}</ul></div>' if for_links else ""
     g = guide_of(a["slug"])
+    cv_text, cv_href = inline_cta_parts(a, g)
     guide_box = ""
     if g:
         idx = g["slugs"].index(a["slug"])
@@ -5233,10 +5274,10 @@ def article_page(a):
         </section>
 
         <aside class="inline-cta">
-          <p class="inline-cta__text">{e(CV_MESSAGES.get(g["key"] if g else "", CV_MESSAGES[""]))}</p>
+          <p class="inline-cta__text">{e(cv_text)}</p>
           <div class="inline-cta__actions">
             <a href="contact.html?category={a["services"][0]}&amp;from=akiyado" class="btn mbtn" data-cta="media-inline">無料で相談する {ARROW}</a>
-            <a href="media/{MEDIA_SERVICE_BY_KEY[g["key"] if g else "use"]["slug"]}.html" class="inline-cta__plan">サービスとプランを見る {ARROW}</a>
+            <a href="{cv_href}" class="inline-cta__plan">サービスとプランを見る {ARROW}</a>
           </div>
         </aside>
 

@@ -61,7 +61,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 - `docs/`・`tools/`・`.claude/`・`CLAUDE.md` は `.vercelignore` で公開対象外。
 - メディア「アキヤド（空き家と民泊のメディア）」は `/media.html`（トップ）と `/media/` 配下。
   - 記事: `pages/media/<slug>.html`。テーマ（カテゴリ）は `sell` 売る・手放す／`lend` 貸す・任せる／`house` 物件・改修／`start` 開業・手続き／`money` お金・税金／`operate` 集客・運営／`trend` 観光と地域（`category-<キー>.html`）。
-  - ガイド（読者の状況別）: `guide-sell`（売りたい）・`guide-use`（活かしたい）・`guide-side`（副業で宿をはじめたい）。記事データの `guides` で Step に並ぶ。
+  - ガイド（読者の状況別）: `guide-sell`（売りたい）・`guide-use`（活かしたい）・`guide-side`（副業で宿をはじめたい）・`guide-run`（宿の運営を伸ばしたい＝運営中の方。集客・採用の記事の受け皿。Step 1 数字・Step 2 予約を増やす・Step 3 人手と運営）。記事データの `guides` で Step に並ぶ。`services` の先頭が `marketing`／`recruit` の記事は、記事中の相談の案内が WEB集客支援／WEB採用支援に向く。
   - ほかに `learn.html`（体系的に学ぶ）、`plans.html`、`service-*.html`、`company.html`、`search.html`（noindex）、`contact.html`・`thanks.html`。
 - 英語版の公開はやめた（`tools/i18n/` は残っているが使っていない）。
 - お問い合わせフォームは全ページ **Google Apps Script**（`tools/forms/Code.gs`）に送る。自動返信・社内通知・添付ファイルのドライブ保存・スプレッドシート記録を行う。`Code.gs` を変えたら、人が Apps Script に貼り直して「新バージョン」でデプロイする必要がある（`docs/forms-setup-guide.md`）。「サービス資料の請求」の自動返信にはドライブの資料 PDF（スクリプト プロパティ `DOC_FILE_ID`）を添付し、フォームのメルマガ受け取りの同意（任意・初期はチェックなし）はスプレッドシートの「メルマガ」列に記録する（配信は未実装）。
