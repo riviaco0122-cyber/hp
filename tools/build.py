@@ -4171,10 +4171,10 @@ MEDIA_SERVICE_CARDS = {
 MEDIA_SERVICE_MORE = {
     "sell": dict(
         compare=dict(cols=["現金に|なるまで", "古い家の|評価", "手間"], note="", rows=[
-            ("仲介で|売る", ["時期が|読めない", "値段が|つきにくい", "内覧・|片付け"], False),
-            ("一般的な|買取", ["早い", "改修費を|見込んだ|価格", "少ない"], False),
-            ("アキヤド|買取", ["早い", "宿として|評価", "少ない"], True),
-            ("アキヤド|借り上げ", ["売らずに|毎月の家賃", "残して|活かす", "運営は|アキヤド"], True)]),
+            ("仲介で|売る", ["△時期が|読めない", "△値段が|つきにくい", "△内覧・|片付け"], False),
+            ("一般的な|買取", ["◎早い", "△改修費を|差し引く", "◎少ない"], False),
+            ("アキヤド|買取", ["◎早い", "○宿として|評価", "◎少ない"], True),
+            ("アキヤド|借り上げ", ["○毎月の|家賃", "◎家を|残せる", "◎運営は|アキヤド"], True)]),
         fit_no=["時間をかけてでも、少しでも高く売りたい（仲介が合う場合があります）", "宿として営業できない条件の物件（法令や建物の状態によっては、お受けできない場合があります）"],
         cases=["akiya-inherited-house-to-inn", "akiya-holding-costs", "akiya-3000man-deduction"], cases_title="手放す前に読んでおきたい記事",
         faq_more=[("相談したら、売らないといけませんか？", "いいえ。ご提案までは無料で、売るかどうかはご提案を見てから決めていただけます。"),
@@ -4184,11 +4184,11 @@ MEDIA_SERVICE_MORE = {
         closing=("決めるのは、比べてからで大丈夫です", "相続登記や税の特例には期限があります。売ると決めていなくても、まずは今の家の値段と、残した場合の収入を知っておくと、ご家族で話し合いやすくなります。")),
     "use": dict(
         compare=dict(cols=["初期費用", "手間", "収入"], note="※ おまかせプランの初期費用は、建物の構造的な補修を除きます。", rows=[
-            ("そのまま|持つ", ["なし", "見回り・|草刈り", "なし|（税はかかる）"], False),
-            ("住まいと|して貸す", ["物件に|よる", "管理会社に|任せられる", "家賃|（借り手|しだい）"], False),
-            ("自分で|民泊", ["改修・|家具・|許可", "集客・|清掃・|対応", "売上から|経費を|引いた分"], False),
-            ("おまかせ|プラン", ["ほぼなし※", "ほぼなし", "毎月一定の|家賃"], True),
-            ("売上シェア|プラン", ["補修・|内装を|共同出資", "ほぼなし", "最低保証|＋上乗せ"], True)]),
+            ("そのまま|持つ", ["◎なし", "△見回り・|草刈り", "×なし"], False),
+            ("住まいと|して貸す", ["○物件に|よる", "○管理会社に|任せる", "○借り手|しだい"], False),
+            ("自分で|民泊", ["△改修・|家具・許可", "△集客・|清掃・対応", "○売上−|経費"], False),
+            ("おまかせ|プラン", ["◎ほぼ|なし※", "◎ほぼ|なし", "○毎月|一定"], True),
+            ("売上シェア|プラン", ["○補修を|共同出資", "◎ほぼ|なし", "◎保証＋|上乗せ"], True)]),
         fit_no=["近いうちに売る可能性が高い（貸すと3,000万円特別控除が使えなくなる場合があるため、先に比べることをおすすめします）", "数年のうちに、ご自身やご家族が住む予定がある"],
         cases=["case-rental-house-inn-first-year", "case-owner-subsidy-akiya", "case-owner-licensed-akiya"], cases_title="空き家が宿になった事例",
         faq_more=[("家賃はどうやって決まりますか？", "周辺の宿の料金と稼働、改修にかかる費用、契約期間をもとに試算し、根拠とあわせてご提示します。"),
@@ -4197,11 +4197,11 @@ MEDIA_SERVICE_MORE = {
                   ("相談したら、契約しないといけませんか？", "いいえ。ご提案までは無料で、条件を見てから決めていただけます。")],
         closing=("家を残すかどうかは、数字を見てから決められます", "空き家は、使わない時間が長いほど傷み、手を入れる費用もかさみます。まずは、宿にした場合の家賃の見込みを知るところから始めてみてください。")),
     "side": dict(
-        compare=dict(cols=["自分で|担うこと", "費用", "向いて|いる方"], note="", rows=[
-            ("すべて|自分で", ["すべて", "手数料|なし", "時間が|ある"], False),
-            ("伴走|コース", ["清掃・|ゲスト対応", "売上の|10%", "現場は|自分で"], True),
-            ("運営代行|コース", ["経営の|判断", "売上の|20%", "本業が|忙しい"], True),
-            ("共同出資|コース", ["経営の|判断", "利益を|出資割合で", "初期投資を|抑えたい"], True)]),
+        compare=dict(cols=["自分の|手間", "手数料", "初期投資"], note="※ 初期投資は、物件の取得・改修・家具などの費用です。", rows=[
+            ("すべて|自分で", ["△すべて", "◎なし", "△全額|自分で"], False),
+            ("伴走|コース", ["○清掃・|ゲスト対応", "○売上の|10%", "△自分で|用意"], True),
+            ("運営代行|コース", ["◎経営の|判断だけ", "△売上の|20%", "△自分で|用意"], True),
+            ("共同出資|コース", ["◎経営の|判断だけ", "○利益を|出資割合で", "◎アキヤドと|分担"], True)]),
         fit_no=["短期間で確実にもうかる方法を探している（収益は物件や運営で変わり、保証はできません）", "宿として営業できない条件の物件で始めたい"],
         cases=["case-owner-rental-side-business", "case-owner-diy-cottage", "case-owner-pricing-mistake"], cases_title="副業で宿を始めた人の事例",
         faq_more=[("会社員でも、本当に運営できますか？", "私たちも会社員として、住まいから離れた下田で宿を始めました。いまは現地に行くのは数か月に1回ほどです。清掃の外注やセルフチェックインなど、離れて運営する仕組みづくりからお手伝いします。"),
@@ -4442,8 +4442,15 @@ def media_service_page(sv):
     review = NODE_REVIEWS[0]
     cmp = more["compare"]
     wb = lambda t: e(t).replace("|", "<wbr>")  # 「|」は改行してよい位置
+    # 各マスの先頭の記号（◎○△×）を、色つきの大きな評価マークにする。言葉は小さく添える
+    marks = {"◎": ("good", "とてもよい"), "○": ("ok", "よい"), "△": ("bad", "負担・注意"), "×": ("none", "なし")}
+    def cmp_cell(c):
+        m = marks.get(c[:1])
+        if not m:
+            return f"<td>{wb(c)}</td>"
+        return f'<td><span class="mcmp__mark mcmp__mark--{m[0]}" role="img" aria-label="{m[1]}">{c[:1]}</span><span class="mcmp__t">{wb(c[1:])}</span></td>'
     cmp_head = "".join(f"<th scope=\"col\">{wb(c)}</th>" for c in cmp["cols"])
-    cmp_rows = "\n".join(f"""              <tr{' class="is-us"' if us else ""}><th scope="row">{wb(n)}</th>{"".join(f'<td>{wb(c)}</td>' for c in cells)}</tr>"""
+    cmp_rows = "\n".join(f"""              <tr{' class="is-us"' if us else ""}><th scope="row">{wb(n)}</th>{"".join(cmp_cell(c) for c in cells)}</tr>"""
                          for n, cells, us in cmp["rows"])
     fit_no = "".join(f"<li>{e(x)}</li>" for x in more["fit_no"])
     flow3 = "".join(f'<li><span class="mflow3__no">{i}</span><p class="mflow3__t">{e(t)}</p><p class="mflow3__d">{e(d)}</p></li>' for i, (t, d) in enumerate(
@@ -4529,8 +4536,8 @@ def media_service_page(sv):
       <div class="container">
         <p class="mlp-en reveal">Compare</p>
         <h2 class="mlp-title reveal">ほかの方法と、ここが違います</h2>
-        <p class="msv-compare__hint" aria-hidden="true">表は横にスクロールできます →</p>
-        <div class="msv-compare reveal" tabindex="0" role="region" aria-label="ほかの方法との比較（横にスクロールできます）">
+        <p class="mcmp__legend" aria-hidden="true"><span><b class="mcmp__mark mcmp__mark--good">◎</b>とてもよい</span><span><b class="mcmp__mark mcmp__mark--ok">○</b>よい</span><span><b class="mcmp__mark mcmp__mark--bad">△</b>負担・注意</span><span><b class="mcmp__mark mcmp__mark--none">×</b>なし</span></p>
+        <div class="msv-compare reveal">
           <table>
             <thead><tr><th scope="col">選択肢</th>{cmp_head}</tr></thead>
             <tbody>
@@ -4538,7 +4545,7 @@ def media_service_page(sv):
             </tbody>
           </table>
         </div>
-        <p class="msv-compare__note">※ 一般的な傾向です。実際の条件は物件や契約によって変わります。{(" " + e(cmp["note"])) if cmp.get("note") else ""}</p>
+        <p class="msv-compare__note">※ 読み手から見た一般的な傾向の目安です。実際の条件は物件や契約によって変わります。{(" " + e(cmp["note"])) if cmp.get("note") else ""}</p>
         <details class="mlp-fold reveal"><summary>ほかの方法が合うかもしれない方</summary><ul>{fit_no}</ul></details>
       </div>
     </section>

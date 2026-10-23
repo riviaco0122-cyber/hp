@@ -4348,15 +4348,6 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .msv-stats li { padding: 18px 6px; }
   .msv-stats__label { font-size: 12px; }
   .msv-stats__note { font-size: 10.5px; }
-  /* スマホは、文字を小さくしすぎず、表を横にスクロールして見せる（1列目＝選択肢の名前は固定） */
-  .msv-compare { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .msv-compare table { min-width: 600px; font-size: 14px; line-height: 1.65; }
-  .msv-compare th, .msv-compare td { padding: 14px 12px; }
-  .msv-compare thead th { font-size: 12.5px; }
-  .msv-compare tbody th { width: 128px; }
-  .msv-compare th:first-child { position: sticky; left: 0; z-index: 1; background: #fff; box-shadow: 1px 0 0 var(--m-line); }
-  .msv-compare thead th:first-child { background: var(--m-sand); }
-  .msv-compare tr.is-us th:first-child { background: #eef5f0; }
 }
 /* ===== アキヤド：サービスページ（LP）。「いくら？」に先に答え、数字は大きく、文章は短く ===== */
 .mlp-hero { position: relative; padding: 28px 0 64px; background: linear-gradient(180deg, var(--m-sand) 0%, var(--m-bg) 100%); }
@@ -4532,3 +4523,29 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mlp-sec--green strong.hl, .mlp-sec--green strong { color: #fff; background: none; font-weight: 700; }
 .msv-compare__hint { display: none; }
 @media (max-width: 899px) { .msv-compare__hint { display: block; margin-top: 24px; font-size: 12px; color: var(--m-sub); text-align: right; } .mlp-sec .msv-compare__hint + .msv-compare { margin-top: 8px; } }
+/* 比較表：各マスは評価マーク（◎○△×）を大きく、言葉は小さく。ぱっと見で比べられるように */
+.msv-compare td { text-align: center; vertical-align: middle; }
+.msv-compare thead th:not(:first-child) { text-align: center; }
+.mcmp__mark { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; font-family: var(--font-round); font-weight: 700; font-size: 19px; line-height: 1; font-style: normal; }
+.mcmp__mark--good { background: var(--m-green); color: #fff; }
+.mcmp__mark--ok { background: #d9eadf; color: var(--m-green); }
+.mcmp__mark--bad { background: #f6e3da; color: var(--m-cta); }
+.mcmp__mark--none { background: #ececec; color: #8a8f8b; }
+.msv-compare td .mcmp__mark { display: grid; margin: 0 auto; }
+.mcmp__t { display: block; margin-top: 6px; font-size: 12.5px; line-height: 1.5; color: var(--m-sub); }
+.mcmp__legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; margin-top: 24px; font-size: 12.5px; color: var(--m-sub); }
+.mcmp__legend span { display: inline-flex; align-items: center; gap: 6px; }
+.mcmp__legend .mcmp__mark { width: 22px; height: 22px; font-size: 13px; }
+.mlp-sec .mcmp__legend + .msv-compare { margin-top: 12px; }
+.msv-compare__hint { display: none !important; }
+@media (max-width: 899px) {
+  .msv-compare { overflow: visible; }
+  .msv-compare table { table-layout: fixed; min-width: 0; font-size: 12.5px; }
+  .msv-compare th, .msv-compare td { padding: 12px 4px; }
+  .msv-compare th:first-child { padding-left: 12px; }
+  .msv-compare thead th { font-size: 11.5px; line-height: 1.45; }
+  .msv-compare tbody th { width: 30%; font-size: 12.5px; line-height: 1.5; }
+  .mcmp__mark { width: 30px; height: 30px; font-size: 17px; }
+  .mcmp__t { font-size: 11px; margin-top: 4px; }
+}
+.msv-compare tbody th { vertical-align: middle; }
