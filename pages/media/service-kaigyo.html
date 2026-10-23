@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=97a040fd">
+  <link rel="stylesheet" href="../../css/style.css?v=f2f946cc">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -162,7 +162,7 @@
         <p class="mlp-en reveal">Simulation</p>
         <h2 class="mlp-title reveal">宿を始めたら、<wbr>5年で<wbr>いくら残る？</h2>
         <p class="mlp-lead reveal"><n-w class="j">持ち家の空き家を一棟貸しの宿にした場合を、モデル物件で試算しました。費用の割合には、私たちの下田の宿の1年目の数字を<n-b>当てはめています。</n-b></n-w></p>
-        <div class="msim reveal" role="img" aria-label="1か月の売上 30万円のゆくえ（標準ケース）：予約サイトの手数料 4.5万円、清掃の委託 4.8万円、光熱水費・Wi-Fi・消耗品 3万円、アキヤドの手数料 3万円、あなたの手元 14.7万円。5年間で、手元に残るお金（初期費用500万円を引いたあと）：控えめ（稼働率35%） 63万円、標準（稼働率50%） 382万円">
+        <div class="msim reveal" role="img" aria-label="1か月の売上 30万円のゆくえ（標準ケース）：予約サイトの手数料 4.5万円、清掃の委託 4.8万円、光熱水費・Wi-Fi・消耗品 3万円、アキヤドの手数料 3万円、あなたの手元 14.7万円。5年間の手元の累計：控えめ（稼働率35%） 63万円、標準（稼働率50%） 382万円">
           <div class="msim__model">
             <p class="msim__badge">モデル物件<wbr>（架空）</p>
             <span class="msim__house" aria-hidden="true"><svg class="fig-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
@@ -175,17 +175,26 @@
           </div>
         </div>
         <div class="msim__future reveal" aria-hidden="true">
-          <p class="msim__h msim__h--c"><n-w>5年間で、手元に残るお金（初期費用500万円を<n-b>引いたあと）</n-b></n-w></p>
+          <p class="msim__h msim__h--c">5年間の<wbr>手元の累計</p>
+          <div class="mchart">
+            <div class="mchart__plot">
+              <span class="mchart__band" style="top:50.0%"></span>
+              <svg viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><g class="mchart__grid"><line x1="200.0" y1="0" x2="200.0" y2="400"/><line x1="400.0" y1="0" x2="400.0" y2="400"/><line x1="600.0" y1="0" x2="600.0" y2="400"/><line x1="800.0" y1="0" x2="800.0" y2="400"/></g><line class="mchart__zero" x1="0" y1="200.0" x2="1000" y2="200.0"/><polyline class="mchart__line mchart__line--sub" points="0.0,386.0 1000.0,176.4"/><polyline class="mchart__line mchart__line--us" points="0.0,386.0 1000.0,57.9"/></svg>
+              <span class="mchart__y" style="top:96.5%">−500</span><span class="mchart__y" style="top:73.3%">−250</span><span class="mchart__y is-zero" style="top:50.0%">±0</span><span class="mchart__y" style="top:26.7%">250</span><span class="mchart__x" style="left:0.0%">開業</span><span class="mchart__x" style="left:20.0%">1年</span><span class="mchart__x" style="left:40.0%">2年</span><span class="mchart__x" style="left:60.0%">3年</span><span class="mchart__x" style="left:80.0%">4年</span><span class="mchart__x is-last" style="left:100.0%">5年</span><span class="mchart__dot mchart__dot--minus" style="left:0.0%;top:96.5%"></span><span class="mchart__mark mchart__mark--minus mchart__mark--r" style="left:0.0%;top:96.5%">初期費用 −500万円</span><span class="mchart__dot mchart__dot--us" style="left:56.7%;top:50.0%"></span><span class="mchart__mark mchart__mark--us mchart__mark--up" style="left:56.7%;top:50.0%">損益分岐点 約34か月</span><span class="mchart__dot mchart__dot--sub" style="left:88.7%;top:50.0%"></span><span class="mchart__mark mchart__mark--sub mchart__mark--down" style="left:88.7%;top:50.0%">約53か月</span><span class="mchart__end mchart__end--sub" style="top:44.1%">＋63<small>万円</small></span><span class="mchart__end mchart__end--us" style="top:14.5%">＋382<small>万円</small></span>
+              <span class="mchart__zlabel" style="top:50.0%">損益分岐点<wbr>（0円）</span>
+            </div>
+            <p class="mchart__unit">万円</p>
+          </div>
           <ul class="msim__rows"><li class="msim__row">
             <p class="msim__row-name"><n-w>控えめ（稼働率35%）</n-w><small><n-w>月の手元 約9.4万円・回収まで約53か月</n-w></small></p>
-            <div class="msim__row-bar"><i style="width:16.5%"></i></div>
+            <span class="msim__sw msim__sw--sub" aria-hidden="true"></span>
             <p class="msim__row-num">＋63<small>万円</small></p>
           </li><li class="msim__row is-us">
             <p class="msim__row-name"><n-w>標準（稼働率50%）</n-w><small><n-w>月の手元 約14.7万円・回収まで約34か月</n-w></small></p>
-            <div class="msim__row-bar"><i style="width:100.0%"></i></div>
+            <span class="msim__sw msim__sw--us" aria-hidden="true"></span>
             <p class="msim__row-num">＋382<small>万円</small></p>
           </li></ul>
-          <p class="msim__big"><span>初期費用の<wbr>回収まで<wbr>（標準）</span><b><small>約</small>34<small>か月</small></b></p>
+          <p class="msim__big"><span>損益分岐点<wbr>（標準）</span><b><small>約</small>34<small>か月</small></b></p>
         </div>
         <p class="msim__extra reveal"><n-w>悲観的な場合も含めて試算し、赤字にならない計画かを一緒に確かめてから<n-b>始めます。</n-b></n-w></p>
         <details class="mlp-fold msim__fold reveal"><summary>試算の前提</summary><ul><li><n-w>モデル物件は、説明のための架空の物件で、持ち家（家賃なし）<n-b>とします。</n-b></n-w></li><li><n-w>1泊の料金は2万円（一棟貸し・6人ほどまで）と仮定。稼働率は、標準50%・控えめ35%（下田の宿の1年目は<n-b>約53%）。</n-b></n-w></li><li><n-w class="j">予約サイトの手数料（売上の約15%）と清掃の委託（約16%）は、下田の宿の1年目の割合。光熱水費・Wi-Fi・消耗品の月3万円は、下田の宿の開業時の<n-b>資料の値です。</n-b></n-w></li><li><n-w>アキヤドの手数料は、伴走コースの売上の<n-b>10%です。</n-b></n-w></li><li><n-w class="j">初期費用は500万円（改修・家具・家電・消防設備・申請など）と仮定。物件の状態で大きく変わります（下田の宿は、改修と家具などで<n-b>約650万円）。</n-b></n-w></li><li><n-w class="j">毎月同じ売上と仮定しています（実際は季節で大きく変わります）。固定資産税・所得税などの税金、保険、修繕や設備の買い替え、ご自身の手間は<n-b>含みません。</n-b></n-w></li></ul><p class="msim__srcs"><a href="../media/case-rental-house-inn-first-year.html"><n-w class="j">下田の賃貸一軒家を民泊に｜約14か月で家具・家電の投資をほぼ回収</n-w> <span class="arrow" aria-hidden="true"></span></a><a href="../media/minpaku-vs-rental-income.html"><n-w class="j">民泊と普通の賃貸、収入の仕組みはどう違う？売上・費用・手間を比べる</n-w> <span class="arrow" aria-hidden="true"></span></a></p></details>

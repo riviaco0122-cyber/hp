@@ -4306,6 +4306,8 @@ def scheme_html(key):
 # サービスページの「未来の手元」の試算（モデル物件で、オーナー様の手元に残るお金を図で見せる）
 # 数字はすべて「前提」に書いた仮定・出典から計算する。モデル物件は架空。実績物件（下田・焼津）とプランを結びつけない
 # split: (見出し, [(名前, 万円, "cost"|"keep", 添え書き)])  future: (見出し, [(名前, 万円, 添え書き, アキヤドか)])
+# chart: 手元の累計の折れ線（損益分岐点＝0円の線を越える月を見せる）。series: (色, [(月, 万円)])、future の行と同じ順
+#   marks: (月, 万円, 言葉, 色, 言葉の置き方 r=右／ur=右上／dr=右下／up=上／down=下)  zlabel: 0円の線に「損益分岐点」と書く
 # big: (ラベル, 前置き, 数字, 単位)  extra: 補足の1文  srcs: 根拠の記事
 MEDIA_SIM_MODEL = ["築45年・木造2階建て", "4LDK・約100㎡", "観光地まで車で15分ほど", "相続から5年、空き家のまま"]
 MEDIA_SIM = {
@@ -4313,6 +4315,8 @@ MEDIA_SIM = {
                  lead="持ち続けた場合と、アキヤドに売った場合を、モデル物件で比べました。買取価格は、説明のための仮の金額です。",
                  split=("持ち続けると、10年でかかるお金", [("土地の固定資産税", 26.6, "cost", "年2.66万円×10年"), ("見回り", 36.0, "cost", "月1回3,000円×10年")]),
                  future=("10年間で、手元に残るお金", [("持ち続ける", -63, "土地の税と見回りがかかり続ける", False), ("アキヤドに売る", 300, "買取価格を300万円と仮定・仲介手数料は不要", True)]),
+                 chart=dict(months=120, xstep=24, x0="今", series=[("minus", [(0, 0), (120, -62.6)]), ("us", [(0, 300), (120, 300)])],
+                            marks=[(0, 300, "売ったとき 300万円（仮）", "us", "dr")]),
                  big=("持ち続けた場合との差", "約", "363", "万円"),
                  extra="売ったお金にかかる税金（譲渡所得税）は別です。相続した空き家は、条件を満たすと3,000万円の特別控除を使える場合があります。",
                  assumptions=["モデル物件は、説明のための架空の物件です。",
@@ -4325,6 +4329,8 @@ MEDIA_SIM = {
                 lead="空き家のままにした場合と、アキヤドが借り上げた場合を、モデル物件で比べました。",
                 split=("1年の家賃 36万円のゆくえ（おまかせプラン）", [("土地の固定資産税", 2.7, "cost", "オーナー様の負担のまま"), ("オーナー様の手元", 33.3, "keep", "見回りの費用もかからなくなります")]),
                 future=("10年間で、手元に残るお金", [("空き家のまま", -63, "土地の税と見回りがかかり続ける", False), ("アキヤドおまかせプラン", 333, "初期費用はアキヤドがほぼ全額を負担", True)]),
+                chart=dict(months=120, xstep=24, x0="今", series=[("minus", [(0, 0), (120, -62.6)]), ("us", [(0, 0), (120, 333.4)])],
+                           marks=[(0, 0, "初期費用ほぼ0円。1か月目からプラス", "us", "ur")]),
                 big=("空き家のままとの差", "約", "396", "万円"),
                 extra="売上シェアプランなら、売上が月平均30万円のとき、受け取りは年66万円です（最低保証2.5万円×12か月＋売上の10%。補修・内装の共同出資は別）。",
                 assumptions=["モデル物件は、説明のための架空の物件です。",
@@ -4336,8 +4342,10 @@ MEDIA_SIM = {
     "side": dict(title="宿を始めたら、5年でいくら残る？",
                  lead="持ち家の空き家を一棟貸しの宿にした場合を、モデル物件で試算しました。費用の割合には、私たちの下田の宿の1年目の数字を当てはめています。",
                  split=("1か月の売上 30万円のゆくえ（標準ケース）", [("予約サイトの手数料", 4.5, "cost", "売上の約15%"), ("清掃の委託", 4.8, "cost", "売上の約16%"), ("光熱水費・Wi-Fi・消耗品", 3.0, "cost", "月3万円"), ("アキヤドの手数料", 3.0, "cost", "伴走コース・売上の10%"), ("あなたの手元", 14.7, "keep", "")]),
-                 future=("5年間で、手元に残るお金（初期費用500万円を引いたあと）", [("控えめ（稼働率35%）", 63, "月の手元 約9.4万円・回収まで約53か月", False), ("標準（稼働率50%）", 382, "月の手元 約14.7万円・回収まで約34か月", True)]),
-                 big=("初期費用の回収まで（標準）", "約", "34", "か月"),
+                 future=("5年間の手元の累計", [("控えめ（稼働率35%）", 63, "月の手元 約9.4万円・回収まで約53か月", False), ("標準（稼働率50%）", 382, "月の手元 約14.7万円・回収まで約34か月", True)]),
+                 chart=dict(months=60, xstep=12, x0="開業", series=[("sub", [(0, -500), (60, 63.4)]), ("us", [(0, -500), (60, 382)])],
+                            marks=[(0, -500, "初期費用 −500万円", "minus", "r"), (34, 0, "損益分岐点 約34か月", "us", "up"), (53.2, 0, "約53か月", "sub", "down")], zlabel=True),
+                 big=("損益分岐点（標準）", "約", "34", "か月"),
                  extra="悲観的な場合も含めて試算し、赤字にならない計画かを一緒に確かめてから始めます。",
                  assumptions=["モデル物件は、説明のための架空の物件で、持ち家（家賃なし）とします。",
                               "1泊の料金は2万円（一棟貸し・6人ほどまで）と仮定。稼働率は、標準50%・控えめ35%（下田の宿の1年目は約53%）。",
@@ -4347,6 +4355,38 @@ MEDIA_SIM = {
                               "毎月同じ売上と仮定しています（実際は季節で大きく変わります）。固定資産税・所得税などの税金、保険、修繕や設備の買い替え、ご自身の手間は含みません。"],
                  srcs=["case-rental-house-inn-first-year", "minpaku-vs-rental-income"]),
 }
+
+
+def sim_chart_html(ch, rows):
+    """手元の累計の折れ線。線は SVG（縦横に伸びる）、文字と点は HTML で重ねる（スマホでも文字が小さくならない）"""
+    vals = [v for _, pts in ch["series"] for _, v in pts] + [0]
+    lo, hi = min(vals), max(vals)
+    step = next(st for st in (50, 100, 200, 250, 500, 1000) if (hi - lo) / st <= 4)
+    lo_t, hi_t = (lo // step) * step, -(-hi // step) * step
+    lo_t, hi_t = lo_t - step * 0.15, hi_t + step * 0.15
+    X = lambda m: m / ch["months"] * 100
+    Y = lambda v: (hi_t - v) / (hi_t - lo_t) * 100
+    y0 = Y(0)
+    grid = "".join(f'<line x1="{X(m) * 10:.1f}" y1="0" x2="{X(m) * 10:.1f}" y2="400"/>' for m in range(ch["xstep"], ch["months"], ch["xstep"]))
+    lines = "".join(f'<polyline class="mchart__line mchart__line--{c}" points="{" ".join(f"{X(m) * 10:.1f},{Y(v) * 4:.1f}" for m, v in pts)}"/>' for c, pts in ch["series"])
+    yt, v = [], (lo // step) * step
+    while v <= hi:
+        if v >= lo - 1e-9:
+            yt.append(v)
+        v += step
+    ylabels = "".join(f'<span class="mchart__y{" is-zero" if t == 0 else ""}" style="top:{Y(t):.1f}%">{"±" if t == 0 else ("−" if t < 0 else "")}{abs(t):,.0f}</span>' for t in yt)
+    xlabels = "".join(f'<span class="mchart__x{" is-last" if m == ch["months"] else ""}" style="left:{X(m):.1f}%">{e(ch["x0"]) if m == 0 else f"{m // 12}年"}</span>' for m in range(0, ch["months"] + 1, ch["xstep"]))
+    marks = "".join(f'<span class="mchart__dot mchart__dot--{c}" style="left:{X(m):.1f}%;top:{Y(v):.1f}%"></span><span class="mchart__mark mchart__mark--{c} mchart__mark--{pos}" style="left:{X(m):.1f}%;top:{Y(v):.1f}%">{e(t)}</span>' for m, v, t, c, pos in ch["marks"])
+    ends = "".join(f'<span class="mchart__end mchart__end--{c}{" is-below" if pts[-1][1] < 0 else ""}" style="top:{Y(pts[-1][1]):.1f}%">{"−" if pts[-1][1] < 0 else "＋"}{abs(round(pts[-1][1])):,}<small>万円</small></span>' for c, pts in ch["series"])
+    return f"""<div class="mchart">
+            <div class="mchart__plot">
+              <span class="mchart__band" style="top:{y0:.1f}%"></span>
+              <svg viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><g class="mchart__grid">{grid}</g><line class="mchart__zero" x1="0" y1="{y0 * 4:.1f}" x2="1000" y2="{y0 * 4:.1f}"/>{lines}</svg>
+              {ylabels}{xlabels}{marks}{ends}
+              {f'<span class="mchart__zlabel" style="top:{y0:.1f}%">損益分岐点（0円）</span>' if ch.get("zlabel") else ""}
+            </div>
+            <p class="mchart__unit">万円</p>
+          </div>"""
 
 
 def sim_html(key):
@@ -4364,12 +4404,11 @@ def sim_html(key):
         segs.append(f'<i class="msim__seg msim__seg--{cls}" style="flex-grow:{v}"></i>')
         legend.append(f'<li class="msim__li msim__li--{cls}"><span class="msim__sw" aria-hidden="true"></span><span class="msim__li-name">{e(name)}{f"<small>{e(note)}</small>" if note else ""}</span><b>{"" if kind == "keep" else "−"}{fmt(v)}<small>万円</small></b></li>')
     fut_t, rows = sm["future"]
-    mx = max(abs(v) for _, v, _, _ in rows)
     rows_html = "".join(f"""<li class="msim__row{" is-us" if us else ""}{" is-minus" if v < 0 else ""}">
             <p class="msim__row-name">{e(n)}<small>{e(nt)}</small></p>
-            <div class="msim__row-bar"><i style="width:{max(abs(v) / mx * 100, 3):.1f}%"></i></div>
+            <span class="msim__sw msim__sw--{c}" aria-hidden="true"></span>
             <p class="msim__row-num">{"−" if v < 0 else "＋"}{abs(v):,}<small>万円</small></p>
-          </li>""" for n, v, nt, us in rows)
+          </li>""" for (n, v, nt, us), (c, _) in zip(rows, sm["chart"]["series"]))
     bl, bpre, bnum, bunit = sm["big"]
     specs = "".join(f"<li>{e(x)}</li>" for x in MEDIA_SIM_MODEL)
     assum = "".join(f"<li>{e(x)}</li>" for x in sm["assumptions"])
@@ -4394,6 +4433,7 @@ def sim_html(key):
         </div>
         <div class="msim__future reveal" aria-hidden="true">
           <p class="msim__h msim__h--c">{e(fut_t)}</p>
+          {sim_chart_html(sm["chart"], rows)}
           <ul class="msim__rows">{rows_html}</ul>
           <p class="msim__big"><span>{e(bl)}</span><b><small>{e(bpre)}</small>{e(bnum)}<small>{e(bunit)}</small></b></p>
         </div>

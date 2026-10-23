@@ -4645,15 +4645,53 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .msim__li--keep .msim__li-name, .msim__li--keep b { color: var(--m-green); font-weight: 700; }
 .msim__li--keep b { font-size: 22px; }
 .msim__future { max-width: 900px; margin: 20px auto 0; padding: 28px 24px 24px; border-radius: 20px; background: var(--m-sand); }
-.msim__rows { display: grid; gap: 14px; margin-top: 18px; }
-.msim__row { display: grid; grid-template-columns: 250px minmax(0, 1fr) 120px; align-items: center; gap: 14px; }
+.msim__rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.msim__row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px; background: #fff; }
+.msim__row .msim__sw { grid-row: 1; grid-column: 1; width: 16px; height: 4px; border-radius: 2px; }
+.msim__row .msim__row-name { grid-column: 2; }
+.msim__sw--us { background: var(--m-green); }
+.msim__sw--minus { background: #e2906d; }
+.msim__sw--sub { background: #a3ada5; }
+/* 手元の累計の折れ線（0円の線＝損益分岐点） */
+.mchart { position: relative; margin-top: 18px; padding: 24px 8px 30px 52px; border-radius: 14px; background: #fff; }
+.mchart__plot { position: relative; height: 280px; }
+.mchart__plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.mchart__grid line { stroke: var(--m-line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.mchart__zero { stroke: var(--m-ink); stroke-width: 1.5; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+.mchart__band { position: absolute; left: 0; right: 0; bottom: 0; background: rgba(207, 95, 55, 0.06); }
+.mchart__line { fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.mchart__line--us { stroke: var(--m-green); }
+.mchart__line--minus { stroke: #e2906d; }
+.mchart__line--sub { stroke: #a3ada5; }
+.mchart__y { position: absolute; left: -48px; width: 40px; transform: translateY(-50%); font-size: 11px; color: var(--m-sub); text-align: right; }
+.mchart__y.is-zero { color: var(--m-ink); font-weight: 700; }
+.mchart__x { position: absolute; bottom: -24px; transform: translateX(-50%); font-size: 11px; color: var(--m-sub); white-space: nowrap; }
+.mchart__x:first-of-type { transform: none; }
+.mchart__x.is-last { transform: translateX(-100%); }
+.mchart__unit { position: absolute; left: 10px; top: 6px; font-size: 10px; color: var(--m-sub); }
+.mchart__zlabel { position: absolute; left: 6px; transform: translateY(4px); font-size: 10.5px; font-weight: 700; color: var(--m-ink); }
+.mchart__dot { position: absolute; width: 12px; height: 12px; margin: -6px 0 0 -6px; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08); }
+.mchart__dot--us { background: var(--m-green); }
+.mchart__dot--minus { background: #cf5f37; }
+.mchart__dot--sub { background: #a3ada5; }
+.mchart__mark { position: absolute; padding: 2px 8px; border-radius: 999px; font-size: 11.5px; font-weight: 700; line-height: 1.5; white-space: nowrap; color: #fff; }
+.mchart__mark--us { background: var(--m-green); }
+.mchart__mark--minus { background: #cf5f37; }
+.mchart__mark--sub { background: #8a958c; }
+.mchart__mark--r { transform: translate(12px, -50%); }
+.mchart__mark--ur { transform: translate(8px, calc(-100% - 8px)); }
+.mchart__mark--dr { transform: translate(8px, 8px); }
+.mchart__mark--up { transform: translate(-50%, calc(-100% - 10px)); }
+.mchart__mark--down { transform: translate(-50%, 10px); }
+.mchart__end { position: absolute; right: 0; transform: translateY(calc(-100% - 6px)); font-family: var(--font-round); font-weight: 700; font-size: 16px; line-height: 1.2; white-space: nowrap; }
+.mchart__end.is-below { transform: translateY(6px); }
+.mchart__end small { font-size: 10px; margin-left: 1px; }
+.mchart__end--us { color: var(--m-green); }
+.mchart__end--minus { color: #cf5f37; }
+.mchart__end--sub { color: #6f7a72; }
 .msim__row-name { font-weight: 700; font-size: 14px; line-height: 1.5; }
 .msim__row-name small { display: block; font-weight: 400; font-size: 12px; color: var(--m-sub); }
-.msim__row-bar { height: 22px; }
-.msim__row-bar i { display: block; height: 100%; border-radius: 0 6px 6px 0; background: #b9c2bb; }
-.msim__row.is-minus .msim__row-bar i { background: #e2906d; }
-.msim__row.is-us .msim__row-bar i { background: var(--m-green); }
-.msim__row-num { font-family: var(--font-round); font-weight: 700; font-size: 24px; text-align: right; white-space: nowrap; }
+.msim__row-num { font-family: var(--font-round); font-weight: 700; font-size: 20px; text-align: right; white-space: nowrap; }
 .msim__row-num small { font-size: 12px; margin-left: 2px; }
 .msim__row.is-minus .msim__row-num { color: var(--m-cta); }
 .msim__row.is-us .msim__row-num, .msim__row.is-us .msim__row-name { color: var(--m-green); }
@@ -4674,9 +4712,14 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .msim__specs li { padding: 5px 10px; word-break: keep-all; }
   .msim__split { padding: 18px 16px; }
   .msim__future { padding: 22px 16px 16px; }
-  .msim__row { grid-template-columns: minmax(0, 1fr) auto; gap: 6px 10px; }
-  .msim__row-bar { grid-column: 1 / -1; grid-row: 2; height: 16px; }
-  .msim__row-num { font-size: 20px; }
+  .msim__rows { grid-template-columns: 1fr; gap: 8px; }
+  .msim__row { padding: 10px 12px; }
+  .msim__row-num { font-size: 18px; }
+  .mchart { padding: 22px 8px 28px 40px; }
+  .mchart__plot { height: 220px; }
+  .mchart__y { left: -38px; width: 32px; font-size: 10px; }
+  .mchart__mark { font-size: 10.5px; padding: 1px 7px; }
+  .mchart__end { font-size: 14px; }
   .msim__extra { font-size: 13px; text-align: left; }
 }
 
