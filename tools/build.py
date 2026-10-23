@@ -4426,7 +4426,7 @@ def media_service_page(sv):
     src_link = f' <a href="media/{pr["src"]}.html">運営事例の記事 {ARROW}</a>' if pr.get("src") else ""
 
     risks = "".join(f"""<li class="mrisk">
-            <p class="mrisk__num">{e(n)}<small>{e(u)}</small></p>
+            <p class="mrisk__num">{(lambda m: (f'<small class="mrisk__pre">{e(m.group(1))}</small>' if m.group(1) else "") + e(m.group(2)))(re.match(r"(\D*)(.*)", n))}<small>{e(u)}</small></p>
             <p class="mrisk__label">{e(l)}</p>
             <p class="mrisk__text">{e(t)}</p>
             <a class="mrisk__link" href="media/{sl}.html">くわしく {ARROW}</a>

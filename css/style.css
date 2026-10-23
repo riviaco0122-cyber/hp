@@ -4519,3 +4519,4 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .founder__photo { width: 136px; height: 136px; margin: 0; flex-shrink: 0; }
 .founder__photo img { display: block; width: 100%; height: 100%; aspect-ratio: 1 / 1; }
 @media (max-width: 899px) { .founder__photo { width: 96px; height: 96px; } }
+.mrisk__num small.mrisk__pre { margin: 0 2px 0 0; }
