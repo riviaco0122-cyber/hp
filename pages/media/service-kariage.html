@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=09f67ee3">
+  <link rel="stylesheet" href="../../css/style.css?v=11a6348d">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -80,20 +80,44 @@
   </header>
 
   <main>
-    <section class="mhero msv-hero">
+    <section class="mlp-hero">
       <div class="container">
         <nav class="crumbs" aria-label="パンくずリスト"><a href="../media.html">アキヤド</a><span class="crumbs__sep">/</span><a href="../media/plans.html">アキヤドの<wbr>プラン</a><span class="crumbs__sep">/</span><span aria-current="page">アキヤド借り上げプラン</span></nav>
-        <div class="msv-hero__grid">
-          <div class="msv-hero__text">
-            <p class="mhero__en reveal">空き家を<wbr>活かしたい方へ</p>
-            <h1 class="msv-hero__title reveal" data-delay="1">家は持ったまま、<br>宿として活かして<wbr>毎月の<wbr>収入に。</h1>
-            <p class="mhero__lead reveal" data-delay="2">アキヤドが<wbr>空き家を<wbr>借り上げ、<wbr>改修から宿の<wbr>運営まで<wbr>行います。<wbr>オーナー様は<wbr>運営の<wbr>手間を<wbr>かけずに、<wbr>家賃を<wbr>受け取れます。</p>
-            <ul class="mcta__points msv-hero__points reveal" data-delay="2"><li>相談・<wbr>お見積りは無料</li><li>全国対応・オンライン可</li><li>しつこい<wbr>営業は<wbr>しません</li></ul>
+        <div class="mlp-hero__grid">
+          <div class="mlp-hero__text">
+            <p class="mlp-hero__eyebrow reveal"><n-w>空き家を活かしたい方へ｜アキヤド借り<n-b>上げプラン</n-b></n-w></p>
+            <h1 class="mlp-hero__title reveal" data-delay="1">初期費用は<em>ほぼ0円</em>。<br>空き家を、<wbr>毎月の<wbr>家賃に。</h1>
+            <p class="mlp-hero__sub reveal" data-delay="2"><n-w>アキヤドが借り上げ、改修から宿の運営まで行います。家は持ったまま、手間をかけずに家賃を<n-b>受け取れます。</n-b></n-w></p>
+            <ul class="mlp-hero__promise reveal" data-delay="2"><li><strong>0円</strong>相談・試算</li><li><strong>2営業日</strong><n-b>以内にご連絡</n-b></li><li><strong>全国</strong>オンライン可</li></ul>
+            <picture class="mlp-hero__photo reveal" data-delay="3"><source srcset="../../images/photos/w/irori-room-800.webp" type="image/webp"><img src="../../images/photos/irori-room.jpg" alt="" width="800" height="533" loading="eager" decoding="async"></picture>
           </div>
-          <div id="msv-form">
-        <form class="qform qform--media reveal" data-delay="2" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html">
-          <p class="qform__title">アキヤド借り上げプランの<wbr>無料相談</p>
-          <p class="qform__lead"><n-w>まだ検討中の段階でも大丈夫です。2営業日以内に<n-b>ご連絡します。</n-b></n-w></p>
+          <div class="mdiag" id="diag" data-rec='{&quot;q&quot;: 2, &quot;map&quot;: [[&quot;アキヤドおまかせプラン&quot;, &quot;初期費用をほぼかけずに、毎月決まった額の家賃を受け取る方法です。&quot;], [&quot;アキヤド売上シェアプラン&quot;, &quot;補修・内装を一部負担するかわりに、売上に応じた上乗せも受け取れる方法です。&quot;], [&quot;おまかせ・売上シェアの比較&quot;, &quot;2つのプランで、受け取れる家賃と負担を試算して比べます。&quot;]]}'>
+            <div class="mdiag__step mdiag__step--1">
+              <p class="mdiag__badge">STEP 1 / 2</p>
+              <p class="mdiag__title">30秒で<wbr>わかる、<wbr>かんたん診断</p>
+              <p class="mdiag__lead"><n-w>3つの質問に答えると、合いそうなプランと、連絡先の入力に<n-b>進みます。</n-b></n-w></p>
+            <fieldset class="mdiag__q">
+              <legend><span>Q1</span>物件のある場所は？</legend>
+              <div class="mdiag__opts"><button type="button" class="mdiag__opt" data-v="都市部" aria-pressed="false">都市部</button><button type="button" class="mdiag__opt" data-v="地方の町" aria-pressed="false">地方の町</button><button type="button" class="mdiag__opt" data-v="観光地・海や山の近く" aria-pressed="false">観光地・海や山の近く</button><button type="button" class="mdiag__opt" data-v="わからない" aria-pressed="false">わからない</button></div>
+            </fieldset>
+            <fieldset class="mdiag__q">
+              <legend><span>Q2</span>建物の<wbr>状態は？</legend>
+              <div class="mdiag__opts"><button type="button" class="mdiag__opt" data-v="すぐ使える" aria-pressed="false">すぐ使える</button><button type="button" class="mdiag__opt" data-v="手入れが必要" aria-pressed="false">手入れが必要</button><button type="button" class="mdiag__opt" data-v="傷みが激しい" aria-pressed="false">傷みが<wbr>激しい</button><button type="button" class="mdiag__opt" data-v="わからない" aria-pressed="false">わからない</button></div>
+            </fieldset>
+            <fieldset class="mdiag__q">
+              <legend><span>Q3</span>改修の<wbr>費用は？</legend>
+              <div class="mdiag__opts"><button type="button" class="mdiag__opt" data-v="かけたくない" aria-pressed="false">かけたくない</button><button type="button" class="mdiag__opt" data-v="一部なら出せる" aria-pressed="false">一部なら<wbr>出せる</button><button type="button" class="mdiag__opt" data-v="わからない" aria-pressed="false">わからない</button></div>
+            </fieldset>
+              <button type="button" class="mbtn mdiag__go" disabled>結果を見る <span class="arrow" aria-hidden="true"></span></button>
+              <p class="mdiag__skip"><a href="#diag-form" data-diag-skip>診断せずに、<wbr>すぐ相談する</a></p>
+            </div>
+            <div class="mdiag__step mdiag__step--2" id="diag-form" hidden>
+              <p class="mdiag__badge">STEP 2 / 2</p>
+              <div class="mdiag__result" aria-live="polite"><p class="mdiag__result-label">あなたに<wbr>合いそうなのは</p><p class="mdiag__result-name"></p><p class="mdiag__result-text"></p></div>
+        <form class="qform qform--media mdiag__form" action="https://script.google.com/macros/s/AKfycbx-SeTX9iRu6f45DUkCBj28vYeyQZnXH-958CJ6XYU0y7Ie1Pn1hDV1ahcyxWaBX3Uc/exec" method="POST" enctype="multipart/form-data" data-thanks="thanks.html">
+          <p class="qform__title">連絡先を<wbr>入力して、<wbr>無料で<wbr>相談する</p>
+          <p class="qform__lead"><n-w>診断の内容をもとに、2営業日以内にご連絡します。まだ検討中の段階でも<n-b>大丈夫です。</n-b></n-w></p>
+          <input type="hidden" name="かんたん診断" value="" class="mdiag__answers">
           <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore aria-hidden="true">
           <input type="hidden" name="_subject" value="【アキヤド】アキヤド借り上げプランのご相談（サービスページ）">
           <input type="hidden" name="ご相談カテゴリ" value="アキヤド借り上げプラン">
@@ -105,118 +129,113 @@
           <button type="submit" class="btn qform__submit">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></button>
           <p class="qform__note"><n-w>送信により</n-w><a href="../privacy.html"><n-w>プライバシーポリシー</n-w></a><n-w>に同意したものとします。しつこい営業は<n-b>しません。</n-b></n-w></p>
         </form>
+              <p class="mdiag__back"><button type="button" class="mdiag__reset">← 診断を<wbr>やり直す</button></p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section msec msec--first">
-      <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Worries</p><h2 class="msec__title">こんな<wbr>お悩みは<wbr>ありませんか？</h2></div></div>
-        <ul class="msv-worries reveal"><li>思い出のある家を、<wbr>手放したくはない</li><li>空き家のまま<wbr>傷んでいくのが心配</li><li>貸したいが、<wbr>借り手が<wbr>見つかる<wbr>地域ではない</li><li>改修に<wbr>まとまった<wbr>お金は<wbr>かけられない</li><li>宿に興味は<wbr>あるが、<wbr>運営する<wbr>時間がない</li></ul>
+    <section class="mlp-sec mlp-sec--worry">
+      <div class="container mlp-narrow">
+        <h2 class="mlp-title reveal">こんな<wbr>お悩み、<wbr>ひとりで<wbr>抱えていませんか？</h2>
+        <ul class="mlp-worries reveal"><li>思い出のある家を、<wbr>手放したくはない</li><li>空き家のまま<wbr>傷んでいくのが心配</li><li>貸したいが、<wbr>借り手が<wbr>見つかる<wbr>地域ではない</li><li>改修に<wbr>まとまった<wbr>お金は<wbr>かけられない</li><li>宿に興味は<wbr>あるが、<wbr>運営する<wbr>時間がない</li></ul>
       </div>
     </section>
 
-    <section class="section section--soft msec">
+    <section class="mlp-sec mlp-sec--soft">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Risk</p><h2 class="msec__title">使っていない<wbr>家は、<wbr>持っているだけで<wbr>お金と<wbr>手間が<wbr>かかります</h2></div></div>
-        <ol class="msv-risks">
-          <li class="msv-risk reveal">
-            <h3 class="msv-risk__title">税と見回りの<wbr>費用が、<wbr>毎年かかる</h3>
-            <p class="msv-risk__text"><n-w class="j">土地の固定資産税（評価額1,200万円の敷地で年26,600円という市の計算例）に、建物の分、見回り（1回3,000円ほどからの例）や草刈りの費用が、使っていなくても<n-b>かかります。</n-b></n-w></p>
-            <a class="msv-risk__link" href="../media/akiya-holding-costs.html"><n-w class="j">空き家の維持費はいくら？</n-w> <span class="arrow" aria-hidden="true"></span></a>
+        <p class="mlp-en reveal">How much?</p>
+        <h2 class="mlp-title reveal">家賃は、<wbr><n-b>いくらになる？</n-b></h2>
+        <p class="mlp-lead reveal"><n-w>周辺の宿の料金と稼働、広さ、改修にかかる費用から、物件ごとに試算します。受け取り方は2つから<n-b>選べます。</n-b></n-w></p>
+        <ul class="mprice__cards mprice__cards--2 reveal"><li class="mprice__card">
+            <p class="mprice__card-label">アキヤドおまかせプラン</p>
+            <p class="mprice__card-num"><small>毎月</small>3<small>万円</small></p>
+            <p class="mprice__card-ex">決まった額の家賃<wbr>（例）</p>
+            <p class="mprice__card-note"><n-w>改修・家具などの初期費用は、アキヤドがほぼ全額を負担（建物の構造的な補修のみ<n-b>オーナー様）</n-b></n-w></p>
+          </li><li class="mprice__card">
+            <p class="mprice__card-label">アキヤド売上シェアプラン</p>
+            <p class="mprice__card-num"><small>最低保証</small>2.5<small>万円＋売上の<wbr>10%</small></p>
+            <p class="mprice__card-ex">（例）<wbr>売上40万円の<wbr>月なら<wbr> 6.5万円</p>
+            <p class="mprice__card-note"><n-w>補修・内装はオーナー様とアキヤドで共同出資。繁忙期の上振れも<n-b>受け取れます</n-b></n-w></p>
+          </li></ul>
+        <div class="mprice__factors reveal"><p>家賃が<wbr>決まる<wbr>4つのこと</p><ul><li>立地（周辺の宿の<wbr><n-b>料金と稼働）</n-b></li><li>広さ・<wbr>泊まれる人数</li><li>建物の状態（改修の<wbr>費用）</li><li>契約期間</li></ul></div>
+        <p class="mprice__note"><n-w>※ 金額はイメージです。物件によって変わります。現地調査のうえ、根拠とあわせて<n-b>ご提示します。</n-b></n-w></p>
+      </div>
+    </section>
+
+    <section class="mlp-sec">
+      <div class="container">
+        <p class="mlp-en reveal">Risk</p>
+        <h2 class="mlp-title reveal">使っていない<wbr>家にも、<wbr>お金と<wbr>手間は<wbr>かかり続けます</h2>
+        <ul class="mrisks reveal"><li class="mrisk">
+            <p class="mrisk__num">最大6<small>倍</small></p>
+            <p class="mrisk__label">勧告後の、<wbr>土地の税の<wbr>計算のもと</p>
+            <p class="mrisk__text"><n-w>管理が行き届かず市の勧告を受けると、住宅用地の特例が外れ、撤回されない限り<n-b>そのまま。</n-b></n-w></p>
+            <a class="mrisk__link" href="../media/akiya-law-kanri-fuzen.html"><n-w class="j">くわしく</n-w> <span class="arrow" aria-hidden="true"></span></a>
+          </li><li class="mrisk">
+            <p class="mrisk__num">3,000<small>円〜</small></p>
+            <p class="mrisk__label">見回りを頼む費用<wbr>（1回）</p>
+            <p class="mrisk__text"><n-w>月1回なら年36,000円の例。草刈りや、建物の分の税も別に<n-b>かかります。</n-b></n-w></p>
+            <a class="mrisk__link" href="../media/akiya-holding-costs.html"><n-w>くわしく</n-w> <span class="arrow" aria-hidden="true"></span></a>
+          </li><li class="mrisk">
+            <p class="mrisk__num">3<small>年以内</small></p>
+            <p class="mrisk__label">相続登記の期限</p>
+            <p class="mrisk__text"><n-w>相続した家は名義変更が義務に。昔の相続でも2027年3月31日までに申請が<n-b>必要です。</n-b></n-w></p>
+            <a class="mrisk__link" href="../media/souzoku-touki-gimuka.html"><n-w>くわしく</n-w> <span class="arrow" aria-hidden="true"></span></a>
+          </li></ul>
+      </div>
+    </section>
+
+    <section class="mlp-sec mlp-sec--green">
+      <div class="container">
+        <h2 class="mlp-title mlp-title--light reveal">改修も、<wbr>集客も、<wbr>ゲスト対応も。<wbr>宿の運営は<wbr>アキヤドが<wbr>すべて行います</h2>
+        <ol class="mpoints">
+          <li class="mpoint reveal">
+            <span class="mpoint__icon" aria-hidden="true"><svg class="fig-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 4 5 7 5-7"/><path d="M12 11v9"/><path d="M8 13h8"/><path d="M8 16.5h8"/></svg></span>
+            <div><h3 class="mpoint__title">初期費用を<wbr>かけずに<wbr>始められる</h3><p class="mpoint__text"><n-w>アキヤドおまかせプランなら、改修・家具などの費用はアキヤドがほぼ負担します（建物の構造的な<n-b>補修を除く）。</n-b></n-w></p></div>
           </li>
-          <li class="msv-risk reveal">
-            <h3 class="msv-risk__title">勧告を<wbr>受けると、<wbr>土地の税が上がる</h3>
-            <p class="msv-risk__text"><n-w class="j">管理が行き届かず市の勧告を受けると、住宅用地の特例が外れ、土地の税の計算のもとが最大6倍になります。勧告が撤回されない限り、<n-b>外れたままです。</n-b></n-w></p>
-            <a class="msv-risk__link" href="../media/akiya-law-kanri-fuzen.html"><n-w class="j">空家法の改正で何が変わった？</n-w> <span class="arrow" aria-hidden="true"></span></a>
+          <li class="mpoint reveal">
+            <span class="mpoint__icon" aria-hidden="true"><svg class="fig-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7"/><path d="M3 14h18v4"/><path d="M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5"/><circle cx="7" cy="11" r="1.8"/></svg></span>
+            <div><h3 class="mpoint__title">宿の運営は<wbr>すべて<wbr>アキヤド</h3><p class="mpoint__text"><n-w>集客・予約・清掃・ゲスト対応まで、宿を運営している私たちが<n-b>行います。</n-b></n-w></p></div>
           </li>
-          <li class="msv-risk reveal">
-            <h3 class="msv-risk__title">相続した<wbr>家は、<wbr>名義の<wbr>変更も必要</h3>
-            <p class="msv-risk__text"><n-w class="j">2024年4月1日から、相続登記は相続を知った日から3年以内が義務です。昔の相続でも、2027年3月31日までに申請が<n-b>必要です。</n-b></n-w></p>
-            <a class="msv-risk__link" href="../media/souzoku-touki-gimuka.html"><n-w class="j">相続登記の義務化とは？</n-w> <span class="arrow" aria-hidden="true"></span></a>
+          <li class="mpoint reveal">
+            <span class="mpoint__icon" aria-hidden="true"><svg class="fig-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19.5s-7.5-4.4-7.5-10A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10z"/></svg></span>
+            <div><h3 class="mpoint__title">家を残し、<wbr>まちに人を呼ぶ</h3><p class="mpoint__text"><n-w>家は持ったまま。旅行者が訪れることで、まちにも人の流れが<n-b>生まれます。</n-b></n-w></p></div>
           </li>
         </ol>
-        <p class="msv-answer reveal"><n-w>そのお悩み、</n-w><strong><n-w>宿を運営するアキヤド</n-w></strong><n-w><n-b>にご相談ください。</n-b></n-w></p>
+        <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-mid">30秒診断から<wbr>相談する <span class="arrow" aria-hidden="true"></span></a><a href="../media/contact.html?category=document&amp;from=akiyado-service-kariage" class="mbtn mbtn--sub" data-cta="media-doc">資料を<wbr>もらう<wbr>（無料）<wbr> <span class="arrow" aria-hidden="true"></span></a></div>
       </div>
     </section>
 
-    <section class="section msec">
+    <section class="mlp-sec">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Why Akiyado</p><h2 class="msec__title">アキヤド借り上げプランが<wbr>選ばれる理由</h2></div></div>
-        <ol class="msv-points">
-          <li class="msv-point reveal" data-delay="0">
-            <span class="msv-point__no">POINT 01</span>
-            <h3 class="msv-point__title">初期費用を<wbr>かけずに<wbr>始められる</h3>
-            <p class="msv-point__text"><n-w>アキヤドおまかせプランなら、改修・家具などの費用はアキヤドがほぼ負担します（建物の構造的な<n-b>補修を除く）。</n-b></n-w></p>
-          </li>
-          <li class="msv-point reveal" data-delay="1">
-            <span class="msv-point__no">POINT 02</span>
-            <h3 class="msv-point__title">宿の運営は<wbr>すべて<wbr>アキヤド</h3>
-            <p class="msv-point__text"><n-w>集客・予約・清掃・ゲスト対応まで、宿を運営している私たちが<n-b>行います。</n-b></n-w></p>
-          </li>
-          <li class="msv-point reveal" data-delay="2">
-            <span class="msv-point__no">POINT 03</span>
-            <h3 class="msv-point__title">家を残し、<wbr>まちに人を呼ぶ</h3>
-            <p class="msv-point__text"><n-w>家は持ったまま。旅行者が訪れることで、まちにも人の流れが<n-b>生まれます。</n-b></n-w></p>
-          </li>
-        </ol>
-        <div class="msv-offer reveal">
-          <p class="msv-offer__label">無料の<wbr>ご相談で、<wbr>お渡しするもの</p>
-          <ol class="msv-offer__list">
-          <li class="msv-offer__item"><span class="msv-offer__no">01</span><div><h3 class="msv-offer__title">宿にした場合の<wbr>収支の試算</h3><p class="msv-offer__text"><n-w>周辺の宿の料金と稼働を調べ、宿にした場合にどれくらいの家賃をお支払いできるかを<n-b>試算します。</n-b></n-w></p></div></li>
-          <li class="msv-offer__item"><span class="msv-offer__no">02</span><div><h3 class="msv-offer__title">具体的な<wbr><n-b>条件のご提示</n-b></h3><p class="msv-offer__text"><n-w>家賃・契約期間・改修の負担の分け方を、おまかせプランと売上シェアプランの両方で、数字で<n-b>お出しします。</n-b></n-w></p></div></li>
-          <li class="msv-offer__item"><span class="msv-offer__no">03</span><div><h3 class="msv-offer__title">宿として<wbr>営業できるかの確認</h3><p class="msv-offer__text"><n-w>用途地域や条例、消防などの条件と、改修が必要な箇所をまとめて<n-b>お伝えします。</n-b></n-w></p></div></li>
-          </ol>
-          <p class="msv-offer__note"><n-w>ここまで費用はかかりません。内容を見てから、進めるかどうかを<n-b>決めていただけます。</n-b></n-w></p>
-        </div>
-        <div class="msv-band reveal">
-          <p class="msv-band__text"><n-w>まずは話を聞いてみたい方も、資料で比べたい方も。</n-w><br class="pc-only"><n-w><n-b>ご相談・資料のお届けは無料です。</n-b></n-w></p>
-          <div class="msv-band__btns">
-            <a href="#msv-form" class="mbtn" data-cta="media-service-mid">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
-            <a href="../media/contact.html?category=document&amp;from=akiyado-service-kariage" class="mbtn mbtn--sub" data-cta="media-doc">資料を<wbr>もらう<wbr>（無料）<wbr> <span class="arrow" aria-hidden="true"></span></a>
+        <div class="mletter reveal">
+          <p class="mlp-en">Message</p>
+          <h2 class="mletter__title">会社員から宿を<wbr>始めた<wbr>私たちが、<br class="pc-only">ご相談を<wbr>お受けします</h2>
+          <div class="mletter__faces"><figure class="mletter__face"><img src="../../images/founder-ishihara.jpg" alt="石原 佑真" width="96" height="96" loading="lazy" decoding="async"><figcaption>石原 佑真<small>代表社員</small></figcaption></figure><figure class="mletter__face"><img src="../../images/founder-katai.jpg" alt="片井 進太" width="96" height="96" loading="lazy" decoding="async"><figcaption>片井 進太<small>代表社員</small></figcaption></figure></div>
+          <div class="mletter__body">
+            <p><n-w>はじめまして。アキヤドを運営する合同会社RIVIA&amp;CO.の、石原と<n-b>片井です。</n-b></n-w></p>
+            <p><n-w class="j">私たちは宿泊業の経験がない会社員として、住まいから離れた静岡県下田市で、借りた家を宿にしました。準備に約7か月。法人での融資の相談が見送られたこと、工事のあとの想定外の請求、古い配線で家電が同時に使えないこと。つまずきは、ひと通り<n-b>経験しました。</n-b></n-w></p>
+            <p><n-w class="j">それでも、清掃を地域の方にお願いし、セルフチェックインなどの仕組みを整えたことで、いまは現地に行くのは数か月に1回ほどで宿が<n-b>回っています。</n-b></n-w></p>
+            <p><n-w class="j">空き家は、手を入れれば旅をする人の滞在先になり、まちに人の流れを生みます。思い出のある家を、壊さず、手放さずに活かす。その道があるかを、数字で<n-b>お見せします。</n-b></n-w></p>
+            <p class="mletter__sign"><n-w>合同会社RIVIA&amp;CO. 代表社員　石原 佑真・<n-b>片井 進太</n-b></n-w></p>
           </div>
+          <ul class="msv-stats">
+            <li><span class="msv-stats__num"><n-w>約14</n-w><small><n-w>か月</n-w></small></span><span class="msv-stats__label"><n-w>初期投資の約98%を回収</n-w></span><span class="msv-stats__note"><n-w>購入費を基準にした割合</n-w></span></li>
+            <li><span class="msv-stats__num">約53<small>%</small></span><span class="msv-stats__label">1年目の<wbr>稼働率</span><span class="msv-stats__note">計画の<wbr>約1.3倍</span></li>
+            <li><span class="msv-stats__num">★4.88</span><span class="msv-stats__label"><n-w>Airbnb の評価</n-w></span><span class="msv-stats__note"><n-w>51件・掲載時点</n-w></span></li>
+          </ul>
+          <figure class="mletter__voice"><blockquote><n-w>和モダンな室内がとてもオシャレで、快適でした！お部屋の居心地がよく、下田旅行の素敵な思い出に<n-b>なりました。</n-b></n-w></blockquote><figcaption><n-w>NODE Shimoda のゲスト（Airbnbゲスト・1泊・202<n-b>6年9月）</n-b></n-w></figcaption></figure>
+          <p class="mletter__more"><a href="../media/case-rental-house-inn-first-year.html"><n-w>下田の宿の運営データを見る</n-w> <span class="arrow" aria-hidden="true"></span></a>　<a href="https://note.com/calm_quokka8545/n/n6de4ea4f8b5f" target="_blank" rel="noopener" data-cta="note-story"><n-w>開業の体験記（note・有料）</n-w> <span class="arrow" aria-hidden="true"></span></a></p>
         </div>
       </div>
     </section>
 
-    <section class="section section--soft msec">
+    <section class="mlp-sec mlp-sec--soft">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Track record</p><h2 class="msec__title">アキヤドが<wbr>運営している宿<wbr>（一例）</h2></div></div>
-        <ul class="msv-stats reveal">
-          <li><span class="msv-stats__num"><n-w>約14</n-w><small><n-w>か月</n-w></small></span><span class="msv-stats__label"><n-w>初期投資の約98%を回収</n-w></span><span class="msv-stats__note"><n-w>営業利益で回収。2026年9月時点</n-w></span></li>
-          <li><span class="msv-stats__num">約53<small>%</small></span><span class="msv-stats__label">1年目の<wbr>稼働率</span><span class="msv-stats__note">計画の<wbr>約1.3倍</span></li>
-          <li><span class="msv-stats__num">★4.88</span><span class="msv-stats__label"><n-w>Airbnb の評価</n-w></span><span class="msv-stats__note"><n-w>51件・掲載時点</n-w></span></li>
-        </ul>
-        <p class="msv-stats__src"><n-w>NODE Shimoda の数字です。詳しくは</n-w><a href="../media/case-rental-house-inn-first-year.html"><n-w>運営事例の記事</n-w></a><n-w>をご覧ください。収益を保証する<n-b>ものではありません。</n-b></n-w></p>
-        <div class="msv-record reveal">
-          <p class="msv-record__lead"><span class="ex-badge"><n-w class="j">運営施設の一例</n-w></span><n-w class="j">アキヤドは複数の宿を自ら運営しています。ここでは、その一例として静岡県下田市の一棟貸しの宿「NODE Shimoda」をご紹介します。</n-w><br class="pc-only"><n-w class="j">記事やご提案は、現場で確かめた運営の知識を<n-b>もとにしています。</n-b></n-w></p>
-          <p class="msv-record__label"><n-w>ゲストの声（Airbnbの<n-b>レビューより抜粋）</n-b></n-w></p>
-          <div class="mvoices">
-            <figure class="mvoice reveal"><blockquote class="mvoice__text"><n-w>和モダンな室内がとてもオシャレで、快適でした！お部屋の居心地がよく、下田旅行の素敵な思い出に<n-b>なりました。</n-b></n-w></blockquote>
-              <figcaption class="mvoice__who"><span class="mvoice__plan">NODE Shimoda</span><n-w>Airbnbゲスト・1泊・20<n-b>26年9月</n-b></n-w></figcaption></figure>
-            <figure class="mvoice reveal"><blockquote class="mvoice__text"><n-w>駅から近くアクセスが良く利便性が高いと感じました。室内も清潔で過ごしやすか<n-b>ったです。</n-b></n-w></blockquote>
-              <figcaption class="mvoice__who"><span class="mvoice__plan">NODE Shimoda</span><n-w>Airbnbゲスト・1泊・20<n-b>26年9月</n-b></n-w></figcaption></figure>
-            <figure class="mvoice reveal"><blockquote class="mvoice__text"><n-w>海も近く初日の出も見ることができ、スーパーも近かったのでとても便利で快適な時間を過ごすことがで<n-b>きました！</n-b></n-w></blockquote>
-              <figcaption class="mvoice__who"><span class="mvoice__plan">NODE Shimoda</span><n-w>Airbnbゲスト・数泊・20<n-b>26年1月</n-b></n-w></figcaption></figure>
-          </div>
-        <a href="https://note.com/calm_quokka8545/n/n6de4ea4f8b5f" class="mstory reveal" target="_blank" rel="noopener" data-cta="note-story">
-          <span class="mstory__photo" aria-hidden="true"></span>
-          <span class="mstory__body">
-            <span class="mstory__en">Founder's story</span>
-            <span class="mstory__title"><n-w>会社員が片道2時間の下田で、民泊を始めた記録</n-w></span>
-            <span class="mstory__text"><n-w class="j">合同会社RIVIA&amp;CO.の代表社員の片井が、はじめて民泊に挑戦したときの体験記です。開業までのリアルと、開業後3か月の歩みをnoteにまとめています。</n-w></span>
-            <span class="mstory__link">noteで読む<wbr>（有料・別タブで<wbr>開きます）<wbr> <span class="arrow" aria-hidden="true"></span></span>
-          </span>
-        </a>
-          <p class="mcta__plans"><a href="/#project">運営実績を見る <span class="arrow" aria-hidden="true"></span></a></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section msec">
-      <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Compare</p><h2 class="msec__title">ほかの<wbr><n-b>選択肢と比べる</n-b></h2></div></div>
+        <p class="mlp-en reveal">Compare</p>
+        <h2 class="mlp-title reveal">ほかの<wbr>方法と、<wbr>ここが<wbr>違います</h2>
         <div class="msv-compare reveal">
           <table>
             <thead><tr><th scope="col">選択肢</th><th scope="col">初期費用</th><th scope="col">手間</th><th scope="col">収入</th></tr></thead>
@@ -229,17 +248,14 @@
             </tbody>
           </table>
         </div>
-        <p class="msv-compare__note"><n-w>※ 一般的な傾向です。実際の条件は物件や契約によって<n-b>変わります。</n-b></n-w></p>
-        <div class="msv-fit reveal">
-          <div class="msv-fit__col msv-fit__col--yes"><p class="msv-fit__label">向いている方</p><ul><li>思い出のある家を、<wbr>手放さずに<wbr>残したい</li><li>改修に<wbr>まとまった<wbr>お金は<wbr>かけられない</li><li>宿に興味は<wbr>あるが、<wbr>運営する<wbr>時間がない</li><li>家を活かして、<wbr>まちに人を呼びたい</li></ul></div>
-          <div class="msv-fit__col msv-fit__col--no"><p class="msv-fit__label">ほかの<wbr>方法が<wbr>合うかもしれない方</p><ul><li><n-w>近いうちに売る可能性が高い（貸すと3,000万円特別控除が使えなくなる場合があるため、先に比べることを<n-b>おすすめします）</n-b></n-w></li><li><n-w>数年のうちに、ご自身やご家族が住む<n-b>予定がある</n-b></n-w></li></ul></div>
-        </div>
+        <details class="mlp-fold reveal"><summary>ほかの<wbr>方法が<wbr>合うかもしれない方</summary><ul><li><n-w>近いうちに売る可能性が高い（貸すと3,000万円特別控除が使えなくなる場合があるため、先に比べることを<n-b>おすすめします）</n-b></n-w></li><li><n-w>数年のうちに、ご自身やご家族が住む<n-b>予定がある</n-b></n-w></li></ul></details>
       </div>
     </section>
 
-    <section class="section msec" id="plans">
+    <section class="mlp-sec" id="plans">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Plans</p><h2 class="msec__title">プランと<wbr>条件の目安</h2></div></div>
+        <p class="mlp-en reveal">Plans</p>
+        <h2 class="mlp-title reveal">プランと<wbr>条件の目安</h2>
         <div class="mplans__cards mplans__cards--2 reveal">
             <article class="mplan is-rec">
               <span class="mplan__badge">おすすめ</span><h3 class="mplan__name">アキヤドおまかせプラン</h3>
@@ -257,13 +273,15 @@
             </article>
         </div>
         <p class="mplans__note"><n-w>※ 金額・割合はイメージです。条件は物件ごとにご提案します。契約は更新を前提と<n-b>しています。</n-b></n-w></p>
-        <p class="mcta__plans"><a href="../media/plans.html">ほかの<wbr>サービスも見る <span class="arrow" aria-hidden="true"></span></a></p>
       </div>
     </section>
 
-    <section class="section section--soft msec">
+    <section class="mlp-sec mlp-sec--soft">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">How it works</p><h2 class="msec__title">ご相談からの流れ</h2></div></div>
+        <p class="mlp-en reveal">Flow</p>
+        <h2 class="mlp-title reveal">ご相談から<wbr>3ステップ。<wbr>ご提案までは<wbr>無料です</h2>
+        <ol class="mflow3 reveal"><li><span class="mflow3__no">1</span><p class="mflow3__t">かんたん診断・ご相談</p><p class="mflow3__d"><n-w>フォームのあと、2営業日以内にご連絡。メールか<n-b>オンラインで伺います</n-b></n-w></p></li><li><span class="mflow3__no">2</span><p class="mflow3__t">現地調査・ご提案</p><p class="mflow3__d"><n-w>物件を拝見し、数字と根拠をそろえてご提案。<n-b>ここまで無料です</n-b></n-w></p></li><li><span class="mflow3__no">3</span><p class="mflow3__t">ご契約・スタート</p><p class="mflow3__d"><n-w>内容にご納得いただけたら、ご契約。準備は<n-b>アキヤドが進めます</n-b></n-w></p></li></ol>
+        <details class="mlp-fold mlp-fold--flow reveal"><summary><n-w>各ステップの期間・お願いすること・費用を見る</n-w></summary>
         <ol class="dflow">
           <li class="dflow__step reveal">
             <div class="dflow__head"><span class="dflow__no">STEP 01</span><span class="dflow__term"><n-w class="j">当日〜数日</n-w></span></div>
@@ -341,9 +359,59 @@
           <li><n-w>しつこい営業や、ご希望のない電話は<n-b>いたしません。</n-b></n-w></li>
           <li><n-w>期間は目安です。物件の状態や手続きの状況によって<n-b>前後します。</n-b></n-w></li>
         </ul>
+        </details>
       </div>
     </section>
 
+    <section class="mlp-sec">
+      <div class="container mlp-narrow">
+        <p class="mlp-en reveal">FAQ</p>
+        <h2 class="mlp-title reveal">よくある質問</h2>
+        <div class="faq reveal">
+          <details class="faq__item">
+            <summary class="faq__q"><span class="faq__mark">Q</span><span>契約期間は<wbr>どれくらいですか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">物件ごとにご提案します。改修の費用をアキヤドが負担するため、一定の期間を前提にした契約になります。契約は更新を前提と<n-b>しています。</n-b></n-w></p><span></span></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span class="faq__mark">Q</span><span><n-w>将来、家を使いたくなったらどうなりますか？</n-w></span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w>契約の形（定期借家など）によっては、期間の満了で返していただくこともできます。ご希望を最初にお聞かせ<n-b>ください。</n-b></n-w></p><span></span></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span class="faq__mark">Q</span><span>どんな<wbr>家でも<wbr>借り上げて<wbr>もらえますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w>立地や建物の状態、法令上、宿として営業できるかによります。現地調査と収支の試算をしたうえで<n-b>ご提案します。</n-b></n-w></p><span></span></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span class="faq__mark">Q</span><span>近所に<wbr>迷惑が<wbr>かからないか<wbr>心配です。</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w>利用ルールの案内や、騒音・ごみへの対応など、周辺への配慮も運営に含めて<n-b>行います。</n-b></n-w></p><span></span></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span class="faq__mark">Q</span><span>家賃は<wbr>どうやって<wbr>決まりますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w>周辺の宿の料金と稼働、改修にかかる費用、契約期間をもとに試算し、根拠とあわせて<n-b>ご提示します。</n-b></n-w></p><span></span></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span class="faq__mark">Q</span><span>将来、<wbr>売ることになったら？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">ご希望があれば最初にお聞かせください。相続した家は、貸すと3,000万円特別控除が使えなくなる場合があるため、売る場合との比較も<n-b>お出しします。</n-b></n-w></p><span></span></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span class="faq__mark">Q</span><span>宿の運営の<wbr>様子は<wbr>分かりますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w>運営の状況を定期的にご報告します。近隣への配慮も含めて宿を<n-b>運営します。</n-b></n-w></p><span></span></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span class="faq__mark">Q</span><span>相談したら、<wbr>契約しないと<wbr>いけませんか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w>いいえ。ご提案までは無料で、条件を見てから<n-b>決めていただけます。</n-b></n-w></p><span></span></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="mlp-sec mlp-sec--final">
+      <div class="container mlp-narrow">
+        <h2 class="mlp-title reveal">家を残すか<wbr>どうかは、<wbr>数字を<wbr>見てから<wbr>決められます</h2>
+        <p class="mlp-lead reveal"><n-w class="j">空き家は、使わない時間が長いほど傷み、手を入れる費用もかさみます。まずは、宿にした場合の家賃の見込みを知るところから<n-b>始めてみてください。</n-b></n-w></p>
+        <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-bottom">30秒診断から<wbr>相談する <span class="arrow" aria-hidden="true"></span></a><a href="../media/contact.html?category=document&amp;from=akiyado-service-kariage" class="mbtn mbtn--sub" data-cta="media-doc">資料を<wbr>もらう<wbr>（無料）<wbr> <span class="arrow" aria-hidden="true"></span></a></div>
+        <p class="mlp-final__note"><n-w>相談・試算は無料。しつこい営業は<n-b>しません。</n-b></n-w></p>
+      </div>
+    </section>
 
     <section class="section">
       <div class="container">
@@ -391,385 +459,6 @@
         </div>
       </div>
     </section>
-
-    <section class="section section--soft msec">
-      <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">FAQ</p><h2 class="msec__title">よくある質問</h2></div></div>
-        <div class="faq reveal">
-          <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>契約期間は<wbr>どれくらいですか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">物件ごとにご提案します。改修の費用をアキヤドが負担するため、一定の期間を前提にした契約になります。契約は更新を前提と<n-b>しています。</n-b></n-w></p><span></span></div>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span><n-w>将来、家を使いたくなったらどうなりますか？</n-w></span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w>契約の形（定期借家など）によっては、期間の満了で返していただくこともできます。ご希望を最初にお聞かせ<n-b>ください。</n-b></n-w></p><span></span></div>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>どんな<wbr>家でも<wbr>借り上げて<wbr>もらえますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w>立地や建物の状態、法令上、宿として営業できるかによります。現地調査と収支の試算をしたうえで<n-b>ご提案します。</n-b></n-w></p><span></span></div>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>近所に<wbr>迷惑が<wbr>かからないか<wbr>心配です。</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w>利用ルールの案内や、騒音・ごみへの対応など、周辺への配慮も運営に含めて<n-b>行います。</n-b></n-w></p><span></span></div>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>家賃は<wbr>どうやって<wbr>決まりますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w>周辺の宿の料金と稼働、改修にかかる費用、契約期間をもとに試算し、根拠とあわせて<n-b>ご提示します。</n-b></n-w></p><span></span></div>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>将来、<wbr>売ることになったら？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">ご希望があれば最初にお聞かせください。相続した家は、貸すと3,000万円特別控除が使えなくなる場合があるため、売る場合との比較も<n-b>お出しします。</n-b></n-w></p><span></span></div>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>宿の運営の<wbr>様子は<wbr>分かりますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w>運営の状況を定期的にご報告します。近隣への配慮も含めて宿を<n-b>運営します。</n-b></n-w></p><span></span></div>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__q"><span class="faq__mark">Q</span><span>相談したら、<wbr>契約しないと<wbr>いけませんか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w>いいえ。ご提案までは無料で、条件を見てから<n-b>決めていただけます。</n-b></n-w></p><span></span></div>
-          </details>
-        </div>
-        <div class="msv-closing reveal">
-          <p class="msv-closing__title"><n-w>家を残すかどうかは、数字を見てから<n-b>決められます</n-b></n-w></p>
-          <p class="msv-closing__text"><n-w class="j">空き家は、使わない時間が長いほど傷み、手を入れる費用もかさみます。まずは、宿にした場合の家賃の見込みを知るところから<n-b>始めてみてください。</n-b></n-w></p>
-        </div>
-        <div class="msv-band reveal">
-          <p class="msv-band__text"><n-w>まずは話を聞いてみたい方も、資料で比べたい方も。</n-w><br class="pc-only"><n-w><n-b>ご相談・資料のお届けは無料です。</n-b></n-w></p>
-          <div class="msv-band__btns">
-            <a href="#msv-form" class="mbtn" data-cta="media-service-mid">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
-            <a href="../media/contact.html?category=document&amp;from=akiyado-service-kariage" class="mbtn mbtn--sub" data-cta="media-doc">資料を<wbr>もらう<wbr>（無料）<wbr> <span class="arrow" aria-hidden="true"></span></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Articles</span>
-          <h2 class="section-title">空き家を<wbr>活かしたい方に<wbr>おすすめの記事</h2>
-        </div>
-        <div class="media-grid media-grid--scroll" data-limit="3">
-          <a href="../media/akiya-inherited-house-to-inn.html" class="media-card reveal" data-category="sell" data-date="2026-09-29">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/old-town-street.jpg" srcset="../../images/photos/w/old-town-street-800.webp 800w, ../../images/photos/old-town-street.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">売る・手放す</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">売る・手放す</span><span class="thumb__catch">放置された<wbr>実家が<br>「小さな<wbr>宿」に<wbr>変わる理由</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag">売る・手放す</span></span>
-              <h3 class="media-card__title">放置された<wbr>実家が<br>「小さな<wbr>宿」に<wbr>変わる理由</h3>
-              <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
-            </div>
-          </a>
-          <a href="../media/why-akiya-utilization-now.html" class="media-card reveal" data-category="trend" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/old-town-street.jpg" srcset="../../images/photos/w/old-town-street-800.webp 800w, ../../images/photos/old-town-street.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">観光と地域</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">観光と地域</span><span class="thumb__catch">なぜ今、<wbr>空き家の<br>活用が<wbr>注目されるのか</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag">観光と地域</span></span>
-              <h3 class="media-card__title">なぜ今、<wbr>空き家の<br>活用が<wbr>注目されるのか</h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/inherited-house-family-talk.html" class="media-card reveal" data-category="sell" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/irori-room.jpg" srcset="../../images/photos/w/irori-room-800.webp 800w, ../../images/photos/irori-room.jpg 1623w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">売る・手放す</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">売る・手放す</span><span class="thumb__catch">相続した<wbr>実家を<br>家族で<wbr>決める</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag">売る・手放す</span></span>
-              <h3 class="media-card__title">相続した<wbr>実家を<br><n-b>家族で決める</n-b></h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/why-minpaku-for-akiya.html" class="media-card reveal" data-category="trend" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/scene-stay.jpg" srcset="../../images/photos/w/scene-stay-800.webp 800w, ../../images/photos/scene-stay.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">観光と地域</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">観光と地域</span><span class="thumb__catch">空き家の<wbr>活用で<br>なぜ民泊が<wbr>選ばれるのか</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">観光と地域</span></span>
-              <h3 class="media-card__title">空き家の<wbr>活用で<br>なぜ民泊が<wbr>選ばれるのか</h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/akiya-lease-types.html" class="media-card reveal" data-category="lend" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/window-garden.jpg" srcset="../../images/photos/w/window-garden-800.webp 800w, ../../images/photos/window-garden.jpg 1079w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">貸す・<wbr>任せる</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">貸す・<wbr>任せる</span><span class="thumb__catch">空き家を貸すときの<br>契約の<wbr>種類と違い</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag">貸す・<wbr>任せる</span></span>
-              <h3 class="media-card__title">空き家を貸すときの<br>契約の<wbr>種類と違い</h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/minpaku-vs-ryokan-law.html" class="media-card reveal" data-category="start" data-date="2026-09-29">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/temple-bridge.jpg" srcset="../../images/photos/w/temple-bridge-800.webp 800w, ../../images/photos/temple-bridge.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">開業・手続き</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">開業・手続き</span><span class="thumb__catch">民泊新法と<wbr>旅館業、<br>どちらで<wbr>始める？</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">開業・手続き</span></span>
-              <h3 class="media-card__title">民泊新法と<wbr>旅館業、<br>どちらで<wbr>始める？</h3>
-              <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
-            </div>
-          </a>
-          <a href="../media/minpaku-management-company.html" class="media-card reveal" data-category="lend" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/gassho-village.jpg" srcset="../../images/photos/w/gassho-village-800.webp 800w, ../../images/photos/gassho-village.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">貸す・<wbr>任せる</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">貸す・<wbr>任せる</span><span class="thumb__catch">住宅宿泊管理業者とは？<br>委託が<wbr>必要な<wbr>ケース</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">貸す・<wbr>任せる</span></span>
-              <h3 class="media-card__title">住宅宿泊管理業者とは？<br>委託が<wbr><n-b>必要なケース</n-b></h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/akiya-utilization-options.html" class="media-card reveal" data-category="house" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/thatched-house.jpg" srcset="../../images/photos/w/thatched-house-800.webp 800w, ../../images/photos/thatched-house.jpg 1920w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">物件・改修</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">物件・改修</span><span class="thumb__catch">空き家の<wbr>活用方法を<br>比べる</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag">物件・改修</span></span>
-              <h3 class="media-card__title">空き家の<wbr>活用方法を<br>比べる</h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/akiya-minpaku-suitability.html" class="media-card reveal" data-category="house" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/riverside-town.jpg" srcset="../../images/photos/w/riverside-town-800.webp 800w, ../../images/photos/riverside-town.jpg 1620w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">物件・改修</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">物件・改修</span><span class="thumb__catch">その空き家は<br>民泊に<wbr>向いている？</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">物件・改修</span></span>
-              <h3 class="media-card__title">その空き家は<br>民泊に<wbr>向いている？</h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/akiya-demolish-or-renovate.html" class="media-card reveal" data-category="house" data-date="2026-10-13">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/old-town-street.jpg" srcset="../../images/photos/w/old-town-street-800.webp 800w, ../../images/photos/old-town-street.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">物件・改修</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">物件・改修</span><span class="thumb__catch">空き家は<wbr>解体か、<br>残して<wbr>直すか</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">物件・改修</span></span>
-              <h3 class="media-card__title">空き家は<wbr>解体か、<br><n-b>残して直すか</n-b></h3>
-              <time class="media-card__date" datetime="2026-10-13">2026.10.13</time>
-            </div>
-          </a>
-          <a href="../media/kominka-renovation-points.html" class="media-card reveal" data-category="house" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/irori-room.jpg" srcset="../../images/photos/w/irori-room-800.webp 800w, ../../images/photos/irori-room.jpg 1623w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">物件・改修</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">物件・改修</span><span class="thumb__catch">古民家を宿に<wbr>改修する<br>ときの<wbr>ポイント</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">物件・改修</span></span>
-              <h3 class="media-card__title">古民家を宿に<wbr>改修する<br>ときの<wbr>ポイント</h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/minpaku-fire-safety.html" class="media-card reveal" data-category="start" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/hotel-room.jpg" srcset="../../images/photos/w/hotel-room-800.webp 800w, ../../images/photos/hotel-room.jpg 1079w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">開業・手続き</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">開業・手続き</span><span class="thumb__catch">民泊・<wbr>小さな宿の<br>消防設備ガイド</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">開業・手続き</span></span>
-              <h3 class="media-card__title">民泊・<wbr>小さな宿の<br>消防設備ガイド</h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/new-build-vs-used-house-inn.html" class="media-card reveal" data-category="start" data-date="2026-09-29">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/thatched-house.jpg" srcset="../../images/photos/w/thatched-house-800.webp 800w, ../../images/photos/thatched-house.jpg 1920w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">開業・手続き</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">開業・手続き</span><span class="thumb__catch">小規模宿は<br>新築と<wbr>中古、<wbr>どっちが<wbr>いい？</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag">開業・手続き</span></span>
-              <h3 class="media-card__title">小規模宿は<br>新築と<wbr>中古、<wbr><n-b>どっちがいい？</n-b></h3>
-              <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
-            </div>
-          </a>
-          <a href="../media/remote-renovation-tips.html" class="media-card reveal" data-category="house" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/dark-room.jpg" srcset="../../images/photos/w/dark-room-800.webp 800w, ../../images/photos/dark-room.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">物件・改修</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">物件・改修</span><span class="thumb__catch">遠方からの<br>改修工事の<wbr>進め方</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">物件・改修</span></span>
-              <h3 class="media-card__title">遠方からの<br><n-b>改修工事の進め方</n-b></h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/case-owner-diy-cottage.html" class="media-card reveal" data-category="house" data-date="2026-10-14">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/mountain-dawn.jpg" srcset="../../images/photos/w/mountain-dawn-800.webp 800w, ../../images/photos/mountain-dawn.jpg 1442w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">物件・改修</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">物件・改修</span><span class="thumb__catch">築古の<wbr>別荘を<wbr>週末DIYで。<br>改修費80万円の事例</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">物件・改修</span></span>
-              <h3 class="media-card__title">築古の<wbr>別荘を<wbr>週末DIYで。<br>改修費80万円の事例</h3>
-              <time class="media-card__date" datetime="2026-10-14">2026.10.14</time>
-            </div>
-          </a>
-          <a href="../media/small-inn-subsidies.html" class="media-card reveal" data-category="money" data-date="2026-09-29">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/dark-room.jpg" srcset="../../images/photos/w/dark-room-800.webp 800w, ../../images/photos/dark-room.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">お金・税金</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">お金・税金</span><span class="thumb__catch">小規模宿で<wbr>使える<br>補助金・支援制度まとめ</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">お金・税金</span></span>
-              <h3 class="media-card__title">小規模宿で<wbr>使える<br>補助金・支援制度まとめ</h3>
-              <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
-            </div>
-          </a>
-          <a href="../media/airdna-revenue-simulation.html" class="media-card reveal" data-category="operate" data-date="2026-09-29">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/koi-pond.jpg" srcset="../../images/photos/w/koi-pond-800.webp 800w, ../../images/photos/koi-pond.jpg 1620w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">集客・運営</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">集客・運営</span><span class="thumb__catch">AirDNAで読む<br>小規模宿の<wbr>収益と<wbr>再現性</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">集客・運営</span></span>
-              <h3 class="media-card__title">AirDNAで読む<br>小規模宿の<wbr><n-b>収益と再現性</n-b></h3>
-              <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
-            </div>
-          </a>
-          <a href="../media/case-rental-house-inn-first-year.html" class="media-card reveal" data-category="operate" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/analytics-paper.jpg" srcset="../../images/photos/w/analytics-paper-800.webp 800w, ../../images/photos/analytics-paper.jpg 1619w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">集客・運営</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">集客・運営</span><span class="thumb__catch">下田の<wbr>一軒家を<wbr>宿に。<br>約14か月で<wbr>初期投資を回収</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">集客・運営</span></span>
-              <h3 class="media-card__title">下田の<wbr>一軒家を<wbr>宿に。<br>約14か月で<wbr>初期投資を回収</h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/minpaku-vs-rental-income.html" class="media-card reveal" data-category="money" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/white-bed.jpg" srcset="../../images/photos/w/white-bed-800.webp 800w, ../../images/photos/white-bed.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">お金・税金</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">お金・税金</span><span class="thumb__catch">民泊と賃貸<br>収入の<wbr>仕組みの違い</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">お金・税金</span></span>
-              <h3 class="media-card__title">民泊と賃貸<br>収入の<wbr>仕組みの違い</h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/akiyado-what-we-do.html" class="media-card reveal" data-category="lend" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/irori-room.jpg" srcset="../../images/photos/w/irori-room-800.webp 800w, ../../images/photos/irori-room.jpg 1623w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">貸す・<wbr>任せる</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">貸す・<wbr>任せる</span><span class="thumb__catch">アキヤドが<br>できること</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag">貸す・<wbr>任せる</span></span>
-              <h3 class="media-card__title">アキヤドが<br>できること</h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/akiyado-consultation-flow.html" class="media-card reveal" data-category="start" data-date="2026-10-11">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/hotel-room.jpg" srcset="../../images/photos/w/hotel-room-800.webp 800w, ../../images/photos/hotel-room.jpg 1079w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">開業・手続き</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">開業・手続き</span><span class="thumb__catch">相談から<wbr>開業までの<br>流れ</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">開業・手続き</span></span>
-              <h3 class="media-card__title">相談から<wbr>開業までの<br>流れ</h3>
-              <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
-            </div>
-          </a>
-          <a href="../media/case-owner-fishing-port.html" class="media-card reveal" data-category="money" data-date="2026-10-14">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/garden-boat.jpg" srcset="../../images/photos/w/garden-boat-800.webp 800w, ../../images/photos/garden-boat.jpg 1617w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">お金・税金</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">お金・税金</span><span class="thumb__catch">元・仕出し屋を<wbr>民泊に。<br>漁港の<wbr>体験プランで<wbr>高単価</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">お金・税金</span></span>
-              <h3 class="media-card__title">元・仕出し屋を<wbr>民泊に。<br>漁港の<wbr><n-b>体験プランで高単価</n-b></h3>
-              <time class="media-card__date" datetime="2026-10-14">2026.10.14</time>
-            </div>
-          </a>
-          <a href="../media/case-owner-licensed-akiya.html" class="media-card reveal" data-category="start" data-date="2026-10-14">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/autumn-garden.jpg" srcset="../../images/photos/w/autumn-garden-800.webp 800w, ../../images/photos/autumn-garden.jpg 1616w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">開業・手続き</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">開業・手続き</span><span class="thumb__catch">空き家を<wbr>旅館業で<wbr>民泊に。<br>初期費用400万円の事例</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">開業・手続き</span></span>
-              <h3 class="media-card__title">空き家を<wbr>旅館業で<wbr>民泊に。<br>初期費用400万円の事例</h3>
-              <time class="media-card__date" datetime="2026-10-14">2026.10.14</time>
-            </div>
-          </a>
-          <a href="../media/case-owner-castle-town-nagaya.html" class="media-card reveal" data-category="money" data-date="2026-10-25">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/old-town-street.jpg" srcset="../../images/photos/w/old-town-street-800.webp 800w, ../../images/photos/old-town-street.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">お金・税金</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">お金・税金</span><span class="thumb__catch">城下町の<wbr>長屋を<wbr>宿に。<br>融資の<wbr>3つの関門</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">お金・税金</span></span>
-              <h3 class="media-card__title">城下町の<wbr>長屋を<wbr>宿に。<br>融資の<wbr>3つの関門</h3>
-              <time class="media-card__date" datetime="2026-10-25">2026.10.25</time>
-            </div>
-          </a>
-          <a href="../media/case-owner-satoyama-airdna.html" class="media-card reveal" data-category="money" data-date="2026-10-27">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/irori-room.jpg" srcset="../../images/photos/w/irori-room-800.webp 800w, ../../images/photos/irori-room.jpg 1623w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">お金・税金</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">お金・税金</span><span class="thumb__catch">里山の<wbr>古民家を<wbr>宿に。<br>データで<wbr>融資を通す</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">お金・税金</span></span>
-              <h3 class="media-card__title">里山の<wbr>古民家を<wbr>宿に。<br>データで<wbr>融資を通す</h3>
-              <time class="media-card__date" datetime="2026-10-27">2026.10.27</time>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section mcta">
-      <div class="container">
-        <div class="mcta__box reveal">
-          <p class="mcta__en">Consultation</p>
-          <h2 class="mcta__title">空き家の<wbr>こと、<br class="sp-only">まずは<wbr>気軽に<wbr>ご相談ください。</h2>
-          <p class="mcta__lead"><n-w class="j">売るか、活かすか、民泊にするか。まだ決めていない段階でも大丈夫です。</n-w><br class="pc-only"><n-w class="j">宿を運営する私たちが、物件の状況に合わせてお答<n-b>えします。</n-b></n-w></p>
-          <ul class="mcta__points"><li>相談・<wbr>お見積りは無料</li><li>全国対応・オンライン可</li><li>しつこい<wbr>営業は<wbr>しません</li></ul>
-          <div class="mcta__btns">
-            <a href="../media/contact.html?category=operation&amp;from=akiyado" class="mbtn" data-cta="media-bottom">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a>
-            <a href="../media/contact.html?category=document&amp;from=akiyado-bottom" class="mbtn mbtn--sub" data-cta="media-doc">資料を<wbr>もらう<wbr>（無料）<wbr> <span class="arrow" aria-hidden="true"></span></a>
-          </div>
-          <p class="mcta__plans"><a href="../media/plans.html">アキヤドの<wbr>プランを見る <span class="arrow" aria-hidden="true"></span></a></p>
-          <p class="mcta__note"><n-w>運営：合同会社RIVIA&amp;CO.（宿泊施設の運営・<n-b>空き家再生）</n-b></n-w></p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="mfooter">
@@ -800,6 +489,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=operation&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=c9bde539"></script>
+  <script src="../../js/main.js?v=f7cc8aa9"></script>
 </body>
 </html>
