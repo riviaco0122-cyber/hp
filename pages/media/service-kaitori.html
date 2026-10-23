@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=2654c695">
+  <link rel="stylesheet" href="../../css/style.css?v=76e7ecd3">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -204,19 +204,19 @@
       <div class="container">
         <p class="mlp-en reveal">Compare</p>
         <h2 class="mlp-title reveal">ほかの<wbr>方法と、<wbr>ここが<wbr>違います</h2>
-        <p class="msv-compare__hint" aria-hidden="true">表は横に<wbr>スクロールできます →</p>
-        <div class="msv-compare reveal" tabindex="0" role="region" aria-label="ほかの方法との比較（横にスクロールできます）">
+        <p class="mcmp__legend" aria-hidden="true"><span><b class="mcmp__mark mcmp__mark--good">◎</b>とてもよい</span><span><b class="mcmp__mark mcmp__mark--ok">○</b>よい</span><span><b class="mcmp__mark mcmp__mark--bad">△</b>負担・注意</span><span><b class="mcmp__mark mcmp__mark--none">×</b>なし</span></p>
+        <div class="msv-compare reveal">
           <table>
-            <thead><tr><th scope="col">選択肢</th><th scope="col">現金に<wbr>なるまで</th><th scope="col">古い家の<wbr>評価</th><th scope="col">手間</th></tr></thead>
+            <thead><tr><th scope="col">選択肢</th><th scope="col">現金に<wbr>なるまで</th><th scope="col">古い家の<wbr>評価</th><th scope="col">売る以外の<wbr>提案</th></tr></thead>
             <tbody>
-              <tr><th scope="row">仲介で<wbr>売る</th><td>時期が<wbr>読めない</td><td>値段が<wbr>つきにくい</td><td>内覧・<wbr>片付け</td></tr>
-              <tr><th scope="row">一般的な<wbr>買取</th><td>早い</td><td>改修費を<wbr>見込んだ<wbr>価格</td><td>少ない</td></tr>
-              <tr class="is-us"><th scope="row">アキヤド<wbr>買取</th><td>早い</td><td>宿として<wbr>評価</td><td>少ない</td></tr>
-              <tr class="is-us"><th scope="row">アキヤド<wbr>借り上げ</th><td>売らずに<wbr>毎月の家賃</td><td>残して<wbr>活かす</td><td>運営は<wbr>アキヤド</td></tr>
+              <tr><th scope="row">仲介で<wbr>売る</th><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意">△</span><span class="mcmp__t">時期が<wbr>読めない</span></td><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意">△</span><span class="mcmp__t">値段が<wbr>つきにくい</span></td><td><span class="mcmp__mark mcmp__mark--none" role="img" aria-label="なし">×</span><span class="mcmp__t">なし</span></td></tr>
+              <tr><th scope="row">一般的な<wbr>買取</th><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">早い</span></td><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意">△</span><span class="mcmp__t">改修費を<wbr>差し引く</span></td><td><span class="mcmp__mark mcmp__mark--none" role="img" aria-label="なし">×</span><span class="mcmp__t">なし</span></td></tr>
+              <tr class="is-us"><th scope="row">アキヤド<wbr>買取</th><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">早い</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">宿として<wbr>評価</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">貸す案も<wbr>比べる</span></td></tr>
+              <tr class="is-us"><th scope="row">アキヤド<wbr>借り上げ</th><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">毎月の<wbr>家賃</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">家を<wbr>残せる</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい">◎</span><span class="mcmp__t">売る案も<wbr>比べる</span></td></tr>
             </tbody>
           </table>
         </div>
-        <p class="msv-compare__note"><n-w>※ 一般的な傾向です。実際の条件は物件や契約によって<n-b>変わります。</n-b></n-w></p>
+        <p class="msv-compare__note"><n-w>※ 読み手から見た一般的な傾向の目安です。実際の条件は物件や契約によって<n-b>変わります。</n-b></n-w></p>
         <details class="mlp-fold reveal"><summary>ほかの<wbr>方法が<wbr>合うかもしれない方</summary><ul><li><n-w>時間をかけてでも、少しでも高く売りたい（仲介が合う場合が<n-b>あります）</n-b></n-w></li><li><n-w>宿として営業できない条件の物件（法令や建物の状態によっては、お受けできない場合が<n-b>あります）</n-b></n-w></li></ul></details>
       </div>
     </section>
@@ -241,9 +241,8 @@
     <section class="mlp-sec mlp-sec--soft">
       <div class="container">
         <p class="mlp-en reveal">Flow</p>
-        <h2 class="mlp-title reveal">ご相談から<wbr>3ステップ。<wbr>ご提案までは<wbr>無料です</h2>
-        <ol class="mflow3 reveal"><li><span class="mflow3__no">1</span><p class="mflow3__t">ご相談・資料の<wbr>お届け</p><p class="mflow3__d"><n-w>フォームのあと、2営業日以内にご連絡。メールか<n-b>オンラインで伺います</n-b></n-w></p></li><li><span class="mflow3__no">2</span><p class="mflow3__t">現地調査・ご提案</p><p class="mflow3__d"><n-w>物件を拝見し、数字と根拠をそろえてご提案。<n-b>ここまで無料です</n-b></n-w></p></li><li><span class="mflow3__no">3</span><p class="mflow3__t">ご契約・スタート</p><p class="mflow3__d"><n-w>内容にご納得いただけたら、ご契約。準備は<n-b>アキヤドが進めます</n-b></n-w></p></li></ol>
-        <details class="mlp-fold mlp-fold--flow reveal"><summary>期間・費用など、<wbr>くわしい<wbr>流れを見る</summary>
+        <h2 class="mlp-title reveal">ご相談からの<wbr>流れ。<br>ご提案までは<wbr>無料です</h2>
+        <div class="mlp-flow">
         <ol class="dflow">
           <li class="dflow__step reveal">
             <div class="dflow__head"><span class="dflow__no">STEP 01</span><span class="dflow__term"><n-w class="j">当日〜数日</n-w></span></div>
@@ -307,7 +306,7 @@
           <li><n-w>しつこい営業や、ご希望のない電話は<n-b>いたしません。</n-b></n-w></li>
           <li><n-w>期間は目安です。物件の状態や手続きの状況によって<n-b>前後します。</n-b></n-w></li>
         </ul>
-        </details>
+        </div>
       </div>
     </section>
 

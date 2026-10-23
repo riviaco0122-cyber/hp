@@ -2539,7 +2539,7 @@ def spec_md():
     w("### メディアの構成（URLは rivia-co.com/media/ 配下。サブドメインは使わない）")
     w("* カテゴリ一覧（media/category-○○.html）：" + " ／ ".join(n for _, n in MEDIA_CATEGORIES) + "。カテゴリの説明文、関連するガイドへの導線、記事一覧（12件ずつ追加表示）。検索結果に出る独立したページにする。")
     w("* 見え方：URLは会社サイトの一部（rivia-co.com/media/）のまま、ヘッダー・フッターはメディア専用（ロゴ「アキヤド」、運営会社への小さなリンク）にして、独立したメディアとして見せる。タイトルの末尾・OGPのサイト名も「アキヤド」。")
-    w("* サービスのページ（media/service-kaitori・service-kariage・service-kaigyo）：問い合わせの直前に読むページ。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く、長い説明は折りたたむ。並びは、ヒーロー（読み手の得を言い切る見出し・3つの約束・写真）と「かんたん診断」→お悩み→いくら？（借り上げは家賃の例、買取は価格の決まり方、開業は下田の宿の数字）→放っておくと（大きな数字のタイル。出典の記事へリンク）→違い→創業者からの手紙と実績の数字・ゲストの声→ほかの方法との比較→プラン→3ステップの流れ（詳細は折りたたみ）→よくある質問→締めのCTA→取材した事例。中身は tools/build.py の MEDIA_SERVICES・MEDIA_SERVICE_LP・MEDIA_SERVICE_MORE。")
+    w("* サービスのページ（media/service-kaitori・service-kariage・service-kaigyo）：問い合わせの直前に読むページ。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く、長い説明は折りたたむ。並びは、ヒーロー（読み手の得を言い切る見出し・3つの約束・写真）と「かんたん診断」→お悩み→いくら？（借り上げは家賃の例、買取は価格の決まり方、開業は下田の宿の数字）→放っておくと（大きな数字のタイル。出典の記事へリンク）→違い→創業者からの手紙と実績の数字・ゲストの声→ほかの方法との比較→プラン→ご相談からの流れ（期間・お願いすること・費用つき）→よくある質問→締めのCTA→取材した事例。中身は tools/build.py の MEDIA_SERVICES・MEDIA_SERVICE_LP・MEDIA_SERVICE_MORE。")
     w("* サービスページのフォーム：最初に「無料で相談する」か「資料をもらう」を選び、名前とメールを送る（相談のときだけ、相談内容とファイルの欄を出す）。資料を選ぶと「ご相談カテゴリ」が「サービス資料の請求」になり、自動返信に資料が付く（Apps Script の変更は不要）。ページ内の「資料をもらう」ボタンは、資料を選んだ状態でこのフォームへ移る。CTA に「断ってもかまいません」のような言い回しは使わない。")
     w("* ヘッダーのナビ：PC（幅900px以上）はヘッダーの下に、状況別ガイド4つと「記事をさがす」「アキヤドのプラン」のタブだけを置く（数を絞り、はみ出して文字が切れないようにする）。右上のメニューボタン（3本線）はPC・スマホ共通で、ガイド4つ・基礎から学ぶ・事例から探す・記事をさがす・アキヤドのプラン・相談と資料請求のボタン・運営会社へのリンクを開く（PCは右上の小さなパネル、スマホは全幅）。トップへはロゴから戻る。")
     w("* メディアトップのFV：写真を全面に敷き、ロゴ・一言・状況別の入口（3つ）・検索窓を1画面に置いて、最初の画面から次の行動を選べるようにする（離脱を防ぐ）。")
@@ -4170,11 +4170,11 @@ MEDIA_SERVICE_CARDS = {
 # 体験談・数字は docs/brand/experience.md の「人が確認済み」の節と、公開済みの記事にあるものだけを使う
 MEDIA_SERVICE_MORE = {
     "sell": dict(
-        compare=dict(cols=["現金に|なるまで", "古い家の|評価", "手間"], note="", rows=[
-            ("仲介で|売る", ["時期が|読めない", "値段が|つきにくい", "内覧・|片付け"], False),
-            ("一般的な|買取", ["早い", "改修費を|見込んだ|価格", "少ない"], False),
-            ("アキヤド|買取", ["早い", "宿として|評価", "少ない"], True),
-            ("アキヤド|借り上げ", ["売らずに|毎月の家賃", "残して|活かす", "運営は|アキヤド"], True)]),
+        compare=dict(cols=["現金に|なるまで", "古い家の|評価", "売る以外の|提案"], note="", rows=[
+            ("仲介で|売る", ["△時期が|読めない", "△値段が|つきにくい", "×なし"], False),
+            ("一般的な|買取", ["◎早い", "△改修費を|差し引く", "×なし"], False),
+            ("アキヤド|買取", ["◎早い", "◎宿として|評価", "◎貸す案も|比べる"], True),
+            ("アキヤド|借り上げ", ["◎毎月の|家賃", "◎家を|残せる", "◎売る案も|比べる"], True)]),
         fit_no=["時間をかけてでも、少しでも高く売りたい（仲介が合う場合があります）", "宿として営業できない条件の物件（法令や建物の状態によっては、お受けできない場合があります）"],
         cases=["akiya-inherited-house-to-inn", "akiya-holding-costs", "akiya-3000man-deduction"], cases_title="手放す前に読んでおきたい記事",
         faq_more=[("相談したら、売らないといけませんか？", "いいえ。ご提案までは無料で、売るかどうかはご提案を見てから決めていただけます。"),
@@ -4183,12 +4183,12 @@ MEDIA_SERVICE_MORE = {
                   ("遠方の物件でも大丈夫ですか？", "全国の物件のご相談をお受けしています。初回はオンラインでお話しでき、現地の拝見は鍵の受け渡しの方法もご相談ください。")],
         closing=("決めるのは、比べてからで大丈夫です", "相続登記や税の特例には期限があります。売ると決めていなくても、まずは今の家の値段と、残した場合の収入を知っておくと、ご家族で話し合いやすくなります。")),
     "use": dict(
-        compare=dict(cols=["初期費用", "手間", "収入"], note="※ おまかせプランの初期費用は、建物の構造的な補修を除きます。", rows=[
-            ("そのまま|持つ", ["なし", "見回り・|草刈り", "なし|（税はかかる）"], False),
-            ("住まいと|して貸す", ["物件に|よる", "管理会社に|任せられる", "家賃|（借り手|しだい）"], False),
-            ("自分で|民泊", ["改修・|家具・|許可", "集客・|清掃・|対応", "売上から|経費を|引いた分"], False),
-            ("おまかせ|プラン", ["ほぼなし※", "ほぼなし", "毎月一定の|家賃"], True),
-            ("売上シェア|プラン", ["補修・|内装を|共同出資", "ほぼなし", "最低保証|＋上乗せ"], True)]),
+        compare=dict(cols=["初期費用", "手間", "収入"], note="", rows=[
+            ("そのまま|持つ", ["◎なし", "△見回り・|草刈り", "×なし"], False),
+            ("住まいと|して貸す", ["△改修が|要ることも", "○管理会社に|任せる", "○借り手|しだい"], False),
+            ("自分で|民泊", ["△改修・|家具・許可", "△集客・|清掃・対応", "○売上−|経費"], False),
+            ("おまかせ|プラン", ["◎ほぼ|なし", "◎ほぼ|なし", "◎毎月|一定"], True),
+            ("売上シェア|プラン", ["○補修を|共同出資", "◎ほぼ|なし", "◎保証＋|上乗せ"], True)]),
         fit_no=["近いうちに売る可能性が高い（貸すと3,000万円特別控除が使えなくなる場合があるため、先に比べることをおすすめします）", "数年のうちに、ご自身やご家族が住む予定がある"],
         cases=["case-rental-house-inn-first-year", "case-owner-subsidy-akiya", "case-owner-licensed-akiya"], cases_title="空き家が宿になった事例",
         faq_more=[("家賃はどうやって決まりますか？", "周辺の宿の料金と稼働、改修にかかる費用、契約期間をもとに試算し、根拠とあわせてご提示します。"),
@@ -4197,11 +4197,11 @@ MEDIA_SERVICE_MORE = {
                   ("相談したら、契約しないといけませんか？", "いいえ。ご提案までは無料で、条件を見てから決めていただけます。")],
         closing=("家を残すかどうかは、数字を見てから決められます", "空き家は、使わない時間が長いほど傷み、手を入れる費用もかさみます。まずは、宿にした場合の家賃の見込みを知るところから始めてみてください。")),
     "side": dict(
-        compare=dict(cols=["自分で|担うこと", "費用", "向いて|いる方"], note="", rows=[
-            ("すべて|自分で", ["すべて", "手数料|なし", "時間が|ある"], False),
-            ("伴走|コース", ["清掃・|ゲスト対応", "売上の|10%", "現場は|自分で"], True),
-            ("運営代行|コース", ["経営の|判断", "売上の|20%", "本業が|忙しい"], True),
-            ("共同出資|コース", ["経営の|判断", "利益を|出資割合で", "初期投資を|抑えたい"], True)]),
+        compare=dict(cols=["自分の|手間", "開業・集客の|ノウハウ", "初期投資"], note="※ 初期投資は、物件の取得・改修・家具などの費用です。", rows=[
+            ("すべて|自分で", ["△すべて", "△手探り", "△全額|自分で"], False),
+            ("伴走|コース", ["○清掃・|ゲスト対応", "◎プロが|伴走", "△自分で|用意"], True),
+            ("運営代行|コース", ["◎経営の|判断だけ", "◎プロが|運営", "△自分で|用意"], True),
+            ("共同出資|コース", ["◎経営の|判断だけ", "◎プロと|一緒に", "◎アキヤドと|分担"], True)]),
         fit_no=["短期間で確実にもうかる方法を探している（収益は物件や運営で変わり、保証はできません）", "宿として営業できない条件の物件で始めたい"],
         cases=["case-owner-rental-side-business", "case-owner-diy-cottage", "case-owner-pricing-mistake"], cases_title="副業で宿を始めた人の事例",
         faq_more=[("会社員でも、本当に運営できますか？", "私たちも会社員として、住まいから離れた下田で宿を始めました。いまは現地に行くのは数か月に1回ほどです。清掃の外注やセルフチェックインなど、離れて運営する仕組みづくりからお手伝いします。"),
@@ -4280,7 +4280,7 @@ MEDIA_SERVICE_LP = {
         worries_title="こんなお悩み、ひとりで抱えていませんか？",
         price=dict(title="家賃は、いくらになる？",
                    lead="周辺の宿の料金と稼働、広さ、改修にかかる費用から、物件ごとに試算します。受け取り方は2つから選べます。",
-                   cards=[("アキヤドおまかせプラン", "毎月", "3", "万円", "決まった額の家賃（例）", "改修・家具などの初期費用は、アキヤドがほぼ全額を負担（建物の構造的な補修のみオーナー様）"),
+                   cards=[("アキヤドおまかせプラン", "毎月", "3", "万円", "決まった額の家賃（例）", "改修・家具などの初期費用は、アキヤドがほぼ全額を負担します"),
                           ("アキヤド売上シェアプラン", "最低保証", "2.5", "万円＋売上の10%", "（例）売上40万円の月なら 6.5万円", "補修・内装はオーナー様とアキヤドで共同出資。繁忙期の上振れも受け取れます")],
                    factors=["立地（周辺の宿の料金と稼働）", "広さ・泊まれる人数", "建物の状態（改修の費用）", "契約期間"],
                    note="金額はイメージです。物件によって変わります。現地調査のうえ、根拠とあわせてご提示します。"),
@@ -4442,12 +4442,17 @@ def media_service_page(sv):
     review = NODE_REVIEWS[0]
     cmp = more["compare"]
     wb = lambda t: e(t).replace("|", "<wbr>")  # 「|」は改行してよい位置
+    # 各マスの先頭の記号（◎○△×）を、色つきの大きな評価マークにする。言葉は小さく添える
+    marks = {"◎": ("good", "とてもよい"), "○": ("ok", "よい"), "△": ("bad", "負担・注意"), "×": ("none", "なし")}
+    def cmp_cell(c):
+        m = marks.get(c[:1])
+        if not m:
+            return f"<td>{wb(c)}</td>"
+        return f'<td><span class="mcmp__mark mcmp__mark--{m[0]}" role="img" aria-label="{m[1]}">{c[:1]}</span><span class="mcmp__t">{wb(c[1:])}</span></td>'
     cmp_head = "".join(f"<th scope=\"col\">{wb(c)}</th>" for c in cmp["cols"])
-    cmp_rows = "\n".join(f"""              <tr{' class="is-us"' if us else ""}><th scope="row">{wb(n)}</th>{"".join(f'<td>{wb(c)}</td>' for c in cells)}</tr>"""
+    cmp_rows = "\n".join(f"""              <tr{' class="is-us"' if us else ""}><th scope="row">{wb(n)}</th>{"".join(cmp_cell(c) for c in cells)}</tr>"""
                          for n, cells, us in cmp["rows"])
     fit_no = "".join(f"<li>{e(x)}</li>" for x in more["fit_no"])
-    flow3 = "".join(f'<li><span class="mflow3__no">{i}</span><p class="mflow3__t">{e(t)}</p><p class="mflow3__d">{e(d)}</p></li>' for i, (t, d) in enumerate(
-        [("ご相談・資料のお届け", "フォームのあと、2営業日以内にご連絡。メールかオンラインで伺います"), ("現地調査・ご提案", "物件を拝見し、数字と根拠をそろえてご提案。ここまで無料です"), ("ご契約・スタート", "内容にご納得いただけたら、ご契約。準備はアキヤドが進めます")], 1))
     cases = [ARTICLE_BY_SLUG[sl] for sl in more["cases"]]
     closing_t, closing_d = more["closing"]
 
@@ -4529,8 +4534,8 @@ def media_service_page(sv):
       <div class="container">
         <p class="mlp-en reveal">Compare</p>
         <h2 class="mlp-title reveal">ほかの方法と、ここが違います</h2>
-        <p class="msv-compare__hint" aria-hidden="true">表は横にスクロールできます →</p>
-        <div class="msv-compare reveal" tabindex="0" role="region" aria-label="ほかの方法との比較（横にスクロールできます）">
+        <p class="mcmp__legend" aria-hidden="true"><span><b class="mcmp__mark mcmp__mark--good">◎</b>とてもよい</span><span><b class="mcmp__mark mcmp__mark--ok">○</b>よい</span><span><b class="mcmp__mark mcmp__mark--bad">△</b>負担・注意</span><span><b class="mcmp__mark mcmp__mark--none">×</b>なし</span></p>
+        <div class="msv-compare reveal">
           <table>
             <thead><tr><th scope="col">選択肢</th>{cmp_head}</tr></thead>
             <tbody>
@@ -4538,7 +4543,7 @@ def media_service_page(sv):
             </tbody>
           </table>
         </div>
-        <p class="msv-compare__note">※ 一般的な傾向です。実際の条件は物件や契約によって変わります。{(" " + e(cmp["note"])) if cmp.get("note") else ""}</p>
+        <p class="msv-compare__note">※ 読み手から見た一般的な傾向の目安です。実際の条件は物件や契約によって変わります。{(" " + e(cmp["note"])) if cmp.get("note") else ""}</p>
         <details class="mlp-fold reveal"><summary>ほかの方法が合うかもしれない方</summary><ul>{fit_no}</ul></details>
       </div>
     </section>
@@ -4557,11 +4562,10 @@ def media_service_page(sv):
     <section class="mlp-sec mlp-sec--soft">
       <div class="container">
         <p class="mlp-en reveal">Flow</p>
-        <h2 class="mlp-title reveal">ご相談から3ステップ。ご提案までは無料です</h2>
-        <ol class="mflow3 reveal">{flow3}</ol>
-        <details class="mlp-fold mlp-fold--flow reveal"><summary>期間・費用など、くわしい流れを見る</summary>
+        <h2 class="mlp-title reveal">ご相談からの流れ。<br>ご提案までは無料です</h2>
+        <div class="mlp-flow">
 {detail_flow(key)}
-        </details>
+        </div>
       </div>
     </section>
 
