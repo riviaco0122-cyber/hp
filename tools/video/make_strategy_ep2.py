@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""アキヤドの解説動画 第2回「民泊は届出か許可か」（約9分・1920×1080）を作る。
+"""アキヤドの解説動画 第2回「民泊の手続き2つの違い」（約8分・1920×1080）を作る。
 
 - 話し手はアニメの民泊戦略家「アキ」。聞き手にユウタ。型は docs/youtube/manual.md 1-2章、骨組みは docs/youtube/ep2-plan.md。
-- 第1回からの改善（2026-10-23）: 冒頭30秒に自己紹介を入れない（名乗りは章2の終わりに一言だけ）／イラストを作り込む
+- 第1回からの改善（2026-10-23）: 冒頭30秒に自己紹介を入れない（名乗りは約束の直後に一言だけ）／イラストを作り込む
   （背景の奥行き・質感と影・小物・色の深み・動き。ep2-plan.md 3章）。
 - 数字の出どころ（説明欄にも書く）:
   営業日数は年180日以内・民泊新法の正式名称と施行（2018年6月）（住宅宿泊事業法）、
@@ -40,19 +40,19 @@ NOTE = "※ 情報提供が目的で、特定の選択を勧めるものでは�
 SCENES = [
     ("sunset", 1.4, [
         ('A', '空き家で宿を始めたい人へ。まず、結論です。', dict(pre=3.4, call=(-3.0, 'K', 'アキヤド、みんぱくスクール！'), sfx=[(-3.9, 'whoosh'), (-3.55, 'pop'), (-2.9, 'bling'), (-0.4, 'whoosh'), (0.2, 'pop'), (1.6, 'pop')])),
-        ('A', '届出は、始めやすい。許可は、日数の制限がありません。', dict(sfx=[(0.4, 'pop')])),
+        ('A', '届出は、始めやすい。許可は、日数を多く取れます。', dict(sfx=[(0.4, 'pop')])),
         ('A', '向くのは、どちらか。日数、場所、建物の3つで、決まります。', dict(say='向くのは、どちらか。日数、場所、建物のみっつで、決まります。', sfx=[(0.4, 'pop')])),
-        ('A', '民泊戦略家の、アキです。', dict(sfx=[(0.4, 'pop')])),
-        ('A', '許可なら、1年に365日、泊められます。民泊新法の届出なら、180日までです。', dict(say='許可なら、いちねんに、さんびゃくろくじゅうごにち、泊められます。民泊新法の届出なら、ひゃくはちじゅうにちまでです。', sfx=[(0.4, 'pop')])),
+                ('A', '許可なら、1年に365日、泊められます。民泊新法の届出なら、180日までです。', dict(say='許可なら、いちねんに、さんびゃくろくじゅうごにち、泊められます。民泊新法の届出なら、ひゃくはちじゅうにちまでです。', sfx=[(0.4, 'pop')])),
         ('A', 'それなのに、なぜ届出を選ぶ人がいるのか。許可には、家の場所と、建物の条件があるからです。', dict(sfx=[(0.4, 'pop')])),
         ('A', 'この動画では、日数、場所、建物を、順に見ていきます。民泊が初めての人にも、分かるように話します。', dict(sfx=[(0.4, 'pop')])),
+('A', '民泊戦略家の、アキです。', dict(sfx=[(0.4, 'pop')])),
         ('A', 'まず、民泊とは何かからです。', dict(sfx=[(0.4, 'pop')])),
     ]),
     ("morning", 1.4, [
         ('A', '民泊とは、空き家や自宅に、旅行者を泊めて、お金をもらうことです。', dict(sfx=[(0, 'chime')])),
-        ('A', 'お金をもらって泊めるには、国のルールに沿った手続きが要ります。', dict(say='お金をもらって泊めるには、国のルールに沿った手続きが要ります。', sfx=[(0.4, 'pop')])),
-        ('A', '1日だけでも、お金をもらって泊めるなら、同じです。', dict(say='いちにちだけでも、お金をもらって泊めるなら、同じです。', sfx=[(0.4, 'pop')])),
-        ('A', 'その手続きの入口は、2つあります。届出と、許可です。', dict(say='その手続きの入口は、ふたつあります。届出と、許可です。', sfx=[(0.4, 'pop')])),
+        ('A', 'お金をもらって泊めるなら、国のルールに沿った手続きが必要です。', dict(say='お金をもらって泊めるなら、国のルールに沿った手続きが必要です。', sfx=[(0.4, 'pop')])),
+        ('Y', '手続きは、誰がやるんですか？', dict(sfx=[(0, 'pop')])),
+        ('A', '宿を始める持ち主が、やります。入口は、2つあります。届出と、許可です。', dict(say='宿を始める持ち主が、やります。入口は、ふたつあります。届出と、許可です。', sfx=[(0.4, 'pop')])),
         ('A', '届出とは、民泊新法にしたがって、役所に「民泊をやります」と知らせる方法です。', dict(sfx=[(0.4, 'pop')])),
         ('A', '民泊新法の正式な名前は、住宅宿泊事業法です。2018年6月に始まりました。', dict(say='民泊新法の正式な名前は、住宅宿泊事業法です。二千十八ねん、ろくがつに始まりました。', sfx=[(0.4, 'pop')])),
         ('A', '許可とは、旅館業法にしたがって、保健所の許可をもらう方法です。', dict(sfx=[(0.4, 'pop')])),
@@ -76,7 +76,8 @@ SCENES = [
         ('Y', 'お客さんが少なければ、届出でもいいんですか？', dict(sfx=[(0.4, 'pop')])),
         ('A', 'はい、そういう場合もあります。大事なのは、何日泊めたいかです。', dict(say='はい、そういう場合もあります。大事なのは、なんにち泊めたいかです。', sfx=[(0.4, 'pop')])),
         ('A', 'お金で言うと、売上の上限は、泊められる日数かける、1泊の料金です。', dict(say='お金で言うと、売上の上限は、泊められる日数かける、いっぱくの料金です。', sfx=[(0.4, 'pop')])),
-        ('A', 'つまり、泊めたい日数が多いほど、許可が向きます。', dict(sfx=[(0.4, 'pop')])),
+        ('Y', '稼働率は、高いほうがいいんですか？', dict(sfx=[(0, 'pop')])),
+        ('A', '高いほど、泊まる日が多いということです。ただし、届出には、180日の上限があります。', dict(say='高いほど、泊まる日が多いということです。ただし、届出には、ひゃくはちじゅうにちの上限があります。', sfx=[(0.4, 'pop')])),
     ]),
     ("golden", 1.4, [
         ('A', 'ここまでで、日数が分かりました。2つめは場所、3つめは建物です。ここに、許可の条件があります。', dict(say='ここまでで、日数が分かりました。ふたつめは場所、みっつめは建物です。ここに、許可の条件があります。', sfx=[(0, 'chime')])),
@@ -84,7 +85,7 @@ SCENES = [
         ('Y', 'もし、うちの空き家がそこにあったら、許可は取れないんですか？', dict(sfx=[(0.4, 'pop')])),
         ('A', '原則、取れません。届出なら、できます。ただし、制限があります。', dict(sfx=[(0.4, 'pop')])),
         ('A', '3つめは、建物です。届出の対象は、台所、浴室、トイレ、洗面がそろう家です。', dict(say='みっつめは、建物です。届出の対象は、台所、浴室、トイレ、洗面がそろう家です。', sfx=[(0.4, 'pop')])),
-        ('A', '空き家が、そのまま対象になるかは、窓口で確かめます。', dict(sfx=[(0.4, 'pop')])),
+        ('A', '空き家が、そのまま対象になるかは、市役所や保健所の相談窓口で確かめます。', dict(sfx=[(0.4, 'pop')])),
         ('A', '許可には、宿としての基準があります。図面を出し、火災報知器や誘導灯を付けます。', dict(sfx=[(0.4, 'pop')])),
         ('A', '広さにも目安があります。10人未満なら、1人あたり3.3平方メートルです。', dict(say='広さにも目安があります。じゅうにん未満なら、ひとりあたり、さんてんさん へいほうメートルです。', sfx=[(0.4, 'pop')])),
         ('A', 'たとえば4人なら、13.2平方メートル。10人以上なら、33平方メートル以上です。', dict(say='たとえば、よにんなら、じゅうさんてんに へいほうメートル。じゅうにん以上なら、さんじゅうさん へいほうメートル以上です。', sfx=[(0.4, 'pop')])),
@@ -99,14 +100,14 @@ SCENES = [
         ('A', '届出が向くのは、小さく試したい人。ときどき使う人。家が住居専用地域にある人です。', dict(sfx=[(0.4, 'pop')])),
         ('A', '許可が向くのは、1年中、事業として運営したい人。泊まる日数が多いほど収入が増える、事業向きの宿です。', dict(say='許可が向くのは、いちねんじゅう、事業として運営したい人。泊まる日数が多いほど収入が増える、事業向きの宿です。', sfx=[(0.4, 'pop')])),
         ('A', 'ここで、考えてみてください。1年に250日、泊めたい家があります。でも、家は住居専用地域です。', dict(say='ここで、考えてみてください。いちねんに、にひゃくごじゅうにち、泊めたい家があります。でも、家は住居専用地域です。', sfx=[(0.4, 'pop')])),
-        ('A', 'A、届出で、180日と割り切る。B、場所を変えて、許可を取る。C、先に窓口で確かめる。', dict(say='エー、届出で、ひゃくはちじゅうにちと割り切る。ビー、場所を変えて、許可を取る。シー、先に窓口で確かめる。', sfx=[(0, 'chime')])),
+        ('A', 'A、届出で、180日と割り切る。B、場所を変えて、許可を取る。C、250日はあきらめて、別の使い道を考える。', dict(say='エー、届出で、ひゃくはちじゅうにちと割り切る。ビー、場所を変えて、許可を取る。シー、にひゃくごじゅうにちはあきらめて、別の使い道を考える。', sfx=[(0, 'chime')])),
         ('A', '答えは、条件で変わります。場所を変えられるなら、B。変えられないなら、A。', dict(pre=3.2, sfx=[(-3.2, 'tick'), (-2.2, 'tick'), (-1.2, 'tick'), (0, 'ding'), (1.2, 'bling')])),
-        ('A', '迷うなら、先にCです。窓口で、その土地が住居専用地域かどうかを、確かめます。', dict(say='迷うなら、先にシーです。窓口で、その土地が住居専用地域かどうかを、確かめます。', sfx=[(0.4, 'pop')])),
-        ('A', 'つまり、場所を変えられるかが、分かれ目です。', dict(sfx=[(0.4, 'pop')])),
+        ('A', 'どれも、間違いではありません。まず、その土地が住居専用地域かどうかを、相談窓口で確かめます。', dict(say='どれも、間違いではありません。まず、その土地が住居専用地域かどうかを、相談窓口で確かめます。', sfx=[(0.4, 'pop')])),
+        ('A', 'つまり、場所を変えられるかで、答えが変わります。', dict(sfx=[(0.4, 'pop')])),
         ('Y', '届出で始めて、あとから許可に変えられますか？', dict(sfx=[(0.4, 'pop')])),
         ('A', '許可は、新しく申請します。場所と建物の条件を満たせば、取れます。そのまま切り替わるかは、窓口で確かめます。', dict(sfx=[(0.4, 'pop')])),
         ('Y', '場所の確認は、どうやってやるんですか？', dict(sfx=[(0, 'pop')])),
-        ('A', '窓口に、住所を伝えて、その土地が住居専用地域かどうかを、聞きます。', dict(sfx=[(0.4, 'pop')])),
+        ('A', '相談窓口に、住所を伝えて、その土地が住居専用地域かどうかを、聞きます。', dict(sfx=[(0.4, 'pop')])),
     ]),
     ("twilight", 1.4, [
         ('A', 'ここまでで、見分け方が分かりました。次は、失敗しやすい点を、3つ話します。', dict(say='ここまでで、見分けかたが分かりました。次は、失敗しやすい点を、みっつ話します。', sfx=[(0, 'chime')])),
@@ -311,10 +312,10 @@ function scene(i,t,lt){
   let s='';
   const aki=(pose,mood='happy',x=250)=>`<ellipse cx="${x+10}" cy="${GROUND+12}" rx="112" ry="17" fill="#000" opacity=".24"/>`+P(x,GROUND,.92,{c:'aki',who:'A',pose,mood},t);
   if(i===0){ // つかみ
-    const pose=on(6)?'present':on(5)?'think':on(4)?'point':'present';
-    if(lt>L[0]-.6)s+=aki(pose,on(5)&&!on(6)?'worry':'happy');
-    if(lt>L[0]-.5&&!on(5)){
-      const A=900,B=1480,by=585,d=Math.floor(365*seg(lt,L[4]+.5,L[4]+7.5)),dA=Math.min(d,180);
+    const pose=on(5)?'present':on(4)?'think':on(3)?'point':'present';
+    if(lt>L[0]-.6)s+=aki(pose,on(4)&&!on(5)?'worry':'happy');
+    if(lt>L[0]-.5&&!on(4)){
+      const A=900,B=1480,by=585,d=Math.floor(365*seg(lt,L[3]+.5,L[3]+7.5)),dA=Math.min(d,180);
       s+=pop(A,by-100,at(0,.5,.1),inn(A,by,.6,{sign:'民泊届出',roof:'#b5603a',noren:T,t,lit:.55,case:1}));
       s+=pop(B,by-100,at(0,.5,.4),inn(B,by,.68,{sign:'旅館業許可',roof:'#2e6b47',noren:G,t,lit:.85,post:1,bike:1,signc:'#2f2a22'}));
       s+=card(620,618,560,196,`<text x="900" y="652" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">民泊新法の届出：年180日まで</text>${cal(641,664,14,dA,180)}${shutter(641,664,14,180,seg(lt,L[0]+4.1,L[0]+4.6),'',0)}`,at(0,.4,.5));
@@ -323,13 +324,13 @@ function scene(i,t,lt){
     if(lt>L[0]-.4&&!on(3)){
       s+=pop(1500,215,at(0,.4,.6),`${face('qa',1790,215,62,'owner',G,'worry',t,false)}<rect x="1210" y="178" width="440" height="86" rx="30" fill="#000" opacity=".12"/><rect x="1210" y="172" width="440" height="86" rx="30" fill="#fff" stroke="${G}" stroke-width="4"/><text x="1430" y="226" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">手続きが難しそう…</text>`);
       s+=pop(1000,215,at(1,.4,.3),`<rect x="700" y="178" width="470" height="86" rx="30" fill="#000" opacity=".12"/><rect x="700" y="172" width="470" height="86" rx="30" fill="#fff" stroke="${T}" stroke-width="4"/><text x="935" y="226" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">何日、泊められるの？</text>`);}
-    if(on(3)&&!on(5))s+=pop(250,205,at(3,.4),`<rect x="68" y="168" width="364" height="76" rx="38" fill="#000" opacity=".14"/><rect x="68" y="160" width="364" height="76" rx="38" fill="url(#gG)"/><text x="250" y="212" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">民泊戦略家 アキ</text>`);
-    if(on(5)&&!on(6)){
-      s+=card(600,250,1240,540,`<text x="1220" y="330" text-anchor="middle" font-size="46" font-weight="900" fill="${DG}">許可なら、1年に365日、泊められる</text><text x="1220" y="400" text-anchor="middle" font-size="46" font-weight="900" fill="${T}">それなのに、なぜ届出を選ぶ人がいる？</text>${q(1220,600,150,t,0)}`,at(5,.4));
-      s+=pop(1220,700,at(5,.5,3.6),`<rect x="720" y="650" width="1000" height="100" rx="50" fill="url(#gG)"/><text x="1220" y="715" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">許可には、家の場所と建物の条件がある</text>`);}
-    if(on(6)&&!on(7)){const it=[['1','分かれ目① 泊められる日数',NAVY],['2','分かれ目② 家の場所',NAVY],['3','分かれ目③ 建物の条件',NAVY]];
-      s+=card(640,270,1160,470,`<text x="1220" y="350" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">今日わかること</text>`,at(6,.4));
-      it.forEach(([n,w,c],k)=>{const y=450+k*110;s+=pop(1220,y,at(6,.4,[1.4,4.4,8][k]),`<rect x="720" y="${y-44}" width="1000" height="92" rx="46" fill="${c}"/><rect x="740" y="${y-38}" width="960" height="24" rx="12" fill="#fff" opacity=".18"/><circle cx="776" cy="${y}" r="34" fill="#fff"/><text x="776" y="${y+14}" text-anchor="middle" font-size="42" font-weight="900" fill="${c}">${n}</text><text x="840" y="${y+15}" font-size="${w.length>12?40:44}" font-weight="900" fill="#fff">${w}</text>`)});}
+    if(on(6)&&!on(7))s+=pop(250,205,at(6,.4),`<rect x="68" y="168" width="364" height="76" rx="38" fill="#000" opacity=".14"/><rect x="68" y="160" width="364" height="76" rx="38" fill="url(#gG)"/><text x="250" y="212" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">民泊戦略家 アキ</text>`);
+    if(on(4)&&!on(5)){
+      s+=card(600,250,1240,540,`<text x="1220" y="330" text-anchor="middle" font-size="46" font-weight="900" fill="${DG}">許可なら、1年に365日、泊められる</text><text x="1220" y="400" text-anchor="middle" font-size="46" font-weight="900" fill="${T}">それなのに、なぜ届出を選ぶ人がいる？</text>${q(1220,600,150,t,0)}`,at(4,.4));
+      s+=pop(1220,700,at(4,.5,3.6),`<rect x="720" y="650" width="1000" height="100" rx="50" fill="url(#gG)"/><text x="1220" y="715" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">許可には、家の場所と建物の条件がある</text>`);}
+    if(on(5)&&!on(6)){const it=[['1','分かれ目① 泊められる日数',NAVY],['2','分かれ目② 家の場所',NAVY],['3','分かれ目③ 建物の条件',NAVY]];
+      s+=card(640,270,1160,470,`<text x="1220" y="350" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">今日わかること</text>`,at(5,.4));
+      it.forEach(([n,w,c],k)=>{const y=450+k*110;s+=pop(1220,y,at(5,.4,[1.4,4.4,8][k]),`<rect x="720" y="${y-44}" width="1000" height="92" rx="46" fill="${c}"/><rect x="740" y="${y-38}" width="960" height="24" rx="12" fill="#fff" opacity=".18"/><circle cx="776" cy="${y}" r="34" fill="#fff"/><text x="776" y="${y+14}" text-anchor="middle" font-size="42" font-weight="900" fill="${c}">${n}</text><text x="840" y="${y+15}" font-size="${w.length>12?40:44}" font-weight="900" fill="#fff">${w}</text>`)});}
     if(on(7)){
       s+=cardGround(600,250,1240,560,728,'#cfe0c8',at(7,.4));
       s+=tag(1220,330,'まず、民泊とは何か',at(7,.4,.3),Y,DG,46);
@@ -441,13 +442,12 @@ function scene(i,t,lt){
       s+=q(1150,540,130,t,0);
       s+=tag(1150,330,'自分の宿は、どっち？',at(10,.4,1.6),Y,DG,44);}
     if(on(10)&&!on(11))s+=qbubble('q6','届出でもいいの？',at(10,.4),t);
-    if(on(12)&&!on(13)){
+    if(on(12)){
       s+=card(620,250,1200,540,`<text x="1220" y="322" text-anchor="middle" font-size="42" font-weight="900" fill="${DG}">売上の上限 ＝ 泊められる日数 × 1泊の料金</text>`,at(12,.4));
       s+=pop(900,470,at(12,.4,.6),formulaChip(700,420,400,'泊められる日数',NAVY,'#fff',40));
       s+=fade(at(12,.3,1.4),`<text x="1180" y="486" text-anchor="middle" font-size="64" font-weight="900" fill="${DG}">×</text>`);
       s+=pop(1440,470,at(12,.4,1.8),formulaChip(1260,420,360,'1泊の料金',NAVY,'#fff',40));
       s+=pop(1220,660,at(12,.4,3.4),`<rect x="800" y="600" width="840" height="96" rx="48" fill="url(#gG)"/><text x="1220" y="667" text-anchor="middle" font-size="44" font-weight="900" fill="#fff">日数が増えるほど、上限も増える</text>`);}
-    if(on(13))s+=pop(1200,500,at(13,.4),`<rect x="640" y="388" width="1120" height="240" rx="120" fill="#000" opacity=".14"/><rect x="640" y="380" width="1120" height="240" rx="120" fill="url(#gO)"/><rect x="700" y="394" width="1000" height="50" rx="25" fill="#fff" opacity=".18"/><text x="1200" y="480" text-anchor="middle" font-size="56" font-weight="900" fill="#fff">泊めたい日数が多いほど、許可が向く</text><text x="1200" y="570" text-anchor="middle" font-size="46" font-weight="900" fill="#fff">ただし、許可には場所と建物の条件がある</text>`)+sparkle(700,380,1,t,0)+sparkle(1720,620,1.1,t,2);
   }
   if(i===3){ // 違い② 手続きと建物
     s+=aki(on(2)&&!on(3)?'think':(on(4)?'point':'present'),on(2)&&!on(3)?'worry':'happy');
@@ -518,13 +518,13 @@ function scene(i,t,lt){
       L1.forEach(([w,o],k)=>{if(on(1))s+=tag(735,636+k*58,w,at(1,.4,o),T,'#fff',30)});
       R1.forEach(([w,o],k)=>{if(on(2))s+=tag(1675,636+k*58,w,at(2,.4,o),G,'#fff',30)});}
     if(on(3)&&!on(5)){
-      s+=card(560,250,1280,560,`<rect x="600" y="280" width="240" height="64" rx="32" fill="${Y}"/><text x="720" y="324" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">考えてみよう</text><text x="1200" y="395" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">1年に250日、泊めたい家が、住居専用地域に</text><text x="1200" y="448" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">ある。どうする？</text>`+[['A','届出で、180日と割り切る'],['B','場所を変えて、許可を取る'],['C','先に窓口で確かめる']].map(([k2,w],k)=>{const x=760+k*440,bob=Math.sin(t*3+k)*4;return `<g opacity="${at(4,.3,[.5,2.9,5.3][k])}" transform="translate(0,${bob})"><rect x="${x-170}" y="526" width="340" height="200" rx="30" fill="#000" opacity=".08"/><rect x="${x-170}" y="520" width="340" height="200" rx="30" fill="#eef3ee"/><rect x="${x-150}" y="528" width="300" height="24" rx="12" fill="#fff" opacity=".8"/><circle cx="${x}" cy="580" r="38" fill="${[G,T,'#3d8a6a'][k]}"/><text x="${x}" y="595" text-anchor="middle" font-size="42" font-weight="900" fill="#fff">${k2}</text><text x="${x}" y="680" text-anchor="middle" font-size="${w.length>9?28:32}" font-weight="900" fill="${DG}">${w}</text></g>`}).join(''),at(3,.4));}
+      s+=card(560,250,1280,560,`<rect x="600" y="280" width="240" height="64" rx="32" fill="${Y}"/><text x="720" y="324" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">考えてみよう</text><text x="1200" y="395" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">1年に250日、泊めたい家が、住居専用地域に</text><text x="1200" y="448" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">ある。どうする？</text>`+[['A','届出で、180日と割り切る'],['B','場所を変えて、許可を取る'],['C','250日はあきらめる']].map(([k2,w],k)=>{const x=760+k*440,bob=Math.sin(t*3+k)*4;return `<g opacity="${at(4,.3,[.5,2.9,5.3][k])}" transform="translate(0,${bob})"><rect x="${x-170}" y="526" width="340" height="200" rx="30" fill="#000" opacity=".08"/><rect x="${x-170}" y="520" width="340" height="200" rx="30" fill="#eef3ee"/><rect x="${x-150}" y="528" width="300" height="24" rx="12" fill="#fff" opacity=".8"/><circle cx="${x}" cy="580" r="38" fill="${[G,T,'#3d8a6a'][k]}"/><text x="${x}" y="595" text-anchor="middle" font-size="42" font-weight="900" fill="#fff">${k2}</text><text x="${x}" y="680" text-anchor="middle" font-size="${w.length>9?28:32}" font-weight="900" fill="${DG}">${w}</text></g>`}).join(''),at(3,.4));}
     const cd=lt-(L[5]-3.2);if(cd>0&&cd<3.2&&!on(5))s+=pop(1200,880,clamp((cd%1)*4),`<circle cx="1200" cy="886" r="60" fill="#000" opacity=".15"/><circle cx="1200" cy="880" r="60" fill="${Y}"/><text x="1200" y="905" text-anchor="middle" font-size="72" font-weight="900" fill="${DG}">${Math.max(1,3-Math.floor(cd))}</text>`);
     if(on(5)&&!on(8)){
       s+=card(600,250,1240,550,`<text x="1220" y="320" text-anchor="middle" font-size="42" font-weight="900" fill="${DG}">答えは、条件で変わる</text><rect x="760" y="360" width="720" height="86" rx="43" fill="#eef3f8" stroke="${NAVY}" stroke-width="4"/><text x="1120" y="418" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">場所を変えられる？</text>`,at(5,.4));
       s+=pop(900,570,at(5,.5,2.2),`<path d="M960 450 L840 520" stroke="${NAVY}" stroke-width="7" stroke-linecap="round"/><rect x="640" y="520" width="440" height="110" rx="30" fill="url(#gG)"/><text x="860" y="570" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">はい</text><text x="860" y="612" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">B 場所を変えて、許可</text>`);
       s+=pop(1340,570,at(5,.5,4.4),`<path d="M1280 450 L1400 520" stroke="${NAVY}" stroke-width="7" stroke-linecap="round"/><rect x="1160" y="520" width="440" height="110" rx="30" fill="url(#gO)"/><text x="1380" y="570" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">いいえ</text><text x="1380" y="612" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">A 届出（180日まで）</text>`);
-      s+=tag(1220,730,'迷うなら、先に C：窓口で土地の地域を確認',at(6,.4,.3),NAVY,'#fff',34);}
+      s+=tag(1220,730,'どれも可。まず、土地の地域を確認',at(6,.4,.3),NAVY,'#fff',34);}
     if(on(8)&&!on(9))s+=qbubble('q4','あとで変えられる？',at(8,.4),t);
     if(on(8)&&!on(12)){
       s+=cardGround(600,250,1240,560,730,'#cfe0c8',at(8,.4));
