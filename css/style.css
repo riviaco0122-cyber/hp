@@ -4504,3 +4504,11 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .mlp-ctarow .mbtn { width: 100%; }
 }
 .mlp-sec .mplans__cards { margin-top: 40px; }
+/* かんたん診断の2段目：相談か資料かを選ぶ */
+.mdiag [hidden] { display: none !important; }
+.mdiag__modes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
+.mdiag__mode { display: flex; flex-direction: column; gap: 2px; padding: 12px 10px; border-radius: 14px; border: 1.5px solid var(--m-line); background: #fff; font: inherit; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
+.mdiag__mode strong { font-family: var(--font-round); font-size: 15px; color: var(--m-ink); }
+.mdiag__mode span { font-size: 11.5px; line-height: 1.5; color: var(--m-sub); }
+.mdiag__mode[aria-checked="true"] { border-color: var(--m-green); background: var(--m-sand); box-shadow: inset 0 0 0 1px var(--m-green); }
+.mdiag__mode[aria-checked="true"] strong { color: var(--m-green); }

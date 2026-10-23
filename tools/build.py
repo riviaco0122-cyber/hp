@@ -2534,7 +2534,7 @@ def spec_md():
     w("* カテゴリ一覧（media/category-○○.html）：" + " ／ ".join(n for _, n in MEDIA_CATEGORIES) + "。カテゴリの説明文、関連するガイドへの導線、記事一覧（12件ずつ追加表示）。検索結果に出る独立したページにする。")
     w("* 見え方：URLは会社サイトの一部（rivia-co.com/media/）のまま、ヘッダー・フッターはメディア専用（ロゴ「アキヤド」、運営会社への小さなリンク）にして、独立したメディアとして見せる。タイトルの末尾・OGPのサイト名も「アキヤド」。")
     w("* サービスのページ（media/service-kaitori・service-kariage・service-kaigyo）：問い合わせの直前に読むページ。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く、長い説明は折りたたむ。並びは、ヒーロー（読み手の得を言い切る見出し・3つの約束・写真）と「かんたん診断」→お悩み→いくら？（借り上げは家賃の例、買取は価格の決まり方、開業は下田の宿の数字）→放っておくと（大きな数字のタイル。出典の記事へリンク）→違い→創業者からの手紙と実績の数字・ゲストの声→ほかの方法との比較→プラン→3ステップの流れ（詳細は折りたたみ）→よくある質問→締めのCTA→取材した事例。中身は tools/build.py の MEDIA_SERVICES・MEDIA_SERVICE_LP・MEDIA_SERVICE_MORE。")
-    w("* かんたん診断：3つの質問（ボタンで選ぶ）に答えると、合いそうなプランを出し、連絡先のフォーム（2段目）に進む。答えはフォームの「かんたん診断」の項目として一緒に送る（Apps Script の変更は不要）。「診断せずに、すぐ相談する」でフォームだけを開ける。GA4 イベント diag_complete。CTA に「断ってもかまいません」のような言い回しは使わない。")
+    w("* かんたん診断：3つの質問（ボタンで選ぶ）に答えたあと、「無料で相談する」か「資料をもらう」を選び、名前とメールを送る2段。結果やシミュレーションは出さない。答えはフォームの「かんたん診断」の項目として一緒に送る（Apps Script の変更は不要）。資料を選ぶと「ご相談カテゴリ」が「サービス資料の請求」になり、自動返信に資料が付く。「質問に答えずに進む」でフォームだけを開ける。GA4 イベント diag_complete。CTA に「断ってもかまいません」のような言い回しは使わない。")
     w("* ヘッダーのナビ：PC（幅900px以上）はヘッダーの下に、状況別ガイド4つと「記事をさがす」のタブだけを置く（数を絞り、はみ出して文字が切れないようにする）。右上のメニューボタン（3本線）はPC・スマホ共通で、ガイド4つ・基礎から学ぶ・事例から探す・記事をさがす・アキヤドのプラン・相談と資料請求のボタン・運営会社へのリンクを開く（PCは右上の小さなパネル、スマホは全幅）。トップへはロゴから戻る。")
     w("* メディアトップのFV：写真を全面に敷き、ロゴ・一言・状況別の入口（3つ）・検索窓を1画面に置いて、最初の画面から次の行動を選べるようにする（離脱を防ぐ）。")
     w("* 想定する読者（ペルソナ）：① 空き家を売りたい方 ② 空き家を活かしたい方 ③ 副業で宿をはじめたい方。記事は、この3者が悩む順番をもとに企画する。")
@@ -4248,7 +4248,7 @@ MEDIA_FLOWS = {
 
 # サービスページ（LP）の見せ方。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く。
 # hero：読み手の得を言い切る見出し／price：いくら？の目安（金額はイメージ。物件ごとに変わることを必ず添える）
-# risk：大きな数字のタイル（出典の記事へリンク）／diag：かんたん診断（3問。rec の問いの答えで、合いそうなプランを出す）
+# risk：大きな数字のタイル（出典の記事へリンク）／diag：3つの質問（答えはフォームと一緒に送る。結果やシミュレーションは出さない）
 # letter：創業者からの一言の、サービスごとの最後の一文
 MEDIA_SERVICE_LP = {
     "sell": dict(
@@ -4266,13 +4266,10 @@ MEDIA_SERVICE_LP = {
               ("最大6", "倍", "勧告後の、土地の税の計算のもと", "管理が行き届かず市の勧告を受けると、住宅用地の特例が外れます。", "akiya-law-kanri-fuzen"),
               ("2027", "年末", "3,000万円特別控除の売却期限", "相続から3年後の年末までが原則。貸したり宿にしたりすると対象外に。", "akiya-3000man-deduction")],
         points_title="「売る」だけでなく、「残す」道も一緒に比べます",
-        diag=dict(title="30秒でわかる、かんたん診断", lead="3つの質問に答えると、合いそうな進め方と、連絡先の入力に進みます。",
+        diag=dict(title="30秒で答えられる、3つの質問", lead="答えると、ご相談か資料の請求に進めます。答えは、ご提案や資料のご案内に使います。",
                   qs=[("物件のある場所は？", ["都市部", "地方の町", "観光地・海や山の近く", "わからない"]),
                       ("建物の状態は？", ["すぐ使える", "手入れが必要", "傷みが激しい", "わからない"]),
-                      ("家への気持ちに近いのは？", ["手放したい", "迷っている", "できれば残したい"])],
-                  rec=2, map=[("アキヤド買取プラン", "現地を拝見し、宿として活かせるかも含めて査定します。"),
-                              ("買取と借り上げの比較", "売る場合と、家を残して家賃を受け取る場合を、手取りと手間で比べてご提案します。"),
-                              ("アキヤド借り上げプラン", "家は持ったまま、宿として活かして毎月の家賃にする方法をご提案します。")]),
+                      ("家への気持ちに近いのは？", ["手放したい", "迷っている", "できれば残したい"])]),
         letter="手放すと決める前に、宿として活かす道があるかを、一緒に確かめさせてください。"),
     "use": dict(
         photo="irori-room",
@@ -4290,13 +4287,10 @@ MEDIA_SERVICE_LP = {
               ("3,000", "円〜", "見回りを頼む費用（1回）", "月1回なら年36,000円の例。草刈りや、建物の分の税も別にかかります。", "akiya-holding-costs"),
               ("3", "年以内", "相続登記の期限", "相続した家は名義変更が義務に。昔の相続でも2027年3月31日までに申請が必要です。", "souzoku-touki-gimuka")],
         points_title="改修も、集客も、ゲスト対応も。宿の運営はアキヤドがすべて行います",
-        diag=dict(title="30秒でわかる、かんたん診断", lead="3つの質問に答えると、合いそうなプランと、連絡先の入力に進みます。",
+        diag=dict(title="30秒で答えられる、3つの質問", lead="答えると、ご相談か資料の請求に進めます。答えは、ご提案や資料のご案内に使います。",
                   qs=[("物件のある場所は？", ["都市部", "地方の町", "観光地・海や山の近く", "わからない"]),
                       ("建物の状態は？", ["すぐ使える", "手入れが必要", "傷みが激しい", "わからない"]),
-                      ("改修の費用は？", ["かけたくない", "一部なら出せる", "わからない"])],
-                  rec=2, map=[("アキヤドおまかせプラン", "初期費用をほぼかけずに、毎月決まった額の家賃を受け取る方法です。"),
-                              ("アキヤド売上シェアプラン", "補修・内装を一部負担するかわりに、売上に応じた上乗せも受け取れる方法です。"),
-                              ("おまかせ・売上シェアの比較", "2つのプランで、受け取れる家賃と負担を試算して比べます。")]),
+                      ("改修の費用は？", ["かけたくない", "一部なら出せる", "わからない"])]),
         letter="思い出のある家を、壊さず、手放さずに活かす。その道があるかを、数字でお見せします。"),
     "side": dict(
         photo="scene-stay",
@@ -4315,13 +4309,10 @@ MEDIA_SERVICE_LP = {
               ("2", "か月以上", "Wi-Fi工事にかかった期間（私たちの開業）", "古い家の配線で家電が同時に使えない、工事後の想定外の請求なども経験しました。", "case-rental-house-inn-first-year"),
               ("92", "%でも赤字", "取材したオーナーの稼働率", "清掃が月25回以上かかり実質赤字に。単価を9,800円から18,500円に見直して立て直しました。", "case-owner-pricing-mistake")],
         points_title="私たちがつまずいたところを、あなたは先回りできます",
-        diag=dict(title="30秒でわかる、かんたん診断", lead="3つの質問に答えると、合いそうなコースと、連絡先の入力に進みます。",
+        diag=dict(title="30秒で答えられる、3つの質問", lead="答えると、ご相談か資料の請求に進めます。答えは、ご提案や資料のご案内に使います。",
                   qs=[("物件は？", ["持っている", "探している", "これから考える"]),
                       ("運営への関わり方は？", ["現場も自分で", "できるだけ任せたい", "出資も含めて相談したい"]),
-                      ("ご予算は？", ["300万円未満", "300〜700万円", "700万円以上", "まだ決めていない"])],
-                  rec=1, map=[("伴走コース", "清掃やゲスト対応など現場はご自身で、開業準備と集客・料金をアキヤドが担います。"),
-                              ("運営代行コース", "開業準備から日々の運営まで、まるごとアキヤドにお任せいただけます。"),
-                              ("共同出資コース", "物件の取得と初期費用をアキヤドと共同出資し、利益を分け合います。")]),
+                      ("ご予算は？", ["300万円未満", "300〜700万円", "700万円以上", "まだ決めていない"])]),
         letter="私たちがつまずいたところは、先回りできます。始めるかどうかは、試算を見てから決めてください。"),
 }
 
@@ -4374,34 +4365,45 @@ def note_story(indent="        "):
 
 
 def media_diag(sv, lp):
-    """かんたん診断（3問）→ 連絡先のフォーム、の2段。答えは「かんたん診断」の項目としてフォームと一緒に送る"""
+    """3つの質問 → 「相談する／資料をもらう」を選んで連絡先を送る、の2段。答えは「かんたん診断」の項目として一緒に送る（結果やシミュレーションは出さない）"""
     d = lp["diag"]
     qs = "\n".join(f"""            <fieldset class="mdiag__q">
               <legend><span>Q{i}</span>{e(q)}</legend>
               <div class="mdiag__opts">{"".join(f'<button type="button" class="mdiag__opt" data-v="{e(o)}" aria-pressed="false">{e(o)}</button>' for o in opts)}</div>
             </fieldset>""" for i, (q, opts) in enumerate(d["qs"], 1))
-    import json as _json
-    rec = _json.dumps({"q": d["rec"], "map": [[n, t] for n, t in d["map"]]}, ensure_ascii=False)
+    reps = [('class="qform reveal" data-delay="2"', 'class="qform qform--media mdiag__form"'),
+            ('data-thanks="thanks.html?form=contact"', 'data-thanks="thanks.html"'),
+            ("【RIVIA&amp;CO.】", "【アキヤド】"),
+            (f'<p class="qform__title">{e(sv["name"])}の無料相談</p>\n', ''),
+            ('<p class="qform__lead">まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。</p>', '<input type="hidden" name="かんたん診断" value="" class="mdiag__answers">'),
+            (f'<input type="hidden" name="ご相談カテゴリ" value="{e(sv["name"])}">',
+             f'<input type="hidden" name="ご相談カテゴリ" value="{e(sv["name"])}" data-consult="{e(sv["name"])}" data-doc="サービス資料の請求">'),
+            ('<label class="qform__field"><span>ご相談内容', '<label class="qform__field mdiag__consult-only"><span>ご相談内容'),
+            ('<label class="qform__field qform__file">', '<label class="qform__field qform__file mdiag__consult-only">'),
+            (f'<button type="submit" class="btn qform__submit">無料で相談する {ARROW}</button>',
+             f'<button type="submit" class="btn qform__submit"><span class="mdiag__submit-t">無料で相談する</span> {ARROW}</button>')]
     form = quick_form(sv["category"], sv["name"])
-    form = (form.replace('class="qform reveal" data-delay="2"', 'class="qform qform--media mdiag__form"')
-                .replace('data-thanks="thanks.html?form=contact"', 'data-thanks="thanks.html"').replace("【RIVIA&amp;CO.】", "【アキヤド】")
-                .replace(f'<p class="qform__title">{e(sv["name"])}の無料相談</p>', '<p class="qform__title">連絡先を入力して、無料で相談する</p>')
-                .replace('<p class="qform__lead">まだ検討中の段階でも大丈夫です。2営業日以内にご連絡します。</p>',
-                         '<p class="qform__lead">診断の内容をもとに、2営業日以内にご連絡します。まだ検討中の段階でも大丈夫です。</p>\n          <input type="hidden" name="かんたん診断" value="" class="mdiag__answers">'))
-    return f"""          <div class="mdiag" id="diag" data-rec='{e(rec)}'>
+    for old, rep in reps:
+        assert old in form, old
+        form = form.replace(old, rep)
+    return f"""          <div class="mdiag" id="diag"><span id="diag-doc" class="mdiag__anchor"></span>
             <div class="mdiag__step mdiag__step--1">
               <p class="mdiag__badge">STEP 1 / 2</p>
               <p class="mdiag__title">{e(d["title"])}</p>
               <p class="mdiag__lead">{e(d["lead"])}</p>
 {qs}
-              <button type="button" class="mbtn mdiag__go" disabled>結果を見る {ARROW}</button>
-              <p class="mdiag__skip"><a href="#diag-form" data-diag-skip>診断せずに、すぐ相談する</a></p>
+              <button type="button" class="mbtn mdiag__go" disabled>次へ {ARROW}</button>
+              <p class="mdiag__skip"><a href="#diag-form" data-diag-skip>質問に答えずに進む</a></p>
             </div>
             <div class="mdiag__step mdiag__step--2" id="diag-form" hidden>
               <p class="mdiag__badge">STEP 2 / 2</p>
-              <div class="mdiag__result" aria-live="polite"><p class="mdiag__result-label">あなたに合いそうなのは</p><p class="mdiag__result-name"></p><p class="mdiag__result-text"></p></div>
+              <p class="mdiag__title">ご希望を選んで、連絡先を入力</p>
+              <div class="mdiag__modes" role="radiogroup" aria-label="ご希望">
+                <button type="button" class="mdiag__mode" role="radio" aria-checked="true" data-mode="consult"><strong>無料で相談する</strong><span>2営業日以内にご連絡します</span></button>
+                <button type="button" class="mdiag__mode" role="radio" aria-checked="false" data-mode="doc"><strong>資料をもらう</strong><span>プランの資料をメールでお送りします</span></button>
+              </div>
 {form}
-              <p class="mdiag__back"><button type="button" class="mdiag__reset">← 診断をやり直す</button></p>
+              <p class="mdiag__back"><button type="button" class="mdiag__reset">← 質問に戻る</button></p>
             </div>
           </div>"""
 
@@ -4466,7 +4468,7 @@ def media_service_page(sv):
                          for n, cells, us in cmp["rows"])
     fit_no = "".join(f"<li>{e(x)}</li>" for x in more["fit_no"])
     flow3 = "".join(f'<li><span class="mflow3__no">{i}</span><p class="mflow3__t">{e(t)}</p><p class="mflow3__d">{e(d)}</p></li>' for i, (t, d) in enumerate(
-        [("かんたん診断・ご相談", "フォームのあと、2営業日以内にご連絡。メールかオンラインで伺います"), ("現地調査・ご提案", "物件を拝見し、数字と根拠をそろえてご提案。ここまで無料です"), ("ご契約・スタート", "内容にご納得いただけたら、ご契約。準備はアキヤドが進めます")], 1))
+        [("3つの質問・ご相談", "フォームのあと、2営業日以内にご連絡。メールかオンラインで伺います"), ("現地調査・ご提案", "物件を拝見し、数字と根拠をそろえてご提案。ここまで無料です"), ("ご契約・スタート", "内容にご納得いただけたら、ご契約。準備はアキヤドが進めます")], 1))
     cases = [ARTICLE_BY_SLUG[sl] for sl in more["cases"]]
     closing_t, closing_d = more["closing"]
 
@@ -4516,7 +4518,7 @@ def media_service_page(sv):
         <ol class="mpoints">
 {points}
         </ol>
-        <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-mid">30秒診断から相談する {ARROW}</a>{plan_doc_link(sv["slug"])}</div>
+        <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-mid">30秒の質問から相談する {ARROW}</a><a href="#diag-doc" class="mbtn mbtn--sub" data-cta="media-service-mid-doc">資料をもらう（無料） {ARROW}</a></div>
       </div>
     </section>
 
@@ -4596,7 +4598,7 @@ def media_service_page(sv):
       <div class="container mlp-narrow">
         <h2 class="mlp-title reveal">{e(closing_t)}</h2>
         <p class="mlp-lead reveal">{e(closing_d)}</p>
-        <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-bottom">30秒診断から相談する {ARROW}</a>{plan_doc_link(sv["slug"])}</div>
+        <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-bottom">30秒の質問から相談する {ARROW}</a><a href="#diag-doc" class="mbtn mbtn--sub" data-cta="media-service-bottom-doc">資料をもらう（無料） {ARROW}</a></div>
         <p class="mlp-final__note">相談・試算は無料。しつこい営業はしません。</p>
       </div>
     </section>

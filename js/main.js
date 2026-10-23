@@ -542,17 +542,21 @@
   });
 
   /**
-   * アキヤドのサービスページ：かんたん診断（3問）→ 連絡先のフォーム、の2段
-   * 答えはフォームの「かんたん診断」の項目に入れて一緒に送る
+   * アキヤドのサービスページ：3つの質問 → 「相談する／資料をもらう」を選んで連絡先を送る、の2段
+   * 答えはフォームの「かんたん診断」の項目に入れて一緒に送る。資料を選ぶと、ご相談カテゴリを「サービス資料の請求」にする
+   * （tools/forms/Code.gs と下のフォーム送信が、この文言で資料の請求と判定する）
    */
   document.querySelectorAll('.mdiag').forEach(function (box) {
-    var rec = {};
-    try { rec = JSON.parse(box.getAttribute('data-rec') || '{}'); } catch (err) { rec = {}; }
     var qs = Array.prototype.slice.call(box.querySelectorAll('.mdiag__q'));
     var go = box.querySelector('.mdiag__go');
     var step1 = box.querySelector('.mdiag__step--1');
     var step2 = box.querySelector('.mdiag__step--2');
+    var form = box.querySelector('form');
     var answers = box.querySelector('.mdiag__answers');
+    var cat = form.querySelector('input[name="ご相談カテゴリ"]');
+    var subject = form.querySelector('input[name="_subject"]');
+    var subjectBase = subject ? subject.value : '';
+    var submitT = form.querySelector('.mdiag__submit-t');
     var picked = function (q) { var b = q.querySelector('.mdiag__opt[aria-pressed="true"]'); return b ? b.getAttribute('data-v') : ''; };
     qs.forEach(function (q) {
       q.querySelectorAll('.mdiag__opt').forEach(function (b) {
@@ -562,34 +566,32 @@
         });
       });
     });
-    var show2 = function (diagnosed) {
-      var name = box.querySelector('.mdiag__result-name');
-      var text = box.querySelector('.mdiag__result-text');
-      var result = box.querySelector('.mdiag__result');
-      if (diagnosed && rec.map) {
-        var q = qs[rec.q];
-        var opts = q ? Array.prototype.slice.call(q.querySelectorAll('.mdiag__opt')) : [];
-        var i = opts.indexOf(q.querySelector('.mdiag__opt[aria-pressed="true"]'));
-        var m = rec.map[Math.max(0, Math.min(i, rec.map.length - 1))] || ['', ''];
-        name.textContent = m[0];
-        text.textContent = m[1] + '（診断は目安です。正式には現地調査のうえでご提案します）';
-        result.hidden = false;
-        answers.value = qs.map(function (q) { return q.querySelector('legend').textContent.replace(/^Q\d+/, '') + '：' + picked(q); }).join(' ／ ') + ' → ' + m[0];
-        track('diag_complete', { diag_result: m[0], page_path: location.pathname });
-      } else {
-        result.hidden = true;
-        answers.value = '';
-      }
+    var setMode = function (mode) {
+      box.querySelectorAll('.mdiag__mode').forEach(function (m) { m.setAttribute('aria-checked', String(m.getAttribute('data-mode') === mode)); });
+      var doc = mode === 'doc';
+      cat.value = cat.getAttribute(doc ? 'data-doc' : 'data-consult');
+      if (subject) subject.value = doc ? subjectBase.replace('のご相談', 'の資料請求') : subjectBase;
+      if (submitT) submitT.textContent = doc ? '資料をもらう（無料）' : '無料で相談する';
+      form.querySelectorAll('.mdiag__consult-only').forEach(function (el) { el.hidden = doc; });
+    };
+    box.querySelectorAll('.mdiag__mode').forEach(function (m) {
+      m.addEventListener('click', function () { setMode(m.getAttribute('data-mode')); });
+    });
+    var show2 = function (answered) {
+      answers.value = answered ? qs.map(function (q) { return q.querySelector('legend').textContent.replace(/^Q\d+/, '') + '：' + picked(q); }).join(' ／ ') : '';
+      if (answered) track('diag_complete', { page_path: location.pathname });
       step1.hidden = true;
       step2.hidden = false;
-      var first = step2.querySelector('input[name="name"]');
       box.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 400);
     };
     go.addEventListener('click', function () { show2(true); });
     var skip = box.querySelector('[data-diag-skip]');
     if (skip) skip.addEventListener('click', function (e) { e.preventDefault(); show2(false); });
     box.querySelector('.mdiag__reset').addEventListener('click', function () { step2.hidden = true; step1.hidden = false; box.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    // ページ内の「資料をもらう」ボタン（#diag-doc）からは、資料を選んだ状態で開く
+    document.querySelectorAll('a[href="#diag-doc"]').forEach(function (a) {
+      a.addEventListener('click', function (e) { e.preventDefault(); setMode('doc'); show2(qs.every(picked)); });
+    });
   });
 
   /**
