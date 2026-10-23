@@ -2539,7 +2539,7 @@ def spec_md():
     w("### メディアの構成（URLは rivia-co.com/media/ 配下。サブドメインは使わない）")
     w("* カテゴリ一覧（media/category-○○.html）：" + " ／ ".join(n for _, n in MEDIA_CATEGORIES) + "。カテゴリの説明文、関連するガイドへの導線、記事一覧（12件ずつ追加表示）。検索結果に出る独立したページにする。")
     w("* 見え方：URLは会社サイトの一部（rivia-co.com/media/）のまま、ヘッダー・フッターはメディア専用（ロゴ「アキヤド」、運営会社への小さなリンク）にして、独立したメディアとして見せる。タイトルの末尾・OGPのサイト名も「アキヤド」。")
-    w("* サービスのページ（media/service-kaitori・service-kariage・service-kaigyo）：問い合わせの直前に読むページ。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く、長い説明は折りたたむ。並びは、ヒーロー（読み手の得を言い切る見出し・3つの約束・写真）と「かんたん診断」→お悩み→いくら？（借り上げは家賃の例、買取は価格の決まり方、開業は下田の宿の数字）→放っておくと（大きな数字のタイル。出典の記事へリンク）→違い→創業者からの手紙と実績の数字・ゲストの声→ほかの方法との比較→プラン→3ステップの流れ（詳細は折りたたみ）→よくある質問→締めのCTA→取材した事例。中身は tools/build.py の MEDIA_SERVICES・MEDIA_SERVICE_LP・MEDIA_SERVICE_MORE。")
+    w("* サービスのページ（media/service-kaitori・service-kariage・service-kaigyo）：問い合わせの直前に読むページ。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く、長い説明は折りたたむ。並びは、ヒーロー（読み手の得を言い切る見出し・3つの約束・写真）と「かんたん診断」→お悩み→いくら？（借り上げは家賃の例、買取は価格の決まり方、開業は下田の宿の数字）→放っておくと（大きな数字のタイル。出典の記事へリンク）→違い→創業者からの手紙と実績の数字・ゲストの声→ほかの方法との比較→プラン→ご相談からの流れ（期間・お願いすること・費用つき）→よくある質問→締めのCTA→取材した事例。中身は tools/build.py の MEDIA_SERVICES・MEDIA_SERVICE_LP・MEDIA_SERVICE_MORE。")
     w("* サービスページのフォーム：最初に「無料で相談する」か「資料をもらう」を選び、名前とメールを送る（相談のときだけ、相談内容とファイルの欄を出す）。資料を選ぶと「ご相談カテゴリ」が「サービス資料の請求」になり、自動返信に資料が付く（Apps Script の変更は不要）。ページ内の「資料をもらう」ボタンは、資料を選んだ状態でこのフォームへ移る。CTA に「断ってもかまいません」のような言い回しは使わない。")
     w("* ヘッダーのナビ：PC（幅900px以上）はヘッダーの下に、状況別ガイド4つと「記事をさがす」「アキヤドのプラン」のタブだけを置く（数を絞り、はみ出して文字が切れないようにする）。右上のメニューボタン（3本線）はPC・スマホ共通で、ガイド4つ・基礎から学ぶ・事例から探す・記事をさがす・アキヤドのプラン・相談と資料請求のボタン・運営会社へのリンクを開く（PCは右上の小さなパネル、スマホは全幅）。トップへはロゴから戻る。")
     w("* メディアトップのFV：写真を全面に敷き、ロゴ・一言・状況別の入口（3つ）・検索窓を1画面に置いて、最初の画面から次の行動を選べるようにする（離脱を防ぐ）。")
@@ -4453,8 +4453,6 @@ def media_service_page(sv):
     cmp_rows = "\n".join(f"""              <tr{' class="is-us"' if us else ""}><th scope="row">{wb(n)}</th>{"".join(cmp_cell(c) for c in cells)}</tr>"""
                          for n, cells, us in cmp["rows"])
     fit_no = "".join(f"<li>{e(x)}</li>" for x in more["fit_no"])
-    flow3 = "".join(f'<li><span class="mflow3__no">{i}</span><p class="mflow3__t">{e(t)}</p><p class="mflow3__d">{e(d)}</p></li>' for i, (t, d) in enumerate(
-        [("ご相談・資料のお届け", "フォームのあと、2営業日以内にご連絡。メールかオンラインで伺います"), ("現地調査・ご提案", "物件を拝見し、数字と根拠をそろえてご提案。ここまで無料です"), ("ご契約・スタート", "内容にご納得いただけたら、ご契約。準備はアキヤドが進めます")], 1))
     cases = [ARTICLE_BY_SLUG[sl] for sl in more["cases"]]
     closing_t, closing_d = more["closing"]
 
@@ -4564,11 +4562,10 @@ def media_service_page(sv):
     <section class="mlp-sec mlp-sec--soft">
       <div class="container">
         <p class="mlp-en reveal">Flow</p>
-        <h2 class="mlp-title reveal">ご相談から3ステップ。ご提案までは無料です</h2>
-        <ol class="mflow3 reveal">{flow3}</ol>
-        <details class="mlp-fold mlp-fold--flow reveal"><summary>期間・費用など、くわしい流れを見る</summary>
+        <h2 class="mlp-title reveal">ご相談からの流れ。<br>ご提案までは無料です</h2>
+        <div class="mlp-flow">
 {detail_flow(key)}
-        </details>
+        </div>
       </div>
     </section>
 
