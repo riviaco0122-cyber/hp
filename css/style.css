@@ -4324,3 +4324,67 @@ body.is-media .mcenter-head__title { margin-top: 6px; font-family: var(--font-ro
 /* メディアTOP：背景色の違うセクション（特徴）の直後は、上の余白をとる */
 body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 @media (max-width: 899px) { .article__section .talk__list { padding: 8px 10px 8px 22px; } .article__section .talk:has(.talk__list) .talk__img { flex-basis: 32px; width: 32px; height: 32px; } }
+/* ===== アキヤド：サービスページの読み物（放置のリスク・無料相談でお渡しするもの・実績・比較・向き不向き・締め） ===== */
+.msv-risks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.msv-risk { display: flex; flex-direction: column; padding: 26px 24px 22px; border-radius: 18px; background: #fff; border-top: 4px solid var(--m-cta, #d0613a); }
+.msv-risk__title { font-family: var(--font-round); font-weight: 700; font-size: 17px; line-height: 1.6; }
+.msv-risk__text { flex: 1; margin-top: 10px; font-size: 14px; line-height: 1.9; color: var(--m-sub); }
+.msv-risk__link { margin-top: 14px; font-size: 13px; font-weight: 700; color: var(--m-green); }
+.msv-risk__link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.msv-offer { margin-top: 40px; padding: 32px; border: 2px solid var(--m-green); border-radius: 20px; background: #fff; }
+.msv-offer__label { font-family: var(--font-round); font-weight: 700; font-size: 18px; text-align: center; color: var(--m-green); }
+.msv-offer__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 22px; }
+.msv-offer__item { display: flex; gap: 14px; align-items: flex-start; }
+.msv-offer__no { flex-shrink: 0; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--m-green); color: #fff; font-family: var(--font-en); font-size: 13px; }
+.msv-offer__title { font-family: var(--font-round); font-weight: 700; font-size: 16px; line-height: 1.6; }
+.msv-offer__text { margin-top: 6px; font-size: 13.5px; line-height: 1.9; color: var(--m-sub); }
+.msv-offer__note { margin-top: 22px; font-size: 13px; text-align: center; color: var(--m-sub); }
+.msv-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 12px; }
+.msv-stats li { display: flex; flex-direction: column; align-items: center; padding: 24px 16px; border-radius: 18px; background: #fff; text-align: center; }
+.msv-stats__num { font-family: var(--font-round); font-weight: 700; font-size: clamp(30px, 3.4vw, 40px); line-height: 1.2; color: var(--m-green); }
+.msv-stats__num small { font-size: 0.5em; margin-left: 2px; }
+.msv-stats__label { margin-top: 8px; font-weight: 700; font-size: 14px; }
+.msv-stats__note { margin-top: 4px; font-size: 12px; color: var(--c-muted); }
+.msv-stats__src { margin-bottom: 28px; font-size: 12.5px; line-height: 1.8; color: var(--c-muted); text-align: center; }
+.msv-stats__src a { color: var(--m-green); text-decoration: underline; text-underline-offset: 3px; }
+.msv-compare { overflow-x: auto; border-radius: 18px; background: #fff; box-shadow: 0 3px 12px rgba(38, 42, 39, 0.05); }
+.msv-compare table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.7; }
+.msv-compare th, .msv-compare td { padding: 16px 18px; border-bottom: 1px solid var(--m-line); text-align: left; vertical-align: top; }
+.msv-compare thead th { background: var(--m-sand); font-size: 13px; color: var(--m-sub); font-weight: 700; }
+.msv-compare tbody th { width: 22%; font-family: var(--font-round); font-weight: 700; }
+.msv-compare tbody tr:last-child th, .msv-compare tbody tr:last-child td { border-bottom: 0; }
+.msv-compare tr.is-us th, .msv-compare tr.is-us td { background: #eef5f0; }
+.msv-compare tr.is-us th { color: var(--m-green); }
+.msv-compare__note { margin-top: 10px; font-size: 12px; color: var(--c-muted); }
+.msv-fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 36px; }
+.msv-fit__col { padding: 24px 26px; border-radius: 18px; background: #fff; box-shadow: 0 3px 12px rgba(38, 42, 39, 0.05); }
+.msv-fit__label { font-family: var(--font-round); font-weight: 700; font-size: 16px; }
+.msv-fit__col--yes .msv-fit__label { color: var(--m-green); }
+.msv-fit__col--no .msv-fit__label { color: var(--m-sub); }
+.msv-fit ul { margin-top: 12px; }
+.msv-fit li { position: relative; padding: 6px 0 6px 26px; font-size: 14px; line-height: 1.8; }
+.msv-fit li::before { position: absolute; left: 0; top: 6px; font-weight: 700; }
+.msv-fit__col--yes li::before { content: "✓"; color: var(--m-green); }
+.msv-fit__col--no li::before { content: "–"; color: var(--c-muted); }
+.msv-closing { margin-top: 48px; text-align: center; }
+.msv-closing__title { font-family: var(--font-round); font-weight: 700; font-size: clamp(18px, 2.2vw, 24px); line-height: 1.6; }
+.msv-closing__text { max-width: 40em; margin: 12px auto 0; font-size: 14.5px; line-height: 2; color: var(--m-sub); }
+@media (max-width: 899px) {
+  .msv-risks, .msv-offer__list, .msv-fit { grid-template-columns: 1fr; gap: 14px; }
+  .msv-offer { padding: 24px 20px; }
+  .msv-offer__list { gap: 18px; }
+  .msv-stats { gap: 8px; }
+  .msv-stats li { padding: 18px 6px; }
+  .msv-stats__label { font-size: 12px; }
+  .msv-stats__note { font-size: 10.5px; }
+  /* スマホは、比較の表を選択肢ごとのカードにする */
+  .msv-compare { overflow: visible; background: transparent; box-shadow: none; }
+  .msv-compare thead { display: none; }
+  .msv-compare table, .msv-compare tbody, .msv-compare tr, .msv-compare th, .msv-compare td { display: block; width: auto; }
+  .msv-compare tr { margin-bottom: 10px; border-radius: 14px; background: #fff; overflow: hidden; box-shadow: 0 3px 12px rgba(38, 42, 39, 0.05); }
+  .msv-compare tbody th { width: auto; padding: 14px 16px 6px; border: 0; font-size: 15px; }
+  .msv-compare td { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 10px; padding: 6px 16px; border: 0; font-size: 13.5px; }
+  .msv-compare td:last-child { padding-bottom: 14px; }
+  .msv-compare td::before { content: attr(data-label); font-size: 12px; color: var(--c-muted); }
+  .msv-fit__col { padding: 20px; }
+}
