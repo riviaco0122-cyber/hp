@@ -4515,3 +4515,7 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 /* TOPのコンセプト：スマホは短い文章に切りかえる */
 .vision__lead--sp { display: none; }
 @media (max-width: 899px) { .vision__lead--pc { display: none; } .vision__lead--sp { display: block; } }
+/* 創業者の写真：幅と高さを明示して、Safari でも正円にする（aspect-ratio だけだと縦に伸びることがある） */
+.founder__photo { width: 136px; height: 136px; margin: 0; flex-shrink: 0; }
+.founder__photo img { display: block; width: 100%; height: 100%; aspect-ratio: 1 / 1; }
+@media (max-width: 899px) { .founder__photo { width: 96px; height: 96px; } }
