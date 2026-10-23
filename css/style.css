@@ -4554,3 +4554,5 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 /* 折り返し方は段落（ブロック）の text-wrap で決まる。サービスページの本文の段落は、ふつうの折り返し（wrap）に戻す。
    iPhone の Safari は text-wrap: pretty を段落全体に効かせるため、行が早めに折れて右側が空いて見えていた */
 .mlp-hero :is(p, li, dd, blockquote), .mlp-sec :is(p, li, dd, blockquote) { text-wrap: wrap !important; }
+/* 悩みのリストは1列（2列だと5項目のとき最後の1つだけが余って見える） */
+.mlp-worries { grid-template-columns: 1fr; max-width: 640px; margin-left: auto; margin-right: auto; }
