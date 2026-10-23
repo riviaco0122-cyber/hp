@@ -4348,12 +4348,15 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .msv-stats li { padding: 18px 6px; }
   .msv-stats__label { font-size: 12px; }
   .msv-stats__note { font-size: 10.5px; }
-  /* スマホも表のまま（文言を短くしてあるので、4列でも収まる） */
-  .msv-compare table { table-layout: fixed; font-size: 12.5px; line-height: 1.6; }
-  .msv-compare th, .msv-compare td { padding: 12px 8px; }
-  .msv-compare thead th { font-size: 11.5px; line-height: 1.5; }
-  .msv-compare tbody th { width: 27%; font-size: 12.5px; }
-  .msv-compare th:first-child, .msv-compare td:first-child { padding-left: 12px; }
+  /* スマホは、文字を小さくしすぎず、表を横にスクロールして見せる（1列目＝選択肢の名前は固定） */
+  .msv-compare { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .msv-compare table { min-width: 600px; font-size: 14px; line-height: 1.65; }
+  .msv-compare th, .msv-compare td { padding: 14px 12px; }
+  .msv-compare thead th { font-size: 12.5px; }
+  .msv-compare tbody th { width: 128px; }
+  .msv-compare th:first-child { position: sticky; left: 0; z-index: 1; background: #fff; box-shadow: 1px 0 0 var(--m-line); }
+  .msv-compare thead th:first-child { background: var(--m-sand); }
+  .msv-compare tr.is-us th:first-child { background: #eef5f0; }
 }
 /* ===== アキヤド：サービスページ（LP）。「いくら？」に先に答え、数字は大きく、文章は短く ===== */
 .mlp-hero { position: relative; padding: 28px 0 64px; background: linear-gradient(180deg, var(--m-sand) 0%, var(--m-bg) 100%); }
@@ -4527,3 +4530,5 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mlp-hero p n-b, .mlp-sec p n-b, .mlp-sec li n-b, .mlp-sec dd n-b { white-space: normal; }
 /* 緑の帯の中の強調は、白い太字だけにする（緑のマーカーは背景と重なって見えにくい） */
 .mlp-sec--green strong.hl, .mlp-sec--green strong { color: #fff; background: none; font-weight: 700; }
+.msv-compare__hint { display: none; }
+@media (max-width: 899px) { .msv-compare__hint { display: block; margin-top: 24px; font-size: 12px; color: var(--m-sub); text-align: right; } .mlp-sec .msv-compare__hint + .msv-compare { margin-top: 8px; } }

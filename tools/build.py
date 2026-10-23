@@ -4529,7 +4529,8 @@ def media_service_page(sv):
       <div class="container">
         <p class="mlp-en reveal">Compare</p>
         <h2 class="mlp-title reveal">ほかの方法と、ここが違います</h2>
-        <div class="msv-compare reveal">
+        <p class="msv-compare__hint" aria-hidden="true">表は横にスクロールできます →</p>
+        <div class="msv-compare reveal" tabindex="0" role="region" aria-label="ほかの方法との比較（横にスクロールできます）">
           <table>
             <thead><tr><th scope="col">選択肢</th>{cmp_head}</tr></thead>
             <tbody>
