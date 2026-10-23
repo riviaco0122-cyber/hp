@@ -4551,3 +4551,6 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .msv-compare tbody th { vertical-align: middle; }
 .mlp-flow { margin-top: 36px; }
 @media (max-width: 899px) { .mlp-flow { margin-top: 28px; } }
+/* 折り返し方は段落（ブロック）の text-wrap で決まる。サービスページの本文の段落は、ふつうの折り返し（wrap）に戻す。
+   iPhone の Safari は text-wrap: pretty を段落全体に効かせるため、行が早めに折れて右側が空いて見えていた */
+.mlp-hero :is(p, li, dd, blockquote), .mlp-sec :is(p, li, dd, blockquote) { text-wrap: wrap !important; }
