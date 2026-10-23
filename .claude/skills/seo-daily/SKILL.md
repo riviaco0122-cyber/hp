@@ -23,7 +23,7 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
    - `origin/seo/daily` があり、まだ `$BASE` にマージされていなければ（人の確認待ち）、それをチェックアウトし、`git merge origin/$BASE` で本番ブランチの変更を取り込んでから、その上に今日の作業を積む。PR は既存のものを使い、説明文を更新する。
    - なければ（前回分がマージ済み）、`origin/$BASE` から `seo/daily` を作り直す。
 3. `python3 -m pip install -q -r tools/requirements.txt budoux beautifulsoup4 pillow yt-dlp`（集客データの取得と生成スクリプト用。`pip` と `python3` の版が違う環境があるので、必ず `python3 -m pip` で入れる。失敗しても続行）。集客データの取得で `cryptography`・`cffi` のエラーが出たら `python3 -m pip install -q -U cffi cryptography` で入れ直してからやり直す（Debian 版が入っていて `-U` が失敗するときは `python3 -m pip install -q --ignore-installed cffi cryptography`。2026-10-12 に動作確認済み）。`GOOGLE_SERVICE_ACCOUNT_JSON` などの環境変数がない場合は、ルーティンの実行環境が「アキヤド」（鍵を登録した環境）になっているかを人に確認してもらうよう、要約に書く。
-4. `python3 tools/build.py` でサイトを作り直す（公開日を迎えた記事を llms.txt・sitemap に反映するため。毎日必ず。差分が出たらその日の PR に含める）。
+4. **`python3` が 3.11 のときは `python3.12` を使う（build.py の f-string が 3.12 の構文で、3.11 では動かない。依存は `python3.12 -m pip install --break-system-packages -r tools/requirements.txt budoux beautifulsoup4 pillow yt-dlp`。2026-10-23 に確認）。** 以降の `python3 tools/…` もすべて `python3.12` で実行する。`python3 tools/build.py` でサイトを作り直す（公開日を迎えた記事を llms.txt・sitemap に反映するため。毎日必ず。差分が出たらその日の PR に含める）。
    - 作り直しは毎回、記事データ（`tools/articles_*.py`）と `tools/build.py` から行う。**HTML を直接書き換えない。**
 5. **未マージの記事の公開日を確認する**：**新規記事の公開日は「人が確認してマージした日の翌日」にする（人の方針 2026-10-12）**。人は実行の当日にマージするので、`seo/daily` に入っている未マージの新規記事は、毎回「今日（日本時間）＋1日」に付け直す（過去の日付で公開しないため。前回の予約記事と日付が重なっても、1日2本までは可）。既にマージ済みの予約記事は変えない。
 6. **人の確認が追いついているか**：未マージの PR が5日以上たっている、または未マージの新規記事が3本以上あるときは、新規記事を作らない。ログ・既存記事の訂正だけにして、PR の冒頭で人にマージを依頼する。記事の在庫は、マージ済みの記事だけで数える。
