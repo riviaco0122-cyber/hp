@@ -4522,3 +4522,6 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mlp-sec .msv-compare { margin-top: 36px; }
 @media (max-width: 899px) { .mlp-sec .msv-compare { margin-top: 28px; } }
 .msv-compare th, .msv-compare td { word-break: keep-all; overflow-wrap: normal; }
+/* サービスページの本文は、行末まで詰めて自然に折り返す（文末のまとめ・行の長さの調整をしない） */
+.mlp-hero p n-w, .mlp-sec p n-w, .mlp-sec li n-w, .mlp-sec dd n-w { text-wrap: wrap; }
+.mlp-hero p n-b, .mlp-sec p n-b, .mlp-sec li n-b, .mlp-sec dd n-b { white-space: normal; }
