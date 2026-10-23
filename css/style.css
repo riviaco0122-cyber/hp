@@ -4579,7 +4579,8 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mscheme__node { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
 .mscheme__icon { display: grid; place-items: center; width: 68px; height: 68px; margin-bottom: 6px; border-radius: 50%; background: #fff; border: 1.5px solid var(--m-line); color: var(--m-green); }
 .mscheme__icon svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.mscheme__node.is-us .mscheme__icon { background: var(--m-green); border-color: var(--m-green); color: #fff; }
+.mscheme__node.is-us .mscheme__icon { border: 2.5px solid var(--m-green); box-shadow: 0 0 0 5px rgba(46, 107, 71, 0.12); }
+.mscheme__icon .amark { width: 44px; height: 42px; fill: initial; stroke: none; margin-left: 2px; }
 .mscheme__node b { font-family: var(--font-round); font-weight: 700; font-size: 15px; line-height: 1.4; }
 .mscheme__node.is-us b { color: var(--m-green); }
 .mscheme__node small { font-size: 12px; line-height: 1.5; color: var(--m-sub); word-break: keep-all; }
@@ -4593,6 +4594,7 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mscheme__ret--12 { left: calc((100% - 2 * var(--aw)) / 2 + var(--aw)); width: calc((100% - 2 * var(--aw)) / 3 + var(--aw)); }
 .mscheme__ret::after { content: ""; position: absolute; top: -8px; right: -7px; border: 6px solid transparent; border-bottom: 8px solid var(--m-cta); border-top: 0; }
 .mscheme__ret.is-left::after { right: auto; left: -7px; }
+.mscheme__ret wbr { display: none; }  /* Chrome は nowrap でも <wbr> で折り返すため、1行に保つ */
 .mscheme__ret span { position: absolute; left: 50%; bottom: -12px; transform: translateX(-50%); padding: 2px 10px; border-radius: 999px; background: var(--m-cta); color: #fff; font-family: var(--font-round); font-weight: 700; font-size: 12px; white-space: nowrap; }
 .mscheme__photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 720px; margin: 32px auto 0; }
 .mscheme__photo { margin: 0; }
@@ -4602,6 +4604,7 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .mscheme { --aw: 44px; margin-top: 28px; }
   .mscheme__icon { width: 56px; height: 56px; }
   .mscheme__icon svg { width: 26px; height: 26px; }
+  .mscheme__icon .amark { width: 36px; height: 34px; }
   .mscheme__node b { font-size: 13.5px; }
   .mscheme__node small { font-size: 11px; }
   .mscheme__arrow { height: 34px; }

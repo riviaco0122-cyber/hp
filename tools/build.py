@@ -4280,7 +4280,8 @@ def scheme_html(key):
     for i, (ic, name, role) in enumerate(sc["nodes"]):
         if i:
             parts.append(f'<span class="mscheme__arrow" aria-hidden="true"><span>{e(sc["arrows"][i - 1])}</span><i></i></span>')
-        parts.append(f'<div class="mscheme__node{" is-us" if "アキヤド" in name else ""}"><span class="mscheme__icon">{icon(ic)}</span><b>{e(name)}</b><small>{e(role)}</small></div>')
+        us = "アキヤド" in name  # アキヤドの丸には、アイコンの代わりにアキヤドのロゴ（マーク）を入れる
+        parts.append(f'<div class="mscheme__node{" is-us" if us else ""}"><span class="mscheme__icon">{AKIYADO_MARK if us else icon(ic)}</span><b>{e(name)}</b><small>{e(role)}</small></div>')
     a, b, lbl = sc["ret"]
     lo, hi = sorted((a, b))
     ret = f'<p class="mscheme__ret mscheme__ret--{lo}{hi}{" is-left" if b < a else ""}" aria-hidden="true"><span>{e(lbl)}</span></p>'
