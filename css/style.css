@@ -4348,15 +4348,12 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .msv-stats li { padding: 18px 6px; }
   .msv-stats__label { font-size: 12px; }
   .msv-stats__note { font-size: 10.5px; }
-  /* スマホは、比較の表を選択肢ごとのカードにする */
-  .msv-compare { overflow: visible; background: transparent; box-shadow: none; }
-  .msv-compare thead { display: none; }
-  .msv-compare table, .msv-compare tbody, .msv-compare tr, .msv-compare th, .msv-compare td { display: block; width: auto; }
-  .msv-compare tr { margin-bottom: 10px; border-radius: 14px; background: #fff; overflow: hidden; box-shadow: 0 3px 12px rgba(38, 42, 39, 0.05); }
-  .msv-compare tbody th { width: auto; padding: 14px 16px 6px; border: 0; font-size: 15px; }
-  .msv-compare td { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 10px; padding: 6px 16px; border: 0; font-size: 13.5px; }
-  .msv-compare td:last-child { padding-bottom: 14px; }
-  .msv-compare td::before { content: attr(data-label); font-size: 12px; color: var(--c-muted); }
+  /* スマホも表のまま（文言を短くしてあるので、4列でも収まる） */
+  .msv-compare table { table-layout: fixed; font-size: 12.5px; line-height: 1.6; }
+  .msv-compare th, .msv-compare td { padding: 12px 8px; }
+  .msv-compare thead th { font-size: 11.5px; line-height: 1.5; }
+  .msv-compare tbody th { width: 27%; font-size: 12.5px; }
+  .msv-compare th:first-child, .msv-compare td:first-child { padding-left: 12px; }
 }
 /* ===== アキヤド：サービスページ（LP）。「いくら？」に先に答え、数字は大きく、文章は短く ===== */
 .mlp-hero { position: relative; padding: 28px 0 64px; background: linear-gradient(180deg, var(--m-sand) 0%, var(--m-bg) 100%); }
@@ -4524,3 +4521,4 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 @media (max-width: 374px) { .msv-stats { gap: 6px; } .msv-stats li { padding: 16px 4px; } .msv-stats__label { font-size: 11px; letter-spacing: 0; } }
 .mlp-sec .msv-compare { margin-top: 36px; }
 @media (max-width: 899px) { .mlp-sec .msv-compare { margin-top: 28px; } }
+.msv-compare th, .msv-compare td { word-break: keep-all; overflow-wrap: normal; }
