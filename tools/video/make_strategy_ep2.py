@@ -132,7 +132,7 @@ SCENES = [
 ]
 LEAD, GAP = 0.5, 0.32
 # 読みまちがえやすい言葉は、音声を作る前にひらがなに置きかえる（字幕はそのまま）
-READ_FIX = [("知りたい方", "知りたいかた"), ("入れ方", "入れかた"), ("稼ぎ方", "稼ぎかた"), ("使い方", "使いかた"), ("始め方", "始めかた"),
+READ_FIX = [("届出", "とどけで"), ("知りたい方", "知りたいかた"), ("入れ方", "入れかた"), ("稼ぎ方", "稼ぎかた"), ("使い方", "使いかた"), ("始め方", "始めかた"),
             ("選び方", "選びかた"), ("取り方", "とりかた"), ("決め方", "決めかた"), ("見分け方", "見分けかた"), ("分け方", "分けかた"), ("一棟貸し", "いっとうがし")]
 
 SCENE_JS = r"""
@@ -421,7 +421,7 @@ function scene(i,t,lt){
         months.forEach((m,mi)=>{const x=680+mi*90,f=(sp>.9?1:.5)*clamp(fillM-mi),cut=mi+1>limitM&&done;r+=`<rect x="${x}" y="${y-30}" width="82" height="72" rx="10" fill="${cut?'#2a2f2c':'#e4ece4'}"/>${f>0&&!cut?`<rect x="${x}" y="${y-30+72*(1-f)}" width="82" height="${72*f}" rx="10" fill="${c}"/>`:''}${cut?`<rect x="${x}" y="${y-30}" width="82" height="72" rx="10" fill="url(#pSlat)"/>`:''}<text x="${x+41}" y="${y+78}" text-anchor="middle" font-size="26" font-weight="900" fill="#4a5a52">${m}月</text>`});
         s+=r;
         if(k===1&&done)s+=pop(1220,y+120,seg(lt,L[7]+5.8*K,L[7]+6.3*K),`<rect x="900" y="${y+96}" width="640" height="56" rx="28" fill="${RED}"/><text x="1220" y="${y+136}" text-anchor="middle" font-size="32" font-weight="900" fill="#fff">180日に着いたら、そこで終わり</text>`)});
-      s+=stampX(1690,720,'イメージ',at(7,.3,.6),'#8a8f98',34,6);}
+      s+=stampX(1690,775,'イメージ',at(7,.3,.6),'#8a8f98',34,6);}
     if(on(8)&&!on(10)){const g=eo(at(8,1.6,.9));
       s+=card(600,250,1240,540,`<text x="1220" y="335" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">私たちの宿：開業から約8.5か月の平均</text>${gauge(700,480,1040,g)}`,at(8,.4));
       s+=stampX(1700,330,'一例',at(9,.3,3),T,44,6);
@@ -551,6 +551,7 @@ function scene(i,t,lt){
       s+=pop(900,470,at(9,.5,.3),`<rect x="660" y="390" width="480" height="200" rx="30" fill="#f3f7f1"/><text x="900" y="470" text-anchor="middle" font-size="42" font-weight="900" fill="#8a8f98">どちらが儲かる？</text>${coin(900,540,34)}<path d="M700 410 L1100 580 M1100 410 L700 580" stroke="${RED}" stroke-width="12" stroke-linecap="round"/>`);
       s+=pop(1500,470,at(9,.5,2.4),`<rect x="1260" y="390" width="480" height="200" rx="30" fill="#e8f3ea" stroke="${G}" stroke-width="5"/><text x="1500" y="470" text-anchor="middle" font-size="42" font-weight="900" fill="${G}">自分の目的に合う？</text><g transform="translate(1500,540)"><circle r="34" fill="${G}"/><path d="M-14 0 l10 12 l20 -24" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>`);
       s+=sparkle(1700,420,1,t,0);}
+  }
   if(i===5){ // 落とし穴 4つ
     s+=aki(on(7)?'point':(on(3)&&!on(5)?'think':'present'),on(3)&&!on(5)?'worry':'happy');
     s+=hdr('','失敗しやすい点 4つ',at(0,.4),RED);
