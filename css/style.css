@@ -4652,6 +4652,9 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .msim__sw--us { background: var(--m-green); }
 .msim__sw--minus { background: #e2906d; }
 .msim__sw--sub { background: #a3ada5; }
+.msim__rows--3 { grid-template-columns: 1fr; }
+.msim__disclaim { max-width: 900px; margin: 16px auto 0; padding: 12px 16px; border: 1px solid var(--m-line); border-radius: 12px; font-size: 12.5px; line-height: 1.8; color: var(--m-sub); }
+.msim__disclaim strong { color: var(--m-ink); }
 /* 手元の累計の折れ線（0円の線＝損益分岐点） */
 .mchart { position: relative; margin-top: 18px; padding: 24px 8px 30px 52px; border-radius: 14px; background: #fff; }
 .mchart__plot { position: relative; height: 280px; }

@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=f2f946cc">
+  <link rel="stylesheet" href="../../css/style.css?v=ef21df06">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -156,8 +156,8 @@
       <div class="container">
         <p class="mlp-en reveal">Simulation</p>
         <h2 class="mlp-title reveal">借り上げなら、<wbr>10年で<wbr>どれだけ<wbr>変わる？</h2>
-        <p class="mlp-lead reveal"><n-w>空き家のままにした場合と、アキヤドが借り上げた場合を、モデル物件で<n-b>比べました。</n-b></n-w></p>
-        <div class="msim reveal" role="img" aria-label="1年の家賃 36万円のゆくえ（おまかせプラン）：土地の固定資産税 2.7万円、オーナー様の手元 33.3万円。10年間で、手元に残るお金：空き家のまま -63万円、アキヤドおまかせプラン 333万円">
+        <p class="mlp-lead reveal"><n-w class="j">空き家のままにした場合と、アキヤドが借り上げた場合（2つのプラン）を、モデル物件で比べました。宿の売上は、私たちの宿やオーナーの事例をもとに、うまくいった場合で<n-b>試算しています。</n-b></n-w></p>
+        <div class="msim reveal" role="img" aria-label="1年の家賃 36万円のゆくえ（おまかせプラン）：土地の固定資産税 2.7万円、オーナー様の手元 33.3万円。10年間の手元の累計：空き家のまま -63万円、おまかせプラン 333万円、売上シェアプラン 713万円">
           <div class="msim__model">
             <p class="msim__badge">モデル物件<wbr>（架空）</p>
             <span class="msim__house" aria-hidden="true"><svg class="fig-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
@@ -170,30 +170,34 @@
           </div>
         </div>
         <div class="msim__future reveal" aria-hidden="true">
-          <p class="msim__h msim__h--c">10年間で、<wbr>手元に残るお金</p>
+          <p class="msim__h msim__h--c">10年間の<wbr>手元の累計</p>
           <div class="mchart">
             <div class="mchart__plot">
-              <span class="mchart__band" style="top:78.3%"></span>
-              <svg viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><g class="mchart__grid"><line x1="200.0" y1="0" x2="200.0" y2="400"/><line x1="400.0" y1="0" x2="400.0" y2="400"/><line x1="600.0" y1="0" x2="600.0" y2="400"/><line x1="800.0" y1="0" x2="800.0" y2="400"/></g><line class="mchart__zero" x1="0" y1="313.2" x2="1000" y2="313.2"/><polyline class="mchart__line mchart__line--minus" points="0.0,313.2 1000.0,360.5"/><polyline class="mchart__line mchart__line--us" points="0.0,313.2 1000.0,61.6"/></svg>
-              <span class="mchart__y is-zero" style="top:78.3%">±0</span><span class="mchart__y" style="top:59.4%">100</span><span class="mchart__y" style="top:40.6%">200</span><span class="mchart__y" style="top:21.7%">300</span><span class="mchart__x" style="left:0.0%">今</span><span class="mchart__x" style="left:20.0%">2年</span><span class="mchart__x" style="left:40.0%">4年</span><span class="mchart__x" style="left:60.0%">6年</span><span class="mchart__x" style="left:80.0%">8年</span><span class="mchart__x is-last" style="left:100.0%">10年</span><span class="mchart__dot mchart__dot--us" style="left:0.0%;top:78.3%"></span><span class="mchart__mark mchart__mark--us mchart__mark--ur" style="left:0.0%;top:78.3%">初期費用ほぼ0円。<wbr>1か月目から<wbr>プラス</span><span class="mchart__end mchart__end--minus is-below" style="top:90.1%">−63<small>万円</small></span><span class="mchart__end mchart__end--us" style="top:15.4%">＋333<small>万円</small></span>
+              <span class="mchart__band" style="top:73.3%"></span>
+              <svg viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><g class="mchart__grid"><line x1="200.0" y1="0" x2="200.0" y2="400"/><line x1="400.0" y1="0" x2="400.0" y2="400"/><line x1="600.0" y1="0" x2="600.0" y2="400"/><line x1="800.0" y1="0" x2="800.0" y2="400"/></g><line class="mchart__zero" x1="0" y1="293.0" x2="1000" y2="293.0"/><polyline class="mchart__line mchart__line--minus" points="0.0,293.0 1000.0,316.3"/><polyline class="mchart__line mchart__line--sub" points="0.0,293.0 1000.0,169.0"/><polyline class="mchart__line mchart__line--us" points="0.0,330.2 1000.0,27.6"/></svg>
+              <span class="mchart__y is-zero" style="top:73.3%">±0</span><span class="mchart__y" style="top:50.0%">250</span><span class="mchart__y" style="top:26.7%">500</span><span class="mchart__x" style="left:0.0%">今</span><span class="mchart__x" style="left:20.0%">2年</span><span class="mchart__x" style="left:40.0%">4年</span><span class="mchart__x" style="left:60.0%">6年</span><span class="mchart__x" style="left:80.0%">8年</span><span class="mchart__x is-last" style="left:100.0%">10年</span><span class="mchart__dot mchart__dot--minus" style="left:0.0%;top:82.6%"></span><span class="mchart__mark mchart__mark--minus mchart__mark--dr" style="left:0.0%;top:82.6%">共同出資 −100万円</span><span class="mchart__dot mchart__dot--us" style="left:12.3%;top:73.3%"></span><span class="mchart__mark mchart__mark--us mchart__mark--up" style="left:12.3%;top:73.3%">損益分岐点 約15か月</span><span class="mchart__end mchart__end--minus is-below" style="top:79.1%">−63<small>万円</small></span><span class="mchart__end mchart__end--sub is-below" style="top:42.2%">＋333<small>万円</small></span><span class="mchart__end mchart__end--us" style="top:6.9%">＋713<small>万円</small></span>
               
             </div>
             <p class="mchart__unit">万円</p>
           </div>
-          <ul class="msim__rows"><li class="msim__row is-minus">
+          <ul class="msim__rows msim__rows--3"><li class="msim__row is-minus">
             <p class="msim__row-name"><n-w>空き家のまま</n-w><small><n-w>土地の税と見回りがかかり続ける</n-w></small></p>
             <span class="msim__sw msim__sw--minus" aria-hidden="true"></span>
             <p class="msim__row-num">−63<small>万円</small></p>
-          </li><li class="msim__row is-us">
-            <p class="msim__row-name"><n-w>アキヤドおまかせプラン</n-w><small><n-w>初期費用はアキヤドがほぼ全額を負担</n-w></small></p>
-            <span class="msim__sw msim__sw--us" aria-hidden="true"></span>
+          </li><li class="msim__row">
+            <p class="msim__row-name"><n-w>おまかせプラン</n-w><small><n-w>初期費用ほぼ0円・毎月3万円の家賃</n-w></small></p>
+            <span class="msim__sw msim__sw--sub" aria-hidden="true"></span>
             <p class="msim__row-num">＋333<small>万円</small></p>
+          </li><li class="msim__row is-us">
+            <p class="msim__row-name"><n-w>売上シェアプラン</n-w><small><n-w>共同出資100万円・月の受け取り約7万円</n-w></small></p>
+            <span class="msim__sw msim__sw--us" aria-hidden="true"></span>
+            <p class="msim__row-num">＋713<small>万円</small></p>
           </li></ul>
-          <p class="msim__big"><span>空き家の<wbr>ままとの差</span><b><small>約</small>396<small>万円</small></b></p>
+          <p class="msim__big"><span><n-w>10年の手元（売上シェアプラン）</n-w></span><b><small><n-w>約</n-w></small>713<small><n-w>万円</n-w></small></b></p>
         </div>
-        <p class="msim__extra reveal"><n-w class="j">売上シェアプランなら、売上が月平均30万円のとき、受け取りは年66万円です（最低保証2.5万円×12か月＋売上の10%。補修・内装の<n-b>共同出資は別）。</n-b></n-w></p>
-        <details class="mlp-fold msim__fold reveal"><summary>試算の前提</summary><ul><li><n-w>モデル物件は、説明のための架空の<n-b>物件です。</n-b></n-w></li><li><n-w>家賃は月3万円（おまかせプランの例）で、10年間同じと仮定しています。家賃・期間は、物件と契約で<n-b>決まります。</n-b></n-w></li><li><n-w class="j">土地の固定資産税は年26,600円（評価額1,200万円の住宅の敷地。大津市の計算例）。建物の分・都市計画税・保険は<n-b>含みません。</n-b></n-w></li><li><n-w>空き家のままの見回りは月1回3,000円（二本松市のシルバー人材センターの例）。草刈り・修繕は<n-b>含みません。</n-b></n-w></li><li><n-w>家賃にかかる所得税などの税金を引く前の<n-b>金額です。</n-b></n-w></li></ul><p class="msim__srcs"><a href="../media/akiya-holding-costs.html"><n-w class="j">空き家の維持費はいくら？税金・見回りの内訳と、民泊・賃貸で賄う考え方</n-w> <span class="arrow" aria-hidden="true"></span></a><a href="../media/akiya-lease-types.html"><n-w class="j">空き家を貸す契約の種類｜普通借家・定期借家と、民泊の借り上げの違い</n-w> <span class="arrow" aria-hidden="true"></span></a></p></details>
-        <p class="mprice__note"><n-w class="j">※ 試算は、架空のモデル物件での目安です。収益や金額を保証するものではありません。実際の物件は、現地を拝見したうえで<n-b>試算します。</n-b></n-w></p>
+        <p class="msim__extra reveal"><n-w>売上シェアプランは、宿の売上が伸びるほど受け取りも増えます。おまかせプランは、売上にかかわらず毎月決まった<n-b>家賃です。</n-b></n-w></p>
+        <details class="mlp-fold msim__fold reveal"><summary>試算の前提</summary><ul><li><n-w>モデル物件は、説明のための架空の<n-b>物件です。</n-b></n-w></li><li><n-w class="j">おまかせプランの家賃は月3万円（プランの例）。売上シェアプランは、最低保証2.5万円＋売上の10%（プランの例）で、宿の売上を月45万円（1泊2.5万円×稼働率60%）と仮定し、月の受け取りは<n-b>約7万円です。</n-b></n-w></li><li><n-w class="j">宿の売上の月45万円は、うまくいった場合の想定です。オーナーの事例では月商が約40万〜55万円の宿があり、私たちの下田の宿は1年目の稼働率が<n-b>約53%でした。</n-b></n-w></li><li><n-w>売上シェアプランの補修・内装の共同出資は、オーナー様の分を100万円と仮定しています（物件ごとに<n-b>決めます）。</n-b></n-w></li><li><n-w>家賃・受け取り・期間は、物件と契約で決まります。10年間、同じ条件と<n-b>仮定しています。</n-b></n-w></li><li><n-w class="j">土地の固定資産税は年26,600円（評価額1,200万円の住宅の敷地。大津市の計算例）で、借り上げ後もオーナー様の負担と仮定。建物の分・都市計画税・保険・所得税などの税金は<n-b>含みません。</n-b></n-w></li><li><n-w>空き家のままの見回りは月1回3,000円（二本松市のシルバー人材センターの例）。草刈り・修繕は<n-b>含みません。</n-b></n-w></li></ul><p class="msim__srcs"><a href="../media/akiya-holding-costs.html"><n-w class="j">空き家の維持費はいくら？税金・見回りの内訳と、民泊・賃貸で賄う考え方</n-w> <span class="arrow" aria-hidden="true"></span></a><a href="../media/akiya-lease-types.html"><n-w class="j">空き家を貸す契約の種類｜普通借家・定期借家と、民泊の借り上げの違い</n-w> <span class="arrow" aria-hidden="true"></span></a><a href="../media/case-owner-satoyama-airdna.html"><n-w class="j">里山の古民家を民泊に｜AirDNAのデータで融資を通した総予算350万円</n-w> <span class="arrow" aria-hidden="true"></span></a></p></details>
+        <p class="msim__disclaim"><n-w class="j">この試算は、架空のモデル物件でのシミュレーションです。</n-w><strong><n-w class="j">将来の収益や金額を保証・約束するものではありません。</n-w></strong><n-w class="j">実際の収支は、物件・立地・季節・運営によって大きく変わります。お持ちの物件は、現地を拝見したうえで<n-b>試算します。</n-b></n-w></p>
       </div>
     </section>
 
