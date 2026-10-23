@@ -3856,7 +3856,7 @@ def media_footer():
       <div class="mfooter__top">
         <div>
           <a href="media.html" class="mfooter__logo">{media_logo()}</a>
-          <p class="mfooter__lead">空き家を、売る。活かす。民泊を、はじめる。<br>宿を運営する私たちが、悩みに沿ってお届けします。</p>
+          <p class="mfooter__lead">空き家を、売る。活かす。民泊をはじめる。<br>宿を運営する私たちが、悩みに沿ってお届けします。</p>
         </div>
         <div class="mfooter__cols">
           <div><p class="mfooter__label">状況から読む</p><ul>{guides}</ul></div>
@@ -4418,7 +4418,7 @@ def media_intro():
           <div class="mintro__text">
             <span class="eyebrow reveal">Media</span>
             <h2 class="section-title section-title--logo reveal"><a href="media.html" class="tlogo" aria-label="アキヤド（空き家と民泊のメディア）">{AKIYADO_MARK}<span class="tlogo__ja" translate="no">アキヤド</span></a><span class="tlogo__sub">空き家と民泊のメディア</span></h2>
-            <p class="mintro__copy reveal" data-delay="1">空き家を、売る。活かす。<br>民泊を、はじめる。</p>
+            <p class="mintro__copy reveal" data-delay="1">空き家を、売る。活かす。<br>民泊をはじめる。</p>
             <p class="mintro__lead reveal" data-delay="1">自ら宿を運営する私たちが、空き家と民泊の悩みに<br class="pc-only">順を追ってお答えするメディアです。</p>
             <div class="mintro__btns reveal" data-delay="2">
               <a href="media.html" class="btn">アキヤドを見る {ARROW}</a>
@@ -4780,7 +4780,7 @@ def media_index_page():
       <div class="container mtop__inner">
         <div class="mtop__text">
           <p class="mtop__eyebrow reveal">空き家と民泊のメディア「アキヤド」</p>
-          <h1 class="mtop__title reveal" data-delay="1"><span class="mtop__line">空き家を、</span><span class="mtop__line"><em>売る。活かす。</em></span><span class="mtop__line"><em>民泊</em>を、はじめる。</span></h1>
+          <h1 class="mtop__title reveal" data-delay="1"><span class="mtop__line">空き家を、</span><span class="mtop__line"><em>売る。活かす。</em></span><span class="mtop__line"><em>民泊</em>をはじめる。</span></h1>
           <p class="mtop__lead reveal" data-delay="1">宿を運営する私たちが、空き家と民泊の悩みに、実際の数字でお答えします。</p>
           <div class="mtop__btns reveal" data-delay="2">
             <a href="contact.html?category=operation&amp;from=akiyado-fv" class="mbtn mtop__btn" data-cta="media-fv">無料で相談する {ARROW}</a>
