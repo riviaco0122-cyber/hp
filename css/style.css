@@ -4599,7 +4599,7 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mscheme__photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 720px; margin: 32px auto 0; }
 .mscheme__photo { margin: 0; }
 .mscheme__photo img { display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; border-radius: 16px; }
-.mscheme__photo figcaption { margin-top: 8px; font-size: 12px; line-height: 1.6; color: var(--m-sub); text-align: center; }
+.mscheme__photo figcaption { margin-top: 8px; font-size: 12px; line-height: 1.6; color: var(--m-sub); text-align: center; word-break: keep-all; }
 @media (max-width: 899px) {
   .mscheme { --aw: 44px; margin-top: 28px; }
   .mscheme__icon { width: 56px; height: 56px; }

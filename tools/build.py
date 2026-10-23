@@ -4257,7 +4257,7 @@ MEDIA_FLOWS = {
 # risk：大きな数字のタイル（出典の記事へリンク）
 # サービスページの「しくみ」の図（文字を読まなくても、誰が何をして、お金がどう流れるかがわかるように）
 # nodes: (アイコン, 名前, していること)  arrows: 左から順の矢印の言葉  ret: (戻りの矢印の起点, 終点, 言葉)
-# photos: (写真, 添える言葉)。自社物件の写真は、どのプランかと結びつけない（docs/brand/experience.md）
+# photos: (写真, 添える言葉。| で改行)。自社物件の写真は、どのプランかと結びつけない（docs/brand/experience.md）
 MEDIA_SCHEME = {
     "sell": dict(title="売っていただいた家は、アキヤドが宿として活かします",
                  nodes=[("house", "オーナー様", "家を売る"), ("key", "アキヤド", "改修して宿に"), ("users", "旅行者", "まちに泊まる")],
@@ -4270,7 +4270,7 @@ MEDIA_SCHEME = {
     "side": dict(title="宿の主役はあなた。アキヤドは裏方で支援します",
                  nodes=[("compass", "アキヤド", "開業を支援"), ("house", "あなたの宿", "開業・運営"), ("users", "旅行者", "宿に泊まる")],
                  arrows=["支援", "予約"], ret=(2, 1, "宿泊の売上"),
-                 photos=[("scene-walk", "泊まった人が、まちを歩く（イメージ）"), ("irori-room", "宿のしつらえ（イメージ）")]),
+                 photos=[("scene-walk", "旅行者がまちで食べ、買う。|地域にお金がめぐる（イメージ）"), ("irori-room", "空き家が宿になり、|古いまちなみが残る（イメージ）")]),
 }
 
 
@@ -4286,7 +4286,7 @@ def scheme_html(key):
     lo, hi = sorted((a, b))
     ret = f'<p class="mscheme__ret mscheme__ret--{lo}{hi}{" is-left" if b < a else ""}" aria-hidden="true"><span>{e(lbl)}</span></p>'
     alt = "、".join(f"{n}が{r}" for _, n, r in sc["nodes"]) + f"。{sc['nodes'][a][1]}から{sc['nodes'][b][1]}へ{lbl}"
-    photos = "".join(f'<figure class="mscheme__photo"><picture><source srcset="images/photos/w/{ph}-800.webp" type="image/webp"><img src="images/photos/{ph}.jpg" alt="" width="800" height="533" loading="lazy" decoding="async"></picture><figcaption>{e(cap)}</figcaption></figure>' for ph, cap in sc["photos"])
+    photos = "".join(f'<figure class="mscheme__photo"><picture><source srcset="images/photos/w/{ph}-800.webp" type="image/webp"><img src="images/photos/{ph}.jpg" alt="" width="800" height="533" loading="lazy" decoding="async"></picture><figcaption>{"<br>".join(e(c) for c in cap.split("|"))}</figcaption></figure>' for ph, cap in sc["photos"])
     return f"""    <section class="mlp-sec mlp-sec--scheme">
       <div class="container mlp-narrow">
         <p class="mlp-en reveal">How it works</p>
