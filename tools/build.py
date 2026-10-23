@@ -86,7 +86,7 @@ def phrase_breaks(html):
     lead = False  # 一文のリード（サービス概要など）も見出しと同じく文節で改行する
     for i, p in enumerate(parts):
         if p.startswith("<"):
-            m_lead = re.match(r'<(p|span) class="(overview__text|hero__sub|cta__text|page-hero__lead|page-hero__target|about-line|mq__q|guide-step__title|mhero__lead|pd__desc|scheme__summary|related__worry|timeline__desc|flow__desc|vsvc__text|faq__qt|mletter__q)\b', p)
+            m_lead = re.match(r'<(p|span) class="(overview__text|hero__sub|cta__text|page-hero__lead|page-hero__target|about-line|mq__q|guide-step__title|mhero__lead|pd__desc|scheme__summary|related__worry|timeline__desc|flow__desc|vsvc__text|faq__qt|mletter__q|msv-cmp__t)\b', p)
             if m_lead:
                 lead = m_lead.group(1)
             elif lead and p == f"</{lead}>":
@@ -4442,7 +4442,7 @@ def media_service_page(sv):
     review = NODE_REVIEWS[0]
     cmp = more["compare"]
     cmp_head = "".join(f"<th scope=\"col\">{e(c)}</th>" for c in cmp["cols"])
-    cmp_rows = "\n".join(f"""              <tr{' class="is-us"' if us else ""}><th scope="row">{e(n)}</th>{"".join(f'<td data-label="{e(h)}">{e(c)}</td>' for h, c in zip(cmp["cols"], cells))}</tr>"""
+    cmp_rows = "\n".join(f"""              <tr{' class="is-us"' if us else ""}><th scope="row">{e(n)}</th>{"".join(f'<td data-label="{e(h)}"><span class="msv-cmp__t">{e(c)}</span></td>' for h, c in zip(cmp["cols"], cells))}</tr>"""
                          for n, cells, us in cmp["rows"])
     fit_no = "".join(f"<li>{e(x)}</li>" for x in more["fit_no"])
     flow3 = "".join(f'<li><span class="mflow3__no">{i}</span><p class="mflow3__t">{e(t)}</p><p class="mflow3__d">{e(d)}</p></li>' for i, (t, d) in enumerate(

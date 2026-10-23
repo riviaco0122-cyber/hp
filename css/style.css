@@ -4522,3 +4522,5 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mrisk__num small.mrisk__pre { margin: 0 2px 0 0; }
 .msv-stats__num small.msv-stats__pre { margin: 0 2px 0 0; }
 @media (max-width: 374px) { .msv-stats { gap: 6px; } .msv-stats li { padding: 16px 4px; } .msv-stats__label { font-size: 11px; letter-spacing: 0; } }
+.mlp-sec .msv-compare { margin-top: 36px; }
+@media (max-width: 899px) { .mlp-sec .msv-compare { margin-top: 28px; } }
