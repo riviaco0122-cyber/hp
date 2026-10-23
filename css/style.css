@@ -2379,6 +2379,7 @@ body.is-media .mheader__right { gap: 10px; }
 .mtabs__list a:hover { color: var(--m-ink); }
 .mtabs__list a[aria-current] { color: var(--m-ink); border-bottom-color: var(--m-green); }
 @media (max-width: 1099px) { .mtabs__list a { padding: 14px 13px; font-size: 13px; letter-spacing: 0.05em; } }
+@media (max-width: 999px) { .mtabs__list a { padding: 14px 9px; letter-spacing: 0.02em; } }
 /* アキヤド：右上のメニューボタン（3本線）で開くメニュー（PC・スマホ共通） */
 .mmenu-btn { position: relative; display: block; width: 44px; height: 44px; margin-left: 6px; margin-right: -10px; }
 .mmenu-btn span { position: absolute; left: 12px; right: 12px; height: 1.5px; background: var(--m-ink); transition: transform .25s, top .25s; }
