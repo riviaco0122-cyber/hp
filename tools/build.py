@@ -4269,7 +4269,7 @@ MEDIA_SERVICE_LP = {
                    note="金額は、物件の状態・立地・法令上の条件で変わります。現地を拝見したうえで、根拠とあわせてご提示します。アキヤドが直接買い取るため、仲介手数料はかかりません。"),
         risk_title="放っておくほど、選べる道は減っていきます",
         risk=[("3", "年以内", "相続登記の期限", "相続を知った日から3年以内に名義変更が義務に（2024年4月から）。怠ると10万円以下の過料の対象になる場合も。", "souzoku-touki-gimuka"),
-              ("最大6", "倍", "勧告後の、土地の税の計算のもと", "管理が行き届かず市の勧告を受けると、住宅用地の特例が外れます。", "akiya-law-kanri-fuzen"),
+              ("最大6", "倍", "空き家の土地の固定資産税（計算のもと）", "管理が行き届かず市の勧告を受けると、税を軽くする住宅用地の特例が外れます。", "akiya-law-kanri-fuzen"),
               ("2027", "年末", "3,000万円特別控除の売却期限", "相続から3年後の年末までが原則。貸したり宿にしたりすると対象外に。", "akiya-3000man-deduction")],
         points_title="売るだけでなく、家を残す道も一緒に比べます",
         letter="手放すと決める前に、宿として活かす道があるかを、一緒に確かめさせてください。"),
@@ -4285,7 +4285,7 @@ MEDIA_SERVICE_LP = {
                    factors=["立地（周辺の宿の料金と稼働）", "広さ・泊まれる人数", "建物の状態（改修の費用）", "契約期間"],
                    note="金額はイメージです。物件によって変わります。現地調査のうえ、根拠とあわせてご提示します。"),
         risk_title="使っていない家にも、お金と手間はかかり続けます",
-        risk=[("最大6", "倍", "勧告後の、土地の税の計算のもと", "管理が行き届かず市の勧告を受けると、住宅用地の特例が外れ、撤回されない限りそのまま。", "akiya-law-kanri-fuzen"),
+        risk=[("最大6", "倍", "空き家の土地の固定資産税（計算のもと）", "管理が行き届かず市の勧告を受けると、税を軽くする住宅用地の特例が外れ、撤回されない限りそのまま。", "akiya-law-kanri-fuzen"),
               ("3,000", "円〜", "見回りを頼む費用（1回）", "月1回なら年36,000円の例。草刈りや、建物の分の税も別にかかります。", "akiya-holding-costs"),
               ("3", "年以内", "相続登記の期限", "相続した家は名義変更が義務に。昔の相続でも2027年3月31日までに申請が必要です。", "souzoku-touki-gimuka")],
         points_title="改修から宿の運営まで、すべてアキヤドが行います",
@@ -4352,7 +4352,7 @@ def note_story(indent="        "):
 {indent}    <span class="mstory__en">Founder's story</span>
 {indent}    <span class="mstory__title">会社員が片道2時間の下田で、民泊を始めた記録</span>
 {indent}    <span class="mstory__text">合同会社RIVIA&CO.の代表社員の片井が、はじめて民泊に挑戦したときの体験記です。開業までのリアルと、開業後3か月の歩みをnoteにまとめています。</span>
-{indent}    <span class="mstory__link">noteで読む（有料・別タブで開きます） {ARROW}</span>
+{indent}    <span class="mstory__link">noteで読む（別タブで開きます） {ARROW}</span>
 {indent}  </span>
 {indent}</a>
 """
@@ -4525,7 +4525,7 @@ def media_service_page(sv):
             <li><p class="msv-stats__num">★4.88</p><p class="msv-stats__label">Airbnb の評価</p><p class="msv-stats__note">51件・掲載時点</p></li>
           </ul>
           <figure class="mletter__voice"><blockquote><p class="mletter__q">{e(review["text"])}</p></blockquote><figcaption>NODE Shimoda のゲスト<br>{e(review["who"])}・{e(review["date"])}</figcaption></figure>
-          <p class="mletter__more"><a href="media/case-rental-house-inn-first-year.html">下田の宿の運営データを見る {ARROW}</a><a href="{NOTE_STORY_URL}" target="_blank" rel="noopener" data-cta="note-story">開業の体験記（note・有料） {ARROW}</a></p>
+          <p class="mletter__more"><a href="media/case-rental-house-inn-first-year.html">下田の宿の運営データを見る {ARROW}</a><a href="{NOTE_STORY_URL}" target="_blank" rel="noopener" data-cta="note-story">開業の体験記（note） {ARROW}</a></p>
         </div>
       </div>
     </section>
