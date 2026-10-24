@@ -4564,6 +4564,27 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .mcmp__t { font-size: 11px; margin-top: 4px; }
 }
 .msv-compare tbody th { vertical-align: middle; }
+/* 比較表（選択肢が横に並ぶ形）：1列目＝比べることを止めて、スマホは左右にスライド */
+.msv-compare--cols { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.msv-compare--cols table { table-layout: auto; }
+.msv-compare--cols thead th { text-align: center; vertical-align: bottom; font-family: var(--font-round); font-size: 14px; color: var(--m-ink); }
+.msv-compare--cols thead th:first-child { text-align: left; font-size: 12.5px; color: var(--m-sub); }
+.msv-compare--cols tbody th { width: auto; font-size: 13.5px; color: var(--m-sub); }
+.msv-compare--cols th:first-child { position: sticky; left: 0; z-index: 1; background: #fff; box-shadow: 1px 0 0 var(--m-line); }
+.msv-compare--cols thead th:first-child { background: var(--m-sand); }
+.msv-compare--cols th.is-us, .msv-compare--cols td.is-us { background: #eef5f0; }
+.msv-compare--cols thead th.is-us { color: var(--m-green); background: #dcebe1; }
+.msv-compare__swipe { display: none; }
+@media (max-width: 899px) {
+  .msv-compare.msv-compare--cols { overflow-x: auto; }
+  .msv-compare--cols table { table-layout: fixed; width: max-content; min-width: 100%; }
+  .msv-compare--cols th, .msv-compare--cols td { width: 104px; min-width: 104px; max-width: 104px; padding: 12px 6px; white-space: normal; }
+  .msv-compare--cols th:first-child { min-width: 72px; width: 72px; max-width: 72px; padding-left: 12px; }
+  .msv-compare--cols thead th { font-size: 12.5px; }
+  .msv-compare--cols tbody th { font-size: 12px; width: 76px; }
+  .msv-compare__swipe { display: block; margin-top: 16px; font-size: 12px; color: var(--m-sub); text-align: right; }
+  .mlp-sec .msv-compare__swipe + .msv-compare { margin-top: 8px; }
+}
 .mlp-flow { margin-top: 36px; }
 @media (max-width: 899px) { .mlp-flow { margin-top: 28px; } }
 /* 折り返し方は段落（ブロック）の text-wrap で決まる。サービスページの本文の段落は、ふつうの折り返し（wrap）に戻す。

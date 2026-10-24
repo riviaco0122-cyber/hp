@@ -4646,14 +4646,16 @@ def media_service_page(sv):
                 "○": _mk.format('<circle cx="10" cy="10" r="6.5"/>'),
                 "△": _mk.format('<path d="M10 3.6 17 15.6H3z"/>'),
                 "×": _mk.format('<path d="M4.8 4.8l10.4 10.4M15.2 4.8 4.8 15.2"/>')}
-    def cmp_cell(c):
+    def cmp_cell(c, us=False):
+        cls = ' class="is-us"' if us else ""
         m = marks.get(c[:1])
         if not m:
-            return f"<td>{wb(c)}</td>"
-        return f'<td><span class="mcmp__mark mcmp__mark--{m[0]}" role="img" aria-label="{m[1]}">{mark_svg[c[:1]]}</span><span class="mcmp__t">{wb(c[1:])}</span></td>'
-    cmp_head = "".join(f"<th scope=\"col\">{wb(c)}</th>" for c in cmp["cols"])
-    cmp_rows = "\n".join(f"""              <tr{' class="is-us"' if us else ""}><th scope="row">{wb(n)}</th>{"".join(cmp_cell(c) for c in cells)}</tr>"""
-                         for n, cells, us in cmp["rows"])
+            return f"<td{cls}>{wb(c)}</td>"
+        return f'<td{cls}><span class="mcmp__mark mcmp__mark--{m[0]}" role="img" aria-label="{m[1]}">{mark_svg[c[:1]]}</span><span class="mcmp__t">{wb(c[1:])}</span></td>'
+    # 選択肢を横（列）、比べることを縦（行）に並べる。スマホは1列目を止めたまま、左右にスライドして見比べる（人の指摘 2026-10-24）
+    cmp_head = "".join(f'<th scope="col"{" class=\"is-us\"" if us else ""}>{wb(n)}</th>' for n, _, us in cmp["rows"])
+    cmp_rows = "\n".join(f"""              <tr><th scope="row">{wb(col)}</th>{"".join(cmp_cell(cells[i], us) for _, cells, us in cmp["rows"])}</tr>"""
+                         for i, col in enumerate(cmp["cols"]))
     fit_no = "".join(f"<li>{e(x)}</li>" for x in more["fit_no"])
     cases = [ARTICLE_BY_SLUG[sl] for sl in more["cases"]]
     closing_t, closing_d = more["closing"]
@@ -4742,9 +4744,10 @@ def media_service_page(sv):
         <p class="mlp-en reveal">Compare</p>
         <h2 class="mlp-title reveal">ほかの方法と、ここが違います</h2>
         <p class="mcmp__legend" aria-hidden="true"><span><b class="mcmp__mark mcmp__mark--good">{mark_svg["◎"]}</b>とてもよい</span><span><b class="mcmp__mark mcmp__mark--ok">{mark_svg["○"]}</b>よい</span><span><b class="mcmp__mark mcmp__mark--bad">{mark_svg["△"]}</b>負担・注意</span><span><b class="mcmp__mark mcmp__mark--none">{mark_svg["×"]}</b>なし</span></p>
-        <div class="msv-compare reveal">
+        <p class="msv-compare__swipe" aria-hidden="true">表は左右にスライドできます →</p>
+        <div class="msv-compare msv-compare--cols reveal">
           <table>
-            <thead><tr><th scope="col">選択肢</th>{cmp_head}</tr></thead>
+            <thead><tr><th scope="col">比べること</th>{cmp_head}</tr></thead>
             <tbody>
 {cmp_rows}
             </tbody>
