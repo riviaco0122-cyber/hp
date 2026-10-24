@@ -17,7 +17,7 @@
 
 YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwriter.md`・`yt-video-engineer.md`・`yt-reviewer.md`）は、YouTube「アキヤド 民泊school」の動画を作る（手順・決まりは `docs/youtube/manual.md`）。
 
-定型業務は `.claude/skills/`: `/seo-daily`（日次サイクル・毎朝9時の定期実行の入口）、`/youtube-weekly`（YouTube の週次サイクル・毎週水曜の定期実行の入口）、`/trend-research`（ネタ収集：YouTube・X・ネット検索の3経路。日次・週次のリサーチで使う）、`/write-article`、`/seo-audit`、`/source-intake`、`/brand-learn`。
+定型業務は `.claude/skills/`: `/seo-daily`（SEO の定期サイクル・月・水・金の朝9時ごろ（8:51）の定期実行の入口。2026-10-24 から2日に1回のペース）、`/youtube-weekly`（YouTube の週次サイクル・毎週水曜の定期実行の入口）、`/trend-research`（ネタ収集：YouTube・X・ネット検索の3経路。日次・週次のリサーチで使う）、`/write-article`、`/seo-audit`、`/source-intake`、`/brand-learn`。
 
 ## 基本姿勢（人の方針 2026-10-12）
 
@@ -26,8 +26,8 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 ## 絶対のルール
 
 1. **本番ブランチに直接 push しない。必ず作業ブランチ → 本番ブランチ向け PR。** マージは次のように分ける（人の方針 2026-10-12）:
-   - **毎日の定期実行（`/seo-daily`）の PR は、絶対にマージしない。** 人が Vercel のプレビューを見てマージする（＝最終確認）。
-   - **それ以外の作業（人が対話で依頼した、手順・ツール・デザイン・不具合修正など）は、人のマージを待たず、自分でマージしてよい。** ただし、seo_check エラー 0・site_check 重大 0・check_secrets 問題なし・本番ブランチとの衝突なし・CI 緑を確かめてから、マージ（通常のマージコミット）する。**既存記事の「見せ方だけ」の書き直し**（図解・表・カード・折りたたみ化、段落の分け方、見出し・ポイントの短縮など。事実・数値・出典・体験・URL・公開日は変えない）も、品質管理部の採点（90点以上・E-E-A-T の判定つき）と seo_check・site_check（スマホ幅の目視確認を含む）を通したら、自分でマージしてよい。**記事の新規公開と、既存記事の事実・数値・出典・体験・主張を変える作業は、人の確認を待つ。** マージしたら、何を本番に反映したかを人に報告する。**毎日の定期実行は、どんな内容でも必ず人を通す（自分でマージしない）。**
+   - **SEO の定期実行（`/seo-daily`、月・水・金）の PR は、絶対にマージしない。** 人が Vercel のプレビューを見てマージする（＝最終確認）。
+   - **それ以外の作業（人が対話で依頼した、手順・ツール・デザイン・不具合修正など）は、人のマージを待たず、自分でマージしてよい。** ただし、seo_check エラー 0・site_check 重大 0・check_secrets 問題なし・本番ブランチとの衝突なし・CI 緑を確かめてから、マージ（通常のマージコミット）する。**既存記事の「見せ方だけ」の書き直し**（図解・表・カード・折りたたみ化、段落の分け方、見出し・ポイントの短縮など。事実・数値・出典・体験・URL・公開日は変えない）も、品質管理部の採点（90点以上・E-E-A-T の判定つき）と seo_check・site_check（スマホ幅の目視確認を含む）を通したら、自分でマージしてよい。**記事の新規公開と、既存記事の事実・数値・出典・体験・主張を変える作業は、人の確認を待つ。** マージしたら、何を本番に反映したかを人に報告する。**SEO の定期実行は、どんな内容でも必ず人を通す（自分でマージしない）。**
    - 本番ブランチ＝GitHub のデフォルトブランチ（2026-10-10 時点では `claude/google-drive-file-refresh-rnv3qr`。`main` は存在しない）。名前は変わりうるので、毎回 `git ls-remote --symref origin HEAD` で調べる。
 2. **事実を作らない。** 数値・制度には出典。RIVIA の体験談として記事に使ってよいのは、`docs/brand/experience.md` のうち **`<!-- 人が確認済み -->` の付いた節だけ**（AI が追記した項目には【未確認】を付け、人が確認するまで使わない）。他者の発信は、公に発信している運営者の発言を出典（発信者名・URL）つきで要約して使う。一般の人の投稿・コメントは「読者の声」として、名前・アカウント・URL を出さずに自分の言葉で要約して使ってよい（原文は引かない。事実の根拠にはしない。人の方針 2026-10-22。`.claude/skills/trend-research`）。
 3. **人の確認が必要なもの**（`docs/seo/playbook.md` 6章）は、PR の「人の確認が必要な点」に必ず書き出す。
@@ -45,7 +45,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 - SEO/AIO の基準と品質の採点基準: `docs/seo/playbook.md`
 - ブランド（文体・用語・思想・体験・NG）: `docs/brand/`
 - 一次情報の置き場と扱い方: `docs/sources/README.md`（人が `docs/sources/inbox/` にメモを置く）
-- **CV 計画（目標）**: `docs/seo/plan.md`（毎日の判定・週次レポート・毎月の見直しはこの計画に対して行う）
+- **CV 計画（目標）**: `docs/seo/plan.md`（実行ごとの判定・週次レポート・毎月の見直しはこの計画に対して行う）
 - カレンダー／キーワード／ログ: `docs/seo/calendar.md`、`docs/seo/keywords.md`、`docs/seo/log.md`
 - ダッシュボード（自動生成）: `docs/dashboard.md`
 - GA4/Search Console/YouTube/e-Stat の設定手順: `docs/seo/analytics-setup.md`
@@ -79,7 +79,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 | `python3 tools/seo_check.py [--json]` | 全ページの SEO/AIO チェック |
 | `python3 tools/article_score.py <原稿 or HTML>` | 記事の機械採点（40点分）と重大NGのゲート判定。合格は品質管理部の60点と合わせて90点以上（playbook 5章） |
 | `python3 tools/analytics.py` | GA4/Search Console のレポート（要 `pip install -r tools/requirements.txt` と環境変数） |
-| `python3 tools/plan.py simulate / check / weekly` | **CV 計画**（いつまでに何件の CV を見込むか）のシミュレーション、計画に対する毎日の進み具合と「今日の最優先」、週次レポート（前提は `docs/seo/plan.json`、計画は `docs/seo/plan.md`、記録は `docs/seo/plan-tracking.md`、週次は `docs/seo/reports/`） |
+| `python3 tools/plan.py simulate / check / weekly` | **CV 計画**（いつまでに何件の CV を見込むか）のシミュレーション、計画に対する実行ごとの進み具合と「今日の最優先」、週次レポート（前提は `docs/seo/plan.json`、計画は `docs/seo/plan.md`、記録は `docs/seo/plan-tracking.md`、週次は `docs/seo/reports/`） |
 | `python3 tools/pdca.py new / baseline <ID> / check / report` | 改善施策（PDCA）の登録・ベースライン取得・効果の判定・集計（台帳は `docs/seo/experiments.md`） |
 | `python3 tools/youtube_research.py "キーワード"` | YouTube の動画情報・概要欄（要 `YOUTUBE_API_KEY`。コメント本文は保存しない） |
 | `python3 tools/yt_trend.py "キーワード" [--transcripts 3]` | **伸びている動画の発見**（最近・登録者が少ない・再生÷登録者が高い動画に絞る）と、上位の字幕・概要欄（`/tmp/akiyado-yt/` にだけ置く）。要 `pip install yt-dlp`（数字は `YOUTUBE_API_KEY` があれば API で取る） |
