@@ -4665,7 +4665,6 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mchart__plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .mchart__grid line { stroke: var(--m-line); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .mchart__zero { stroke: var(--m-ink); stroke-width: 1.5; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
-.mchart__band { position: absolute; left: 0; right: 0; bottom: 0; background: rgba(207, 95, 55, 0.06); }
 .mchart__line { fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .mchart__line--us { stroke: var(--m-green); }
 .mchart__line--minus { stroke: #e2906d; }
@@ -4676,7 +4675,6 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mchart__x:first-of-type { transform: none; }
 .mchart__x.is-last { transform: translateX(-100%); }
 .mchart__unit { position: absolute; left: 10px; top: 6px; font-size: 10px; color: var(--m-sub); }
-.mchart__zlabel { position: absolute; right: 6px; transform: translateY(4px); font-size: 10.5px; font-weight: 700; color: var(--m-ink); }
 .mchart__dot { position: absolute; width: 12px; height: 12px; margin: -6px 0 0 -6px; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08); }
 .mchart__dot--us { background: var(--m-green); }
 .mchart__dot--minus { background: #cf5f37; }
@@ -4724,13 +4722,11 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .msim__howto li { font-size: 11.5px; padding: 3px 10px; }
   .msim__row { padding: 10px 12px; }
   .msim__row-num { font-size: 18px; }
-  .mchart { padding: 22px 64px 28px 40px; }
-  .mchart__plot { height: 220px; }
+  .mchart { padding: 22px 70px 28px 40px; }
+  .mchart__plot { height: 240px; }
   .mchart__y { left: -38px; width: 32px; font-size: 10px; }
   .mchart__mark { font-size: 10.5px; padding: 1px 7px; }
-  .mchart__zlabel { display: none; }  /* スマホは線と重なるので出さない（上の「点線より上＝プラス」と目印の言葉で伝わる） */
-  .mchart__end { left: calc(100% + 5px); font-size: 13px; }
-  .mchart__end small { display: block; font-size: 9.5px; }
+  .mchart__end { left: calc(100% + 5px); font-size: 12.5px; }
   .msim__extra { font-size: 13px; text-align: left; }
 }
 

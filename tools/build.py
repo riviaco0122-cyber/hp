@@ -4308,18 +4308,18 @@ def scheme_html(key):
 # 数字はすべて「前提」に書いた仮定・出典から計算する。モデル物件は架空。実績物件（下田・焼津）とプランを結びつけない
 # split: (見出し, [(名前, 万円, "cost"|"keep", 添え書き)])  future: (見出し, [(名前, 万円, 添え書き, アキヤドか)])
 # chart: 手元の累計の折れ線（損益分岐点＝0円の線を越える月を見せる）。series: (色, [(月, 万円)])、future の行と同じ順
-#   marks: (月, 万円, 言葉, 色, 言葉の置き方 r=右／ur=右上／dr=右下／up=上／down=下)  zlabel: 0円の線に「ここを越えたら元が取れた」と書く
+#   marks: (月, 万円, 言葉, 色, 言葉の置き方 r=右／ur=右上／dr=右下／up=上／down=下)。言葉は「元が取れる」の1つだけにして、ごちゃごちゃさせない
 # summary: グラフの前に置く、結論の1〜2文（数学が苦手な人にも伝わる言葉で。「損益分岐点」「累計」「稼働率」などの言葉は使わない）
 # big: (ラベル, 前置き, 数字, 単位)  extra: 補足の1文  srcs: 根拠の記事
 MEDIA_SIM_MODEL = ["築45年・木造2階建て", "4LDK・約100㎡", "観光地まで車で15分ほど", "相続から5年、空き家のまま"]
 MEDIA_SIM = {
     "use": dict(title="借り上げなら、10年でどれだけ変わる？",
-                lead="空き家のままにした場合と、アキヤドが借り上げた場合（2つのプラン）を、モデル物件で比べました。宿の売上は、私たちの宿やオーナーの事例をもとに、うまくいった場合で試算しています。",
+                lead="アキヤドが借り上げた場合の2つのプランを、モデル物件で比べました。宿の売上は、私たちの宿やオーナーの事例をもとに、うまくいった場合で試算しています。",
                 split=("家賃が年36万円入ると、手元にいくら残る？（おまかせプラン）", [("土地の固定資産税", 2.7, "cost", "オーナー様の負担のまま"), ("オーナー様の手元", 33.3, "keep", "見回りの費用もかからなくなります")]),
-                future=("10年で、手元のお金はどう変わる？", [("空き家のまま", -63, "土地の税と見回りがかかり続ける", False), ("おまかせプラン", 333, "最初の出費ほぼなし。毎月3万円の家賃", False), ("売上シェアプラン", 713, "最初に100万円出し、毎月約7万円を受け取る", True)]),
-                chart=dict(months=120, xstep=24, x0="今", series=[("minus", [(0, 0), (120, -62.6)]), ("sub", [(0, 0), (120, 333.4)]), ("us", [(0, -100), (120, 713.4)])],
-                           marks=[(0, -100, "最初に出すお金 100万円", "minus", "dr"), (14.75, 0, "約15か月で元が取れる", "us", "up")]),
-                summary="空き家のままだと、毎年お金が出ていきます。借り上げなら、毎月お金が入ってきます。売上シェアプランは、最初に出した100万円を約15か月で取り戻し、そのあとは増えていく計算です。",
+                future=("10年で、手元のお金はどう変わる？", [("おまかせプラン", 333, "最初の出費ほぼなし。毎月3万円の家賃", False), ("売上シェアプラン", 713, "最初に100万円出し、毎月約7万円を受け取る", True)]),
+                chart=dict(months=120, xstep=60, x0="今", series=[("sub", [(0, 0), (120, 333.4)]), ("us", [(0, -100), (120, 713.4)])],
+                           marks=[(14.75, 0, "約15か月で元が取れる", "us", "dr")]),
+                summary="おまかせプランは、最初の出費がほぼなく、毎月家賃が入ります。売上シェアプランは、最初に100万円出しますが、約15か月で取り戻し、そのあとは大きく増えていく計算です。（空き家のままだと、10年で約63万円が出ていきます）",
                 big=("10年で手元に残るお金（売上シェアプラン）", "約", "713", "万円"),
                 extra="売上シェアプランは、宿の売上が伸びるほど受け取りも増えます。おまかせプランは、売上にかかわらず毎月決まった家賃です。",
                 assumptions=["モデル物件は、説明のための架空の物件です。",
@@ -4335,7 +4335,7 @@ MEDIA_SIM = {
                  split=("1か月に45万円売れたら、手元にいくら残る？", [("予約サイトの手数料", 6.8, "cost", "売上の約15%"), ("清掃の委託", 7.2, "cost", "売上の約16%"), ("光熱水費・Wi-Fi・消耗品", 3.0, "cost", "月3万円"), ("アキヤドの手数料", 4.5, "cost", "伴走コース・売上の10%"), ("あなたの手元", 23.5, "keep", "")]),
                  future=("5年で、手元のお金はどう変わる？", [("控えめ（月に14日ほど泊まる）", 615, "毎月 約16.9万円が残り、約24か月で元が取れる", False), ("標準（月に18日ほど泊まる）", 1013, "毎月 約23.5万円が残り、約17か月で元が取れる", True)]),
                  chart=dict(months=60, xstep=12, x0="開業", series=[("sub", [(0, -400), (60, 614.6)]), ("us", [(0, -400), (60, 1013)])],
-                            marks=[(0, -400, "最初にかかるお金 400万円", "minus", "r"), (17, 0, "約17か月で元が取れる", "us", "up"), (23.7, 0, "", "sub", "dr")], zlabel=True),
+                            marks=[(17, 0, "約17か月で元が取れる", "us", "up"), (23.7, 0, "", "sub", "dr")]),
                  summary="最初に400万円かかりますが、毎月 約23.5万円ずつ手元に残り、約17か月で取り戻せる計算です。そのあとは、残ったお金がそのまま増えていきます。",
                  big=("元が取れるまで（標準）", "約", "17", "か月"),
                  extra="うまくいった場合の試算です。私たちは、悲観的な場合も含めて試算し、赤字にならない計画かを一緒に確かめてから始めます。",
@@ -4366,6 +4366,7 @@ def sim_chart_html(ch, rows):
         if v >= lo - 1e-9:
             yt.append(v)
         v += step
+    yt = sorted(set(yt) | {pts[0][1] for _, pts in ch["series"]})  # 線の始まり（最初に出すお金）も目盛りに出す
     ylabels = "".join(f'<span class="mchart__y{" is-zero" if t == 0 else ""}" style="top:{Y(t):.1f}%">{"0" if t == 0 else ("−" if t < 0 else "") + f"{abs(t):,.0f}"}</span>' for t in yt)
     xlabels = "".join(f'<span class="mchart__x{" is-last" if m == ch["months"] else ""}" style="left:{X(m):.1f}%">{e(ch["x0"]) if m == 0 else f"{m // 12}年"}</span>' for m in range(0, ch["months"] + 1, ch["xstep"]))
     marks = "".join(f'<span class="mchart__dot mchart__dot--{c}" style="left:{X(m):.1f}%;top:{Y(v):.1f}%"></span>{f'<span class="mchart__mark mchart__mark--{c} mchart__mark--{pos}" style="left:{X(m):.1f}%;top:{Y(v):.1f}%">{e(t)}</span>' if t else ""}' for m, v, t, c, pos in ch["marks"])
@@ -4373,10 +4374,8 @@ def sim_chart_html(ch, rows):
     ends = "".join(f'<span class="mchart__end mchart__end--{c}" style="top:{Y(pts[-1][1]):.1f}%">{"−" if pts[-1][1] < 0 else "＋"}{abs(round(pts[-1][1])):,}<small>万円</small></span>' for c, pts in ch["series"])
     return f"""<div class="mchart">
             <div class="mchart__plot">
-              <span class="mchart__band" style="top:{y0:.1f}%"></span>
               <svg viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><g class="mchart__grid">{grid}</g><line class="mchart__zero" x1="0" y1="{y0 * 4:.1f}" x2="1000" y2="{y0 * 4:.1f}"/>{lines}</svg>
               {ylabels}{xlabels}{marks}{ends}
-              {f'<span class="mchart__zlabel" style="top:{y0:.1f}%">ここを越えたら元が取れた</span>' if ch.get("zlabel") else ""}
             </div>
             <p class="mchart__unit">手元のお金（万円）</p>
           </div>"""
