@@ -4582,10 +4582,11 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .msv-compare.msv-compare--cols { overflow-x: auto; }
   .msv-compare--cols table { table-layout: fixed; width: max-content; min-width: 100%; }
   .msv-compare--cols th, .msv-compare--cols td { width: 104px; min-width: 104px; max-width: 104px; padding: 12px 6px; white-space: normal; }
-  .msv-compare--cols th:first-child { min-width: 80px; width: 80px; max-width: 80px; padding-left: 12px; padding-right: 6px; }
+  .msv-compare--cols th:first-child { min-width: 96px; width: 96px; max-width: 96px; padding-left: 12px; padding-right: 6px; }
+  .msv-compare--cols tbody th:first-child { letter-spacing: 0; }
   .msv-compare--cols thead th:first-child { font-size: 11.5px; letter-spacing: 0.02em; }
   .msv-compare--cols thead th { font-size: 12.5px; }
-  .msv-compare--cols tbody th { font-size: 12px; width: 76px; }
+  .msv-compare--cols tbody th { font-size: 12px; width: 96px; }
   .msv-compare__swipe { display: block; margin-top: 16px; font-size: 12px; color: var(--m-sub); text-align: right; }
   .mlp-sec .msv-compare__swipe + .msv-compare { margin-top: 8px; }
 }
