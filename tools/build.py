@@ -5331,8 +5331,8 @@ def media_index_page():
             <div class="mfeat__fig">
               <p class="mfeat-case">運営している宿の一例<span>静岡県下田市・一棟貸し</span></p>
               <div class="mfeat-stats">
-                <div class="mfeat-stat"><svg class="mfeat-donut" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16" pathLength="100"/><circle class="mfeat-donut__v" cx="21" cy="21" r="16" pathLength="100" stroke-dasharray="53 47"/></svg><p class="mfeat-stat__n">約53<small>%</small></p><p class="mfeat-stat__k">1年目の稼働率</p></div>
-                <div class="mfeat-stat"><p class="mfeat-stat__n mfeat-stat__n--top">約14<small>か月</small></p><span class="mfeat-bar" aria-hidden="true"><i></i></span><p class="mfeat-stat__k">開業費用をほぼ回収</p></div>
+                <div class="mfeat-stat"><svg class="mfeat-donut" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16" pathLength="100"/><circle class="mfeat-donut__v" cx="21" cy="21" r="16" pathLength="100" stroke-dasharray="53 47"/></svg><p class="mfeat-stat__n"><small class="mfeat-stat__pre">約</small>53<small>%</small></p><p class="mfeat-stat__k">1年目の稼働率</p></div>
+                <div class="mfeat-stat"><p class="mfeat-stat__n mfeat-stat__n--top"><small class="mfeat-stat__pre">約</small>14<small>か月</small></p><span class="mfeat-bar" aria-hidden="true"><i></i></span><p class="mfeat-stat__k">開業費用をほぼ回収</p></div>
               </div>
             </div>
             <p class="mfeat__text">記事の数字も、ご提案の見込みも、こうした自分たちの運営の記録から出しています。稼働率の月ごとの波や、清掃・手数料の費用までお伝えします。</p>

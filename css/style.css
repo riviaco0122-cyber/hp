@@ -4291,9 +4291,10 @@ body.is-media .mcenter-head__title { margin-top: 6px; font-family: var(--font-ro
 .mfeat-stat { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; min-height: 128px; padding: 14px 8px 12px; border-radius: 12px; background: var(--m-sand); }
 .mfeat-donut { position: absolute; top: 10px; left: 50%; width: 66px; height: 66px; transform: translateX(-50%) rotate(-90deg); fill: none; stroke: #dbe5dc; stroke-width: 5; }
 .mfeat-donut__v { stroke: var(--m-cta); stroke-linecap: round; }
-.mfeat-stat__n { position: relative; margin-top: 66px; color: var(--m-cta); font-family: var(--font-round); font-weight: 700; font-size: 24px; line-height: 1.1; }
-.mfeat-stat__n small { font-size: 13px; }
-.mfeat-stat__n--top { margin-top: 18px; font-size: 30px; }
+.mfeat-stat__n { position: relative; margin-top: 66px; color: var(--m-cta); font-family: var(--font-round); font-weight: 700; font-size: 32px; line-height: 1.1; }
+.mfeat-stat__n small { font-size: 14px; }
+.mfeat-stat__n small.mfeat-stat__pre { margin-right: 2px; }
+.mfeat-stat__n--top { margin-top: 18px; font-size: 38px; }
 .mfeat-bar { position: relative; display: block; width: 76%; height: 8px; margin: 12px 0 auto; border-radius: 4px; background: #dbe5dc; }
 .mfeat-bar i { position: absolute; inset: 0 auto 0 0; width: 100%; border-radius: 4px; background: var(--m-cta); }
 .mfeat-bar::before, .mfeat-bar::after { position: absolute; top: 12px; font-size: 10px; color: var(--m-sub); }
