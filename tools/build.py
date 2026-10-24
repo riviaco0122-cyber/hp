@@ -5343,7 +5343,7 @@ def media_index_page():
               <p class="mfeat-pill">あなたの空き家</p>
               <svg class="mfeat-branch" viewBox="0 0 300 36" preserveAspectRatio="none" aria-hidden="true"><path d="M150 0v12M50 36V22a10 10 0 0 1 10-10h180a10 10 0 0 1 10 10v14M150 12v24"/></svg>
               <div class="mfeat-three">
-                <p><span class="mfeat-three__no">1</span><b>売る</b>売った場合の目安</p>
+                <p><span class="mfeat-three__no">1</span><b>売る</b>売却額の目安</p>
                 <p><span class="mfeat-three__no">2</span><b>借り上げ</b>家を残して収入</p>
                 <p><span class="mfeat-three__no">3</span><b>自分で運営</b>宿の収支見込み</p>
               </div>
