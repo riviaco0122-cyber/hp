@@ -4320,7 +4320,6 @@ MEDIA_SIM = {
                 chart=dict(months=120, xstep=60, x0="今", series=[("sub", [(0, 0), (120, 333.4)]), ("us", [(0, -100), (120, 713.4)])],
                            marks=[(14.75, 0, "約15か月で元が取れる", "us", "dr")]),
                 summary="おまかせプランは、最初の出費がほぼなく、毎月家賃が入ります。売上シェアプランは、最初に100万円出しますが、約15か月で取り戻し、そのあとは大きく増えていく計算です。（空き家のままだと、10年で約63万円が出ていきます）",
-                big=("10年で手元に残るお金（売上シェアプラン）", "約", "713", "万円"),
                 extra="売上シェアプランは、宿の売上が伸びるほど受け取りも増えます。おまかせプランは、売上にかかわらず毎月決まった家賃です。",
                 assumptions=["モデル物件は、説明のための架空の物件です。",
                              "おまかせプランの家賃は月3万円（プランの例）。売上シェアプランは、最低保証2.5万円＋売上の10%（プランの例）で、宿の売上を月45万円（1泊2.5万円で、月に18日ほど泊まる）と仮定し、月の受け取りは約7万円です。",
@@ -4401,7 +4400,10 @@ def sim_html(key):
             <span class="msim__sw msim__sw--{c}" aria-hidden="true"></span>
             <p class="msim__row-num">{"−" if v < 0 else "＋"}{abs(v):,}<small>万円</small></p>
           </li>""" for (n, v, nt, us), (c, _) in zip(rows, sm["chart"]["series"]))
-    bl, bpre, bnum, bunit = sm["big"]
+    big = ""
+    if sm.get("big"):  # 大きな数字の枠（凡例と同じ金額を繰り返すなら付けない）
+        bl, bpre, bnum, bunit = sm["big"]
+        big = f'<p class="msim__big"><span>{e(bl)}</span><b><small>{e(bpre)}</small>{e(bnum)}<small>{e(bunit)}</small></b></p>'
     specs = "".join(f"<li>{e(x)}</li>" for x in MEDIA_SIM_MODEL)
     assum = "".join(f"<li>{e(x)}</li>" for x in sm["assumptions"])
     srcs = "".join(f'<a href="media/{sl}.html">{e(ARTICLE_BY_SLUG[sl]["title"])} {ARROW}</a>' for sl in sm["srcs"])
@@ -4429,7 +4431,7 @@ def sim_html(key):
           <ul class="msim__howto"><li><b>線が上がる</b>手元のお金が増える</li><li><b>線が下がる</b>お金が出ていく</li><li><b>点線より上</b>プラス（得をしている）</li></ul>
           {sim_chart_html(sm["chart"], rows)}
           <ul class="msim__rows msim__rows--{len(rows)}">{rows_html}</ul>
-          <p class="msim__big"><span>{e(bl)}</span><b><small>{e(bpre)}</small>{e(bnum)}<small>{e(bunit)}</small></b></p>
+          {big}
         </div>
         <p class="msim__extra reveal">{e(sm["extra"])}</p>
         <details class="mlp-fold msim__fold reveal"><summary>試算の前提</summary><ul>{assum}</ul><p class="msim__srcs">{srcs}</p></details>
