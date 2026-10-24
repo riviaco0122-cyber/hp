@@ -4709,7 +4709,7 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .msim__srcs a { color: var(--m-green); font-weight: 700; }
 @media (max-width: 899px) {
   .msim { grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
-  .msim__model { display: grid; grid-template-columns: 56px minmax(0, 1fr); align-items: center; gap: 4px 14px; padding: 16px; text-align: left; }
+  .msim__model { display: grid; grid-template-columns: 56px minmax(0, 1fr); align-items: center; gap: 14px 14px; padding: 16px; text-align: left; }
   .msim__badge { grid-column: 1 / -1; justify-self: start; }
   .msim__house { width: 56px; height: 56px; margin: 0; }
   .msim__specs { grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 0; font-size: 12px; }
