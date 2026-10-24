@@ -4575,6 +4575,7 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .msv-compare--cols thead th { text-align: center; vertical-align: bottom; font-family: var(--font-round); font-size: 14px; color: var(--m-ink); }
 .msv-compare--cols thead th:first-child { text-align: left; font-size: 12.5px; color: var(--m-sub); }
 .msv-compare--cols tbody th { width: auto; font-size: 13.5px; color: var(--m-sub); }
+.msv-compare--cols th:first-child { width: 150px; }
 .msv-compare--cols th:first-child { position: sticky; left: 0; z-index: 1; background: #fff; box-shadow: 1px 0 0 var(--m-line); }
 .msv-compare--cols thead th:first-child { background: var(--m-sand); }
 .msv-compare--cols th.is-us, .msv-compare--cols td.is-us { background: #eef5f0; }
@@ -4601,6 +4602,19 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 
 /* サービスページ：しくみの図（誰が何をして、お金がどう流れるか）と写真 */
 .mlp-sec--worry + .mlp-sec--scheme { padding-top: 0; }
+/* お悩み：PCは写真とリストを横に並べる（スマホはリストだけ） */
+.mlp-worry { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; max-width: 920px; margin: 32px auto 0; align-items: stretch; }
+.mlp-worry .mlp-worries { max-width: none; margin: 0; grid-template-columns: 1fr; }
+.mlp-worry__photo { display: block; }
+.mlp-worry__photo img { display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover; border-radius: 20px; }
+.mlp-worry__body { display: flex; flex-direction: column; justify-content: center; }
+.mlp-worry__cta { margin-top: 16px; font-size: 14px; font-weight: 700; }
+.mlp-worry__cta a { color: var(--m-green); }
+@media (max-width: 899px) {
+  .mlp-worry { grid-template-columns: 1fr; gap: 0; margin-top: 24px; }
+  .mlp-worry__photo { display: none; }
+  .mlp-worry__cta { font-size: 13px; text-align: center; text-wrap: balance; }
+}
 .mscheme { --aw: 64px; position: relative; max-width: 720px; margin: 36px auto 0; padding-bottom: 64px; }
 .mscheme__row { display: grid; grid-template-columns: 1fr var(--aw) 1fr var(--aw) 1fr; align-items: start; }
 .mscheme__node { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
@@ -4628,6 +4642,26 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mscheme__tag { position: absolute; top: 8px; left: 8px; z-index: 1; padding: 1px 8px; border-radius: 999px; background: rgba(0, 0, 0, 0.5); color: #fff; font-size: 10px; line-height: 1.6; letter-spacing: 0.06em; }
 .mscheme__photo img { display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; border-radius: 16px; }
 .mscheme__photo figcaption { margin-top: 8px; font-size: 12px; line-height: 1.6; color: var(--m-sub); text-align: center; word-break: keep-all; }
+/* しくみの図：PCは大きく（スマホで見る大きさに比べて、PCでは小さく見えていた。人の指摘 2026-10-24） */
+@media (min-width: 900px) {
+  .mscheme { --aw: 140px; max-width: 920px; margin-top: 44px; padding-bottom: 84px; }
+  .mscheme__icon { width: 108px; height: 108px; margin-bottom: 10px; border-width: 2px; }
+  .mscheme__icon svg { width: 46px; height: 46px; stroke-width: 1.5; }
+  .mscheme__node.is-us .mscheme__icon { border-width: 3px; box-shadow: 0 0 0 7px rgba(46, 107, 71, 0.12); }
+  .mscheme__icon .amark { width: 70px; height: 66px; }
+  .mscheme__node b { font-size: 21px; }
+  .mscheme__node small { font-size: 15px; }
+  .mscheme__arrow { height: 62px; }
+  .mscheme__arrow span { font-size: 15px; }
+  .mscheme__arrow i { height: 3px; margin-top: 6px; }
+  .mscheme__arrow i::after { top: -5px; border-width: 6px; border-left-width: 9px; }
+  .mscheme__ret { bottom: 14px; height: 46px; border-width: 3px; border-radius: 0 0 18px 18px; }
+  .mscheme__ret::after { top: -10px; right: -8px; border-width: 7px; border-bottom-width: 10px; }
+  .mscheme__ret.is-left::after { left: -8px; }
+  .mscheme__ret span { bottom: -16px; padding: 4px 16px; font-size: 15px; }
+  .mscheme__photos { max-width: 920px; gap: 16px; margin-top: 40px; }
+  .mscheme__photo figcaption { font-size: 14px; }
+}
 @media (max-width: 899px) {
   .mscheme { --aw: 44px; margin-top: 28px; }
   .mscheme__icon { width: 56px; height: 56px; }
@@ -4694,6 +4728,14 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .msim__howto { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 8px; margin-top: 12px; }
 .msim__howto li { padding: 4px 12px; border-radius: 999px; background: #fff; font-size: 12.5px; line-height: 1.6; color: var(--m-sub); }
 .msim__howto b { margin-right: 6px; color: var(--m-ink); }
+/* PCはグラフと凡例を横に並べ、グラフが横に長くなりすぎないように（人の指摘 2026-10-24） */
+@media (min-width: 900px) {
+  .msim__fwrap { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; align-items: center; margin-top: 18px; }
+  .msim__fwrap .mchart { margin-top: 0; }
+  .msim__fwrap .mchart__plot { height: 300px; }
+  .msim__fside .msim__rows, .msim__fside .msim__rows--3 { grid-template-columns: 1fr; margin-top: 0; }
+  .msim__fside .msim__big { margin-top: 10px; flex-direction: column; align-items: center; gap: 2px; }
+}
 .msim__disclaim { max-width: 900px; margin: 16px auto 0; padding: 12px 16px; border: 1px solid var(--m-line); border-radius: 12px; font-size: 12.5px; line-height: 1.8; color: var(--m-sub); }
 .msim__disclaim strong { color: var(--m-ink); }
 /* 手元の累計の折れ線（0円の線＝損益分岐点） */

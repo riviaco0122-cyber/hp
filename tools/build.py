@@ -4173,8 +4173,7 @@ MEDIA_SERVICE_MORE = {
         compare=dict(cols=["現金に|なるまで", "古い家の|評価", "売る以外の|提案"], note="", rows=[
             ("仲介で|売る", ["△時期が|読めない", "△値段が|つきにくい", "×なし"], False),
             ("一般的な|買取", ["◎早い", "△改修費を|差し引く", "×なし"], False),
-            ("アキヤド|買取", ["◎早い", "◎宿として|評価", "◎貸す案も|比べる"], True),
-            ("アキヤド|借り上げ", ["◎毎月の|家賃", "◎家を|残せる", "◎売る案も|比べる"], True)]),
+            ("アキヤド|買取", ["◎早い", "◎宿として|評価", "◎貸す案も|比べる"], True)]),  # 買取のページなので、借り上げの列は入れない（人の指摘 2026-10-24）
         fit_no=["時間をかけてでも、少しでも高く売りたい（仲介が合う場合があります）", "宿として営業できない条件の物件（法令や建物の状態によっては、お受けできない場合があります）"],
         cases=["akiya-inherited-house-to-inn", "akiya-holding-costs", "akiya-3000man-deduction"], cases_title="手放す前に読んでおきたい記事",
         faq_more=[("相談したら、売らないといけませんか？", "いいえ。ご提案までは無料で、売るかどうかはご提案を見てから決めていただけます。"),
@@ -4253,6 +4252,7 @@ MEDIA_FLOWS = {
 
 
 # サービスページ（LP）の見せ方。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く。
+# worries_photo：PCでお悩みのリストの横に置く写真（PCで節が簡素に見えないように。人の指摘 2026-10-24）
 # hero：読み手の得を言い切る見出し／price：いくら？の目安（金額はイメージ。物件ごとに変わることを必ず添える）
 # risk：大きな数字のタイル（出典の記事へリンク）。(数字, 単位, 何の数字か, 説明, 記事, [しくみの3段階])。放っておくといくら損するかを金額で、なぜそうなるかを「しくみ」で見せる（人の指摘 2026-10-24）
 # サービスページの「しくみ」の図（文字を読まなくても、誰が何をして、お金がどう流れるかがわかるように）
@@ -4431,9 +4431,13 @@ def sim_html(key):
           <p class="msim__h msim__h--c">{e(fut_t)}</p>
           <p class="msim__summary">{e(sm["summary"])}</p>
           <ul class="msim__howto"><li><b>線が上がる</b>手元のお金が増える</li><li><b>線が下がる</b>お金が出ていく</li><li><b>点線より上</b>プラス（得をしている）</li></ul>
-          {sim_chart_html(sm["chart"], rows)}
-          <ul class="msim__rows msim__rows--{len(rows)}">{rows_html}</ul>
-          {big}
+          <div class="msim__fwrap">
+            {sim_chart_html(sm["chart"], rows)}
+            <div class="msim__fside">
+              <ul class="msim__rows msim__rows--{len(rows)}">{rows_html}</ul>
+              {big}
+            </div>
+          </div>
         </div>
         <p class="msim__extra reveal">{e(sm["extra"])}</p>
         <details class="mlp-fold msim__fold reveal"><summary>試算の前提</summary><ul>{assum}</ul><p class="msim__srcs">{srcs}</p></details>
@@ -4450,7 +4454,7 @@ MEDIA_SERVICE_LP = {
         hero="古くて売れない家も、<br><em>宿として活かせるなら</em><br>買い取ります。",
         hero_sub="相続した家、遠方で管理できない家。住まいとしては値段がつきにくい家も、宿として活かせるなら買い取れます。",
         hero_sub_sp="値段がつきにくい家も、|宿として活かせるなら買い取れます。",
-        worries_title="こんなお悩み、ひとりで抱えていませんか？",
+        worries_title="こんなお悩み、ひとりで抱えていませんか？", worries_photo="dark-room",
         price=dict(title="買取価格は、宿として稼げるかで決まります",
                    lead="一般の査定は「住まいとして売れるか」で見ます。アキヤドは、宿にしたときの収益から考えるため、古い家・地方の家でも金額をお出しできることがあります。",
                    # (式の言葉, 補足, スマホで式に書く短い言葉)
@@ -4468,7 +4472,7 @@ MEDIA_SERVICE_LP = {
         hero="初期費用は<em>ほぼ0円</em>。<br>空き家を、毎月の家賃に。",
         hero_sub="アキヤドが借り上げ、改修から宿の運営まで行います。家は持ったまま、手間をかけずに家賃を受け取れます。",
         hero_sub_sp="家は持ったまま、|手間をかけずに家賃を受け取れます。",
-        worries_title="こんなお悩み、ひとりで抱えていませんか？",
+        worries_title="こんなお悩み、ひとりで抱えていませんか？", worries_photo="window-garden",
         price=dict(title="家賃は、いくらになる？",
                    lead="周辺の宿の料金と稼働、広さ、改修にかかる費用から、物件ごとに試算します。受け取り方は2つから選べます。",
                    cards=[("アキヤドおまかせプラン", "毎月", "3", "万円", "決まった額の家賃（例）", "改修・家具などの初期費用は、アキヤドがほぼ全額を負担します"),
@@ -4486,7 +4490,7 @@ MEDIA_SERVICE_LP = {
         hero="はじめての民泊を、<br><em>宿を運営する私たち</em>が伴走します。",
         hero_sub="物件選び、許可や届出、料金の決め方、開業後の集客まで。会社員のまま宿を始めた私たちが、任せたい範囲に合わせて支援します。",
         hero_sub_sp="物件選びから集客まで、|任せたい範囲だけ支援します。",
-        worries_title="こんなところで、止まっていませんか？",
+        worries_title="こんなところで、止まっていませんか？", worries_photo="analytics-paper",
         price=dict(title="いくらかかって、いくら残る？ 私たちの宿の数字です",
                    lead="創業メンバーが下田（静岡県）で、借りた家を一棟貸しの宿にしたときの数字です。物件や運営で変わりますが、計画を立てるときの目安になります。",
                    cards=[("初期費用", "約", "650", "万円", "改修 約410万円＋家具・家電・備品 約240万円", "物件は賃貸のため、取得費はかかっていません"),
@@ -4680,7 +4684,13 @@ def media_service_page(sv):
     <section class="mlp-sec mlp-sec--worry">
       <div class="container mlp-narrow">
         <h2 class="mlp-title reveal">{e(lp["worries_title"])}</h2>
-        <ul class="mlp-worries reveal">{worries}</ul>
+        <div class="mlp-worry reveal">
+          <picture class="mlp-worry__photo pc-only"><source srcset="images/photos/w/{lp["worries_photo"]}-800.webp" type="image/webp"><img src="images/photos/{lp["worries_photo"]}.jpg" alt="" width="800" height="1000" loading="lazy" decoding="async"></picture>
+          <div class="mlp-worry__body">
+            <ul class="mlp-worries">{worries}</ul>
+            <p class="mlp-worry__cta"><a href="#diag" data-cta="media-service-worry">ひとつでも当てはまったら、<br class="sp-only">まずは無料でご相談ください {ARROW}</a></p>
+          </div>
+        </div>
       </div>
     </section>
 

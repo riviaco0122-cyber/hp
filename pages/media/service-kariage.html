@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=25aa2c1e">
+  <link rel="stylesheet" href="../../css/style.css?v=da5d9264">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -118,7 +118,13 @@
     <section class="mlp-sec mlp-sec--worry">
       <div class="container mlp-narrow">
         <h2 class="mlp-title reveal">こんな<wbr>お悩み、<wbr>ひとりで<wbr>抱えていませんか？</h2>
-        <ul class="mlp-worries reveal"><li>思い出のある家を、<wbr>手放したくはない</li><li>空き家のまま<wbr>傷んでいくのが心配</li><li>貸したいが、<wbr>借り手が<wbr>見つかる<wbr>地域ではない</li><li>改修に<wbr>まとまった<wbr>お金は<wbr>かけられない</li><li>宿に興味は<wbr>あるが、<wbr>運営する<wbr>時間がない</li></ul>
+        <div class="mlp-worry reveal">
+          <picture class="mlp-worry__photo pc-only"><source srcset="../../images/photos/w/window-garden-800.webp" type="image/webp"><img src="../../images/photos/window-garden.jpg" alt="" width="800" height="1000" loading="lazy" decoding="async"></picture>
+          <div class="mlp-worry__body">
+            <ul class="mlp-worries"><li>思い出のある家を、<wbr>手放したくはない</li><li>空き家のまま<wbr>傷んでいくのが心配</li><li>貸したいが、<wbr>借り手が<wbr>見つかる<wbr>地域ではない</li><li>改修に<wbr>まとまった<wbr>お金は<wbr>かけられない</li><li>宿に興味は<wbr>あるが、<wbr>運営する<wbr>時間がない</li></ul>
+            <p class="mlp-worry__cta"><a href="#diag" data-cta="media-service-worry"><n-w>ひとつでも当てはまったら、</n-w><br class="sp-only"><n-w>まずは無料でご相談ください</n-w> <span class="arrow" aria-hidden="true"></span></a></p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -169,14 +175,16 @@
           <p class="msim__h msim__h--c">10年で、<wbr>手元の<wbr>お金はどう変わる？</p>
           <p class="msim__summary"><n-w class="j">おまかせプランは、最初の出費がほぼなく、毎月家賃が入ります。売上シェアプランは、最初に出すお金を100万円と仮定すると、約15か月で取り戻し、そのあとは大きく増えていく計算です。（空き家のままだと、10年で約63万円が<n-b>出ていきます）</n-b></n-w></p>
           <ul class="msim__howto"><li><b>線が上がる</b>手元の<wbr><n-b>お金が増える</n-b></li><li><b>線が下がる</b>お金が<wbr>出ていく</li><li><b>点線より上</b>プラス（得を<wbr>している）</li></ul>
-          <div class="mchart">
+          <div class="msim__fwrap">
+            <div class="mchart">
             <div class="mchart__plot">
               <svg viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><g class="mchart__grid"><line x1="500.0" y1="0" x2="500.0" y2="400"/></g><line class="mchart__zero" x1="0" y1="293.0" x2="1000" y2="293.0"/><polyline class="mchart__line mchart__line--sub" points="0.0,293.0 1000.0,169.0"/><polyline class="mchart__line mchart__line--us" points="0.0,330.2 1000.0,27.6"/></svg>
               <span class="mchart__y" style="top:82.6%">−100</span><span class="mchart__y is-zero" style="top:73.3%">0</span><span class="mchart__y" style="top:50.0%">250</span><span class="mchart__y" style="top:26.7%">500</span><span class="mchart__x" style="left:0.0%">今</span><span class="mchart__x" style="left:50.0%">5年</span><span class="mchart__x is-last" style="left:100.0%">10年</span><span class="mchart__dot mchart__dot--us" style="left:12.3%;top:73.3%"></span><span class="mchart__mark mchart__mark--us mchart__mark--dr" style="left:12.3%;top:73.3%">約15か月で元が<wbr>取れる</span><span class="mchart__end mchart__end--sub" style="top:42.2%">＋333<small>万円</small></span><span class="mchart__end mchart__end--us" style="top:6.9%">＋713<small>万円</small></span>
             </div>
             <p class="mchart__unit">手元のお金（万円）</p>
           </div>
-          <ul class="msim__rows msim__rows--2"><li class="msim__row">
+            <div class="msim__fside">
+              <ul class="msim__rows msim__rows--2"><li class="msim__row">
             <p class="msim__row-name"><n-w>おまかせプラン</n-w><small><n-w>最初の出費ほぼなし。毎月3万円の家賃</n-w></small></p>
             <span class="msim__sw msim__sw--sub" aria-hidden="true"></span>
             <p class="msim__row-num">＋333<small>万円</small></p>
@@ -185,7 +193,9 @@
             <span class="msim__sw msim__sw--us" aria-hidden="true"></span>
             <p class="msim__row-num">＋713<small>万円</small></p>
           </li></ul>
-          
+              
+            </div>
+          </div>
         </div>
         <p class="msim__extra reveal"><n-w>売上シェアプランは、宿の売上が伸びるほど受け取りも増えます。おまかせプランは、売上にかかわらず毎月決まった<n-b>家賃です。</n-b></n-w></p>
         <details class="mlp-fold msim__fold reveal"><summary>試算の前提</summary><ul><li><n-w>モデル物件は、説明のための架空の<n-b>物件です。</n-b></n-w></li><li><n-w class="j">おまかせプランの家賃は月3万円（プランの例）。売上シェアプランは、最低保証2.5万円＋売上の10%（プランの例）で、宿の売上を月45万円（1泊2.5万円で、月に18日ほど泊まる）と仮定し、月の受け取りは<n-b>約7万円です。</n-b></n-w></li><li><n-w class="j">宿の売上の月45万円は、シミュレーション例としての想定です。オーナーの事例では月商が約40万〜55万円の宿があり、私たちの下田の宿は1年目の稼働率が<n-b>約53%でした。</n-b></n-w></li><li><n-w>売上シェアプランの補修・内装の共同出資は、オーナー様の分を100万円と仮定しています（物件ごとに<n-b>決めます）。</n-b></n-w></li><li><n-w>家賃・受け取り・期間は、物件と契約で決まります。10年間、同じ条件と<n-b>仮定しています。</n-b></n-w></li><li><n-w class="j">土地の固定資産税は年26,600円（評価額1,200万円の住宅の敷地。大津市の計算例）で、借り上げ後もオーナー様の負担と仮定。建物の分・都市計画税・保険・所得税などの税金は<n-b>含みません。</n-b></n-w></li><li><n-w>空き家のままの見回りは月1回3,000円（二本松市のシルバー人材センターの例）。草刈り・修繕は<n-b>含みません。</n-b></n-w></li></ul><p class="msim__srcs"><a href="../media/akiya-holding-costs.html"><n-w class="j">空き家の維持費はいくら？税金・見回りの内訳と、民泊・賃貸で賄う考え方</n-w> <span class="arrow" aria-hidden="true"></span></a><a href="../media/akiya-lease-types.html"><n-w class="j">空き家を貸す契約の種類｜普通借家・定期借家と、民泊の借り上げの違い</n-w> <span class="arrow" aria-hidden="true"></span></a><a href="../media/case-owner-satoyama-airdna.html"><n-w class="j">里山の古民家を民泊に｜AirDNAのデータで融資を通した総予算350万円</n-w> <span class="arrow" aria-hidden="true"></span></a></p></details>
