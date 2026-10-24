@@ -27,14 +27,14 @@ s+=inn(1090,790,.82,{sign:'許可',roof:'#2e6b47',noren:T,t:.9,lit:.9,post:1,bik
 const bd=(x,y,w,h)=>`<rect x="${x-6}" y="${y-6}" width="${w+12}" height="${h+12}" rx="14" fill="#000" opacity=".2" transform="translate(0 6)"/><rect x="${x-6}" y="${y-6}" width="${w+12}" height="${h+12}" rx="14" fill="#fff"/>`;
 s+=bd(278,832,444,120)+cal(278,832,12,365,180)+shutter(278,832,12,180,1,'',0);
 s+=bd(868,832,444,120)+cal(868,832,12,365,0);
-s+=big(500,958,480,'年180日まで','#c95a35')+big(1090,958,380,'365日OK','#2e6b47');
+s+=big(500,958,480,'年180日まで','#c95a35')+big(1090,958,520,'許可は上限なし','#2e6b47');
 s+=`<g transform="translate(1180 440) rotate(-8)"><circle r="78" fill="#fff" opacity=".96" stroke="#c95a35" stroke-width="8"/><text y="-8" text-anchor="middle" font-size="40" font-weight="900" fill="#c95a35">上限</text><text y="46" text-anchor="middle" font-size="58" font-weight="900" fill="#c95a35">49%</text></g>`;
 s+=`<ellipse cx="1690" cy="${GROUND+16}" rx="130" ry="19" fill="#000" opacity=".26"/>`+person(1690,GROUND,1.12,{c:'aki',pose:'point',mood:'happy',t:.3,flip:true});
 """
 SCENE_B = r"""
 s+=`<g transform="translate(0 0)">${gateSmall(470,860,0)}${gateBig(1090,860,0)}</g>`;
 const orb=(x,y,r,top,txt,c)=>`<circle cx="${x}" cy="${y+10}" r="${r}" fill="#000" opacity=".22"/><circle cx="${x}" cy="${y}" r="${r}" fill="${c}" stroke="#fff" stroke-width="9"/><ellipse cx="${x-r*.25}" cy="${y-r*.55}" rx="${r*.5}" ry="${r*.22}" fill="#fff" opacity=".25"/><text x="${x}" y="${y-r*.18}" text-anchor="middle" font-size="${r*.36}" font-weight="900" fill="#fff">${top}</text><text x="${x}" y="${y+r*.5}" text-anchor="middle" font-size="${r*.62}" font-weight="900" fill="#fff" stroke="#000" stroke-opacity=".25" stroke-width="2" paint-order="stroke">${txt}</text>`;
-s+=orb(470,690,112,'年','180日','#c95a35')+orb(1090,690,126,'年','365日','#2e6b47');
+s+=orb(470,690,112,'年','180日','#c95a35')+orb(1090,690,126,'日数の上限','なし','#2e6b47');
 s+=big(470,905,300,'届出','#c95a35')+big(1090,905,300,'許可','#2e6b47');
 s+=`<ellipse cx="1690" cy="${GROUND+16}" rx="130" ry="19" fill="#000" opacity=".26"/>`+person(1690,GROUND,1.12,{c:'aki',pose:'point',mood:'happy',t:.3,flip:true});
 """
