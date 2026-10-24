@@ -4579,7 +4579,8 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .msv-compare.msv-compare--cols { overflow-x: auto; }
   .msv-compare--cols table { table-layout: fixed; width: max-content; min-width: 100%; }
   .msv-compare--cols th, .msv-compare--cols td { width: 104px; min-width: 104px; max-width: 104px; padding: 12px 6px; white-space: normal; }
-  .msv-compare--cols th:first-child { min-width: 72px; width: 72px; max-width: 72px; padding-left: 12px; }
+  .msv-compare--cols th:first-child { min-width: 80px; width: 80px; max-width: 80px; padding-left: 12px; padding-right: 6px; }
+  .msv-compare--cols thead th:first-child { font-size: 11.5px; letter-spacing: 0.02em; }
   .msv-compare--cols thead th { font-size: 12.5px; }
   .msv-compare--cols tbody th { font-size: 12px; width: 76px; }
   .msv-compare__swipe { display: block; margin-top: 16px; font-size: 12px; color: var(--m-sub); text-align: right; }

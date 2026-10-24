@@ -4747,7 +4747,7 @@ def media_service_page(sv):
         <p class="msv-compare__swipe" aria-hidden="true">表は左右にスライドできます →</p>
         <div class="msv-compare msv-compare--cols reveal">
           <table>
-            <thead><tr><th scope="col">比べること</th>{cmp_head}</tr></thead>
+            <thead><tr><th scope="col">比べる<wbr>こと</th>{cmp_head}</tr></thead>
             <tbody>
 {cmp_rows}
             </tbody>
