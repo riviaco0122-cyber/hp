@@ -4421,7 +4421,12 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mrisk__num { font-family: var(--font-round); font-weight: 700; font-size: 48px; line-height: 1.1; color: var(--m-cta); }
 .mrisk__num small { margin-left: 2px; font-size: 18px; }
 .mrisk__label { margin-top: 6px; font-weight: 700; font-size: 15px; line-height: 1.6; }
-.mrisk__text { flex: 1; margin-top: 8px; font-size: 13.5px; line-height: 1.85; color: var(--m-sub); }
+.mrisk__how { margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: #fbf1ec; }
+.mrisk__how-h { font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; color: var(--m-cta); }
+.mrisk__how ol { display: grid; gap: 0; margin-top: 6px; }
+.mrisk__how li { position: relative; padding: 3px 0; font-size: 13.5px; font-weight: 700; line-height: 1.6; color: var(--m-ink); }
+.mrisk__how li + li::before { content: "↓"; display: block; margin: -2px 0 2px; font-size: 12px; font-weight: 400; line-height: 1; color: var(--m-cta); }
+.mrisk__text { flex: 1; margin-top: 12px; font-size: 13.5px; line-height: 1.85; color: var(--m-sub); }
 .mrisk__link { margin-top: 12px; font-size: 13px; font-weight: 700; color: var(--m-green); }
 /* 違い */
 .mpoints { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 36px; }
@@ -4564,6 +4569,29 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .mcmp__t { font-size: 11px; margin-top: 4px; }
 }
 .msv-compare tbody th { vertical-align: middle; }
+/* 比較表（選択肢が横に並ぶ形）：1列目＝比べることを止めて、スマホは左右にスライド */
+.msv-compare--cols { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.msv-compare--cols table { table-layout: auto; }
+.msv-compare--cols thead th { text-align: center; vertical-align: bottom; font-family: var(--font-round); font-size: 14px; color: var(--m-ink); }
+.msv-compare--cols thead th:first-child { text-align: left; font-size: 12.5px; color: var(--m-sub); }
+.msv-compare--cols tbody th { width: auto; font-size: 13.5px; color: var(--m-sub); }
+.msv-compare--cols th:first-child { width: 150px; }
+.msv-compare--cols th:first-child { position: sticky; left: 0; z-index: 1; background: #fff; box-shadow: 1px 0 0 var(--m-line); }
+.msv-compare--cols thead th:first-child { background: var(--m-sand); }
+.msv-compare--cols th.is-us, .msv-compare--cols td.is-us { background: #eef5f0; }
+.msv-compare--cols thead th.is-us { color: var(--m-green); background: #dcebe1; }
+.msv-compare__swipe { display: none; }
+@media (max-width: 899px) {
+  .msv-compare.msv-compare--cols { overflow-x: auto; }
+  .msv-compare--cols table { table-layout: fixed; width: max-content; min-width: 100%; }
+  .msv-compare--cols th, .msv-compare--cols td { width: 104px; min-width: 104px; max-width: 104px; padding: 12px 6px; white-space: normal; }
+  .msv-compare--cols th:first-child { min-width: 80px; width: 80px; max-width: 80px; padding-left: 12px; padding-right: 6px; }
+  .msv-compare--cols thead th:first-child { font-size: 11.5px; letter-spacing: 0.02em; }
+  .msv-compare--cols thead th { font-size: 12.5px; }
+  .msv-compare--cols tbody th { font-size: 12px; width: 76px; }
+  .msv-compare__swipe { display: block; margin-top: 16px; font-size: 12px; color: var(--m-sub); text-align: right; }
+  .mlp-sec .msv-compare__swipe + .msv-compare { margin-top: 8px; }
+}
 .mlp-flow { margin-top: 36px; }
 @media (max-width: 899px) { .mlp-flow { margin-top: 28px; } }
 /* 折り返し方は段落（ブロック）の text-wrap で決まる。サービスページの本文の段落は、ふつうの折り返し（wrap）に戻す。
@@ -4574,6 +4602,19 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 
 /* サービスページ：しくみの図（誰が何をして、お金がどう流れるか）と写真 */
 .mlp-sec--worry + .mlp-sec--scheme { padding-top: 0; }
+/* お悩み：PCは写真とリストを横に並べる（スマホはリストだけ） */
+.mlp-worry { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; max-width: 920px; margin: 32px auto 0; align-items: stretch; }
+.mlp-worry .mlp-worries { max-width: none; margin: 0; grid-template-columns: 1fr; }
+.mlp-worry__photo { display: block; }
+.mlp-worry__photo img { display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover; border-radius: 20px; }
+.mlp-worry__body { display: flex; flex-direction: column; justify-content: center; }
+.mlp-worry__cta { margin-top: 16px; font-size: 14px; font-weight: 700; }
+.mlp-worry__cta a { color: var(--m-green); }
+@media (max-width: 899px) {
+  .mlp-worry { grid-template-columns: 1fr; gap: 0; margin-top: 24px; }
+  .mlp-worry__photo { display: none; }
+  .mlp-worry__cta { font-size: 13px; text-align: center; text-wrap: balance; }
+}
 .mscheme { --aw: 64px; position: relative; max-width: 720px; margin: 36px auto 0; padding-bottom: 64px; }
 .mscheme__row { display: grid; grid-template-columns: 1fr var(--aw) 1fr var(--aw) 1fr; align-items: start; }
 .mscheme__node { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
@@ -4601,6 +4642,26 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mscheme__tag { position: absolute; top: 8px; left: 8px; z-index: 1; padding: 1px 8px; border-radius: 999px; background: rgba(0, 0, 0, 0.5); color: #fff; font-size: 10px; line-height: 1.6; letter-spacing: 0.06em; }
 .mscheme__photo img { display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; border-radius: 16px; }
 .mscheme__photo figcaption { margin-top: 8px; font-size: 12px; line-height: 1.6; color: var(--m-sub); text-align: center; word-break: keep-all; }
+/* しくみの図：PCは大きく（スマホで見る大きさに比べて、PCでは小さく見えていた。人の指摘 2026-10-24） */
+@media (min-width: 900px) {
+  .mscheme { --aw: 140px; max-width: 920px; margin-top: 44px; padding-bottom: 84px; }
+  .mscheme__icon { width: 108px; height: 108px; margin-bottom: 10px; border-width: 2px; }
+  .mscheme__icon svg { width: 46px; height: 46px; stroke-width: 1.5; }
+  .mscheme__node.is-us .mscheme__icon { border-width: 3px; box-shadow: 0 0 0 7px rgba(46, 107, 71, 0.12); }
+  .mscheme__icon .amark { width: 70px; height: 66px; }
+  .mscheme__node b { font-size: 21px; }
+  .mscheme__node small { font-size: 15px; }
+  .mscheme__arrow { height: 62px; }
+  .mscheme__arrow span { font-size: 15px; }
+  .mscheme__arrow i { height: 3px; margin-top: 6px; }
+  .mscheme__arrow i::after { top: -5px; border-width: 6px; border-left-width: 9px; }
+  .mscheme__ret { bottom: 14px; height: 46px; border-width: 3px; border-radius: 0 0 18px 18px; }
+  .mscheme__ret::after { top: -10px; right: -8px; border-width: 7px; border-bottom-width: 10px; }
+  .mscheme__ret.is-left::after { left: -8px; }
+  .mscheme__ret span { bottom: -16px; padding: 4px 16px; font-size: 15px; }
+  .mscheme__photos { max-width: 920px; gap: 16px; margin-top: 40px; }
+  .mscheme__photo figcaption { font-size: 14px; }
+}
 @media (max-width: 899px) {
   .mscheme { --aw: 44px; margin-top: 28px; }
   .mscheme__icon { width: 56px; height: 56px; }
@@ -4613,6 +4674,144 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .mscheme__photos { gap: 8px; margin-top: 24px; }
   .mscheme__photo img { border-radius: 12px; }
   .mscheme__photo figcaption { font-size: 11px; }
+}
+
+/* 未来の手元の試算：モデル物件 → お金のゆくえ（帯グラフ）→ 数年後の手元（横棒） */
+.msim { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 20px; max-width: 900px; margin: 36px auto 0; }
+.msim--solo { grid-template-columns: 1fr; }
+.msim--multi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.msim--multi .msim__model { grid-column: 1 / -1; flex-direction: row; gap: 16px; }
+.msim--multi .msim__house { margin: 0; }
+.msim--multi .msim__specs { grid-template-columns: repeat(2, auto); gap: 8px; align-self: auto; margin-top: 0; }
+.msim--multi .msim__specs li { white-space: nowrap; }
+.msim--solo .msim__model { flex-direction: row; gap: 16px; }
+.msim--solo .msim__house { margin: 0; }
+.msim--solo .msim__specs { grid-template-columns: repeat(2, auto); gap: 8px; align-self: auto; margin-top: 0; }
+.msim--solo .msim__specs li { white-space: nowrap; }
+.msim__model { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 20px; border-radius: 20px; background: var(--m-sand); text-align: center; }
+.msim__badge { display: inline-block; padding: 2px 12px; border-radius: 999px; background: #fff; font-size: 12px; font-weight: 700; color: var(--m-green); }
+.msim__house { display: grid; place-items: center; width: 64px; height: 64px; margin: 14px auto 0; border-radius: 50%; background: #fff; color: var(--m-green); }
+.msim__house svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.msim__specs { display: grid; gap: 6px; align-self: stretch; margin-top: 14px; font-size: 13.5px; line-height: 1.6; }
+.msim__specs li { padding: 6px 8px; border-radius: 10px; background: #fff; }
+.msim__split { display: flex; flex-direction: column; justify-content: center; padding: 24px; border: 1.5px solid var(--m-line); border-radius: 20px; background: #fff; }
+.msim__h { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; font-family: var(--font-round); font-weight: 700; font-size: 15px; line-height: 1.6; }
+.msim__h span { color: var(--m-sub); font-size: 13px; }
+.msim__h--c { justify-content: center; text-align: center; }
+.msim__bar { display: flex; gap: 2px; height: 30px; margin-top: 14px; border-radius: 8px; overflow: hidden; }
+.msim__seg { display: block; min-width: 4px; }
+.msim__seg--c1, .msim__li--c1 .msim__sw { background: #cf5f37; }
+.msim__seg--c2, .msim__li--c2 .msim__sw { background: #e2906d; }
+.msim__seg--c3, .msim__li--c3 .msim__sw { background: #eeb99f; }
+.msim__seg--c4, .msim__li--c4 .msim__sw { background: #b9c2bb; }
+.msim__seg--keep, .msim__li--keep .msim__sw { background: var(--m-green); }
+.msim__legend { display: grid; gap: 2px; margin-top: 14px; }
+.msim__li { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--m-line); }
+.msim__li:last-child { border-bottom: 0; }
+.msim__sw { flex-shrink: 0; width: 12px; height: 12px; border-radius: 3px; }
+.msim__li-name { flex: 1; font-size: 14px; line-height: 1.5; }
+.msim__li-name small { display: block; font-size: 12px; color: var(--m-sub); }
+.msim__li b { font-family: var(--font-round); font-size: 17px; white-space: nowrap; }
+.msim__li b small { font-size: 11px; margin-left: 2px; }
+.msim__li--keep .msim__li-name, .msim__li--keep b { color: var(--m-green); font-weight: 700; }
+.msim__li--keep b { font-size: 22px; }
+.msim__future { max-width: 900px; margin: 20px auto 0; padding: 28px 24px 24px; border-radius: 20px; background: var(--m-sand); }
+.msim__rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.msim__row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px; background: #fff; }
+.msim__row .msim__sw { grid-row: 1; grid-column: 1; width: 16px; height: 4px; border-radius: 2px; }
+.msim__row .msim__row-name { grid-column: 2; }
+.msim__sw--us { background: var(--m-green); }
+.msim__sw--minus { background: #e2906d; }
+.msim__sw--sub { background: #a3ada5; }
+.msim__rows--3 { grid-template-columns: 1fr; }
+.msim__summary { max-width: 40em; margin: 10px auto 0; font-size: 15px; line-height: 1.9; text-align: center; }
+.msim__howto { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 8px; margin-top: 12px; }
+.msim__howto li { padding: 4px 12px; border-radius: 999px; background: #fff; font-size: 12.5px; line-height: 1.6; color: var(--m-sub); }
+.msim__howto b { margin-right: 6px; color: var(--m-ink); }
+/* PCはグラフと凡例を横に並べ、グラフが横に長くなりすぎないように（人の指摘 2026-10-24） */
+@media (min-width: 900px) {
+  .msim__fwrap { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; align-items: center; margin-top: 18px; }
+  .msim__fwrap .mchart { margin-top: 0; }
+  .msim__fwrap .mchart__plot { height: 300px; }
+  .msim__fside .msim__rows, .msim__fside .msim__rows--3 { grid-template-columns: 1fr; margin-top: 0; }
+  .msim__fside .msim__big { margin-top: 10px; flex-direction: column; align-items: center; gap: 2px; }
+}
+.msim__disclaim { max-width: 900px; margin: 16px auto 0; padding: 12px 16px; border: 1px solid var(--m-line); border-radius: 12px; font-size: 12.5px; line-height: 1.8; color: var(--m-sub); }
+.msim__disclaim strong { color: var(--m-ink); }
+/* 手元の累計の折れ線（0円の線＝損益分岐点） */
+.mchart { position: relative; margin-top: 18px; padding: 24px 92px 30px 52px; border-radius: 14px; background: #fff; }
+.mchart__plot { position: relative; height: 280px; }
+.mchart__plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.mchart__grid line { stroke: var(--m-line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.mchart__zero { stroke: var(--m-ink); stroke-width: 1.5; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+.mchart__line { fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.mchart__line--us { stroke: var(--m-green); }
+.mchart__line--minus { stroke: #e2906d; }
+.mchart__line--sub { stroke: #a3ada5; }
+.mchart__y { position: absolute; left: -48px; width: 40px; white-space: nowrap; transform: translateY(-50%); font-size: 11px; color: var(--m-sub); text-align: right; }
+.mchart__y.is-zero { color: var(--m-ink); font-weight: 700; }
+.mchart__x { position: absolute; bottom: -24px; transform: translateX(-50%); font-size: 11px; color: var(--m-sub); white-space: nowrap; }
+.mchart__x:first-of-type { transform: none; }
+.mchart__x.is-last { transform: translateX(-100%); }
+.mchart__unit { position: absolute; left: 10px; top: 6px; font-size: 10px; color: var(--m-sub); }
+.mchart__dot { position: absolute; width: 12px; height: 12px; margin: -6px 0 0 -6px; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08); }
+.mchart__dot--us { background: var(--m-green); }
+.mchart__dot--minus { background: #cf5f37; }
+.mchart__dot--sub { background: #a3ada5; }
+.mchart__mark { position: absolute; padding: 2px 8px; border-radius: 999px; font-size: 11.5px; font-weight: 700; line-height: 1.5; white-space: nowrap; color: #fff; }
+.mchart__mark--us { background: var(--m-green); }
+.mchart__mark--minus { background: #cf5f37; }
+.mchart__mark--sub { background: #8a958c; }
+.mchart__mark--r { transform: translate(12px, -50%); }
+.mchart__mark--ur { transform: translate(8px, calc(-100% - 8px)); }
+.mchart__mark--dr { transform: translate(8px, 8px); }
+.mchart__mark--up { transform: translate(-50%, calc(-100% - 10px)); }
+.mchart__mark--down { transform: translate(-50%, 10px); }
+.mchart__end { position: absolute; left: calc(100% + 8px); transform: translateY(-50%); font-family: var(--font-round); font-weight: 700; font-size: 16px; line-height: 1.2; white-space: nowrap; }
+.mchart__end small { font-size: 10px; margin-left: 1px; }
+.mchart__end--us { color: var(--m-green); }
+.mchart__end--minus { color: #cf5f37; }
+.mchart__end--sub { color: #6f7a72; }
+.msim__row-name { font-weight: 700; font-size: 14px; line-height: 1.5; }
+.msim__row-name small { display: block; font-weight: 400; font-size: 12px; color: var(--m-sub); }
+.msim__row-num { font-family: var(--font-round); font-weight: 700; font-size: 20px; text-align: right; white-space: nowrap; }
+.msim__row-num small { font-size: 12px; margin-left: 2px; }
+.msim__row.is-minus .msim__row-num { color: var(--m-cta); }
+.msim__row.is-us .msim__row-num, .msim__row.is-us .msim__row-name { color: var(--m-green); }
+.msim__big { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 4px 14px; margin-top: 20px; padding: 14px 16px; border-radius: 14px; background: #fff; }
+.msim__big span { font-weight: 700; font-size: 14px; }
+.msim__big b { font-family: var(--font-round); font-size: clamp(34px, 4.4vw, 44px); line-height: 1.1; color: var(--m-green); }
+.msim__big b small { font-size: 15px; margin: 0 3px; }
+.msim__extra { max-width: 900px; margin: 16px auto 0; font-size: 14px; line-height: 1.9; text-align: center; color: var(--m-sub); }
+.msim__fold { max-width: 900px; margin-left: auto; margin-right: auto; background: var(--m-sand); }
+.msim__srcs { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 0 18px 16px; font-size: 13px; }
+.msim__srcs a { color: var(--m-green); font-weight: 700; }
+@media (max-width: 899px) {
+  .msim { grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
+  .msim--solo .msim__model, .msim--multi .msim__model { gap: 14px; }
+  .msim--multi .msim__specs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .msim--multi .msim__specs li { white-space: normal; }
+  .msim--solo .msim__specs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .msim--solo .msim__specs li { white-space: normal; }
+  .msim__model { display: grid; grid-template-columns: 56px minmax(0, 1fr); align-items: center; gap: 14px 14px; padding: 16px; text-align: left; }
+  .msim__badge { grid-column: 1 / -1; justify-self: start; }
+  .msim__house { width: 56px; height: 56px; margin: 0; }
+  .msim__specs { grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 0; font-size: 12px; }
+  .msim__specs li { padding: 5px 10px; word-break: keep-all; }
+  .msim__split { padding: 18px 16px; }
+  .msim__future { padding: 22px 16px 16px; }
+  .msim__rows { grid-template-columns: 1fr; gap: 8px; }
+  .msim__summary { font-size: 14px; text-align: left; }
+  .msim__howto { justify-content: flex-start; }
+  .msim__howto li { font-size: 11.5px; padding: 3px 10px; }
+  .msim__row { padding: 10px 12px; }
+  .msim__row-num { font-size: 18px; }
+  .mchart { padding: 22px 78px 28px 40px; }
+  .mchart__plot { height: 240px; }
+  .mchart__y { left: -38px; width: 32px; font-size: 10px; }
+  .mchart__mark { font-size: 10.5px; padding: 1px 7px; }
+  .mchart__end { left: calc(100% + 5px); font-size: 12.5px; }
+  .msim__extra { font-size: 13px; text-align: left; }
 }
 
 /* 「放っておくと」のタイル：スマホは横にスワイプ（縦に3枚積むと文字が続いて見える） */

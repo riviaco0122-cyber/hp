@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=9e3b1592">
+  <link rel="stylesheet" href="../../css/style.css?v=da5d9264">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -118,7 +118,13 @@
     <section class="mlp-sec mlp-sec--worry">
       <div class="container mlp-narrow">
         <h2 class="mlp-title reveal">こんな<wbr>お悩み、<wbr>ひとりで<wbr>抱えていませんか？</h2>
-        <ul class="mlp-worries reveal"><li>思い出のある家を、<wbr>手放したくはない</li><li>空き家のまま<wbr>傷んでいくのが心配</li><li>貸したいが、<wbr>借り手が<wbr>見つかる<wbr>地域ではない</li><li>改修に<wbr>まとまった<wbr>お金は<wbr>かけられない</li><li>宿に興味は<wbr>あるが、<wbr>運営する<wbr>時間がない</li></ul>
+        <div class="mlp-worry reveal">
+          <picture class="mlp-worry__photo pc-only"><source srcset="../../images/photos/w/window-garden-800.webp" type="image/webp"><img src="../../images/photos/window-garden.jpg" alt="" width="800" height="1000" loading="lazy" decoding="async"></picture>
+          <div class="mlp-worry__body">
+            <ul class="mlp-worries"><li>思い出のある家を、<wbr>手放したくはない</li><li>空き家のまま<wbr>傷んでいくのが心配</li><li>貸したいが、<wbr>借り手が<wbr>見つかる<wbr>地域ではない</li><li>改修に<wbr>まとまった<wbr>お金は<wbr>かけられない</li><li>宿に興味は<wbr>あるが、<wbr>運営する<wbr>時間がない</li></ul>
+            <p class="mlp-worry__cta"><a href="#diag" data-cta="media-service-worry"><n-w>ひとつでも当てはまったら、</n-w><br class="sp-only"><n-w>まずは無料でご相談ください</n-w> <span class="arrow" aria-hidden="true"></span></a></p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -152,25 +158,73 @@
       </div>
     </section>
 
+    <section class="mlp-sec mlp-sec--sim">
+      <div class="container">
+        <p class="mlp-en reveal">Simulation</p>
+        <h2 class="mlp-title reveal">借り上げなら、<wbr>10年で<wbr>どれだけ<wbr>変わる？</h2>
+        <p class="mlp-lead reveal"><n-w class="j">アキヤドが借り上げた場合の2つのプランを、モデル物件で比べました。宿の売上は、私たちの宿やオーナーの事例をもとにしたシミュレーショ<n-b>ン例です。</n-b></n-w></p>
+        <div class="msim msim--solo reveal" role="img" aria-label="10年で、手元のお金はどう変わる？：おまかせプラン 333万円、売上シェアプラン 713万円">
+          <div class="msim__model">
+            <p class="msim__badge">モデル物件<wbr>（架空）</p>
+            <span class="msim__house" aria-hidden="true"><svg class="fig-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
+            <ul class="msim__specs"><li>築45年・木造2階建て</li><li>4LDK・約100㎡</li><li>観光地まで車で<wbr>15分ほど</li><li>相続から<wbr>5年、<wbr>空き家のまま</li></ul>
+          </div>
+          
+        </div>
+        <div class="msim__future reveal" aria-hidden="true">
+          <p class="msim__h msim__h--c">10年で、<wbr>手元の<wbr>お金はどう変わる？</p>
+          <p class="msim__summary"><n-w class="j">おまかせプランは、最初の出費がほぼなく、毎月家賃が入ります。売上シェアプランは、最初に出すお金を100万円と仮定すると、約15か月で取り戻し、そのあとは大きく増えていく計算です。（空き家のままだと、10年で約63万円が<n-b>出ていきます）</n-b></n-w></p>
+          <ul class="msim__howto"><li><b>線が上がる</b>手元の<wbr><n-b>お金が増える</n-b></li><li><b>線が下がる</b>お金が<wbr>出ていく</li><li><b>点線より上</b>プラス（得を<wbr>している）</li></ul>
+          <div class="msim__fwrap">
+            <div class="mchart">
+            <div class="mchart__plot">
+              <svg viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><g class="mchart__grid"><line x1="500.0" y1="0" x2="500.0" y2="400"/></g><line class="mchart__zero" x1="0" y1="293.0" x2="1000" y2="293.0"/><polyline class="mchart__line mchart__line--sub" points="0.0,293.0 1000.0,169.0"/><polyline class="mchart__line mchart__line--us" points="0.0,330.2 1000.0,27.6"/></svg>
+              <span class="mchart__y" style="top:82.6%">−100</span><span class="mchart__y is-zero" style="top:73.3%">0</span><span class="mchart__y" style="top:50.0%">250</span><span class="mchart__y" style="top:26.7%">500</span><span class="mchart__x" style="left:0.0%">今</span><span class="mchart__x" style="left:50.0%">5年</span><span class="mchart__x is-last" style="left:100.0%">10年</span><span class="mchart__dot mchart__dot--us" style="left:12.3%;top:73.3%"></span><span class="mchart__mark mchart__mark--us mchart__mark--dr" style="left:12.3%;top:73.3%">約15か月で元が<wbr>取れる</span><span class="mchart__end mchart__end--sub" style="top:42.2%">＋333<small>万円</small></span><span class="mchart__end mchart__end--us" style="top:6.9%">＋713<small>万円</small></span>
+            </div>
+            <p class="mchart__unit">手元のお金（万円）</p>
+          </div>
+            <div class="msim__fside">
+              <ul class="msim__rows msim__rows--2"><li class="msim__row">
+            <p class="msim__row-name"><n-w>おまかせプラン</n-w><small><n-w>最初の出費ほぼなし。毎月3万円の家賃</n-w></small></p>
+            <span class="msim__sw msim__sw--sub" aria-hidden="true"></span>
+            <p class="msim__row-num">＋333<small>万円</small></p>
+          </li><li class="msim__row is-us">
+            <p class="msim__row-name"><n-w>売上シェアプラン</n-w><small><n-w>最初に100万円（仮定）出資し、毎月約7万円を受け取る</n-w></small></p>
+            <span class="msim__sw msim__sw--us" aria-hidden="true"></span>
+            <p class="msim__row-num">＋713<small>万円</small></p>
+          </li></ul>
+              
+            </div>
+          </div>
+        </div>
+        <p class="msim__extra reveal"><n-w>売上シェアプランは、宿の売上が伸びるほど受け取りも増えます。おまかせプランは、売上にかかわらず毎月決まった<n-b>家賃です。</n-b></n-w></p>
+        <details class="mlp-fold msim__fold reveal"><summary>試算の前提</summary><ul><li><n-w>モデル物件は、説明のための架空の<n-b>物件です。</n-b></n-w></li><li><n-w class="j">おまかせプランの家賃は月3万円（プランの例）。売上シェアプランは、最低保証2.5万円＋売上の10%（プランの例）で、宿の売上を月45万円（1泊2.5万円で、月に18日ほど泊まる）と仮定し、月の受け取りは<n-b>約7万円です。</n-b></n-w></li><li><n-w class="j">宿の売上の月45万円は、シミュレーション例としての想定です。オーナーの事例では月商が約40万〜55万円の宿があり、私たちの下田の宿は1年目の稼働率が<n-b>約53%でした。</n-b></n-w></li><li><n-w>売上シェアプランの補修・内装の共同出資は、オーナー様の分を100万円と仮定しています（物件ごとに<n-b>決めます）。</n-b></n-w></li><li><n-w>家賃・受け取り・期間は、物件と契約で決まります。10年間、同じ条件と<n-b>仮定しています。</n-b></n-w></li><li><n-w class="j">土地の固定資産税は年26,600円（評価額1,200万円の住宅の敷地。大津市の計算例）で、借り上げ後もオーナー様の負担と仮定。建物の分・都市計画税・保険・所得税などの税金は<n-b>含みません。</n-b></n-w></li><li><n-w>空き家のままの見回りは月1回3,000円（二本松市のシルバー人材センターの例）。草刈り・修繕は<n-b>含みません。</n-b></n-w></li></ul><p class="msim__srcs"><a href="../media/akiya-holding-costs.html"><n-w class="j">空き家の維持費はいくら？税金・見回りの内訳と、民泊・賃貸で賄う考え方</n-w> <span class="arrow" aria-hidden="true"></span></a><a href="../media/akiya-lease-types.html"><n-w class="j">空き家を貸す契約の種類｜普通借家・定期借家と、民泊の借り上げの違い</n-w> <span class="arrow" aria-hidden="true"></span></a><a href="../media/case-owner-satoyama-airdna.html"><n-w class="j">里山の古民家を民泊に｜AirDNAのデータで融資を通した総予算350万円</n-w> <span class="arrow" aria-hidden="true"></span></a></p></details>
+        <p class="msim__disclaim"><n-w class="j">この試算は、架空のモデル物件でのシミュレーションです。</n-w><strong><n-w class="j">将来の収益や金額を保証・約束するものではありません。</n-w></strong><n-w class="j">実際の収支は、物件・立地・季節・運営によって大きく変わります。お持ちの物件は、現地を拝見したうえで<n-b>試算します。</n-b></n-w></p>
+      </div>
+    </section>
+
     <section class="mlp-sec">
       <div class="container">
         <p class="mlp-en reveal">Risk</p>
         <h2 class="mlp-title reveal">使っていない<wbr>家にも、<wbr>お金と<wbr>手間は<wbr>かかり続けます</h2>
         <ul class="mrisks reveal"><li class="mrisk">
-            <p class="mrisk__num"><small class="mrisk__pre">最大</small>6<small>倍</small></p>
-            <p class="mrisk__label">空き家の<wbr>土地の<wbr>固定資産税<wbr>（計算のもと）</p>
-            <p class="mrisk__text"><n-w>管理が行き届かず市の勧告を受けると、税を軽くする住宅用地の特例が外れ、撤回されない限り<n-b>そのまま。</n-b></n-w></p>
-            <a class="mrisk__link" href="../media/akiya-law-kanri-fuzen.html"><n-w class="j">くわしく</n-w> <span class="arrow" aria-hidden="true"></span></a>
+            <p class="mrisk__num"><small class="mrisk__pre">約</small>14<small>万円／年</small></p>
+            <p class="mrisk__label">土地の<wbr>固定資産税が<wbr>増える額</p>
+            <div class="mrisk__how"><p class="mrisk__how-h">しくみ</p><ol><li>管理が<wbr>行き届かない</li><li>市から<wbr><n-b>勧告を受ける</n-b></li><li>税を軽くする特例が<wbr>外れる</li></ol></div>
+            <p class="mrisk__text"><n-w class="j">評価額1,200万円の土地なら、年2.8万円の税が16.8万円に（計算のもとが6倍）。実際は数年かけて、この額まで<n-b>上がります。</n-b></n-w></p>
+            <a class="mrisk__link" href="../media/akiya-holding-costs.html"><n-w class="j">くわしく</n-w> <span class="arrow" aria-hidden="true"></span></a>
           </li><li class="mrisk">
-            <p class="mrisk__num">3,000<small>円〜</small></p>
-            <p class="mrisk__label">見回りを頼む費用<wbr>（1回）</p>
-            <p class="mrisk__text"><n-w>月1回なら年36,000円の例。草刈りや、建物の分の税も別に<n-b>かかります。</n-b></n-w></p>
-            <a class="mrisk__link" href="../media/akiya-holding-costs.html"><n-w>くわしく</n-w> <span class="arrow" aria-hidden="true"></span></a>
+            <p class="mrisk__num"><small class="mrisk__pre">約</small>63<small>万円</small></p>
+            <p class="mrisk__label">何もしなくても、<wbr>10年で<wbr>出ていくお金</p>
+            <div class="mrisk__how"><p class="mrisk__how-h">しくみ</p><ol><li>土地の<wbr>税 年2.7万円</li><li>見回り<wbr> 年3.6万円</li><li>10年続くと<wbr>約63万円</li></ol></div>
+            <p class="mrisk__text"><n-w>評価額1,200万円の土地・月1回の見回り（1回3,000円）の例。建物の分の税・草刈り・修繕は別に<n-b>かかります。</n-b></n-w></p>
+            <a class="mrisk__link" href="../media/akiya-holding-costs.html"><n-w class="j">くわしく</n-w> <span class="arrow" aria-hidden="true"></span></a>
           </li><li class="mrisk">
-            <p class="mrisk__num">3<small>年以内</small></p>
-            <p class="mrisk__label">相続登記の期限</p>
-            <p class="mrisk__text"><n-w>相続した家は名義変更が義務に。昔の相続でも2027年3月31日までに申請が<n-b>必要です。</n-b></n-w></p>
-            <a class="mrisk__link" href="../media/souzoku-touki-gimuka.html"><n-w>くわしく</n-w> <span class="arrow" aria-hidden="true"></span></a>
+            <p class="mrisk__num">10<small>万円以下</small></p>
+            <p class="mrisk__label">名義変更を<wbr>しない<wbr>ときの過料</p>
+            <div class="mrisk__how"><p class="mrisk__how-h">しくみ</p><ol><li>家を相続する</li><li>3年以内に<wbr>名義変更</li><li>しないと<wbr><n-b>過料の対象に</n-b></li></ol></div>
+            <p class="mrisk__text"><n-w class="j">2024年4月から、相続を知った日から3年以内の名義変更が義務に。昔の相続でも2027年3月31日までに申請が必要です（正当な理由がない<n-b>場合が対象）。</n-b></n-w></p>
+            <a class="mrisk__link" href="../media/souzoku-touki-gimuka.html"><n-w class="j">くわしく</n-w> <span class="arrow" aria-hidden="true"></span></a>
           </li></ul>
         <p class="mrisks__hint" aria-hidden="true">横にスワイプして、<wbr>3つ見られます →</p>
       </div>
@@ -222,29 +276,7 @@
       </div>
     </section>
 
-    <section class="mlp-sec mlp-sec--soft">
-      <div class="container">
-        <p class="mlp-en reveal">Compare</p>
-        <h2 class="mlp-title reveal">ほかの<wbr>方法と、<wbr>ここが<wbr>違います</h2>
-        <p class="mcmp__legend" aria-hidden="true"><span><b class="mcmp__mark mcmp__mark--good"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></b>とてもよい</span><span><b class="mcmp__mark mcmp__mark--ok"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/></svg></b>よい</span><span><b class="mcmp__mark mcmp__mark--bad"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></b>負担・注意</span><span><b class="mcmp__mark mcmp__mark--none"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 4.8l10.4 10.4M15.2 4.8 4.8 15.2"/></svg></b>なし</span></p>
-        <div class="msv-compare reveal">
-          <table>
-            <thead><tr><th scope="col">選択肢</th><th scope="col">初期費用</th><th scope="col">手間</th><th scope="col">収入</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">そのまま<wbr>持つ</th><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">なし</span></td><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></span><span class="mcmp__t">見回り・<wbr>草刈り</span></td><td><span class="mcmp__mark mcmp__mark--none" role="img" aria-label="なし"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 4.8l10.4 10.4M15.2 4.8 4.8 15.2"/></svg></span><span class="mcmp__t">なし</span></td></tr>
-              <tr><th scope="row">住まいと<wbr>して貸す</th><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></span><span class="mcmp__t">改修が<wbr>要ることも</span></td><td><span class="mcmp__mark mcmp__mark--ok" role="img" aria-label="よい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/></svg></span><span class="mcmp__t">管理会社に<wbr>任せる</span></td><td><span class="mcmp__mark mcmp__mark--ok" role="img" aria-label="よい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/></svg></span><span class="mcmp__t">借り手<wbr>しだい</span></td></tr>
-              <tr><th scope="row">自分で<wbr>民泊</th><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></span><span class="mcmp__t">改修・<wbr>家具・許可</span></td><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></span><span class="mcmp__t">集客・<wbr>清掃・対応</span></td><td><span class="mcmp__mark mcmp__mark--ok" role="img" aria-label="よい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/></svg></span><span class="mcmp__t">売上−<wbr>経費</span></td></tr>
-              <tr class="is-us"><th scope="row">おまかせ<wbr>プラン</th><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">ほぼ<wbr>なし</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">ほぼ<wbr>なし</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">毎月<wbr>一定</span></td></tr>
-              <tr class="is-us"><th scope="row">売上シェア<wbr>プラン</th><td><span class="mcmp__mark mcmp__mark--ok" role="img" aria-label="よい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/></svg></span><span class="mcmp__t">補修を<wbr>共同出資</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">ほぼ<wbr>なし</span></td><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">保証＋<wbr>上乗せ</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="msv-compare__note"><n-w>※ 読み手から見た一般的な傾向の目安です。実際の条件は物件や契約によって<n-b>変わります。</n-b></n-w></p>
-        <details class="mlp-fold reveal"><summary>ほかの<wbr>方法が<wbr>合うかもしれない方</summary><ul><li><n-w>近いうちに売る可能性が高い（貸すと3,000万円特別控除が使えなくなる場合があるため、先に比べることを<n-b>おすすめします）</n-b></n-w></li><li><n-w>数年のうちに、ご自身やご家族が住む<n-b>予定がある</n-b></n-w></li></ul></details>
-      </div>
-    </section>
-
-    <section class="mlp-sec" id="plans">
+    <section class="mlp-sec mlp-sec--soft" id="plans">
       <div class="container">
         <p class="mlp-en reveal">Plans</p>
         <h2 class="mlp-title reveal">プランと<wbr>条件の目安</h2>
@@ -266,6 +298,27 @@
         </div>
         <p class="mrisks__hint" aria-hidden="true">横にスワイプして、<wbr>2つ見比べられます →</p>
         <p class="mplans__note"><n-w>※ 金額・割合はイメージです。条件は物件ごとにご提案します。契約は更新を前提と<n-b>しています。</n-b></n-w></p>
+      </div>
+    </section>
+
+    <section class="mlp-sec">
+      <div class="container">
+        <p class="mlp-en reveal">Compare</p>
+        <h2 class="mlp-title reveal">ほかの<wbr>方法と、<wbr>ここが<wbr>違います</h2>
+        <p class="mcmp__legend" aria-hidden="true"><span><b class="mcmp__mark mcmp__mark--good"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></b>とてもよい</span><span><b class="mcmp__mark mcmp__mark--ok"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/></svg></b>よい</span><span><b class="mcmp__mark mcmp__mark--bad"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></b>負担・注意</span><span><b class="mcmp__mark mcmp__mark--none"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 4.8l10.4 10.4M15.2 4.8 4.8 15.2"/></svg></b>なし</span></p>
+        <p class="msv-compare__swipe" aria-hidden="true">表は左右に<wbr>スライドできます →</p>
+        <div class="msv-compare msv-compare--cols reveal">
+          <table>
+            <thead><tr><th scope="col">比べる<wbr>こと</th><th scope="col">そのまま<wbr>持つ</th><th scope="col">住まいと<wbr>して貸す</th><th scope="col">自分で<wbr>民泊</th><th scope="col" class="is-us">おまかせ<wbr>プラン</th><th scope="col" class="is-us">売上シェア<wbr>プラン</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">初期費用</th><td><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">なし</span></td><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></span><span class="mcmp__t">改修が<wbr>要ることも</span></td><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></span><span class="mcmp__t">改修・<wbr>家具・許可</span></td><td class="is-us"><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">ほぼ<wbr>なし</span></td><td class="is-us"><span class="mcmp__mark mcmp__mark--ok" role="img" aria-label="よい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/></svg></span><span class="mcmp__t">補修を<wbr>共同出資</span></td></tr>
+              <tr><th scope="row">手間</th><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></span><span class="mcmp__t">見回り・<wbr>草刈り</span></td><td><span class="mcmp__mark mcmp__mark--ok" role="img" aria-label="よい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/></svg></span><span class="mcmp__t">管理会社に<wbr>任せる</span></td><td><span class="mcmp__mark mcmp__mark--bad" role="img" aria-label="負担・注意"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.6 17 15.6H3z"/></svg></span><span class="mcmp__t">集客・<wbr>清掃・対応</span></td><td class="is-us"><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">ほぼ<wbr>なし</span></td><td class="is-us"><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">ほぼ<wbr>なし</span></td></tr>
+              <tr><th scope="row">収入</th><td><span class="mcmp__mark mcmp__mark--none" role="img" aria-label="なし"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 4.8l10.4 10.4M15.2 4.8 4.8 15.2"/></svg></span><span class="mcmp__t">なし</span></td><td><span class="mcmp__mark mcmp__mark--ok" role="img" aria-label="よい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/></svg></span><span class="mcmp__t">借り手<wbr>しだい</span></td><td><span class="mcmp__mark mcmp__mark--ok" role="img" aria-label="よい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/></svg></span><span class="mcmp__t">売上−<wbr>経費</span></td><td class="is-us"><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">毎月<wbr>一定</span></td><td class="is-us"><span class="mcmp__mark mcmp__mark--good" role="img" aria-label="とてもよい"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.6"/></svg></span><span class="mcmp__t">保証＋<wbr>上乗せ</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="msv-compare__note"><n-w>※ 読み手から見た一般的な傾向の目安です。実際の条件は物件や契約によって<n-b>変わります。</n-b></n-w></p>
+        <details class="mlp-fold reveal"><summary>ほかの<wbr>方法が<wbr>合うかもしれない方</summary><ul><li><n-w>近いうちに売る可能性が高い（貸すと3,000万円特別控除が使えなくなる場合があるため、先に比べることを<n-b>おすすめします）</n-b></n-w></li><li><n-w>数年のうちに、ご自身やご家族が住む<n-b>予定がある</n-b></n-w></li></ul></details>
       </div>
     </section>
 

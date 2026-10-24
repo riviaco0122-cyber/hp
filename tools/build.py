@@ -4173,8 +4173,7 @@ MEDIA_SERVICE_MORE = {
         compare=dict(cols=["現金に|なるまで", "古い家の|評価", "売る以外の|提案"], note="", rows=[
             ("仲介で|売る", ["△時期が|読めない", "△値段が|つきにくい", "×なし"], False),
             ("一般的な|買取", ["◎早い", "△改修費を|差し引く", "×なし"], False),
-            ("アキヤド|買取", ["◎早い", "◎宿として|評価", "◎貸す案も|比べる"], True),
-            ("アキヤド|借り上げ", ["◎毎月の|家賃", "◎家を|残せる", "◎売る案も|比べる"], True)]),
+            ("アキヤド|買取", ["◎早い", "◎宿として|評価", "◎貸す案も|比べる"], True)]),  # 買取のページなので、借り上げの列は入れない（人の指摘 2026-10-24）
         fit_no=["時間をかけてでも、少しでも高く売りたい（仲介が合う場合があります）", "宿として営業できない条件の物件（法令や建物の状態によっては、お受けできない場合があります）"],
         cases=["akiya-inherited-house-to-inn", "akiya-holding-costs", "akiya-3000man-deduction"], cases_title="手放す前に読んでおきたい記事",
         faq_more=[("相談したら、売らないといけませんか？", "いいえ。ご提案までは無料で、売るかどうかはご提案を見てから決めていただけます。"),
@@ -4253,8 +4252,9 @@ MEDIA_FLOWS = {
 
 
 # サービスページ（LP）の見せ方。読み手が最初に知りたい「いくら？」に先に答え、数字は大きく、文章は短く。
+# worries_photo：PCでお悩みのリストの横に置く写真（PCで節が簡素に見えないように。人の指摘 2026-10-24）
 # hero：読み手の得を言い切る見出し／price：いくら？の目安（金額はイメージ。物件ごとに変わることを必ず添える）
-# risk：大きな数字のタイル（出典の記事へリンク）
+# risk：大きな数字のタイル（出典の記事へリンク）。(数字, 単位, 何の数字か, 説明, 記事, [しくみの3段階])。放っておくといくら損するかを金額で、なぜそうなるかを「しくみ」で見せる（人の指摘 2026-10-24）
 # サービスページの「しくみ」の図（文字を読まなくても、誰が何をして、お金がどう流れるかがわかるように）
 # nodes: (アイコン, 名前, していること)  arrows: 左から順の矢印の言葉  ret: (戻りの矢印の起点, 終点, 言葉)
 # photos: (写真, 添える言葉。| で改行)。自社物件の写真は、どのプランかと結びつけない（docs/brand/experience.md）
@@ -4303,6 +4303,150 @@ def scheme_html(key):
 """
 
 
+# サービスページの「未来の手元」の試算（モデル物件で、オーナー様の手元に残るお金を図で見せる）
+# 買取プランには入れない（人の方針 2026-10-24。売ったら代金が入るだけで、未来の収支を見せる意味が薄い）
+# 数字はすべて「前提」に書いた仮定・出典から計算する。モデル物件は架空。実績物件（下田・焼津）とプランを結びつけない
+# split: (見出し, [(名前, 万円, "cost"|"keep", 添え書き)])  1か月のお金の内訳。任意（借り上げは折れ線で伝わるので付けない。人の判断 2026-10-24）。プランが2つなら splits=[split, split] で並べられる  future: (見出し, [(名前, 万円, 添え書き, アキヤドか)])
+# chart: 手元の累計の折れ線（損益分岐点＝0円の線を越える月を見せる）。series: (色, [(月, 万円)])、future の行と同じ順
+#   marks: (月, 万円, 言葉, 色, 言葉の置き方 r=右／ur=右上／dr=右下／up=上／down=下)。言葉は「元が取れる」の1つだけにして、ごちゃごちゃさせない
+# summary: グラフの前に置く、結論の1〜2文（数学が苦手な人にも伝わる言葉で。「損益分岐点」「累計」「稼働率」などの言葉は使わない）
+# big: (ラベル, 前置き, 数字, 単位)  extra: 補足の1文  srcs: 根拠の記事
+MEDIA_SIM_MODEL = ["築45年・木造2階建て", "4LDK・約100㎡", "観光地まで車で15分ほど", "相続から5年、空き家のまま"]
+MEDIA_SIM = {
+    "use": dict(title="借り上げなら、10年でどれだけ変わる？",
+                lead="アキヤドが借り上げた場合の2つのプランを、モデル物件で比べました。宿の売上は、私たちの宿やオーナーの事例をもとにしたシミュレーション例です。",
+                future=("10年で、手元のお金はどう変わる？", [("おまかせプラン", 333, "最初の出費ほぼなし。毎月3万円の家賃", False), ("売上シェアプラン", 713, "最初に100万円（仮定）出資し、毎月約7万円を受け取る", True)]),
+                chart=dict(months=120, xstep=60, x0="今", series=[("sub", [(0, 0), (120, 333.4)]), ("us", [(0, -100), (120, 713.4)])],
+                           marks=[(14.75, 0, "約15か月で元が取れる", "us", "dr")]),
+                summary="おまかせプランは、最初の出費がほぼなく、毎月家賃が入ります。売上シェアプランは、最初に出すお金を100万円と仮定すると、約15か月で取り戻し、そのあとは大きく増えていく計算です。（空き家のままだと、10年で約63万円が出ていきます）",
+                extra="売上シェアプランは、宿の売上が伸びるほど受け取りも増えます。おまかせプランは、売上にかかわらず毎月決まった家賃です。",
+                assumptions=["モデル物件は、説明のための架空の物件です。",
+                             "おまかせプランの家賃は月3万円（プランの例）。売上シェアプランは、最低保証2.5万円＋売上の10%（プランの例）で、宿の売上を月45万円（1泊2.5万円で、月に18日ほど泊まる）と仮定し、月の受け取りは約7万円です。",
+                             "宿の売上の月45万円は、シミュレーション例としての想定です。オーナーの事例では月商が約40万〜55万円の宿があり、私たちの下田の宿は1年目の稼働率が約53%でした。",
+                             "売上シェアプランの補修・内装の共同出資は、オーナー様の分を100万円と仮定しています（物件ごとに決めます）。",
+                             "家賃・受け取り・期間は、物件と契約で決まります。10年間、同じ条件と仮定しています。",
+                             "土地の固定資産税は年26,600円（評価額1,200万円の住宅の敷地。大津市の計算例）で、借り上げ後もオーナー様の負担と仮定。建物の分・都市計画税・保険・所得税などの税金は含みません。",
+                             "空き家のままの見回りは月1回3,000円（二本松市のシルバー人材センターの例）。草刈り・修繕は含みません。"],
+                srcs=["akiya-holding-costs", "akiya-lease-types", "case-owner-satoyama-airdna"]),
+    "side": dict(title="宿を始めたら、5年でいくら残る？",
+                 lead="持ち家の空き家を一棟貸しの宿にした場合を、モデル物件で試算しました。私たちの下田の宿と、オーナーの事例（総予算350万〜450万円・月商40万〜55万円）をもとにした、シミュレーション例です。",
+                 split=("1か月に45万円売れたら、手元にいくら残る？", [("予約サイトの手数料", 6.8, "cost", "売上の約15%"), ("清掃の委託", 7.2, "cost", "売上の約16%"), ("光熱水費・Wi-Fi・消耗品", 3.0, "cost", "月3万円"), ("アキヤドの手数料", 4.5, "cost", "伴走コース・売上の10%"), ("あなたの手元", 23.5, "keep", "")]),
+                 future=("5年で、手元のお金はどう変わる？", [("控えめ（月に14日ほど泊まる）", 615, "毎月 約16.9万円が残り、約24か月で元が取れる", False), ("標準（月に18日ほど泊まる）", 1013, "毎月 約23.5万円が残り、約17か月で元が取れる", True)]),
+                 chart=dict(months=60, xstep=12, x0="開業", series=[("sub", [(0, -400), (60, 614.6)]), ("us", [(0, -400), (60, 1013)])],
+                            marks=[(17, 0, "約17か月で元が取れる", "us", "up"), (23.7, 0, "", "sub", "dr")]),
+                 summary="最初にかかる費用を400万円と仮定すると、毎月 約23.5万円ずつ手元に残り、約17か月で取り戻せる計算です。そのあとは、残ったお金がそのまま増えていきます。",
+                 big=("元が取れるまで（標準）", "約", "17", "か月"),
+                 extra="あくまでシミュレーション例です。実際のご相談では、悲観的な場合も含めて試算し、赤字にならない計画かを一緒に確かめてから始めます。",
+                 assumptions=["モデル物件は、説明のための架空の物件で、持ち家（家賃なし）とします。",
+                              "1泊の料金は2.5万円（一棟貸し・6人ほどまで）と仮定。泊まる日は、標準で月18日ほど（稼働率60%）、控えめで月14日ほど（45%）。下田の宿は、1年目が約53%、2年目の上半期が約66%でした。",
+                              "標準の月の売上45万円は、オーナーの事例（月商 約40万〜55万円）の範囲です。",
+                              "初期費用は400万円（改修・家具・家電・消防設備・申請など）と仮定。オーナーの事例の総予算は約350万〜450万円で、物件の状態で大きく変わります（下田の宿は、改修と家具などで約650万円）。",
+                              "予約サイトの手数料（売上の約15%）と清掃の委託（約16%）は、下田の宿の1年目の割合。光熱水費・Wi-Fi・消耗品の月3万円は、下田の宿の開業時の資料の値です。アキヤドの手数料は、伴走コースの売上の10%です。",
+                              "毎月同じ売上と仮定しています（実際は季節で大きく変わり、閑散期に赤字の月が出ることもあります）。融資の返済、固定資産税・所得税などの税金、保険、修繕や設備の買い替え、ご自身の手間は含みません。"],
+                 srcs=["case-rental-house-inn-first-year", "case-owner-setouchi-cycling", "case-owner-castle-town-nagaya", "case-owner-satoyama-airdna"]),
+}
+
+
+def sim_chart_html(ch, rows):
+    """手元の累計の折れ線。線は SVG（縦横に伸びる）、文字と点は HTML で重ねる（スマホでも文字が小さくならない）"""
+    vals = [v for _, pts in ch["series"] for _, v in pts] + [0]
+    lo, hi = min(vals), max(vals)
+    step = next(st for st in (50, 100, 200, 250, 500, 1000) if (hi - lo) / st <= 4)
+    lo_t, hi_t = (lo // step) * step, -(-hi // step) * step
+    lo_t, hi_t = lo_t - step * 0.15, hi_t + step * 0.15
+    X = lambda m: m / ch["months"] * 100
+    Y = lambda v: (hi_t - v) / (hi_t - lo_t) * 100
+    y0 = Y(0)
+    grid = "".join(f'<line x1="{X(m) * 10:.1f}" y1="0" x2="{X(m) * 10:.1f}" y2="400"/>' for m in range(ch["xstep"], ch["months"], ch["xstep"]))
+    lines = "".join(f'<polyline class="mchart__line mchart__line--{c}" points="{" ".join(f"{X(m) * 10:.1f},{Y(v) * 4:.1f}" for m, v in pts)}"/>' for c, pts in ch["series"])
+    yt, v = [], (lo // step) * step
+    while v <= hi:
+        if v >= lo - 1e-9:
+            yt.append(v)
+        v += step
+    yt = sorted(set(yt) | {pts[0][1] for _, pts in ch["series"]})  # 線の始まり（最初に出すお金）も目盛りに出す
+    ylabels = "".join(f'<span class="mchart__y{" is-zero" if t == 0 else ""}" style="top:{Y(t):.1f}%">{"0" if t == 0 else ("−" if t < 0 else "") + f"{abs(t):,.0f}"}</span>' for t in yt)
+    xlabels = "".join(f'<span class="mchart__x{" is-last" if m == ch["months"] else ""}" style="left:{X(m):.1f}%">{e(ch["x0"]) if m == 0 else f"{m // 12}年"}</span>' for m in range(0, ch["months"] + 1, ch["xstep"]))
+    marks = "".join(f'<span class="mchart__dot mchart__dot--{c}" style="left:{X(m):.1f}%;top:{Y(v):.1f}%"></span>{f'<span class="mchart__mark mchart__mark--{c} mchart__mark--{pos}" style="left:{X(m):.1f}%;top:{Y(v):.1f}%">{e(t)}</span>' if t else ""}' for m, v, t, c, pos in ch["marks"])
+    # 線の終わりの金額は、グラフの右の外に、線の終わりの高さで書く（線に重ならないように）
+    ends = "".join(f'<span class="mchart__end mchart__end--{c}" style="top:{Y(pts[-1][1]):.1f}%">{"−" if pts[-1][1] < 0 else "＋"}{abs(round(pts[-1][1])):,}<small>万円</small></span>' for c, pts in ch["series"])
+    return f"""<div class="mchart">
+            <div class="mchart__plot">
+              <svg viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><g class="mchart__grid">{grid}</g><line class="mchart__zero" x1="0" y1="{y0 * 4:.1f}" x2="1000" y2="{y0 * 4:.1f}"/>{lines}</svg>
+              {ylabels}{xlabels}{marks}{ends}
+            </div>
+            <p class="mchart__unit">手元のお金（万円）</p>
+          </div>"""
+
+
+def sim_html(key):
+    from figures import icon
+    sm = MEDIA_SIM[key]
+    fmt = lambda v: f"{v:,.1f}".removesuffix(".0")
+    splits = sm.get("splits") or ([sm["split"]] if sm.get("split") else [])  # 1か月のお金の内訳（プランごとに1枚）
+
+    def split_html(split_t, parts):
+        total = sum(v for _, v, _, _ in parts)
+        n_cost = 0
+        segs, legend = [], []
+        for name, v, kind, note in parts:
+            if kind == "cost":
+                n_cost += 1
+            cls = "keep" if kind == "keep" else f"c{n_cost}"
+            segs.append(f'<i class="msim__seg msim__seg--{cls}" style="flex-grow:{v}"></i>')
+            legend.append(f'<li class="msim__li msim__li--{cls}"><span class="msim__sw" aria-hidden="true"></span><span class="msim__li-name">{e(name)}{f"<small>{e(note)}</small>" if note else ""}</span><b>{"" if kind == "keep" else "−"}{fmt(v)}<small>万円</small></b></li>')
+        return f"""<div class="msim__split">
+            <p class="msim__h">{e(split_t)}{"" if f"{fmt(total)}万円" in split_t else f'<span>{"計 " if any(k == "keep" for _, _, k, _ in parts) else "計 −"}{fmt(total)}万円</span>'}</p>
+            <div class="msim__bar" aria-hidden="true">{"".join(segs)}</div>
+            <ul class="msim__legend" aria-hidden="true">{"".join(legend)}</ul>
+          </div>"""
+    fut_t, rows = sm["future"]
+    rows_html = "".join(f"""<li class="msim__row{" is-us" if us else ""}{" is-minus" if v < 0 else ""}">
+            <p class="msim__row-name">{e(n)}<small>{e(nt)}</small></p>
+            <span class="msim__sw msim__sw--{c}" aria-hidden="true"></span>
+            <p class="msim__row-num">{"−" if v < 0 else "＋"}{abs(v):,}<small>万円</small></p>
+          </li>""" for (n, v, nt, us), (c, _) in zip(rows, sm["chart"]["series"]))
+    big = ""
+    if sm.get("big"):  # 大きな数字の枠（凡例と同じ金額を繰り返すなら付けない）
+        bl, bpre, bnum, bunit = sm["big"]
+        big = f'<p class="msim__big"><span>{e(bl)}</span><b><small>{e(bpre)}</small>{e(bnum)}<small>{e(bunit)}</small></b></p>'
+    specs = "".join(f"<li>{e(x)}</li>" for x in MEDIA_SIM_MODEL)
+    assum = "".join(f"<li>{e(x)}</li>" for x in sm["assumptions"])
+    srcs = "".join(f'<a href="media/{sl}.html">{e(ARTICLE_BY_SLUG[sl]["title"])} {ARROW}</a>' for sl in sm["srcs"])
+    alt = "".join(f"{t}：" + "、".join(f"{n} {fmt(v)}万円" for n, v, _, _ in ps) + "。" for t, ps in splits) + f"{fut_t}：" + "、".join(f"{n} {v}万円" for n, v, _, _ in rows)
+    return f"""    <section class="mlp-sec mlp-sec--sim">
+      <div class="container">
+        <p class="mlp-en reveal">Simulation</p>
+        <h2 class="mlp-title reveal">{e(sm["title"])}</h2>
+        <p class="mlp-lead reveal">{e(sm["lead"])}</p>
+        <div class="msim{" msim--solo" if not splits else " msim--multi" if len(splits) > 1 else ""} reveal" role="img" aria-label="{e(alt)}">
+          <div class="msim__model">
+            <p class="msim__badge">モデル物件（架空）</p>
+            <span class="msim__house" aria-hidden="true">{icon("house")}</span>
+            <ul class="msim__specs">{specs}</ul>
+          </div>
+          {"".join(split_html(t, ps) for t, ps in splits)}
+        </div>
+        <div class="msim__future reveal" aria-hidden="true">
+          <p class="msim__h msim__h--c">{e(fut_t)}</p>
+          <p class="msim__summary">{e(sm["summary"])}</p>
+          <ul class="msim__howto"><li><b>線が上がる</b>手元のお金が増える</li><li><b>線が下がる</b>お金が出ていく</li><li><b>点線より上</b>プラス（得をしている）</li></ul>
+          <div class="msim__fwrap">
+            {sim_chart_html(sm["chart"], rows)}
+            <div class="msim__fside">
+              <ul class="msim__rows msim__rows--{len(rows)}">{rows_html}</ul>
+              {big}
+            </div>
+          </div>
+        </div>
+        <p class="msim__extra reveal">{e(sm["extra"])}</p>
+        <details class="mlp-fold msim__fold reveal"><summary>試算の前提</summary><ul>{assum}</ul><p class="msim__srcs">{srcs}</p></details>
+        <p class="msim__disclaim">この試算は、架空のモデル物件でのシミュレーションです。<strong>将来の収益や金額を保証・約束するものではありません。</strong>実際の収支は、物件・立地・季節・運営によって大きく変わります。お持ちの物件は、現地を拝見したうえで試算します。</p>
+      </div>
+    </section>
+"""
+
+
 # letter：創業者からの一言の、サービスごとの最後の一文
 MEDIA_SERVICE_LP = {
     "sell": dict(
@@ -4310,17 +4454,17 @@ MEDIA_SERVICE_LP = {
         hero="古くて売れない家も、<br><em>宿として活かせるなら</em><br>買い取ります。",
         hero_sub="相続した家、遠方で管理できない家。住まいとしては値段がつきにくい家も、宿として活かせるなら買い取れます。",
         hero_sub_sp="値段がつきにくい家も、|宿として活かせるなら買い取れます。",
-        worries_title="こんなお悩み、ひとりで抱えていませんか？",
+        worries_title="こんなお悩み、ひとりで抱えていませんか？", worries_photo="dark-room",
         price=dict(title="買取価格は、宿として稼げるかで決まります",
                    lead="一般の査定は「住まいとして売れるか」で見ます。アキヤドは、宿にしたときの収益から考えるため、古い家・地方の家でも金額をお出しできることがあります。",
                    # (式の言葉, 補足, スマホで式に書く短い言葉)
                    formula=[("宿にしたときに見込める収益", "周辺の宿の料金と稼働から", "宿の収益"), ("宿にするための改修の費用", "建物の状態と法令の条件から", "改修費"), ("買取価格のめやす", "根拠とあわせて書面で", "買取価格")],
                    facts=[("無料", "相談・現地の拝見・査定"), ("2〜4週間", "現地の拝見から、金額のご提示まで（目安）"), ("不要", "仲介手数料")],
                    note="金額は、物件の状態・立地・法令上の条件で変わります。現地を拝見したうえで、根拠とあわせてご提示します。アキヤドが直接買い取るため、仲介手数料はかかりません。"),
-        risk_title="放っておくほど、選べる道は減っていきます",
-        risk=[("3", "年以内", "相続登記の期限", "相続を知った日から3年以内に名義変更が義務に（2024年4月から）。怠ると10万円以下の過料の対象になる場合も。", "souzoku-touki-gimuka"),
-              ("最大6", "倍", "空き家の土地の固定資産税（計算のもと）", "管理が行き届かず市の勧告を受けると、税を軽くする住宅用地の特例が外れます。", "akiya-law-kanri-fuzen"),
-              ("2027", "年末", "3,000万円特別控除の売却期限", "相続から3年後の年末までが原則。貸したり宿にしたりすると対象外に。", "akiya-3000man-deduction")],
+        risk_title="空き家は、放っておくほど選べる道が減っていきます",
+        risk=[("10", "万円以下", "名義変更をしないときの過料", "2024年4月から、相続を知った日から3年以内の名義変更が義務に。昔の相続でも2027年3月31日までに申請が必要です（正当な理由がない場合が対象）。", "souzoku-touki-gimuka", ["家を相続する", "3年以内に名義変更", "しないと過料の対象に"]),
+              ("約14", "万円／年", "土地の固定資産税が増える額", "評価額1,200万円の土地なら、年2.8万円の税が16.8万円に（計算のもとが6倍）。実際は数年かけて、この額まで上がります。", "akiya-holding-costs", ["管理が行き届かない", "市から勧告を受ける", "税を軽くする特例が外れる"]),
+              ("最高3,000", "万円", "期限を過ぎると使えなくなる控除", "売った利益から最高3,000万円を引ける特例です。2027年末までの売却が対象で、相続後に貸したり宿にしたりしても使えなくなります。条件は税務署・税理士に確認を。", "akiya-3000man-deduction", ["相続した古い家を売るなら", "相続から3年後の年末までが期限", "過ぎると、控除が使えない"])],
         points_title="売るだけでなく、家を残す道も一緒に比べます",
         letter="手放すと決める前に、[[宿として活かす道があるか]]を、一緒に確かめさせてください。"),
     "use": dict(
@@ -4328,7 +4472,7 @@ MEDIA_SERVICE_LP = {
         hero="初期費用は<em>ほぼ0円</em>。<br>空き家を、毎月の家賃に。",
         hero_sub="アキヤドが借り上げ、改修から宿の運営まで行います。家は持ったまま、手間をかけずに家賃を受け取れます。",
         hero_sub_sp="家は持ったまま、|手間をかけずに家賃を受け取れます。",
-        worries_title="こんなお悩み、ひとりで抱えていませんか？",
+        worries_title="こんなお悩み、ひとりで抱えていませんか？", worries_photo="window-garden",
         price=dict(title="家賃は、いくらになる？",
                    lead="周辺の宿の料金と稼働、広さ、改修にかかる費用から、物件ごとに試算します。受け取り方は2つから選べます。",
                    cards=[("アキヤドおまかせプラン", "毎月", "3", "万円", "決まった額の家賃（例）", "改修・家具などの初期費用は、アキヤドがほぼ全額を負担します"),
@@ -4336,9 +4480,9 @@ MEDIA_SERVICE_LP = {
                    factors=["立地（周辺の宿の料金と稼働）", "広さ・泊まれる人数", "建物の状態（改修の費用）", "契約期間"],
                    note="金額はイメージです。物件によって変わります。現地調査のうえ、根拠とあわせてご提示します。"),
         risk_title="使っていない家にも、お金と手間はかかり続けます",
-        risk=[("最大6", "倍", "空き家の土地の固定資産税（計算のもと）", "管理が行き届かず市の勧告を受けると、税を軽くする住宅用地の特例が外れ、撤回されない限りそのまま。", "akiya-law-kanri-fuzen"),
-              ("3,000", "円〜", "見回りを頼む費用（1回）", "月1回なら年36,000円の例。草刈りや、建物の分の税も別にかかります。", "akiya-holding-costs"),
-              ("3", "年以内", "相続登記の期限", "相続した家は名義変更が義務に。昔の相続でも2027年3月31日までに申請が必要です。", "souzoku-touki-gimuka")],
+        risk=[("約14", "万円／年", "土地の固定資産税が増える額", "評価額1,200万円の土地なら、年2.8万円の税が16.8万円に（計算のもとが6倍）。実際は数年かけて、この額まで上がります。", "akiya-holding-costs", ["管理が行き届かない", "市から勧告を受ける", "税を軽くする特例が外れる"]),
+              ("約63", "万円", "何もしなくても、10年で出ていくお金", "評価額1,200万円の土地・月1回の見回り（1回3,000円）の例。建物の分の税・草刈り・修繕は別にかかります。", "akiya-holding-costs", ["土地の税 年2.7万円", "見回り 年3.6万円", "10年続くと約63万円"]),
+              ("10", "万円以下", "名義変更をしないときの過料", "2024年4月から、相続を知った日から3年以内の名義変更が義務に。昔の相続でも2027年3月31日までに申請が必要です（正当な理由がない場合が対象）。", "souzoku-touki-gimuka", ["家を相続する", "3年以内に名義変更", "しないと過料の対象に"])],
         points_title="改修から宿の運営まで、すべてアキヤドが行います",
         letter="思い出のある家を、[[壊さず、手放さずに活かす]]。その道があるかを、数字でお見せします。"),
     "side": dict(
@@ -4346,7 +4490,7 @@ MEDIA_SERVICE_LP = {
         hero="はじめての民泊を、<br><em>宿を運営する私たち</em>が伴走します。",
         hero_sub="物件選び、許可や届出、料金の決め方、開業後の集客まで。会社員のまま宿を始めた私たちが、任せたい範囲に合わせて支援します。",
         hero_sub_sp="物件選びから集客まで、|任せたい範囲だけ支援します。",
-        worries_title="こんなところで、止まっていませんか？",
+        worries_title="こんなところで、止まっていませんか？", worries_photo="analytics-paper",
         price=dict(title="いくらかかって、いくら残る？ 私たちの宿の数字です",
                    lead="創業メンバーが下田（静岡県）で、借りた家を一棟貸しの宿にしたときの数字です。物件や運営で変わりますが、計画を立てるときの目安になります。",
                    cards=[("初期費用", "約", "650", "万円", "改修 約410万円＋家具・家電・備品 約240万円", "物件は賃貸のため、取得費はかかっていません"),
@@ -4484,9 +4628,10 @@ def media_service_page(sv):
     risks = "".join(f"""<li class="mrisk">
             <p class="mrisk__num">{(lambda m: (f'<small class="mrisk__pre">{e(m.group(1))}</small>' if m.group(1) else "") + e(m.group(2)))(re.match(r"(\D*)(.*)", n))}<small>{e(u)}</small></p>
             <p class="mrisk__label">{e(l)}</p>
+            {(lambda how: f'<div class="mrisk__how"><p class="mrisk__how-h">しくみ</p><ol>' + "".join(f"<li>{e(x)}</li>" for x in how) + "</ol></div>" if how else "")(r[5] if len(r) > 5 else None)}
             <p class="mrisk__text">{e(t)}</p>
             <a class="mrisk__link" href="media/{sl}.html">くわしく {ARROW}</a>
-          </li>""" for n, u, l, t, sl in lp["risk"])
+          </li>""" for r in lp["risk"] for n, u, l, t, sl in [r[:5]])
 
     points = "\n".join(f"""          <li class="mpoint reveal">
             <span class="mpoint__icon" aria-hidden="true">{icon(ic)}</span>
@@ -4506,14 +4651,16 @@ def media_service_page(sv):
                 "○": _mk.format('<circle cx="10" cy="10" r="6.5"/>'),
                 "△": _mk.format('<path d="M10 3.6 17 15.6H3z"/>'),
                 "×": _mk.format('<path d="M4.8 4.8l10.4 10.4M15.2 4.8 4.8 15.2"/>')}
-    def cmp_cell(c):
+    def cmp_cell(c, us=False):
+        cls = ' class="is-us"' if us else ""
         m = marks.get(c[:1])
         if not m:
-            return f"<td>{wb(c)}</td>"
-        return f'<td><span class="mcmp__mark mcmp__mark--{m[0]}" role="img" aria-label="{m[1]}">{mark_svg[c[:1]]}</span><span class="mcmp__t">{wb(c[1:])}</span></td>'
-    cmp_head = "".join(f"<th scope=\"col\">{wb(c)}</th>" for c in cmp["cols"])
-    cmp_rows = "\n".join(f"""              <tr{' class="is-us"' if us else ""}><th scope="row">{wb(n)}</th>{"".join(cmp_cell(c) for c in cells)}</tr>"""
-                         for n, cells, us in cmp["rows"])
+            return f"<td{cls}>{wb(c)}</td>"
+        return f'<td{cls}><span class="mcmp__mark mcmp__mark--{m[0]}" role="img" aria-label="{m[1]}">{mark_svg[c[:1]]}</span><span class="mcmp__t">{wb(c[1:])}</span></td>'
+    # 選択肢を横（列）、比べることを縦（行）に並べる。スマホは1列目を止めたまま、左右にスライドして見比べる（人の指摘 2026-10-24）
+    cmp_head = "".join(f'<th scope="col"{" class=\"is-us\"" if us else ""}>{wb(n)}</th>' for n, _, us in cmp["rows"])
+    cmp_rows = "\n".join(f"""              <tr><th scope="row">{wb(col)}</th>{"".join(cmp_cell(cells[i], us) for _, cells, us in cmp["rows"])}</tr>"""
+                         for i, col in enumerate(cmp["cols"]))
     fit_no = "".join(f"<li>{e(x)}</li>" for x in more["fit_no"])
     cases = [ARTICLE_BY_SLUG[sl] for sl in more["cases"]]
     closing_t, closing_d = more["closing"]
@@ -4537,7 +4684,13 @@ def media_service_page(sv):
     <section class="mlp-sec mlp-sec--worry">
       <div class="container mlp-narrow">
         <h2 class="mlp-title reveal">{e(lp["worries_title"])}</h2>
-        <ul class="mlp-worries reveal">{worries}</ul>
+        <div class="mlp-worry reveal">
+          <picture class="mlp-worry__photo pc-only"><source srcset="images/photos/w/{lp["worries_photo"]}-800.webp" type="image/webp"><img src="images/photos/{lp["worries_photo"]}.jpg" alt="" width="800" height="1000" loading="lazy" decoding="async"></picture>
+          <div class="mlp-worry__body">
+            <ul class="mlp-worries">{worries}</ul>
+            <p class="mlp-worry__cta"><a href="#diag" data-cta="media-service-worry">ひとつでも当てはまったら、<br class="sp-only">まずは無料でご相談ください {ARROW}</a></p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -4552,6 +4705,7 @@ def media_service_page(sv):
       </div>
     </section>
 
+{sim_html(key) if key in MEDIA_SIM else ""}
     <section class="mlp-sec">
       <div class="container">
         <p class="mlp-en reveal">Risk</p>
@@ -4596,25 +4750,7 @@ def media_service_page(sv):
       </div>
     </section>
 
-    <section class="mlp-sec mlp-sec--soft">
-      <div class="container">
-        <p class="mlp-en reveal">Compare</p>
-        <h2 class="mlp-title reveal">ほかの方法と、ここが違います</h2>
-        <p class="mcmp__legend" aria-hidden="true"><span><b class="mcmp__mark mcmp__mark--good">{mark_svg["◎"]}</b>とてもよい</span><span><b class="mcmp__mark mcmp__mark--ok">{mark_svg["○"]}</b>よい</span><span><b class="mcmp__mark mcmp__mark--bad">{mark_svg["△"]}</b>負担・注意</span><span><b class="mcmp__mark mcmp__mark--none">{mark_svg["×"]}</b>なし</span></p>
-        <div class="msv-compare reveal">
-          <table>
-            <thead><tr><th scope="col">選択肢</th>{cmp_head}</tr></thead>
-            <tbody>
-{cmp_rows}
-            </tbody>
-          </table>
-        </div>
-        <p class="msv-compare__note">※ 読み手から見た一般的な傾向の目安です。実際の条件は物件や契約によって変わります。{(" " + e(cmp["note"])) if cmp.get("note") else ""}</p>
-        <details class="mlp-fold reveal"><summary>ほかの方法が合うかもしれない方</summary><ul>{fit_no}</ul></details>
-      </div>
-    </section>
-
-    <section class="mlp-sec" id="plans">
+    <section class="mlp-sec mlp-sec--soft" id="plans">
       <div class="container">
         <p class="mlp-en reveal">Plans</p>
         <h2 class="mlp-title reveal">プランと条件の目安</h2>
@@ -4623,6 +4759,25 @@ def media_service_page(sv):
         </div>
         {f'<p class="mrisks__hint" aria-hidden="true">横にスワイプして、{len(plans)}つ見比べられます →</p>' if len(plans) > 1 else ""}
         <p class="mplans__note">{e(PLANS[src]["note"])}</p>
+      </div>
+    </section>
+
+    <section class="mlp-sec">
+      <div class="container">
+        <p class="mlp-en reveal">Compare</p>
+        <h2 class="mlp-title reveal">ほかの方法と、ここが違います</h2>
+        <p class="mcmp__legend" aria-hidden="true"><span><b class="mcmp__mark mcmp__mark--good">{mark_svg["◎"]}</b>とてもよい</span><span><b class="mcmp__mark mcmp__mark--ok">{mark_svg["○"]}</b>よい</span><span><b class="mcmp__mark mcmp__mark--bad">{mark_svg["△"]}</b>負担・注意</span><span><b class="mcmp__mark mcmp__mark--none">{mark_svg["×"]}</b>なし</span></p>
+        <p class="msv-compare__swipe" aria-hidden="true">表は左右にスライドできます →</p>
+        <div class="msv-compare msv-compare--cols reveal">
+          <table>
+            <thead><tr><th scope="col">比べる<wbr>こと</th>{cmp_head}</tr></thead>
+            <tbody>
+{cmp_rows}
+            </tbody>
+          </table>
+        </div>
+        <p class="msv-compare__note">※ 読み手から見た一般的な傾向の目安です。実際の条件は物件や契約によって変わります。{(" " + e(cmp["note"])) if cmp.get("note") else ""}</p>
+        <details class="mlp-fold reveal"><summary>ほかの方法が合うかもしれない方</summary><ul>{fit_no}</ul></details>
       </div>
     </section>
 
