@@ -4739,7 +4739,19 @@ def media_service_page(sv):
       </div>
     </section>
 
-    <section class="mlp-sec mlp-sec--soft">
+    <section class="mlp-sec mlp-sec--soft" id="plans">
+      <div class="container">
+        <p class="mlp-en reveal">Plans</p>
+        <h2 class="mlp-title reveal">プランと条件の目安</h2>
+        <div class="mplans__cards mplans__cards--{len(plans)} reveal">
+{plan_cards}
+        </div>
+        {f'<p class="mrisks__hint" aria-hidden="true">横にスワイプして、{len(plans)}つ見比べられます →</p>' if len(plans) > 1 else ""}
+        <p class="mplans__note">{e(PLANS[src]["note"])}</p>
+      </div>
+    </section>
+
+    <section class="mlp-sec">
       <div class="container">
         <p class="mlp-en reveal">Compare</p>
         <h2 class="mlp-title reveal">ほかの方法と、ここが違います</h2>
@@ -4755,18 +4767,6 @@ def media_service_page(sv):
         </div>
         <p class="msv-compare__note">※ 読み手から見た一般的な傾向の目安です。実際の条件は物件や契約によって変わります。{(" " + e(cmp["note"])) if cmp.get("note") else ""}</p>
         <details class="mlp-fold reveal"><summary>ほかの方法が合うかもしれない方</summary><ul>{fit_no}</ul></details>
-      </div>
-    </section>
-
-    <section class="mlp-sec" id="plans">
-      <div class="container">
-        <p class="mlp-en reveal">Plans</p>
-        <h2 class="mlp-title reveal">プランと条件の目安</h2>
-        <div class="mplans__cards mplans__cards--{len(plans)} reveal">
-{plan_cards}
-        </div>
-        {f'<p class="mrisks__hint" aria-hidden="true">横にスワイプして、{len(plans)}つ見比べられます →</p>' if len(plans) > 1 else ""}
-        <p class="mplans__note">{e(PLANS[src]["note"])}</p>
       </div>
     </section>
 
