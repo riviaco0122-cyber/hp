@@ -4491,10 +4491,6 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .mprice__term-t { font-size: 16px; line-height: 1.3; letter-spacing: 0; white-space: nowrap; }
   .mprice__op { font-size: 22px; }
   .mprice__term-n.pc-only { display: none; }
-  .mprice__fnotes.sp-only { display: grid; gap: 10px; margin-top: 16px; }
-  .mprice__fnotes div { display: grid; grid-template-columns: 4.6em 1fr; gap: 10px; align-items: baseline; }
-  .mprice__fnotes dt { font-family: var(--font-round); font-weight: 700; font-size: 13px; color: var(--m-green); }
-  .mprice__fnotes dd { font-size: 13px; line-height: 1.7; color: var(--m-sub); }
   .mprice__facts { gap: 8px; }
   .mprice__facts li { padding: 14px 6px; }
   .mprice__fact-big { font-size: 20px; }

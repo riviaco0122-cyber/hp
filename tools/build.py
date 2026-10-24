@@ -4456,11 +4456,11 @@ MEDIA_SERVICE_LP = {
         hero_sub_sp="値段がつきにくい家も、|宿として活かせるなら買い取れます。",
         worries_title="こんなお悩み、ひとりで抱えていませんか？", worries_photo="dark-room",
         price=dict(title="買取価格は、宿として稼げるかで決まります",
-                   lead="一般の査定は「住まいとして売れるか」で見ます。アキヤドは、宿にしたときの収益から考えるため、古い家・地方の家でも金額をお出しできることがあります。",
+                   lead="宿の収益から考えるので、古い家・地方の家にも値段がつくことがあります。",
                    # (式の言葉, 補足, スマホで式に書く短い言葉)
                    formula=[("宿にしたときに見込める収益", "周辺の宿の料金と稼働から", "宿の収益"), ("宿にするための改修の費用", "建物の状態と法令の条件から", "改修費"), ("買取価格のめやす", "根拠とあわせて書面で", "買取価格")],
-                   facts=[("無料", "相談・現地の拝見・査定"), ("2〜4週間", "現地の拝見から、金額のご提示まで（目安）"), ("不要", "仲介手数料")],
-                   note="金額は、物件の状態・立地・法令上の条件で変わります。現地を拝見したうえで、根拠とあわせてご提示します。アキヤドが直接買い取るため、仲介手数料はかかりません。"),
+                   facts=[("無料", "相談・拝見・査定"), ("2〜4週間", "ご提示までの目安"), ("不要", "仲介手数料")],
+                   note="金額は物件の状態・立地・法令の条件で変わります。現地を拝見し、根拠とあわせて書面でご提示します。"),
         risk_title="空き家は、放っておくほど選べる道が減っていきます",
         risk=[("10", "万円以下", "名義変更をしないときの過料", "2024年4月から、相続を知った日から3年以内の名義変更が義務に。昔の相続でも2027年3月31日までに申請が必要です（正当な理由がない場合が対象）。", "souzoku-touki-gimuka", ["家を相続する", "3年以内に名義変更", "しないと過料の対象に"]),
               ("約14", "万円／年", "土地の固定資産税が増える額", "評価額1,200万円の土地なら、年2.8万円の税が16.8万円に（計算のもとが6倍）。実際は数年かけて、この額まで上がります。", "akiya-holding-costs", ["管理が行き届かない", "市から勧告を受ける", "税を軽くする特例が外れる"]),
@@ -4599,15 +4599,12 @@ def media_service_page(sv):
     pr = lp["price"]
     if "formula" in pr:
         steps = []
-        # スマホは「宿の収益 − 改修費 ＝ 買取価格」と短い言葉の式にして、言葉の説明は式の下に並べる（縦に積むと式に見えず、長い言葉を横に並べると窮屈）
-        notes = []
+        # スマホは「宿の収益 − 改修費 ＝ 買取価格」と短い言葉の式だけにする（縦に積むと式に見えず、長い言葉を横に並べると窮屈。説明を足すと文字が多い。人の指摘 2026-10-24）
         for i, (t, n, sh) in enumerate(pr["formula"]):
             op = ["", '<span class="mprice__op" aria-hidden="true">−</span>', '<span class="mprice__op" aria-hidden="true">＝</span>'][i]
             steps.append(f'{op}<div class="mprice__term{" is-result" if i == 2 else ""}"><span class="mprice__term-t"><span class="pc-only">{e(t)}</span><span class="sp-only">{e(sh)}</span></span><span class="mprice__term-n pc-only">{e(n)}</span></div>')
-            notes.append(f'<div><dt>{e(sh)}</dt><dd>{e(t)}。{e(n)}</dd></div>')
         facts = "".join(f'<li><span class="mprice__fact-big">{e(b)}</span><span class="mprice__fact-l">{e(l)}</span></li>' for b, l in pr["facts"])
         price_body = f"""        <div class="mprice__formula reveal">{"".join(steps)}</div>
-        <dl class="mprice__fnotes sp-only reveal">{"".join(notes) if "formula" in pr else ""}</dl>
         <ul class="mprice__facts reveal">{facts}</ul>"""
     else:
         cards = "".join(f"""<li class="mprice__card">
