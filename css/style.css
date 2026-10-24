@@ -4618,6 +4618,11 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 /* 未来の手元の試算：モデル物件 → お金のゆくえ（帯グラフ）→ 数年後の手元（横棒） */
 .msim { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 20px; max-width: 900px; margin: 36px auto 0; }
 .msim--solo { grid-template-columns: 1fr; }
+.msim--multi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.msim--multi .msim__model { grid-column: 1 / -1; flex-direction: row; gap: 16px; }
+.msim--multi .msim__house { margin: 0; }
+.msim--multi .msim__specs { grid-template-columns: repeat(2, auto); gap: 8px; align-self: auto; margin-top: 0; }
+.msim--multi .msim__specs li { white-space: nowrap; }
 .msim--solo .msim__model { flex-direction: row; gap: 16px; }
 .msim--solo .msim__house { margin: 0; }
 .msim--solo .msim__specs { grid-template-columns: repeat(2, auto); gap: 8px; align-self: auto; margin-top: 0; }
@@ -4714,7 +4719,9 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .msim__srcs a { color: var(--m-green); font-weight: 700; }
 @media (max-width: 899px) {
   .msim { grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
-  .msim--solo .msim__model { gap: 14px; }
+  .msim--solo .msim__model, .msim--multi .msim__model { gap: 14px; }
+  .msim--multi .msim__specs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .msim--multi .msim__specs li { white-space: normal; }
   .msim--solo .msim__specs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
   .msim--solo .msim__specs li { white-space: normal; }
   .msim__model { display: grid; grid-template-columns: 56px minmax(0, 1fr); align-items: center; gap: 14px 14px; padding: 16px; text-align: left; }
