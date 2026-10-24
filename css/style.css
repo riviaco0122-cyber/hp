@@ -4617,6 +4617,11 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 
 /* 未来の手元の試算：モデル物件 → お金のゆくえ（帯グラフ）→ 数年後の手元（横棒） */
 .msim { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 20px; max-width: 900px; margin: 36px auto 0; }
+.msim--solo { grid-template-columns: 1fr; }
+.msim--solo .msim__model { flex-direction: row; gap: 16px; }
+.msim--solo .msim__house { margin: 0; }
+.msim--solo .msim__specs { grid-template-columns: repeat(2, auto); gap: 8px; align-self: auto; margin-top: 0; }
+.msim--solo .msim__specs li { white-space: nowrap; }
 .msim__model { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 20px; border-radius: 20px; background: var(--m-sand); text-align: center; }
 .msim__badge { display: inline-block; padding: 2px 12px; border-radius: 999px; background: #fff; font-size: 12px; font-weight: 700; color: var(--m-green); }
 .msim__house { display: grid; place-items: center; width: 64px; height: 64px; margin: 14px auto 0; border-radius: 50%; background: #fff; color: var(--m-green); }
@@ -4709,6 +4714,9 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .msim__srcs a { color: var(--m-green); font-weight: 700; }
 @media (max-width: 899px) {
   .msim { grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
+  .msim--solo .msim__model { gap: 14px; }
+  .msim--solo .msim__specs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .msim--solo .msim__specs li { white-space: normal; }
   .msim__model { display: grid; grid-template-columns: 56px minmax(0, 1fr); align-items: center; gap: 14px 14px; padding: 16px; text-align: left; }
   .msim__badge { grid-column: 1 / -1; justify-self: start; }
   .msim__house { width: 56px; height: 56px; margin: 0; }
@@ -4722,7 +4730,7 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .msim__howto li { font-size: 11.5px; padding: 3px 10px; }
   .msim__row { padding: 10px 12px; }
   .msim__row-num { font-size: 18px; }
-  .mchart { padding: 22px 70px 28px 40px; }
+  .mchart { padding: 22px 78px 28px 40px; }
   .mchart__plot { height: 240px; }
   .mchart__y { left: -38px; width: 32px; font-size: 10px; }
   .mchart__mark { font-size: 10.5px; padding: 1px 7px; }

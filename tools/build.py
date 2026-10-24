@@ -4306,7 +4306,7 @@ def scheme_html(key):
 # サービスページの「未来の手元」の試算（モデル物件で、オーナー様の手元に残るお金を図で見せる）
 # 買取プランには入れない（人の方針 2026-10-24。売ったら代金が入るだけで、未来の収支を見せる意味が薄い）
 # 数字はすべて「前提」に書いた仮定・出典から計算する。モデル物件は架空。実績物件（下田・焼津）とプランを結びつけない
-# split: (見出し, [(名前, 万円, "cost"|"keep", 添え書き)])  future: (見出し, [(名前, 万円, 添え書き, アキヤドか)])
+# split: (見出し, [(名前, 万円, "cost"|"keep", 添え書き)])。任意（借り上げは折れ線で伝わるので付けない。人の指摘 2026-10-24）  future: (見出し, [(名前, 万円, 添え書き, アキヤドか)])
 # chart: 手元の累計の折れ線（損益分岐点＝0円の線を越える月を見せる）。series: (色, [(月, 万円)])、future の行と同じ順
 #   marks: (月, 万円, 言葉, 色, 言葉の置き方 r=右／ur=右上／dr=右下／up=上／down=下)。言葉は「元が取れる」の1つだけにして、ごちゃごちゃさせない
 # summary: グラフの前に置く、結論の1〜2文（数学が苦手な人にも伝わる言葉で。「損益分岐点」「累計」「稼働率」などの言葉は使わない）
@@ -4315,7 +4315,6 @@ MEDIA_SIM_MODEL = ["築45年・木造2階建て", "4LDK・約100㎡", "観光地
 MEDIA_SIM = {
     "use": dict(title="借り上げなら、10年でどれだけ変わる？",
                 lead="アキヤドが借り上げた場合の2つのプランを、モデル物件で比べました。宿の売上は、私たちの宿やオーナーの事例をもとに、うまくいった場合で試算しています。",
-                split=("家賃が年36万円入ると、手元にいくら残る？（おまかせプラン）", [("土地の固定資産税", 2.7, "cost", "オーナー様の負担のまま"), ("オーナー様の手元", 33.3, "keep", "見回りの費用もかからなくなります")]),
                 future=("10年で、手元のお金はどう変わる？", [("おまかせプラン", 333, "最初の出費ほぼなし。毎月3万円の家賃", False), ("売上シェアプラン", 713, "最初に100万円出し、毎月約7万円を受け取る", True)]),
                 chart=dict(months=120, xstep=60, x0="今", series=[("sub", [(0, 0), (120, 333.4)]), ("us", [(0, -100), (120, 713.4)])],
                            marks=[(14.75, 0, "約15か月で元が取れる", "us", "dr")]),
@@ -4384,7 +4383,7 @@ def sim_html(key):
     from figures import icon
     sm = MEDIA_SIM[key]
     fmt = lambda v: f"{v:,.1f}".removesuffix(".0")
-    split_t, parts = sm["split"]
+    split_t, parts = sm.get("split") or ("", [])  # お金のゆくえの帯グラフ（折れ線で伝わるなら付けない）
     total = sum(v for _, v, _, _ in parts)
     n_cost = 0
     segs, legend = [], []
@@ -4407,23 +4406,23 @@ def sim_html(key):
     specs = "".join(f"<li>{e(x)}</li>" for x in MEDIA_SIM_MODEL)
     assum = "".join(f"<li>{e(x)}</li>" for x in sm["assumptions"])
     srcs = "".join(f'<a href="media/{sl}.html">{e(ARTICLE_BY_SLUG[sl]["title"])} {ARROW}</a>' for sl in sm["srcs"])
-    alt = f"{split_t}：" + "、".join(f"{n} {fmt(v)}万円" for n, v, _, _ in parts) + f"。{fut_t}：" + "、".join(f"{n} {v}万円" for n, v, _, _ in rows)
+    alt = (f"{split_t}：" + "、".join(f"{n} {fmt(v)}万円" for n, v, _, _ in parts) + "。" if parts else "") + f"{fut_t}：" + "、".join(f"{n} {v}万円" for n, v, _, _ in rows)
     return f"""    <section class="mlp-sec mlp-sec--sim">
       <div class="container">
         <p class="mlp-en reveal">Simulation</p>
         <h2 class="mlp-title reveal">{e(sm["title"])}</h2>
         <p class="mlp-lead reveal">{e(sm["lead"])}</p>
-        <div class="msim reveal" role="img" aria-label="{e(alt)}">
+        <div class="msim{"" if parts else " msim--solo"} reveal" role="img" aria-label="{e(alt)}">
           <div class="msim__model">
             <p class="msim__badge">モデル物件（架空）</p>
             <span class="msim__house" aria-hidden="true">{icon("house")}</span>
             <ul class="msim__specs">{specs}</ul>
           </div>
-          <div class="msim__split">
+          {f"""<div class="msim__split">
             <p class="msim__h">{e(split_t)}<span>{"計 " if any(k == "keep" for _, _, k, _ in parts) else "計 −"}{fmt(total)}万円</span></p>
             <div class="msim__bar" aria-hidden="true">{"".join(segs)}</div>
             <ul class="msim__legend" aria-hidden="true">{"".join(legend)}</ul>
-          </div>
+          </div>""" if parts else ""}
         </div>
         <div class="msim__future reveal" aria-hidden="true">
           <p class="msim__h msim__h--c">{e(fut_t)}</p>
