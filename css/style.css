@@ -4653,10 +4653,14 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .msim__sw--minus { background: #e2906d; }
 .msim__sw--sub { background: #a3ada5; }
 .msim__rows--3 { grid-template-columns: 1fr; }
+.msim__summary { max-width: 40em; margin: 10px auto 0; font-size: 15px; line-height: 1.9; text-align: center; }
+.msim__howto { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 8px; margin-top: 12px; }
+.msim__howto li { padding: 4px 12px; border-radius: 999px; background: #fff; font-size: 12.5px; line-height: 1.6; color: var(--m-sub); }
+.msim__howto b { margin-right: 6px; color: var(--m-ink); }
 .msim__disclaim { max-width: 900px; margin: 16px auto 0; padding: 12px 16px; border: 1px solid var(--m-line); border-radius: 12px; font-size: 12.5px; line-height: 1.8; color: var(--m-sub); }
 .msim__disclaim strong { color: var(--m-ink); }
 /* 手元の累計の折れ線（0円の線＝損益分岐点） */
-.mchart { position: relative; margin-top: 18px; padding: 24px 8px 30px 52px; border-radius: 14px; background: #fff; }
+.mchart { position: relative; margin-top: 18px; padding: 24px 92px 30px 52px; border-radius: 14px; background: #fff; }
 .mchart__plot { position: relative; height: 280px; }
 .mchart__plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .mchart__grid line { stroke: var(--m-line); stroke-width: 1; vector-effect: non-scaling-stroke; }
@@ -4666,13 +4670,13 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mchart__line--us { stroke: var(--m-green); }
 .mchart__line--minus { stroke: #e2906d; }
 .mchart__line--sub { stroke: #a3ada5; }
-.mchart__y { position: absolute; left: -48px; width: 40px; transform: translateY(-50%); font-size: 11px; color: var(--m-sub); text-align: right; }
+.mchart__y { position: absolute; left: -48px; width: 40px; white-space: nowrap; transform: translateY(-50%); font-size: 11px; color: var(--m-sub); text-align: right; }
 .mchart__y.is-zero { color: var(--m-ink); font-weight: 700; }
 .mchart__x { position: absolute; bottom: -24px; transform: translateX(-50%); font-size: 11px; color: var(--m-sub); white-space: nowrap; }
 .mchart__x:first-of-type { transform: none; }
 .mchart__x.is-last { transform: translateX(-100%); }
 .mchart__unit { position: absolute; left: 10px; top: 6px; font-size: 10px; color: var(--m-sub); }
-.mchart__zlabel { position: absolute; left: 6px; transform: translateY(4px); font-size: 10.5px; font-weight: 700; color: var(--m-ink); }
+.mchart__zlabel { position: absolute; right: 6px; transform: translateY(4px); font-size: 10.5px; font-weight: 700; color: var(--m-ink); }
 .mchart__dot { position: absolute; width: 12px; height: 12px; margin: -6px 0 0 -6px; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08); }
 .mchart__dot--us { background: var(--m-green); }
 .mchart__dot--minus { background: #cf5f37; }
@@ -4686,8 +4690,7 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mchart__mark--dr { transform: translate(8px, 8px); }
 .mchart__mark--up { transform: translate(-50%, calc(-100% - 10px)); }
 .mchart__mark--down { transform: translate(-50%, 10px); }
-.mchart__end { position: absolute; right: 0; transform: translateY(calc(-100% - 6px)); font-family: var(--font-round); font-weight: 700; font-size: 16px; line-height: 1.2; white-space: nowrap; }
-.mchart__end.is-below { transform: translateY(6px); }
+.mchart__end { position: absolute; left: calc(100% + 8px); transform: translateY(-50%); font-family: var(--font-round); font-weight: 700; font-size: 16px; line-height: 1.2; white-space: nowrap; }
 .mchart__end small { font-size: 10px; margin-left: 1px; }
 .mchart__end--us { color: var(--m-green); }
 .mchart__end--minus { color: #cf5f37; }
@@ -4716,13 +4719,18 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .msim__split { padding: 18px 16px; }
   .msim__future { padding: 22px 16px 16px; }
   .msim__rows { grid-template-columns: 1fr; gap: 8px; }
+  .msim__summary { font-size: 14px; text-align: left; }
+  .msim__howto { justify-content: flex-start; }
+  .msim__howto li { font-size: 11.5px; padding: 3px 10px; }
   .msim__row { padding: 10px 12px; }
   .msim__row-num { font-size: 18px; }
-  .mchart { padding: 22px 8px 28px 40px; }
+  .mchart { padding: 22px 64px 28px 40px; }
   .mchart__plot { height: 220px; }
   .mchart__y { left: -38px; width: 32px; font-size: 10px; }
   .mchart__mark { font-size: 10.5px; padding: 1px 7px; }
-  .mchart__end { font-size: 14px; }
+  .mchart__zlabel { display: none; }  /* スマホは線と重なるので出さない（上の「点線より上＝プラス」と目印の言葉で伝わる） */
+  .mchart__end { left: calc(100% + 5px); font-size: 13px; }
+  .mchart__end small { display: block; font-size: 9.5px; }
   .msim__extra { font-size: 13px; text-align: left; }
 }
 
