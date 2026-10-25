@@ -40,12 +40,18 @@ NOTE = "※ 情報提供が目的で、特定の選択を勧めるものでは�
 SCENES = [
     ("sunset", 1.4, [
         ('A', '空き家で宿を始めたい人へ。まず、結論です。', dict(pre=3.4, call=(-3.0, 'K', 'アキヤド、みんぱくスクール！'), sfx=[(-3.9, 'whoosh'), (-3.55, 'pop'), (-2.9, 'bling'), (-0.4, 'whoosh'), (0.2, 'pop'), (1.6, 'pop')])),
-        ('A', '届出は、始めやすい。許可は、日数を多く取れます。', dict(sfx=[(0.4, 'pop')])),
+        ('A', '宿を始めるとき、国の手続きは2つあります。', dict(say='宿を始めるとき、国の手続きはふたつあります。', sfx=[(0.4, 'pop')])),
+        ('A', '1つは、1年の半分ほどまでしか、泊められない方法。', dict(say='ひとつは、いちねんの半分ほどまでしか、泊められないほうほう。', sfx=[(0.4, 'pop')])),
+        ('A', 'もう1つは、1年中、泊められる方法です。', dict(say='もうひとつは、いちねんじゅう、泊められるほうほうです。', sfx=[(0.4, 'pop')])),
+        ('A', '前のほうを「届出」、後のほうを「許可」と呼びます。', dict(say='まえのほうを、とどけで、あとのほうを、きょか、とよびます。', sfx=[(0.4, 'pop'), (1.8, 'pop')])),
+        ('A', 'どちらを選ぶかで、始め方も、売上も変わります。', dict(sfx=[(0.4, 'pop')])),
         ('A', '向くのは、どちらか。日数、場所、建物の3つで、決まります。', dict(say='向くのは、どちらか。日数、場所、建物のみっつで、決まります。', sfx=[(0.4, 'pop')])),
-                ('A', '許可なら、1年に365日、泊められます。民泊新法の届出なら、180日までです。', dict(say='許可なら、いちねんに、さんびゃくろくじゅうごにち、泊められます。民泊新法の届出なら、ひゃくはちじゅうにちまでです。', sfx=[(0.4, 'pop')])),
+        ('A', '許可なら、1年に365日。届出なら、180日までです。', dict(say='許可なら、いちねんに、さんびゃくろくじゅうごにち。届出なら、ひゃくはちじゅうにちまでです。', sfx=[(0.4, 'pop')])),
         ('A', 'それなのに、なぜ届出を選ぶ人がいるのか。許可には、家の場所と、建物の条件があるからです。', dict(sfx=[(0.4, 'pop')])),
-        ('A', 'この動画では、日数、場所、建物を、順に見ていきます。民泊が初めての人にも、分かるように話します。', dict(sfx=[(0.4, 'pop')])),
-('A', '民泊戦略家の、アキです。', dict(sfx=[(0.4, 'pop')])),
+        ('A', 'この動画では、3つ話します。1つめは、泊められる日数です。', dict(say='この動画では、みっつ話します。ひとつめは、泊められる日数です。', sfx=[(0.4, 'pop'), (2.4, 'pop')])),
+        ('A', '2つめは、家の場所。3つめは、建物の条件です。', dict(say='ふたつめは、家の場所。みっつめは、建物の条件です。', sfx=[(0.4, 'pop'), (2.2, 'pop')])),
+        ('A', '民泊が初めての人にも、分かるように話します。', dict(sfx=[(0.4, 'pop')])),
+        ('A', '民泊戦略家の、アキです。', dict(sfx=[(0.4, 'pop')])),
         ('A', 'まず、民泊とは何かからです。', dict(sfx=[(0.4, 'pop')])),
     ]),
     ("morning", 1.4, [
@@ -327,33 +333,60 @@ function scene(i,t,lt){
   const K=.89,L=SL[i],E=SE[i],at=(k,d=.5,o=0)=>seg(lt,L[k]+o*K,L[k]+o*K+d),on=k=>lt>=L[k];
   let s='';
   const aki=(pose,mood='happy',x=250)=>`<ellipse cx="${x+10}" cy="${GROUND+12}" rx="112" ry="17" fill="#000" opacity=".24"/>`+P(x,GROUND,.92,{c:'aki',who:'A',pose,mood},t);
-  if(i===0){ // つかみ
-    const pose=on(5)?'present':on(4)?'think':on(3)?'point':'present';
-    if(lt>L[0]-.6)s+=aki(pose,on(4)&&!on(5)?'worry':'happy');
-    if(lt>L[0]-.5&&!on(4)){
-      const A=900,B=1480,by=585,d=Math.floor(365*seg(lt,L[3]+.5,L[3]+7.5)),dA=Math.min(d,180);
-      s+=pop(A,by-100,at(0,.5,.1),inn(A,by,.6,{sign:'民泊届出',roof:'#b5603a',noren:T,t,lit:.55,case:1}));
-      s+=pop(B,by-100,at(0,.5,.4),inn(B,by,.68,{sign:'旅館業許可',roof:'#2e6b47',noren:G,t,lit:.85,post:1,bike:1,signc:'#2f2a22'}));
-      const W0=500,dA0=Math.min(d,180),endL=(x,o)=>fade(at(0,.4,.9),`<text x="${x}" y="800" font-size="26" font-weight="900" fill="${DG}">1月</text><text x="${x+W0}" y="800" text-anchor="end" font-size="26" font-weight="900" fill="${DG}">12月</text>`);
-      s+=card(620,618,560,222,`<text x="900" y="654" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">民泊新法の届出：年180日まで</text>${ybar(641,690,W0,64,dA0,180,T,{})}${dA0>=150?`<text x="${641+W0*180/365/2}" y="732" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">180日まで</text>`:''}<g opacity="${seg(lt,L[0]+4.1,L[0]+4.6)}"><text x="${641+W0*(180+365)/2/365}" y="732" text-anchor="middle" font-size="30" font-weight="900" fill="#4a5a52">営業できない</text></g>${endL(641)}`,at(0,.4,.5));
-      s+=card(1200,618,560,222,`<text x="1480" y="654" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">旅館業の許可：日数の上限なし</text>${ybar(1221,690,W0,64,d,0,G,{})}${d>=300?`<text x="1471" y="732" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">365日 ずっと営業できる</text>`:''}${endL(1221)}`,at(0,.4,.8));
-
-    }
-    if(lt>L[0]-.4&&!on(3)){
-      s+=pop(1500,215,at(0,.4,.6),`${face('qa',1790,215,62,'owner',G,'worry',t,false)}<rect x="1210" y="178" width="440" height="86" rx="30" fill="#000" opacity=".12"/><rect x="1210" y="172" width="440" height="86" rx="30" fill="#fff" stroke="${G}" stroke-width="4"/><text x="1430" y="226" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">手続きが難しそう…</text>`);
-      s+=pop(1000,215,at(1,.4,.3),`<rect x="700" y="178" width="470" height="86" rx="30" fill="#000" opacity=".12"/><rect x="700" y="172" width="470" height="86" rx="30" fill="#fff" stroke="${T}" stroke-width="4"/><text x="935" y="226" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">何日、泊められるの？</text>`);}
-    if(on(6)&&!on(7))s+=pop(250,205,at(6,.4),`<rect x="68" y="168" width="364" height="76" rx="38" fill="#000" opacity=".14"/><rect x="68" y="160" width="364" height="76" rx="38" fill="url(#gG)"/><text x="250" y="212" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">民泊戦略家 アキ</text>`);
-    if(on(4)&&!on(5)){
-      s+=card(600,250,1240,540,`<text x="1220" y="330" text-anchor="middle" font-size="46" font-weight="900" fill="${DG}">許可なら、1年に365日、泊められる</text><text x="1220" y="400" text-anchor="middle" font-size="46" font-weight="900" fill="${T}">それなのに、なぜ届出を選ぶ人がいる？</text>${q(1220,600,150,t,0)}`,at(4,.4));
-      s+=pop(1220,700,at(4,.5,3.6),`<rect x="720" y="650" width="1000" height="100" rx="50" fill="url(#gG)"/><text x="1220" y="715" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">許可には、家の場所と建物の条件がある</text>`);}
-    if(on(5)&&!on(6)){const it=[['1','泊められる日数',NAVY],['2','家の場所',NAVY],['3','建物の条件',NAVY]];
-      s+=card(640,270,1160,470,`<text x="1220" y="350" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">今日わかること</text>`,at(5,.4));
-      it.forEach(([n,w,c],k)=>{const y=450+k*110;s+=pop(1220,y,at(5,.4,[1.4,4.4,8][k]),`<rect x="720" y="${y-44}" width="1000" height="92" rx="46" fill="${c}"/><rect x="740" y="${y-38}" width="960" height="24" rx="12" fill="#fff" opacity=".18"/><circle cx="776" cy="${y}" r="34" fill="#fff"/><text x="776" y="${y+14}" text-anchor="middle" font-size="42" font-weight="900" fill="${c}">${n}</text><text x="840" y="${y+15}" font-size="${w.length>12?40:44}" font-weight="900" fill="#fff">${w}</text>`)});}
-    if(on(7)){
-      s+=cardGround(600,250,1240,560,728,'#cfe0c8',at(7,.4));
-      s+=tag(1220,330,'まず、民泊とは何か',at(7,.4,.3),Y,DG,46);
-      s+=pop(1380,560,at(7,.5,.8),inn(1380,728,.72,{sign:'宿',t,lit:.7,case:1,post:1}));
-      s+=pop(840,600,at(7,.5,1.4),`<g transform="translate(840,590)"><ellipse cx="0" cy="130" rx="90" ry="12" fill="#000" opacity=".15"/>${coin(-30,100,52)}${coin(40,60,44)}${coin(-4,20,40)}</g>`);}
+  if(i===0){ // つかみ（1文ごとに画面を切り替える。「届出」「許可」は、名前を付ける文（5つめ）まで画面にも出さない）
+    const pose=on(11)?'present':on(8)&&!on(9)?'think':on(7)?'point':'present';
+    if(lt>L[0]-.6)s+=aki(pose,on(8)&&!on(9)?'worry':'happy');
+    // 0 空き家と、困る人の絵
+    if(on(0)&&!on(1)){
+      s+=cardGround(600,250,1240,560,728,'#cfe0c8',at(0,.4));
+      s+=pop(1220,560,at(0,.5,.5),inn(1220,728,.82,{sign:'空き家',roof:'#8a8f98',noren:'#9aa59d',t,lit:.25,chim:0,case:1}));
+      s+=tag(1220,330,'空き家で、宿を始めたい',at(0,.4,.9),Y,DG,46);}
+    // 1 国の手続きは2つ（まだ中身は分からない）
+    if(on(1)&&!on(2)){
+      s+=card(640,300,1160,400,`<text x="1220" y="392" text-anchor="middle" font-size="54" font-weight="900" fill="${DG}">宿を始める、国の手続き</text><text x="1220" y="460" text-anchor="middle" font-size="40" font-weight="900" fill="${T}">その数は…</text>`,at(1,.4));
+      [[1020,'#6b756e'],[1420,'#6b756e']].forEach(([x,c],k)=>{s+=pop(x,590,at(1,.5,.9+k*.7),`<circle cx="${x}" cy="598" r="78" fill="#000" opacity=".12"/><circle cx="${x}" cy="590" r="78" fill="${c}"/><text x="${x}" y="622" text-anchor="middle" font-size="88" font-weight="900" fill="#fff">？</text>`)});}
+    // 2・3 手続きの1つめ・2つめ（意味のラベルだけ。名前はまだ出さない）
+    if(on(2)&&!on(5)){
+      const W5=510,d2=Math.round(180*seg(lt,L[2]+.4,L[2]+3)),d3=Math.round(365*seg(lt,L[3]+.4,L[3]+3));
+      const named=(k)=>fade(at(4,.4,k*.9),`<rect x="${[895,1525][k]-110}" y="318" width="220" height="62" rx="31" fill="${[T,G][k]}"/><text x="${[895,1525][k]}" y="364" text-anchor="middle" font-size="46" font-weight="900" fill="#fff">${['届出','許可'][k]}</text>`,0);
+      s+=card(600,290,590,400,`<text x="895" y="450" text-anchor="middle" font-size="54" font-weight="900" fill="${T}">半年ほどまで</text>${ybar(640,490,W5,80,d2,180,T,{})}${d2>=150?`<text x="${640+W5*180/365/2}" y="542" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">泊められる</text>`:''}<text x="${640+W5*(180+365)/2/365}" y="542" text-anchor="middle" font-size="30" font-weight="900" fill="#4a5a52">泊められない</text><text x="640" y="622" font-size="26" font-weight="900" fill="${DG}">1月</text><text x="${640+W5}" y="622" text-anchor="end" font-size="26" font-weight="900" fill="${DG}">12月</text>${named(0)}`,at(2,.4));
+      s+=card(1230,290,590,400,`<text x="1525" y="450" text-anchor="middle" font-size="54" font-weight="900" fill="${G}">1年中</text>${ybar(1270,490,W5,80,d3,0,G,{})}${d3>=300?`<text x="1525" y="542" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">ずっと泊められる</text>`:''}<text x="1270" y="622" font-size="26" font-weight="900" fill="${DG}">1月</text><text x="${1270+W5}" y="622" text-anchor="end" font-size="26" font-weight="900" fill="${DG}">12月</text>${named(1)}`,at(3,.4));}
+    if(on(1)&&!on(4)){
+      s+=pop(1430,215,at(1,.4,.6),`${face('qa',1790,215,62,'owner',G,'worry',t,false)}<rect x="1210" y="178" width="440" height="86" rx="30" fill="#000" opacity=".12"/><rect x="1210" y="172" width="440" height="86" rx="30" fill="#fff" stroke="${G}" stroke-width="4"/><text x="1430" y="226" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">手続きが難しそう…</text>`);}
+    if(on(3)&&!on(5)){
+      s+=pop(935,215,at(3,.4,.3),`<rect x="640" y="178" width="470" height="86" rx="30" fill="#000" opacity=".12"/><rect x="640" y="172" width="470" height="86" rx="30" fill="#fff" stroke="${T}" stroke-width="4"/><text x="875" y="226" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">何日、泊められるの？</text>`);}
+    // 5〜7 名前が付いた2つの宿。始め方・売上 → 決まる3つ → 日数のちがい
+    if(on(5)&&!on(8)){
+      const A=900,B=1480,by=585,d=Math.floor(365*seg(lt,L[7]+.5,L[7]+7.5)),dA=Math.min(d,180);
+      s+=pop(A,by-100,at(5,.5,.1),inn(A,by,.6,{sign:'届出',roof:'#b5603a',noren:T,t,lit:.55,case:1}));
+      s+=pop(B,by-100,at(5,.5,.4),inn(B,by,.68,{sign:'許可',roof:'#2e6b47',noren:G,t,lit:.85,post:1,bike:1,signc:'#2f2a22'}));
+      if(on(5)&&!on(6)){s+=tag(1190,240,'始め方',at(5,.4,.8),Y,DG,44);s+=tag(1190,320,'売上',at(5,.4,1.8),Y,DG,44);}
+      if(on(6)&&!on(7)){[['日数',960],['場所',1190],['建物',1420]].forEach(([w,x],k)=>{s+=tag(x,270,w,at(6,.4,[1.8,2.8,3.8][k]),NAVY,'#fff',44)});}
+      if(on(7)){
+        const W0=500,endL=(x)=>fade(at(7,.4,.9),`<text x="${x}" y="800" font-size="26" font-weight="900" fill="${DG}">1月</text><text x="${x+W0}" y="800" text-anchor="end" font-size="26" font-weight="900" fill="${DG}">12月</text>`);
+        s+=card(620,618,560,222,`<text x="900" y="654" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">届出：年180日まで</text>${ybar(641,690,W0,64,dA,180,T,{})}${dA>=150?`<text x="${641+W0*180/365/2}" y="732" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">180日まで</text>`:''}<g opacity="${seg(lt,L[7]+.8,L[7]+1.3)}"><text x="${641+W0*(180+365)/2/365}" y="732" text-anchor="middle" font-size="30" font-weight="900" fill="#4a5a52">営業できない</text></g>${endL(641)}`,at(7,.4,.2));
+        s+=card(1200,618,560,222,`<text x="1480" y="654" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">許可：日数の上限なし</text>${ybar(1221,690,W0,64,d,0,G,{})}${d>=300?`<text x="1471" y="732" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">365日 ずっと営業できる</text>`:''}${endL(1221)}`,at(7,.4,.5));}}
+    // 8 なぜ届出を選ぶのか
+    if(on(8)&&!on(9)){
+      s+=card(600,250,1240,540,`<text x="1220" y="330" text-anchor="middle" font-size="46" font-weight="900" fill="${DG}">許可なら、1年に365日、泊められる</text><text x="1220" y="400" text-anchor="middle" font-size="46" font-weight="900" fill="${T}">それなのに、なぜ届出を選ぶ人がいる？</text>${q(1220,600,150,t,0)}`,at(8,.4));
+      s+=pop(1220,700,at(8,.5,3.6),`<rect x="720" y="650" width="1000" height="100" rx="50" fill="url(#gG)"/><text x="1220" y="715" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">許可には、家の場所と建物の条件がある</text>`);}
+    // 9〜10 今日話す3つ（1つずつ出す）
+    if(on(9)&&!on(11)){const it=[['1','泊められる日数',NAVY,9,.8],['2','家の場所',NAVY,10,.5],['3','建物の条件',NAVY,10,2.4]];
+      s+=card(640,270,1160,470,`<text x="1220" y="350" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">今日わかること</text>`,at(9,.4));
+      it.forEach(([n,w,c,li,o],k)=>{const y=450+k*110;s+=pop(1220,y,at(li,.4,o),`<rect x="720" y="${y-44}" width="1000" height="92" rx="46" fill="${c}"/><rect x="740" y="${y-38}" width="960" height="24" rx="12" fill="#fff" opacity=".18"/><circle cx="776" cy="${y}" r="34" fill="#fff"/><text x="776" y="${y+14}" text-anchor="middle" font-size="42" font-weight="900" fill="${c}">${n}</text><text x="840" y="${y+15}" font-size="44" font-weight="900" fill="#fff">${w}</text>`)});}
+    // 11 はじめての人にも
+    if(on(11)&&!on(13)){
+      s+=cardGround(600,250,1240,560,728,'#cfe0c8',at(11,.4));
+      s+=tag(1220,330,'はじめてでも、大丈夫',at(11,.4,.3),G,'#fff',46);
+      s+=pop(1220,560,at(11,.5,.8),`<g transform="translate(1220,728)">${inn(0,0,.74,{sign:'宿',t,lit:.7,case:1,post:1,chim:0})}</g>`);
+      s+=sparkle(900,470,1.2,t,0)+sparkle(1540,450,1,t,2);}
+    if(on(12)&&!on(13))s+=pop(250,205,at(12,.4),`<rect x="68" y="168" width="364" height="76" rx="38" fill="#000" opacity=".14"/><rect x="68" y="160" width="364" height="76" rx="38" fill="url(#gG)"/><text x="250" y="212" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">民泊戦略家 アキ</text>`);
+    // 13 まず、民泊とは
+    if(on(13)){
+      s+=cardGround(600,250,1240,560,728,'#cfe0c8',at(13,.4));
+      s+=tag(1220,330,'まず、民泊とは何か',at(13,.4,.3),Y,DG,46);
+      s+=pop(1380,560,at(13,.5,.8),inn(1380,728,.72,{sign:'宿',t,lit:.7,case:1,post:1}));
+      s+=pop(840,600,at(13,.5,1.4),`<g transform="translate(840,590)"><ellipse cx="0" cy="130" rx="90" ry="12" fill="#000" opacity=".15"/>${coin(-30,100,52)}${coin(40,60,44)}${coin(-4,20,40)}</g>`);}
     // オープニング（動画の頭の約3.5秒）：緑の幕が入る → ロゴ → 「アキヤド 民泊school」（呼び込みの声）→ はける
     {const q0=lt,D=L[0]-.3;if(q0<D){
       const out=seg(q0,D-.45,D),wipe=eo(seg(q0,0,.45));
@@ -368,8 +401,10 @@ function scene(i,t,lt){
   if(i===1){ // 手続きの入口
     s+=aki(on(9)&&!on(10)?'think':(on(5)&&!on(6)?'point':'present'),on(9)&&!on(10)?'worry':'happy');
     const gatesScene=p=>{let g=cardGround(580,250,1260,570,708,'#cfe0c8',p);
-      g+=pop(900,640,at(3,.5,.3),gateSmall(900,720,t))+pop(1450,640,at(3,.5,1.4),gateBig(1450,720,t));
-      g+=tag(900,780,'届出  民泊新法',at(3,.4,2.6),T,'#fff',34)+tag(1450,780,'許可  旅館業',at(3,.4,4.2),G,'#fff',34);
+      const rf=1-.65*seg(lt,L[4]+.2,L[4]+.8);
+      g+=pop(900,640,at(3,.5,.3),gateSmall(900,720,t))+tag(900,780,'届出  民泊新法',at(3,.4,2.6),T,'#fff',34);
+      g+=`<g opacity="${rf}">`+pop(1450,640,at(3,.5,1.4),gateBig(1450,720,t))+tag(1450,780,'許可  旅館業',at(3,.4,4.2),G,'#fff',34)+`</g>`;
+      if(on(4))g+=tag(900,330,'役所に知らせる',at(4,.4,.5),NAVY,'#fff',44);
       g+=plant(680,735,.9,t)+plant(1790,735,.9,t+1);
       return g};
     if(on(0)&&!on(3)){
@@ -437,12 +472,15 @@ function scene(i,t,lt){
         s+=r;
         if(k===1&&done)s+=pop(1220,y+120,seg(lt,L[5]+5.8*K,L[5]+6.3*K),`<rect x="900" y="${y+96}" width="640" height="56" rx="28" fill="${RED}"/><text x="1220" y="${y+136}" text-anchor="middle" font-size="32" font-weight="900" fill="#fff">180日に着いたら、そこで終わり</text>`)});
       s+=stampX(1690,775,'イメージ',at(5,.3,.6),'#8a8f98',34,6);}
-    if(on(6)&&!on(9)){const g=eo(at(6,1.6,.9));
+    if(on(6)&&!on(7)){const g=eo(at(6,1.6,.9));
       s+=card(600,250,1240,540,`<text x="1220" y="335" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">私たちの宿：開業から約8.5か月の平均</text>${gauge(700,480,1040,g)}`,at(6,.4));
-      s+=stampX(1700,330,'一例',at(7,.3,3),T,44,6);
-      s+=fade(at(8,.4,.3),`<text x="1640" y="412" text-anchor="middle" font-size="30" font-weight="900" fill="${T}">手間と初期投資は含まない</text>`);
-      if(g>.99)s+=sparkle(1320,500,1.1,t,0)+sparkle(1500,470,.8,t,3);
-      s+=fade(at(7,.5,.6),`<text x="1220" y="760" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">この水準が1年続くと：365日 × 0.53 ＝ 約193日</text>`);}
+      if(g>.99)s+=sparkle(1320,500,1.1,t,0)+sparkle(1500,470,.8,t,3);}
+    if(on(7)&&!on(8)){
+      s+=card(600,250,1240,540,`<text x="1220" y="330" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">この水準が1年続くと</text><text x="1220" y="470" text-anchor="middle" font-size="76" font-weight="900" fill="${DG}">365日 × 0.53</text><text x="1220" y="590" text-anchor="middle" font-size="110" font-weight="900" fill="${T}">＝ 約193日</text>`,at(7,.4));
+      s+=pop(1220,700,at(7,.5,3.6),`<rect x="800" y="652" width="840" height="84" rx="42" fill="${RED}"/><text x="1220" y="710" text-anchor="middle" font-size="44" font-weight="900" fill="#fff">届出の上限 180日を、超える</text>`);}
+    if(on(8)&&!on(9)){
+      s+=card(600,250,1240,540,`<text x="1220" y="335" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">稼働率 約53%は、開業から約8.5か月の平均</text><text x="1220" y="470" text-anchor="middle" font-size="84" font-weight="900" fill="${T}">これは、一例</text><text x="1220" y="600" text-anchor="middle" font-size="58" font-weight="900" fill="${DG}">手間と初期投資は含まない</text>`,at(8,.4));
+      s+=stampX(1560,705,'一例',at(8,.3,.6),T,44,6);}
     if(on(9)&&!on(10)){
       s+=cardGround(600,250,1240,560,728,'#cfe0c8',at(9,.4));
       s+=pop(1000,560,at(9,.5,.4),inn(1000,728,.74,{sign:'許可',roof:'#2e6b47',noren:G,t,lit:.85,case:1,post:1,signc:'#2f2a22'}));
@@ -463,12 +501,17 @@ function scene(i,t,lt){
       s+=q(1150,540,130,t,0);
       s+=tag(1150,330,'自分の宿は、どっち？',at(11,.4,1.6),Y,DG,44);}
     if(on(11)&&!on(12))s+=qbubble('q6','届出でもいいの？',at(11,.4),t);
-    if(on(13)){
+    if(on(13)&&!on(15)){
       s+=card(620,250,1200,540,`<text x="1220" y="322" text-anchor="middle" font-size="42" font-weight="900" fill="${DG}">売上の上限 ＝ 泊められる日数 × 1泊の料金</text>`,at(13,.4));
       s+=pop(900,470,at(13,.4,.6),formulaChip(700,420,400,'泊められる日数',NAVY,'#fff',40));
       s+=fade(at(13,.3,1.4),`<text x="1180" y="486" text-anchor="middle" font-size="64" font-weight="900" fill="${DG}">×</text>`);
       s+=pop(1440,470,at(13,.4,1.8),formulaChip(1260,420,360,'1泊の料金',NAVY,'#fff',40));
       s+=pop(1220,660,at(13,.4,3.4),`<rect x="800" y="600" width="840" height="96" rx="48" fill="url(#gG)"/><text x="1220" y="667" text-anchor="middle" font-size="44" font-weight="900" fill="#fff">日数が増えるほど、上限も増える</text>`);}
+    if(on(15)){
+      s+=card(620,250,1200,540,`<text x="1220" y="322" text-anchor="middle" font-size="42" font-weight="900" fill="${DG}">稼働率が高いほど、売上は増える</text>`,at(15,.4));
+      s+=pop(1220,470,at(15,.5,.5),`<rect x="720" y="400" width="1000" height="110" rx="55" fill="url(#gG)"/><text x="1220" y="474" text-anchor="middle" font-size="52" font-weight="900" fill="#fff">お客さんが多い ＝ 売上が増える</text>`);
+      s+=pop(1220,600,at(15,.5,3.6),`<rect x="720" y="545" width="1000" height="110" rx="55" fill="${RED}"/><text x="1220" y="619" text-anchor="middle" font-size="52" font-weight="900" fill="#fff">届出は、180日まで</text>`);
+      s+=pop(1220,720,at(15,.5,6.6),`<rect x="720" y="680" width="1000" height="90" rx="45" fill="${NAVY}"/><text x="1220" y="742" text-anchor="middle" font-size="46" font-weight="900" fill="#fff">日数が多いほど、許可が向く</text>`);}
   }
   if(i===3){ // 違い② 手続きと建物
     s+=aki(on(2)&&!on(3)?'think':(on(4)?'point':'present'),on(2)&&!on(3)?'worry':'happy');
@@ -488,7 +531,8 @@ function scene(i,t,lt){
       s+=cardGround(580,250,1260,570,728,'#cfe0c8',at(4,.4));
       s+=pop(830,560,at(4,.5,.3),inn(850,728,.7,{sign:'住宅',t,lit:.7,case:1}));
       [['台所','kitchen'],['浴室','bath'],['トイレ','toilet'],['洗面','sink']].forEach(([w,pc],k)=>{const x=1130+(k%2)*350,y=330+Math.floor(k/2)*220,o=[2.6,3.8,5,6.2][k];
-        s+=tileP(x,y,320,190,at(4,.4,o*.9),PIC[pc](x+160,y+70),w,at(4,.3,o*.9+.5))});}
+        s+=tileP(x,y,320,190,at(4,.4,o*.9),PIC[pc](x+160,y+70),w,at(4,.3,o*.9+.5))});
+      if(on(5))s+=tag(1220,284,'対象かは、窓口で確かめる',at(5,.4,.3),NAVY,'#fff',40);}
     if(on(6)&&!on(7)){
       s+=cardGround(580,250,1260,570,728,'#cfe0c8',at(6,.4));
       s+=pop(830,560,at(6,.5,.3),inn(830,728,.7,{sign:'許可',t,lit:.8,roof:'#2e6b47',noren:G,signc:'#2f2a22'}));
@@ -545,12 +589,14 @@ function scene(i,t,lt){
       s+=card(600,250,1240,550,`<text x="1220" y="320" text-anchor="middle" font-size="42" font-weight="900" fill="${DG}">答えは、条件で変わる</text><rect x="860" y="360" width="720" height="86" rx="43" fill="#eef3f8" stroke="${NAVY}" stroke-width="4"/><text x="1220" y="418" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">場所を変えられる？</text>`,at(5,.4));
       s+=pop(980,570,at(5,.5,2.2),`<path d="M1120 450 L980 520" stroke="${NAVY}" stroke-width="7" stroke-linecap="round"/><rect x="760" y="520" width="440" height="110" rx="30" fill="url(#gG)"/><text x="980" y="570" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">はい</text><text x="980" y="612" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">B 場所を変えて、許可</text>`);
       s+=pop(1460,570,at(5,.5,4.4),`<path d="M1320 450 L1460 520" stroke="${NAVY}" stroke-width="7" stroke-linecap="round"/><rect x="1240" y="520" width="440" height="110" rx="30" fill="url(#gO)"/><text x="1460" y="570" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">いいえ</text><text x="1460" y="612" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">A 届出（180日まで）</text>`);
-      s+=tag(1220,730,'どれも可。まず、土地の地域を確認',at(6,.4,.3),NAVY,'#fff',34);}
+      if(!on(7))s+=tag(1220,730,'どれも可。まず、土地の地域を確認',at(6,.4,.3),NAVY,'#fff',34);
+      if(on(7))s+=tag(1220,730,'答えを分けるのは「場所を変えられるか」',at(7,.4,.2),DG,'#fff',36);}
     if(on(8)&&!on(9))s+=qbubble('q4','あとで変えられる？',at(8,.4),t);
     if(on(8)&&!on(12)){
       s+=cardGround(600,250,1240,560,730,'#cfe0c8',at(8,.4));
       s+=pop(1180,540,at(8,.5,.3),`<g transform="translate(1180,730)"><ellipse cx="0" cy="8" rx="320" ry="16" fill="#000" opacity=".16"/><rect x="-300" y="-170" width="600" height="170" rx="10" fill="#b5835a"/><rect x="-300" y="-170" width="600" height="170" fill="url(#pWood)"/><rect x="-316" y="-190" width="632" height="30" rx="8" fill="#8a5a3c"/><rect x="-250" y="-330" width="500" height="150" rx="10" fill="#bfe0ef" opacity=".7"/><rect x="-250" y="-330" width="500" height="150" rx="10" fill="none" stroke="#fff" stroke-width="6"/><path d="M-250 -330 l140 0 l-90 150 l-50 0z" fill="#fff" opacity=".35"/><g transform="translate(-130,-186)">${person2(0,0,1.15,G,'#2b2422')}</g><g transform="translate(150,-186)">${person2(0,0,1.15,'#3d6a8a','#4a3324')}</g><rect x="-170" y="-384" width="340" height="56" rx="28" fill="${G}"/><text x="0" y="-345" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">窓口</text></g>`);
-      s+=tag(1200,298,'許可は、新しく申請する',at(8,.4,.6),Y,DG,40);
+      if(!on(11))s+=tag(1200,298,'許可は、新しく申請する',at(8,.4,.6),Y,DG,40);
+      if(on(11)){s+=tag(1000,298,'住所を伝える',at(11,.4,.2),NAVY,'#fff',40);s+=tag(1540,298,'住居専用地域か、聞く',at(11,.4,1.8),NAVY,'#fff',40);}
       s+=stampX(1500,480,'窓口で確認',at(8,.3,3.4),RED,48,6);
       s+=noteB('※届出から許可へそのまま切り替わるかは、窓口で確かめてください',at(8,.4,.8));}
   }
