@@ -286,6 +286,20 @@ function shutter(x,y,cell,limit,p,label,fs){
   const d=`M${x0} ${yr} H${x+W} V${y+H} H${x} V${yr+cell} H${x0}Z`;
   return `<g opacity="${clamp(p*2)}" transform="translate(0,${-(1-eo(p))*70})"><path d="${d}" fill="#2a2f2c" opacity=".84"/><path d="${d}" fill="url(#pSlat)"/><path d="M${x0} ${yr} V${yr+cell}" stroke="${T}" stroke-width="6"/>${label?`<text x="${x+W/2}" y="${yr+cell+(H-r0*cell-cell)/2+fs*.3}" text-anchor="middle" font-size="${fs}" font-weight="900" fill="#fff">${label}</text>`:''}</g>`;
 }
+const MST=[0,31,59,90,120,151,181,212,243,273,304,334,365];
+function ybar(x,y,W,H,days,limit,col,o){ // 1年を1本の横棒で。limit 以降は灰色。o.months で12か月のブロックに分ける
+  const px=d=>x+W*d/365,cap=limit?(o.months&&limit===180?181:limit):365;let s='';
+  if(o.months){
+    for(let m=0;m<12;m++){const a=MST[m],b=MST[m+1],x0=px(a)+2,w=px(b)-px(a)-4,cut=limit&&a>=cap,f=cut?0:clamp((Math.min(days,cap)-a)/(b-a));
+      s+=`<rect x="${x0}" y="${y+5}" width="${w}" height="${H}" rx="12" fill="#000" opacity=".1"/><rect x="${x0}" y="${y}" width="${w}" height="${H}" rx="12" fill="${cut?'#c4ccc6':'#e6ede6'}"/>`+(f>0?`<rect x="${x0}" y="${y}" width="${w*f}" height="${H}" rx="12" fill="${col}"/><rect x="${x0+4}" y="${y+5}" width="${Math.max(0,w*f-8)}" height="${H*.22}" rx="8" fill="#fff" opacity=".22"/>`:'')+`<text x="${x0+w/2}" y="${y+H/2+o.fs*.36}" text-anchor="middle" font-size="${o.fs}" font-weight="900" fill="${f>.5?'#fff':(cut?'#66706a':DG)}">${m+1}月</text>`}
+    return s}
+  const r=H/2;
+  s+=`<rect x="${x}" y="${y+5}" width="${W}" height="${H}" rx="${r}" fill="#000" opacity=".1"/><rect x="${x}" y="${y}" width="${W}" height="${H}" rx="${r}" fill="#e6ede6"/>`;
+  if(limit)s+=`<path d="M${px(limit)} ${y} H${x+W-r} A${r} ${r} 0 0 1 ${x+W-r} ${y+H} H${px(limit)}Z" fill="#c4ccc6"/>`;
+  const fw=W*Math.min(days,cap)/365;
+  if(fw>0)s+=`<rect x="${x}" y="${y}" width="${fw}" height="${H}" rx="${r}" fill="${col}"/><rect x="${x+12}" y="${y+6}" width="${Math.max(0,fw-24)}" height="${H*.2}" rx="${H*.1}" fill="#fff" opacity=".22"/>`;
+  return s;
+}
 function gauge(x,y,W,prog){ // 0〜100%のものさし。天井（約49%）と、私たちの宿（約53%）
   const f=53*prog,cx=x+W*.49;let s=`<rect x="${x}" y="${y+6}" width="${W}" height="64" rx="32" fill="#000" opacity=".08"/><rect x="${x}" y="${y}" width="${W}" height="64" rx="32" fill="#dfe8df"/>`;
   s+=`<rect x="${x}" y="${y}" width="${Math.max(0,Math.min(W*.49,W*f/100))}" height="64" rx="32" fill="url(#gG)"/>`;
@@ -319,9 +333,10 @@ function scene(i,t,lt){
       const A=900,B=1480,by=585,d=Math.floor(365*seg(lt,L[3]+.5,L[3]+7.5)),dA=Math.min(d,180);
       s+=pop(A,by-100,at(0,.5,.1),inn(A,by,.6,{sign:'民泊届出',roof:'#b5603a',noren:T,t,lit:.55,case:1}));
       s+=pop(B,by-100,at(0,.5,.4),inn(B,by,.68,{sign:'旅館業許可',roof:'#2e6b47',noren:G,t,lit:.85,post:1,bike:1,signc:'#2f2a22'}));
-      s+=card(620,618,560,196,`<text x="900" y="652" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">民泊新法の届出：年180日まで</text>${cal(641,664,14,dA,180)}${shutter(641,664,14,180,seg(lt,L[0]+4.1,L[0]+4.6),'180日で、営業はここまで',30)}`,at(0,.4,.5));
-      s+=card(1200,618,560,196,`<text x="1480" y="652" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">旅館業の許可：日数の上限なし</text>${cal(1221,664,14,d,0)}`,at(0,.4,.8));
-      if(d>0)s+=fade(at(0,.4,.9),`<rect x="1200" y="830" width="560" height="46" rx="23" fill="${G}"/><text x="1480" y="864" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">${d>=365?'365日、ずっと営業できる':'ずっと営業できる　'+d+'日目'}</text>`);
+      const W0=500,dA0=Math.min(d,180),endL=(x,o)=>fade(at(0,.4,.9),`<text x="${x}" y="800" font-size="26" font-weight="900" fill="${DG}">1月</text><text x="${x+W0}" y="800" text-anchor="end" font-size="26" font-weight="900" fill="${DG}">12月</text>`);
+      s+=card(620,618,560,222,`<text x="900" y="654" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">民泊新法の届出：年180日まで</text>${ybar(641,690,W0,64,dA0,180,T,{})}${dA0>=150?`<text x="${641+W0*180/365/2}" y="732" text-anchor="middle" font-size="25" font-weight="900" fill="#fff">泊められる 180日</text>`:''}<g opacity="${seg(lt,L[0]+4.1,L[0]+4.6)}"><text x="${641+W0*(180+365)/2/365}" y="732" text-anchor="middle" font-size="25" font-weight="900" fill="#4a5a52">この先は営業できない</text></g>${endL(641)}`,at(0,.4,.5));
+      s+=card(1200,618,560,222,`<text x="1480" y="654" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">旅館業の許可：日数の上限なし</text>${ybar(1221,690,W0,64,d,0,G,{})}${d>=300?`<text x="1471" y="732" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">365日 ずっと営業できる</text>`:''}${endL(1221)}`,at(0,.4,.8));
+
     }
     if(lt>L[0]-.4&&!on(3)){
       s+=pop(1500,215,at(0,.4,.6),`${face('qa',1790,215,62,'owner',G,'worry',t,false)}<rect x="1210" y="178" width="440" height="86" rx="30" fill="#000" opacity=".12"/><rect x="1210" y="172" width="440" height="86" rx="30" fill="#fff" stroke="${G}" stroke-width="4"/><text x="1430" y="226" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">手続きが難しそう…</text>`);
@@ -399,11 +414,13 @@ function scene(i,t,lt){
       rows.forEach(([w,v,c,l,rc],k)=>{const y=470+k*190,g=eo(at(1,1.1,.4+k*1.2));
         s+=`<g opacity="${at(1,.3,.3+k*1.2)}">${inn(720,y+60,.34,{sign:'',roof:rc,noren:c,t,lit:.6,chim:0})}<text x="885" y="${y-2}" text-anchor="middle" font-size="32" font-weight="900" fill="${c}">${k?'旅館業':'民泊新法'}</text><text x="885" y="${y+34}" text-anchor="middle" font-size="30" font-weight="900" fill="${c}">（${w}）</text><rect x="960" y="${y-34}" width="800" height="68" rx="34" fill="#e3ebe3"/><rect x="960" y="${y-34}" width="${800*v/365*g}" height="68" rx="34" fill="${k?'url(#gG)':'url(#gO)'}"/><rect x="976" y="${y-26}" width="${Math.max(0,800*v/365*g-32)}" height="12" rx="6" fill="#fff" opacity=".26"/>${g>.9?`<text x="${960+800*v/365-30}" y="${y+14}" text-anchor="end" font-size="38" font-weight="900" fill="#fff">${l}</text>`:''}</g>`});}
     if(on(2)&&!on(4)){
-      const show=Math.floor(365*seg(lt,L[2]+.3*K,L[2]+3.6*K)),dd=Math.min(show,365);
-      s+=card(600,250,1240,545,`<text x="1220" y="322" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">1年 ＝ 365日（1マス ＝ 1日）</text>${cal(684,348,28,dd,180)}${shutter(684,348,28,180,seg(lt,L[2]+2.2,L[2]+2.8),'ここから先は営業できない',34)}`,at(2,.4));
-      s+=fade(at(2,.4,3.6),`<rect x="660" y="672" width="780" height="92" rx="46" fill="url(#gO)"/><text x="1050" y="737" text-anchor="middle" font-size="50" font-weight="900" fill="#fff">180日 ÷ 365日 ＝ 約49%</text>`);
-      s+=tag(1680,715,'地域で短いことも',at(2,.4,5.6),Y,DG,28);
-      if(show<365&&show>0&&show<=180)s+=`<g transform="translate(${684+((show-1)%37)*28+14},${348+Math.floor((show-1)/37)*28-10})"><path d="M0 0 l-14 -26 h28z" fill="${T}"/></g>`;}
+      const days=Math.round(180*seg(lt,L[2]+.3*K,L[2]+3.6*K)),X0=670,W2=1100,BY=450,BH=110,lx=X0+W2*181/365;
+      s+=card(600,250,1240,545,`<text x="1220" y="320" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">1年（12か月）</text>${ybar(X0,BY,W2,BH,days,180,T,{months:1,fs:28})}`,at(2,.4));
+      s+=fade(at(2,.4,3.3),`<path d="M${lx} 395 V${BY}" stroke="${T}" stroke-width="6"/><rect x="${lx-75}" y="345" width="150" height="54" rx="27" fill="${T}"/><text x="${lx}" y="384" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">180日</text>`);
+      s+=fade(at(2,.4,3.6),`<rect x="${X0+W2*181/365/2-290}" y="585" width="580" height="62" rx="31" fill="${T}"/><text x="${X0+W2*181/365/2}" y="629" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">泊められる 180日（約半分）</text><rect x="${(lx+X0+W2)/2-235}" y="585" width="470" height="62" rx="31" fill="#6b756e"/><text x="${(lx+X0+W2)/2}" y="629" text-anchor="middle" font-size="38" font-weight="900" fill="#fff">ここから先は営業できない</text>`);
+      s+=fade(at(2,.4,4.6),`<rect x="620" y="672" width="720" height="84" rx="42" fill="url(#gO)"/><text x="980" y="730" text-anchor="middle" font-size="46" font-weight="900" fill="#fff">180日 ÷ 365日 ＝ 約49%</text>`);
+      s+=tag(1600,714,'1年の約半分',at(2,.4,5.2),Y,DG,40);
+      s+=tag(1600,400,'地域で短いことも',at(2,.4,6.4),Y,DG,28);}
     if(on(4)&&!on(5)){
       const nights=[1,2,3,8,9,10,15,16,17,22,23,24,29,30];
       s+=card(600,250,1240,545,`<text x="1220" y="322" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">稼働率 ＝ 泊まった日 ÷ 全部の日</text>`,at(4,.4));
@@ -415,7 +432,7 @@ function scene(i,t,lt){
       s+=card(600,250,1240,560,`<text x="1220" y="312" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">使った日数が、180日に近づくスピード</text>`,at(5,.4));
       rowsM.forEach(([w,sp,c],k)=>{const y=420+k*190,g=seg(lt,L[5]+(1+k*.4)*K,L[5]+(5+k*.4)*K);const limitM=sp>.9?8.2:12;const fillM=Math.min(g*12,limitM),done=sp>.9&&fillM>=limitM;
         let r=`<text x="680" y="${y-46}" font-size="34" font-weight="900" fill="${DG}">${w}</text>`;
-        months.forEach((m,mi)=>{const x=680+mi*90,f=(sp>.9?1:.5)*clamp(fillM-mi),cut=mi+1>limitM&&done;r+=`<rect x="${x}" y="${y-30}" width="82" height="72" rx="10" fill="${cut?'#2a2f2c':'#e4ece4'}"/>${f>0&&!cut?`<rect x="${x}" y="${y-30+72*(1-f)}" width="82" height="${72*f}" rx="10" fill="${c}"/>`:''}${cut?`<rect x="${x}" y="${y-30}" width="82" height="72" rx="10" fill="url(#pSlat)"/>`:''}<text x="${x+41}" y="${y+78}" text-anchor="middle" font-size="26" font-weight="900" fill="#4a5a52">${m}月</text>`});
+        months.forEach((m,mi)=>{const x=680+mi*90,f=(sp>.9?1:.5)*clamp(fillM-mi),cut=mi+1>limitM&&done;r+=`<rect x="${x}" y="${y-30}" width="82" height="72" rx="10" fill="${cut?'#c4ccc6':'#e4ece4'}"/>${f>0&&!cut?`<rect x="${x}" y="${y-30+72*(1-f)}" width="82" height="${72*f}" rx="10" fill="${c}"/>`:''}<text x="${x+41}" y="${y+78}" text-anchor="middle" font-size="26" font-weight="900" fill="#4a5a52">${m}月</text>`});
         s+=r;
         if(k===1&&done)s+=pop(1220,y+120,seg(lt,L[5]+5.8*K,L[5]+6.3*K),`<rect x="900" y="${y+96}" width="640" height="56" rx="28" fill="${RED}"/><text x="1220" y="${y+136}" text-anchor="middle" font-size="32" font-weight="900" fill="#fff">180日に着いたら、そこで終わり</text>`)});
       s+=stampX(1690,775,'イメージ',at(5,.3,.6),'#8a8f98',34,6);}
