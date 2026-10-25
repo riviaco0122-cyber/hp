@@ -319,8 +319,9 @@ function scene(i,t,lt){
       const A=900,B=1480,by=585,d=Math.floor(365*seg(lt,L[3]+.5,L[3]+7.5)),dA=Math.min(d,180);
       s+=pop(A,by-100,at(0,.5,.1),inn(A,by,.6,{sign:'民泊届出',roof:'#b5603a',noren:T,t,lit:.55,case:1}));
       s+=pop(B,by-100,at(0,.5,.4),inn(B,by,.68,{sign:'旅館業許可',roof:'#2e6b47',noren:G,t,lit:.85,post:1,bike:1,signc:'#2f2a22'}));
-      s+=card(620,618,560,196,`<text x="900" y="652" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">民泊新法の届出：年180日まで</text>${cal(641,664,14,dA,180)}${shutter(641,664,14,180,seg(lt,L[0]+4.1,L[0]+4.6),'',0)}`,at(0,.4,.5));
+      s+=card(620,618,560,196,`<text x="900" y="652" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">民泊新法の届出：年180日まで</text>${cal(641,664,14,dA,180)}${shutter(641,664,14,180,seg(lt,L[0]+4.1,L[0]+4.6),'180日で、営業はここまで',30)}`,at(0,.4,.5));
       s+=card(1200,618,560,196,`<text x="1480" y="652" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">旅館業の許可：日数の上限なし</text>${cal(1221,664,14,d,0)}`,at(0,.4,.8));
+      if(d>0)s+=fade(at(0,.4,.9),`<rect x="1200" y="830" width="560" height="46" rx="23" fill="${G}"/><text x="1480" y="864" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">${d>=365?'365日、ずっと営業できる':'ずっと営業できる　'+d+'日目'}</text>`);
     }
     if(lt>L[0]-.4&&!on(3)){
       s+=pop(1500,215,at(0,.4,.6),`${face('qa',1790,215,62,'owner',G,'worry',t,false)}<rect x="1210" y="178" width="440" height="86" rx="30" fill="#000" opacity=".12"/><rect x="1210" y="172" width="440" height="86" rx="30" fill="#fff" stroke="${G}" stroke-width="4"/><text x="1430" y="226" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">手続きが難しそう…</text>`);
@@ -329,7 +330,7 @@ function scene(i,t,lt){
     if(on(4)&&!on(5)){
       s+=card(600,250,1240,540,`<text x="1220" y="330" text-anchor="middle" font-size="46" font-weight="900" fill="${DG}">許可なら、1年に365日、泊められる</text><text x="1220" y="400" text-anchor="middle" font-size="46" font-weight="900" fill="${T}">それなのに、なぜ届出を選ぶ人がいる？</text>${q(1220,600,150,t,0)}`,at(4,.4));
       s+=pop(1220,700,at(4,.5,3.6),`<rect x="720" y="650" width="1000" height="100" rx="50" fill="url(#gG)"/><text x="1220" y="715" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">許可には、家の場所と建物の条件がある</text>`);}
-    if(on(5)&&!on(6)){const it=[['1','分かれ目① 泊められる日数',NAVY],['2','分かれ目② 家の場所',NAVY],['3','分かれ目③ 建物の条件',NAVY]];
+    if(on(5)&&!on(6)){const it=[['1','泊められる日数',NAVY],['2','家の場所',NAVY],['3','建物の条件',NAVY]];
       s+=card(640,270,1160,470,`<text x="1220" y="350" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">今日わかること</text>`,at(5,.4));
       it.forEach(([n,w,c],k)=>{const y=450+k*110;s+=pop(1220,y,at(5,.4,[1.4,4.4,8][k]),`<rect x="720" y="${y-44}" width="1000" height="92" rx="46" fill="${c}"/><rect x="740" y="${y-38}" width="960" height="24" rx="12" fill="#fff" opacity=".18"/><circle cx="776" cy="${y}" r="34" fill="#fff"/><text x="776" y="${y+14}" text-anchor="middle" font-size="42" font-weight="900" fill="${c}">${n}</text><text x="840" y="${y+15}" font-size="${w.length>12?40:44}" font-weight="900" fill="#fff">${w}</text>`)});}
     if(on(7)){
@@ -391,7 +392,7 @@ function scene(i,t,lt){
   }
   if(i===2){ // 違い① 泊められる日数
     s+=aki(on(11)&&!on(13)?'think':(on(4)&&!on(5)?'point':'present'),on(11)&&!on(13)?'worry':'happy');
-    s+=hdr('分かれ目 ①','泊められる日数',at(0,.4),NAVY);
+    s+=hdr('分かれ目','泊められる日数',at(0,.4),NAVY);
     if(on(1)&&!on(2)){
       const rows=[['届出',180,T,'年180日まで','#b5603a'],['許可',365,G,'日数の上限なし','#2e6b47']];
       s+=card(600,250,1240,560,'',at(1,.4));
@@ -453,7 +454,7 @@ function scene(i,t,lt){
   }
   if(i===3){ // 違い② 手続きと建物
     s+=aki(on(2)&&!on(3)?'think':(on(4)?'point':'present'),on(2)&&!on(3)?'worry':'happy');
-    s+=hdr('分かれ目 ②③','場所と建物',at(0,.4),NAVY);
+    s+=hdr('分かれ目','場所と建物',at(0,.4),NAVY);
     const tileP=(x,y,w,h,p,inner,label,ck)=>pop(x+w/2,y+h/2,p,`${bx(x,y,w,h,22)}${inner}<text x="${x+w/2}" y="${y+h-24}" text-anchor="middle" font-size="${label.length>5?30:34}" font-weight="900" fill="${DG}">${label}</text>${ck>0?`<g transform="translate(${x+w-34},${y+34}) scale(${.5+.5*eo(ck)})"><circle r="26" fill="${G}"/><path d="M-12 0 l9 10 l17 -20" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>`:''}`);
     const PIC={
       kitchen:(cx,cy)=>`<g transform="translate(${cx},${cy})"><rect x="-36" y="-6" width="72" height="42" rx="9" fill="#8a8f98"/><rect x="-42" y="-12" width="84" height="11" rx="5" fill="#b3b9c1"/><path d="M-46 10 h-14 M46 10 h14" stroke="#8a8f98" stroke-width="8" stroke-linecap="round"/>${[-14,0,14].map((o,k)=>`<path d="M${o} -24 q-9 -14 0 -28" stroke="#9aa59d" stroke-width="5" fill="none" stroke-linecap="round" opacity="${.5+.4*Math.sin(t*3+k)}"/>`).join('')}</g>`,
@@ -576,7 +577,7 @@ function scene(i,t,lt){
       s+=pop(1200,470,at(7,.5),`${bx(660,270,1080,380,40)}${icon(940,380,70,'chat',G,'#fff',1.3)}<text x="1280" y="400" text-anchor="middle" font-size="46" font-weight="900" fill="${DG}">あなたの家は、どちら？</text>${formulaChip(900,480,300,'届出',T,'#fff',46)}${formulaChip(1260,480,300,'許可',G,'#fff',46)}<text x="1200" y="620" text-anchor="middle" font-size="34" font-weight="900" fill="${T}">コメントで教えてください</text>`);}
     s+=fade(seg(lt,E[7]+.5,E[7]+1.2),`<rect width="1920" height="1080" fill="#16301f"/><circle cx="960" cy="200" r="260" fill="url(#glow)" opacity=".25"/><text x="960" y="380" text-anchor="middle" font-size="60" font-weight="900" fill="#fff">最後まで見てくれて、ありがとうございます</text><text x="960" y="460" text-anchor="middle" font-size="37" font-weight="700" fill="#dfe9e3">${NOTE}</text><text x="960" y="524" text-anchor="middle" font-size="37" font-weight="700" fill="#dfe9e3">宿の稼働率は、開業から約8.5か月の平均の一例です。</text><text x="960" y="584" text-anchor="middle" font-size="37" font-weight="700" fill="#dfe9e3">手間と初期投資は含みません。出典は概要欄に記載しています。</text><text x="960" y="662" text-anchor="middle" font-size="34" font-weight="700" fill="#b8c9bf">${CREDIT}</text><rect x="780" y="730" width="360" height="100" rx="50" fill="#fff"/>${LOGO(810,745,1.1)}`,0);
   }
-  const TT={2:['分かれ目 ①','泊められる日数',NAVY],3:['分かれ目 ②③','場所と建物',NAVY],4:['判断','どちらが向くか',NAVY],5:['注意','失敗しやすい点 3つ',RED],6:['最後に','あなたの家は、届出？ 許可？',NAVY]};
+  const TT={2:['分かれ目','泊められる日数',NAVY],3:['分かれ目','場所と建物',NAVY],4:['判断','どちらが向くか',NAVY],5:['注意','失敗しやすい点 3つ',RED],6:['最後に','あなたの家は、届出？ 許可？',NAVY]};
   if(TT[i]&&L.length>1&&lt<L[1]){const [a,b,c]=TT[i],p=at(0,.4,.1)*(1-seg(lt,L[1]-.35,L[1]-.05)),fs=b.length>8?72:b.length>6?88:120;s+=pop(1180,480,p,`${bx(640,300,1080,360,40)}<rect x="${1180-140}" y="270" width="280" height="76" rx="38" fill="${c}"/><text x="1180" y="322" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">${a}</text><text x="1180" y="${fs>100?560:540}" text-anchor="middle" font-size="${fs}" font-weight="900" fill="${c}">${b}</text>${sparkle(760,380,1,t,1)}${sparkle(1620,560,.9,t,3)}`);}
   return s;
 }
@@ -591,7 +592,7 @@ window.draw=function(t){
     if(p>0)out+=`<g opacity="${p*e}"><rect x="24" y="26" width="${EP_TITLE.length*30+92}" height="56" rx="28" fill="#000" opacity=".14"/><rect x="24" y="20" width="${EP_TITLE.length*30+92}" height="56" rx="28" fill="#fff" opacity=".94"/><circle cx="52" cy="48" r="16" fill="${G}"/>${MARK(52,48,.42)}<text x="78" y="58" font-size="28" font-weight="900" fill="${DG}">${EP_TITLE}</text></g>`;
   }
   { // 画面の隅の「いま3つのうち何番め」（章2〜）
-    const act={2:[0],3:[1,2],4:[0,1,2],5:[0,1,2],6:[0,1,2]}[i];
+    const act={2:[0],3:[1,2]}[i];
     if(act!=null){const items=[['① 日数',130],['② 場所',130],['③ 建物',130]];let x=1380,g='';
       items.forEach(([w,wd],k)=>{const on1=act.includes(k);g+=`<rect x="${x}" y="22" width="${wd}" height="50" rx="25" fill="${on1?NAVY:'#fff'}" opacity="${on1?1:.8}" stroke="${NAVY}" stroke-width="3"/><text x="${x+wd/2}" y="55" text-anchor="middle" font-size="26" font-weight="900" fill="${on1?'#fff':NAVY}">${w}</text>`;x+=wd+14});
       const pp=seg(t,SC[2][0]+.6,SC[2][0]+1.2);out+=`<g opacity="${pp*(1-seg(t,SC[SC.length-1][1]-6,SC[SC.length-1][1]-5.4))}"><text x="1366" y="55" text-anchor="end" font-size="26" font-weight="900" fill="${NAVY}">分かれ目</text>${g}</g>`;}
