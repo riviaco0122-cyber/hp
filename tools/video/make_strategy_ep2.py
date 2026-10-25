@@ -485,7 +485,7 @@ function scene(i,t,lt){
     };
     if(on(4)&&!on(6)){
       s+=cardGround(580,250,1260,570,728,'#cfe0c8',at(4,.4));
-      s+=pop(830,560,at(4,.5,.3),inn(830,728,.7,{sign:'住宅',t,lit:.7,case:1,bike:1}));
+      s+=pop(830,560,at(4,.5,.3),inn(850,728,.7,{sign:'住宅',t,lit:.7,case:1}));
       [['台所','kitchen'],['浴室','bath'],['トイレ','toilet'],['洗面','sink']].forEach(([w,pc],k)=>{const x=1130+(k%2)*350,y=330+Math.floor(k/2)*220,o=[2.6,3.8,5,6.2][k];
         s+=tileP(x,y,320,190,at(4,.4,o*.9),PIC[pc](x+160,y+70),w,at(4,.3,o*.9+.5))});}
     if(on(6)&&!on(7)){
