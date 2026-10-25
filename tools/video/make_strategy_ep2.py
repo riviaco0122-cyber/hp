@@ -66,7 +66,7 @@ SCENES = [
         ('A', 'ここまでで、民泊の入口は2つと分かりました。1つめの分かれ目は、泊められる日数です。', dict(say='ここまでで、民泊の入口はふたつと分かりました。ひとつめの分かれ目は、泊められる日数です。', sfx=[(0, 'chime')])),
         ('A', '届出で始めると、泊められるのは、1年に180日までです。許可なら、制限はありません。', dict(say='届出で始めると、泊められるのは、いちねんに、ひゃくはちじゅうにちまでです。許可なら、制限はありません。', sfx=[(0.4, 'pop')])),
         ('A', '180日は、1年のおよそ半分、約49%です。', dict(say='ひゃくはちじゅうにちは、いちねんの、およそ半分、やく よんじゅうきゅうパーセントです。', sfx=[(0.4, 'pop')])),
-        ('A', '地域のルールで、さらに短くなることもあります。', dict(say='地域のルールで、さらに短くなることもあります。', sfx=[(0.4, 'pop')])),
+        ('A', '180日の長さは、お客さんの数で変わります。', dict(say='ひゃくはちじゅうにちの長さは、お客さんの数で変わります。', sfx=[(0.4, 'pop')])),
         ('A', 'ここで言葉を1つ。稼働率とは、1年のうち、お客さんが泊まった日の割合です。', dict(say='ここで言葉をひとつ。稼働率とは、いちねんのうち、お客さんが泊まった日の割合です。', sfx=[(0.4, 'pop')])),
         ('A', 'つまり、お客さんが多い宿ほど、180日に早く着きます。', dict(say='つまり、お客さんが多い宿ほど、ひゃくはちじゅうにちに早く着きます。', sfx=[(0.4, 'pop')])),
         ('A', '私たちの宿の例です。開業から約8.5か月の平均で、稼働率は約53%でした。', dict(say='私たちの宿の例です。開業から、やく はってんご かげつの平均で、稼働率は、やく ごじゅうさんパーセントでした。', sfx=[(0.4, 'pop')])),
@@ -93,12 +93,12 @@ SCENES = [
         ('A', '届出でも、1人あたり3.3平方メートル以上は必要です。', dict(say='届出でも、ひとりあたり、さんてんさん へいほうメートル以上は必要です。', sfx=[(0.4, 'pop')])),
         ('A', '宿に使う部分が200平方メートルを超えると、用途変更も要ります。建物の使い道を変える手続きです。', dict(say='宿に使う部分が、にひゃく へいほうメートルを超えると、用途変更も要ります。建物の使い道を変える手続きです。', sfx=[(0.4, 'pop')])),
         ('A', '私たちは、開業の2か月前に、保健所と消防署に相談しました。許可が出るまで、1〜2か月かかりました。', dict(say='私たちは、開業のにかげつ前に、保健所と消防署に相談しました。許可が出るまで、いっかげつから、にかげつかかりました。', sfx=[(0.4, 'pop')])),
-        ('A', '許可番号がないと、Airbnbで予約を受けられません。これは、私たちの1件の経験です。', dict(say='許可番号がないと、エアビーアンドビーで予約を受けられません。これは、私たちの、いっけんの経験です。', sfx=[(0.4, 'pop')])),
+        ('A', '許可番号がないと、Airbnbで予約を受けられません。', dict(say='許可番号がないと、エアビーアンドビーで予約を受けられません。', sfx=[(0.4, 'pop')])),
         ('A', '窓口に行くときは、日数、場所、建物の3つを、メモして行くと、話が早いです。', dict(say='窓口に行くときは、日数、場所、建物のみっつを、メモして行くと、話が早いです。', sfx=[(0.4, 'pop')])),
     ]),
     ("evening", 1.4, [
         ('A', 'ここまでで、日数、場所、建物の3つが分かりました。次は、この3つで、どちらが向くかを見分けます。', dict(say='ここまでで、日数、場所、建物のみっつが分かりました。次は、このみっつで、どちらが向くかを見分けます。', sfx=[(0, 'chime')])),
-        ('A', '届出が向くのは、小さく試したい人。ときどき使う人。家が住居専用地域にある人です。', dict(sfx=[(0.4, 'pop')])),
+        ('A', '届出が向くのは、小さく試したい人。ときどき使う人。家が、許可の取れない住居専用地域にある人です。', dict(sfx=[(0.4, 'pop')])),
         ('A', '許可が向くのは、1年中、事業として運営したい人。泊まる日数が多いほど収入が増える、事業向きの宿です。', dict(say='許可が向くのは、いちねんじゅう、事業として運営したい人。泊まる日数が多いほど収入が増える、事業向きの宿です。', sfx=[(0.4, 'pop')])),
         ('A', 'ここで、考えてみてください。1年に250日、泊めたい家があります。でも、家は住居専用地域です。', dict(say='ここで、考えてみてください。いちねんに、にひゃくごじゅうにち、泊めたい家があります。でも、家は住居専用地域です。', sfx=[(0.4, 'pop')])),
         ('A', 'A、届出で、180日と割り切る。B、場所を変えて、許可を取る。C、250日はあきらめて、別の使い道を考える。', dict(say='エー、届出で、ひゃくはちじゅうにちと割り切る。ビー、場所を変えて、許可を取る。シー、にひゃくごじゅうにちはあきらめて、別の使い道を考える。', sfx=[(0, 'chime')])),
@@ -106,7 +106,7 @@ SCENES = [
         ('A', 'どれも、間違いではありません。まず、その土地が住居専用地域かどうかを、相談窓口で確かめます。', dict(say='どれも、間違いではありません。まず、その土地が住居専用地域かどうかを、相談窓口で確かめます。', sfx=[(0.4, 'pop')])),
         ('A', 'つまり、場所を変えられるかで、答えが変わります。', dict(sfx=[(0.4, 'pop')])),
         ('Y', '届出で始めて、あとから許可に変えられますか？', dict(sfx=[(0.4, 'pop')])),
-        ('A', '許可は、新しく申請します。場所と建物の条件を満たせば、取れます。そのまま切り替わるかは、窓口で確かめます。', dict(sfx=[(0.4, 'pop')])),
+        ('A', '許可は、新しく申請します。場所と建物の条件を満たせば、取れます。', dict(sfx=[(0.4, 'pop')])),
         ('Y', '場所の確認は、どうやってやるんですか？', dict(sfx=[(0, 'pop')])),
         ('A', '相談窓口に、住所を伝えて、その土地が住居専用地域かどうかを、聞きます。', dict(sfx=[(0.4, 'pop')])),
     ]),
@@ -114,7 +114,7 @@ SCENES = [
         ('A', 'ここまでで、見分け方が分かりました。次は、失敗しやすい点を、3つ話します。', dict(say='ここまでで、見分けかたが分かりました。次は、失敗しやすい点を、みっつ話します。', sfx=[(0, 'chime')])),
         ('A', '失敗しやすいのは、決めたあとに気づくことです。', dict(sfx=[(0.4, 'pop')])),
         ('A', '1つめ。消防設備の費用の見落とし。会社員のオーナーさんの例で、想定の約40万円が、約60万円になりました。約1.5倍です。', dict(say='ひとつめ。消防設備の費用の見落とし。会社員のオーナーさんの例で、想定の、やく よんじゅうまんえんが、やく ろくじゅうまんえんになりました。やく いってんごばいです。', sfx=[(0.4, 'pop')])),
-        ('A', 'これは1人の事例です。どの家でもそうなる、という話ではありません。', dict(say='これは、ひとりの事例です。どの家でもそうなる、という話ではありません。', sfx=[(0.4, 'pop')])),
+        ('A', 'つまり、費用は、決める前に確かめます。', dict(say='つまり、費用は、決める前に確かめます。', sfx=[(0.4, 'pop')])),
         ('A', '2つめ。近隣への説明不足。私たちも、Wi-Fi工事の車の駐車で、近所から指摘を受けました。', dict(say='ふたつめ。近隣への説明不足。私たちも、ワイファイ工事の車の駐車で、近所から指摘を受けました。', sfx=[(0.4, 'pop')])),
         ('A', '3つめ。「許可なんて簡単」「届出だけで1年中OK」という話を、そのまま信じることです。', dict(say='みっつめ。「許可なんて簡単」「届出だけで、いちねんじゅうオーケー」という話を、そのまま信じることです。', sfx=[(0.4, 'pop')])),
         ('A', 'どれも、買う前に知っていれば、防げます。', dict(sfx=[(0.4, 'pop')])),
@@ -241,6 +241,7 @@ function hdr(no,title,p,c=T){
   return fade(p,`<rect x="540" y="72" width="${w}" height="86" rx="43" fill="#000" opacity=".13"/><rect x="540" y="66" width="${w}" height="86" rx="43" fill="#fff" opacity=".96"/>${no?`<rect x="552" y="77" width="${bw}" height="64" rx="32" fill="${c}"/><text x="${552+bw/2}" y="121" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">${no}</text>`:''}<text x="${no?552+bw+22:584}" y="123" font-size="54" font-weight="900" fill="${DG}">${title}</text>`,0);
 }
 const tag=(x,y,txt,p,c=Y,fc=DG,fs=34)=>pop(x,y,p,`<rect x="${x-txt.length*fs*.5-24}" y="${y-fs*.88+5}" width="${txt.length*fs+48}" height="${fs*1.76}" rx="${fs*.88}" fill="#000" opacity=".13"/><rect x="${x-txt.length*fs*.5-24}" y="${y-fs*.88}" width="${txt.length*fs+48}" height="${fs*1.76}" rx="${fs*.88}" fill="${c}"/><rect x="${x-txt.length*fs*.5-10}" y="${y-fs*.88+4}" width="${txt.length*fs+20}" height="${fs*.5}" rx="${fs*.25}" fill="#fff" opacity=".2"/><text x="${x}" y="${y+fs*.36}" text-anchor="middle" font-size="${fs}" font-weight="900" fill="${fc}">${txt}</text>`);
+const noteB=(txt,p)=>{const w=txt.length*28+64;return fade(p,`<rect x="${1200-w/2}" y="812" width="${w}" height="46" rx="23" fill="#1f3a2b" opacity=".85"/><text x="1200" y="845" text-anchor="middle" font-size="28" font-weight="700" fill="#fff">${txt}</text>`,0)};
 function qbubble(id,txt,p,t){
   return pop(1500,215,p,`${face(id,1790,215,62,'owner',G,'worry',t,talking('Y',t))}<rect x="${1700-txt.length*30-60}" y="178" width="${txt.length*30+60}" height="86" rx="30" fill="#000" opacity=".12"/><rect x="${1700-txt.length*30-60}" y="172" width="${txt.length*30+60}" height="86" rx="30" fill="#fff" stroke="${G}" stroke-width="4"/><text x="${1700-30-txt.length*15}" y="227" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">${txt}</text>`);
 }
@@ -262,7 +263,7 @@ function inn(x,y,s,o){
   [[-58,-30],[-28,0],[2,30],[32,58]].forEach(([a,b],k)=>{h+=`<path d="M${a} -214 H${b} L${b+sw*(1+k*.1)} -128 H${a+sw*(1+k*.1)}Z" fill="${nor}"/><path d="M${a} -214 H${b} L${b+sw*.4} -190 H${a+sw*.4}Z" fill="#000" opacity=".16"/>`});
   h+=`<circle cx="${sw*.7}" cy="-172" r="17" fill="#fff" opacity=".92"/><path d="M${-8+sw*.7} -172 L${sw*.7} -182 L${8+sw*.7} -172 V-164 H${-8+sw*.7}Z" fill="${nor}"/>`;
   h+=lantern(-104,-286,.9,t,x*.01)+lantern(104,-286,.9,t,x*.01+2);
-  if(o.sign){const fs=34,w=o.sign.length*fs+36;h+=`<rect x="${-w/2}" y="-262" width="${w}" height="50" rx="8" fill="#000" opacity=".16" transform="translate(0 5)"/><rect x="${-w/2}" y="-262" width="${w}" height="50" rx="8" fill="${o.signc||'#4a3324'}"/><rect x="${-w/2}" y="-262" width="${w}" height="50" fill="url(#pWood)"/><rect x="${-w/2+4}" y="-258" width="${w-8}" height="6" rx="3" fill="#fff" opacity=".2"/><text x="0" y="-226" text-anchor="middle" font-size="${fs}" font-weight="900" fill="#fff">${o.sign}</text>`}
+  if(o.sign){const fs=46,w=o.sign.length*fs+40;h+=`<rect x="${-w/2}" y="-274" width="${w}" height="60" rx="8" fill="#000" opacity=".16" transform="translate(0 5)"/><rect x="${-w/2}" y="-274" width="${w}" height="60" rx="8" fill="${o.signc||'#4a3324'}"/><rect x="${-w/2}" y="-274" width="${w}" height="60" fill="url(#pWood)"/><rect x="${-w/2+4}" y="-270" width="${w-8}" height="6" rx="3" fill="#fff" opacity=".2"/><text x="0" y="-228" text-anchor="middle" font-size="${fs}" font-weight="900" fill="#fff">${o.sign}</text>`}
   h+=plant(-210,6,.9,t)+plant(214,6,.9,t+1);
   if(o.case)h+=suitcase(-130,6,.85);
   if(o.post)h+=postbox(270,8,.85);
@@ -334,7 +335,7 @@ function scene(i,t,lt){
       s+=pop(A,by-100,at(0,.5,.1),inn(A,by,.6,{sign:'民泊届出',roof:'#b5603a',noren:T,t,lit:.55,case:1}));
       s+=pop(B,by-100,at(0,.5,.4),inn(B,by,.68,{sign:'旅館業許可',roof:'#2e6b47',noren:G,t,lit:.85,post:1,bike:1,signc:'#2f2a22'}));
       const W0=500,dA0=Math.min(d,180),endL=(x,o)=>fade(at(0,.4,.9),`<text x="${x}" y="800" font-size="26" font-weight="900" fill="${DG}">1月</text><text x="${x+W0}" y="800" text-anchor="end" font-size="26" font-weight="900" fill="${DG}">12月</text>`);
-      s+=card(620,618,560,222,`<text x="900" y="654" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">民泊新法の届出：年180日まで</text>${ybar(641,690,W0,64,dA0,180,T,{})}${dA0>=150?`<text x="${641+W0*180/365/2}" y="732" text-anchor="middle" font-size="25" font-weight="900" fill="#fff">泊められる 180日</text>`:''}<g opacity="${seg(lt,L[0]+4.1,L[0]+4.6)}"><text x="${641+W0*(180+365)/2/365}" y="732" text-anchor="middle" font-size="25" font-weight="900" fill="#4a5a52">この先は営業できない</text></g>${endL(641)}`,at(0,.4,.5));
+      s+=card(620,618,560,222,`<text x="900" y="654" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">民泊新法の届出：年180日まで</text>${ybar(641,690,W0,64,dA0,180,T,{})}${dA0>=150?`<text x="${641+W0*180/365/2}" y="732" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">180日まで</text>`:''}<g opacity="${seg(lt,L[0]+4.1,L[0]+4.6)}"><text x="${641+W0*(180+365)/2/365}" y="732" text-anchor="middle" font-size="30" font-weight="900" fill="#4a5a52">営業できない</text></g>${endL(641)}`,at(0,.4,.5));
       s+=card(1200,618,560,222,`<text x="1480" y="654" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">旅館業の許可：日数の上限なし</text>${ybar(1221,690,W0,64,d,0,G,{})}${d>=300?`<text x="1471" y="732" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">365日 ずっと営業できる</text>`:''}${endL(1221)}`,at(0,.4,.8));
 
     }
@@ -395,10 +396,10 @@ function scene(i,t,lt){
       s+=fade(at(6,.4,3.4),`<path d="M1130 560 H1210" stroke="${T}" stroke-width="12" stroke-linecap="round" stroke-dasharray="22 14" stroke-dashoffset="${-t*40}"/>`);
       s+=hanko(1120,470,'許可',seg(lt,L[6]+(5.4*K),L[6]+(5.4*K)+.35));}
     if(on(8)&&!on(9)){
-      s+=card(600,250,1240,540,`<text x="1220" y="330" text-anchor="middle" font-size="44" font-weight="900" fill="${DG}">特区民泊 ＝ 国が決めた区域だけ</text><path d="M720 640 Q660 560 720 500 Q780 430 860 450 Q920 360 1020 380 Q1080 330 1160 380 Q1240 360 1280 430 Q1360 450 1340 530 Q1420 560 1380 640 Q1260 700 1120 680 Q980 720 860 690 Q780 700 720 640Z" fill="#cfe5cf" stroke="#9fc4a8" stroke-width="6"/><path d="M780 600 Q860 560 940 610 M1100 470 Q1180 440 1260 500" stroke="#b6d4b8" stroke-width="10" fill="none" stroke-linecap="round"/>`,at(8,.4));
-      s+=pop(1000,545,at(8,.5,.8),`<ellipse cx="1000" cy="545" rx="120" ry="84" fill="url(#pHatch)" stroke="${G}" stroke-width="7" stroke-dasharray="16 10"/><g transform="translate(1000,505)"><path d="M0 0 C-30 -30 -36 -66 0 -78 C36 -66 30 -30 0 0Z" fill="${T}"/><circle cx="0" cy="-48" r="11" fill="#fff"/></g>`);
-      s+=tag(1580,520,'今日は扱いません',at(8,.4,2.8),'#9aa59d','#fff',34);
-      s+=tag(1580,420,'特区民泊',at(8,.4,.4),G,'#fff',40);}
+      s+=card(600,250,1240,540,`<text x="1220" y="330" text-anchor="middle" font-size="44" font-weight="900" fill="${DG}">特区民泊 ＝ 国が決めた区域だけ</text><g transform="translate(1220 520) scale(.85) translate(-1050 -520)"><path d="M720 640 Q660 560 720 500 Q780 430 860 450 Q920 360 1020 380 Q1080 330 1160 380 Q1240 360 1280 430 Q1360 450 1340 530 Q1420 560 1380 640 Q1260 700 1120 680 Q980 720 860 690 Q780 700 720 640Z" fill="#cfe5cf" stroke="#9fc4a8" stroke-width="6"/><path d="M780 600 Q860 560 940 610 M1100 470 Q1180 440 1260 500" stroke="#b6d4b8" stroke-width="10" fill="none" stroke-linecap="round"/></g>`,at(8,.4));
+      s+=pop(1180,545,at(8,.5,.8),`<g transform="translate(1180 520) scale(.85) translate(-1000 -520)"><ellipse cx="1000" cy="545" rx="120" ry="84" fill="url(#pHatch)" stroke="${G}" stroke-width="7" stroke-dasharray="16 10"/><g transform="translate(1000,505)"><path d="M0 0 C-30 -30 -36 -66 0 -78 C36 -66 30 -30 0 0Z" fill="${T}"/><circle cx="0" cy="-48" r="11" fill="#fff"/></g></g>`);
+      s+=tag(1050,745,'特区民泊',at(8,.4,.4),G,'#fff',40);
+      s+=tag(1390,745,'今日は扱いません',at(8,.4,2.8),'#6b756e','#fff',34);}
     if(on(9)&&!on(10))s+=gatesScene(1);
     if(on(9)&&!on(10))s+=qbubble('q1','どっちも民泊でしょ？',at(9,.4),t);
     if(on(10)){
@@ -420,7 +421,7 @@ function scene(i,t,lt){
       s+=fade(at(2,.4,3.6),`<rect x="${X0+W2*181/365/2-290}" y="585" width="580" height="62" rx="31" fill="${T}"/><text x="${X0+W2*181/365/2}" y="629" text-anchor="middle" font-size="40" font-weight="900" fill="#fff">泊められる 180日（約半分）</text><rect x="${(lx+X0+W2)/2-235}" y="585" width="470" height="62" rx="31" fill="#6b756e"/><text x="${(lx+X0+W2)/2}" y="629" text-anchor="middle" font-size="38" font-weight="900" fill="#fff">ここから先は営業できない</text>`);
       s+=fade(at(2,.4,4.6),`<rect x="620" y="672" width="720" height="84" rx="42" fill="url(#gO)"/><text x="980" y="730" text-anchor="middle" font-size="46" font-weight="900" fill="#fff">180日 ÷ 365日 ＝ 約49%</text>`);
       s+=tag(1600,714,'1年の約半分',at(2,.4,5.2),Y,DG,40);
-      s+=tag(1600,400,'地域で短いことも',at(2,.4,6.4),Y,DG,28);}
+      s+=noteB('※地域のルールで、さらに短いこともあります',at(2,.4,6));}
     if(on(4)&&!on(5)){
       const nights=[1,2,3,8,9,10,15,16,17,22,23,24,29,30];
       s+=card(600,250,1240,545,`<text x="1220" y="322" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">稼働率 ＝ 泊まった日 ÷ 全部の日</text>`,at(4,.4));
@@ -501,9 +502,8 @@ function scene(i,t,lt){
       s+=pop(1560,560,at(8,.4,.4),formulaChip(1340,510,440,'10人以上：33㎡以上',T,'#fff',30));
       if(on(9))s+=tag(1200,744,'届出の宿も、1人 3.3㎡以上',at(9,.4,.4),Y,DG,34);}
     if(on(1)&&!on(4)){
-      s+=card(600,250,1240,550,`<rect x="660" y="320" width="520" height="420" rx="22" fill="#e9efe4"/><rect x="660" y="320" width="270" height="420" rx="22" fill="url(#pHatch)"/><rect x="660" y="320" width="270" height="420" rx="22" fill="none" stroke="${G}" stroke-width="5" stroke-dasharray="14 9"/><path d="M930 320 V740 M660 530 H1180" stroke="#cfd8cb" stroke-width="22"/>${[[960,350],[1040,350],[1110,350],[960,570],[1040,570],[1110,570],[960,650],[1110,650]].map(([bx0,by0],k)=>`<rect x="${bx0}" y="${by0}" width="52" height="${k<3?70:60}" rx="6" fill="${['#e7b36a','#d98a6a','#9fc4d8'][k%3]}"/>`).join('')}<rect x="690" y="340" width="210" height="46" rx="23" fill="${G}"/><text x="795" y="373" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">住居専用地域</text><g transform="translate(795,520)"><path d="M-44 0 L0 -40 L44 0 V40 H-44Z" fill="${T}"/><rect x="-12" y="8" width="24" height="32" fill="#fff"/></g>`,at(1,.4));
-      const rowP=(y,name,c,sym,sc,txt,o)=>pop(1510,y,at(1,.4,o),`<rect x="1220" y="${y-52}" width="560" height="120" rx="30" fill="#f3f7f1" stroke="#dfe8dc" stroke-width="3"/><rect x="1236" y="${y-36}" width="170" height="52" rx="26" fill="${c}"/><text x="1321" y="${y}" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">${name}</text><circle cx="1700" cy="${y+8}" r="42" fill="${sc}"/><text x="1700" y="${y+30}" text-anchor="middle" font-size="64" font-weight="900" fill="#fff">${sym}</text><text x="1300" y="${y+50}" font-size="28" font-weight="900" fill="${DG}">${txt}</text>`);
-      s+=rowP(420,'届出',T,'△','#d99a2b','制限つきで可能',2.4)+rowP(610,'許可',G,'×',RED,'原則、営業できない',5.8);
+      const rowP=(y,name,c,sym,sc,txt,o)=>pop(1510,y,at(1,.4,o<3?.9:1.3),`<rect x="1220" y="${y-52}" width="560" height="120" rx="30" fill="#f3f7f1" stroke="#dfe8dc" stroke-width="3"/><rect x="1236" y="${y-36}" width="170" height="52" rx="26" fill="${c}"/><text x="1321" y="${y}" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">${name}</text>`)+fade(at(1,.4,o),`<circle cx="1700" cy="${y+8}" r="42" fill="${sc}"/><text x="1700" y="${y+30}" text-anchor="middle" font-size="64" font-weight="900" fill="#fff">${sym}</text><text x="1300" y="${y+50}" font-size="28" font-weight="900" fill="${DG}">${txt}</text>`,0);
+      s+=card(600,250,1240,550,`<rect x="660" y="320" width="520" height="420" rx="22" fill="#e9efe4"/><rect x="660" y="320" width="270" height="420" rx="22" fill="url(#pHatch)"/><rect x="660" y="320" width="270" height="420" rx="22" fill="none" stroke="${G}" stroke-width="5" stroke-dasharray="14 9"/><path d="M930 320 V740 M660 530 H1180" stroke="#cfd8cb" stroke-width="22"/>${[[960,350],[1040,350],[1110,350],[960,570],[1040,570],[1110,570],[960,650],[1110,650]].map(([bx0,by0],k)=>`<rect x="${bx0}" y="${by0}" width="52" height="${k<3?70:60}" rx="6" fill="${['#e7b36a','#d98a6a','#9fc4d8'][k%3]}"/>`).join('')}<rect x="690" y="340" width="210" height="46" rx="23" fill="${G}"/><text x="795" y="373" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">住居専用地域</text><g transform="translate(795,520)"><path d="M-44 0 L0 -40 L44 0 V40 H-44Z" fill="${T}"/><rect x="-12" y="8" width="24" height="32" fill="#fff"/></g>${rowP(420,'届出',T,'△','#d99a2b','制限つきで可能',2.4)}${rowP(610,'許可',G,'×',RED,'原則、営業できない',5.8)}`,at(1,.4));
       if(on(2))s+=qbubble('q3','許可は難しいのか…',at(2,.4),t);}
     if(on(10)&&!on(11)){
       s+=cardGround(600,250,1240,560,720,'#cfe0c8',at(10,.4));
@@ -515,7 +515,8 @@ function scene(i,t,lt){
     if(on(11)&&!on(14)){
       s+=card(600,250,1240,550,`<path d="M740 430 H1670" stroke="#cfd8cb" stroke-width="12" stroke-linecap="round"/><path d="M740 430 H${740+930*eo(at(11,6,.6))}" stroke="${G}" stroke-width="12" stroke-linecap="round"/>`,at(11,.4));
       [['開業の2か月前','保健所・消防署に相談'],['自分で申請','書類をそろえる'],['1〜2か月','申請から許可まで'],['許可番号','予約を受けられる']].forEach(([a,b],k)=>{const x=740+k*310,o=[.8,3.4,6.0,9.0][k];
-        s+=pop(x,430,at(11,.4,o),`<circle cx="${x}" cy="436" r="34" fill="#000" opacity=".12"/><circle cx="${x}" cy="430" r="34" fill="${[G,'#3d8a6a',Y,T][k]}"/><text x="${x}" y="445" text-anchor="middle" font-size="40" font-weight="900" fill="${k==2?DG:'#fff'}">${k+1}</text><text x="${x}" y="510" text-anchor="middle" font-size="32" font-weight="900" fill="${DG}">${a}</text><text x="${x}" y="552" text-anchor="middle" font-size="26" font-weight="700" fill="#4a5a52">${b}</text>`)});
+        s+=pop(x,430,at(11,.4,o),`<circle cx="${x}" cy="436" r="34" fill="#000" opacity=".12"/><circle cx="${x}" cy="430" r="34" fill="${[G,'#3d8a6a',Y,T][k]}"/><circle cx="${x}" cy="430" r="11" fill="${k==2?DG:'#fff'}"/><text x="${x}" y="510" text-anchor="middle" font-size="32" font-weight="900" fill="${DG}">${a}</text><text x="${x}" y="552" text-anchor="middle" font-size="26" font-weight="700" fill="#4a5a52">${b}</text>`)});
+      s+=noteB('※許可番号の件は、私たちの1件の経験です',at(12,.4,.5));
       s+=pop(1250,670,at(11,.5,9.4),`<rect x="840" y="590" width="820" height="170" rx="26" fill="#000" opacity=".08" transform="translate(0 6)"/><rect x="840" y="590" width="820" height="170" rx="26" fill="#fff" stroke="#e1e8df" stroke-width="3"/><text x="880" y="640" font-size="36" font-weight="900" fill="#ff5a5f">Airbnb</text><rect x="880" y="660" width="420" height="60" rx="12" fill="#eef3ee"/><text x="900" y="702" font-size="30" font-weight="700" fill="#4a5a52">許可番号：●●●●●●</text><g transform="translate(1330,690)"><circle r="22" fill="${G}"/><path d="M-10 0 l8 9 l14 -18" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><rect x="1410" y="650" width="210" height="64" rx="32" fill="url(#gO)"/><text x="1515" y="692" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">予約OK</text>`);}
   }
   if(i===4){ // 違い③ 向く人は誰か
@@ -527,30 +528,31 @@ function scene(i,t,lt){
         <circle cx="1560" cy="340" r="52" fill="#fff6c9" opacity=".95"/><path d="M${x0} 560 Q760 440 980 540 Q1160 460 1340 540 Q1560 450 1860 540 V820 H${x0}Z" fill="#b9dcc0"/><path d="M${x0} 620 Q800 540 1000 610 Q1200 540 1400 610 Q1640 540 1860 600 V820 H${x0}Z" fill="#a6d0a8"/><rect x="${x0}" y="640" width="${w}" height="180" fill="#9ac79a"/>
         <g opacity=".75" transform="translate(${((t*8)%1500)+600},300)" fill="#fff"><ellipse rx="80" ry="22"/><ellipse cx="46" cy="-14" rx="52" ry="26"/></g>
         <path d="M1110 820 L1280 820 L1520 590 L1440 590 L1195 760 L930 590 L860 590Z" fill="#d8c7a0"/><path d="M1110 820 L1280 820 L1195 735Z" fill="#d8c7a0"/><path d="M1125 820 L1195 756 L1265 820" stroke="#fff" stroke-width="5" fill="none" opacity=".6"/>
-        <path d="M1195 740 L900 600 M1195 740 L1480 600" stroke="#fff" stroke-width="5" stroke-dasharray="20 18" stroke-dashoffset="${-t*30}" opacity=".7"/>
+        <path d="M1195 815 V785 L1120 755 L895 590 M1195 785 L1270 755 L1480 590" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="20 18" stroke-dashoffset="${-t*30}" opacity=".7"/>
         <g transform="translate(790,560)"><ellipse cx="0" cy="12" rx="70" ry="10" fill="#000" opacity=".16"/><rect x="-6" y="-70" width="12" height="80" rx="4" fill="#7a5a3c"/><circle cx="${sway}" cy="-100" r="46" fill="#f4b6c9"/><circle cx="${-30+sway}" cy="-76" r="32" fill="#f7c8d6"/><circle cx="${30+sway}" cy="-80" r="34" fill="#f09ab5"/>${[0,1,2,3].map(k=>`<circle cx="${((k*57+t*30)%120)-60}" cy="${((k*41+t*40)%100)-20}" r="4" fill="#f9d3df" opacity=".8"/>`).join('')}</g>
         <g transform="translate(1590,560)"><ellipse cx="0" cy="12" rx="70" ry="10" fill="#000" opacity=".16"/><rect x="-6" y="-70" width="12" height="80" rx="4" fill="#7a5a3c"/><circle cx="${sway}" cy="-100" r="46" fill="#e0693a"/><circle cx="${-30+sway}" cy="-76" r="32" fill="#e9893f"/><circle cx="${30+sway}" cy="-80" r="34" fill="#cf4b2f"/></g>
         ${inn(880,600,.2,{sign:'',t,lit:.6,chim:0,roof:'#b5603a',noren:T})}${inn(1510,600,.26,{sign:'',t,lit:.9,roof:'#2e6b47',noren:G})}
         <g transform="translate(1195,740)"><ellipse cx="0" cy="8" rx="46" ry="8" fill="#000" opacity=".2"/><rect x="-7" y="-150" width="14" height="156" rx="4" fill="#7a5a3c"/><rect x="-7" y="-150" width="14" height="156" fill="url(#pWood)"/><path d="M-12 -142 h-130 l-26 28 l26 28 h130z" fill="${T}"/><path d="M12 -92 h130 l26 28 l-26 28 h-130z" fill="${G}"/><text x="-80" y="-102" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">届出</text><text x="80" y="-52" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">許可</text></g>
         <rect x="${x0}" y="${y0}" width="${hl==1?640:0}" height="${h}" fill="none"/>${hl==2?`<rect x="${x0}" y="${y0}" width="630" height="${h}" fill="#fff" opacity=".5"/>`:`<rect x="1190" y="${y0}" width="670" height="${h}" fill="#fff" opacity=".5"/>`}</g>`);
       s+=g;
-      const L1=[['ときどき使う家',.4],['まず試す',2.2],['住居専用地域',4]],R1=[['通年',.4],['泊まった日数で回収',2.4],['一棟貸しを本格運営',4.4]];
-      L1.forEach(([w,o],k)=>{if(on(1))s+=tag(735,636+k*58,w,at(1,.4,o),T,'#fff',30)});
+      const L1=[['ときどき使う家',.4],['まず試す',2.2],['許可が取れない地域',4]],R1=[['通年',.4],['泊まった日数で回収',2.4],['一棟貸しを本格運営',4.4]];
+      L1.forEach(([w,o],k)=>{if(on(1))s+=tag(760,636+k*58,w,at(1,.4,o),T,'#fff',30)});
       R1.forEach(([w,o],k)=>{if(on(2))s+=tag(1675,636+k*58,w,at(2,.4,o),G,'#fff',30)});}
     if(on(3)&&!on(5)){
-      s+=card(560,250,1280,560,`<rect x="600" y="280" width="240" height="64" rx="32" fill="${Y}"/><text x="720" y="324" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">考えてみよう</text><text x="1200" y="395" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">1年に250日、泊めたい家が、住居専用地域に</text><text x="1200" y="448" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">ある。どうする？</text>`+[['A','届出で、180日と割り切る'],['B','場所を変えて、許可を取る'],['C','250日はあきらめる']].map(([k2,w],k)=>{const x=760+k*440,bob=Math.sin(t*3+k)*4;return `<g opacity="${at(4,.3,[.5,2.9,5.3][k])}" transform="translate(0,${bob})"><rect x="${x-170}" y="526" width="340" height="200" rx="30" fill="#000" opacity=".08"/><rect x="${x-170}" y="520" width="340" height="200" rx="30" fill="#eef3ee"/><rect x="${x-150}" y="528" width="300" height="24" rx="12" fill="#fff" opacity=".8"/><circle cx="${x}" cy="580" r="38" fill="${[G,T,'#3d8a6a'][k]}"/><text x="${x}" y="595" text-anchor="middle" font-size="42" font-weight="900" fill="#fff">${k2}</text><text x="${x}" y="680" text-anchor="middle" font-size="${w.length>9?28:32}" font-weight="900" fill="${DG}">${w}</text></g>`}).join(''),at(3,.4));}
+      s+=card(560,250,1280,560,`<rect x="600" y="280" width="240" height="64" rx="32" fill="${Y}"/><text x="720" y="324" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">考えてみよう</text><text x="1200" y="395" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">1年に250日、泊めたい家が、住居専用地域に</text><text x="1200" y="448" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">ある。どうする？</text>`+[['A','届出で、180日と割り切る'],['B','場所を変えて、許可を取る'],['C','250日はあきらめる']].map(([k2,w],k)=>{const x=760+k*440,bob=Math.sin(t*3+k)*4;return `<g opacity="${at(3,.3,1)}" transform="translate(0,${bob})"><rect x="${x-170}" y="526" width="340" height="200" rx="30" fill="#000" opacity=".08"/><rect x="${x-170}" y="520" width="340" height="200" rx="30" fill="#eef3ee"/><rect x="${x-150}" y="528" width="300" height="24" rx="12" fill="#fff" opacity=".8"/><circle cx="${x}" cy="580" r="38" fill="${[G,T,'#3d8a6a'][k]}"/><text x="${x}" y="595" text-anchor="middle" font-size="42" font-weight="900" fill="#fff">${k2}</text><g opacity="${at(4,.3,[.5,2.9,5.3][k])}"><text x="${x}" y="680" text-anchor="middle" font-size="${w.length>9?28:32}" font-weight="900" fill="${DG}">${w}</text></g></g>`}).join(''),at(3,.4));}
     const cd=lt-(L[5]-3.2);if(cd>0&&cd<3.2&&!on(5))s+=pop(1200,880,clamp((cd%1)*4),`<circle cx="1200" cy="886" r="60" fill="#000" opacity=".15"/><circle cx="1200" cy="880" r="60" fill="${Y}"/><text x="1200" y="905" text-anchor="middle" font-size="72" font-weight="900" fill="${DG}">${Math.max(1,3-Math.floor(cd))}</text>`);
     if(on(5)&&!on(8)){
-      s+=card(600,250,1240,550,`<text x="1220" y="320" text-anchor="middle" font-size="42" font-weight="900" fill="${DG}">答えは、条件で変わる</text><rect x="760" y="360" width="720" height="86" rx="43" fill="#eef3f8" stroke="${NAVY}" stroke-width="4"/><text x="1120" y="418" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">場所を変えられる？</text>`,at(5,.4));
-      s+=pop(900,570,at(5,.5,2.2),`<path d="M960 450 L840 520" stroke="${NAVY}" stroke-width="7" stroke-linecap="round"/><rect x="640" y="520" width="440" height="110" rx="30" fill="url(#gG)"/><text x="860" y="570" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">はい</text><text x="860" y="612" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">B 場所を変えて、許可</text>`);
-      s+=pop(1340,570,at(5,.5,4.4),`<path d="M1280 450 L1400 520" stroke="${NAVY}" stroke-width="7" stroke-linecap="round"/><rect x="1160" y="520" width="440" height="110" rx="30" fill="url(#gO)"/><text x="1380" y="570" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">いいえ</text><text x="1380" y="612" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">A 届出（180日まで）</text>`);
+      s+=card(600,250,1240,550,`<text x="1220" y="320" text-anchor="middle" font-size="42" font-weight="900" fill="${DG}">答えは、条件で変わる</text><rect x="860" y="360" width="720" height="86" rx="43" fill="#eef3f8" stroke="${NAVY}" stroke-width="4"/><text x="1220" y="418" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">場所を変えられる？</text>`,at(5,.4));
+      s+=pop(980,570,at(5,.5,2.2),`<path d="M1120 450 L980 520" stroke="${NAVY}" stroke-width="7" stroke-linecap="round"/><rect x="760" y="520" width="440" height="110" rx="30" fill="url(#gG)"/><text x="980" y="570" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">はい</text><text x="980" y="612" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">B 場所を変えて、許可</text>`);
+      s+=pop(1460,570,at(5,.5,4.4),`<path d="M1320 450 L1460 520" stroke="${NAVY}" stroke-width="7" stroke-linecap="round"/><rect x="1240" y="520" width="440" height="110" rx="30" fill="url(#gO)"/><text x="1460" y="570" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">いいえ</text><text x="1460" y="612" text-anchor="middle" font-size="36" font-weight="900" fill="#fff">A 届出（180日まで）</text>`);
       s+=tag(1220,730,'どれも可。まず、土地の地域を確認',at(6,.4,.3),NAVY,'#fff',34);}
     if(on(8)&&!on(9))s+=qbubble('q4','あとで変えられる？',at(8,.4),t);
     if(on(8)&&!on(12)){
       s+=cardGround(600,250,1240,560,730,'#cfe0c8',at(8,.4));
       s+=pop(1180,540,at(8,.5,.3),`<g transform="translate(1180,730)"><ellipse cx="0" cy="8" rx="320" ry="16" fill="#000" opacity=".16"/><rect x="-300" y="-170" width="600" height="170" rx="10" fill="#b5835a"/><rect x="-300" y="-170" width="600" height="170" fill="url(#pWood)"/><rect x="-316" y="-190" width="632" height="30" rx="8" fill="#8a5a3c"/><rect x="-250" y="-330" width="500" height="150" rx="10" fill="#bfe0ef" opacity=".7"/><rect x="-250" y="-330" width="500" height="150" rx="10" fill="none" stroke="#fff" stroke-width="6"/><path d="M-250 -330 l140 0 l-90 150 l-50 0z" fill="#fff" opacity=".35"/><g transform="translate(-130,-186)">${person2(0,0,1.15,G,'#2b2422')}</g><g transform="translate(150,-186)">${person2(0,0,1.15,'#3d6a8a','#4a3324')}</g><rect x="-170" y="-384" width="340" height="56" rx="28" fill="${G}"/><text x="0" y="-345" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">窓口</text></g>`);
       s+=tag(1200,298,'許可は、新しく申請する',at(8,.4,.6),Y,DG,40);
-      s+=stampX(1500,480,'窓口で確認',at(8,.3,3.4),RED,48,6);}
+      s+=stampX(1500,480,'窓口で確認',at(8,.3,3.4),RED,48,6);
+      s+=noteB('※届出から許可へそのまま切り替わるかは、窓口で確かめてください',at(8,.4,.8));}
   }
   if(i===5){ // 失敗しやすい点 3つ
     s+=aki(on(6)?'point':(on(3)&&!on(4)?'think':'present'),on(3)&&!on(4)?'worry':'happy');
@@ -564,10 +566,10 @@ function scene(i,t,lt){
     const cardsT=[['消防設備の','費用の見落とし'],['近隣への','説明不足'],['うまい話を','そのまま信じる']];
     const startL=[2,4,5];
     cardsT.forEach(([a1,b1],k)=>{const [x,y]=slots[k],p=at(startL[k],.9,.0);if(on(startL[k])){
-      const extra=k===0&&on(2)?`<text x="${x+210}" y="${y+170}" font-size="32" font-weight="900" fill="${DG}">想定 約40万円</text><text x="${x+210}" y="${y+212}" font-size="36" font-weight="900" fill="${RED}">→ 約60万円（約1.5倍）</text>`:(k===2?`<text x="${x+210}" y="${y+170}" font-size="30" font-weight="900" fill="${DG}">「許可なんて簡単」</text><text x="${x+210}" y="${y+212}" font-size="30" font-weight="900" fill="${DG}">「届出だけで1年中OK」</text>`:'');
-      s+=drop(p,`${bx(x,y,600,250,28)}<rect x="${x}" y="${y}" width="14" height="250" rx="7" fill="${RED}"/>${ICONS[k](x,y)}<text x="${x+210}" y="${y+80}" font-size="40" font-weight="900" fill="${DG}">${a1}</text><text x="${x+210}" y="${y+128}" font-size="40" font-weight="900" fill="${DG}">${b1}</text>${extra}<circle cx="${x+560}" cy="${y+36}" r="26" fill="${RED}"/><text x="${x+560}" y="${y+48}" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">${k+1}</text>`);
+      const cx=x+385,extra=k===0&&on(2)?`<text x="${cx}" y="${y+170}" text-anchor="middle" font-size="32" font-weight="900" fill="${DG}">想定 約40万円</text><text x="${cx}" y="${y+212}" text-anchor="middle" font-size="32" font-weight="900" fill="${RED}">→ 約60万円（約1.5倍）</text>`:(k===1?`<text x="${cx}" y="${y+170}" text-anchor="middle" font-size="28" font-weight="900" fill="${DG}">Wi-Fi工事の車の駐車で</text><text x="${cx}" y="${y+212}" text-anchor="middle" font-size="28" font-weight="900" fill="${DG}">近所から指摘を受けた</text>`:(k===2?`<text x="${cx}" y="${y+170}" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">「許可なんて簡単」</text><text x="${cx}" y="${y+212}" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">「届出だけで1年中OK」</text>`:''));
+      s+=drop(p,`${bx(x,y,600,250,28)}${ICONS[k](x,y)}<text x="${cx}" y="${y+80}" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">${a1}</text><text x="${cx}" y="${y+128}" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">${b1}</text>${extra}<circle cx="${x+36}" cy="${y+36}" r="26" fill="${RED}"/><text x="${x+36}" y="${y+48}" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">${k+1}</text>`);
       if(p>.82&&p<1)s+=`<g opacity="${1-seg(p,.82,1)}"><ellipse cx="${x+300}" cy="${y+256}" rx="${200+80*seg(p,.82,1)}" ry="10" fill="#fff" opacity=".6"/></g>`}});
-    if(on(3)&&!on(5))s+=pop(1340,520,at(3,.3),`<g transform="rotate(-5 1340 520)"><rect x="1245" y="494" width="190" height="52" rx="26" fill="${Y}"/><text x="1340" y="530" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">1人の事例</text></g>`);
+    if(on(3)&&!on(5))s+=noteB('※消防設備の費用は1人の事例で、どの家でもそうなるとは限りません',at(3,.3));
     if(on(6))s+=tag(1220,840,'家を買う前に、窓口へ相談',at(6,.4,.3),G,'#fff',38);
   }
   if(i===6){ // あなたの家はどっち？
@@ -581,7 +583,8 @@ function scene(i,t,lt){
         s+=`<g opacity="${on(k+1)?1:0}">`+card(x,260,400,540,`<circle cx="${x+66}" cy="338" r="40" fill="${[G,T,'#3d8a6a'][k]}"/><text x="${x+66}" y="354" text-anchor="middle" font-size="44" font-weight="900" fill="#fff">${n}</text><text x="${x+120}" y="352" font-size="36" font-weight="900" fill="${DG}">${a}</text><text x="${x+200}" y="440" text-anchor="middle" font-size="30" font-weight="700" fill="#4a5a52">${b}</text>`+ans.map(([w,r,c],j)=>`<rect x="${x+24}" y="${480+j*150}" width="352" height="128" rx="24" fill="${c}"/><rect x="${x+36}" y="${488+j*150}" width="328" height="26" rx="13" fill="#fff" opacity=".18"/><text x="${x+200}" y="${526+j*150}" text-anchor="middle" font-size="28" font-weight="900" fill="#fff">${w}</text><text x="${x+200}" y="${580+j*150}" text-anchor="middle" font-size="${r.length>8?30:36}" font-weight="900" fill="#fff">${r}</text>`).join(''),at(k+1,.4))+(dim<1?`<rect x="${x}" y="260" width="400" height="540" rx="28" fill="#1f3a2b" opacity=".42"/>`:'')+`</g>`});
     }
     if(on(4)&&!on(5)){
-      s+=pop(1200,520,at(4,.5),inn(1200,770,.95,{sign:'あなたの家',t,lit:1,roof:'#2e6b47',noren:T,case:1,post:1,bike:1,signc:'#2f2a22'}));
+      s+=`<defs><radialGradient id="spD" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#0a1428" stop-opacity=".1"/><stop offset=".45" stop-color="#0a1428" stop-opacity=".72"/><stop offset="1" stop-color="#0a1428" stop-opacity="0"/></radialGradient><radialGradient id="spW" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff6d0" stop-opacity=".55"/><stop offset=".6" stop-color="#fff6d0" stop-opacity=".18"/><stop offset="1" stop-color="#fff6d0" stop-opacity="0"/></radialGradient></defs><g opacity="${at(4,.5)}"><rect x="500" y="0" width="1420" height="1080" fill="url(#spD)"/><ellipse cx="1200" cy="600" rx="420" ry="400" fill="url(#spW)"/></g>`;
+      s+=pop(1200,520,at(4,.5),inn(1200,790,1.0,{sign:'あなたの家',t,lit:1,roof:'#2e6b47',noren:T,signc:'#2f2a22'}));
       [['日数',860],['場所',1200],['建物',1540]].forEach(([w,x],k)=>{s+=tag(x,290,w,at(4,.4,[.4,1.2,2][k]),NAVY,'#fff',44)});
       s+=tag(1200,835,'日数・場所・建物が、分かれ目',at(4,.4,5.2),Y,DG,34);}
     if(on(5)&&!on(6)){
