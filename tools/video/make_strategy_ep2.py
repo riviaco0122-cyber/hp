@@ -66,7 +66,7 @@ SCENES = [
         ('A', 'ここまでで、民泊の入口は2つと分かりました。1つめの分かれ目は、泊められる日数です。', dict(say='ここまでで、民泊の入口はふたつと分かりました。ひとつめの分かれ目は、泊められる日数です。', sfx=[(0, 'chime')])),
         ('A', '届出で始めると、泊められるのは、1年に180日までです。許可なら、制限はありません。', dict(say='届出で始めると、泊められるのは、いちねんに、ひゃくはちじゅうにちまでです。許可なら、制限はありません。', sfx=[(0.4, 'pop')])),
         ('A', '180日は、1年のおよそ半分、約49%です。', dict(say='ひゃくはちじゅうにちは、いちねんの、およそ半分、やく よんじゅうきゅうパーセントです。', sfx=[(0.4, 'pop')])),
-        ('A', '180日の長さは、お客さんの数で変わります。', dict(say='ひゃくはちじゅうにちの長さは、お客さんの数で変わります。', sfx=[(0.4, 'pop')])),
+        ('A', '180日に着くまでの早さは、お客さんの数で変わります。', dict(say='ひゃくはちじゅうにちに着くまでの早さは、お客さんの数で変わります。', sfx=[(0.4, 'pop')])),
         ('A', 'ここで言葉を1つ。稼働率とは、1年のうち、お客さんが泊まった日の割合です。', dict(say='ここで言葉をひとつ。稼働率とは、いちねんのうち、お客さんが泊まった日の割合です。', sfx=[(0.4, 'pop')])),
         ('A', 'つまり、お客さんが多い宿ほど、180日に早く着きます。', dict(say='つまり、お客さんが多い宿ほど、ひゃくはちじゅうにちに早く着きます。', sfx=[(0.4, 'pop')])),
         ('A', '私たちの宿の例です。開業から約8.5か月の平均で、稼働率は約53%でした。', dict(say='私たちの宿の例です。開業から、やく はってんご かげつの平均で、稼働率は、やく ごじゅうさんパーセントでした。', sfx=[(0.4, 'pop')])),
@@ -558,7 +558,7 @@ function scene(i,t,lt){
     s+=aki(on(6)?'point':(on(3)&&!on(4)?'think':'present'),on(3)&&!on(4)?'worry':'happy');
     s+=hdr('','失敗しやすい点 3つ',at(0,.4),RED);
     const drop=(p,inner)=>{if(p<=0)return '';const dy=-(1-bk(p))*560;return `<g opacity="${clamp(p*5)}" transform="translate(0,${dy})">${inner}</g>`};
-    const slots=[[590,280],[1230,280],[900,550]];
+    const slots=[[590,270],[1230,270],[900,540]];
     const ICONS=[
       (x,y)=>`<g transform="translate(${x+110},${y+130})"><ellipse cx="0" cy="66" rx="40" ry="8" fill="#000" opacity=".16"/><rect x="-26" y="-30" width="52" height="94" rx="18" fill="#d9342b"/><rect x="-26" y="-30" width="14" height="94" rx="8" fill="#fff" opacity=".24"/><rect x="-12" y="-52" width="24" height="26" rx="4" fill="#2a2f2c"/><path d="M12 -44 q40 -4 44 30 q2 30 -14 40" stroke="#2a2f2c" stroke-width="7" fill="none"/><rect x="-22" y="0" width="44" height="34" rx="4" fill="#fff" opacity=".9"/></g>`,
       (x,y)=>`<g transform="translate(${x+110},${y+130})"><ellipse cx="0" cy="66" rx="80" ry="9" fill="#000" opacity=".14"/>${inn(-48,64,.14,{sign:'',t,lit:.6,chim:0})}${inn(52,64,.14,{sign:'',t,lit:.3,chim:0,roof:'#7a8a9a'})}<g transform="translate(2,-38)"><path d="M-44 -30 h88 a14 14 0 0 1 14 14 v22 a14 14 0 0 1 -14 14 h-40 l-20 20 v-20 h-28 a14 14 0 0 1 -14 -14 v-22 a14 14 0 0 1 14 -14z" fill="#fff" stroke="${RED}" stroke-width="6"/><text y="14" text-anchor="middle" font-size="44" font-weight="900" fill="${RED}">!</text></g></g>`,
@@ -570,7 +570,7 @@ function scene(i,t,lt){
       s+=drop(p,`${bx(x,y,600,250,28)}${ICONS[k](x,y)}<text x="${cx}" y="${y+80}" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">${a1}</text><text x="${cx}" y="${y+128}" text-anchor="middle" font-size="40" font-weight="900" fill="${DG}">${b1}</text>${extra}<circle cx="${x+36}" cy="${y+36}" r="26" fill="${RED}"/><text x="${x+36}" y="${y+48}" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">${k+1}</text>`);
       if(p>.82&&p<1)s+=`<g opacity="${1-seg(p,.82,1)}"><ellipse cx="${x+300}" cy="${y+256}" rx="${200+80*seg(p,.82,1)}" ry="10" fill="#fff" opacity=".6"/></g>`}});
     if(on(3)&&!on(5))s+=noteB('※消防設備の費用は1人の事例で、どの家でもそうなるとは限りません',at(3,.3));
-    if(on(6))s+=tag(1220,840,'家を買う前に、窓口へ相談',at(6,.4,.3),G,'#fff',38);
+    if(on(6))s+=tag(1220,845,'家を買う前に、窓口へ相談',at(6,.4,.3),G,'#fff',34);
   }
   if(i===6){ // あなたの家はどっち？
     s+=aki(on(7)?'cheer':(on(4)&&!on(5)?'present':'point'));
