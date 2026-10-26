@@ -15,6 +15,8 @@
   overlap   主役（宿 inn・人物 person）や小物（自転車・スーツケース・ポスト・植木・街灯 など）どうしの重なり
             （宿の中に置いた小物どうし・宿の外の人物や街灯との重なりを見る。壁の前に置くのは数えない）
   numdup    番号の二重表示の疑い（丸や板の中の「①」／「①」と同じ番号の数字が近くにある／同じ画面に ① と 1・2・3 が混在）
+  tight     文字つきのピル・札どうしの間が 24px 未満（近すぎ・重なり）
+  lastitem  「N個」と並べる項目（同じ字の大きさでそろった3つ以上）の最後が出てから、2秒たたないうちに消える
   caveat    台本（字幕）に断り書き（「一例です」「限りません」「違います」など）がある。稼働率の必須注意（手間・初期費用が入っていない）は許可リスト
   ※ 黒い幕の下・出入りの途中・影と光（黒の半透明・glow）は数えない。誤検知が出たら、直すか、しきい値（下のオプション）を見直す。
 
@@ -134,6 +136,27 @@ function figChecks(svg, op, texts, covers, res, OPT) {
     for (const p of plain) { if (parseInt(p.s, 10) === n && Math.hypot((p.r.left + p.r.right) / 2 - cx, (p.r.top + p.r.bottom) / 2 - cy) < 160) res.push(['numdup', '「' + o.s + '」と数字「' + p.s + '」が近くにある']); }
   }
   if (circs.length && plain.some(p => parseInt(p.s, 10) >= 1 && parseInt(p.s, 10) <= 9 && p.r.width < 80)) res.push(['numdup', '同じ画面に「' + circs[0].s + '」と数字（' + plain.map(p => p.s).slice(0, 3).join('・') + '）が混在']);
+  // (f) tight: 文字つきのピル・札どうしが近すぎる（24px 未満。縦に並べるときは箱の高さの 0.4 倍以上あける）
+  const pills = [...svg.querySelectorAll('rect')].filter(e => { if (inDefs(e) || op(e) < .85 || e.closest('[data-sub]') || e.closest('[data-obj]')) return false;
+    const r = R(e), rx = parseFloat(e.getAttribute('rx') || 0), f = e.getAttribute('fill') || '';
+    if (!(rx >= r.height * .4 && r.height >= 36 && r.height <= 110 && r.width >= 80 && r.width <= 1100)) return false;
+    if (f === '#000' || f === 'none' || /^url\(#(glow|pS)/.test(f) || op(e) < .85) return false;
+    const cx = (r.left + r.right) / 2, cy = (r.top + r.bottom) / 2;
+    return tt.some(o => o.r.left >= r.left - 6 && o.r.right <= r.right + 6 && o.r.top >= r.top - 8 && o.r.bottom <= r.bottom + 8 && cx > 0 && cy > 0); }).map(e => ({ e, r: R(e), lab: (tt.find(o => { const r = R(e); return o.r.left >= r.left - 6 && o.r.right <= r.right + 6 && o.r.top >= r.top - 8 && o.r.bottom <= r.bottom + 8; }) || {}).s }));
+  for (let i = 0; i < pills.length; i++) for (let j = i + 1; j < pills.length; j++) {
+    const a = pills[i].r, b = pills[j].r;
+    if (a.left <= b.left && a.right >= b.right && a.top <= b.top && a.bottom >= b.bottom) continue;
+    if (b.left <= a.left && b.right >= a.right && b.top <= a.top && b.bottom >= a.bottom) continue;
+    const ox = Math.min(a.right, b.right) - Math.max(a.left, b.left), oy = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+    const gx = Math.max(a.left, b.left) - Math.min(a.right, b.right), gy = Math.max(a.top, b.top) - Math.min(a.bottom, b.bottom);
+    let gap = null;
+    if (ox > 20 && gy >= -2 && gy < 24) gap = gy;           // 縦に並ぶ
+    else if (oy > 20 && gx >= -2 && gx < 24) gap = gx;      // 横に並ぶ
+    else if (ox > 20 && oy > 6) gap = -1;                   // 重なっている
+    if (gap != null) res.push(['tight', '「' + pills[i].lab + '」と「' + pills[j].lab + '」の間が ' + Math.max(0, Math.round(gap)) + 'px']);
+  }
+  // 項目の出現を記録（lastitem の判定用。Python 側で場面ごとに集計する）
+  res.push(['_t', JSON.stringify(tt.filter(o => o.r.width > 4 && !o.e.closest('[data-sub]')).map(o => [o.s, parseFloat(o.e.getAttribute('font-size') || 30), Math.round((o.r.left + o.r.right) / 2), Math.round((o.r.top + o.r.bottom) / 2), Math.round(o.r.left)]))]);
 }
 window.figChecks = figChecks;
 """
@@ -228,6 +251,44 @@ def caveats(lines, sc):
     return out
 
 
+def lastitem(vis, sc, step, t0, t1):
+    """「N個」と並べる項目（同じ字の大きさで、縦か横にそろった3つ以上）が、ずらして出るとき、
+    最後の1つが出てから、どれかが消える（または場面が終わる）までが 2 秒未満なら出す。"""
+    out = []
+    times = sorted(vis)
+    for si, (sa, sb) in enumerate(sc):
+        ts = [x for x in times if sa <= x < sb]
+        if len(ts) < 3:
+            continue
+        first, last, info = {}, {}, {}
+        for x in ts:
+            for s, fs, cx, cy, left in vis[x]:
+                k = (s, round(fs), round(cy / 60))
+                first.setdefault(k, x); last[k] = x; info[k] = (fs, cx, cy, left)
+        keys = [k for k in first if len(k[0]) <= 24]
+        done = set()
+        for k in keys:
+            fs, cx, cy, left = info[k]
+            grp = [q for q in keys if round(info[q][0]) == round(fs) and (abs(info[q][2] - cy) < 14 or abs(info[q][3] - left) < 14 or abs(info[q][1] - cx) < 14)]
+            if len(grp) < 3 or len({first[q] for q in grp}) < 3:
+                continue
+            if max(first[q] for q in grp) - min(first[q] for q in grp) > 10:
+                continue
+            gid = tuple(sorted(grp))
+            if gid in done:
+                continue
+            done.add(gid)
+            a_last = max(first[q] for q in grp)
+            grp = [q for q in grp if last[q] >= a_last]      # 最後の項目と同時に見えている仲間だけ
+            if len(grp) < 3:
+                continue
+            end = min(last[q] for q in grp) + step
+            if end - a_last < 2 - 1e-6 and a_last >= t0 and a_last <= t1:
+                lastk = max(grp, key=lambda q: first[q])
+                out.append((a_last, end, "lastitem", f"最後の項目「{lastk[0]}」が出てから {end - a_last:.1f}秒で消える（項目 {len(grp)} 個）"))
+    return out
+
+
 def main():
     args = sys.argv[1:]
     if not args:
@@ -259,6 +320,15 @@ def main():
             if r.returncode:
                 print(r.stderr[-2000:]); sys.exit(2)
             found += json.loads(r.stdout.strip().splitlines()[-1])
+    # lastitem 用: 各コマに見えている文字（_t）を取り出す
+    vis = {}
+    found2 = []
+    for t_, kind, what in found:
+        if kind == "_t":
+            vis[t_] = json.loads(what)
+        else:
+            found2.append((t_, kind, what))
+    found = found2
     # 同じ種類・同じ文字で続くものは、1件（開始〜終了）にまとめる
     merged = {}
     for t, kind, what in found:
@@ -270,6 +340,9 @@ def main():
     rows = sorted((a, b, k, w) for (k, w), spans in merged.items() for a, b in spans if b - a >= step * 0.99 or k in ("offscreen",))
     if not nofig:  # 台本の断り書き（字幕が出ている時間を1件として出す）
         rows += [(a, b, k, w) for a, b, k, w in caveats(lines, sc) if a <= t1 and b >= t0]
+        rows.sort()
+    if not nofig and vis:
+        rows += lastitem(vis, sc, step, t0, t1)
         rows.sort()
     scene_of = lambda t: next((i for i, (a, b) in enumerate(sc) if a <= t < b), len(sc) - 1)
     for a, b, k, w in rows:

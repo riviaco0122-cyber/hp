@@ -46,7 +46,7 @@ SCENES = [
         ('A', 'もう1つは、1年中、泊められる方法です。', dict(say='もうひとつは、いちねんじゅう、泊められるほうほうです。', sfx=[(0.4, 'pop')])),
         ('A', '前のほうを「届出」、後のほうを「許可」と呼びます。', dict(say='まえのほうを、とどけで、あとのほうを、きょか、とよびます。', sfx=[(0.4, 'pop'), (1.8, 'pop')])),
         ('A', 'どちらを選ぶかで、始め方も、売上も変わります。', dict(sfx=[(0.4, 'pop')])),
-        ('A', '届出と許可のどちらが向くかは、この3つで決まります。', dict(say='届出と許可のどちらが向くかは、このみっつで決まります。', sfx=[(0.4, 'pop')])),
+        ('A', '届出と許可のどちらが向くかは、日数、場所、建物の、この3つで決まります。', dict(say='届出と許可のどちらが向くかは、日数、場所、建物の、このみっつで決まります。', sfx=[(0.4, 'pop')])),
         ('A', '許可なら、1年に365日。届出なら、180日までです。', dict(say='許可なら、いちねんに、さんびゃくろくじゅうごにち。届出なら、ひゃくはちじゅうにちまでです。', sfx=[(0.4, 'pop')])),
         ('A', 'それなのに、なぜ届出を選ぶ人がいるのか。許可には、家の場所と、建物の条件があるからです。', dict(sfx=[(0.4, 'pop')])),
         ('A', 'この動画では、その3つを順に話します。1つめは、1年に何日、泊めたいかです。', dict(say='この動画では、そのみっつを順に話します。ひとつめは、いちねんに、なんにち、泊めたいかです。', sfx=[(0.4, 'pop'), (3.2, 'pop')])),
@@ -361,8 +361,8 @@ function scene(i,t,lt){
       const A=900,B=1480,by=585,d=Math.floor(365*seg(lt,L[8]+.5,L[8]+7.5)),dA=Math.min(d,180);
       s+=pop(A,by-100,at(6,.5,.1),inn(A,by,.6,{sign:'届出',roof:'#b5603a',noren:T,t,lit:.55,case:1}));
       s+=pop(B,by-100,at(6,.5,.4),inn(B,by,.68,{sign:'許可',roof:'#2e6b47',noren:G,t,lit:.85,post:1,bike:1,signc:'#2f2a22'}));
-      if(on(6)&&!on(7)){s+=tag(1190,240,'始め方',at(6,.4,.8),Y,DG,44);s+=tag(1190,320,'売上',at(6,.4,1.8),Y,DG,44);}
-      if(on(7)&&!on(8)){[['日数',960],['場所',1190],['建物',1420]].forEach(([w,x],k)=>{s+=tag(x,270,w,at(7,.4,[1.8,2.8,3.8][k]),NAVY,'#fff',44)});}
+      if(on(6)&&!on(7)){s+=tag(1190,225,'始め方',at(6,.4,.8),Y,DG,44);s+=tag(1190,345,'売上',at(6,.4,1.8),Y,DG,44);}
+      if(on(7)&&!on(9)){[['日数',960],['場所',1190],['建物',1420]].forEach(([w,x],k)=>{s+=tag(x,270,w,at(7,.4,[2.3,3.1,3.9][k]),NAVY,'#fff',44)});}
       if(on(8)){
         const W0=500,endL=(x)=>fade(at(8,.4,.9),`<text x="${x}" y="800" font-size="26" font-weight="900" fill="${DG}">1月</text><text x="${x+W0}" y="800" text-anchor="end" font-size="26" font-weight="900" fill="${DG}">12月</text>`);
         s+=card(620,618,560,222,`<text x="900" y="654" text-anchor="middle" font-size="30" font-weight="900" fill="${DG}">届出：年180日まで</text>${ybar(641,690,W0,64,dA,180,T,{})}${dA>=150?`<text x="${641+W0*180/365/2}" y="732" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">180日まで</text>`:''}<g opacity="${seg(lt,L[8]+.8,L[8]+1.3)}"><text x="${641+W0*(180+365)/2/365}" y="732" text-anchor="middle" font-size="30" font-weight="900" fill="#4a5a52">営業できない</text></g>${endL(641)}`,at(8,.4,.2));
@@ -374,7 +374,7 @@ function scene(i,t,lt){
     // 9〜10 今日話す3つ（1つずつ出す）
     if(on(10)&&!on(12)){const it=[['1','1年に何日、泊めたい？',NAVY,10,.8],['2','家は、どんな地域にある？',NAVY,11,.5],['3','建物は、許可の条件に合う？',NAVY,11,2.4]];
       s+=card(640,270,1160,470,`<text x="1220" y="350" text-anchor="middle" font-size="44" font-weight="900" fill="${DG}">届出か許可か、決める3つのこと</text>`,at(10,.4));
-      it.forEach(([n,w,c,li,o],k)=>{const y=450+k*110;s+=pop(1220,y,at(li,.4,o),`<rect x="720" y="${y-44}" width="1000" height="92" rx="46" fill="${c}"/><rect x="740" y="${y-38}" width="960" height="24" rx="12" fill="#fff" opacity=".18"/><circle cx="776" cy="${y}" r="34" fill="#fff"/><text x="776" y="${y+14}" text-anchor="middle" font-size="42" font-weight="900" fill="${c}">${n}</text><text x="840" y="${y+14}" font-size="40" font-weight="900" fill="#fff">${w}</text>`)});}
+      it.forEach(([n,w,c,li,o],k)=>{const y=440+k*120;s+=pop(1220,y,at(li,.4,o),`<rect x="720" y="${y-44}" width="1000" height="92" rx="46" fill="${c}"/><rect x="740" y="${y-38}" width="960" height="24" rx="12" fill="#fff" opacity=".18"/><circle cx="776" cy="${y}" r="34" fill="#fff"/><text x="776" y="${y+14}" text-anchor="middle" font-size="42" font-weight="900" fill="${c}">${n}</text><text x="840" y="${y+14}" font-size="40" font-weight="900" fill="#fff">${w}</text>`)});}
     // 11 はじめての人にも
     if(on(12)&&!on(13)){
       s+=cardGround(600,250,1240,560,728,'#cfe0c8',at(12,.4));
@@ -566,7 +566,7 @@ function scene(i,t,lt){
       s+=noteB('※許可番号の件は、私たちの1件の経験です',at(12,.4,.5));}
     if(on(13)){
       s+=card(600,250,1240,550,`<text x="1220" y="336" text-anchor="middle" font-size="46" font-weight="900" fill="${DG}">窓口に行くときは、メモを持って</text>`,at(13,.4));
-      [['1','日数'],['2','場所'],['3','建物']].forEach(([n,w],k)=>{const y=450+k*110;s+=pop(1220,y,at(13,.4,[.8,2.4,4][k]),`<rect x="900" y="${y-44}" width="640" height="92" rx="46" fill="${NAVY}"/><circle cx="956" cy="${y}" r="34" fill="#fff"/><path d="M940 ${y} l11 12 l20 -24" stroke="${NAVY}" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="1030" y="${y+15}" font-size="44" font-weight="900" fill="#fff">${w}</text>`)});
+      [['1','日数'],['2','場所'],['3','建物']].forEach(([n,w],k)=>{const y=440+k*120;s+=pop(1220,y,at(13,.4,[.8,2.4,4][k]),`<rect x="900" y="${y-44}" width="640" height="92" rx="46" fill="${NAVY}"/><circle cx="956" cy="${y}" r="34" fill="#fff"/><path d="M940 ${y} l11 12 l20 -24" stroke="${NAVY}" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="1030" y="${y+15}" font-size="44" font-weight="900" fill="#fff">${w}</text>`)});
     }
   }
   if(i===4){ // 違い③ 向く人は誰か
@@ -586,8 +586,8 @@ function scene(i,t,lt){
         <rect x="${x0}" y="${y0}" width="${hl==1?640:0}" height="${h}" fill="none"/>${hl==2?`<rect x="${x0}" y="${y0}" width="630" height="${h}" fill="#fff" opacity=".5"/>`:`<rect x="1190" y="${y0}" width="670" height="${h}" fill="#fff" opacity=".5"/>`}</g>`);
       s+=g;
       const L1=[['ときどき使う家',.4],['まず試す',2.2],['許可が取れない地域',4]],R1=[['通年',.4],['泊まった日数で回収',2.4],['一棟貸しを本格運営',4.4]];
-      L1.forEach(([w,o],k)=>{if(on(1))s+=tag(760,636+k*58,w,at(1,.4,o),T,'#fff',30)});
-      R1.forEach(([w,o],k)=>{if(on(2))s+=tag(1675,636+k*58,w,at(2,.4,o),G,'#fff',30)});}
+      L1.forEach(([w,o],k)=>{if(on(1))s+=tag(760,604+k*80,w,at(1,.4,o),T,'#fff',30)});
+      R1.forEach(([w,o],k)=>{if(on(2))s+=tag(1675,604+k*80,w,at(2,.4,o),G,'#fff',30)});}
     if(on(3)&&!on(5)){
       s+=card(560,250,1280,560,`<rect x="600" y="280" width="240" height="64" rx="32" fill="${Y}"/><text x="720" y="324" text-anchor="middle" font-size="36" font-weight="900" fill="${DG}">考えてみよう</text><g opacity="${at(3,.4,1.2)}"><text x="1200" y="395" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">1年に250日、泊めたい家が、住居専用地域に</text><text x="1200" y="448" text-anchor="middle" font-size="38" font-weight="900" fill="${DG}">ある。どうする？</text></g>`+[['A','届出で、180日と割り切る'],['B','場所を変えて、許可を取る'],['C','250日はあきらめる']].map(([k2,w],k)=>{const x=760+k*440,bob=Math.sin(t*3+k)*4;return `<g opacity="${at(3,.3,1)}" transform="translate(0,${bob})"><rect x="${x-170}" y="526" width="340" height="200" rx="30" fill="#000" opacity=".08"/><rect x="${x-170}" y="520" width="340" height="200" rx="30" fill="#eef3ee"/><rect x="${x-150}" y="528" width="300" height="24" rx="12" fill="#fff" opacity=".8"/><g opacity="${at(3,.3,4.2+k*.3)}"><circle cx="${x}" cy="580" r="38" fill="${[G,T,'#3d8a6a'][k]}"/><text x="${x}" y="595" text-anchor="middle" font-size="42" font-weight="900" fill="#fff">${k2}</text></g><g opacity="${at(4,.3,[.5,2.9,5.3][k])}"><text x="${x}" y="680" text-anchor="middle" font-size="${w.length>9?28:32}" font-weight="900" fill="${DG}">${w}</text></g></g>`}).join(''),at(3,.4));}
     const cd=lt-(L[5]-3.2);if(cd>0&&cd<3.2&&!on(5))s+=pop(1200,880,clamp((cd%1)*4),`<circle cx="1200" cy="886" r="60" fill="#000" opacity=".15"/><circle cx="1200" cy="880" r="60" fill="${Y}"/><text x="1200" y="905" text-anchor="middle" font-size="72" font-weight="900" fill="${DG}">${Math.max(1,3-Math.floor(cd))}</text>`);
@@ -601,10 +601,10 @@ function scene(i,t,lt){
     if(on(8)&&!on(12)){
       s+=cardGround(600,250,1240,560,730,'#cfe0c8',at(8,.4));
       s+=pop(1180,540,at(8,.5,.3),`<g transform="translate(1180,730)"><ellipse cx="0" cy="8" rx="320" ry="16" fill="#000" opacity=".16"/><rect x="-300" y="-170" width="600" height="170" rx="10" fill="#b5835a"/><rect x="-300" y="-170" width="600" height="170" fill="url(#pWood)"/><rect x="-316" y="-190" width="632" height="30" rx="8" fill="#8a5a3c"/><rect x="-250" y="-330" width="500" height="150" rx="10" fill="#bfe0ef" opacity=".7"/><rect x="-250" y="-330" width="500" height="150" rx="10" fill="none" stroke="#fff" stroke-width="6"/><path d="M-250 -330 l140 0 l-90 150 l-50 0z" fill="#fff" opacity=".35"/><g transform="translate(-130,-186)">${person2(0,0,1.15,G,'#2b2422')}</g><g transform="translate(150,-186)">${person2(0,0,1.15,'#3d6a8a','#4a3324')}</g><rect x="-170" y="-384" width="340" height="56" rx="28" fill="${G}"/><text x="0" y="-345" text-anchor="middle" font-size="34" font-weight="900" fill="#fff">窓口</text></g>`);
-      if(!on(9))s+=tag(1200,298,'許可は、新しく申請する',at(8,.4,.6),Y,DG,40);
-      if(on(11)){s+=tag(1000,298,'住所を伝える',at(11,.4,.2),NAVY,'#fff',40);s+=tag(1540,298,'住居専用地域か、聞く',at(11,.4,1.8),NAVY,'#fff',40);}
+      if(!on(9))s+=tag(1200,285,'許可は、新しく申請する',at(8,.4,.6),Y,DG,34);
+      if(on(11)){s+=tag(1000,285,'住所を伝える',at(11,.4,.2),NAVY,'#fff',34);s+=tag(1540,285,'住居専用地域か、聞く',at(11,.4,1.8),NAVY,'#fff',34);}
       s+=stampX(1500,480,'窓口で確認',at(9,.3,.8),RED,48,6);
-      if(on(9)&&!on(11))s+=tag(1200,298,'条件を満たせば、取れる',at(9,.4,.3),G,'#fff',40);
+      if(on(9)&&!on(11))s+=tag(1200,285,'条件を満たせば、取れる',at(9,.4,.3),G,'#fff',34);
       s+=noteB('※届出から許可へそのまま切り替わるかは、窓口で確かめてください',at(8,.4,.8));}
   }
   if(i===5){ // 失敗しやすい点 3つ
@@ -666,8 +666,8 @@ window.draw=function(t){
   }
   { // 画面の隅の「いま3つのうち何番め」（章2〜）
     const act={2:[0],3:[1,2]}[i];
-    if(act!=null){const items=[['① 日数',130],['② 場所',130],['③ 建物',130]];let x=1380,g='';
-      items.forEach(([w,wd],k)=>{const on1=act.includes(k);g+=`<rect x="${x}" y="22" width="${wd}" height="50" rx="25" fill="${on1?NAVY:'#fff'}" opacity="${on1?1:.8}" stroke="${NAVY}" stroke-width="3"/><text x="${x+wd/2}" y="55" text-anchor="middle" font-size="26" font-weight="900" fill="${on1?'#fff':NAVY}">${w}</text>`;x+=wd+14});
+    if(act!=null){const items=[['① 日数',130],['② 場所',130],['③ 建物',130]];let x=1400,g='';
+      items.forEach(([w,wd],k)=>{const on1=act.includes(k);g+=`<rect x="${x}" y="22" width="${wd}" height="50" rx="25" fill="${on1?NAVY:'#fff'}" opacity="${on1?1:.8}" stroke="${NAVY}" stroke-width="3"/><text x="${x+wd/2}" y="55" text-anchor="middle" font-size="26" font-weight="900" fill="${on1?'#fff':NAVY}">${w}</text>`;x+=wd+26});
       const pp=seg(t,SC[2][0]+.6,SC[2][0]+1.2);out+=`<g opacity="${pp*(1-seg(t,SC[SC.length-1][1]-6,SC[SC.length-1][1]-5.4))}"><text x="1366" y="55" text-anchor="end" font-size="26" font-weight="900" fill="${NAVY}">決める3つ</text>${g}</g>`;}
   }
   const cur=LINES.find(l=>t>=l[0]-.05&&t<l[1]+.3);
