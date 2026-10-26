@@ -166,10 +166,13 @@ class PageParser(HTMLParser):
         self.times = []          # (label_context, datetime)
         self._last_text = ""
         self.faq_q = []          # 画面のよくある質問（<summary class="faq__q">）の文
+        self.nosnippet_bad = []  # data-nosnippet が効かない要素（Google が対応するのは div・span・section だけ）
         self._faq_depth = 0
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
+        if "data-nosnippet" in a and tag not in ("div", "span", "section"):
+            self.nosnippet_bad.append(tag)
         if tag == "title":
             self._in = "title"
         elif tag == "meta":
@@ -381,6 +384,24 @@ def check():
             if faq_ld is not None and shown_q != ld_q:
                 add("error", pp, f"画面のよくある質問（{len(shown_q)}問）と構造化データ FAQPage（{len(ld_q)}問）の質問が一致しない")
 
+        # サイトリンク・サイト名（playbook 4-1）
+        site_items = [it for it in ld_objs if isinstance(it, dict) and it.get("@type") == "WebSite"]
+        is_home = pp in ("/", "/index.html")
+        if is_home and not site_items:
+            add("warn", pp, "構造化データ WebSite がない（トップで Google にサイト名を伝える）")
+        elif not is_home and site_items:
+            add("error", pp, "トップ以外に WebSite がある（サイト名の宣言はトップだけ。同じドメインに名前の違う WebSite があると、サイト名・サイトリンクが混乱する。isPartOf でトップの WebSite を参照する）")
+        for tag in sorted(set(p.nosnippet_bad)):
+            add("warn", pp, f"<{tag}> の data-nosnippet は Google に効かない（div・span・section に付ける）")
+        if not noindex and not is_home and pp != "/404.html":
+            bc = ld_find(ld_objs, ("BreadcrumbList",))
+            if bc is None:
+                add("warn", pp, "構造化データ BreadcrumbList がない（サイトの階層を伝える。tools/build.py の with_breadcrumbs が自動で付ける）")
+            else:
+                first = next((i for i in bc.get("itemListElement", []) if isinstance(i, dict)), {})
+                if first.get("item") != SITE + "/":
+                    add("warn", pp, "BreadcrumbList が「ホーム（トップ）」から始まっていない")
+
         # 見出し
         if p.h1 != 1:
             add("error", pp, f"h1 が {p.h1} 個（1個にする）")
@@ -525,9 +546,8 @@ def check_media_page(add, pp, text, ld_objs, types):
     Article・FAQPage・「この記事のポイント」は求めない。種類ごとに、いまのファイルに入っている構造化データを確認する"""
     name = pp.rsplit("/", 1)[-1]
     if pp == "/media.html":
-        for t in ("WebSite", "CollectionPage"):
-            if t not in types:
-                add("warn", pp, f"構造化データ {t} がない（メディアのトップに推奨）")
+        if "CollectionPage" not in types:
+            add("warn", pp, "構造化データ CollectionPage がない（メディアのトップに推奨。WebSite はトップだけに置く）")
         col = ld_find(ld_objs, ("CollectionPage",))
         listed = media_list_slugs()
         if col is not None and listed is not None:
