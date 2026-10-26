@@ -135,7 +135,8 @@ rivia-hp/
 * お問い合わせ・採用・プライバシーポリシーのページには表示しない。
 
 ### パンくずリスト
-* 画面上には表示しない（ページ名と重複し、文字が多く見えるため）。記事ページのみ構造化データ（BreadcrumbList）で検索エンジンに現在地を伝える。
+* コーポレートのページでは画面上に表示しない（ページ名と重複し、文字が多く見えるため）。構造化データ（BreadcrumbList）は、トップ以外の全ページに「ホーム」から始まる形で入れ、検索エンジンに現在地とサイトの階層を伝える（`with_breadcrumbs`。サイトリンクの整え方は `docs/seo/playbook.md` 4-1）。
+* サイト名の宣言（構造化データ WebSite）はトップだけに置く。アキヤドのトップ（media.html）は CollectionPage として、トップの WebSite の一部（isPartOf）と伝える。
 
 ### SEO・計測（追加）
 * 全ページ: 個別の title / description / canonical / OGP（og:image は ogp.jpg、1200×630）/ ファビコン（HTMLに埋め込み）。

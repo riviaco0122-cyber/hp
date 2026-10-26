@@ -503,6 +503,29 @@ def asset_version(path):
         return hashlib.md5(f.read()).hexdigest()[:8]
 
 
+def with_breadcrumbs(filename, title, jsonld, noindex):
+    """パンくずの構造化データ（BreadcrumbList）を、全ページ「ホーム（rivia-co.com/）」から始まる同じ形にそろえる。
+    ないページ（コーポレートのページ）には「ホーム > ページ名」を足す。Google にサイトの階層を伝え、サイトリンクの選び方を助ける"""
+    jsonld = list(jsonld or [])
+    found = False
+    for j in jsonld:
+        if j.get("@type") != "BreadcrumbList":
+            continue
+        found = True
+        items = j["itemListElement"]
+        if items and items[0].get("item") == f"{SITE}/":
+            items[0]["name"] = "ホーム"
+        else:
+            items.insert(0, {"@type": "ListItem", "name": "ホーム", "item": f"{SITE}/"})
+        for n, it in enumerate(items, 1):
+            it["position"] = n
+    if not found and not noindex and title and "/" not in filename and filename not in ("index.html", "404.html"):
+        jsonld.append({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "ホーム", "item": f"{SITE}/"},
+            {"@type": "ListItem", "position": 2, "name": title}]})
+    return jsonld
+
+
 def page(filename, title, description, body, current="", jsonld=None, og_type=None, og_image="images/ogp.jpg", noindex=False, mnav="", cv_category="operation"):
     # サービスページは、画面下に常に「無料で相談する」を表示する
     fixed_cta = (f'  <div class="fixed-cta"><a href="contact.html?category={current}" class="btn">無料で相談する {ARROW}</a></div>'
@@ -529,6 +552,7 @@ def page(filename, title, description, body, current="", jsonld=None, og_type=No
         if og_image == "images/ogp.jpg":
             og_image = "images/ogp-media.jpg"
     url = f"{SITE}/" + ("" if filename == "index.html" else filename)
+    jsonld = with_breadcrumbs(filename, title, jsonld, noindex)
     ld = ""
     if jsonld:
         ld = "\n".join(
@@ -1822,7 +1846,7 @@ def index_page():
       </div>
     </section>"""
     org_ld = org_entity()
-    page("index.html", "", "地域に眠る価値を、日本の活力に。空き家の再生や民泊の開業・運営から、集客・採用、まちづくりまでを担う合同会社RIVIA&CO.のコーポレートサイトです。", body, jsonld=[org_ld, {"@context": "https://schema.org", "@type": "WebSite", "name": "RIVIA&CO.", "alternateName": ["合同会社RIVIA&CO.", "リビアアンドコー"], "url": f"{SITE}/"}])
+    page("index.html", "", "地域に眠る価値を、日本の活力に。空き家の再生や民泊の開業・運営から、集客・採用、まちづくりまでを担う合同会社RIVIA&CO.のコーポレートサイトです。", body, jsonld=[org_ld, {"@context": "https://schema.org", "@type": "WebSite", "@id": WEBSITE_ID, "name": "RIVIA&CO.", "alternateName": ["合同会社RIVIA&CO.", "リビアアンドコー"], "url": f"{SITE}/", "inLanguage": "ja", "publisher": {"@id": ORG_ID}}])
 
 
 # ---------------------------------------------------------------- about
@@ -1868,6 +1892,8 @@ FOUNDERS = [
 
 # 構造化データの @id（Organization・Person は about.html で定義し、ほかのページからは @id で参照する）
 ORG_ID = f"{SITE}/about.html#organization"
+# サイト名の宣言（WebSite）はトップだけに置き、ほかのページは @id で参照する（同じドメインに名前の違う WebSite を置かない）
+WEBSITE_ID = f"{SITE}/#website"
 
 
 def person_id(key):
@@ -2386,7 +2412,8 @@ def spec_md():
     w("* お問い合わせ・採用・プライバシーポリシーのページには表示しない。")
     w("")
     w("### パンくずリスト")
-    w("* 画面上には表示しない（ページ名と重複し、文字が多く見えるため）。記事ページのみ構造化データ（BreadcrumbList）で検索エンジンに現在地を伝える。")
+    w("* コーポレートのページでは画面上に表示しない（ページ名と重複し、文字が多く見えるため）。構造化データ（BreadcrumbList）は、トップ以外の全ページに「ホーム」から始まる形で入れ、検索エンジンに現在地とサイトの階層を伝える（`with_breadcrumbs`。サイトリンクの整え方は `docs/seo/playbook.md` 4-1）。")
+    w("* サイト名の宣言（構造化データ WebSite）はトップだけに置く。アキヤドのトップ（media.html）は CollectionPage として、トップの WebSite の一部（isPartOf）と伝える。")
     w("")
     w("### SEO・計測（追加）")
     w("* 全ページ: 個別の title / description / canonical / OGP（og:image は ogp.jpg、1200×630）/ ファビコン（HTMLに埋め込み）。")
@@ -3904,7 +3931,7 @@ def media_footer():
             <li><a href="media/learn.html">基礎から学ぶ</a></li>
             <li><a href="media/search.html">記事をさがす</a></li>
             <li><a href="media/plans.html">アキヤドのプラン</a></li>
-            <li><a href="media/company.html">運営会社について</a></li>
+            <li><a href="media/company.html">運営者情報</a></li>
             <li><a href="{NOTE_STORY_URL}" target="_blank" rel="noopener" data-cta="note-story-footer">代表・片井の体験記（note）</a></li>
             <li><a href="contact.html">ご相談・お問い合わせ</a></li>
             <li><a href="privacy.html">プライバシーポリシー</a></li>
@@ -4838,8 +4865,8 @@ def media_company_page():
             <a href="contact.html?from=akiyado-company" class="mbtn" data-cta="media-company">無料で相談する {ARROW}</a>
           </div>
         </div>"""
-    crumbs = media_crumbs([("アキヤド", "media.html"), ("運営会社", "")])
-    body = f"""{media_hero("About us", "運営会社", "アキヤドは、宿泊施設の運営と空き家の再生を行う、合同会社RIVIA&CO.が運営しています。", crumbs)}
+    crumbs = media_crumbs([("アキヤド", "media.html"), ("運営者情報", "")])
+    body = f"""{media_hero("About us", "運営者情報", "アキヤドは、宿泊施設の運営と空き家の再生を行う、合同会社RIVIA&CO.が運営しています。", crumbs)}
 
     <section class="section msec msec--first">
       <div class="container">
@@ -4892,13 +4919,14 @@ def media_company_page():
     </section>
 
 {media_cta()}"""
-    ld = [{"@context": "https://schema.org", "@type": "AboutPage", "name": "アキヤドの運営会社",
+    ld = [{"@context": "https://schema.org", "@type": "AboutPage", "name": "アキヤドの運営者情報", "isPartOf": {"@id": WEBSITE_ID},
            "about": org_ref()},
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
               {"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"},
-              {"@type": "ListItem", "position": 2, "name": "運営会社"}]}]
-    page("media/company.html", "アキヤドの運営会社｜合同会社RIVIA&CO.",
-         "アキヤドを運営する合同会社RIVIA&CO.の会社概要です。静岡県下田市で一棟貸しの宿を運営し、空き家の買取・借り上げ、民泊の開業・運営支援を行っています。",
+              {"@type": "ListItem", "position": 2, "name": "運営者情報"}]}]
+    # 会社概要の本体はコーポレートの about.html。ここは「メディアを誰が・どう書いているか」のページとして、名前と説明を分ける
+    page("media/company.html", "アキヤドの運営者情報｜記事の書き手と監修",
+         "空き家と民泊のメディア「アキヤド」の運営者情報です。記事を書く理由と監修者、運営している宿の一例、アキヤドに相談できることを紹介します。運営は合同会社RIVIA&CO.です。",
          body, current="media", jsonld=ld)
 
 
@@ -5424,18 +5452,15 @@ def media_index_page():
 
 {media_cta()}"""
     ld = [{
+        # アキヤドは rivia-co.com の中のメディア。WebSite（サイト名の宣言）はトップだけに置き、ここではサイトの一部として伝える
         "@context": "https://schema.org",
-        "@type": "WebSite",
+        "@type": "CollectionPage",
         "name": "アキヤド",
         "alternateName": "空き家と民泊のメディア アキヤド",
         "url": f"{SITE}/media.html",
         "inLanguage": "ja",
+        "isPartOf": {"@id": WEBSITE_ID},
         "publisher": org_ref(),
-    }, {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "アキヤド",
-        "url": f"{SITE}/media.html",
         "hasPart": [{"@type": "Article", "headline": a["title"], "url": f"{SITE}/media/{a['slug']}.html"} for a in ordered],
     }, {
         # アキヤドの主なページ（検索結果のサイトリンクの候補になるページを、名前つきで伝える）
@@ -5446,7 +5471,7 @@ def media_index_page():
             ("空き家を売りたい方へ", "media/guide-sell.html"), ("空き家を活かしたい方へ", "media/guide-use.html"),
             ("副業で宿をはじめたい方へ", "media/guide-side.html"), ("アキヤドのプラン", "media/plans.html"),
             ("ゼロから体系的に学ぶ", "media/learn.html"), ("無料相談・お問い合わせ", "media/contact.html"),
-            ("運営会社", "media/company.html")], 1)],
+            ("運営者情報", "media/company.html")], 1)],
     }]
     page("media.html", "アキヤド｜空き家の売却・活用と、副業ではじめる民泊のメディア", "空き家を売りたい方、活かしたい方、副業で民泊や小さな宿をはじめたい方に向けて、宿を運営する合同会社RIVIA&CO.が悩みに沿って解説するメディアです。", body, current="media", jsonld=ld, mnav="top")
 
@@ -5784,13 +5809,13 @@ def article_page(a):
           </ul>
         </div>
 
-        <aside class="author" data-nosnippet>
+        <section class="author" data-nosnippet>
           <p class="author__label">この記事を書いた人</p>
           <p class="author__name">アキヤド編集部</p>
           <p class="author__text">合同会社RIVIA&amp;CO.のメディア編集部。空き家の再生から宿泊施設の運営・開業支援、WEB集客・採用支援まで、自ら宿を運営する当事者の視点で、地域の価値を活かすための情報をお届けします。</p>
-        </aside>
+        </section>
 
-        <aside class="supervisor" data-nosnippet>
+        <section class="supervisor" data-nosnippet>
           <figure class="supervisor__photo"><img src="images/{SUPERVISOR["photo"]}" alt="{e(SUPERVISOR["name"])}の写真" width="600" height="600" loading="lazy" decoding="async"></figure>
           <div>
             <p class="author__label">この記事の監修者</p>
@@ -5801,7 +5826,7 @@ def article_page(a):
               <ul>{"".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in SUPERVISOR["links"])}</ul>
             </div>
           </div>
-        </aside>
+        </section>
 
         <aside class="article-cta">
           <p class="article-cta__title">この記事に関連するサービス</p>

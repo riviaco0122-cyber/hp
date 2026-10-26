@@ -7,9 +7,11 @@ HTMLを直接書き換えず、ここを直してから作り直してくださ�
 ## 作り直す
 
 ```sh
-pip install budoux beautifulsoup4 pillow
+pip install budoux==0.10.0 beautifulsoup4 pillow
 python3 tools/build.py
 ```
+
+budoux（日本語の改行位置）は **0.10.0 に固定**する。版が違うと、全ページの改行位置（`<wbr>`）が変わり、差分が数十ファイルに広がる。
 
 日本語のページを作ったあと、英語版（`pages/en/`）も自動で作ります。
 
