@@ -283,7 +283,7 @@ def lastitem(vis, sc, step, t0, t1):
             if len(grp) < 3:
                 continue
             end = min(last[q] for q in grp) + step
-            if end - a_last < 2 - 1e-6 and a_last >= t0 and a_last <= t1:
+            if end - a_last <= 2 + step + 1e-6 and a_last >= t0 and a_last <= t1:
                 lastk = max(grp, key=lambda q: first[q])
                 out.append((a_last, end, "lastitem", f"最後の項目「{lastk[0]}」が出てから {end - a_last:.1f}秒で消える（項目 {len(grp)} 個）"))
     return out
