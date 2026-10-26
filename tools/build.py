@@ -2943,7 +2943,7 @@ ARTICLES = [
 <p>「空き家を少し貸すだけ」でも、宿泊料を受け取って不特定の人を泊めるなら、どちらかの手続きが要ります。</p>
 """),
             ("compare", "民泊新法と簡易宿所では、日数と手続きがどう違うのか", """
-<p>民泊新法は手続きが軽く、始めやすい場合があります。反面、泊められるのは年180日までで、自治体の条例でさらに短くなる場合もあります。</p>
+<p>民泊新法は手続きが軽く、始めやすい場合があります。反面、泊められるのは年180日までで、自治体の条例でさらに短くなる場合もあります。数え方や超えたときの扱いは、<a href="media/minpaku-180days-rule.html">民泊新法の年180日ルール</a>にまとめています。</p>
 <p>簡易宿所は、1年を通して営業できる場合があります。泊められる日数に上限がなく、旅館業の許可の種類のひとつですが、許可が必要で建物の条件も厳しくなります。</p>
 <table class="table">
 <thead><tr><th>項目</th><th>住宅宿泊事業法（民泊新法）</th><th>旅館業法（簡易宿所）</th></tr></thead>
@@ -4953,7 +4953,7 @@ MEDIA_COURSES = [
                    ("収益の考え方", "指標の読み方、収益の試算、投資としての見方、運営の事例。", ["inn-kpi-basics", "minpaku-break-even", "airdna-revenue-simulation", "minpaku-investment-yield", "case-rental-house-inn-first-year"])]),
     dict(key="challenges", en="Course 03", title="民泊の課題と、乗り越え方", lead="「民泊は大変」と言われる理由と、実際の乗り越え方。手続き、お金、運営、集客まで。",
          chapters=[("よく聞く課題を知る", "手続き・近隣・運営・季節・費用の5つの課題。", ["minpaku-hard-truth"]),
-                   ("制度と手続き", "民泊と旅館業の違い、開業までの流れ、会社員の副業の確認、消防。", ["minpaku-vs-ryokan-law", "minpaku-start-steps", "kaishain-minpaku-fukugyo", "minpaku-chintai-start", "kani-shukusho-kyoka-guide", "minpaku-fire-safety"]),
+                   ("制度と手続き", "民泊と旅館業の違い、開業までの流れ、会社員の副業の確認、消防。", ["minpaku-vs-ryokan-law", "minpaku-start-steps", "minpaku-180days-rule", "kaishain-minpaku-fukugyo", "minpaku-chintai-start", "kani-shukusho-kyoka-guide", "minpaku-fire-safety"]),
                    ("お金と改修", "開業資金、補助金、改修の進め方、宿泊税。", ["inn-startup-funding", "small-inn-subsidies", "kominka-renovation-points", "remote-renovation-tips", "accommodation-tax"]),
                    ("運営の課題", "近隣との関係、設備、清掃、清掃を頼む人、閑散期、遠方からの運営。", ["minpaku-neighbor-rules", "long-stay-guest-equipment", "cleaning-linen-operations", "minpaku-seisou-kojin-kakunin", "minpaku-off-season", "minpaku-remote-operation"]),
                    ("集客と評価", "予約サイトの使い方、予約ページ、レビュー。", ["minpaku-shukyaku-first-steps", "ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips"]),
