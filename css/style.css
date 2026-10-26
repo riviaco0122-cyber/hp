@@ -3143,6 +3143,8 @@ body.is-media .toc li::before { color: var(--m-green); }
 @media (max-width: 599px) { .article__section .fig .fig-cyc__node { font-size: 10.5px; padding: 4px; } }
 /* PC：横に並んだ項目カードの高さをそろえる（片方だけ低くならないように） */
 .fig-points > .fig-point { align-self: stretch; }
+/* 項目カード：文字の量が違っても、見出しの高さをそろえる（上づめ） */
+.fig-points > .fig-point { align-items: start; align-content: start; }
 body.is-media .article__section .fig ul.fig-points > li.fig-point { margin-top: 0; }
 
 /* ===== 一覧を「短い表示名＋小さな補足」のカードにする（ガイド・学ぶ・記事一覧） ===== */
