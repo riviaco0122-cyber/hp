@@ -517,6 +517,10 @@ def check_article(add, pp, page_url, text, p, ld_objs, types, sitemap, articles,
         add("warn", pp, "構造化データ FAQPage がない（AIO向けに推奨）")
     if 'class="keypoints' not in text:
         add("warn", pp, "「この記事のポイント」がない（AIO向けに推奨）")
+    # 対談（.talk）は「顔写真＋吹き出し」の2つだけ。注記などが入ると吹き出しが1文字幅に潰れて縦書きのようになる
+    for extra in re.findall(r'<div class="talk__body">.*?</div>(.*?)</div>', text, re.S):
+        if extra.strip():
+            add("error", pp, f"対談（.talk）の中に吹き出し以外の要素がある（表示が崩れる）: {re.sub(r'<[^>]+>', '', extra).strip()[:40]}")
     pub = art.get("datePublished") if art else None
     mod = art.get("dateModified") if art else None
     if not p.article_publish:
