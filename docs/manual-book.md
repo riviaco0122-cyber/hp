@@ -626,7 +626,7 @@ tools: Read, Grep, Glob, Bash, Edit, Write
      - `date`：公開予定日（日本時間）。今日より前の日付にしない。
    - `python3 tools/build.py` で作り直す（一覧・テーマ・ガイド・関連記事・検索の索引・sitemap・llms.txt・仕様書まで自動で更新される）。
    - `python3 tools/article_score.py pages/media/<スラッグ>.html` で機械採点し、品質管理部に HTML の採点を依頼する。
-2. **既存記事の改善**（title・説明文・本文・FAQ・内部リンク）：該当する `tools/articles_*.py`（または `build.py` の `ARTICLES`）の記事データを直して作り直す。公開済み記事の `title` 変更・URL 変更は人の確認が必要（playbook 6章）。内容を直したら `updated` を今日にする。
+2. **既存記事の改善**（title・説明文・本文・FAQ・内部リンク）：該当する `tools/articles_*.py`（初期の記事は `tools/articles_base.py`）の記事データを直して作り直す。公開済み記事の `title` 変更・URL 変更は人の確認が必要（playbook 6章）。内容を直したら `updated` を今日にする。
 3. **テクニカルSEO/AIO**：構造化データ・meta・内部リンク・llms.txt（`build.py` の `llms_txt()` が作る）の改善は `tools/build.py` を直す。
 4. **計測（GA4 のイベント）**を足すときは `js/main.js` を直し、GA4 側で人が設定することがあれば PR に手順を書く。
 

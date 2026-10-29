@@ -287,6 +287,7 @@ def check():
     seen_titles, seen_descs = {}, {}
     indexable_urls, noindex_urls = set(), set()
     alternates = {}  # canonical URL → {hreflang: href}
+    inbound = {}  # canonical URL → そのページへ <a> でリンクしている、ほかのページ
 
     for file in html_files():
         pp = public_path(file)
@@ -421,6 +422,9 @@ def check():
                 continue
             if not urlparse(href).netloc and not href.startswith("/"):
                 relative_links += 1
+            if tag == "a":
+                target = redirect_target(u.path) or u.path
+                inbound.setdefault(SITE + canonical_path(target), set()).add(pp)
             if resolve_file(u.path) is None:
                 add("error", pp, f"リンク切れ: {href}")
             elif redirect_target(u.path) is not None:
@@ -442,6 +446,13 @@ def check():
             add("error", "seo/sitemap.xml", f"noindex のページが sitemap に載っている: {url}")
         else:
             add("error", "seo/sitemap.xml", f"sitemap にあるが存在しない: {url}")
+
+    # 孤立ページ（sitemap にはあるが、ほかのどのページからもリンクされていない）。Google が見つけにくく、評価も伝わりにくい
+    for url in sorted(sitemap):
+        if url != SITE + "/" and not (inbound.get(url, set()) - {url.replace(SITE, "")}):
+            add("warn", url.replace(SITE, ""), "ほかのどのページからもリンクされていない（孤立ページ。ガイド・関連記事・一覧から1本以上つなぐ）")
+
+    check_crawl_rules(add, sitemap)
 
     # hreflang の相互参照（日本語版 ⇄ 英語版）
     for url, alts in sorted(alternates.items()):
@@ -501,6 +512,24 @@ def check():
     return issues, articles
 
 
+def check_crawl_rules(add, sitemap):
+    """インデックス登録の土台: robots.txt で公開ページや CSS・JS・画像を止めていないか、
+    内部用のパス（/pages/・/seo/）で同じ中身を開けたままになっていないか（重複 URL）。"""
+    robots = ROOT / "seo" / "robots.txt"
+    if robots.is_file():
+        for line in robots.read_text(encoding="utf-8").splitlines():
+            m = re.match(r"\s*Disallow:\s*(\S+)", line, re.I)
+            if not m:
+                continue
+            rule = m.group(1)
+            hit = [u for u in sitemap if urlparse(u).path.startswith(rule)]
+            if hit or any(d.startswith(rule) for d in ("/css/", "/js/", "/images/")):
+                add("error", "seo/robots.txt", f"Disallow: {rule} が公開ページか CSS・JS・画像を止めている（Google がページを正しく読めない）")
+    for probe in ("/pages/media.html", "/pages/media/x.html", "/seo/sitemap.xml"):
+        if redirect_target(probe) is None:
+            add("warn", "vercel.json", f"内部用のパス {probe} が公開 URL へ転送されていない（同じ中身の URL が2つでき、インデックスの重複の原因になる）")
+
+
 def page_url_of(pp: str) -> str:
     return SITE + pp
 
@@ -517,6 +546,10 @@ def check_article(add, pp, page_url, text, p, ld_objs, types, sitemap, articles,
         add("warn", pp, "構造化データ FAQPage がない（AIO向けに推奨）")
     if 'class="keypoints' not in text:
         add("warn", pp, "「この記事のポイント」がない（AIO向けに推奨）")
+    # 対談（.talk）は「顔写真＋吹き出し」の2つだけ。注記などが入ると吹き出しが1文字幅に潰れて縦書きのようになる
+    for extra in re.findall(r'<div class="talk__body">.*?</div>(.*?)</div>', text, re.S):
+        if extra.strip():
+            add("error", pp, f"対談（.talk）の中に吹き出し以外の要素がある（表示が崩れる）: {re.sub(r'<[^>]+>', '', extra).strip()[:40]}")
     pub = art.get("datePublished") if art else None
     mod = art.get("dateModified") if art else None
     if not p.article_publish:

@@ -142,6 +142,36 @@
       "source": "/media/minpaku-case-list.html",
       "destination": "/media.html",
       "permanent": true
+    },
+    {
+      "source": "/pages/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/pages/media/:file.html",
+      "destination": "/media/:file.html",
+      "permanent": true
+    },
+    {
+      "source": "/pages/:file.html",
+      "destination": "/:file.html",
+      "permanent": true
+    },
+    {
+      "source": "/seo/robots.txt",
+      "destination": "/robots.txt",
+      "permanent": true
+    },
+    {
+      "source": "/seo/sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/seo/llms.txt",
+      "destination": "/llms.txt",
+      "permanent": true
     }
   ],
   "ignoreCommand": "case \"$VERCEL_GIT_COMMIT_REF\" in seo/daily) exit 1;; seo/*) exit 0;; *) exit 1;; esac"

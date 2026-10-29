@@ -57,6 +57,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
   - 記事: `tools/articles_*.py`（AI社員チームが新しく足す記事は `tools/articles_auto.py`）。図は `tools/figures.py`
   - ページの文言・構成・テーマ・ガイド・よくある悩み・llms.txt: `tools/build.py`
   - 共通の見た目・動き: `css/style.css`・`js/main.js`（手で直す。版番号は build.py が自動で付ける）
+- **技術負債をためない書き方**（人の方針 2026-10-29）: ①CSS は、後ろに上書きのルールや `!important` を足して押し切らず、元のルールを直す ②使わなくなったクラス・ルール・関数は、その場で消す ③似た処理・似た部品が2つ目になったら、共通の関数・部品にまとめる ④記事データは `tools/articles_*.py`、図は `tools/figures.py` に置き、`build.py` にはページの組み立てと設定だけを書く。月1回、`/seo-daily` で見た目を変えずに片付ける（「月1回のコードの点検」）。
 - 作り直したら必ず `python3 tools/seo_check.py`（エラー0）と `node tools/check/site_check.js`（**サイト全体の点検**。全ページをスマホ幅・PC幅で開き、JSエラー・読み込み失敗・リンク切れ・横はみ出し・画像の欠けを点検し、本番ブランチとの見た目の差分も比べる。重大0）を通す。
 - HTML は `pages/` にある（例外: `404.html` はリポジトリ直下）。公開URLは `vercel.json` の rewrites で対応づける: `/` → `pages/index.html`、`/xxx.html` → `pages/xxx.html`、`/media/xxx.html` → `pages/media/xxx.html`、`/robots.txt`・`/sitemap.xml`・`/llms.txt` → `seo/`。
 - `docs/`・`tools/`・`.claude/`・`CLAUDE.md` は `.vercelignore` で公開対象外。
@@ -85,6 +86,8 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 | `python3 tools/yt_trend.py "キーワード" [--transcripts 3]` | **伸びている動画の発見**（最近・登録者が少ない・再生÷登録者が高い動画に絞る）と、上位の字幕・概要欄（`/tmp/akiyado-yt/` にだけ置く）。要 `pip install yt-dlp`（数字は `YOUTUBE_API_KEY` があれば API で取る） |
 | `python3 tools/x_post_date.py <投稿URL...> [--days 180]` | X の投稿 URL から投稿日を出す（WebSearch を x.com に絞って集めた投稿の古さを見る） |
 | `python3 tools/estat.py lodging 静岡県` ／ `akiya 静岡県 下田市` ／ `search "キーワード"` | e-Stat（政府統計）から宿泊者数・外国人の割合（宿泊旅行統計調査）、空き家数・空き家率（住宅・土地統計調査）などを出典つきで取る（要 `ESTAT_APP_ID`。結果は `docs/sources/estat/`）。**記事の統計の数字はこれで取り、出典を付ける** |
+| `python3 tools/code_health.py [--record]` | コードの健康診断（大きいファイルの行数・CSS の重ね書き・使われていないルール・seo_check）。月1回の点検で使い、記録は `docs/seo/code-health.md` |
+| `python3 tools/css_prune.py [--apply]` | `css/style.css` のうち、どのページ・ソースでも使われていないルールの一覧（`--apply` で消す。消したら build → site_check で見た目の差分0を確かめる） |
 | `python3 tools/build_dashboard.py` | `docs/dashboard.md` の再生成 |
 | `bash tools/check_secrets.sh` | コミット前の鍵の混入チェック |
 | `python3 tools/youtube_analytics.py report / retention <動画ID>` | YouTube のチャンネルの数字（再生・平均再生率・視聴者維持・入口）。要 `YT_CLIENT_ID`・`YT_CLIENT_SECRET`・`YT_REFRESH_TOKEN`（analytics-setup.md 8章） |
