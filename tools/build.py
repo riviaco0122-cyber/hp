@@ -4797,8 +4797,13 @@ def article_page(a):
         """会話の吹き出しの直後の箇条書きは、話している人の言葉の続きとして吹き出しの中に入れる"""
         return re.sub(r'(<div class="talk__body">(?:(?!</div>).)*?)</div></div>\s*(<(ul|ol)>.*?</\3>)',
                       lambda m: m.group(1) + m.group(2).replace(f"<{m.group(3)}>", f'<{m.group(3)} class="talk__list">', 1) + "</div></div>", html, flags=re.S)
+    def talk_questions(html):
+        """聞き手の質問（<p class="talk__q">）を、アキヤドのマークを顔にした「編集部」の吹き出しにして、対話の形で見せる"""
+        return re.sub(r'<p class="talk__q">(.*?)</p>',
+                      lambda m: f'<div class="talk talk--q"><span class="talk__img talk__img--logo">{AKIYADO_MARK}</span><div class="talk__body"><p class="talk__name">編集部</p><p>{m.group(1)}</p></div></div>',
+                      html, flags=re.S)
     def tables(html):
-        html = talk_lists(html)
+        html = talk_questions(talk_lists(html))
         html = calc_lists(html)
         html = auto_stack_tables(html)
         html = html.replace('<table class="table">', '<div class="table-scroll"><table class="table">').replace("</table>", "</table></div>")
