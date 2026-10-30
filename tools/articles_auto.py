@@ -1594,9 +1594,9 @@ ARTICLES_AUTO = [
         slug="minpaku-house-guide",
         date="2026-10-31", updated="2026-10-31", topics=["operate"], photo=("white-bedroom", "白い寝具の整った客室"),
         guides=[("run", 2)],
-        title='民泊のゲストからの質問を減らす方法｜408件を分析',
+        title='民泊のゲストからの質問を減らす方法｜実際に届いた質問408件から',
         short="民泊のゲストの質問を\n減らす先回りの案内",
-        blurb='質問408件を分析',
+        blurb='届いた質問408件から',
         description='住所・荷物・チェックイン時間・名簿。民泊のゲストから同じ質問が何度も届く悩みを、予約確定後の案内で減らす方法です。アキヤドの運営チームが関わる3物件のゲストの質問408件から、先に書くこと（ハウスルール・ハウスガイド・宿泊者名簿）をチェックリストにしました。',
         services=["operation", "management"],
         keypoints=[
