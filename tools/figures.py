@@ -96,13 +96,14 @@ def formula(title, terms, result=None, note=""):
     return _figure("formula", title, f'            <div class="fig-formula">{"".join(parts)}</div>', note)
 
 
-def bars(title, items, note=""):
-    """割合：items = [(項目, 割合%, 一言)]。いちばん大きい項目を強調する"""
-    top = max(v for _, v, _ in items)
+def bars(title, items, note="", unit="%", top=1):
+    """割合・件数：items = [(項目, 値, 一言)]。上位 top 個を濃い色で強調する。unit が % のときは「約◯%」、それ以外（件など）は「◯件」と値をそのまま出す"""
+    biggest = max(v for _, v, _ in items)
+    cut = sorted((v for _, v, _ in items), reverse=True)[min(top, len(items)) - 1]
     rows = "\n".join(
-        f"""              <li class="fig-bar{' is-top' if v == top else ''}"><span class="fig-bar__label">{e(l)}</span>"""
-        f"""<span class="fig-bar__track"><span class="fig-bar__fill" style="width:{v / top * 100:.0f}%"></span></span>"""
-        f"""<span class="fig-bar__value">約{v}%</span>{f'<span class="fig-bar__sub">{e(s)}</span>' if s else ''}</li>"""
+        f"""              <li class="fig-bar{' is-top' if v >= cut else ''}"><span class="fig-bar__label">{e(l)}</span>"""
+        f"""<span class="fig-bar__track"><span class="fig-bar__fill" style="width:{v / biggest * 100:.0f}%"></span></span>"""
+        f"""<span class="fig-bar__value">{'約' if unit == '%' else ''}{v}{unit}</span>{f'<span class="fig-bar__sub">{e(s)}</span>' if s else ''}</li>"""
         for l, v, s in items)
     return _figure("bars", title, f'            <ul class="fig-bars">\n{rows}\n            </ul>', note)
 
