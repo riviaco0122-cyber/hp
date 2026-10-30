@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=7f0fd72b">
+  <link rel="stylesheet" href="../../css/style.css?v=abc0e90b">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -166,7 +166,12 @@
           </div>
           <div class="mform__field">
             <label for="m-file">ファイル <span class="mform__opt">任意</span></label>
-            <input type="file" id="m-file" name="attachment" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx">
+            <label class="file file--compact">
+              <input type="file" name="attachment" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx" id="m-file" multiple>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/></svg>
+              <span class="file__title">ファイルを<wbr>添付する</span>
+              <span class="file__name" data-default="写真・図面など（複数可）">写真・図面など<wbr>（複数可）</span>
+            </label>
             <p class="mform__help"><n-w>物件の写真や図面があれば添付してください（合計10M<n-b>Bまで）。</n-b></n-w></p>
           </div>
           <div class="mform__field">

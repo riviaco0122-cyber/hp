@@ -1503,7 +1503,9 @@ def quick_form(key, name):
           <label class="qform__field"><span>お名前 <em>必須</em></span><input type="text" name="name" placeholder="山田 太郎" autocomplete="name" required></label>
           <label class="qform__field"><span>メールアドレス <em>必須</em></span><input type="email" name="email" placeholder="your@email.com" autocomplete="email" required></label>
           <label class="qform__field"><span>ご相談内容 <small>任意</small></span><textarea name="message" rows="3" placeholder="物件の場所や、気になっていることなど"></textarea></label>
-          <label class="qform__field qform__file"><span>ファイル <small>任意・物件の写真や図面など</small></span><input type="file" name="attachment" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"></label>
+          <div class="qform__field qform__file"><span>ファイル <small>任意・物件の写真や図面など</small></span>
+{file_box("attachment", "ファイルを添付する", "写真・図面など（複数可・合計10MBまで）", "image/*,.pdf,.doc,.docx,.xls,.xlsx", attrs="multiple", cls="file--compact", indent="            ")}
+          </div>
           <button type="submit" class="btn qform__submit">無料で相談する {ARROW}</button>
           <p class="qform__note">送信により<a href="privacy.html">プライバシーポリシー</a>に同意したものとします。しつこい営業はしません。</p>
         </form>"""
@@ -2074,6 +2076,17 @@ def about_page():
 UPLOAD = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/></svg>'
 
 
+def file_box(name, title, hint, accept, attrs="", cls="", indent="            "):
+    """ファイルの添付欄（点線の枠。選んだファイル名は js/main.js が file__name に出す）。全フォームで共通"""
+    i = indent
+    return f"""{i}<label class="file{(" " + cls) if cls else ""}">
+{i}  <input type="file" name="{name}" accept="{accept}"{(" " + attrs) if attrs else ""}>
+{i}  {UPLOAD}
+{i}  <span class="file__title">{title}</span>
+{i}  <span class="file__name" data-default="{hint}">{hint}</span>
+{i}</label>"""
+
+
 # メールマガジンの受け取りの同意（任意・初期状態はチェックなし＝特定電子メール法のオプトイン）。
 # 値は tools/forms/Code.gs がスプレッドシートの「メルマガ」列に記録する（配信そのものは今後、配信サービスにつなぐ）
 NEWSLETTER_LABEL = "RIVIA&amp;CO.からのお知らせ（空き家活用・民泊のメールマガジン）を受け取る"
@@ -2098,13 +2111,8 @@ def consent(id_, newsletter=False):
 
 
 def careers_page():
-    def file_box(name, title):
-        return f"""            <label class="file">
-              <input type="file" name="{name}" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" required>
-              {UPLOAD}
-              <span class="file__title">{title}</span>
-              <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択">クリックまたはドラッグ&amp;ドロップでファイルを選択</span>
-            </label>"""
+    def career_file(name, title):
+        return file_box(name, title, "クリックまたはドラッグ&amp;ドロップでファイルを選択", ".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png", attrs="required")
 
     body = f"""    <section class="page-hero page-hero--contact">
       <div class="container">
@@ -2139,8 +2147,8 @@ def careers_page():
             <legend class="form__legend">添付ファイル <span class="req">必須</span></legend>
             <p class="form__notes form__notes--above">職務経歴書・履歴書を添付してください。</p>
             <div class="files">
-{file_box("resume", "職務経歴書")}
-{file_box("cv", "履歴書")}
+{career_file("resume", "職務経歴書")}
+{career_file("cv", "履歴書")}
             </div>
           </fieldset>
 {consent("c-agree")}
@@ -2239,12 +2247,7 @@ def contact_page():
           <fieldset class="form__field form__fieldset">
             <legend class="form__legend">添付ファイル <span class="opt">任意</span></legend>
             <p class="form__notes form__notes--above">物件の資料・写真・図面などがあれば添付してください。PDF・画像・Word・Excelなど、合計10MBまでを目安にお送りください。</p>
-            <label class="file">
-              <input type="file" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.heic" multiple>
-              {UPLOAD}
-              <span class="file__title">ファイルを添付する</span>
-              <span class="file__name" data-default="クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）">クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）</span>
-            </label>
+{file_box("attachment", "ファイルを添付する", "クリックまたはドラッグ&amp;ドロップでファイルを選択（複数可）", ".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.heic", attrs="multiple")}
           </fieldset>
           </div>
 {consent("agree", newsletter=True)}
@@ -3723,7 +3726,7 @@ def media_form(sv):
             (f'<input type="hidden" name="ご相談カテゴリ" value="{e(sv["name"])}">',
              f'<input type="hidden" name="ご相談カテゴリ" value="{e(sv["name"])}" data-consult="{e(sv["name"])}" data-doc="サービス資料の請求">'),
             ('<label class="qform__field"><span>ご相談内容', '<label class="qform__field mform2__consult-only"><span>ご相談内容'),
-            ('<label class="qform__field qform__file">', '<label class="qform__field qform__file mform2__consult-only">'),
+            ('<div class="qform__field qform__file">', '<div class="qform__field qform__file mform2__consult-only">'),
             (f'<button type="submit" class="btn qform__submit">無料で相談する {ARROW}</button>',
              f'<button type="submit" class="btn qform__submit"><span class="mform2__submit-t">無料で相談する</span> {ARROW}</button>')]
     form = quick_form(sv["category"], sv["name"])
@@ -4256,7 +4259,7 @@ def media_contact_page():
           </div>
           <div class="mform__field">
             <label for="m-file">ファイル <span class="mform__opt">任意</span></label>
-            <input type="file" id="m-file" name="attachment" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx">
+{file_box("attachment", "ファイルを添付する", "写真・図面など（複数可）", "image/*,.pdf,.doc,.docx,.xls,.xlsx", attrs='id="m-file" multiple', cls="file--compact")}
             <p class="mform__help">物件の写真や図面があれば添付してください（合計10MBまで）。</p>
           </div>
           <div class="mform__field">
