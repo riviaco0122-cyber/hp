@@ -485,6 +485,15 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .file__title { font-size: 14px; }
 .file__name { font-size: 12px; color: var(--c-muted); word-break: break-all; }
 .file.has-file { border-style: solid; border-color: var(--c-text); }
+/* 小さいフォーム（かんたん相談・アキヤドのお問い合わせ）の添付欄 */
+.file--compact { min-height: 0; gap: 4px; padding: 14px 12px; }
+.file--compact svg { width: 22px; height: 22px; }
+.file--compact .file__title { font-size: 13.5px; }
+/* アキヤドのフォームの添付欄：入力欄と同じ角丸・緑 */
+.qform--media .file, .mform .file { border-color: var(--m-line); border-radius: 10px; background: #fbfcfb; }
+.qform--media .file:hover, .qform--media .file:focus-within, .mform .file:hover, .mform .file:focus-within { border-color: var(--m-green); background: #f3f7f2; }
+.qform--media .file svg, .mform .file svg { stroke: var(--m-green); }
+.qform--media .file.has-file, .mform .file.has-file { border-color: var(--m-green); }
 .files { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 899px) { .files { grid-template-columns: 1fr; } }
 
@@ -2215,7 +2224,7 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
 .qform__title { font-family: var(--font-serif); font-size: 19px; letter-spacing: 0.06em; }
 .qform__lead { margin-top: -6px; font-size: 12.5px; line-height: 1.8; color: var(--c-sub); }
 .qform__field { display: grid; gap: 6px; }
-.qform__field span { font-size: 12.5px; letter-spacing: 0.04em; }
+.qform__field > span { font-size: 12.5px; letter-spacing: 0.04em; }
 .qform__field em { margin-left: 4px; padding: 1px 6px; background: var(--c-accent); color: #fff; font-style: normal; font-size: 10.5px; }
 .qform__field small { margin-left: 4px; font-size: 11px; color: var(--c-muted); }
 .qform input, .qform textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--c-line-strong); background: #fff; font: inherit; font-size: 15px; }
@@ -2340,7 +2349,6 @@ body.is-media .ctag--who { border-color: transparent; background: #e3eee6; color
   .fig-cyc__no { font-size: 10px; }
 }
 /* かんたん相談フォーム：ファイル添付（任意） */
-.qform__file input { padding: 8px; font-size: 13px; }
 .plan-brand { display: block; margin-bottom: 4px; font-size: 11.5px; letter-spacing: 0.08em; color: var(--c-accent); font-weight: 500; }
 body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round); font-weight: 700; }
 /* 記事カード：バナーとタグを、雑誌のように静かに（暗くしない・太くしない・丸いラベルを使わない） */
@@ -2477,7 +2485,6 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 .svc-hero .qform__field span { font-size: 12px; }
 .svc-hero .qform input, .svc-hero .qform textarea { padding: 8px 12px; font-size: 15px; line-height: 1.5; }
 .svc-hero .qform textarea { min-height: 0; height: 64px; }
-.svc-hero .qform__file input { padding: 5px 8px; font-size: 12.5px; }
 .svc-hero .qform__submit { margin-top: 6px; padding-top: 14px; padding-bottom: 14px; }
 .svc-hero .qform__note { font-size: 10.5px; line-height: 1.6; }
 .page-hero--photo:has(.svc-hero) { min-height: calc(100svh - var(--header-h)); padding: 32px 0; }
@@ -2491,14 +2498,13 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 .mform__points { justify-content: center; margin: 0 0 24px; }
 .mform { display: grid; gap: 22px; padding: 40px 44px 36px; border-radius: 24px; background: #fff; box-shadow: 0 6px 24px rgba(38, 42, 39, 0.06); }
 .mform__field { display: grid; gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
-.mform__field > label, .mform__field > legend { padding: 0; font-family: var(--font-round); font-weight: 700; font-size: 15px; }
+.mform__field > label:not(.file), .mform__field > legend { padding: 0; font-family: var(--font-round); font-weight: 700; font-size: 15px; }
 .mform__field > legend { margin-bottom: 8px; }
 .mform__req, .mform__opt { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 4px; font-family: var(--font-sans); font-weight: 500; font-size: 11px; vertical-align: 2px; }
 .mform__req { background: var(--m-cta); color: #fff; }
 .mform__opt { background: #eef1ee; color: var(--c-muted); }
 .mform input[type="text"], .mform input[type="email"], .mform input[type="tel"], .mform textarea, .mform select { width: 100%; padding: 12px 14px; border: 1px solid var(--m-line); border-radius: 10px; background: #fbfcfb; font: inherit; font-size: 16px; }
 .mform input:focus, .mform textarea:focus, .mform select:focus { outline: 2px solid var(--m-green); outline-offset: -1px; background: #fff; }
-.mform input[type="file"] { padding: 8px; border: 1px dashed var(--m-line); border-radius: 10px; font-size: 13px; }
 .mform__help { font-size: 12.5px; line-height: 1.7; color: var(--c-muted); }
 .mform__checks { display: grid; gap: 8px; }
 .mform__check, .mform__agree { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
