@@ -820,7 +820,7 @@ ARTICLES_AUTO = [
 <li>税金：所得税などの扱いは、税務署や税理士に確認してください。</li>
 </ul>
 </details>
-<p>利回りの考え方は<a href="media/minpaku-investment-yield.html">民泊の投資利回り</a>、開業前の売上の試算は<a href="media/airdna-revenue-simulation.html">収益シミュレーション</a>にあります。</p>
+<p>利回りの考え方は<a href="media/minpaku-investment-yield.html">民泊の投資利回り</a>、開業前の売上の試算は<a href="media/airdna-revenue-simulation.html">収益シミュレーション</a>にあります。泊数で増える費用の大きな部分になる清掃は、<a href="media/minpaku-seisou-kojin-kakunin.html">民泊の清掃を個人に頼む前の確認</a>で、ゲストへの案内の作り方は<a href="media/minpaku-house-guide.html">民泊のゲストからの質問を減らす方法</a>で説明しています。</p>
 """),
             ('summary', 'まとめ：4つの数字を書き出して、始める前に境目を知る', """
 <p><strong>まず、毎月同じ費用・1泊で増える費用・1泊の料金・月の日数の4つを書き出します。</strong>式に入れると、黒字になる泊数と稼働率が出ます。</p>

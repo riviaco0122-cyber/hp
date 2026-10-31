@@ -4952,6 +4952,7 @@ def article_page(a):
           <p class="author__label">この記事を書いた人</p>
           <p class="author__name">アキヤド編集部</p>
           <p class="author__text">合同会社RIVIA&amp;CO.のメディア編集部。空き家の再生から宿泊施設の運営・開業支援、WEB集客・採用支援まで、自ら宿を運営する当事者の視点で、地域の価値を活かすための情報をお届けします。</p>
+          <p class="author__text">実績：静岡県下田市の宿「NODE Shimoda」を開業・運営。アキヤドの運営チームが関わる3物件では、ゲストの質問408件とレビュー79件を分析して記事にまとめています（2026年）。</p>
         </section>
 
         <section class="supervisor" data-nosnippet>

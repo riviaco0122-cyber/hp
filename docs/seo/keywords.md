@@ -89,3 +89,15 @@
 | 民泊 ゲスト 問い合わせ 多い／ハウスガイド 作り方（よくある質問に先回りする案内・定型文） | ③ | 開業・運営支援、WEB集客 | — | 候補（優先度: 高） | 一次情報: `experience.md` 9章（「アキヤドの運営チームが関わる3物件」と紹介。質問408件の分類。エリアは伏せる）。重なり注意: `guest-review-tips`（レビュー）。2026-10-26 追加 |
 | 民泊 備品 リスト／民泊 開業 準備するもの（ゲストが尋ねる・レビューで褒められる備品と仕組み） | ② 開業 | 開業・運営支援 | — | 候補（優先度: 高） | 一次情報: `experience.md` 9-3（質問×レビューの優先順位）。重なり注意: `minpaku-start-steps`。2026-10-26 追加 |
 | （既存記事の強化）レビューで褒められる点：`guest-review-tips`・訪日客の国と季節：`japan-tourism-market-data`／`inbound-regional-dispersion`・定期借家の割合：`akiya-lease-types` | ③／market／akiya | — | 各記事 | 改善候補 | 根拠: `experience.md` 9-2、`docs/sources/research/2026-10-26-owner-public-data-reports.md`（原典で値を確かめてから使う）。2026-10-26 追加 |
+
+## 入口の記事（ハブ）と深掘りの記事（クラスタ）の対応表（2026-10-31・人の方針）
+検索上位の記事は、広い問いに1本で全体を答える入口の記事を持つ（`docs/seo/benchmark-2026-10-31.md`）。アキヤドも、入口の記事（ハブ）を3本決め、深掘りの記事（クラスタ）を必ずどれかのハブにつなげる。**新しい記事は、公開前に、どのハブの深掘りかを決め、ハブ→新記事・新記事→ハブの両方にリンクを1文ずつ入れる。**
+
+| ハブ（入口） | 狙う広い検索語 | 深掘り（クラスタ） |
+|---|---|---|
+| `minpaku-start-steps`（民泊を始めるには何から？） | 民泊 始め方、空き家 民泊 | minpaku-vs-ryokan-law／minpaku-180days-rule／kani-shukusho-kyoka-guide／minpaku-fire-safety／minpaku-management-company／minpaku-chintai-start／kaishain-minpaku-fukugyo／inn-startup-funding／small-inn-subsidies／accommodation-tax／minpaku-bihin-priority／minpaku-house-guide |
+| `akiya-utilization-options`（空き家の使い道） | 空き家 活用、空き家 どうする | akiya-holding-costs／akiya-law-kanri-fuzen／souzoku-touki-gimuka／akiya-3000man-deduction／akiya-bank-guide／akiya-demolish-or-renovate／akiya-lease-types／inherited-house-family-talk／akiya-minpaku-suitability／why-minpaku-for-akiya／why-akiya-utilization-now／minpaku-vs-rental-income／akiya-inherited-house-to-inn |
+| `minpaku-break-even`（民泊の収支と運営） | 民泊 収支、民泊 運営 | inn-kpi-basics／minpaku-off-season／minpaku-investment-yield／ota-vs-direct-booking／listing-photo-tips／guest-review-tips／minpaku-shukyaku-first-steps／minpaku-neighbor-rules／cleaning-linen-operations／minpaku-seisou-kojin-kakunin／minpaku-remote-operation／long-stay-travel-demand／long-stay-guest-equipment／minpaku-bihin-priority／minpaku-house-guide |
+
+- リンクの確認は、2026-10-31 に機械的に行い、足りなかった6か所に足した。新しい記事を足したら、同じ確認（ハブ→クラスタ、クラスタ→ハブ）を行う。
+- ハブは、広い検索語に1本で答える作りにする（定義・比較表・条件の表・メリット・デメリット・補助金・FAQ。`minpaku-start-steps` が最初の例）。`akiya-utilization-options` と `minpaku-break-even` は、次の底上げ（水曜）で、同じ作りに強化する。
