@@ -647,8 +647,8 @@
    * （字間を広げると段落ごとに見た目が変わるため、詰める方向だけにする）
    * 詰めても直らない左揃えの文は、文末の言葉をまとめて次の行へ送る
    */
-  function shortLines(block, fs) {
-    // 文字（テキスト）だけを行ごとに集計し、短い行の数を返す
+  // 文字（テキスト）だけを行ごとに集め、各行の幅と左右の端を返す
+  function lineBoxes(block, fs) {
     var lines = [];
     var walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
     var range = document.createRange();
@@ -659,21 +659,64 @@
         if (!r.width) return;
         var line = null;
         for (var k = 0; k < lines.length; k++) if (Math.abs(lines[k].top - r.top) < fs * 0.6) { line = lines[k]; break; }
-        if (!line) { line = { top: r.top, width: 0 }; lines.push(line); }
+        if (!line) { line = { top: r.top, width: 0, left: r.left, right: r.right }; lines.push(line); }
         line.width += r.width;
+        line.left = Math.min(line.left, r.left);
+        line.right = Math.max(line.right, r.right);
       });
     }
+    return lines;
+  }
+  // 短い行（5文字未満）の数
+  function shortLines(block, fs) {
+    var lines = lineBoxes(block, fs);
     if (lines.length < 2) return 0;
     return lines.filter(function (l) { return l.width / fs < 5; }).length;
   }
+  // 両端揃えにすると字間が大きく開く行（左揃えで行末に2.5文字分以上の空きがある、最後以外の行）の数
+  function stretchedLines(block, fs) {
+    var cs = getComputedStyle(block);
+    var inner = block.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    block.style.textAlign = 'left';
+    var lines = lineBoxes(block, fs);
+    block.style.textAlign = '';
+    lines.sort(function (a, c) { return a.top - c.top; });
+    return lines.slice(0, -1).filter(function (l) { return inner - (l.right - l.left) > fs * 2.5; }).length;
+  }
+  // 区切り（<wbr>）のない文末のまとまりに、言葉の区切りを入れる。最後の行に4文字未満が残る位置では区切らない
+  function addBreaks(nb) {
+    if (nb.querySelector('wbr') || nb.childNodes.length !== 1 || nb.firstChild.nodeType !== 3 || !(window.Intl && Intl.Segmenter)) return;
+    var str = nb.firstChild.nodeValue;
+    var segs = Array.from(new Intl.Segmenter('ja', { granularity: 'word' }).segment(str), function (x) { return x.segment; });
+    var done = 0;
+    nb.textContent = '';
+    segs.forEach(function (sg, i) {
+      nb.appendChild(document.createTextNode(sg));
+      done += sg.length;
+      if (i < segs.length - 1 && str.length - done >= 4) nb.appendChild(document.createElement('wbr'));
+    });
+  }
+  // 文末をまとめたせいで前の行の字間が開く段落は、まとめをほどいて文節の区切りで改行させる。
+  // それでも開く行が残る段落（長いリンクや英数字があるなど）は、左揃えにする
+  function fixJustify(b, fs) {
+    if (!b.querySelector('n-w.j') || !stretchedLines(b, fs)) return;
+    var nbs = b.querySelectorAll('n-b');
+    Array.prototype.forEach.call(nbs, function (nb) { addBreaks(nb); nb.classList.add('is-loose'); });
+    if (!stretchedLines(b, fs)) return;
+    Array.prototype.forEach.call(nbs, function (nb) { nb.classList.remove('is-loose'); });
+    b.style.textAlign = 'left';
+  }
   function fixBlock(b) {
     b.style.letterSpacing = '';
+    b.style.textAlign = '';
+    Array.prototype.forEach.call(b.querySelectorAll('n-b.is-loose'), function (nb) { nb.classList.remove('is-loose'); });
     if (!b.offsetParent) return;
     // サービスページ（LP）の本文は、行末まで詰めて自然に折り返す（字間や文末の調整をしない）
     if (b.closest && b.closest('.mlp-sec, .mlp-hero')) return;
     var cs = getComputedStyle(b);
     var fs = parseFloat(cs.fontSize);
     var base = parseFloat(cs.letterSpacing) || 0;
+    fixJustify(b, fs);
     var best = shortLines(b, fs), bestStep = 0;
     if (!best) return;
     var steps = [-0.01, -0.02, -0.03, -0.04, -0.05];
@@ -694,17 +737,27 @@
       fixBlock(en.target);
     });
   }, { rootMargin: '400px 0px' }) : null;
-  function fixShortLines() {
+  // 本文（<n-w>）を含む段落を集める
+  function textBlocks(root) {
     var blocks = [];
-    document.querySelectorAll('n-w').forEach(function (el) {
+    root.querySelectorAll('n-w').forEach(function (el) {
       var b = el.parentElement;
       if (b && blocks.indexOf(b) < 0) blocks.push(b);
     });
+    return blocks;
+  }
+  function fixShortLines() {
+    var blocks = textBlocks(document);
     unguard(document);
     blocks.forEach(function (b) {
-      if (lineObserver) { lineObserver.unobserve(b); lineObserver.observe(b); } else fixBlock(b);
+      // 横スワイプのカードは画面の外にあっても見えたと判定されないので、先に整える
+      if (lineObserver && !b.closest('.carousel')) { lineObserver.unobserve(b); lineObserver.observe(b); } else fixBlock(b);
     });
   }
+  // 閉じていた折りたたみ（よくある質問など）は、開いたときに中の段落を整える
+  document.addEventListener('toggle', function (ev) {
+    if (ev.target.open) textBlocks(ev.target).forEach(fixBlock);
+  }, true);
   function guardTail(b, fs) {
     var nws = b.querySelectorAll('n-w');
     var nw = nws[nws.length - 1];

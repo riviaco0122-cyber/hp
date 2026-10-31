@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=abc0e90b">
+  <link rel="stylesheet" href="../../css/style.css?v=ca278c28">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -138,7 +138,16 @@
             </ul>
           </figure>
 
-<div class="table-scroll table-scroll--stack"><table class="table table--stack"><thead><tr><th>費用</th><th>金額の例</th><th>前提</th></tr></thead><tbody><tr><td><n-w>固定資産税（土地）：毎年かかる土地・建物の税</n-w></td><td data-label="金額の例">年26,600円</td><td data-label="前提"><n-w>評価額1,200万円・住宅の敷地（大津市の計算例）</n-w></td></tr><tr><td>見回り</td><td data-label="金額の例"><n-w>1回3,000円（月1回で年36,000円）</n-w></td><td data-label="前提"><n-w>シルバー人材センター（二本松市の2021年の案内）</n-w></td></tr><tr><td>草刈り</td><td data-label="金額の例">1時間<wbr>1,379円から</td><td data-label="前提">機械での<wbr>草刈り。<wbr>処分費は別</td></tr><tr><td>火災保険</td><td data-label="金額の例">見積もりで<wbr>決まる</td><td data-label="前提">建物の<wbr>状態と<wbr>補償の<wbr>範囲で<wbr>変わる</td></tr><tr><td>電気・水道</td><td data-label="金額の例">契約を<wbr>続ける間の基本料金</td><td data-label="前提">契約先の<wbr>料金表で確認</td></tr></tbody></table></div>
+<p class="table-hint" aria-hidden="true">表は左右に<wbr>スライドできます →</p><div class="table-scroll table-scroll--wide"><table class="table table--wide">
+<thead><tr><th>費用</th><th>金額の例</th><th>前提</th></tr></thead>
+<tbody>
+<tr><td><n-w>固定資産税（土地）：毎年かかる土地・建物の税</n-w></td><td>年26,600円</td><td><n-w>評価額1,200万円・住宅の敷地（大津市の計算例）</n-w></td></tr>
+<tr><td>見回り</td><td><n-w>1回3,000円（月1回で年36,000円）</n-w></td><td><n-w>シルバー人材センター（二本松市の2021年の案内）</n-w></td></tr>
+<tr><td>草刈り</td><td>1時間<wbr>1,379円から</td><td>機械での<wbr>草刈り。<wbr>処分費は別</td></tr>
+<tr><td>火災保険</td><td>見積もりで<wbr>決まる</td><td>建物の<wbr>状態と<wbr>補償の<wbr>範囲で<wbr>変わる</td></tr>
+<tr><td>電気・水道</td><td>契約を<wbr>続ける間の基本料金</td><td>契約先の<wbr>料金表で確認</td></tr>
+</tbody>
+</table></div>
 <p class="table-note"><n-w class="j">※ 金額は説明のための例で、土地や市町村ごとに変わります。固定資産税は建物の分と、都市計画税を課す市町村ではその分が別にかかります。火災保険は、空き家として引き受けるかどうかも保険会社で異なるため、金額は<n-b>載せていません。</n-b></n-w></p>
         </section>
         <section class="article__section" id="tax">
@@ -156,7 +165,13 @@
         <section class="article__section" id="lose">
           <h2>住宅用地の<wbr>特例が<wbr>外れると、<wbr>税はどれだけ<wbr>増えるのか？</h2>
 <p><span class="lead-s"><n-w class="j">勧告を受けるか更地にすると、土地の税の計算のもとになる課税標準額が6倍になる場合があります。</n-w></span><n-w class="j">特例が外れた土地の課税標準額は、評価額そのものになるからです。同じ評価額1,200万円で本則（原則の計算）どおりに比べると、200万円から1,200万円へ<n-b>増えます。</n-b></n-w></p>
-<div class="table-scroll table-scroll--stack"><table class="table table--stack"><thead><tr><th>土地の状態</th><th>本則の<wbr>課税標準額</th><th>税額（税率1.4%）</th></tr></thead><tbody><tr><td>住宅の敷地<wbr>（200㎡以下）</td><td data-label="本則の課税標準額">200万円<wbr>（評価額の<wbr>1/6）</td><td data-label="税額（税率1.4%）">28,000円</td></tr><tr><td>特例が<wbr>外れた土地</td><td data-label="本則の課税標準額">1,200万円<wbr>（評価額と<wbr>同じ）</td><td data-label="税額（税率1.4%）">168,000円</td></tr></tbody></table></div>
+<p class="table-hint" aria-hidden="true">表は左右に<wbr>スライドできます →</p><div class="table-scroll table-scroll--wide"><table class="table table--wide">
+<thead><tr><th>土地の状態</th><th>本則の<wbr>課税標準額</th><th>税額（税率1.4%）</th></tr></thead>
+<tbody>
+<tr><td>住宅の敷地<wbr>（200㎡以下）</td><td>200万円<wbr>（評価額の<wbr>1/6）</td><td>28,000円</td></tr>
+<tr><td>特例が<wbr>外れた土地</td><td>1,200万円<wbr>（評価額と<wbr>同じ）</td><td>168,000円</td></tr>
+</tbody>
+</table></div>
 <p class="table-note"><n-w class="j">※ 評価額1,200万円・税率1.4%で、本則どおりに計算した額です。負担調整措置があるため、実際の税額はこの額に向けてゆるやかに上がります（総務省「やさしい地方税」）。建物の分と都市計画税は<n-b>含みません。</n-b></n-w></p>
 <p>特例が<wbr>外れる<wbr>場面は、<wbr>次の2つです。</p>
 <div class="carousel" role="group" aria-label="特例が外れる場面（横にスワイプ）">
@@ -164,7 +179,7 @@
 <div class="carousel__card"><span class="carousel__no">場面 2</span><h3 class="carousel__title">更地にしたとき</h3><p class="carousel__text"><n-w class="j">更地（建物のない土地）など、住宅が建っていない土地は住宅用地ではなく、特例の対象外です。判定は毎年1月1日の利用で<n-b>行います。</n-b></n-w></p></div>
 </div>
 <p class="carousel__hint">横にスワイプで<wbr>続きを<wbr>見られます</p>
-<p><n-w class="j">勧告の仕組みは「</n-w><a href="../media/akiya-law-kanri-fuzen.html"><n-w class="j">空家法の改正で何が変わった？</n-w></a><n-w class="j">」で説明しています。ここまでは税の話でした。次は、見回りや草刈りを頼むときの<n-b>お金を見ます。</n-b></n-w></p>
+<p><n-w class="j">勧告の仕組みは「</n-w><a href="../media/akiya-law-kanri-fuzen.html"><n-w class="j">空家法の改正で何が変わった？</n-w></a><n-w class="j">」で説明しています。ここまでは税の話でした。次は、見回りや草刈りを頼むときの<n-b>お金を<wbr>見ます。</n-b></n-w></p>
 <p class="table-note"><n-w class="j">※ 国土交通省「空き家対策特設サイト」「『空家法』と『2023改正空家法』」、島田市「住宅用地に対する課税標準の特例」（空地は非住宅用地で特例なし）にもと<n-b>づきます。</n-b></n-w></p>
         </section>
         <section class="article__section" id="care">
@@ -197,20 +212,29 @@
 <div class="carousel__card"><span class="carousel__no">対象外</span><h3 class="carousel__title">高所・危険な作業</h3><p class="carousel__text"><n-w>4m以上の庭木の剪定や、専門的な作業は引き受けて<n-b>もらえません。</n-b></n-w></p></div>
 </div>
 <p class="carousel__hint">横にスワイプで<wbr>続きを<wbr>見られます</p>
-<p><n-w class="j">台風のあとに屋根が傷んだ場合などは、見回りでは直せません。修繕は、業者に頼む費用が別に要ります。ここまでの出費を踏まえて、次は、維持費を<n-b>減らす道を見ます。</n-b></n-w></p>
+<p><n-w class="j">台風のあとに屋根が傷んだ場合などは、見回りでは直せません。修繕は、業者に頼む費用が別に要ります。ここまでの出費を踏まえて、次は、維持費を<n-b>減らす道を<wbr>見ます。</n-b></n-w></p>
         </section>
         <section class="article__section" id="reduce">
           <h2>維持費を<wbr>減らす・まかなうには、<wbr>どんな道が<wbr>あるのか？</h2>
-<p><span class="lead-s"><n-w>税と見回りのお金を払い続けるかわりに、手放すか、家を使って収入を得るかを考えます。</n-w></span><n-w><n-b>道は大きく3つです。</n-b></n-w></p>
+<p><span class="lead-s"><n-w>税と見回りのお金を払い続けるかわりに、手放すか、家を使って収入を得るかを考えます。</n-w></span><n-w><n-b>道は<wbr>大きく<wbr>3つです。</n-b></n-w></p>
 <ul>
 <li><strong><n-w>管理を続ける</n-w></strong><n-w>：将来使う予定があるなら、見回りを頼んで状態を保ちます。維持費は<n-b>かかり続けます。</n-b></n-w></li>
 <li><strong><n-w>売る</n-w></strong><n-w>：使う予定がないなら、傷みが進む前に手放します。税と見回りの負担は<n-b>なくなります。</n-b></n-w></li>
-<li><strong><n-w>貸す・宿として活かす</n-w></strong><n-w>：家を残したまま、維持費をまかなう<n-b>収入にします。</n-b></n-w></li>
+<li><strong><n-w>貸す・宿として活かす</n-w></strong><n-w>：家を残したまま、維持費をまかなう<n-b>収入に<wbr>します。</n-b></n-w></li>
 </ul>
 <p><n-w class="j">貸す・宿として活かす道では、収入だけでなく、運営側にかかる実費との差で見ます。創業メンバーが下田市で賃貸物件を宿にしたときの記録では、月々の運営費は次の<n-b>とおりでした。</n-b></n-w></p>
-<div class="table-scroll table-scroll--stack"><table class="table table--stack"><thead><tr><th>運営費<wbr>（月）</th><th>金額</th></tr></thead><tbody><tr><td>家賃</td><td data-label="金額">5万円</td></tr><tr><td>清掃委託</td><td data-label="金額">2万円</td></tr><tr><td>予約サイトの<wbr>手数料などの<wbr>システム利用料</td><td data-label="金額">8万円</td></tr><tr><td>光熱水費・Wi-Fi・消耗品</td><td data-label="金額">3万円</td></tr><tr><td>合計</td><td data-label="金額">18万円</td></tr></tbody></table></div>
+<div class="table-scroll table-scroll--stack"><table class="table table--stack">
+<thead><tr><th>運営費<wbr>（月）</th><th>金額</th></tr></thead>
+<tbody>
+<tr><td>家賃</td><td>5万円</td></tr>
+<tr><td>清掃委託</td><td>2万円</td></tr>
+<tr><td>予約サイトの<wbr>手数料などの<wbr>システム利用料</td><td>8万円</td></tr>
+<tr><td>光熱水費・Wi-Fi・消耗品</td><td>3万円</td></tr>
+<tr><td>合計</td><td>18万円</td></tr>
+</tbody>
+</table></div>
 <p class="table-note"><n-w class="j">※ 運営側の実費の一例です。開業から3か月の試運転期間の値で、この期間の売上は約100万円、営業利益（売上から費用を引いた利益）は約45万円、稼働率（部屋が埋まっている割合）は約52%でした。空き家の維持費とは別の<n-b>ものです。</n-b></n-w></p>
-<p><n-w class="j">違いは</n-w><a href="../media/akiya-utilization-options.html"><n-w class="j">空き家の活用方法と向き不向き</n-w></a><n-w class="j">で比べています。売るときの税の特例は「</n-w><a href="../media/akiya-3000man-deduction.html"><n-w class="j">相続した空き家を売るときの3,000万円特別控除</n-w></a><n-w class="j"><n-b>」で説明しています。</n-b></n-w></p>
+<p><n-w class="j">違いは</n-w><a href="../media/akiya-utilization-options.html"><n-w class="j">空き家の活用方法と向き不向き</n-w></a><n-w class="j">で比べています。売るときの税の特例は「</n-w><a href="../media/akiya-3000man-deduction.html"><n-w class="j">相続した空き家を売るときの3,000万円特別控除</n-w></a><n-w class="j"><n-b>」で<wbr>説明しています。</n-b></n-w></p>
         </section>
         <section class="article__section" id="summary">
           <h2>まとめ：税と<wbr>見回りで、<wbr>年にいくらかを先に出す</h2>
@@ -218,7 +242,7 @@
 <p class="table-note"><n-w>※ 年6万円ほどの目安は、建物の分と都市計画税を含みません。金額は市によって<n-b>異なります。</n-b></n-w></p>
 <p><n-w class="j">勧告を受けるか更地にすると、評価額1,200万円（200㎡以下）の土地なら、税は本則で6倍の計算になります。持ち続けるか、売るか、貸すかは、この数字を自分の家の評価額に置き換えて<n-b>決めましょう。</n-b></n-w></p>
 
-<p><n-w>活用が注目されている背景は、「</n-w><a href="../media/why-akiya-utilization-now.html"><n-w>なぜ今「空き家の活用」が注目されるのか</n-w></a><n-w><n-b>」で紹介しています。</n-b></n-w></p>
+<p><n-w>活用が注目されている背景は、「</n-w><a href="../media/why-akiya-utilization-now.html"><n-w>なぜ今「空き家の活用」が注目されるのか</n-w></a><n-w><n-b>」で<wbr>紹介しています。</n-b></n-w></p>
         </section>
 
         <section class="article__section" id="faq">
@@ -242,7 +266,7 @@
           </details>
           <details class="faq__item">
             <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">維持費を<wbr>収入で<wbr>まかなう方法は<wbr>ありますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">住まいとして貸す、宿として活かすなどの方法があります。家を残したまま、事業者に借り上げてもらう（事業者が家を借りて運営する）方法もあります。運営側にも実費がかかるため、収入との<n-b>差で見ます。</n-b></n-w></p><span></span></div>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">住まいとして貸す、宿として活かすなどの方法があります。家を残したまま、事業者に借り上げてもらう（事業者が家を借りて運営する）方法もあります。運営側にも実費がかかるため、収入との<n-b>差で<wbr>見ます。</n-b></n-w></p><span></span></div>
           </details>
           </div>
         </section>
@@ -285,7 +309,7 @@
           <div>
             <p class="author__label"><n-b>この記事の監修者</n-b></p>
             <p class="author__name"><n-w>石原 佑真</n-w><span class="supervisor__role"><n-w>合同会社RIVIA&amp;CO. 代表社員</n-w></span></p>
-            <p class="author__text"><n-w class="j">株式会社リクルートの新規事業開発室で事業の立ち上げを経験し、その後ベンチャー企業で新規事業の創出と組織の拡大を牽引。RIVIA&amp;CO.を共同創業し、空き家の再生と宿の運営・開業支援<n-b>に携わる。</n-b></n-w></p>
+            <p class="author__text"><n-w class="j">株式会社リクルートの新規事業開発室で事業の立ち上げを経験し、その後ベンチャー企業で新規事業の創出と組織の拡大を牽引。RIVIA&amp;CO.を共同創業し、空き家の再生と宿の運営・開業支援<n-b>に<wbr>携わる。</n-b></n-w></p>
             <div class="supervisor__links">
               <a href="../about.html#founders" class="supervisor__more">プロフィールを見る <span class="arrow" aria-hidden="true"></span></a>
               <ul><li><a href="https://youtrust.jp/users/yumayade__2210" target="_blank" rel="noopener">YOUTRUST</a></li><li><a href="https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.wantedly.com/id/tasuku_ishihara_g" target="_blank" rel="noopener">Wantedly</a></li></ul>
@@ -1049,6 +1073,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=operation&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=4b8fe9c4"></script>
+  <script src="../../js/main.js?v=d85a4e08"></script>
 </body>
 </html>

@@ -88,9 +88,12 @@ def formula(title, terms, result=None, note=""):
     if result:
         parts.append(f'<span class="fig-term fig-term--result"><b>{e(result[0])}</b><small>{e(result[1])}</small></span><span class="fig-op">＝</span>')
     for t in terms:
-        if isinstance(t, str):
-            paren = " fig-op--paren" if t in ("（", "）") else ""
-            parts.append(f'<span class="fig-op{paren}">{e(t)}</span>')
+        if t == "（":  # かっこの中はひとまとまり（fig-group）にして、スマホでも横に並べて計算の順番を見せる
+            parts.append('<span class="fig-group"><span class="fig-op">（</span>')
+        elif t == "）":
+            parts.append('<span class="fig-op">）</span></span>')
+        elif isinstance(t, str):
+            parts.append(f'<span class="fig-op">{e(t)}</span>')
         else:
             parts.append(f'<span class="fig-term"><b>{e(t[0])}</b><small>{e(t[1])}</small></span>')
     return _figure("formula", title, f'            <div class="fig-formula">{"".join(parts)}</div>', note)
