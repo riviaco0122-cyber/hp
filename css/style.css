@@ -53,6 +53,7 @@ body {
 }
 n-w { word-break: normal; line-break: strict; text-wrap: pretty; } /* 本文は行末まで詰めて折り返す（長い段落は両端揃え） */
 n-b { white-space: nowrap; } /* 文末の短い文節は直前の文節とまとめて改行しない */
+n-b.is-loose { white-space: normal; word-break: keep-all; } /* まとめたせいで前の行の字間が開くときは、文節の区切り（<wbr>）でだけ改行する（js/main.js） */
 /* 長い段落（60字超）は両端揃えにして、右端のガタつきをなくす（最終行は左寄せ） */
 :is(p, li, dd, blockquote):has(> n-w.j) { text-align: justify; text-justify: inter-character; }
 img { max-width: 100%; height: auto; display: block; }
@@ -679,7 +680,8 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .table th, .table td { padding: 14px 16px; border: 1px solid var(--c-line); text-align: left; vertical-align: top; }
 .table th { background: var(--c-bg-soft); font-weight: 500; white-space: nowrap; }
 .table td:first-child { font-weight: 500; white-space: nowrap; }
-.table-note { font-size: 12px !important; color: var(--c-muted); margin-top: -12px !important; }
+.table-note { font-size: 12px !important; color: var(--c-muted); margin-top: 4px !important; } /* 注記が続くときは、上の注記に重ねない */
+:not(.table-note) + .table-note { margin-top: -12px !important; } /* 表・図の直後の注記は、上に寄せる */
 .article__section p:not(.table-note) + .table-note, .article__section ul + .table-note { margin-top: 20px !important; }
 .callout { margin: 28px 0; padding: 24px 28px; background: var(--c-bg-soft); border-left: 2px solid var(--c-text); }
 .callout__label { font-size: 12px !important; color: var(--c-muted); letter-spacing: 0.12em; margin-bottom: 6px; }
@@ -2153,6 +2155,7 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
 .fig-term--result { background: var(--m-green, #2e6b47); color: #fff; }
 .fig-term--result small { color: rgba(255, 255, 255, 0.8); }
 .fig-op { font-family: var(--font-round); font-weight: 700; font-size: 20px; color: var(--m-green, #2e6b47); }
+.fig-group { display: flex; align-items: center; gap: 8px; }
 /* 割合 */
 .fig-bars { display: grid; gap: 10px; }
 .fig-bar { display: grid; grid-template-columns: 11em minmax(0, 1fr) 4em; align-items: center; gap: 2px 14px; }
@@ -2209,6 +2212,8 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
   .article__section .fig .fig-cyc__node { font-size: 11.5px; }
   .fig-formula { flex-direction: column; gap: 6px; }
   .fig-term, .fig-term--result { flex: none; width: 100%; }
+  .fig-group { align-self: stretch; gap: 4px; }
+  .fig-group .fig-term { flex: 1 1 0; align-self: stretch; width: auto; min-width: 0; }
   .fig-formula .fig-op:first-of-type { flex-basis: auto; }
 }
 @media (min-width: 900px) { .article__section .fig .fig-steps--7 .fig-step__name { font-size: 12.5px; } }
@@ -2217,7 +2222,7 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
 .article__section .fig ul.fig-col__list li { padding-left: 16px; }
 .article__section .fig ul.fig-col__list li::before { content: ""; position: absolute; left: 2px; top: 0.72em; width: 6px; height: 6px; border-radius: 50%; background: var(--m-green, #2e6b47); }
 .article__section .fig strong { font-weight: inherit; background: none; }
-@media (max-width: 899px) { .fig-op--paren { display: none; } }
+
 /* サービスページ：冒頭のかんたん相談フォーム */
 .svc-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); gap: 40px 64px; align-items: center; }
 .qform { display: grid; gap: 12px; padding: 28px 28px 24px; background: #fff; color: var(--c-text); box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18); text-shadow: none; }
@@ -2886,7 +2891,16 @@ body.is-media .article__section .compare__col--c :is(h3, h4).compare__head { bor
 body.is-media .guide-step__blurb { font-size: 12px; }
 body.is-media .guide-stage__head { padding: 12px 16px; }
 @media (max-width: 899px) { .media-card .ctags .ctag:nth-child(2) { display: none; } }
-/* 列が多く文が長い表（市町ごとの補助など）は、スマホ幅では1行ずつのカードに積み替える（data-label が項目名） */
+/* 3列以上で文が長い表（比べる表）は、スマホでもカードにせず、1列目を止めて左右にスライドする（design-guide 6章。build.py の auto_stack_tables） */
+.table-hint { display: none; }
+@media (max-width: 899px) {
+  body.is-media .article__section .table-hint { display: block; margin: 24px 0 -16px; font-size: 12px; color: var(--c-muted); text-align: right; }
+  body.is-media .table-scroll--wide .table--wide { width: max-content; min-width: 100%; }
+  body.is-media .article__section .table--wide th, body.is-media .article__section .table--wide td { min-width: 8.5em; max-width: 13em; }
+  body.is-media .article__section .table--wide :is(th, td):first-child { position: sticky; left: 0; z-index: 1; min-width: 7.5em; max-width: 8.5em; background: #fff; box-shadow: 1px 0 0 var(--m-line); }
+  body.is-media .article__section .table--wide th:first-child { background: var(--m-sand); }
+}
+/* 2列で文が長い表（項目と内容）は、スマホ幅では1行ずつのカードに積み替える（記事データで手書きした表は data-label が項目名） */
 @media (max-width: 639px) {
   body.is-media .table-scroll--stack { margin: 24px 0; padding: 0; overflow: visible; }
   body.is-media .table-scroll--stack .table--stack, body.is-media .table-scroll--stack .table--stack tbody, body.is-media .table-scroll--stack .table--stack tr, body.is-media .table-scroll--stack .table--stack td { display: block; width: 100%; }

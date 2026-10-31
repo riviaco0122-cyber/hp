@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=684ac539">
+  <link rel="stylesheet" href="../../css/style.css?v=ca278c28">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -147,9 +147,21 @@
 
 <p><n-w class="j">業者にまとめて借り上げてもらう形（サブリース）は、契約の種類とは別の話です。「契約の種類」と「貸し方の形」の2つに分けて考えると、混乱しません。普通借家・定期借家は前者、サブリース（業者が借りて又貸しする形）は<n-b>後者です。</n-b></n-w></p>
 <h3>軸1：契約の種類<wbr>（更新が<wbr>あるかどうか）</h3>
-<div class="table-scroll table-scroll--stack"><table class="table table--stack"><thead><tr><th>契約の種類</th><th>特徴</th><th>向いている<wbr>ケース</th></tr></thead><tbody><tr><td>普通借家契約</td><td data-label="特徴"><n-w>期間が満了しても、借主が希望すれば原則として更新される</n-w></td><td data-label="向いているケース">長く貸し続けたい</td></tr><tr><td>定期借家契約</td><td data-label="特徴"><n-w>期間が満了すると更新されずに終了する（再契約は可能）</n-w></td><td data-label="向いているケース">将来、<wbr>自分で使う・売る<wbr>可能性がある</td></tr></tbody></table></div>
+<p class="table-hint" aria-hidden="true">表は左右に<wbr>スライドできます →</p><div class="table-scroll table-scroll--wide"><table class="table table--wide">
+<thead><tr><th>契約の種類</th><th>特徴</th><th>向いている<wbr>ケース</th></tr></thead>
+<tbody>
+<tr><td>普通借家契約</td><td><n-w>期間が満了しても、借主が希望すれば原則として更新される</n-w></td><td>長く貸し続けたい</td></tr>
+<tr><td>定期借家契約</td><td><n-w>期間が満了すると更新されずに終了する（再契約は可能）</n-w></td><td>将来、<wbr>自分で使う・売る<wbr>可能性がある</td></tr>
+</tbody>
+</table></div>
 <h3>軸2：貸し方の形<wbr>（誰が<wbr>借りて、<wbr>誰が使うか）</h3>
-<div class="table-scroll table-scroll--stack"><table class="table table--stack"><thead><tr><th>貸し方</th><th>仕組み</th><th>オーナーの相手</th></tr></thead><tbody><tr><td>直接貸し</td><td data-label="仕組み">借りた<wbr>人が、<wbr>そのまま<wbr>住む・宿として使う</td><td data-label="オーナーの相手">実際に使う人</td></tr><tr><td>サブリース<wbr>（借り上げ）</td><td data-label="仕組み"><n-w>業者がオーナーから借り、入居者や宿泊者に貸す（転貸借）</n-w></td><td data-label="オーナーの相手">サブリース業者</td></tr></tbody></table></div>
+<p class="table-hint" aria-hidden="true">表は左右に<wbr>スライドできます →</p><div class="table-scroll table-scroll--wide"><table class="table table--wide">
+<thead><tr><th>貸し方</th><th>仕組み</th><th>オーナーの相手</th></tr></thead>
+<tbody>
+<tr><td>直接貸し</td><td>借りた<wbr>人が、<wbr>そのまま<wbr>住む・宿として使う</td><td>実際に使う人</td></tr>
+<tr><td>サブリース<wbr>（借り上げ）</td><td><n-w>業者がオーナーから借り、入居者や宿泊者に貸す（転貸借）</n-w></td><td>サブリース業者</td></tr>
+</tbody>
+</table></div>
 <p><n-w class="j">国土交通省は、サブリース住宅を「貸主（サブリース業者）が建物の所有者から借りた物件を入居者に貸している、いわゆる転貸借されている住宅」と説明しています。オーナーと業者の契約は、普通借家・定期借家のどちらでも<n-b>結べます。</n-b></n-w></p>
 <p class="table-note"><n-w class="j">※ 国土交通省の「サブリース住宅標準契約書」は、業者と入居者の間の転貸借契約のひな形で、オーナーと業者の契約書ではありません。オーナーと業者の契約書をつくるときは、同省が公表する「定期建物賃貸借標準契約書」などが参考になる場合があります（202<n-b>6年10月時点）。</n-b></n-w></p>
 <p><n-w class="j">普通借家で貸すと、自分で使いたくなっても戻せないことがあります。借地借家法（借りる人を守る法律）は借主を強く守っていて、貸主が更新を断るには「正当な事由」（正当な理由）が必要です（第28条）。一度貸すと、長いあいだ自分で使えなくなる可能性があります。個別の判断は専門家に<n-b>確かめてください。</n-b></n-w></p>
@@ -176,12 +188,12 @@
 <p><n-w class="j">約650万円をかけた物件は、他人の持ち物です。契約期間が短かったり、貸主から更新を断れる契約だったりすると、元が取れる前に使えなくなるおそれがあります。貸主・借り主のどちらの立場でも、次の5項目は契約書で確かめて<n-b>おきましょう。</n-b></n-w></p>
 <ul>
 <li><strong>用途</strong>：宿泊施設として使う<wbr>ことを<wbr>明記する。</li>
-<li><strong><n-w>改修の負担</n-w></strong><n-w>：誰がどこまで工事し、<n-b>費用を持つか。</n-b></n-w></li>
+<li><strong><n-w>改修の負担</n-w></strong><n-w>：誰がどこまで工事し、<n-b>費用を<wbr>持つか。</n-b></n-w></li>
 <li><strong><n-w>原状回復（借りる前の状態に戻すこと）</n-w></strong><n-w>：契約が終わるとき、改修した部分を<n-b>どうするか。</n-b></n-w></li>
-<li><strong><n-w>修繕の分担</n-w></strong><n-w>：屋根・構造など大きな修繕と、日常の<n-b>小さな修繕。</n-b></n-w></li>
+<li><strong><n-w>修繕の分担</n-w></strong><n-w>：屋根・構造など大きな修繕と、日常の<n-b>小さな<wbr>修繕。</n-b></n-w></li>
 <li><strong><n-w>中途解約</n-w></strong><n-w>：どちらから、どんな条件で<n-b>解約できるか。</n-b></n-w></li>
 </ul>
-<p><n-w class="j">運営を任せる場合の管理会社の選び方は「</n-w><a href="../media/minpaku-management-company.html"><n-w class="j">住宅宿泊管理業者とは？</n-w></a><n-w class="j">」で、民泊新法と旅館業の違いは「</n-w><a href="../media/minpaku-vs-ryokan-law.html"><n-w class="j">民泊新法と旅館業、どちらで始める？</n-w></a><n-w class="j"><n-b>」で説明しています。</n-b></n-w></p>
+<p><n-w class="j">運営を任せる場合の管理会社の選び方は「</n-w><a href="../media/minpaku-management-company.html"><n-w class="j">住宅宿泊管理業者とは？</n-w></a><n-w class="j">」で、民泊新法と旅館業の違いは「</n-w><a href="../media/minpaku-vs-ryokan-law.html"><n-w class="j">民泊新法と旅館業、どちらで始める？</n-w></a><n-w class="j"><n-b>」で<wbr>説明しています。</n-b></n-w></p>
         </section>
         <section class="article__section" id="summary">
           <h2>まとめ：将来の<wbr>使い方→運営者→改修費の順に<wbr>決める</h2>
@@ -198,7 +210,7 @@
           </details>
           <details class="faq__item">
             <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">改修費は誰が<wbr>負担しますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">契約によって異なります。創業メンバーが下田で宿を開いたときは、他者所有の賃貸物件を借り主が約410万円かけて改修しました。所有者が負担して家賃を高めにする方法もあるため、契約書で<n-b>明確にします。</n-b></n-w></p><span></span></div>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">契約によって異なります。創業メンバーが下田で宿を開いたときは、他者所有の賃貸物件を借り主が約410万円かけて改修しました。所有者が負担して家賃を高めにする方法もあるため、契約書で<n-b>明確に<wbr>します。</n-b></n-w></p><span></span></div>
           </details>
           <details class="faq__item">
             <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">途中で<wbr>売りたくなった<wbr>場合は<wbr>どうなりますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
@@ -249,7 +261,7 @@
           <div>
             <p class="author__label"><n-b>この記事の監修者</n-b></p>
             <p class="author__name"><n-w>石原 佑真</n-w><span class="supervisor__role"><n-w>合同会社RIVIA&amp;CO. 代表社員</n-w></span></p>
-            <p class="author__text"><n-w class="j">株式会社リクルートの新規事業開発室で事業の立ち上げを経験し、その後ベンチャー企業で新規事業の創出と組織の拡大を牽引。RIVIA&amp;CO.を共同創業し、空き家の再生と宿の運営・開業支援<n-b>に携わる。</n-b></n-w></p>
+            <p class="author__text"><n-w class="j">株式会社リクルートの新規事業開発室で事業の立ち上げを経験し、その後ベンチャー企業で新規事業の創出と組織の拡大を牽引。RIVIA&amp;CO.を共同創業し、空き家の再生と宿の運営・開業支援<n-b>に<wbr>携わる。</n-b></n-w></p>
             <div class="supervisor__links">
               <a href="../about.html#founders" class="supervisor__more">プロフィールを見る <span class="arrow" aria-hidden="true"></span></a>
               <ul><li><a href="https://youtrust.jp/users/yumayade__2210" target="_blank" rel="noopener">YOUTRUST</a></li><li><a href="https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.wantedly.com/id/tasuku_ishihara_g" target="_blank" rel="noopener">Wantedly</a></li></ul>
@@ -1013,6 +1025,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=operation&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=4b8fe9c4"></script>
+  <script src="../../js/main.js?v=d85a4e08"></script>
 </body>
 </html>

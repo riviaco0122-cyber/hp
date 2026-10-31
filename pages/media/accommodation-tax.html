@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=684ac539">
+  <link rel="stylesheet" href="../../css/style.css?v=ca278c28">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -85,7 +85,7 @@
         <div class="container container--article">
           <nav class="crumbs" aria-label="パンくずリスト"><a href="../media.html">アキヤド</a><span class="crumbs__sep">/</span><a href="../media/category-money.html">お金・税金</a></nav>
           <div class="article__cats"><a href="../media/category-money.html" class="tag article__cat">お金・税金</a><a href="../media/category-trend.html" class="tag article__cat">観光と地域</a></div>
-          <h1 class="article__title">宿泊税とは？<wbr>民泊は<wbr>対象？<wbr>東京都は<wbr>202<wbr>7年4月に<wbr>定率3%へ</h1>
+          <h1 class="article__title">宿泊税とは？<wbr>民泊は<wbr>対象？<wbr>東京都は<wbr>2027年4月に<wbr>定率3%へ</h1>
           <p class="article__meta">
             <span><n-w>公開日</n-w> <time datetime="2026-10-11">2026.10.11</time></span>
             <span><n-w>更新日</n-w> <time datetime="2026-10-31">2026.10.31</time></span>
@@ -136,7 +136,14 @@
 
 <p><n-w class="j">宿泊税は、宿に泊まる人が払う税です。自治体が条例で独自に決める税（法定外税）なので、民泊を対象にするかどうかも自治体ごとに違います。「宿泊施設なら一律にかかる」税ではあ<n-b>りません。</n-b></n-w></p>
 <p><n-w class="j">宿泊者から運営者が預かって自治体に納める仕組み（特別徴収）が一般的で、宿泊料金とは別に支払ってもらいます。税額の決め方には、1泊いくらの定額と、宿泊料金に割合をかける定率があります。表の「民泊（住宅宿泊事業）」は、民泊新法にもとづく民泊の<n-b>ことです。</n-b></n-w></p>
-<div class="table-scroll table-scroll--stack"><table class="table table--stack"><thead><tr><th>自治体</th><th>民泊（住宅宿泊事業）</th><th>税額</th></tr></thead><tbody><tr><td>東京都<wbr>（現行）</td><td data-label="民泊（住宅宿泊事業）">対象外<wbr>（ホテル・旅館が<wbr>対象）</td><td data-label="税額"><n-w>1人1泊 1万円以上1.5万円未満で100円、1.5万円以上で200円。1万円未満は課税なし</n-w></td></tr><tr><td>東京都<wbr>（202<wbr>7年4月1日から）</td><td data-label="民泊（住宅宿泊事業）">対象（民泊新法・<wbr>特区民泊・簡易宿所も）</td><td data-label="税額"><n-w>宿泊料金の3%。13,000円未満は課税なし</n-w></td></tr><tr><td>熱海市<wbr>（202<wbr>5年4月1日導入）</td><td data-label="民泊（住宅宿泊事業）"><n-w>対象（旅館・ホテル・簡易宿所〔旅館業法の小規模な宿〕と住宅宿泊事業）</n-w></td><td data-label="税額">1人1泊200円</td></tr></tbody></table></div>
+<p class="table-hint" aria-hidden="true">表は左右に<wbr>スライドできます →</p><div class="table-scroll table-scroll--wide"><table class="table table--wide">
+<thead><tr><th>自治体</th><th>民泊（住宅宿泊事業）</th><th>税額</th></tr></thead>
+<tbody>
+<tr><td>東京都<wbr>（現行）</td><td>対象外<wbr>（ホテル・旅館が<wbr>対象）</td><td><n-w>1人1泊 1万円以上1.5万円未満で100円、1.5万円以上で200円。1万円未満は課税なし</n-w></td></tr>
+<tr><td>東京都<wbr>（2027年4月1日から）</td><td>対象（民泊新法・<wbr>特区民泊・簡易宿所も）</td><td><n-w>宿泊料金の3%。13,000円未満は課税なし</n-w></td></tr>
+<tr><td>熱海市<wbr>（2025年4月1日導入）</td><td><n-w>対象（旅館・ホテル・簡易宿所〔旅館業法の小規模な宿〕と住宅宿泊事業）</n-w></td><td>1人1泊200円</td></tr>
+</tbody>
+</table></div>
 <p class="table-note"><n-w class="j">出典：東京都主税局「宿泊税」、熱海市「宿泊税の概要」※2026年10月時点。上の表以外の自治体は、各自治体の案内か総務省「法定外税の状況」で<n-b>確認してください。</n-b></n-w></p>
 <p><n-w>まず、見直しが決まっている東京都から<n-b>見ていきます。</n-b></n-w></p>
         </section>
@@ -146,7 +153,7 @@
 <p><n-w class="j">1人1泊13,000円未満ならかかりません。条例の改正は2026年3月27日に可決され、同年6月30日に総務大臣の同意を得ました（東京都主税局）。詳しくは東京都の案内で<n-b>確認してください。</n-b></n-w></p>
 <p><n-w class="j">宿泊料金は、食事代などを含まない素泊まりの料金（税抜き）で判断します。1室に2人以上で泊まるときは、1人あたりに換算します。子どもでも、基準を超えれば<n-b>課税されます。</n-b></n-w></p>
 <div class="table-scroll"><table class="table">
-<thead><tr><th>1人1泊の<wbr>宿泊料金<wbr>（税抜き）</th><th>現行（ホテル・旅館）</th><th>202<wbr>7年4月以降の試算</th></tr></thead>
+<thead><tr><th>1人1泊の<wbr>宿泊料金<wbr>（税抜き）</th><th>現行（ホテル・旅館）</th><th>2027年4月以降の試算</th></tr></thead>
 <tbody>
 <tr><td>12,000円</td><td>100円</td><td>課税なし<wbr>（13,000円未満）</td></tr>
 <tr><td>13,000円</td><td>100円</td><td>390円<wbr>（3%）</td></tr>
@@ -154,13 +161,13 @@
 </tbody>
 </table></div>
 <p class="table-note"><n-w class="j">※ 「2027年4月以降」の列は、公表されている税率3%・免税点13,000円から計算した試算です。民泊は現行では対象外のため、現行の列はホテル・旅館の<n-b>場合です。</n-b></n-w></p>
-<p><n-w class="j">東京都は、民泊のうち約3割の施設が課税対象になる見込みと試算しています。東京で民泊をするなら、まず、料金が13,000円以上になる日があるかを確かめます。次は、すでに民泊も対象にしている<n-b>熱海市の例です。</n-b></n-w></p>
+<p><n-w class="j">東京都は、民泊のうち約3割の施設が課税対象になる見込みと試算しています。東京で民泊をするなら、まず、料金が13,000円以上になる日があるかを確かめます。次は、すでに民泊も対象にしている<n-b>熱海市の<wbr>例です。</n-b></n-w></p>
         </section>
         <section class="article__section" id="atami">
           <h2>熱海市の<wbr>例では、<wbr>運営者は何を<wbr>するのか？</h2>
-<p><strong><n-w class="j">熱海市で民泊をするなら、1人1泊200円の宿泊税を預かる準備が要ります。</n-w></strong><n-w class="j">熱海市は2025年4月1日に宿泊税を導入し、旅館・ホテル・簡易宿所と住宅宿泊事業（民泊）の宿泊者から、1人1泊200円を徴収します（熱海市）。預かって納める手間は、<n-b>毎月かかります。</n-b></n-w></p>
+<p><strong><n-w class="j">熱海市で民泊をするなら、1人1泊200円の宿泊税を預かる準備が要ります。</n-w></strong><n-w class="j">熱海市は2025年4月1日に宿泊税を導入し、旅館・ホテル・簡易宿所と住宅宿泊事業（民泊）の宿泊者から、1人1泊200円を徴収します（熱海市）。預かって納める手間は、<n-b>毎月<wbr>かかります。</n-b></n-w></p>
 <ul>
-<li><strong><n-w>免除される人</n-w></strong><n-w>：小学生以下、修学旅行などの学校行事の参加者、市長が災害などで避難が必要と<n-b>認めた人など。</n-b></n-w></li>
+<li><strong><n-w>免除される人</n-w></strong><n-w>：小学生以下、修学旅行などの学校行事の参加者、市長が災害などで避難が必要と<n-b>認めた<wbr>人など。</n-b></n-w></li>
 <li><strong><n-w>預かり方</n-w></strong><n-w>：宿泊者が宿泊税の分を施設に支払い、施設の経営者（特別徴収義務者）が<n-b>預かります。</n-b></n-w></li>
 <li><strong><n-w class="j">納め方</n-w></strong><n-w class="j">：毎月1日から末日までの分を、翌月末日までに申告・納入します。一定の要件を満たせば、3か月ごとにまとめて申告する<n-b>こともできます。</n-b></n-w></li>
 <li><strong><n-w>使い道</n-w></strong><n-w>：花火大会などのイベントの開催や、フリーWi-Fiの整備などに充てる予定と<n-b>されています。</n-b></n-w></li>
@@ -178,7 +185,7 @@
 <li><strong><n-w>特別徴収の登録をする</n-w></strong><n-w>：熱海市のように、経営者が徴収義務者として登録・申告する自治体が<n-b>あります。</n-b></n-w></li>
 <li><strong><n-w>料金表示を直す</n-w></strong><n-w>：予約ページに、宿泊税の金額と支払い方法を<n-b>書きます。</n-b></n-w></li>
 </ol>
-<p><n-w class="j">宿泊税を含めた売上や客室単価（1室あたりの宿泊料金）の見方は「</n-w><a href="../media/inn-kpi-basics.html"><n-w class="j">稼働率・客室単価・RevPARとは？</n-w></a><n-w class="j">」、料金の見せ方は「</n-w><a href="../media/ota-vs-direct-booking.html"><n-w class="j">予約サイト（OTA）と自社予約、どう使い分ける？</n-w></a><n-w class="j"><n-b>」で説明しています。</n-b></n-w></p>
+<p><n-w class="j">宿泊税を含めた売上や客室単価（1室あたりの宿泊料金）の見方は「</n-w><a href="../media/inn-kpi-basics.html"><n-w class="j">稼働率・客室単価・RevPARとは？</n-w></a><n-w class="j">」、料金の見せ方は「</n-w><a href="../media/ota-vs-direct-booking.html"><n-w class="j">予約サイト（OTA）と自社予約、どう使い分ける？</n-w></a><n-w class="j"><n-b>」で<wbr>説明しています。</n-b></n-w></p>
         </section>
         <section class="article__section" id="summary">
           <h2>まとめ：民泊が<wbr>対象かどうかを、<wbr>自治体ごとに<wbr>確かめる</h2>
@@ -246,7 +253,7 @@
           <div>
             <p class="author__label"><n-b>この記事の監修者</n-b></p>
             <p class="author__name"><n-w>石原 佑真</n-w><span class="supervisor__role"><n-w>合同会社RIVIA&amp;CO. 代表社員</n-w></span></p>
-            <p class="author__text"><n-w class="j">株式会社リクルートの新規事業開発室で事業の立ち上げを経験し、その後ベンチャー企業で新規事業の創出と組織の拡大を牽引。RIVIA&amp;CO.を共同創業し、空き家の再生と宿の運営・開業支援<n-b>に携わる。</n-b></n-w></p>
+            <p class="author__text"><n-w class="j">株式会社リクルートの新規事業開発室で事業の立ち上げを経験し、その後ベンチャー企業で新規事業の創出と組織の拡大を牽引。RIVIA&amp;CO.を共同創業し、空き家の再生と宿の運営・開業支援<n-b>に<wbr>携わる。</n-b></n-w></p>
             <div class="supervisor__links">
               <a href="../about.html#founders" class="supervisor__more">プロフィールを見る <span class="arrow" aria-hidden="true"></span></a>
               <ul><li><a href="https://youtrust.jp/users/yumayade__2210" target="_blank" rel="noopener">YOUTRUST</a></li><li><a href="https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.wantedly.com/id/tasuku_ishihara_g" target="_blank" rel="noopener">Wantedly</a></li></ul>
@@ -1010,6 +1017,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=management&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=4b8fe9c4"></script>
+  <script src="../../js/main.js?v=d85a4e08"></script>
 </body>
 </html>

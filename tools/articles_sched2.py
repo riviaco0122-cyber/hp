@@ -778,9 +778,9 @@ ARTICLES_SCHED2 = [
             ("deadline", "期限はいつまで？2024年の改正で何が変わった？", """
 <p><strong>売ると決めたら、相続から3年後の年末という期限を先に確かめます。</strong>正確には、<strong>相続の開始から3年を経過する日の属する年の12月31日</strong>までです。「約3年」ではなく、年末までという数え方です。</p>
 <div class="stats" role="group" aria-label="期限の計算例">
-<div class="stat stat--accent"><span class="stat__num">2026<small>年3月</small></span><span class="stat__label">相続の開始</span><span class="stat__note">例</span></div>
-<div class="stat"><span class="stat__num">2029<small>年3月</small></span><span class="stat__label">3年を経過する日</span><span class="stat__note">この日が属する年は2029年</span></div>
-<div class="stat stat--accent"><span class="stat__num">2029<small>年末</small></span><span class="stat__label">売却の期限</span><span class="stat__note">ただし特例自体は2027年末まで</span></div>
+<div class="stat"><span class="stat__num">2026<small>年3月</small></span><span class="stat__label">相続の開始</span><span class="stat__note">例</span></div>
+<div class="stat"><span class="stat__num">2029<small>年末</small></span><span class="stat__label">3年後の年末</span><span class="stat__note">本来の期限</span></div>
+<div class="stat stat--accent"><span class="stat__num">2027<small>年末</small></span><span class="stat__label">実際の期限</span><span class="stat__note">特例が2027年末まで</span></div>
 </div>
 <p>特例そのものの期間（2027年12月31日までの売却）も、同時に満たす必要があります。上の例のように2026年に相続した場合は、3年後の年末より先に2027年末が来ます。そのため、実際の期限は2027年12月31日です。</p>
 <p>それまでに売れば、特例を使える場合があります。ただし、親子・夫婦など特別な関係の人への売却は対象外です。</p>

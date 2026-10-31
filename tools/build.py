@@ -127,9 +127,12 @@ def phrase_breaks(html):
             if len(tail) < 5:
                 tail = body_text[-5:]
         head_text = body_text[: len(body_text) - len(tail)]
-        tail_html = f"<n-b>{e(tail, quote=False)}</n-b>" if tail else ""
+        # 塊の中にも文節の区切り（<wbr>）を入れておく。ふだんは改行しないが、前の行の字間が開くときは js/main.js がここで改行させる
+        tail_html = f"<n-b>{'<wbr>'.join(e(c, quote=False) for c in _budoux.parse(tail))}</n-b>" if tail else ""
         parts[i] = f'{tag}{e(head_text, quote=False)}{tail_html}</n-w>{e(trail, quote=False)}'
     body = "".join(parts)
+    # 数字の途中や、数字と単位の間では改行しない（「202／5年」「約3,188／万人」を防ぐ）
+    body = re.sub(r"(?<=[0-9０-９,.，．])<wbr>(?=[0-9０-９,.，．年月日時分円万億千%％倍人件泊室戸棟回歳㎡])", "", body)
     # 段落が太字（マーカー）で終わるときは、太字の最後の文節と文末をひとまとまりにする（「〜しま／す。」を防ぐ）
     def _glue(m):
         attrs, txt, after = m.group(1), m.group(2), m.group(3) or ""
@@ -143,7 +146,7 @@ def phrase_breaks(html):
         if not last or len(last) >= len(raw):
             return m.group(0)
         return (f'<strong class="hl"><n-w{attrs}>{e(raw[: -len(last)], quote=False)}</n-w></strong>'
-                f'<n-b><strong class="hl">{e(last, quote=False)}</strong>{after_txt}</n-b>')
+                f'<n-b><strong class="hl">{e(last, quote=False)}</strong><wbr>{after_txt}</n-b>')
     body = re.sub(r'<strong class="hl"><n-w([^>]*)>([^<]+)</n-w></strong>((?:<n-w>)?(?:<n-b>)?[^<]{0,8}(?:</n-b>)?(?:</n-w>)?)(?=</(?:p|li|dd)>)', _glue, body)
     return head + sep + body
 
@@ -4753,8 +4756,10 @@ def article_page(a):
             return m.group(0)
         return re.sub(r"<ul([^>]*)>(.*?)</ul>", lambda m: sub(m) if 'class=' not in m.group(1) else m.group(0), html, flags=re.S)
     def auto_stack_tables(html):
-        """スマホで1列目が細く縦に伸びる表を、自動でカード表示（table--stack）にする（人の方針 2026-10-12）。
-        見出し行があり、1列目の文字が長い（12字超）表が対象。各セルに data-label を付ける。"""
+        """スマホで1列目が細く縦に伸びる表を、見やすい形に変える（人の方針 2026-10-12。比べる表は design-guide 6章）。
+        見出し行があり、1列目の文字が長い（12字超）か、ほかのマスが長い（24字超）表が対象。
+        - 2列の表（項目と内容）：1行ずつのカード（table--stack）に積み替える。項目名がカードの見出しになるので、ラベルは付けない
+        - 3列以上の表：比べるための表なので、カードにせず、1列目を止めて左右にスライドする表（table--wide）にする"""
         def conv(m):
             t = m.group(0)
             heads = [re.sub(r"<[^>]+>", "", h).strip() for h in re.findall(r"<th[^>]*>(.*?)</th>", t, re.S)]
@@ -4768,15 +4773,10 @@ def article_page(a):
             other = max(len(re.sub(r"<[^>]+>", "", x[1]).strip()) for c in parsed for x in c[1:])
             if first <= 12 and other <= 24:
                 return t
-            out = ['<div class="table-scroll table-scroll--stack"><table class="table table--stack">', t[t.index("<thead"):t.index("</thead>") + 8], "<tbody>"]
-            for c in parsed:
-                tds = []
-                for i, (attrs, inner) in enumerate(c):
-                    lab = "" if i == 0 else f' data-label="{e(heads[i])}"'
-                    tds.append(f"<td{attrs}{lab}>{inner}</td>")
-                out.append("<tr>" + "".join(tds) + "</tr>")
-            out.append("</tbody></table>")
-            return "".join(out)
+            if len(heads) >= 3:
+                return ('<p class="table-hint" aria-hidden="true">表は左右にスライドできます →</p>'
+                        '<div class="table-scroll table-scroll--wide"><table class="table table--wide">' + t[len('<table class="table">'):])
+            return '<div class="table-scroll table-scroll--stack"><table class="table table--stack">' + t[len('<table class="table">'):]
         return re.sub(r'<table class="table">.*?</table>', conv, html, flags=re.S)
     def thin_strong(html):
         """強調（太字）を絞る（playbook 13-4。人の方針 2026-10-12）。段落（<p>）の中の太字は、節の最初の太字（結論の1文）だけ残し、

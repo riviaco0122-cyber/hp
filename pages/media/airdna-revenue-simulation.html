@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=684ac539">
+  <link rel="stylesheet" href="../../css/style.css?v=ca278c28">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -131,7 +131,7 @@
         </section>
         <section class="article__section" id="formula">
           <h2>売上と<wbr>手元に残る利益は、<wbr>どんな式で<wbr>試算するのか</h2>
-<p><span class="lead-s"><n-w>売上と手元に残る利益は、簡単な式で試算できます。</n-w></span><n-w><n-b>使うのは次の3つの式です。</n-b></n-w></p>
+<p><span class="lead-s"><n-w>売上と手元に残る利益は、簡単な式で試算できます。</n-w></span><n-w><n-b>使うのは<wbr>次の<wbr>3つの<wbr>式です。</n-b></n-w></p>
           <figure class="fig fig--formula">
             <p class="fig__title">収益シミュレーションの<wbr>基本式</p>
             <div class="fig-formula"><span class="fig-term fig-term--result"><b>売上</b><small>1年間</small></span><span class="fig-op">＝</span><span class="fig-term"><b>販売できる日数</b><small>年間の<wbr>営業日</small></span><span class="fig-op">×</span><span class="fig-term"><b>稼働率</b><small>埋まった日の割合</small></span><span class="fig-op">×</span><span class="fig-term"><b>客室単価</b><small>1泊あたりの料金</small></span></div>
@@ -148,8 +148,19 @@
         <section class="article__section" id="example">
           <h2>【計算例】地方の<wbr>一棟貸し<wbr>（定員6名）の場合</h2>
 <p><span class="lead-s"><n-w>次の条件で試算します。</n-w></span><n-w>数値はすべて</n-w><strong><n-w>説明のための仮定</n-w></strong><n-w>で、特定のエリアの<n-b>実績ではありません。</n-b></n-w></p>
-<div class="table-scroll table-scroll--stack"><table class="table table--stack"><thead><tr><th>項目</th><th>仮定</th></tr></thead><tbody><tr><td>施設</td><td data-label="仮定"><n-w>地方の空き家を改修した一棟貸し（定員6名）、旅館業（簡易宿所）で年間営業</n-w></td></tr><tr><td>投資額</td><td data-label="仮定"><n-w>1,500万円（物件取得・改修・家具家電の合計）</n-w></td></tr><tr><td>ADR</td><td data-label="仮定"><n-w>25,000円（競合施設のデータから設定）</n-w></td></tr><tr><td>販売手数料</td><td data-label="仮定">売上の<wbr>12%</td></tr><tr><td>運営委託費</td><td data-label="仮定">売上の<wbr>15%</td></tr><tr><td>清掃・リネン</td><td data-label="仮定">1回8,000円<wbr>（平均2泊で<wbr>1回と<wbr>仮定）</td></tr><tr><td>固定費</td><td data-label="仮定"><n-w>年81万円（水道光熱・通信36万円、消耗品15万円、保険・税金・修繕積立30万円）</n-w></td></tr></tbody></table></div>
-<p><n-w>この条件で、稼働率を3パターンに分けて計算した結果が<n-b>次の表です。</n-b></n-w></p>
+<div class="table-scroll table-scroll--stack"><table class="table table--stack">
+<thead><tr><th>項目</th><th>仮定</th></tr></thead>
+<tbody>
+<tr><td>施設</td><td><n-w>地方の空き家を改修した一棟貸し（定員6名）、旅館業（簡易宿所）で年間営業</n-w></td></tr>
+<tr><td>投資額</td><td><n-w>1,500万円（物件取得・改修・家具家電の合計）</n-w></td></tr>
+<tr><td>ADR</td><td><n-w>25,000円（競合施設のデータから設定）</n-w></td></tr>
+<tr><td>販売手数料</td><td>売上の<wbr>12%</td></tr>
+<tr><td>運営委託費</td><td>売上の<wbr>15%</td></tr>
+<tr><td>清掃・リネン</td><td>1回8,000円<wbr>（平均2泊で<wbr>1回と<wbr>仮定）</td></tr>
+<tr><td>固定費</td><td><n-w>年81万円（水道光熱・通信36万円、消耗品15万円、保険・税金・修繕積立30万円）</n-w></td></tr>
+</tbody>
+</table></div>
+<p><n-w>この条件で、稼働率を3パターンに分けて計算した結果が<n-b>次の<wbr>表です。</n-b></n-w></p>
 <div class="table-scroll"><table class="table">
 <thead><tr><th>パターン</th><th>悲観（稼働率40%）</th><th>標準（55%）</th><th>楽観（65%）</th></tr></thead>
 <tbody>
@@ -163,8 +174,8 @@
 <p class="table-note"><n-w>※ 所得税・住民税、借入金の返済、大規模修繕は<n-b>含みません。</n-b></n-w></p>
 <p><n-w class="j">同じ物件でも、悲観と楽観で稼働率が25ポイント違うと、回収年数は約6年変わります。「平均的な稼働率」を一つだけ置いた計画は<n-b>危ういのです。</n-b></n-w></p>
 <p><n-w class="j">同じ条件を民泊新法（年間180日が上限）で運営すると、180日すべて埋まっても年間売上は450万円までです。どの制度で始めるかで売上の上限が決まるので、試算の段階で<n-b>入れておきましょう。</n-b></n-w></p>
-<p><n-w>稼働率や客室単価の意味は、「</n-w><a href="../media/inn-kpi-basics.html"><n-w>稼働率・客室単価・RevPARとは？</n-w></a><n-w><n-b>」で説明しています。</n-b></n-w></p>
-<p><n-w class="j">実績の費用から赤字にならない稼働率を出す方法は、「</n-w><a href="../media/minpaku-break-even.html"><n-w class="j">民泊は稼働率何%で黒字？損益分岐点を自分で計算するやり方</n-w></a><n-w class="j"><n-b>」で説明しています。</n-b></n-w></p>
+<p><n-w>稼働率や客室単価の意味は、「</n-w><a href="../media/inn-kpi-basics.html"><n-w>稼働率・客室単価・RevPARとは？</n-w></a><n-w><n-b>」で<wbr>説明しています。</n-b></n-w></p>
+<p><n-w class="j">実績の費用から赤字にならない稼働率を出す方法は、「</n-w><a href="../media/minpaku-break-even.html"><n-w class="j">民泊は稼働率何%で黒字？損益分岐点を自分で計算するやり方</n-w></a><n-w class="j"><n-b>」で<wbr>説明しています。</n-b></n-w></p>
 <p><n-w>ただし、この試算の元になるAirDNAの数字には、気をつけたい点が<n-b>あります。</n-b></n-w></p>
         </section>
         <section class="article__section" id="limits">
@@ -178,14 +189,14 @@
 <p><n-w class="j">地方では、比べられる宿の数が少なく、1〜2軒の数字で平均が大きく動きます。定員や価格帯の違う宿が混ざると、自分の物件とは前提が<n-b>合いません。</n-b></n-w></p>
 <h3>過去の<wbr>データは<wbr>未来を<wbr>保証しない</h3>
 <p><n-w class="j">新しい宿が次々に開業すれば、泊まれる部屋が増えて稼働率は下がります。規制が変わったり、イベントがあったりしても、需要は大きく<n-b>動きます。</n-b></n-w></p>
-<p><n-w>季節による売上の波への備えは、「</n-w><a href="../media/minpaku-off-season.html"><n-w>閑散期をどう乗り越える？</n-w></a><n-w><n-b>」で説明しています。</n-b></n-w></p>
+<p><n-w>季節による売上の波への備えは、「</n-w><a href="../media/minpaku-off-season.html"><n-w>閑散期をどう乗り越える？</n-w></a><n-w><n-b>」で<wbr>説明しています。</n-b></n-w></p>
 <p><n-w>では、こうした限界を踏まえて、試算をどう組み立てればよいので<n-b>しょうか。</n-b></n-w></p>
         </section>
         <section class="article__section" id="repro">
           <h2>試算の<wbr>ぶれを<wbr>減らす<wbr>「再現性」を<wbr>高める<wbr>5つのコツ</h2>
 <p><span class="lead-s"><n-w class="j">3つの工夫で、試算の大きなぶれを減らせます。</n-w></span><n-w class="j">似た条件の宿だけを比べる、悲観・標準・楽観の3パターンで計算する、開業直後の客足が少ない期間を見込む、の3つです。何度やっても大きくぶれないことを、再現性といいます。下の1〜3がこの3つで、4と5で裏づけを<n-b>足します。</n-b></n-w></p>
 <ol class="steps">
-<li><strong><n-w class="j">条件の近い競合だけを比べる</n-w></strong><n-w class="j">：エリア全体の平均ではなく、定員・広さ・価格帯・レビュー評価が近い施設を数軒選び、その数値を<n-b>基準にします。</n-b></n-w></li>
+<li><strong><n-w class="j">条件の近い競合だけを比べる</n-w></strong><n-w class="j">：エリア全体の平均ではなく、定員・広さ・価格帯・レビュー評価が近い施設を数軒選び、その数値を<n-b>基準に<wbr>します。</n-b></n-w></li>
 <li><strong><n-w class="j">悲観・標準・楽観の3パターンで試算する</n-w></strong><n-w class="j">：上の計算例のように稼働率とADRに幅をもたせ、悲観パターンでも赤字にならないかを<n-b>確かめます。</n-b></n-w></li>
 <li><strong><n-w class="j">開業直後の立ち上がり期間を見込む</n-w></strong><n-w class="j">：レビューが少ない最初の数か月は、実績のある宿と同じ稼働率にはなりません。初年度は低めに見込むと<n-b>安全です。</n-b></n-w></li>
 <li><strong><n-w>季節変動を月単位で確認する</n-w></strong><n-w>：年間平均だけでなく、閑散期の月にどれだけ売上が落ちるかを見て、資金繰りを<n-b>計画します。</n-b></n-w></li>
@@ -224,7 +235,7 @@
         <section class="sources">
           <details class="sources__fold">
             <summary class="sources__title">参考資料<wbr>（3件）</summary>
-            <ul><li><n-w>AirDNA 公式サイト（サービス・指<n-b>標の説明）</n-b></n-w></li><li>観光庁<wbr>「民泊制度<wbr>ポータルサイト」</li><li>厚生労働省<wbr>「旅館業法に<wbr>ついて」</li></ul>
+            <ul><li><n-w>AirDNA 公式サイト（サービス・指<n-b>標の<wbr>説明）</n-b></n-w></li><li>観光庁<wbr>「民泊制度<wbr>ポータルサイト」</li><li>厚生労働省<wbr>「旅館業法に<wbr>ついて」</li></ul>
             <p class="sources__note"><n-w>※ 本記事の数値・制度は公開日時点で公表されている資料にもとづきます。最新の情報は各機関の発表を<n-b>ご確認ください。</n-b></n-w></p>
           </details>
         </section>
@@ -259,7 +270,7 @@
           <div>
             <p class="author__label"><n-b>この記事の監修者</n-b></p>
             <p class="author__name"><n-w>石原 佑真</n-w><span class="supervisor__role"><n-w>合同会社RIVIA&amp;CO. 代表社員</n-w></span></p>
-            <p class="author__text"><n-w class="j">株式会社リクルートの新規事業開発室で事業の立ち上げを経験し、その後ベンチャー企業で新規事業の創出と組織の拡大を牽引。RIVIA&amp;CO.を共同創業し、空き家の再生と宿の運営・開業支援<n-b>に携わる。</n-b></n-w></p>
+            <p class="author__text"><n-w class="j">株式会社リクルートの新規事業開発室で事業の立ち上げを経験し、その後ベンチャー企業で新規事業の創出と組織の拡大を牽引。RIVIA&amp;CO.を共同創業し、空き家の再生と宿の運営・開業支援<n-b>に<wbr>携わる。</n-b></n-w></p>
             <div class="supervisor__links">
               <a href="../about.html#founders" class="supervisor__more">プロフィールを見る <span class="arrow" aria-hidden="true"></span></a>
               <ul><li><a href="https://youtrust.jp/users/yumayade__2210" target="_blank" rel="noopener">YOUTRUST</a></li><li><a href="https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.wantedly.com/id/tasuku_ishihara_g" target="_blank" rel="noopener">Wantedly</a></li></ul>
@@ -1023,6 +1034,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="../media/contact.html?category=management&amp;from=akiyado" class="btn" data-cta="media-fixed">無料で<wbr>相談する <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../../js/main.js?v=4b8fe9c4"></script>
+  <script src="../../js/main.js?v=d85a4e08"></script>
 </body>
 </html>
