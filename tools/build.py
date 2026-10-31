@@ -137,7 +137,8 @@ def phrase_breaks(html):
         raw = unescape(txt)
         ph = _budoux.parse(raw)
         last = ""
-        while ph and len(last) < 3 and len(last + ph[-1]) <= 7:
+        # まとめる長さは文末と合わせて11字まで（狭い枠で1行に収まらず、はみ出すのを防ぐ）
+        while ph and len(last) < 3 and len(last + ph[-1]) <= 7 and len(last + ph[-1] + after_txt) <= 11:
             last = ph.pop() + last
         if not last or len(last) >= len(raw):
             return m.group(0)

@@ -3245,7 +3245,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .is-corp .issue__title { margin-top: 18px; font-size: 24px; line-height: 1.55; }
 
 /* 会話 */
-.is-corp .issue__scene, .is-corp .issue__answer { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; max-width: 820px; padding: 0; background: none; border-radius: 0; }
+.is-corp .issue__scene, .is-corp .issue__answer { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; max-width: 820px; margin: 0; padding: 0; background: none; border-radius: 0; }
 .is-corp .issue__scene { margin-top: 26px; }
 .is-corp .issue__scene .issue__sublabel, .is-corp .issue__answer > .issue__sublabel { grid-column: 2; grid-row: 1; margin-bottom: 6px; }
 .is-corp .issue__avatar { grid-column: 1; grid-row: 2; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; align-self: start; }
