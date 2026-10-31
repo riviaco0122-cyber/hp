@@ -86,6 +86,7 @@ DESIGNS = {
     "minpaku-seisou-kojin-kakunin": dict(layout="boxes", lines=["清掃を個人に頼む前に", "[家主不在・雇用・欠員]", "3つ確かめる"]),
     "minpaku-180days-rule": dict(layout="number", big="180", unit="DAYS", lines=["民泊新法の年上限。", "[数え方と超えたとき]"], color="terra"),
     "minpaku-house-guide": dict(layout="number", big="408", unit="件", lines=["ゲストの質問を数えて分かった", "[先に送る案内の作り方]"], color="deep"),
+    "minpaku-bihin-priority": dict(layout="number", big="3", unit="段階", lines=["民泊の備品は、買う順番で", "[買いすぎを防ぐ]"], color="terra"),
     "long-stay-guest-equipment": dict(layout="marker", lines=["長期滞在のゲストに", "[選ばれる設備]"], photo="hotel-room", pos="60% 45%"),
 
     # ---- 観光と地域
