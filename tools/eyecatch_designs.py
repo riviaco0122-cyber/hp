@@ -43,7 +43,7 @@ DESIGNS = {
 
     # ---- 物件・改修
     "akiya-bank-guide": dict(layout="marker", lines=["空き家バンクの", "[仕組みと使い方]"], sub="登録・購入の前に知っておきたいこと"),
-    "shizuoka-yaizu-akiya-inn": dict(layout="boxes", lines=["観光地でなくても", "[収益物件]になる？"]),
+    "shizuoka-yaizu-akiya-inn": dict(layout="boxes", lines=["観光地でなくても", "[民泊]は成り立つ？"]),
     "kominka-renovation-points": dict(layout="mincho", lines=["古民家を、", "宿に直す"], sub="残すもの・変えるもの", photo="irori-room", pos="50% 62%"),
     "akiya-utilization-options": dict(layout="poster", big="売る？貸す？宿？", lines=["空き家の[活用方法]を比べる"], color="green"),
     "akiya-minpaku-suitability": dict(layout="quote", lines=["その空き家は、", "[民泊に向いている？]"], color="sand", photo="old-town-street", pos="50% 45%"),
