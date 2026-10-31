@@ -61,7 +61,7 @@ DESIGNS = {
     "minpaku-vs-ryokan-law": dict(layout="duo", a="民泊新法", b="旅館業", lines=["[どちらで始める？]"]),
     "minpaku-start-steps": dict(layout="number", big="7", unit="STEP", lines=["民泊を始めるまでの", "[7ステップ]"], color="terra"),
     "minpaku-fire-safety": dict(layout="poster", big="消防設備", lines=["民泊・小さな宿の", "[ガイド]"], color="terra"),
-    "akiyado-consultation-flow": dict(layout="frame", lines=["相談から開業までの", "[流れ]"], color="green"),
+    "akiyado-consultation-flow": dict(layout="frame", lines=["相談から", "[開業までの流れ]"], color="green"),
 
     # ---- お金・税金
     "small-inn-subsidies": dict(layout="giant", big="補助金", lines=["小規模宿で使える", "[支援制度まとめ]"]),
