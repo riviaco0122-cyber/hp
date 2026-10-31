@@ -21,7 +21,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AirDNAで民泊の収益をシミュレーション｜再現性を高める5つのコツ | アキヤド</title>
-  <meta name="description" content="宿を始める前に、「その町で1年にいくら売れそうか」を調べられるデータサービスがAirDNAです。部屋の埋まり具合と1泊の値段から売上と利益を試算する手順、計算例、数字を信じすぎないコツを紹介します。">
+  <meta name="description" content="AirDNAは、その町の宿の稼働率や1泊の値段を推計するデータサービスです。売上と利益の出し方、定員6名の計算例、下田の宿で稼働率が月33〜71%と動いた実例、試算のぶれを減らす5つのコツを紹介します。">
   <link rel="canonical" href="https://rivia-co.com/media/airdna-revenue-simulation.html">
   <link rel="icon" href="../../images/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="../../images/favicon-48.png" type="image/png" sizes="48x48">
@@ -29,7 +29,7 @@
 
   <!-- OGP（SNSやLINEでシェアされたときの表示。画像は横長 1200×630） -->
   <meta property="og:title" content="AirDNAで民泊の収益をシミュレーション｜再現性を高める5つのコツ | アキヤド">
-  <meta property="og:description" content="宿を始める前に、「その町で1年にいくら売れそうか」を調べられるデータサービスがAirDNAです。部屋の埋まり具合と1泊の値段から売上と利益を試算する手順、計算例、数字を信じすぎないコツを紹介します。">
+  <meta property="og:description" content="AirDNAは、その町の宿の稼働率や1泊の値段を推計するデータサービスです。売上と利益の出し方、定員6名の計算例、下田の宿で稼働率が月33〜71%と動いた実例、試算のぶれを減らす5つのコツを紹介します。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://rivia-co.com/media/airdna-revenue-simulation.html">
   <meta property="og:image" content="https://rivia-co.com/images/eyecatch/airdna-revenue-simulation.jpg?v=bdd855b8">
@@ -50,8 +50,8 @@
     document.documentElement.classList.add('js');
     setTimeout(function () { if (!window.RIVIA_READY) document.documentElement.classList.remove('js'); }, 2000);
   </script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AirDNAで民泊の収益をシミュレーション｜再現性を高める5つのコツ", "description": "宿を始める前に、「その町で1年にいくら売れそうか」を調べられるデータサービスがAirDNAです。部屋の埋まり具合と1泊の値段から売上と利益を試算する手順、計算例、数字を信じすぎないコツを紹介します。", "datePublished": "2026-09-29", "dateModified": "2026-10-31", "image": "https://rivia-co.com/images/eyecatch/airdna-revenue-simulation.jpg?v=bdd855b8", "mainEntityOfPage": "https://rivia-co.com/media/airdna-revenue-simulation.html", "author": {"@type": "Organization", "name": "アキヤド編集部（合同会社RIVIA&CO.）", "url": "https://rivia-co.com/about.html", "parentOrganization": {"@id": "https://rivia-co.com/about.html#organization"}}, "contributor": {"@type": "Person", "@id": "https://rivia-co.com/about.html#ishihara", "name": "石原 佑真", "jobTitle": "合同会社RIVIA&CO. 代表社員（監修）", "url": "https://rivia-co.com/about.html#founders", "sameAs": ["https://youtrust.jp/users/yumayade__2210", "https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b", "https://www.wantedly.com/id/tasuku_ishihara_g"]}, "publisher": {"@type": "Organization", "@id": "https://rivia-co.com/about.html#organization", "name": "合同会社RIVIA&CO.", "url": "https://rivia-co.com/", "logo": {"@type": "ImageObject", "url": "https://rivia-co.com/images/logo/logo.png"}}, "articleSection": "集客・運営", "inLanguage": "ja"}</script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "AirDNAの稼働率はどのくらい正確ですか？", "acceptedAnswer": {"@type": "Answer", "text": "予約サイト上の公開情報からの推計値なので、誤差があります。とくに掲載件数の少ない地方や、直接予約の多い宿では、実態とずれやすくなります。複数の情報源で裏づけをとってから使ってください。"}}, {"@type": "Question", "name": "シミュレーションで最低限入れるべき費用は何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "販売手数料、清掃・リネン費、水道光熱・通信費、消耗品費、運営を委託する場合の委託費、保険・税金・修繕積立です。借入があるなら返済額、所得にかかる税金も別に見込んでください。"}}, {"@type": "Question", "name": "小規模宿の利回りはどれくらいを目安にすべきですか？", "acceptedAnswer": {"@type": "Answer", "text": "物件や運営の方法で大きく変わるため、一概には言えません。悲観的な稼働率でも赤字にならず、想定した年数で投資を回収できるかを基準に判断してください。"}}, {"@type": "Question", "name": "開業したばかりの宿でも、競合と同じ稼働率になりますか？", "acceptedAnswer": {"@type": "Answer", "text": "レビューが少ない開業直後は、たいてい競合より稼働率が低くなります。初年度は低めに見込み、レビューの蓄積とともに改善していく前提で計画すると安全です。"}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AirDNAで民泊の収益をシミュレーション｜再現性を高める5つのコツ", "description": "AirDNAは、その町の宿の稼働率や1泊の値段を推計するデータサービスです。売上と利益の出し方、定員6名の計算例、下田の宿で稼働率が月33〜71%と動いた実例、試算のぶれを減らす5つのコツを紹介します。", "datePublished": "2026-09-29", "dateModified": "2026-10-31", "image": "https://rivia-co.com/images/eyecatch/airdna-revenue-simulation.jpg?v=bdd855b8", "mainEntityOfPage": "https://rivia-co.com/media/airdna-revenue-simulation.html", "author": {"@type": "Organization", "name": "アキヤド編集部（合同会社RIVIA&CO.）", "url": "https://rivia-co.com/about.html", "parentOrganization": {"@id": "https://rivia-co.com/about.html#organization"}}, "contributor": {"@type": "Person", "@id": "https://rivia-co.com/about.html#ishihara", "name": "石原 佑真", "jobTitle": "合同会社RIVIA&CO. 代表社員（監修）", "url": "https://rivia-co.com/about.html#founders", "sameAs": ["https://youtrust.jp/users/yumayade__2210", "https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b", "https://www.wantedly.com/id/tasuku_ishihara_g"]}, "publisher": {"@type": "Organization", "@id": "https://rivia-co.com/about.html#organization", "name": "合同会社RIVIA&CO.", "url": "https://rivia-co.com/", "logo": {"@type": "ImageObject", "url": "https://rivia-co.com/images/logo/logo.png"}}, "articleSection": "集客・運営", "inLanguage": "ja"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "AirDNAの稼働率はどのくらい正確ですか？", "acceptedAnswer": {"@type": "Answer", "text": "予約サイトの公開情報から推計した数字なので、誤差があります。特に、宿の少ない地方や、直接の予約が多い宿では、実際とずれやすくなります。予約サイトのカレンダーや地元の話で、裏づけを取ってから使います。"}}, {"@type": "Question", "name": "シミュレーションで最低限入れるべき費用は何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "予約サイトの手数料、清掃・リネン、水道光熱・通信、消耗品、運営を任せる場合の委託費、保険・税金・修繕の積み立てです。借入があるなら返済額、所得にかかる税金も別に見込みます。"}}, {"@type": "Question", "name": "小規模宿の利回りはどれくらいを目安にすべきですか？", "acceptedAnswer": {"@type": "Answer", "text": "物件や運営の方法で大きく変わるため、一律の目安はありません。悲観の稼働率でも赤字にならず、決めた年数で投資を回収できるかで判断します。"}}, {"@type": "Question", "name": "開業したばかりの宿でも、競合と同じ稼働率になりますか？", "acceptedAnswer": {"@type": "Answer", "text": "レビューが少ない開業直後は、たいてい競合より低くなります。下田の宿では、開業直後は値段を抑えてレビューを集め、高評価が5件ほどたまってから値段を上げました。初年度は低めに見込みます。"}}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://rivia-co.com/"}, {"@type": "ListItem", "position": 2, "name": "アキヤド", "item": "https://rivia-co.com/media.html"}, {"@type": "ListItem", "position": 3, "name": "集客・運営", "item": "https://rivia-co.com/media/category-operate.html"}, {"@type": "ListItem", "position": 4, "name": "AirDNAで民泊の収益をシミュレーション｜再現性を高める5つのコツ"}]}</script>
 </head>
 <body class="is-media">
@@ -99,11 +99,11 @@
       </header>
 
       <div class="container container--article article__body">
-        <p class="article__lead"><n-w class="j">宿を始める前に、「その町で1年にいくら売れそうか」を調べられるデータサービスがAirDNAです。部屋の埋まり具合と1泊の値段から売上と利益を試算する手順、計算例、数字を信じすぎないコツを<n-b>紹介します。</n-b></n-w></p>
+        <p class="article__lead"><n-w class="j">AirDNAは、その町の宿の稼働率や1泊の値段を推計するデータサービスです。売上と利益の出し方、定員6名の計算例、下田の宿で稼働率が月33〜71%と動いた実例、試算のぶれを減らす5つのコツを<n-b>紹介します。</n-b></n-w></p>
 
         <section class="keypoints" aria-labelledby="keypoints-title">
           <h2 id="keypoints-title" class="keypoints__title">この記事の<wbr>ポイント</h2>
-          <ul><li><span class="kp__main"><n-w class="j">AirDNAを使うと、開業前に、その町の稼働率や部屋代の目安がつかめます。</n-w></span><span class="kp__sub"><n-w class="j">Airbnbなどに載っている公開情報から、稼働率（部屋が埋まっている割合）、1泊の平均の部屋代（ADR）、季節ごとの波を推計するデータサービスです。</n-w></span></li><li><span class="kp__main"><n-w class="j">売上と手元に残る利益は、簡単な式で試算できます。</n-w></span><span class="kp__sub"><n-w class="j">年間売上は「ADR × 営業日数 × 稼働率」です。ここから予約サイトの手数料・掃除代・運営費を引くと、手元に残る利益が出ます。投資額に対する利益の割合が利回りです。</n-w></span></li><li><span class="kp__main"><n-w class="j">AirDNAの数字を信じすぎると、収支の見積もりが甘くなります。</n-w></span><span class="kp__sub"><n-w class="j">数字は推計で、平均値をそのまま使うと実態より良く見えがちです。自社サイトなどの直接予約も入っていません。</n-w></span></li><li><span class="kp__main"><n-w class="j">3つの工夫で、試算の大きなぶれを減らせます。</n-w></span><span class="kp__sub"><n-w class="j">似た条件の宿だけを比べる、悲観・標準・楽観の3パターンで計算する、開業直後の客足が少ない期間を見込む、の3つです。何度やっても大きくぶれないことを、再現性といいます。</n-w></span></li></ul>
+          <ul><li><span class="kp__main"><n-w>AirDNAを使うと、開業前にその町の稼働率と1泊の値段の目安がつかめます。</n-w></span><span class="kp__sub"><n-w>予約サイトの公開情報から推計したデータです。</n-w></span></li><li><span class="kp__main"><n-w class="j">売上は「1泊の値段 × 営業日数 × 稼働率」で出せます。</n-w></span><span class="kp__sub"><n-w class="j">ここから手数料・清掃・光熱費などを引いた残りが、手元に残る利益です。</n-w></span></li><li><span class="kp__main"><n-w class="j">稼働率を1つだけ置いた計画は危うくなります。</n-w></span><span class="kp__sub"><n-w class="j">定員6名の一棟貸しの計算例では、稼働率が40%か65%かで、投資の回収年数が約6年変わりました。</n-w></span></li><li><span class="kp__main"><n-w class="j">年の平均だけでなく、月ごとの稼働率を見てください。</n-w></span><span class="kp__sub"><n-w class="j">下田の宿の1年目は平均約53%でしたが、月では33%から71%まで動きました。</n-w></span></li><li><span class="kp__main"><n-w class="j">試算のぶれは、5つのコツで減らせます。</n-w></span><span class="kp__sub"><n-w class="j">特に効くのは、自分と同じ形の宿だけと比べることと、悪い月でも続けられるかを見ることです。</n-w></span></li></ul>
         </section>
 
         <aside class="inline-cta">
@@ -116,51 +116,48 @@
 
         <nav class="toc" aria-label="目次">
           <details class="toc__details">
-            <summary class="toc__title">目次を開く<wbr>（全7章）</summary>
-            <ol><li><a href="#what"><n-w>AirDNAで、開業前に町の稼働率や部屋代の目安はつかめるのか</n-w></a></li><li><a href="#formula"><n-w>売上と手元に残る利益は、どんな式で試算するのか</n-w></a></li><li><a href="#example"><n-w>【計算例】地方の一棟貸し（定員6名）の場合</n-w></a></li><li><a href="#limits"><n-w>AirDNAの数字を信じすぎると、何が危ないのか</n-w></a></li><li><a href="#repro"><n-w>試算のぶれを減らす「再現性」を高める5つのコツ</n-w></a></li><li><a href="#summary"><n-w>まとめ：データを「使える数字」に変えるのは、前提の置き方</n-w></a></li><li><a href="#faq">よくある質問</a></li></ol>
+            <summary class="toc__title">目次を開く<wbr>（全8章）</summary>
+            <ol><li><a href="#what">AirDNAで、<wbr>開業前に何が<wbr>分かるのか？</a></li><li><a href="#formula"><n-w>売上と手元に残る利益は、どんな式で出すのか？</n-w></a></li><li><a href="#example"><n-w>定員6名の一棟貸しなら、稼働率しだいで回収年数が約6年変わる</n-w></a></li><li><a href="#shimoda"><n-w>実際の宿の稼働率は、月ごとにどれくらい動いたのか？</n-w></a></li><li><a href="#limits"><n-w>AirDNAの数字を信じすぎると、何が危ないのか？</n-w></a></li><li><a href="#repro">試算の<wbr>ぶれを<wbr>減らす<wbr>5つの<wbr>コツは？</a></li><li><a href="#summary"><n-w>まとめ：平均ではなく、悪い月でも続けられるかで判断する</n-w></a></li><li><a href="#faq">よくある質問</a></li></ol>
           </details>
         </nav>
 
         <section class="article__section" id="what">
-          <h2>AirDNAで、<wbr>開業前に町の<wbr>稼働率や<wbr>部屋代の<wbr>目安は<wbr>つかめるのか</h2>
-<p><span class="lead-s"><n-w class="j">開業前に、その町の稼働率や部屋代の目安がつかめます。</n-w></span><n-w class="j">AirDNAは、Airbnbなどの予約サイトに載っている民泊の公開情報から、</n-w><strong><n-w class="j">エリアごとの稼働率（部屋が埋まっている割合）、平均客室単価（ADR＝1泊の平均の部屋代）、1室あたり売上、季節ごとの変動</n-w></strong><n-w class="j">などを推計する<n-b>データサービスです。</n-b></n-w></p>
-<p><n-w class="j">小さな宿を考えるとき、「この町で宿をやったら、1年にいくら売れるのか」は、最も知りたい情報の一つです。一棟貸しや民泊には、ホテルのような業界統計がありません。そこで、AirDNAのような推計データが、勘に頼らず事業計画を立てる出発点に<n-b>なります。</n-b></n-w></p>
-<div class="callout"><p class="callout__label">主に確認できる指標</p><p><n-w class="j">稼働率（予約が入った日の割合）、ADR（1泊あたりの平均販売単価）、RevPAR（販売可能な1日あたりの売上）、エリア内の掲載件数の推移、月ごとの需要の波など。機能や料金は変わるため、使うときに公式サイトで<n-b>確かめてください。</n-b></n-w></p></div>
-<p class="table-note"><n-w>※ RIVIA&amp;CO.はAirDNA社と提携関係はありません。本記事は一般的な使い方の<n-b>説明です。</n-b></n-w></p>
-<p><n-w>数字が手に入ったら、次は売上と利益を<n-b>計算します。</n-b></n-w></p>
+          <h2>AirDNAで、<wbr>開業前に何が<wbr>分かるのか？</h2>
+<p><span class="lead-s"><n-w class="j">AirDNAを使うと、開業前に、その町の宿がどれくらい埋まり、1泊いくらで泊まられているかの目安が分かります。</n-w></span><n-w class="j">AirDNAは、Airbnbなどの予約サイトに載っている宿の公開情報から、町ごとの数字を推計する<n-b>データサービスです。</n-b></n-w></p>
+<div class="callout"><p class="callout__label">AirDNAで<wbr>見られる主な数字</p><p><n-w class="j">稼働率（部屋が埋まった日の割合）、ADR（1泊の平均の値段）、RevPAR（1室・1日あたりの売上。ADR×稼働率）、町の掲載件数の推移、月ごとの<n-b>需要の<wbr>波など。</n-b></n-w></p></div>
+<p class="table-note"><n-w class="j">※ 機能と料金は変わることがあるため、使う前に公式サイトで確かめてください。RIVIA&amp;CO.はAirDNA社と<n-b>提携していません。</n-b></n-w></p>
+<p><n-w class="j">一棟貸しや民泊には、ホテルのような業界の統計がほとんどありません。だから、勘ではなく数字で計画を立てたいときの出発点に<n-b>なります。</n-b></n-w></p>
+<p><n-w class="j">使い方の例として、中国地方の里山で古民家を宿にしたIさんご夫婦の話を紹介します。Iさんは、日本政策金融公庫の融資の面談で「過疎の里山に、本当に1年を通して泊まる人がいるのか」と問われました。そこでAirDNAで、周辺の一棟貸しの古民家の稼働率・平均の値段・予約の傾向を調べ、グラフと表にして事業計画書に付けました。町全体の観光客数ではなく、自分と同じ形の宿の数字を見せたことが、融資に<n-b>つながっています。</n-b></n-w></p>
+<p class="table-note"><n-w>※ 取材（2026年1〜3月）での本人の話です。AirDNAで見た数字そのものは、取材では<n-b>確認していません。</n-b></n-w></p>
+<p><n-w>集めた数字は、次の式に入れると、売上と利益に<n-b>変わります。</n-b></n-w></p>
         </section>
         <section class="article__section" id="formula">
-          <h2>売上と<wbr>手元に残る利益は、<wbr>どんな式で<wbr>試算するのか</h2>
-<p><span class="lead-s"><n-w>売上と手元に残る利益は、簡単な式で試算できます。</n-w></span><n-w><n-b>使うのは<wbr>次の<wbr>3つの<wbr>式です。</n-b></n-w></p>
-          <figure class="fig fig--formula">
-            <p class="fig__title">収益シミュレーションの<wbr>基本式</p>
-            <div class="fig-formula"><span class="fig-term fig-term--result"><b>売上</b><small>1年間</small></span><span class="fig-op">＝</span><span class="fig-term"><b>販売できる日数</b><small>年間の<wbr>営業日</small></span><span class="fig-op">×</span><span class="fig-term"><b>稼働率</b><small>埋まった日の割合</small></span><span class="fig-op">×</span><span class="fig-term"><b>客室単価</b><small>1泊あたりの料金</small></span></div>
-            <figcaption class="fig__note"><n-w>ここから予約サイトの手数料・清掃費・光熱費などを引いたものが、手元に残る<n-b>利益です。</n-b></n-w></figcaption>
-          </figure>
-
+          <h2>売上と<wbr>手元に残る利益は、<wbr>どんな式で<wbr>出すのか？</h2>
+<p><span class="lead-s"><n-w>売上は「1泊の値段 × 営業日数 × 稼働率」で出し、そこから費用を引くと手元に残る利益になります。</n-w></span><n-w><n-b>式は<wbr>次の<wbr>3つです。</n-b></n-w></p>
 <ol class="steps">
-<li><strong><n-w class="j">年間売上 ＝ ADR × 営業日数 × 稼働率</n-w></strong><n-w class="j">：旅館業（簡易宿所＝小さな宿の許可区分）なら営業日数は最大365日、住宅宿泊事業法（民泊新法）なら年間180日が<n-b>上限です。</n-b></n-w></li>
-<li><strong><n-w class="j">手元に残る利益 ＝ 年間売上 － 運営にかかる費用</n-w></strong><n-w class="j">：販売手数料、清掃・リネン、水道光熱・通信、消耗品、運営委託費、保険・税金・修繕積立などを<n-b>差し引きます。</n-b></n-w></li>
-<li><strong><n-w class="j">利回り（投資額に対して1年で戻る利益の割合） ＝ 手元に残る利益 ÷ 投資額</n-w></strong><n-w class="j">：投資額は、物件の取得費と改修・家具家電などの初期費用の合計です。投資額を利益で割ると、おおよその回収年数も<n-b>分かります。</n-b></n-w></li>
+<li><strong><n-w class="j">年間売上 ＝ ADR × 営業日数 × 稼働率</n-w></strong><n-w class="j">：旅館業の簡易宿所（小さな宿に多い許可）なら、営業日数は最大365日です。住宅宿泊事業法（民泊新法）の届出なら年180日が上限で、自治体の条例でさらに短くなる場合が<n-b>あります。</n-b></n-w></li>
+<li><strong><n-w class="j">手元に残る利益 ＝ 年間売上 － 運営の費用</n-w></strong><n-w class="j">：予約サイトの手数料、清掃・リネン、水道光熱・通信、消耗品、運営の委託費、保険・税金・修繕の積み立てを<n-b>引きます。</n-b></n-w></li>
+<li><strong><n-w class="j">利回り ＝ 手元に残る利益 ÷ 投資額</n-w></strong><n-w class="j">：投資額に対して、1年でどれだけ戻るかの割合です。投資額は、物件の取得費と、改修・家具家電の合計です。投資額を利益で割ると、回収までの年数の<n-b>目安が<wbr>出ます。</n-b></n-w></li>
 </ol>
-<p><n-w class="j">AirDNAで分かるのは、主に1つ目の式の</n-w><strong><n-w class="j">ADRと稼働率</n-w></strong><n-w class="j">です。費用は、物件と運営のやり方に合わせて、自分で積み上げます。では、実際に数字を<n-b>入れてみましょう。</n-b></n-w></p>
+<p><n-w class="j">AirDNAで分かるのは、主に1つ目の式のADRと稼働率です。費用は、物件と運営のやり方に合わせて、自分で積み上げます。宿の数字の意味は、「</n-w><a href="../media/inn-kpi-basics.html"><n-w class="j">稼働率・客室単価・RevPARとは？</n-w></a><n-w class="j"><n-b>」で<wbr>説明しています。</n-b></n-w></p>
         </section>
         <section class="article__section" id="example">
-          <h2>【計算例】地方の<wbr>一棟貸し<wbr>（定員6名）の場合</h2>
-<p><span class="lead-s"><n-w>次の条件で試算します。</n-w></span><n-w>数値はすべて</n-w><strong><n-w>説明のための仮定</n-w></strong><n-w>で、特定のエリアの<n-b>実績ではありません。</n-b></n-w></p>
+          <h2>定員6名の<wbr>一棟貸しなら、<wbr>稼働率しだいで<wbr>回収年数が<wbr>約6年変わる</h2>
+<p><span class="lead-s"><n-w class="j">同じ物件でも、稼働率を40%と置くか65%と置くかで、回収年数は約12年から約6年まで変わります。</n-w></span><n-w class="j">地方の空き家を改修した一棟貸しを例に、次の条件で<n-b>計算しました。</n-b></n-w></p>
 <div class="table-scroll table-scroll--stack"><table class="table table--stack">
 <thead><tr><th>項目</th><th>仮定</th></tr></thead>
 <tbody>
-<tr><td>施設</td><td><n-w>地方の空き家を改修した一棟貸し（定員6名）、旅館業（簡易宿所）で年間営業</n-w></td></tr>
-<tr><td>投資額</td><td><n-w>1,500万円（物件取得・改修・家具家電の合計）</n-w></td></tr>
-<tr><td>ADR</td><td><n-w>25,000円（競合施設のデータから設定）</n-w></td></tr>
-<tr><td>販売手数料</td><td>売上の<wbr>12%</td></tr>
-<tr><td>運営委託費</td><td>売上の<wbr>15%</td></tr>
-<tr><td>清掃・リネン</td><td>1回8,000円<wbr>（平均2泊で<wbr>1回と<wbr>仮定）</td></tr>
+<tr><td>施設</td><td><n-w>地方の空き家を改修した一棟貸し（定員6名）。旅館業（簡易宿所）で1年を通して営業</n-w></td></tr>
+<tr><td>投資額</td><td><n-w>1,500万円（物件の取得・改修・家具家電の合計）</n-w></td></tr>
+<tr><td>ADR</td><td>25,000円<wbr>（似た宿の<wbr>データから<wbr>設定）</td></tr>
+<tr><td>予約サイトの手数料</td><td>売上の<wbr>12%</td></tr>
+<tr><td>運営の<wbr>委託費</td><td>売上の<wbr>15%</td></tr>
+<tr><td>清掃・リネン</td><td>1回8,000円<wbr>（平均2泊で<wbr>1回）</td></tr>
 <tr><td>固定費</td><td><n-w>年81万円（水道光熱・通信36万円、消耗品15万円、保険・税金・修繕積立30万円）</n-w></td></tr>
 </tbody>
 </table></div>
-<p><n-w>この条件で、稼働率を3パターンに分けて計算した結果が<n-b>次の<wbr>表です。</n-b></n-w></p>
+<p class="table-note"><n-w>※ 数字はすべて説明のための仮定で、特定の町の実績ではありません。手数料の割合は、予約サイトと料金の方式で<n-b>変わります。</n-b></n-w></p>
+<p><n-w>この条件で、稼働率を3通りに分けて計算した結果が<n-b>次の<wbr>表です。</n-b></n-w></p>
 <div class="table-scroll"><table class="table">
 <thead><tr><th>パターン</th><th>悲観（稼働率40%）</th><th>標準（55%）</th><th>楽観（65%）</th></tr></thead>
 <tbody>
@@ -171,43 +168,59 @@
 <tr><td>回収年数の目安</td><td>約11.8年</td><td>約7.3年</td><td>約5.8年</td></tr>
 </tbody>
 </table></div>
-<p class="table-note"><n-w>※ 所得税・住民税、借入金の返済、大規模修繕は<n-b>含みません。</n-b></n-w></p>
-<p><n-w class="j">同じ物件でも、悲観と楽観で稼働率が25ポイント違うと、回収年数は約6年変わります。「平均的な稼働率」を一つだけ置いた計画は<n-b>危ういのです。</n-b></n-w></p>
-<p><n-w class="j">同じ条件を民泊新法（年間180日が上限）で運営すると、180日すべて埋まっても年間売上は450万円までです。どの制度で始めるかで売上の上限が決まるので、試算の段階で<n-b>入れておきましょう。</n-b></n-w></p>
-<p><n-w>稼働率や客室単価の意味は、「</n-w><a href="../media/inn-kpi-basics.html"><n-w>稼働率・客室単価・RevPARとは？</n-w></a><n-w><n-b>」で<wbr>説明しています。</n-b></n-w></p>
-<p><n-w class="j">実績の費用から赤字にならない稼働率を出す方法は、「</n-w><a href="../media/minpaku-break-even.html"><n-w class="j">民泊は稼働率何%で黒字？損益分岐点を自分で計算するやり方</n-w></a><n-w class="j"><n-b>」で<wbr>説明しています。</n-b></n-w></p>
-<p><n-w>ただし、この試算の元になるAirDNAの数字には、気をつけたい点が<n-b>あります。</n-b></n-w></p>
+<p class="table-note"><n-w>※ 所得税・住民税、借入金の返済、大きな修繕は<n-b>含みません。</n-b></n-w></p>
+<p><n-w class="j">稼働率が25ポイント違うだけで、回収は約6年ずれます。だから、平均的な稼働率を1つだけ置いた計画は危ういと私たちは<n-b>考えています。</n-b></n-w></p>
+<p><n-w class="j">同じ条件を民泊新法で営業すると、180日すべてが埋まっても、年間売上は450万円までです。どの制度で始めるかで売上の上限が決まるので、試算の最初に決めておきます。赤字にならない稼働率の出し方は、「</n-w><a href="../media/minpaku-break-even.html"><n-w class="j">民泊は稼働率何%で黒字？</n-w></a><n-w class="j"><n-b>」に<wbr>まとめました。</n-b></n-w></p>
+        </section>
+        <section class="article__section" id="shimoda">
+          <h2>実際の宿の<wbr>稼働率は、<wbr>月ごとに<wbr>どれくらい<wbr>動いたのか？</h2>
+<p><span class="lead-s"><n-w class="j">私たちの創業メンバーが開業した下田の宿では、1年目の稼働率は平均約53%でした。</n-w></span><n-w class="j">ただ、月ごとに見ると、33%から71%まで動いています。宿は、下田市の旧町内にある、賃貸の物件を改修した<n-b>一棟貸しの<wbr>宿です。</n-b></n-w></p>
+          <figure class="fig fig--bars">
+            <p class="fig__title">下田の宿の1年目、<wbr><n-b>月ごとの稼働率</n-b></p>
+            <ul class="fig-bars">
+              <li class="fig-bar"><span class="fig-bar__label">8月</span><span class="fig-bar__track"><span class="fig-bar__fill" style="width:82%"></span></span><span class="fig-bar__value">約58%</span></li>
+              <li class="fig-bar"><span class="fig-bar__label">9月</span><span class="fig-bar__track"><span class="fig-bar__fill" style="width:85%"></span></span><span class="fig-bar__value">約60%</span></li>
+              <li class="fig-bar"><span class="fig-bar__label">10月</span><span class="fig-bar__track"><span class="fig-bar__fill" style="width:73%"></span></span><span class="fig-bar__value">約52%</span></li>
+              <li class="fig-bar is-top"><span class="fig-bar__label">11月</span><span class="fig-bar__track"><span class="fig-bar__fill" style="width:46%"></span></span><span class="fig-bar__value">約33%</span></li>
+              <li class="fig-bar"><span class="fig-bar__label">12月</span><span class="fig-bar__track"><span class="fig-bar__fill" style="width:100%"></span></span><span class="fig-bar__value">約71%</span></li>
+              <li class="fig-bar is-top"><span class="fig-bar__label">1月</span><span class="fig-bar__track"><span class="fig-bar__fill" style="width:55%"></span></span><span class="fig-bar__value">約39%</span><span class="fig-bar__sub">備品の<wbr>買い替えが<wbr>重なり赤字</span></li>
+              <li class="fig-bar"><span class="fig-bar__label">2月</span><span class="fig-bar__track"><span class="fig-bar__fill" style="width:80%"></span></span><span class="fig-bar__value">約57%</span></li>
+              <li class="fig-bar"><span class="fig-bar__label">3月</span><span class="fig-bar__track"><span class="fig-bar__fill" style="width:86%"></span></span><span class="fig-bar__value">約61%</span></li>
+            </ul>
+            <figcaption class="fig__note"><n-w>※ 2025年8月〜2026年3月。開業月の7月を除く。1年目の平均は<n-b>約53%。</n-b></n-w></figcaption>
+          </figure>
+
+<p><n-w class="j">いちばん埋まった12月と、いちばん空いた11月では、2倍以上の差があります。1月は、客の少ない時期に備品の買い替えが重なり、赤字に<n-b>なりました。</n-b></n-w></p>
+<p><n-w class="j">年の平均の約53%だけを見ると、上の計算例の悲観（40%）と標準（55%）の間に収まります。ところが、月で見ると、悲観の40%を下回る月が2回ありました。平均で計画を立てると、こうした月の資金繰りが<n-b>見えません。</n-b></n-w></p>
+<p><n-w class="j">AirDNAでも、町の数字は月ごとに見られます。客の少ない月の稼働率を拾い、その月でも家賃や返済を払えるかを確かめてください。1年目の売上や回収の流れは、「</n-w><a href="../media/case-rental-house-inn-first-year.html"><n-w class="j">下田の賃貸物件を宿にした1年目の記録</n-w></a><n-w class="j"><n-b>」で<wbr>紹介しています。</n-b></n-w></p>
         </section>
         <section class="article__section" id="limits">
-          <h2>AirDNAの<wbr>数字を<wbr>信じすぎると、<wbr>何が危ないのか</h2>
-<p><span class="lead-s"><n-w class="j">AirDNAの数字を信じすぎると、収支の見積もりが甘くなります。</n-w></span><n-w class="j">数字は推計で、平均値をそのまま使うと実態より良く見えがちです。限界は次の<n-b>4点です。</n-b></n-w></p>
-<h3>推計値であり、<wbr>実績そのものではない</h3>
-<p><n-w class="j">AirDNAの数値は、予約サイト上の公開情報からの推計です。予約の入っていない日と、オーナーが自分で販売を止めた日（ブロック）は、完全には見分けられません。そのため、稼働率には誤差が<n-b>あります。</n-b></n-w></p>
-<h3>予約サイト以外の<wbr>売上は<wbr>含まれない</h3>
-<p><n-w class="j">自社サイトからの直接予約や、対象外の予約サイト経由の売上は反映されません。直接予約の多い人気の宿ほど、実態より低く見えることが<n-b>あります。</n-b></n-w></p>
-<h3>掲載件数が<wbr>少ない<wbr>エリアほど<wbr><n-b>ブレが大きい</n-b></h3>
-<p><n-w class="j">地方では、比べられる宿の数が少なく、1〜2軒の数字で平均が大きく動きます。定員や価格帯の違う宿が混ざると、自分の物件とは前提が<n-b>合いません。</n-b></n-w></p>
-<h3>過去の<wbr>データは<wbr>未来を<wbr>保証しない</h3>
-<p><n-w class="j">新しい宿が次々に開業すれば、泊まれる部屋が増えて稼働率は下がります。規制が変わったり、イベントがあったりしても、需要は大きく<n-b>動きます。</n-b></n-w></p>
-<p><n-w>季節による売上の波への備えは、「</n-w><a href="../media/minpaku-off-season.html"><n-w>閑散期をどう乗り越える？</n-w></a><n-w><n-b>」で<wbr>説明しています。</n-b></n-w></p>
-<p><n-w>では、こうした限界を踏まえて、試算をどう組み立てればよいので<n-b>しょうか。</n-b></n-w></p>
+          <h2>AirDNAの<wbr>数字を<wbr>信じすぎると、<wbr>何が危ないのか？</h2>
+<p><span class="lead-s"><n-w class="j">AirDNAの数字をそのまま使うと、収支の見積もりが甘くなりがちです。</n-w></span><n-w class="j">推計の数字なので、実際の宿とずれる理由が<n-b>3つあります。</n-b></n-w></p>
+<div class="carousel" role="group" aria-label="AirDNAの数字がずれる理由（横にスワイプ）">
+<div class="carousel__card"><span class="carousel__no">理由 1</span><h3 class="carousel__title">空いた日と止めた日を<wbr>分けにくい</h3><p class="carousel__text"><n-w>予約が入らなかった日と、持ち主が販売を止めた日を、公開情報だけでは見分けきれません。稼働率に<n-b>誤差が<wbr>出ます。</n-b></n-w></p></div>
+<div class="carousel__card"><span class="carousel__no">理由 2</span><h3 class="carousel__title">直接の<wbr>予約は<wbr>入らない</h3><p class="carousel__text"><n-w>宿の自社サイトからの予約などは、数字に入りません。直接の予約が多い人気の宿ほど、低く見えることが<n-b>あります。</n-b></n-w></p></div>
+<div class="carousel__card"><span class="carousel__no">理由 3</span><h3 class="carousel__title">宿が少ない町は<wbr><n-b>数字がぶれる</n-b></h3><p class="carousel__text"><n-w>地方では比べる宿が少なく、1〜2軒の数字で平均が大きく動きます。定員や値段の違う宿が混ざると、前提が<n-b>合いません。</n-b></n-w></p></div>
+</div>
+<p class="carousel__hint">横にスワイプで<wbr>続きを<wbr>見られます</p>
+<p><n-w class="j">新しい宿が近くに増えれば、町の稼働率は下がります。客の少ない時期の備えは、「</n-w><a href="../media/minpaku-off-season.html"><n-w class="j">閑散期をどう乗り越える？</n-w></a><n-w class="j">」で説明しています。こうしたずれを前提にして、試算の組み立て方で<n-b>補います。</n-b></n-w></p>
         </section>
         <section class="article__section" id="repro">
-          <h2>試算の<wbr>ぶれを<wbr>減らす<wbr>「再現性」を<wbr>高める<wbr>5つのコツ</h2>
-<p><span class="lead-s"><n-w class="j">3つの工夫で、試算の大きなぶれを減らせます。</n-w></span><n-w class="j">似た条件の宿だけを比べる、悲観・標準・楽観の3パターンで計算する、開業直後の客足が少ない期間を見込む、の3つです。何度やっても大きくぶれないことを、再現性といいます。下の1〜3がこの3つで、4と5で裏づけを<n-b>足します。</n-b></n-w></p>
+          <h2>試算の<wbr>ぶれを<wbr>減らす<wbr>5つの<wbr>コツは？</h2>
+<p><span class="lead-s"><n-w>試算のぶれは、次の5つのコツで減らせます。</n-w></span><n-w>何度計算しても結果が大きくぶれない状態を、再現性があると<n-b>いいます。</n-b></n-w></p>
 <ol class="steps">
-<li><strong><n-w class="j">条件の近い競合だけを比べる</n-w></strong><n-w class="j">：エリア全体の平均ではなく、定員・広さ・価格帯・レビュー評価が近い施設を数軒選び、その数値を<n-b>基準に<wbr>します。</n-b></n-w></li>
-<li><strong><n-w class="j">悲観・標準・楽観の3パターンで試算する</n-w></strong><n-w class="j">：上の計算例のように稼働率とADRに幅をもたせ、悲観パターンでも赤字にならないかを<n-b>確かめます。</n-b></n-w></li>
-<li><strong><n-w class="j">開業直後の立ち上がり期間を見込む</n-w></strong><n-w class="j">：レビューが少ない最初の数か月は、実績のある宿と同じ稼働率にはなりません。初年度は低めに見込むと<n-b>安全です。</n-b></n-w></li>
-<li><strong><n-w>季節変動を月単位で確認する</n-w></strong><n-w>：年間平均だけでなく、閑散期の月にどれだけ売上が落ちるかを見て、資金繰りを<n-b>計画します。</n-b></n-w></li>
-<li><strong><n-w class="j">現地の実態で裏づけをとる</n-w></strong><n-w class="j">：予約サイトのカレンダーや料金設定、地元の不動産会社・観光協会への聞き取りなど、複数の情報源で数字を<n-b>確かめます。</n-b></n-w></li>
+<li><strong><n-w class="j">自分と同じ形の宿だけと比べる</n-w></strong><n-w class="j">：町全体の平均ではなく、定員・広さ・値段・レビューの評価が近い宿を数軒選びます。Iさんが一棟貸しの古民家だけを調べたのも、この<n-b>考え方です。</n-b></n-w></li>
+<li><strong><n-w>悲観・標準・楽観の3通りで計算する</n-w></strong><n-w>：稼働率とADRに幅を持たせ、悲観の場合でも赤字に<n-b>ならないかを<wbr>見ます。</n-b></n-w></li>
+<li><strong><n-w class="j">開業直後は低めに見込む</n-w></strong><n-w class="j">：レビューが少ない最初の数か月は、実績のある宿ほど埋まりません。下田の宿も、開業直後は値段を抑えてレビューを集め、高評価が5件ほどたまってから段階的に<n-b>上げました。</n-b></n-w></li>
+<li><strong><n-w>月ごとの稼働率で資金繰りを見る</n-w></strong><n-w>：いちばん悪い月でも、家賃や返済を払えるかを<n-b>確かめます。</n-b></n-w></li>
+<li><strong><n-w>予約サイトと現地で裏づけを取る</n-w></strong><n-w>：似た宿の予約カレンダーと値段、地元の不動産会社や観光協会の話で、数字を<n-b>確かめます。</n-b></n-w></li>
 </ol>
-<p><n-w class="j">データは、仮説を立てる道具です。開業したら、実際の稼働率と単価を毎月記録し、試算とのズレを見ながら価格や集客を直していきます。これを続けるほど、計画の精度が<n-b>上がります。</n-b></n-w></p>
+<p><n-w class="j">開業したら、実際の稼働率と値段を毎月記録し、試算とのずれを見ながら値段や集客を直していきます。記録がたまるほど、次の計画の精度が<n-b>上がります。</n-b></n-w></p>
         </section>
         <section class="article__section" id="summary">
-          <h2>まとめ：データを<wbr>「使える<wbr>数字」に<wbr>変えるのは、<wbr><n-b>前提の置き方</n-b></h2>
-<p><span class="lead-s"><n-w class="j">AirDNAを使うと、小さな宿の売上や利回りを、勘ではなくデータから見積もれます。</n-w></span><n-w class="j">一方で、推計データの限界を知らずに平均値をそのまま使うと、楽観的な計画に<n-b>なりがちです。</n-b></n-w></p>
-<p><n-w class="j">条件の近い競合を選ぶこと、複数パターンで試算すること、開業後に検証し続けること。この3つがそろえば、試算は投資判断に使えるものに<n-b>なります。</n-b></n-w></p>
+          <h2>まとめ：平均ではなく、<wbr>悪い月でも<wbr>続けられるかで<wbr>判断する</h2>
+<p><span class="lead-s"><n-w class="j">AirDNAを使うと、小さな宿の売上や利回りを、勘ではなく数字から見積もれます。</n-w></span><n-w class="j">ただ、推計の数字で、平均だけを使うと計画が<n-b>甘くなります。</n-b></n-w></p>
+<p><n-w class="j">次にすることは3つです。自分と同じ形の宿を数軒選んで数字を集め、悲観・標準・楽観の3通りで計算し、いちばん悪い月でも続けられるかを確かめます。物件の数字で試算してほしいときは、</n-w><a href="../media/contact.html"><n-w class="j">相談の窓口</n-w></a><n-w class="j"><n-b>から<wbr>声を<wbr>かけてください。</n-b></n-w></p>
         </section>
 
         <section class="article__section" id="faq">
@@ -215,27 +228,27 @@
           <div class="faq">
           <details class="faq__item">
             <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">AirDNAの<wbr>稼働率はどのくらい<wbr>正確ですか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">予約サイト上の公開情報からの推計値なので、誤差があります。とくに掲載件数の少ない地方や、直接予約の多い宿では、実態とずれやすくなります。複数の情報源で裏づけをとってから<n-b>使ってください。</n-b></n-w></p><span></span></div>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">予約サイトの公開情報から推計した数字なので、誤差があります。特に、宿の少ない地方や、直接の予約が多い宿では、実際とずれやすくなります。予約サイトのカレンダーや地元の話で、裏づけを取ってから<n-b>使います。</n-b></n-w></p><span></span></div>
           </details>
           <details class="faq__item">
             <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">シミュレーションで<wbr>最低限入れるべき<wbr>費用は<wbr>何ですか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">販売手数料、清掃・リネン費、水道光熱・通信費、消耗品費、運営を委託する場合の委託費、保険・税金・修繕積立です。借入があるなら返済額、所得にかかる税金も別に<n-b>見込んでください。</n-b></n-w></p><span></span></div>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">予約サイトの手数料、清掃・リネン、水道光熱・通信、消耗品、運営を任せる場合の委託費、保険・税金・修繕の積み立てです。借入があるなら返済額、所得にかかる税金も別に<n-b>見込みます。</n-b></n-w></p><span></span></div>
           </details>
           <details class="faq__item">
             <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">小規模宿の<wbr>利回りは<wbr>どれくらいを<wbr>目安に<wbr>すべきですか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">物件や運営の方法で大きく変わるため、一概には言えません。悲観的な稼働率でも赤字にならず、想定した年数で投資を回収できるかを基準に<n-b>判断してください。</n-b></n-w></p><span></span></div>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">物件や運営の方法で大きく変わるため、一律の目安はありません。悲観の稼働率でも赤字にならず、決めた年数で投資を回収できるかで<n-b>判断します。</n-b></n-w></p><span></span></div>
           </details>
           <details class="faq__item">
             <summary class="faq__q"><span class="faq__mark">Q</span><span class="faq__qt">開業したばかりの<wbr>宿でも、<wbr>競合と同じ稼働率に<wbr>なりますか？</span><span class="faq__toggle" aria-hidden="true"></span></summary>
-            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">レビューが少ない開業直後は、たいてい競合より稼働率が低くなります。初年度は低めに見込み、レビューの蓄積とともに改善していく前提で計画すると<n-b>安全です。</n-b></n-w></p><span></span></div>
+            <div class="faq__a"><span class="faq__mark">A</span><p><n-w class="j">レビューが少ない開業直後は、たいてい競合より低くなります。下田の宿では、開業直後は値段を抑えてレビューを集め、高評価が5件ほどたまってから値段を上げました。初年度は低めに<n-b>見込みます。</n-b></n-w></p><span></span></div>
           </details>
           </div>
         </section>
 
         <section class="sources">
           <details class="sources__fold">
-            <summary class="sources__title">参考資料<wbr>（3件）</summary>
-            <ul><li><n-w>AirDNA 公式サイト（サービス・指<n-b>標の<wbr>説明）</n-b></n-w></li><li>観光庁<wbr>「民泊制度<wbr>ポータルサイト」</li><li>厚生労働省<wbr>「旅館業法に<wbr>ついて」</li></ul>
+            <summary class="sources__title">参考資料<wbr>（5件）</summary>
+            <ul><li><n-w>AirDNA 公式サイト（サービス・指標の説明。202<n-b>6年閲覧）</n-b></n-w></li><li><n-w>創業メンバーが運営する下田の宿の運営記録（2025年8月〜2026年3月の<n-b>月別稼働率）</n-b></n-w></li><li><n-w>民泊オーナーへの取材（2026年1月〜3月）。本人の<n-b>話にもとづく</n-b></n-w></li><li><a href="https://www.mlit.go.jp/kankocho/minpaku/" target="_blank" rel="noopener noreferrer"><n-w>観光庁「民泊制度ポータルサイト」（2026年10月閲覧）</n-w></a></li><li><a href="https://laws.e-gov.go.jp/law/323AC0000000138" target="_blank" rel="noopener noreferrer"><n-w>旅館業法（e-Gov 法令検索、2026年10月確認）</n-w></a></li></ul>
             <p class="sources__note"><n-w>※ 本記事の数値・制度は公開日時点で公表されている資料にもとづきます。最新の情報は各機関の発表を<n-b>ご確認ください。</n-b></n-w></p>
           </details>
         </section>
@@ -244,7 +257,7 @@
         <nav class="guide-box" aria-label="この記事を含むガイド">
           <p class="guide-box__label">この記事を含む<wbr>ガイド</p>
           <a href="../media/guide-use.html" class="guide-box__title">空き家を<wbr>活かしたい方へ</a>
-          <ol class="guide-box__list"><li data-date="2026-09-29"><a href="../media/akiya-inherited-house-to-inn.html" class="guide-box__item" title="実家を放置するとどうなる？固定資産税の負担と「民泊」という選択"><span class="guide-box__no">01</span><span class="guide-box__text"><span class="guide-box__name"><n-w>放置された実家が｜「小さな宿」に変わる理由</n-w></span><span class="guide-box__blurb"><n-w>固定資産税を払い続ける前に</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/why-akiya-utilization-now.html" class="guide-box__item" title="なぜ今「空き家の活用」が注目されるのか｜税の負担・活用の道・民泊の追い風"><span class="guide-box__no">02</span><span class="guide-box__text"><span class="guide-box__name"><n-w>なぜ今、空き家の｜活用が注目されるのか</n-w></span><span class="guide-box__blurb"><n-w>税の負担から、民泊の追い風まで</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/inherited-house-family-talk.html" class="guide-box__item" title="相続した実家を売る・貸す・民泊にする？家族での話し合いの進め方"><span class="guide-box__no">03</span><span class="guide-box__text"><span class="guide-box__name"><n-w>相続した実家を｜家族で決める</n-w></span><span class="guide-box__blurb"><n-w>話し合いの進め方</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/why-minpaku-for-akiya.html" class="guide-box__item" title="空き家の活用で、なぜ民泊・小さな宿が選ばれるのか"><span class="guide-box__no">04</span><span class="guide-box__text"><span class="guide-box__name"><n-w>空き家の活用で｜なぜ民泊が選ばれるのか</n-w></span><span class="guide-box__blurb"><n-w>活用の選択肢として</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/akiya-lease-types.html" class="guide-box__item" title="空き家を貸す契約の種類｜普通借家・定期借家と、民泊の借り上げの違い"><span class="guide-box__no">05</span><span class="guide-box__text"><span class="guide-box__name"><n-w>空き家を貸すときの｜契約の種類と違い</n-w></span><span class="guide-box__blurb"><n-w>普通借家・定期借家・借り上げ</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-09-29"><a href="../media/minpaku-vs-ryokan-law.html" class="guide-box__item" title="民泊新法と旅館業（簡易宿所）の違い｜空き家で宿を始める選び方"><span class="guide-box__no">06</span><span class="guide-box__text"><span class="guide-box__name"><n-w>民泊新法と旅館業、どちらで始める？</n-w></span><span class="guide-box__blurb"><n-w>民泊新法と簡易宿所の違い</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/minpaku-management-company.html" class="guide-box__item" title="住宅宿泊管理業者とは？民泊で委託が必要なケースと、管理会社の選び方"><span class="guide-box__no">07</span><span class="guide-box__text"><span class="guide-box__name"><n-w>住宅宿泊管理業者とは？委託が必要なケース</n-w></span><span class="guide-box__blurb"><n-w>選ぶときの5つのポイント</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/akiya-utilization-options.html" class="guide-box__item" title="空き家の活用方法を比べる｜売る・貸す・民泊にするの向き不向き"><span class="guide-box__no">08</span><span class="guide-box__text"><span class="guide-box__name"><n-w>空き家の活用方法を｜比べる</n-w></span><span class="guide-box__blurb"><n-w>5つの道の分かれ目を実例で</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/akiya-minpaku-suitability.html" class="guide-box__item" title="その空き家、民泊に向いている？立地・建物・法令・運営の4つで見極める"><span class="guide-box__no">09</span><span class="guide-box__text"><span class="guide-box__name"><n-w>その空き家は｜民泊に向いている？</n-w></span><span class="guide-box__blurb"><n-w>立地・建物・法令・運営の4点</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-13"><a href="../media/akiya-demolish-or-renovate.html" class="guide-box__item" title="空き家は解体か、残して民泊・宿にするか｜費用・税金・補助で比べる"><span class="guide-box__no">10</span><span class="guide-box__text"><span class="guide-box__name"><n-w>空き家は解体か、残して直すか</n-w></span><span class="guide-box__blurb"><n-w>税・費用・補助で比べる</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/kominka-renovation-points.html" class="guide-box__item" title="古民家を民泊に改修するポイント｜残すもの・変えるもの、断熱・水回り・耐震"><span class="guide-box__no">11</span><span class="guide-box__text"><span class="guide-box__name"><n-w>古民家を宿に改修する｜ときのポイント</n-w></span><span class="guide-box__blurb"><n-w>断熱・水回り・耐震の考え方</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/minpaku-fire-safety.html" class="guide-box__item" title="民泊・小さな宿の消防設備ガイド｜火災報知設備・誘導灯・適合通知書の基本"><span class="guide-box__no">12</span><span class="guide-box__text"><span class="guide-box__name"><n-w>民泊・小さな宿の｜消防設備ガイド</n-w></span><span class="guide-box__blurb"><n-w>感知器・誘導灯・適合通知書</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-09-29"><a href="../media/new-build-vs-used-house-inn.html" class="guide-box__item" title="民泊・小規模宿は新築と中古どっち？費用・工期・法令・税金の違いと選び方"><span class="guide-box__no">13</span><span class="guide-box__text"><span class="guide-box__name"><n-w>小規模宿は｜新築と中古、どっちがいい？</n-w></span><span class="guide-box__blurb"><n-w>費用・工期・法令・税金で比較</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/remote-renovation-tips.html" class="guide-box__item" title="空き家を民泊に改修する進め方｜遠方でも追加費用を防ぐ相見積もり・記録・配線確認"><span class="guide-box__no">14</span><span class="guide-box__text"><span class="guide-box__name"><n-w>遠方からの｜改修工事の進め方</n-w></span><span class="guide-box__blurb"><n-w>相見積もり・記録・配線の確認</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-14"><a href="../media/case-owner-diy-cottage.html" class="guide-box__item" title="解体200万円と言われた別荘を、週末DIYで宿に｜改修費約80万円の民泊事例"><span class="guide-box__no">15</span><span class="guide-box__text"><span class="guide-box__name"><n-w>築古の別荘を週末DIYで。改修費80万円の事例</n-w></span><span class="guide-box__blurb"><n-w>改修費80万円・月の利益35万円</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-09-29"><a href="../media/small-inn-subsidies.html" class="guide-box__item" title="民泊・小規模宿で使える補助金・支援制度まとめ｜申請前に知っておきたい注意点"><span class="guide-box__no">16</span><span class="guide-box__text"><span class="guide-box__name"><n-w>小規模宿で使える｜補助金・支援制度まとめ</n-w></span><span class="guide-box__blurb"><n-w>申請前の注意点つき</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-09-29" aria-current="page"><span class="guide-box__item"><span class="guide-box__no">17</span><span class="guide-box__text"><span class="guide-box__name"><n-w>AirDNAで読む｜小規模宿の収益と再現性</n-w></span><span class="guide-box__blurb"><n-w>数字の見方と5つのコツ</n-w></span></span><span class="guide-box__here"><n-w>この記事</n-w></span></span></li><li data-date="2026-10-11"><a href="../media/case-rental-house-inn-first-year.html" class="guide-box__item" title="下田の賃貸一軒家を民泊に｜約14か月で家具・家電の投資をほぼ回収"><span class="guide-box__no">18</span><span class="guide-box__text"><span class="guide-box__name"><n-w>下田の一軒家を宿に。約14か月で初期投資を回収</n-w></span><span class="guide-box__blurb"><n-w>伊豆・下田の運営事例</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/minpaku-vs-rental-income.html" class="guide-box__item" title="民泊と普通の賃貸、収入の仕組みはどう違う？売上・費用・手間を比べる"><span class="guide-box__no">19</span><span class="guide-box__text"><span class="guide-box__name"><n-w>民泊と賃貸｜収入の仕組みの違い</n-w></span><span class="guide-box__blurb"><n-w>売上・費用・手間を比べる</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/akiyado-what-we-do.html" class="guide-box__item" title="アキヤドができること｜空き家の買取・借り上げから、民泊の開業・運営まで"><span class="guide-box__no">20</span><span class="guide-box__text"><span class="guide-box__name"><n-w>アキヤドが｜できること</n-w></span><span class="guide-box__blurb"><n-w>買取・借り上げから運営まで</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/akiyado-consultation-flow.html" class="guide-box__item" title="空き家・民泊の相談から開業までの流れ｜初回に聞かれること・準備するもの"><span class="guide-box__no">21</span><span class="guide-box__text"><span class="guide-box__name"><n-w>相談から開業までの｜流れ</n-w></span><span class="guide-box__blurb"><n-w>初回相談で聞くこと・準備</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-14"><a href="../media/case-owner-fishing-port.html" class="guide-box__item" title="実績ゼロで民泊開業、公庫融資400万円｜元・仕出し屋を漁港体験の宿にした事例"><span class="guide-box__no">22</span><span class="guide-box__text"><span class="guide-box__name"><n-w>元・仕出し屋を民泊に。漁港の体験プランで高単価</n-w></span><span class="guide-box__blurb"><n-w>公庫400万円・月商60〜70万円</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-14"><a href="../media/case-owner-licensed-akiya.html" class="guide-box__item" title="空き家を旅館業の許可で民泊に｜初期費用400万円・月の純利益は平均25万円"><span class="guide-box__no">23</span><span class="guide-box__text"><span class="guide-box__name"><n-w>空き家を旅館業で民泊に。初期費用400万円の事例</n-w></span><span class="guide-box__blurb"><n-w>初期費用400万円・月の利益25万円</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-25"><a href="../media/case-owner-castle-town-nagaya.html" class="guide-box__item" title="城下町の古い長屋を民泊に再生｜公庫融資の3つの関門と、総予算450万円の事例"><span class="guide-box__no">24</span><span class="guide-box__text"><span class="guide-box__name"><n-w>城下町の長屋を宿に。融資の3つの関門</n-w></span><span class="guide-box__blurb"><n-w>公庫300万円・融資の3つの関門</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-27"><a href="../media/case-owner-satoyama-airdna.html" class="guide-box__item" title="里山の古民家を民泊に｜AirDNAのデータで融資を通した総予算350万円"><span class="guide-box__no">25</span><span class="guide-box__text"><span class="guide-box__name"><n-w>里山の古民家を宿に。データで融資を通す</n-w></span><span class="guide-box__blurb"><n-w>AirDNAのデータで公庫250万円</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li></ol>
+          <ol class="guide-box__list"><li data-date="2026-09-29"><a href="../media/akiya-inherited-house-to-inn.html" class="guide-box__item" title="実家を放置するとどうなる？固定資産税の負担と「民泊」という選択"><span class="guide-box__no">01</span><span class="guide-box__text"><span class="guide-box__name"><n-w>放置された実家が｜「小さな宿」に変わる理由</n-w></span><span class="guide-box__blurb"><n-w>固定資産税を払い続ける前に</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/why-akiya-utilization-now.html" class="guide-box__item" title="なぜ今「空き家の活用」が注目されるのか｜税の負担・活用の道・民泊の追い風"><span class="guide-box__no">02</span><span class="guide-box__text"><span class="guide-box__name"><n-w>なぜ今、空き家の｜活用が注目されるのか</n-w></span><span class="guide-box__blurb"><n-w>税の負担から、民泊の追い風まで</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/inherited-house-family-talk.html" class="guide-box__item" title="相続した実家を売る・貸す・民泊にする？家族での話し合いの進め方"><span class="guide-box__no">03</span><span class="guide-box__text"><span class="guide-box__name"><n-w>相続した実家を｜家族で決める</n-w></span><span class="guide-box__blurb"><n-w>話し合いの進め方</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/why-minpaku-for-akiya.html" class="guide-box__item" title="空き家の活用で、なぜ民泊・小さな宿が選ばれるのか"><span class="guide-box__no">04</span><span class="guide-box__text"><span class="guide-box__name"><n-w>空き家の活用で｜なぜ民泊が選ばれるのか</n-w></span><span class="guide-box__blurb"><n-w>活用の選択肢として</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/akiya-lease-types.html" class="guide-box__item" title="空き家を貸す契約の種類｜普通借家・定期借家と、民泊の借り上げの違い"><span class="guide-box__no">05</span><span class="guide-box__text"><span class="guide-box__name"><n-w>空き家を貸すときの｜契約の種類と違い</n-w></span><span class="guide-box__blurb"><n-w>普通借家・定期借家・借り上げ</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-09-29"><a href="../media/minpaku-vs-ryokan-law.html" class="guide-box__item" title="民泊新法と旅館業（簡易宿所）の違い｜空き家で宿を始める選び方"><span class="guide-box__no">06</span><span class="guide-box__text"><span class="guide-box__name"><n-w>民泊新法と旅館業、どちらで始める？</n-w></span><span class="guide-box__blurb"><n-w>民泊新法と簡易宿所の違い</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/minpaku-management-company.html" class="guide-box__item" title="住宅宿泊管理業者とは？民泊で委託が必要なケースと、管理会社の選び方"><span class="guide-box__no">07</span><span class="guide-box__text"><span class="guide-box__name"><n-w>住宅宿泊管理業者とは？委託が必要なケース</n-w></span><span class="guide-box__blurb"><n-w>選ぶときの5つのポイント</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/akiya-utilization-options.html" class="guide-box__item" title="空き家の活用方法を比べる｜売る・貸す・民泊にするの向き不向き"><span class="guide-box__no">08</span><span class="guide-box__text"><span class="guide-box__name"><n-w>空き家の活用方法を｜比べる</n-w></span><span class="guide-box__blurb"><n-w>5つの道の分かれ目を実例で</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/akiya-minpaku-suitability.html" class="guide-box__item" title="その空き家、民泊に向いている？立地・建物・法令・運営の4つで見極める"><span class="guide-box__no">09</span><span class="guide-box__text"><span class="guide-box__name"><n-w>その空き家は｜民泊に向いている？</n-w></span><span class="guide-box__blurb"><n-w>立地・建物・法令・運営の4点</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-13"><a href="../media/akiya-demolish-or-renovate.html" class="guide-box__item" title="空き家は解体か、残して民泊・宿にするか｜費用・税金・補助で比べる"><span class="guide-box__no">10</span><span class="guide-box__text"><span class="guide-box__name"><n-w>空き家は解体か、残して直すか</n-w></span><span class="guide-box__blurb"><n-w>税・費用・補助で比べる</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/kominka-renovation-points.html" class="guide-box__item" title="古民家を民泊に改修するポイント｜残すもの・変えるもの、断熱・水回り・耐震"><span class="guide-box__no">11</span><span class="guide-box__text"><span class="guide-box__name"><n-w>古民家を宿に改修する｜ときのポイント</n-w></span><span class="guide-box__blurb"><n-w>断熱・水回り・耐震の考え方</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/minpaku-fire-safety.html" class="guide-box__item" title="民泊・小さな宿の消防設備ガイド｜火災報知設備・誘導灯・適合通知書の基本"><span class="guide-box__no">12</span><span class="guide-box__text"><span class="guide-box__name"><n-w>民泊・小さな宿の｜消防設備ガイド</n-w></span><span class="guide-box__blurb"><n-w>感知器・誘導灯・適合通知書</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-09-29"><a href="../media/new-build-vs-used-house-inn.html" class="guide-box__item" title="民泊・小規模宿は新築と中古どっち？費用・工期・法令・税金の違いと選び方"><span class="guide-box__no">13</span><span class="guide-box__text"><span class="guide-box__name"><n-w>小規模宿は｜新築と中古、どっちがいい？</n-w></span><span class="guide-box__blurb"><n-w>費用・工期・法令・税金で比較</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/remote-renovation-tips.html" class="guide-box__item" title="空き家を民泊に改修する進め方｜遠方でも追加費用を防ぐ相見積もり・記録・配線確認"><span class="guide-box__no">14</span><span class="guide-box__text"><span class="guide-box__name"><n-w>遠方からの｜改修工事の進め方</n-w></span><span class="guide-box__blurb"><n-w>相見積もり・記録・配線の確認</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-14"><a href="../media/case-owner-diy-cottage.html" class="guide-box__item" title="解体に200万〜300万円の別荘を週末DIYで宿に｜改修費約80万円の民泊事例"><span class="guide-box__no">15</span><span class="guide-box__text"><span class="guide-box__name"><n-w>築古の別荘を週末DIYで。改修費80万円の事例</n-w></span><span class="guide-box__blurb"><n-w>改修費80万円・月の利益35万円</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-09-29"><a href="../media/small-inn-subsidies.html" class="guide-box__item" title="民泊・小規模宿で使える補助金・支援制度まとめ｜申請前に知っておきたい注意点"><span class="guide-box__no">16</span><span class="guide-box__text"><span class="guide-box__name"><n-w>小規模宿で使える｜補助金・支援制度まとめ</n-w></span><span class="guide-box__blurb"><n-w>申請前の注意点つき</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-09-29" aria-current="page"><span class="guide-box__item"><span class="guide-box__no">17</span><span class="guide-box__text"><span class="guide-box__name"><n-w>AirDNAで読む｜小規模宿の収益と再現性</n-w></span><span class="guide-box__blurb"><n-w>数字の見方と5つのコツ</n-w></span></span><span class="guide-box__here"><n-w>この記事</n-w></span></span></li><li data-date="2026-10-11"><a href="../media/case-rental-house-inn-first-year.html" class="guide-box__item" title="民泊の初期投資を約14か月でほぼ回収｜下田の賃貸物件を改修した宿"><span class="guide-box__no">18</span><span class="guide-box__text"><span class="guide-box__name"><n-w>下田の賃貸物件を宿に。約14か月で初期投資を回収</n-w></span><span class="guide-box__blurb"><n-w>伊豆・下田の運営事例</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/minpaku-vs-rental-income.html" class="guide-box__item" title="民泊と普通の賃貸、収入の仕組みはどう違う？売上・費用・手間を比べる"><span class="guide-box__no">19</span><span class="guide-box__text"><span class="guide-box__name"><n-w>民泊と賃貸｜収入の仕組みの違い</n-w></span><span class="guide-box__blurb"><n-w>売上・費用・手間を比べる</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/akiyado-what-we-do.html" class="guide-box__item" title="アキヤドができること｜空き家の買取・借り上げから、民泊の開業・運営まで"><span class="guide-box__no">20</span><span class="guide-box__text"><span class="guide-box__name"><n-w>アキヤドが｜できること</n-w></span><span class="guide-box__blurb"><n-w>買取・借り上げから運営まで</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-11"><a href="../media/akiyado-consultation-flow.html" class="guide-box__item" title="空き家・民泊の相談から開業までの流れ｜初回に聞かれること・準備するもの"><span class="guide-box__no">21</span><span class="guide-box__text"><span class="guide-box__name"><n-w>相談から開業までの｜流れ</n-w></span><span class="guide-box__blurb"><n-w>初回相談で聞くこと・準備</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-14"><a href="../media/case-owner-fishing-port.html" class="guide-box__item" title="実績ゼロで民泊開業、公庫融資400万円｜元・仕出し屋を漁港体験の宿にした事例"><span class="guide-box__no">22</span><span class="guide-box__text"><span class="guide-box__name"><n-w>元・仕出し屋を民泊に。漁港の体験プランで高単価</n-w></span><span class="guide-box__blurb"><n-w>公庫400万円・月商60〜70万円</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-14"><a href="../media/case-owner-licensed-akiya.html" class="guide-box__item" title="空き家を旅館業の許可で民泊に｜初期費用400万円・月の純利益は平均25万円"><span class="guide-box__no">23</span><span class="guide-box__text"><span class="guide-box__name"><n-w>空き家を旅館業で民泊に。初期費用400万円の事例</n-w></span><span class="guide-box__blurb"><n-w>初期費用400万円・月の利益25万円</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-25"><a href="../media/case-owner-castle-town-nagaya.html" class="guide-box__item" title="城下町の古い長屋を民泊に再生｜公庫融資の3つの関門と、総予算450万円の事例"><span class="guide-box__no">24</span><span class="guide-box__text"><span class="guide-box__name"><n-w>城下町の長屋を宿に。融資の3つの関門</n-w></span><span class="guide-box__blurb"><n-w>公庫300万円・融資の3つの関門</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li><li data-date="2026-10-27"><a href="../media/case-owner-satoyama-airdna.html" class="guide-box__item" title="里山の古民家を民泊に｜AirDNAのデータで融資を通した総予算350万円"><span class="guide-box__no">25</span><span class="guide-box__text"><span class="guide-box__name"><n-w>里山の古民家を宿に。データで融資を通す</n-w></span><span class="guide-box__blurb"><n-w>AirDNAのデータで公庫250万円</n-w></span></span><span class="guide-box__go" aria-hidden="true">›</span></a></li></ol>
           <a href="../media/guide-use.html" class="guide-box__all">ガイドを全部見る <span class="arrow" aria-hidden="true"></span></a>
         </nav>
 
@@ -357,11 +370,11 @@
             <div class="thumb thumb--photo">
               <img src="../../images/photos/analytics-paper.jpg" srcset="../../images/photos/w/analytics-paper-800.webp 800w, ../../images/photos/analytics-paper.jpg 1619w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
               <span class="thumb__cat">集客・運営</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">集客・運営</span><span class="thumb__catch">下田の<wbr>一軒家を<wbr>宿に。<br>約14か月で<wbr>初期投資を回収</span></span>
+              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">集客・運営</span><span class="thumb__catch">下田の<wbr>賃貸物件を<wbr>宿に。<br>約14か月で<wbr>初期投資を回収</span></span>
             </div>
             <div class="media-card__body">
               <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">集客・運営</span></span>
-              <h3 class="media-card__title">下田の<wbr>一軒家を<wbr>宿に。<br>約14か月で<wbr>初期投資を回収</h3>
+              <h3 class="media-card__title">下田の<wbr>賃貸物件を<wbr>宿に。<br>約14か月で<wbr>初期投資を回収</h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
           </a>
@@ -369,11 +382,11 @@
             <div class="thumb thumb--photo">
               <img src="../../images/photos/dark-room.jpg" srcset="../../images/photos/w/dark-room-800.webp 800w, ../../images/photos/dark-room.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
               <span class="thumb__cat">集客・運営</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">集客・運営</span><span class="thumb__catch">「民泊は<wbr>大変」って<br>本当？</span></span>
+              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">集客・運営</span><span class="thumb__catch">民泊は<wbr>大変？<br>5つの<wbr>課題と<wbr>備え方</span></span>
             </div>
             <div class="media-card__body">
               <span class="ctags"><span class="ctag ctag--who">副業で宿を<wbr>はじめたい</span><span class="ctag">集客・運営</span></span>
-              <h3 class="media-card__title">「民泊は<wbr>大変」って<br>本当？</h3>
+              <h3 class="media-card__title">民泊は<wbr>大変？<br>5つの<wbr><n-b>課題と備え方</n-b></h3>
               <time class="media-card__date" datetime="2026-10-11">2026.10.11</time>
             </div>
           </a>
@@ -485,6 +498,18 @@
               <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
             </div>
           </a>
+          <a href="../media/japan-tourism-market-data.html" class="media-card reveal" data-category="trend" data-date="2026-09-29">
+            <div class="thumb thumb--photo">
+              <img src="../../images/photos/fuji-lake.jpg" srcset="../../images/photos/w/fuji-lake-800.webp 800w, ../../images/photos/fuji-lake.jpg 1620w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
+              <span class="thumb__cat">観光と地域</span>
+              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">観光と地域</span><span class="thumb__catch">データで<wbr>見る日本の<wbr>観光市場と<br>地方が<wbr>抱える<wbr>5つの課題</span></span>
+            </div>
+            <div class="media-card__body">
+              <span class="ctags"><span class="ctag ctag--who">副業で宿を<wbr>はじめたい</span><span class="ctag">観光と地域</span></span>
+              <h3 class="media-card__title">データで<wbr>見る日本の<wbr>観光市場と<br>地方が<wbr>抱える<wbr>5つの課題</h3>
+              <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
+            </div>
+          </a>
           <a href="../media/minpaku-vs-ryokan-law.html" class="media-card reveal" data-category="start" data-date="2026-09-29">
             <div class="thumb thumb--photo">
               <img src="../../images/photos/temple-bridge.jpg" srcset="../../images/photos/w/temple-bridge-800.webp 800w, ../../images/photos/temple-bridge.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
@@ -525,11 +550,11 @@
             <div class="thumb thumb--photo">
               <img src="../../images/photos/town-railway.jpg" srcset="../../images/photos/w/town-railway-800.webp 800w, ../../images/photos/town-railway.jpg 1080w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
               <span class="thumb__cat">物件・改修</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">物件・改修</span><span class="thumb__catch">観光地でなくても<br>収益物件に<wbr>なり得る理由</span></span>
+              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">物件・改修</span><span class="thumb__catch">観光地でなくても<br>空き家の<wbr>民泊は<wbr>成り立つ？</span></span>
             </div>
             <div class="media-card__body">
               <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>売りたい</span><span class="ctag">物件・改修</span></span>
-              <h3 class="media-card__title">観光地でなくても<br>収益物件に<wbr>なり得る理由</h3>
+              <h3 class="media-card__title">観光地でなくても<br>空き家の<wbr>民泊は<wbr>成り立つ？</h3>
               <time class="media-card__date" datetime="2026-10-01">2026.10.01</time>
             </div>
           </a>
@@ -987,18 +1012,6 @@
               <span class="ctags"><span class="ctag ctag--who">空き家を<wbr>活かしたい</span><span class="ctag">お金・税金</span></span>
               <h3 class="media-card__title">里山の<wbr>古民家を<wbr>宿に。<br>データで<wbr>融資を通す</h3>
               <time class="media-card__date" datetime="2026-10-27">2026.10.27</time>
-            </div>
-          </a>
-          <a href="../media/japan-tourism-market-data.html" class="media-card reveal" data-category="trend" data-date="2026-09-29">
-            <div class="thumb thumb--photo">
-              <img src="../../images/photos/fuji-lake.jpg" srcset="../../images/photos/w/fuji-lake-800.webp 800w, ../../images/photos/fuji-lake.jpg 1620w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="720" height="450" loading="lazy" decoding="async">
-              <span class="thumb__cat">観光と地域</span>
-              <span class="thumb__banner" aria-hidden="true"><span class="thumb__kicker">観光と地域</span><span class="thumb__catch">データで<wbr>見る日本の<wbr>観光市場と<br>地方が<wbr>抱える<wbr>5つの課題</span></span>
-            </div>
-            <div class="media-card__body">
-              <span class="ctags"><span class="ctag ctag--who">副業で宿を<wbr>はじめたい</span><span class="ctag">観光と地域</span></span>
-              <h3 class="media-card__title">データで<wbr>見る日本の<wbr>観光市場と<br>地方が<wbr>抱える<wbr>5つの課題</h3>
-              <time class="media-card__date" datetime="2026-09-29">2026.09.29</time>
             </div>
           </a>
         </div>
