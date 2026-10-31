@@ -6,7 +6,7 @@
 | 作業 | 内容 | 具体 | 優先 |
 |---|---|---|---|
 | note のプロフィールからサイトへ | 片井さんの note（https://note.com/calm_quokka8545 ）のプロフィールと、体験記の末尾に、アキヤド（https://rivia-co.com/media.html ）へのリンクを置く | 文面案を AI が用意 | 高 |
-| Google ビジネスプロフィール | 会社・宿（NODE Shimoda）の情報を登録し、サイトの URL を入れる | 登録の手順は `docs/seo/indexing.md` | 高 |
+| Google ビジネスプロフィール | **NODE Shimoda は登録済み**（掲載ページ: https://share.google/2OGfd8WOEyEwFTSPP ）。残る作業：①「ウェブサイト」の欄に、アキヤドのメディア（`https://rivia-co.com/media.html?utm_source=google&utm_medium=organic&utm_campaign=gbp`）を入れる ②写真・説明文・営業情報を最新にする ③ゲストの口コミへの返信 ④会社（合同会社RIVIA&CO.）のプロフィールが別にあるかを確認する | 説明文の案は AI が用意 | 高 |
 | 取材協力者からの紹介 | 取材した方（匿名のまま）に、自分の SNS・ブログで記事の URL を紹介してもらう | 依頼の文面案を AI が用意（掲載の許諾済みの方のみ） | 中 |
 | 自治体・観光協会・商工会の「空き家」「創業支援」ページ | 下田市など、公開されたリンク集・活用事例ページへの掲載を依頼する | 対象ページの URL を AI が調べる（公式ページのみ） | 中 |
 | SNS（X・Instagram） | 新記事の公開日に、1枚の要約画像と URL を投稿する | 要約画像と文面案を AI が用意 | 中 |

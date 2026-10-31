@@ -4043,7 +4043,7 @@ def media_company_page():
     <section class="section section--soft msec">
       <div class="container">
         <div class="msec__head reveal"><div><p class="msec__en">Our inn</p><h2 class="msec__title">運営している宿の一例：NODE Shimoda</h2></div></div>
-        <p class="msv-record__lead"><span class="ex-badge">運営施設の一例</span>複数ある運営施設のうちの1つです。</p>
+        <p class="msv-record__lead"><span class="ex-badge">運営施設の一例</span>複数ある運営施設のうちの1つです。<a href="https://share.google/2OGfd8WOEyEwFTSPP" target="_blank" rel="noopener">Googleの掲載ページを見る（別タブで開きます）</a></p>
         <p class="msv-record__label">ゲストの声（Airbnbのレビューより抜粋）</p>
         <div class="mvoices">
 {reviews}
