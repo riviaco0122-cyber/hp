@@ -20,3 +20,22 @@
 
 ## 実施記録
 - （まだありません）
+
+## note に貼るリンク（計測用のパラメータつき。2026-10-31）
+GA4 で、note から来た人を「Organic Social」として見分けるためのパラメータ（`utm_medium=social`）。**パラメータはそのまま貼る。** サイト側は、パラメータがあっても同じページを表示し、canonical はパラメータのないURLを指すので、検索の評価は分散しない。
+- プロフィール: `utm_campaign=profile`／記事の末尾: `utm_campaign=article-end`、`utm_content=<記事のスラッグ>`（どの記事の末尾から来たかを見分ける）
+- note の記事ごとに分けたいときは、`utm_campaign=` の値を、noteの記事の名前（英数字）に変える。
+
+| 貼る場所・記事 | URL |
+|---|---|
+| プロフィール（アキヤドのトップ） | `https://rivia-co.com/media.html?utm_source=note&utm_medium=social&utm_campaign=profile` |
+| 民泊を始めるには何から？ | `https://rivia-co.com/media/minpaku-start-steps.html?utm_source=note&utm_medium=social&utm_campaign=article-end&utm_content=minpaku-start-steps` |
+| 民泊の備品は何から買う？ | `https://rivia-co.com/media/minpaku-bihin-priority.html?utm_source=note&utm_medium=social&utm_campaign=article-end&utm_content=minpaku-bihin-priority` |
+| 民泊のゲストからの質問を減らす方法 | `https://rivia-co.com/media/minpaku-house-guide.html?utm_source=note&utm_medium=social&utm_campaign=article-end&utm_content=minpaku-house-guide` |
+| 民泊は稼働率何%で黒字？ | `https://rivia-co.com/media/minpaku-break-even.html?utm_source=note&utm_medium=social&utm_campaign=article-end&utm_content=minpaku-break-even` |
+| 民泊新法の年180日ルール | `https://rivia-co.com/media/minpaku-180days-rule.html?utm_source=note&utm_medium=social&utm_campaign=article-end&utm_content=minpaku-180days-rule` |
+| 簡易宿所の許可を取るには？ | `https://rivia-co.com/media/kani-shukusho-kyoka-guide.html?utm_source=note&utm_medium=social&utm_campaign=article-end&utm_content=kani-shukusho-kyoka-guide` |
+| 空き家の活用方法を比べる | `https://rivia-co.com/media/akiya-utilization-options.html?utm_source=note&utm_medium=social&utm_campaign=article-end&utm_content=akiya-utilization-options` |
+| 空き家の維持費はいくら？ | `https://rivia-co.com/media/akiya-holding-costs.html?utm_source=note&utm_medium=social&utm_campaign=article-end&utm_content=akiya-holding-costs` |
+| 民泊・小さな宿の開業資金 | `https://rivia-co.com/media/inn-startup-funding.html?utm_source=note&utm_medium=social&utm_campaign=article-end&utm_content=inn-startup-funding` |
+| 民泊の集客は何から？ | `https://rivia-co.com/media/minpaku-shukyaku-first-steps.html?utm_source=note&utm_medium=social&utm_campaign=article-end&utm_content=minpaku-shukyaku-first-steps` |
