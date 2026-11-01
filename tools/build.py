@@ -146,8 +146,8 @@ def phrase_breaks(html):
             if len(tail) < 5:
                 tail = body_text[-5:]
         head_text = body_text[: len(body_text) - len(tail)]
-        # 塊の中にも文節の区切り（<wbr>）を入れておく。ふだんは改行しないが、前の行の字間が開くときは js/main.js がここで改行させる
-        tail_html = f"<n-b>{'<wbr>'.join(e(c, quote=False) for c in _budoux.parse(tail))}</n-b>" if tail else ""
+        # 塊の中に <wbr> は入れない（nowrap の中でも、ブラウザは <wbr> で改行してしまう）。字間が開くときは js/main.js が区切りを入れる
+        tail_html = f"<n-b>{e(tail, quote=False)}</n-b>" if tail else ""
         parts[i] = f'{tag}{e(head_text, quote=False)}{tail_html}</n-w>{e(trail, quote=False)}'
     body = "".join(parts)
     # 数字の途中や、数字と単位の間では改行しない（「202／5年」「約3,188／万人」を防ぐ）
@@ -166,7 +166,7 @@ def phrase_breaks(html):
         if not last or len(last) >= len(raw):
             return m.group(0)
         return (f'<strong class="hl"><n-w{attrs}>{e(raw[: -len(last)], quote=False)}</n-w></strong>'
-                f'<n-b><strong class="hl">{e(last, quote=False)}</strong><wbr>{after_txt}</n-b>')
+                f'<n-b><strong class="hl">{e(last, quote=False)}</strong>{after_txt}</n-b>')
     body = re.sub(r'<strong class="hl"><n-w([^>]*)>([^<]+)</n-w></strong>((?:<n-w>)?(?:<n-b>)?[^<]{0,8}(?:</n-b>)?(?:</n-w>)?)(?=</(?:p|li|dd)>)', _glue, body)
     return head + sep + body
 
@@ -2597,8 +2597,8 @@ def spec_md():
     w("* サービスページのフォーム：最初に「無料で相談する」か「資料をもらう」を選び、名前とメールを送る（相談のときだけ、相談内容とファイルの欄を出す）。資料を選ぶと「ご相談カテゴリ」が「サービス資料の請求」になり、自動返信に資料が付く（Apps Script の変更は不要）。ページ内の「資料をもらう」ボタンは、資料を選んだ状態でこのフォームへ移る。CTA に「断ってもかまいません」のような言い回しは使わない。")
     w("* ヘッダーのナビ：PC（幅900px以上）はヘッダーの下に、状況別ガイド4つと「記事をさがす」「アキヤドのプラン」のタブだけを置く（数を絞り、はみ出して文字が切れないようにする）。右上のメニューボタン（3本線）はPC・スマホ共通で、ガイド4つ・基礎から学ぶ・事例から探す・記事をさがす・アキヤドのプラン・相談と資料請求のボタン・運営会社へのリンクを開く（PCは右上の小さなパネル、スマホは全幅）。トップへはロゴから戻る。")
     w("* メディアトップのFV：写真を全面に敷き、ロゴ・一言・状況別の入口（3つ）・検索窓を1画面に置いて、最初の画面から次の行動を選べるようにする（離脱を防ぐ）。")
-    w("* 想定する読者（ペルソナ）：① 空き家を売りたい方 ② 空き家を活かしたい方 ③ 副業で宿をはじめたい方。記事は、この3者が悩む順番をもとに企画する。")
-    w("* 記事を追加するとき：記事データに guides=[(\"sell\", 2)] のように「ガイド（sell／use／side）とStep番号」を書けば、ガイドの該当Stepに自動で並ぶ。公開日前は「公開予定」と表示される。よくある悩みの一覧（MEDIA_QUESTIONS）にも、読者の言葉の質問を1行足すと入口が増える。")
+    w("* 想定する読者（ペルソナ）：宿を誰が運営するかで4つに分ける（人の方針 2026-11-01。重なり・漏れのない分け方）。① 空き家を手放したい方 ② 空き家を任せたい方（家は残し、自分では運営しない） ③ 宿をはじめたい方（自分で運営する。持ち家・借りた家、副業・本業を問わない） ④ 宿の運営を伸ばしたい方（運営中）。記事は、この4者が悩む順番をもとに企画する。")
+    w("* 記事を追加するとき：記事データに guides=[(\"sell\", 2)] のように「ガイド（sell／use／side／run）とStep番号」を書けば、ガイドの該当Stepに自動で並ぶ。公開日前は「公開予定」と表示される。よくある悩みの一覧（MEDIA_QUESTIONS）にも、読者の言葉の質問を1行足すと入口が増える。")
     w("* ガイド（media/guide-○○.html）：" + " ／ ".join(g["title"] for g in MEDIA_GUIDES) + "。読者の状況ごとに、悩みが生まれる順の「段階（Step）」に分けて記事を並べる。公開前の記事は「○月○日公開予定」と表示し、リンクにしない。")
     for g in MEDIA_GUIDES:
         w(f"    * {g['title']}：" + " → ".join(f"{lb}（{len(xs)}本）" for lb, _, xs in g["stages"]))
@@ -2937,34 +2937,36 @@ MEDIA_CAT_TITLE = {
 }
 # 読者の状況（ペルソナ）別のガイド。悩みが生まれる順に「段階」を分け、記事を並べる
 MEDIA_GUIDES = [
-    dict(key="sell", label="空き家を売りたい", title="空き家を売りたい方へ", service="operation", photo="old-town-street",
-         who="相続した実家や、使っていない家を手放したい方",
-         worries=["放置しているとどうなる？", "売るときの税金は？", "売る以外の選択肢は？"],
+    # 4つのガイドは「宿を誰が運営するか」で分ける（人の方針 2026-11-01。重なり・漏れのない分け方）。
+    # 運営しない持ち主＝手放す（sell）／任せる（use）、自分で運営する人＝はじめる（side）／伸ばす（run）。プラン（買取・借り上げ・開業運営・WEB集客）と1対1
+    dict(key="sell", label="空き家を手放したい", title="空き家を手放したい方へ", service="operation", photo="old-town-street",
+         who="相続した実家や使っていない家を、売ることも含めて手放したい方",
+         worries=["放っておくとどうなる？", "売るときの税金は？", "売る前に比べる道は？"],
          lead="相続した実家や、使っていない家を手放したい。そう考えたときに知っておきたいことを、悩みが生まれる順に並べました。",
          stages=[
-             ("まず知っておきたいこと", "放置した場合の負担と、空き家をめぐる制度の変化。", ["akiya-inherited-house-to-inn", "akiya-bank-guide"]),
-             ("売る前に、比べておきたいこと", "売る以外に「貸す」「宿として活かす」という選択肢も。手取りと将来を比べて判断します。", ["akiya-lease-types", "shizuoka-yaizu-akiya-inn", "new-build-vs-used-house-inn"]),
-             ("お金と税金", "売却したときの税金と、使える特例。", ["akiya-3000man-deduction"]),
+             ("放っておくと、どうなる？", "維持費と税金、空き家をめぐる制度の変化、家族での話し合い。", ["akiya-holding-costs", "akiya-law-kanri-fuzen", "souzoku-touki-gimuka", "akiya-inherited-house-to-inn", "inherited-house-family-talk"]),
+             ("売る前に、ほかの道と比べる", "売る・壊す・貸す・宿にする。手取りと、家が残るかを比べて判断します。", ["akiya-utilization-options", "akiya-demolish-or-renovate", "akiya-lease-types", "why-akiya-utilization-now"]),
+             ("売るときのお金と相談先", "売却の税金の特例と、空き家バンク、買取の相談。", ["akiya-3000man-deduction", "akiya-bank-guide", "akiyado-what-we-do"]),
          ]),
-    dict(key="use", label="空き家を活かしたい", title="空き家を活かしたい方へ", service="operation", photo="thatched-house",
-         who="家を手放さずに、収入や地域の役に立つ形で活かしたい方",
-         worries=["古い家でも宿にできる？", "貸す？任せる？自分でやる？", "改修にいくらかかる？"],
-         lead="思い出のある家を手放さずに、収入や地域の役に立つ形で活かしたい。活用の選び方から改修、お金のことまでを順番に。",
+    dict(key="use", label="空き家を任せたい", title="空き家を任せたい方へ", service="operation", photo="thatched-house",
+         who="家は手放さず、自分では運営せずに、貸す・任せる形で活かしたい方",
+         worries=["古い家でも宿に向く？", "貸す？借り上げ？何が違う？", "賃貸と宿、収入はどう違う？"],
+         lead="思い出のある家は残したい。でも、自分で宿を運営するのは難しい。貸す・任せる形で活かす道を、比べ方から順番に。",
          stages=[
-             ("活かし方を知る", "空き家が宿として、地域の中でどんな価値を持つのか。", ["akiya-inherited-house-to-inn"]),
-             ("活かし方を選ぶ", "貸す・運営を任せる・自分で営業する。契約と法令の違い。", ["akiya-lease-types", "minpaku-vs-ryokan-law", "minpaku-management-company"]),
-             ("家を整える", "残すもの・直すもの、消防設備の基準。", ["kominka-renovation-points", "minpaku-fire-safety", "new-build-vs-used-house-inn"]),
-             ("お金の見通しを立てる", "補助金と、収益の見込みの立て方。", ["small-inn-subsidies", "airdna-revenue-simulation"]),
+             ("家を残して活かす道を知る", "住まいとして貸しにくい家が、宿として選ばれる理由。", ["why-minpaku-for-akiya", "why-akiya-utilization-now", "akiya-utilization-options", "inherited-house-family-talk"]),
+             ("宿に向く家か、確かめる", "立地・建物・法令で、宿に向くかを見るところ。", ["akiya-minpaku-suitability", "shizuoka-yaizu-akiya-inn", "kominka-renovation-points"]),
+             ("貸し方と収入を比べる", "普通の賃貸・定期借家・借り上げの違いと、収入の比べ方、相談の流れ。", ["akiya-lease-types", "minpaku-vs-rental-income", "akiyado-what-we-do", "akiyado-consultation-flow"]),
          ]),
-    dict(key="side", label="副業で宿をはじめたい", title="副業で宿をはじめたい方へ", service="management", photo="white-bedroom",
-         who="本業を続けながら、民泊や小さな宿に挑戦してみたい方",
-         worries=["副業でも民泊はできる？", "資金はいくら必要？", "本業があっても運営できる？"],
-         lead="本業を続けながら、民泊や小さな宿に挑戦してみたい。市場の見方から開業の手続き、資金、運営を任せる方法までを順番に。",
+    dict(key="side", label="宿をはじめたい", title="宿をはじめたい方へ", service="management", photo="white-bedroom",
+         who="持ち家でも借りた家でも、副業でも本業でも、自分で民泊や小さな宿を始めたい方",
+         worries=["本当に始めて大丈夫？", "資金はいくら必要？", "許可や準備は何から？"],
+         lead="自分で民泊や小さな宿を始めたい。始めるかどうかの判断から、物件とお金、家の整え方、許可と開業、先に始めた人の事例までを順番に。",
          stages=[
-             ("市場と可能性を知る", "どんな旅行者が、どんな宿を求めているのか。投資としての考え方。", ["long-stay-travel-demand", "minpaku-investment-yield"]),
-             ("物件とお金を準備する", "物件の探し方、収益の見込み、資金の集め方。", ["akiya-bank-guide", "airdna-revenue-simulation", "inn-startup-funding", "small-inn-subsidies"]),
-             ("開業の手続きを進める", "民泊か旅館業か、消防、管理を任せる体制。", ["minpaku-start-steps", "minpaku-vs-ryokan-law", "minpaku-fire-safety", "minpaku-management-company"]),
-             ("運営して、育てる", "数字の読み方、集客、レビュー、清掃、宿泊税。", ["inn-kpi-basics", "ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips", "cleaning-linen-operations", "accommodation-tax"]),
+             ("始めるかどうかを決める", "民泊の大変なところ、市場の見方、副業で始めるときの注意、年180日の決まり。", ["minpaku-hard-truth", "japan-tourism-market-data", "long-stay-travel-demand", "kaishain-minpaku-fukugyo", "minpaku-180days-rule", "minpaku-investment-yield"]),
+             ("物件とお金を準備する", "物件の探し方、収益と赤字にならない線、資金の集め方と補助金。", ["akiya-bank-guide", "minpaku-chintai-start", "akiya-minpaku-suitability", "airdna-revenue-simulation", "minpaku-break-even", "inn-startup-funding", "small-inn-subsidies"]),
+             ("家を整える", "改修の進め方、消防設備、備品と設備。", ["kominka-renovation-points", "remote-renovation-tips", "new-build-vs-used-house-inn", "minpaku-fire-safety", "minpaku-bihin-priority", "long-stay-guest-equipment"]),
+             ("許可を取り、開業する", "民泊新法か旅館業か、管理の体制、案内の準備、最初の集客。", ["minpaku-start-steps", "minpaku-vs-ryokan-law", "kani-shukusho-kyoka-guide", "minpaku-management-company", "minpaku-house-guide", "minpaku-shukyaku-first-steps"]),
+             ("先に始めた人に学ぶ", "空き家や借りた家で宿を始めた人の、費用・収支・つまずき。", ["case-rental-house-inn-first-year", "case-owner-subsidy-akiya", "case-owner-diy-cottage", "case-owner-fishing-port", "case-owner-rental-side-business", "case-owner-licensed-akiya", "case-owner-setouchi-cycling", "case-owner-castle-town-nagaya", "case-owner-satoyama-airdna"]),
          ]),
     # すでに宿を運営している方向け。集客・採用の記事の受け皿（記事データに guides=[("run", 2)] のように書く）
     dict(key="run", label="宿の運営を伸ばしたい", title="宿の運営を伸ばしたい方へ", service="marketing", photo="laptop-dashboard",
@@ -2972,9 +2974,9 @@ MEDIA_GUIDES = [
          worries=["予約がなかなか増えない", "予約サイトの手数料が重い", "清掃や運営の人手が足りない"],
          lead="民泊や小さな宿を運営していて、予約や人手に悩んでいる。数字の見方から、予約の増やし方、人手と運営の整え方までを順番に。",
          stages=[
-             ("数字で今を知る", "稼働率・客室単価の読み方と、赤字にならない線。", ["inn-kpi-basics", "minpaku-break-even"]),
-             ("予約を増やす", "予約サイトと自社予約の使い分け、掲載ページ、レビュー、料金、閑散期。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips", "case-owner-pricing-mistake", "minpaku-off-season"]),
-             ("人手と運営を整える", "清掃の仕組み、離れた場所からの運営、近隣との関係、任せる先。", ["cleaning-linen-operations", "minpaku-remote-operation", "minpaku-neighbor-rules", "minpaku-management-company"]),
+             ("数字で今を知る", "稼働率・客室単価の読み方、赤字にならない線、宿泊税。", ["inn-kpi-basics", "minpaku-break-even", "accommodation-tax"]),
+             ("予約を増やす", "予約サイトと自社予約の使い分け、掲載ページ、レビュー、料金、閑散期。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips", "case-owner-pricing-mistake", "minpaku-off-season", "minpaku-shukyaku-first-steps"]),
+             ("人手と運営を整える", "清掃の仕組み、離れた場所からの運営、近隣との関係、任せる先、ゲストへの案内。", ["cleaning-linen-operations", "minpaku-seisou-kojin-kakunin", "minpaku-remote-operation", "minpaku-neighbor-rules", "minpaku-management-company", "minpaku-house-guide"]),
          ]),
 ]
 # 記事は今後も増える前提。記事データに guides=[("sell", 2)]（ガイドのkey, Stepの番号）と書けば、
@@ -2986,22 +2988,22 @@ for _a in ARTICLES:
             _st.append(_a["slug"])
 for _g in MEDIA_GUIDES:
     _g["slugs"] = list(dict.fromkeys(x for _, _, xs in _g["stages"] for x in xs))
-MEDIA_GUIDE_FOR_CAT = {"sell": "sell", "lend": "use", "house": "use", "start": "side", "money": "side", "operate": "run", "trend": "use"}
+MEDIA_GUIDE_FOR_CAT = {"sell": "sell", "lend": "use", "house": "side", "start": "side", "money": "side", "operate": "run", "trend": "side"}
 # よくある悩みから記事へ（読者の言葉で書く）
 MEDIA_QUESTIONS = [
     ("sell", "相続した実家、放置するとどうなる？", "akiya-inherited-house-to-inn"),
     ("sell", "空き家を売ったら、税金はどれくらいかかる？", "akiya-3000man-deduction"),
     ("use", "観光地ではない場所の空き家でも、宿になる？", "shizuoka-yaizu-akiya-inn"),
     ("use", "家を貸すなら、どんな契約がいい？", "akiya-lease-types"),
-    ("use", "古い家を宿にするなら、どこを直すべき？", "kominka-renovation-points"),
-    ("side", "副業で民泊をはじめるには、何から？", "minpaku-start-steps"),
+    ("side", "民泊をはじめるには、何から？", "minpaku-start-steps"),
+    ("side", "古い家を宿にするなら、どこを直すべき？", "kominka-renovation-points"),
     ("side", "民泊と旅館業、どちらで始めればいい？", "minpaku-vs-ryokan-law"),
     ("side", "本業があっても、宿の運営はできる？", "minpaku-management-company"),
     ("side", "開業資金は、どう用意する？", "inn-startup-funding"),
     ("side", "実際、初期投資はどれくらいで回収できる？", "case-rental-house-inn-first-year"),
     ("side", "宿の収益は、どれくらい見込める？", "airdna-revenue-simulation"),
 ]
-MEDIA_LEAD = "空き家を売りたい、活かしたい。副業で民泊をはじめたい。その悩みに、宿を運営する私たちが順を追ってお答えします。"
+MEDIA_LEAD = "空き家を手放したい、任せたい。自分で宿をはじめたい、伸ばしたい。その悩みに、宿を運営する私たちが順を追ってお答えします。"
 
 
 # 記事の途中に置く相談の案内（読者の状況＝ガイドごとに言葉を変える）
@@ -3145,9 +3147,9 @@ SAMPLE_VOICES = [
      "遠くて管理に行けず、ずっと気がかりでした。現地を見てもらい、売る場合と貸す場合の両方を説明してもらったうえで、納得して手放せました。家が宿として使われると聞いて、ほっとしています。"),
 ]
 MEDIA_PLAN_GROUPS = [
-    ("sell", "空き家を売りたい方", "手放したいけれど、買い手がつくか不安。そんな家もご相談ください。", "operation", ["アキヤド買取プラン"]),
-    ("use", "空き家を活かしたい方", "家は持ったまま、宿として活かして収入に。改修や運営の手間はかかりません。", "operation", ["アキヤドおまかせプラン", "アキヤド売上シェアプラン"]),
-    ("side", "副業で宿をはじめたい方", "物件選びや許可から開業後の集客まで。任せる範囲を選べます。", "management", ["伴走コース", "運営代行コース", "共同出資コース"]),
+    ("sell", "空き家を手放したい方", "手放したいけれど、買い手がつくか不安。そんな家もご相談ください。", "operation", ["アキヤド買取プラン"]),
+    ("use", "空き家を任せたい方", "家は持ったまま、宿として活かして収入に。改修や運営の手間はかかりません。", "operation", ["アキヤドおまかせプラン", "アキヤド売上シェアプラン"]),
+    ("side", "宿をはじめたい方", "物件選びや許可から開業後の集客まで。任せる範囲を選べます。", "management", ["伴走コース", "運営代行コース", "共同出資コース"]),
 ]
 PLAN_FLOW = [
     ("無料相談・資料請求", "フォームから、物件や状況を気軽にお知らせください。オンラインでもお話しできます。"),
@@ -3297,7 +3299,7 @@ def guide_video_ld(page_url):
 # ---------------------------------------------------------------- アキヤド：サービスごとのページ（読者の状況ごとに、悩み→解決→プラン→流れ→実績→質問）
 MEDIA_SERVICES = [
     dict(key="sell", slug="service-kaitori", name="アキヤド買取プラン", category="operation",
-         eyebrow="空き家を売りたい方へ", title="買い手が見つからない家も、\n宿として活かせるなら買い取れます。",
+         eyebrow="空き家を手放したい方へ", title="買い手が見つからない家も、\n宿として活かせるなら買い取れます。",
          lead="相続した家、遠方で管理できない家。アキヤドは「宿として再生できるか」という目で物件を見るため、一般の仲介では値段がつきにくい家もご相談いただけます。",
          worries=["相続した実家を、どうしたらいいか決められない", "遠方に住んでいて、管理や草刈りに通うのが負担", "不動産会社に「古いので売れにくい」と言われた",
                   "固定資産税だけを払い続けている", "手放す前に、ほかの選択肢とも比べたい"],
@@ -3311,7 +3313,7 @@ MEDIA_SERVICES = [
               ("査定に費用はかかりますか？", "現地の拝見と査定、ご提案までは無料です。"),
               ("相続の手続きが終わっていなくても相談できますか？", "ご相談いただけます。売却には名義の変更が必要になるため、進め方も一緒に整理します。")]),
     dict(key="use", slug="service-kariage", name="アキヤド借り上げプラン", category="operation",
-         eyebrow="空き家を活かしたい方へ", title="家は持ったまま、\n宿として活かして毎月の収入に。",
+         eyebrow="空き家を任せたい方へ", title="家は持ったまま、\n宿として活かして毎月の収入に。",
          lead="アキヤドが空き家を借り上げ、改修から宿の運営まで行います。オーナー様は運営の手間をかけずに、家賃を受け取れます。",
          worries=["思い出のある家を、手放したくはない", "空き家のまま傷んでいくのが心配", "貸したいが、借り手が見つかる地域ではない",
                   "改修にまとまったお金はかけられない", "宿に興味はあるが、運営する時間がない"],
@@ -3325,7 +3327,7 @@ MEDIA_SERVICES = [
               ("どんな家でも借り上げてもらえますか？", "立地や建物の状態、法令上、宿として営業できるかによります。現地調査と収支の試算をしたうえでご提案します。"),
               ("近所に迷惑がかからないか心配です。", "利用ルールの案内や、騒音・ごみへの対応など、周辺への配慮も運営に含めて行います。")]),
     dict(key="side", slug="service-kaigyo", name="アキヤド開業・運営プラン", category="management",
-         eyebrow="副業で宿をはじめたい方へ", title="はじめての民泊を、\n開業準備から運営まで伴走します。",
+         eyebrow="宿をはじめたい方へ", title="はじめての民泊を、\n開業準備から運営まで伴走します。",
          lead="物件選び、許可や届出、写真や料金の決め方、開業後の集客まで。実際に宿を運営しているアキヤドが、任せたい範囲に合わせて支援します。",
          worries=["何から始めればいいか分からない", "民泊と旅館業、どちらで始めるべきか迷っている", "本業が忙しく、運営に時間をかけられない",
                   "物件が宿として収益を出せるか見通せない", "予約が入るページのつくり方が分からない"],
@@ -4207,10 +4209,10 @@ def media_learn_page():
 
 # ---------------------------------------------------------------- アキヤド：お問い合わせ（コーポレートとは別の、アキヤド専用のページ）
 MEDIA_CONTACT_TOPICS = [
-    ("sell", "アキヤド買取プラン（空き家を売りたい）",
+    ("sell", "アキヤド買取プラン（空き家を手放したい）",
      "【買取について】\n・売りたい物件：\n・空き家になった時期：\n・気になっていること（例：古くて売れるか不安）：\n"),
-    ("use operation", "アキヤド借り上げプラン（空き家を活かしたい）",
-     "【借り上げについて】\n・活かしたい物件：\n・家を残したい理由や、将来使う予定：\n・気になっていること（例：改修の費用）：\n"),
+    ("use operation", "アキヤド借り上げプラン（空き家を任せたい）",
+     "【借り上げについて】\n・任せたい物件：\n・家を残したい理由や、将来使う予定：\n・気になっていること（例：改修の費用）：\n"),
     ("side management", "アキヤド開業・運営プラン（民泊・小さな宿をはじめたい）",
      "【開業・運営について】\n・物件の有無（ある／探している）：\n・はじめたい宿のイメージ：\n・ご予算の目安：\n・自分で運営に関わりたい範囲：\n"),
     # 「サービス資料がほしい」の文言は tools/forms/Code.gs の DOC_REQUEST_VALUES（資料の自動添付の判定）と一致させる
@@ -4626,12 +4628,12 @@ def media_index_page():
         "@type": "ItemList",
         "name": "アキヤドのメニュー",
         "itemListElement": [{"@type": "SiteNavigationElement", "position": i, "name": n, "url": f"{SITE}/{u}"} for i, (n, u) in enumerate([
-            ("空き家を売りたい方へ", "media/guide-sell.html"), ("空き家を活かしたい方へ", "media/guide-use.html"),
-            ("副業で宿をはじめたい方へ", "media/guide-side.html"), ("アキヤドのプラン", "media/plans.html"),
+            ("空き家を手放したい方へ", "media/guide-sell.html"), ("空き家を任せたい方へ", "media/guide-use.html"),
+            ("宿をはじめたい方へ", "media/guide-side.html"), ("宿の運営を伸ばしたい方へ", "media/guide-run.html"), ("アキヤドのプラン", "media/plans.html"),
             ("ゼロから体系的に学ぶ", "media/learn.html"), ("無料相談・お問い合わせ", "media/contact.html"),
             ("運営者情報", "media/company.html")], 1)],
     }]
-    page("media.html", "アキヤド｜空き家の売却・活用と、副業ではじめる民泊のメディア", "空き家を売りたい方、活かしたい方、副業で民泊や小さな宿をはじめたい方に向けて、宿を運営する合同会社RIVIA&CO.が悩みに沿って解説するメディアです。", body, current="media", jsonld=ld, mnav="top")
+    page("media.html", "アキヤド｜空き家の売却・活用と、副業ではじめる民泊のメディア", "空き家を手放したい方、任せたい方、自分で民泊や小さな宿をはじめたい方、運営を伸ばしたい方に向けて、宿を運営する合同会社RIVIA&CO.が悩みに沿って解説するメディアです。", body, current="media", jsonld=ld, mnav="top")
 
 
 def theme_tags(current=None, all_href="media.html#all"):

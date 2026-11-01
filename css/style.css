@@ -2196,7 +2196,7 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
 }
 /* 記事本文の箇条書き・段落の書式が、図の中に入り込まないようにする */
 .article__section .fig ul, .article__section .fig ol { margin: 0; padding: 0; border: 0; list-style: none; }
-.article__section .fig li { margin: 0; padding-left: 0; font-size: inherit; line-height: inherit; font-weight: inherit; }
+.article__section .fig li { margin: 0; padding-left: 0; font-size: inherit; line-height: inherit; font-weight: inherit; text-align: start; } /* 図の中の狭い列で両端揃えにすると、字の間が大きく空く */
 .article__section .fig li + li { margin-top: 0; }
 .article__section .fig li::before { content: none; }
 .article__section .fig p { font-size: inherit; line-height: 1.6; }

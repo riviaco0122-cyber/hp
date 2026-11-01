@@ -6,7 +6,7 @@
 #     date="2026-12-11",                               # 公開日（日本時間）。この日まで一覧などから自動で隠れる
 #     topics=["sell", "money"],                        # テーマ（先頭がカテゴリ）: sell/lend/house/start/money/operate/trend
 #     photo=("old-town-street", "古い町家が並ぶ通り"),   # images/photos/<名前>.jpg と代替テキスト（既存の写真だけ）
-#     guides=[("sell", 2)],                            # ガイドの何番目の Step に入るか: sell/use/side（なければ []）
+#     guides=[("sell", 2)],                            # ガイドの何番目の Step に入るか: sell/use/side/run（なければ []。既存の記事は build.py の MEDIA_GUIDES に並べてある）
 #     title="…", short="一覧用の短い題\n2行まで", description="…（50〜140字）",
 #     services=["operation"],                          # 関連サービス: operation/management/partnership/marketing/recruit
 #     keypoints=["…", "…", "…"],                      # この記事のポイント（3〜5）
@@ -20,7 +20,6 @@ ARTICLES_AUTO = [
     dict(
         slug="akiya-rate-and-inn",
         date="2026-10-13", topics=["house", "trend"], photo=("riverside-town", "川沿いの町並み"),
-        guides=[("use", 1)],
         title='空き家率が高い地域は宿に向く？下田市の空き家率31.3%を内訳で読む',
         short="空き家率の高い町は\n宿に向く？",
         description='空き家率が高い地域は宿に向くのか。住宅・土地統計調査の取得値から、空き家率が下田市31.3%・静岡県16.7%・全国13.8%を内訳で比べ、計算式つきで読み方を整理します。宿の需要を見る統計と、自分の市町村の調べ方も紹介します。',
@@ -176,7 +175,6 @@ ARTICLES_AUTO = [
     dict(
         slug="akiya-demolish-or-renovate",
         date="2026-10-13", updated="2026-10-31", topics=["house", "sell"], photo=("old-town-street", "古い家が並ぶ町の通り"),
-        guides=[("use", 2)],
         title='空き家は解体か、残して民泊・宿にするか｜費用・税金・補助で比べる',
         short='空き家は解体か、\n残して直すか',
         blurb='税・費用・補助で比べる',
@@ -438,7 +436,6 @@ ARTICLES_AUTO = [
     dict(
         slug="kani-shukusho-kyoka-guide",
         date="2026-10-16", updated="2026-10-30", topics=["start", "house"], photo=("old-town-street", "古い家が並ぶ町の通り"),
-        guides=[("side", 3)],
         title='簡易宿所の許可を取るには？民泊を旅館業で始める広さ・相談先・流れ',
         short="簡易宿所の許可の取り方\n広さ・相談先・流れ",
         blurb='初めての人の全体像',
@@ -646,7 +643,6 @@ ARTICLES_AUTO = [
     dict(
         slug="minpaku-break-even",
         date="2026-10-17", updated="2026-10-30", topics=["money", "operate"], photo=("analytics-paper", "収支をまとめた資料"),
-        guides=[("side", 2)],
         title='民泊は稼働率何%で黒字？損益分岐点を自分で計算するやり方',
         short="民泊は稼働率何%で黒字？\n自分で計算するやり方",
         blurb='4つの数字で黒字ラインを出す',
@@ -835,7 +831,7 @@ ARTICLES_AUTO = [
         ],
         sources=[
             '住宅宿泊事業法（平成29年法律第65号）第2条第3項（e-Gov 法令検索、2026年10月確認） https://laws.e-gov.go.jp/law/429AC0000000065',
-            'RIVIA&CO.「下田の賃貸一軒家を民泊に｜約14か月で家具・家電の投資をほぼ回収」（2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html',
+            'RIVIA&CO.「民泊の家具・家電・設備の初期投資を約14か月でほぼ回収｜下田の賃貸物件の宿」（2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html',
             'RIVIA&CO.「民泊の価格設定で失敗した事例｜ほぼ満室でも赤字から、単価1.9倍で立て直すまで」（取材したオーナー本人の申告、2026年） https://rivia-co.com/media/case-owner-pricing-mistake.html',
             'RIVIA&CO.「宿の稼働率・客室単価の基本」（2026年） https://rivia-co.com/media/inn-kpi-basics.html',
             '創業メンバーによる下田での開業記録（2025年11月執筆）',
@@ -844,7 +840,6 @@ ARTICLES_AUTO = [
     dict(
         slug="kaishain-minpaku-fukugyo",
         date="2026-10-18", updated="2026-10-31", topics=["money", "start"], photo=("laptop-dashboard", "ノートパソコンで書類を確認する様子"),
-        guides=[("side", 2)],
         title='会社員の民泊副業｜始める前の確認手順（就業規則・20万円ルール）',
         short="会社員の民泊副業\n就業規則と20万円ルール",
         blurb='会社と税務署に聞く順番',
@@ -986,7 +981,6 @@ ARTICLES_AUTO = [
     dict(
         slug="minpaku-chintai-start",
         date="2026-10-19", updated="2026-10-31", topics=["start", "operate"], photo=("white-bedroom", "白い寝具の整った客室"),
-        guides=[("side", 2)],
         title='賃貸で民泊を始めるには？転貸の承諾書と管理規約の確認手順',
         short="賃貸で民泊を始めるには\n承諾書と管理規約",
         blurb='貸主の承諾と規約の確かめ方',
@@ -1124,7 +1118,6 @@ ARTICLES_AUTO = [
     dict(
         slug="minpaku-shukyaku-first-steps",
         date="2026-10-24", updated="2026-10-30", topics=["operate"], photo=("white-bedroom", "白い寝具の整った客室"),
-        guides=[("side", 4)],
         title='民泊の集客は何から？インスタの前に決める「誰に・何を・どこで」',
         short="民泊の集客は何から？\nインスタの前に決めること",
         blurb='誰に・何を・どこでの決め方',
@@ -1305,7 +1298,6 @@ ARTICLES_AUTO = [
     dict(
         slug="minpaku-seisou-kojin-kakunin",
         date="2026-10-25", updated="2026-10-31", topics=["operate"], photo=("white-bed", "白いシーツの整ったベッド"),
-        guides=[("run", 3)],
         title='民泊の清掃を個人に頼む前の確認｜家主不在・雇用の線引き・欠員対策',
         short="民泊の清掃を個人に頼む前に\n確かめること",
         blurb='家主不在・雇用の線引き・欠員対策',
@@ -1452,7 +1444,6 @@ ARTICLES_AUTO = [
     dict(
         slug="minpaku-180days-rule",
         date="2026-10-27", updated="2026-10-31", topics=["start", "operate"], photo=("white-bedroom", "白い寝具の整った客室"),
-        guides=[("side", 1)],
         title='民泊新法の年180日ルール｜数え方・超えたとき・条例で短くなる場合',
         short="民泊の年180日ルール\n数え方と超えたとき",
         blurb='数え方・超過・条例で短縮',
@@ -1569,7 +1560,7 @@ ARTICLES_AUTO = [
                 ("", "地域の条例", "180日より短くなっていないか、保健所に聞く"),
                 ("", "見込み", "稼働率が約5割に近いなら、通年の許可も比べる"),
             ]) + """
-<p>180日の運営に収益の保証はありません。副業で宿を始める方の流れは、<a href="media/guide-side.html">副業で宿をはじめたい方のガイド</a>にまとめています。法律や条例の最終判断は、届出先の窓口や専門家に確認してください。</p>
+<p>180日の運営に収益の保証はありません。副業で宿を始める方の流れは、<a href="media/guide-side.html">宿をはじめたい方のガイド</a>にまとめています。法律や条例の最終判断は、届出先の窓口や専門家に確認してください。</p>
 """),
         ],
         faq=[
@@ -1593,7 +1584,6 @@ ARTICLES_AUTO = [
     dict(
         slug="minpaku-house-guide",
         date="2026-10-31", updated="2026-10-31", topics=["operate"], photo=("white-bedroom", "白い寝具の整った客室"),
-        guides=[("run", 2)],
         title='民泊のゲストからの質問を減らす方法｜実際に届いた質問408件から',
         short="民泊のゲストの質問を減らす案内の送り方",
         blurb='届いた質問408件から',
@@ -1805,7 +1795,6 @@ ARTICLES_AUTO = [
     dict(
         slug="minpaku-bihin-priority",
         date="2026-11-01", updated="2026-11-01", topics=["start", "operate"], photo=("white-bed", "白いシーツの整ったベッド"),
-        guides=[("side", 3)],
         title='民泊の備品は何から買う？買いすぎを防ぐ順番｜ゲストの質問408件から',
         short="民泊の備品は\n何から買う？",
         blurb='買う順番と費用',

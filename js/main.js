@@ -683,9 +683,11 @@
     lines.sort(function (a, c) { return a.top - c.top; });
     return lines.slice(0, -1).filter(function (l) { return inner - (l.right - l.left) > fs * 2; }).length;
   }
-  // 区切り（<wbr>）のない文末のまとまりに、言葉の区切りを入れる。最後の行に4文字未満が残る位置では区切らない
+  // 文末のまとまりをほどく：言葉の区切り（<wbr>）を入れる。最後の行に4文字未満が残る位置では区切らない。
+  // ブラウザは nowrap の中でも <wbr> で改行するので、区切りはほどくときだけ入れ、戻すときに消す（tightenBreaks）
   function addBreaks(nb) {
-    if (nb.querySelector('wbr') || nb.childNodes.length !== 1 || nb.firstChild.nodeType !== 3 || !(window.Intl && Intl.Segmenter)) return;
+    nb.classList.add('is-loose');
+    if (nb.childNodes.length !== 1 || nb.firstChild.nodeType !== 3 || !(window.Intl && Intl.Segmenter)) return;
     var str = nb.firstChild.nodeValue;
     var segs = Array.from(new Intl.Segmenter('ja', { granularity: 'word' }).segment(str), function (x) { return x.segment; });
     var done = 0;
@@ -696,20 +698,25 @@
       if (i < segs.length - 1 && str.length - done >= 4) nb.appendChild(document.createElement('wbr'));
     });
   }
+  function tightenBreaks(nb) {
+    nb.classList.remove('is-loose');
+    Array.prototype.forEach.call(nb.querySelectorAll('wbr'), function (w) { w.remove(); });
+    nb.normalize();
+  }
   // 文末をまとめたせいで前の行の字間が開く段落は、まとめをほどいて文節の区切りで改行させる。
   // それでも開く行が残る段落（長いリンクや英数字があるなど）は、左揃えにする
   function fixJustify(b, fs) {
     if (!b.querySelector('n-w.j') || !stretchedLines(b, fs)) return;
     var nbs = b.querySelectorAll('n-b');
-    Array.prototype.forEach.call(nbs, function (nb) { addBreaks(nb); nb.classList.add('is-loose'); });
+    Array.prototype.forEach.call(nbs, addBreaks);
     if (!stretchedLines(b, fs)) return;
-    Array.prototype.forEach.call(nbs, function (nb) { nb.classList.remove('is-loose'); });
+    Array.prototype.forEach.call(nbs, tightenBreaks);
     b.style.textAlign = 'left';
   }
   function fixBlock(b) {
     b.style.letterSpacing = '';
     b.style.textAlign = '';
-    Array.prototype.forEach.call(b.querySelectorAll('n-b.is-loose'), function (nb) { nb.classList.remove('is-loose'); });
+    Array.prototype.forEach.call(b.querySelectorAll('n-b.is-loose'), tightenBreaks);
     if (!b.offsetParent) return;
     // サービスページ（LP）の本文は、行末まで詰めて自然に折り返す（字間や文末の調整をしない）
     if (b.closest && b.closest('.mlp-sec, .mlp-hero')) return;

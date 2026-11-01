@@ -7,7 +7,6 @@ ARTICLES_SERIES3 = [
     dict(
         slug="akiyado-what-we-do",
         date=D, updated="2026-10-31", topics=["lend", "start"], photo=("irori-room", "囲炉裏のある居間"),
-        guides=[("sell", 3), ("use", 4), ("side", 2)],
         keyword="空き家 買取 借り上げ",
         title="アキヤドができること｜空き家の買取・借り上げから、民泊の開業・運営まで",
         short="アキヤドが\nできること",
@@ -90,7 +89,6 @@ ARTICLES_SERIES3 = [
     dict(
         slug="akiyado-consultation-flow",
         date=D, updated="2026-10-31", topics=["start", "lend"], photo=("hotel-room", "整えられた客室"),
-        guides=[("use", 4), ("side", 2)],
         keyword="空き家 民泊 相談",
         title="空き家・民泊の相談から開業までの流れ｜初回に聞かれること・準備するもの",
         short="相談から開業までの\n流れ",
@@ -184,7 +182,6 @@ ARTICLES_SERIES3 = [
     dict(
         slug="minpaku-partner-choose",
         date=D, updated="2026-10-13", topics=["lend", "operate"], photo=("analytics-paper", "収支をまとめた資料"),
-        guides=[("side", 3), ("use", 2)],
         title="空き家・民泊の相談先の選び方｜運営代行や借り上げの事業者を比べる5つのポイント",
         short="相談先・委託先の\n選び方",
         description="空き家の活用や民泊の運営を任せる事業者は、どう選べばよいのでしょうか。運営の実績、収支の見込みの出し方、費用の分かりやすさ、契約の柔軟さ、地域との関わり方の5つのポイントで比べ方を紹介します。",
@@ -261,7 +258,6 @@ ARTICLES_SERIES3 += [
     dict(
         slug="remote-renovation-tips",
         date=D, updated="2026-10-31", topics=["house", "start"], photo=("dark-room", "改修された和室"),
-        guides=[("use", 3), ("side", 3)],
         keyword="空き家 民泊 改修",
         title="空き家を民泊に改修する進め方｜遠方でも追加費用を防ぐ相見積もり・記録・配線確認",
         short="遠方からの\n改修工事の進め方",
@@ -329,7 +325,6 @@ ARTICLES_SERIES3 += [
     dict(
         slug="long-stay-guest-equipment",
         date=D, updated="2026-10-31", topics=["operate", "house"], photo=("white-bedroom", "ワークデスクのある寝室"),
-        guides=[("side", 4)],
         keyword="民泊 長期滞在 設備",
         title="民泊で長期滞在・海外のゲストに選ばれる設備と備品｜キッチン・乾燥機・Wi-Fi",
         short="長期滞在のゲストに\n選ばれる設備",

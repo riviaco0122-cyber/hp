@@ -77,7 +77,7 @@ DESIGNS = {
     "cleaning-linen-operations": dict(layout="mincho", lines=["清掃と、", "リネン"], sub="小さな宿の運用ガイド"),
     "listing-photo-tips": dict(layout="boxes", lines=["予約が入る", "[宿のページ]の", "つくり方"]),
     "guest-review-tips": dict(layout="number", big="★5", unit="", lines=["レビューの評価を上げる", "[ゲスト対応]"], color="green"),
-    "case-rental-house-inn-first-year": dict(layout="number", big="14", unit="か月", lines=["下田の賃貸物件を宿に。", "[初期投資を回収]するまで"], color="deep"),
+    "case-rental-house-inn-first-year": dict(layout="number", big="14", unit="か月", lines=["下田の賃貸物件を宿に。", "[家具・家電の投資]を回収"], color="deep"),
     "minpaku-hard-truth": dict(layout="poster", big="5つ", lines=["民泊は大変？", "[よく聞く課題]と備え方"], color="sand"),
     "minpaku-neighbor-rules": dict(layout="frame", lines=["近隣トラブルを防ぐ", "[ルールづくり]"], color="mustard"),
     "minpaku-off-season": dict(layout="mincho", lines=["閑散期を、", "どう越える"], sub="売上の波をならす工夫", photo="own-fishing-bay", pos="50% 30%"),

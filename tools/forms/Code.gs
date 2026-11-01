@@ -130,11 +130,12 @@ var SIGNATURE = [
 // 自動返信メールの下部に載せる、アキヤド（メディア）の案内。リンクには GA4 で効果を測るための utm を付ける
 var PROMO = {
   title: 'ご連絡までの間に、アキヤドもご覧ください',
-  lead: '空き家の売却・活用や、副業ではじめる民泊について、宿を運営する私たちが悩みに沿って解説しているメディアです。',
+  lead: '空き家を手放す・任せる、自分で宿をはじめる・伸ばすときの悩みについて、宿を運営する私たちが悩みに沿って解説しているメディアです。',
   links: [
-    ['空き家を売りたい方へ', '/media/guide-sell.html'],
-    ['空き家を活かしたい方へ', '/media/guide-use.html'],
-    ['副業で宿をはじめたい方へ', '/media/guide-side.html'],
+    ['空き家を手放したい方へ', '/media/guide-sell.html'],
+    ['空き家を任せたい方へ', '/media/guide-use.html'],
+    ['宿をはじめたい方へ', '/media/guide-side.html'],
+    ['宿の運営を伸ばしたい方へ', '/media/guide-run.html'],
     ['空き家と民泊を、ゼロから体系的に学ぶ', '/media/learn.html']
   ],
   top: ['アキヤドのトップへ', '/media.html']
