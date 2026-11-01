@@ -3711,7 +3711,7 @@ def note_story(indent="        "):
 {indent}  <span class="mstory__photo" aria-hidden="true"></span>
 {indent}  <span class="mstory__body">
 {indent}    <span class="mstory__en">Founder's story</span>
-{indent}    <span class="mstory__title">会社員が片道2時間の下田で、民泊を始めた記録</span>
+{indent}    <span class="mstory__title">会社員が、住まいから離れた下田で民泊を始めた記録</span>
 {indent}    <span class="mstory__text">合同会社RIVIA&CO.の代表社員の片井が、はじめて民泊に挑戦したときの体験記です。開業までのリアルと、開業後3か月の歩みをnoteにまとめています。</span>
 {indent}    <span class="mstory__link">noteで読む（別タブで開きます） {ARROW}</span>
 {indent}  </span>
