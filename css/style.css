@@ -53,6 +53,7 @@ body {
 }
 n-w { word-break: normal; line-break: strict; text-wrap: pretty; } /* 本文は行末まで詰めて折り返す（長い段落は両端揃え） */
 n-b { white-space: nowrap; } /* 文末の短い文節は直前の文節とまとめて改行しない */
+.nw { white-space: nowrap; } /* 数字と単位のまとまり（build.py の keep_numbers）は途中で改行しない */
 n-b.is-loose { white-space: normal; word-break: keep-all; } /* まとめたせいで前の行の字間が開くときは、文節の区切り（<wbr>）でだけ改行する（js/main.js） */
 /* 長い段落（60字超）は両端揃えにして、右端のガタつきをなくす（最終行は左寄せ） */
 :is(p, li, dd, blockquote):has(> n-w.j) { text-align: justify; text-justify: inter-character; }
@@ -2742,7 +2743,7 @@ body.is-media .table-scroll { margin: 28px 0; -webkit-overflow-scrolling: touch;
 body.is-media .article__section .table { margin: 0; font-size: 14px; border-collapse: separate; border-spacing: 0; border: 1px solid var(--m-line); border-radius: 12px; overflow: hidden; }
 body.is-media .article__section .table th, body.is-media .article__section .table td { padding: 12px 14px; border: 0; border-bottom: 1px solid var(--m-line); line-height: 1.7; }
 body.is-media .article__section .table tr:last-child td { border-bottom: 0; }
-body.is-media .article__section .table th { white-space: normal; min-width: 4.5em; background: var(--m-sand); color: var(--m-green); font-weight: 700; }
+body.is-media .article__section .table th { white-space: normal; min-width: 4.5em; background: var(--m-sand); color: var(--m-green); font-weight: 700; text-wrap: balance; } /* 見出しが折り返すとき、1文字だけ次の行に残さない */
 body.is-media .article__section .table td:first-child { font-weight: 700; background: #f7f9f6; }
 body.is-media .article__section .table td.num { font-variant-numeric: tabular-nums; }
 /* この記事のポイント：短い要点（太字）＋補足（小さく淡く） */
@@ -3782,7 +3783,6 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 }
 @media (min-width: 900px) {
   .page-hero--collage .svc-hero__text { isolation: isolate; }
-  .page-hero--collage .svc-name__ja .nw { white-space: nowrap; }
 }
 /* PC：番号は白抜きの大きな数字だけで見せる（TOP の 01・02… と同じ表現。バッジと重ねない） */
 @media (min-width: 900px) {

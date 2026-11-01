@@ -61,6 +61,25 @@ def highlight(html):
     return head + sep + "".join(parts)
 
 
+# 数字と単位のまとまり（「2027年3月31日」「約3,188万人」「15.9万円」）。表のマスや図の中のように狭い所でも、途中で改行させない
+_NUM_TOKEN = re.compile(r"(?<![0-9０-９A-Za-z])((?:約)?[0-9０-９][0-9０-９,.，．]*(?:万|億|兆)?(?:年|か月|月|日|時間|円|人泊|人|泊|%|％|倍|件|戸|棟|回|歳|㎡|室)(?:[0-9０-９]+(?:か月|月|日))*)")
+
+
+def keep_numbers(body):
+    """本文のテキスト（script・style の中は除く）の、4文字以上の数字と単位のまとまりを <span class="nw"> で包む"""
+    parts = re.split(r"(<[^>]+>)", body)
+    skip = 0
+    for i, p in enumerate(parts):
+        if p.startswith("<"):
+            m = re.match(r"<(/?)(script|style|textarea|title)\b", p, re.I)
+            if m:
+                skip += -1 if m.group(1) else 1
+            continue
+        if not skip:
+            parts[i] = _NUM_TOKEN.sub(lambda m: f'<span class="nw">{m.group(1)}</span>' if len(m.group(1)) >= 4 else m.group(1), p)
+    return "".join(parts)
+
+
 def phrase_breaks(html):
     """日本語の改行を整える。
     - 見出しと短い文言（20字以内）：文節ごとに改行候補（<wbr>）を入れ、CSS の
@@ -133,6 +152,7 @@ def phrase_breaks(html):
     body = "".join(parts)
     # 数字の途中や、数字と単位の間では改行しない（「202／5年」「約3,188／万人」を防ぐ）
     body = re.sub(r"(?<=[0-9０-９,.，．])<wbr>(?=[0-9０-９,.，．年月日時分円万億千%％倍人件泊室戸棟回歳㎡])", "", body)
+    body = keep_numbers(body)
     # 段落が太字（マーカー）で終わるときは、太字の最後の文節と文末をひとまとまりにする（「〜しま／す。」を防ぐ）
     def _glue(m):
         attrs, txt, after = m.group(1), m.group(2), m.group(3) or ""

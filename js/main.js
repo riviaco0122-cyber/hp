@@ -673,7 +673,7 @@
     if (lines.length < 2) return 0;
     return lines.filter(function (l) { return l.width / fs < 5; }).length;
   }
-  // 両端揃えにすると字間が大きく開く行（左揃えで行末に2.5文字分以上の空きがある、最後以外の行）の数
+  // 両端揃えにすると字間が大きく開く行（左揃えで行末に2文字分以上の空きがある、最後以外の行）の数
   function stretchedLines(block, fs) {
     var cs = getComputedStyle(block);
     var inner = block.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
@@ -681,7 +681,7 @@
     var lines = lineBoxes(block, fs);
     block.style.textAlign = '';
     lines.sort(function (a, c) { return a.top - c.top; });
-    return lines.slice(0, -1).filter(function (l) { return inner - (l.right - l.left) > fs * 2.5; }).length;
+    return lines.slice(0, -1).filter(function (l) { return inner - (l.right - l.left) > fs * 2; }).length;
   }
   // 区切り（<wbr>）のない文末のまとまりに、言葉の区切りを入れる。最後の行に4文字未満が残る位置では区切らない
   function addBreaks(nb) {
