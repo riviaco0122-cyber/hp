@@ -2114,6 +2114,7 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
 .fig-cols--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .fig-col { padding: 22px 18px 20px; border-radius: 16px; background: #fff; text-align: center; }
 .fig-col--accent { box-shadow: inset 0 0 0 2px var(--m-green, #2e6b47); }
+.fig-col__count, .fig-cols__hint { display: none; }
 .fig-col__name { margin-top: 10px !important; font-family: var(--font-round); font-weight: 700; font-size: 16px; }
 .fig-col__sub { margin-top: 2px !important; font-size: 12px; color: var(--c-muted); }
 .fig-col__list { margin-top: 14px !important; padding-top: 12px !important; border-top: 1px solid var(--m-line, #e1e6e1); display: grid; gap: 6px; text-align: left; }
@@ -2174,6 +2175,9 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
   /* 比較の図（3列・4列）は文字が多く縦に長くなるので、スマホでは横にスワイプするカルーセルにする */
   .fig--compare .fig-cols--3, .fig--compare .fig-cols--4 { display: flex; gap: 12px; margin: 0 -16px; padding: 4px 16px 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 16px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
   .fig--compare .fig-cols--3 .fig-col, .fig--compare .fig-cols--4 .fig-col { flex: 0 0 78%; max-width: 300px; scroll-snap-align: start; grid-column: auto; }
+  /* 1枚目だけで全部だと思われないよう、枚数とスワイプの案内を出す */
+  .fig--compare .fig-col__count { display: block; font-family: var(--font-en); font-size: 11px; letter-spacing: .12em; color: var(--m-green, #2e6b47); }
+  .fig--compare .fig-cols__hint { display: block; margin: -4px 0 12px; white-space: nowrap; font-size: 12px; line-height: 1.6; color: var(--m-green, #2e6b47); font-weight: 500; text-align: center; }
   .fig-col { padding: 16px 12px 14px; }
   .fig-col__name { font-size: 14.5px; }
   .fig-col__list li { font-size: 12.5px; }
