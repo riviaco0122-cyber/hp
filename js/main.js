@@ -703,15 +703,15 @@
     Array.prototype.forEach.call(nb.querySelectorAll('wbr'), function (w) { w.remove(); });
     nb.normalize();
   }
-  // 文末をまとめたせいで前の行の字間が開く段落は、まとめをほどいて文節の区切りで改行させる。
-  // それでも開く行が残る段落（長いリンクや英数字があるなど）は、左揃えにする
+  // 文末をまとめたせいで、前の行の行末が早く終わる段落（両端揃えなら字間が開く、左揃えなら右に空きができる）は、
+  // まとめをほどいて言葉の区切りで改行させる。それでも両端揃えで字間が開く段落（長いリンクや英数字があるなど）は、左揃えにする
   function fixJustify(b, fs) {
-    if (!b.querySelector('n-w.j') || !stretchedLines(b, fs)) return;
     var nbs = b.querySelectorAll('n-b');
+    if (!nbs.length || !stretchedLines(b, fs)) return;
     Array.prototype.forEach.call(nbs, addBreaks);
     if (!stretchedLines(b, fs)) return;
     Array.prototype.forEach.call(nbs, tightenBreaks);
-    b.style.textAlign = 'left';
+    if (b.querySelector('n-w.j')) b.style.textAlign = 'left';
   }
   function fixBlock(b) {
     b.style.letterSpacing = '';
@@ -787,7 +787,7 @@
     guard.textContent = tail;
     text.nodeValue = str.slice(0, str.length - tail.length);
     nw.appendChild(guard);
-    if (shortLines(b, fs)) unguard(b);  // 改善しなければ元に戻す
+    if (shortLines(b, fs) || stretchedLines(b, fs)) unguard(b);  // 改善しない、または前の行の行末が早く終わるなら元に戻す
   }
   function unguard(root) {
     root.querySelectorAll('n-b[data-auto]').forEach(function (g) {

@@ -15,12 +15,13 @@ _budoux = budoux.load_default_japanese_parser()
 
 def _merge_short(chunks):
     """「伸ば｜したい」「宿と｜して」のような2文字以下の切れ端は、前後の文節とつなげて改行させない
-    （句読点や閉じかっこの直後は自然な区切りなので、そこではつなげない）"""
+    （句読点や閉じかっこの直後は自然な区切りなので、そこではつなげない。つなげて9文字以上になるときもつなげない）"""
     out = []
     sticky = False
     for c in chunks:
         joinable = out and not re.search(r"[、。」）!?！？]$", out[-1])
-        if joinable and ((sticky and len(out[-1] + c) <= 9) or len(c) <= 2 or len(out[-1]) <= 2):
+        # つなげた結果が長すぎる（9文字以上）ときはつなげない（狭い表のマスで入りきらず、塊の途中で割れるため）
+        if joinable and ((sticky and len(out[-1] + c) <= 9) or ((len(c) <= 2 or len(out[-1]) <= 2) and len(out[-1] + c) <= 8)):
             out[-1] += c
         else:
             out.append(c)
@@ -2873,11 +2874,12 @@ def card_tags(a):
 
 def list_name(a):
     """一覧カードの表示名（短い。1〜2行）。元の title は変えない"""
-    # 2行に分けた短い名前は、1行目が句読点で終わっていなければ「｜」でつなぐ（「〜の取り方広さ…」のように続けて読めてしまうため）
+    # 2行に分けた短い名前は、1行目が名詞（漢字・カタカナ・英数字）で終わるときだけ「｜」でつなぐ（「〜の取り方広さ…」のように
+    # 名詞が続けて読めてしまうため）。助詞・動詞など（ひらがな）や句読点で終わるときは、1つの文なのでそのまま続ける
     lines = [l.strip() for l in a["short"].split("\n") if l.strip()]
     out = lines[0] if lines else ""
     for l in lines[1:]:
-        out += l if out[-1:] in "。、！？」』）" else "｜" + l
+        out += l if re.search(r"[ぁ-ゖ。、！？」』）]$", out) else "｜" + l
     return out
 
 
