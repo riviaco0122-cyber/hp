@@ -611,6 +611,8 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .media-filter:hover { border-color: var(--c-text); }
 .media-filter.is-active { background: var(--c-text); border-color: var(--c-text); color: #fff; }
 @media (max-width: 1099px) { .media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* カードが1枚だけのときは、左に寄せず中央に置く（design-guide 5章） */
+@media (min-width: 900px) { .media-grid:has(> :only-child) { grid-template-columns: minmax(0, 1fr); max-width: 400px; margin-inline: auto; } }
 @media (max-width: 899px) { .media-grid { grid-template-columns: 1fr; gap: 40px; }  }
 
 /* 文字組みのサムネイル */
@@ -2507,6 +2509,7 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 .mform__req { background: var(--m-cta); color: #fff; }
 .mform__opt { background: #eef1ee; color: var(--c-muted); }
 .mform input[type="text"], .mform input[type="email"], .mform input[type="tel"], .mform textarea, .mform select { width: 100%; padding: 12px 14px; border: 1px solid var(--m-line); border-radius: 10px; background: #fbfcfb; font: inherit; font-size: 16px; }
+.mform select { -webkit-appearance: none; appearance: none; padding-right: 44px; } /* ブラウザの矢印を消し、.select::after の矢印だけを出す（矢印が2つ並ばないように） */
 .mform input:focus, .mform textarea:focus, .mform select:focus { outline: 2px solid var(--m-green); outline-offset: -1px; background: #fff; }
 .mform__help { font-size: 12.5px; line-height: 1.7; color: var(--c-muted); }
 .mform__checks { display: grid; gap: 8px; }
@@ -2726,9 +2729,9 @@ body.is-media .article__section ul.calc li::before { display: none; }
 body.is-media .article__section ul.calc li { padding-left: 0; }
 /* 折りたたみ（長い式・補足）：<details class="fold"><summary>…</summary>…</details> */
 body.is-media .article__section details.fold { margin: 24px 0; border: 1px solid var(--m-line); border-radius: 14px; background: #fff; }
-body.is-media .article__section details.fold > summary { padding: 14px 18px; cursor: pointer; list-style: none; font-size: 15px; font-weight: 700; color: var(--m-green); }
+body.is-media .article__section details.fold > summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; cursor: pointer; list-style: none; font-size: 15px; font-weight: 700; color: var(--m-green); }
 body.is-media .article__section details.fold > summary::-webkit-details-marker { display: none; }
-body.is-media .article__section details.fold > summary::after { content: "＋"; float: right; }
+body.is-media .article__section details.fold > summary::after { content: "＋"; flex: none; } /* 見出しが2行になっても、縦の中央にそろえる */
 body.is-media .article__section details.fold[open] > summary::after { content: "－"; }
 body.is-media .article__section details.fold > :not(summary) { margin-left: 18px; margin-right: 18px; }
 body.is-media .article__section details.fold > ul.calc { margin-top: 0; border: 0; border-top: 1px solid var(--m-line); border-radius: 0; padding: 0; margin-left: 18px; margin-right: 18px; }
