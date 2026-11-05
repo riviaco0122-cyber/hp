@@ -48,15 +48,19 @@ def _figure(kind, title, inner, note=""):
 
 
 def compare(title, cols, note=""):
-    """比べる：列ごとに、アイコン・見出し・要点を並べる。cols = [(icon, 見出し, 一言, [要点])]"""
+    """比べる：列ごとに、アイコン・見出し・要点を並べる。cols = [(icon, 見出し, 一言, [要点])]
+    3列以上はスマホで横スワイプになるので、「n / 全体」と「横にスワイプ」の案内を付ける（1枚目だけで全部だと思われないように）"""
+    n = len(cols)
+    swipe = n >= 3
     items = "\n".join(
-        f"""              <div class="fig-col{' fig-col--accent' if i == len(cols) - 1 and accent else ''}">
-                <p class="fig-col__name">{e(name)}</p>
+        f"""              <div class="fig-col{' fig-col--accent' if i == n - 1 and accent else ''}">
+{f'                <p class="fig-col__count">{i + 1} / {n}</p>' + chr(10) if swipe else ''}                <p class="fig-col__name">{e(name)}</p>
                 <p class="fig-col__sub">{e(sub)}</p>
                 <ul class="fig-col__list">{''.join(f'<li>{e(p)}</li>' for p in points)}</ul>
               </div>"""
         for i, (ic, name, sub, points, *rest) in enumerate(cols) for accent in [bool(rest and rest[0])])
-    return _figure("compare", title, f'            <div class="fig-cols fig-cols--{len(cols)}">\n{items}\n            </div>', note)
+    hint = f'            <p class="fig-cols__hint">全{n}枚・横にスワイプで続きへ →</p>\n' if swipe else ""
+    return _figure("compare", title, f'{hint}            <div class="fig-cols fig-cols--{n}">\n{items}\n            </div>', note)
 
 
 def flow(title, steps, note=""):

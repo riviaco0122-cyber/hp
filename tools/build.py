@@ -4,29 +4,11 @@ from html import escape as e, unescape
 import math
 import os
 import re
-import budoux  # pip install budoux（日本語の文節区切り）
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from figures import insert_figure, cycle as fig_cycle  # 記事の図解
 
 _JA = re.compile(r"[\u3040-\u30ff\u3400-\u9fff]")
-_budoux = budoux.load_default_japanese_parser()
-
-
-def _merge_short(chunks):
-    """「伸ば｜したい」「宿と｜して」のような2文字以下の切れ端は、前後の文節とつなげて改行させない
-    （句読点や閉じかっこの直後は自然な区切りなので、そこではつなげない。つなげて9文字以上になるときもつなげない）"""
-    out = []
-    sticky = False
-    for c in chunks:
-        joinable = out and not re.search(r"[、。」）!?！？]$", out[-1])
-        # つなげた結果が長すぎる（9文字以上）ときはつなげない（狭い表のマスで入りきらず、塊の途中で割れるため）
-        if joinable and ((sticky and len(out[-1] + c) <= 9) or ((len(c) <= 2 or len(out[-1]) <= 2) and len(out[-1] + c) <= 8)):
-            out[-1] += c
-        else:
-            out.append(c)
-        sticky = len(c) <= 2 and not re.search(r"[、。」）!?！？]$", c)
-    return out
 
 
 # 本文中で強調する言葉（お客様にとっての「結果・メリット」）。各ページで最初の1回だけマーカーを引く
@@ -82,94 +64,33 @@ def keep_numbers(body):
 
 
 def phrase_breaks(html):
-    """日本語の改行を整える。
-    - 見出しと短い文言（20字以内）：文節ごとに改行候補（<wbr>）を入れ、CSS の
-      word-break: keep-all で単語の途中で折り返さないようにする。
-    - 本文（長い文）：<n-w> で包んで通常どおり行末まで詰めて折り返し、両端揃え（CSS）で
-      右端のガタつきをなくす。短い最終行は js/main.js が字間の微調整で防ぐ。"""
+    """日本語の改行：ふつうに行末まで詰めて折り返す（文節での改行・両端揃え・字間の調整はしない。人の方針 2026-11-05）。
+    段落や見出し・ラベルの最後の3文字だけはひとまとまり（<n-b>、改行しない）にして、
+    最後の行に1〜2文字だけがはみ出して残らないようにする（はみ出しそうなときだけ、前の行から一緒に送られる）。"""
     head, sep, body = html.partition("<body")
     parts = re.split(r"(<[^>]+>)", body)
-    # 段落（p・li など）ごとの文字数を先に数え、太字などで分かれたテキストも段落単位で判定する
-    block_len = {}
-    stack = []
-    for i, p in enumerate(parts):
-        m = re.match(r"<(/?)(p|li|dd|blockquote|figcaption|h[1-6])\b", p)
-        if m and not m.group(1):
-            stack.append((i, m.group(2)))
-        elif m and stack:
-            start, _ = stack.pop()
-            idx = [k for k in range(start + 1, i) if not parts[k].startswith("<")]
-            total = sum(len(unescape(parts[k]).strip()) for k in idx)
-            for k in idx:
-                block_len.setdefault(k, total)
-    skip = heading = 0
-    lead = False  # 一文のリード（サービス概要など）も見出しと同じく文節で改行する
+    skip = 0
+    block_end = re.compile(r"</(p|li|dd|dt|blockquote|figcaption|h[1-6]|th|td|span|a|button|label|summary)>")
+    inline_end = re.compile(r"</(strong|em|b|a|span|small)>")
     for i, p in enumerate(parts):
         if p.startswith("<"):
-            m_lead = re.match(r'<(p|span) class="(overview__text|hero__sub|cta__text|page-hero__lead|page-hero__target|about-line|mq__q|guide-step__title|mhero__lead|pd__desc|scheme__summary|related__worry|timeline__desc|flow__desc|vsvc__text|faq__qt|mletter__q|msv-cmp__t)\b', p)
-            if m_lead:
-                lead = m_lead.group(1)
-            elif lead and p == f"</{lead}>":
-                lead = False
-            m = re.match(r"<(/?)(script|style|textarea|select|option|title|h[1-4])\b", p, re.I)
+            m = re.match(r"<(/?)(script|style|textarea|select|option|title|svg)\b", p, re.I)
             if m:
-                step = -1 if m.group(1) else 1
-                if m.group(2).lower().startswith("h"):
-                    heading += step
-                else:
-                    skip += step
+                skip += -1 if m.group(1) else 1
             continue
         text = unescape(p)
-        if skip or not _JA.search(text):
-            continue
-        ends_block = i + 1 < len(parts) and re.match(r"</(p|li|dd|blockquote|figcaption|h[1-6])>", parts[i + 1]) is not None
-        if heading or lead or block_len.get(i, len(text.strip())) <= 20:
-            chunks = _merge_short(_budoux.parse(text))
-            # 最後の文節が短い（4文字未満）ときは、1つ前の文節とつなげて最終行に1〜3文字だけ残らないようにする
-            if ends_block and len(chunks) >= 2 and len(chunks[-1].strip()) < 4 and len(chunks[-2] + chunks[-1]) <= 9:
-                chunks[-2:] = [f"\x00{chunks[-2]}{chunks[-1]}\x01"]
-            parts[i] = "<wbr>".join(e(c, quote=False) for c in chunks).replace("\x00", "<n-b>").replace("\x01", "</n-b>")
-            continue
         body_text = text.rstrip()
-        trail = text[len(body_text):]
-        # 本文：行末まで詰めて折り返し、両端揃えで右端を揃える。
-        # 最後の行が短くなる場合は、表示時に js/main.js が字間をわずかに調整して整える
-        # 60字を超える長い段落だけ両端揃え（短い文は字間を一定に保つため左揃え）
-        tag = '<n-w class="j">' if block_len.get(i, len(body_text.strip())) > 60 else "<n-w>"
-        # 段落の終わりは、最後の文節（5〜10文字）をひとまとまりにして、最終行に「す。」だけが残らないようにする
-        tail = ""
-        if ends_block and len(body_text.strip()) <= 16:
-            tail = body_text  # 太字などの後ろに続く短い文末は、まるごと1つにまとめる
-        elif ends_block:
-            phrases = _budoux.parse(body_text)
-            while phrases and len(tail) < 5 and len(tail + phrases[-1]) <= 10:
-                tail = phrases.pop() + tail
-            if len(tail) < 5:
-                tail = body_text[-5:]
-        head_text = body_text[: len(body_text) - len(tail)]
-        # 塊の中に <wbr> は入れない（nowrap の中でも、ブラウザは <wbr> で改行してしまう）。字間が開くときは js/main.js が区切りを入れる
-        tail_html = f"<n-b>{e(tail, quote=False)}</n-b>" if tail else ""
-        parts[i] = f'{tag}{e(head_text, quote=False)}{tail_html}</n-w>{e(trail, quote=False)}'
-    body = "".join(parts)
-    # 数字の途中や、数字と単位の間では改行しない（「202／5年」「約3,188／万人」を防ぐ）
-    body = re.sub(r"(?<=[0-9０-９,.，．])<wbr>(?=[0-9０-９,.，．年月日時分円万億千%％倍人件泊室戸棟回歳㎡])", "", body)
-    body = keep_numbers(body)
-    # 段落が太字（マーカー）で終わるときは、太字の最後の文節と文末をひとまとまりにする（「〜しま／す。」を防ぐ）
-    def _glue(m):
-        attrs, txt, after = m.group(1), m.group(2), m.group(3) or ""
-        after_txt = re.sub(r"</?n-[wb][^>]*>", "", after)
-        raw = unescape(txt)
-        ph = _budoux.parse(raw)
-        last = ""
-        # まとめる長さは文末と合わせて11字まで（狭い枠で1行に収まらず、はみ出すのを防ぐ）
-        while ph and len(last) < 3 and len(last + ph[-1]) <= 7 and len(last + ph[-1] + after_txt) <= 11:
-            last = ph.pop() + last
-        if not last or len(last) >= len(raw):
-            return m.group(0)
-        return (f'<strong class="hl"><n-w{attrs}>{e(raw[: -len(last)], quote=False)}</n-w></strong>'
-                f'<n-b><strong class="hl">{e(last, quote=False)}</strong>{after_txt}</n-b>')
-    body = re.sub(r'<strong class="hl"><n-w([^>]*)>([^<]+)</n-w></strong>((?:<n-w>)?(?:<n-b>)?[^<]{0,8}(?:</n-b>)?(?:</n-w>)?)(?=</(?:p|li|dd)>)', _glue, body)
-    return head + sep + body
+        if skip or len(body_text.strip()) < 6 or not _JA.search(body_text):
+            continue
+        j = i + 1
+        while j < len(parts) and (parts[j] == "" or (inline_end.fullmatch(parts[j]) and not block_end.fullmatch(parts[j]))):
+            j += 1
+        if j >= len(parts) or not block_end.fullmatch(parts[j]):
+            continue
+        # 全体を <n-w> で包む（横並び（flex）の中でも、文字が1つのまとまりのまま並ぶように）
+        parts[i] = (f"<n-w>{e(body_text[:-3], quote=False)}<n-b>{e(body_text[-3:], quote=False)}</n-b></n-w>"
+                    f"{e(text[len(body_text):], quote=False)}")
+    return head + sep + keep_numbers("".join(parts))
 
 
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # リポジトリの直下（tools/ の1つ上）
