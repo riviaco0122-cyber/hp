@@ -53,7 +53,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 
 ## サイトの構造（エンジニア部向けの要点）
 
-- **サイトは生成スクリプトで作る。HTML を直接書き換えない。** `pages/`・`css/` 以外の生成物・`seo/`（sitemap・robots・llms.txt）・`js/media-index.js`・`docs/site-spec.md` は `python3 tools/build.py` が作る（依存: `pip install budoux beautifulsoup4 pillow`。使い方は `tools/README.md`）。直すのは次のデータ:
+- **サイトは生成スクリプトで作る。HTML を直接書き換えない。** `pages/`・`css/` 以外の生成物・`seo/`（sitemap・robots・llms.txt）・`js/media-index.js`・`docs/site-spec.md` は `python3 tools/build.py` が作る（依存: `pip install beautifulsoup4 pillow`。使い方は `tools/README.md`）。直すのは次のデータ:
   - 記事: `tools/articles_*.py`（AI社員チームが新しく足す記事は `tools/articles_auto.py`）。図は `tools/figures.py`
   - ページの文言・構成・テーマ・ガイド・よくある悩み・llms.txt: `tools/build.py`
   - 共通の見た目・動き: `css/style.css`・`js/main.js`（手で直す。版番号は build.py が自動で付ける）
