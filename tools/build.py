@@ -44,13 +44,31 @@ def highlight(html):
     return head + sep + "".join(parts)
 
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "vendor"))
+import budoux  # 同梱（tools/vendor/budoux）。見出しを単語の途中で改行しないための文節区切り
+_budoux = budoux.load_default_japanese_parser()
+_VOID = {"br", "wbr", "img", "input", "meta", "link", "hr", "source", "col", "area", "base", "embed", "track"}
+# 見出しとして扱う要素：h1〜h6 と、クラス名が「〜__title」「〜__name」「〜__head」「〜heading」などの要素（カードや図の見出し）
+_HEADING_CLASS = re.compile(r'class="[^"]*(?:__title|__name|__head\b|heading|-title)\b')
+
+
+def _heading_phrases(text):
+    """見出しの文字を文節に分け、文節の切れ目にだけ改行候補（<wbr>）を入れる。最後の文節が2文字以下なら、前の文節とつなげる"""
+    ph = _budoux.parse(text)
+    if len(ph) > 1 and len(ph[-1].strip()) <= 2:
+        ph[-2:] = [ph[-2] + ph[-1]]
+    return "<wbr>".join(e(x, quote=False) for x in ph)
+
+
 def phrase_breaks(html):
-    """日本語の改行：ふつうに行末まで詰めて折り返す（文節での改行・両端揃え・字間の調整はしない。人の方針 2026-11-05）。
-    段落や見出し・ラベルの最後の3文字だけはひとまとまり（<n-b>、改行しない）にして、
-    最後の行に1〜2文字だけがはみ出して残らないようにする（はみ出しそうなときだけ、前の行から一緒に送られる）。"""
+    """日本語の改行（人の方針 2026-11-05・11-06）。
+    - 本文：ふつうに行末まで詰めて折り返す（両端揃え・字間の調整はしない）。段落・ラベルの最後の3文字だけは
+      ひとまとまり（<n-b>、改行しない）にして、最後の行に1〜2文字だけがはみ出して残らないようにする。
+    - 見出し：単語の途中で切れないよう、文節の切れ目（<wbr>）でだけ改行する（<n-w class="h">、word-break: keep-all）。"""
     head, sep, body = html.partition("<body")
     parts = re.split(r"(<[^>]+>)", body)
     skip = 0
+    stack = []  # (タグ名, 見出しの中か)
     block_end = re.compile(r"</(p|li|dd|dt|blockquote|figcaption|h[1-6]|th|td|span|a|button|label|summary)>")
     inline_end = re.compile(r"</(strong|em|b|a|span|small)>")
     for i, p in enumerate(parts):
@@ -58,10 +76,25 @@ def phrase_breaks(html):
             m = re.match(r"<(/?)(script|style|textarea|select|option|title|svg)\b", p, re.I)
             if m:
                 skip += -1 if m.group(1) else 1
+            t = re.match(r"<(/?)([a-zA-Z][\w-]*)", p)
+            if t and not p.startswith("<!"):
+                name = t.group(2).lower()
+                if t.group(1):
+                    if any(n == name for n, _ in stack):
+                        while stack and stack.pop()[0] != name:
+                            pass
+                elif name not in _VOID and not p.endswith("/>"):
+                    in_h = (stack[-1][1] if stack else False) or bool(re.fullmatch(r"h[1-6]", name)) or bool(_HEADING_CLASS.search(p))
+                    stack.append((name, in_h))
             continue
         text = unescape(p)
         body_text = text.rstrip()
-        if skip or len(body_text.strip()) < 6 or not _JA.search(body_text):
+        if skip or not _JA.search(body_text):
+            continue
+        if stack and stack[-1][1]:
+            parts[i] = f'<n-w class="h">{_heading_phrases(body_text)}</n-w>{e(text[len(body_text):], quote=False)}'
+            continue
+        if len(body_text.strip()) < 6:
             continue
         j = i + 1
         while j < len(parts) and (parts[j] == "" or (inline_end.fullmatch(parts[j]) and not block_end.fullmatch(parts[j]))):
