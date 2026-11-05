@@ -92,7 +92,7 @@ for p in articles:
 
 # --slug（記事データの1記事）: build 済みの HTML と記事データが一致し、ゲート違反がないこと
 try:
-    import build as B  # noqa: E402  要 pip install budoux beautifulsoup4 pillow
+    import build as B  # noqa: E402  要 pip install beautifulsoup4 pillow
 except ImportError as ex:
     B = None
     print(f"[slug] build.py を読み込めないため省略: {ex}")
