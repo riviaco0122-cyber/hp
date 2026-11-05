@@ -29,7 +29,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
    - **SEO の定期実行（`/seo-daily`、月・水・金）の PR は、絶対にマージしない。** 人が Vercel のプレビューを見てマージする（＝最終確認）。
    - **それ以外の作業（人が対話で依頼した、手順・ツール・デザイン・不具合修正など）は、人のマージを待たず、自分でマージしてよい。** ただし、seo_check エラー 0・site_check 重大 0・check_secrets 問題なし・本番ブランチとの衝突なし・CI 緑を確かめてから、マージ（通常のマージコミット）する。**既存記事の「見せ方だけ」の書き直し**（図解・表・カード・折りたたみ化、段落の分け方、見出し・ポイントの短縮など。事実・数値・出典・体験・URL・公開日は変えない）も、品質管理部の採点（90点以上・E-E-A-T の判定つき）と seo_check・site_check（スマホ幅の目視確認を含む）を通したら、自分でマージしてよい。**記事の新規公開と、既存記事の事実・数値・出典・体験・主張を変える作業は、人の確認を待つ。** マージしたら、何を本番に反映したかを人に報告する。**SEO の定期実行は、どんな内容でも必ず人を通す（自分でマージしない）。**
    - 本番ブランチ＝GitHub のデフォルトブランチ（2026-10-10 時点では `claude/google-drive-file-refresh-rnv3qr`。`main` は存在しない）。名前は変わりうるので、毎回 `git ls-remote --symref origin HEAD` で調べる。
-2. **事実を作らない。** 数値・制度には出典。RIVIA の体験談として記事に使ってよいのは、`docs/brand/experience.md` のうち **`<!-- 人が確認済み -->` の付いた節だけ**（AI が追記した項目には【未確認】を付け、人が確認するまで使わない）。他者の発信は、公に発信している運営者の発言を出典（発信者名・URL）つきで要約して使う。一般の人の投稿・コメントは「読者の声」として、名前・アカウント・URL を出さずに自分の言葉で要約して使ってよい（原文は引かない。事実の根拠にはしない。人の方針 2026-10-22。`.claude/skills/trend-research`）。
+2. **事実を作らない。** 数値・制度には出典。RIVIA の体験談として記事に使ってよいのは、`docs/brand/experience.md` のうち **`<!-- 人が確認済み -->` の付いた節だけ**（AI が追記した項目には【未確認】を付け、人が確認するまで使わない）。他者の発信は、公に発信している運営者の発言を要約して使う（本文では名前を出さず「〜という運営者もいます」と紹介し、発信者名・URL は記事の最後の出典欄に書く。人の方針 2026-11-06）。一般の人の投稿・コメントは「読者の声」として、名前・アカウント・URL を出さずに自分の言葉で要約して使ってよい（原文は引かない。事実の根拠にはしない。人の方針 2026-10-22。`.claude/skills/trend-research`）。
 3. **人の確認が必要なもの**（`docs/seo/playbook.md` 6章）は、PR の「人の確認が必要な点」に必ず書き出す。
 4. **記事は品質管理部の採点が100点満点で90点以上、かつ playbook 5-1 のゲート（事実誤り・出典なし・重大NG・法務/炎上リスク・体験の捏造・seo_check エラー・共食い）に1つも当てはまらなければ PR に入れない。** 届かなければ原因の工程（リサーチ／構成案／執筆／HTML化）に戻る（playbook 5章・7章）。
 5. `python3 tools/seo_check.py` のエラーが 0 でない状態、`node tools/check/site_check.js` の重大が 0 でない状態で PR を出さない。
@@ -53,7 +53,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 
 ## サイトの構造（エンジニア部向けの要点）
 
-- **サイトは生成スクリプトで作る。HTML を直接書き換えない。** `pages/`・`css/` 以外の生成物・`seo/`（sitemap・robots・llms.txt）・`js/media-index.js`・`docs/site-spec.md` は `python3 tools/build.py` が作る（依存: `pip install budoux beautifulsoup4 pillow`。使い方は `tools/README.md`）。直すのは次のデータ:
+- **サイトは生成スクリプトで作る。HTML を直接書き換えない。** `pages/`・`css/` 以外の生成物・`seo/`（sitemap・robots・llms.txt）・`js/media-index.js`・`docs/site-spec.md` は `python3 tools/build.py` が作る（依存: `pip install beautifulsoup4 pillow`。使い方は `tools/README.md`）。直すのは次のデータ:
   - 記事: `tools/articles_*.py`（AI社員チームが新しく足す記事は `tools/articles_auto.py`）。図は `tools/figures.py`
   - ページの文言・構成・テーマ・ガイド・よくある悩み・llms.txt: `tools/build.py`
   - 共通の見た目・動き: `css/style.css`・`js/main.js`（手で直す。版番号は build.py が自動で付ける）

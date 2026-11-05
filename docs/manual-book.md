@@ -65,7 +65,7 @@
 
 ## サイトの構造（エンジニア部向けの要点）
 
-- **サイトは生成スクリプトで作る。HTML を直接書き換えない。** `pages/`・`css/` 以外の生成物・`seo/`（sitemap・robots・llms.txt）・`js/media-index.js`・`docs/site-spec.md` は `python3 tools/build.py` が作る（依存: `pip install budoux beautifulsoup4 pillow`。使い方は `tools/README.md`）。直すのは次のデータ:
+- **サイトは生成スクリプトで作る。HTML を直接書き換えない。** `pages/`・`css/` 以外の生成物・`seo/`（sitemap・robots・llms.txt）・`js/media-index.js`・`docs/site-spec.md` は `python3 tools/build.py` が作る（依存: `pip install beautifulsoup4 pillow`。使い方は `tools/README.md`）。直すのは次のデータ:
   - 記事: `tools/articles_*.py`（AI社員チームが新しく足す記事は `tools/articles_auto.py`）。図は `tools/figures.py`
   - ページの文言・構成・テーマ・ガイド・よくある悩み・llms.txt: `tools/build.py`
   - 共通の見た目・動き: `css/style.css`・`js/main.js`（手で直す。版番号は build.py が自動で付ける）
@@ -295,7 +295,7 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
 2. 作業ブランチは **`seo/daily` に固定**する。
    - `origin/seo/daily` があり、まだ `$BASE` にマージされていなければ（人の確認待ち）、それをチェックアウトし、`git merge origin/$BASE` で本番ブランチの変更を取り込んでから、その上に今日の作業を積む。PR は既存のものを使い、説明文を更新する。
    - なければ（前回分がマージ済み）、`origin/$BASE` から `seo/daily` を作り直す。
-3. `pip install -q -r tools/requirements.txt budoux beautifulsoup4 pillow`（集客データの取得と生成スクリプト用。失敗しても続行）。
+3. `pip install -q -r tools/requirements.txt beautifulsoup4 pillow`（集客データの取得と生成スクリプト用。失敗しても続行）。
 4. `python3 tools/build.py` でサイトを作り直す（公開日を迎えた記事を llms.txt・sitemap に反映するため。毎日必ず。差分が出たらその日の PR に含める）。
    - 作り直しは毎回、記事データ（`tools/articles_*.py`）と `tools/build.py` から行う。**HTML を直接書き換えない。**
 5. **未マージの記事の公開日を確認する**：`seo/daily` に入っている新規記事で、公開予定日が今日以前になったものは、公開予定日を「今日＋2日以降」に付け直す（過去の日付で公開しないため）。
@@ -608,7 +608,7 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 - `CLAUDE.md`（サイトの構造と注意点）、`tools/README.md`（生成スクリプトの使い方）、`docs/seo/playbook.md` の 4 章
 
 ## 大原則
-- **HTML（`pages/`・`seo/`・`js/media-index.js`）を直接書き換えない。** すべて `tools/` の生成スクリプトのデータを直し、`python3 tools/build.py` で作り直す（依存: `pip install -q budoux beautifulsoup4 pillow`）。
+- **HTML（`pages/`・`seo/`・`js/media-index.js`）を直接書き換えない。** すべて `tools/` の生成スクリプトのデータを直し、`python3 tools/build.py` で作り直す（依存: `pip install -q beautifulsoup4 pillow`）。
 - 作り直したら、必ず次の3つを通す。1つでも通らなければ編集長に返さない。
   1. `python3 tools/seo_check.py` → エラー 0
   2. `node tools/check/site_check.js --no-visual --out /tmp/site_check.md` → 重大 0（全ページをスマホ幅・PC幅で開き、JSエラー・読み込み失敗・リンク切れ・横はみ出し・画像の欠け等を点検）

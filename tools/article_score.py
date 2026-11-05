@@ -200,7 +200,7 @@ def parse_md(text):
 
 def load_article(slug):
     """tools/build.py の記事データ（ARTICLES。tools/articles_*.py も含む）から1記事を取り出す。
-    build.py を読み込むだけで、ページは作らない（要 pip install budoux beautifulsoup4 pillow）"""
+    build.py を読み込むだけで、ページは作らない（要 pip install beautifulsoup4 pillow）"""
     sys.path.insert(0, str(ROOT / "tools"))
     import build  # noqa: E402  build.py は __main__ でないときはページを書き出さない
     a = build.ARTICLE_BY_SLUG.get(slug)
