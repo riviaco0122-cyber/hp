@@ -21,6 +21,7 @@ rivia-hp/
 ├── pages/                   すべてのHTML（公開URLは今までどおり rivia-co.com/○○.html。vercel.json で振り分け）
 │   ├── index.html           トップページ
 │   ├── about.html           About Us
+│   ├── services.html        事業内容（5つの事業の一覧）
 │   ├── service-operation.html空き家再生事業
 │   ├── service-management.html開業・運営支援事業
 │   ├── service-partnership.html不動産事業者様との協業
