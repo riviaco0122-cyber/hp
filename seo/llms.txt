@@ -7,6 +7,7 @@
 - [お問い合わせ](https://rivia-co.com/contact.html): 無料相談の窓口
 
 ## サービス
+- [事業内容](https://rivia-co.com/services.html): 5つの事業の一覧
 - [空き家再生事業](https://rivia-co.com/service-operation.html)
 - [開業・運営支援事業](https://rivia-co.com/service-management.html)
 - [不動産事業者様との協業](https://rivia-co.com/service-partnership.html)
@@ -79,3 +80,4 @@
 - [民泊新法の年180日ルール｜数え方・超えたとき・条例で短くなる場合](https://rivia-co.com/media/minpaku-180days-rule.html): 民泊新法の年180日ルールを初心者向けに整理します。数え方は国の省令で全国共通。4月1日正午から翌年4月1日正午まで。超えたときの扱い、日数の報告、条例で短くなる場合の調べ方を、法令と公式情報で確かめます。
 - [里山の古民家を民泊に｜AirDNAのデータで融資を通した総予算350万円](https://rivia-co.com/media/case-owner-satoyama-airdna.html): 中国地方の里山で、住む人がいなくなった古い農家住宅を借り受け、宿に再生したご夫婦の事例です。総予算は約350万円（自己資金100万円＋公庫融資250万円）。過疎地の需要を、民泊のデータ分析ツール AirDNA で示して融資を通しました。
 - [民泊のゲストからの質問を減らす方法｜実際に届いた質問408件から](https://rivia-co.com/media/minpaku-house-guide.html): 住所・荷物・チェックイン時間・名簿。民泊のゲストから同じ質問が何度も届く悩みを、予約確定後の案内で減らす方法です。アキヤドの運営チームが関わる3物件のゲストの質問408件から、先に書くこと（ハウスルール・ハウスガイド・宿泊者名簿）をチェックリストにしました。
+- [民泊の備品は何から買う？買いすぎを防ぐ順番｜ゲストの質問408件から](https://rivia-co.com/media/minpaku-bihin-priority.html): 民泊の備品は、買ってそろえる物と、買い足せない物に分け、ないと困る物から買います。ゲストの質問408件と公開レビュー79件から、買う順番とやめどころ、費用の考え方を説明します。

@@ -411,8 +411,8 @@ def header(current):
             for k, intent in its)
         for aud, its in NAV_INTENTS)
     sub = (f'              <li class="subnav__intents"><ul>{items}</ul></li>\n'
-           f'              <li class="subnav__foot"><a href="index.html#service">すべてのサービスを見る {ARROW}</a></li>')
-    service_cur = ' aria-current="page"' if current in SERVICE_NAMES else ""
+           f'              <li class="subnav__foot"><a href="services.html">事業内容の一覧を見る {ARROW}</a></li>')
+    service_cur = ' aria-current="page"' if current in SERVICE_NAMES or current == "services" else ""
     return f"""  <header class="header">
     <div class="container header__inner">
       <a href="index.html" class="logo" aria-label="RIVIA&amp;CO. トップページ"><img src="images/logo/logo.svg" alt="RIVIA&amp;CO." width="325" height="64"><img class="logo__on-photo" src="images/logo/logo-white.svg" alt="" width="325" height="64" aria-hidden="true"></a>
@@ -440,7 +440,7 @@ def header(current):
 
 def footer():
     # 文字を詰め込まず、ロゴ・相談ボタン・主要リンクだけのシンプルな構成にする
-    links = [("about.html", "私たちについて"), ("index.html#service", "事業内容"), ("index.html#project", "実績"),
+    links = [("about.html", "私たちについて"), ("services.html", "事業内容"), ("index.html#project", "実績"),
              ("media.html", "メディア"), ("careers.html", "採用情報"), ("contact.html", "お問い合わせ")]
     nav = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in links)
     # 目的・お悩みから探す（Serviceメニューと同じ「〜したい」の一覧）
@@ -1515,6 +1515,34 @@ def quick_form(key, name):
         </form>"""
 
 
+def services_page():
+    """事業内容の一覧ページ。メニューの「事業内容」と同じ名前の1ページを置き、5つの事業をその下の階層として見せる"""
+    body = f"""    <section class="page-hero">
+      <div class="container">
+        <p class="page-hero__en ttl-x reveal"><span class="ln"><span>Service</span></span></p>
+        <h1 class="page-hero__ja reveal" data-delay="1">事業内容</h1>
+        <p class="page-hero__lead reveal" data-delay="2">宿泊施設の運営・開業と、WEBマーケティング支援。<br>2つの軸で、5つの事業を行っています。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+{service_groups_html()}
+      </div>
+    </section>
+
+{flow_section(soft=True)}
+
+{cta(text=OPEN_MSG)}"""
+    ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "事業内容", "url": f"{SITE}/services.html",
+           "isPartOf": {"@id": f"{SITE}/#website"},
+           "mainEntity": {"@type": "ItemList", "itemListElement": [
+               {"@type": "ListItem", "position": i, "name": n, "url": f"{SITE}/service-{k}.html"} for i, (k, n) in enumerate(SERVICES, 1)]}}]
+    page("services.html", "事業内容",
+         "合同会社RIVIA&CO.の事業内容です。空き家再生、宿泊施設の開業・運営支援、不動産事業者様との協業、WEB集客支援、WEB採用支援の5つの事業を紹介します。",
+         body, current="services", jsonld=ld)
+
+
 def service_page(key, name):
     d = SERVICE_DATA[key]
 
@@ -1674,10 +1702,53 @@ def service_page(key, name):
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in d["faq"]
         ],
     }
-    page(f"service-{key}.html", name, d["description"], body, current=key, jsonld=[faq_ld])
+    crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "name": "事業内容", "item": f"{SITE}/services.html"}, {"@type": "ListItem", "name": name}]}
+    page(f"service-{key}.html", name, d["description"], body, current=key, jsonld=[faq_ld, crumbs])
 
 
 # ---------------------------------------------------------------- index
+def service_groups_html():
+    """事業の一覧（左に届ける価値、右に事業のカード）。トップの「事業紹介」と事業内容のページで共通"""
+    names = dict(SERVICES)
+    num = 0
+    groups_html = []
+    # どんな価値を届けるために、どの事業をしているか（左に価値、右に事業。スマホは事業を横スワイプ）
+    for g in GROUPS:
+        v = TOP_VALUES[g["key"]]
+        cards = []
+        for i, k in enumerate(g["services"]):
+            num += 1
+            en, summary, ic = SERVICE_INTRO[k]
+            cards.append(f"""            <a href="service-{k}.html" class="vsvc">
+              <span class="vsvc__num" aria-hidden="true">{num:02d}</span>
+              <span class="vsvc__catch">{e(SERVICE_CATCH[k])}</span>
+              <h3 class="vsvc__name">{e(names[k])}</h3>
+              <p class="vsvc__text">{e(summary)}</p>
+              <span class="vsvc__go" aria-hidden="true"></span>
+            </a>""")
+        groups_html.append(f"""        <div class="vrow vrow--{len(g["services"])} reveal">
+          <div class="vrow__head">
+            {photo(v["photo"], cls="vrow__bg", width=v["w"], height=v["h"], sizes="(max-width: 899px) 100vw, 420px")}
+            <span class="vrow__en">{e(v["en"])}</span>
+            <p class="vrow__value">{v["value"]}</p>
+            <p class="vrow__name">{e(g["name"])}</p>
+          </div>
+          <div class="vrow__list">
+{chr(10).join(cards)}
+          </div>
+        </div>""")
+    return "\n".join(groups_html)
+
+
+# 会社サイトの主要ページ（ヘッダーのメニューと同じ並び・同じ名前）。トップで SiteNavigationElement として伝える
+CORP_NAV = [("私たちについて", "about.html"), ("事業内容", "services.html"), ("アキヤド", "media.html"),
+            ("採用情報", "careers.html"), ("お問い合わせ", "contact.html")]
+CORP_NAV_LD = {"@context": "https://schema.org", "@type": "ItemList", "name": "RIVIA&CO.のメニュー",
+               "itemListElement": [{"@type": "SiteNavigationElement", "position": i, "name": n, "url": f"{SITE}/{u}"}
+                                   for i, (n, u) in enumerate(CORP_NAV, 1)]}
+
+
 def index_page():
     vsteps = "\n".join(
         f"""          <li class="vision__step reveal" data-delay="{i - 1}">
@@ -1720,35 +1791,7 @@ def index_page():
         </div>
       </div>
     </section>"""
-    names = dict(SERVICES)
-    num = 0
-    groups_html = []
-    # どんな価値を届けるために、どの事業をしているか（左に価値、右に事業。スマホは事業を横スワイプ）
-    for g in GROUPS:
-        v = TOP_VALUES[g["key"]]
-        cards = []
-        for i, k in enumerate(g["services"]):
-            num += 1
-            en, summary, ic = SERVICE_INTRO[k]
-            cards.append(f"""            <a href="service-{k}.html" class="vsvc">
-              <span class="vsvc__num" aria-hidden="true">{num:02d}</span>
-              <span class="vsvc__catch">{e(SERVICE_CATCH[k])}</span>
-              <h3 class="vsvc__name">{e(names[k])}</h3>
-              <p class="vsvc__text">{e(summary)}</p>
-              <span class="vsvc__go" aria-hidden="true"></span>
-            </a>""")
-        groups_html.append(f"""        <div class="vrow vrow--{len(g["services"])} reveal">
-          <div class="vrow__head">
-            {photo(v["photo"], cls="vrow__bg", width=v["w"], height=v["h"], sizes="(max-width: 899px) 100vw, 420px")}
-            <span class="vrow__en">{e(v["en"])}</span>
-            <p class="vrow__value">{v["value"]}</p>
-            <p class="vrow__name">{e(g["name"])}</p>
-          </div>
-          <div class="vrow__list">
-{chr(10).join(cards)}
-          </div>
-        </div>""")
-    cards = "\n".join(groups_html)
+    cards = service_groups_html()
     reasons = "\n".join(
         f"""          <li class="reason reveal" data-delay="{i - 1}">
             <span class="reason__num">{i:02d}</span>
@@ -1852,7 +1895,7 @@ def index_page():
       </div>
     </section>"""
     org_ld = org_entity()
-    page("index.html", "", "地域に眠る価値を、日本の活力に。空き家の再生や民泊の開業・運営から、集客・採用、まちづくりまでを担う合同会社RIVIA&CO.のコーポレートサイトです。", body, jsonld=[org_ld, {"@context": "https://schema.org", "@type": "WebSite", "@id": WEBSITE_ID, "name": "RIVIA&CO.", "alternateName": ["合同会社RIVIA&CO.", "リビアアンドコー"], "url": f"{SITE}/", "inLanguage": "ja", "publisher": {"@id": ORG_ID}}])
+    page("index.html", "", "地域に眠る価値を、日本の活力に。空き家の再生や民泊の開業・運営から、集客・採用、まちづくりまでを担う合同会社RIVIA&CO.のコーポレートサイトです。", body, jsonld=[org_ld, {"@context": "https://schema.org", "@type": "WebSite", "@id": WEBSITE_ID, "name": "RIVIA&CO.", "alternateName": ["合同会社RIVIA&CO.", "リビアアンドコー"], "url": f"{SITE}/", "inLanguage": "ja", "publisher": {"@id": ORG_ID}}, CORP_NAV_LD])
 
 
 # ---------------------------------------------------------------- about
@@ -2366,6 +2409,7 @@ def spec_md():
     w("├── pages/                   すべてのHTML（公開URLは今までどおり rivia-co.com/○○.html。vercel.json で振り分け）")
     w("│   ├── index.html           トップページ")
     w("│   ├── about.html           About Us")
+    w("│   ├── services.html        事業内容（5つの事業の一覧）")
     for k, n in SERVICES:
         w(("│   ├── " + f"service-{k}.html").ljust(29) + n)
     w("│   ├── careers.html         採用情報")
@@ -4180,7 +4224,7 @@ def media_learn_page():
     ld = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "アキヤド", "item": f"{SITE}/media.html"},
         {"@type": "ListItem", "position": 2, "name": "基礎から学ぶ"}]}]
-    page("media/learn.html", "空き家と民泊を、ゼロから体系的に学ぶ｜アキヤド",
+    page("media/learn.html", "空き家と民泊をゼロから学ぶ｜アキヤド",
          "なぜ今、空き家の活用なのか。なぜ民泊・小さな宿なのか。民泊の課題と乗り越え方。アキヤドが支援できること。4つのコースで、空き家と民泊を体系的に学べます。",
          body, current="media", jsonld=ld, mnav="learn")
 
@@ -5050,7 +5094,7 @@ def llms_txt():
     lines = ["# 合同会社RIVIA&CO.", "",
              "> 空き家の再生、民泊・小さな宿の開業と運営、WEB集客・採用を支援する会社です。運営メディア「アキヤド（空き家と民泊のメディア）」では、空き家を売りたい方・活かしたい方・副業で民泊をはじめたい方に向けて、悩みの順に記事を公開しています。",
              "", "## 会社", f"- [会社概要]({SITE}/about.html): ミッション・ビジョン・バリューと創業者",
-             f"- [お問い合わせ]({SITE}/contact.html): 無料相談の窓口", "", "## サービス"]
+             f"- [お問い合わせ]({SITE}/contact.html): 無料相談の窓口", "", "## サービス", f"- [事業内容]({SITE}/services.html): 5つの事業の一覧"]
     lines += [f"- [{n}]({SITE}/service-{k}.html)" for k, n in SERVICES]
     lines += ["", "## アキヤド（ガイド）"]
     lines += [f"- [{g['title']}]({SITE}/media/guide-{g['key']}.html): {g['lead']}" for g in MEDIA_GUIDES]
@@ -5062,7 +5106,7 @@ def llms_txt():
 
 
 def sitemap():
-    pages = ["", "about.html"] + [f"service-{k}.html" for k, _ in SERVICES] + \
+    pages = ["", "about.html", "services.html"] + [f"service-{k}.html" for k, _ in SERVICES] + \
             ["media.html"] + [f"media/category-{k}.html" for k, _ in MEDIA_CATEGORIES] + [f"media/guide-{g['key']}.html" for g in MEDIA_GUIDES] + ["media/plans.html"] + [f"media/{sv['slug']}.html" for sv in MEDIA_SERVICES] + ["media/company.html", "media/learn.html", "media/contact.html"] + [f"media/{a['slug']}.html" for a in ARTICLES if a["date"] <= BUILD_DATE] + ["careers.html", "contact.html", "privacy.html"]
     # 公開日前の記事は sitemap に載せない（公開日を迎えて作り直すと載る）。
     # 記事ページは JS で転送しない（転送すると Google に「ページにリダイレクトがあります」と記録されるため。2026-10-22）
@@ -5101,6 +5145,7 @@ def sitemap():
 if __name__ == "__main__":
     index_page()
     about_page()
+    services_page()
     for k, n in SERVICES:
         service_page(k, n)
     careers_page()
