@@ -66,6 +66,37 @@ def _heading_phrases(text):
         else:
             merged.append(x)
     ph = merged
+    # 「」『』で囲んだ言葉（12文字以内）は、途中で改行しない1つのまとまりにする（「暮らすように／旅する」を防ぐ。人の指摘 2026-11-06）
+    merged, buf = [], None  # buf: かっこの中の文節を集めているところ（元の文節のリスト）
+    for x in ph:
+        if buf is not None:
+            m = re.search(r"[」』]", x)
+            if not m:
+                buf.append(x)
+                continue
+            inner = buf + [x[:m.end()]]
+            if len("".join(inner)) <= 13:
+                merged.append("".join(inner))
+            else:
+                merged.extend(inner)
+            if x[m.end():]:
+                merged.append(x[m.end():])
+            buf = None
+            continue
+        if ("「" in x and "」" not in x[x.index("「"):]) or ("『" in x and "』" not in x[x.index("『"):]):
+            buf = [x]
+            continue
+        merged.append(x)
+    if buf is not None:
+        merged.extend(buf)
+    # 「・」で終わる文節（「個人・」）と、数字が途中で分かれた文節（「202」「6年」）は、次の文節とつなげる
+    ph, merged = merged, []
+    for x in ph:
+        if merged and (merged[-1].endswith("・") or (merged[-1][-1:].isdigit() and x[:1].isdigit()) or re.search(r"[A-Za-z]$", merged[-1]) and re.match(r"[A-Za-z]", x)):
+            merged[-1] += x
+        else:
+            merged.append(x)
+    ph = merged
     if len(ph) > 1 and len(ph[-1].strip()) <= 2:
         ph[-2:] = [ph[-2] + ph[-1]]
     # 最後の4文字は改行しないまとまり（<n-b>）にする。左揃えで右に大きな空きができて、js/main.js が言葉の途中でも折れる形
@@ -78,6 +109,8 @@ def _heading_phrases(text):
         if not opened and cut >= 0 and pos <= cut < pos + len(x):
             out += e(x[:cut - pos], quote=False) + "<n-b>" + e(x[cut - pos:], quote=False)
             opened = True
+        elif not opened and "・" in x.rstrip("・") and len(x) <= 12:
+            out += "<n-b>" + e(x, quote=False) + "</n-b>"  # 「個人・法人を」：「・」のあとは keep-all でも折れるので、文節ごとまとめる
         else:
             out += e(x, quote=False)
         pos += len(x)
@@ -88,11 +121,11 @@ def _heading_phrases(text):
 
 
 # 数字のまとまり：前の「約」から、単位（「万人」「兆円」「年3月31日」など）まで。単位がないときは直後の1文字（「2つ」）まで
-_NUM_TOKEN = re.compile(r"(?:約)?\d[\d,.]*(?:(?:万|億|兆)?(?:人泊|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)(?:\d+(?:か月|月|日))*|[^\s\d,.、。・（）()「」])")
+_NUM_TOKEN = re.compile(r"(?:約)?\d[\d,.]*(?:(?:万|億|兆)?(?:人泊|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)(?:\d+(?:か月|月|日))*|[^\s\d,.、。・（）()「」])[、。，．）」』]*")
 
 
 # 本文の長い段落で使う、短いまとまり：数字と直後の1文字だけ（「5万」「2つ」）。まとまりを長くすると、行末で丸ごと次の行へ送られ、右側が大きく空くため
-_NUM_SHORT = re.compile(r"\d[\d,.]*[^\s\d,.、。・（）()「」]")
+_NUM_SHORT = re.compile(r"\d[\d,.]*[^\s\d,.、。・（）()「」][、。，．）」』]*")  # 直後の「、」「。」もまとめる（行頭に「、」が来ないように）
 # 会社名（「合同会社RIVIA&CO.」）は、数字のまとまりと同じく途中で改行しない（「RIVIA&／CO.」を防ぐ。人の指摘 2026-11-06）
 _BRAND = r"(?:合同会社)?RIVIA&CO\."
 _KEEP_LONG = re.compile(_BRAND + "|" + _NUM_TOKEN.pattern)
@@ -124,6 +157,87 @@ def _phrase_html(text):
     return "<wbr>".join(out)
 
 
+def _glue_short_tail(parts, i):
+    """段落の最後が「<strong>契約前に確認</strong>します。」のように、短い文字（6文字未満）で終わるとき、
+    直前の太字・リンクごと改行しないまとまり（<n-b>）にする（「確認し／ます。」を防ぐ。人の指摘 2026-11-06）。
+    直前の要素の中身が8文字を超えるときは何もしない（狭い枠ではみ出さないように）。<wbr> のあとの短い語（「ベンチャー」など）は、その語だけをまとめる"""
+    j = i + 1
+    while j < len(parts) and parts[j] == "":
+        j += 1
+    if j >= len(parts) or not re.fullmatch(r"</(p|li|dd|dt|blockquote|figcaption|td|th)>", parts[j]):
+        return False
+    k = i - 1
+    while k >= 0 and parts[k] == "":
+        k -= 1
+    if k >= 0 and re.fullmatch(r"<wbr\s*/?>", parts[k]):
+        parts[i] = "<n-b>" + e(unescape(parts[i]), quote=False) + "</n-b>"
+        return True
+    m = re.fullmatch(r"</(strong|em|b|a|span)>", parts[k]) if k >= 0 else None
+    if not m:
+        return False
+    if re.fullmatch(r"[。、．，）」』！？!?)\s]+", unescape(parts[i])):
+        # 句読点だけが残るとき（「…<strong>集めます</strong>。」）：「。」は行頭に来ないので、太字の中の最後の3文字をまとめれば足りる
+        t = k - 1
+        while t >= 0 and parts[t] == "":
+            t -= 1
+        if t >= 0 and not parts[t].startswith("<") and len(unescape(parts[t]).strip()) > 4:
+            txt = unescape(parts[t])
+            parts[t] = e(txt[:-3], quote=False) + "<n-b>" + e(txt[-3:], quote=False) + "</n-b>"
+            return True
+        return False
+    name, depth, o = m.group(1), 0, k
+    while o >= 0:
+        if re.fullmatch(rf"</{name}>", parts[o]):
+            depth += 1
+        elif re.match(rf"<{name}\b", parts[o]):
+            depth -= 1
+            if depth == 0:
+                break
+        o -= 1
+    if o < 0:
+        return False
+    inner = "".join(x for x in parts[o + 1:k] if not x.startswith("<"))
+    if len(unescape(inner).strip()) > 8 or any(re.match(r"</?(p|div|li|ul|ol|br)\b", x) for x in parts[o + 1:k]):
+        return False
+    parts[o] = "<n-b>" + parts[o]
+    parts[i] = e(unescape(parts[i]), quote=False) + "</n-b>"
+    return True
+
+
+_SHORT_BLOCKS = {"p", "li", "dd", "dt", "blockquote", "figcaption", "h1", "h2", "h3", "h4", "h5", "h6", "td", "th", "summary", "label", "button"}
+_SHORT_MAX = 60
+
+
+def _block_text_lengths(parts):
+    """開きタグの位置ごとに、その要素の中の文字数（空白を除く）を数える"""
+    out, stack, skip = {}, [], 0
+    for i, p in enumerate(parts):
+        if p.startswith("<"):
+            m = re.match(r"<(/?)(script|style|textarea|select|option|title|svg)\b", p, re.I)
+            if m:
+                skip += -1 if m.group(1) else 1
+            t = re.match(r"<(/?)([a-zA-Z][\w-]*)", p)
+            if t and not p.startswith("<!"):
+                name = t.group(2).lower()
+                if t.group(1):
+                    if any(n == name for n, _ in stack):
+                        while stack:
+                            n, ix = stack.pop()
+                            if n == name:
+                                break
+                elif name not in _VOID and not p.endswith("/>"):
+                    stack.append((name, i))
+                    out[i] = 0
+            continue
+        if skip:
+            continue
+        k = len(re.sub(r"\s", "", unescape(p)))
+        if k:
+            for _n, ix in stack:
+                out[ix] += k
+    return out
+
+
 def phrase_breaks(html):
     """日本語の改行（人の方針 2026-11-05・11-06）。
     - 本文：ふつうに行末まで詰めて折り返す（両端揃え・字間の調整はしない）。段落・ラベルの最後（と <br> の手前）の4文字だけは
@@ -133,7 +247,8 @@ def phrase_breaks(html):
     head, sep, body = html.partition("<body")
     parts = re.split(r"(<[^>]+>)", body)
     skip = 0
-    stack = []  # (タグ名, 見出しの中か)
+    stack = []  # (タグ名, 見出しの中か, parts の位置)
+    blen = _block_text_lengths(parts)  # 開きタグの位置 → その要素の中の文字数
     row_first = False  # <tr> が開いて、まだ最初のマス（<td>・<th>）が来ていない
     block_end = re.compile(r"</(p|li|dd|dt|blockquote|figcaption|h[1-6]|th|td|span|a|button|label|summary)>")
     inline_end = re.compile(r"</(strong|em|b|a|span|small)>")
@@ -146,7 +261,7 @@ def phrase_breaks(html):
             if t and not p.startswith("<!"):
                 name = t.group(2).lower()
                 if t.group(1):
-                    if any(n == name for n, _ in stack):
+                    if any(n == name for n, *_ in stack):
                         while stack and stack.pop()[0] != name:
                             pass
                 elif name not in _VOID and not p.endswith("/>"):
@@ -163,13 +278,22 @@ def phrase_breaks(html):
                         row_first = True
                     elif name in ("td", "th"):
                         row_first = False
-                    stack.append((name, in_h))
+                    stack.append((name, in_h, i))
             continue
         text = unescape(p)
         body_text = text.rstrip()
-        if skip or not _JA.search(body_text):
+        if skip:
+            continue
+        if 0 < len(body_text.strip()) < 6 and _glue_short_tail(parts, i):  # 「…<strong>集めます</strong>。」の「。」など
+            continue
+        if not _JA.search(body_text):
             continue
         mode = stack[-1][1] if stack else False
+        # 短い文（段落・項目・引用・ラベルなど、まとまり全体で60文字以内）は、見出しと同じく言葉の切れ目でだけ改行し、
+        # 行の長さをそろえる（CSS の text-wrap: balance）。右に大きな空きや、語の途中の改行を作らない（人の方針 2026-11-06）
+        blk = next((ix for n, _m, ix in reversed(stack) if n in _SHORT_BLOCKS), None)
+        if blk is not None and 0 < blen.get(blk, 999) <= _SHORT_MAX:
+            mode = True
         if mode is True or (mode == "card" and len(body_text.strip()) <= _CARD_MAX) or (mode == "label" and len(body_text.strip()) <= 20):
             parts[i] = f'<n-w class="h">{_heading_phrases(body_text)}</n-w>{e(text[len(body_text):], quote=False)}'
             continue
@@ -193,7 +317,7 @@ def phrase_breaks(html):
             if m.start() < cut < m.end():
                 cut = m.start()
         # 100文字以下の文は、言葉の切れ目に改行候補を入れておく（中央揃えで表示されるときに、語の途中で折れないように。人の指摘 2026-11-06）
-        head_html = _phrase_html(body_text[:cut]) if len(body_text.strip()) <= 100 else _keep_numbers(body_text[:cut], whole=short)
+        head_html = _phrase_html(body_text[:cut])  # 長さにかかわらず言葉の切れ目に改行候補を入れる（中央揃えで表示されたときに語の途中で折れないように。人の指摘 2026-11-06）
         parts[i] = (f"<n-w>{head_html}<n-b>{e(body_text[cut:], quote=False)}</n-b></n-w>"
                     f"{e(text[len(body_text):], quote=False)}")
     return head + sep + "".join(parts)
