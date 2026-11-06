@@ -52,6 +52,9 @@ _CARD_CLASS = re.compile(r'class="[^"]*__(?:text|desc|sub|blurb|lead)\b')
 _CARD_MAX = 60
 
 
+_NO_SPLIT = ["のしかかる", "ドラッグ&ドロップ"]  # BudouX が途中で区切る言葉（人の指摘で見つけたら足す）
+
+
 def _heading_phrases(text):
     """見出しの文字を文節に分け、文節の切れ目にだけ改行候補（<wbr>）を入れる。最後の文節が2文字以下なら、前の文節とつなげる"""
     ph = _budoux.parse(text)
@@ -89,6 +92,20 @@ def _heading_phrases(text):
         merged.append(x)
     if buf is not None:
         merged.extend(buf)
+    # BudouX が語の途中で区切ってしまう言葉は、区切りを外す（見つけたら _NO_SPLIT に足す）
+    joined, pos, cuts = "".join(merged), 0, []
+    for x in merged[:-1]:
+        pos += len(x); cuts.append(pos)
+    bad = {c for w in _NO_SPLIT for m in re.finditer(re.escape(w), joined) for c in cuts if m.start() < c < m.end()}
+    if bad:
+        out_, cur, pos = [], "", 0
+        for x in merged:
+            cur += x; pos += len(x)
+            if pos not in bad:
+                out_.append(cur); cur = ""
+        if cur:
+            out_.append(cur)
+        merged = out_
     # 「・」で終わる文節（「個人・」）と、数字が途中で分かれた文節（「202」「6年」）は、次の文節とつなげる
     ph, merged = merged, []
     for x in ph:
@@ -204,7 +221,7 @@ def _glue_short_tail(parts, i):
     return True
 
 
-_SHORT_BLOCKS = {"p", "li", "dd", "dt", "blockquote", "figcaption", "h1", "h2", "h3", "h4", "h5", "h6", "td", "th", "summary", "label", "button"}
+_SHORT_BLOCKS = {"p", "li", "dd", "dt", "blockquote", "figcaption", "h1", "h2", "h3", "h4", "h5", "h6", "td", "th", "summary", "label", "button", "div", "span", "a"}
 _SHORT_MAX = 60
 
 
@@ -320,7 +337,13 @@ def phrase_breaks(html):
         head_html = _phrase_html(body_text[:cut])  # 長さにかかわらず言葉の切れ目に改行候補を入れる（中央揃えで表示されたときに語の途中で折れないように。人の指摘 2026-11-06）
         parts[i] = (f"<n-w>{head_html}<n-b>{e(body_text[cut:], quote=False)}</n-b></n-w>"
                     f"{e(text[len(body_text):], quote=False)}")
-    return head + sep + "".join(parts)
+    out = "".join(parts)
+    # かっこ・句読点の内側には改行候補を置かない（「力で、「／その土地…」のように「「」だけが行末に残るのを防ぐ。人の指摘 2026-11-06）
+    out = re.sub(r"(?<=[「『（(【〈《［])((?:</?n-[bw][^>]*>)*)<wbr>", r"\1", out)
+    out = re.sub(r"<wbr>((?:</?n-[bw][^>]*>)*)(?=[」』）)】〉》］、。，．・：；？！ー])", r"\1", out)
+    # 開きかっこの直前と直後の文字を、改行しないまとまりにする（keep-all でない本文でも、「「」だけが行末に残らないように）
+    out = re.sub(r"([^\s<>「『（(【〈《])([「『（【〈《])([^\s<>」』）】〉》])", r"<n-b>\1\2\3</n-b>", out)
+    return head + sep + out
 
 
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # リポジトリの直下（tools/ の1つ上）
