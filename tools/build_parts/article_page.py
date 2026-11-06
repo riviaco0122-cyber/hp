@@ -52,8 +52,9 @@ def article_page(a):
     def auto_stack_tables(html):
         """スマホで1列目が細く縦に伸びる表を、見やすい形に変える（人の方針 2026-10-12。比べる表は design-guide 6章）。
         見出し行があり、1列目の文字が長い（12字超）か、ほかのマスが長い（24字超）表が対象。
-        - 2列の表（項目と内容）：1行ずつのカード（table--stack）に積み替える。項目名がカードの見出しになるので、ラベルは付けない
-        - 3列以上の表：比べるための表なので、カードにせず、1列目を止めて左右にスライドする表（table--wide）にする"""
+        - 2列の表（項目と内容）：文字が長いときだけ、1行ずつのカード（table--stack）に積み替える。項目名がカードの見出しになるので、ラベルは付けない
+        - 3列以上の表：比べるための表なので、文字の長さによらずカードにせず、1列目を止めて左右にスライドする表（table--wide）にする
+          （短い表もスマホで潰れないように。表が画面に収まるときは、js/main.js がスライドの案内を隠す）"""
         def conv(m):
             t = m.group(0)
             heads = [re.sub(r"<[^>]+>", "", h).strip() for h in re.findall(r"<th[^>]*>(.*?)</th>", t, re.S)]
@@ -65,11 +66,11 @@ def article_page(a):
                 return t
             first = max(len(re.sub(r"<[^>]+>", "", c[0][1]).strip()) for c in parsed)
             other = max(len(re.sub(r"<[^>]+>", "", x[1]).strip()) for c in parsed for x in c[1:])
-            if first <= 12 and other <= 24:
-                return t
             if len(heads) >= 3:
                 return ('<p class="table-hint" aria-hidden="true">表は左右にスライドできます →</p>'
                         '<div class="table-scroll table-scroll--wide"><table class="table table--wide">' + t[len('<table class="table">'):])
+            if first <= 12 and other <= 24:
+                return t
             return '<div class="table-scroll table-scroll--stack"><table class="table table--stack">' + t[len('<table class="table">'):]
         return re.sub(r'<table class="table">.*?</table>', conv, html, flags=re.S)
     def thin_strong(html):
@@ -100,9 +101,18 @@ def article_page(a):
         return re.sub(r'<p class="talk__q">(.*?)</p>',
                       lambda m: f'<div class="talk talk--q"><span class="talk__img talk__img--logo">{AKIYADO_MARK}</span><div class="talk__body"><p class="talk__name">編集部</p><p>{m.group(1)}</p></div></div>',
                       html, flags=re.S)
+    def label_lists(html):
+        """表の1列目の項目名が、3つ以上を「・」でつないだ長いもの（9文字以上）なら、1つずつ改行した箇条書きにする
+        （「鍵・／チェックイン／・防犯」のように「・」が行頭・行末に残って見えるため。人の指摘 2026-11-06）"""
+        def sub(m):
+            items = m.group(2).split("・")
+            if len(items) < 3 or len(m.group(2)) < 9 or "（" in m.group(2) or not all(items):
+                return m.group(0)
+            return m.group(1) + "<br>".join("・" + x for x in items) + m.group(3)
+        return re.sub(r"(<tr>\s*<td(?:\s[^>]*)?>)([^<]+)(</td>)", sub, html)
     def tables(html):
         html = talk_questions(talk_lists(html))
-        html = calc_lists(html)
+        html = calc_lists(label_lists(html))
         html = auto_stack_tables(html)
         html = html.replace('<table class="table">', '<div class="table-scroll"><table class="table">').replace("</table>", "</table></div>")
         return re.sub(r"<td>((?:約|―|—)?[0-9０-９.,]+(?:%|倍|か月)?(?:（[^<]{0,12}）)?)</td>", r'<td class="num">\1</td>', html)

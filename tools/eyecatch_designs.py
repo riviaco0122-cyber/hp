@@ -19,11 +19,11 @@
 DESIGNS = {
     # ---- オーナーの事例（取材）: 専用デザイン。顔アイコンと、費用・月商・利益の数字を見せる（数字は各記事の本文にあるものだけ）
     "case-owner-pricing-mistake": dict(layout="case", avatar=1, who="Aさん", lines=["ほぼ満室なのに[赤字]", "単価1.9倍で立て直した"], chips=[("稼働率", "92%→58%"), ("客室単価", "9,800→18,500円"), ("月の売上", "約27→32万円")]),
-    "case-owner-diy-cottage": dict(layout="case", avatar=2, who="Bさんご夫婦", lines=["解体200万円の別荘が", "[週末DIY約80万円]で宿に"], chips=[("改修費", "約80万円"), ("月商", "約55万円"), ("月の純利益", "約35万円")]),
-    "case-owner-subsidy-akiya": dict(layout="case", avatar=3, who="Cさん", lines=["自己資金100万円で", "空き家を[宿]に"], chips=[("改装の予算", "約450万円"), ("月商", "約45万円"), ("月の純利益", "15〜18万円")]),
+    "case-owner-diy-cottage": dict(layout="case", avatar=2, who="Bさんご夫婦", lines=["解体200万〜300万円の別荘が", "[週末DIY約80万円]で宿に"], chips=[("改修費", "約80万円"), ("月商", "約55万円"), ("月の純利益", "約35万円")]),
+    "case-owner-subsidy-akiya": dict(layout="case", avatar=3, who="Cさん", lines=["改装の自己資金100万円で", "空き家を[宿]に"], chips=[("改装の予算", "約450万円"), ("月商", "約45万円"), ("月の純利益", "15〜18万円")]),
     "case-owner-fishing-port": dict(layout="case", avatar=6, who="Dさんご夫婦", lines=["実績ゼロで[融資400万円]", "元・仕出し屋が宿に"], chips=[("工事費用", "約500万円"), ("月商", "60〜70万円"), ("月の純利益", "20〜30万円")]),
     "case-owner-rental-side-business": dict(layout="case", avatar=4, who="Eさん", lines=["[週1〜2時間]で民泊副業", "会社員のまま始めた"], chips=[("初期費用", "約200万円"), ("月商", "約40万円"), ("月の純利益", "12〜15万円")]),
-    "case-owner-licensed-akiya": dict(layout="case", avatar=5, who="Fさん", lines=["空き家を[旅館業]で宿に", "初期費用400万円の内訳"], chips=[("初期費用", "約400万円"), ("月商", "平均約55万円"), ("月の純利益", "平均約25万円")]),
+    "case-owner-licensed-akiya": dict(layout="case", avatar=6, who="Fさん", lines=["空き家を[旅館業]で宿に", "初期費用400万円の内訳"], chips=[("初期費用", "約400万円"), ("月商", "平均約55万円"), ("月の純利益", "平均約25万円")]),
     "case-owner-setouchi-cycling": dict(layout="case", avatar=1, who="Gさんご夫婦", lines=["空き店舗を", "[サイクリスト]の宿に"], chips=[("総予算", "約400万円"), ("月商", "40〜45万円"), ("月の純利益", "12〜15万円")]),
     "case-owner-castle-town-nagaya": dict(layout="case", avatar=3, who="Hさんご夫婦", lines=["城下町の[古い長屋]を宿に", "融資の3つの関門"], chips=[("総予算", "約450万円"), ("月商", "45〜55万円"), ("月の純利益", "15〜18万円")]),
     "case-owner-satoyama-airdna": dict(layout="case", avatar=2, who="Iさんご夫婦", lines=["里山の古民家を宿に", "[データ]で融資を通す"], chips=[("総予算", "約350万円"), ("月商", "45〜50万円"), ("月の純利益", "15〜18万円")]),
@@ -43,7 +43,7 @@ DESIGNS = {
 
     # ---- 物件・改修
     "akiya-bank-guide": dict(layout="marker", lines=["空き家バンクの", "[仕組みと使い方]"], sub="登録・購入の前に知っておきたいこと"),
-    "shizuoka-yaizu-akiya-inn": dict(layout="boxes", lines=["観光地でなくても", "[収益物件]になる？"]),
+    "shizuoka-yaizu-akiya-inn": dict(layout="boxes", lines=["観光地でなくても", "[民泊]は成り立つ？"]),
     "kominka-renovation-points": dict(layout="mincho", lines=["古民家を、", "宿に直す"], sub="残すもの・変えるもの", photo="irori-room", pos="50% 62%"),
     "akiya-utilization-options": dict(layout="poster", big="売る？貸す？宿？", lines=["空き家の[活用方法]を比べる"], color="green"),
     "akiya-minpaku-suitability": dict(layout="quote", lines=["その空き家は、", "[民泊に向いている？]"], color="sand", photo="old-town-street", pos="50% 45%"),
@@ -61,7 +61,7 @@ DESIGNS = {
     "minpaku-vs-ryokan-law": dict(layout="duo", a="民泊新法", b="旅館業", lines=["[どちらで始める？]"]),
     "minpaku-start-steps": dict(layout="number", big="7", unit="STEP", lines=["民泊を始めるまでの", "[7ステップ]"], color="terra"),
     "minpaku-fire-safety": dict(layout="poster", big="消防設備", lines=["民泊・小さな宿の", "[ガイド]"], color="terra"),
-    "akiyado-consultation-flow": dict(layout="frame", lines=["相談から開業までの", "[流れ]"], color="green"),
+    "akiyado-consultation-flow": dict(layout="frame", lines=["相談から", "[開業までの流れ]"], color="green"),
 
     # ---- お金・税金
     "small-inn-subsidies": dict(layout="giant", big="補助金", lines=["小規模宿で使える", "[支援制度まとめ]"]),
@@ -77,8 +77,8 @@ DESIGNS = {
     "cleaning-linen-operations": dict(layout="mincho", lines=["清掃と、", "リネン"], sub="小さな宿の運用ガイド"),
     "listing-photo-tips": dict(layout="boxes", lines=["予約が入る", "[宿のページ]の", "つくり方"]),
     "guest-review-tips": dict(layout="number", big="★5", unit="", lines=["レビューの評価を上げる", "[ゲスト対応]"], color="green"),
-    "case-rental-house-inn-first-year": dict(layout="number", big="14", unit="か月", lines=["下田の一軒家を宿に。", "[初期投資を回収]するまで"], color="deep"),
-    "minpaku-hard-truth": dict(layout="quote", lines=["「民泊は大変」", "って[本当？]"], color="sand"),
+    "case-rental-house-inn-first-year": dict(layout="number", big="14", unit="か月", lines=["下田の賃貸物件を宿に。", "[家具・家電の投資]を回収"], color="deep"),
+    "minpaku-hard-truth": dict(layout="poster", big="5つ", lines=["民泊は大変？", "[よく聞く課題]と備え方"], color="sand"),
     "minpaku-neighbor-rules": dict(layout="frame", lines=["近隣トラブルを防ぐ", "[ルールづくり]"], color="mustard"),
     "minpaku-off-season": dict(layout="mincho", lines=["閑散期を、", "どう越える"], sub="売上の波をならす工夫", photo="own-fishing-bay", pos="50% 30%"),
     "minpaku-shukyaku-first-steps": dict(layout="boxes", lines=["民泊の集客は何から？", "[誰に・何を・どこで]", "インスタの前に決める"]),

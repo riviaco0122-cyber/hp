@@ -56,10 +56,14 @@ def _heading_phrases(text):
     return "<wbr>".join(e(x, quote=False) for x in ph)
 
 
+# 数字のまとまり：前の「約」から、単位（「万人」「兆円」「年3月31日」など）まで。単位がないときは直後の1文字（「2つ」）まで
+_NUM_TOKEN = re.compile(r"(?:約)?\d[\d,.]*(?:(?:万|億|兆)?(?:人泊|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)(?:\d+(?:か月|月|日))*|[^\s\d,.、。・（）()「」])")
+
+
 def _keep_numbers(text):
-    """数字と、直後の1文字（単位・助数詞）の間で改行しない（「2／つ」「5／万円」を防ぐ）。エスケープ済みの文字列を返す"""
+    """数字のまとまり（「約3,188万人」「2027年3月31日」「2つ」）の途中で改行しない（「約／3,188万／人」を防ぐ）。エスケープ済みの文字列を返す"""
     out, last = [], 0
-    for m in re.finditer(r"\d[\d,.]*[^\s\d,.、。・（）()「」]", text):
+    for m in _NUM_TOKEN.finditer(text):
         out += [e(text[last:m.start()], quote=False), f"<n-b>{e(m.group(0), quote=False)}</n-b>"]
         last = m.end()
     return "".join(out) + e(text[last:], quote=False)
@@ -112,7 +116,12 @@ def phrase_breaks(html):
                 parts[i] = _keep_numbers(text)
             continue
         # 全体を <n-w> で包む（横並び（flex）の中でも、文字が1つのまとまりのまま並ぶように）
-        parts[i] = (f"<n-w>{_keep_numbers(body_text[:-3])}<n-b>{e(body_text[-3:], quote=False)}</n-b></n-w>"
+        # 最後の3文字の切れ目が数字のまとまりの途中に入るときは、まとまりの頭から送る（「約3,18／8万人」を防ぐ）
+        cut = len(body_text) - 3
+        for m in _NUM_TOKEN.finditer(body_text):
+            if m.start() < cut < m.end():
+                cut = m.start()
+        parts[i] = (f"<n-w>{_keep_numbers(body_text[:cut])}<n-b>{e(body_text[cut:], quote=False)}</n-b></n-w>"
                     f"{e(text[len(body_text):], quote=False)}")
     return head + sep + "".join(parts)
 
