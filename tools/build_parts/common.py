@@ -45,7 +45,8 @@ import budoux  # 同梱（tools/vendor/budoux）。見出しを単語の途中�
 _budoux = budoux.load_default_japanese_parser()
 _VOID = {"br", "wbr", "img", "input", "meta", "link", "hr", "source", "col", "area", "base", "embed", "track"}
 # 見出しとして扱う要素：h1〜h6 と、クラス名が「〜__title」「〜__name」「〜__head」「〜heading」などの要素（カードや図の見出し）
-_HEADING_CLASS = re.compile(r'class="[^"]*(?:__title|__name|__head\b|heading|-title|__q)\b')
+# カードの見出しになる悩みの文（「〜__worry」）も、言葉の切れ目でだけ改行する（人の指摘 2026-11-06）
+_HEADING_CLASS = re.compile(r'class="[^"]*(?:__title|__name|__head\b|heading|-title|__q|__worry)\b')
 # カードの説明文などの短い文（60字以内）も、見出しと同じく文節の切れ目でだけ改行する（人の指摘 2026-11-06：事業紹介のカード）
 _CARD_CLASS = re.compile(r'class="[^"]*__(?:text|desc|sub|blurb|lead)\b')
 _CARD_MAX = 60
