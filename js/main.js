@@ -698,7 +698,7 @@
       n.classList.remove('fill');
       var centered = getComputedStyle(p).textAlign === 'center';
       if (!n.classList.contains('h')) n.classList.toggle('c', centered);
-      if (!centered && n.classList.contains('h') && rightGap(n, p) > 3) n.classList.add('fill');
+      if (!centered && n.classList.contains('h') && parseFloat(getComputedStyle(p).fontSize) < 22 && rightGap(n, p) > 3) n.classList.add('fill'); // 大きな見出し（22px以上）は文節で折るほうが自然なので対象外
     });
   };
   if (phraseTexts.length) {
@@ -837,12 +837,13 @@
 })();
 
 // 最後の行が短い文（「ます。」「です。」「する力」などが次の行に3〜4文字だけ落ちる）のバランスをとる（人の方針 2026-11-06）
-// 実際の幅で組んだあと、最後の行が4文字以下の段落・見出し・ラベルだけ、前の行の途中に改行（<br class="jsbr">）を入れて、
-// 最後の行が7文字ほどになるよう一言を一緒に下ろす。画面幅が変わったら外して組み直す。
+// 実際の幅で組んだあと、最後の行が3文字以下の段落・見出し・ラベルだけ、前の行の途中に改行（<br class="jsbr">）を入れて、
+// 最後の行が4〜6文字になるよう、できるだけ少ない文字を下ろす（下ろしすぎると前の行の右が大きく空くため。
+// 右の余白が少ないことを優先し、最後の行は2〜3文字だけにならなければよい。人の方針 2026-11-06）。画面幅が変わったら外して組み直す。
 // 見出し（n-w.h）は文節の切れ目（<wbr>）でだけ下ろす。数字と単位（<n-b>）や「、。」の前では切らない。
 (function () {
   'use strict';
-  var SHORT = 4, TARGET = 7;
+  var SHORT = 3, MIN = 4, MAXMOVE = 4; // 最後の行がSHORT文字以下なら、MIN文字以上になるまで下ろす。下ろすのは最大でも（必要な数＋MAXMOVE）文字まで
   // 表のマスは対象外（改行を足すと列の幅が変わり、組み直しが止まらないため。マスの改行位置は「|」＝<wbr> で決める）
   var SEL = 'main p, main li, main dd, main dt, main figcaption, main blockquote, main h1, main h2, main h3, main h4, main span[class*="__text"], main span[class*="__desc"], main span[class*="__lead"], main span[class*="__sub"], main span[class*="__blurb"], main span[class*="__note"], main span.mq__q';
   function blocks() { // 記事一覧など、あとから JS で描かれる部分もあるので、毎回探し直す
@@ -922,16 +923,22 @@
       var last = ls[ls.length - 1].cs, prev = ls[ls.length - 2].cs;
       if (last.length > SHORT) return;
       if (last[0].node.previousSibling && last[0].node.previousSibling.nodeName === 'BR' && last[0].i === 0) return; // 意図した改行のあと
-      var heading = !!el.querySelector('wbr'); // 文節の区切り（<wbr>）がある見出しは、その位置でだけ下ろす
-      var want = TARGET - last.length; // 前の行から下ろしたい文字数
+      // 文節の切れ目でだけ改行する文（見出しなど。n-w.h（fill でないもの）・n-w.c）は、その位置（<wbr>）で下ろす。ふつうの段落は単語の切れ目で
+      var heading = !!el.querySelector('n-w.h:not(.fill), n-w.c');
+      var need = MIN - last.length; // 前の行から少なくとも下ろす文字数
       var best = null, bestScore = 0;
-      var from = heading ? 2 : Math.max(2, prev.length - want - 6); // 見出しは、文節の頭ならどこまで戻ってもよい
-      for (var k = from; k < prev.length - 1; k++) { // 前の行に最低2文字は残す
-        if (!okBreakBefore(prev[k], heading)) continue;
-        // 単語の途中で切る位置は大きく減点する（切れ目がどこにもないときだけ使う）
-        var score = Math.abs((prev.length - k) - want) + (heading || isBoundary(prev[k - 1].node.data[prev[k - 1].i], prev[k].node.data[prev[k].i]) ? 0 : 20);
-        if (best === null || score < bestScore) { best = k; bestScore = score; }
-      }
+      [heading, false].forEach(function (hd, pass) { // 文節の切れ目が見つからない見出しは、単語の切れ目で探し直す
+        if (best !== null || (pass === 1 && !heading)) return;
+        for (var k = Math.max(2, prev.length - need - MAXMOVE); k <= prev.length - need; k++) { // 前の行に最低2文字は残す
+          if (!okBreakBefore(prev[k], hd)) continue;
+          var pw = prev[k].i === 0 && prev[k].node.previousSibling && prev[k].node.previousSibling.nodeName === 'WBR';
+          var inWord = !(hd || pw || isBoundary(prev[k - 1].node.data[prev[k - 1].i], prev[k].node.data[prev[k].i]));
+          if (inWord && k < 4) continue; // 「リネ／ン」のように、行の頭の短い語を割ってまで下ろさない
+          // 下ろす文字が少ないほどよい（前の行の右が空かない）。単語の途中で切る位置は減点する
+          var score = (prev.length - k) + (inWord ? 3 : 0);
+          if (best === null || score < bestScore) { best = k; bestScore = score; }
+        }
+      });
       if (best === null) return;
       var br = insertBr(prev[best]), after = lines(chars(el));
       // 下ろしたら行が増えた・最後の行が長くならなかった（下ろした行が収まらず、また折れた）ときは、元に戻す（「防ぐ／相見積もり…配線確／認」を防ぐ）

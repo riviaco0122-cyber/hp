@@ -70,7 +70,15 @@ def _heading_phrases(text):
         ph[-2:] = [ph[-2] + ph[-1]]
     # 最後の4文字は改行しないまとまり（<n-b>）にする。左揃えで右に大きな空きができて、js/main.js が言葉の途中でも折れる形
     # （n-w.fill）に切り替えたときも、最後の行が2〜3文字だけにならないように（人の指摘 2026-11-06）
-    cut = len("".join(ph)) - 4 if len("".join(ph)) > 6 else -1
+    total = len("".join(ph))
+    cut = total - 4 if total > 6 else -1
+    if cut > 0:  # 最後の文節が5文字以内なら、文節の頭でまとめる（「仕組／みの違い」のように語の途中で切らない）
+        pos = 0
+        for x in ph:
+            if cut - 1 <= pos < cut:
+                cut = pos
+                break
+            pos += len(x)
     out, pos, opened = "", 0, False
     for i, x in enumerate(ph):
         if i and pos <= cut:
@@ -192,6 +200,11 @@ def phrase_breaks(html):
         for m in (_KEEP_LONG if whole_cut else _KEEP_SHORT).finditer(body_text):
             if m.start() < cut < m.end():
                 cut = m.start()
+        if len(body_text) - cut > 8:  # 日付などの長いまとまりで、最後の塊が長くなりすぎる（「（2026年10月閲覧）」）ときは、短いまとまりで切る
+            cut = len(body_text) - 4
+            for m in _KEEP_SHORT.finditer(body_text):
+                if m.start() < cut < m.end():
+                    cut = m.start()
         # 100文字以下の文は、言葉の切れ目に改行候補を入れておく（中央揃えで表示されるときに、語の途中で折れないように。人の指摘 2026-11-06）
         head_html = _phrase_html(body_text[:cut]) if len(body_text.strip()) <= 100 else _keep_numbers(body_text[:cut], whole=short)
         parts[i] = (f"<n-w>{head_html}<n-b>{e(body_text[cut:], quote=False)}</n-b></n-w>"
