@@ -51,6 +51,7 @@ body {
   line-break: strict;
   overflow-wrap: anywhere;
 }
+:is(td, th):has(wbr) { word-break: keep-all; } /* 表のマスは「|」（<wbr>）の位置でだけ改行する */
 n-w.h { word-break: keep-all; } /* 見出しは文節の切れ目（<wbr>）でだけ改行し、単語の途中で切らない（tools/build.py） */
 n-b { white-space: nowrap; } /* 段落・見出しの最後の3文字。最後の行に1〜2文字だけが残らないよう、まとめて送る（tools/build.py） */
 img { max-width: 100%; height: auto; display: block; }
