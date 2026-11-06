@@ -357,6 +357,7 @@ def main():
         stale = stale_fields(parse_article(art), d)
         if stale:
             raise SystemExit(f"{p.relative_to(ROOT)} が記事データと違う（{'、'.join(stale)}）。先に python3 tools/build.py を実行する")
+        d["keyword"] = art.get("keyword", "")  # 主キーワードは記事データの keyword を使う（HTML には出ないため）
     elif a.path:
         p = Path(a.path)
         text = p.read_text(encoding="utf-8")
