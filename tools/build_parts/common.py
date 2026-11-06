@@ -45,7 +45,7 @@ import budoux  # 同梱（tools/vendor/budoux）。見出しを単語の途中�
 _budoux = budoux.load_default_japanese_parser()
 _VOID = {"br", "wbr", "img", "input", "meta", "link", "hr", "source", "col", "area", "base", "embed", "track"}
 # 見出しとして扱う要素：h1〜h6 と、クラス名が「〜__title」「〜__name」「〜__head」「〜heading」などの要素（カードや図の見出し）
-_HEADING_CLASS = re.compile(r'class="[^"]*(?:__title|__name|__head\b|heading|-title)\b')
+_HEADING_CLASS = re.compile(r'class="[^"]*(?:__title|__name|__head\b|heading|-title|__q)\b')
 
 
 def _heading_phrases(text):

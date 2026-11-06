@@ -789,7 +789,7 @@
   'use strict';
   var SHORT = 4, TARGET = 7;
   // 表のマスは対象外（改行を足すと列の幅が変わり、組み直しが止まらないため。マスの改行位置は「|」＝<wbr> で決める）
-  var SEL = 'main p, main li, main dd, main dt, main figcaption, main blockquote, main h1, main h2, main h3, main h4, main span[class*="__text"], main span[class*="__desc"], main span[class*="__lead"], main span[class*="__sub"], main span[class*="__blurb"], main span[class*="__note"]';
+  var SEL = 'main p, main li, main dd, main dt, main figcaption, main blockquote, main h1, main h2, main h3, main h4, main span[class*="__text"], main span[class*="__desc"], main span[class*="__lead"], main span[class*="__sub"], main span[class*="__blurb"], main span[class*="__note"], main span.mq__q';
   function blocks() { // 記事一覧など、あとから JS で描かれる部分もあるので、毎回探し直す
     return Array.prototype.slice.call(document.querySelectorAll(SEL)).filter(function (el) {
       return !el.querySelector('p, li, dd, div, ul, ol, table') && /[ぁ-んァ-ン一-龯]/.test(el.textContent);
