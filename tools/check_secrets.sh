@@ -17,7 +17,7 @@ PATTERN='private[_]key|BEGIN PRIVATE[ ]KEY|AIza[0-9A-Za-z_-]{30,}|client[_]email
 
 found=0
 while IFS= read -r -d '' f; do
-  hits=$(git diff --cached --no-color --no-ext-diff -U0 -- "$f" | grep -E '^\+' | grep -vE '^\+\+\+ ' | grep -cE "$PATTERN")
+  hits=$(git diff --cached --text --no-color --no-ext-diff -U0 -- "$f" | grep -E '^\+' | grep -vE '^\+\+\+ ' | grep -cE "$PATTERN")
   if [ "${hits:-0}" -gt 0 ]; then
     echo "鍵・トークンらしい文字列: $f（${hits} 行）" >&2
     found=1

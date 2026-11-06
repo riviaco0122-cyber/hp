@@ -974,7 +974,7 @@ ARTICLES_AUTO = [
                 ("check", "許可・届出の手順を確かめた", "7ステップの記事で確認した"),
             ]) + """
 <p>最後の許可・届出は、<a href="media/minpaku-start-steps.html">民泊を始めるまでの7ステップ</a>で続きを確かめられます。収入面の比較は、<a href="media/minpaku-vs-rental-income.html">賃貸と民泊の収入の違い</a>が参考になります。借りた部屋で始めるなら、貸主の承諾と管理規約の確かめ方を<a href="media/minpaku-chintai-start.html">賃貸で民泊を始める手順</a>にまとめています。副業ではじめる人向けの流れは、<a href="media/guide-side.html">副業ではじめるガイド</a>にあります。</p>
-<p>「会社員のまま、無理なく運営できる形にしたい」という段階から、<a href="service-management.html">宿泊施設 開業・運営支援事業</a>でご相談を受けています。</p>
+<p>「会社員のまま、無理なく運営できる形にしたい」という段階から、<a href="service-management.html">開業・運営支援事業</a>でご相談を受けています。</p>
 <p class="table-note">※ 税や就業規則の判断は、税務署・会社・専門家に確認してください。</p>
 <p class="table-note">※ 本記事の制度は、2026年10月時点の公表資料にもとづきます。</p>
 """),

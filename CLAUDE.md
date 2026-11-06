@@ -93,6 +93,16 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 | `python3 tools/youtube_analytics.py report / retention <動画ID>` | YouTube のチャンネルの数字（再生・平均再生率・視聴者維持・入口）。要 `YT_CLIENT_ID`・`YT_CLIENT_SECRET`・`YT_REFRESH_TOKEN`（analytics-setup.md 8章） |
 | `python3 tools/video/make_strategy_ep<N>.py [出力] [--hq]` ／ `make_reel.py` ／ `layout_check.py` | YouTube の解説動画・リール（縦長）の書き出しと自動点検（`docs/youtube/manual.md` 4章） |
 | `python3 tools/eyecatch.py [slug ...]` | 記事のアイキャッチ（記事トップ・OGP、1200×630）を `images/eyecatch/<slug>.jpg` に作る。デザインは記事ごとに `tools/eyecatch_designs.py` に書く（なければ標準デザイン）。作ったあと `python3 tools/build.py` で反映 |
+| `python3 tools/gen_diff.py [基準]` | 生成物（`pages/`・`404.html`・`js/media-index.js`・`seo/`）の変化を、同じ変化をまとめて短く出す（生成物は `git diff` に本文が出ない設定） |
+| `python3 tools/page_text.py <HTML...>` | 生成された HTML を本文だけのテキストにする（見出し・段落・表・画像の alt）。記事 HTML は1ファイル10万字を超えるので、中身の確認・採点はこれで読む |
+
+## 作業の量を抑える（トークンの節約。人の方針 2026-11-05）
+
+AI の作業は、読み込む量がそのまま費用になる。同じ品質で、読む量を減らす。
+- **生成物を読まない。** `pages/`・`404.html`・`js/media-index.js`・`seo/` は `.gitattributes` で `-diff`（`git diff` に本文が出ない）、`js/media-index.js` は Read 禁止（`.claude/settings.json`）・Grep の対象外（`.ignore`）。変化は `gen_diff.py`、記事の中身は `page_text.py`、見た目は site_check とスクリーンショットで見る。HTML の構造を確かめたいときは、Grep で該当の数行だけ見る（`git diff --text` で全文を出さない）。
+- **大きなファイル（`tools/build.py`・`css/style.css`・`tools/articles_*.py`・`docs/seo/playbook.md`）は全体を読まない。** Grep で場所を探し、Read は `offset`・`limit` でその前後だけ読む。playbook は、指示された章（例: 5-3c）だけを読む。
+- **点検の結果は、ファイルに出して要点だけ読む**（`node tools/check/site_check.js --out <ファイル>` のあと、重大・警告の節だけ見る）。
+- **対話で頼まれた小さな改修（文言・デザイン・不具合の修正）は、部署を呼ばずに編集長が直接直す。** 部署（サブエージェント）は呼ぶたびに CLAUDE.md・playbook・ブランド資料を最初から読み直すので、記事の新規作成・採点など、部署の役割が要る作業に限る。
 
 ## 書き方
 

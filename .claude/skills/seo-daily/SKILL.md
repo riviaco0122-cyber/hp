@@ -64,7 +64,7 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
    - **スマホ幅のスクリーンショットを自分の目で確認する**（Playwright で幅 390px、予約公開の記事は `?preview=1`。画像を Read で開いて見る）。対象は、新規・変更した記事と、**共通 CSS（`css/style.css`・`js/main.js`・`tools/figures.py`・`tools/build.py` の部品）を変えた日は全記事**。図（fig-point・fig-col・fig-step・fig-cyc・fig-flow・計算式の枠）・表・番号つきリスト・注意枠・折りたたみ・目次・画像について、**左右の余白（番号や文字が枠の左端にくっついていないか）・文字のはみ出し・重なり・固定の相談ボタンの被り**を見る。`site_check` の「見た目の崩れ」などの警告も 0 にする（出たら css・figures.py・記事データを直して作り直す）。
    - `python3 tools/seo_check.py` のエラーが 0 であること。
    - 記事を新規・変更した日は `node tools/check/text_runs.js`（スマホ幅で「文章だけが続く高さ」を測る。1400px 以上の記事が0本であること。超えたら図解・表・カードで区切る）。
-   - `qa` に `git diff origin/$BASE` 全体を採点してもらい、「人の確認が必要な点」を出す。
+   - `qa` に `git diff origin/$BASE` 全体を採点してもらい、「人の確認が必要な点」を出す（生成物は `git diff` に本文が出ないので、`python3 tools/gen_diff.py origin/$BASE` の要約と、記事は `python3 tools/page_text.py` の本文で見る）。
 5. **記録とPR**：`pm` の仕事B（カレンダー・ログ・ダッシュボード・台帳・PR説明）。
 6. **衝突を自動で直す（人の方針 2026-10-12）**：人はスマホでプレビューを見てそのままマージするだけにしたいので、PR に衝突を残さない。コミットの前後で `bash tools/sync_base.sh` を実行し、本番ブランチの取り込みと衝突の自動解消（log 等は両方残す／ダッシュボードと生成物は作り直す）を行う。終了コード 2（自動で直せない衝突）のときは、衝突ファイルを自分で読んで解消し、`python3 tools/build.py` → seo_check → site_check をやり直す。解消後に再度 `bash tools/sync_base.sh` が「衝突なし」になるまで繰り返してから push する。push 後、PR が「衝突あり」のままなら、その場で直す。
    6. `bash tools/check_secrets.sh` で鍵が混ざっていないことを確かめてから、コミット（「日次SEO YYYY-MM-DD: 〜」）→ `git push -u origin seo/daily` → `$BASE` 向けの PR がなければ作成、あれば説明文を更新。PR タイトルは「SEO/AIO 改善（YYYY-MM-DD〜）」。
@@ -146,7 +146,7 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
 1. **数字を取る**：`python3 tools/code_health.py --record`（大きいファイルの行数、CSS の `!important`・同じセレクタの重ね書き・使われていないルールの数、seo_check のエラー・警告）。`docs/seo/code-health.md` に1行たまるので、前月より増えた項目から片付ける。
 2. **使われていない CSS を消す**：`python3 tools/css_prune.py` で一覧を見て、`python3 tools/css_prune.py --apply` → `python3 tools/build.py`。
 3. **重ね書きを1か所にまとめる**：前回の点検のあとに足された CSS で、同じセレクタを後ろで上書きしているもの・`!important` で押し切っているものは、元のルールを直してまとめる（一度に直すのは数か所まで）。
-4. **見た目が変わっていないことを確かめる**：`node tools/check/site_check.js`（本番との見た目の比較）で、整理した分の差分が 0 であること。差分が出た整理は、原因が分からなければ取り消す（整理で見た目を変えない）。HTML（`pages/`）が変わったときは、`git diff` で変わったのが CSS の版番号（`?v=`）だけであることを確かめる。
+4. **見た目が変わっていないことを確かめる**：`node tools/check/site_check.js`（本番との見た目の比較）で、整理した分の差分が 0 であること。差分が出た整理は、原因が分からなければ取り消す（整理で見た目を変えない）。HTML（`pages/`）が変わったときは、`python3 tools/gen_diff.py` で、変わったのが CSS の版番号（`?v=`）だけ（「英数字のハッシュ・版番号だけの変化」のパターンだけ）であることを確かめる。
 5. **インデックス登録の土台を点検する**：seo_check の「孤立ページ」（どこからもリンクされていない）・robots.txt・内部用パス（`/pages/`・`/seo/`）の転送・sitemap・canonical・noindex・リンク切れ・転送先へのリンクを 0 にする。Search Console の「ページのインデックス登録」で、「重複」「代替ページ」「クロール済み - インデックス未登録」「見つかりませんでした（404）」「リダイレクト」が増えていないかを見る（取れなければ、人に画面の確認を頼む項目として PR に書く）。
 6. **大きな整理は提案だけ**：`tools/build.py` の分割など、ファイルの構成を変える整理は、その日の PR に入れず、週次レポートの「サイト全体の改修提案」に書く。
 7. PR の説明に「コードの点検」の節を作り、数字（前月比）・整理したこと・見た目の差分 0 の確認結果を書く（マージは人）。

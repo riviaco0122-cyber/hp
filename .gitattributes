@@ -1,2 +1,11 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# 生成物（python3 tools/build.py が作る）。直すのは tools/ のデータ。
+# -diff: git diff で本文を出さない（AI の作業でトークンを食わないように）。中身の変化は
+#        python3 tools/gen_diff.py で要約して見る。どうしても全文が要るときは git diff --text。
+# linguist-generated: GitHub の PR 画面で折りたたむ。
+pages/** -diff linguist-generated=true
+404.html -diff linguist-generated=true
+js/media-index.js -diff linguist-generated=true
+seo/** -diff linguist-generated=true

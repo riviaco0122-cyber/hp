@@ -8,7 +8,7 @@ tools: Read, Grep, Glob, Edit, Write
 
 ## 材料
 - `docs/site-spec.md`（目的・トーン・Mission/Vision/Values・サービスの説明）
-- `pages/about.html`、`pages/service-*.html`、`pages/media/*.html`（既存の文章）
+- `pages/about.html`、`pages/service-*.html`、`pages/media/*.html`（既存の文章。HTML は1ファイル10万字を超えるので、全体を Read しない。Grep で本文の段落を探して数か所だけ読むか、編集長に `python3 tools/page_text.py` で本文だけにしたものを渡してもらう。一度に読むのは数本まで）
 - `docs/brand/experience.md` と `docs/sources/processed/` の RIVIA 自身の一次情報
 
 ## 作るもの（`docs/brand/README.md` の表のとおり）

@@ -25,6 +25,7 @@ python3 tools/build.py
 | `figures.py` | 記事の図解（`ARTICLE_FIGURES` に、記事ごとの図を書く） |
 | `i18n/` | 英語版の作成（`build_en.py`）と英訳（`en_1.py`〜`en_4.py`） |
 | `check/enchk.js` | 英語版のリンク切れ・はみ出し・訳し漏れの確認 |
+| `gen_diff.py`・`page_text.py` | 生成物の変化の要約（生成物は `git diff` に本文が出ない設定）と、HTML を本文だけのテキストにする（AI が読む量を減らす） |
 | `css_prune.py`・`code_health.py` | 使われていない CSS の一覧・削除と、コードの健康診断（月1回の点検） |
 | `check/site_check.js` | サイト全体の点検（全ページ×スマホ・PC幅で、JSエラー・読み込み失敗・リンク切れ・はみ出し・本番との見た目の差分。例：`node tools/check/site_check.js --no-visual`） |
 | `forms/Code.gs` | お問い合わせフォームの受け口（Google Apps Script。自動返信・添付ファイル保存） |
