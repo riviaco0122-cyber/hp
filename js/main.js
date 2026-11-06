@@ -672,35 +672,15 @@
 
   // 改行の仕方を、表示されている揃え方で決める（人の指摘 2026-11-06。docs/design-guide.md 3章）
   // ・中央揃えの文：言葉の切れ目（build で入れた <wbr>）でだけ改行する（n-w.c。見出しの n-w.h はもともと同じ）
-  // ・左揃えの見出し・短い文（n-w.h）：まず言葉の切れ目で折る。そのせいで行末に3文字分を超える空きができる行があれば、
-  //   言葉の途中でも折れる形にする（n-w.fill）。最後の4文字は build でまとめてあるので、最後の行が2〜3文字にはならない
+  // ・見出し・短い文（n-w.h）：言葉の切れ目でだけ折り、行の長さをそろえる（CSS の text-wrap: balance）。語の途中では折らない
   // 部品によってはスマホとPCで揃え方が変わるので、画面の幅が変わったら付け直す
   var phraseTexts = document.querySelectorAll('n-w');
-  var rightGap = function (n, p) {
-    var cs = getComputedStyle(p);
-    var right = p.getBoundingClientRect().right - parseFloat(cs.paddingRight) - parseFloat(cs.borderRightWidth);
-    var fs = parseFloat(cs.fontSize);
-    var range = document.createRange();
-    range.selectNodeContents(n);
-    var lines = [];
-    Array.prototype.forEach.call(range.getClientRects(), function (r) {
-      if (!r.width) return;
-      var line = null;
-      for (var k = 0; k < lines.length; k++) if (Math.abs(lines[k].top - r.top) < fs * 0.6) { line = lines[k]; break; }
-      if (!line) { line = { top: r.top, right: r.right }; lines.push(line); }
-      line.right = Math.max(line.right, r.right);
-    });
-    lines.sort(function (x, y) { return x.top - y.top; });
-    return lines.slice(0, -1).reduce(function (m, l) { return Math.max(m, (right - l.right) / fs); }, 0);
-  };
   var fitLines = function () {
     Array.prototype.forEach.call(phraseTexts, function (n) {
       var p = n.parentElement;
       if (!p || !n.querySelector('wbr')) return;
-      n.classList.remove('fill');
       var centered = getComputedStyle(p).textAlign === 'center';
       if (!n.classList.contains('h')) n.classList.toggle('c', centered);
-      if (!centered && n.classList.contains('h') && rightGap(n, p) > 3) n.classList.add('fill');
     });
   };
   if (phraseTexts.length) {

@@ -67,28 +67,35 @@ def _heading_phrases(text):
             merged.append(x)
     ph = merged
     # 「」『』で囲んだ言葉（12文字以内）は、途中で改行しない1つのまとまりにする（「暮らすように／旅する」を防ぐ。人の指摘 2026-11-06）
-    merged, buf = [], None
+    merged, buf = [], None  # buf: かっこの中の文節を集めているところ（元の文節のリスト）
     for x in ph:
         if buf is not None:
             m = re.search(r"[」』]", x)
             if not m:
-                buf += x
+                buf.append(x)
                 continue
-            whole, rest = buf + x[:m.end()], x[m.end():]
-            if len(whole) <= 13:
-                merged.append(whole)
+            inner = buf + [x[:m.end()]]
+            if len("".join(inner)) <= 13:
+                merged.append("".join(inner))
             else:
-                merged.extend([buf, x[:m.end()]])
-            if rest:
-                merged.append(rest)
+                merged.extend(inner)
+            if x[m.end():]:
+                merged.append(x[m.end():])
             buf = None
             continue
         if ("「" in x and "」" not in x[x.index("「"):]) or ("『" in x and "』" not in x[x.index("『"):]):
-            buf = x
+            buf = [x]
             continue
         merged.append(x)
     if buf is not None:
-        merged.append(buf)
+        merged.extend(buf)
+    # 「・」で終わる文節（「個人・」）と、数字が途中で分かれた文節（「202」「6年」）は、次の文節とつなげる
+    ph, merged = merged, []
+    for x in ph:
+        if merged and (merged[-1].endswith("・") or (merged[-1][-1:].isdigit() and x[:1].isdigit()) or re.search(r"[A-Za-z]$", merged[-1]) and re.match(r"[A-Za-z]", x)):
+            merged[-1] += x
+        else:
+            merged.append(x)
     ph = merged
     if len(ph) > 1 and len(ph[-1].strip()) <= 2:
         ph[-2:] = [ph[-2] + ph[-1]]
@@ -102,6 +109,8 @@ def _heading_phrases(text):
         if not opened and cut >= 0 and pos <= cut < pos + len(x):
             out += e(x[:cut - pos], quote=False) + "<n-b>" + e(x[cut - pos:], quote=False)
             opened = True
+        elif not opened and "・" in x.rstrip("・") and len(x) <= 12:
+            out += "<n-b>" + e(x, quote=False) + "</n-b>"  # 「個人・法人を」：「・」のあとは keep-all でも折れるので、文節ごとまとめる
         else:
             out += e(x, quote=False)
         pos += len(x)
@@ -195,6 +204,40 @@ def _glue_short_tail(parts, i):
     return True
 
 
+_SHORT_BLOCKS = {"p", "li", "dd", "dt", "blockquote", "figcaption", "h1", "h2", "h3", "h4", "h5", "h6", "td", "th", "summary", "label", "button"}
+_SHORT_MAX = 60
+
+
+def _block_text_lengths(parts):
+    """開きタグの位置ごとに、その要素の中の文字数（空白を除く）を数える"""
+    out, stack, skip = {}, [], 0
+    for i, p in enumerate(parts):
+        if p.startswith("<"):
+            m = re.match(r"<(/?)(script|style|textarea|select|option|title|svg)\b", p, re.I)
+            if m:
+                skip += -1 if m.group(1) else 1
+            t = re.match(r"<(/?)([a-zA-Z][\w-]*)", p)
+            if t and not p.startswith("<!"):
+                name = t.group(2).lower()
+                if t.group(1):
+                    if any(n == name for n, _ in stack):
+                        while stack:
+                            n, ix = stack.pop()
+                            if n == name:
+                                break
+                elif name not in _VOID and not p.endswith("/>"):
+                    stack.append((name, i))
+                    out[i] = 0
+            continue
+        if skip:
+            continue
+        k = len(re.sub(r"\s", "", unescape(p)))
+        if k:
+            for _n, ix in stack:
+                out[ix] += k
+    return out
+
+
 def phrase_breaks(html):
     """日本語の改行（人の方針 2026-11-05・11-06）。
     - 本文：ふつうに行末まで詰めて折り返す（両端揃え・字間の調整はしない）。段落・ラベルの最後（と <br> の手前）の4文字だけは
@@ -204,7 +247,8 @@ def phrase_breaks(html):
     head, sep, body = html.partition("<body")
     parts = re.split(r"(<[^>]+>)", body)
     skip = 0
-    stack = []  # (タグ名, 見出しの中か)
+    stack = []  # (タグ名, 見出しの中か, parts の位置)
+    blen = _block_text_lengths(parts)  # 開きタグの位置 → その要素の中の文字数
     row_first = False  # <tr> が開いて、まだ最初のマス（<td>・<th>）が来ていない
     block_end = re.compile(r"</(p|li|dd|dt|blockquote|figcaption|h[1-6]|th|td|span|a|button|label|summary)>")
     inline_end = re.compile(r"</(strong|em|b|a|span|small)>")
@@ -217,7 +261,7 @@ def phrase_breaks(html):
             if t and not p.startswith("<!"):
                 name = t.group(2).lower()
                 if t.group(1):
-                    if any(n == name for n, _ in stack):
+                    if any(n == name for n, *_ in stack):
                         while stack and stack.pop()[0] != name:
                             pass
                 elif name not in _VOID and not p.endswith("/>"):
@@ -234,7 +278,7 @@ def phrase_breaks(html):
                         row_first = True
                     elif name in ("td", "th"):
                         row_first = False
-                    stack.append((name, in_h))
+                    stack.append((name, in_h, i))
             continue
         text = unescape(p)
         body_text = text.rstrip()
@@ -245,6 +289,11 @@ def phrase_breaks(html):
         if not _JA.search(body_text):
             continue
         mode = stack[-1][1] if stack else False
+        # 短い文（段落・項目・引用・ラベルなど、まとまり全体で60文字以内）は、見出しと同じく言葉の切れ目でだけ改行し、
+        # 行の長さをそろえる（CSS の text-wrap: balance）。右に大きな空きや、語の途中の改行を作らない（人の方針 2026-11-06）
+        blk = next((ix for n, _m, ix in reversed(stack) if n in _SHORT_BLOCKS), None)
+        if blk is not None and 0 < blen.get(blk, 999) <= _SHORT_MAX:
+            mode = True
         if mode is True or (mode == "card" and len(body_text.strip()) <= _CARD_MAX) or (mode == "label" and len(body_text.strip()) <= 20):
             parts[i] = f'<n-w class="h">{_heading_phrases(body_text)}</n-w>{e(text[len(body_text):], quote=False)}'
             continue
@@ -268,7 +317,7 @@ def phrase_breaks(html):
             if m.start() < cut < m.end():
                 cut = m.start()
         # 100文字以下の文は、言葉の切れ目に改行候補を入れておく（中央揃えで表示されるときに、語の途中で折れないように。人の指摘 2026-11-06）
-        head_html = _phrase_html(body_text[:cut]) if len(body_text.strip()) <= 100 else _keep_numbers(body_text[:cut], whole=short)
+        head_html = _phrase_html(body_text[:cut])  # 長さにかかわらず言葉の切れ目に改行候補を入れる（中央揃えで表示されたときに語の途中で折れないように。人の指摘 2026-11-06）
         parts[i] = (f"<n-w>{head_html}<n-b>{e(body_text[cut:], quote=False)}</n-b></n-w>"
                     f"{e(text[len(body_text):], quote=False)}")
     return head + sep + "".join(parts)
