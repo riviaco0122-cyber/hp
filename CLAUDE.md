@@ -93,6 +93,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 | `python3 tools/youtube_analytics.py report / retention <動画ID>` | YouTube のチャンネルの数字（再生・平均再生率・視聴者維持・入口）。要 `YT_CLIENT_ID`・`YT_CLIENT_SECRET`・`YT_REFRESH_TOKEN`（analytics-setup.md 8章） |
 | `python3 tools/video/make_strategy_ep<N>.py [出力] [--hq]` ／ `make_reel.py` ／ `layout_check.py` | YouTube の解説動画・リール（縦長）の書き出しと自動点検（`docs/youtube/manual.md` 4章） |
 | `python3 tools/eyecatch.py [slug ...]` | 記事のアイキャッチ（記事トップ・OGP、1200×630）を `images/eyecatch/<slug>.jpg` に作る。デザインは記事ごとに `tools/eyecatch_designs.py` に書く（なければ標準デザイン）。作ったあと `python3 tools/build.py` で反映 |
+| `node tools/check/short_lines.js [--widths 375,390] [--only ページ名]` | 最後の行が4文字以下になっている文（「ます。」だけが落ちるなど）をスマホ幅で数える（`docs/design-guide.md` 3章） |
 | `python3 tools/gen_diff.py [基準]` | 生成物（`pages/`・`404.html`・`js/media-index.js`・`seo/`）の変化を、同じ変化をまとめて短く出す（生成物は `git diff` に本文が出ない設定） |
 | `python3 tools/page_text.py <HTML...>` | 生成された HTML を本文だけのテキストにする（見出し・段落・表・画像の alt）。記事 HTML は1ファイル10万字を超えるので、中身の確認・採点はこれで読む |
 
