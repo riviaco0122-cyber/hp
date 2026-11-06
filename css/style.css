@@ -51,6 +51,7 @@ body {
   line-break: strict;
   overflow-wrap: anywhere;
 }
+:is(td, th):has(wbr) { word-break: keep-all; } /* 表のマスは「|」（<wbr>）の位置でだけ改行する */
 n-w.h { word-break: keep-all; } /* 見出しは文節の切れ目（<wbr>）でだけ改行し、単語の途中で切らない（tools/build.py） */
 n-b { white-space: nowrap; } /* 段落・見出しの最後の3文字。最後の行に1〜2文字だけが残らないよう、まとめて送る（tools/build.py） */
 img { max-width: 100%; height: auto; display: block; }
@@ -328,7 +329,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .page-hero__en { font-family: var(--font-en); font-weight: 300; font-size: clamp(48px, 8vw, 104px); line-height: 1; letter-spacing: 0.06em; }
 .page-hero__ja { margin-top: 20px; font-size: 14px; color: var(--c-sub); letter-spacing: 0.12em; }
 .page-hero__lead { margin-top: 40px; color: var(--c-sub); max-width: 680px; line-height: 2.2; }
-.page-hero__lead--2l { max-width: 22.8em; } /* PC でも余白を持たせて2行で見せる（事業内容のリード。1文目で1行目が終わる幅） */
 @media (max-width: 899px) { .page-hero { padding: 72px 0 64px; } }
 
 /* サービス概要：一文のリードとして、余白を詰めた帯で見せる */
