@@ -723,10 +723,25 @@
       if (blk.offsetParent === null || blk.querySelector('p, li, dd, div, ul, ol, table')) return;
       var cs = getComputedStyle(blk);
       if (cs.textAlign === 'center' || cs.textAlign === 'right' || cs.whiteSpace === 'nowrap' || cs.writingMode.indexOf('vertical') === 0) return;
-      if (maxGap(blk) <= (parseFloat(cs.fontSize) >= 22 ? 5 : 3)) return;
-      blk.classList.add('wrap-fill');
-      // 6文字以上の塊と、「・」のすぐあとに英単語が続く塊（「価・R」＋「evPAR」で1つの長い塊になる）を解く
-      blk.querySelectorAll('n-b').forEach(function (b) { if (b.textContent.length >= 6 || /・[A-Za-z]$/.test(b.textContent)) b.classList.add('loose'); });
+      if (maxGap(blk) > (parseFloat(cs.fontSize) >= 22 ? 5 : 3)) {
+        blk.classList.add('wrap-fill');
+        // 6文字以上の塊と、「・」のすぐあとに英単語が続く塊（「価・R」＋「evPAR」で1つの長い塊になる）を解く
+        blk.querySelectorAll('n-b').forEach(function (b) { if (b.textContent.length >= 6 || /・[A-Za-z]$/.test(b.textContent)) b.classList.add('loose'); });
+      }
+      // どの左揃えのまとまりも、最後の4文字は改行しないまとまりにしておく（最後の行が「す。」のように2〜3文字だけにならないように。
+      // 「…<strong>約67%</strong>でした。」のように、build でまとめきれなかった語尾も含む）
+      var tw = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), t, last = null;
+      while ((t = tw.nextNode())) if (t.data.trim()) last = t;
+      if (last) {
+        var txt = last.data.replace(/\s+$/, ''), pe = last.parentNode, kept = false;
+        for (var a = pe; a && a !== blk; a = a.parentNode) if (a.tagName === 'N-B' && !a.classList.contains('loose') && a.textContent.trim().length >= 4) kept = true;
+        if (!kept && txt.length >= 4) {
+          var tail = last.splitText(txt.length - 4), nb = document.createElement('n-b');
+          pe.insertBefore(nb, tail); nb.appendChild(tail);
+        } else if (!kept) { // 最後の文字が短く分かれている（「…で<n-b>す。</n-b>」）ときは、外側の塊を解かずに残す
+          for (a = pe; a && a !== blk; a = a.parentNode) if (a.tagName === 'N-B') a.classList.remove('loose');
+        }
+      }
     });
   };
   if (phraseTexts.length) {
