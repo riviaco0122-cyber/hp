@@ -323,10 +323,10 @@ def about_page():
         '          <div class="about-para reveal">' + "".join(f'<p class="about-line" style="--i:{j}">{e(l)}</p>' for j, l in enumerate(para)) + "</div>"
         for para in MISSION_PROSE)
     pillars = "\n".join(
-        f"""          <li class="reveal" data-delay="{i - 1}"><span class="about-pillar__num">{i:02d}</span><span class="about-pillar__en">{e(en)}</span><h3>{e(t)}</h3><p>{e(d)}</p></li>"""
+        f"""          <li class="reveal" data-delay="{i - 1}"><span class="about-pillar__num">{i:02d}</span><span class="about-pillar__en">{e(en)}</span><h3>{e(t)}</h3><p class="about-pillar__text">{e(d)}</p></li>"""
         for i, (t, en, d) in enumerate(VISION["steps"], 1))
     values = "\n".join(
-        f"""          <li class="reveal" data-delay="{(i - 1) % 2}"><span class="about-value__num">{i:02d}</span><div><h3>{e(t)}</h3><p>{e(d)}</p></div></li>"""
+        f"""          <li class="reveal" data-delay="{(i - 1) % 2}"><span class="about-value__num">{i:02d}</span><div><h3>{e(t)}</h3><p class="about-value__text">{e(d)}</p></div></li>"""
         for i, (t, d) in enumerate(VALUES, 1))
     import japan_map
     body = f"""    <section class="page-hero page-hero--about page-hero--map">
