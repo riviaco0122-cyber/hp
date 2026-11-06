@@ -55,9 +55,9 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 
 - **サイトは生成スクリプトで作る。HTML を直接書き換えない。** `pages/`・`css/` 以外の生成物・`seo/`（sitemap・robots・llms.txt）・`js/media-index.js`・`docs/site-spec.md` は `python3 tools/build.py` が作る（依存: `pip install beautifulsoup4 pillow`。使い方は `tools/README.md`）。直すのは次のデータ:
   - 記事: `tools/articles_*.py`（AI社員チームが新しく足す記事は `tools/articles_auto.py`）。図は `tools/figures.py`
-  - ページの文言・構成・テーマ・ガイド・よくある悩み・llms.txt: `tools/build.py`
+  - ページの文言・構成・テーマ・ガイド・よくある悩み・llms.txt: `tools/build_parts/*.py`（`tools/build.py` は入口で、本体を役割ごとのファイルに分けてある。どのファイルに何があるかは `build.py` の `BUILD_PARTS` の注記。資料に「`build.py` の `○○`」とあれば、`Grep "def ○○\|^○○ = " tools/build_parts` で探す）
   - 共通の見た目・動き: `css/style.css`・`js/main.js`（手で直す。版番号は build.py が自動で付ける）
-- **技術負債をためない書き方**（人の方針 2026-10-29）: ①CSS は、後ろに上書きのルールや `!important` を足して押し切らず、元のルールを直す ②使わなくなったクラス・ルール・関数は、その場で消す ③似た処理・似た部品が2つ目になったら、共通の関数・部品にまとめる ④記事データは `tools/articles_*.py`、図は `tools/figures.py` に置き、`build.py` にはページの組み立てと設定だけを書く。月1回、`/seo-daily` で見た目を変えずに片付ける（「月1回のコードの点検」）。
+- **技術負債をためない書き方**（人の方針 2026-10-29）: ①CSS は、後ろに上書きのルールや `!important` を足して押し切らず、元のルールを直す ②使わなくなったクラス・ルール・関数は、その場で消す ③似た処理・似た部品が2つ目になったら、共通の関数・部品にまとめる ④記事データは `tools/articles_*.py`、図は `tools/figures.py` に置き、`tools/build_parts/` にはページの組み立てと設定だけを書く。1つのファイルが800行を超えたら、役割で分けて `BUILD_PARTS` に足す。月1回、`/seo-daily` で見た目を変えずに片付ける（「月1回のコードの点検」）。
 - 作り直したら必ず `python3 tools/seo_check.py`（エラー0）と `node tools/check/site_check.js`（**サイト全体の点検**。全ページをスマホ幅・PC幅で開き、JSエラー・読み込み失敗・リンク切れ・横はみ出し・画像の欠けを点検し、本番ブランチとの見た目の差分も比べる。重大0）を通す。
 - HTML は `pages/` にある（例外: `404.html` はリポジトリ直下）。公開URLは `vercel.json` の rewrites で対応づける: `/` → `pages/index.html`、`/xxx.html` → `pages/xxx.html`、`/media/xxx.html` → `pages/media/xxx.html`、`/robots.txt`・`/sitemap.xml`・`/llms.txt` → `seo/`。
 - `docs/`・`tools/`・`.claude/`・`CLAUDE.md` は `.vercelignore` で公開対象外。
@@ -100,7 +100,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 
 AI の作業は、読み込む量がそのまま費用になる。同じ品質で、読む量を減らす。
 - **生成物を読まない。** `pages/`・`404.html`・`js/media-index.js`・`seo/` は `.gitattributes` で `-diff`（`git diff` に本文が出ない）、`js/media-index.js` は Read 禁止（`.claude/settings.json`）・Grep の対象外（`.ignore`）。変化は `gen_diff.py`、記事の中身は `page_text.py`、見た目は site_check とスクリーンショットで見る。HTML の構造を確かめたいときは、Grep で該当の数行だけ見る（`git diff --text` で全文を出さない）。
-- **大きなファイル（`tools/build.py`・`css/style.css`・`tools/articles_*.py`・`docs/seo/playbook.md`）は全体を読まない。** Grep で場所を探し、Read は `offset`・`limit` でその前後だけ読む。playbook は、指示された章（例: 5-3c）だけを読む。
+- **大きなファイル（`tools/build_parts/` の大きいもの・`css/style.css`・`tools/articles_*.py`・`docs/seo/playbook.md`）は全体を読まない。** Grep で場所を探し、Read は `offset`・`limit` でその前後だけ読む。playbook は、指示された章（例: 5-3c）だけを読む。
 - **点検の結果は、ファイルに出して要点だけ読む**（`node tools/check/site_check.js --out <ファイル>` のあと、重大・警告の節だけ見る）。
 - **対話で頼まれた小さな改修（文言・デザイン・不具合の修正）は、部署を呼ばずに編集長が直接直す。** 部署（サブエージェント）は呼ぶたびに CLAUDE.md・playbook・ブランド資料を最初から読み直すので、記事の新規作成・採点など、部署の役割が要る作業に限る。
 
