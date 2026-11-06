@@ -339,10 +339,20 @@ def phrase_breaks(html):
                     f"{e(text[len(body_text):], quote=False)}")
     out = "".join(parts)
     # かっこ・句読点の内側には改行候補を置かない（「力で、「／その土地…」のように「「」だけが行末に残るのを防ぐ。人の指摘 2026-11-06）
-    out = re.sub(r"(?<=[「『（(【〈《［])((?:</?n-[bw][^>]*>)*)<wbr>", r"\1", out)
+    out = re.sub(r"(?<=[「『（(【〈《［・])((?:</?n-[bw][^>]*>)*)<wbr>", r"\1", out)
     out = re.sub(r"<wbr>((?:</?n-[bw][^>]*>)*)(?=[」』）)】〉》］、。，．・：；？！ー])", r"\1", out)
     # 開きかっこの直前と直後の文字を、改行しないまとまりにする（keep-all でない本文でも、「「」だけが行末に残らないように）
     out = re.sub(r"([^\s<>「『（(【〈《])([「『（【〈《])([^\s<>」』）】〉》])", r"<n-b>\1\2\3</n-b>", out)
+    # 「・」の前後で改行しない（「再生・／創出」「家具・／家電」を防ぐ。人の指摘 2026-11-06）。前後の1文字とまとめる
+    segs, skip_ = re.split(r"(<[^>]+>)", out), 0
+    for k, sg in enumerate(segs):
+        if sg.startswith("<"):
+            m = re.match(r"<(/?)(script|style|textarea|title|svg)\b", sg, re.I)
+            if m:
+                skip_ += -1 if m.group(1) else 1
+        elif not skip_ and "・" in sg:
+            segs[k] = re.sub(r"([^\s・])・([^\s・])", r"<n-b>\1・\2</n-b>", sg)
+    out = "".join(segs)
     return head + sep + out
 
 
