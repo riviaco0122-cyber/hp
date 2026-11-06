@@ -58,7 +58,7 @@ def _heading_phrases(text):
 
 def phrase_breaks(html):
     """日本語の改行（人の方針 2026-11-05・11-06）。
-    - 本文：ふつうに行末まで詰めて折り返す（両端揃え・字間の調整はしない）。段落・ラベルの最後の3文字だけは
+    - 本文：ふつうに行末まで詰めて折り返す（両端揃え・字間の調整はしない）。段落・ラベルの最後（と <br> の手前）の3文字だけは
       ひとまとまり（<n-b>、改行しない）にして、最後の行に1〜2文字だけがはみ出して残らないようにする。
     - 見出し：単語の途中で切れないよう、文節の切れ目（<wbr>）でだけ改行する（<n-w class="h">、word-break: keep-all）。"""
     head, sep, body = html.partition("<body")
@@ -95,7 +95,7 @@ def phrase_breaks(html):
         j = i + 1
         while j < len(parts) and (parts[j] == "" or (inline_end.fullmatch(parts[j]) and not block_end.fullmatch(parts[j]))):
             j += 1
-        if j >= len(parts) or not block_end.fullmatch(parts[j]):
+        if j >= len(parts) or not (block_end.fullmatch(parts[j]) or re.fullmatch(r"<br\b[^>]*>", parts[j])):
             continue
         # 全体を <n-w> で包む（横並び（flex）の中でも、文字が1つのまとまりのまま並ぶように）
         parts[i] = (f"<n-w>{e(body_text[:-3], quote=False)}<n-b>{e(body_text[-3:], quote=False)}</n-b></n-w>"
