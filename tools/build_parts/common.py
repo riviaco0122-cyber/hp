@@ -59,13 +59,37 @@ def _heading_phrases(text):
     return "<wbr>".join(e(x, quote=False) for x in ph)
 
 
-def _keep_numbers(text):
-    """数字と、直後の1文字（単位・助数詞）の間で改行しない（「2／つ」「5／万円」を防ぐ）。エスケープ済みの文字列を返す"""
+# 数字のまとまり：前の「約」から、単位（「万人」「兆円」「年3月31日」など）まで。単位がないときは直後の1文字（「2つ」）まで
+_NUM_TOKEN = re.compile(r"(?:約)?\d[\d,.]*(?:(?:万|億|兆)?(?:人泊|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)(?:\d+(?:か月|月|日))*|[^\s\d,.、。・（）()「」])")
+
+
+# 本文の長い段落で使う、短いまとまり：数字と直後の1文字だけ（「5万」「2つ」）。まとまりを長くすると、行末で丸ごと次の行へ送られ、右側が大きく空くため
+_NUM_SHORT = re.compile(r"\d[\d,.]*[^\s\d,.、。・（）()「」]")
+
+
+def _keep_numbers(text, whole=False):
+    """数字の途中や、数字と単位の間で改行しない。エスケープ済みの文字列を返す。
+    whole=True（表のマス・ラベルなど20文字以下の短い文言）：「約3,188万人」「2027年3月31日」を丸ごとまとめる（「約3,18／8万人」を防ぐ）。
+    whole=False（本文の長い段落）：数字と直後の1文字だけをまとめる（「5／万円」は防ぎ、右端のガタつきは増やさない）"""
     out, last = [], 0
-    for m in re.finditer(r"\d[\d,.]*[^\s\d,.、。・（）()「」]", text):
+    for m in (_NUM_TOKEN if whole else _NUM_SHORT).finditer(text):
         out += [e(text[last:m.start()], quote=False), f"<n-b>{e(m.group(0), quote=False)}</n-b>"]
         last = m.end()
     return "".join(out) + e(text[last:], quote=False)
+
+
+def _phrase_html(text):
+    """短い文（100文字以下）の文字を、言葉の切れ目に改行候補（<wbr>）を入れた HTML にする。数字のまとまりは1つの塊（<n-b>）のまま。
+    左揃えでは行末まで詰めて折り返すので見た目は変わらず、中央揃えで表示される文だけ js/main.js が n-w.c にして切れ目でだけ改行させる"""
+    out, last = [], 0
+    for m in _NUM_TOKEN.finditer(text):
+        if text[last:m.start()]:
+            out += [e(x, quote=False) for x in _budoux.parse(text[last:m.start()])]
+        out.append(f"<n-b>{e(m.group(0), quote=False)}</n-b>")
+        last = m.end()
+    if text[last:]:
+        out += [e(x, quote=False) for x in _budoux.parse(text[last:])]
+    return "<wbr>".join(out)
 
 
 def phrase_breaks(html):
@@ -112,17 +136,26 @@ def phrase_breaks(html):
             continue
         if len(body_text.strip()) < 6:
             if re.search(r"\d", text):
-                parts[i] = _keep_numbers(text)
+                parts[i] = _keep_numbers(text, whole=len(text.strip()) <= 20)
             continue
         j = i + 1
         while j < len(parts) and (parts[j] == "" or (inline_end.fullmatch(parts[j]) and not block_end.fullmatch(parts[j]))):
             j += 1
         if j >= len(parts) or not (block_end.fullmatch(parts[j]) or re.fullmatch(r"<br\b[^>]*>", parts[j])):
             if re.search(r"\d", text):
-                parts[i] = _keep_numbers(text)
+                parts[i] = _keep_numbers(text, whole=len(text.strip()) <= 20)
             continue
         # 全体を <n-w> で包む（横並び（flex）の中でも、文字が1つのまとまりのまま並ぶように）
-        parts[i] = (f"<n-w>{_keep_numbers(body_text[:-3])}<n-b>{e(body_text[-3:], quote=False)}</n-b></n-w>"
+        # 最後の3文字の切れ目が数字のまとまりの途中に入るときは、まとまりの頭から送る（「約3,18／8万人」を防ぐ）
+        short = len(body_text.strip()) <= 20
+        whole_cut = len(body_text.strip()) <= 100
+        cut = len(body_text) - 3
+        for m in (_NUM_TOKEN if whole_cut else _NUM_SHORT).finditer(body_text):
+            if m.start() < cut < m.end():
+                cut = m.start()
+        # 100文字以下の文は、言葉の切れ目に改行候補を入れておく（中央揃えで表示されるときに、語の途中で折れないように。人の指摘 2026-11-06）
+        head_html = _phrase_html(body_text[:cut]) if len(body_text.strip()) <= 100 else _keep_numbers(body_text[:cut], whole=short)
+        parts[i] = (f"<n-w>{head_html}<n-b>{e(body_text[cut:], quote=False)}</n-b></n-w>"
                     f"{e(text[len(body_text):], quote=False)}")
     return head + sep + "".join(parts)
 
