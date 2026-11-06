@@ -6,7 +6,7 @@
   python3 tools/code_health.py --record   # 数字を docs/seo/code-health.md の表に1行足す（前回と比べられるように）
 
 見るもの（増え続けていたら、整理の合図）:
-  - 大きいファイルの行数（build.py・style.css・main.js・figures.py）
+  - 大きいファイルの行数（build.py と tools/build_parts/ の合計・style.css・main.js・figures.py）
   - CSS の !important の数、同じ条件（@media）で同じセレクタを何度も書いている数、
     どのページでも使われていないルールの数（消すのは python3 tools/css_prune.py --apply）
   - SEO の点検（seo_check）のエラー・警告の数（インデックス登録の土台: sitemap・canonical・noindex・リンク切れ・孤立ページ・robots.txt・重複 URL）
@@ -31,6 +31,12 @@ FILES = ["tools/build.py", "css/style.css", "js/main.js", "tools/figures.py"]
 def lines(path):
     with open(os.path.join(ROOT, path), encoding="utf-8") as f:
         return sum(1 for _ in f)
+
+
+def build_parts():
+    """build.py の本体（tools/build_parts/*.py）の行数。表の build.py の列は、build.py と本体の合計"""
+    d = os.path.join(ROOT, "tools", "build_parts")
+    return {f"tools/build_parts/{n}": lines(f"tools/build_parts/{n}") for n in sorted(os.listdir(d)) if n.endswith(".py")}
 
 
 def css_stats():
@@ -66,11 +72,15 @@ def seo_stats():
 def main():
     today = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).date().isoformat()
     sizes = {f: lines(f) for f in FILES}
+    parts = build_parts()
+    sizes["tools/build.py"] += sum(parts.values())
     css = css_stats()
     seo = seo_stats()
     print("## コードの健康診断", today)
     for f, n in sizes.items():
-        print(f"- {f}: {n} 行")
+        print(f"- {f}: {n} 行" + ("（tools/build_parts/ を含む合計）" if f == "tools/build.py" else ""))
+    big = max(parts, key=parts.get)
+    print(f"  - いちばん大きい本体のファイル: {big}（{parts[big]} 行。800行を超えたら分けることを考える）")
     print(f"- CSS の !important: {css['important']} 個")
     print(f"- CSS で同じ条件・同じセレクタを2回以上書いている: {css['repeated']} 件")
     print(f"- CSS のどのページでも使われていないルール: {css['unused']} 件（python3 tools/css_prune.py で一覧）")

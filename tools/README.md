@@ -7,11 +7,10 @@ HTMLを直接書き換えず、ここを直してから作り直してくださ�
 ## 作り直す
 
 ```sh
-pip install budoux==0.10.0 beautifulsoup4 pillow
+pip install beautifulsoup4 pillow
 python3 tools/build.py
 ```
 
-budoux（日本語の改行位置）は **0.10.0 に固定**する。版が違うと、全ページの改行位置（`<wbr>`）が変わり、差分が数十ファイルに広がる。
 
 日本語のページを作ったあと、英語版（`pages/en/`）も自動で作ります。
 
@@ -19,13 +18,15 @@ budoux（日本語の改行位置）は **0.10.0 に固定**する。版が違�
 
 | ファイル | 中身 |
 | --- | --- |
-| `build.py` | 全ページの文言・構成・プラン・アキヤドの設定（テーマ、ガイド、よくある悩みなど） |
+| `build.py` | サイトを作り直す入口。本体の `build_parts/*.py` を決まった順番で読み込み、1つのファイルとして実行する |
+| `build_parts/*.py` | 全ページの文言・構成・プラン・アキヤドの設定（テーマ、ガイド、よくある悩みなど）。役割ごとのファイル（一覧と中身は `build.py` の `BUILD_PARTS`）。ほかのファイルの関数・定数は import なしで使える |
 | `articles_base.py` | アキヤドの初期の記事（以前は build.py の中にあったもの） |
 | `articles_sched1.py`・`articles_sched2.py`・`articles_case.py` | アキヤドの記事（公開日は各記事の `date`） |
 | `articles_auto.py` | AI社員チーム（毎朝の日次サイクル）が追加する記事 |
 | `figures.py` | 記事の図解（`ARTICLE_FIGURES` に、記事ごとの図を書く） |
 | `i18n/` | 英語版の作成（`build_en.py`）と英訳（`en_1.py`〜`en_4.py`） |
 | `check/enchk.js` | 英語版のリンク切れ・はみ出し・訳し漏れの確認 |
+| `gen_diff.py`・`page_text.py` | 生成物の変化の要約（生成物は `git diff` に本文が出ない設定）と、HTML を本文だけのテキストにする（AI が読む量を減らす） |
 | `css_prune.py`・`code_health.py` | 使われていない CSS の一覧・削除と、コードの健康診断（月1回の点検） |
 | `check/site_check.js` | サイト全体の点検（全ページ×スマホ・PC幅で、JSエラー・読み込み失敗・リンク切れ・はみ出し・本番との見た目の差分。例：`node tools/check/site_check.js --no-visual`） |
 | `forms/Code.gs` | お問い合わせフォームの受け口（Google Apps Script。自動返信・添付ファイル保存） |

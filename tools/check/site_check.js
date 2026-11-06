@@ -215,9 +215,8 @@ async function prepare(page, { reveal = false } = {}) {
     await Promise.all(imgs.map(i => (i.decode ? i.decode().catch(() => 0) : 0)));
   }, reveal);
   if (reveal) {
-    // スクリーンショット用: main.js の行末の調整（letter-spacing・文末の n-b）は、フォントの準備ができた時点と画面幅が変わった時点で
-    // やり直され、画面に近づいた段落から順に行われる。走るタイミングで結果が変わるため、表示を確定させてから
-    // 画面幅を1px変えて戻し（調整のやり直し）、もう一度ゆっくりスクロールして全段落を調整させる
+    // スクリーンショット用: 画面に近づいてから表示される要素があるため、表示を確定させてから
+    // 画面幅を1px変えて戻し、もう一度ゆっくりスクロールして全体を表示させる
     const vp = page.viewportSize();
     await page.setViewportSize({ width: vp.width + 1, height: vp.height });
     await page.waitForTimeout(250);
@@ -311,7 +310,11 @@ function layoutProbe() {
     const add = b => { if (b.width > 0 && b.height > 0) { l = Math.min(l, b.left); r = Math.max(r, b.right); any = true; } };
     const tw = document.createTreeWalker(e, NodeFilter.SHOW_TEXT);
     for (let n = tw.nextNode(); n; n = tw.nextNode()) {
-      if (!n.textContent.trim() || !n.parentElement || getComputedStyle(n.parentElement).position === 'absolute') continue;
+      if (!n.textContent.trim() || !n.parentElement) continue;
+      // 絶対配置の要素（グラフの吹き出しなど）の中の文字は、枠の中身に数えない（<n-w> などで包まれていても同じ）
+      let absolute = false;
+      for (let p = n.parentElement; p && p !== e; p = p.parentElement) if (getComputedStyle(p).position === 'absolute') { absolute = true; break; }
+      if (absolute) continue;
       const rg = document.createRange(); rg.selectNodeContents(n); for (const b of rg.getClientRects()) add(b);
     }
     for (const im of e.querySelectorAll('img')) add(im.getBoundingClientRect());
