@@ -7,7 +7,6 @@ ARTICLES_SERIES2 = [
     dict(
         slug="kominka-stay-value",
         date=D, updated="2026-10-13", topics=["trend", "house"], photo=("gassho-village", "合掌造りの集落"),
-        guides=[("use", 1)],
         title="古い家だからこそ価値になる｜古民家・町家の宿が旅行者に選ばれる理由",
         short="古い家だからこそ\n価値になる",
         description="住まいとしては「古い」と見られる家も、宿にすると旅行者に選ばれる魅力になります。古民家（昔ながらの造りの古い家）や町家（町なかに建つ、昔ながらの商家や住まい）の宿が選ばれる理由と、残すもの・整えるものを紹介します。",
@@ -65,7 +64,6 @@ ARTICLES_SERIES2 = [
     dict(
         slug="akiya-minpaku-suitability",
         date=D, updated="2026-10-31", topics=["house", "start"], photo=("riverside-town", "川沿いの町並み"),
-        guides=[("use", 2), ("side", 2)],
         title="その空き家、民泊に向いている？立地・建物・法令・運営の4つで見極める",
         short="その空き家は\n民泊に向いている？",
         description="駅から歩いて10分、古い電気配線、営業の許可が出るまで1〜2か月。下田で賃貸の一軒家を宿にした経験から、立地・建物・法令・運営の4つで空き家を見極める方法を整理します。",
@@ -208,7 +206,6 @@ ARTICLES_SERIES2 = [
     dict(
         slug="minpaku-hard-truth",
         date=D, updated="2026-10-31", topics=["operate", "start"], photo=("dark-room", "落ち着いた照明の客室"),
-        guides=[("side", 3)],
         title="「民泊は大変」って本当？よく聞く5つの課題と、実際の乗り越え方",
         short="「民泊は大変」って\n本当？",
         description="民泊は「手続きが難しい」「近所とトラブルになる」「清掃が回らない」「閑散期に赤字になる」と聞いて、不安に思う方も多いはずです。よく聞く5つの課題と、実際にどう乗り越えるかを整理します。",
@@ -272,7 +269,6 @@ ARTICLES_SERIES2 = [
     dict(
         slug="minpaku-neighbor-rules",
         date=D, updated="2026-10-31", topics=["operate", "start"], photo=("town-railway", "線路沿いの住宅街"),
-        guides=[("side", 4)],
         title="民泊の近隣トラブルを防ぐには？騒音・ごみ・駐車のルールづくりと伝え方",
         short="近隣トラブルを防ぐ\nルールづくり",
         description="民泊のトラブルで多いのが、騒音・ごみ・駐車など近隣との関係です。開業前の近隣へのあいさつ、宿泊者へのルールの伝え方、困ったときの連絡体制など、トラブルを防ぐための準備をまとめます。",
@@ -325,7 +321,6 @@ ARTICLES_SERIES2 = [
     dict(
         slug="minpaku-off-season",
         date=D, updated="2026-10-31", topics=["operate", "money"], photo=("mountain-dawn", "朝焼けの山並み"),
-        guides=[("side", 4)],
         title="民泊の閑散期をどう乗り越える？下田の宿の月別の稼働率と料金・長期滞在の工夫",
         short="閑散期を\nどう乗り越える？",
         description="宿には、お客さんが減る時期（閑散期）があります。下田の宿の1年目は、月ごとの稼働率（部屋が埋まっている割合）が3割台まで落ちた月もありました。料金や長期滞在の工夫と、赤字の月への備えを紹介します。",
@@ -413,7 +408,6 @@ ARTICLES_SERIES2 = [
     dict(
         slug="minpaku-remote-operation",
         date=D, updated="2026-10-31", topics=["operate", "lend"], photo=("laptop-dashboard", "パソコンで予約状況を確認する様子"),
-        guides=[("side", 4)],
         title="遠方の物件でも民泊を運営できる？スマートロック・清掃の外注・遠隔運営の仕組み",
         short="遠方の物件でも\n運営できる？",
         description="住んでいる場所から遠い空き家でも、仕組みを整えれば宿として運営できます。鍵の受け渡し、清掃、問い合わせ、緊急時の対応を遠くから回す方法と、法律上の注意、人に任せる場合の考え方を紹介します。",

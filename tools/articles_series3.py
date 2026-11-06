@@ -7,7 +7,6 @@ ARTICLES_SERIES3 = [
     dict(
         slug="akiyado-what-we-do",
         date=D, updated="2026-10-31", topics=["lend", "start"], photo=("irori-room", "囲炉裏のある居間"),
-        guides=[("sell", 3), ("use", 4), ("side", 2)],
         title="アキヤドができること｜空き家の買取・借り上げから、民泊の開業・運営まで",
         short="アキヤドが\nできること",
         description="アキヤドは、空き家を宿として活かす目線で、買取・借り上げ・民泊の開業と運営を支援しています。3つのプランの違いと、どんな方に向いているか、相談したときに何が分かるのかを紹介します。",
@@ -78,7 +77,6 @@ ARTICLES_SERIES3 = [
     dict(
         slug="akiyado-consultation-flow",
         date=D, updated="2026-10-31", topics=["start", "lend"], photo=("hotel-room", "整えられた客室"),
-        guides=[("use", 4), ("side", 2)],
         title="空き家・民泊の相談から開業までの流れ｜初回に聞かれること・準備するもの",
         short="相談から開業までの\n流れ",
         description="空き家や民泊の相談で、何を聞かれ、何を準備すればよいかを紹介します。無料ヒアリングから提案、契約、開業までの流れと期間の目安、各質問が相続登記（家の名義の書き換え）や民泊の条件にどうつながるかを解説します。",
@@ -172,7 +170,6 @@ ARTICLES_SERIES3 = [
     dict(
         slug="minpaku-partner-choose",
         date=D, updated="2026-10-13", topics=["lend", "operate"], photo=("analytics-paper", "収支をまとめた資料"),
-        guides=[("side", 3), ("use", 2)],
         title="空き家・民泊の相談先の選び方｜運営代行や借り上げの事業者を比べる5つのポイント",
         short="相談先・委託先の\n選び方",
         description="空き家の活用や民泊の運営を任せる事業者は、どう選べばよいのでしょうか。運営の実績、収支の見込みの出し方、費用の分かりやすさ、契約の柔軟さ、地域との関わり方の5つのポイントで比べ方を紹介します。",
@@ -251,7 +248,6 @@ ARTICLES_SERIES3 += [
     dict(
         slug="remote-renovation-tips",
         date=D, updated="2026-10-31", topics=["house", "start"], photo=("dark-room", "改修された和室"),
-        guides=[("use", 3), ("side", 3)],
         title="空き家を民泊に改修する進め方｜遠方でも追加費用を防ぐ相見積もり・記録・配線確認",
         short="遠方からの\n改修工事の進め方",
         description="空き家を宿に改修するとき、遠方に住んでいると工事の進み具合を確かめにくく、追加費用や行き違いが起きがちです。アキヤドが運営に関わる宿の経験をもとに、相見積もり、打ち合わせの記録、古い電気配線の確認など、改修工事を進めるコツを紹介します。",
@@ -315,7 +311,6 @@ ARTICLES_SERIES3 += [
     dict(
         slug="long-stay-guest-equipment",
         date=D, updated="2026-10-31", topics=["operate", "house"], photo=("white-bedroom", "ワークデスクのある寝室"),
-        guides=[("side", 4)],
         title="民泊で長期滞在・海外のゲストに選ばれる設備と備品｜キッチン・乾燥機・Wi-Fi",
         short="長期滞在のゲストに\n選ばれる設備",
         description="遠方に住みながら宿を営むなら、現地に行かずに済む設備選びが大切です。創業メンバーが下田で開業した宿の経験をもとに、泊まった人の評価（レビュー）で喜ばれた洗濯・乾燥機と調理器具、睡眠と仕事への投資、Wi-Fi工事の遅れへの備えを紹介します。",

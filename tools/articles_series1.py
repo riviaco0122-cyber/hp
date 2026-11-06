@@ -8,7 +8,6 @@ ARTICLES_SERIES1 = [
     dict(
         slug="akiya-data-9-million",
         date=D, updated="2026-10-13", topics=["trend", "house"], photo=("rural-station", "田園の中の地方の駅"),
-        guides=[("use", 1)],
         title="データで見る日本の空き家｜約900万戸・空き家率13.8%が意味すること",
         short="データで見る\n日本の空き家",
         description="日本の空き家は約900万戸、空き家率13.8%（総務省・2023年）。うち「賃貸・売却用及び二次的住宅を除く空き家」は約386万戸です。この区分の意味と、静岡県・伊豆の市町で内訳がどう違うか、自分の市町の調べ方を解説します。",
@@ -119,7 +118,6 @@ ARTICLES_SERIES1 = [
     dict(
         slug="why-akiya-utilization-now",
         date=D, updated="2026-10-31", topics=["trend", "sell"], photo=("old-town-street", "古い町家が並ぶ通り"),
-        guides=[("use", 1), ("sell", 1)],
         title="なぜ今「空き家の活用」が注目されるのか｜税の負担・活用の道・民泊の追い風",
         short="なぜ今、空き家の\n活用が注目されるのか",
         description="空き家は、持っているだけで負担が増えるようになりました。市の勧告で土地の税が上がる決まりと相続登記の義務化、負担を減らす4つの活用の道、比べたときに民泊・宿に追い風がある理由を、順に整理します。",
@@ -221,7 +219,6 @@ ARTICLES_SERIES1 = [
     dict(
         slug="akiya-law-kanri-fuzen",
         date=D, updated="2026-10-31", topics=["sell", "money"], photo=("shrine-path", "木々に囲まれた石畳の道"),
-        guides=[("sell", 1)],
         title="空家法改正の「管理不全空家」とは？固定資産税の特例と、民泊など活用の対策",
         short="空家法の改正で\n何が変わった？",
         description="2023年12月から、放置すると危険になりそうな空き家（管理不全空家）も、市から改善を求められるようになりました。正式に求められる（勧告）と土地の税を軽くする決まりが外れます。変化と対策をまとめます。",
@@ -330,7 +327,6 @@ ARTICLES_SERIES1 = [
     dict(
         slug="souzoku-touki-gimuka",
         date=D, updated="2026-10-31", topics=["sell", "money"], photo=("window-garden", "窓から見える庭"),
-        guides=[("sell", 1)],
         title="相続登記の義務化とは？空き家を相続して売る・民泊にする前にやること",
         short="相続登記の義務化と\n最初にやること",
         description="2024年4月から、相続した家や土地の名義を変える手続き（相続登記）が義務になりました。相続を知ってから3年以内で、過去の相続分も対象です。怠ると過料（お金の罰）の対象になります。最初にやることを整理します。",
@@ -412,7 +408,6 @@ ARTICLES_SERIES1 = [
     dict(
         slug="akiya-holding-costs",
         date=D, updated="2026-10-31", topics=["sell", "money"], photo=("autumn-garden", "紅葉した庭"),
-        guides=[("sell", 1)],
         title="空き家の維持費はいくら？税金・見回りの内訳と、民泊・賃貸で賄う考え方",
         short="空き家の維持費の\n税金と見回りの金額",
         blurb="税金と見回りの実額例",
@@ -559,7 +554,6 @@ ARTICLES_SERIES1 = [
     dict(
         slug="akiya-utilization-options",
         date=D, updated="2026-10-31", topics=["house", "lend"], photo=("thatched-house", "かやぶき屋根の古民家"),
-        guides=[("use", 2), ("sell", 2)],
         title="空き家の活用方法を比べる｜売る・貸す・民泊にするの向き不向き",
         short="空き家の活用方法を\n比べる",
         blurb="5つの道の分かれ目を実例で",
@@ -711,7 +705,6 @@ ARTICLES_SERIES1 = [
     dict(
         slug="inherited-house-family-talk",
         date=D, updated="2026-10-31", topics=["sell", "lend"], photo=("irori-room", "囲炉裏のある古い家の居間"),
-        guides=[("sell", 1), ("use", 1)],
         title="相続した実家を売る・貸す・民泊にする？家族での話し合いの進め方",
         short="相続した実家を\n家族で決める",
         description="相続した実家をどうするかは、家族の思いが重なり、決めにくいものです。話し合いの前に集めておきたい情報、決めておきたいこと、意見が分かれたときの考え方を整理します。",
@@ -789,7 +782,6 @@ ARTICLES_SERIES1 = [
     dict(
         slug="akiya-local-resource",
         date=D, updated="2026-10-13", topics=["trend", "house"], photo=("scene-walk", "灯りのともる夜の路地"),
-        guides=[("use", 1)],
         title="空き家は地域の資源になる｜使われていない家が、まちの魅力に変わるまで",
         short="空き家は\n地域の資源になる",
         description="空き家は地域の課題として語られがちですが、宿やお店、交流の場に生まれ変わると、まちに人を呼ぶ資源になります。空き家が地域の魅力に変わる仕組みと、そのために押さえたい条件を紹介します。",
@@ -853,7 +845,6 @@ ARTICLES_SERIES1 = [
     dict(
         slug="why-minpaku-for-akiya",
         date=D, updated="2026-10-31", topics=["trend", "start"], photo=("scene-stay", "和室から見える町と山の景色"),
-        guides=[("use", 1), ("side", 1)],
         title="空き家の活用で、なぜ民泊・小さな宿が選ばれるのか",
         short="空き家の活用で\nなぜ民泊が選ばれるのか",
         description="空き家の活かし方のなかで、民泊（住まいに旅行者を有料で泊めること）や小さな宿が選ばれる理由を整理します。住む人が見つからなくても泊まる人はいること、古い家の趣が魅力になること、家を残したまま収入にできることを説明します。",
@@ -931,7 +922,6 @@ ARTICLES_SERIES1 = [
     dict(
         slug="minpaku-vs-rental-income",
         date=D, updated="2026-10-31", topics=["money", "lend"], photo=("white-bed", "白いベッドのある寝室"),
-        guides=[("use", 4), ("side", 1)],
         title="民泊と普通の賃貸、収入の仕組みはどう違う？売上・費用・手間を比べる",
         short="民泊と賃貸\n収入の仕組みの違い",
         description="空き家を住まいとして貸す場合と、民泊（旅行者を有料で泊めること）・宿として貸す場合では、収入の決まり方が大きく違います。売上の決まり方、かかる費用、手間、収入の安定性を比べ、どちらが向くかを考えます。",

@@ -60,10 +60,16 @@ def _heading_phrases(text):
 _NUM_TOKEN = re.compile(r"(?:約)?\d[\d,.]*(?:(?:万|億|兆)?(?:人泊|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)(?:\d+(?:か月|月|日))*|[^\s\d,.、。・（）()「」])")
 
 
-def _keep_numbers(text):
-    """数字のまとまり（「約3,188万人」「2027年3月31日」「2つ」）の途中で改行しない（「約／3,188万／人」を防ぐ）。エスケープ済みの文字列を返す"""
+# 本文の長い段落で使う、短いまとまり：数字と直後の1文字だけ（「5万」「2つ」）。まとまりを長くすると、行末で丸ごと次の行へ送られ、右側が大きく空くため
+_NUM_SHORT = re.compile(r"\d[\d,.]*[^\s\d,.、。・（）()「」]")
+
+
+def _keep_numbers(text, whole=False):
+    """数字の途中や、数字と単位の間で改行しない。エスケープ済みの文字列を返す。
+    whole=True（表のマス・ラベルなど20文字以下の短い文言）：「約3,188万人」「2027年3月31日」を丸ごとまとめる（「約3,18／8万人」を防ぐ）。
+    whole=False（本文の長い段落）：数字と直後の1文字だけをまとめる（「5／万円」は防ぎ、右端のガタつきは増やさない）"""
     out, last = [], 0
-    for m in _NUM_TOKEN.finditer(text):
+    for m in (_NUM_TOKEN if whole else _NUM_SHORT).finditer(text):
         out += [e(text[last:m.start()], quote=False), f"<n-b>{e(m.group(0), quote=False)}</n-b>"]
         last = m.end()
     return "".join(out) + e(text[last:], quote=False)
@@ -106,22 +112,23 @@ def phrase_breaks(html):
             continue
         if len(body_text.strip()) < 6:
             if re.search(r"\d", text):
-                parts[i] = _keep_numbers(text)
+                parts[i] = _keep_numbers(text, whole=len(text.strip()) <= 20)
             continue
         j = i + 1
         while j < len(parts) and (parts[j] == "" or (inline_end.fullmatch(parts[j]) and not block_end.fullmatch(parts[j]))):
             j += 1
         if j >= len(parts) or not (block_end.fullmatch(parts[j]) or re.fullmatch(r"<br\b[^>]*>", parts[j])):
             if re.search(r"\d", text):
-                parts[i] = _keep_numbers(text)
+                parts[i] = _keep_numbers(text, whole=len(text.strip()) <= 20)
             continue
         # 全体を <n-w> で包む（横並び（flex）の中でも、文字が1つのまとまりのまま並ぶように）
         # 最後の3文字の切れ目が数字のまとまりの途中に入るときは、まとまりの頭から送る（「約3,18／8万人」を防ぐ）
+        short = len(body_text.strip()) <= 20
         cut = len(body_text) - 3
-        for m in _NUM_TOKEN.finditer(body_text):
+        for m in (_NUM_TOKEN if short else _NUM_SHORT).finditer(body_text):
             if m.start() < cut < m.end():
                 cut = m.start()
-        parts[i] = (f"<n-w>{_keep_numbers(body_text[:cut])}<n-b>{e(body_text[cut:], quote=False)}</n-b></n-w>"
+        parts[i] = (f"<n-w>{_keep_numbers(body_text[:cut], whole=short)}<n-b>{e(body_text[cut:], quote=False)}</n-b></n-w>"
                     f"{e(text[len(body_text):], quote=False)}")
     return head + sep + "".join(parts)
 
