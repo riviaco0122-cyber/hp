@@ -668,6 +668,20 @@
     update();
   }
 
+  // 横にスライドする表の案内（「表は左右にスライドできます →」）は、表が枠からはみ出すときだけ出す
+  var hints = document.querySelectorAll('.table-hint');
+  if (hints.length) {
+    var checkHints = function () {
+      Array.prototype.forEach.call(hints, function (h) {
+        var sc = h.nextElementSibling;
+        h.hidden = !(sc && sc.scrollWidth > sc.clientWidth + 2);
+      });
+    };
+    checkHints();
+    window.addEventListener('load', checkHints);
+    window.addEventListener('resize', checkHints);
+  }
+
   // TOPのファーストビュー：写真をゆっくり寄りながら切り替える（動きを減らす設定のときは1枚目のまま）
   var slides = document.querySelectorAll('.hero--x .hero__bg');
   var count = document.querySelector('.hero__count');

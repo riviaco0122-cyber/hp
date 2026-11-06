@@ -2742,7 +2742,9 @@ body.is-media .table-scroll { margin: 28px 0; -webkit-overflow-scrolling: touch;
 body.is-media .article__section .table { margin: 0; font-size: 14px; border-collapse: separate; border-spacing: 0; border: 1px solid var(--m-line); border-radius: 12px; overflow: hidden; }
 body.is-media .article__section .table th, body.is-media .article__section .table td { padding: 12px 14px; border: 0; border-bottom: 1px solid var(--m-line); line-height: 1.7; }
 body.is-media .article__section .table tr:last-child td { border-bottom: 0; }
-body.is-media .article__section .table th { white-space: normal; min-width: 4.5em; background: var(--m-sand); color: var(--m-green); font-weight: 700; overflow-wrap: normal; } /* 見出しは語の途中で割らない（入りきらない語は列を広げる） */
+body.is-media .article__section .table th { white-space: normal; min-width: 4.5em; background: var(--m-sand); color: var(--m-green); font-weight: 700; word-break: keep-all; overflow-wrap: normal; } /* 見出しはラベルなので語の途中で割らない（「耐用年｜数」を防ぐ。入りきらない語は列を広げる） */
+body.is-media .article__section .table td:first-child { white-space: normal; max-width: 18em; } /* 記事の表の1列目は文になることがあるので折り返す（.table の nowrap はコーポレートの短いラベル用） */
+
 body.is-media .article__section .table td:first-child { font-weight: 700; background: #f7f9f6; }
 body.is-media .article__section .table td.num { font-variant-numeric: tabular-nums; }
 /* この記事のポイント：短い要点（太字）＋補足（小さく淡く） */
@@ -4134,6 +4136,8 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mcmp__mark--none { background: #ececec; color: #8a8f8b; }
 .msv-compare td .mcmp__mark { display: grid; margin: 0 auto; }
 .mcmp__t { display: block; margin-top: 6px; font-size: 12.5px; line-height: 1.5; color: var(--m-sub); }
+/* 比較表の見出しとマスは短いラベルなので、build.py で入れた区切り（<wbr>）でだけ改行する（「住まいとして貸｜す」を防ぐ） */
+.msv-compare :is(th, .mcmp__t) { word-break: keep-all; }
 .mcmp__legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; margin-top: 24px; font-size: 12.5px; color: var(--m-sub); }
 .mcmp__legend span { display: inline-flex; align-items: center; gap: 6px; }
 .mcmp__legend .mcmp__mark { width: 22px; height: 22px; font-size: 13px; }

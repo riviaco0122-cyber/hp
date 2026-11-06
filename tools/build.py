@@ -87,8 +87,13 @@ def phrase_breaks(html):
             j += 1
         if j >= len(parts) or not block_end.fullmatch(parts[j]):
             continue
+        # 最後の3文字が数字と単位のまとまり（「約3,188万人」など）の途中で切れるときは、まとまりの頭から送る
+        cut = len(body_text) - 3
+        for m in _NUM_TOKEN.finditer(body_text):
+            if m.start() < cut < m.end():
+                cut = m.start()
         # 全体を <n-w> で包む（横並び（flex）の中でも、文字が1つのまとまりのまま並ぶように）
-        parts[i] = (f"<n-w>{e(body_text[:-3], quote=False)}<n-b>{e(body_text[-3:], quote=False)}</n-b></n-w>"
+        parts[i] = (f"<n-w>{e(body_text[:cut], quote=False)}<n-b>{e(body_text[cut:], quote=False)}</n-b></n-w>"
                     f"{e(text[len(body_text):], quote=False)}")
     return head + sep + keep_numbers("".join(parts))
 
@@ -4703,8 +4708,9 @@ def article_page(a):
     def auto_stack_tables(html):
         """スマホで1列目が細く縦に伸びる表を、見やすい形に変える（人の方針 2026-10-12。比べる表は design-guide 6章）。
         見出し行があり、1列目の文字が長い（12字超）か、ほかのマスが長い（24字超）表が対象。
-        - 2列の表（項目と内容）：1行ずつのカード（table--stack）に積み替える。項目名がカードの見出しになるので、ラベルは付けない
-        - 3列以上の表：比べるための表なので、カードにせず、1列目を止めて左右にスライドする表（table--wide）にする"""
+        - 2列の表（項目と内容）：文字が長いときだけ、1行ずつのカード（table--stack）に積み替える。項目名がカードの見出しになるので、ラベルは付けない
+        - 3列以上の表：比べるための表なので、文字の長さによらずカードにせず、1列目を止めて左右にスライドする表（table--wide）にする
+          （短い表もスマホで潰れないように。表が画面に収まるときは、js/main.js がスライドの案内を隠す）"""
         def conv(m):
             t = m.group(0)
             heads = [re.sub(r"<[^>]+>", "", h).strip() for h in re.findall(r"<th[^>]*>(.*?)</th>", t, re.S)]
@@ -4716,11 +4722,11 @@ def article_page(a):
                 return t
             first = max(len(re.sub(r"<[^>]+>", "", c[0][1]).strip()) for c in parsed)
             other = max(len(re.sub(r"<[^>]+>", "", x[1]).strip()) for c in parsed for x in c[1:])
-            if first <= 12 and other <= 24:
-                return t
             if len(heads) >= 3:
                 return ('<p class="table-hint" aria-hidden="true">表は左右にスライドできます →</p>'
                         '<div class="table-scroll table-scroll--wide"><table class="table table--wide">' + t[len('<table class="table">'):])
+            if first <= 12 and other <= 24:
+                return t
             return '<div class="table-scroll table-scroll--stack"><table class="table table--stack">' + t[len('<table class="table">'):]
         return re.sub(r'<table class="table">.*?</table>', conv, html, flags=re.S)
     def thin_strong(html):
