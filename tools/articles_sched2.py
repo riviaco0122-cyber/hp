@@ -862,7 +862,7 @@ ARTICLES_SCHED2 = [
 <p><strong>遠くに住んだままでも、宿の運営を通して地域に関わり続けられます。</strong>実は創業メンバー自身が、宿のある下田に住まず、遠くから運営している関係人口です。開業したころは静岡市に住んでいて、いまは東京から運営しています。<strong>現地へ行くのは、数か月に1回ほど</strong>です。</p>
 <div class="stats" role="group" aria-label="下田での関わり方">
 <div class="stat stat--accent"><span class="stat__num">約2<small>時間</small></span><span class="stat__label">開業のころの住まい（静岡市）から下田まで</span><span class="stat__note">車で片道</span></div>
-<div class="stat"><span class="stat__num">月1<small>回</small></span><span class="stat__label">現地に行く頻度</span><span class="stat__note">スマートロック等で運営</span></div>
+<div class="stat"><span class="stat__num">数か月に1<small>回</small></span><span class="stat__label">現地に行く頻度</span><span class="stat__note">スマートロック等で運営</span></div>
 <div class="stat"><span class="stat__num">2<small>か月目</small></span><span class="stat__label">清掃が自走した時期</span><span class="stat__note">近隣の事業者に外注</span></div>
 </div>
 <p>それを支えてくれたのが、地元の人との仕事です。私たちの宿では、清掃を近くの個人事業主・複業人材に頼みました。手順書をつくり、最初は現地で一緒に掃除して、終わったあとは写真で仕上がりを確かめるようにしたところ、開業2か月目には自分が行かなくても回る体制になりました。</p>
@@ -894,7 +894,7 @@ ARTICLES_SCHED2 = [
         faq=[
             ("関係人口になるには、どうすればよいですか？", "特別な手続きはいりません。気になる地域に何度も訪れる、ふるさと納税で応援する、地域の活動に参加するなど、関わり方はいろいろです。"),
             ("地域おこし協力隊として宿の仕事に関わることはできますか？", "募集の内容は自治体ごとに違います。活動分野には観光も含まれるので、各自治体の募集情報を確かめてみてください。募集の検索には、ふるさと回帰・移住交流推進機構（JOIN）のサイトが案内されています。"),
-            ("住んでいない人が、宿を運営できますか？", "創業メンバーは静岡市に住みながら、車で約2時間の下田で宿を運営しています。スマートロックによるセルフチェックイン、AIチャットボット、地元の清掃パートナーを組み合わせて、現地へは数か月に1回ほどです。"),
+            ("住んでいない人が、宿を運営できますか？", "創業メンバーは、開業のころは静岡市（下田まで車で約2時間）から、いまは東京から、下田の宿を運営しています。スマートロックによるセルフチェックイン、AIチャットボット、地元の清掃パートナーを組み合わせて、現地へは数か月に1回ほどです。"),
         ],
         sources=[
             "総務省「地域おこし協力隊〜移住・地域活性化の仕事へのチャレンジを支援します！〜」（2026年10月閲覧） https://www.soumu.go.jp/main_sosiki/jichi_gyousei/c-gyousei/02gyosei08_03000066.html",
