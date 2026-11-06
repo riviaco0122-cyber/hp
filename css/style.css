@@ -53,6 +53,8 @@ body {
 }
 n-b { white-space: nowrap; } /* 段落・見出しの最後の3文字。最後の行に1〜2文字だけが残らないよう、まとめて送る（tools/build.py） */
 .nw { white-space: nowrap; } /* 数字と単位のまとまり（build.py の keep_numbers）は途中で改行しない */
+/* 見出しとカードの題名は、言葉の切れ目（文節）で改行する（「いくら｜か？」を防ぐ。本文は行末まで詰める。人の方針 2026-11-06。design-guide 1章） */
+:is(h1, h2, h3, h4, .media-card__title, .guide-step__title, .fig__title) { word-break: auto-phrase; }
 img { max-width: 100%; height: auto; display: block; }
 /* hidden 属性は、各要素の display 指定より常に優先して非表示にする（絞り込み・予約公開で使用） */
 [hidden] { display: none !important; }
