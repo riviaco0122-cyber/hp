@@ -246,7 +246,7 @@ def article_card(a, extra_class=""):
             {thumb(a)}
             <div class="media-card__body">
               {card_tags(a)}
-              <h3 class="media-card__title">{"<br>".join(e(l) for l in a["short"].split(chr(10)) if l.strip())}</h3>
+              <h3 class="media-card__title">{e("".join(l.strip() for l in a["short"].split(chr(10))))}</h3>
               <time class="media-card__date" datetime="{a["date"]}">{fmt_date(a["date"])}</time>
             </div>
           </a>"""
