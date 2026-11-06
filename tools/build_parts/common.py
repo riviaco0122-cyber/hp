@@ -55,6 +55,13 @@ _CARD_MAX = 60
 def _heading_phrases(text):
     """見出しの文字を文節に分け、文節の切れ目にだけ改行候補（<wbr>）を入れる。最後の文節が2文字以下なら、前の文節とつなげる"""
     ph = _budoux.parse(text)
+    merged = []
+    for x in ph:  # 開きかっこ（「（」など）で終わる文節は、次の文節とつなげる（かっこの直後で改行しない）
+        if merged and merged[-1][-1:] in "（(「『【〈《":
+            merged[-1] += x
+        else:
+            merged.append(x)
+    ph = merged
     if len(ph) > 1 and len(ph[-1].strip()) <= 2:
         ph[-2:] = [ph[-2] + ph[-1]]
     return "<wbr>".join(e(x, quote=False) for x in ph)
@@ -103,6 +110,7 @@ def phrase_breaks(html):
     parts = re.split(r"(<[^>]+>)", body)
     skip = 0
     stack = []  # (タグ名, 見出しの中か)
+    row_first = False  # <tr> が開いて、まだ最初のマス（<td>・<th>）が来ていない
     block_end = re.compile(r"</(p|li|dd|dt|blockquote|figcaption|h[1-6]|th|td|span|a|button|label|summary)>")
     inline_end = re.compile(r"</(strong|em|b|a|span|small)>")
     for i, p in enumerate(parts):
@@ -123,8 +131,14 @@ def phrase_breaks(html):
                         in_h = True
                     elif up == "card" or _CARD_CLASS.search(p):
                         in_h = "card"
+                    elif name in ("td", "th") and row_first:
+                        in_h = "label"  # 表の1行目のマス（項目名）。短ければ見出しと同じく文節の切れ目で改行する
                     else:
                         in_h = False
+                    if name == "tr":
+                        row_first = True
+                    elif name in ("td", "th"):
+                        row_first = False
                     stack.append((name, in_h))
             continue
         text = unescape(p)
@@ -132,7 +146,7 @@ def phrase_breaks(html):
         if skip or not _JA.search(body_text):
             continue
         mode = stack[-1][1] if stack else False
-        if mode is True or (mode == "card" and len(body_text.strip()) <= _CARD_MAX):
+        if mode is True or (mode == "card" and len(body_text.strip()) <= _CARD_MAX) or (mode == "label" and len(body_text.strip()) <= 20):
             parts[i] = f'<n-w class="h">{_heading_phrases(body_text)}</n-w>{e(text[len(body_text):], quote=False)}'
             continue
         if len(body_text.strip()) < 6:
