@@ -50,7 +50,7 @@ ARTICLE_TSUNAMI = dict(
 <div class="table-scroll table-scroll--stack"><table class="table table--stack">
 <thead><tr><th>段階</th><th>ゲストに伝える動き</th><th>運営者が決めること</th></tr></thead>
 <tbody>
-<tr><td>津波注意報</td><td data-label="ゲストに伝える動き">海の中にいる人は、ただちに海から上がる。海岸から離れる</td><td data-label="運営者が決めること">泊まっているゲストが宿にいるか、外出中かを確かめるか。次の連絡をいつにするか</td></tr>
+<tr><td>津波注意報</td><td data-label="ゲストに伝える動き">海の中にいる人は、ただちに海から上がる。海岸から離れる</td><td data-label="運営者が決めること">ゲストが宿にいるか外出中かを確かめるかどうか。次の連絡をいつにするか</td></tr>
 <tr><td>津波警報・大津波警報</td><td data-label="ゲストに伝える動き">ただちに、高台や避難ビルへ向かう</td><td data-label="運営者が決めること">宿の周辺で、どの高台・避難ビルを案内するか（事前に調べておく）</td></tr>
 </tbody>
 </table>
@@ -74,11 +74,11 @@ ARTICLE_TSUNAMI = dict(
             ("", "次の連絡", "次にいつ、どんなときに連絡するか"),
         ], "※ 4点を1通にまとめるのがおすすめです。状況が変わったら、同じ4点で送り直します。") + """
 <p>スマホの通知で最後まで読めるように、1通は短くします。ゲストが日本語を読めないなら、予約のやりとりで使った言語で送ると、いちばん伝わります。</p>
-<p>英語の文例を4つ並べました。どれも、中学英語で読めるやさしい言い方です。</p>
+<p>英語の文例を4つ並べました。どれも、短くてやさしい言い方にしてあります。</p>
 <div class="table-scroll table-scroll--stack"><table class="table table--stack">
 <thead><tr><th>場面</th><th>日本語</th><th>English</th></tr></thead>
 <tbody>
-<tr><td>注意報が出たとき</td><td data-label="日本語">津波注意報が出ています。海や海岸にいる方は、すぐに海から上がり、海岸から離れてください。最新の情報を確認してください。また連絡します。</td><td data-label="English">A tsunami advisory has been issued. If you are in the sea or on the beach, please get out of the water and move away from the coast now. Please check the latest information. I will message you again.</td></tr>
+<tr><td>注意報が出たとき</td><td data-label="日本語">津波注意報が出ています。海や海岸にいる方は、すぐに海から上がり、海岸から離れてください。最新の情報を確認してください。また連絡します。</td><td data-label="English">A tsunami advisory has been issued. If you are in the sea or on the beach, please get out of the water now. Please move away from the coast. Please check the latest information. I will message you again.</td></tr>
 <tr><td>警報が出たとき</td><td data-label="日本語">津波警報が出ました。すぐに高台か避難ビルへ向かってください。次の連絡を待たずに動いてください。</td><td data-label="English">A tsunami warning has been issued. Please go to higher ground or a tsunami evacuation building right now. Do not wait for my next message.</td></tr>
 <tr><td>外出中のゲストへ</td><td data-label="日本語">いま、海の近くにいますか。海の近くなら、海岸から離れてください。いる場所を教えてください。</td><td data-label="English">Are you near the sea now? If you are, please move away from the coast. Please tell me where you are.</td></tr>
 <tr><td>解除されたとき</td><td data-label="日本語">津波注意報が解除されました。このあとのことは、あらためて連絡します。</td><td data-label="English">The tsunami advisory has been lifted. I will contact you again about the rest of your stay.</td></tr>
@@ -89,7 +89,7 @@ ARTICLE_TSUNAMI = dict(
 <details class="fold">
 <summary>やさしい英語に書き換えるコツ</summary>
 <ol class="steps">
-<li><strong>1文に頼みごとは1つ</strong>：「海から上がる」と「海岸から離れる」は、文を分けても大丈夫です。</li>
+<li><strong>頼みごとが多いときは、文を分ける</strong>：「海から上がる」と「海岸から離れる」は、文を分けても大丈夫です。</li>
 <li><strong>動詞で始める</strong>：please get out、please move のように、してほしい動きを先に書きます。</li>
 <li><strong>固有の地名は足す</strong>：避難先の建物名や高台の名前は、地図で見つかる呼び名にします。</li>
 <li><strong>翻訳アプリの結果を読み返す</strong>：長い文になっていたら、短く切ります。</li>
@@ -166,7 +166,7 @@ ARTICLE_TSUNAMI = dict(
     faq=[
         ('津波注意報と津波警報の違いは何ですか？', '気象庁は、予想される最大波の高さを、津波注意報で0.2m以上1m以下、津波警報で1m超3m以下、大津波警報で3m超としています。注意報では海から上がって海岸から離れ、警報以上では高台や避難ビルへ向かいます（2026年11月6日取得）。'),
         ('外国人ゲストには、何を伝えればいいですか？', '「津波の種類・どこへ行くか・いま何をするか・次の連絡」の4点を、短く伝えます。状況が変わったら、同じ4点で送り直します。'),
-        ('自分が現地にいないときは、どうすればいいですか？', '予約サイトのメッセージで、状況と避難の必要性をこまめに伝えます。メッセージなら、現地にいなくても送れます。私たちの下田の宿では、2025年7月末の津波注意報のとき、メッセージで状況と避難の必要性をこまめに伝えました。'),
+        ('自分が現地にいないときは、どうすればいいですか？', '予約サイトのメッセージで、状況と避難の必要性をこまめに伝えます。メッセージなら、現地にいなくても送れます。事例は「キャンセルや返金には、応じるべき？」の節に書いています。'),
         ('キャンセルや返金には、必ず応じるべきですか？', '必ず応じるとは言えません。予約サイトごとに決まりが違うので、自分の予約サイトのヘルプで確かめ、先に自分の方針を決めておきます。私たちは、ゲストの意向で返金に応じた例があります。'),
         ('災害時の案内には、決まりがありますか？', '民泊新法の届出住宅は、外国人宿泊者に、火災・地震などの災害時の通報連絡先（消防署などへの連絡方法）を、予約時に日本語以外で提示した言語で案内することなどが決まっています（観光庁）。旅館業法の簡易宿所は別の法令なので、保健所に確認してください。'),
         ('注意報が解除されたら、すぐ普段どおりに戻していいですか？', '気象庁は、津波は長い時間くり返し襲うため、解除まで避難を続けるよう呼びかけています。解除の発表を確かめてから、ゲストに連絡し、チェックインと清掃を再開します。'),
