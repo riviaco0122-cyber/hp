@@ -232,11 +232,12 @@ def card_tags(a):
 
 def list_name(a):
     """一覧カードの表示名（短い。1〜2行）。元の title は変えない"""
-    # 2行に分けた短い名前は、1行目が句読点で終わっていなければ「｜」でつなぐ（「〜の取り方広さ…」のように続けて読めてしまうため）
+    # 2行に分けた短い名前は、1行目が名詞（漢字・カタカナ・英数字）で終わるときだけ「｜」でつなぐ（「〜の取り方広さ…」のように
+    # 名詞が続けて読めてしまうため）。助詞・動詞など（ひらがな）や句読点で終わるときは、1つの文なのでそのまま続ける
     lines = [l.strip() for l in a["short"].split("\n") if l.strip()]
     out = lines[0] if lines else ""
     for l in lines[1:]:
-        out += l if out[-1:] in "。、！？」』）" else "｜" + l
+        out += l if re.search(r"[ぁ-ゖ。、！？」』）]$", out) else "｜" + l
     return out
 
 
@@ -296,34 +297,36 @@ MEDIA_CAT_TITLE = {
 }
 # 読者の状況（ペルソナ）別のガイド。悩みが生まれる順に「段階」を分け、記事を並べる
 MEDIA_GUIDES = [
-    dict(key="sell", label="空き家を売りたい", title="空き家を売りたい方へ", service="operation", photo="old-town-street",
-         who="相続した実家や、使っていない家を手放したい方",
-         worries=["放置しているとどうなる？", "売るときの税金は？", "売る以外の選択肢は？"],
+    # 4つのガイドは「宿を誰が運営するか」で分ける（人の方針 2026-11-01。重なり・漏れのない分け方）。
+    # 運営しない持ち主＝手放す（sell）／任せる（use）、自分で運営する人＝はじめる（side）／伸ばす（run）。プラン（買取・借り上げ・開業運営・WEB集客）と1対1
+    dict(key="sell", label="空き家を手放したい", title="空き家を手放したい方へ", service="operation", photo="old-town-street",
+         who="相続した実家や使っていない家を、売ることも含めて手放したい方",
+         worries=["放っておくとどうなる？", "売るときの税金は？", "売る前に比べる道は？"],
          lead="相続した実家や、使っていない家を手放したい。そう考えたときに知っておきたいことを、悩みが生まれる順に並べました。",
          stages=[
-             ("まず知っておきたいこと", "放置した場合の負担と、空き家をめぐる制度の変化。", ["akiya-inherited-house-to-inn", "akiya-bank-guide"]),
-             ("売る前に、比べておきたいこと", "売る以外に「貸す」「宿として活かす」という選択肢も。手取りと将来を比べて判断します。", ["akiya-lease-types", "shizuoka-yaizu-akiya-inn", "new-build-vs-used-house-inn"]),
-             ("お金と税金", "売却したときの税金と、使える特例。", ["akiya-3000man-deduction"]),
+             ("放っておくと、どうなる？", "維持費と税金、空き家をめぐる制度の変化、家族での話し合い。", ["akiya-holding-costs", "akiya-law-kanri-fuzen", "souzoku-touki-gimuka", "akiya-inherited-house-to-inn", "inherited-house-family-talk"]),
+             ("売る前に、ほかの道と比べる", "売る・壊す・貸す・宿にする。手取りと、家が残るかを比べて判断します。", ["akiya-utilization-options", "akiya-demolish-or-renovate", "akiya-lease-types", "why-akiya-utilization-now"]),
+             ("売るときのお金と相談先", "売却の税金の特例と、空き家バンク、買取の相談。", ["akiya-3000man-deduction", "akiya-bank-guide", "akiyado-what-we-do"]),
          ]),
-    dict(key="use", label="空き家を活かしたい", title="空き家を活かしたい方へ", service="operation", photo="thatched-house",
-         who="家を手放さずに、収入や地域の役に立つ形で活かしたい方",
-         worries=["古い家でも宿にできる？", "貸す？任せる？自分でやる？", "改修にいくらかかる？"],
-         lead="思い出のある家を手放さずに、収入や地域の役に立つ形で活かしたい。活用の選び方から改修、お金のことまでを順番に。",
+    dict(key="use", label="空き家を任せたい", title="空き家を任せたい方へ", service="operation", photo="thatched-house",
+         who="家は手放さず、自分では運営せずに、貸す・任せる形で活かしたい方",
+         worries=["古い家でも宿に向く？", "貸す？借り上げ？何が違う？", "賃貸と宿、収入はどう違う？"],
+         lead="思い出のある家は残したい。でも、自分で宿を運営するのは難しい。貸す・任せる形で活かす道を、比べ方から順番に。",
          stages=[
-             ("活かし方を知る", "空き家が宿として、地域の中でどんな価値を持つのか。", ["akiya-inherited-house-to-inn"]),
-             ("活かし方を選ぶ", "貸す・運営を任せる・自分で営業する。契約と法令の違い。", ["akiya-lease-types", "minpaku-vs-ryokan-law", "minpaku-management-company"]),
-             ("家を整える", "残すもの・直すもの、消防設備の基準。", ["kominka-renovation-points", "minpaku-fire-safety", "new-build-vs-used-house-inn"]),
-             ("お金の見通しを立てる", "補助金と、収益の見込みの立て方。", ["small-inn-subsidies", "airdna-revenue-simulation"]),
+             ("家を残して活かす道を知る", "住まいとして貸しにくい家が、宿として選ばれる理由。", ["why-minpaku-for-akiya", "why-akiya-utilization-now", "akiya-utilization-options", "inherited-house-family-talk"]),
+             ("宿に向く家か、確かめる", "立地・建物・法令で、宿に向くかを見るところ。", ["akiya-minpaku-suitability", "shizuoka-yaizu-akiya-inn", "kominka-renovation-points"]),
+             ("貸し方と収入を比べる", "普通の賃貸・定期借家・借り上げの違いと、収入の比べ方、相談の流れ。", ["akiya-lease-types", "minpaku-vs-rental-income", "akiyado-what-we-do", "akiyado-consultation-flow"]),
          ]),
-    dict(key="side", label="副業で宿をはじめたい", title="副業で宿をはじめたい方へ", service="management", photo="white-bedroom",
-         who="本業を続けながら、民泊や小さな宿に挑戦してみたい方",
-         worries=["副業でも民泊はできる？", "資金はいくら必要？", "本業があっても運営できる？"],
-         lead="本業を続けながら、民泊や小さな宿に挑戦してみたい。市場の見方から開業の手続き、資金、運営を任せる方法までを順番に。",
+    dict(key="side", label="宿をはじめたい", title="宿をはじめたい方へ", service="management", photo="white-bedroom",
+         who="持ち家でも借りた家でも、副業でも本業でも、自分で民泊や小さな宿を始めたい方",
+         worries=["本当に始めて大丈夫？", "資金はいくら必要？", "許可や準備は何から？"],
+         lead="自分で民泊や小さな宿を始めたい。始めるかどうかの判断から、物件とお金、家の整え方、許可と開業、先に始めた人の事例までを順番に。",
          stages=[
-             ("市場と可能性を知る", "どんな旅行者が、どんな宿を求めているのか。投資としての考え方。", ["long-stay-travel-demand", "minpaku-investment-yield"]),
-             ("物件とお金を準備する", "物件の探し方、収益の見込み、資金の集め方。", ["akiya-bank-guide", "airdna-revenue-simulation", "inn-startup-funding", "small-inn-subsidies"]),
-             ("開業の手続きを進める", "民泊か旅館業か、消防、管理を任せる体制。", ["minpaku-start-steps", "minpaku-vs-ryokan-law", "minpaku-fire-safety", "minpaku-management-company"]),
-             ("運営して、育てる", "数字の読み方、集客、レビュー、清掃、宿泊税。", ["inn-kpi-basics", "ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips", "cleaning-linen-operations", "accommodation-tax"]),
+             ("始めるかどうかを決める", "民泊の大変なところ、市場の見方、副業で始めるときの注意、年180日の決まり。", ["minpaku-hard-truth", "japan-tourism-market-data", "long-stay-travel-demand", "kaishain-minpaku-fukugyo", "minpaku-180days-rule", "minpaku-investment-yield"]),
+             ("物件とお金を準備する", "物件の探し方、収益と赤字にならない線、資金の集め方と補助金。", ["akiya-bank-guide", "minpaku-chintai-start", "akiya-minpaku-suitability", "airdna-revenue-simulation", "minpaku-break-even", "inn-startup-funding", "small-inn-subsidies"]),
+             ("家を整える", "改修の進め方、消防設備、備品と設備。", ["kominka-renovation-points", "remote-renovation-tips", "new-build-vs-used-house-inn", "minpaku-fire-safety", "minpaku-bihin-priority", "long-stay-guest-equipment"]),
+             ("許可を取り、開業する", "民泊新法か旅館業か、管理の体制、案内の準備、最初の集客。", ["minpaku-start-steps", "minpaku-vs-ryokan-law", "kani-shukusho-kyoka-guide", "minpaku-management-company", "minpaku-house-guide", "minpaku-shukyaku-first-steps"]),
+             ("先に始めた人に学ぶ", "空き家や借りた家で宿を始めた人の、費用・収支・つまずき。", ["case-rental-house-inn-first-year", "case-owner-subsidy-akiya", "case-owner-diy-cottage", "case-owner-fishing-port", "case-owner-rental-side-business", "case-owner-licensed-akiya", "case-owner-setouchi-cycling", "case-owner-castle-town-nagaya", "case-owner-satoyama-airdna"]),
          ]),
     # すでに宿を運営している方向け。集客・採用の記事の受け皿（記事データに guides=[("run", 2)] のように書く）
     dict(key="run", label="宿の運営を伸ばしたい", title="宿の運営を伸ばしたい方へ", service="marketing", photo="laptop-dashboard",
@@ -331,9 +334,9 @@ MEDIA_GUIDES = [
          worries=["予約がなかなか増えない", "予約サイトの手数料が重い", "清掃や運営の人手が足りない"],
          lead="民泊や小さな宿を運営していて、予約や人手に悩んでいる。数字の見方から、予約の増やし方、人手と運営の整え方までを順番に。",
          stages=[
-             ("数字で今を知る", "稼働率・客室単価の読み方と、赤字にならない線。", ["inn-kpi-basics", "minpaku-break-even"]),
-             ("予約を増やす", "予約サイトと自社予約の使い分け、掲載ページ、レビュー、料金、閑散期。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips", "case-owner-pricing-mistake", "minpaku-off-season"]),
-             ("人手と運営を整える", "清掃の仕組み、離れた場所からの運営、近隣との関係、任せる先。", ["cleaning-linen-operations", "minpaku-remote-operation", "minpaku-neighbor-rules", "minpaku-management-company"]),
+             ("数字で今を知る", "稼働率・客室単価の読み方、赤字にならない線、宿泊税。", ["inn-kpi-basics", "minpaku-break-even", "accommodation-tax"]),
+             ("予約を増やす", "予約サイトと自社予約の使い分け、掲載ページ、レビュー、料金、閑散期。", ["ota-vs-direct-booking", "listing-photo-tips", "guest-review-tips", "case-owner-pricing-mistake", "minpaku-off-season", "minpaku-shukyaku-first-steps"]),
+             ("人手と運営を整える", "清掃の仕組み、離れた場所からの運営、近隣との関係、任せる先、ゲストへの案内。", ["cleaning-linen-operations", "minpaku-seisou-kojin-kakunin", "minpaku-remote-operation", "minpaku-neighbor-rules", "minpaku-management-company", "minpaku-house-guide"]),
          ]),
 ]
 # 記事は今後も増える前提。記事データに guides=[("sell", 2)]（ガイドのkey, Stepの番号）と書けば、
@@ -345,22 +348,22 @@ for _a in ARTICLES:
             _st.append(_a["slug"])
 for _g in MEDIA_GUIDES:
     _g["slugs"] = list(dict.fromkeys(x for _, _, xs in _g["stages"] for x in xs))
-MEDIA_GUIDE_FOR_CAT = {"sell": "sell", "lend": "use", "house": "use", "start": "side", "money": "side", "operate": "run", "trend": "use"}
+MEDIA_GUIDE_FOR_CAT = {"sell": "sell", "lend": "use", "house": "side", "start": "side", "money": "side", "operate": "run", "trend": "side"}
 # よくある悩みから記事へ（読者の言葉で書く）
 MEDIA_QUESTIONS = [
     ("sell", "相続した実家、放置するとどうなる？", "akiya-inherited-house-to-inn"),
     ("sell", "空き家を売ったら、税金はどれくらいかかる？", "akiya-3000man-deduction"),
     ("use", "観光地ではない場所の空き家でも、宿になる？", "shizuoka-yaizu-akiya-inn"),
     ("use", "家を貸すなら、どんな契約がいい？", "akiya-lease-types"),
-    ("use", "古い家を宿にするなら、どこを直すべき？", "kominka-renovation-points"),
-    ("side", "副業で民泊をはじめるには、何から？", "minpaku-start-steps"),
+    ("side", "民泊をはじめるには、何から？", "minpaku-start-steps"),
+    ("side", "古い家を宿にするなら、どこを直すべき？", "kominka-renovation-points"),
     ("side", "民泊と旅館業、どちらで始めればいい？", "minpaku-vs-ryokan-law"),
     ("side", "本業があっても、宿の運営はできる？", "minpaku-management-company"),
     ("side", "開業資金は、どう用意する？", "inn-startup-funding"),
     ("side", "実際、初期投資はどれくらいで回収できる？", "case-rental-house-inn-first-year"),
     ("side", "宿の収益は、どれくらい見込める？", "airdna-revenue-simulation"),
 ]
-MEDIA_LEAD = "空き家を売りたい、活かしたい。副業で民泊をはじめたい。その悩みに、宿を運営する私たちが順を追ってお答えします。"
+MEDIA_LEAD = "空き家を手放したい、任せたい。自分で宿をはじめたい、伸ばしたい。その悩みに、宿を運営する私たちが順を追ってお答えします。"
 
 
 # 記事の途中に置く相談の案内（読者の状況＝ガイドごとに言葉を変える）

@@ -302,12 +302,12 @@ def media_index_page():
         "@type": "ItemList",
         "name": "アキヤドのメニュー",
         "itemListElement": [{"@type": "SiteNavigationElement", "position": i, "name": n, "url": f"{SITE}/{u}"} for i, (n, u) in enumerate([
-            ("空き家を売りたい方へ", "media/guide-sell.html"), ("空き家を活かしたい方へ", "media/guide-use.html"),
-            ("副業で宿をはじめたい方へ", "media/guide-side.html"), ("アキヤドのプラン", "media/plans.html"),
+            ("空き家を手放したい方へ", "media/guide-sell.html"), ("空き家を任せたい方へ", "media/guide-use.html"),
+            ("宿をはじめたい方へ", "media/guide-side.html"), ("宿の運営を伸ばしたい方へ", "media/guide-run.html"), ("アキヤドのプラン", "media/plans.html"),
             ("ゼロから体系的に学ぶ", "media/learn.html"), ("無料相談・お問い合わせ", "media/contact.html"),
             ("運営者情報", "media/company.html")], 1)],
     }]
-    page("media.html", "アキヤド｜空き家の売却・活用と、副業ではじめる民泊のメディア", "空き家を売りたい方、活かしたい方、副業で民泊や小さな宿をはじめたい方に向けて、宿を運営する合同会社RIVIA&CO.が悩みに沿って解説するメディアです。", body, current="media", jsonld=ld, mnav="top")
+    page("media.html", "アキヤド｜空き家の売却・活用と、副業ではじめる民泊のメディア", "空き家を手放したい方、任せたい方、自分で民泊や小さな宿をはじめたい方、運営を伸ばしたい方に向けて、宿を運営する合同会社RIVIA&CO.が悩みに沿って解説するメディアです。", body, current="media", jsonld=ld, mnav="top")
 
 
 def theme_tags(current=None, all_href="media.html#all"):
