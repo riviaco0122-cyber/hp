@@ -828,6 +828,24 @@
     }
     return true;
   }
+  function kind(ch) {
+    if (/[ぁ-んゝゞ]/.test(ch)) return 'h';
+    if (/[ァ-ヶー]/.test(ch)) return 'k';
+    if (/[一-龯々〆]/.test(ch)) return 'c';
+    if (/[0-9A-Za-z０-９Ａ-Ｚａ-ｚ]/.test(ch)) return 'a';
+    if (/[「『（(【〈《]/.test(ch)) return 'o';
+    return 'p';
+  }
+  // 単語の切れ目らしい位置か（「、」のあと、ひらがな→漢字・カタカナ・英数字に変わる所など）。「問わ／ず」のような切り方を避ける
+  function isBoundary(a, b) {
+    var ka = kind(a), kb = kind(b);
+    if (/[、。，．）」』】〉》!?！？]/.test(a)) return true;
+    if (kb === 'o') return true;
+    if (ka === 'h' && kb !== 'h') return true;
+    if (ka !== kb && (ka === 'a' || kb === 'a')) return true;
+    if ((ka === 'k' && kb === 'c') || (ka === 'c' && kb === 'k')) return true;
+    return false;
+  }
   function insertBr(c) {
     var node = c.node, at = c.i;
     if (at > 0) node = node.splitText(at);
@@ -850,11 +868,13 @@
       if (last[0].node.previousSibling && last[0].node.previousSibling.nodeName === 'BR' && last[0].i === 0) return; // 意図した改行のあと
       var heading = !!el.querySelector('wbr'); // 文節の区切り（<wbr>）がある見出しは、その位置でだけ下ろす
       var want = TARGET - last.length; // 前の行から下ろしたい文字数
-      var best = null;
+      var best = null, bestScore = 0;
       var from = heading ? 2 : Math.max(2, prev.length - want - 6); // 見出しは、文節の頭ならどこまで戻ってもよい
       for (var k = from; k < prev.length - 1; k++) { // 前の行に最低2文字は残す
         if (!okBreakBefore(prev[k], heading)) continue;
-        if (!best || Math.abs((prev.length - k) - want) < Math.abs((prev.length - best) - want)) best = k;
+        // 単語の途中で切る位置は大きく減点する（切れ目がどこにもないときだけ使う）
+        var score = Math.abs((prev.length - k) - want) + (heading || isBoundary(prev[k - 1].node.data[prev[k - 1].i], prev[k].node.data[prev[k].i]) ? 0 : 20);
+        if (best === null || score < bestScore) { best = k; bestScore = score; }
       }
       if (best !== null) insertBr(prev[best]);
     });
