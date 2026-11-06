@@ -720,7 +720,7 @@
       if (blocks.indexOf(b) < 0) blocks.push(b);
     });
     blocks.forEach(function (blk) {
-      if (blk.offsetParent === null || blk.querySelector('p, li, dd, div, ul, ol, table')) return;
+      if (blk.offsetParent === null || blk.querySelector('p, li, dd, div, ul, ol, table') || blk.closest('table')) return; // 表のマスは「|」（<wbr>）で改行位置を決めるので対象外
       var cs = getComputedStyle(blk);
       if (cs.textAlign === 'center' || cs.textAlign === 'right' || cs.whiteSpace === 'nowrap' || cs.writingMode.indexOf('vertical') === 0) return;
       if (maxGap(blk) > (parseFloat(cs.fontSize) >= 22 ? 5 : 3)) {
