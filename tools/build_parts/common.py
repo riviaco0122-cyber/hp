@@ -56,10 +56,20 @@ def _heading_phrases(text):
     return "<wbr>".join(e(x, quote=False) for x in ph)
 
 
+def _keep_numbers(text):
+    """数字と、直後の1文字（単位・助数詞）の間で改行しない（「2／つ」「5／万円」を防ぐ）。エスケープ済みの文字列を返す"""
+    out, last = [], 0
+    for m in re.finditer(r"\d[\d,.]*[^\s\d,.、。・（）()「」]", text):
+        out += [e(text[last:m.start()], quote=False), f"<n-b>{e(m.group(0), quote=False)}</n-b>"]
+        last = m.end()
+    return "".join(out) + e(text[last:], quote=False)
+
+
 def phrase_breaks(html):
     """日本語の改行（人の方針 2026-11-05・11-06）。
     - 本文：ふつうに行末まで詰めて折り返す（両端揃え・字間の調整はしない）。段落・ラベルの最後（と <br> の手前）の3文字だけは
       ひとまとまり（<n-b>、改行しない）にして、最後の行に1〜2文字だけがはみ出して残らないようにする。
+      数字と直後の単位（「2つ」「5万円」）の間でも改行しない。
     - 見出し：単語の途中で切れないよう、文節の切れ目（<wbr>）でだけ改行する（<n-w class="h">、word-break: keep-all）。"""
     head, sep, body = html.partition("<body")
     parts = re.split(r"(<[^>]+>)", body)
@@ -91,14 +101,18 @@ def phrase_breaks(html):
             parts[i] = f'<n-w class="h">{_heading_phrases(body_text)}</n-w>{e(text[len(body_text):], quote=False)}'
             continue
         if len(body_text.strip()) < 6:
+            if re.search(r"\d", text):
+                parts[i] = _keep_numbers(text)
             continue
         j = i + 1
         while j < len(parts) and (parts[j] == "" or (inline_end.fullmatch(parts[j]) and not block_end.fullmatch(parts[j]))):
             j += 1
         if j >= len(parts) or not (block_end.fullmatch(parts[j]) or re.fullmatch(r"<br\b[^>]*>", parts[j])):
+            if re.search(r"\d", text):
+                parts[i] = _keep_numbers(text)
             continue
         # 全体を <n-w> で包む（横並び（flex）の中でも、文字が1つのまとまりのまま並ぶように）
-        parts[i] = (f"<n-w>{e(body_text[:-3], quote=False)}<n-b>{e(body_text[-3:], quote=False)}</n-b></n-w>"
+        parts[i] = (f"<n-w>{_keep_numbers(body_text[:-3])}<n-b>{e(body_text[-3:], quote=False)}</n-b></n-w>"
                     f"{e(text[len(body_text):], quote=False)}")
     return head + sep + "".join(parts)
 
