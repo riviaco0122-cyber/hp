@@ -484,7 +484,7 @@ def careers_page():
           </div>
           <div class="form__field">
             <label for="c-detail">詳細 <span class="req">必須</span></label>
-            <textarea id="c-detail" name="detail" placeholder="志望動機や希望年収、思っていることを是非教えてください。" required></textarea>
+            <textarea id="c-detail" name="detail" placeholder="志望動機や希望年収、思っていることを教えてください。" required></textarea>
           </div>
           <fieldset class="form__field form__fieldset">
             <legend class="form__legend">添付ファイル <span class="req">必須</span></legend>

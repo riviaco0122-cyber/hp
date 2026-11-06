@@ -543,6 +543,8 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .related__worry { font-family: var(--font-serif); font-weight: 300; font-size: 15px; line-height: 1.9; }
 .related__name { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; color: var(--c-sub); padding-top: 16px; border-top: 1px solid var(--c-line); }
 @media (max-width: 1099px) { .related { grid-template-columns: repeat(2, 1fr); } }
+/* PC：カードの枚数に合わせて枠いっぱいに並べる（2枚・3枚のグループで、右側が大きく空かないように） */
+@media (min-width: 1100px) { .related { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); } }
 @media (max-width: 899px) { .related { grid-template-columns: 1fr; } .related__card { padding: 28px 20px; gap: 20px; } }
 
 /* お問い合わせの安心材料 */
@@ -3278,7 +3280,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 
 /* PC：左＝番号と見出し（細い線で区切る）、右＝会話。吹き出しは右の列の幅いっぱいに */
 @media (min-width: 900px) {
-  .is-corp .issue { display: grid; grid-template-columns: 250px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 48px; }
+  .is-corp .issue { display: grid; grid-template-columns: 300px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 48px; } /* 悩みの見出しが言葉の切れ目で細かく折れないよう、1行に11文字ほど入る幅 */
   .is-corp .issue__problem { grid-column: 1; grid-row: 1 / span 2; align-self: stretch; padding-right: 40px; border-right: 1px solid var(--c-line); }
   .is-corp .issue__head { flex-direction: column; align-items: flex-start; gap: 12px; }
   .is-corp .issue__mark { font-size: 104px; }
