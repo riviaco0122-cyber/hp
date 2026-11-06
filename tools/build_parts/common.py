@@ -62,6 +62,30 @@ def _heading_phrases(text):
         else:
             merged.append(x)
     ph = merged
+    # 「」『』で囲んだ言葉（12文字以内）は、途中で改行しない1つのまとまりにする（「暮らすように／旅する」を防ぐ。人の指摘 2026-11-06）
+    merged, buf = [], None
+    for x in ph:
+        if buf is not None:
+            m = re.search(r"[」』]", x)
+            if not m:
+                buf += x
+                continue
+            whole, rest = buf + x[:m.end()], x[m.end():]
+            if len(whole) <= 13:
+                merged.append(whole)
+            else:
+                merged.extend([buf, x[:m.end()]])
+            if rest:
+                merged.append(rest)
+            buf = None
+            continue
+        if ("「" in x and "」" not in x[x.index("「"):]) or ("『" in x and "』" not in x[x.index("『"):]):
+            buf = x
+            continue
+        merged.append(x)
+    if buf is not None:
+        merged.append(buf)
+    ph = merged
     if len(ph) > 1 and len(ph[-1].strip()) <= 2:
         ph[-2:] = [ph[-2] + ph[-1]]
     # 最後の4文字は改行しないまとまり（<n-b>）にする。左揃えで右に大きな空きができて、js/main.js が言葉の途中でも折れる形
@@ -84,11 +108,11 @@ def _heading_phrases(text):
 
 
 # 数字のまとまり：前の「約」から、単位（「万人」「兆円」「年3月31日」など）まで。単位がないときは直後の1文字（「2つ」）まで
-_NUM_TOKEN = re.compile(r"(?:約)?\d[\d,.]*(?:(?:万|億|兆)?(?:人泊|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)(?:\d+(?:か月|月|日))*|[^\s\d,.、。・（）()「」])")
+_NUM_TOKEN = re.compile(r"(?:約)?\d[\d,.]*(?:(?:万|億|兆)?(?:人泊|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)(?:\d+(?:か月|月|日))*|[^\s\d,.、。・（）()「」])[、。，．）」』]*")
 
 
 # 本文の長い段落で使う、短いまとまり：数字と直後の1文字だけ（「5万」「2つ」）。まとまりを長くすると、行末で丸ごと次の行へ送られ、右側が大きく空くため
-_NUM_SHORT = re.compile(r"\d[\d,.]*[^\s\d,.、。・（）()「」]")
+_NUM_SHORT = re.compile(r"\d[\d,.]*[^\s\d,.、。・（）()「」][、。，．）」』]*")  # 直後の「、」「。」もまとめる（行頭に「、」が来ないように）
 # 会社名（「合同会社RIVIA&CO.」）は、数字のまとまりと同じく途中で改行しない（「RIVIA&／CO.」を防ぐ。人の指摘 2026-11-06）
 _BRAND = r"(?:合同会社)?RIVIA&CO\."
 _KEEP_LONG = re.compile(_BRAND + "|" + _NUM_TOKEN.pattern)
@@ -118,6 +142,53 @@ def _phrase_html(text):
     if text[last:]:
         out += [e(x, quote=False) for x in _budoux.parse(text[last:])]
     return "<wbr>".join(out)
+
+
+def _glue_short_tail(parts, i):
+    """段落の最後が「<strong>契約前に確認</strong>します。」のように、短い文字（6文字未満）で終わるとき、
+    直前の太字・リンクごと改行しないまとまり（<n-b>）にする（「確認し／ます。」を防ぐ。人の指摘 2026-11-06）。
+    直前の要素の中身が8文字を超えるときは何もしない（狭い枠ではみ出さないように）。<wbr> のあとの短い語（「ベンチャー」など）は、その語だけをまとめる"""
+    j = i + 1
+    while j < len(parts) and parts[j] == "":
+        j += 1
+    if j >= len(parts) or not re.fullmatch(r"</(p|li|dd|dt|blockquote|figcaption|td|th)>", parts[j]):
+        return False
+    k = i - 1
+    while k >= 0 and parts[k] == "":
+        k -= 1
+    if k >= 0 and re.fullmatch(r"<wbr\s*/?>", parts[k]):
+        parts[i] = "<n-b>" + e(unescape(parts[i]), quote=False) + "</n-b>"
+        return True
+    m = re.fullmatch(r"</(strong|em|b|a|span)>", parts[k]) if k >= 0 else None
+    if not m:
+        return False
+    if re.fullmatch(r"[。、．，）」』！？!?)\s]+", unescape(parts[i])):
+        # 句読点だけが残るとき（「…<strong>集めます</strong>。」）：「。」は行頭に来ないので、太字の中の最後の3文字をまとめれば足りる
+        t = k - 1
+        while t >= 0 and parts[t] == "":
+            t -= 1
+        if t >= 0 and not parts[t].startswith("<") and len(unescape(parts[t]).strip()) > 4:
+            txt = unescape(parts[t])
+            parts[t] = e(txt[:-3], quote=False) + "<n-b>" + e(txt[-3:], quote=False) + "</n-b>"
+            return True
+        return False
+    name, depth, o = m.group(1), 0, k
+    while o >= 0:
+        if re.fullmatch(rf"</{name}>", parts[o]):
+            depth += 1
+        elif re.match(rf"<{name}\b", parts[o]):
+            depth -= 1
+            if depth == 0:
+                break
+        o -= 1
+    if o < 0:
+        return False
+    inner = "".join(x for x in parts[o + 1:k] if not x.startswith("<"))
+    if len(unescape(inner).strip()) > 8 or any(re.match(r"</?(p|div|li|ul|ol|br)\b", x) for x in parts[o + 1:k]):
+        return False
+    parts[o] = "<n-b>" + parts[o]
+    parts[i] = e(unescape(parts[i]), quote=False) + "</n-b>"
+    return True
 
 
 def phrase_breaks(html):
@@ -163,7 +234,11 @@ def phrase_breaks(html):
             continue
         text = unescape(p)
         body_text = text.rstrip()
-        if skip or not _JA.search(body_text):
+        if skip:
+            continue
+        if 0 < len(body_text.strip()) < 6 and _glue_short_tail(parts, i):  # 「…<strong>集めます</strong>。」の「。」など
+            continue
+        if not _JA.search(body_text):
             continue
         mode = stack[-1][1] if stack else False
         if mode is True or (mode == "card" and len(body_text.strip()) <= _CARD_MAX) or (mode == "label" and len(body_text.strip()) <= 20):
