@@ -894,7 +894,7 @@
   // 単語の切れ目らしい位置か（「、」のあと、ひらがな→漢字・カタカナ・英数字に変わる所など）。「問わ／ず」のような切り方を避ける
   function isBoundary(a, b) {
     var ka = kind(a), kb = kind(b);
-    if (/[、。，．）」』】〉》!?！？]/.test(a)) return true;
+    if (/[、。，．・｜|）」』】〉》!?！？]/.test(a)) return true;
     if (kb === 'o') return true;
     if (ka === 'h' && kb !== 'h') return true;
     if (ka !== kb && (ka === 'a' || kb === 'a')) return true;
@@ -906,6 +906,7 @@
     if (at > 0) node = node.splitText(at);
     var br = document.createElement('br'); br.className = 'jsbr';
     node.parentNode.insertBefore(br, node);
+    return br;
   }
   function clear() {
     document.querySelectorAll('br.jsbr').forEach(function (br) { var p = br.parentNode; p.removeChild(br); p.normalize(); });
@@ -931,7 +932,10 @@
         var score = Math.abs((prev.length - k) - want) + (heading || isBoundary(prev[k - 1].node.data[prev[k - 1].i], prev[k].node.data[prev[k].i]) ? 0 : 20);
         if (best === null || score < bestScore) { best = k; bestScore = score; }
       }
-      if (best !== null) insertBr(prev[best]);
+      if (best === null) return;
+      var br = insertBr(prev[best]), after = lines(chars(el));
+      // 下ろしたら行が増えた・最後の行が長くならなかった（下ろした行が収まらず、また折れた）ときは、元に戻す（「防ぐ／相見積もり…配線確／認」を防ぐ）
+      if (after.length > ls.length || after[after.length - 1].cs.length <= last.length) { var bp = br.parentNode; bp.removeChild(br); bp.normalize(); }
     });
     busy = false;
   }
