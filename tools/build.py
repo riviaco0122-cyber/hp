@@ -4757,9 +4757,18 @@ def article_page(a):
         return re.sub(r'<p class="talk__q">(.*?)</p>',
                       lambda m: f'<div class="talk talk--q"><span class="talk__img talk__img--logo">{AKIYADO_MARK}</span><div class="talk__body"><p class="talk__name">編集部</p><p>{m.group(1)}</p></div></div>',
                       html, flags=re.S)
+    def label_lists(html):
+        """表の1列目の項目名が、3つ以上を「・」でつないだ長いもの（9文字以上）なら、1つずつ改行した箇条書きにする
+        （「鍵・／チェックイン／・防犯」のように「・」が行頭・行末に残って見えるため。人の指摘 2026-11-06）"""
+        def sub(m):
+            items = m.group(2).split("・")
+            if len(items) < 3 or len(m.group(2)) < 9 or "（" in m.group(2) or not all(items):
+                return m.group(0)
+            return m.group(1) + "<br>".join("・" + x for x in items) + m.group(3)
+        return re.sub(r"(<tr>\s*<td(?:\s[^>]*)?>)([^<]+)(</td>)", sub, html)
     def tables(html):
         html = talk_questions(talk_lists(html))
-        html = calc_lists(html)
+        html = calc_lists(label_lists(html))
         html = auto_stack_tables(html)
         html = html.replace('<table class="table">', '<div class="table-scroll"><table class="table">').replace("</table>", "</table></div>")
         return re.sub(r"<td>((?:約|―|—)?[0-9０-９.,]+(?:%|倍|か月)?(?:（[^<]{0,12}）)?)</td>", r'<td class="num">\1</td>', html)
