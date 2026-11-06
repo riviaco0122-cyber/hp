@@ -59,6 +59,10 @@ def _heading_phrases(text):
     for x in ph:  # 開きかっこ（「（」など）で終わる文節は、次の文節とつなげる（かっこの直後で改行しない）
         if merged and merged[-1][-1:] in "（(「『【〈《":
             merged[-1] += x
+        elif merged and merged[-1][-1:] == "と" and x.startswith("して"):  # 「第三者と／してではなく」→「第三者として／ではなく」
+            merged[-1] += "して"
+            if x[2:]:
+                merged.append(x[2:])
         else:
             merged.append(x)
     ph = merged
