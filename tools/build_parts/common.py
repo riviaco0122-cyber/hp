@@ -46,6 +46,9 @@ _budoux = budoux.load_default_japanese_parser()
 _VOID = {"br", "wbr", "img", "input", "meta", "link", "hr", "source", "col", "area", "base", "embed", "track"}
 # 見出しとして扱う要素：h1〜h6 と、クラス名が「〜__title」「〜__name」「〜__head」「〜heading」などの要素（カードや図の見出し）
 _HEADING_CLASS = re.compile(r'class="[^"]*(?:__title|__name|__head\b|heading|-title)\b')
+# カードの説明文などの短い文（60字以内）も、見出しと同じく文節の切れ目でだけ改行する（人の指摘 2026-11-06：事業紹介のカード）
+_CARD_CLASS = re.compile(r'class="[^"]*__(?:text|desc|sub|blurb|lead)\b')
+_CARD_MAX = 60
 
 
 def _heading_phrases(text):
@@ -114,14 +117,21 @@ def phrase_breaks(html):
                         while stack and stack.pop()[0] != name:
                             pass
                 elif name not in _VOID and not p.endswith("/>"):
-                    in_h = (stack[-1][1] if stack else False) or bool(re.fullmatch(r"h[1-6]", name)) or bool(_HEADING_CLASS.search(p))
+                    up = stack[-1][1] if stack else False
+                    if up is True or re.fullmatch(r"h[1-6]", name) or _HEADING_CLASS.search(p):
+                        in_h = True
+                    elif up == "card" or _CARD_CLASS.search(p):
+                        in_h = "card"
+                    else:
+                        in_h = False
                     stack.append((name, in_h))
             continue
         text = unescape(p)
         body_text = text.rstrip()
         if skip or not _JA.search(body_text):
             continue
-        if stack and stack[-1][1]:
+        mode = stack[-1][1] if stack else False
+        if mode is True or (mode == "card" and len(body_text.strip()) <= _CARD_MAX):
             parts[i] = f'<n-w class="h">{_heading_phrases(body_text)}</n-w>{e(text[len(body_text):], quote=False)}'
             continue
         if len(body_text.strip()) < 6:

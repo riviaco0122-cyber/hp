@@ -809,3 +809,113 @@
   window.addEventListener('resize', later);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(shape);
 })();
+
+// 最後の行が短い文（「ます。」「です。」「する力」などが次の行に3〜4文字だけ落ちる）のバランスをとる（人の方針 2026-11-06）
+// 実際の幅で組んだあと、最後の行が4文字以下の段落・見出し・ラベルだけ、前の行の途中に改行（<br class="jsbr">）を入れて、
+// 最後の行が7文字ほどになるよう一言を一緒に下ろす。画面幅が変わったら外して組み直す。
+// 見出し（n-w.h）は文節の切れ目（<wbr>）でだけ下ろす。数字と単位（<n-b>）や「、。」の前では切らない。
+(function () {
+  'use strict';
+  var SHORT = 4, TARGET = 7;
+  // 表のマスは対象外（改行を足すと列の幅が変わり、組み直しが止まらないため。マスの改行位置は「|」＝<wbr> で決める）
+  var SEL = 'main p, main li, main dd, main dt, main figcaption, main blockquote, main h1, main h2, main h3, main h4, main span[class*="__text"], main span[class*="__desc"], main span[class*="__lead"], main span[class*="__sub"], main span[class*="__blurb"], main span[class*="__note"]';
+  function blocks() { // 記事一覧など、あとから JS で描かれる部分もあるので、毎回探し直す
+    return Array.prototype.slice.call(document.querySelectorAll(SEL)).filter(function (el) {
+      return !el.querySelector('p, li, dd, div, ul, ol, table') && /[ぁ-んァ-ン一-龯]/.test(el.textContent);
+    });
+  }
+  var NOHEAD = /[、。，．・：；？！）」』】〉》ーぁぃぅぇぉっゃゅょァィゥェォッャュョ%％]/; // 行の頭に来てはいけない文字
+  function chars(el) { // el の中の文字（空白以外）を、位置と行の上端つきで並べる
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), out = [], n, r = document.createRange();
+    while ((n = w.nextNode())) {
+      for (var j = 0; j < n.length; j++) {
+        if (/\s/.test(n.data[j])) continue;
+        r.setStart(n, j); r.setEnd(n, j + 1);
+        var rc = r.getClientRects()[0]; if (!rc || !rc.width) continue;
+        out.push({ node: n, i: j, top: rc.top, h: rc.height });
+      }
+    }
+    return out;
+  }
+  function lines(cs) {
+    var ls = [];
+    cs.forEach(function (c) {
+      var l = ls[ls.length - 1];
+      if (!l || c.top > l.top + c.h * 0.6) ls.push({ top: c.top, cs: [c] }); else l.cs.push(c);
+    });
+    return ls;
+  }
+  function okBreakBefore(c, heading) {
+    if (NOHEAD.test(c.node.data[c.i])) return false;
+    var pe = c.node.parentElement;
+    if (pe && pe.tagName === 'N-B' && c.i > 0) return false; // 数字と単位のまとまりの途中
+    if (pe && pe.tagName === 'N-B' && c.i === 0 && pe.previousSibling === null && pe.parentElement && pe.parentElement.tagName === 'N-W') { /* n-w の先頭は可 */ }
+    if (heading) { // 見出しは文節の頭（直前が <wbr>）だけ
+      if (c.i !== 0) return false;
+      var prev = c.node.previousSibling;
+      return !!(prev && prev.nodeName === 'WBR');
+    }
+    return true;
+  }
+  function kind(ch) {
+    if (/[ぁ-んゝゞ]/.test(ch)) return 'h';
+    if (/[ァ-ヶー]/.test(ch)) return 'k';
+    if (/[一-龯々〆]/.test(ch)) return 'c';
+    if (/[0-9A-Za-z０-９Ａ-Ｚａ-ｚ]/.test(ch)) return 'a';
+    if (/[「『（(【〈《]/.test(ch)) return 'o';
+    return 'p';
+  }
+  // 単語の切れ目らしい位置か（「、」のあと、ひらがな→漢字・カタカナ・英数字に変わる所など）。「問わ／ず」のような切り方を避ける
+  function isBoundary(a, b) {
+    var ka = kind(a), kb = kind(b);
+    if (/[、。，．）」』】〉》!?！？]/.test(a)) return true;
+    if (kb === 'o') return true;
+    if (ka === 'h' && kb !== 'h') return true;
+    if (ka !== kb && (ka === 'a' || kb === 'a')) return true;
+    if ((ka === 'k' && kb === 'c') || (ka === 'c' && kb === 'k')) return true;
+    return false;
+  }
+  function insertBr(c) {
+    var node = c.node, at = c.i;
+    if (at > 0) node = node.splitText(at);
+    var br = document.createElement('br'); br.className = 'jsbr';
+    node.parentNode.insertBefore(br, node);
+  }
+  function clear() {
+    document.querySelectorAll('br.jsbr').forEach(function (br) { var p = br.parentNode; p.removeChild(br); p.normalize(); });
+  }
+  function fix() {
+    busy = true;
+    clear();
+    blocks().forEach(function (el) {
+      if (el.offsetParent === null) return;
+      var st = getComputedStyle(el);
+      if (st.writingMode.indexOf('vertical') === 0 || st.whiteSpace === 'nowrap' || /flex|grid|^inline$/.test(st.display)) return;
+      var ls = lines(chars(el)); if (ls.length < 2) return;
+      var last = ls[ls.length - 1].cs, prev = ls[ls.length - 2].cs;
+      if (last.length > SHORT) return;
+      if (last[0].node.previousSibling && last[0].node.previousSibling.nodeName === 'BR' && last[0].i === 0) return; // 意図した改行のあと
+      var heading = !!el.querySelector('wbr'); // 文節の区切り（<wbr>）がある見出しは、その位置でだけ下ろす
+      var want = TARGET - last.length; // 前の行から下ろしたい文字数
+      var best = null, bestScore = 0;
+      var from = heading ? 2 : Math.max(2, prev.length - want - 6); // 見出しは、文節の頭ならどこまで戻ってもよい
+      for (var k = from; k < prev.length - 1; k++) { // 前の行に最低2文字は残す
+        if (!okBreakBefore(prev[k], heading)) continue;
+        // 単語の途中で切る位置は大きく減点する（切れ目がどこにもないときだけ使う）
+        var score = Math.abs((prev.length - k) - want) + (heading || isBoundary(prev[k - 1].node.data[prev[k - 1].i], prev[k].node.data[prev[k].i]) ? 0 : 20);
+        if (best === null || score < bestScore) { best = k; bestScore = score; }
+      }
+      if (best !== null) insertBr(prev[best]);
+    });
+    busy = false;
+  }
+  var busy = false, mtimer;
+  var main = document.querySelector('main');
+  if (main && window.MutationObserver) new MutationObserver(function () { if (busy) return; clearTimeout(mtimer); mtimer = setTimeout(fix, 200); }).observe(main, { childList: true, subtree: true });
+  var timer, lastW = window.innerWidth;
+  function later() { if (window.innerWidth === lastW) return; lastW = window.innerWidth; clearTimeout(timer); timer = setTimeout(fix, 150); }
+  fix();
+  window.addEventListener('load', fix);
+  window.addEventListener('resize', later);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fix);
+})();
