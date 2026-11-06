@@ -672,47 +672,61 @@
 
   // 改行の仕方を、表示されている揃え方で決める（人の指摘 2026-11-06。docs/design-guide.md 3章）
   // ・中央揃えの文：言葉の切れ目（build で入れた <wbr>）でだけ改行する（n-w.c。見出しの n-w.h はもともと同じ）
-  // ・見出し・短い文（n-w.h）：まず言葉の切れ目で折る。ただし左揃えで、そのせいで行末に3文字分を超える空きができる行があれば、
-  //   その文のまとまり（段落・項目）の n-w.h を、言葉の途中でも折れる形（n-w.fill）にする（右の余白を少なくすることを優先。
-  //   人の方針 2026-11-06：「右に余白が大きく残るなら、単語で折り返してよい」）。大きな見出し（22px以上）は文節で折るほうが自然なので対象外
+  // ・左揃えの文：まず言葉の切れ目・まとまり（build で入れた <wbr>・<n-b>）を守って折る。ただし、そのせいで行末に3文字分を超える
+  //   空き（22px以上の大きな見出しは5文字分を超える空き）ができる行があれば、そのまとまり（段落・項目・見出し）を .wrap-fill にして、
+  //   言葉の途中でも折れるようにし、6文字以上の長い塊（日付・出典のかっこ・「・」のつながり）も解く（右の余白を少なくすることを優先。
+  //   人の方針 2026-11-06：「右に余白が大きく残るなら、単語で折り返してよい。右側の見栄えが大事」）。5文字以下の塊（「5万円」「ます。」「物・立」）は解かない。
+  //   数字の途中やかっこだけが残る折り方は、ブラウザの禁則処理で起きない
   // 部品によってはスマホとPCで揃え方が変わるので、画面の幅が変わったら付け直す
   var phraseTexts = document.querySelectorAll('n-w');
   var blockOf = function (el) { // 文字が並ぶまとまり（display: inline でない一番近い祖先）
     while (el.parentElement && getComputedStyle(el).display === 'inline') el = el.parentElement;
     return el;
   };
-  var bigGap = function (blk) { // まとまりの中で、最後の行以外に、行末の空きが3文字分を超える行があるか
+  var maxGap = function (blk) { // まとまりの中で、最後の行以外の行末の空き（文字数）の最大
     var cs = getComputedStyle(blk), fs = parseFloat(cs.fontSize);
     var right = blk.getBoundingClientRect().right - parseFloat(cs.paddingRight) - parseFloat(cs.borderRightWidth);
-    var range = document.createRange(), lines = [];
-    range.selectNodeContents(blk);
-    Array.prototype.forEach.call(range.getClientRects(), function (r) {
-      if (!r.width || !r.height) return;
-      var line = null;
-      for (var k = 0; k < lines.length; k++) if (Math.abs(lines[k].top - r.top) < fs * 0.6) { line = lines[k]; break; }
-      if (!line) { line = { top: r.top, right: r.right }; lines.push(line); }
-      line.right = Math.max(line.right, r.right);
+    var range = document.createRange(), lines = [], tw = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), t;
+    while ((t = tw.nextNode())) { // 文字の部分だけで測る（要素の箱の幅は数えない）
+      if (!t.data.trim()) continue;
+      range.selectNodeContents(t);
+      Array.prototype.forEach.call(range.getClientRects(), function (r) {
+        if (!r.width || !r.height) return;
+        var line = null;
+        for (var k = 0; k < lines.length; k++) if (Math.abs(lines[k].top - r.top) < fs * 0.6) { line = lines[k]; break; }
+        if (!line) { line = { top: r.top, right: r.right }; lines.push(line); }
+        line.right = Math.max(line.right, r.right);
+      });
+    }
+    blk.querySelectorAll('br').forEach(function (br) { // 手で入れた改行（<br>）の直前の行は、空いていて当然なので数えない
+      var t = br.getBoundingClientRect().top;
+      lines.forEach(function (l) { if (Math.abs(l.top - t) < fs * 0.6) l.hard = true; });
     });
     lines.sort(function (x, y) { return x.top - y.top; });
-    return lines.slice(0, -1).some(function (l) { return (right - l.right) / fs > 3; });
+    return lines.slice(0, -1).reduce(function (m, l) { return l.hard ? m : Math.max(m, (right - l.right) / fs); }, 0);
   };
   var fitLines = function () {
-    var checked = [];
+    document.querySelectorAll('.wrap-fill').forEach(function (b) { b.classList.remove('wrap-fill'); });
+    document.querySelectorAll('n-b.loose').forEach(function (b) { b.classList.remove('loose'); });
     Array.prototype.forEach.call(phraseTexts, function (n) {
       var p = n.parentElement;
       if (!p || !n.querySelector('wbr')) return;
-      n.classList.remove('fill');
       var centered = getComputedStyle(p).textAlign === 'center';
       if (!n.classList.contains('h')) n.classList.toggle('c', centered);
     });
-    Array.prototype.forEach.call(phraseTexts, function (n) {
-      if (!n.classList.contains('h') || !n.parentElement) return;
-      var blk = blockOf(n.parentElement);
-      if (checked.indexOf(blk) >= 0) return;
-      checked.push(blk);
+    var blocks = [];
+    document.querySelectorAll('main n-w, main n-b').forEach(function (n) {
+      var b = blockOf(n);
+      if (blocks.indexOf(b) < 0) blocks.push(b);
+    });
+    blocks.forEach(function (blk) {
+      if (blk.offsetParent === null || blk.querySelector('p, li, dd, div, ul, ol, table')) return;
       var cs = getComputedStyle(blk);
-      if (cs.textAlign === 'center' || cs.textAlign === 'right' || parseFloat(cs.fontSize) >= 22 || blk.offsetParent === null) return;
-      if (bigGap(blk)) blk.querySelectorAll('n-w.h').forEach(function (m) { m.classList.add('fill'); });
+      if (cs.textAlign === 'center' || cs.textAlign === 'right' || cs.whiteSpace === 'nowrap' || cs.writingMode.indexOf('vertical') === 0) return;
+      if (maxGap(blk) <= (parseFloat(cs.fontSize) >= 22 ? 5 : 3)) return;
+      blk.classList.add('wrap-fill');
+      // 6文字以上の塊と、「・」のすぐあとに英単語が続く塊（「価・R」＋「evPAR」で1つの長い塊になる）を解く
+      blk.querySelectorAll('n-b').forEach(function (b) { if (b.textContent.length >= 6 || /・[A-Za-z]$/.test(b.textContent)) b.classList.add('loose'); });
     });
   };
   if (phraseTexts.length) {
