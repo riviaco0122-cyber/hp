@@ -631,7 +631,7 @@ def media_service_page(sv):
           </div>
           <p class="msv-stats__cap">運営する宿の一例<span>NODE Shimoda（静岡県下田市）</span></p>
           <ul class="msv-stats">
-            <li><p class="msv-stats__num"><small class="msv-stats__pre">約</small>14<small>か月</small></p><p class="msv-stats__label">初期投資を回収</p><p class="msv-stats__note">約98%（購入費が基準）</p></li>
+            <li><p class="msv-stats__num"><small class="msv-stats__pre">約</small>14<small>か月</small></p><p class="msv-stats__label">初期投資を回収</p><p class="msv-stats__note">購入費の約98%</p></li>
             <li><p class="msv-stats__num"><small class="msv-stats__pre">約</small>53<small>%</small></p><p class="msv-stats__label">1年目の稼働率</p><p class="msv-stats__note">計画の約1.3倍</p></li>
             <li><p class="msv-stats__num">★4.88</p><p class="msv-stats__label">Airbnb の評価</p><p class="msv-stats__note">51件・掲載時点</p></li>
           </ul>
