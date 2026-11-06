@@ -668,6 +668,21 @@
     update();
   }
 
+  // 中央揃えで表示される文は、言葉の切れ目（build で入れた <wbr>）でだけ改行する（n-w.c。「実／際」のように語の途中で折れて目立つため。
+  // 部品によってはスマホとPCで揃え方が変わるので、画面の幅が変わったら付け直す）
+  var phraseTexts = document.querySelectorAll('n-w:not(.h)');
+  if (phraseTexts.length) {
+    var markCentered = function () {
+      Array.prototype.forEach.call(phraseTexts, function (n) {
+        var p = n.parentElement;
+        n.classList.toggle('c', !!(p && n.querySelector('wbr') && getComputedStyle(p).textAlign === 'center'));
+      });
+    };
+    var centerTimer;
+    markCentered();
+    window.addEventListener('resize', function () { clearTimeout(centerTimer); centerTimer = setTimeout(markCentered, 150); });
+  }
+
   // 横にスライドする表の案内（「表は左右にスライドできます →」）は、表が枠からはみ出すときだけ出す
   var hints = document.querySelectorAll('.table-hint');
   if (hints.length) {

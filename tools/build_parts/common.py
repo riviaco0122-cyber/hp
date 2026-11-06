@@ -75,6 +75,20 @@ def _keep_numbers(text, whole=False):
     return "".join(out) + e(text[last:], quote=False)
 
 
+def _phrase_html(text):
+    """短い文（100文字以下）の文字を、言葉の切れ目に改行候補（<wbr>）を入れた HTML にする。数字のまとまりは1つの塊（<n-b>）のまま。
+    左揃えでは行末まで詰めて折り返すので見た目は変わらず、中央揃えで表示される文だけ js/main.js が n-w.c にして切れ目でだけ改行させる"""
+    out, last = [], 0
+    for m in _NUM_TOKEN.finditer(text):
+        if text[last:m.start()]:
+            out += [e(x, quote=False) for x in _budoux.parse(text[last:m.start()])]
+        out.append(f"<n-b>{e(m.group(0), quote=False)}</n-b>")
+        last = m.end()
+    if text[last:]:
+        out += [e(x, quote=False) for x in _budoux.parse(text[last:])]
+    return "<wbr>".join(out)
+
+
 def phrase_breaks(html):
     """日本語の改行（人の方針 2026-11-05・11-06）。
     - 本文：ふつうに行末まで詰めて折り返す（両端揃え・字間の調整はしない）。段落・ラベルの最後（と <br> の手前）の3文字だけは
@@ -124,11 +138,14 @@ def phrase_breaks(html):
         # 全体を <n-w> で包む（横並び（flex）の中でも、文字が1つのまとまりのまま並ぶように）
         # 最後の3文字の切れ目が数字のまとまりの途中に入るときは、まとまりの頭から送る（「約3,18／8万人」を防ぐ）
         short = len(body_text.strip()) <= 20
+        whole_cut = len(body_text.strip()) <= 100
         cut = len(body_text) - 3
-        for m in (_NUM_TOKEN if short else _NUM_SHORT).finditer(body_text):
+        for m in (_NUM_TOKEN if whole_cut else _NUM_SHORT).finditer(body_text):
             if m.start() < cut < m.end():
                 cut = m.start()
-        parts[i] = (f"<n-w>{_keep_numbers(body_text[:cut], whole=short)}<n-b>{e(body_text[cut:], quote=False)}</n-b></n-w>"
+        # 100文字以下の文は、言葉の切れ目に改行候補を入れておく（中央揃えで表示されるときに、語の途中で折れないように。人の指摘 2026-11-06）
+        head_html = _phrase_html(body_text[:cut]) if len(body_text.strip()) <= 100 else _keep_numbers(body_text[:cut], whole=short)
+        parts[i] = (f"<n-w>{head_html}<n-b>{e(body_text[cut:], quote=False)}</n-b></n-w>"
                     f"{e(text[len(body_text):], quote=False)}")
     return head + sep + "".join(parts)
 

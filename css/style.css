@@ -51,7 +51,7 @@ body {
   line-break: strict;
   overflow-wrap: anywhere;
 }
-n-w.h { word-break: keep-all; } /* 見出しは文節の切れ目（<wbr>）でだけ改行し、単語の途中で切らない（tools/build.py） */
+n-w.h, n-w.c { word-break: keep-all; } /* 見出しと、中央揃えで表示される文（c。js/main.js が付ける）は、文節の切れ目（<wbr>）でだけ改行し、単語の途中で切らない（tools/build_parts/common.py） */
 n-b { white-space: nowrap; } /* 段落・見出しの最後の3文字。最後の行に1〜2文字だけが残らないよう、まとめて送る（tools/build.py） */
 img { max-width: 100%; height: auto; display: block; }
 /* hidden 属性は、各要素の display 指定より常に優先して非表示にする（絞り込み・予約公開で使用） */
