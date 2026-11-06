@@ -53,6 +53,8 @@ body {
 }
 :is(td, th):has(wbr) { word-break: keep-all; } /* 表のマスは「|」（<wbr>）の位置でだけ改行する */
 n-w.h, n-w.c { word-break: keep-all; } /* 見出しと、中央揃えで表示される文（c。js/main.js が付ける）は、文節の切れ目（<wbr>）でだけ改行し、単語の途中で切らない（tools/build_parts/common.py） */
+n-w.fill { word-break: normal; } /* 左揃えで、言葉の切れ目で折ると行末に3文字分を超える空きができる文（js/main.js が付ける）は、言葉の途中でも折る */
+n-w.fill n-b:has(n-b) { white-space: normal; } /* そのときは「・」でつないだ長い言葉（「建物・立地・法令・収支の」）の塊も解く。「・」と前後の1文字（内側の n-b）は離さない */
 n-b { white-space: nowrap; } /* 段落・見出しの最後の4文字。最後の行に2〜3文字だけが残らないよう、まとめて送る（tools/build.py） */
 img { max-width: 100%; height: auto; display: block; }
 /* hidden 属性は、各要素の display 指定より常に優先して非表示にする（絞り込み・予約公開で使用） */
