@@ -446,6 +446,7 @@ ARTICLES_AUTO = [
     ),
     dict(
         slug="kani-shukusho-kyoka-guide",
+        keyword="簡易宿所 許可",
         date="2026-10-16", updated="2026-10-30", topics=["start", "house"], photo=("old-town-street", "古い家が並ぶ町の通り"),
         title='簡易宿所の許可を取るには？民泊を旅館業で始める広さ・相談先・流れ',
         short="簡易宿所の許可の取り方\n広さ・相談先・流れ",
@@ -657,6 +658,7 @@ ARTICLES_AUTO = [
     ),
     dict(
         slug="minpaku-break-even",
+        keyword="民泊 損益分岐点",
         date="2026-10-17", updated="2026-10-30", topics=["money", "operate"], photo=("analytics-paper", "収支をまとめた資料"),
         title='民泊は稼働率何%で黒字？損益分岐点を自分で計算するやり方',
         short="民泊は稼働率何%で黒字？\n自分で計算するやり方",
@@ -856,6 +858,7 @@ ARTICLES_AUTO = [
     ),
     dict(
         slug="kaishain-minpaku-fukugyo",
+        keyword="会社員 民泊 副業",
         date="2026-10-18", updated="2026-10-31", topics=["money", "start"], photo=("laptop-dashboard", "ノートパソコンで書類を確認する様子"),
         title='会社員の民泊副業｜始める前の確認手順（就業規則・20万円ルール）',
         short="会社員の民泊副業\n就業規則と20万円ルール",
@@ -992,6 +995,7 @@ ARTICLES_AUTO = [
     ),
     dict(
         slug="minpaku-chintai-start",
+        keyword="賃貸 民泊",
         date="2026-10-19", updated="2026-10-31", topics=["start", "operate"], photo=("white-bedroom", "白い寝具の整った客室"),
         title='賃貸で民泊を始めるには？転貸の承諾書と管理規約の確認手順',
         short="賃貸で民泊を始めるには\n承諾書と管理規約",
@@ -1605,6 +1609,7 @@ ARTICLES_AUTO = [
     ),
     dict(
         slug="minpaku-house-guide",
+        keyword="民泊 ゲスト 質問",
         date="2026-10-31", updated="2026-10-31", topics=["operate"], photo=("white-bedroom", "白い寝具の整った客室"),
         title='民泊のゲストからの質問を減らす方法｜実際に届いた質問408件から',
         short="民泊のゲストの質問を減らす案内の送り方",
@@ -1816,6 +1821,7 @@ ARTICLES_AUTO = [
     ),
     dict(
         slug="minpaku-bihin-priority",
+        keyword="民泊 備品",
         date="2026-11-01", updated="2026-11-01", topics=["start", "operate"], photo=("white-bed", "白いシーツの整ったベッド"),
         title='民泊の備品は何から買う？買いすぎを防ぐ順番｜ゲストの質問408件から',
         short="民泊の備品は\n何から買う？",
@@ -1931,6 +1937,7 @@ ARTICLES_AUTO = [
     ),
     dict(
     slug="tsunami-advisory-guest-response",
+    keyword="民泊 津波",
     date="2026-11-07", topics=["operate"], photo=("own-open-sea", "穏やかな海と岬が見える港の景色"),
     guides=[("side", 4), ("run", 3)],
     title='民泊で津波注意報が出たら｜外国人ゲストへの伝え方と動き方',
