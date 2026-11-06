@@ -127,7 +127,7 @@ def services_page():
       <div class="container">
         <p class="page-hero__en ttl-x reveal"><span class="ln"><span>Service</span></span></p>
         <h1 class="page-hero__ja reveal" data-delay="1">事業内容</h1>
-        <p class="page-hero__lead page-hero__lead--2l reveal" data-delay="2">宿の運営・開業と、WEBマーケティング支援。2つの軸で、5つの事業を行っています。</p>
+        <p class="page-hero__lead reveal" data-delay="2"><span class="pc-only">宿泊施設の運営・開業と、WEBマーケティング支援。<br>2つの軸で、5つの事業を行っています。</span><span class="sp-only">宿の運営・開業と、WEBマーケティング支援。2つの軸で、5つの事業を行っています。</span></p>
       </div>
     </section>
 
