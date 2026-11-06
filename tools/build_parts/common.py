@@ -55,7 +55,7 @@ _CARD_MAX = 60
 _NO_SPLIT = ["のしかかる", "ドラッグ&ドロップ"]  # BudouX が途中で区切る言葉（人の指摘で見つけたら足す）
 
 
-def _heading_phrases(text):
+def _heading_phrases(text, tail=True):
     """見出しの文字を文節に分け、文節の切れ目にだけ改行候補（<wbr>）を入れる。最後の文節が2文字以下なら、前の文節とつなげる"""
     ph = _budoux.parse(text)
     merged = []
@@ -118,7 +118,7 @@ def _heading_phrases(text):
         ph[-2:] = [ph[-2] + ph[-1]]
     # 最後の4文字は改行しないまとまり（<n-b>）にする。左揃えで右に大きな空きができて、js/main.js が言葉の途中でも折れる形
     # （n-w.fill）に切り替えたときも、最後の行が2〜3文字だけにならないように（人の指摘 2026-11-06）
-    cut = len("".join(ph)) - 4 if len("".join(ph)) > 6 else -1
+    cut = len("".join(ph)) - 4 if tail and len("".join(ph)) > 6 else -1  # 段落の途中（リンク・太字の前）の文字には付けない
     out, pos, opened = "", 0, False
     for i, x in enumerate(ph):
         if i and pos <= cut:
@@ -312,7 +312,11 @@ def phrase_breaks(html):
         if blk is not None and 0 < blen.get(blk, 999) <= _SHORT_MAX:
             mode = True
         if mode is True or (mode == "card" and len(body_text.strip()) <= _CARD_MAX) or (mode == "label" and len(body_text.strip()) <= 20):
-            parts[i] = f'<n-w class="h">{_heading_phrases(body_text)}</n-w>{e(text[len(body_text):], quote=False)}'
+            jj = i + 1
+            while jj < len(parts) and (parts[jj] == "" or (inline_end.fullmatch(parts[jj]) and not block_end.fullmatch(parts[jj]))):
+                jj += 1
+            final = jj >= len(parts) or bool(block_end.fullmatch(parts[jj]) or re.fullmatch(r"<br\b[^>]*>", parts[jj]))
+            parts[i] = f'<n-w class="h">{_heading_phrases(body_text, tail=final)}</n-w>{e(text[len(body_text):], quote=False)}'
             continue
         if len(body_text.strip()) < 6:
             if re.search(r"\d|RIVIA&", text):
@@ -353,6 +357,15 @@ def phrase_breaks(html):
         elif not skip_ and "・" in sg:
             segs[k] = re.sub(r"([^\s・])・([^\s・])", r"<n-b>\1・\2</n-b>", sg)
     out = "".join(segs)
+    # 「」で囲んだリンク・太字（14文字以内）は、途中で改行しない（「相談から／開業までの流れ」を防ぐ。人の指摘 2026-11-06）
+    def _nb(m):
+        tag, attrs, inner = m.group(2), m.group(3), m.group(4)
+        if len(re.sub(r"<[^>]+>|\s", "", unescape(inner))) > 14:
+            return m.group(0)
+        attrs = re.sub(r'class="', 'class="nb ', attrs, 1) if 'class="' in attrs else attrs + ' class="nb"'
+        inner = re.sub(r"<wbr\s*/?>", "", inner)  # <wbr> は nowrap の中でも改行できる位置になるので外す
+        return f"{m.group(1)}<{tag}{attrs}>{inner}</{tag}>"
+    out = re.sub(r"(「(?:</?n-[bw][^>]*>)*)<(a|strong|em)\b([^>]*)>(.*?)</\2>(?=(?:</?n-[bw][^>]*>)*」)", _nb, out)
     return head + sep + out
 
 
