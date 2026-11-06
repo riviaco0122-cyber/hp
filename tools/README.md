@@ -18,7 +18,8 @@ python3 tools/build.py
 
 | ファイル | 中身 |
 | --- | --- |
-| `build.py` | 全ページの文言・構成・プラン・アキヤドの設定（テーマ、ガイド、よくある悩みなど） |
+| `build.py` | サイトを作り直す入口。本体の `build_parts/*.py` を決まった順番で読み込み、1つのファイルとして実行する |
+| `build_parts/*.py` | 全ページの文言・構成・プラン・アキヤドの設定（テーマ、ガイド、よくある悩みなど）。役割ごとのファイル（一覧と中身は `build.py` の `BUILD_PARTS`）。ほかのファイルの関数・定数は import なしで使える |
 | `articles_base.py` | アキヤドの初期の記事（以前は build.py の中にあったもの） |
 | `articles_sched1.py`・`articles_sched2.py`・`articles_case.py` | アキヤドの記事（公開日は各記事の `date`） |
 | `articles_auto.py` | AI社員チーム（毎朝の日次サイクル）が追加する記事 |
