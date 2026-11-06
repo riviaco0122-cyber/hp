@@ -328,6 +328,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .page-hero__en { font-family: var(--font-en); font-weight: 300; font-size: clamp(48px, 8vw, 104px); line-height: 1; letter-spacing: 0.06em; }
 .page-hero__ja { margin-top: 20px; font-size: 14px; color: var(--c-sub); letter-spacing: 0.12em; }
 .page-hero__lead { margin-top: 40px; color: var(--c-sub); max-width: 680px; line-height: 2.2; }
+.page-hero__lead--2l { max-width: 22.8em; } /* PC でも余白を持たせて2行で見せる（事業内容のリード。1文目で1行目が終わる幅） */
 @media (max-width: 899px) { .page-hero { padding: 72px 0 64px; } }
 
 /* サービス概要：一文のリードとして、余白を詰めた帯で見せる */
