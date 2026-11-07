@@ -119,6 +119,9 @@ def _heading_phrases(text):
     # 最後の4文字は改行しないまとまり（<n-b>）にする。左揃えで右に大きな空きができて、js/main.js が言葉の途中でも折れる形
     # （n-w.fill）に切り替えたときも、最後の行が2〜3文字だけにならないように（人の指摘 2026-11-06）
     cut = len("".join(ph)) - 4 if len("".join(ph)) > 6 else -1
+    for m in _KEEP_LONG.finditer("".join(ph)):  # 切れ目が数字と単位の途中（「80万／円の事例」）なら、数字の頭から送る
+        if m.start() < cut < m.end():
+            cut = m.start()
     out, pos, opened = "", 0, False
     for i, x in enumerate(ph):
         if i and pos <= cut:
@@ -342,7 +345,16 @@ def phrase_breaks(html):
     out = re.sub(r"(?<=[「『（(【〈《［・])((?:</?n-[bw][^>]*>)*)<wbr>", r"\1", out)
     out = re.sub(r"<wbr>((?:</?n-[bw][^>]*>)*)(?=[」』）)】〉》］、。，．・：；？！ー])", r"\1", out)
     # 開きかっこの直前と直後の文字を、改行しないまとまりにする（keep-all でない本文でも、「「」だけが行末に残らないように）
-    out = re.sub(r"([^\s<>「『（(【〈《])([「『（【〈《])([^\s<>」』）】〉》])", r"<n-b>\1\2\3</n-b>", out)
+    # （文字の部分だけに効かせる。タグの属性（フォームの隠し項目の値など）・script・style は触らない）
+    segs, skip_ = re.split(r"(<[^>]+>)", out), 0
+    for k, sg in enumerate(segs):
+        if sg.startswith("<"):
+            m = re.match(r"<(/?)(script|style|textarea|title|svg)\b", sg, re.I)
+            if m:
+                skip_ += -1 if m.group(1) else 1
+        elif k and not skip_:
+            segs[k] = re.sub(r"([^\s「『（(【〈《])([「『（【〈《])([^\s」』）】〉》])", r"<n-b>\1\2\3</n-b>", sg)
+    out = "".join(segs)
     # 「・」の前後で改行しない（「再生・／創出」「家具・／家電」を防ぐ。人の指摘 2026-11-06）。前後の1文字とまとめる
     segs, skip_ = re.split(r"(<[^>]+>)", out), 0
     for k, sg in enumerate(segs):
@@ -352,6 +364,15 @@ def phrase_breaks(html):
                 skip_ += -1 if m.group(1) else 1
         elif not skip_ and "・" in sg:
             segs[k] = re.sub(r"([^\s・])・([^\s・])", r"<n-b>\1・\2</n-b>", sg)
+    # 「Wi-Fi」「e-Gov」：ハイフンのあとで改行しない（文字の部分だけを見る。タグの中・script・style は触らない）
+    segs, skip_ = re.split(r"(<[^>]+>)", "".join(segs)), 0
+    for k, sg in enumerate(segs):
+        if sg.startswith("<"):
+            m = re.match(r"<(/?)(script|style|textarea|title|svg)\b", sg, re.I)
+            if m:
+                skip_ += -1 if m.group(1) else 1
+        elif k and not skip_ and re.search(r"[A-Za-z]-[A-Za-z]", sg):  # k=0 は <body の残り（属性）なので触らない
+            segs[k] = re.sub(r"(?<![A-Za-z-])([A-Za-z]+(?:-[A-Za-z]+)+)", r"<n-b>\1</n-b>", sg)
     out = "".join(segs)
     return head + sep + out
 
