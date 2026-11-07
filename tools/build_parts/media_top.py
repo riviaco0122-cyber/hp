@@ -55,7 +55,7 @@ def media_hero(en, title, lead, crumbs="", search=""):
       <div class="container">{crumbs}
         <p class="mhero__en reveal">{e(en)}</p>
         <h1 class="mhero__title reveal" data-delay="1">{title}</h1>
-        <p class="mhero__lead reveal" data-delay="2">{e(lead)}</p>{search}
+        <p class="mhero__lead reveal" data-delay="2">{lines_html(lead)}</p>{search}
       </div>
     </section>"""
 
@@ -149,7 +149,7 @@ def media_index_page():
         <div class="mtop__text">
           <p class="mtop__eyebrow reveal">空き家と民泊のメディア「アキヤド」</p>
           <h1 class="mtop__title reveal" data-delay="1"><span class="mtop__line">空き家を</span><span class="mtop__line"><em>売る。活かす。</em></span><span class="mtop__line"><em>民泊</em>をはじめる。</span></h1>
-          <p class="mtop__lead reveal" data-delay="1">宿を運営する私たちが、空き家と民泊の悩みに、実際の数字でお答えします。</p>
+          <p class="mtop__lead reveal" data-delay="1">{lines_html("宿を運営する私たちが、空き家と民泊の悩みに、実際の数字でお答えします。")}</p>
           <div class="mtop__btns reveal" data-delay="2">
             <a href="contact.html?category=operation&amp;from=akiyado-fv" class="mbtn mtop__btn" data-cta="media-fv">無料で相談する {ARROW}</a>
             <a href="contact.html?category=document&amp;from=akiyado-fv" class="mtop__btn mtop__btn--sub" data-cta="media-fv-doc">資料をダウンロード</a>

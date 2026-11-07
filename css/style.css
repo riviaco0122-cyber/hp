@@ -1944,8 +1944,9 @@ body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(
 .vision__grid .vision__more { grid-area: more; align-self: start; }
 .cycle__loop { position: absolute; right: 79%; top: 17%; white-space: nowrap; font-family: var(--font-serif); font-size: 12px; letter-spacing: 0.08em; color: var(--c-accent); }
 .vision__lead { margin-top: 36px; }
-.vision__sent { display: block; }
-.vision__sent > span { display: inline-block; }
+.ml-s { display: block; } /* リード・コンセプトの改行（tools/build_parts/common.py の lines_html）：1文＝1まとまり */
+.ml-s > span { display: inline-block; } /* 文の中の区切り（「|」・読点のあと）。入る限り前の行に詰め、言葉の途中では折れない */
+.ml-s > span.ml-l { display: inline; } /* 16文字を超える長い区切りは、ふつうに流す（lines_html） */
 .cycle { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1; margin-inline: auto; }
 .cycle__ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .cycle__ring circle { fill: none; stroke: var(--c-line-strong); stroke-width: 0.25; }

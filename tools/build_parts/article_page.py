@@ -203,7 +203,7 @@ def article_page(a):
       </header>
 
       <div class="container container--article article__body">
-        <p class="article__lead">{e(a["description"])}</p>
+        <p class="article__lead">{lines_html(a["description"])}</p>
 
         <section class="keypoints" aria-labelledby="keypoints-title">
           <h2 id="keypoints-title" class="keypoints__title">この記事のポイント</h2>

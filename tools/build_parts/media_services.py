@@ -562,8 +562,8 @@ def media_service_page(sv):
           <div class="mlp-hero__text">
             <p class="mlp-hero__eyebrow reveal">{e(sv["eyebrow"])}<span class="pc-only">｜{e(sv["name"])}</span></p>
             <h1 class="mlp-hero__title reveal" data-delay="1">{lp["hero"]}</h1>
-            <p class="mlp-hero__sub pc-only reveal" data-delay="2">{e(lp["hero_sub"])}</p>
-            <p class="mlp-hero__sub mlp-hero__sub--sp sp-only reveal" data-delay="2">{e(lp["hero_sub_sp"]).replace("|", "<br>")}</p>
+            <p class="mlp-hero__sub pc-only reveal" data-delay="2">{lines_html(lp["hero_sub"])}</p>
+            <p class="mlp-hero__sub mlp-hero__sub--sp sp-only reveal" data-delay="2">{lines_html(lp["hero_sub_sp"])}</p>
             <ul class="mlp-hero__promise reveal" data-delay="2"><li><strong>無料</strong>相談・試算</li><li><strong>2営業日</strong>以内にご連絡</li><li><strong>全国</strong>オンライン可</li></ul>
             <picture class="mlp-hero__photo reveal" data-delay="3"><source srcset="images/photos/w/{lp["photo"]}-800.webp" type="image/webp"><img src="images/photos/{lp["photo"]}.jpg" alt="" width="800" height="533" loading="eager" decoding="async"></picture>
           </div>

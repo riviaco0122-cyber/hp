@@ -71,8 +71,8 @@ def index_page():
               <span class="eyebrow">Concept</span>
               <h2 class="vision__copy">{e(TOP_CONCEPT["copy"]).replace("、", "、<br>", 1)}</h2>
             </div>
-            <p class="vision__lead vision__lead--pc reveal" data-delay="1">{"".join("<span class=\"vision__sent\">" + "".join(f"<span>{e(c)}</span>" for c in l.split("|")) + "</span>" for l in TOP_CONCEPT["lead"])}</p>
-            <p class="vision__lead vision__lead--sp reveal" data-delay="1">{"".join("<span class=\"vision__sent\">" + "".join(f"<span>{e(c)}</span>" for c in l.split("|")) + "</span>" for l in TOP_CONCEPT["lead_sp"])}</p>
+            <p class="vision__lead vision__lead--pc reveal" data-delay="1">{lines_html(TOP_CONCEPT["lead"])}</p>
+            <p class="vision__lead vision__lead--sp reveal" data-delay="1">{lines_html(TOP_CONCEPT["lead_sp"])}</p>
           </div>
           <div class="cycle reveal" data-delay="1" role="img" aria-label="空き家を宿に再生し、旅行者がまちを訪れ、まちで食べて買い、ファンになって再び訪れる。その収益で次の空き家を再生する、地域の経済循環">
             <svg class="cycle__ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="36"/>{arrows}</svg>
