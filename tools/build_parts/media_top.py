@@ -174,7 +174,7 @@ def media_index_page():
 
     <section class="section msec mservices" id="services">
       <div class="container">
-        <div class="mcenter-head reveal"><p class="msec__en">Services</p><h2 class="mcenter-head__title">アキヤドのサービス</h2><p class="mcenter-head__lead">空き家の状況とご希望に合わせて、個別にご提案しています。</p></div>
+        <div class="mcenter-head reveal"><p class="msec__en">Services</p><h2 class="mcenter-head__title">アキヤドのサービス</h2><p class="mcenter-head__lead">{lines_html("空き家の状況とご希望に合わせて、個別にご提案しています。")}</p></div>
         <ul class="mservice-cards">{service_cards}</ul>
         <p class="mservices__more reveal">プランごとの条件の目安は「<a href="media/plans.html">アキヤドのプラン</a>」、相談から開業までの流れは「<a href="media/akiyado-consultation-flow.html">相談から開業までの流れ</a>」で紹介しています。</p>
       </div>
@@ -231,7 +231,7 @@ def media_index_page():
     <section class="section msec">
       <div class="container">
         <div class="msec__head reveal"><div><p class="msec__en">For you</p><h2 class="msec__title">ご自身の状況から読む</h2></div></div>
-        <p class="msec__lead">いまの状況に近いものを選んでください。知っておきたいことを、悩みが生まれる順に並べたガイドをご用意しています。</p>
+        <p class="msec__lead">{lines_html("いまの状況に近いものを選んでください。知っておきたいことを、悩みが生まれる順に並べたガイドをご用意しています。")}</p>
         <div class="persona-cards">
 {guides}
         </div>
@@ -241,7 +241,7 @@ def media_index_page():
     <section class="section msec" id="cases">
       <div class="container">
         <div class="msec__head reveal"><div><p class="msec__en">Cases</p><h2 class="msec__title">民泊オーナーの事例</h2></div></div>
-        <p class="msec__lead">実際に民泊を運営しているオーナーへの取材です。初期費用・月商・純利益と、うまくいかなかったことまで、自分に近い事例から読めます。</p>
+        <p class="msec__lead">{lines_html("実際に民泊を運営しているオーナーへの取材です。初期費用・月商・純利益と、うまくいかなかったことまで、自分に近い事例から読めます。")}</p>
         <div class="media-grid media-grid--scroll" data-limit="{len(CASE_SLUGS)}">
 {case_cards}
         </div>
