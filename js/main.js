@@ -811,8 +811,9 @@
       keepNums(blk); // 言葉の途中でも折れるので、先に数字と単位（「2営業日」「80万円」）をまとめておく
       var loosened = [];
       blk.querySelectorAll('n-b').forEach(function (b) {
-        // 6文字以上の塊と、「・」のすぐあとに英単語が続く塊（「価・R」＋「evPAR」）を解く。数字と単位（n-b.num）・最後の語尾（n-b.tail）は解かない
-        if (b.classList.contains('num') || b.classList.contains('tail') || !(b.textContent.length >= 6 || /・[A-Za-z]$/.test(b.textContent))) return;
+        // 6文字以上の塊と、英単語の端を巻き込んだ塊（「価・R」＋「evPAR」、「Rとは？」）を解く（英単語の前後では折れる。英単語の中は折れない）。
+        // 数字と単位（n-b.num）・最後の語尾（n-b.tail）は解かない
+        if (b.classList.contains('num') || b.classList.contains('tail') || !(b.textContent.length >= 6 || /・[A-Za-z]$|[A-Za-z][^A-Za-z.\-]/.test(b.textContent))) return;
         keepNums(b); // 解く前に、中の数字と単位（「80万円」「2027年」）をまとめておく（「80万／円」を防ぐ）
         b.classList.add('loose'); loosened.push(b);
       });
