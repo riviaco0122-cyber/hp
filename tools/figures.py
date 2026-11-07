@@ -60,7 +60,8 @@ def compare(title, cols, note=""):
               </div>"""
         for i, (ic, name, sub, points, *rest) in enumerate(cols) for accent in [bool(rest and rest[0])])
     hint = f'            <p class="fig-cols__hint">全{n}枚・横にスワイプで続きへ →</p>\n' if swipe else ""
-    return _figure("compare", title, f'{hint}            <div class="fig-cols fig-cols--{n}">\n{items}\n            </div>', note)
+    m = max((len(c[3]) for c in cols), default=1)  # 項目の数（多い列）。左右の項目を1つずつ同じ行にそろえるのに使う（css .fig-col）
+    return _figure("compare", title, f'{hint}            <div class="fig-cols fig-cols--{n} fig-cols--align" style="--fig-rows:{m + 2};--fig-items:{m}">\n{items}\n            </div>', note)
 
 
 def flow(title, steps, note=""):
