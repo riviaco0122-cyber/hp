@@ -135,7 +135,7 @@ def media_index_page():
           <span class="mservice__img">{photo(_guide[sv["key"]]["photo"], width=720, height=450, sizes="(max-width: 899px) 100vw, 360px")}</span>
           <span class="mservice__who">{e(sv["eyebrow"])}</span><span class="mservice__name">{e(sv["name"])}</span>
           <span class="mservice__text">{e(sv["lead"])}</span>
-          <span class="mservice__more">詳しく見る <span aria-hidden="true">›</span></span></a></li>''' for i, sv in enumerate(MEDIA_SERVICES))
+          <span class="mservice__more">詳しく見る <span aria-hidden="true"></span></span></a></li>''' for i, sv in enumerate(MEDIA_SERVICES))
     guides = "\n".join(guide_card(g, i) for i, g in enumerate(MEDIA_GUIDES))
     labels = {g["key"]: g["label"] for g in MEDIA_GUIDES}
     questions = "\n".join(f"""          <li data-date="{ARTICLE_BY_SLUG[slug]["date"]}"><a href="media/{slug}.html" class="mq__item">
