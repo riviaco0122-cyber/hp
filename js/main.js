@@ -807,6 +807,11 @@
       var n = b.querySelectorAll('br.sb').length + 1, withSb = lineCount(b);
       b.classList.add('nosb');
       if (withSb <= n && lineCount(b) >= n) b.classList.remove('nosb');
+      // 文をつなげたときは、文の終わりのまとまり（改行の直前の n-b）も段落の途中になるので、右詰めのときに解けるようにする
+      b.querySelectorAll('br.sb').forEach(function (br) {
+        var t = br.previousElementSibling;
+        if (t && t.tagName === 'N-B') t.classList.toggle('sbl', b.classList.contains('nosb'));
+      });
     });
     document.querySelectorAll('.wrap-fill').forEach(function (b) { b.classList.remove('wrap-fill'); });
     document.querySelectorAll('n-b.loose').forEach(function (b) { b.classList.remove('loose'); });
