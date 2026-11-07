@@ -410,6 +410,7 @@ AI は記事を**断片（チャンク）**で取り出す。各節は、**単�
 - 手順の記事（開業の手順、届出の流れなど）に、**HowTo の構造化データ**を足す（現在は FAQPage のみ）。
 - 組織・ブランドの基本情報を、1か所（`llms.txt` または JSON-LD の Organization）で統一して書く。内容が変わったら、毎回 `tools/build.py` で全ページに反映する。
 - `knowledge.json` のような独自ファイルは、効果が確認できていないため、今は作らない。
+- **IndexNow（2026-11-07 導入）**: 本番ブランチに sitemap の変化が入ると、GitHub Actions（`.github/workflows/indexnow.yml`）が、増えた・直した・消えた URL を Bing などに知らせる（`tools/indexnow.py`）。ChatGPT の検索・Copilot は Bing の索引を使うため、AI 検索に載るまでを早める。鍵はリポジトリ直下の `<32桁>.txt`（公開する仕様の値で、秘密ではない。消さない・名前を変えない）。Bing Webmaster Tools の登録は人の作業（`docs/seo/indexing.md`）。
 
 ### 12-5. 指名検索を受け止める（ゼロクリックから成果へ）
 AI の回答で「アキヤド」「RIVIA&CO.」の名前が出ると、読み手は「アキヤド 評判」「RIVIA&CO. 空き家」のように**社名・サービス名で検索し直す**。

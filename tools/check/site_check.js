@@ -355,9 +355,15 @@ function layoutProbe() {
   for (const par of area.querySelectorAll('.fig *')) {
     if (par.closest('svg')) continue;
     const kids = [...par.children].filter(k => shown(k) && !['absolute', 'fixed'].includes(getComputedStyle(k).position) && !/^(svg|br)$/i.test(k.tagName));
+    // 行ごとの四角（getClientRects）どうしで比べる。2行に折り返した文字のまとまり（n-b など）は、外枠の四角だと
+    // 2行分の幅いっぱいに広がり、隣の言葉と重なって見えてしまうため（文字そのものは重なっていない）
+    const boxes = kids.map(k => [...k.getClientRects()]);
     for (let i = 0; i < kids.length; i++) for (let j = i + 1; j < kids.length; j++) {
-      const a = kids[i].getBoundingClientRect(), b = kids[j].getBoundingClientRect();
-      const ox = Math.min(a.right, b.right) - Math.max(a.left, b.left), oy = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+      let ox = 0, oy = 0;
+      for (const a of boxes[i]) for (const b of boxes[j]) {
+        const x = Math.min(a.right, b.right) - Math.max(a.left, b.left), y = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+        if (x > 4 && y > 4 && x * y > ox * oy) { ox = x; oy = y; }
+      }
       if (ox > 4 && oy > 4) push('重なり', par, `${desc(kids[i])} と ${desc(kids[j])}（${Math.round(ox)}×${Math.round(oy)}px）`);
     }
   }

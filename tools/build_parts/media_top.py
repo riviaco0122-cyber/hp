@@ -33,8 +33,7 @@ def media_nav(current=""):
 
 SUPERVISOR = dict(
     key="ishihara", name="石原 佑真", role="合同会社RIVIA&CO. 代表社員", photo="founder-ishihara.jpg",
-    links=[("YOUTRUST", "https://youtrust.jp/users/yumayade__2210"), ("LinkedIn", "https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b"),
-           ("Wantedly", "https://www.wantedly.com/id/tasuku_ishihara_g")],
+    links=next(f["profiles"] for f in FOUNDERS if f["key"] == "ishihara"),
     bio="株式会社リクルートの新規事業開発室で事業の立ち上げを経験し、その後ベンチャー企業で新規事業の創出と組織の拡大を牽引。RIVIA&CO.を共同創業し、空き家の再生と宿の運営・開業支援に携わる。",
 )
 # 初めての方が使いそうな言葉を先に並べる

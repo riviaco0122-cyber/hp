@@ -94,3 +94,18 @@ Search Console の「ページがインデックスに登録されなかった�
 - 「ページ」の上のグラフで、緑（登録済み）が増えているか。
 - 増えていなければ、「ページ」の画面のスクリーンショットを Claude に送る（トップから主要記事へのリンクの強化や、記事の絞り込みを検討する）。
 - あわせて、外からのリンクを増やす：Google ビジネスプロフィール、Instagram・X・note のプロフィール、Airbnb の紹介文などに `https://rivia-co.com/` を載せる（Google がサイトを見つけて大事だと判断する、いちばんの手がかり）。
+
+## 2026-11-07 Bing と IndexNow（AI 検索の土台）
+
+ChatGPT の検索・Microsoft Copilot は **Bing の索引**を、Google の AI による概要は Google の索引を使う。索引に入っていない記事は、AI の回答に引用されない。これまで Google（Search Console）だけを見ていたので、Bing を足す。
+
+### サイト側でやったこと
+- **IndexNow を入れた。** 本番ブランチに `seo/sitemap.xml` の変化が入ると、GitHub Actions（`.github/workflows/indexnow.yml`）が `tools/indexnow.py` を動かし、増えた・lastmod が変わった・消えた URL を `api.indexnow.org` に送る（Bing・Yandex・Naver などに共有される）。Vercel の反映を待ってから送る（最大10分）。
+- 鍵はリポジトリ直下の `f66d6ad6847b1fb90ee61019740f5052.txt`（`https://rivia-co.com/<鍵>.txt` で公開するのが仕様。秘密の値ではない）。**消す・名前を変えると送信が 403 になる。**
+- 予約公開の記事は、公開日を迎えて作り直し（build）、本番に反映されたときに送られる。
+- 手で送るとき: GitHub の Actions →「IndexNow」→「Run workflow」で sitemap の全 URL を送る（初回はこれで一度送った）。
+
+### 人にお願いしたいこと
+- [ ] **Bing Webmaster Tools（https://www.bing.com/webmasters ）に登録する。** Microsoft アカウントでログイン →「Google Search Console からインポート」を選ぶと、サイトの確認とサイトマップの登録まで数分で終わる。
+- [ ] 登録後、「サイトマップ」に `https://rivia-co.com/sitemap.xml` があることを確かめる（なければ送信）。
+- [ ] 1〜2週間後に「IndexNow」の画面で、送った URL が届いていること、「検索パフォーマンス」に表示が出始めたことを見る。Bing の表示・クリックは、月1回 `docs/seo/plan-tracking.md` のメモに残す（Bing は ChatGPT の検索の手がかり）。

@@ -89,6 +89,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 | `python3 tools/code_health.py [--record]` | コードの健康診断（大きいファイルの行数・CSS の重ね書き・使われていないルール・seo_check）。月1回の点検で使い、記録は `docs/seo/code-health.md` |
 | `python3 tools/css_prune.py [--apply]` | `css/style.css` のうち、どのページ・ソースでも使われていないルールの一覧（`--apply` で消す。消したら build → site_check で見た目の差分0を確かめる） |
 | `python3 tools/build_dashboard.py` | `docs/dashboard.md` の再生成 |
+| `python3 tools/indexnow.py diff <基準> / urls <URL...> / all [--dry-run]` | IndexNow で、変わった URL を Bing などに知らせる（AI 検索に載るまでを早める）。本番ブランチへの反映時に GitHub Actions が自動で実行する。直下の `<32桁>.txt` は鍵のファイル（消さない） |
 | `bash tools/check_secrets.sh` | コミット前の鍵の混入チェック |
 | `python3 tools/youtube_analytics.py report / retention <動画ID>` | YouTube のチャンネルの数字（再生・平均再生率・視聴者維持・入口）。要 `YT_CLIENT_ID`・`YT_CLIENT_SECRET`・`YT_REFRESH_TOKEN`（analytics-setup.md 8章） |
 | `python3 tools/video/make_strategy_ep<N>.py [出力] [--hq]` ／ `make_reel.py` ／ `layout_check.py` | YouTube の解説動画・リール（縦長）の書き出しと自動点検（`docs/youtube/manual.md` 4章） |
