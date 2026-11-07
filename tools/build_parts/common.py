@@ -56,7 +56,27 @@ _NO_SPLIT = ["のしかかる", "ドラッグ&ドロップ"]  # BudouX が途中
 
 
 def _heading_phrases(text):
-    """見出しの文字を文節に分け、文節の切れ目にだけ改行候補（<wbr>）を入れる。最後の文節が2文字以下なら、前の文節とつなげる"""
+    """見出しの文字を文節に分け、文節の切れ目にだけ改行候補（<wbr>）を入れる。最後の文節が2文字以下なら、前の文節とつなげる。
+    文の終わり（「。」「！」「？」）のあとに次の文が続くときは、そこで改行し（<br class="sb">）、文ごとに組む。短い文では、
+    A の文の直後に B の文を続けず、文ごとに行を分けたほうが読みやすく、右に中途半端な空きもできない（人の方針 2026-11-07）。
+    ただし前後の文がどちらも8文字以上のときだけ（「空き家を売る。活かす。」のような短いキャッチは1行で読ませる）"""
+    sents, depth, cur = [], 0, ""  # かっこの中の「。」（「（例外あり。税務署に確認）」）では分けない
+    for k, ch in enumerate(text):
+        cur += ch
+        depth += (ch in "（(「『【") - (ch in "）)」』】")
+        if depth <= 0 and ch in "。！？" and k + 1 < len(text) and text[k + 1] not in "」』）)】〉》、。！？ \u3000":
+            sents.append(cur); cur = ""
+    if cur:
+        sents.append(cur)
+    if len(sents) > 1:
+        groups = [sents[0]]
+        for x in sents[1:]:
+            if len(groups[-1].strip()) >= 8 and len(x.strip()) >= 8:
+                groups.append(x)
+            else:
+                groups[-1] += x
+        if len(groups) > 1:
+            return '<br class="sb">'.join(_heading_phrases(g) for g in groups)
     ph = _budoux.parse(text)
     merged = []
     for x in ph:  # 開きかっこ（「（」など）で終わる文節は、次の文節とつなげる（かっこの直後で改行しない）

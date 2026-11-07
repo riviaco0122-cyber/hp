@@ -1,4 +1,4 @@
-// 最後の行が短い（「ます。」だけなど）文を探す。スマホの主な幅で各ページを開き、段落・リスト・見出し・ラベルの最後の行の文字数を数える。
+// 最後の行が短い（「ます。」だけなど）文を探す（<br> で区切った部分ごと）。スマホの主な幅で各ページを開き、段落・リスト・見出し・ラベルの最後の行の文字数を数える。
 // 使い方: node tools/check/short_lines.js [--max 4] [--widths 375,390] [--only ページ名の一部,...] [--out ファイル]
 const { chromium } = require(process.env.PLAYWRIGHT_PATH || '/opt/node22/lib/node_modules/playwright');
 const fs = require('fs'), path = require('path');
@@ -26,11 +26,13 @@ if (ONLY.length) files = files.filter(f => ONLY.some(o => f.includes(o)));
           if (el.querySelector('p, li, dd, div, ul, ol, table')) continue; // 中に段落を含む入れ物は除く
           if (/flex|grid/.test(cs.display) || cs.writingMode.indexOf('vertical') === 0) continue; // 横並びの部品（数字カードなど）は除く
           const text = el.innerText.trim(); if (text.length < 8 || !/[ぁ-んァ-ン一-龯]/.test(text)) continue;
-          const lastPara = text.split('\n').pop(); // <br> で区切った最後の段だけを見る
-          const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); const r = document.createRange();
-          const lines = []; let n;
+          // <br>（手で入れた改行・文ごとの改行 br.sb）で区切った部分ごとに、最後の行の文字数を見る
+          const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT); const r = document.createRange();
+          const segs = [[]]; let n;
           while ((n = walker.nextNode())) {
+            if (n.nodeType === 1) { if (n.tagName === 'BR' && segs[segs.length - 1].length) segs.push([]); continue; }
             const pe = n.parentElement; if (!pe || pe.offsetParent === null) continue;
+            const lines = segs[segs.length - 1];
             for (let i = 0; i < n.length; i++) {
               const c = n.data[i]; if (/\s/.test(c)) continue;
               r.setStart(n, i); r.setEnd(n, i + 1); const rc = r.getClientRects()[0]; if (!rc || !rc.width) continue;
@@ -38,10 +40,11 @@ if (ONLY.length) files = files.filter(f => ONLY.some(o => f.includes(o)));
               if (!last || rc.top > last.top + rc.height * 0.6) lines.push({ top: rc.top, s: c }); else last.s += c;
             }
           }
-          if (lines.length < 2) continue;
-          const tail = lines[lines.length - 1].s;
-          if (lastPara.replace(/\s/g, '').length <= tail.length) continue; // <br> の後ろが元から短い（意図した改行）
-          if (tail.length <= MAX) out.push({ tail, prev: lines[lines.length - 2].s.slice(-14), text: text.replace(/\s+/g, ' ').slice(0, 70), cls: el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).split(' ')[0] : '') });
+          for (const lines of segs) {
+            if (lines.length < 2) continue; // 1行に収まった部分（<br> の後ろが元から短いものを含む）は数えない
+            const tail = lines[lines.length - 1].s;
+            if (tail.length <= MAX) out.push({ tail, prev: lines[lines.length - 2].s.slice(-14), text: text.replace(/\s+/g, ' ').slice(0, 70), cls: el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).split(' ')[0] : '') });
+          }
         }
         return out;
       }, MAX);

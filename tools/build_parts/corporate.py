@@ -183,7 +183,7 @@ def index_page():
             <p class="careers-cta__title">CAREERS</p>
             <div class="careers-cta__row">
               <span class="pill">年齢・経験は問いません！</span>
-              <p class="careers-cta__text">一緒に働く仲間を募集しています。</p>
+              <p class="careers-cta__text">仲間を募集中です。</p>
             </div>
           </div>
           <span class="careers-cta__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 5l7 7-7 7"/></svg></span>
