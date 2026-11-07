@@ -1,0 +1,27 @@
+# 本番ブランチ（デフォルトブランチ）に sitemap の変化が入ったら、変わった URL を IndexNow で
+# Bing などに知らせる（tools/indexnow.py。ChatGPT の検索・Copilot は Bing の索引を使う）。
+name: IndexNow
+on:
+  push:
+    paths: ["seo/sitemap.xml"]
+  workflow_dispatch:
+jobs:
+  ping:
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 変わった URL を送る（手動のときは全 URL）
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          base="$BEFORE"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            python3 tools/indexnow.py all   # 手動で動かしたとき（初回など）は sitemap の全 URL
+            exit 0
+          fi
+          if [ -z "$base" ] || ! git cat-file -e "$base^{commit}" 2>/dev/null; then base="HEAD~1"; fi
+          python3 tools/indexnow.py diff "$base" --wait
