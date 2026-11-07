@@ -814,6 +814,8 @@
       });
     });
     document.querySelectorAll('.wrap-fill').forEach(function (b) { b.classList.remove('wrap-fill'); });
+    document.querySelectorAll('.jfy').forEach(function (b) { b.classList.remove('jfy'); });
+    var jfy = [];
     document.querySelectorAll('n-b.loose').forEach(function (b) { b.classList.remove('loose'); });
     Array.prototype.forEach.call(phraseTexts, function (n) {
       var p = n.parentElement;
@@ -832,6 +834,9 @@
       var cs = getComputedStyle(blk);
       if (cs.textAlign === 'center' || cs.textAlign === 'right' || cs.whiteSpace === 'nowrap' || cs.writingMode.indexOf('vertical') === 0) return;
       var fsz = parseFloat(cs.fontSize);
+      // 左揃えの本文・項目・表のマスは、両端揃えにして右端をそろえる（半角〜1文字分の小さな空きは、折り方では消せないため。
+      // 見出し・大きな文字・中央揃えは対象外。最後の行と手で入れた改行の前は左揃えのまま。人の指摘 2026-11-07）
+      if (fsz < 20 && !/^H[1-6]$/.test(blk.tagName) && !blk.querySelector('.ml-s')) jfy.push(blk);
       keepTail(blk);
       var gapA = maxGap(blk);
       var narrow = !inTable && (blk.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) / fsz < 16; // 1行に16文字未満の狭い枠（スマホのカード・2列の図など）。表のマスは右の空きを優先
@@ -856,13 +861,16 @@
         loosened.forEach(function (b) { b.classList.remove('loose'); });
       }
     });
+    // 判定がすべて済んでから両端揃えにする。右の空きが1.5文字分を超える行があるまとまりは、字間が大きく開くので左揃えのまま
+    jfy.filter(function (b) { return maxGap(b) <= 1.5; }).forEach(function (b) { b.classList.add('jfy'); });
   };
   if (phraseTexts.length) {
-    var fitTimer;
+    var fitTimer, fitW = window.innerWidth;
     fitLines();
     window.addEventListener('load', fitLines);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLines);
-    window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(fitLines, 150); });
+    // 幅が変わったときだけ組み直す（スマホはスクロールでアドレスバーが出入りし、高さだけが変わる resize が続くため。組み直しは重く、スクロールがカクつく）
+    window.addEventListener('resize', function () { if (window.innerWidth === fitW) return; fitW = window.innerWidth; clearTimeout(fitTimer); fitTimer = setTimeout(fitLines, 150); });
   }
 
   // 横にスライドする表の案内（「表は左右にスライドできます →」）は、表が枠からはみ出すときだけ出す
