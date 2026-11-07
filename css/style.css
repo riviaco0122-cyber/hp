@@ -2116,6 +2116,10 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
 .fig-cols--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .fig-cols--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .fig-col { padding: 22px 18px 20px; border-radius: 16px; background: #fff; text-align: center; }
+/* 題名・副題・項目の1つ1つを、隣の列と同じ行にそろえる（副題や項目が2行になっても、下の線と項目の書き出しが左右でずれない）。
+   行数は tools/figures.py の compare() が --fig-rows・--fig-items で渡し、fig-cols--align を付ける（記事データに直接書いた図には付けない） */
+.fig-cols--align > .fig-col { display: grid; grid-row: span var(--fig-rows); grid-template-rows: subgrid; row-gap: 0; align-content: start; }
+.fig-cols--align .fig-col__list { grid-row: span var(--fig-items); grid-template-rows: subgrid; }
 .fig-col--accent { box-shadow: inset 0 0 0 2px var(--m-green, #2e6b47); }
 .fig-col__count, .fig-cols__hint { display: none; }
 .fig-col__name { margin-top: 10px !important; font-family: var(--font-round); font-weight: 700; font-size: 16px; }
