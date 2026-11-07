@@ -773,7 +773,10 @@
       var gap = (right - L.right) / fs;
       if (gap > 3) total += gap * gap / 4; // 空きは大きいほど目立つので、2乗で重くする
       var p = N.first.i === 0 ? N.first.node.previousSibling || (N.first.node.parentNode !== blk ? N.first.node.parentNode.previousSibling : null) : null;
-      var atWord = (p && p.nodeName === 'WBR') || JA_END.test(L.last.ch) || JA_OPEN.test(N.first.ch) || (/[A-Za-z0-9]/.test(L.last.ch) !== /[A-Za-z0-9]/.test(N.first.ch));
+      var nx = N.first.node.data.slice(N.first.i, N.first.i + 3);
+      var atWord = (p && p.nodeName === 'WBR') || JA_END.test(L.last.ch) || JA_OPEN.test(N.first.ch) || (/[A-Za-z0-9]/.test(L.last.ch) !== /[A-Za-z0-9]/.test(N.first.ch)) ||
+        // 漢字のあとの「します」「できます」、助詞（「要件／を」）は言葉の切れ目。送りがなの途中（「満／たせる」）は切れ目ではない
+        (/[一-龯々]/.test(L.last.ch) && /^(?:し[てたまなょゃ]|する|され|させ|でき|[をがはへでのにとも])/.test(nx));
       if (!atWord) total += 4;
     }
     if (lines[lines.length - 1].n <= 3) total += 6;
@@ -801,7 +804,7 @@
       keepTail(blk);
       var gapA = maxGap(blk);
       if (gapA <= (fsz >= 22 ? 5 : 3)) return; // 右に大きな空きがなければ、言葉の切れ目で折った形のまま
-      var narrow = (blk.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) / fsz < 12; // 1行に12文字未満の狭い枠
+      var narrow = (blk.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) / fsz < 16; // 1行に16文字未満の狭い枠（スマホのカード・2列の図など）
       var a = narrow ? cost(blk, fsz) : 0;
       // 言葉の切れ目で折った形（A）で右が空く・最後の行が短いときは、言葉の途中でも折る形（B）も組んで、見栄えの良いほうを使う
       blk.classList.add('wrap-fill');
@@ -815,7 +818,7 @@
       });
       keepTail(blk);
       // ふつうの幅の枠は、右の最大の空きが小さくなるなら B（基本は右詰め。人の方針 2026-11-06）。
-      // 狭い枠（2列の図など）は、言葉の途中で切れる所も数えて、見栄えの良いほう（「ごみ袋の／予備」）
+      // 狭い枠（カード・2列の図など）は、言葉の途中で切れる所も数えて、見栄えの良いほう（「ごみ袋の／予備」「要件を／満たせるか」）
       if (narrow ? cost(blk, fsz) >= a : maxGap(blk) > gapA - 1) {
         blk.classList.remove('wrap-fill');
         loosened.forEach(function (b) { b.classList.remove('loose'); });
