@@ -706,6 +706,7 @@
     return lines.slice(0, -1).reduce(function (m, l) { return l.hard ? m : Math.max(m, (right - l.right) / fs); }, 0);
   };
   var NUM = /約?\d[\d,.]*(?:万|億|兆)?(?:人泊|営業日|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)?/g;
+  var WORD = /[ァ-ヴー]{2,12}|[A-Za-z][A-Za-z0-9&.\-]*[A-Za-z0-9]/g;
   var keepNums = function (b) { // b の中の数字と単位を、改行しないまとまり（n-b）で包む
     var tw = document.createTreeWalker(b, NodeFilter.SHOW_TEXT), t, nodes = [];
     while ((t = tw.nextNode())) if (!(t.parentNode.closest && t.parentNode.closest('n-b.num'))) nodes.push(t); // 前に包んだ数字（n-b.num）は包み直さない
@@ -713,6 +714,9 @@
       var m, hits = [];
       NUM.lastIndex = 0;
       while ((m = NUM.exec(node.data))) if (m[0].length >= 2) hits.push([m.index, m[0].length]);
+      WORD.lastIndex = 0; // カタカナ語・英単語も、言葉の途中で折れる形のときに語の中で折らない（「ス／カウト」「Air／bnb」を防ぐ）
+      while ((m = WORD.exec(node.data))) if (!hits.some(function (h) { return m.index < h[0] + h[1] && h[0] < m.index + m[0].length; })) hits.push([m.index, m[0].length]);
+      hits.sort(function (x, y) { return x[0] - y[0]; });
       for (var i = hits.length - 1; i >= 0; i--) {
         var mid = node.splitText(hits[i][0]); mid.splitText(hits[i][1]);
         var nb = document.createElement('n-b'); nb.className = 'num'; mid.parentNode.insertBefore(nb, mid); nb.appendChild(mid);
@@ -817,6 +821,7 @@
     document.querySelectorAll('.jfy').forEach(function (b) { b.classList.remove('jfy'); });
     var jfy = [];
     document.querySelectorAll('n-b.loose').forEach(function (b) { b.classList.remove('loose'); });
+    document.querySelectorAll('n-b.over').forEach(function (b) { b.classList.remove('over'); });
     Array.prototype.forEach.call(phraseTexts, function (n) {
       var p = n.parentElement;
       if (!p || !n.querySelector('wbr')) return;
@@ -863,7 +868,14 @@
     });
     // 判定がすべて済んでから両端揃えにする。右の空きが3.5文字分を超える行があるまとまりは、字間が大きく開くので左揃えのまま
     // （1行20文字ほどなら、3文字分の空きでも1文字あたり0.15文字分ほどの広がりで目立たない。人の指摘 2026-11-07）
-    jfy.filter(function (b) { return maxGap(b) <= 3.5; }).forEach(function (b) { b.classList.add('jfy'); });
+    // 安全策：改行しないまとまり（n-b）が枠より長いときは、そのまとまりを解く（枠の外へはみ出さないように）
+    blocks.forEach(function (blk) {
+      if (blk.offsetParent === null) return;
+      var w = blk.clientWidth;
+      blk.querySelectorAll('n-b').forEach(function (b) { if (!b.closest('.visually-hidden') && b.getBoundingClientRect().width > w + 1) b.classList.add('over'); }); // 読み上げ用の見えない文字は対象外
+    });
+    // 字間が広がりすぎない（1行の文字数の12%まで）ときだけ両端揃え（狭い枠で「チ ャ ネ ル」と字間が開くのを防ぐ）
+    jfy.filter(function (b) { var g = maxGap(b); return g <= 3.5 && g <= b.clientWidth / parseFloat(getComputedStyle(b).fontSize) * 0.12; }).forEach(function (b) { b.classList.add('jfy'); });
   };
   if (phraseTexts.length) {
     var fitTimer, fitW = window.innerWidth;

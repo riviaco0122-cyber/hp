@@ -183,6 +183,10 @@ def _heading_phrases(text):
     for m in _KEEP_LONG.finditer("".join(ph)):  # 切れ目が数字と単位の途中（「80万／円の事例」）なら、数字の頭から送る
         if m.start() < cut < m.end():
             cut = m.start()
+    # 切れ目が漢字の熟語・カタカナ語の途中（「予／算を集中」「ス／カウト」）なら、語の頭まで戻す（まとまりは8文字まで）
+    _w = r"[一-龯々]{2}|[ァ-ヴー]{2}"
+    while cut > 0 and len(jj) - cut < 8 and re.fullmatch(_w, jj[cut - 1:cut + 1]):
+        cut -= 1
     out, pos, opened = "", 0, False
     for i, x in enumerate(ph):
         if i and pos <= cut:
@@ -238,6 +242,25 @@ def _phrase_html(text):
     return "<wbr>".join(out)
 
 
+# 「・」でつないだ語の並び（「求人検索・スカウト・広告・SNS」）。語は、漢字・カタカナ・英数字それぞれの続き（1文字の語も含む）
+_MIDDOT_WORD = r"(?:[一-龯々〆ヵヶ]+|[ァ-ヴー]+|[A-Za-z0-9][A-Za-z0-9&.\-]*|[^\s・<>])"
+_MIDDOT_CHAIN = re.compile(rf"{_MIDDOT_WORD}(?:・{_MIDDOT_WORD})+")
+
+
+def _glue_middot(m):
+    """「・」の前後で改行しない（「再生・／創出」を防ぐ）。語の途中にまとまりの境目を作らないよう、語ごと包む
+    （1文字ずつ包むと、言葉の途中でも折れる形のとき「求人検索・ス／カウト」「採用／数」と語の中で折れる。人の指摘 2026-11-07）。
+    語は「・」ごとにまとめ、「・」のあとでだけ折れるようにする"""
+    t = m.group(0)
+    ws = t.split("・")
+    if len(ws) == 2 and len(t) <= 6:
+        return f"<n-b>{t}</n-b>"  # 「再生・創出」：短い2語は1つのまとまり
+    # 「語・」ごとに、js/main.js が解かないまとまり（n-b.num）にする。並び全体が10文字以下なら、さらに外側でまとめる
+    # （外側は、右が大きく空くときだけ js が解く。そのときも「・」のあとでだけ折れ、語の中では折れない）
+    inner = "".join(f'<n-b class="num">{w}・</n-b>' for w in ws[:-1]) + f'<n-b class="num">{ws[-1]}</n-b>'
+    return f"<n-b>{inner}</n-b>" if len(t) <= 10 else inner
+
+
 def _glue_short_tail(parts, i):
     """段落の最後が「<strong>契約前に確認</strong>します。」のように、短い文字（6文字未満）で終わるとき、
     直前の太字・リンクごと改行しないまとまり（<n-b>）にする（「確認し／ます。」を防ぐ。人の指摘 2026-11-06）。
@@ -281,9 +304,12 @@ def _glue_short_tail(parts, i):
         o -= 1
     if o < 0:
         return False
-    inner = "".join(x for x in parts[o + 1:k] if not x.startswith("<"))
-    if len(unescape(inner).strip()) > 8 or any(re.match(r"</?(p|div|li|ul|ol|br)\b", x) for x in parts[o + 1:k]):
+    inner = re.sub(r"<[^>]+>", "", "".join(parts[o + 1:k]))  # 先に文節の切れ目を入れた中身（<n-w>…）もタグを外して数える（数え漏れて長い太字ごと1行にまとめ、はみ出すのを防ぐ）
+    if any(re.match(r"</?(p|div|li|ul|ol|br)\b", x) for x in parts[o + 1:k]):
         return False
+    if len(unescape(inner).strip()) > 8:  # 太字が長いときは、太字とまとめず、残りの短い語尾（「させます。」）だけをまとめる（「さ／せます。」を防ぐ）
+        parts[i] = "<n-b>" + e(unescape(parts[i]), quote=False) + "</n-b>"
+        return True
     parts[o] = "<n-b>" + parts[o]
     parts[i] = e(unescape(parts[i]), quote=False) + "</n-b>"
     return True
@@ -430,7 +456,7 @@ def phrase_breaks(html):
             if m:
                 skip_ += -1 if m.group(1) else 1
         elif not skip_ and "・" in sg:
-            segs[k] = re.sub(r"([^\s・])・([^\s・])", r"<n-b>\1・\2</n-b>", sg)
+            segs[k] = _MIDDOT_CHAIN.sub(_glue_middot, sg)
     # 「Wi-Fi」「e-Gov」：ハイフンのあとで改行しない。文の終わりの「ます。」を切らない（文字の部分だけを見る。タグの中・script・style は触らない）
     segs, skip_ = re.split(r"(<[^>]+>)", "".join(segs)), 0
     for k, sg in enumerate(segs):
