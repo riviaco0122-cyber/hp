@@ -52,7 +52,11 @@ _CARD_CLASS = re.compile(r'class="[^"]*__(?:text|desc|sub|blurb|lead)\b')
 _CARD_MAX = 60
 
 
-_NO_SPLIT = ["のしかかる", "ドラッグ&ドロップ"]  # BudouX が途中で区切る言葉（人の指摘で見つけたら足す）
+_NO_SPLIT = ["のしかかる", "ドラッグ&ドロップ", "まるごと", "体制", "日本政策金融公庫", "空家等", "方法", "案内"]  # BudouX が途中で区切る言葉（tools/check/line_quality.js の「語の途中の改行」で見つけたら足す）
+# 長い複合語の、折ってよい所（狭い枠で1語が1行に収まらないとき、ブラウザが「日本政策金融／公庫」「チェックイン／システム」のように
+# 語の途中で無理に折らないよう、語の切れ目に改行候補を置く。tools/check/line_quality.js で見つけたら足す）
+_PREFERRED_SPLIT = {"日本政策金融公庫": "日本政策|金融公庫", "チェックインシステム": "チェックイン|システム",
+                    "ダイナミックプライシングツール": "ダイナミック|プライシング|ツール", "プライシングツール": "プライシング|ツール"}
 
 
 def _sentences(text):
@@ -183,10 +187,19 @@ def _heading_phrases(text):
     for m in _KEEP_LONG.finditer("".join(ph)):  # 切れ目が数字と単位の途中（「80万／円の事例」）なら、数字の頭から送る
         if m.start() < cut < m.end():
             cut = m.start()
-    # 切れ目が漢字の熟語・カタカナ語の途中（「予／算を集中」「ス／カウト」）なら、語の頭まで戻す（まとまりは8文字まで）
-    _w = r"[一-龯々]{2}|[ァ-ヴー]{2}"
-    while cut > 0 and len(jj) - cut < 8 and re.fullmatch(_w, jj[cut - 1:cut + 1]):
-        cut -= 1
+    # まとまりの頭は、まとまりの前で折れても不自然でない所に置く（ブラウザはまとまりの頭で折るので、語の途中に置くと
+    # 「あ／ります。」「予／算を集中」「備／品約240万円」と折れる。人の指摘 2026-11-07）。文節の切れ目・句読点のあと・
+    # 語の切れ目らしい所（_natural_break）まで、最大12文字のまとまりになるところまで戻す。見つからなければそのまま
+    if cut > 0:
+        bounds = {len("".join(ph[:n])) for n in range(1, len(ph))}
+        ok = lambda c: c > 0 and (c in bounds or jj[c - 1] in "、。・」』）)！？ 　" or _natural_break(jj, c))
+        found = next((c for c in range(cut, max(0, len(jj) - 12) - 1, -1) if ok(c)), None)
+        if found is None and ok(cut + 1):  # 戻って見つからなければ、3文字のまとまり（「日本政策金融公庫／の融資」）
+            found = cut + 1
+        if found is None and len(jj) <= 12:  # 短い文で切れ目がなければ、まとまりを作らない（語の途中にまとまりの頭を置かない）
+            found = -1
+        if found is not None:
+            cut = found
     out, pos, opened = "", 0, False
     for i, x in enumerate(ph):
         if i and pos <= cut:
@@ -259,6 +272,76 @@ def _glue_middot(m):
     # （外側は、右が大きく空くときだけ js が解く。そのときも「・」のあとでだけ折れ、語の中では折れない）
     inner = "".join(f'<n-b class="num">{w}・</n-b>' for w in ws[:-1]) + f'<n-b class="num">{ws[-1]}</n-b>'
     return f"<n-b>{inner}</n-b>" if len(t) <= 10 else inner
+
+
+def _ch_class(c):
+    """文字の種類（js/main.js の chClass と同じ）：K 漢字・H ひらがな・T カタカナ・L 英字・D 数字・P そのほか"""
+    if c == "・":
+        return "P"
+    if re.match(r"[\u4E00-\u9FFF\u3400-\u4DBF々〆ヵヶ]", c):
+        return "K"
+    if re.match(r"[\u3041-\u309F]", c):
+        return "H"
+    if re.match(r"[\u30A0-\u30FF]", c):
+        return "T"
+    if re.match(r"[A-Za-z]", c):
+        return "L"
+    if re.match(r"[0-9０-９]", c):
+        return "D"
+    return "P"
+
+
+_H_ENDS = {"たり", "ので", "から", "けど", "ても", "って", "まで", "より", "など", "には", "では", "とは"}  # ひらがなが続くとき、このあとは折ってよい
+_PARTICLE = re.compile(r"(?:から|まで|より|など|への|での|との|には|では|とは|を|が|は|へ|の|で|と|も|や|に)")
+
+
+# 送り仮名を含む複合語（「空き家」「持ち主」）。中では折らない（js/main.js の KEEP_WORDS と同じ）
+_KEEP_WORDS = ["空き家", "空き地", "空き室", "持ち主", "貸し出し", "引き渡し", "立ち上げ", "申し込み", "受け取り", "取り組み", "見積もり", "借り上げ", "借り手", "貸し手", "売り手", "買い手", "手続き", "問い合わせ", "組み合わせ", "打ち合わせ", "割り当て", "売り上げ", "繰り越し", "書き込み", "読み込み", "振り込み", "引き継ぎ", "立ち会い", "建て替え", "住み替え", "落ち着き", "見直し", "下見", "空き"]
+
+
+def _natural_break(s, j):
+    """s[j-1] と s[j] の間が、語の切れ目らしい所か（js/main.js の canBreak と同じ決まり。「魅／力」「か／ら」「働／く」は False）"""
+    if j <= 0 or j >= len(s):
+        return False
+    for w in _KEEP_WORDS + _NO_SPLIT:
+        for st in range(max(0, j - len(w) + 1), j):
+            if s.startswith(w, st):
+                return False
+    a, b = s[j - 1], s[j]
+    ca, cb = _ch_class(a), _ch_class(b)
+    if cb == "P":
+        return b in "「『（(【〈《［" and ca != "P"
+    if ca == "P":
+        return False
+    if ca == "H" and cb == "H":  # 「状態を／つくります」「したり／しまったり」
+        return (a in "をがは" and b not in "をがは") or s[max(0, j - 2):j] in _H_ENDS
+    if cb == "H":
+        if not _PARTICLE.match(s, j):
+            return False
+        if ca != "K":
+            return ca != "D"
+        n = 0
+        while j - 1 - n >= 0 and _ch_class(s[j - 1 - n]) == "K":
+            n += 1
+        return n >= 2 or (j - 1 - n >= 0 and _ch_class(s[j - 1 - n]) == "D")  # 「31日／までの」のように数字のあとの単位でもよい
+    return (ca == "H" and cb in "KTLD") or (ca == "T" and cb in "KL") or (ca == "K" and cb in "TL") or (ca == "L" and cb in "KT")
+
+
+def _glue_open_brackets(sg):
+    """開きかっこを、直後の語（次の語の切れ目まで。10文字まで）と改行しないまとまりにする（「「」だけが行末に残るのを防ぐ）。
+    まとまりの端ではブラウザが折るので、端は語の切れ目に置く（1文字だけまとめると「（民／泊」「「働／く」と語の中で折れる。人の指摘 2026-11-07）"""
+    out, i, n = [], 0, len(sg)
+    while i < n:
+        if sg[i] in "「『（【〈《" and i + 1 < n and not sg[i + 1].isspace() and sg[i + 1] not in "」』）】〉》":
+            j = i + 2
+            while j < n and j - i < 10 and not sg[j].isspace() and sg[j] not in "<>" and not (sg[j - 1] in "、。・」』）)！？" or _natural_break(sg, j)):
+                j += 1
+            out.append("<n-b>" + sg[i:j] + "</n-b>")
+            i = j
+        else:
+            out.append(sg[i])
+            i += 1
+    return "".join(out)
 
 
 def _glue_short_tail(parts, i):
@@ -444,9 +527,7 @@ def phrase_breaks(html):
             if m:
                 skip_ += -1 if m.group(1) else 1
         elif k and not skip_:
-            sg = re.sub(r"([^\s「『（(【〈《])([「『（【〈《])([^\s」』）】〉》])", r"<n-b>\1\2\3</n-b>", sg)
-            # 文字の部分の頭（太字・マーカーの直後など）や空白のあとの開きかっこは、直後の1文字とまとめる（「<strong>「成長投資」</strong>」の「「」が行末に残るのを防ぐ）
-            segs[k] = re.sub(r"(?:^|(?<=\s))([「『（【〈《])([^\s」』）】〉》])", r"<n-b>\1\2</n-b>", sg)
+            segs[k] = _glue_open_brackets(sg)
     out = "".join(segs)
     # 「・」の前後で改行しない（「再生・／創出」「家具・／家電」を防ぐ。人の指摘 2026-11-06）。前後の1文字とまとめる
     segs, skip_ = re.split(r"(<[^>]+>)", out), 0
@@ -467,6 +548,8 @@ def phrase_breaks(html):
         elif k and not skip_:  # k=0 は <body の残り（属性）なので触らない
             if re.search(r"[A-Za-z]-[A-Za-z]", sg):
                 sg = re.sub(r"(?<![A-Za-z-])([A-Za-z]+(?:-[A-Za-z]+)+)", r"<n-b>\1</n-b>", sg)
+            for w_, r_ in _PREFERRED_SPLIT.items():
+                sg = sg.replace(w_, r_.replace("|", "<wbr>"))
             # 文の終わりの「かな2文字＋。」（「ます。」「です。」）は切らない（「お聞きしま／す。」のように「す。」だけを行頭に送らない）
             segs[k] = re.sub(r"([ぁ-ん]{2}[。！？])", r"<n-b>\1</n-b>", sg)
     out = "".join(segs)

@@ -53,10 +53,11 @@ body {
 }
 :is(td, th):has(wbr) { word-break: keep-all; } /* 表のマスは「|」（<wbr>）の位置でだけ改行する */
 n-w.h, n-w.c { word-break: keep-all; } /* 見出しと、中央揃えで表示される文（c。js/main.js が付ける）は、文節の切れ目（<wbr>）でだけ改行し、単語の途中で切らない（tools/build_parts/common.py） */
-.wrap-fill n-w, n-w.wrap-fill { word-break: normal; } /* 左揃えで、言葉の切れ目・まとまりを守って折ると行末に大きな空きができるまとまり（js/main.js が .wrap-fill を付ける）は、言葉の途中でも折る */
+.wrap-fill, .wrap-fill n-w, n-w.wrap-fill { word-break: keep-all; } /* 左揃えで、言葉の切れ目・まとまりを守って折ると行末に大きな空きができるまとまり（js/main.js が .wrap-fill を付ける）は、語の切れ目らしい所（js が入れる <wbr class="f">）でも折る。言葉の途中では折らない */
 .wrap-fill n-b.loose { white-space: normal; } /* そのときは6文字以上の長い塊（日付・出典のかっこ・「・」のつながり）も解く（js/main.js が .loose を付ける） */
-n-b { white-space: nowrap; }
-n-b.over { white-space: normal; } /* 枠より長いまとまりは解く（js/main.js。はみ出し防止） */ /* 段落・見出しの最後の4文字。最後の行に2〜3文字だけが残らないよう、まとめて送る（tools/build.py） */
+n-b { white-space: nowrap; } /* 改行しないまとまり（最後の4文字・数字と単位など。tools/build_parts/common.py） */
+n-b.over { white-space: normal; } /* 枠より長いまとまりは解く（js/main.js。はみ出し防止） */
+n-b.over.fill, :has(> wbr.f) { word-break: keep-all; } /* 解いたまとまり・語の切れ目を入れた所は、その切れ目（<wbr class="f">）でだけ折る */
 img { max-width: 100%; height: auto; display: block; }
 /* hidden 属性は、各要素の display 指定より常に優先して非表示にする（絞り込み・予約公開で使用） */
 [hidden] { display: none !important; }
