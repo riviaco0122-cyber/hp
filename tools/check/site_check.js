@@ -24,7 +24,7 @@
  *           フェードイン（.reveal）が表示されないまま、読み込みが遅い、スマホで画像が重い、
  *           見た目の崩れ（スマホ幅のみ。図・カード・囲み枠の中身が左端／右端から 10px/6px 未満でくっついている、文字が枠や画面からはみ出している、
  *           図の中の要素の重なり）。警告が出たら css/style.css・tools/figures.py・記事データを直して 0 にする（機械では見つからない崩れは、スクリーンショットを自分の目で見る）
- *   - 参考: 外部ドメイン（Google Fonts・計測タグなど）への通信。ネットワーク制限で失敗しうるので重大に数えない（既定では遮断して速くする）
+ *   - 参考: 外部ドメイン（計測タグなど）への通信。Google Fonts だけは実際の改行で点検するため既定で読み込む。ネットワーク制限で失敗しうるので重大に数えない（既定では遮断して速くする）
  *   - 見た目の回帰テスト: 本番ブランチを git worktree で一時フォルダに出し、主要ページのスクリーンショットを両方で撮って
  *     tools/check/img_diff.py（Pillow）で比べ、差分の割合が大きいページを一覧にする（意図した変更かを人と品質管理部が確認する）
  *
@@ -194,9 +194,24 @@ function publishDateOf(router, p) {
 }
 
 // ---------------------------------------------------------------- ページの準備（遅延読み込みの解除・フェードイン・スクロール）
+// Google Fonts（Noto Sans JP など）は既定で読み込む。読み込まないと代わりのフォントで組まれ、改行の位置が実際の表示と変わる
+// （2026-11-07：フォントを止めた点検の画像と、人が見る画面で改行がずれていた）
+const FONT_HOSTS = new Set(['fonts.googleapis.com', 'fonts.gstatic.com']);
+const fontCache = new Map(); // URL → 応答（ページごとに取り直すと遅く、読み込み時間の警告が出るので、1回の点検の中で使い回す）
+async function fontRoute(r) {
+  const url = r.request().url();
+  try {
+    if (!fontCache.has(url)) { // 同時に開いたページが同じ URL を何度も取りに行かないよう、取得中の Promise をしまう
+      fontCache.set(url, r.fetch().then(async res => ({ status: res.status(), headers: res.headers(), body: await res.body() })));
+    }
+    return r.fulfill(await fontCache.get(url));
+  } catch (e) { fontCache.delete(url); return r.abort('failed'); }
+}
+
 async function prepare(page, { reveal = false } = {}) {
   await page.addStyleTag({ content: '*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}' });
   await page.evaluate(async (reveal) => {
+    await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 5000))]); // Webフォントで組んだ改行で撮る
     document.querySelectorAll('img[loading=lazy]').forEach(i => { i.loading = 'eager'; });
     if (reveal) document.querySelectorAll('.reveal').forEach(e => e.classList.add('is-visible'));
     const step = Math.max(400, Math.floor(innerHeight * 0.9));
@@ -400,6 +415,7 @@ async function checkPage(browser, srv, p, width, opts, report) {
   await ctx.route('**/*', r => {
     const u = new URL(r.request().url());
     if (u.host === host || u.protocol === 'data:') return r.continue();
+    if (FONT_HOSTS.has(u.host)) return fontRoute(r);
     report.external(u.host, opts.allowExternal ? 'allowed' : 'blocked');
     return opts.allowExternal ? r.continue() : r.abort('blockedbyclient');
   });
@@ -580,8 +596,9 @@ async function screenshots(browser, srv, pages, widths, date, dir, concurrency) 
     if (!r.file) continue; // 本番ブランチにまだないページ
     const pub = publishDateOf(srv.route, p);
     for (const w of widths) tasks.push(async () => {
-      const ctx = await browser.newContext({ viewport: { width: w, height: 900 }, timezoneId: 'Asia/Tokyo', locale: 'ja-JP' });
-      await ctx.route('**/*', rt => (new URL(rt.request().url()).host === host ? rt.continue() : rt.abort('blockedbyclient')));
+      // 動きを減らす設定で撮る（TOPの写真の切り替えなどが、撮るたびに違う写真になって差分に出ないように）
+      const ctx = await browser.newContext({ viewport: { width: w, height: 900 }, timezoneId: 'Asia/Tokyo', locale: 'ja-JP', reducedMotion: 'reduce' });
+      await ctx.route('**/*', rt => { const h = new URL(rt.request().url()).host; return h === host ? rt.continue() : FONT_HOSTS.has(h) ? fontRoute(rt) : rt.abort('blockedbyclient'); });
       const page = await ctx.newPage();
       // 予約公開の記事は公開日の時計で撮る（どちらのブランチでも同じ時計にする）
       await page.clock.setFixedTime(new Date(((pub && pub > date) ? pub : date) + 'T10:00:00+09:00'));
@@ -663,7 +680,7 @@ function toMarkdown(o, pages, rep, visual, notes, secs) {
   const ext = rep.ext();
   if (ext.length) {
     L.push('## 参考: 外部ドメインへの通信（重大に数えない）', '');
-    L.push(o.allowExternal ? '外部への通信を許可して点検した。' : '点検を速く安定させるため、外部への通信は遮断した（Google Fonts・GA4・Clarity など。本番では読み込まれる）。');
+    L.push(o.allowExternal ? '外部への通信を許可して点検した。' : '点検を速く安定させるため、外部への通信は遮断した（GA4・Clarity など。本番では読み込まれる）。改行を実際の表示で点検するため、Google Fonts だけは読み込んだ。');
     ext.forEach(([k, n]) => L.push(`- ${k}: ${n} 回`));
     L.push('');
   }

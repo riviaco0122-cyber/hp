@@ -16,7 +16,8 @@ if (ONLY.length) files = files.filter(f => ONLY.some(o => f.includes(o)));
     for (const f of files) {
       await p.goto('file://' + path.join(root, f) + '?preview=1');
       await p.addStyleTag({ content: '.reveal{opacity:1!important;transform:none!important}' });
-      await p.waitForTimeout(150);
+      await p.evaluate(() => Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 5000))])); // Webフォントで組んだ改行で数える
+      await p.waitForTimeout(300); // js/main.js の改行の調整を待つ
       const found = await p.evaluate((MAX) => {
         const out = [];
         const blocks = document.querySelectorAll('main p, main li, main dd, main dt, main h1, main h2, main h3, main h4, main figcaption, main blockquote, main [class*="__lead"], main [class*="__text"], main [class*="__desc"], main [class*="__sub"]');
