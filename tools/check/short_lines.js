@@ -31,7 +31,7 @@ if (ONLY.length) files = files.filter(f => ONLY.some(o => f.includes(o)));
           const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT); const r = document.createRange();
           const segs = [[]]; let n;
           while ((n = walker.nextNode())) {
-            if (n.nodeType === 1) { if (n.tagName === 'BR' && segs[segs.length - 1].length) segs.push([]); continue; }
+            if (n.nodeType === 1) { if (n.tagName === 'BR' && getComputedStyle(n).display !== 'none' && segs[segs.length - 1].length) segs.push([]); continue; } // 隠している改行（文をつなげたときの br.sb）は数えない
             const pe = n.parentElement; if (!pe || pe.offsetParent === null) continue;
             const lines = segs[segs.length - 1];
             for (let i = 0; i < n.length; i++) {
