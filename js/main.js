@@ -861,8 +861,9 @@
         loosened.forEach(function (b) { b.classList.remove('loose'); });
       }
     });
-    // 判定がすべて済んでから両端揃えにする。右の空きが1.5文字分を超える行があるまとまりは、字間が大きく開くので左揃えのまま
-    jfy.filter(function (b) { return maxGap(b) <= 1.5; }).forEach(function (b) { b.classList.add('jfy'); });
+    // 判定がすべて済んでから両端揃えにする。右の空きが3.5文字分を超える行があるまとまりは、字間が大きく開くので左揃えのまま
+    // （1行20文字ほどなら、3文字分の空きでも1文字あたり0.15文字分ほどの広がりで目立たない。人の指摘 2026-11-07）
+    jfy.filter(function (b) { return maxGap(b) <= 3.5; }).forEach(function (b) { b.classList.add('jfy'); });
   };
   if (phraseTexts.length) {
     var fitTimer, fitW = window.innerWidth;
