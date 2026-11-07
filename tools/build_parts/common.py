@@ -141,7 +141,7 @@ def _heading_phrases(text):
 
 
 # 数字のまとまり：前の「約」から、単位（「万人」「兆円」「年3月31日」など）まで。単位がないときは直後の1文字（「2つ」）まで
-_NUM_TOKEN = re.compile(r"(?:約)?\d[\d,.]*(?:(?:万|億|兆)?(?:人泊|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)(?:\d+(?:か月|月|日))*|[^\s\d,.、。・（）()「」])[、。，．）」』]*")
+_NUM_TOKEN = re.compile(r"(?:約)?\d[\d,.]*(?:(?:万|億|兆)?(?:人泊|営業日|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)(?:\d+(?:か月|月|日))*|[^\s\d,.、。・（）()「」])[、。，．）」』]*")
 
 
 # 本文の長い段落で使う、短いまとまり：数字と直後の1文字だけ（「5万」「2つ」）。まとまりを長くすると、行末で丸ごと次の行へ送られ、右側が大きく空くため
@@ -364,15 +364,18 @@ def phrase_breaks(html):
                 skip_ += -1 if m.group(1) else 1
         elif not skip_ and "・" in sg:
             segs[k] = re.sub(r"([^\s・])・([^\s・])", r"<n-b>\1・\2</n-b>", sg)
-    # 「Wi-Fi」「e-Gov」：ハイフンのあとで改行しない（文字の部分だけを見る。タグの中・script・style は触らない）
+    # 「Wi-Fi」「e-Gov」：ハイフンのあとで改行しない。文の終わりの「ます。」を切らない（文字の部分だけを見る。タグの中・script・style は触らない）
     segs, skip_ = re.split(r"(<[^>]+>)", "".join(segs)), 0
     for k, sg in enumerate(segs):
         if sg.startswith("<"):
             m = re.match(r"<(/?)(script|style|textarea|title|svg)\b", sg, re.I)
             if m:
                 skip_ += -1 if m.group(1) else 1
-        elif k and not skip_ and re.search(r"[A-Za-z]-[A-Za-z]", sg):  # k=0 は <body の残り（属性）なので触らない
-            segs[k] = re.sub(r"(?<![A-Za-z-])([A-Za-z]+(?:-[A-Za-z]+)+)", r"<n-b>\1</n-b>", sg)
+        elif k and not skip_:  # k=0 は <body の残り（属性）なので触らない
+            if re.search(r"[A-Za-z]-[A-Za-z]", sg):
+                sg = re.sub(r"(?<![A-Za-z-])([A-Za-z]+(?:-[A-Za-z]+)+)", r"<n-b>\1</n-b>", sg)
+            # 文の終わりの「かな2文字＋。」（「ます。」「です。」）は切らない（「お聞きしま／す。」のように「す。」だけを行頭に送らない）
+            segs[k] = re.sub(r"([ぁ-ん]{2}[。！？])", r"<n-b>\1</n-b>", sg)
     out = "".join(segs)
     return head + sep + out
 

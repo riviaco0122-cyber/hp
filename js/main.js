@@ -705,7 +705,7 @@
     lines.sort(function (x, y) { return x.top - y.top; });
     return lines.slice(0, -1).reduce(function (m, l) { return l.hard ? m : Math.max(m, (right - l.right) / fs); }, 0);
   };
-  var NUM = /約?\d[\d,.]*(?:万|億|兆)?(?:人泊|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)?/g;
+  var NUM = /約?\d[\d,.]*(?:万|億|兆)?(?:人泊|営業日|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)?/g;
   var keepNums = function (b) { // b の中の数字と単位を、改行しないまとまり（n-b）で包む
     var tw = document.createTreeWalker(b, NodeFilter.SHOW_TEXT), t, nodes = [];
     while ((t = tw.nextNode())) if (!(t.parentNode.closest && t.parentNode.closest('n-b.num'))) nodes.push(t); // 前に包んだ数字（n-b.num）は包み直さない
@@ -734,6 +734,11 @@
       if (cut > 0 && txt[cut - 1] === '約' && /\d/.test(txt[cut])) cut--;
       var tail = last.splitText(cut), nb = document.createElement('n-b'); nb.className = 'tail';
       pe.insertBefore(nb, tail); nb.appendChild(tail);
+    } else if (pe.tagName === 'N-B' && pe.textContent.length < 4 && pe.previousSibling && pe.previousSibling.nodeType === 3 &&
+               pe.previousSibling.data.length >= 4 - pe.textContent.length) {
+      // 最後のまとまりが「ます。」のように4文字に足りないときは、直前の文字を足して守る（「あり／ます。」を防ぐ）
+      var tn = pe.previousSibling, moved = tn.splitText(tn.data.length - (4 - pe.textContent.length)), nb3 = document.createElement('n-b');
+      nb3.className = 'tail'; pe.parentNode.insertBefore(nb3, moved); nb3.appendChild(moved); nb3.appendChild(pe);
     } else if (last.previousSibling && (last.previousSibling.textContent + txt).length >= 4 && (last.previousSibling.textContent + txt).length <= 8) {
       // 最後の文字が短く分かれている（「…<n-b>10月</n-b>閲覧）」）ときは、直前のまとまりと合わせて守る
       var prev = last.previousSibling, nb2 = document.createElement('n-b'); nb2.className = 'tail';
@@ -800,6 +805,7 @@
       var a = narrow ? cost(blk, fsz) : 0;
       // 言葉の切れ目で折った形（A）で右が空く・最後の行が短いときは、言葉の途中でも折る形（B）も組んで、見栄えの良いほうを使う
       blk.classList.add('wrap-fill');
+      keepNums(blk); // 言葉の途中でも折れるので、先に数字と単位（「2営業日」「80万円」）をまとめておく
       var loosened = [];
       blk.querySelectorAll('n-b').forEach(function (b) {
         // 6文字以上の塊と、「・」のすぐあとに英単語が続く塊（「価・R」＋「evPAR」）を解く。数字と単位（n-b.num）・最後の語尾（n-b.tail）は解かない
