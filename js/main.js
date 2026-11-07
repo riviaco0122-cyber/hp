@@ -802,8 +802,11 @@
     sbBlocks.forEach(function (b) {
       b.classList.remove('nosb');
       if (b.offsetParent === null) return;
-      // どの文も1行に収まるときだけ、文ごとに改行する（お手本のコンセプト文のように1文1行で並ぶ形）。そうでなければ流す
-      if (lineCount(b) > b.querySelectorAll('br.sb').length + 1) b.classList.add('nosb');
+      // どの文も1行に収まり、つなげても行数が減らないときだけ、文ごとに改行する（お手本のコンセプト文のように1文1行で並ぶ形）。
+      // 1文が2行になる・PC の広い枠でつなげれば1行に収まる（右が大きく空く）ときは、文をつなげて流す
+      var n = b.querySelectorAll('br.sb').length + 1, withSb = lineCount(b);
+      b.classList.add('nosb');
+      if (withSb <= n && lineCount(b) >= n) b.classList.remove('nosb');
     });
     document.querySelectorAll('.wrap-fill').forEach(function (b) { b.classList.remove('wrap-fill'); });
     document.querySelectorAll('n-b.loose').forEach(function (b) { b.classList.remove('loose'); });

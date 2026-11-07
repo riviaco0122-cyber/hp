@@ -256,8 +256,12 @@ def _glue_short_tail(parts, i):
         while t >= 0 and parts[t] == "":
             t -= 1
         if t >= 0 and not parts[t].startswith("<") and len(unescape(parts[t]).strip()) > 4:
-            txt = unescape(parts[t])
-            parts[t] = e(txt[:-3], quote=False) + "<n-b>" + e(txt[-3:], quote=False) + "</n-b>"
+            # すでにタグを含む（数字の <n-b>1回</n-b> など）ときは、最後のタグより後ろの文字だけを扱う（タグを文字に戻さない）
+            pre, tail_txt = re.match(r"(.*?)([^<>]*)$", parts[t], re.S).groups()
+            txt = unescape(tail_txt)
+            if len(txt) < 3:
+                return False
+            parts[t] = pre + e(txt[:-3], quote=False) + "<n-b>" + e(txt[-3:], quote=False) + "</n-b>"
             return True
         return False
     name, depth, o = m.group(1), 0, k

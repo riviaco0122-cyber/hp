@@ -312,7 +312,7 @@ def sim_html(key):
       <div class="container">
         <p class="mlp-en reveal">Simulation</p>
         <h2 class="mlp-title reveal">{e(sm["title"])}</h2>
-        <p class="mlp-lead reveal">{e(sm["lead"])}</p>
+        <p class="mlp-lead reveal">{lines_html(sm["lead"])}</p>
         <div class="msim{" msim--solo" if not splits else " msim--multi" if len(splits) > 1 else ""} reveal" role="img" aria-label="{e(alt)}">
           <div class="msim__model">
             <p class="msim__badge">モデル物件（架空）</p>
@@ -590,7 +590,7 @@ def media_service_page(sv):
       <div class="container">
         <p class="mlp-en reveal">How much?</p>
         <h2 class="mlp-title reveal">{e(pr["title"])}</h2>
-        <p class="mlp-lead reveal">{e(pr["lead"])}</p>
+        <p class="mlp-lead reveal">{lines_html(pr["lead"])}</p>
 {price_body}
         <p class="mprice__note">※ {e(pr["note"])}{src_link}</p>
       </div>
@@ -695,9 +695,9 @@ def media_service_page(sv):
     <section class="mlp-sec mlp-sec--final">
       <div class="container mlp-narrow">
         <h2 class="mlp-title reveal">{e(closing_t)}</h2>
-        <p class="mlp-lead reveal">{e(closing_d)}</p>
+        <p class="mlp-lead reveal">{lines_html(closing_d)}</p>
         <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-bottom">無料で相談する {ARROW}</a><a href="#diag-doc" class="mbtn mbtn--sub" data-cta="media-service-bottom-doc">資料をもらう（無料） {ARROW}</a></div>
-        <p class="mlp-final__note">相談・試算は無料。しつこい営業はしません。</p>
+        <ul class="mcta__points mlp-final__points reveal"><li>相談・試算は無料</li><li>しつこい営業はしません</li></ul>
       </div>
     </section>
 
