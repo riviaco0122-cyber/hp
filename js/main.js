@@ -712,7 +712,7 @@
   var OPEN = /[「『（(【〈《［]/;
   var H_ENDS = /^(?:たり|ので|から|けど|ても|って|まで|より|など|には|では|とは)$/; // ひらがなが続くとき、このあとは折ってよい
   var PARTICLE = /^(?:から|まで|より|など|への|での|との|には|では|とは|を|が|は|へ|の|で|と|も|や|に)/;
-  var KEEP_WORDS = ["空き家", "空き地", "空き室", "持ち主", "貸し出し", "引き渡し", "立ち上げ", "申し込み", "受け取り", "取り組み", "見積もり", "借り上げ", "借り手", "貸し手", "売り手", "買い手", "手続き", "問い合わせ", "組み合わせ", "打ち合わせ", "割り当て", "売り上げ", "繰り越し", "書き込み", "読み込み", "振り込み", "引き継ぎ", "立ち会い", "建て替え", "住み替え", "落ち着き", "見直し", "下見", "空き"].concat(['のしかかる', 'まるごと', '体制', '日本政策金融公庫', '空家等', '方法', '案内']); // 中では折らない語（tools/build_parts/common.py の _KEEP_WORDS・_NO_SPLIT と同じ）
+  var KEEP_WORDS = ["空き家", "空き地", "空き室", "持ち主", "貸し出し", "引き渡し", "立ち上げ", "申し込み", "受け取り", "取り組み", "見積もり", "借り上げ", "借り手", "貸し手", "売り手", "買い手", "手続き", "問い合わせ", "組み合わせ", "打ち合わせ", "割り当て", "売り上げ", "繰り越し", "書き込み", "読み込み", "振り込み", "引き継ぎ", "立ち会い", "建て替え", "住み替え", "落ち着き", "見直し", "下見", "空き", "すきま風"].concat(['のしかかる', 'まるごと', '体制', '日本政策金融公庫', '空家等', '方法', '案内']); // 中では折らない語（tools/build_parts/common.py の _KEEP_WORDS・_NO_SPLIT と同じ）
   var markKeep = function (cs) { // cs.keep[j]：cs[j-1] と cs[j] の間が、中では折らない語の中
     var str = cs.map(function (c) { return c || ' '; }).join(''); cs.keep = {};
     KEEP_WORDS.forEach(function (w) { for (var at = str.indexOf(w); at >= 0; at = str.indexOf(w, at + 1)) for (var q = at + 1; q < at + w.length; q++) cs.keep[q] = true; });
@@ -730,7 +730,7 @@
       var n = 0, k; for (k = j - 1; k >= 0 && chClass(cs[k]) === 'K'; k--) n++;
       return n >= 2 || (k >= 0 && chClass(cs[k]) === 'D'); // 「31日／までの」のように数字のあとの単位でもよい
     }
-    if (ca === 'H' && cb === 'H') return (/[をがは]/.test(a) && !/[をがは]/.test(b)) || H_ENDS.test(cs.slice(Math.max(0, j - 2), j).join('')); // 「状態を／つくります」「したり／しまったり」
+    if (ca === 'H' && cb === 'H') return (/[をがは]/.test(a) && !/[をがは]/.test(b)) || (H_ENDS.test(cs.slice(Math.max(0, j - 2), j).join('')) && b !== 'す'); // 「のですか」の「ので」は除く // 「状態を／つくります」「したり／しまったり」
     return (ca === 'H' && (cb === 'K' || cb === 'T' || cb === 'L' || cb === 'D')) || (ca === 'T' && (cb === 'K' || cb === 'L')) ||
       (ca === 'K' && (cb === 'T' || cb === 'L')) || (ca === 'L' && (cb === 'K' || cb === 'T'));
   };
@@ -738,6 +738,8 @@
     var tw = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), t, r = document.createRange();
     while ((t = tw.nextNode())) {
       if (!t.parentNode.closest('n-w.h, n-w.c, n-b.over')) continue; // ふつうの本文（どこで折れてもよい）は見ない
+      r.selectNodeContents(t);
+      if (r.getClientRects().length <= 1) continue; // 1行に収まっている文字の並びは見ない（重くしない）
       var top = null;
       for (var i = 0; i < t.data.length; i++) {
         r.setStart(t, i); r.setEnd(t, i + 1);
@@ -756,8 +758,19 @@
     }
     markKeep(cs);
     for (var j = 1; j < cs.length; j++) if (canBreak(cs, j)) marks.push(pos[j]);
+    var nowrapOf = function (n) { // n を含む、解いていない（折れない）一番外の n-b
+      var out = null;
+      for (var e = n.parentNode; e && e !== blk; e = e.parentNode) if (e.tagName === 'N-B' && !e.classList.contains('loose') && !e.classList.contains('over')) out = e;
+      return out;
+    };
     for (var k = marks.length - 1; k >= 0; k--) {
       var node = marks[k][0], idx = marks[k][1], w = document.createElement('wbr'); w.className = 'f';
+      var nb = nowrapOf(node);
+      if (nb) { // 折れないまとまりの中には置かない（<wbr> はまとまりの中でも折れてしまう）。まとまりの頭なら、まとまりの前に置く
+        var first = document.createTreeWalker(nb, NodeFilter.SHOW_TEXT).nextNode();
+        if (idx === 0 && first === node) nb.parentNode.insertBefore(w, nb);
+        continue;
+      }
       if (idx === 0) node.parentNode.insertBefore(w, node);
       else node.parentNode.insertBefore(w, node.splitText(idx));
     }
@@ -777,7 +790,7 @@
       if (cut > 0 && txt[cut - 1] === '約' && /\d/.test(txt[cut])) cut--;
       // まとまりの頭は語の切れ目らしい所に置く（まとまりの頭で折れるので、語の途中だと「あ／ります。」になる。人の指摘 2026-11-07）
       var cs0 = txt.split(''), c2; markKeep(cs0);
-      for (c2 = cut; c2 > 0 && c2 >= txt.length - 12; c2--) if (/[、。・」』）)！？\s]/.test(txt[c2 - 1]) || canBreak(cs0, c2)) break;
+      for (c2 = cut; c2 > 0 && c2 >= txt.length - 12; c2--) if (/\s/.test(txt[c2 - 1]) || (chClass(txt[c2 - 1]) === 'P' && !OPEN.test(txt[c2 - 1]) && chClass(txt[c2]) !== 'P') || canBreak(cs0, c2)) break;
       if (c2 > 0 && c2 >= txt.length - 12) cut = c2;
       var tail = last.splitText(cut), nb = document.createElement('n-b'); nb.className = 'tail';
       pe.insertBefore(nb, tail); nb.appendChild(tail);
@@ -890,17 +903,23 @@
       var gapA = maxGap(blk);
       var narrow = !inTable && (blk.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) / fsz < 16; // 1行に16文字未満の狭い枠（スマホのカード・2列の図など）。表のマスは右の空きを優先
       if (gapA <= (fsz >= 22 ? 5 : narrow ? 3 : 1.5)) return; // 右の空きが小さければ、言葉の切れ目で折った形のまま（ふつうの幅は1.5文字分まで。基本は右詰め）
+      var nw = blk.querySelector('n-w'); // ふつうの本文（どこでも折れる文）は、すでに右まで詰まるので試さない（重くしない）
+      if (!nw || getComputedStyle(nw).wordBreak !== 'keep-all') return;
       var a = narrow ? cost(blk, fsz) : 0;
       // 言葉の切れ目で折った形（A）で右が空く・最後の行が短いときは、言葉の途中でも折る形（B）も組んで、見栄えの良いほうを使う
       blk.classList.add('wrap-fill');
-      fillBreaks(blk); // 語の切れ目らしい所でも折れるようにする（言葉の途中では折らない）
       var loosened = [];
+      var lastT = null, twl = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), tl;
+      while ((tl = twl.nextNode())) if (tl.data.trim()) lastT = tl;
+      var tailNb = null; for (var ea = lastT && lastT.parentNode; ea && ea !== blk; ea = ea.parentNode) if (ea.tagName === 'N-B') tailNb = ea;
       blk.querySelectorAll('n-b').forEach(function (b) {
+        if (tailNb && tailNb.contains(b)) return; // 最後のまとまり（語尾）とその中は解かない（解くと「代執行は／ない」「「20万円」／とは？」と最後の行が短くなる）
         // 6文字以上の塊と、英単語の端を巻き込んだ塊（「価・R」＋「evPAR」、「Rとは？」）を解く（英単語の前後では折れる。英単語の中は折れない）。
         // 数字と単位（n-b.num）・最後の語尾（n-b.tail）・読点や句点で終わる区切りの終わり（「79件から、」）は解かない
         if (b.classList.contains('num') || b.classList.contains('tail') || /[、。，．！？]$/.test(b.textContent) || !(b.textContent.length >= 6 || /・[A-Za-z]$|[A-Za-z][^A-Za-z.\-]/.test(b.textContent))) return;
         b.classList.add('loose'); loosened.push(b);
       });
+      fillBreaks(blk); // 語の切れ目らしい所でも折れるようにする（言葉の途中では折らない。解いたまとまりの中も）
       keepTail(blk);
       // ふつうの幅の枠は、右の最大の空きが小さくなるなら B（基本は右詰め。人の方針 2026-11-06）。
       // 狭い枠（カード・2列の図など）は、言葉の途中で切れる所も数えて、見栄えの良いほう（「ごみ袋の／予備」「要件を／満たせるか」）
@@ -916,17 +935,20 @@
     blocks.forEach(function (blk) {
       if (blk.offsetParent === null) return;
       var bcs = getComputedStyle(blk), w = blk.clientWidth - parseFloat(bcs.paddingLeft) - parseFloat(bcs.paddingRight); // 枠の中身の幅
+      if (w < parseFloat(bcs.fontSize) * 4) return; // 隠れていて幅が測れない枠は見ない
       blk.querySelectorAll('n-b').forEach(function (b) { if (!b.closest('.visually-hidden') && b.getBoundingClientRect().width > w + 1) b.classList.add('over'); }); // 読み上げ用の見えない文字は対象外
     });
     // 1つの言葉のまとまりが枠より長く、ブラウザが言葉の途中で無理に折ったまとまり（狭い表のマス・ラベルの「セルフチェックインな／ど」）は、
     // 語の切れ目らしい所でも折れるようにする（人の指摘 2026-11-07）
     blocks.forEach(function (blk) {
-      if (blk.offsetParent === null || blk.classList.contains('wrap-fill') || !forced(blk)) return;
+      if (blk.offsetParent === null || blk.classList.contains('wrap-fill')) return;
+      var fz = parseFloat(getComputedStyle(blk).fontSize);
+      if (blk.clientWidth / fz > 16 || blk.textContent.length > 80 || !forced(blk)) return; // 無理な折れは狭い枠で起きる。広い枠・長い本文は見ない（重くしない）
       fillBreaks(blk);
       blk.querySelectorAll('n-b.over').forEach(function (b) { b.classList.add('fill'); });
     });
-    // 字間が広がりすぎない（1行の文字数の12%まで）ときだけ両端揃え（狭い枠で「チ ャ ネ ル」と字間が開くのを防ぐ）
-    jfy.filter(function (b) { var g = maxGap(b); return g <= 3.5 && g <= b.clientWidth / parseFloat(getComputedStyle(b).fontSize) * 0.12; }).forEach(function (b) { b.classList.add('jfy'); });
+    // 字間が広がりすぎない（右の空きが1行の文字数の8%まで）ときだけ両端揃え（狭い枠で「チ ャ ネ ル」と字間が開くのを防ぐ）
+    jfy.filter(function (b) { var g = maxGap(b); return g <= 3.5 && g <= b.clientWidth / parseFloat(getComputedStyle(b).fontSize) * 0.08; }).forEach(function (b) { b.classList.add('jfy'); });
   };
   if (phraseTexts.length) {
     var fitTimer, fitW = window.innerWidth;

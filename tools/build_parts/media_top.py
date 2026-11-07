@@ -208,7 +208,7 @@ def media_index_page():
               <svg class="mfeat-branch mfeat-branch--in" viewBox="0 0 300 36" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0v14a10 10 0 0 0 10 10h180a10 10 0 0 0 10-10V0M150 0v36"/></svg>
               <p class="mfeat-goal"><span>ご家族が<b>納得できる方法</b>を選べる</span></p>
             </div>
-            <p class="mfeat__text">{lines_html("3つの見込みを、並べてお出しします。")}</p>
+            <p class="mfeat__text">{lines_html("売却・借り上げ・自分で運営の見込みを、並べてお出しします。")}</p>
             <p class="mfeat__note">※ 収益を保証するものではありません。</p>
           </li>
           <li class="mfeat reveal" data-delay="2">
@@ -222,7 +222,7 @@ def media_index_page():
                 <li><span class="mfeat-rows__k">価格</span><b>時期に合わせて調整</b></li>
               </ul>
             </div>
-            <p class="mfeat__text">{lines_html("開業2か月目には、行かなくても回る体制にしました。")}</p>
+            <p class="mfeat__text">{lines_html("開業2か月目には、現地に行かなくても回る体制にしました。")}</p>
           </li>
         </ul>
       </div>

@@ -192,7 +192,7 @@ def _heading_phrases(text):
     # 語の切れ目らしい所（_natural_break）まで、最大12文字のまとまりになるところまで戻す。見つからなければそのまま
     if cut > 0:
         bounds = {len("".join(ph[:n])) for n in range(1, len(ph))}
-        ok = lambda c: c > 0 and (c in bounds or jj[c - 1] in "、。・」』）)！？ 　" or _natural_break(jj, c))
+        ok = lambda c: c > 0 and (c in bounds or jj[c - 1].isspace() or (_ch_class(jj[c - 1]) == "P" and jj[c - 1] not in "「『（(【〈《［" and _ch_class(jj[c]) != "P") or _natural_break(jj, c))  # 記号（「、」「＋」「・」）のあとも良い
         found = next((c for c in range(cut, max(0, len(jj) - 12) - 1, -1) if ok(c)), None)
         if found is None and ok(cut + 1):  # 戻って見つからなければ、3文字のまとまり（「日本政策金融公庫／の融資」）
             found = cut + 1
@@ -296,7 +296,7 @@ _PARTICLE = re.compile(r"(?:から|まで|より|など|への|での|との|に
 
 
 # 送り仮名を含む複合語（「空き家」「持ち主」）。中では折らない（js/main.js の KEEP_WORDS と同じ）
-_KEEP_WORDS = ["空き家", "空き地", "空き室", "持ち主", "貸し出し", "引き渡し", "立ち上げ", "申し込み", "受け取り", "取り組み", "見積もり", "借り上げ", "借り手", "貸し手", "売り手", "買い手", "手続き", "問い合わせ", "組み合わせ", "打ち合わせ", "割り当て", "売り上げ", "繰り越し", "書き込み", "読み込み", "振り込み", "引き継ぎ", "立ち会い", "建て替え", "住み替え", "落ち着き", "見直し", "下見", "空き"]
+_KEEP_WORDS = ["空き家", "空き地", "空き室", "持ち主", "貸し出し", "引き渡し", "立ち上げ", "申し込み", "受け取り", "取り組み", "見積もり", "借り上げ", "借り手", "貸し手", "売り手", "買い手", "手続き", "問い合わせ", "組み合わせ", "打ち合わせ", "割り当て", "売り上げ", "繰り越し", "書き込み", "読み込み", "振り込み", "引き継ぎ", "立ち会い", "建て替え", "住み替え", "落ち着き", "見直し", "下見", "空き", "すきま風"]
 
 
 def _natural_break(s, j):
@@ -314,7 +314,7 @@ def _natural_break(s, j):
     if ca == "P":
         return False
     if ca == "H" and cb == "H":  # 「状態を／つくります」「したり／しまったり」
-        return (a in "をがは" and b not in "をがは") or s[max(0, j - 2):j] in _H_ENDS
+        return (a in "をがは" and b not in "をがは") or (s[max(0, j - 2):j] in _H_ENDS and b != "す")  # 「のですか」の「ので」は除く
     if cb == "H":
         if not _PARTICLE.match(s, j):
             return False
