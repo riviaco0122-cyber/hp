@@ -312,7 +312,7 @@ def sim_html(key):
       <div class="container">
         <p class="mlp-en reveal">Simulation</p>
         <h2 class="mlp-title reveal">{e(sm["title"])}</h2>
-        <p class="mlp-lead reveal">{e(sm["lead"])}</p>
+        <p class="mlp-lead reveal">{lines_html(sm["lead"])}</p>
         <div class="msim{" msim--solo" if not splits else " msim--multi" if len(splits) > 1 else ""} reveal" role="img" aria-label="{e(alt)}">
           <div class="msim__model">
             <p class="msim__badge">モデル物件（架空）</p>
@@ -562,8 +562,8 @@ def media_service_page(sv):
           <div class="mlp-hero__text">
             <p class="mlp-hero__eyebrow reveal">{e(sv["eyebrow"])}<span class="pc-only">｜{e(sv["name"])}</span></p>
             <h1 class="mlp-hero__title reveal" data-delay="1">{lp["hero"]}</h1>
-            <p class="mlp-hero__sub pc-only reveal" data-delay="2">{e(lp["hero_sub"])}</p>
-            <p class="mlp-hero__sub mlp-hero__sub--sp sp-only reveal" data-delay="2">{e(lp["hero_sub_sp"]).replace("|", "<br>")}</p>
+            <p class="mlp-hero__sub pc-only reveal" data-delay="2">{lines_html(lp["hero_sub"])}</p>
+            <p class="mlp-hero__sub mlp-hero__sub--sp sp-only reveal" data-delay="2">{lines_html(lp["hero_sub_sp"])}</p>
             <ul class="mlp-hero__promise reveal" data-delay="2"><li><strong>無料</strong>相談・試算</li><li><strong>2営業日</strong>以内にご連絡</li><li><strong>全国</strong>オンライン可</li></ul>
             <picture class="mlp-hero__photo reveal" data-delay="3"><source srcset="images/photos/w/{lp["photo"]}-800.webp" type="image/webp"><img src="images/photos/{lp["photo"]}.jpg" alt="" width="800" height="533" loading="eager" decoding="async"></picture>
           </div>
@@ -590,7 +590,7 @@ def media_service_page(sv):
       <div class="container">
         <p class="mlp-en reveal">How much?</p>
         <h2 class="mlp-title reveal">{e(pr["title"])}</h2>
-        <p class="mlp-lead reveal">{e(pr["lead"])}</p>
+        <p class="mlp-lead reveal">{lines_html(pr["lead"])}</p>
 {price_body}
         <p class="mprice__note">※ {e(pr["note"])}{src_link}</p>
       </div>
@@ -695,9 +695,9 @@ def media_service_page(sv):
     <section class="mlp-sec mlp-sec--final">
       <div class="container mlp-narrow">
         <h2 class="mlp-title reveal">{e(closing_t)}</h2>
-        <p class="mlp-lead reveal">{e(closing_d)}</p>
+        <p class="mlp-lead reveal">{lines_html(closing_d)}</p>
         <div class="mlp-ctarow reveal"><a href="#diag" class="mbtn" data-cta="media-service-bottom">無料で相談する {ARROW}</a><a href="#diag-doc" class="mbtn mbtn--sub" data-cta="media-service-bottom-doc">資料をもらう（無料） {ARROW}</a></div>
-        <p class="mlp-final__note">相談・試算は無料。しつこい営業はしません。</p>
+        <ul class="mcta__points mlp-final__points reveal"><li>相談・試算は無料</li><li>しつこい営業はしません</li></ul>
       </div>
     </section>
 
@@ -800,8 +800,8 @@ def media_company_page():
 def media_intro():
     """コーポレートTOPのメディア紹介。記事を並べるのではなく、アキヤドが何のメディアかを伝える"""
     entries = "".join(
-        f'<li><a href="media/guide-{g["key"]}.html" class="mintro__entry"><span class="mintro__who">{e(g["label"])}方へ</span>'
-        f'<span class="mintro__desc">{e(MEDIA_INTRO_DESC[g["key"]])}</span><span class="mintro__arrow">{ARROW}</span></a></li>'
+        f'<li><a href="media/guide-{g["key"]}.html" class="mintro__entry"><span class="mintro__who">{lines_html(MEDIA_INTRO_WHO[g["key"]])}</span>'
+        f'<span class="mintro__desc">{lines_html(MEDIA_INTRO_DESC[g["key"]])}</span><span class="mintro__arrow">{ARROW}</span></a></li>'
         for g in MEDIA_GUIDES)
     return f"""    <section class="section mintro">
       <div class="container">
@@ -825,9 +825,11 @@ def media_intro():
     </section>"""
 
 
+# トップの「アキヤド」紹介の入り口（ガイド）。「|」は折ってよい位置（lines_html）。説明文は PC で2行に収まる長さにする（人の指摘 2026-11-07）
+MEDIA_INTRO_WHO = {"sell": "空き家を|手放したい方へ", "use": "空き家を|任せたい方へ", "side": "宿を|はじめたい方へ", "run": "宿の運営を|伸ばしたい方へ"}
 MEDIA_INTRO_DESC = {
-    "sell": "相続した家を手放すときの流れ、税金の特例、放置したときのリスク",
-    "use": "家を残したまま宿として活かす方法、貸す契約、改修の考え方",
-    "side": "民泊の始め方、制度と届出、開業資金、集客と運営",
-    "run": "運営中の宿の数字の見方、予約の増やし方、人手と運営の整え方",
+    "sell": "相続した家の手放し方、|税金の特例、放置のリスク",
+    "use": "家を残して宿にする方法、|貸す契約、改修の考え方",
+    "side": "民泊の始め方、制度と届出、|開業資金、集客と運営",
+    "run": "数字の見方、予約の増やし方、|人手と運営の整え方",
 }

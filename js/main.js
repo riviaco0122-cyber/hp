@@ -782,7 +782,32 @@
     if (lines[lines.length - 1].n <= 3) total += 6;
     return total;
   };
+  var lineCount = function (blk) { // まとまりの中の文字の行数
+    var tops = [], r = document.createRange(), tw = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), t;
+    var fs = parseFloat(getComputedStyle(blk).fontSize);
+    while ((t = tw.nextNode())) {
+      if (!t.data.trim()) continue;
+      r.selectNodeContents(t);
+      Array.prototype.forEach.call(r.getClientRects(), function (q) {
+        if (q.width && !tops.some(function (y) { return Math.abs(y - q.top) < fs * 0.6; })) tops.push(q.top);
+      });
+    }
+    return tops.length;
+  };
   var fitLines = function () {
+    // 文ごとの改行（br.sb。build が短い文に入れる）は、どの文も1行に収まるときだけ残す。そうでなければ文をつなげて流す
+    // （PC の狭いカードで「受け付けて／います。」のように行が増え、ページが無駄に縦に長くなるため。人の指摘 2026-11-07）
+    var sbBlocks = [];
+    document.querySelectorAll('main br.sb').forEach(function (br) { var b = blockOf(br.parentElement); if (sbBlocks.indexOf(b) < 0) sbBlocks.push(b); });
+    sbBlocks.forEach(function (b) {
+      b.classList.remove('nosb');
+      if (b.offsetParent === null) return;
+      // どの文も1行に収まり、つなげても行数が減らないときだけ、文ごとに改行する（お手本のコンセプト文のように1文1行で並ぶ形）。
+      // 1文が2行になる・PC の広い枠でつなげれば1行に収まる（右が大きく空く）ときは、文をつなげて流す
+      var n = b.querySelectorAll('br.sb').length + 1, withSb = lineCount(b);
+      b.classList.add('nosb');
+      if (withSb <= n && lineCount(b) >= n) b.classList.remove('nosb');
+    });
     document.querySelectorAll('.wrap-fill').forEach(function (b) { b.classList.remove('wrap-fill'); });
     document.querySelectorAll('n-b.loose').forEach(function (b) { b.classList.remove('loose'); });
     Array.prototype.forEach.call(phraseTexts, function (n) {
@@ -812,8 +837,8 @@
       var loosened = [];
       blk.querySelectorAll('n-b').forEach(function (b) {
         // 6文字以上の塊と、英単語の端を巻き込んだ塊（「価・R」＋「evPAR」、「Rとは？」）を解く（英単語の前後では折れる。英単語の中は折れない）。
-        // 数字と単位（n-b.num）・最後の語尾（n-b.tail）は解かない
-        if (b.classList.contains('num') || b.classList.contains('tail') || !(b.textContent.length >= 6 || /・[A-Za-z]$|[A-Za-z][^A-Za-z.\-]/.test(b.textContent))) return;
+        // 数字と単位（n-b.num）・最後の語尾（n-b.tail）・読点や句点で終わる区切りの終わり（「79件から、」）は解かない
+        if (b.classList.contains('num') || b.classList.contains('tail') || /[、。，．！？]$/.test(b.textContent) || !(b.textContent.length >= 6 || /・[A-Za-z]$|[A-Za-z][^A-Za-z.\-]/.test(b.textContent))) return;
         keepNums(b); // 解く前に、中の数字と単位（「80万円」「2027年」）をまとめておく（「80万／円」を防ぐ）
         b.classList.add('loose'); loosened.push(b);
       });

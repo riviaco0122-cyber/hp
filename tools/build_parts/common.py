@@ -55,12 +55,9 @@ _CARD_MAX = 60
 _NO_SPLIT = ["のしかかる", "ドラッグ&ドロップ"]  # BudouX が途中で区切る言葉（人の指摘で見つけたら足す）
 
 
-def _heading_phrases(text):
-    """見出しの文字を文節に分け、文節の切れ目にだけ改行候補（<wbr>）を入れる。最後の文節が2文字以下なら、前の文節とつなげる。
-    文の終わり（「。」「！」「？」）のあとに次の文が続くときは、そこで改行し（<br class="sb">）、文ごとに組む。短い文では、
-    A の文の直後に B の文を続けず、文ごとに行を分けたほうが読みやすく、右に中途半端な空きもできない（人の方針 2026-11-07）。
-    ただし前後の文がどちらも8文字以上のときだけ（「空き家を売る。活かす。」のような短いキャッチは1行で読ませる）"""
-    sents, depth, cur = [], 0, ""  # かっこの中の「。」（「（例外あり。税務署に確認）」）では分けない
+def _sentences(text):
+    """文の終わり（「。」「！」「？」）で文に分ける。かっこの中の「。」（「（例外あり。税務署に確認）」）では分けない"""
+    sents, depth, cur = [], 0, ""
     for k, ch in enumerate(text):
         cur += ch
         depth += (ch in "（(「『【") - (ch in "）)」』】")
@@ -68,6 +65,44 @@ def _heading_phrases(text):
             sents.append(cur); cur = ""
     if cur:
         sents.append(cur)
+    return sents
+
+
+def lines_html(text):
+    """リード・コンセプトの改行（お手本：トップのコンセプト文。docs/design-guide.md 3章）。
+    1文を1まとまり（.ml-s、文の終わりで改行）にし、文の中は「|」の位置で区切る（「|」がない文は、読点「、」のあとで区切る）。
+    区切りは inline-block なので、入る限り前の行に詰め、言葉の途中では折れない。4文字未満の区切りは次とつなげる。
+    リストで渡したときは、要素ごとに1まとまりにする（TOP_CONCEPT のように、まとまりを手で決めたもの）"""
+    out = []
+    for sent in (text if isinstance(text, list) else _sentences(text)):
+        if "|" in sent:
+            segs = [x for x in sent.split("|") if x]
+        else:
+            segs, depth, cur = [], 0, ""
+            for ch in sent:
+                cur += ch
+                depth += (ch in "（(「『【") - (ch in "）)」』】")
+                if depth <= 0 and ch == "、":
+                    segs.append(cur); cur = ""
+            if cur:
+                segs.append(cur)
+        merged = []
+        for x in segs:
+            if merged and len(merged[-1]) < 4:
+                merged[-1] += x
+            else:
+                merged.append(x)
+        # 16文字を超える長い区切りは箱（inline-block）にせず流す（1行に入らない箱は行いっぱいを占め、次の区切りが続けられず右が空くため）
+        out.append('<span class="ml-s">' + "".join(f'<span{" class=\"ml-l\"" if len(x) > 16 else ""}>{e(x)}</span>' for x in merged) + "</span>")
+    return "".join(out)
+
+
+def _heading_phrases(text):
+    """見出しの文字を文節に分け、文節の切れ目にだけ改行候補（<wbr>）を入れる。最後の文節が2文字以下なら、前の文節とつなげる。
+    文の終わり（「。」「！」「？」）のあとに次の文が続くときは、そこで改行し（<br class="sb">）、文ごとに組む。短い文では、
+    A の文の直後に B の文を続けず、文ごとに行を分けたほうが読みやすく、右に中途半端な空きもできない（人の方針 2026-11-07）。
+    ただし前後の文がどちらも8文字以上のときだけ（「空き家を売る。活かす。」のような短いキャッチは1行で読ませる）"""
+    sents = _sentences(text)
     if len(sents) > 1:
         groups = [sents[0]]
         for x in sents[1:]:
@@ -221,8 +256,12 @@ def _glue_short_tail(parts, i):
         while t >= 0 and parts[t] == "":
             t -= 1
         if t >= 0 and not parts[t].startswith("<") and len(unescape(parts[t]).strip()) > 4:
-            txt = unescape(parts[t])
-            parts[t] = e(txt[:-3], quote=False) + "<n-b>" + e(txt[-3:], quote=False) + "</n-b>"
+            # すでにタグを含む（数字の <n-b>1回</n-b> など）ときは、最後のタグより後ろの文字だけを扱う（タグを文字に戻さない）
+            pre, tail_txt = re.match(r"(.*?)([^<>]*)$", parts[t], re.S).groups()
+            txt = unescape(tail_txt)
+            if len(txt) < 3:
+                return False
+            parts[t] = pre + e(txt[:-3], quote=False) + "<n-b>" + e(txt[-3:], quote=False) + "</n-b>"
             return True
         return False
     name, depth, o = m.group(1), 0, k
@@ -392,6 +431,8 @@ def phrase_breaks(html):
             if m:
                 skip_ += -1 if m.group(1) else 1
         elif k and not skip_:  # k=0 は <body の残り（属性）なので触らない
+            # 大文字で始まる英単語が続く名前（「HR Tech」「NODE Shimoda」）は、間の空白で改行しない
+            sg = re.sub(r"\b([A-Z][A-Za-z0-9&.]*) (?=[A-Z][A-Za-z0-9&.]*\b)", "\\1\u00a0", sg)
             if re.search(r"[A-Za-z]-[A-Za-z]", sg):
                 sg = re.sub(r"(?<![A-Za-z-])([A-Za-z]+(?:-[A-Za-z]+)+)", r"<n-b>\1</n-b>", sg)
             # 文の終わりの「かな2文字＋。」（「ます。」「です。」）は切らない（「お聞きしま／す。」のように「す。」だけを行頭に送らない）

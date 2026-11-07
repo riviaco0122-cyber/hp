@@ -1944,8 +1944,10 @@ body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(
 .vision__grid .vision__more { grid-area: more; align-self: start; }
 .cycle__loop { position: absolute; right: 79%; top: 17%; white-space: nowrap; font-family: var(--font-serif); font-size: 12px; letter-spacing: 0.08em; color: var(--c-accent); }
 .vision__lead { margin-top: 36px; }
-.vision__sent { display: block; }
-.vision__sent > span { display: inline-block; }
+.nosb br.sb { display: none; } /* 文ごとの改行で行数が増えるときは、文をつなげて流す（js/main.js） */
+.ml-s { display: block; } /* リード・コンセプトの改行（tools/build_parts/common.py の lines_html）：1文＝1まとまり */
+.ml-s > span { display: inline-block; } /* 文の中の区切り（「|」・読点のあと）。入る限り前の行に詰め、言葉の途中では折れない */
+.ml-s > span.ml-l { display: inline; } /* 16文字を超える長い区切りは、ふつうに流す（lines_html） */
 .cycle { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1; margin-inline: auto; }
 .cycle__ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .cycle__ring circle { fill: none; stroke: var(--c-line-strong); stroke-width: 0.25; }
@@ -2596,7 +2598,7 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
   .flow__title { margin-top: 0; font-size: 16px; }
   .flow__desc { margin-top: 0; font-size: 12.5px; line-height: 1.8; }
   .flow__step:not(:last-child)::after { display: none; }
-  .reviews__list .review:nth-child(n+3) { display: none; }
+  .reviews__list .review:nth-child(n+2) { display: none; } /* スマホのゲストの声は1つだけ（文字の塊を続けない。人の指摘 2026-11-07） */
 }
 @media (max-width: 899px) {
   .vision__step, .vision__step + .vision__step, .vision__step:nth-child(3) { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 2px 14px; padding: 20px 0 22px; }
@@ -3896,6 +3898,7 @@ body.is-media .mcenter-head__title { margin-top: 6px; font-family: var(--font-ro
 .mfeat__no { display: block; margin-bottom: 2px; font-family: var(--font-en); font-size: 13px; font-weight: 500; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.6); }
 .mfeat__fig { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px 22px 4px; text-align: center; }
 .mfeat__text { padding: 16px 24px 26px; color: var(--m-sub); font-size: 13.5px; line-height: 1.85; }
+.mfeat__note { margin-top: -18px; padding: 0 24px 22px; color: var(--c-muted); font-size: 11.5px; line-height: 1.7; } /* 説明文の直後の※（収益の保証ではない、など） */
 /* 01 当事者：運営している宿の数字 → 記事・提案 */
 .mfeat-case { display: flex; flex-direction: column; color: var(--m-sub); font-size: 12px; letter-spacing: 0.06em; }
 .mfeat-case span { color: var(--m-green); font-size: 14px; font-weight: 700; }
@@ -3996,9 +3999,11 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mlp-title { margin-top: 8px; font-family: var(--font-round); font-weight: 700; font-size: clamp(22px, 2.8vw, 32px); line-height: 1.5; text-align: center; }
 .mlp-title--light { color: #fff; }
 .mlp-lead { max-width: 40em; margin: 16px auto 0; font-size: 15px; line-height: 2; color: var(--m-sub); text-align: center; }
-.mlp-worries { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 28px; }
-.mlp-worries li { position: relative; padding: 14px 16px 14px 44px; border-radius: 14px; background: #fff; border: 1px solid var(--m-line); font-size: 15px; line-height: 1.6; }
-.mlp-worries li::before { content: "✓"; position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--m-cta); font-weight: 700; }
+/* 悩みのリスト：1枚の白い枠に、区切り線で並べる（項目ごとの枠をやめ、線より文字が目立つように。チェックは塗りの丸。人の指摘 2026-11-07） */
+.mlp-worries { display: grid; grid-template-columns: 1fr; max-width: 640px; margin: 28px auto 0; padding: 6px 26px; border-radius: 20px; background: #fff; box-shadow: 0 10px 30px rgba(38, 42, 39, .06); }
+.mlp-worries li { position: relative; padding: 17px 0 17px 40px; border-bottom: 1px solid var(--m-line); color: var(--m-ink); font-size: 16px; font-weight: 500; line-height: 1.6; }
+.mlp-worries li:last-child { border-bottom: 0; }
+.mlp-worries li::before { content: "✓"; position: absolute; left: 0; top: 50%; display: grid; place-items: center; width: 24px; height: 24px; margin-top: -12px; border-radius: 50%; background: var(--m-cta); color: #fff; font-size: 13px; font-weight: 700; }
 /* いくら？ */
 .mprice__cards { display: grid; gap: 16px; margin-top: 36px; }
 .mprice__cards--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 900px; margin-left: auto; margin-right: auto; }
@@ -4073,7 +4078,7 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mlp-fold--flow { background: transparent; text-align: center; }
 .mlp-fold--flow[open] { text-align: left; }
 .mlp-sec--final { text-align: center; background: linear-gradient(180deg, var(--m-bg), var(--m-sand)); }
-.mlp-final__note { margin-top: 14px; font-size: 12.5px; color: var(--m-sub); }
+.mlp-final__points { margin: 20px 0 0; } /* ボタンの下の安心材料（相談の案内と同じ札の部品 mcta__points） */
 @media (max-width: 899px) {
   .mlp-hero { padding: 16px 0 48px; }
   .mlp-hero__grid { grid-template-columns: 1fr; gap: 24px; margin-top: 16px; }
@@ -4087,8 +4092,9 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
   .mform2 { padding: 22px 18px 16px; }
   .mlp-sec { padding: 64px 0; }
   .mlp-sec--worry { padding: 44px 0 48px; }
-  .mlp-worries, .mprice__cards--2, .mprice__cards--3, .mrisks, .mpoints { grid-template-columns: 1fr; gap: 12px; }
-  .mlp-worries li { font-size: 14px; }
+  .mprice__cards--2, .mprice__cards--3, .mrisks, .mpoints { grid-template-columns: 1fr; gap: 12px; }
+  .mlp-worries { padding: 4px 18px; }
+  .mlp-worries li { padding: 15px 0 15px 36px; font-size: 15px; }
   .mprice__card { padding: 22px 18px; }
   .mprice__formula { gap: 6px; margin-top: 28px; } /* 式は横並びのまま（縦に積むと式に見えない） */
   .mprice__term { min-width: 0; padding: 18px 4px; border-radius: 14px; display: grid; place-items: center; }
@@ -4192,14 +4198,12 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 /* 折り返し方は段落（ブロック）の text-wrap で決まる。サービスページの本文の段落は、ふつうの折り返し（wrap）に戻す。
    iPhone の Safari は text-wrap: pretty を段落全体に効かせるため、行が早めに折れて右側が空いて見えていた */
 .mlp-hero :is(p, li, dd, blockquote), .mlp-sec :is(p, li, dd, blockquote) { text-wrap: wrap !important; }
-/* 悩みのリストは1列（2列だと5項目のとき最後の1つだけが余って見える） */
-.mlp-worries { grid-template-columns: 1fr; max-width: 640px; margin-left: auto; margin-right: auto; }
 
 /* サービスページ：しくみの図（誰が何をして、お金がどう流れるか）と写真 */
 .mlp-sec--worry + .mlp-sec--scheme { padding-top: 0; }
 /* お悩み：PCは写真とリストを横に並べる（スマホはリストだけ） */
 .mlp-worry { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; max-width: 920px; margin: 32px auto 0; align-items: stretch; }
-.mlp-worry .mlp-worries { max-width: none; margin: 0; grid-template-columns: 1fr; }
+.mlp-worry .mlp-worries { max-width: none; margin: 0; }
 .mlp-worry__photo { display: block; }
 .mlp-worry__photo img { display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover; border-radius: 20px; }
 .mlp-worry__body { display: flex; flex-direction: column; justify-content: center; }
