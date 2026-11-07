@@ -215,6 +215,7 @@ def company_profile():
 
 
 # 創業者（about.html の Founders と、構造化データの Person で共通。事実はここに書いてある内容だけ）
+# profiles: 本人が公開しているプロフィール（構造化データの sameAs と、記事の監修者欄のリンク。人の了承 2026-11-07）
 FOUNDERS = [
     dict(key="ishihara", name="石原 佑真", en="Yuma Ishihara", role="代表社員 ／ 共同創業者", origin="大阪府出身", photo="founder-ishihara.jpg", photo_type="photo",
          bio="大阪府出身。新卒で株式会社リクルートに入社し、新規事業開発室にてゼロイチの事業立ち上げを経験。その後、HR Techベンチャー、サイバーセキュリティベンチャーにおいて、一貫して新規事業の創出と組織拡大を牽引。新規事業を立ち上げ、事業と組織を成長させてきた経験と、テクノロジー領域での知見を活かし、RIVIA&CO.を共同創業。",
@@ -222,7 +223,9 @@ FOUNDERS = [
                  ("HR Techベンチャー", "新規事業の創出と組織拡大を牽引"),
                  ("サイバーセキュリティベンチャー", "新規事業の創出と組織拡大を牽引"),
                  ("合同会社RIVIA&CO.", "共同創業")],
-         strengths=["新規事業開発", "事業グロース", "組織拡大", "テクノロジー領域の知見"]),
+         strengths=["新規事業開発", "事業グロース", "組織拡大", "テクノロジー領域の知見"],
+         profiles=[("YOUTRUST", "https://youtrust.jp/users/yumayade__2210"), ("LinkedIn", "https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b"),
+                   ("Wantedly", "https://www.wantedly.com/id/tasuku_ishihara_g")]),
     dict(key="katai", name="片井 進太", en="Shinta Katai", role="代表社員 ／ 共同創業者", origin="静岡県出身", photo="founder-katai.jpg", photo_type="illust",
          bio="静岡県出身。新卒で静岡県庁に入庁し、行政の視点から地域課題に向き合う。その後、大手メーカー、リクルート、HR Techベンチャーを経て、位置情報データを扱うベンチャー企業に参画。官民両方の視点と、多角的な業界知見、データ分析力を強みに持つ。現在、複数企業の経営にも携わりながらRIVIA&CO.を共同創業。",
          career=[("静岡県庁", "行政の視点から地域課題に向き合う"),
@@ -231,7 +234,8 @@ FOUNDERS = [
                  ("HR Techベンチャー", ""),
                  ("位置情報データベンチャー", "位置情報データを活用した事業に参画"),
                  ("合同会社RIVIA&CO.", "共同創業。現在、複数企業の経営にも携わる")],
-         strengths=["官民両方の視点", "多角的な業界知見", "データ分析", "企業経営"]),
+         strengths=["官民両方の視点", "多角的な業界知見", "データ分析", "企業経営"],
+         profiles=[("note", "https://note.com/calm_quokka8545")]),
 ]
 
 
@@ -252,7 +256,7 @@ def org_ref():
 
 
 def founder_person(f):
-    """創業者の Person（about.html で定義する本体）。sameAs は SNS を載せない方針なので付けない"""
+    """創業者の Person（about.html で定義する本体）。sameAs は本人の公開プロフィール（AI・検索に同じ人物だと伝える）"""
     return {
         "@type": "Person",
         "@id": person_id(f["key"]),
@@ -264,6 +268,7 @@ def founder_person(f):
         "worksFor": {"@id": ORG_ID},
         "image": f"{SITE}/images/{f['photo']}",
         "url": f"{SITE}/about.html#founders",
+        "sameAs": [u for _, u in f.get("profiles", [])],
     }
 
 
