@@ -176,6 +176,10 @@ def _heading_phrases(text):
     cut = len("".join(ph)) - 4 if len("".join(ph)) > 6 else -1
     while cut > 0 and len("".join(ph)[cut:].replace(" ", "").replace("\u3000", "")) < 4:  # 空白は数えない（「予／備 8件」を防ぐ）
         cut -= 1
+    sp = "".join(ph).rfind(" ")
+    jj = "".join(ph)
+    if cut > 0 and sp >= cut - 6 and re.match(r"\d+\S*$", jj[sp + 1:]) and re.match(r"[ァ-ヶー]{2}", jj[cut - 1:cut + 1]):  # まとまりがカタカナ語の途中から始まるときだけ  # 「エレベーター 31件」のように最後が「名前＋空白＋件数」なら、件数だけをまとめ、空白で折れるようにする
+        cut = sp + 1
     for m in _KEEP_LONG.finditer("".join(ph)):  # 切れ目が数字と単位の途中（「80万／円の事例」）なら、数字の頭から送る
         if m.start() < cut < m.end():
             cut = m.start()
