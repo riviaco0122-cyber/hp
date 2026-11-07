@@ -20,7 +20,7 @@ def service_groups_html():
               <span class="vsvc__num" aria-hidden="true">{num:02d}</span>
               <span class="vsvc__catch">{e(SERVICE_CATCH[k])}</span>
               <h3 class="vsvc__name">{e(names[k])}</h3>
-              <p class="vsvc__text">{e(summary)}</p>
+              <p class="vsvc__text">{lines_html(summary)}</p>
               <span class="vsvc__go" aria-hidden="true"></span>
             </a>""")
         groups_html.append(f"""        <div class="vrow vrow--{len(g["services"])} reveal">
@@ -218,7 +218,7 @@ def company_profile():
 # profiles: 本人が公開しているプロフィール（構造化データの sameAs と、記事の監修者欄のリンク。人の了承 2026-11-07）
 FOUNDERS = [
     dict(key="ishihara", name="石原 佑真", en="Yuma Ishihara", role="代表社員 ／ 共同創業者", origin="大阪府出身", photo="founder-ishihara.jpg", photo_type="photo",
-         bio="大阪府出身。新卒で株式会社リクルートに入社し、新規事業開発室にてゼロイチの事業立ち上げを経験。その後、HR Techベンチャー、サイバーセキュリティベンチャーにおいて、一貫して新規事業の創出と組織拡大を牽引。新規事業を立ち上げ、事業と組織を成長させてきた経験と、テクノロジー領域での知見を活かし、RIVIA&CO.を共同創業。",
+         bio="新卒でリクルートに入社し、新規事業開発室でゼロイチの事業立ち上げを経験。その後、HR Tech・サイバーセキュリティのベンチャーで新規事業の創出と組織拡大を牽引し、RIVIA&CO.を共同創業。",
          career=[("株式会社リクルート", "新規事業開発室にて、ゼロイチの事業立ち上げを経験"),
                  ("HR Techベンチャー", "新規事業の創出と組織拡大を牽引"),
                  ("サイバーセキュリティベンチャー", "新規事業の創出と組織拡大を牽引"),
@@ -227,7 +227,7 @@ FOUNDERS = [
          profiles=[("YOUTRUST", "https://youtrust.jp/users/yumayade__2210"), ("LinkedIn", "https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b"),
                    ("Wantedly", "https://www.wantedly.com/id/tasuku_ishihara_g")]),
     dict(key="katai", name="片井 進太", en="Shinta Katai", role="代表社員 ／ 共同創業者", origin="静岡県出身", photo="founder-katai.jpg", photo_type="illust",
-         bio="静岡県出身。新卒で静岡県庁に入庁し、行政の視点から地域課題に向き合う。その後、大手メーカー、リクルート、HR Techベンチャーを経て、位置情報データを扱うベンチャー企業に参画。官民両方の視点と、多角的な業界知見、データ分析力を強みに持つ。現在、複数企業の経営にも携わりながらRIVIA&CO.を共同創業。",
+         bio="新卒で静岡県庁に入庁し、行政の立場で地域課題に向き合う。その後、大手メーカー、リクルート、HR Techベンチャーを経て、位置情報データのベンチャーに参画。複数企業の経営に携わりながら、RIVIA&CO.を共同創業。",
          career=[("静岡県庁", "行政の視点から地域課題に向き合う"),
                  ("大手メーカー", ""),
                  ("株式会社リクルート", ""),

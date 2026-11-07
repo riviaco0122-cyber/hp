@@ -427,6 +427,8 @@ def phrase_breaks(html):
             if m:
                 skip_ += -1 if m.group(1) else 1
         elif k and not skip_:  # k=0 は <body の残り（属性）なので触らない
+            # 大文字で始まる英単語が続く名前（「HR Tech」「NODE Shimoda」）は、間の空白で改行しない
+            sg = re.sub(r"\b([A-Z][A-Za-z0-9&.]*) (?=[A-Z][A-Za-z0-9&.]*\b)", "\\1\u00a0", sg)
             if re.search(r"[A-Za-z]-[A-Za-z]", sg):
                 sg = re.sub(r"(?<![A-Za-z-])([A-Za-z]+(?:-[A-Za-z]+)+)", r"<n-b>\1</n-b>", sg)
             # 文の終わりの「かな2文字＋。」（「ます。」「です。」）は切らない（「お聞きしま／す。」のように「す。」だけを行頭に送らない）

@@ -800,8 +800,8 @@ def media_company_page():
 def media_intro():
     """コーポレートTOPのメディア紹介。記事を並べるのではなく、アキヤドが何のメディアかを伝える"""
     entries = "".join(
-        f'<li><a href="media/guide-{g["key"]}.html" class="mintro__entry"><span class="mintro__who">{e(g["label"])}方へ</span>'
-        f'<span class="mintro__desc">{e(MEDIA_INTRO_DESC[g["key"]])}</span><span class="mintro__arrow">{ARROW}</span></a></li>'
+        f'<li><a href="media/guide-{g["key"]}.html" class="mintro__entry"><span class="mintro__who">{lines_html(MEDIA_INTRO_WHO[g["key"]])}</span>'
+        f'<span class="mintro__desc">{lines_html(MEDIA_INTRO_DESC[g["key"]])}</span><span class="mintro__arrow">{ARROW}</span></a></li>'
         for g in MEDIA_GUIDES)
     return f"""    <section class="section mintro">
       <div class="container">
@@ -825,9 +825,11 @@ def media_intro():
     </section>"""
 
 
+# トップの「アキヤド」紹介の入り口（ガイド）。「|」は折ってよい位置（lines_html）。説明文は PC で2行に収まる長さにする（人の指摘 2026-11-07）
+MEDIA_INTRO_WHO = {"sell": "空き家を|手放したい方へ", "use": "空き家を|任せたい方へ", "side": "宿を|はじめたい方へ", "run": "宿の運営を|伸ばしたい方へ"}
 MEDIA_INTRO_DESC = {
-    "sell": "相続した家を手放すときの流れ、税金の特例、放置したときのリスク",
-    "use": "家を残したまま宿として活かす方法、貸す契約、改修の考え方",
-    "side": "民泊の始め方、制度と届出、開業資金、集客と運営",
-    "run": "運営中の宿の数字の見方、予約の増やし方、人手と運営の整え方",
+    "sell": "相続した家の手放し方、|税金の特例、放置のリスク",
+    "use": "家を残して宿にする方法、|貸す契約、改修の考え方",
+    "side": "民泊の始め方、制度と届出、|開業資金、集客と運営",
+    "run": "数字の見方、予約の増やし方、|人手と運営の整え方",
 }

@@ -782,7 +782,29 @@
     if (lines[lines.length - 1].n <= 3) total += 6;
     return total;
   };
+  var lineCount = function (blk) { // まとまりの中の文字の行数
+    var tops = [], r = document.createRange(), tw = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), t;
+    var fs = parseFloat(getComputedStyle(blk).fontSize);
+    while ((t = tw.nextNode())) {
+      if (!t.data.trim()) continue;
+      r.selectNodeContents(t);
+      Array.prototype.forEach.call(r.getClientRects(), function (q) {
+        if (q.width && !tops.some(function (y) { return Math.abs(y - q.top) < fs * 0.6; })) tops.push(q.top);
+      });
+    }
+    return tops.length;
+  };
   var fitLines = function () {
+    // 文ごとの改行（br.sb。build が短い文に入れる）は、どの文も1行に収まるときだけ残す。そうでなければ文をつなげて流す
+    // （PC の狭いカードで「受け付けて／います。」のように行が増え、ページが無駄に縦に長くなるため。人の指摘 2026-11-07）
+    var sbBlocks = [];
+    document.querySelectorAll('main br.sb').forEach(function (br) { var b = blockOf(br.parentElement); if (sbBlocks.indexOf(b) < 0) sbBlocks.push(b); });
+    sbBlocks.forEach(function (b) {
+      b.classList.remove('nosb');
+      if (b.offsetParent === null) return;
+      // どの文も1行に収まるときだけ、文ごとに改行する（お手本のコンセプト文のように1文1行で並ぶ形）。そうでなければ流す
+      if (lineCount(b) > b.querySelectorAll('br.sb').length + 1) b.classList.add('nosb');
+    });
     document.querySelectorAll('.wrap-fill').forEach(function (b) { b.classList.remove('wrap-fill'); });
     document.querySelectorAll('n-b.loose').forEach(function (b) { b.classList.remove('loose'); });
     Array.prototype.forEach.call(phraseTexts, function (n) {

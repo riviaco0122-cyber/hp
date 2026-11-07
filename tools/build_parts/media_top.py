@@ -193,7 +193,7 @@ def media_index_page():
                 <div class="mfeat-stat"><p class="mfeat-stat__n mfeat-stat__n--top"><small class="mfeat-stat__pre">約</small>14<small>か月</small></p><span class="mfeat-bar" aria-hidden="true"><i></i></span><p class="mfeat-stat__k">開業費用をほぼ回収</p></div>
               </div>
             </div>
-            <p class="mfeat__text">記事の数字も、ご提案の見込みも、こうした自分たちの運営の記録から出しています。稼働率の月ごとの波や、清掃・手数料の費用までお伝えします。</p>
+            <p class="mfeat__text">{lines_html("記事の数字もご提案の見込みも、私たちの運営記録が元です。")}</p>
           </li>
           <li class="mfeat reveal" data-delay="1">
             <p class="mfeat__head"><span class="mfeat__no">02</span>売る・貸す・はじめるを<br>並べて比べられる</p>
@@ -208,20 +208,21 @@ def media_index_page():
               <svg class="mfeat-branch mfeat-branch--in" viewBox="0 0 300 36" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0v14a10 10 0 0 0 10 10h180a10 10 0 0 0 10-10V0M150 0v36"/></svg>
               <p class="mfeat-goal"><span>ご家族が<b>納得できる方法</b>を選べる</span></p>
             </div>
-            <p class="mfeat__text">売った場合の目安と、家を残した場合・自分で宿をはじめた場合の見込みを、あわせてお出しします（収益を保証するものではありません）。</p>
+            <p class="mfeat__text">{lines_html("3つの見込みを、並べてお出しします。")}</p>
+            <p class="mfeat__note">※ 収益を保証するものではありません。</p>
           </li>
           <li class="mfeat reveal" data-delay="2">
             <p class="mfeat__head"><span class="mfeat__no">03</span>遠方の家でも<br>回る運営の仕組み</p>
             <div class="mfeat__fig">
               <p class="mfeat-big"><span>現地に行くのは</span><b>数か月に1回</b><span>ほど</span></p>
               <ul class="mfeat-rows">
-                <li><span class="mfeat-rows__k">清掃</span><b>手順書と写真確認で、近隣の方に任せる</b></li>
-                <li><span class="mfeat-rows__k">入室</span><b>スマートロックで、受付なしで入室</b></li>
-                <li><span class="mfeat-rows__k">問い合わせ</span><b>自動翻訳・定型文・AIチャットで対応</b></li>
-                <li><span class="mfeat-rows__k">価格</span><b>レビューと時期に合わせて段階的に調整</b></li>
+                <li><span class="mfeat-rows__k">清掃</span><b>近隣の方に依頼</b></li>
+                <li><span class="mfeat-rows__k">入室</span><b>スマートロック</b></li>
+                <li><span class="mfeat-rows__k">問い合わせ</span><b>翻訳とAIチャット</b></li>
+                <li><span class="mfeat-rows__k">価格</span><b>時期に合わせて調整</b></li>
               </ul>
             </div>
-            <p class="mfeat__text">清掃・入室・問い合わせ・価格まで仕組みをつくり、開業2か月目には、自分が行かなくても回る体制にしました。</p>
+            <p class="mfeat__text">{lines_html("開業2か月目には、行かなくても回る体制にしました。")}</p>
           </li>
         </ul>
       </div>

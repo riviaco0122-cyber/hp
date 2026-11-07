@@ -257,7 +257,7 @@ def service_page(key, name):
         <div class="section-head reveal">
           <span class="eyebrow">Process</span>
           <h2 class="section-title">ご支援の流れ（一例）</h2>
-          <p class="section-lead">内容や期間は、お選びいただくプランや状況によって変わります。</p>
+          <p class="section-lead">{lines_html("内容や期間は、プランや状況によって変わります。")}</p>
         </div>
         <ol class="timeline">
 {steps}

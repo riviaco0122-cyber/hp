@@ -12,11 +12,11 @@ SERVICE_NAMES = dict(SERVICES)
 # 各サービスの対象者（トップの「お悩みから探す」と共通）
 # TOPの事業紹介（英語名・ひとこと説明・アイコン）
 SERVICE_INTRO = {
-    "operation": ("Revitalization", "地方の空き家を自社で改修し、「暮らすように旅する」宿として運営します。", "house"),
-    "management": ("Management", "民泊・小規模宿の開業から日々の運営まで、個人・法人を問わず伴走します。", "key"),
-    "marketing": ("Web Marketing", "自社サイト・広告・SNSなどで、問い合わせと売上が伸びる仕組みをつくります。", "target"),
-    "partnership": ("Partnership", "保有物件から民泊向きの物件を選び、利回りの算出から購入後の運営まで担います。", "key"),
-    "recruit": ("Web Recruiting", "採用計画から定着まで、地方企業の人材確保を支援します。", "users"),
+    "operation": ("Revitalization", "地方の空き家を自社で改修し、暮らすように旅する宿へ。", "house"),
+    "management": ("Management", "宿の開業から日々の運営まで、個人・法人を問わず伴走します。", "key"),
+    "marketing": ("Web Marketing", "自社サイト・広告・SNSなどで、問い合わせと売上を伸ばします。", "target"),
+    "partnership": ("Partnership", "保有物件から民泊向きを選び、利回り算出と運営を担います。", "key"),
+    "recruit": ("Web Recruiting", "採用計画から定着まで、地方企業の採用を支援します。", "users"),
 }
 
 PERSONAS = {
@@ -441,7 +441,7 @@ def reviews_html():
         return ""
     items = "\n".join(
         f"""            <figure class="review reveal" data-delay="{i % 3}">
-              <blockquote class="review__text">「{e(r["text"])}」</blockquote>
+              <blockquote class="review__text">{e(r["text"])}</blockquote>
               <figcaption class="review__who">{e(r["who"])}{f'<span>{e(r["date"])}</span>' if r.get("date") else ""}</figcaption>
             </figure>"""
         for i, r in enumerate(NODE_REVIEWS))
@@ -463,7 +463,7 @@ def project_card(compact=False):
             <span class="project__badge">運営施設の一例</span>
             <h3 class="project__name">NODE Shimoda</h3>
             <p class="project__meta">静岡県下田市 ｜ 一棟貸しバケーションレンタル</p>
-            <p class="project__desc">下田市旧町内の空き家を改修した滞在型アパート。RIVIAが運営・集客・DX化を担っています。</p>
+            <p class="project__desc">{lines_html("下田市旧町内の空き家を改修した滞在型アパート。RIVIAが運営・集客・DX化を担っています。")}</p>
             <div class="project__rating"><strong><span class="project__star" aria-hidden="true">★</span><span data-count="4.88">4.88</span></strong><span>Airbnb評価（51件）</span></div>
             <span class="project__link">施設サイトを見る（別タブで開きます） {ARROW}</span>
           </div>
