@@ -827,14 +827,15 @@
       if (blocks.indexOf(b) < 0) blocks.push(b);
     });
     blocks.forEach(function (blk) {
-      if (blk.offsetParent === null || blk.querySelector('p, li, dd, div, ul, ol, table') || blk.closest('table')) return; // 表のマスは「|」（<wbr>）で改行位置を決めるので対象外
+      if (blk.offsetParent === null || blk.querySelector('p, li, dd, div, ul, ol, table')) return;
+      var inTable = !!blk.closest("table"); // 表のマスも右詰めの対象（右の最大の空きが小さくなるなら右詰め。人の指摘 2026-11-07）
       var cs = getComputedStyle(blk);
       if (cs.textAlign === 'center' || cs.textAlign === 'right' || cs.whiteSpace === 'nowrap' || cs.writingMode.indexOf('vertical') === 0) return;
       var fsz = parseFloat(cs.fontSize);
       keepTail(blk);
       var gapA = maxGap(blk);
-      if (gapA <= (fsz >= 22 ? 5 : 3)) return; // 右に大きな空きがなければ、言葉の切れ目で折った形のまま
-      var narrow = (blk.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) / fsz < 16; // 1行に16文字未満の狭い枠（スマホのカード・2列の図など）
+      var narrow = !inTable && (blk.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) / fsz < 16; // 1行に16文字未満の狭い枠（スマホのカード・2列の図など）。表のマスは右の空きを優先
+      if (gapA <= (fsz >= 22 ? 5 : narrow ? 3 : 1.5)) return; // 右の空きが小さければ、言葉の切れ目で折った形のまま（ふつうの幅は1.5文字分まで。基本は右詰め）
       var a = narrow ? cost(blk, fsz) : 0;
       // 言葉の切れ目で折った形（A）で右が空く・最後の行が短いときは、言葉の途中でも折る形（B）も組んで、見栄えの良いほうを使う
       blk.classList.add('wrap-fill');

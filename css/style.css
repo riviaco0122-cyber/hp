@@ -305,7 +305,8 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .project__rating { margin-top: 32px; padding: 20px 0; border-top: 1px solid var(--c-line); border-bottom: 1px solid var(--c-line); display: flex; align-items: baseline; gap: 16px; }
 .project__rating strong { font-family: var(--font-en); font-weight: 300; font-size: 44px; line-height: 1; letter-spacing: 0.02em; }
 .project__rating span { font-size: 13px; color: var(--c-sub); }
-.project__link { margin-top: 28px; display: inline-flex; align-items: center; gap: 14px; font-size: 13px; letter-spacing: 0.1em; }
+.project__ext { margin-left: 0.25em; font-size: 0.5em; vertical-align: 0.6em; color: var(--c-accent); } /* 施設名を押すと施設サイトが開く（カード全体がリンク）ことの目印 */
+.project:hover .project__name { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
 @media (max-width: 899px) { .project { grid-template-columns: 1fr; gap: 36px; } }
 
 /* Careers CTA */
@@ -2119,15 +2120,15 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
 .fig-cols--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .fig-cols--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .fig-col { padding: 22px 18px 20px; border-radius: 16px; background: #fff; text-align: center; }
-/* 題名・副題・項目の1つ1つを、隣の列と同じ行にそろえる（副題や項目が2行になっても、下の線と項目の書き出しが左右でずれない）。
-   行数は tools/figures.py の compare() が --fig-rows・--fig-items で渡し、fig-cols--align を付ける（記事データに直接書いた図には付けない） */
-.fig-cols--align > .fig-col { display: grid; grid-row: span var(--fig-rows); grid-template-rows: subgrid; row-gap: 0; align-content: start; }
-.fig-cols--align .fig-col__list { grid-row: span var(--fig-items); grid-template-rows: subgrid; }
+/* 題名・副題・区切りの線を、隣の列と同じ高さにそろえる（副題が2行になっても、線と項目の書き出しが左右でずれない）。
+   項目どうしはそろえない（隣の項目が2行のとき、短い項目の下に意味のない空白ができるため。人の指摘 2026-11-07）。
+   tools/figures.py の compare() が fig-cols--align を付ける（記事データに直接書いた図には付けない） */
+.fig-cols--align > .fig-col { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
 .fig-col--accent { box-shadow: inset 0 0 0 2px var(--m-green, #2e6b47); }
 .fig-col__count, .fig-cols__hint { display: none; }
 .fig-col__name { margin-top: 10px !important; font-family: var(--font-round); font-weight: 700; font-size: 16px; }
 .fig-col__sub { margin-top: 2px !important; font-size: 12px; color: var(--c-muted); }
-.fig-col__list { margin-top: 14px !important; padding-top: 12px !important; border-top: 1px solid var(--m-line, #e1e6e1); display: grid; gap: 6px; text-align: left; }
+.fig-col__list { margin-top: 14px !important; padding-top: 12px !important; border-top: 1px solid var(--m-line, #e1e6e1); display: grid; gap: 6px; align-content: start; text-align: left; }
 .fig-col__list li { position: relative; padding-left: 16px; font-size: 13px; line-height: 1.7; }
 .fig .fig-col__list li::before { content: ""; position: absolute; left: 2px; top: 0.72em; width: 6px; height: 6px; border-radius: 50%; background: var(--m-green, #2e6b47); }
 /* 順番 */
@@ -2209,7 +2210,7 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
 }
 /* 記事本文の箇条書き・段落の書式が、図の中に入り込まないようにする */
 .article__section .fig ul, .article__section .fig ol { margin: 0; padding: 0; border: 0; list-style: none; }
-.article__section .fig li { margin: 0; padding-left: 0; font-size: inherit; line-height: inherit; font-weight: inherit; text-align: start; } /* 図の中の狭い列で両端揃えにすると、字の間が大きく空く */
+.article__section .fig li:not(.fig-step) { margin: 0; padding-left: 0; font-size: inherit; line-height: inherit; font-weight: inherit; text-align: start; } /* 図の中の狭い列で両端揃えにすると、字の間が大きく空く */
 .article__section .fig li + li { margin-top: 0; }
 .article__section .fig li::before { content: none; }
 .article__section .fig p { font-size: inherit; line-height: 1.6; }
@@ -2599,7 +2600,7 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
   .flow__title { margin-top: 0; font-size: 16px; }
   .flow__desc { margin-top: 0; font-size: 12.5px; line-height: 1.8; }
   .flow__step:not(:last-child)::after { display: none; }
-  .reviews__list .review:nth-child(n+2) { display: none; } /* スマホのゲストの声は1つだけ（文字の塊を続けない。人の指摘 2026-11-07） */
+  .reviews__list .review:nth-child(n+3) { display: none; } /* スマホのゲストの声は2つまで（人の指摘 2026-11-07） */
 }
 @media (max-width: 899px) {
   .vision__step, .vision__step + .vision__step, .vision__step:nth-child(3) { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 2px 14px; padding: 20px 0 22px; }
@@ -2768,7 +2769,7 @@ body.is-media .keypoints li + li { margin-top: 16px; padding-top: 16px; border-t
 body.is-media .keypoints li::before { top: 0.75em; left: 2px; width: 12px; height: 6px; border-color: var(--m-green); border-width: 2px; }
 body.is-media .keypoints li + li::before { top: calc(16px + 0.75em); }
 body.is-media .keypoints .kp__main { display: block; font-weight: 700; color: var(--m-ink); }
-body.is-media .keypoints .kp__sub { display: block; margin-top: 4px; font-size: 13px; line-height: 1.8; color: var(--m-sub); }
+body.is-media .keypoints .kp__sub { display: none; } /* ポイント欄は要点の一文だけを並べる（補足は本文にある。文字を詰め込まない。人の指摘 2026-11-07） */
 /* 目次：スマホでは折りたたみ */
 body.is-media .toc { padding: 0; margin-top: 24px; }
 body.is-media .toc__details > summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 16px 20px; cursor: pointer; list-style: none; font-size: 15px; font-weight: 700; color: var(--m-ink); letter-spacing: 0.04em; }
