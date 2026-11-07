@@ -1947,6 +1947,7 @@ body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(
 .vision__lead { margin-top: 36px; }
 .nosb br.sb { display: none; }
 .nosb n-b.sbl { white-space: normal; } /* 文をつなげたときの、文の終わりのまとまり（js/main.js） */ /* 文ごとの改行で行数が増えるときは、文をつなげて流す（js/main.js） */
+.jfy { text-align: justify; text-justify: inter-character; } /* 左揃えの本文・項目・表のマスの両端揃え（js/main.js が付ける。最後の行と改行の前は左揃え） */
 .ml-s { display: block; } /* リード・コンセプトの改行（tools/build_parts/common.py の lines_html）：1文＝1まとまり */
 .ml-s > span { display: inline-block; } /* 文の中の区切り（「|」・読点のあと）。入る限り前の行に詰め、言葉の途中では折れない */
 .ml-s > span.ml-l { display: inline; } /* 16文字を超える長い区切りは、ふつうに流す（lines_html） */
