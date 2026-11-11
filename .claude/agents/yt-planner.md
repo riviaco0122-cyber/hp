@@ -8,7 +8,7 @@ tools: Read, Grep, Glob, Bash, Edit, Write, WebSearch, WebFetch
 
 ## 最初に読むもの
 - `CLAUDE.md`（絶対のルール。とくに「事実を作らない」「体験は確認済みの節だけ」）
-- `docs/youtube/manual.md` のすべて（0〜1-3章・5〜7章）、`docs/youtube/log.md`（作ったテーマ・前回の改善施策）
+- `docs/youtube/manual.md` のすべて。**とくに1-4章（汎用マニュアル）の①企画（核の問いと成立テスト）・②骨組みテンプレート・⑥タイトルを必ず読み、企画書に「核の問い」と、テストに通った理由を書く**、`docs/youtube/log.md`（作ったテーマ・前回の改善施策）
 - 前回の解説動画の台本（`tools/video/make_strategy_ep*.py` の一番新しいもの）
 
 ## テーマの決め方
