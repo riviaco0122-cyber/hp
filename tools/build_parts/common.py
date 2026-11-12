@@ -47,9 +47,9 @@ _VOID = {"br", "wbr", "img", "input", "meta", "link", "hr", "source", "col", "ar
 # 見出しとして扱う要素：h1〜h6 と、クラス名が「〜__title」「〜__name」「〜__head」「〜heading」などの要素（カードや図の見出し）
 # カードの見出しになる悩みの文（「〜__worry」）も、言葉の切れ目でだけ改行する（人の指摘 2026-11-06）
 _HEADING_CLASS = re.compile(r'class="[^"]*(?:__title|__name|__head\b|heading|-title|__q|__worry)\b')
-# カードの説明文などの短い文（60字以内）も、見出しと同じく文節の切れ目でだけ改行する（人の指摘 2026-11-06：事業紹介のカード）
+# カードの説明文・リードなどの文（120字以内）も、見出しと同じく文節の切れ目でだけ改行する（人の指摘 2026-11-06：事業紹介のカード。11-12：リード）
 _CARD_CLASS = re.compile(r'class="[^"]*__(?:text|desc|sub|blurb|lead)\b')
-_CARD_MAX = 60
+_CARD_MAX = 120  # リード（__lead）の2〜3文も、言葉の切れ目で折り、右詰めは js が語の切れ目で行う
 
 
 _NO_SPLIT = ["のしかかる", "ドラッグ&ドロップ", "まるごと", "体制", "日本政策金融公庫", "空家等", "方法", "案内"]  # BudouX が途中で区切る言葉（tools/check/line_quality.js の「語の途中の改行」で見つけたら足す）
@@ -76,7 +76,11 @@ def lines_html(text):
     """リード・コンセプトの改行（お手本：トップのコンセプト文。docs/design-guide.md 3章）。
     1文を1まとまり（.ml-s、文の終わりで改行）にし、文の中は「|」の位置で区切る（「|」がない文は、読点「、」のあとで区切る）。
     区切りは inline-block なので、入る限り前の行に詰め、言葉の途中では折れない。4文字未満の区切りは次とつなげる。
-    リストで渡したときは、要素ごとに1まとまりにする（TOP_CONCEPT のように、まとまりを手で決めたもの）"""
+    リストで渡したときは、要素ごとに1まとまりにする（TOP_CONCEPT のように、まとまりを手で決めたもの）。
+    文で渡した長い文章（3文以上か50文字超）は、この組み方にせず、ふつうの段落として右まで詰めて流す（文ごと・読点ごとに行を変えると、
+    行が増えて右が空き、読みにくい。人の指摘 2026-11-12）"""
+    if not isinstance(text, list) and (len(_sentences(text)) >= 3 or len(text.replace("|", "")) > 50):
+        return e(text.replace("|", ""))
     out = []
     for sent in (text if isinstance(text, list) else _sentences(text)):
         if "|" in sent:
@@ -314,7 +318,8 @@ def _natural_break(s, j):
     if ca == "P":
         return False
     if ca == "H" and cb == "H":  # 「状態を／つくります」「したり／しまったり」
-        return (a in "をがは" and b not in "をがは") or (s[max(0, j - 2):j] in _H_ENDS and b != "す")  # 「のですか」の「ので」は除く
+        return ((a in "をがは" and b not in "をがは") or (s[max(0, j - 2):j] in _H_ENDS and b != "す")  # 「のですか」の「ので」は除く
+                or (b in "ごお" and j + 1 < len(s) and _ch_class(s[j + 1]) == "K"))  # 敬語の「ご」「お」の前（「形で／ご用意」）
     if cb == "H":
         if not _PARTICLE.match(s, j):
             return False
@@ -553,7 +558,41 @@ def phrase_breaks(html):
             # 文の終わりの「かな2文字＋。」（「ます。」「です。」）は切らない（「お聞きしま／す。」のように「す。」だけを行頭に送らない）
             segs[k] = re.sub(r"([ぁ-ん]{2}[。！？])", r"<n-b>\1</n-b>", sg)
     out = "".join(segs)
-    return head + sep + out
+    return head + sep + _wbr_before_groups(out)
+
+
+def _wbr_before_groups(html):
+    """要素の境目（一番外の改行しないまとまり <n-b>、太字・リンク・文節 <n-w> の頭）が語の切れ目なら、そこに改行候補（<wbr>）を置く。
+    iPhone の Safari は、言葉の切れ目でだけ折る文（keep-all）で、日本語の文字とまとまりの境目を改行候補にしないため、
+    まとまり（「<strong>一括で担い</strong>ます。」）が行末に入りきらないと、次の行へ送れずに枠の外へはみ出す（人の指摘 2026-11-12）。
+    Chrome はもともとここで折るので、見た目は変わらない"""
+    toks = re.split(r"(<[^>]+>)", html)
+    depth, skip, prev, pending, out = 0, 0, "", None, []
+    for t in toks:
+        if t.startswith("<"):
+            m = re.match(r"<(/?)(script|style|textarea|title|svg)\b", t, re.I)
+            if m:
+                skip += -1 if m.group(1) else 1
+            if re.match(r"<(?:n-b|n-w|strong|em|b|a|small|span)\b", t) and depth == 0 and not skip and prev and not pending:
+                pending = (len(out), prev)  # 要素の最初の文字が分かったら決める（太字・リンク・文節の境目も、Safari は折らない）
+            if t.startswith("<n-b"):
+                depth += 1
+            elif t == "</n-b>":
+                depth = max(0, depth - 1)
+            elif re.match(r"<(?:/?(?:p|li|h[1-6]|td|th|dd|dt|div|figcaption|summary|label|ul|ol)\b|br\b|wbr)", t):
+                prev = ""  # 段落・行の頭、改行候補のあとは置かない
+            out.append(t)
+            continue
+        if pending and t.strip():
+            pos, pc = pending
+            first = t.lstrip()[:1]
+            if (pc in "、。・」』）)！？" and first not in "、。・」』）)！？") or _natural_break(pc + first, 1):
+                out[pos] = "<wbr>" + out[pos]
+            pending = None
+        if t.strip() and not skip:
+            prev = "" if t[-1:].isspace() else t[-1]
+        out.append(t)
+    return "".join(out)
 
 
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # リポジトリの直下（tools/ の1つ上）

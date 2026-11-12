@@ -55,7 +55,7 @@ function inspect() {
     if (!it.managed || !nx.managed) return;
     const a = cls(it.c), b = cls(nx.c);
     const prev2 = (items[k - 1] ? items[k - 1].c : '') + it.c;
-    let bad = a !== 'P' && a === b && !(a === 'H' && (/[をがは]/.test(it.c) || /^(?:たり|ので|から|けど|ても|って|まで|より|など|には|では|とは)$/.test(prev2))); // 「状態を／つくります」「したり／しまったり」は良い
+    let bad = a !== 'P' && a === b && !(a === 'H' && (/[をがは]/.test(it.c) || /^(?:たり|ので|から|けど|ても|って|まで|より|など|には|では|とは)$/.test(prev2) || (/[ごお]/.test(nx.c) && items[k + 2] && cls(items[k + 2].c) === 'K'))); // 「状態を／つくります」「したり／しまったり」は良い
     if (a === 'K' && b === 'H') { // 漢字のあとのひらがな：助詞（「職種／を」）なら、2文字以上の漢字の語のあとだけ良い
       let n = 0, j = k; for (; j >= 0 && cls(items[j].c) === 'K'; j--) n++;
       bad = !(PARTICLE.test(nx.c + (items[k + 2] ? items[k + 2].c : '')) && (n >= 2 || (j >= 0 && /[0-9]/.test(items[j].c))));

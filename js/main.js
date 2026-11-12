@@ -730,7 +730,7 @@
       var n = 0, k; for (k = j - 1; k >= 0 && chClass(cs[k]) === 'K'; k--) n++;
       return n >= 2 || (k >= 0 && chClass(cs[k]) === 'D'); // 「31日／までの」のように数字のあとの単位でもよい
     }
-    if (ca === 'H' && cb === 'H') return (/[をがは]/.test(a) && !/[をがは]/.test(b)) || (H_ENDS.test(cs.slice(Math.max(0, j - 2), j).join('')) && b !== 'す'); // 「のですか」の「ので」は除く // 「状態を／つくります」「したり／しまったり」
+    if (ca === 'H' && cb === 'H') return (/[をがは]/.test(a) && !/[をがは]/.test(b)) || (H_ENDS.test(cs.slice(Math.max(0, j - 2), j).join('')) && b !== 'す') || (/[ごお]/.test(b) && chClass(cs[j + 1] || '') === 'K'); // 「のですか」の「ので」は除く。敬語の「ご」「お」の前（「形で／ご用意」）は良い // 「状態を／つくります」「したり／しまったり」
     return (ca === 'H' && (cb === 'K' || cb === 'T' || cb === 'L' || cb === 'D')) || (ca === 'T' && (cb === 'K' || cb === 'L')) ||
       (ca === 'K' && (cb === 'T' || cb === 'L')) || (ca === 'L' && (cb === 'K' || cb === 'T'));
   };
