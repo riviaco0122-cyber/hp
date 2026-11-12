@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """RIVIA&CO. サイトの静的HTMLを生成する（作業用スクリプト）"""
 from html import escape as e, unescape
+import collections
 import math
 import os
 import re

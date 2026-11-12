@@ -24,6 +24,31 @@ def first_sentence_end(text):
     return 0
 
 
+def _kp_grams(s):
+    s = re.sub(r"[、。「」『』（）()・：:？！?!\s,.%％0-9０-９]", "", s)
+    return collections.Counter(s[i:i + 2] for i in range(len(s) - 1))
+
+
+def keypoint_sections(a, min_ratio=1.4):
+    """「この記事のポイント」の各項目が、どの節の答えかを推定する（なければ None）。
+    要点と節（見出し＋本文）の2文字の重なりを、ほかの節にもある言葉ほど軽く、見出しにある言葉ほど重く数え、
+    1位が2位の min_ratio 倍以上のときだけ対応づける（迷うときはリンクを付けない。誤ったリンクは、ないより悪い）。
+    「まとめ」の節とよくある質問は対象外。記事データに kp_sections=[節のid か None, …] があれば、それを使う"""
+    if a.get("kp_sections"):
+        return list(a["kp_sections"]) + [None] * (len(a["keypoints"]) - len(a["kp_sections"]))
+    secs = [(sid, h, re.sub(r"<[^>]+>|\s", "", b)) for sid, h, b in a["sections"] if not h.startswith("まとめ") and sid != "faq"]
+    sg = [_kp_grams(h + b) for _sid, h, b in secs]
+    df = collections.Counter(g for c in sg for g in set(c))
+    out = []
+    for k in a["keypoints"]:
+        kg = _kp_grams(k)
+        sc = sorted(((sum((1 + 2 * (g in _kp_grams(h))) / df[g] for g in kg if g in c), sid)
+                     for (sid, h, _b), c in zip(secs, sg)), reverse=True)
+        ok = sc and sc[0][0] > 0 and (len(sc) == 1 or sc[0][0] >= min_ratio * sc[1][0])
+        out.append(sc[0][1] if ok else None)
+    return out
+
+
 def article_page(a):
     names = dict(SERVICES)
     toc = "".join(f'<li><a href="#{sid}">{e(h)}</a></li>' for sid, h, _ in a["sections"])
@@ -33,7 +58,13 @@ def article_page(a):
         if n and k[n:].strip():
             return f'<li><span class="kp__main">{e(k[:n])}</span><span class="kp__sub">{e(k[n:].strip())}</span></li>'
         return f'<li><span class="kp__main">{e(k)}</span></li>'
-    keypoints = "".join(kp_item(k) for k in a["keypoints"])
+    kp_to = keypoint_sections(a)
+    def kp_link(i):  # その要点の答えが載っている節へのリンク（お手本の記事にならう。docs/seo/benchmark-2026-11-12.md）
+        if not kp_to[i]:
+            return ""
+        n = next(j for j, (sid, _h, _b) in enumerate(a["sections"], 1) if sid == kp_to[i])
+        return f'<a class="kp__go" href="#{kp_to[i]}">{n}章で詳しく<span aria-hidden="true"> ↓</span></a>'
+    keypoints = "".join(kp_item(k).replace("</li>", kp_link(i) + "</li>") for i, k in enumerate(a["keypoints"]))
     def lead_sentence(html):
         """節の最初の段落（<p>）の一文目を強調する。2文以上あり、一文目にタグを含まない段落だけ。"""
         m = re.match(r"(\s*<p>)([^<]+)", html)
@@ -218,7 +249,8 @@ def article_page(a):
           </div>
         </aside>
 
-        <nav class="toc" aria-label="目次">
+        <a class="to-toc" href="#toc" hidden>目次に戻る<span aria-hidden="true"> ↑</span></a>
+        <nav class="toc" id="toc" aria-label="目次">
           <details class="toc__details">
             <summary class="toc__title">目次を開く（全{len(a["sections"]) + 1}章）</summary>
             <ol>{toc}<li><a href="#faq">よくある質問</a></li></ol>

@@ -390,6 +390,24 @@
   // 記事の目次：スマホでは折りたたみ（既定）、PC幅では開いておく
   var tocDetails = document.querySelector('.toc__details');
   if (tocDetails && window.matchMedia('(min-width: 900px)').matches) tocDetails.open = true;
+  // 「目次に戻る」：目次より下で、上にスクロールしたときだけ右下に出す（読み進めている間は、読んでいる行を隠さない。
+  // スマホで読む一般の方に負担をかけない形。docs/seo/benchmark-2026-11-12.md）。押したら目次を開く
+  var toToc = document.querySelector('.to-toc'), tocNav = document.getElementById('toc');
+  if (toToc && tocNav) {
+    var lastY = window.scrollY, tocTick = false;
+    window.addEventListener('scroll', function () {
+      if (tocTick) return;
+      tocTick = true;
+      requestAnimationFrame(function () {
+        var y = window.scrollY, below = tocNav.getBoundingClientRect().bottom < 0;
+        if (!below) toToc.hidden = true;
+        else if (y < lastY - 4) toToc.hidden = false;   // 上へ戻ろうとしている
+        else if (y > lastY + 4) toToc.hidden = true;    // 読み進めている
+        lastY = y; tocTick = false;
+      });
+    }, { passive: true });
+    toToc.addEventListener('click', function () { if (tocDetails) tocDetails.open = true; toToc.hidden = true; });
+  }
   var fixedMedia = document.querySelector('.fixed-cta');
   // 冒頭の入口・フォーム・相談ブロックが見えている間は、下に固定した相談ボタンを隠す（重なりを防ぐ）
   var hideTargets = document.querySelectorAll('.mfv, .qform, .mcta__box, .msv-band, .inline-cta, .article-cta');
