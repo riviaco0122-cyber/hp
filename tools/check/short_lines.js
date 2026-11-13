@@ -55,6 +55,11 @@ if (ONLY.length) files = files.filter(f => ONLY.some(o => f.includes(o)));
           }
           prevEl = el; prevShort = short;
         }
+        // 手順の図の説明（.fig-step__sub）は1行に収める（人の指摘 2026-11-13。docs/design-guide.md 3章）
+        for (const el of document.querySelectorAll('main .fig-step__sub')) {
+          const lh = parseFloat(getComputedStyle(el).lineHeight), n = Math.round(el.getBoundingClientRect().height / lh);
+          if (n > 1) out.push({ tail: `${n}行`, prev: '', text: el.textContent.trim(), cls: 'fig-step__sub（1行に収める）' });
+        }
         return out;
       }, [MAX, ALL]);
       for (const x of found) rows.push({ w, f, ...x });
