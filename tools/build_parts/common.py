@@ -573,7 +573,9 @@ def _wbr_before_groups(html):
             m = re.match(r"<(/?)(script|style|textarea|title|svg)\b", t, re.I)
             if m:
                 skip += -1 if m.group(1) else 1
-            if re.match(r"<(?:n-b|n-w|strong|em|b|a|small|span)\b", t) and depth == 0 and not skip and prev and not pending:
+            if re.match(r"</?span\b", t):
+                prev = ""  # 部品の境目（span）をまたいで置かない（横並びの部品の間に <wbr> が入ると、レイアウトが崩れる。人の指摘 2026-11-13）
+            elif re.match(r"<(?:n-b|n-w|strong|em|b|a)\b", t) and depth == 0 and not skip and prev and not pending:
                 pending = (len(out), prev)  # 要素の最初の文字が分かったら決める（太字・リンク・文節の境目も、Safari は折らない）
             if t.startswith("<n-b"):
                 depth += 1
