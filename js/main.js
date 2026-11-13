@@ -756,6 +756,15 @@
     var tail = last.splitText(txt.length - 4), nb = document.createElement('n-b'); nb.className = 'keep';
     last.parentNode.insertBefore(nb, tail); nb.appendChild(tail);
   };
+  // すぐ前に並ぶ文のまとまり（前の兄弟。項目の中の先頭の文なら、前の項目）の最後の行が3文字以下か。
+  // 間に見出し・表・図・折りたたみがあれば、続けてとは数えない（tools/check/short_lines.js と同じ決め方）
+  var prevEndsShort = function (el) {
+    var ps = el.previousElementSibling, li = el.parentElement && el.parentElement.closest('li');
+    if (!ps && li) ps = li.previousElementSibling;
+    if (!ps || ps.offsetParent === null || /^(H[1-6]|SUMMARY|DETAILS|TABLE|FIGURE|IMG|HR|SVG)$/i.test(ps.tagName) || ps.querySelector('table, figure, img, svg, details')) return false;
+    var ls = lineBoxes(ps);
+    return ls.length > 1 && ls[ls.length - 1].n <= 3;
+  };
   var unwrap = function (n) { while (n.firstChild) n.parentNode.insertBefore(n.firstChild, n); n.parentNode.removeChild(n); };
   var textBlocks = function () { // 文字が並ぶいちばん内側のまとまり（段落・項目・見出し・表のマスなど）
     return Array.prototype.filter.call(document.querySelectorAll('main :is(p, li, dd, dt, h1, h2, h3, h4, td, th, figcaption, summary, blockquote, .kp__main, .ml-s)'), function (b) {
@@ -780,9 +789,24 @@
       n.classList.toggle('c', getComputedStyle(p).textAlign === 'center');
     });
     document.querySelectorAll('.ml-s').forEach(function (m) { m.classList.toggle('ml-c', getComputedStyle(m).textAlign === 'center'); });
+    // 1文ごとに改行するリード（.ml-s）で、短い最後の行（4文字以下。「す。」「います。」）が2文続くときは、
+    // 文ごとの改行をやめて段落としてつなげて流す（中途半端に残る行を続けて出さない。人の指摘 2026-11-13）
+    var mlBoxes = [];
+    document.querySelectorAll('.ml-s:not(.ml-c)').forEach(function (m) { if (mlBoxes.indexOf(m.parentElement) < 0) mlBoxes.push(m.parentElement); });
+    mlBoxes.forEach(function (box) {
+      box.classList.remove('ml-flow');
+      if (box.offsetParent === null) return;
+      var prevShort = false, both = false;
+      box.querySelectorAll(':scope > .ml-s').forEach(function (m) {
+        var ls = lineBoxes(m), sh = ls.length > 1 && ls[ls.length - 1].n <= 4;
+        if (sh && prevShort) both = true;
+        prevShort = sh;
+      });
+      if (both) box.classList.add('ml-flow');
+    });
     document.querySelectorAll('n-b.keep').forEach(unwrap);
     document.querySelectorAll('.jfy').forEach(function (b) { b.classList.remove('jfy'); });
-    var blocks = textBlocks(), prev = null, prevShort = false;
+    var blocks = textBlocks();
     blocks.forEach(function (blk) {
       if (blk.offsetParent === null) return;
       keepNums(blk);
@@ -792,16 +816,13 @@
       // 直前のまとまり（同じ親の中で、すぐ前に並ぶもの）も最後の行が3文字以下なら、続けて起きないように最後の4文字をまとめる。
       // 見出しは文字の大きさも形も違い、続けて並んでも目立たないので数えない（見出しのあとは数え直す）
       // 表のマスも、ほかの文と同じく行末まで詰めるだけにする（隣のマスと比べて送ると、マスの中で右が空くため。人の指摘 2026-11-13）
-      if (/^H[1-6]$/.test(blk.tagName) || blk.tagName === 'SUMMARY' || /^T[DH]$/.test(blk.tagName)) { prev = null; prevShort = false; if (!/^T[DH]$/.test(blk.tagName)) return; }
-      var unit = function (x) { return x.closest('li') || x; }; // 項目の中の部品（要点のリンクなど）は、項目どうしで並びを見る
-      var near = prev && (unit(prev) === unit(blk).previousElementSibling || unit(prev).parentElement === unit(blk).parentElement);
+      if (/^H[1-6]$/.test(blk.tagName) || blk.tagName === 'SUMMARY') return;
       var short = lines.length > 1 && lines[lines.length - 1].n <= 3;
-      if (short && near && prevShort && !/^T[DH]$/.test(blk.tagName)) {
+      if (short && !/^T[DH]$/.test(blk.tagName) && prevEndsShort(blk)) {
         keepLast4(blk);
         lines = lineBoxes(blk);
         short = lines.length > 1 && lines[lines.length - 1].n <= 3;
       }
-      if (!/^T[DH]$/.test(blk.tagName)) { prev = blk; prevShort = short; }
       // 左揃えの本文・項目・表のマスは、両端揃えにして右端をそろえる（見出し・大きな文字・中央揃えは対象外。最後の行は左揃えのまま）
       if (fsz < 20 && !/^H[1-6]$/.test(blk.tagName) && cs.textAlign !== 'center' && cs.textAlign !== 'right' && !blk.querySelector('.ml-s') &&
           lines.length > 1 && maxGap(blk) <= 1.2) blk.classList.add('jfy'); // 1文字分を超える空きを両端揃えで埋めると、字間が目立って開くため

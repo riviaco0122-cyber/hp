@@ -1946,6 +1946,8 @@ body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(
 .nosb br.sb { display: none; }
 .jfy { text-align: justify; text-justify: inter-character; } /* 左揃えの本文・項目・表のマスの両端揃え（js/main.js が付ける。最後の行と改行の前は左揃え） */
 .ml-s { display: block; } /* リード・コンセプトの改行（tools/build_parts/common.py の lines_html）：1文＝1まとまり */
+.ml-flow { text-align: justify; text-justify: inter-character; } /* 短い最後の行が2文続くリードは、文をつなげて流し、本文と同じく右端をそろえる（js/main.js） */
+.ml-flow > .ml-s { display: inline; }
 .ml-s > span { display: inline; } /* 文の中の区切りでは改行を待たず、行末まで詰める（人の方針 2026-11-13） */
 .vision__lead .ml-s > span, .ml-c > span { display: inline-block; } /* 中央揃えの文だけは、区切りで改行する（js/main.js が .ml-c を付ける。トップのコンセプトのお手本） */
 .vision__lead .ml-s > span.ml-l, .ml-c > span.ml-l { display: inline; } /* 16文字を超える長い区切りは、ふつうに流す */
