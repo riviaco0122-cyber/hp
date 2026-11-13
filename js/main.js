@@ -791,16 +791,17 @@
       if (!lines.length) return;
       // 直前のまとまり（同じ親の中で、すぐ前に並ぶもの）も最後の行が3文字以下なら、続けて起きないように最後の4文字をまとめる。
       // 見出しは文字の大きさも形も違い、続けて並んでも目立たないので数えない（見出しのあとは数え直す）
-      if (/^H[1-6]$/.test(blk.tagName) || blk.tagName === 'SUMMARY') { prev = null; prevShort = false; return; }
+      // 表のマスも、ほかの文と同じく行末まで詰めるだけにする（隣のマスと比べて送ると、マスの中で右が空くため。人の指摘 2026-11-13）
+      if (/^H[1-6]$/.test(blk.tagName) || blk.tagName === 'SUMMARY' || /^T[DH]$/.test(blk.tagName)) { prev = null; prevShort = false; if (!/^T[DH]$/.test(blk.tagName)) return; }
       var unit = function (x) { return x.closest('li') || x; }; // 項目の中の部品（要点のリンクなど）は、項目どうしで並びを見る
       var near = prev && (unit(prev) === unit(blk).previousElementSibling || unit(prev).parentElement === unit(blk).parentElement);
       var short = lines.length > 1 && lines[lines.length - 1].n <= 3;
-      if (short && near && prevShort) {
+      if (short && near && prevShort && !/^T[DH]$/.test(blk.tagName)) {
         keepLast4(blk);
         lines = lineBoxes(blk);
         short = lines.length > 1 && lines[lines.length - 1].n <= 3;
       }
-      prev = blk; prevShort = short;
+      if (!/^T[DH]$/.test(blk.tagName)) { prev = blk; prevShort = short; }
       // 左揃えの本文・項目・表のマスは、両端揃えにして右端をそろえる（見出し・大きな文字・中央揃えは対象外。最後の行は左揃えのまま）
       if (fsz < 20 && !/^H[1-6]$/.test(blk.tagName) && cs.textAlign !== 'center' && cs.textAlign !== 'right' && !blk.querySelector('.ml-s') &&
           lines.length > 1 && maxGap(blk) <= 2) blk.classList.add('jfy');
