@@ -51,12 +51,9 @@ body {
   line-break: strict;
   overflow-wrap: anywhere;
 }
-:is(td, th):has(wbr) { word-break: keep-all; } /* 表のマスは「|」（<wbr>）の位置でだけ改行する */
-n-w.h, n-w.c { word-break: keep-all; } /* 見出しと、中央揃えで表示される文（c。js/main.js が付ける）は、文節の切れ目（<wbr>）でだけ改行し、単語の途中で切らない（tools/build_parts/common.py） */
-.wrap-fill n-w, n-w.wrap-fill { word-break: normal; } /* 左揃えで、言葉の切れ目・まとまりを守って折ると行末に大きな空きができるまとまり（js/main.js が .wrap-fill を付ける）は、言葉の途中でも折る */
-.wrap-fill n-b.loose { white-space: normal; } /* そのときは6文字以上の長い塊（日付・出典のかっこ・「・」のつながり）も解く（js/main.js が .loose を付ける） */
-n-b { white-space: nowrap; }
-n-b.over { white-space: normal; } /* 枠より長いまとまりは解く（js/main.js。はみ出し防止） */ /* 段落・見出しの最後の4文字。最後の行に2〜3文字だけが残らないよう、まとめて送る（tools/build.py） */
+.vision__lead n-w, n-w.c { word-break: keep-all; } /* 中央揃えの文は、言葉の切れ目（<wbr>）でだけ改行する（js/main.js が .c を付ける） */
+.vision__lead n-b, n-w.c n-b { white-space: nowrap; } /* トップのコンセプト（人のお手本 2026-11-07）は、右詰めにせず言葉の区切りで改行する */
+n-b.nu, n-b.keep { white-space: nowrap; } /* 改行しないのは、数字と単位と、最後の行の短さが続くときの最後の4文字だけ（js/main.js）。ほかの文字は言葉の切れ目を待たずに行末まで詰めて折り返す（人の方針 2026-11-13） */
 img { max-width: 100%; height: auto; display: block; }
 /* hidden 属性は、各要素の display 指定より常に優先して非表示にする（絞り込み・予約公開で使用） */
 [hidden] { display: none !important; }
@@ -1947,11 +1944,11 @@ body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(
 .cycle__loop { position: absolute; right: 79%; top: 17%; white-space: nowrap; font-family: var(--font-serif); font-size: 12px; letter-spacing: 0.08em; color: var(--c-accent); }
 .vision__lead { margin-top: 36px; }
 .nosb br.sb { display: none; }
-.nosb n-b.sbl { white-space: normal; } /* 文をつなげたときの、文の終わりのまとまり（js/main.js） */ /* 文ごとの改行で行数が増えるときは、文をつなげて流す（js/main.js） */
 .jfy { text-align: justify; text-justify: inter-character; } /* 左揃えの本文・項目・表のマスの両端揃え（js/main.js が付ける。最後の行と改行の前は左揃え） */
 .ml-s { display: block; } /* リード・コンセプトの改行（tools/build_parts/common.py の lines_html）：1文＝1まとまり */
-.ml-s > span { display: inline-block; } /* 文の中の区切り（「|」・読点のあと）。入る限り前の行に詰め、言葉の途中では折れない */
-.ml-s > span.ml-l { display: inline; } /* 16文字を超える長い区切りは、ふつうに流す（lines_html） */
+.ml-s > span { display: inline; } /* 文の中の区切りでは改行を待たず、行末まで詰める（人の方針 2026-11-13） */
+.vision__lead .ml-s > span, .ml-c > span { display: inline-block; } /* 中央揃えの文だけは、区切りで改行する（js/main.js が .ml-c を付ける。トップのコンセプトのお手本） */
+.vision__lead .ml-s > span.ml-l, .ml-c > span.ml-l { display: inline; } /* 16文字を超える長い区切りは、ふつうに流す */
 .cycle { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1; margin-inline: auto; }
 .cycle__ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .cycle__ring circle { fill: none; stroke: var(--c-line-strong); stroke-width: 0.25; }
@@ -2771,7 +2768,7 @@ body.is-media .keypoints li + li { margin-top: 16px; padding-top: 16px; border-t
 body.is-media .keypoints li::before { top: 0.75em; left: 2px; width: 12px; height: 6px; border-color: var(--m-green); border-width: 2px; }
 body.is-media .keypoints li + li::before { top: calc(16px + 0.75em); }
 body.is-media .keypoints .kp__main { display: block; font-weight: 700; color: var(--m-ink); }
-body.is-media .keypoints .kp__go { display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 700; color: var(--m-green); white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; } /* その要点の答えが載っている節へ（build の keypoint_sections） */
+body.is-media .keypoints .kp__link { display: block; color: inherit; text-decoration: underline; text-decoration-color: var(--m-green); text-decoration-thickness: 1px; text-underline-offset: 5px; } /* 要点の文そのものを、答えが載っている節へのリンクにする（build の keypoint_sections。人の方針 2026-11-13） */
 .to-toc { position: fixed; right: 16px; bottom: 24px; z-index: 89; display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; background: #fff; box-shadow: 0 4px 16px rgba(38, 42, 39, 0.16); font-size: 13px; font-weight: 700; color: var(--m-green); white-space: nowrap; }
 .to-toc[hidden] { display: none; }
 @media (max-width: 899px) { .to-toc { bottom: calc(66px + env(safe-area-inset-bottom)); } } /* 下に固定した相談ボタンの上に出す */
