@@ -2771,6 +2771,10 @@ body.is-media .keypoints li + li { margin-top: 16px; padding-top: 16px; border-t
 body.is-media .keypoints li::before { top: 0.75em; left: 2px; width: 12px; height: 6px; border-color: var(--m-green); border-width: 2px; }
 body.is-media .keypoints li + li::before { top: calc(16px + 0.75em); }
 body.is-media .keypoints .kp__main { display: block; font-weight: 700; color: var(--m-ink); }
+body.is-media .keypoints .kp__go { display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 700; color: var(--m-green); white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; } /* その要点の答えが載っている節へ（build の keypoint_sections） */
+.to-toc { position: fixed; right: 16px; bottom: 24px; z-index: 89; display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; background: #fff; box-shadow: 0 4px 16px rgba(38, 42, 39, 0.16); font-size: 13px; font-weight: 700; color: var(--m-green); white-space: nowrap; }
+.to-toc[hidden] { display: none; }
+@media (max-width: 899px) { .to-toc { bottom: calc(66px + env(safe-area-inset-bottom)); } } /* 下に固定した相談ボタンの上に出す */
 body.is-media .keypoints .kp__sub { display: none; } /* ポイント欄は要点の一文だけを並べる（補足は本文にある。文字を詰め込まない。人の指摘 2026-11-07） */
 /* 目次：スマホでは折りたたみ */
 body.is-media .toc { padding: 0; margin-top: 24px; }
