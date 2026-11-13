@@ -688,133 +688,79 @@
     update();
   }
 
-  // 改行の仕方を、表示されている揃え方で決める（人の指摘 2026-11-06。docs/design-guide.md 3章）
-  // ・中央揃えの文：言葉の切れ目（build で入れた <wbr>）でだけ改行する（n-w.c。見出しの n-w.h はもともと同じ）
-  // ・左揃えの文：まず言葉の切れ目・まとまり（build で入れた <wbr>・<n-b>）を守って折る。ただし、そのせいで行末に3文字分を超える
-  //   空き（22px以上の大きな見出しは5文字分を超える空き）ができる行があれば、そのまとまり（段落・項目・見出し）を .wrap-fill にして、
-  //   言葉の途中でも折れるようにし、6文字以上の長い塊（日付・出典のかっこ・「・」のつながり）も解く（右の余白を少なくすることを優先。
-  //   人の方針 2026-11-06：「右に余白が大きく残るなら、単語で折り返してよい。右側の見栄えが大事」）。5文字以下の塊（「5万円」「ます。」「物・立」）は解かない。
-  //   数字の途中やかっこだけが残る折り方は、ブラウザの禁則処理で起きない
-  // 部品によってはスマホとPCで揃え方が変わるので、画面の幅が変わったら付け直す
-  var phraseTexts = document.querySelectorAll('n-w');
+  // 改行の仕方（人の方針 2026-11-13。docs/design-guide.md 3章）
+  // ・すべての文は、言葉の切れ目を待たずに行末まで詰めて折り返す（右詰め）。言葉の単位で早めに折ると、右に空きができて読みにくいため
+  // ・最後の行が2〜3文字になるのは許す。ただし、それが続けて起きる（直前の段落・項目も最後の行が3文字以下）ときだけ、
+  //   最後の4文字を改行しないまとまり（n-b.keep）にして、最後の行を4文字以上にする
+  // ・数字と単位（「9,500円」「2営業日」）は途中で折らない（n-b.nu）
+  // ・左揃えの小さな文字（本文・項目・表のマス）は両端揃えにして、右端をそろえる（.jfy）
+  // 部品によってはスマホとPCで幅が変わるので、画面の幅が変わったら付け直す
   var blockOf = function (el) { // 文字が並ぶまとまり（display: inline でない一番近い祖先）
     while (el.parentElement && getComputedStyle(el).display === 'inline') el = el.parentElement;
     return el;
   };
-  var maxGap = function (blk) { // まとまりの中で、最後の行以外の行末の空き（文字数）の最大
-    var cs = getComputedStyle(blk), fs = parseFloat(cs.fontSize);
-    var right = blk.getBoundingClientRect().right - parseFloat(cs.paddingRight) - parseFloat(cs.borderRightWidth);
-    var range = document.createRange(), lines = [], tw = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), t;
-    while ((t = tw.nextNode())) { // 文字の部分だけで測る（要素の箱の幅は数えない）
-      if (!t.data.trim()) continue;
-      range.selectNodeContents(t);
-      Array.prototype.forEach.call(range.getClientRects(), function (r) {
-        if (!r.width || !r.height) return;
-        var line = null;
-        for (var k = 0; k < lines.length; k++) if (Math.abs(lines[k].top - r.top) < fs * 0.6) { line = lines[k]; break; }
-        if (!line) { line = { top: r.top, right: r.right }; lines.push(line); }
-        line.right = Math.max(line.right, r.right);
+  var lineBoxes = function (blk) { // まとまりの中の文字の行（上から順に、行の左端・右端と、おおよその文字数）
+    var cs = getComputedStyle(blk), fs = parseFloat(cs.fontSize), ls = parseFloat(cs.letterSpacing) || 0;
+    var lines = [], r = document.createRange(), tw = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), t;
+    while ((t = tw.nextNode())) { // 文字の部分だけで測る（要素の箱の幅は数えない）。1文字ずつ測ると長い記事で重いので、文字の塊ごとに測る
+      if (!t.data.trim() || (t.parentElement && t.parentElement.closest('.visually-hidden'))) continue;
+      r.selectNodeContents(t);
+      Array.prototype.forEach.call(r.getClientRects(), function (q) {
+        if (!q.width || !q.height) return;
+        var l = null;
+        for (var k = 0; k < lines.length; k++) if (Math.abs(lines[k].top - q.top) < fs * 0.6) { l = lines[k]; break; }
+        if (!l) lines.push({ top: q.top, left: q.left, right: q.right });
+        else { l.left = Math.min(l.left, q.left); l.right = Math.max(l.right, q.right); }
       });
     }
-    blk.querySelectorAll('br').forEach(function (br) { // 手で入れた改行（<br>）の直前の行は、空いていて当然なので数えない
-      var t = br.getBoundingClientRect().top;
-      lines.forEach(function (l) { if (Math.abs(l.top - t) < fs * 0.6) l.hard = true; });
-    });
     lines.sort(function (x, y) { return x.top - y.top; });
-    return lines.slice(0, -1).reduce(function (m, l) { return l.hard ? m : Math.max(m, (right - l.right) / fs); }, 0);
+    lines.forEach(function (l) { l.n = Math.round((l.right - l.left) / (fs + ls)); });
+    return lines;
+  };
+  var lineCount = function (blk) { return lineBoxes(blk).length; };
+  var maxGap = function (blk) { // 最後の行以外の行末の空き（文字数）の最大。手で入れた改行（<br>）の直前の行は数えない
+    var cs = getComputedStyle(blk), fs = parseFloat(cs.fontSize);
+    var right = blk.getBoundingClientRect().right - parseFloat(cs.paddingRight) - parseFloat(cs.borderRightWidth);
+    var lines = lineBoxes(blk), brs = Array.prototype.map.call(blk.querySelectorAll('br'), function (br) { return br.getBoundingClientRect().top; });
+    return lines.slice(0, -1).reduce(function (m, l) {
+      return brs.some(function (y) { return Math.abs(y - l.top) < fs * 0.6; }) ? m : Math.max(m, (right - l.right) / fs);
+    }, 0);
   };
   var NUM = /約?\d[\d,.]*(?:万|億|兆)?(?:人泊|営業日|時間|か月|円|人|泊|年|月|日|倍|件|戸|棟|回|歳|㎡|室|%|％)?/g;
-  var WORD = /[ァ-ヴー]{2,12}|[A-Za-z][A-Za-z0-9&.\-]*[A-Za-z0-9]/g;
-  var keepNums = function (b) { // b の中の数字と単位を、改行しないまとまり（n-b）で包む
+  var keepNums = function (b) { // b の中の数字と単位を、改行しないまとまり（n-b.nu）で包む
     var tw = document.createTreeWalker(b, NodeFilter.SHOW_TEXT), t, nodes = [];
-    while ((t = tw.nextNode())) if (!(t.parentNode.closest && t.parentNode.closest('n-b.num'))) nodes.push(t); // 前に包んだ数字（n-b.num）は包み直さない
+    while ((t = tw.nextNode())) if (!(t.parentElement && t.parentElement.closest('n-b.nu'))) nodes.push(t);
     nodes.forEach(function (node) {
       var m, hits = [];
       NUM.lastIndex = 0;
       while ((m = NUM.exec(node.data))) if (m[0].length >= 2) hits.push([m.index, m[0].length]);
-      WORD.lastIndex = 0; // カタカナ語・英単語も、言葉の途中で折れる形のときに語の中で折らない（「ス／カウト」「Air／bnb」を防ぐ）
-      while ((m = WORD.exec(node.data))) if (!hits.some(function (h) { return m.index < h[0] + h[1] && h[0] < m.index + m[0].length; })) hits.push([m.index, m[0].length]);
-      hits.sort(function (x, y) { return x[0] - y[0]; });
       for (var i = hits.length - 1; i >= 0; i--) {
         var mid = node.splitText(hits[i][0]); mid.splitText(hits[i][1]);
-        var nb = document.createElement('n-b'); nb.className = 'num'; mid.parentNode.insertBefore(nb, mid); nb.appendChild(mid);
+        var nb = document.createElement('n-b'); nb.className = 'nu'; mid.parentNode.insertBefore(nb, mid); nb.appendChild(mid);
       }
     });
   };
-  // まとまりの最後の4文字は、改行しないまとまりにしておく（最後の行が「す。」のように2〜3文字だけにならないように。
-  // 「…<strong>約67%</strong>でした。」のように、build でまとめきれなかった語尾も含む）
-  var keepTail = function (blk) {
+  var keepLast4 = function (blk) { // 最後の4文字を改行しないまとまり（n-b.keep）にする
     var tw = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), t, last = null;
     while ((t = tw.nextNode())) if (t.data.trim()) last = t;
     if (!last) return;
-    var txt = last.data.replace(/\s+$/, ''), pe = last.parentNode, kept = false, a;
-    for (a = pe; a && a !== blk; a = a.parentNode) if (a.tagName === 'N-B' && (a.classList.contains('tail') || !a.classList.contains('loose') && a.textContent.trim().length >= 4)) kept = true; // tail：前に包んだ最後の4文字
-    if (kept) return;
-    if (txt.length >= 4) {
-      var cut = txt.length - 4; // 切れ目が数字と単位の途中（「80万／円の事例」）なら、数字の頭まで戻す
-      while (cut > 0 && /[\d,.万億兆]/.test(txt[cut - 1]) && /[\d,.万億兆円人泊年月日倍件戸棟回歳㎡室%％]/.test(txt[cut])) cut--;
-      if (cut > 0 && txt[cut - 1] === '約' && /\d/.test(txt[cut])) cut--;
-      var tail = last.splitText(cut), nb = document.createElement('n-b'); nb.className = 'tail';
-      pe.insertBefore(nb, tail); nb.appendChild(tail);
-    } else if (pe.tagName === 'N-B' && pe.textContent.length < 4 && pe.previousSibling && pe.previousSibling.nodeType === 3 &&
-               pe.previousSibling.data.length >= 4 - pe.textContent.length) {
-      // 最後のまとまりが「ます。」のように4文字に足りないときは、直前の文字を足して守る（「あり／ます。」を防ぐ）
-      var tn = pe.previousSibling, moved = tn.splitText(tn.data.length - (4 - pe.textContent.length)), nb3 = document.createElement('n-b');
-      nb3.className = 'tail'; pe.parentNode.insertBefore(nb3, moved); nb3.appendChild(moved); nb3.appendChild(pe);
-    } else if (last.previousSibling && (last.previousSibling.textContent + txt).length >= 4 && (last.previousSibling.textContent + txt).length <= 8) {
-      // 最後の文字が短く分かれている（「…<n-b>10月</n-b>閲覧）」）ときは、直前のまとまりと合わせて守る
-      var prev = last.previousSibling, nb2 = document.createElement('n-b'); nb2.className = 'tail';
-      pe.insertBefore(nb2, prev); nb2.appendChild(prev); nb2.appendChild(last);
-    } else { // それもできないときは、外側の塊を解かずに残す
-      for (a = pe; a && a !== blk; a = a.parentNode) if (a.tagName === 'N-B') { a.classList.remove('loose'); a.querySelectorAll('n-b.loose').forEach(function (x) { x.classList.remove('loose'); }); }
+    var txt = last.data.replace(/\s+$/, '');
+    if (txt.length < 4) { // 最後の文字の塊が短い（「…<strong>10月</strong>です。」）ときは、その塊ごと直前とまとめる
+      var host = last.parentElement !== blk && last.parentElement.tagName === 'N-B' ? last.parentElement : last;
+      var prev = host.previousSibling;
+      if (!prev || prev.nodeType !== 3 || prev.data.length < 4 - txt.length) return;
+      var moved = prev.splitText(prev.data.length - (4 - txt.length)), nb2 = document.createElement('n-b');
+      nb2.className = 'keep'; host.parentNode.insertBefore(nb2, moved); nb2.appendChild(moved); nb2.appendChild(host);
+      return;
     }
+    var tail = last.splitText(txt.length - 4), nb = document.createElement('n-b'); nb.className = 'keep';
+    last.parentNode.insertBefore(nb, tail); nb.appendChild(tail);
   };
-  // 組んだ形の見栄えの悪さ：途中の行の右の空き（文字数の2乗÷4。3文字分まではなし）＋言葉の途中で切れた所×4＋最後の行が3文字以下なら6
-  var JA_END = /[、。，．・：；！？!?）」』】〉》\s]/, JA_OPEN = /[「『（(【〈《]/;
-  var cost = function (blk, fs) {
-    var cs = getComputedStyle(blk);
-    var right = blk.getBoundingClientRect().right - parseFloat(cs.paddingRight) - parseFloat(cs.borderRightWidth);
-    var tw = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), t, r = document.createRange(), lines = [];
-    while ((t = tw.nextNode())) {
-      for (var j = 0; j < t.length; j++) {
-        if (/\s/.test(t.data[j])) continue;
-        r.setStart(t, j); r.setEnd(t, j + 1);
-        var rc = r.getClientRects()[0]; if (!rc || !rc.width) continue;
-        var l = lines[lines.length - 1], c = { node: t, i: j, ch: t.data[j] };
-        if (!l || rc.top > l.top + rc.height * 0.6) lines.push({ top: rc.top, right: rc.right, first: c, last: c, n: 1 });
-        else { l.right = Math.max(l.right, rc.right); l.last = c; l.n++; }
-      }
-    }
-    if (lines.length < 2) return 0;
-    var hard = blk.querySelectorAll('br');
-    var total = 0;
-    for (var k = 0; k < lines.length - 1; k++) {
-      var L = lines[k], N = lines[k + 1], isHard = false;
-      hard.forEach(function (br) { if (Math.abs(br.getBoundingClientRect().top - L.top) < fs * 0.6) isHard = true; });
-      if (isHard) continue;
-      var gap = (right - L.right) / fs;
-      if (gap > 3) total += gap * gap / 4; // 空きは大きいほど目立つので、2乗で重くする
-      var p = N.first.i === 0 ? N.first.node.previousSibling || (N.first.node.parentNode !== blk ? N.first.node.parentNode.previousSibling : null) : null;
-      var nx = N.first.node.data.slice(N.first.i, N.first.i + 3);
-      var atWord = (p && p.nodeName === 'WBR') || JA_END.test(L.last.ch) || JA_OPEN.test(N.first.ch) || (/[A-Za-z0-9]/.test(L.last.ch) !== /[A-Za-z0-9]/.test(N.first.ch)) ||
-        // 漢字のあとの「します」「できます」、助詞（「要件／を」）は言葉の切れ目。送りがなの途中（「満／たせる」）は切れ目ではない
-        (/[一-龯々]/.test(L.last.ch) && /^(?:し[てたまなょゃ]|する|され|させ|でき|[をがはへでのにとも])/.test(nx));
-      if (!atWord) total += 4;
-    }
-    if (lines[lines.length - 1].n <= 3) total += 6;
-    return total;
-  };
-  var lineCount = function (blk) { // まとまりの中の文字の行数
-    var tops = [], r = document.createRange(), tw = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), t;
-    var fs = parseFloat(getComputedStyle(blk).fontSize);
-    while ((t = tw.nextNode())) {
-      if (!t.data.trim()) continue;
-      r.selectNodeContents(t);
-      Array.prototype.forEach.call(r.getClientRects(), function (q) {
-        if (q.width && !tops.some(function (y) { return Math.abs(y - q.top) < fs * 0.6; })) tops.push(q.top);
-      });
-    }
-    return tops.length;
+  var unwrap = function (n) { while (n.firstChild) n.parentNode.insertBefore(n.firstChild, n); n.parentNode.removeChild(n); };
+  var textBlocks = function () { // 文字が並ぶいちばん内側のまとまり（段落・項目・見出し・表のマスなど）
+    return Array.prototype.filter.call(document.querySelectorAll('main :is(p, li, dd, dt, h1, h2, h3, h4, td, th, figcaption, summary, blockquote, .kp__main, .ml-s)'), function (b) {
+      return !b.querySelector('p, li, dd, div, ul, ol, table, h2, h3, h4, .kp__main, .ml-s') && b.textContent.trim().length > 0;
+    });
   };
   var fitLines = function () {
     // 文ごとの改行（br.sb。build が短い文に入れる）は、どの文も1行に収まるときだけ残す。そうでなければ文をつなげて流す
@@ -824,83 +770,49 @@
     sbBlocks.forEach(function (b) {
       b.classList.remove('nosb');
       if (b.offsetParent === null) return;
-      // どの文も1行に収まり、つなげても行数が減らないときだけ、文ごとに改行する（お手本のコンセプト文のように1文1行で並ぶ形）。
-      // 1文が2行になる・PC の広い枠でつなげれば1行に収まる（右が大きく空く）ときは、文をつなげて流す
       var n = b.querySelectorAll('br.sb').length + 1, withSb = lineCount(b);
       b.classList.add('nosb');
       if (withSb <= n && lineCount(b) >= n) b.classList.remove('nosb');
-      // 文をつなげたときは、文の終わりのまとまり（改行の直前の n-b）も段落の途中になるので、右詰めのときに解けるようにする
-      b.querySelectorAll('br.sb').forEach(function (br) {
-        var t = br.previousElementSibling;
-        if (t && t.tagName === 'N-B') t.classList.toggle('sbl', b.classList.contains('nosb'));
-      });
     });
-    document.querySelectorAll('.wrap-fill').forEach(function (b) { b.classList.remove('wrap-fill'); });
+    // 中央揃えの文（トップのコンセプトなど）は、右詰めにならないので、これまでどおり言葉の切れ目でだけ改行する（n-w.c・.ml-c。人のお手本 2026-11-07）
+    document.querySelectorAll('n-w').forEach(function (n) {
+      var p = n.parentElement; if (!p || !n.querySelector('wbr')) return;
+      n.classList.toggle('c', getComputedStyle(p).textAlign === 'center');
+    });
+    document.querySelectorAll('.ml-s').forEach(function (m) { m.classList.toggle('ml-c', getComputedStyle(m).textAlign === 'center'); });
+    document.querySelectorAll('n-b.keep').forEach(unwrap);
     document.querySelectorAll('.jfy').forEach(function (b) { b.classList.remove('jfy'); });
-    var jfy = [];
-    document.querySelectorAll('n-b.loose').forEach(function (b) { b.classList.remove('loose'); });
-    document.querySelectorAll('n-b.over').forEach(function (b) { b.classList.remove('over'); });
-    Array.prototype.forEach.call(phraseTexts, function (n) {
-      var p = n.parentElement;
-      if (!p || !n.querySelector('wbr')) return;
-      var centered = getComputedStyle(p).textAlign === 'center';
-      if (!n.classList.contains('h')) n.classList.toggle('c', centered);
-    });
-    var blocks = [];
-    document.querySelectorAll('main n-w, main n-b').forEach(function (n) {
-      var b = blockOf(n);
-      if (blocks.indexOf(b) < 0) blocks.push(b);
-    });
-    blocks.forEach(function (blk) {
-      if (blk.offsetParent === null || blk.querySelector('p, li, dd, div, ul, ol, table')) return;
-      var inTable = !!blk.closest("table"); // 表のマスも右詰めの対象（右の最大の空きが小さくなるなら右詰め。人の指摘 2026-11-07）
-      var cs = getComputedStyle(blk);
-      if (cs.textAlign === 'center' || cs.textAlign === 'right' || cs.whiteSpace === 'nowrap' || cs.writingMode.indexOf('vertical') === 0) return;
-      var fsz = parseFloat(cs.fontSize);
-      // 左揃えの本文・項目・表のマスは、両端揃えにして右端をそろえる（半角〜1文字分の小さな空きは、折り方では消せないため。
-      // 見出し・大きな文字・中央揃えは対象外。最後の行と手で入れた改行の前は左揃えのまま。人の指摘 2026-11-07）
-      if (fsz < 20 && !/^H[1-6]$/.test(blk.tagName) && !blk.querySelector('.ml-s')) jfy.push(blk);
-      keepTail(blk);
-      var gapA = maxGap(blk);
-      var narrow = !inTable && (blk.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) / fsz < 16; // 1行に16文字未満の狭い枠（スマホのカード・2列の図など）。表のマスは右の空きを優先
-      if (gapA <= (fsz >= 22 ? 5 : narrow ? 3 : 1.5)) return; // 右の空きが小さければ、言葉の切れ目で折った形のまま（ふつうの幅は1.5文字分まで。基本は右詰め）
-      var a = narrow ? cost(blk, fsz) : 0;
-      // 言葉の切れ目で折った形（A）で右が空く・最後の行が短いときは、言葉の途中でも折る形（B）も組んで、見栄えの良いほうを使う
-      blk.classList.add('wrap-fill');
-      keepNums(blk); // 言葉の途中でも折れるので、先に数字と単位（「2営業日」「80万円」）をまとめておく
-      var loosened = [];
-      blk.querySelectorAll('n-b').forEach(function (b) {
-        // 6文字以上の塊と、英単語の端を巻き込んだ塊（「価・R」＋「evPAR」、「Rとは？」）を解く（英単語の前後では折れる。英単語の中は折れない）。
-        // 数字と単位（n-b.num）・最後の語尾（n-b.tail）・読点や句点で終わる区切りの終わり（「79件から、」）は解かない
-        if (b.classList.contains('num') || b.classList.contains('tail') || /[、。，．！？]$/.test(b.textContent) || !(b.textContent.length >= 6 || /・[A-Za-z]$|[A-Za-z][^A-Za-z.\-]/.test(b.textContent))) return;
-        keepNums(b); // 解く前に、中の数字と単位（「80万円」「2027年」）をまとめておく（「80万／円」を防ぐ）
-        b.classList.add('loose'); loosened.push(b);
-      });
-      keepTail(blk);
-      // ふつうの幅の枠は、右の最大の空きが小さくなるなら B（基本は右詰め。人の方針 2026-11-06）。
-      // 狭い枠（カード・2列の図など）は、言葉の途中で切れる所も数えて、見栄えの良いほう（「ごみ袋の／予備」「要件を／満たせるか」）
-      if (narrow ? cost(blk, fsz) >= a : maxGap(blk) > gapA - 1) {
-        blk.classList.remove('wrap-fill');
-        loosened.forEach(function (b) { b.classList.remove('loose'); });
-      }
-    });
-    // 判定がすべて済んでから両端揃えにする。右の空きが3.5文字分を超える行があるまとまりは、字間が大きく開くので左揃えのまま
-    // （1行20文字ほどなら、3文字分の空きでも1文字あたり0.15文字分ほどの広がりで目立たない。人の指摘 2026-11-07）
-    // 安全策：改行しないまとまり（n-b）が枠より長いときは、そのまとまりを解く（枠の外へはみ出さないように）
+    var blocks = textBlocks(), prev = null, prevShort = false;
     blocks.forEach(function (blk) {
       if (blk.offsetParent === null) return;
-      var w = blk.clientWidth;
-      blk.querySelectorAll('n-b').forEach(function (b) { if (!b.closest('.visually-hidden') && b.getBoundingClientRect().width > w + 1) b.classList.add('over'); }); // 読み上げ用の見えない文字は対象外
+      keepNums(blk);
+      var cs = getComputedStyle(blk), fsz = parseFloat(cs.fontSize);
+      var lines = lineBoxes(blk);
+      if (!lines.length) return;
+      // 直前のまとまり（同じ親の中で、すぐ前に並ぶもの）も最後の行が3文字以下なら、続けて起きないように最後の4文字をまとめる。
+      // 見出しは文字の大きさも形も違い、続けて並んでも目立たないので数えない（見出しのあとは数え直す）
+      // 表のマスも、ほかの文と同じく行末まで詰めるだけにする（隣のマスと比べて送ると、マスの中で右が空くため。人の指摘 2026-11-13）
+      if (/^H[1-6]$/.test(blk.tagName) || blk.tagName === 'SUMMARY' || /^T[DH]$/.test(blk.tagName)) { prev = null; prevShort = false; if (!/^T[DH]$/.test(blk.tagName)) return; }
+      var unit = function (x) { return x.closest('li') || x; }; // 項目の中の部品（要点のリンクなど）は、項目どうしで並びを見る
+      var near = prev && (unit(prev) === unit(blk).previousElementSibling || unit(prev).parentElement === unit(blk).parentElement);
+      var short = lines.length > 1 && lines[lines.length - 1].n <= 3;
+      if (short && near && prevShort && !/^T[DH]$/.test(blk.tagName)) {
+        keepLast4(blk);
+        lines = lineBoxes(blk);
+        short = lines.length > 1 && lines[lines.length - 1].n <= 3;
+      }
+      if (!/^T[DH]$/.test(blk.tagName)) { prev = blk; prevShort = short; }
+      // 左揃えの本文・項目・表のマスは、両端揃えにして右端をそろえる（見出し・大きな文字・中央揃えは対象外。最後の行は左揃えのまま）
+      if (fsz < 20 && !/^H[1-6]$/.test(blk.tagName) && cs.textAlign !== 'center' && cs.textAlign !== 'right' && !blk.querySelector('.ml-s') &&
+          lines.length > 1 && maxGap(blk) <= 1.2) blk.classList.add('jfy'); // 1文字分を超える空きを両端揃えで埋めると、字間が目立って開くため
     });
-    // 字間が広がりすぎない（1行の文字数の12%まで）ときだけ両端揃え（狭い枠で「チ ャ ネ ル」と字間が開くのを防ぐ）
-    jfy.filter(function (b) { var g = maxGap(b); return g <= 3.5 && g <= b.clientWidth / parseFloat(getComputedStyle(b).fontSize) * 0.12; }).forEach(function (b) { b.classList.add('jfy'); });
   };
-  if (phraseTexts.length) {
+  if (document.querySelector('main')) {
     var fitTimer, fitW = window.innerWidth;
     fitLines();
     window.addEventListener('load', fitLines);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLines);
-    // 幅が変わったときだけ組み直す（スマホはスクロールでアドレスバーが出入りし、高さだけが変わる resize が続くため。組み直しは重く、スクロールがカクつく）
+    // 幅が変わったときだけ組み直す（スマホはスクロールでアドレスバーが出入りし、高さだけが変わる resize が続くため）
     window.addEventListener('resize', function () { if (window.innerWidth === fitW) return; fitW = window.innerWidth; clearTimeout(fitTimer); fitTimer = setTimeout(fitLines, 150); });
   }
 
