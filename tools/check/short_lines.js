@@ -21,7 +21,7 @@ if (ONLY.length) files = files.filter(f => ONLY.some(o => f.includes(o)));
       await p.evaluate(() => Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 5000))])); // Webフォントで組んだ改行で数える
       await p.waitForTimeout(300); // js/main.js の改行の調整を待つ
       const found = await p.evaluate(([MAX, ALL]) => {
-        const out = []; let prevEl = null, prevShort = false;
+        const out = [];
         const blocks = document.querySelectorAll('main p, main li, main dd, main dt, main h1, main h2, main h3, main h4, main figcaption, main blockquote, main [class*="__lead"], main [class*="__text"], main [class*="__desc"], main [class*="__sub"]');
         for (const el of blocks) {
           if (el.closest('nav, header, footer, .toc, [hidden]')) continue;
@@ -29,7 +29,7 @@ if (ONLY.length) files = files.filter(f => ONLY.some(o => f.includes(o)));
           if (el.querySelector('p, li, dd, div, ul, ol, table')) continue; // 中に段落を含む入れ物は除く
           if (/flex|grid/.test(cs.display) || cs.writingMode.indexOf('vertical') === 0) continue; // 横並びの部品（数字カードなど）は除く
           const text = el.innerText.trim(); if (text.length < 8 || !/[ぁ-んァ-ン一-龯]/.test(text)) continue;
-          if (/^H[1-6]$/.test(el.tagName)) { prevEl = null; prevShort = false; continue; } // 見出しは数えない（見出しのあとは数え直す。js/main.js と同じ）
+          if (/^H[1-6]$/.test(el.tagName)) continue; // 見出しは数えない（js/main.js と同じ）
           // <br>（手で入れた改行・文ごとの改行 br.sb）で区切った部分ごとに、最後の行の文字数を見る
           const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT); const r = document.createRange();
           const segs = [[]]; let n;
@@ -44,16 +44,24 @@ if (ONLY.length) files = files.filter(f => ONLY.some(o => f.includes(o)));
               if (!last || rc.top > last.top + rc.height * 0.6) lines.push({ top: rc.top, s: c }); else last.s += c;
             }
           }
-          const near = prevEl && (prevEl === el.previousElementSibling || prevEl.parentElement === el.parentElement);
-          let short = false;
+          // すぐ前に並ぶ文のまとまり（前の兄弟。項目の中の先頭の文なら前の項目）の最後の行が3文字以下か（js/main.js の prevEndsShort と同じ決め方）
+          const prevShort = (() => {
+            let ps = el.previousElementSibling; const li = el.parentElement && el.parentElement.closest('li');
+            if (!ps && li) ps = li.previousElementSibling;
+            if (!ps || ps.offsetParent === null || /^(H[1-6]|SUMMARY|DETAILS|TABLE|FIGURE|IMG|HR|SVG)$/i.test(ps.tagName) || ps.querySelector('table, figure, img, svg, details')) return false;
+            const rr = document.createRange(), ls = []; const tw = document.createTreeWalker(ps, NodeFilter.SHOW_TEXT); let t;
+            while ((t = tw.nextNode())) { if (!t.parentElement || t.parentElement.offsetParent === null) continue;
+              for (let i = 0; i < t.length; i++) { if (/\s/.test(t.data[i])) continue; rr.setStart(t, i); rr.setEnd(t, i + 1); const q = rr.getClientRects()[0]; if (!q || !q.width) continue;
+                const l = ls[ls.length - 1]; if (!l || q.top > l.top + q.height * 0.6) ls.push({ top: q.top, n: 1 }); else l.n++; } }
+            return ls.length > 1 && ls[ls.length - 1].n <= MAX;
+          })();
+          const near = !/^T[DH]$/.test(el.tagName); // 表のマスは数えない（js/main.js と同じ）
           for (const lines of segs) {
             if (lines.length < 2) continue; // 1行に収まった部分（<br> の後ろが元から短いものを含む）は数えない
             const tail = lines[lines.length - 1].s;
             if (tail.length > MAX) continue;
-            short = true;
             if (ALL || (near && prevShort)) out.push({ tail, prev: lines[lines.length - 2].s.slice(-14), text: text.replace(/\s+/g, ' ').slice(0, 70), cls: el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).split(' ')[0] : '') });
           }
-          prevEl = el; prevShort = short;
         }
         // 手順の図の説明（.fig-step__sub）は1行に収める（人の指摘 2026-11-13。docs/design-guide.md 3章）
         for (const el of document.querySelectorAll('main .fig-step__sub')) {
