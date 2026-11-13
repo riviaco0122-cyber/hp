@@ -32,7 +32,7 @@ const files = [
             const cs = getComputedStyle(el, pe || null);
             if (!isCircle(cs)) continue;
             const txt = pe ? (cs.content || '').replace(/^["']|["']$/g, '') : el.textContent.trim();
-            if (!txt || txt === 'none' || txt.length > 3 || /^\s*$/.test(txt)) continue;
+            if (!txt || txt === 'none' || txt.length > 3 || !/^[A-Za-z0-9]+$/.test(txt)) continue; // 数字・英字の印だけ（漢字は線の配置が字ごとに偏り、インクの位置では測れない）
             if (!pe && el.children.length) continue;
             const key = el.className + pe;
             if (keys.has(key)) continue;

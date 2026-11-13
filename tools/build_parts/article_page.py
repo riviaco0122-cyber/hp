@@ -52,19 +52,16 @@ def keypoint_sections(a, min_ratio=1.4):
 def article_page(a):
     names = dict(SERVICES)
     toc = "".join(f'<li><a href="#{sid}">{e(h)}</a></li>' for sid, h, _ in a["sections"])
-    def kp_item(k):
-        # 最初の一文を太字の要点、残りを補足（小さく・淡く）にして、短く見せる
-        n = first_sentence_end(k)
-        if n and k[n:].strip():
-            return f'<li><span class="kp__main">{e(k[:n])}</span><span class="kp__sub">{e(k[n:].strip())}</span></li>'
-        return f'<li><span class="kp__main">{e(k)}</span></li>'
     kp_to = keypoint_sections(a)
-    def kp_link(i):  # その要点の答えが載っている節へのリンク（お手本の記事にならう。docs/seo/benchmark-2026-11-12.md）
-        if not kp_to[i]:
-            return ""
-        n = next(j for j, (sid, _h, _b) in enumerate(a["sections"], 1) if sid == kp_to[i])
-        return f'<a class="kp__go" href="#{kp_to[i]}">{n}章で詳しく<span aria-hidden="true"> ↓</span></a>'
-    keypoints = "".join(kp_item(k).replace("</li>", kp_link(i) + "</li>") for i, k in enumerate(a["keypoints"]))
+    def kp_item(i, k):
+        # 要点の一文だけを見せ（補足は本文にある）、その一文そのものを、答えが載っている節へのリンクにする
+        # （「◯章で詳しく」の行を足さず、ポイント欄を縦に長くしない。人の指摘 2026-11-13）
+        n = first_sentence_end(k)
+        main, sub = (k[:n], k[n:].strip()) if n and k[n:].strip() else (k, "")
+        main_html = (f'<a class="kp__main" href="#{kp_to[i]}">{e(main)}<span class="kp__arrow" aria-hidden="true"></span></a>'
+                     if kp_to[i] else f'<span class="kp__main">{e(main)}</span>')
+        return f'<li>{main_html}' + (f'<span class="kp__sub">{e(sub)}</span>' if sub else "") + "</li>"
+    keypoints = "".join(kp_item(i, k) for i, k in enumerate(a["keypoints"]))
     def lead_sentence(html):
         """節の最初の段落（<p>）の一文目を強調する。2文以上あり、一文目にタグを含まない段落だけ。"""
         m = re.match(r"(\s*<p>)([^<]+)", html)

@@ -51,13 +51,7 @@ body {
   line-break: strict;
   overflow-wrap: anywhere;
 }
-:is(td, th):has(wbr) { word-break: keep-all; } /* 表のマスは「|」（<wbr>）の位置でだけ改行する */
-n-w.h, n-w.c { word-break: keep-all; } /* 見出しと、中央揃えで表示される文（c。js/main.js が付ける）は、文節の切れ目（<wbr>）でだけ改行し、単語の途中で切らない（tools/build_parts/common.py） */
-.wrap-fill, .wrap-fill n-w, n-w.wrap-fill { word-break: keep-all; } /* 左揃えで、言葉の切れ目・まとまりを守って折ると行末に大きな空きができるまとまり（js/main.js が .wrap-fill を付ける）は、語の切れ目らしい所（js が入れる <wbr class="f">）でも折る。言葉の途中では折らない */
-.wrap-fill n-b.loose { white-space: normal; } /* そのときは6文字以上の長い塊（日付・出典のかっこ・「・」のつながり）も解く（js/main.js が .loose を付ける） */
-n-b { white-space: nowrap; } /* 改行しないまとまり（最後の4文字・数字と単位など。tools/build_parts/common.py） */
-n-b.over { white-space: normal; } /* 枠より長いまとまりは解く（js/main.js。はみ出し防止） */
-n-b.over.fill, :has(> wbr.f) { word-break: keep-all; } /* 解いたまとまり・語の切れ目を入れた所は、その切れ目（<wbr class="f">）でだけ折る */
+n-b { white-space: nowrap; } /* 途中で改行しない、数字と単位・英単語・会社名（tools/build_parts/common.py の phrase_breaks）と、最後の行が短くなるのが続くときの語尾（js/main.js） */
 img { max-width: 100%; height: auto; display: block; }
 /* hidden 属性は、各要素の display 指定より常に優先して非表示にする（絞り込み・予約公開で使用） */
 [hidden] { display: none !important; }
@@ -1789,7 +1783,6 @@ a.guide-step__body:hover .guide-step__thumb img { transform: scale(1.04); }
 }
 /* ===== スマホで読みやすく ===== */
 .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.table td.num { white-space: nowrap; }
 @media (max-width: 899px) {
   .table-scroll { margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter); }
   .table-scroll .table { min-width: 100%; }
@@ -1949,12 +1942,8 @@ body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(
 .vision__grid .vision__more { grid-area: more; align-self: start; }
 .cycle__loop { position: absolute; right: 79%; top: 17%; white-space: nowrap; font-family: var(--font-serif); font-size: 12px; letter-spacing: 0.08em; color: var(--c-accent); }
 .vision__lead { margin-top: 36px; }
-.nosb br.sb { display: none; }
-.nosb n-b.sbl { white-space: normal; } /* 文をつなげたときの、文の終わりのまとまり（js/main.js） */ /* 文ごとの改行で行数が増えるときは、文をつなげて流す（js/main.js） */
-.jfy { text-align: justify; text-justify: inter-character; } /* 左揃えの本文・項目・表のマスの両端揃え（js/main.js が付ける。最後の行と改行の前は左揃え） */
-.ml-s { display: block; } /* リード・コンセプトの改行（tools/build_parts/common.py の lines_html）：1文＝1まとまり */
-.ml-s > span { display: inline-block; } /* 文の中の区切り（「|」・読点のあと）。入る限り前の行に詰め、言葉の途中では折れない */
-.ml-s > span.ml-l { display: inline; } /* 16文字を超える長い区切りは、ふつうに流す（lines_html） */
+.ml-s { display: block; } /* 行の区切りを手で決めたコピー（lines_html にリストで渡したもの）の1行 */
+.ml-s > span { display: inline-block; } /* その行の中の区切り（「|」）。入る限り前の行に詰め、区切りの途中では折らない */
 .cycle { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1; margin-inline: auto; }
 .cycle__ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .cycle__ring circle { fill: none; stroke: var(--c-line-strong); stroke-width: 0.25; }
@@ -2761,7 +2750,7 @@ body.is-media .table-scroll { margin: 28px 0; -webkit-overflow-scrolling: touch;
 body.is-media .article__section .table { margin: 0; font-size: 14px; border-collapse: separate; border-spacing: 0; border: 1px solid var(--m-line); border-radius: 12px; overflow: hidden; }
 body.is-media .article__section .table th, body.is-media .article__section .table td { padding: 12px 14px; border: 0; border-bottom: 1px solid var(--m-line); line-height: 1.7; }
 body.is-media .article__section .table tr:last-child td { border-bottom: 0; }
-body.is-media .article__section .table th { white-space: normal; min-width: 4.5em; background: var(--m-sand); color: var(--m-green); font-weight: 700; word-break: keep-all; overflow-wrap: normal; } /* 見出しはラベルなので語の途中で割らない（「耐用年｜数」を防ぐ。入りきらない語は列を広げる） */
+body.is-media .article__section .table th { white-space: normal; min-width: 4.5em; background: var(--m-sand); color: var(--m-green); font-weight: 700; }
 body.is-media .article__section .table td:first-child { white-space: normal; max-width: 18em; } /* 記事の表の1列目は文になることがあるので折り返す（.table の nowrap はコーポレートの短いラベル用） */
 
 body.is-media .article__section .table td:first-child { font-weight: 700; background: #f7f9f6; }
@@ -2774,7 +2763,9 @@ body.is-media .keypoints li + li { margin-top: 16px; padding-top: 16px; border-t
 body.is-media .keypoints li::before { top: 0.75em; left: 2px; width: 12px; height: 6px; border-color: var(--m-green); border-width: 2px; }
 body.is-media .keypoints li + li::before { top: calc(16px + 0.75em); }
 body.is-media .keypoints .kp__main { display: block; font-weight: 700; color: var(--m-ink); }
-body.is-media .keypoints .kp__go { display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 700; color: var(--m-green); white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; } /* その要点の答えが載っている節へ（build の keypoint_sections） */
+body.is-media .keypoints a.kp__main { text-decoration: underline; text-decoration-color: rgba(46, 107, 71, 0.35); text-decoration-thickness: 1px; text-underline-offset: 5px; } /* 要点そのものが、答えが載っている節へのリンク（build の keypoint_sections） */
+body.is-media .keypoints a.kp__main:hover { color: var(--m-green); text-decoration-color: currentColor; }
+body.is-media .keypoints .kp__arrow { display: inline-block; width: 7px; height: 7px; margin-left: 8px; border-right: 2px solid var(--m-green); border-bottom: 2px solid var(--m-green); transform: translateY(-3px) rotate(45deg); } /* 下の節へ飛ぶ印 */
 .to-toc { position: fixed; right: 16px; bottom: 24px; z-index: 89; display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; background: #fff; box-shadow: 0 4px 16px rgba(38, 42, 39, 0.16); font-size: 13px; font-weight: 700; color: var(--m-green); white-space: nowrap; }
 .to-toc[hidden] { display: none; }
 @media (max-width: 899px) { .to-toc { bottom: calc(66px + env(safe-area-inset-bottom)); } } /* 下に固定した相談ボタンの上に出す */
@@ -4164,8 +4155,6 @@ body.is-media .mfeatures + .section { padding-top: var(--section-y); }
 .mcmp__mark--none { background: #ececec; color: #8a8f8b; }
 .msv-compare td .mcmp__mark { display: grid; margin: 0 auto; }
 .mcmp__t { display: block; margin-top: 6px; font-size: 12.5px; line-height: 1.5; color: var(--m-sub); }
-/* 比較表の見出しとマスは短いラベルなので、build.py で入れた区切り（<wbr>）でだけ改行する（「住まいとして貸｜す」を防ぐ） */
-.msv-compare :is(th, .mcmp__t) { word-break: keep-all; }
 .mcmp__legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; margin-top: 24px; font-size: 12.5px; color: var(--m-sub); }
 .mcmp__legend span { display: inline-flex; align-items: center; gap: 6px; }
 .mcmp__legend .mcmp__mark { width: 22px; height: 22px; font-size: 13px; }

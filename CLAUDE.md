@@ -62,7 +62,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
   - ページの文言・構成・テーマ・ガイド・よくある悩み・llms.txt: `tools/build_parts/*.py`（`tools/build.py` は入口で、本体を役割ごとのファイルに分けてある。どのファイルに何があるかは `build.py` の `BUILD_PARTS` の注記。資料に「`build.py` の `○○`」とあれば、`Grep "def ○○\|^○○ = " tools/build_parts` で探す）
   - 共通の見た目・動き: `css/style.css`・`js/main.js`（手で直す。版番号は build.py が自動で付ける）
 - **技術負債をためない書き方**（人の方針 2026-10-29）: ①CSS は、後ろに上書きのルールや `!important` を足して押し切らず、元のルールを直す ②使わなくなったクラス・ルール・関数は、その場で消す ③似た処理・似た部品が2つ目になったら、共通の関数・部品にまとめる ④記事データは `tools/articles_*.py`、図は `tools/figures.py` に置き、`tools/build_parts/` にはページの組み立てと設定だけを書く。1つのファイルが800行を超えたら、役割で分けて `BUILD_PARTS` に足す。月1回、`/seo-daily` で見た目を変えずに片付ける（「月1回のコードの点検」）。
-- 作り直したら必ず `python3 tools/seo_check.py`（エラー0）、`node tools/check/line_quality.js`（はみ出し・開きかっこ0）と `node tools/check/site_check.js`（**サイト全体の点検**。全ページをスマホ幅・PC幅で開き、JSエラー・読み込み失敗・リンク切れ・横はみ出し・画像の欠けを点検し、本番ブランチとの見た目の差分も比べる。重大0）を通す。
+- 作り直したら必ず `python3 tools/seo_check.py`（エラー0）、`node tools/check/line_quality.js`（はみ出し・開きかっこ・短い行の連続0）と `node tools/check/site_check.js`（**サイト全体の点検**。全ページをスマホ幅・PC幅で開き、JSエラー・読み込み失敗・リンク切れ・横はみ出し・画像の欠けを点検し、本番ブランチとの見た目の差分も比べる。重大0）を通す。
 - HTML は `pages/` にある（例外: `404.html` はリポジトリ直下）。公開URLは `vercel.json` の rewrites で対応づける: `/` → `pages/index.html`、`/xxx.html` → `pages/xxx.html`、`/media/xxx.html` → `pages/media/xxx.html`、`/robots.txt`・`/sitemap.xml`・`/llms.txt` → `seo/`。
 - `docs/`・`tools/`・`.claude/`・`CLAUDE.md` は `.vercelignore` で公開対象外。
 - メディア「アキヤド（空き家と民泊のメディア）」は `/media.html`（トップ）と `/media/` 配下。
@@ -99,9 +99,9 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 | `python3 tools/video/make_strategy_ep<N>.py [出力] [--hq]` ／ `make_reel.py` ／ `layout_check.py` | YouTube の解説動画・リール（縦長）の書き出しと自動点検（`docs/youtube/manual.md` 4章） |
 | `python3 tools/eyecatch.py [slug ...]` | 記事のアイキャッチ（記事トップ・OGP、1200×630）を `images/eyecatch/<slug>.jpg` に作る。デザインは記事ごとに `tools/eyecatch_designs.py` に書く（なければ標準デザイン）。作ったあと `python3 tools/build.py` で反映 |
 | `node tools/check/linebreak_samples.js [--only id] [--shots フォルダ] [--update id]` | **改行の見本の回帰テスト**。人が確かめた改行（`tools/check/linebreak_samples.json`）が崩れていないかを、Web フォントを読み込んだ実際の表示で行ごとに比べる（approved が崩れたら NG。`docs/design-guide.md` 8章） |
-| `node tools/check/line_quality.js [--widths 360,375,390,414] [--only ページ名] [--out ファイル]` | **改行の質の点検**。全ページをスマホ幅で開き、はみ出し・行末に残った開きかっこ・語の途中の改行（「魅／力」「か／ら」「ス／カウト」）を数える（はみ出し・開きかっこは0件にする。`docs/design-guide.md` 3章）。改行・文字組みを変えたら必ず流す |
+| `node tools/check/line_quality.js [--widths 360,375,390,414] [--only ページ名] [--out ファイル]` | **改行の質の点検**。全ページをスマホ幅で開き、はみ出し・行末に残った開きかっこ・短い最後の行（2〜3文字）が並んだ項目で続く所を数える（どれも0件にする。改行は全部ふつうの右詰め。`docs/design-guide.md` 3章）。改行・文字組みを変えたら必ず流す |
 | `node tools/check/badge_center.js [--widths 390,1280] [--only ページ名]` | 丸い印（円の中の数字・「Q」など）の文字が真ん中にあるかを、画面を撮って測る（1px を超えるずれを出す。`docs/design-guide.md` 3章） |
-| `node tools/check/short_lines.js [--widths 375,390] [--only ページ名]` | 最後の行が4文字以下になっている文（「ます。」だけが落ちるなど）をスマホ幅で数える（`docs/design-guide.md` 3章） |
+| `node tools/check/short_lines.js [--widths 375,390] [--only ページ名]` | 最後の行が短い文をスマホ幅で数える（参考。2〜3文字の最後の行は許す方針なので、並んで続く所だけを `line_quality.js` で0件にする） |
 | `python3 tools/gen_diff.py [基準]` | 生成物（`pages/`・`404.html`・`js/media-index.js`・`seo/`）の変化を、同じ変化をまとめて短く出す（生成物は `git diff` に本文が出ない設定） |
 | `python3 tools/page_text.py <HTML...>` | 生成された HTML を本文だけのテキストにする（見出し・段落・表・画像の alt）。記事 HTML は1ファイル10万字を超えるので、中身の確認・採点はこれで読む |
 
