@@ -804,7 +804,7 @@
       if (!/^T[DH]$/.test(blk.tagName)) { prev = blk; prevShort = short; }
       // 左揃えの本文・項目・表のマスは、両端揃えにして右端をそろえる（見出し・大きな文字・中央揃えは対象外。最後の行は左揃えのまま）
       if (fsz < 20 && !/^H[1-6]$/.test(blk.tagName) && cs.textAlign !== 'center' && cs.textAlign !== 'right' && !blk.querySelector('.ml-s') &&
-          lines.length > 1 && maxGap(blk) <= 2) blk.classList.add('jfy');
+          lines.length > 1 && maxGap(blk) <= 1.2) blk.classList.add('jfy'); // 1文字分を超える空きを両端揃えで埋めると、字間が目立って開くため
     });
   };
   if (document.querySelector('main')) {

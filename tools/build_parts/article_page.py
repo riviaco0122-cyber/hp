@@ -29,10 +29,10 @@ def _kp_grams(s):
     return collections.Counter(s[i:i + 2] for i in range(len(s) - 1))
 
 
-def keypoint_sections(a, min_ratio=1.4):
+def keypoint_sections(a):
     """「この記事のポイント」の各項目が、どの節の答えかを推定する（なければ None）。
     要点と節（見出し＋本文）の2文字の重なりを、ほかの節にもある言葉ほど軽く、見出しにある言葉ほど重く数え、
-    1位が2位の min_ratio 倍以上のときだけ対応づける（迷うときはリンクを付けない。誤ったリンクは、ないより悪い）。
+    いちばん重なる節に対応づける（すべての要点をリンクにする。人の指摘 2026-11-13）。ずれる所は記事データの kp_sections で直す。
     「まとめ」の節とよくある質問は対象外。記事データに kp_sections=[節のid か None, …] があれば、それを使う"""
     if a.get("kp_sections"):
         return list(a["kp_sections"]) + [None] * (len(a["keypoints"]) - len(a["kp_sections"]))
@@ -44,8 +44,9 @@ def keypoint_sections(a, min_ratio=1.4):
         kg = _kp_grams(k)
         sc = sorted(((sum((1 + 2 * (g in _kp_grams(h))) / df[g] for g in kg if g in c), sid)
                      for (sid, h, _b), c in zip(secs, sg)), reverse=True)
-        ok = sc and sc[0][0] > 0 and (len(sc) == 1 or sc[0][0] >= min_ratio * sc[1][0])
-        out.append(sc[0][1] if ok else None)
+        # 迷うとき（1位と2位が近い）も、いちばん近い節に付ける（すべての要点をリンクにする。人の指摘 2026-11-13）。
+        # ずれるときは、記事データの kp_sections で指定する
+        out.append(sc[0][1] if sc and sc[0][0] > 0 else None)
     return out
 
 
