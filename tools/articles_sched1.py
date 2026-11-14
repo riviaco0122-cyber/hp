@@ -1,7 +1,7 @@
 # 予約公開する記事（2026-11-01 から1日おき）その1：11/01〜11/19
 ARTICLES_SCHED1 = [
     dict(
-        slug="minpaku-start-steps", related=['akiya-bank-guide', 'minpaku-management-company', 'listing-photo-tips', 'guest-review-tips', 'inn-kpi-basics', 'minpaku-break-even', 'minpaku-bihin-priority', 'small-inn-subsidies', 'inn-startup-funding', 'ota-vs-direct-booking', 'kaishain-minpaku-fukugyo', 'minpaku-chintai-start', 'minpaku-house-guide', 'accommodation-tax'],
+        slug="minpaku-start-steps", related=['minpaku-management-company', 'minpaku-break-even', 'kaishain-minpaku-fukugyo', 'akiya-bank-guide', 'listing-photo-tips', 'guest-review-tips', 'inn-kpi-basics', 'minpaku-bihin-priority', 'small-inn-subsidies', 'inn-startup-funding', 'ota-vs-direct-booking', 'minpaku-chintai-start', 'minpaku-house-guide', 'accommodation-tax'],
         category="kaigyo",
         date="2026-10-11",
         updated="2026-11-06",
