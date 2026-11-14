@@ -2,7 +2,7 @@
 from figures import compare
 ARTICLES_SCHED2 = [
     dict(
-        slug="minpaku-management-company",
+        slug="minpaku-management-company", related=['minpaku-start-steps'],
         category="kaigyo",
         date="2026-10-11",
         updated="2026-11-06",
@@ -72,7 +72,7 @@ ARTICLES_SCHED2 = [
             ("summary", "まとめ：委託の可否を確かめ、範囲を分けて見積もりをもらう", """
 <p>居室が5を超えるか、泊まっている間に家主がいなくなるなら、管理の仕事は全部まとめて1社に任せます。会社を選ぶ前に、法律で決まった業務と、契約で上乗せする業務（清掃・駆けつけ・予約の運用）を分けておきましょう。</p>
 <p>そのうえで、2〜3社に同じ条件で見積もりを頼んでみてください。居室の数、家主が家にいるかどうか、夜間の対応の希望を伝えて、業務ごとの内訳をもらうと比べやすくなります。委託が必要かどうかは、物件のある自治体の窓口でも確かめられます。</p>
-<p>許可や届出も含めた開業の流れは、<a href="media/minpaku-start-steps.html">民泊を始めるまでの7ステップ</a>にまとめています。</p>
+
 """),
         ],
         faq=[
@@ -174,7 +174,7 @@ ARTICLES_SCHED2 = [
         ],
     ),
     dict(
-        slug="listing-photo-tips",
+        slug="listing-photo-tips", related=['ota-vs-direct-booking'],
         category="keiei",
         date="2026-10-11",
         updated="2026-11-06",
@@ -239,7 +239,7 @@ ARTICLES_SCHED2 = [
 <li><strong>閑散期の前に</strong>：写真・説明文の更新と、最低泊数の調整を済ませる。</li>
 </ol>
 <p class="table-note">※ 上げ幅や時期は、地域と宿のタイプで変わります。</p>
-<p>予約サイトと自社予約の使い分けは「<a href="media/ota-vs-direct-booking.html">予約サイトと自社予約、どう使い分ける？</a>」で紹介しています。料金の次は設備です。レビューでは、どこが評価されたのでしょう。</p>
+<p>料金の次は設備です。レビューでは、どこが評価されたのでしょう。</p>
 """),
             ("review", "レビューで評価されたのは、どんな設備だったのか？", """
 <p><strong>私たちの下田の宿では、洗濯機と乾燥機、調理器具がレビューで評価されました。</strong>レビューに書かれていたのは、<strong>洗濯機と乾燥機があること、調理器具がそろっていること</strong>でした。睡眠（マットレス）と仕事（ワークデスク）には、お金をかけています。長期滞在のゲストにとっては、暮らしの道具がそろっているかが決め手になったのだと思います。</p>
@@ -352,7 +352,7 @@ ARTICLES_SCHED2 = [
         ],
     ),
     dict(
-        slug="inn-startup-funding",
+        slug="inn-startup-funding", related=['airdna-revenue-simulation'],
         category="kaigyo",
         date="2026-10-11",
         updated="2026-11-06",
@@ -889,7 +889,7 @@ ARTICLES_SCHED2 = [
         ],
     ),
     dict(
-        slug="minpaku-investment-yield",
+        slug="minpaku-investment-yield", related=['case-rental-house-inn-first-year'],
         category="keiei",
         date="2026-10-11",
         updated="2026-11-06",
@@ -933,7 +933,7 @@ ARTICLES_SCHED2 = [
 </table>
 <p>月の運営費は、合わせて18万円でした。内訳は、家賃5万円、清掃委託2万円、予約サイトの手数料などのシステム利用料8万円、光熱水費・Wi-Fi・消耗品など3万円です。売上が増えると、手数料と清掃の費用も一緒に増えていきます。</p>
 <p class="table-note">※ 試運転期間の値で、通年や本格稼働後の実績ではありません。営業利益は、運営する人の人件費と初期投資（改修と家具・家電・備品で約650万円）を含みません。同じ数字になることを約束するものではありません。</p>
-<p>開業から1年目・2年目の数字は「<a href="media/case-rental-house-inn-first-year.html">借りた家を宿にした1年目の運営事例</a>」で紹介しています。では、この数字を、不動産投資でよく使う利回りで見るとどうなるでしょう。</p>
+<p>では、この数字を、不動産投資でよく使う利回りで見るとどうなるでしょう。</p>
 """),
             ("yield", "利回りは、運営費を引くとどう見えるのか？", """
 <p><strong>利回りは、運営費を引いた実質的な数字で見るのがおすすめです。</strong>不動産投資でよく使う表面利回りは、売上を投資額で割ったものです。下田の宿では売上の半分以上が運営費だったので、表面利回りだけを見ると、手元に残る額を多く見積もってしまいます。比べるなら、運営費を引いた収益を投資額で割った、実質的な利回りです。</p>
