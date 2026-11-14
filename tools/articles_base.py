@@ -818,7 +818,7 @@ ARTICLES_BASE += [
 
 ARTICLES_BASE += [
     dict(
-        slug="shizuoka-yaizu-akiya-inn", related=['minpaku-vs-ryokan-law', 'akiya-minpaku-suitability'],
+        slug="shizuoka-yaizu-akiya-inn", related=['minpaku-vs-ryokan-law', 'case-rental-house-inn-first-year'],
         category="akiya",
         tone="sand",
         date="2026-10-01",
@@ -910,14 +910,14 @@ ARTICLES_BASE += [
 <li><strong>アクセス</strong>：最寄り駅や高速道路のインターチェンジからの距離と、駐車場を用意できるかを確かめます。</li>
 <li><strong>建物の状態</strong>：雨漏り・シロアリ・水回りの傷みなど、改修費が大きくなる原因を見ます。焼津の宿は、水回りを新しくし、風呂場をシャワー室にする計画です。</li>
 <li><strong>制度と条例</strong>：旅館業法（簡易宿所）か住宅宿泊事業法（民泊新法）か。用途地域や、条例による営業日・区域の制限も見ます。</li>
-<li><strong>収支の見通し</strong>：周辺の宿の料金と稼働率を調べ、悲観的な想定でも赤字にならないかを試算します。下田の宿の運営1年目の数字は、「<a href="media/case-rental-house-inn-first-year.html">下田の賃貸一軒家を宿に</a>」で紹介しています。</li>
+<li><strong>収支の見通し</strong>：周辺の宿の料金と稼働率を調べ、悲観的な想定でも赤字にならないかを試算します。</li>
 </ol>
 <p class="table-note">※ 試算は見通しを立てるためのもので、収益を約束するものではありません。</p>
 <div class="callout callout--note">
 <p class="callout__label">向かない場面</p>
 <p>出張や帰省で、一人で1泊するだけなら、駅前のビジネスホテルが選ばれやすいでしょう。一棟貸しは、家族やグループ、長期滞在、車での来訪のように、広さや台所が要る人に向けてつくります。</p>
 </div>
-
+<p>物件ごとの見極め方は、「<a href="media/akiya-minpaku-suitability.html">その空き家、民泊に向いている？</a>」で紹介しています。</p>
 """),
             ("summary", "まとめ：「観光地ではない」は、あきらめる理由にならない", """
 <p>泊まる理由は、観光だけではありません。仕事や帰省の用事に加えて、町の日常そのものを味わう滞在もあります。焼津の鰯ヶ島では、この考えで2026年末の開業を準備しています（2026年10月時点の予定）。</p>

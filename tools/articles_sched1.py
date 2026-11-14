@@ -831,7 +831,7 @@ ARTICLES_SCHED1 = [
         ],
     ),
     dict(
-        slug="cleaning-linen-operations", related=['inn-kpi-basics', 'minpaku-seisou-kojin-kakunin', 'minpaku-remote-operation'],
+        slug="cleaning-linen-operations", related=['inn-kpi-basics', 'minpaku-remote-operation', 'case-owner-rental-side-business'],
         category="keiei",
         date="2026-10-11",
         updated="2026-11-06",
@@ -900,8 +900,8 @@ ARTICLES_SCHED1 = [
 <p class="compare__row"><span>任せる範囲</span><span>清掃と現場の対応</span></p>
 <p class="compare__row"><span>オーナーの手間</span><span>週1〜2時間（返信と価格調整）</span></p></div>
 </div>
-<p class="table-note">※ Eさんの数字は、取材時点の本人の申告です（<a href="media/case-owner-rental-side-business.html">会社員の副業で賃貸マンションを民泊にした事例</a>）。</p>
-<p>個人に頼むなら、まず地域の人と知り合い、単発の仕事で一緒に働いてみてから、合う人に続けてお願いする進め方がおすすめです。そのときに、上の手順書が役に立ちます。</p>
+<p class="table-note">※ Eさんの数字は、取材時点の本人の申告です（会社員の副業で賃貸マンションを民泊にした事例）。</p>
+<p>個人に頼むなら、まず地域の人と知り合い、単発の仕事で一緒に働いてみてから、合う人に続けてお願いする進め方がおすすめです。そのときに、上の手順書が役に立ちます。報酬の決め方や、業務委託と雇用の違いは「<a href="media/minpaku-seisou-kojin-kakunin.html">民泊の清掃を個人に頼む前の確認</a>」にまとめました。</p>
 <div class="callout callout--note">
 <p class="callout__label">民泊新法で家を空ける場合</p>
 <p>住宅宿泊事業法（民泊新法）の届出住宅で、ゲストが泊まる間に家主が不在になるときは、衛生や安全を守る措置などを、登録を受けた住宅宿泊管理業者に任せる決まりです。清掃だけを個人に頼む形にはならないので、先に管理業者を決めます。下田の宿は旅館業法の簡易宿所なので、この決まりの対象ではありません。</p>
