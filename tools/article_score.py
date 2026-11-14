@@ -289,6 +289,11 @@ def ja_style(text):
         ends = {re.sub(r"[。！？]$", "", x)[-4:] for x in sents[i:i + 3]}
         if len(ends) == 1 and sents[i].endswith("。"):
             hits.append(("同じ文末が3文続く", "…" + sents[i + 2][-12:]))
+    # 特定の市の案内を、例だと添えずに主語として並べる（その市に住む人向けの記事と誤解される。voice.md 2-7・人の指摘 2026-11-14）
+    cities = [c for c in re.findall(r"([一-龥]{1,4}[市町村])(?:は|が|では|の案内)", text_)
+              if c not in ("市区町村", "市町村", "区市町村", "各市", "同市", "市町")]
+    if len(cities) >= 6 and not re.search(r"たとえば|例えば|を例に|例として|一例|[都道府県]内では|[都道府県]内の", text_):
+        hits.append(("特定の市を、例だと添えずに主語として並べている（「たとえば」「〜を例に」と添え、読み手の地域での確かめ方も書く）", "、".join(sorted(set(cities)))[:30]))
     return hits
 
 

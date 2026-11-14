@@ -19,7 +19,7 @@ MEDIA_COURSES = [
     dict(key="challenges", en="Course 03", title="民泊の課題と、乗り越え方", lead="「民泊は大変」と言われる理由と、実際の乗り越え方。手続き、お金、運営、集客まで。",
          chapters=[("よく聞く課題を知る", "手続き・近隣・運営・季節・費用の5つの課題。", ["minpaku-hard-truth"]),
                    ("制度と手続き", "民泊と旅館業の違い、開業までの流れ、会社員の副業の確認、消防。", ["minpaku-vs-ryokan-law", "minpaku-start-steps", "minpaku-180days-rule", "kaishain-minpaku-fukugyo", "minpaku-chintai-start", "kani-shukusho-kyoka-guide", "minpaku-fire-safety"]),
-                   ("お金と改修", "開業資金、補助金、改修の進め方、宿泊税。", ["inn-startup-funding", "small-inn-subsidies", "kominka-renovation-points", "remote-renovation-tips", "accommodation-tax"]),
+                   ("お金と改修", "開業資金、補助金、改修の進め方、宿泊税、固定資産税。", ["inn-startup-funding", "small-inn-subsidies", "kominka-renovation-points", "remote-renovation-tips", "accommodation-tax", "minpaku-kotei-shisanzei"]),
                    ("運営の課題", "近隣との関係、ハウスガイド、設備、清掃、清掃を頼む人、スタッフの集め方、閑散期、遠方からの運営、津波注意報のとき。", ["minpaku-neighbor-rules", "minpaku-house-guide", "long-stay-guest-equipment", "minpaku-bihin-priority", "cleaning-linen-operations", "minpaku-seisou-kojin-kakunin", "minpaku-staff-atsumekata", "minpaku-off-season", "minpaku-remote-operation", "tsunami-advisory-guest-response"]),
                    ("集客と評価", "予約サイトの使い方、予約ページ、料金設定、レビュー。", ["minpaku-shukyaku-first-steps", "ota-vs-direct-booking", "listing-photo-tips", "minpaku-ryokin-kimekata", "guest-review-tips"]),
                    ("オーナーの事例", "民泊オーナーへの取材。費用、収支、うまくいかなかったこと。", CASE_SLUGS)]),
