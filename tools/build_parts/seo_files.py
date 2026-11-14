@@ -45,6 +45,9 @@ def llms_txt():
     lines += ["", "## アキヤド（記事）"]
     lines += [f"- [{a['title']}]({SITE}/media/{a['slug']}.html): {a['description']}"
               for a in sorted(ARTICLES, key=lambda x: x["date"]) if a["date"] <= BUILD_DATE]
+    okaeri = os.path.join(OUT, "tools", "okaeri", "llms_section.txt")  # 英語メディア Okaeri Japan の段落（tools/okaeri/build.py が作る）
+    if os.path.isfile(okaeri):
+        lines += ["", open(okaeri, encoding="utf-8").read().rstrip("\n")]
     with open(os.path.join(OUT, SEO_DIR, "llms.txt"), "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
 
@@ -84,4 +87,6 @@ def sitemap():
         f.write("# AI検索・生成AIのロボットも含めて、すべて許可する方針\n\n"
                 "User-agent: *\nAllow: /\n\n"
                 + "".join(f"User-agent: {b}\nAllow: /\n\n" for b in bots)
-                + f"Sitemap: {SITE}/sitemap.xml\n")
+                + f"Sitemap: {SITE}/sitemap.xml\n"
+                # 英語メディア Okaeri Japan（tools/okaeri/build.py が作る。アキヤドの sitemap とは別ファイル）
+                + (f"Sitemap: {SITE}/okaeri/sitemap.xml\n" if os.path.isfile(os.path.join(OUT, "okaeri", "sitemap.xml")) else ""))
