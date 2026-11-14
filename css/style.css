@@ -358,7 +358,9 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .issue__answer { padding: 28px; background: var(--c-bg-soft); }
 .issue__steps { display: grid; gap: 14px; }
 .issue__steps li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 12px; align-items: start; }
-.issue__step-num { width: 24px; height: 24px; margin-top: 3px; border-radius: 50%; background: var(--c-accent); color: #fff; font-family: var(--font-en); font-size: 13px; line-height: 24px; text-align: center; }
+/* 丸い印の中の文字（数字・Q・R）は、大文字の高さ（cap）から下の線（baseline）までを、円の真ん中に置く（text-box で上下の余白を切り、align-content で中央へ）。
+   フォントの上下の余白の差で文字が下にずれる（iPhone で「Q」が下がる）のを防ぐ。字間は 0（字間ぶん横にずれるため）。人の指摘 2026-11-07。点検は tools/check/badge_center.js */
+.issue__step-num { width: 24px; height: 24px; margin-top: 3px; border-radius: 50%; background: var(--c-accent); color: #fff; font-family: var(--font-en); font-size: 13px; text-align: center; align-content: center; text-box: trim-both cap alphabetic; letter-spacing: 0; line-height: 1; }
 .issue__steps p { font-size: 14px; line-height: 1.9; color: var(--c-text); }
 .issue__kpi { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--c-line-strong); }
 .issue__kpi ul { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -671,7 +673,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .article__section ol:not(.steps):not([class*="fig"]) { counter-reset: li; margin: 20px 0; }
 .article__section ol:not(.steps):not([class*="fig"]) li { counter-increment: li; position: relative; padding-left: 36px; font-size: 15px; line-height: 2; }
 .article__section ol:not(.steps):not([class*="fig"]) li + li { margin-top: 16px; }
-.article__section ol:not(.steps):not([class*="fig"]) li::before { content: counter(li); position: absolute; left: 0; top: 0.5em; width: 22px; height: 22px; border: 1px solid var(--c-muted); border-radius: 50%; font-family: var(--font-en); font-size: 12px; line-height: 20px; text-align: center; color: var(--c-muted); }
+.article__section ol:not(.steps):not([class*="fig"]) li::before { content: counter(li); position: absolute; left: 0; top: 0.5em; width: 22px; height: 22px; border: 1px solid var(--c-muted); border-radius: 50%; font-family: var(--font-en); font-size: 12px; text-align: center; align-content: center; text-box: trim-both cap alphabetic; letter-spacing: 0; line-height: 1; color: var(--c-muted); }
 .article__section p + ul:not(.steps), .article__section p + ol:not(.steps):not([class*="fig"]) { margin-top: 20px; }
 .article__section ol.steps { counter-reset: step; margin: 20px 0; border-top: 1px solid var(--c-line); }
 .article__section ol.steps li { counter-increment: step; padding: 18px 0 18px 48px; border-bottom: 1px solid var(--c-line); }
@@ -1899,7 +1901,7 @@ body.is-media .mq { gap: 12px; border-top: 0; }
 body.is-media .mq__item { border: 0; border-radius: 14px; background: #fff; padding: 18px 20px; box-shadow: 0 3px 12px rgba(42, 39, 36, 0.04); }
 body.is-media .mq__item:hover { box-shadow: 0 8px 20px rgba(42, 39, 36, 0.08); }
 body.is-media .mq__q { display: grid; grid-template-columns: 26px minmax(0, 1fr); column-gap: 10px; align-items: start; }
-body.is-media .mq__q::before { content: "Q"; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--m-green); color: #fff; font-family: var(--font-sans, sans-serif); font-size: 13px; font-weight: 700; line-height: 1; }
+body.is-media .mq__q::before { content: "Q"; display: block; width: 26px; height: 26px; border-radius: 50%; background: var(--m-green); color: #fff; font-family: var(--font-sans); font-size: 13px; font-weight: 700; text-align: center; align-content: center; text-box: trim-both cap alphabetic; letter-spacing: 0; line-height: 1; }
 body.is-media .mq__who { display: inline-block; justify-self: start; white-space: nowrap; padding: 2px 10px; border-radius: 999px; background: #eaf2ee; color: var(--m-green); }
 body.is-media .tag { border-radius: 999px; border-color: var(--m-line); background: #fff; }
 body.is-media :is(.keypoints, .guide-box, .supervisor, .inline-cta, .guide-worries) { border-radius: 18px; }
@@ -2391,7 +2393,7 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
 .fig-steps, .fig-steps--7 { gap: 0; }
 .fig-step, .fig-steps--7 .fig-step { position: relative; padding: 0 10px; background: none; border-radius: 0; text-align: center; }
 .fig .fig-step:not(:last-child)::after, .fig .fig-steps--7 .fig-step:not(:last-child)::after { content: ""; position: absolute; top: 19px; left: calc(50% + 24px); right: calc(-50% + 24px); width: auto; height: 1px; border: 0; background: #b9cdbf; transform: none; }
-.fig-step__no { display: grid; place-items: center; width: 38px; height: 38px; margin: 0 auto 12px; border: 1px solid var(--m-green, #2e6b47); border-radius: 50%; background: #fff; font-family: var(--font-en); font-size: 13px; letter-spacing: 0.06em; color: var(--m-green, #2e6b47); }
+.fig-step__no { display: block; width: 38px; height: 38px; margin: 0 auto 12px; border: 1px solid var(--m-green, #2e6b47); border-radius: 50%; background: #fff; font-family: var(--font-en); font-size: 13px; text-align: center; align-content: center; text-box: trim-both cap alphabetic; letter-spacing: 0; line-height: 1; color: var(--m-green, #2e6b47); }
 .fig-step:first-child .fig-step__no { background: var(--m-green, #2e6b47); color: #fff; }
 .article__section .fig .fig-step__name { font-size: 14px; }
 .article__section .fig .fig-steps--7 .fig-step__name { font-size: 12.5px; }
@@ -3283,7 +3285,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .is-corp .issue__avatar--guest { background: var(--c-kinari); border: 1px solid rgba(26, 71, 42, 0.14); }
 .is-corp .issue__avatar--guest svg { width: 24px; height: 24px; fill: none; stroke: var(--c-forest); stroke-width: 1.4; stroke-linecap: round; }
 .is-corp .issue__voice { grid-column: 2; grid-row: 2; justify-self: start; margin: 0; padding: 16px 22px; border: 0; border-radius: 4px 20px 20px 20px; background: var(--c-kinari); font-size: 14.5px; line-height: 1.9; color: var(--c-text); }
-.is-corp .issue__avatar--rivia { background: var(--c-forest); color: #fff; font-family: var(--font-en); font-size: 22px; line-height: 1; }
+.is-corp .issue__avatar--rivia { display: block; background: var(--c-forest); color: #fff; font-family: var(--font-en); font-size: 22px; text-align: center; align-content: center; text-box: trim-both cap alphabetic; letter-spacing: 0; line-height: 1; }
 .is-corp .issue__reply { grid-column: 2; grid-row: 2; justify-self: start; padding: 18px 24px 16px; border-radius: 4px 20px 20px 20px; background: rgba(26, 71, 42, 0.07); }
 .is-corp .issue__sublabel--accent { font-size: 13px; color: var(--c-forest); font-weight: 600; letter-spacing: 0.18em; }
 .is-corp .issue__step-num { background: var(--c-shu); }
@@ -3568,7 +3570,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .form--steps { gap: 28px; padding: 56px; border-radius: 24px; background: #fff; box-shadow: 0 30px 60px rgba(15, 38, 24, 0.08), 0 2px 6px rgba(15, 38, 24, 0.04); }
 .form__step { display: grid; gap: 22px; padding-bottom: 32px; border-bottom: 1px solid var(--c-line); }
 .form__step-head { display: flex; align-items: center; gap: 14px; font-family: var(--font-serif); font-size: 20px; letter-spacing: 0.08em; }
-.form__step-head span { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--c-forest); color: #fff; font-family: var(--font-en); font-size: 17px; letter-spacing: 0.04em; }
+.form__step-head span { display: block; flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--c-forest); color: #fff; font-family: var(--font-en); font-size: 17px; text-align: center; align-content: center; text-box: trim-both cap alphabetic; letter-spacing: 0; line-height: 1; }
 .form__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 20px; }
 .form--steps .form__field label, .form--steps .form__legend { font-size: 13px; color: var(--c-sub); margin-bottom: 8px; }
 .form--steps .req, .form--steps .opt { border-radius: 999px; padding: 1px 9px; font-size: 10.5px; }
@@ -3889,7 +3891,8 @@ body.is-media .mcenter-head__title { margin-top: 6px; font-family: var(--font-ro
 .mservice__name { margin: 4px 24px 0; color: var(--m-green); font-family: var(--font-round); font-weight: 700; font-size: 20px; text-align: center; }
 .mservice__text { flex: 1; margin: 14px 24px 24px; color: var(--m-sub); font-size: 14px; line-height: 1.9; }
 .mservice__more { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 16px; background: var(--m-green); color: #fff; font-weight: 700; letter-spacing: 0.12em; }
-.mservice__more span { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #fff; color: var(--m-green); font-size: 14px; line-height: 1; letter-spacing: 0; }
+.mservice__more span { position: relative; display: inline-block; width: 22px; height: 22px; border-radius: 50%; background: #fff; }
+.mservice__more span::after { content: ""; position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; border-top: 1.5px solid var(--m-green); border-right: 1.5px solid var(--m-green); transform: translate(-65%, -50%) rotate(45deg); } /* 矢印は線で描く（文字の「›」はフォントで上下にずれるため） */
 .mservices__more { margin-top: 32px; color: var(--m-sub); font-size: 14px; text-align: center; }
 .mservices__more a { color: var(--m-green); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 899px) {
