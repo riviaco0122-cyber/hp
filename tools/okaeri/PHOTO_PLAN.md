@@ -41,3 +41,19 @@
 - `ze3rMm6TWfs` Coastal village with boats docked in a calm bay（PJH）→ Places 候補
 - `Kjbhq8BJZTE` 地方の日常（軽トラ・トタンの小屋・古い家と緑の山）（Loris Boulinguez, 5901×3934）→ Live part-time 候補
 - `8xjIJk7SbsA` fishing village（漁村）（moreau tokyo, 7360×4912）→ Places 候補
+
+## 実施結果（2026-11-14）
+
+候補を画像で見比べて選び、すべて `download_asset` でダウンロードを記録した。出典は `content.py` の `PHOTO_CREDITS`、クレジットは各ページ下の「Photo credits」（そのページで使った写真の撮影者だけ）。
+
+| 枠 | 新しい写真（名前） | Unsplash ID | 撮影者 |
+|---|---|---|---|
+| トップのFV | coastal-village | jb0SsX_Bz_E | PJH |
+| Stay longer | window-room | fta5pzyM0T8 | ZENG YILI |
+| Live part-time | town-lane | stvwZJNN6Qo | PJH |
+| Own a home | empty-tatami-room | IAgczbi1B-M | ayumi kubo |
+| Places | rocky-coast | a3e4znCn-0o | Lucius Hunter |
+| 金目鯛の記事 | grilled-red-fish（alt は「赤い魚の焼き物」。金目鯛とは書かない） | lFG7xubInhE | kazuend |
+| 東京から伊豆の記事 | train-window-sea | E401NBqwIGg | realfish |
+
+使わなくなった terraced-fields・scene-stay・town-railway・thatched-house・own-open-sea・own-fishing-bay は photos/ から消した。

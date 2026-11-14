@@ -48,32 +48,32 @@ SOURCES = {
 # 記事は必ずこの3つのどれか1つ（"topic"）に入れる。ほかの段階の読み手にも役立つ記事は "also" に足す（一覧の「こちらも役立つ」に出る）。
 # 場所（places）は別の軸。記事に "place" があれば場所の一覧にも出る。
 TOPICS = {
-    "stay": {"kind": "plan", "name": "Stay longer", "ja": "長めに旅する", "photo": "scene-stay",
-             "photo_alt": "Tatami room opening onto a view of a town and mountains",
+    "stay": {"kind": "plan", "name": "Stay longer", "ja": "長めに旅する", "photo": "window-room",
+             "photo_alt": "Two low chairs and a small table by a window with paper screens, looking out over water",
              "path_label": "A longer trip", "path_desc": "A week to a month as a visitor: towns, food, getting there.",
              "path_ja": "長めの旅（旅行者として1週間〜1か月）",
              "seo_title": "Slow Travel in Small-Town Japan: Week- and Month-Long Trips",
              "description": "Guides for travellers who want a week or a month in one small Japanese town instead of a different city every night: access, seasons, food and where to stay.",
              "intro": "For a week or a month as a visitor. One town instead of a different hotel every night: how to get there, when to go, what to eat and how a house changes the trip.",
              "coming": ["Shimoda for a week or longer", "The Japanese countryside for a longer stay"]},
-    "live": {"kind": "plan", "name": "Live part-time", "ja": "一年の一部を暮らす", "photo": "town-railway",
-             "photo_alt": "Single railway track curving between houses in a small town",
+    "live": {"kind": "plan", "name": "Live part-time", "ja": "一年の一部を暮らす", "photo": "town-lane",
+             "photo_alt": "Quiet paved lane between hedges and low houses, with green hills behind",
              "path_label": "Living here part of the year", "path_desc": "Months at a time, or every year: remote work, visas, monthly homes.",
              "path_ja": "一年の一部を暮らす（数か月・毎年・仕事をしながら）",
              "seo_title": "Living in Japan Part-Time: Long Stays, Visas, Remote Work",
              "description": "How to live in small-town Japan for months at a time or every year: how long you can stay, Japan’s digital nomad visa, monthly homes and working remotely.",
              "intro": "For months at a time, or a season every year. How long you can stay, Japan’s digital nomad visa, renting a home by the month and working remotely from a small town.",
              "coming": ["Renting a house in Japan for a month", "Japan’s digital nomad visa, and where to base yourself", "How long can you stay in Japan?"]},
-    "own": {"kind": "plan", "name": "Own a home", "ja": "家を持つ", "photo": "thatched-house",
-            "photo_alt": "Old thatched farmhouse among green rice fields",
+    "own": {"kind": "plan", "name": "Own a home", "ja": "家を持つ", "photo": "empty-tatami-room",
+            "photo_alt": "Empty tatami room in an old wooden house, with sliding windows open to a garden",
             "path_label": "Owning a home here", "path_desc": "Buying, restoring or running an akiya.",
             "path_ja": "家を持つ（空き家を買う・直す・運営する）",
             "seo_title": "Akiya in Japan: Buying, Restoring and Owning an Old House",
             "description": "Plain guides to owning an akiya, one of Japan’s vacant houses: who can buy one, what it really costs, restoring it and testing the town before you commit.",
             "intro": "Japan has about nine million empty homes, and foreigners can buy them. The listings are the easy part. These guides cover what an akiya really costs, what owning one does and does not give you, and how to try a town before you sign.",
             "coming": ["Can foreigners buy property in Japan?", "What is an akiya?", "Cheap and free houses in Japan: the real cost", "Akiya banks explained"]},
-    "places": {"kind": "place", "name": "Places", "ja": "場所", "photo": "own-open-sea",
-               "photo_alt": "Calm sea with a wooded headland and a breakwater",
+    "places": {"kind": "place", "name": "Places", "ja": "場所", "photo": "rocky-coast",
+               "photo_alt": "Waves breaking against dark volcanic cliffs on a rocky coastline",
                "seo_title": "Small-Town Japan: Place Guides for Longer Stays",
                "description": "Guides to the towns where we run homes and the regions around them, starting with the Izu Peninsula, written for people staying a week or longer.",
                "intro": "We write about the places where we run homes, starting with the Izu Peninsula south-west of Tokyo.",
@@ -107,7 +107,7 @@ ARTICLES = [
 # ============================================================ 金目鯛
 {
  "id": "kinmedai", "slug": "kinmedai", "topic": "stay", "place": "izu", "also": [],
- "photo": ("own-fishing-bay", "Fishing rod held out over a calm bay on a clear day", ""),
+ "photo": ("grilled-red-fish", "A whole grilled red fish with rice, soup and small side dishes on a wooden table", ""),
  "published": "2026-11-14", "updated": "2026-11-14",
  "kicker": "Food and port towns",
  "h1": "Kinmedai: Japan’s golden-eye snapper and where to eat it",
@@ -350,7 +350,7 @@ ARTICLES = [
 # ============================================================ 伊豆
 {
  "id": "izu-from-tokyo", "slug": "izu-peninsula-from-tokyo", "topic": "stay", "place": "izu", "also": ["live"],
- "photo": ("town-railway", "Single railway track curving between houses in a small town", ""),
+ "photo": ("train-window-sea", "The sea and breaking waves seen through a train window", ""),
  "published": "2026-11-14", "updated": "2026-11-14",
  "kicker": "Izu Peninsula",
  "h1": "Izu Peninsula from Tokyo: trains, fares and why to stay a week",
@@ -485,9 +485,23 @@ ABOUT = {
 
 # ---------------------------------------------------------------- 写真・施設
 # 写真は photos/<名前>-<幅>.webp（大きさは build.py がファイルから読む）。
-# アキヤドの images/photos から。own-* と node-shimoda と yaizu-* は自社の写真、ほかは場所を特定しない雰囲気の写真として使い、地名を書かない。
+# node-shimoda と yaizu-* は自社の写真（アキヤドの images/photos から）。ほかは Unsplash の写真（PHOTO_CREDITS）。
+# Unsplash の写真は場所を特定しない雰囲気の写真として使い、alt・説明文に地名を書かない（撮影地が分かっても、自社の記事の主役の場所としては使わない）。
 # yaizu-* は「リフォーム前」と明記する（docs/brand/experience.md の確認済みの条件）。
 NODE_URL = "https://nodeshimoda.com/"
+
+# Unsplash の写真の出典（写真の名前 → 撮影者・撮影者ページ・写真ページ・写真ID）。2026-11-14 に download_asset でダウンロードを記録して取得。
+# ページ下の「Photo credits」に、そのページで使った写真の分だけ「Photo by 撮影者 on Unsplash」を出す（build.py の footer）。
+UNSPLASH_UTM = "?utm_source=okaeri_japan&utm_medium=referral"
+PHOTO_CREDITS = {
+    "coastal-village": ("PJH", "https://unsplash.com/@dokae", "https://unsplash.com/photos/jb0SsX_Bz_E", "jb0SsX_Bz_E"),
+    "window-room": ("ZENG YILI", "https://unsplash.com/@zengyili", "https://unsplash.com/photos/fta5pzyM0T8", "fta5pzyM0T8"),
+    "town-lane": ("PJH", "https://unsplash.com/@dokae", "https://unsplash.com/photos/stvwZJNN6Qo", "stvwZJNN6Qo"),
+    "empty-tatami-room": ("ayumi kubo", "https://unsplash.com/@ayumikubo", "https://unsplash.com/photos/IAgczbi1B-M", "IAgczbi1B-M"),
+    "rocky-coast": ("Lucius Hunter", "https://unsplash.com/@lucius_x14", "https://unsplash.com/photos/a3e4znCn-0o", "a3e4znCn-0o"),
+    "grilled-red-fish": ("kazuend", "https://unsplash.com/@kazuend", "https://unsplash.com/photos/lFG7xubInhE", "lFG7xubInhE"),
+    "train-window-sea": ("realfish", "https://unsplash.com/@realfish", "https://unsplash.com/photos/E401NBqwIGg", "E401NBqwIGg"),
+}
 NODE_FACTS = [
     "About 10 minutes on foot from Izukyu-Shimoda Station",
     "Work desk, washing machine and dryer",

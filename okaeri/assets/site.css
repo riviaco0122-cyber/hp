@@ -297,6 +297,10 @@ form.signup .formmsg{flex:1 1 100%}
 .foot a{color:var(--ink);text-decoration:none}
 .foot a:hover{text-decoration:underline}
 .foot__h{font-weight:700;color:var(--ink);margin:0 0 .5rem;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
+.foot__credits{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--line);font-size:.82rem}
+.foot__credits ul{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem}
+.foot__credits li{margin:0}
+.foot__credits a{text-decoration:underline}
 .brand--foot{margin-bottom:.5rem}
 .inline-stay{display:flex;gap:.8rem;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:.7rem;padding:.6rem .8rem;margin:1rem 0;font-family:var(--display);font-size:.92rem;text-decoration:none;color:var(--ink)}
 .inline-stay img{width:4.2rem;height:3.2rem;object-fit:cover;border-radius:.4rem;flex:none}

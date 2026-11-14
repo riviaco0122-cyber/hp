@@ -79,6 +79,7 @@ class Ctx:
 
     def __init__(self, mode, page_id, lang="en"):
         self.mode, self.page_id, self.lang = mode, page_id, lang
+        self.photos = []  # このページで使った写真（ページ下のクレジット用）
 
     def href(self, pid, frag=""):
         if self.mode == "preview":
@@ -135,6 +136,8 @@ def photo_src(ctx, name, want=1200):
 
 def img(ctx, name, alt, caption="", eager=False, cls="photo", sizes="(max-width: 44rem) 100vw, 44rem", want=1200, bare=False):
     base, files, pick = photo_src(ctx, name, want)
+    if name not in ctx.photos:
+        ctx.photos.append(name)
     srcset = ", ".join(f"{base}{f} {w}w" for w, h, f in files)
     load = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
     tag = (f'<img src="{base}{pick[2]}" srcset="{srcset}" sizes="{sizes}" width="{pick[0]}" height="{pick[1]}" alt="{esc(alt)}" {load}>')
@@ -212,7 +215,7 @@ def page_home(ctx):
     facts = "".join(f"<li>{esc(x)}</li>" for x in C.NODE_FACTS)
     return f"""
 <section class="hero">
-{img(ctx, "terraced-fields", "Rice terraces and a small village on a green hillside above the sea", bare=True, eager=True, sizes="100vw", want=1600)}
+{img(ctx, "coastal-village", "Wooden houses along a calm bay below green wooded hills", bare=True, eager=True, sizes="100vw", want=1600)}
 <div class="hero__shade"></div>
 <div class="wrap wide hero__inner">
 <p class="hero__kicker">Stay longer · Live part-time · Own a home</p>
@@ -480,12 +483,16 @@ def page_ja_notes(ctx):
 </ul>
 
 <h2>写真</h2>
-<p>アキヤドの写真から、場所がはっきりしている自社の写真だけを使いました。</p>
+<p>自社の写真（NODE Shimoda のリビング、焼津の家のリフォーム前）はそのまま。ほかは Unsplash の写真に替えました。地名は書かず、写っているものだけを説明しています。クレジットは各ページの下の「Photo credits」に出ます。</p>
 <ul class="checklist">
-<li><strong>NODE Shimoda のリビング</strong>：トップ、空き家の記事、伊豆の記事、各記事の最後の案内</li>
-<li><strong>海の写真（own-open-sea）</strong>：トップの帯。撮影した場所の記録がないため、説明文に地名を入れていません。場所が分かれば入れます</li>
-<li>富士山・合掌造りなどの写真は、伊豆や下田の記事に置くと別の土地の写真になるため使っていません</li>
-<li>足りないもの：金目鯛（料理・水揚げ）、下田の町と浜、家のキッチン・ワークデスク・外観</li>
+<li><strong>トップのFV</strong>：山と入り江の小さな町（coastal-village）</li>
+<li><strong>長めに旅する</strong>：障子の窓辺の椅子と机、外に水辺（window-room）</li>
+<li><strong>一年の一部を暮らす</strong>：生け垣と低い家の静かな道、後ろに緑の山（town-lane）</li>
+<li><strong>家を持つ</strong>：古い木造の家の、何も置いていない和室（empty-tatami-room）</li>
+<li><strong>場所</strong>：岩の海岸線（rocky-coast）</li>
+<li><strong>金目鯛の記事</strong>：赤い魚の焼き物の定食（grilled-red-fish。金目鯛とは書いていません）</li>
+<li><strong>伊豆の記事</strong>：電車の窓から見る海（train-window-sea）</li>
+<li>まだ足りないもの：下田の町と浜、家のキッチン・ワークデスク・外観（自社で撮る）</li>
 </ul>
 
 <h2>まだ埋まっていない黄色い枠</h2>
@@ -609,7 +616,15 @@ def header(ctx, preview=False):
             f'<a class="btn btn--solid" href="{C.NODE_URL}" rel="noopener">Stay at NODE Shimoda</a></div></details></div></header>')
 
 
-def footer(ctx):
+def credits(names):
+    """Unsplash の写真のクレジット（Photo by 撮影者 on Unsplash）。そのページで使った写真の撮影者ごとに1行"""
+    u = C.UNSPLASH_UTM
+    items = [f'<li>Photo by <a href="{c[1]}{u}" rel="noopener">{esc(c[0])}</a> on <a href="https://unsplash.com/{u}" rel="noopener">Unsplash</a></li>'
+             for c in {C.PHOTO_CREDITS[n][1]: C.PHOTO_CREDITS[n] for n in names if n in C.PHOTO_CREDITS}.values()]
+    return f'<div class="wrap wide foot__credits"><p class="foot__h">Photo credits</p><ul>{"".join(items)}</ul></div>' if items else ""
+
+
+def footer(ctx, photos=None):
     topics = "".join(f'<li><a href="{ctx.href("topic-" + k)}">{esc(C.TOPICS[k]["name"])}</a></li>' for k in C.PLANS)
     arts = "".join(f'<li><a href="{ctx.href(a["id"])}">{a["h1"]}</a></li>' for a in PUBLISHED[:5])
     corp = "https://rivia-co.com/" if ctx.mode == "preview" else "/"
@@ -621,14 +636,13 @@ def footer(ctx):
             f'<nav aria-label="Popular guides"><p class="foot__h">Popular guides</p><ul>{arts}</ul></nav>'
             f'<nav aria-label="About"><p class="foot__h">Okaeri Japan</p><ul><li><a href="{C.NODE_URL}" rel="noopener">NODE Shimoda</a></li>'
             f'<li><a href="{ctx.href("home", "homes")}">Our homes</a></li><li><a href="{ctx.href("about")}">About us</a></li></ul></nav>'
-            f'</div></footer>')
+            f'</div>{credits(ctx.photos if photos is None else photos)}</footer>')
 
 
 FORM_JS = """document.querySelectorAll('form[data-proto]').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var m=f.parentNode.querySelector('.formmsg');if(m){m.textContent='Sign-up is not open yet. Please check back soon.';}});});"""
 
 
-def dist_html(page, main):
-    ctx = Ctx("dist", page["id"])
+def dist_html(page, main, ctx):
     url = SITE + page["path"]
     title = page["seo_title"] if page["kind"] == "home" else f'{page["seo_title"]} | {NAME}'
     og_img = SITE + PRE + (f"/assets/og/{page['article']['slug']}.png" if page["kind"] == "article" else "/assets/og/default.png")
@@ -760,7 +774,7 @@ def build():
 
     ednotes = []
     for p in pages:
-        write(out_file(p["path"]), dist_html(p, render(Ctx("dist", p["id"]), p)))
+        write(out_file(p["path"]), dist_html(p, render(rctx := Ctx("dist", p["id"]), p), rctx))
     ednotes_en = list(ednotes)
     write(os.path.join(DIST, "assets/site.css"), CSS)
     write(os.path.join(DIST, "assets/favicon.svg"), MARK.replace('class="mark" ', 'xmlns="http://www.w3.org/2000/svg" ').replace("currentColor", "#15232d").replace("var(--red)", "#c2372c").replace(' aria-hidden="true"', ""))
@@ -796,7 +810,7 @@ def build():
     prev = (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Okaeri Japan 試作</title>'
             f'<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="{FONTS_ALL}" rel="stylesheet"><style>{CSS}</style></head><body>'
             f'<div class="proto" lang="ja"><div class="wrap">試作です（本番は1ページごとに別のURL）。<a href="#ja-notes">日本語レビュー</a>・<a href="#seo-plan">SEO計画</a></div></div>'
-            f'{header(pctx, preview=True)}{"".join(mains)}{footer(pctx)}<script>{router}{FORM_JS}</script></body></html>')
+            f'{header(pctx, preview=True)}{"".join(mains)}{footer(pctx, list(C.PHOTO_CREDITS))}<script>{router}{FORM_JS}</script></body></html>')
     write(os.path.join(PREVIEW, "index.html"), prev)
 
     print(f"okaeri/: {len(pages)} ページ ／ 公開記事 {len(PUBLISHED)} 本 ／ テーマ別一覧 {len(HUB_TOPICS)}（検索に載せる {len(INDEXED_TOPICS)}） ／ 黄色い枠 {len(ednotes_en)} か所")
