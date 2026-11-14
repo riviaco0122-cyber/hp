@@ -550,6 +550,14 @@ def check_article(add, pp, page_url, text, p, ld_objs, types, sitemap, articles,
     for extra in re.findall(r'<div class="talk__body">.*?</div>(.*?)</div>', text, re.S):
         if extra.strip():
             add("error", pp, f"対談（.talk）の中に吹き出し以外の要素がある（表示が崩れる）: {re.sub(r'<[^>]+>', '', extra).strip()[:40]}")
+    # 表のマスには、読み手の問いへの答えを置く。「記載なし」や「〜と案内」のような、資料に何が書いてあるかの説明を
+    # マスに並べると、表を見ても何が言いたいのか分からない（人の指摘 2026-11-14。design-guide 0章・6章）
+    for tb in re.findall(r"<tbody>(.*?)</tbody>", text, re.S):
+        cells = [re.sub(r"<[^>]+>", "", c).strip() for c in re.findall(r"<td[^>]*>(.*?)</td>", tb, re.S)]
+        empty = sum(1 for c in cells if re.fullmatch(r"(記載なし|記述なし|言及なし|情報なし|不明|未確認|[—―－-])", c))
+        meta = sum(1 for c in cells if re.search(r"資料に(は)?(書|記載)|と案内して|と示して|に記載(が)?ある", c))
+        if empty >= 2 or meta >= 2:
+            add("warn", pp, f"表のマスに答えでなく資料の説明が並んでいる（記載なし等 {empty}・資料の説明 {meta}。マスには読み手の問いへの答えを置く）: {' / '.join(cells[:3])[:60]}")
     pub = art.get("datePublished") if art else None
     mod = art.get("dateModified") if art else None
     if not p.article_publish:
