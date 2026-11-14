@@ -7,7 +7,7 @@ from figures import flow, compare, bars
 ARTICLE_KOTEI_SHISANZEI = dict(
     slug="minpaku-kotei-shisanzei",
     keyword="民泊 固定資産税",
-    date="2026-11-15", topics=["money", "start"], photo=("analytics-paper", "数字をまとめた資料"),
+    date="2026-11-16", topics=["money", "start"], photo=("analytics-paper", "数字をまとめた資料"),
     guides=[("use", 3)],
     related=["minpaku-start-steps", "minpaku-vs-ryokan-law", "akiya-holding-costs", "akiya-demolish-or-renovate", "akiya-law-kanri-fuzen", "souzoku-touki-gimuka", "minpaku-break-even", "akiya-lease-types"],
     title='民泊にすると固定資産税は上がる？｜上がる場合・計算例・確かめ方',
