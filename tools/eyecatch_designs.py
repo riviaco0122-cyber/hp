@@ -105,4 +105,5 @@ DESIGNS = {
     "kani-shukusho-kyoka-guide": dict(layout="boxes", lines=["簡易宿所の許可", "[広さ・相談先・流れ]", "をやさしく解説"]),
     "minpaku-ryokin-kimekata": dict(layout="boxes", lines=["民泊の料金設定", "[下限・相場・季節]", "の順に決める"]),
     "minpaku-staff-atsumekata": dict(layout="boxes", lines=["民泊・宿のスタッフ集め", "[仕事を分けて]", "地域の人から頼む"]),
+    "minpaku-kotei-shisanzei": dict(layout="boxes", lines=["民泊にすると", "[固定資産税]は", "上がる？"]),
 }
