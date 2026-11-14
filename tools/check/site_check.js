@@ -202,7 +202,7 @@ async function fontRoute(r) {
   const url = r.request().url();
   try {
     if (!fontCache.has(url)) { // 同時に開いたページが同じ URL を何度も取りに行かないよう、取得中の Promise をしまう
-      fontCache.set(url, r.fetch().then(async res => ({ status: res.status(), headers: res.headers(), body: await res.body() })));
+      fontCache.set(url, r.fetch({ timeout: 10000 }).then(async res => ({ status: res.status(), headers: res.headers(), body: await res.body() })));
     }
     return r.fulfill(await fontCache.get(url));
   } catch (e) { fontCache.delete(url); return r.abort('failed'); }
