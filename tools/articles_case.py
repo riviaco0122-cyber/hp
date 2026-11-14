@@ -45,8 +45,8 @@ ARTICLES_CASE = [
             ("invest", "初期投資は何にいくらかかったのか？", """
 <p>開業までにかかったお金は、改修工事が約410万円、家具・家電・備品が約240万円です。物件を買わずに借りたので、建物の取得費はかかっていません。</p>
 <div class="stats stats--2" role="group" aria-label="開業までにかかったお金">
-<div class="stat stat--accent"><span class="stat__num">約410<small>万円</small></span><span class="stat__label">改修工事</span></div>
-<div class="stat"><span class="stat__num">約240<small>万円</small></span><span class="stat__label">家具・家電・備品</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>410<small>万円</small></span><span class="stat__label">改修工事</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>240<small>万円</small></span><span class="stat__label">家具・家電・備品</span></div>
 </div>
 <p>運営データでは、改修工事とは別に、開業前に買った家具・家電や設備工事などを「初期投資」として、項目ごとに分けています。全体を100としたときの内訳は次のとおりです。約410万円の改修工事は、この表に入っていません。</p>
 <table class="table">
