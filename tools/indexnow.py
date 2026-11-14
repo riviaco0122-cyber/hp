@@ -29,7 +29,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://rivia-co.com"
 HOST = "rivia-co.com"
 ENDPOINT = "https://api.indexnow.org/indexnow"
-SITEMAP = "seo/sitemap.xml"
+SITEMAPS = ["seo/sitemap.xml", "okaeri/sitemap.xml"]  # アキヤド・コーポレートと、英語メディア Okaeri Japan（/okaeri）
 URL_RE = re.compile(r"<loc>([^<]+)</loc>(?:<lastmod>([^<]+)</lastmod>)?")
 
 
@@ -45,12 +45,24 @@ def parse(text):
 
 
 def sitemap_at(ref):
-    r = subprocess.run(["git", "show", f"{ref}:{SITEMAP}"], cwd=ROOT, capture_output=True, text=True)
-    return parse(r.stdout) if r.returncode == 0 else {}
+    out = {}
+    for sm in SITEMAPS:
+        r = subprocess.run(["git", "show", f"{ref}:{sm}"], cwd=ROOT, capture_output=True, text=True)
+        if r.returncode == 0:
+            out.update(parse(r.stdout))
+    return out
+
+
+def sitemap_now():
+    out = {}
+    for sm in SITEMAPS:
+        if (ROOT / sm).is_file():
+            out.update(parse((ROOT / sm).read_text(encoding="utf-8")))
+    return out
 
 
 def changed(base):
-    old, new = sitemap_at(base), parse((ROOT / SITEMAP).read_text(encoding="utf-8"))
+    old, new = sitemap_at(base), sitemap_now()
     upd = [u for u, m in new.items() if u not in old or old[u] != m]
     gone = [u for u in old if u not in new]
     return upd, gone
@@ -116,7 +128,7 @@ def main(argv):
     elif cmd == "urls" and len(args) > 1:
         submit(args[1:], k, dry)
     elif cmd == "all":
-        submit(list(parse((ROOT / SITEMAP).read_text(encoding="utf-8"))), k, dry)
+        submit(list(sitemap_now()), k, dry)
     else:
         sys.exit(__doc__)
 
