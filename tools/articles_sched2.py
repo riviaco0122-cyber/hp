@@ -143,8 +143,8 @@ ARTICLES_SCHED2 = [
             ("inn", "宿として貸すとき、改修費は誰が持つのか？", """
 <p><strong>借りた人が自分で改修費を出して、宿にした例もあります。</strong>創業メンバーが下田で開いた宿は、持ち主が別にいる賃貸の家を借りて宿にしたもので、改修費は借りた側が出しました。誰が出すかは契約ごとに違います。借りた側が出すなら、その金額は、貸す側と契約期間を決めるときの判断材料になります。</p>
 <div class="stats" role="group" aria-label="下田の初期費用">
-<div class="stat stat--accent"><span class="stat__num">約410<small>万円</small></span><span class="stat__label">改修工事</span><span class="stat__note">借り主が負担</span></div>
-<div class="stat"><span class="stat__num">約240<small>万円</small></span><span class="stat__label">家具・家電・備品</span><span class="stat__note">借り主が購入</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>410<small>万円</small></span><span class="stat__label">改修工事</span><span class="stat__note">借り主が負担</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>240<small>万円</small></span><span class="stat__label">家具・家電・備品</span><span class="stat__note">借り主が購入</span></div>
 </div>
 <p>改修と備品に合わせて約650万円をかけた宿も、建物はあくまで他人の持ち物です。契約期間が短かったり、貸す側から更新を断れる契約だったりすると、元が取れる前に使えなくなるかもしれません。貸す側・借りる側のどちらの立場でも、次の5つは契約書で確かめておきましょう。</p>
 <ul>
@@ -847,8 +847,8 @@ ARTICLES_SCHED2 = [
             ("practice", "住まずに関わる、とは具体的にどういうことか？", """
 <p><strong>遠くに住んだままでも、宿の運営を通して地域に関わり続けられます。</strong>実は創業メンバー自身が、宿のある下田に住まず、遠くから運営している関係人口です。開業したころは静岡市に住んでいて、いまは東京から運営しています。<strong>現地へ行くのは、数か月に1回ほど</strong>です。</p>
 <div class="stats" role="group" aria-label="下田での関わり方">
-<div class="stat stat--accent"><span class="stat__num">約2<small>時間</small></span><span class="stat__label">開業のころの住まい（静岡市）から下田まで</span><span class="stat__note">車で片道</span></div>
-<div class="stat"><span class="stat__num">数か月に1<small>回</small></span><span class="stat__label">現地に行く頻度</span><span class="stat__note">スマートロック等で運営</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>2<small>時間</small></span><span class="stat__label">開業のころの住まい（静岡市）から下田まで</span><span class="stat__note">車で片道</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">数か月に</small>1<small>回</small></span><span class="stat__label">現地に行く頻度</span><span class="stat__note">スマートロック等で運営</span></div>
 <div class="stat"><span class="stat__num">2<small>か月目</small></span><span class="stat__label">清掃が自走した時期</span><span class="stat__note">近隣の事業者に外注</span></div>
 </div>
 <p>それを支えてくれたのが、地元の人との仕事です。私たちの宿では、清掃を近くの個人事業主・複業人材に頼みました。手順書をつくり、最初は現地で一緒に掃除して、終わったあとは写真で仕上がりを確かめるようにしたところ、開業2か月目には自分が現地に行かなくても回る体制になりました。</p>

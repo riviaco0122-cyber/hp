@@ -886,7 +886,7 @@ ARTICLES_SERIES1 = [
 <p class="table-note">※ 総務省「令和5年住宅・土地統計調査」、2023年10月1日時点。</p>
 <div class="stats stats--2" role="group" aria-label="下田市の空き家と、宿の稼働">
 <div class="stat"><span class="stat__num">31.3<small>%</small></span><span class="stat__label">下田市の空き家率</span><span class="stat__note">全国は13.8%</span></div>
-<div class="stat stat--accent"><span class="stat__num">約53<small>%</small></span><span class="stat__label">宿の1年目の稼働率</span><span class="stat__note">2025年7月中旬〜2026年3月</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>53<small>%</small></span><span class="stat__label">宿の1年目の稼働率</span><span class="stat__note">2025年7月中旬〜2026年3月</span></div>
 </div>
 <p>同じ町で、創業メンバーが借りて運営する宿（NODE Shimoda。運営施設の一例）の1年目の稼働率は約53%でした。ゲストは海外からの訪日客が中心で、ワーケーションやサーフィンが目的の人もいます。夏は長期の滞在が多めです。</p>
 <p>こうした旅行者は増えています。2025年の訪日外客数（日本を訪れた外国人旅行者の数）は約4,268万人で、過去最多でした（日本政府観光局・推計値）。台所や広い居間がある一軒家は、家族や長く滞在する旅行者にとって使いやすい宿になります。</p>
@@ -902,9 +902,9 @@ ARTICLES_SERIES1 = [
 <p>持ち家を宿にすれば、家を手放さずに収入を得られます。ただ、手元に残るのは売上から運営費を引いた分で、季節の波もあります。</p>
 <p>目安として、創業メンバーが借りて運営する下田の宿の、最初の3か月の数字を見てみましょう。この宿は賃貸の物件なので、持ち家を残した例ではありません。宿の売上と運営費の規模をつかむための数字です。稼働率は、泊まれる日数のうち実際に泊まった日の割合です。</p>
 <div class="stats" role="group" aria-label="私たちの宿の最初の3か月">
-<div class="stat"><span class="stat__num">約52<small>%</small></span><span class="stat__label">稼働率</span><span class="stat__note">3か月の平均</span></div>
-<div class="stat"><span class="stat__num">約100<small>万円</small></span><span class="stat__label">売上</span><span class="stat__note">3か月の合計</span></div>
-<div class="stat stat--accent"><span class="stat__num">約45<small>万円</small></span><span class="stat__label">営業利益</span><span class="stat__note">3か月の合計</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>52<small>%</small></span><span class="stat__label">稼働率</span><span class="stat__note">3か月の平均</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>100<small>万円</small></span><span class="stat__label">売上</span><span class="stat__note">3か月の合計</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>45<small>万円</small></span><span class="stat__label">営業利益</span><span class="stat__note">3か月の合計</span></div>
 </div>
 <p>この3か月は、本格営業の前の試運転の期間です。営業利益は、売上から運営費を引いた利益のことです。月の売上は最大で約60万円で、本格稼働のあとは、売上も利益もさらに伸びました。</p>
 <p>毎月の運営費は計18万円で、内訳は次のとおりです。</p>
@@ -974,7 +974,7 @@ ARTICLES_SERIES1 = [
 <p>次の「稼働率」は、月ごとに大きく動きます。下田の宿の1年目は、平均すると約53%でしたが、月別では次のように開きました。</p>
 <div class="stats" role="group" aria-label="下田の宿の1年目の月別稼働率">
 <div class="stat stat--accent"><span class="stat__num">71<small>%</small></span><span class="stat__label">いちばん高い月</span><span class="stat__note">12月</span></div>
-<div class="stat"><span class="stat__num">約53<small>%</small></span><span class="stat__label">1年目の平均</span><span class="stat__note">2025年7月中旬〜2026年3月</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>53<small>%</small></span><span class="stat__label">1年目の平均</span><span class="stat__note">2025年7月中旬〜2026年3月</span></div>
 <div class="stat"><span class="stat__num">33<small>%</small></span><span class="stat__label">いちばん低い月</span><span class="stat__note">11月</span></div>
 </div>
 <p class="table-note">※ 月別は、8月58%・9月60%・10月52%・11月33%・12月71%・1月39%・2月57%・3月61%です（開業月の7月を除く）。運営施設の一例の数字です。</p>
