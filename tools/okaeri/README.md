@@ -15,6 +15,17 @@ python3 tools/seo_check.py                 # アキヤド側の点検
 
 順番は「okaeri の build → アキヤドの build → 両方の点検」。
 
+## 記事の作り方・見直し方（部署の分担と採点）
+
+記事は `/okaeri-article <テーマ or 記事id>` で、戦略部 → リサーチ部 → 執筆部 → 品質保証部 → エンジニア部 → 品質保証部の順に回す（アキヤドと同じ仕組み）。100点満点（機械40＋品質60）で90点以上、ゲート違反なしのものだけを入れる。
+
+| 資料 | 場所 |
+|---|---|
+| 基準（部署・書き方・採点・戻る工程・人の確認） | `tools/okaeri/playbook.md` |
+| 機械採点（40点）とゲート | `python3 tools/okaeri/article_score.py <記事id or 下書き.py>`（`--all` で全記事） |
+| 部署 | `.claude/agents/okaeri-strategist.md`・`okaeri-researcher.md`・`okaeri-writer.md`・`okaeri-engineer.md`・`okaeri-qa.md` |
+| 構成案・下書き・採点ログ | `tools/okaeri/briefs/`・`tools/okaeri/drafts/`・`tools/okaeri/log.md` |
+
 ## どこを直すか
 
 | 直したいもの | ファイル |

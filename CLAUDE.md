@@ -15,6 +15,8 @@
 | 品質管理部 | `.claude/agents/qa.md` | 採点と差し戻し（評価者） |
 | ブランド学習係 | `.claude/agents/brand-learner.md` | `docs/brand/` の作成・更新 |
 
+英語の海外向けメディア **Okaeri Japan**（`okaeri-japan` ブランチ、`tools/okaeri/`）の記事は、Okaeri 用の部署（`.claude/agents/okaeri-strategist.md`・`okaeri-researcher.md`・`okaeri-writer.md`・`okaeri-engineer.md`・`okaeri-qa.md`）が `/okaeri-article` で分担し、`tools/okaeri/playbook.md` の基準で100点満点・90点以上のものだけを入れる。社長は英語を読まないので、レビューは日本語レビュー版で渡す。
+
 YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwriter.md`・`yt-video-engineer.md`・`yt-reviewer.md`）は、YouTube「アキヤド 民泊school」の動画を作る（手順・決まりは `docs/youtube/manual.md`）。
 
 定型業務は `.claude/skills/`: `/seo-daily`（SEO の定期サイクル・月・水・金の朝9時ごろ（8:51）の定期実行の入口。2026-10-24 から2日に1回のペース）、`/youtube-weekly`（YouTube の週次サイクル・毎週水曜の定期実行の入口）、`/trend-research`（ネタ収集：YouTube・X・ネット検索の3経路。日次・週次のリサーチで使う）、`/write-article`、`/seo-audit`、`/source-intake`、`/brand-learn`。
