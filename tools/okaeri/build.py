@@ -35,7 +35,50 @@ TOPIC_INDEX_MIN = 3  # テーマ別の一覧ページを検索に載せる（ind
 
 FONTS_EN = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
 FONTS_ALL = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Noto+Sans+JP:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
-MARK = '<svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M32 19c4 0 7 3 7.4 7.2C46 23.6 54 18 60 9.5 58.6 21.5 51 31 41.6 34.2 42.6 41 45 49 51 59 43.5 54 38.2 47.6 34.6 40.4 33.4 46.6 31 52.6 25.6 59 26.6 51 27.6 44.4 27.8 38.2 19.6 38.2 9.8 34.2 4 26 13 29.4 21 29.6 26.8 27.4 26.4 22.8 28.6 19 32 19Z"/><circle cx="33.2" cy="25.6" r="2.7" fill="var(--red)"/></svg>'
+# ロゴのツバメ（横向きで右へ飛ぶ。丸い体・白いお腹・赤いのど）。ヘッダー・ファビコン（SVG）とロゴ・OGP（PNG）は、この1つの形から作る。
+# 色: ink=文字色 / paper=背景色（白目・お腹） / red=のど。パスは絶対座標の M・L・C・Z だけで書く（PNG 用に折れ線へ直すため）。
+MARK_SHAPES = [
+    ("ink", "M28 36.5C20.5 34.5 12 31.5 3 29.5C9.5 34.5 15 38.2 19.6 41C14 43.2 8.6 46 4.5 49.5C12.6 48.6 20.6 46.4 27.6 43Z"),  # 燕尾
+    ("ink", "M24 33C26 22 34 16 42 16C51 16 56 22.5 56 29.5C56 38 49 44.5 39.5 44.5C31 44.5 25.5 41 24 33Z"),  # 体
+    ("ink", "M55.6 26.2L61.6 29L55.6 31.6Z"),  # くちばし
+    ("paper", "M28.8 36.8C33.6 43.6 46.8 45.4 53.8 36.8C46.2 39.6 36 40 28.8 36.8Z"),  # お腹
+    ("red", "M50.6 31C53.6 30.6 56 32 55.9 33.8C55.3 36.3 52.4 37.6 49.8 36.9C48.4 35.6 48.8 31.4 50.6 31Z"),  # のど
+    ("ink", "M34 27.5C31 18.5 25.5 11.5 15.5 8.5C17 16 21.5 25 29.5 33.5Z"),  # 翼
+    ("paper", (46.4, 24.4, 3.7)), ("ink", (47.3, 24.7, 2.3)), ("paper", (48.1, 23.7, 0.85)),  # 目（白目・黒目・光）
+]
+
+
+def mark_svg(colors=None, attrs='class="mark" aria-hidden="true"'):
+    """ロゴの SVG。colors を渡すと色を固定する（ファビコン用）"""
+    c = colors or {"ink": "currentColor", "paper": "var(--paper)", "red": "var(--red)"}
+    parts = [f'<circle cx="{v[0]}" cy="{v[1]}" r="{v[2]}" fill="{c[k]}"/>' if isinstance(v, tuple) else f'<path fill="{c[k]}" d="{v}"/>'
+             for k, v in MARK_SHAPES]
+    return f'<svg {attrs} viewBox="0 0 64 64">{"".join(parts)}</svg>'
+
+
+def mark_polys(steps=12):
+    """ロゴの形を (色, 折れ線の点) と (色, 円) に直す（PNG 用）"""
+    out = []
+    for k, v in MARK_SHAPES:
+        if isinstance(v, tuple):
+            out.append((k, v))
+            continue
+        nums = [float(x) for x in re.findall(r"-?\d+(?:\.\d+)?", v)]
+        cmds = re.findall(r"[MLCZ]", v)
+        pts, n = [], 0
+        for cmd in cmds:
+            if cmd in "ML":
+                pts.append((nums[n], nums[n + 1])); n += 2
+            elif cmd == "C":
+                (x0, y0), (x1, y1, x2, y2, x3, y3) = pts[-1], nums[n:n + 6]; n += 6
+                for t in (i / steps for i in range(1, steps + 1)):
+                    u = 1 - t
+                    pts.append((u**3 * x0 + 3 * u * u * t * x1 + 3 * u * t * t * x2 + t**3 * x3, u**3 * y0 + 3 * u * u * t * y1 + 3 * u * t * t * y2 + t**3 * y3))
+        out.append((k, pts))
+    return out
+
+
+MARK = mark_svg()
 
 esc = htmllib.escape
 ART = {a["id"]: a for a in C.ARTICLES}
@@ -691,19 +734,29 @@ def make_images():
     if not os.path.exists(serif):
         return False
     ink, paper, red, sea = (21, 35, 45), (243, 245, 244), (194, 55, 44), (29, 106, 115)
-    pts = [(32, 19), (36.5, 20.5), (39.4, 26.2), (46, 23.6), (54, 18), (60, 9.5), (58.6, 21.5), (51, 31), (41.6, 34.2), (42.6, 41), (45, 49), (51, 59),
-           (43.5, 54), (38.2, 47.6), (34.6, 40.4), (33.4, 46.6), (31, 52.6), (25.6, 59), (26.6, 51), (27.6, 44.4), (27.8, 38.2), (19.6, 38.2), (9.8, 34.2),
-           (4, 26), (13, 29.4), (21, 29.6), (26.8, 27.4), (26.4, 22.8), (28.6, 19)]
+    shapes = mark_polys()
 
-    def mark(d, x, y, s, fill):
-        d.polygon([(x + px * s, y + py * s) for px, py in pts], fill=fill)
-        d.ellipse([x + (33.2 - 2.7) * s, y + (25.6 - 2.7) * s, x + (33.2 + 2.7) * s, y + (25.6 + 2.7) * s], fill=red)
+    def mark(im, x, y, s, fill):
+        """ロゴを im の (x, y) に倍率 s で置く。4倍で描いて縮め、縁をなめらかにする"""
+        k = 4
+        w, h = int(64 * s) + 1, int(64 * s) + 1
+        big = Image.new("RGBA", (w * k, h * k), (0, 0, 0, 0))
+        d = ImageDraw.Draw(big)
+        col = {"ink": fill, "paper": paper, "red": red}
+        for name, v in shapes:
+            if isinstance(v[0], tuple):
+                d.polygon([(px * s * k, py * s * k) for px, py in v], fill=col[name])
+            else:
+                cx, cy, r = v
+                d.ellipse([(cx - r) * s * k, (cy - r) * s * k, (cx + r) * s * k, (cy + r) * s * k], fill=col[name])
+        small = big.resize((w, h), Image.LANCZOS)
+        im.paste(small, (round(x), round(y)), small)
 
     def og(path, title, kicker):
         im = Image.new("RGB", (1200, 630), paper)
         d = ImageDraw.Draw(im)
         d.rectangle([0, 0, 1200, 14], fill=sea)
-        mark(d, 70, 60, 1.6, ink)
+        mark(im, 70, 60, 1.6, ink)
         d.text((190, 86), NAME, font=ImageFont.truetype(serif, 44), fill=ink)
         d.text((80, 220), kicker.upper(), font=ImageFont.truetype(sans, 26), fill=red)
         size = 68
@@ -734,7 +787,8 @@ def make_images():
         og(os.path.join(DIST, f"assets/og/{a['slug']}.png"), strip_tags(a["h1"]), a["kicker"])
     for name, size in (("logo.png", 512), ("apple-touch-icon.png", 180)):
         im = Image.new("RGB", (size, size), paper)
-        mark(ImageDraw.Draw(im), size * 0.06, size * 0.03, size / 73, ink)
+        sc = size / 72  # 形の範囲（x 3〜61.6、y 8.5〜49.5）を真ん中に置く
+        mark(im, size / 2 - 32.3 * sc, size / 2 - 29 * sc, sc, ink)
         im.save(os.path.join(DIST, "assets", name), optimize=True)
     return True
 
@@ -777,7 +831,7 @@ def build():
         write(out_file(p["path"]), dist_html(p, render(rctx := Ctx("dist", p["id"]), p), rctx))
     ednotes_en = list(ednotes)
     write(os.path.join(DIST, "assets/site.css"), CSS)
-    write(os.path.join(DIST, "assets/favicon.svg"), MARK.replace('class="mark" ', 'xmlns="http://www.w3.org/2000/svg" ').replace("currentColor", "#15232d").replace("var(--red)", "#c2372c").replace(' aria-hidden="true"', ""))
+    write(os.path.join(DIST, "assets/favicon.svg"), mark_svg({"ink": "#15232d", "paper": "#f3f5f4", "red": "#c2372c"}, 'xmlns="http://www.w3.org/2000/svg"'))
     make_images()
     shutil.copytree(os.path.join(HERE, "photos"), os.path.join(DIST, "assets/photos"))
     shutil.copytree(os.path.join(HERE, "photos"), os.path.join(PREVIEW, "assets/photos"))
