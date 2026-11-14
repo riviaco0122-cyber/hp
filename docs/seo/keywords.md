@@ -91,13 +91,14 @@
 | 民泊 備品 リスト／民泊 開業 準備するもの（ゲストが尋ねる・レビューで褒められる備品と仕組み） | ② 開業 | 開業・運営支援 | — | 候補（優先度: 高） | 一次情報: `experience.md` 9-3（質問×レビューの優先順位）。重なり注意: `minpaku-start-steps`。2026-10-26 追加 |
 | （既存記事の強化）レビューで褒められる点：`guest-review-tips`・訪日客の国と季節：`japan-tourism-market-data`／`inbound-regional-dispersion`・定期借家の割合：`akiya-lease-types` | ③／market／akiya | — | 各記事 | 改善候補 | 根拠: `experience.md` 9-2、`docs/sources/research/2026-10-26-owner-public-data-reports.md`（原典で値を確かめてから使う）。2026-10-26 追加 |
 | 民泊 スタッフ／民泊 スタッフ 募集・求人／民泊 業務委託／民泊 駆けつけ スタッフ（宿の仕事を分けて仕組みで減らし、地域の人→スキマバイト→続けて頼む順に集める。人手の入口） | ④ | WEB採用、開業・運営支援 | `media/minpaku-staff-atsumekata.html` | 記事化予定（公開予定 2026-11-14。構成案 `briefs/2026-11-14-minpaku-staff-atsumekata.md`） | サジェスト「民泊 スタッフ」6候補・「民泊 業務委託」4候補（2026-11-12）。`minpaku-break-even` の深掘りで、人手の小さなハブ（清掃の細部・雇用の線引きは `minpaku-seisou-kojin-kakunin`、人手不足の考え方は `tourism-labor-shortage` に渡す）。主語を「清掃スタッフ」にしない。2026-11-12 追加 |
+| 民泊 固定資産税／民泊 住宅用地／民泊 固定資産税 上がる・計算方法・経費（家の一部・全部を宿にしたとき住宅用地の特例が外れるか、計算例、自治体への確かめ方） | ①② お金 | 開業・運営支援、空き家再生 | `media/minpaku-kotei-shisanzei.html` | PR待ち（公開予定 2026-11-15） | 需要: サジェスト「民泊 固定資産税」9候補（住宅用地／総務省／東京都／上がる／大阪市／経費／計算方法／京都市）・「民泊 住宅用地」3候補（2026-11-14取得。ボリュームは未確認。Search Console に表示なし）。ハブ `minpaku-start-steps` の深掘り（guide-use Step 3）。税は人の確認対象。共食い注意: `akiya-holding-costs`（空き家の維持費・固定資産税の一般論）。2026-11-14 追加 |
 
 ## 入口の記事（ハブ）と深掘りの記事（クラスタ）の対応表（2026-10-31・人の方針）
 検索上位の記事は、広い問いに1本で全体を答える入口の記事を持つ（`docs/seo/benchmark-2026-10-31.md`）。アキヤドも、入口の記事（ハブ）を3本決め、深掘りの記事（クラスタ）を必ずどれかのハブにつなげる。**新しい記事は、公開前に、どのハブの深掘りかを決め、ハブ→新記事・新記事→ハブの両方にリンクを1文ずつ入れる。**
 
 | ハブ（入口） | 狙う広い検索語 | 深掘り（クラスタ） |
 |---|---|---|
-| `minpaku-start-steps`（民泊を始めるには何から？） | 民泊 始め方、空き家 民泊 | minpaku-vs-ryokan-law／minpaku-180days-rule／kani-shukusho-kyoka-guide／minpaku-fire-safety／minpaku-management-company／minpaku-chintai-start／kaishain-minpaku-fukugyo／inn-startup-funding／small-inn-subsidies／accommodation-tax／minpaku-bihin-priority／minpaku-house-guide |
+| `minpaku-start-steps`（民泊を始めるには何から？） | 民泊 始め方、空き家 民泊 | minpaku-vs-ryokan-law／minpaku-180days-rule／kani-shukusho-kyoka-guide／minpaku-fire-safety／minpaku-management-company／minpaku-chintai-start／kaishain-minpaku-fukugyo／inn-startup-funding／small-inn-subsidies／accommodation-tax／minpaku-bihin-priority／minpaku-house-guide／minpaku-kotei-shisanzei |
 | `akiya-utilization-options`（空き家の使い道） | 空き家 活用、空き家 どうする | akiya-holding-costs／akiya-law-kanri-fuzen／souzoku-touki-gimuka／akiya-3000man-deduction／akiya-bank-guide／akiya-demolish-or-renovate／akiya-lease-types／inherited-house-family-talk／akiya-minpaku-suitability／why-minpaku-for-akiya／why-akiya-utilization-now／minpaku-vs-rental-income／akiya-inherited-house-to-inn |
 | `minpaku-break-even`（民泊の収支と運営） | 民泊 収支、民泊 運営 | inn-kpi-basics／minpaku-off-season／minpaku-investment-yield／ota-vs-direct-booking／listing-photo-tips／guest-review-tips／minpaku-shukyaku-first-steps／minpaku-neighbor-rules／cleaning-linen-operations／minpaku-seisou-kojin-kakunin／minpaku-remote-operation／long-stay-travel-demand／long-stay-guest-equipment／minpaku-bihin-priority／minpaku-house-guide |
 
