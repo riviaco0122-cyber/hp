@@ -99,6 +99,8 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 | `python3 tools/video/make_strategy_ep<N>.py [出力] [--hq]` ／ `make_reel.py` ／ `layout_check.py` | YouTube の解説動画・リール（縦長）の書き出しと自動点検（`docs/youtube/manual.md` 4章） |
 | `python3 tools/eyecatch.py [slug ...]` | 記事のアイキャッチ（記事トップ・OGP、1200×630）を `images/eyecatch/<slug>.jpg` に作る。デザインは記事ごとに `tools/eyecatch_designs.py` に書く（なければ標準デザイン）。作ったあと `python3 tools/build.py` で反映 |
 | `node tools/check/linebreak_samples.js [--only id] [--shots フォルダ] [--update id]` | **改行の見本の回帰テスト**。人が確かめた改行（`tools/check/linebreak_samples.json`）が崩れていないかを、Web フォントを読み込んだ実際の表示で行ごとに比べる（approved が崩れたら NG。`docs/design-guide.md` 8章） |
+| `node tools/check/line_quality.js [--widths 360,375,390,414] [--only ページ名] [--out ファイル]` | 改行の質の点検。全ページをスマホ幅で開き、文字のはみ出しと、行末に残った開きかっこを数える（どちらも0件にする。`docs/design-guide.md` 3章） |
+| `node tools/check/badge_center.js [--widths 390,1280] [--only ページ名]` | 丸い印（円の中の数字・「Q」など）の文字が円の真ん中にあるかを、画面を撮って測る（1px を超えるずれを出す。`docs/design-guide.md` 3章） |
 | `node tools/check/short_lines.js [--all] [--widths 375,390] [--only ページ名]` | 最後の行が3文字以下の文が、続けて起きている所をスマホ幅で数える（2〜3文字の最後の行そのものは許す。`--all` で全部。`docs/design-guide.md` 3章） |
 | `python3 tools/gen_diff.py [基準]` | 生成物（`pages/`・`404.html`・`js/media-index.js`・`seo/`）の変化を、同じ変化をまとめて短く出す（生成物は `git diff` に本文が出ない設定） |
 | `python3 tools/page_text.py <HTML...>` | 生成された HTML を本文だけのテキストにする（見出し・段落・表・画像の alt）。記事 HTML は1ファイル10万字を超えるので、中身の確認・採点はこれで読む |
