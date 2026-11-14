@@ -185,6 +185,11 @@ def article_page(a):
         _c = ARTICLE_BY_SLUG.get(_ct.get((a.get("topics") or ["start"])[0], "case-owner-licensed-akiya"))
         if _c:
             related = [_c] + [x for x in related if x["slug"] != _c["slug"]]
+    # 記事データの related（本文から外した案内の行き先。人の指摘 2026-11-14：本文の「詳しくは〜」は1節1本・1記事5本まで）を先頭に並べる。
+    # 本文の案内を減らしても、記事どうしのつながり（読み手の次の一歩・検索エンジンの巡回）は「あわせて読みたい」で残す
+    _rel = [ARTICLE_BY_SLUG[s_] for s_ in a.get("related", []) if s_ in ARTICLE_BY_SLUG and s_ != a["slug"]]
+    if _rel:
+        related = _rel + [x for x in related if x["slug"] not in {r["slug"] for r in _rel}]
     from urllib.parse import quote
     share_url = quote(f"{SITE}/media/{a['slug']}.html", safe="")
     share_text = quote(f"{a['title']}｜アキヤド", safe="")
