@@ -149,7 +149,7 @@ rivia-hp/
 * トップ: 会社情報の構造化データ（Organization）。サービスページ: よくある質問の構造化データ（FAQPage）。
 * Googleアナリティクス4（測定ID: G-RZVE2XBPQ2）の計測タグを、全ページの `<head>` の直後に設置済み。
 * フォーム（お問い合わせ・採用エントリー）は画面を移動せずに送信し、成功したら thanks.html へ移動する。thanks.html で GA4 の `generate_lead` イベント（form_type: contact / careers / akiyado、lead_type: consult 相談 / document 資料請求 / careers 採用）を送るので、GA4 の管理画面で `generate_lead` を「キーイベント」に設定すると問い合わせ数を計測できる。
-* 運営実績の下に「ゲストの声（Airbnb のレビューより）」を表示できる。build.py の `NODE_REVIEWS` に、実際のレビューを原文のまま入れたときだけ表示される（空のときは非表示）。
+* 会社サイトの運営実績には「ゲストの声」を出さない（人の指摘 2026-11-15）。NODE Shimoda のレビュー（`NODE_REVIEWS`）は、アキヤドのサービスページ（運営している宿の一例）でだけ使う。
 * **公開ドメインは https://rivia-co.com（canonical / OGP / 構造化データ / sitemap に反映済み）。**
 * AI検索向けのサイト案内 llms.txt（公開URL `/llms.txt`、実体は seo/llms.txt）を置く。会社・サービス・アキヤドのガイドと、公開日を迎えた記事を載せる。`tools/build.py`（llms_txt）で生成し、手で直さない（日次の定期実行で毎日作り直す）。
 
