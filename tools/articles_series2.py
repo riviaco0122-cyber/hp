@@ -111,8 +111,8 @@ ARTICLES_SERIES2 = [
 </table>
 <p>配線のほうは、ゲストに同時に使わないよう案内して運営しました。3芯化の工事は費用がかかるので、早めに確かめて資金計画に入れておく。これが私たちの学びです。</p>
 <div class="stats stats--2" role="group" aria-label="開業時にかかった費用">
-<div class="stat stat--accent"><span class="stat__num">約410<small>万円</small></span><span class="stat__label">改修工事</span><span class="stat__note">3社を比較</span></div>
-<div class="stat"><span class="stat__num">約240<small>万円</small></span><span class="stat__label">家具・家電</span><span class="stat__note">備品を含む</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>410<small>万円</small></span><span class="stat__label">改修工事</span><span class="stat__note">3社を比較</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>240<small>万円</small></span><span class="stat__label">家具・家電</span><span class="stat__note">備品を含む</span></div>
 </div>
 <p>改修工事は3社の見積もりを比べて、見積額がいちばん低かった会社に頼みました。進み具合は、写真とビデオ通話で共有してもらえて助かりました。</p>
 <p>ただ、工事が終わって支払ったあとに、思ってもいなかった追加の請求が届きました。相談のうえ、支払いは一部にとどめています。ここで学んだのは、やりとりを文書で残すことと、どんな宿にしたいかを最初に言葉にして共有することです。</p>
@@ -253,8 +253,8 @@ ARTICLES_SERIES2 = [
             ("money", "初期費用は、どこで膨らみ、どう抑えたのか？", """
 <p>初期費用は、改修の追加費用で膨らみやすくなります。下田の宿では、自分でできる解体は自分でやり、補助金も組み合わせて抑えました。</p>
 <div class="stats stats--2" role="group" aria-label="下田の宿の初期費用">
-<div class="stat stat--accent"><span class="stat__num">約410<small>万円</small></span><span class="stat__label">改修工事</span></div>
-<div class="stat"><span class="stat__num">約240<small>万円</small></span><span class="stat__label">家具・家電・備品</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>410<small>万円</small></span><span class="stat__label">改修工事</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>240<small>万円</small></span><span class="stat__label">家具・家電・備品</span></div>
 </div>
 <p>抑えるためにしたことと、膨らんだことを表にまとめました。</p>
 <table class="table">
