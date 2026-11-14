@@ -424,7 +424,8 @@ def flow_section(soft=False):
     </section>"""
 
 
-# NODE Shimoda のゲストレビュー（Airbnb に実際に投稿されたものだけを、原文のまま載せる）
+# NODE Shimoda のゲストレビュー（Airbnb に実際に投稿されたものだけを、原文のまま載せる）。アキヤドのサービスページで使う
+# （会社サイトの運営実績の「ゲストの声」は、人の指摘 2026-11-15 で外した）
 # 例: dict(text="原文のまま", who="ゲスト（東京都）", date="2026年8月"),
 NODE_REVIEWS = [
     dict(text="和モダンな室内がとてもオシャレで、快適でした！お部屋の居心地がよく、下田旅行の素敵な思い出になりました。",
@@ -434,24 +435,6 @@ NODE_REVIEWS = [
     dict(text="海も近く初日の出も見ることができ、スーパーも近かったのでとても便利で快適な時間を過ごすことができました！",
          who="Airbnbゲスト・数泊", date="2026年1月"),
 ]
-
-
-def reviews_html():
-    if not NODE_REVIEWS:
-        return ""
-    items = "\n".join(
-        f"""            <figure class="review reveal" data-delay="{i % 3}">
-              <blockquote class="review__text">{e(r["text"])}</blockquote>
-              <figcaption class="review__who">{e(r["who"])}{f'<span>{e(r["date"])}</span>' if r.get("date") else ""}</figcaption>
-            </figure>"""
-        for i, r in enumerate(NODE_REVIEWS))
-    return f"""        <div class="reviews">
-          <p class="reviews__head">ゲストの声 <span>Airbnb のレビュー（★5）より抜粋</span></p>
-          <div class="reviews__list">
-{items}
-          </div>
-        </div>
-"""
 
 
 def project_card(compact=False):
@@ -654,7 +637,6 @@ SERVICE_DATA = {
         ],
     ),
 }
-
 
 
 def faq_html(items):

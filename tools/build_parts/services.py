@@ -272,7 +272,7 @@ def service_page(key, name):
           <h2 class="section-title">RIVIAの運営実績</h2>
         </div>
 {project_card(compact=True)}
-{reviews_html()}      </div>
+      </div>
     </section>
 
 {cta(key, text=OPEN_MSG if key in GROUPS[0]["services"] else "")}
