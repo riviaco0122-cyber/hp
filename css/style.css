@@ -1076,7 +1076,7 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
   }
   .media-grid--scroll > * { flex-basis: 76%; }
   .plans { padding-top: 22px; align-items: stretch; } /* 「おすすめ」ラベルの分 */
-  .issues > * { flex-basis: 88%; }
+  .issues > * { flex-basis: 90%; }
   .issue { padding: 24px 16px 20px; }
   .issue__answer { margin: 0 -6px; padding: 18px 12px; }
   .issue__steps li { grid-template-columns: 20px minmax(0, 1fr); gap: 8px; }
@@ -3328,7 +3328,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 
 /* スマホ（カルーセル）：段は subgrid でカード間をそろえる。アイコンは小さく */
 @media (max-width: 899px) {
-  .is-corp .issue { display: grid; padding: 24px 18px 22px; }
+  .is-corp .issue { display: grid; padding: 24px 14px 22px; } /* 打ち手の文が2行に収まるよう、左右の余白は控えめに（人の指摘 2026-11-15） */
   .is-corp .issue__problem { display: contents; }
   .is-corp .issue__mark { font-size: 58px; }
   .is-corp .issue__title { margin-top: 12px; font-size: 18px; }
@@ -3340,7 +3340,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .is-corp .issue__avatar--rivia { font-size: 14px; }
   .is-corp .issue__voice, .is-corp .issue__reply { grid-column: 1 / -1; justify-self: stretch; margin-top: 8px; }
   .is-corp .issue__voice { padding: 12px 16px; font-size: 13.5px; line-height: 1.85; }
-  .is-corp .issue__reply { padding: 14px 16px 12px; }
+  .is-corp .issue__reply { padding: 14px 12px 12px; }
   .is-corp .issue__kpi { grid-column: 1 / -1; justify-content: flex-start; margin-top: 12px; }
   .is-corp .issue__kpi ul { flex: 1 1 100%; gap: 6px; }
 }
