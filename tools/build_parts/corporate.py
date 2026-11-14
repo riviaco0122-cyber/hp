@@ -218,7 +218,7 @@ def company_profile():
 # profiles: 本人が公開しているプロフィール（構造化データの sameAs と、記事の監修者欄のリンク。人の了承 2026-11-07）
 FOUNDERS = [
     dict(key="ishihara", name="石原 佑真", en="Yuma Ishihara", role="代表社員 ／ 共同創業者", origin="大阪府出身", photo="founder-ishihara.jpg", photo_type="photo",
-         bio="新卒でリクルートに入社し、新規事業開発室でゼロイチの事業立ち上げを経験。その後はHR Techとサイバーセキュリティのベンチャーで、新規事業の創出と組織拡大を牽引。RIVIA&CO.を共同創業。",
+         bio="新卒でリクルートに入り、新規事業開発室でゼロイチの立ち上げを経験。その後、HR Techとサイバーセキュリティのベンチャーで新規事業と組織の拡大を牽引。RIVIA&CO.を共同創業。",
          career=[("株式会社リクルート", "新規事業開発室にて、ゼロイチの事業立ち上げを経験"),
                  ("HR Techベンチャー", "新規事業の創出と組織拡大を牽引"),
                  ("サイバーセキュリティベンチャー", "新規事業の創出と組織拡大を牽引"),
@@ -227,7 +227,7 @@ FOUNDERS = [
          profiles=[("YOUTRUST", "https://youtrust.jp/users/yumayade__2210"), ("LinkedIn", "https://www.linkedin.com/in/%E4%BD%91%E7%9C%9F-%E7%9F%B3%E5%8E%9F-7a4bb929b"),
                    ("Wantedly", "https://www.wantedly.com/id/tasuku_ishihara_g")]),
     dict(key="katai", name="片井 進太", en="Shinta Katai", role="代表社員 ／ 共同創業者", origin="静岡県出身", photo="founder-katai.jpg", photo_type="illust",
-         bio="新卒で静岡県庁に入庁し、行政の立場で地域課題に向き合う。その後、大手メーカー、リクルート、HR Techベンチャーを経て、位置情報データのベンチャーに参画。複数企業の経営に携わりながら、RIVIA&CO.を共同創業。",
+         bio="新卒で静岡県庁に入庁し、行政の立場で地域課題に向き合う。その後、大手メーカー、リクルート、HR Techベンチャーを経て、位置情報データベンチャーに参画。複数企業の経営に携わりつつ、RIVIA&CO.を共同創業。",
          career=[("静岡県庁", "行政の視点から地域課題に向き合う"),
                  ("大手メーカー", ""),
                  ("株式会社リクルート", ""),
