@@ -7,7 +7,7 @@ from figures import cycle as fig_cycle  # 記事の図解
 
 ARTICLES_BASE = [
     dict(
-        slug="akiya-inherited-house-to-inn",
+        slug="akiya-inherited-house-to-inn", related=['why-akiya-utilization-now'],
         category="akiya",
         tone="sand",
         date="2026-09-29",
@@ -440,7 +440,7 @@ ARTICLES_BASE = [
 
 ARTICLES_BASE += [
     dict(
-        slug="airdna-revenue-simulation",
+        slug="airdna-revenue-simulation", related=['minpaku-break-even'],
         category="keiei",
         tone="mist",
         date="2026-09-29",
@@ -504,7 +504,7 @@ ARTICLES_BASE += [
 <p>同じ物件でも、悲観と楽観で稼働率が25ポイント違うと、回収年数は約6年も変わります。「平均的な稼働率」を一つだけ置いた計画は、思った以上に危ういということです。</p>
 <p>同じ条件を民泊新法（年間180日が上限）で運営すると、180日すべて埋まっても年間売上は450万円までです。どの制度で始めるかで売上の上限が決まるので、試算の段階で入れておきましょう。</p>
 <p>稼働率や客室単価の意味は、「<a href="media/inn-kpi-basics.html">稼働率・客室単価・RevPARとは？</a>」で説明しています。</p>
-<p>実績の費用から赤字にならない稼働率を出す方法は、「<a href="media/minpaku-break-even.html">民泊は稼働率何%で黒字？損益分岐点を自分で計算するやり方</a>」で説明しています。</p>
+
 <p>ただ、この試算のもとになるAirDNAの数字には、気をつけたい点があります。</p>
 """),
             ("limits", "AirDNAの数字を信じすぎると、何が危ないのか", """
@@ -550,7 +550,7 @@ ARTICLES_BASE += [
         ],
     ),
     dict(
-        slug="small-inn-subsidies",
+        slug="small-inn-subsidies", related=['minpaku-start-steps', 'inn-startup-funding'],
         category="kaigyo",
         tone="sand",
         date="2026-09-29",
@@ -585,7 +585,7 @@ ARTICLES_BASE += [
 <p class="table-note">※ 公庫は日本政策金融公庫。準備期間は約7か月。融資の可否や補助金の採択は、時期や制度によって異なります。</p>
 <p>補助金の要項では、「市内の工務店との契約」が求められていました。そこで工務店3社に見積もりを取り、いちばん安い会社に発注しています。要項の条件と見積もりの結果を見比べて、補助金を使うかどうかを決めました。</p>
 <p>融資の相談では、法人名義だと「宿泊業の経験がない」ことを理由に見送られ、個人名義で相談して決まりました。担当者によって対応が変わることもあると感じたので、私たちは、融資や補助金がなくてもどこまでできるかを先に決めておくほうが安全だと考えています。</p>
-<p>資金全体の組み立ては、「<a href="media/inn-startup-funding.html">小さな宿の開業資金はどう用意する？</a>」で説明しています。では、国の制度には何があるのでしょう。</p>
+<p>では、国の制度には何があるのでしょう。</p>
 """),
             ("national", "国の制度では、何が使えるのか？", """
 <p>小さな宿が使いやすいのは、集客の費用を補う小規模事業者持続化補助金と、システムの費用を補うIT導入補助金の2つです。</p>
@@ -658,7 +658,7 @@ ARTICLES_BASE += [
             ("summary", "まとめ：補助金は「成り立つ計画」に上乗せするもの", """
 <p>計画は、補助金がなくても成り立つ形で立てておくと安心です。私たちの宿でも、補助金は50万円で、資金の中心は融資と自己資金でした。静岡県内の制度も、上限は数十万円が中心で、予算は早く尽きます。</p>
 <p>そのうえで、使える制度を上乗せしていきましょう。制度の名称・上限・条件は年度で変わるので、申請の前に、最新の公募要領と窓口で確かめてください。</p>
-<p>補助金を申し込む前に必要な許可や届出の流れは、<a href="media/minpaku-start-steps.html">民泊を始めるまでの7ステップ</a>で説明しています。</p>
+
 """),
         ],
         faq=[
@@ -685,7 +685,7 @@ ARTICLES_BASE += [
         ],
     ),
     dict(
-        slug="new-build-vs-used-house-inn",
+        slug="new-build-vs-used-house-inn", related=['minpaku-fire-safety'],
         category="kaigyo",
         tone="sage",
         date="2026-09-29",
@@ -751,7 +751,7 @@ ARTICLES_BASE += [
 <p class="table-note">※ 出典：国土交通省「建築基準法の一部を改正する法律（平成30年法律第67号）について」ほか。2026年10月時点。</p>
 <p>建築基準法の耐震基準は、1981年6月に大きく変わりました。静岡県内の空き家の解体補助にも、「昭和56年5月31日以前の建築」を条件にしている市町がたくさんあります（<a href="media/akiya-demolish-or-renovate.html">静岡県35市町の補助</a>）。</p>
 <p>用途変更の確認申請が要らない広さでも、建物を宿泊施設の基準に合わせる必要はあります。長く空き家だった建物は、雨漏りやシロアリが進んでいることがあります。買う前に専門家の建物調査（インスペクション）を入れておくと、見落としが減ります。</p>
-<p>消防設備は、「<a href="media/minpaku-fire-safety.html">民泊・小さな宿の消防設備ガイド</a>」で説明しています。ここまでは中古の話でした。では、新築を選ぶなら、何を確かめればよいのでしょう。</p>
+<p>ここまでは中古の話でした。では、新築を選ぶなら、何を確かめればよいのでしょう。</p>
 """),
             ("new", "新築にするなら、先に何を確かめるか？", """
 <p>新築が合うのは、更地の土地を持っている場合や、宿泊用に一から設計したい場合です。古い建物が残っている土地なら、新築の前に解体費がかかります。たとえば、次のような場合は新築を考えてみる価値があります。</p>
@@ -818,7 +818,7 @@ ARTICLES_BASE += [
 
 ARTICLES_BASE += [
     dict(
-        slug="shizuoka-yaizu-akiya-inn",
+        slug="shizuoka-yaizu-akiya-inn", related=['minpaku-vs-ryokan-law', 'akiya-minpaku-suitability'],
         category="akiya",
         tone="sand",
         date="2026-10-01",
@@ -917,7 +917,7 @@ ARTICLES_BASE += [
 <p class="callout__label">向かない場面</p>
 <p>出張や帰省で、一人で1泊するだけなら、駅前のビジネスホテルが選ばれやすいでしょう。一棟貸しは、家族やグループ、長期滞在、車での来訪のように、広さや台所が要る人に向けてつくります。</p>
 </div>
-<p>制度の違いは、「<a href="media/minpaku-vs-ryokan-law.html">民泊新法と旅館業、どちらで始める？</a>」で説明しています。物件ごとの見極め方は、「<a href="media/akiya-minpaku-suitability.html">その空き家、民泊に向いている？</a>」で紹介しています。</p>
+
 """),
             ("summary", "まとめ：「観光地ではない」は、あきらめる理由にならない", """
 <p>泊まる理由は、観光だけではありません。仕事や帰省の用事に加えて、町の日常そのものを味わう滞在もあります。焼津の鰯ヶ島では、この考えで2026年末の開業を準備しています（2026年10月時点の予定）。</p>

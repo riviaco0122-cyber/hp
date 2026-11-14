@@ -6,7 +6,7 @@ D = "2026-10-11"
 
 ARTICLES_SERIES1 = [
     dict(
-        slug="akiya-data-9-million",
+        slug="akiya-data-9-million", related=['akiya-holding-costs', 'akiya-utilization-options', 'why-akiya-utilization-now'],
         date=D, updated="2026-10-13", topics=["trend", "house"], photo=("rural-station", "田園の中の地方の駅"),
         title="データで見る日本の空き家｜約900万戸・空き家率13.8%が意味すること",
         short="データで見る\n日本の空き家",
@@ -90,11 +90,11 @@ ARTICLES_SERIES1 = [
 """),
             ("risk", "空き家が増えると、持ち主にどんな影響があるのか？", """
 <p>人の住まない家は、傷むのが早いものです。雨漏りや草木の伸びすぎで、近所に迷惑がかかることもあります。2023年の空家法の改正で、管理が不十分な空き家への対応は強化されました（<a href="media/akiya-law-kanri-fuzen.html">空家法の改正で何が変わったのか</a>）。</p>
-<p>持ち主にとっての負担は、お金に表れます。勧告を受けると、住宅用地の特例で評価額の1/6になっていた固定資産税の課税標準額が、本則では6倍の計算になります。見回りを頼む料金の例も含めた金額は、<a href="media/akiya-holding-costs.html">空き家を持ち続けるお金</a>にまとめました。</p>
+<p>持ち主にとっての負担は、お金に表れます。勧告を受けると、住宅用地の特例で評価額の1/6になっていた固定資産税の課税標準額が、本則では6倍の計算になります。</p>
 """),
             ("summary", "まとめ：まず「自分の家はどの区分か」を知る", """
 <p>全国の空き家約900万戸のうち、約半分は募集中の賃貸用です。「その他の空き家」の約386万戸も、放置されている家という意味ではなく、統計上の区分名です。</p>
-<p>まずは、自分の市町で二次的住宅が多いのか、その他が多いのかを見てみてください。それだけでも、地域の事情がぐっと見えてきます。活用の選択肢は<a href="media/akiya-utilization-options.html">空き家の活用方法と向き不向き</a>で、注目されている理由は<a href="media/why-akiya-utilization-now.html">なぜ今、空き家の活用が注目されているのか</a>で紹介しています。</p>
+<p>まずは、自分の市町で二次的住宅が多いのか、その他が多いのかを見てみてください。それだけでも、地域の事情がぐっと見えてきます。</p>
 """),
         ],
         figure=("data", points("空き家900万戸の内訳（全国）", [
@@ -116,7 +116,7 @@ ARTICLES_SERIES1 = [
         ],
     ),
     dict(
-        slug="why-akiya-utilization-now",
+        slug="why-akiya-utilization-now", related=['akiya-utilization-options'],
         keyword="空き家 活用",
         date=D, updated="2026-11-06", topics=["trend", "sell"], photo=("old-town-street", "古い町家が並ぶ通り"),
         title="なぜ今「空き家の活用」が注目されるのか｜税の負担・活用の道・民泊の追い風",
@@ -159,7 +159,7 @@ ARTICLES_SERIES1 = [
 </table>
 <p class="table-note">※ 2026年10月時点。特例は国税庁 タックスアンサー No.3306、住宅用地の特例は総務省「やさしい地方税」によります。貸したり宿にしたりしたときの固定資産税の扱いは、建物の使い方で変わることがあるため、市の資産税の窓口に確認してください。</p>
 <p>一つ気をつけたいのが、売る順番です。宿や賃貸にしてから売ると、3,000万円の特例は使えません。売る可能性が少しでもあるなら、貸す・宿にする前に決めておくと安心です（詳しくは<a href="media/akiya-3000man-deduction.html">3,000万円特別控除の記事</a>）。</p>
-<p>もう一つ見てほしいのが、相手の違いです。売る・貸すの相手はその地域で住まいを探す人ですが、宿の相手は外から来る旅行者です。そのため、住まいとしては借り手や買い手がつきにくい家でも、宿としては選ばれることがあります。4つの道の詳しい比べ方は<a href="media/akiya-utilization-options.html">空き家の活用方法と向き不向き</a>にまとめています。</p>
+<p>もう一つ見てほしいのが、相手の違いです。売る・貸すの相手はその地域で住まいを探す人ですが、宿の相手は外から来る旅行者です。そのため、住まいとしては借り手や買い手がつきにくい家でも、宿としては選ばれることがあります。</p>
 <p>では、宿の相手である旅行者は、いまどれくらいいるのでしょう。</p>
 """),
             ("market", "4つを比べると、なぜ宿に追い風があるのか？", """
@@ -348,7 +348,7 @@ ARTICLES_SERIES1 = [
         ],
     ),
     dict(
-        slug="souzoku-touki-gimuka",
+        slug="souzoku-touki-gimuka", related=['inherited-house-family-talk'],
         keyword="相続登記 義務化",
         date=D, updated="2026-11-06", topics=["sell", "money"], photo=("window-garden", "窓から見える庭"),
         title="相続登記の義務化とは？空き家を相続して売る・民泊にする前にやること",
@@ -392,7 +392,7 @@ ARTICLES_SERIES1 = [
 <ol class="steps">
 <li><strong>相続人と財産を確かめる</strong>：戸籍で相続人を確認し、家や土地の登記の内容を調べます。</li>
 <li><strong>家の状態を見ておく</strong>：雨漏りや傷みがないか、鍵や書類がどこにあるかを確かめます。管理が足りないまま勧告（市からの正式な改善の求め）を受けると、住宅用地の特例（敷地の税を軽くする決まり）が外れます（<a href="media/akiya-law-kanri-fuzen.html">空家法の改正で何が変わったのか</a>）。</li>
-<li><strong>家族で方針を話し合う</strong>：誰が引き継ぐか、売るか、貸すか、活かすかを話し合います。進め方は<a href="media/inherited-house-family-talk.html">相続した実家を家族でどう決めるか</a>で紹介しています。</li>
+<li><strong>家族で方針を話し合う</strong>：誰が引き継ぐか、売るか、貸すか、活かすかを話し合います。</li>
 <li><strong>登記をする</strong>：自分で申請するか、司法書士（登記の専門家）に依頼します。</li>
 </ol>
 <p>登記と並んで、家の使い道でも先に決めておきたいことがあります。</p>
@@ -429,7 +429,7 @@ ARTICLES_SERIES1 = [
         ],
     ),
     dict(
-        slug="akiya-holding-costs",
+        slug="akiya-holding-costs", related=['why-akiya-utilization-now', 'akiya-3000man-deduction'],
         keyword="空き家 維持費",
         date=D, updated="2026-11-06", topics=["sell", "money"], photo=("autumn-garden", "紅葉した庭"),
         title="空き家の維持費はいくら？税金・見回りの内訳と、民泊・賃貸で賄う考え方",
@@ -534,7 +534,7 @@ ARTICLES_SERIES1 = [
 </tbody>
 </table>
 <p>同じ3か月の売上は合計で約100万円、営業利益（売上から費用を引いた利益）は約45万円でした。持ち家を宿にするなら家賃は要りませんが、残りの運営費はかかります。維持費をまかなえるかは、この運営費を引いたあとの利益で見ます。</p>
-<p>賃貸と宿の収入の比べ方は<a href="media/minpaku-vs-rental-income.html">民泊と普通の賃貸、収入の仕組みはどう違う？</a>に、道ごとの向き不向きは<a href="media/akiya-utilization-options.html">空き家の活用方法を比べる</a>にあります。売るときの特例は<a href="media/akiya-3000man-deduction.html">相続した空き家を売るときの3,000万円特別控除</a>で説明しています。</p>
+<p>賃貸と宿の収入の比べ方は<a href="media/minpaku-vs-rental-income.html">民泊と普通の賃貸、収入の仕組みはどう違う？</a>に、道ごとの向き不向きは<a href="media/akiya-utilization-options.html">空き家の活用方法を比べる</a>にあります。</p>
 """),
             ("summary", "まとめ：税と見回りで、年にいくらかを先に出す", """
 <p>評価額1,200万円の土地なら、大津市の計算例の税と、二本松市の案内の見回り（月1回）を足して、年に6万円ほどが目安です。建物の分と都市計画税は含みません。</p>
@@ -563,7 +563,7 @@ ARTICLES_SERIES1 = [
         ],
     ),
     dict(
-        slug="akiya-utilization-options",
+        slug="akiya-utilization-options", related=['akiya-bank-guide', 'why-minpaku-for-akiya', 'minpaku-vs-rental-income'],
         keyword="空き家 活用方法",
         date=D, updated="2026-11-06", topics=["house", "lend"], photo=("thatched-house", "かやぶき屋根の古民家"),
         title="空き家の活用方法を比べる｜売る・貸す・民泊にするの向き不向き",
@@ -665,7 +665,7 @@ ARTICLES_SERIES1 = [
 <p>この約48%は、売りにも貸しにも出ていない家です。使い道を決める前の段階の家が多いようです。</p>
 <p class="table-note">※ 売却用が80戸と少ないのは、売りに出ている数であり、買い手の需要の大きさを示すものではありません。</p>
 <p>一方、賃貸用に出ている空き家は1,230戸です。ただ、この数だけでは借り手の多さまでは分かりません。近隣の賃料と募集の状況を、不動産会社に聞いて確かめるのが確実です。</p>
-<p>貸す場合は、入居者が住める状態にする修繕や、設備の故障への対応を、貸主が負担する契約も多くあります。負担の分け方は、契約しだいです。契約の種類による違いは<a href="media/akiya-lease-types.html">空き家を貸す契約の種類</a>で比べています。借り手や買い手を探す入口としては、自治体の<a href="media/akiya-bank-guide.html">空き家バンクの登録方法と使い方</a>も確かめられます。</p>
+<p>貸す場合は、入居者が住める状態にする修繕や、設備の故障への対応を、貸主が負担する契約も多くあります。負担の分け方は、契約しだいです。契約の種類による違いは<a href="media/akiya-lease-types.html">空き家を貸す契約の種類</a>で比べています。</p>
 <p>どの道もすぐには決めきれないときは、どうすればいいのでしょう。</p>
 """),
             ("choose", "迷ったときや持ち続けるときは、何をどの順で確かめるか？", """
@@ -683,7 +683,7 @@ ARTICLES_SERIES1 = [
 """),
             ("summary", "まとめ：数字で確かめてから、道を選ぶ", """
 <p>5つの道は、売却なら控除の要件、解体なら補助の対象条件、貸す・宿なら借り手や旅行者の動きで分かれます。まずは、家の築年と相続の日、市の補助の受付状況を確かめてみてください。そこから、選ぶための材料がそろってきます。</p>
-<p>宿にする道を選ぶ理由は<a href="media/why-minpaku-for-akiya.html">空き家の活用で、なぜ民泊・小さな宿が選ばれるのか</a>で、貸す場合との収入の違いは<a href="media/minpaku-vs-rental-income.html">民泊と普通の賃貸の収入の違い</a>で説明しています。</p>
+
 <p>借り上げや買取、宿としての運営を含めた相談は、<a href="service-operation.html">空き家再生事業</a>で受けています。</p>
 """),
         ],
@@ -715,7 +715,7 @@ ARTICLES_SERIES1 = [
         ],
     ),
     dict(
-        slug="inherited-house-family-talk",
+        slug="inherited-house-family-talk", related=['why-akiya-utilization-now'],
         keyword="相続 実家 話し合い",
         date=D, updated="2026-11-06", topics=["sell", "lend"], photo=("irori-room", "囲炉裏のある古い家の居間"),
         title="相続した実家を売る・貸す・民泊にする？家族での話し合いの進め方",
@@ -866,7 +866,7 @@ ARTICLES_SERIES1 = [
         ],
     ),
     dict(
-        slug="why-minpaku-for-akiya",
+        slug="why-minpaku-for-akiya", related=['japan-tourism-market-data'],
         keyword="空き家 民泊",
         date=D, updated="2026-11-06", topics=["trend", "start"], photo=("scene-stay", "和室から見える町と山の景色"),
         title="空き家の活用で、なぜ民泊・小さな宿が選ばれるのか",

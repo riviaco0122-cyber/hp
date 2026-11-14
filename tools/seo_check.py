@@ -546,6 +546,27 @@ def check_article(add, pp, page_url, text, p, ld_objs, types, sitemap, articles,
         add("warn", pp, "構造化データ FAQPage がない（AIO向けに推奨）")
     if 'class="keypoints' not in text:
         add("warn", pp, "「この記事のポイント」がない（AIO向けに推奨）")
+    # 本文の中の、ほかの記事への案内（「詳しくは〜」）は、1節に1つ・1記事に5つまで（人の指摘 2026-11-14：多いと読みづらい。
+    # 外した行き先は記事データの related に入れ、「あわせて読みたい」に並べる。playbook 2章）。表のマス・事例へのリンクの部品は数えない
+    total, over_sec = 0, []
+    for sid, sec in re.findall(r'<section class="article__section" id="([^"]+)"[^>]*>(.*?)</section>', text, re.S):
+        if sid == "faq":
+            continue
+        sec = re.sub(r'<table\b.*?</table>|<(ul|div|ol)[^>]*class="[^"]*(?:case-links|carousel)[^"]*".*?</\1>', "", sec, flags=re.S)
+        n, last = 0, None
+        for m in re.finditer(r'<a [^>]*href="(?:\.\./)*(?:media/)?([a-z0-9-]+)\.html"', sec):
+            if m.group(1).startswith(("guide-", "category-", "service-", "plans", "learn", "contact", "media", "index", "search")):
+                continue
+            if last is None or "。" in re.sub(r"<[^>]+>", "", sec[last:m.start()]):  # 同じ文の中の2本目以降は、1つの案内として数える
+                n += 1
+            last = m.end()
+        total += n
+        if n > 1:
+            over_sec.append(f"{sid}（{n}）")
+    if over_sec:
+        add("error", pp, f"本文のほかの記事への案内が、1つの節に2つ以上ある: {'、'.join(over_sec)}（1節1つまで。残りは記事データの related へ）")
+    if total > 5:
+        add("error", pp, f"本文のほかの記事への案内が {total} 個ある（1記事5つまで。残りは記事データの related へ）")
     # 対談（.talk）は「顔写真＋吹き出し」の2つだけ。注記などが入ると吹き出しが1文字幅に潰れて縦書きのようになる
     for extra in re.findall(r'<div class="talk__body">.*?</div>(.*?)</div>', text, re.S):
         if extra.strip():

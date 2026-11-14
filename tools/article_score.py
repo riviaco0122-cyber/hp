@@ -159,6 +159,8 @@ def parse_html(text):
     # リンクの href（資料名がリンクになっている参考資料）も、URL ありと数える
     d["sources"] = [(strip_tags(x).strip() + " " + " ".join(re.findall(r'href="(https?://[^"]+)"', x))).strip() for x in re.findall(r"<li>(.*?)</li>", m.group(0), re.S)] if m else []
     links = re.findall(r'href="([^"]+)"', body)
+    rel = re.search(r'<span class="eyebrow">Related</span>.*?</section>', text, re.S)  # 記事の最後の「あわせて読みたい」
+    links += re.findall(r'href="([^"]+)"', rel.group(0)) if rel else []
     d["article_links"] = sorted({l for l in links if re.search(r"media/[a-z0-9-]+\.html", l) and "category-" not in l and "guide-" not in l})
     cta = re.search(r'<aside class="article-cta">.*?</aside>', text, re.S)
     d["service_links"] = sorted(set(re.findall(r'href="[^"]*(service-[a-z]+\.html)', body + (cta.group(0) if cta else ""))))
@@ -225,7 +227,7 @@ def parse_article(a):
     d["faq_text"] = strip_tags(" ".join(ans for _, ans in a["faq"]))
     d["faq_ld"] = len(a["faq"])  # 構造化データ FAQPage は同じ faq から作られる
     d["sources"] = list(a["sources"])
-    links = re.findall(r'href="([^"]+)"', body_html)
+    links = re.findall(r'href="([^"]+)"', body_html) + [f"media/{x}.html" for x in a.get("related", [])]
     d["article_links"] = sorted({l for l in links if re.search(r"media/[a-z0-9-]+\.html", l) and "category-" not in l and "guide-" not in l})
     # 記事末尾の「この記事に関連するサービス」は services から作られる
     d["service_links"] = sorted(set(re.findall(r'href="[^"]*(service-[a-z]+\.html)', body_html)) | {f"service-{k}.html" for k in a["services"]})
@@ -338,7 +340,7 @@ def score(d):
     add("参考資料（3件以上・公的機関か観光系大手企業を含む）", (3 if len(counted) >= 3 else len(counted)) + (2 if pub else 0), 5,
         f"{len(counted)}件（うち公的機関 {pub}件{extra}）")
     al, sl = d["article_links"], d["service_links"]
-    add("本文から他の記事へのリンク（2本以上）", 2 if len(al) >= 2 else len(al), 2, f"{len(al)}本")
+    add("他の記事へのつながり（本文の案内と「あわせて読みたい」で2本以上。本文の案内は1節1つ・1記事5つまで＝seo_check）", 2 if len(al) >= 2 else len(al), 2, f"{len(al)}本")
     add("関連サービスへのリンク（1本以上）", 2 if sl else 0, 2, ", ".join(sl) or "なし")
 
     text = d["body_text"]
