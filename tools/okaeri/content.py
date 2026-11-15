@@ -282,11 +282,11 @@ ARTICLES = [
    "For somewhere to stay, you’ve got a town’s trial home, a monthly rental or a guesthouse with monthly rates. From abroad, the last two are usually more realistic.",
  ],
  "body": """
-<p>An akiya (空き家) is simply a house that nobody lives in. Japan’s 2023 Housing and Land Survey counted 9.0 million of them on 1 October 2023, a record 13.8% of the country’s homes [[s:stat_housing2023]]. About 3.86 million weren’t for rent or sale and weren’t anyone’s second home either, up by 369,000 since 2018 [[s:stat_housing2023]]. That’s the group people usually mean when they talk about Japan’s abandoned houses.</p>
+<p>An akiya (空き家) is simply a house that nobody lives in. Japan’s 2023 Housing and Land Survey counted 9.0 million of them on 1 October 2023, a record 13.8% of the country’s homes [[s:stat_housing2023]]. About 3.86 million weren’t for rent or sale and weren’t anyone’s second home either, up by 369,000 since 2018 [[s:stat_housing2023]]. In our experience, that’s usually the group people mean when they talk about Japan’s abandoned houses.</p>
 
 <h2>Can foreigners buy an akiya?</h2>
 <p>Yes. Non-residents can buy, and the Ministry of Finance’s rules spell out what they need to do. Since April 2026, a non-resident who buys property in Japan has to report the purchase to the ministry under the Foreign Exchange Act, even a home they plan to live in [[s:mof_fefta2026,mof_realprop_faq]]. Real Estate Japan, a property site for foreign buyers, makes the same point: you don’t need to live in Japan to buy [[s:rej]]. Since 5 October 2026, every buyer, Japanese or not, gives their nationality when the purchase is registered [[s:moj_nationality]].</p>
-<p>The rules are still moving. As of November 2026, a bill before the Diet would create new zones within about 1 km of some defence and coast guard sites, and on uninhabited border islands [[s:cao_land_bill,cao_land_bill_outline]]. Every transfer of land ownership in those zones would need the government’s approval in advance, and the law would take effect within 18 months of being promulgated [[s:cao_land_bill_outline]].</p>
+<p>The rules are still moving. As of November 2026, a bill before the Diet would create new zones within about 1 km of some defence and coast guard sites, and on uninhabited border islands [[s:cao_land_bill,cao_land_bill_outline]]. Every transfer of land ownership in those zones would need the government’s approval in advance, and the law would take effect within 18 months of becoming law [[s:cao_land_bill_outline]].</p>
 [[ed:Check the bill’s progress in the House of Representatives (222nd Diet, cabinet bill no. 18): has it passed, when was it promulgated, and when does it take effect?]]
 <p>We’d also treat a house and a visa as two separate questions. If you’re hoping that owning a home will help you stay in Japan longer, ask an administrative scrivener (<em>gyoseishoshi</em>) who handles visas before you count on it. With the rules changing this fast, we think it’s sensible to have a lawyer or judicial scrivener (<em>shiho shoshi</em>) look at your own case before you sign.</p>
 [[ed:Confirm with a gyoseishoshi or the Immigration Services Agency how owning property relates to residence status. No official source has been found for this yet.]]
@@ -327,7 +327,7 @@ ARTICLES = [
 <div class="tablewrap"><table class="free">
 <thead><tr><th>Option</th><th>How long</th><th>Good to know</th></tr></thead>
 <tbody>
-<tr><td><strong>A town’s trial home</strong> (<em>otameshi jutaku</em>)</td><td>From a day or two up to a few months, and in one city up to two years [[s:shizuoka_trial,minamialps_trial,shizuoka_long_trial]]</td><td>Each town sets its own rules, mostly for people planning to move. Minami-Alps City lets one for one to three months at ¥21,000 a month (February 2026) [[s:minamialps_trial]].</td></tr>
+<tr><td><strong>A town’s trial home</strong> (<em>otameshi jutaku</em>)</td><td>From a day or two up to a few months, and in one city for up to just under two years [[s:shizuoka_trial,minamialps_trial,shizuoka_long_trial]]</td><td>Each town sets its own rules, mostly for people planning to move. Minami-Alps City rents its trial home for one to three months at ¥21,000 a month (February 2026) [[s:minamialps_trial]].</td></tr>
 <tr><td><strong>A monthly rental</strong></td><td>A month or more</td><td>A furnished room or flat let by the month. In a small town there may be few to choose from, so it helps to search early.</td></tr>
 <tr><td><strong>A guesthouse or holiday home with monthly rates</strong></td><td>A week to a month or more</td><td>Often the easiest to book from abroad, and you can try living in an older house without committing to anything.</td></tr>
 </tbody></table></div>
@@ -383,7 +383,7 @@ ARTICLES = [
     "泊まる場所は、自治体のお試し住宅、マンスリーの部屋、月割のある宿の3つ。海外から来るなら、たいていは後の2つが現実的です。",
   ],
   "body": """
-<p>akiya（空き家）は、ひとことで言えば、誰も住んでいない家のことです。2023年の住宅・土地統計調査では、2023年10月1日時点で900万戸、日本の住宅の13.8%が空き家で、割合は過去最高でした[[s:stat_housing2023]]。そのうち約386万戸は、貸すためでも売るためでもなく、別荘でもない家で、2018年から36万9千戸増えました[[s:stat_housing2023]]。「日本の放置された家」と言うとき、たいていはこの家のことを指しています。</p>
+<p>akiya（空き家）は、ひとことで言えば、誰も住んでいない家のことです。2023年の住宅・土地統計調査では、2023年10月1日時点で900万戸、日本の住宅の13.8%が空き家で、割合は過去最高でした[[s:stat_housing2023]]。そのうち約386万戸は、貸すためでも売るためでもなく、別荘でもない家で、2018年から36万9千戸増えました[[s:stat_housing2023]]。私たちの感覚では、「日本の放置された家」と言うとき、たいていはこの家のことを指しています。</p>
 
 <h2>外国人は空き家を買えるのか</h2>
 <p>買えます。日本に住んでいない人も買うことができ、何をすればいいかは財務省の決まりに書かれています。2026年4月から、日本に住んでいない人が日本の不動産を買うと、住むための家でも、外為法にもとづいて財務省に報告することになりました[[s:mof_fefta2026,mof_realprop_faq]]。外国からの買い手向けの不動産サイト Real Estate Japan も、買うのに日本に住んでいる必要はないと書いています[[s:rej]]。2026年10月5日からは、日本人も含めて、買った人はみな登記のときに国籍を届け出ます[[s:moj_nationality]]。</p>
@@ -428,7 +428,7 @@ ARTICLES = [
 <div class="tablewrap"><table class="free">
 <thead><tr><th>選択肢</th><th>期間</th><th>知っておきたいこと</th></tr></thead>
 <tbody>
-<tr><td><strong>自治体のお試し住宅</strong></td><td>町によって、1〜2日から数か月まで。2年まで住める市もあります[[s:shizuoka_trial,minamialps_trial,shizuoka_long_trial]]</td><td>決まりは町ごとで、多くは移住するつもりの人向け。南アルプス市は1〜3か月、月21,000円で貸しています（2026年2月）[[s:minamialps_trial]]。</td></tr>
+<tr><td><strong>自治体のお試し住宅</strong></td><td>町によって、1〜2日から数か月まで。2年近く住める市もあります[[s:shizuoka_trial,minamialps_trial,shizuoka_long_trial]]</td><td>決まりは町ごとで、多くは移住するつもりの人向け。南アルプス市は1〜3か月、月21,000円で貸しています（2026年2月）[[s:minamialps_trial]]。</td></tr>
 <tr><td><strong>マンスリーの部屋</strong></td><td>1か月以上</td><td>家具付きの部屋を月単位で借ります。小さな町では選べる数が少ないこともあるので、早めに探すと安心です。</td></tr>
 <tr><td><strong>月割のある宿・貸別荘</strong></td><td>1週間〜1か月以上</td><td>海外からいちばん予約しやすいことが多く、何も契約せずに古い家での暮らしを試せます。</td></tr>
 </tbody></table></div>
