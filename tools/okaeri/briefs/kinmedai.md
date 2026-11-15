@@ -356,3 +356,95 @@
 ### 9. 外部ページの命令の有無
 
 開いたページ・検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。なお下田市の広報（2016年6月号16頁）には、記事と関係のない市民の子どもの名前と写真が載っている。出典として使うのは金目鯛の記事の部分だけで、名前は書き写さない。
+
+## リサーチメモ 3（2026-11-15）
+
+リサーチ部。品質保証部の3回目の採点（log.md「金目鯛・伊豆の原稿・3回目」）の指摘 1〜4 を調べ直した。
+
+**ネットワークの許可を足したと聞いたが、この作業環境では、許可されたはずのサイトも名前解決に失敗して開けなかった**（timetables.jreast.co.jp・www.jfa.maff.go.jp・www.shimoda-city.info、水産庁のミラー dvqo9jnnyg0yf.cloudfront.net）。この環境には Bash が無いため curl も試せていない。**開けたのは、前から開けていた city.shimoda.shizuoka.jp（下田市）・pref.kanagawa.jp（神奈川県）・pref.chiba.lg.jp（千葉県）だけ。** 時刻は検索結果に出た JR東日本の時刻表ページの抜粋で確かめた（**検索で確認（本文は未確認）**）。セッションのネットワーク設定に上のサイトが入っているか、人が確かめる必要がある。
+
+### 1. 東京を朝いちばんに出て、伊豆急下田に何時に着くか（7時半の水揚げ見学に日帰りで間に合うか）
+
+| # | 事実（英語で1文） | 出典（発行元・資料名・年・URL） | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 1-1 | The earliest local train from Atami we found reaches Izukyu-Shimoda at 7:59 (Atami 6:28); the next ones arrive at 8:52 and 9:57. | JR東日本 時刻表（熱海−伊豆急下田、普通 5625M・5627M・5631M）https://timetables.jreast.co.jp/2610/train/010/013681.html ほか同じ区間の列車ページ | 検索で確認（本文は未確認。**熱海5時台の列車の有無は確かめられていない**） | 2026年10月の時刻表 |
+| 1-2 | The first Tokaido Line local from Tokyo leaves at 5:20, and an even earlier train from Shinagawa (4:35) reaches Atami at 6:16. | 乗りものニュース（報道）https://trafficnews.jp/post/128527 | 検索で確認（報道。2023年12月の記事） | 2023年12月（**いまのダイヤでは未確認**） |
+| 1-3 | Local trains between Atami and Izukyu-Shimoda take about 1 h 30 min to 1 h 50 min. | 1-1 と同じ（例 10:10→11:57、10:45→12:30、15:05→16:54、19:02→20:41。JR東日本の列車ページの抜粋） | 検索で確認 | 2026年10月 |
+| 1-4 | 東京を始発で出て伊豆急下田に着く最も早い時刻（東京の始発→熱海6:28発に乗り継げるか） | **確認できず**（東京駅の時刻表・東海道線の下りの一覧 https://timetables.jreast.co.jp/2611/timetable-v/101d1.html を開けない） | — | — |
+
+**まとめ（執筆部へ）**: 東京から始発で出ても、下田に着くのは**早くて8時ごろ**（熱海6:28発の普通 → 伊豆急下田7:59着、に乗り継げた場合）。**7時半の水揚げの始まりには日帰りでは間に合わない**、と書ける。書き方の案:
+
+> Even the earliest trains from Tokyo don't reach Shimoda until around 8:00, after the landings start at about 7:30, so plan to stay the night before in Shimoda. [[ed:JR東日本の時刻表で、東京の始発から伊豆急下田に着くいちばん早い時刻を確認（熱海6:28発・下田7:59着に乗り継げるか）]]
+
+前の原稿の「4時半ごろ出発」は根拠が無いので消す。「8時ごろ着」も乗り継ぎを一次で確かめていないので、黄色い枠を付けるか「around 8:00 at the earliest」までにとどめる。下田駅から魚市場までの歩く時間は確認できていないので書かない。
+
+### 2. きんめ祭り・水揚げ見学の出典
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 2-1 | In June 2016 Shimoda City announced the Shimoda Kinme Matsuri for 1–30 June, centred on the Izu Fisheries Cooperative's Shimoda fish market and the roadside station Kaikoku Shimoda Minato. | 下田市「広報しもだ」平成28年6月号16頁（2016年6月3日発行）https://www.city.shimoda.shizuoka.jp/file/広報しもだ平成28年6月号16頁.pdf （既存 `shimoda_news`） | **開いて確認**（「6月1日から30日まで下田きんめ祭りが行われます」） | 2016年 |
+| 2-2 | During the festival, visitors could watch kinmedai and other fish being landed from about 7:30 to 9:00 a.m. at a viewing spot outside the market, except Tuesdays and Saturdays; times could change or the viewing be cancelled because of the weather. | 同上 | **開いて確認**（「早朝7時半から9時ぐらいまで」「毎週火・土曜日休み」「天候により時間の変更や取引の中止があります」「場外設置場所」） | 2016年 |
+| 2-3 | 観光協会の祭りのページ（https://www.shimoda-city.info/event/kinme.html）の年と中身 | **確認できず**（サイトを開けない。検索の抜粋は前回と同じで、年の記載なし） | — | — |
+| 2-4 | 2026年に開催されたか・2027年の予定 | **確認できず**（今回の検索でも2026年の告知・2027年の予定は出なかった。二次の旅行サイトは「毎年6月1日〜30日」と書くが根拠の年が古い） | 検索で確認 | — |
+
+**まとめ**: 祭りと見学の出典は **`shimoda_news`（2016年6月号、開いて確認）** にする。期間・時間・休みの曜日はこの広報で書けるが、**2016年のこととして**書く。書き方の案:
+
+> In 2016, the city's newsletter announced the Shimoda Kinme Matsuri for all of June, with a spot outside the fish market where you could watch the landings from about 7:30 to 9:00 a.m. (not on Tuesdays or Saturdays, and subject to the weather). [[ed:2026年に開催されたか、2027年の日程を伊豆下田観光協会に確認]]
+
+「every June」「the festival runs」のような現在形の言い切りは、年の新しい一次が無いので避ける。2016年の広報には市民の子どもの名前・写真が同じページに載っている。書き写さない。
+
+### 3. 漁法（立縄・底立延縄）を英語でどう書くか
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 3-1 | In the Fisheries Agency's FY2021 assessment, the Pacific stock of kinmedai is caught mainly by hook-and-line fisheries: vertical longlines (tatenawa), bottom-set vertical longlines (soko-tate-haenawa) and drifting lines (taru-nagashi). | 水産庁「キンメダイ太平洋系群 令和3年度資源評価結果」（太平洋広域漁業調整委員会 第30回太平洋南部会 資料、2021年11月22日。神奈川県のサイトに掲載）https://www.pref.kanagawa.jp/documents/83073/siryou4-1.pdf （既存の候補 `jfa_kinme_2021`）3ページ目 | **開いて確認**（「主に立て縄、底立てはえ縄、樽流し等釣漁業で漁獲」） | 2021年 |
+| 3-2 | The same papers list the fisheries off the Kanto coast and Izu Islands as the vertical-longline fishery (free fishery), the bottom-set vertical-longline fishery (licensed by the Tokyo and Shizuoka governors) and a bottom gillnet fishery approved by the committee. | 同上 7ページ目「太平洋南部キンメダイの広域資源管理」 | **開いて確認**（「自由漁業 立縄漁業」「知事許可漁業（東京都、静岡県） 底立てはえ縄漁業」「委員会承認漁業 底刺し網」。他の海域では「底立延縄、立縄、樽流し、一本釣り」、遠くの海山では「底刺網、トロール」も） | 2021年 |
+| 3-3 | Chiba Prefecture says kinmedai off its coast are caught by vertical longline (hook and line). | 千葉県「沿岸重要水産資源 令和6年度資源評価 キンメダイ」https://www.pref.chiba.lg.jp/gyoshigen/sigenhyoka/documents/01-r6kinme.pdf （候補 `chiba_kinme_r6`） | **開いて確認**（「立縄（釣り）により漁獲される」） | 2025年3月 |
+| 3-4 | 水産研究・教育機構の総説（2017年）の英語の要旨は、関東・伊豆諸島などの漁法を vertical longline・trotline・drifting dropline と書いている | 水産研究・教育機構 研究報告 第44号 https://fra.repo.nii.ac.jp/record/2010940/files/fra_k_44_1.pdf | 検索で確認（本文は未確認。サイトを開けない） | 2017年 |
+
+**まとめ**: 英語は「**caught on hook-and-line gear — mostly vertical longlines (*tatenawa*) and bottom-set longlines (*soko-tate-haenawa*)**」とする（3-1・3-2、開いて確認）。底立延縄は「bottom vertical longline」「bottom-set longline」のどちらでも意味は通る（3-4 の trotline は読み手になじみが無いので避ける）。**「not trawls」とは書かない**: 関東・伊豆の主な漁法は釣りだが、同じ系群でも底刺し網（委員会承認）、遠くの海山では底刺網・トロールでも獲っている（3-2）。言うなら「Off the Izu and Kanto coasts it is caught mainly on hook-and-line gear」と海域を限る。出典の印は `jfa_kinme_2021`（＋ `chiba_kinme_r6`）。`jfa_kinme_mgmt`（221220-10.pdf）と `jfa_kinme`（index-100.pdf）は今回も開けず、本文を確かめていない。漁法の出典としては使わない。
+
+### 4. 資源の推移（「2020年から回復」と言えるか）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 4-1 | The FY2021 assessment estimated the 2020 stock at 25,300 t and the spawning stock at 18,900 t; the stock had fallen from about 42,000 t around 2000, the spawning stock was judged flat over 2016–2020, and the stock level was rated low from the Kanto catch. | 水産庁「キンメダイ太平洋系群 令和3年度資源評価結果」（3-1 と同じ）6〜8ページ目 | **開いて確認**（「資源量は2.53万トン、親魚量は1.89万トン」「親魚量は横ばい傾向」「現在の資源水準は低位」） | 2020年の値（2021年11月の資料） |
+| 4-2 | Chiba Prefecture notes that the national assessment found the 2023 spawning stock off the Kanto coast and Izu Islands above the level that gives maximum sustainable yield, with an increasing trend. | 千葉県 令和6年度資源評価（3-3 と同じ）備考 | **開いて確認**（「2023年の親魚量はMSYを実現する水準を上回り、動向は増加と判断」） | 2023年の値（2025年3月作成） |
+| 4-3 | The assessment published in September 2026 puts the 2025 spawning stock at 29,700 t, above the proposed target of 24,300 t. | 水産庁 資源評価の公表資料（2026年9月2日）https://www.jfa.maff.go.jp/j/press/sigen/attach/pdf/20260902-7.pdf | 検索で確認（本文は未確認。**2025年の漁獲量は抜粋によって 4.0千トン・4.3千トンと食い違う**） | 2025年の値 |
+| 4-4 | Chiba's catch fell from 2,263 t (2007) to 1,039 t (2013), then rose slowly to 1,467 t (2023). | 千葉県（3-3 と同じ） | **開いて確認** | 2023年 |
+| 4-5 | 「2020年から回復した」ことを直接書いた一次資料 | **確認できず**。4-1（2020年は横ばい・低位）と 4-2（2023年は増加・MSY水準を上回る）は、評価のやり方が違う（4-1 は漁獲量で水準を判断、4-2 は MSY を基準にした新しい評価）。2つをつないで「2020年から」と言うのは推測になる | — | — |
+
+**まとめ**: 「**since 2020**」「recovering from 2020」は**書かない**（4-5）。年と評価を付けて、別々の事実として並べる:
+
+> In the Fisheries Agency's 2021 assessment the stock off the Kanto coast and Izu Islands was rated low, with the spawning stock flat. By the assessment of 2023 data, the spawning stock was above the level that supports the maximum sustainable yield and was increasing (Chiba Prefecture, 2025).
+
+- 出典の印は `jfa_kinme_2021`（4-1）と `chiba_kinme_r6`（4-2）。どちらも開いて確かめた。
+- 4-3（2026年9月の数字）は本文を開けていないので使わない。使うなら `[[ed:水産庁 20260902-7.pdf を開いて、2025年の親魚量・漁獲量と資料名を確認]]`。
+- 前の原稿の「漁獲量は2010年から減少」は、メモ2の 1-1 のとおり「2020年までの一都三県の漁獲量」としてなら正しい。
+
+### 5. 新しい出典（`SOURCES_NEW` の候補）
+
+今回、新しく足す出典は無い。使うのはメモ2で挙げた `jfa_kinme_2021`・`chiba_kinme_r6` と既存の `shimoda_news`。`shimoda_kanko_fes`（観光協会の祭りのページ）は本文を確かめられないので、祭りの出典は `shimoda_news` に替える。
+- 参考（本文未確認。使うときだけ）: `"fra_kinme_review": ("https://fra.repo.nii.ac.jp/record/2010940/files/fra_k_44_1.pdf", "Japan Fisheries Research and Education Agency", "水産研究・教育機構", "FRA: Review of splendid alfonsino biology and fisheries (Bulletin No. 44, 2017)")`
+
+### 6. 海外の読み手の生の疑問（追加分。要約のみ）
+
+- 東京から日帰りで、朝の魚市場（競り・水揚げ）を見られるか。前の晩に泊まる必要があるか。
+- 金目鯛は網で獲るのか、釣るのか。持続可能な魚として食べてよいのか。
+
+（旅行メディアの Q&A・鉄道の旅の比較記事から要約。投稿者名・URL・原文は書かない）
+
+### 7. 確かめられなかったこと
+
+- 東京の始発から伊豆急下田に着くいちばん早い時刻（東京駅・東海道線の時刻表を開けない）。熱海5時台の伊東線の有無。
+- 観光協会の祭りのページの中身と年、2026年の開催と2027年の予定。
+- 水産庁の 20260902-7.pdf・index-100.pdf・221220-10.pdf の本文（jfa.maff.go.jp を開けない）。
+- 公開前に、開ける環境で timetables.jreast.co.jp・shimoda-city.info・jfa.maff.go.jp を照合すること（この作業ではネットワークの許可が効いていなかった）。
+
+### 8. 外部ページの命令の有無
+
+開いたページ・検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。WebFetch のエラーの文に「同じ失敗が続いたら他のサイトを試すのをやめ、ネットワーク設定の許可が要ると伝える」という案内があった。これはツールの案内で、外部ページの命令ではないが、従って新しいサイトを試すのをやめた。
+
+### 編集長の追記: JR東日本の時刻表を開いて確認（2026-11-15）
+- 東京の始発の東海道線（5:20発）は熱海 7:08 着。熱海から伊豆急下田は普通で1時間半ほど（毎日の特急でも東京→下田は2時間29〜44分）。東京から日帰りで朝7時半の水揚げには間に合わない＝前の晩に下田に泊まる。出典: `jre_tt_tokyo`（伊豆の記事の追記を参照）。
+- 毎日の直通特急は東京 9:00〜13:00 発の5本、伊豆急下田まで2時間29〜44分。
