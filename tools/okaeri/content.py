@@ -46,9 +46,10 @@ SOURCES = {
 # 読み手の入口は「どこまで日本に深く関わるか」の1本の軸で分ける（重ならず、漏れない）:
 #   stay = 旅行者として1週間〜1か月滞在する ／ live = 一年の一部を暮らす（数か月・毎年・仕事をしながら）／ own = 家を持つ（空き家を買う・直す・運営する）
 # 記事は必ずこの3つのどれか1つ（"topic"）に入れる。ほかの段階の読み手にも役立つ記事は "also" に足す（一覧の「こちらも役立つ」に出る）。
+# kanji は入口の印（漢字一文字）。季節の色は site.css の .t-<キー>（春=旅・夏=暮らし・秋=家・冬=場所）。
 # 場所（places）は別の軸。記事に "place" があれば場所の一覧にも出る。
 TOPICS = {
-    "stay": {"kind": "plan", "name": "Stay longer", "ja": "長めに旅する", "photo": "window-room",
+    "stay": {"kind": "plan", "name": "Stay longer", "ja": "長めに旅する", "kanji": "旅", "photo": "window-room",
              "photo_alt": "Two low chairs and a small table by a window with paper screens, looking out over water",
              "path_label": "A longer trip", "path_desc": "A week to a month as a visitor: towns, food, getting there.",
              "path_ja": "長めの旅（旅行者として1週間〜1か月）",
@@ -56,7 +57,7 @@ TOPICS = {
              "description": "Guides for travellers who want a week or a month in one small Japanese town instead of a different city every night: access, seasons, food and where to stay.",
              "intro": "For a week or a month as a visitor. One town instead of a different hotel every night: how to get there, when to go, what to eat and how a house changes the trip.",
              "coming": ["Shimoda for a week or longer", "The Japanese countryside for a longer stay"]},
-    "live": {"kind": "plan", "name": "Live part-time", "ja": "一年の一部を暮らす", "photo": "town-lane",
+    "live": {"kind": "plan", "name": "Live part-time", "ja": "一年の一部を暮らす", "kanji": "暮", "photo": "town-lane",
              "photo_alt": "Quiet paved lane between hedges and low houses, with green hills behind",
              "path_label": "Living here part of the year", "path_desc": "Months at a time, or every year: remote work, visas, monthly homes.",
              "path_ja": "一年の一部を暮らす（数か月・毎年・仕事をしながら）",
@@ -64,7 +65,7 @@ TOPICS = {
              "description": "How to live in small-town Japan for months at a time or every year: how long you can stay, Japan’s digital nomad visa, monthly homes and working remotely.",
              "intro": "For months at a time, or a season every year. How long you can stay, Japan’s digital nomad visa, renting a home by the month and working remotely from a small town.",
              "coming": ["Renting a house in Japan for a month", "Japan’s digital nomad visa, and where to base yourself", "How long can you stay in Japan?"]},
-    "own": {"kind": "plan", "name": "Own a home", "ja": "家を持つ", "photo": "empty-tatami-room",
+    "own": {"kind": "plan", "name": "Own a home", "ja": "家を持つ", "kanji": "家", "photo": "empty-tatami-room",
             "photo_alt": "Empty tatami room in an old wooden house, with sliding windows open to a garden",
             "path_label": "Owning a home here", "path_desc": "Buying, restoring or running an akiya.",
             "path_ja": "家を持つ（空き家を買う・直す・運営する）",
@@ -72,7 +73,7 @@ TOPICS = {
             "description": "Plain guides to owning an akiya, one of Japan’s vacant houses: who can buy one, what it really costs, restoring it and testing the town before you commit.",
             "intro": "Japan has about nine million empty homes, and foreigners can buy them. The listings are the easy part. These guides cover what an akiya really costs, what owning one does and does not give you, and how to try a town before you sign.",
             "coming": ["Can foreigners buy property in Japan?", "What is an akiya?", "Cheap and free houses in Japan: the real cost", "Akiya banks explained"]},
-    "places": {"kind": "place", "name": "Places", "ja": "場所", "photo": "rocky-coast",
+    "places": {"kind": "place", "name": "Places", "ja": "場所", "kanji": "地", "photo": "rocky-coast",
                "photo_alt": "Waves breaking against dark volcanic cliffs on a rocky coastline",
                "seo_title": "Small-Town Japan: Place Guides for Longer Stays",
                "description": "Guides to the towns where we run homes and the regions around them, starting with the Izu Peninsula, written for people staying a week or longer.",

@@ -33,8 +33,8 @@ ORG_ID = SITE + "/about.html#organization"              # 会社（アキヤド�
 TODAY = date.today().isoformat()
 TOPIC_INDEX_MIN = 3  # テーマ別の一覧ページを検索に載せる（index）最少の記事数。それ未満は noindex,follow でメニューからだけ使う
 
-FONTS_EN = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
-FONTS_ALL = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Noto+Sans+JP:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+FONTS_EN = "https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap"  # 見出し=明朝（Shippori Mincho）・UI=Zen Kaku Gothic New・本文=Source Serif 4
+FONTS_ALL = "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap"
 # ロゴのツバメ（横向きで右へ飛ぶ。丸い体・白いお腹・赤いのど）。ヘッダー・ファビコン（SVG）とロゴ・OGP（PNG）は、この1つの形から作る。
 # 色: ink=文字色 / paper=背景色（白目・お腹） / red=のど。パスは絶対座標の M・L・C・Z だけで書く（PNG 用に折れ線へ直すため）。
 MARK_SHAPES = [
@@ -50,7 +50,7 @@ MARK_SHAPES = [
 
 def mark_svg(colors=None, attrs='class="mark" aria-hidden="true"'):
     """ロゴの SVG。colors を渡すと色を固定する（ファビコン用）"""
-    c = colors or {"ink": "currentColor", "paper": "var(--paper)", "red": "var(--red)"}
+    c = colors or {"ink": "currentColor", "paper": "var(--paper)", "red": "var(--shu)"}
     parts = [f'<circle cx="{v[0]}" cy="{v[1]}" r="{v[2]}" fill="{c[k]}"/>' if isinstance(v, tuple) else f'<path fill="{c[k]}" d="{v}"/>'
              for k, v in MARK_SHAPES]
     return f'<svg {attrs} viewBox="0 0 64 64">{"".join(parts)}</svg>'
@@ -215,14 +215,14 @@ def plural(n, word):
 
 
 def topic_chip(ctx, k):
-    return f'<a class="chip" href="{ctx.href("topic-" + k)}">{esc(C.TOPICS[k]["name"])}</a>'
+    return f'<a class="chip t-{k}" href="{ctx.href("topic-" + k)}">{esc(C.TOPICS[k]["name"])}</a>'
 
 
 def article_chips(ctx, a):
     out = topic_chip(ctx, a["topic"])
     if a.get("place"):
         pl = C.PLACES[a["place"]]
-        out += f'<a class="chip chip--place" href="{ctx.href(pl["page"])}">{esc(pl["name"])}</a>'
+        out += f'<a class="chip t-places" href="{ctx.href(pl["page"])}">{esc(pl["name"])}</a>'
     return out
 
 
@@ -248,7 +248,7 @@ def cta(ctx):
 # ------------------------------------------------------------------ 各ページの本文
 def page_home(ctx):
     paths = "".join(
-        f'<a class="path" href="{ctx.href("topic-" + k)}">{img(ctx, t["photo"], t["photo_alt"], bare=True, sizes="(max-width: 40rem) 100vw, 22rem", want=640)}'
+        f'<a class="path t-{k}" href="{ctx.href("topic-" + k)}"><span class="path__seal" lang="ja" aria-hidden="true">{t["kanji"]}</span>{img(ctx, t["photo"], t["photo_alt"], bare=True, sizes="(max-width: 40rem) 100vw, 22rem", want=640)}'
         f'<span class="path__body"><span class="path__label">{esc(t["path_label"])}</span>'
         f'<span class="path__desc">{esc(t["path_desc"])}</span>'
         f'<span class="path__meta">{esc(t["name"])} · {plural(len(hub_articles(k)), "guide") if hub_articles(k) else "Guides coming soon"} →</span></span></a>'
@@ -260,6 +260,7 @@ def page_home(ctx):
 <section class="hero">
 {img(ctx, "coastal-village", "Wooden houses along a calm bay below green wooded hills", bare=True, eager=True, sizes="100vw", want=1600)}
 <div class="hero__shade"></div>
+<p class="hero__ja" lang="ja" aria-hidden="true">おかえり</p>
 <div class="wrap wide hero__inner">
 <p class="hero__kicker">Stay longer · Live part-time · Own a home</p>
 <h1>Live in small-town Japan for a month.</h1>
@@ -350,7 +351,7 @@ def page_topic(ctx, k):
             + (f'<div class="grid3">{"".join(card(ctx, a) for a in arts)}</div>' if arts else "") + '</section>')
     also_html = (f'<section class="band"><div class="band__head"><h2>Also useful</h2></div><p class="band__sub">Filed under another plan, but they cover part of this one.</p>'
                  f'<div class="grid3">{"".join(card(ctx, a) for a in also)}</div></section>') if also else ""
-    return (f'<section class="topichead">{img(ctx, t["photo"], t["photo_alt"], bare=True, eager=True, sizes="100vw", want=1600)}<div class="hero__shade"></div>'
+    return (f'<section class="topichead t-{k}">{img(ctx, t["photo"], t["photo_alt"], bare=True, eager=True, sizes="100vw", want=1600)}<div class="hero__shade"></div><span class="topichead__kanji" lang="ja" aria-hidden="true">{t["kanji"]}</span>'
             f'<div class="wrap wide topichead__inner">{crumbs(ctx, [(NAME, "home"), ("Guides", "guides"), (t["name"], None)])}'
             f'<h1>{esc(t["name"])}</h1><p>{esc(t["intro"])}</p></div></section>'
             f'<div class="wrap wide">{first}{main}{also_html}'
@@ -709,7 +710,7 @@ def dist_html(page, main, ctx):
         head += [f'<meta property="article:published_time" content="{a["published"]}">', f'<meta property="article:modified_time" content="{a["updated"]}">']
     head += [
         f'<link rel="icon" href="{PRE}/assets/favicon.svg" type="image/svg+xml">', f'<link rel="apple-touch-icon" href="{PRE}/assets/apple-touch-icon.png">',
-        '<meta name="theme-color" content="#f3f5f4" media="(prefers-color-scheme: light)">', '<meta name="theme-color" content="#0f181d" media="(prefers-color-scheme: dark)">',
+        '<meta name="theme-color" content="#f7f3ea" media="(prefers-color-scheme: light)">', '<meta name="theme-color" content="#12161f" media="(prefers-color-scheme: dark)">',
         '<link rel="preconnect" href="https://fonts.googleapis.com">', '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
         f'<link href="{FONTS_EN}" rel="stylesheet">', f'<link rel="stylesheet" href="{PRE}/assets/site.css">', ld_for(page),
     ]
@@ -733,7 +734,7 @@ def make_images():
     sans = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
     if not os.path.exists(serif):
         return False
-    ink, paper, red, sea = (21, 35, 45), (243, 245, 244), (194, 55, 44), (29, 106, 115)
+    ink, paper, red, sea = (28, 34, 48), (247, 243, 234), (185, 61, 38), (43, 74, 126)  # site.css の墨・和紙・朱・藍
     shapes = mark_polys()
 
     def mark(im, x, y, s, fill):
@@ -831,7 +832,7 @@ def build():
         write(out_file(p["path"]), dist_html(p, render(rctx := Ctx("dist", p["id"]), p), rctx))
     ednotes_en = list(ednotes)
     write(os.path.join(DIST, "assets/site.css"), CSS)
-    write(os.path.join(DIST, "assets/favicon.svg"), mark_svg({"ink": "#15232d", "paper": "#f3f5f4", "red": "#c2372c"}, 'xmlns="http://www.w3.org/2000/svg"'))
+    write(os.path.join(DIST, "assets/favicon.svg"), mark_svg({"ink": "#1c2230", "paper": "#f7f3ea", "red": "#b93d26"}, 'xmlns="http://www.w3.org/2000/svg"'))
     make_images()
     shutil.copytree(os.path.join(HERE, "photos"), os.path.join(DIST, "assets/photos"))
     shutil.copytree(os.path.join(HERE, "photos"), os.path.join(PREVIEW, "assets/photos"))
