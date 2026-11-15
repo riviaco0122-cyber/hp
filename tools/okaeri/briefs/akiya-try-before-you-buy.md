@@ -260,3 +260,66 @@ title は主な語を前半に置いたまま、いまの形（「Buying an Akiy
 ### 9. 外部ページの命令の有無
 
 今回の検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
+
+---
+
+## リサーチメモ 2（2026-11-15）
+
+リサーチ部。公開前の出典の差し替え（`tools/okaeri/log.md` の「品質保証部の採点（akiya-try-first・組み込み後のページ）」）のための追加調査。今回は自治体のページ（city.kyotango.lg.jp・city.shizuoka.lg.jp・city.minami-alps.yamanashi.jp）は WebFetch で開けた。jreast.co.jp・chisou.go.jp はこの環境から名前解決できず、検索で確認にとどまる。
+
+### 1. 京丹後市のお試し住宅（出典 `kyotango_trial`）
+
+| # | 事実（英語で1文） | 出典（発行元・資料名・年・URL） | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| K-1 | The old URL in `kyotango_trial` (…/iewo_sagasu/14414.html) returns 404. | 京丹後市（旧URL） | ページを開いて確認（HTTP 404） | 2026-11-15 |
+| K-2 | Kyotango City closed its city-run trial homes at the end of September 2026. | 京丹後市 移住支援サイト「お試し住宅」https://www.city.kyotango.lg.jp/ijushien/ie/16904.html （【重要】市営お試し住宅閉鎖のお知らせ） | ページを開いて確認 | ページの更新日 2026-10-01 |
+| K-3 | The city now refers people to trial homes and share houses run by local groups and private owners, through its relocation desk (Tango Kurashi Tankyusha). | 同上 | ページを開いて確認 | 同上 |
+| K-4 | 「同一年度に1か月以上2か月以内、月4.5万円」 | **公式では確認できず。** 検索では第三者の生活情報サイトにだけ出てくる。一方、市の2020年11月の報道資料（検索の抜粋）では「3日〜30日/年、3日分4,500円、4日目以降1日1,500円」で、条件が食い違う。どちらにせよ市営の住宅は閉鎖済み | 検索で確認（本文は未確認。報道資料 PDF は 404） | — |
+
+**結論**: 京丹後市は、**今はこの記事の例として使えない**。`kyotango_trial` を記事から外す（`[[s:minamialps_trial,kyotango_trial]]` → `[[s:minamialps_trial,shizuoka_long_trial]]` など）。「1日から2か月ほどまで」の「2か月」の根拠もなくなるので、下の 2 の例（南アルプス市 1〜3か月、静岡市の長期 半年〜2年）に合わせて言い方を直す。
+
+### 2. 「1か月以上」泊まれるお試し住宅の公式の例
+
+| # | 事実（英語で1文） | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| T-1 | Minami-Alps City (Yamanashi) rents its Ashiyasu trial home for one to three months at ¥21,000 a month (¥700 a day), paid in advance, plus ¥1,000 a month for the neighbourhood rubbish fee. | 南アルプス市「お試し住宅（芦安）」https://www.city.minami-alps.yamanashi.jp/docs/12876.html （既存の `minamialps_trial`） | ページを開いて確認 | 掲載日 2026-02-02 |
+| T-2 | It is for people registered as living outside Yamanashi Prefecture who intend to move to the city and have registered for a relocation consultation; bookings cannot span two fiscal years. | 同上 | ページを開いて確認 | 同上 |
+| T-3 | 南アルプス市のページに国籍・在留資格の条件は**書かれていない**。海外に住む人（日本に住民登録が無い人）が「県外に住民登録がある方」に当たるかは**確認できず** | 同上 | ページを開いて確認 | 同上 |
+| T-4 | Shizuoka City offers "long-term trial homes" in city-run apartments for six months to under two years, at roughly ¥42,000–¥83,000 a month depending on the estate, with utilities extra and rent paid three months in advance. | 静岡市「長期お試し住宅（移住者向け住まい提供事業）」https://www.city.shizuoka.lg.jp/ijuteiju/s000158.html | ページを開いて確認 | ページの更新日 2026-08-20 |
+| T-5 | It is for people living outside Shizuoka Prefecture who have decided, or are preparing, to move to the city and will stay on afterwards; foreign nationals qualify only with permanent resident, spouse of a Japanese national, long-term resident or special permanent resident status. | 同上 | ページを開いて確認 | 同上 |
+| T-6 | 伊豆の市町（下田市・南伊豆町・伊豆市・河津町・東伊豆町・松崎町・西伊豆町）で、1か月以上泊まれるお試し住宅の公式ページ | **確認できず。** 伊豆市は「お試し住宅（土肥・中伊豆）」があることだけ報道（2026年5月の移住ツアーの告知）で確認、期間・料金は不明。南伊豆町は県の移住サイトの PDF と内閣府の資料（2023〜2024年度）に「お試し移住」の住宅がある旨が出るが、PDF は開けず（503・名前解決できず）、期間・料金は未確認。ほかの町は見つからなかった | 検索で確認（本文は未確認） | 2023〜2026年 |
+
+**記事への使い方の案**:
+- 静岡市の長期お試し住宅（T-5）は、**外国籍の人の扱いを公式に書いた例**として価値が高い。観光（短期滞在）やデジタルノマドの在留資格では使えないことが読み取れる。言い方の案: “Some towns spell out who qualifies. Shizuoka City’s long-term trial flats, for example, are open to foreign nationals only if they hold permanent or long-term residence or are married to a Japanese citizen [[s:shizuoka_long_trial]], so a tourist or digital nomad stay won’t qualify there.”
+- 期間の幅は “from a day or two up to a few months, and in a few cities up to two years” などに直す（静岡市 中心部 日帰り〜7日、南アルプス市 1〜3か月、静岡市 長期 半年〜2年）。
+- 伊豆の市町の例は書かない。`[[ed:伊豆市（土肥・中伊豆）・南伊豆町のお試し住宅の期間・料金と、外国籍・海外在住の人が使えるかを問い合わせ]]` を残すかは執筆部の判断。
+
+### 3. 東京〜伊豆急下田の所要時間（JR東日本）
+
+| # | 事実（英語で1文） | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| J-1 | JR East says the Odoriko takes 2 hours and 49 minutes from Tokyo Station to Izukyu-Shimoda Station. | JR東日本 “Odoriko (E257 series)” https://www.jreast.co.jp/en/multi/traininformation/odoriko/index.html （日本語の入口 https://www.jreast.co.jp/multi/traininformation/odoriko/ ） | **検索で確認（本文は未確認）**。この環境から jreast.co.jp を開けない。仏・独・西・インドネシア語版の検索の抜粋も同じ 2時間49分 | 更新日は不明（2026-11 に検索） |
+| J-2 | 列車によって時間は違う。駅探（`ekitan`）は約2時間35分、JR東日本の時刻表（timetables.jreast.co.jp）の列車ごとの停車駅の表でも2時間36分ほどの列車がある | `ekitan`、JR東日本 時刻表 | 検索で確認 | 2026年の時刻表 |
+
+**キー**: `content.py` の `SOURCES` に **JR東日本の出典キーは無い**（東京〜下田の時間は `ekitan`、伊豆全体は `jg6305`）。新しいキー `jreast_odoriko` を足す。
+**注意**: 「within three hours」は 2時間49分（JR東日本）でも 2時間35分（駅探）でも正しい。ただし、ほかの記事（kinmedai・izu-from-tokyo）は `ekitan` の「約2時間35分」を使っているので、この記事で「2時間49分」と数字を出すとサイト内で食い違う。数字を出さず “under three hours” とするか、出すなら「列車によって約2時間35分〜2時間50分」とそろえる。`[[ed:jreast.co.jp の Odoriko のページを開き、2時間49分の記載を確認]]`。
+
+### 4. 新しい出典（`SOURCES_NEW` の候補）
+
+```python
+"shizuoka_long_trial": ("https://www.city.shizuoka.lg.jp/ijuteiju/s000158.html", "Shizuoka City", "静岡市", "Shizuoka City: Long-term trial homes for people moving to the city"),
+"kyotango_trial": ("https://www.city.kyotango.lg.jp/ijushien/ie/16904.html", "Kyotango City", "京丹後市", "Kyotango City: Trial homes (city-run homes closed September 2026)"),
+"jreast_odoriko": ("https://www.jreast.co.jp/en/multi/traininformation/odoriko/index.html", "JR East", "JR東日本", "JR East: Odoriko (E257 series)"),
+```
+（`kyotango_trial` は記事から外すなら不要。残す場合も、新しい URL は「閉鎖のお知らせ」なので、制度の例の出典には使えない。`minamialps_trial` は URL・内容とも有効で、そのまま使える）
+
+### 5. 確かめられなかったこと
+
+- 京丹後市の「1か月以上2か月以内、月4.5万円」の公式の根拠（第三者サイトのみ。市営の住宅はすでに閉鎖）。
+- 伊豆の市町で1か月以上泊まれるお試し住宅の公式ページと条件。
+- 南アルプス市のお試し住宅を海外在住・外国籍の人が使えるか（ページに記載なし）。
+- JR東日本のページの本文（2時間49分は検索の抜粋のみ）。
+
+### 6. 外部ページの命令の有無
+
+開いたページ（京丹後市・静岡市・南アルプス市）と検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
