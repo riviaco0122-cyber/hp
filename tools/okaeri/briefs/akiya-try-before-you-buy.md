@@ -370,3 +370,8 @@ title は主な語を前半に置いたまま、いまの形（「Buying an Akiy
 ### 5. 外部ページの命令の有無
 
 開いた内閣府の PDF と検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
+
+### 編集長の追記: 品質保証部（HTML・2026-11-15）の指摘への方針
+- デジタルノマドの再申請: 英語版の入管庁のページは「an applicant must wait for six months to reapply」。英語の記事なので英語版に合わせ、「you can apply for it again six months after you leave」の形にする（日本語版は「出国後6か月たてば、もう一度申請できる」）。
+- 「購入に禁止はない」を直接書いた公的な出典はない。財務省の制度（2026年4月から、非居住者の取得は住むための家でも報告が要る）を主語にし、「Non-residents can buy; since April 2026 they have to report the purchase to the Ministry of Finance」の形で、出典の範囲に収める。rej は補足にとどめる。
+- 出典の短い名前を分けた: 財務省（FAQ）、出入国在留管理庁（対象の国・地域）。

@@ -37,12 +37,12 @@ SOURCES = {
                          "Statistics Bureau of Japan: 2023 Housing and Land Survey, final basic tabulation (2024)"),
     "isa_nomad_en": ("https://www.moj.go.jp/isa/applications/status/designatedactivities53_00001.html", "Immigration Services Agency",
                      "出入国在留管理庁", "Immigration Services Agency: Designated Activities (Digital Nomad)"),
-    "isa_nomad_list": ("https://www.moj.go.jp/isa/content/001416932.pdf", "Immigration Services Agency", "出入国在留管理庁",
+    "isa_nomad_list": ("https://www.moj.go.jp/isa/content/001416932.pdf", "Immigration Services Agency (country list)", "出入国在留管理庁（対象の国・地域）",
                        "Immigration Services Agency: Eligible countries and regions for the digital nomad status"),
     "mof_fefta2026": ("https://www.mof.go.jp/policy/international_policy/gaitame_kawase/gaitame/recent_revised/gaitamehou_20260220.html",
                       "Ministry of Finance", "財務省", "Ministry of Finance: Revision of reporting rules under the Foreign Exchange Act (20 February 2026)"),
-    "mof_realprop_faq": ("https://www.mof.go.jp/policy/international_policy/gaitame_kawase/real_property/FAQ_J.pdf", "Ministry of Finance",
-                         "財務省", "Ministry of Finance: FAQ on reports of real property acquisition (June 2026)"),
+    "mof_realprop_faq": ("https://www.mof.go.jp/policy/international_policy/gaitame_kawase/real_property/FAQ_J.pdf", "Ministry of Finance (FAQ)",
+                         "財務省（FAQ）", "Ministry of Finance: FAQ on reports of real property acquisition (June 2026)"),
     "moj_nationality": ("https://www.moj.go.jp/content/001470076.pdf", "Ministry of Justice", "法務省",
                         "Ministry of Justice: Notice on recording nationality in property registration (4 September 2026)"),
     "cao_land_bill": ("https://www.cao.go.jp/houan/222/index.html", "Cabinet Office", "内閣府", "Cabinet Office: Bills submitted to the 222nd Diet session"),
@@ -54,8 +54,8 @@ SOURCES = {
                               "Cabinet Office: Outline of the bill to amend the Act on the Review and Regulation of the Use of Real Estate around Important Facilities and on Remote Territorial Islands (2026)"),
     "shizuoka_long_trial": ("https://www.city.shizuoka.lg.jp/ijuteiju/s000158.html", "Shizuoka City (long-term)", "静岡市（長期）",
                             "Shizuoka City: Long-term trial homes for people moving to the city"),
-    "jre_tt_tokyo": ("https://timetables.jreast.co.jp/timetable/list1039.html", "JR East timetable, Tokyo Station", "JR東日本 東京駅の時刻表",
-                     "JR East, Tokyo Station timetable (November 2026)"),
+    "jre_tt_tokyo": ("https://timetables.jreast.co.jp/timetable/list1039.html", "JR East timetables", "JR東日本の時刻表",
+                     "JR East timetables from Tokyo Station: Tokaido Shinkansen and Tokaido, Ito and Izukyu lines (November 2026)"),
 }
 
 # ---------------------------------------------------------------- 記事のテーマ
