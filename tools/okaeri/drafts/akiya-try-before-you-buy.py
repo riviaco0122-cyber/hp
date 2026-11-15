@@ -21,8 +21,8 @@ SOURCES_NEW = {
                          "Minami-Alps City: Trial homes for people considering a move"),
     "shizuoka_long_trial": ("https://www.city.shizuoka.lg.jp/ijuteiju/s000158.html", "Shizuoka City", "静岡市",
                             "Shizuoka City: Long-term trial homes for people moving to the city"),
-    "jreast_odoriko": ("https://www.jreast.co.jp/en/multi/traininformation/odoriko/index.html", "JR East", "JR東日本",
-                       "JR East: Odoriko (E257 series)"),
+    "jre_tt_tokyo": ("https://timetables.jreast.co.jp/timetable/list1039.html", "JR East timetable, Tokyo Station", "JR東日本 東京駅の時刻表",
+                     "JR East, Tokyo Station timetable (November 2026)"),
     "shizuoka_trial": ("https://www.city.shizuoka.lg.jp/ijuteiju/s000050.html", "Shizuoka City", "静岡市",
                        "Shizuoka City: Trial homes for people considering a move"),
 }
@@ -53,27 +53,28 @@ ARTICLE = {
 <p>Yes. As of November 2026, Japan doesn’t ban foreigners or non-residents from buying a home [[s:rej,mof_realprop_faq]]. There’s more paperwork than before, though. Since April 2026, non-residents who buy property have to report it under the Foreign Exchange Act, even a home they plan to live in [[s:mof_fefta2026,mof_realprop_faq]]. Since 5 October 2026, every buyer, Japanese or not, gives their nationality when the purchase is registered [[s:moj_nationality]].</p>
 <p>The rules are still moving. As of November 2026, a bill before the Diet would create new zones within about 1 km of some defence and coast guard sites, and on uninhabited border islands [[s:cao_land_bill,cao_land_bill_outline]]. Every transfer of land ownership in those zones would need the government’s approval in advance, and the law would take effect within 18 months of being promulgated [[s:cao_land_bill_outline]].</p>
 [[ed:Check the bill’s progress in the House of Representatives (222nd Diet, cabinet bill no. 18): has it passed, when was it promulgated, and when does it take effect?]]
-<p>We’d also treat a house and a visa as two separate questions. If you’re hoping that owning a home will help you stay in Japan longer, ask an immigration specialist (<em>gyoseishoshi</em>) before you count on it. With the rules changing this fast, we think it’s sensible to have a lawyer or judicial scrivener (<em>shiho shoshi</em>) look at your own case before you sign.</p>
+<p>We’d also treat a house and a visa as two separate questions. If you’re hoping that owning a home will help you stay in Japan longer, ask an administrative scrivener (<em>gyoseishoshi</em>) who handles visas before you count on it. With the rules changing this fast, we think it’s sensible to have a lawyer or judicial scrivener (<em>shiho shoshi</em>) look at your own case before you sign.</p>
 [[ed:Confirm with a gyoseishoshi or the Immigration Services Agency how owning property relates to residence status. No official source has been found for this yet.]]
 
 <h2>Why live in the town before you buy?</h2>
-<p>The house is the cheap part. What you’re really committing to is the town, and a listing can only tell you so much: the price, the floor plan, a few photos. The things that decide whether you’ll be happy there only show up once you’ve lived there for a while.</p>
+<p>Buying the house is the easy part. What you’re really committing to is the town, and a listing can only tell you so much: the price, the floor plan, a few photos. The things that decide whether you’ll be happy there only show up once you’ve lived there for a while.</p>
 <div class="tablewrap"><table>
 <thead><tr><th>What you want to know</th><th>How a month shows you</th></tr></thead>
 <tbody>
 <tr><td>How cold an old wooden house gets in January, and what heating costs</td><td>You’ll feel it on the first cold night and see it on the electricity bill.</td></tr>
-<tr><td>Whether daily life works without a car</td><td>A week of shopping and errands on foot, by bus or by bike makes it obvious.</td></tr>
+<tr><td>Whether daily life works without a car</td><td>A week of shopping and errands on foot, by bus or by bike makes it obvious. Our house in Shimoda is about ten minutes’ walk from the station, with a supermarket, a convenience store and places to eat nearby, and that kind of spot is easy to test.</td></tr>
 <tr><td>Where you’ll buy food, and when the shops close</td><td>Cooking most of your own meals soon shows you what’s easy to find and what isn’t.</td></tr>
 <tr><td>How rubbish sorting works on that street</td><td>You’ll be following the local collection calendar like everyone else. If there’s an English version, it’s worth asking city hall for it.</td></tr>
 <tr><td>Whether the internet holds up for a working day</td><td>Normal working hours, video calls included, are the real test.</td></tr>
 <tr><td>What humid months and typhoons do to the building</td><td>Neighbours and local builders know what tends to fail first in houses like it.</td></tr>
-<tr><td>How the neighbourhood treats a newcomer</td><td>Saying hello, joining a clean-up day if there is one, and asking how other newcomers settled in will tell you a lot.</td></tr>
+<tr><td>How the neighbourhood treats a newcomer</td><td>Saying hello, joining a clean-up day if there is one, and asking how other newcomers settled in will tell you a lot. Neighbours notice small things, too. When our broadband was being installed in Shimoda, we heard from neighbours about where the engineer’s van was parked.</td></tr>
 </tbody></table></div>
 <p>None of this comes up in a viewing.</p>
 
 <h2>What only shows up once you live in an old house?</h2>
 <p>The wiring and the internet, in our experience. We learnt this when one of our founding members rented an old house in Shimoda from its owner and turned it into a guesthouse. We rented rather than bought, but we think a buyer would run into the same things.</p>
 <p>The old two-wire electrics couldn’t run the air conditioner, the fridge and the microwave all at once, so we had to ask guests not to use them together. Upgrading the wiring costs real money, so it’s something to find out before you budget, not after. Getting broadband put in took more than two months because it was the busy season, and we got by on a plug-in home router until then.</p>
+<p>That’s true of cheap houses in general. The asking price is only part of the bill: renovation, taxes, insurance and upkeep come on top, and they vary so much from one building to the next that only written quotes will tell you the real figure.</p>
 
 <h2>How long can you stay in Japan to test a town?</h2>
 <p>Long enough for a proper trial, for most people. There are two main ways to do it without a work or residence visa, and the rules below are as of November 2026.</p>
@@ -95,16 +96,17 @@ ARTICLE = {
 <tr><td><strong>A monthly rental</strong></td><td>A month or more</td><td>A furnished room or flat let by the month. In a small town there may be few to choose from, so it helps to search early.</td></tr>
 <tr><td><strong>A guesthouse or holiday home with monthly rates</strong></td><td>A week to a month or more</td><td>Often the easiest to book from abroad, and you can try living in an older house without committing to anything.</td></tr>
 </tbody></table></div>
-<p>Trial homes sound ideal, but there’s a catch: they’re built for people who are moving, not for people testing a town from abroad. Minami-Alps City’s home is for people registered as living outside Yamanashi who intend to move to the city and have signed up for a relocation consultation [[s:minamialps_trial]]. The page doesn’t mention nationality, so if you live overseas, the city’s relocation desk can tell you whether you’d qualify.</p>
+<p>Trial homes sound ideal, but there’s a catch: they’re built for people who are moving, not for people testing a town from abroad. Minami-Alps City’s home is for people registered as living outside Yamanashi who intend to move to the city and have signed up for a relocation consultation [[s:minamialps_trial]]. Nationality isn’t one of the listed conditions, so if you live overseas, the city’s relocation desk can tell you whether you’d qualify.</p>
 <p>Some cities spell it out. Shizuoka City’s long-term trial flats are city-run apartments you can rent for six months to under two years, but only if you live outside Shizuoka Prefecture and have decided to move to the city. Foreign nationals qualify only as permanent residents, long-term residents, special permanent residents or spouses of Japanese nationals (page updated August 2026) [[s:shizuoka_long_trial]]. So a tourist or digital nomad stay won’t qualify there. In our view, if you’re coming from abroad, a monthly rental or a guesthouse is usually the realistic choice. If you’ve set your heart on a trial home, the town’s relocation office is the first call to make.</p>
 [[ed:Ask the Izu towns (Shimoda, Minamiizu, Izu City) whether they have trial homes of a month or more, what they cost, and whether foreign nationals or people living overseas can use them.]]
-<p>Towns within reach of Tokyo are the easiest to test. Shimoda, on the [[l:izu|Izu Peninsula]], is under three hours away by direct train [[s:jreast_odoriko]], as our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]] explains. If it’s on your list, our home there, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, is one option among the ones above. It’s an older house in the old town, renovated for long stays and licensed under Japan’s Hotel Business Act, so it can take guests all year, with weekly and monthly discounts. Most of our guests so far have come from Europe and North America, and some come to work remotely.</p>
+<p>Towns within reach of Tokyo are the easiest to test. As of November 2026, the daily direct trains from Tokyo Station reach Shimoda, on the [[l:izu|Izu Peninsula]], in 2 hours 29 to 44 minutes [[s:jre_tt_tokyo]]. Our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]] has the details.</p>
+<p>If Shimoda is on your list, our own home there, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, is one of the guesthouse options above. It’s an older house in the old town, renovated for long stays and licensed under Japan’s Hotel Business Act. Most of our guests so far have come from Europe and North America, and some come to work remotely.</p>
 [[img:node-shimoda|Living room with a sofa, low table and sliding paper screens|The living room of NODE Shimoda, our home in Shimoda’s old town.]]
-[[ed:Confirm before publishing: the monthly rate, whether stays of 30 nights or more can always be accepted, and whether we may call the Shimoda house a restored akiya.]]
+[[ed:Confirm before publishing: whether stays of 30 nights or more can always be accepted, and whether we may call the Shimoda house an older house.]]
 
 <h2>What does a trial month look like?</h2>
 <p>Mostly, it looks like ordinary life, with a few deliberate tests built in. Here’s roughly how we’d spend it, based on what caught us out in Shimoda.</p>
-<p>The first week goes on settling in: the supermarket, the clinic, the bus stop and the rubbish calendar. If you’re staying in an older house, try running the air conditioner, fridge and microwave at the same time. That’s the test our own wiring failed, and it gives you a feel for what old electrics can and can’t handle.</p>
+<p>The first week goes on settling in: the supermarket, the clinic, the bus stop and the rubbish calendar. If you’re staying in an older house, ask your host what amperage the electricity contract allows and where the breaker box is. Our own old wiring couldn’t run the air conditioner, fridge and microwave together, and those two answers give you a feel for what an old house can handle.</p>
 <p>By the second week you’re working your usual hours and cooking at home. That’s when you find out whether the connection survives a day of video calls, and you’ll see what heating or cooling really costs. It’s also a good moment to ask a local provider how long a new line takes there, since ours took more than two months.</p>
 <p>The third week is for asking around. You might visit the city hall desk that handles empty houses, talk to a local agent, or ask a builder roughly what rewiring an old house costs. Neighbours are often the best people to tell you what humid summers and typhoons do to houses like theirs.</p>
 <p>By the fourth week you’ll have a fair idea of what would need to change, about the house and about the way you live. Writing those costs and doubts down while they’re fresh makes it much easier to compare towns, or to walk away.</p>
@@ -114,21 +116,22 @@ ARTICLE = {
    ("Can foreigners buy property in Japan?",
     "As of November 2026 there’s no ban, but non-residents must report a purchase under the Foreign Exchange Act, and every buyer gives their nationality at registration [[s:mof_fefta2026,moj_nationality]]. The rules are changing, so a lawyer or judicial scrivener can check your own case."),
    ("Will owning a house in Japan help me get a visa?",
-    "We wouldn’t count on it. We treat a house and a visa as separate questions, so if staying longer is part of your plan, ask an immigration specialist (<em>gyoseishoshi</em>) before you buy."),
+    "We wouldn’t count on it. We treat a house and a visa as separate questions, so if staying longer is part of your plan, ask an administrative scrivener (<em>gyoseishoshi</em>) who handles visas before you buy."),
    ("Is a cheap house in Japan really cheap?",
     "Not always. The purchase price is only one part of the bill. Renovation, taxes, insurance and upkeep come on top, and they vary a lot from one building to the next, so written quotes are the only way to know before you commit."),
    ("Can I use a town’s trial home as a foreigner?",
-    "It depends on the town. Trial homes are mostly for people who plan to move there, and some spell out who qualifies. As of August 2026, Shizuoka City’s long-term trial flats took foreign nationals only with permanent or long-term residence, or as the spouse of a Japanese national [[s:shizuoka_long_trial]]. The town’s relocation office will know the current rules."),
+    "It depends on the town. Trial homes are mostly for people who plan to move there, and some spell out who qualifies. As of August 2026, Shizuoka City’s long-term trial flats took foreign nationals only with permanent, long-term or special permanent residence, or as the spouse of a Japanese national [[s:shizuoka_long_trial]]. The town’s relocation office will know the current rules."),
    ("How many akiya are there in Japan?",
     "About 9.0 million homes were empty on 1 October 2023, 13.8% of all housing, according to the 2023 Housing and Land Survey [[s:stat_housing2023]]."),
  ],
  "sources": ["stat_housing2023", "rej", "mof_fefta2026", "mof_realprop_faq", "moj_nationality", "cao_land_bill", "cao_land_bill_outline", "mofa",
-             "isa_nomad_en", "isa_nomad_list", "minamialps_trial", "shizuoka_trial", "shizuoka_long_trial", "jreast_odoriko"],
+             "isa_nomad_en", "isa_nomad_list", "minamialps_trial", "shizuoka_trial", "shizuoka_long_trial", "jre_tt_tokyo"],
  "related": ["izu-from-tokyo", "izu"],
  "ja": {
   "h1": "日本で空き家を買う前に、まず1か月住んでみる",
   "dek": "日本には約900万戸の空き家があり、2026年11月時点で、外国人が買うことは禁止されていません。でも、家を買うのは簡単なほうです。本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
   "review": [
+   "【2026-11-15 組み込み前の仕上げ（品質保証部 90点・合格のあとの編集長の指摘8点）】変えた点: ①「家は安いほうの買い物」→「家を買うこと自体は簡単なほう」（リードと FAQ に合わせました）。配線の節の後に、改修・税金・保険・維持費が上乗せされ、本当の金額は書面の見積もりで分かる、の2文を足しました ②FAQ のお試し住宅の答えに特別永住者を足しました ③行政書士を英語で「在留資格（ビザ）の手続きを扱う行政書士（administrative scrivener）」と資格の名前で書きました（本文・FAQ） ④【事実の変更】「下田まで直通で3時間かからない」→「2026年11月時点で、東京駅から毎日走る直通で2時間29〜44分」。出典を編集長が確かめた JR東日本の東京駅の時刻表（jre_tt_tokyo）に替え、踊り子のページ（jreast_odoriko）は外しました ⑤南アルプス市の条件を「国籍は条件に挙げられていない」と制度の側から書きました ⑥NODE Shimoda の段落を3文にし、「一年中泊まれ、週割・月割がある」を削りました（黄色い枠から月額料金も外しました） ⑦「なぜ町で暮らすのか」の表の2行を、確認済みの体験（experience.md 3-2）につなげました。車の行に「下田の家は駅から徒歩10分ほどで、スーパー・コンビニ・飲食店が近い」、近所の行に「回線工事の車の停め方で近所から声をかけられた」 ⑧お試し1週目の「エアコン・冷蔵庫・電子レンジを同時に使ってみる」を、「泊まり先の人に契約のアンペア数とブレーカーの場所を聞く」に替えました。人に確かめてほしい点: 近所の行の書き方（experience.md では「工事の車両の駐車で近隣から指摘を受けた」）が、やわらげすぎ・強すぎになっていないか",
    "【2026-11-15 3回目の書き直し（品質保証部 84点・ゲート違反1、リサーチメモ 3）】変えた点: ①【事実の変更】土地の法案を、内閣府の法案の概要どおりに直しました。「重要な防衛施設の周りや国境の離島、国籍を問わず許可」→「一部の防衛関係施設と海上保安庁の施設の周り（おおむね1km）と無人の国境離島に区域をつくり、区域内の土地の所有権の移転はすべて事前許可。公布から1年6か月以内に施行」。審議の状況は「2026年11月時点で国会にかかっている」だけにし、10月23日の日付と内閣官房の提言の出典（cas_land_teigen）は外しました。新しい出典 cao_land_bill_outline を足しました ②【主張の変更】「家を買っても在留資格は付かない」「買うのにビザは要らない」は公的な出典が見つからなかったので、断定をやめました。本文・In short・FAQ とも「家とビザは別々の問題として考える、あてにする前に行政書士に聞く」という私たちの見方にし、黄色い枠を足しました ③description・card・In short の4項目目に「2026年11月時点」、FAQ のお試し住宅に「2026年8月時点」を入れました ④「海外に住む人が対象か確かめられなかった」という調べた側の言い方をやめ、「市の移住の窓口に聞けば分かる」にしました ⑤「it’s worth …」を7回から1回に減らし、締めの言い方を変えました（日本語版の「〜しておくと安心です」も同じように減らしました） ⑥「泊まれる場所」の節の最初の文で3つの選択肢の名前を言い、表のお試し住宅の欄を短くしました（静岡市オクシズの例と出典 okushizuoka_trial は外しました） ⑦「お試しの1か月」の節を、下田での体験（配線・回線工事の待ち）と表の項目につなげ、週ごとに試すこと（家電の同時使用、ビデオ会議と冷暖房費、回線工事にかかる期間を業者に聞く、配線のやり直しの費用を工務店に聞く、湿気・台風のことを近所に聞く、費用と迷いを書きとめる）を具体的にしました。新しい事実は足していません ⑧日本語版の伊豆半島への内部リンクを、日本語版の記事（ja-izu）に向くよう直しました ⑨In short の5項目目に「海外からならマンスリーか宿が現実的」を足しました（本文の見方と同じ）",
    "【2026-11-15 2回目の書き直し（リサーチメモ 2・組み込み後の採点の指摘）】変えた点: ①【事実の変更】京丹後市のお試し住宅は2026年9月末で市営の住宅が閉鎖されたため（市の閉鎖のお知らせ）、京丹後市を例から外し、出典 kyotango_trial も消しました。京丹後市にもとづいていた「1日から2か月ほどまで」は、「1〜2日から数か月まで、2年まで住める市もある」に直しました（静岡市 中心部・南アルプス市 1〜3か月・静岡市 長期 半年〜2年） ②お試し住宅の例を、リサーチ部が公式ページを開いて確かめた2つにしました。南アルプス市（芦安、1〜3か月・月21,000円、山梨県外に住民登録があり移住するつもりで移住相談に登録した人。国籍の記載なし）と、静岡市の長期お試し住宅（市営住宅に半年以上2年未満、静岡県外に住み移住を決めた人、外国籍は永住者・定住者・特別永住者・日本人の配偶者等に限る） ③お試し住宅は「移住する人のための仕組み」で、観光やデジタルノマドの滞在では使えない市があることを正直に書き、海外から来るならマンスリーか宿のほうが現実的だという見方を「私たちの考え」として添えました。FAQ の「外国人でも使えるか」も静岡市の例で答え直しました ④前の「たいてい町の外に住民登録がある人」という言い方（実際は県外が多い）をやめ、市ごとの条件をそのまま書きました ⑤「下田まで直通で3時間以内」に JR東日本（踊り子）の出典を付けました。数字は出していません ⑥「お試しの1か月」の節を、「1週目：…」のラベルの箇条書きから、ふつうの文章の段落に直しました ⑦伊豆の市町の黄色い枠を「1か月以上泊まれるか・料金・外国籍や海外在住の人が使えるか」に広げました",
    "【2026-11-15 品質保証部の指摘を受けた書き直し】変えた点: ①「購入に国籍・在留の制限はない」の断定をやめ、「2026年11月時点で禁止はないが、手続きは増えた（2026年4月から非居住者は外為法の報告、10月5日から登記で国籍の届出）。重要な区域の土地の許可制の法案が10月23日に国会に出ている」の形にし、専門家（弁護士・司法書士）に確かめるよう添えました（財務省・法務省・内閣府・内閣官房の出典） ②デジタルノマドを、出入国在留管理庁の条件どおりに直しました（対象はビザ免除かつ租税条約のある国・地域の人、年収1,000万円以上、治療費1,000万円以上の民間医療保険、日本の会社には雇われない、6か月で更新不可、出国から6か月たてば再び可）。時点は2026年11月 ③滞在の手段（観光の短期滞在・デジタルノマド）を表にしました ④空き家の数の出典を、総務省統計局の確報（2024年9月公表）1つにしました（900万戸・13.8%・過去最高、使い道のない空き家 約386万戸・2018年から36.9万戸増） ⑤「1か月泊まれる場所」の節を新しく書き、自治体のお試し住宅（自治体ごと、条件は町の外に住民登録があって移住を考えている人など。例は静岡市オクシズの3泊〜2週間・1組1日300円）、マンスリー、宿を表で並べました。NODE Shimoda はその中の1つとして紹介しています ⑥創業メンバーが下田で借りた古い家を宿に改修したときの体験を2点入れました（古い2芯の配線でエアコン・冷蔵庫・電子レンジを同時に使えなかった／繁忙期で回線工事に2か月以上かかり、置き型のルーターでしのいだ）。「買った」とは書かず「持ち主から借りた」と明記しています ⑦ゲストを「リモートで働く人がたくさん」→「リモートで働きに来る人もいる」に ⑧前の最後の節の「いちばんの近道」という押しの強い言い方をやめ、最後は1か月の過ごし方の節にしました。4週目も「決める」→「振り返る」に ⑨FAQ に「外国人は買えるか」「お試し住宅は外国人も使えるか」を足して5問にしました",
@@ -149,27 +152,28 @@ ARTICLE = {
 <p>買えます。2026年11月時点で、外国人や日本に住んでいない人が家を買うことは禁止されていません[[s:rej,mof_realprop_faq]]。ただ、手続きは前より増えました。2026年4月から、日本に住んでいない人が不動産を買うと、住むための家でも外為法にもとづく報告が要ります[[s:mof_fefta2026,mof_realprop_faq]]。2026年10月5日からは、日本人も含めて、買った人はみな登記のときに国籍を届け出ます[[s:moj_nationality]]。</p>
 <p>決まりは、まだ動いています。2026年11月時点で国会にかかっている法案は、一部の防衛関係施設と海上保安庁の施設の周り（おおむね1km）と、無人の国境離島に、新しい区域をつくる内容です[[s:cao_land_bill,cao_land_bill_outline]]。その区域で土地の所有権を移すときは、すべて事前に国の許可が要り、法律は公布から1年6か月以内に施行されます[[s:cao_land_bill_outline]]。</p>
 [[ed:衆議院の議案審議経過（第222回国会 閣法18号）で、成立したか、いつ公布・施行かを確かめてください。]]
-<p>家とビザは、別々の問題として考えたほうがいいと私たちは思います。家を持つことで日本に長くいられるようになると期待しているなら、あてにする前に行政書士に聞いてみてください。決まりがこれだけ速く変わっているので、契約の前に、自分の場合を弁護士や司法書士に見てもらうのが賢明だと思います。</p>
+<p>家とビザは、別々の問題として考えたほうがいいと私たちは思います。家を持つことで日本に長くいられるようになると期待しているなら、あてにする前に、在留資格（ビザ）の手続きを扱う行政書士に聞いてみてください。決まりがこれだけ速く変わっているので、契約の前に、自分の場合を弁護士や司法書士に見てもらうのが賢明だと思います。</p>
 [[ed:不動産を持つことと在留資格の関係を、行政書士か出入国在留管理庁に確かめてください。いまのところ公的な出典は見つかっていません。]]
 
 <h2>なぜ、買う前にその町で暮らすのか</h2>
-<p>家は、安いほうの買い物です。本当に引き受けるのは町のほうで、物件情報から分かるのは、価格と間取りと何枚かの写真くらい。そこで楽しく暮らせるかを決めることは、しばらく住んでみて初めて見えてきます。</p>
+<p>家を買うこと自体は、簡単なほうです。本当に引き受けるのは町のほうで、物件情報から分かるのは、価格と間取りと何枚かの写真くらい。そこで楽しく暮らせるかを決めることは、しばらく住んでみて初めて見えてきます。</p>
 <div class="tablewrap"><table>
 <thead><tr><th>知りたいこと</th><th>1か月暮らすと、こう分かる</th></tr></thead>
 <tbody>
 <tr><td>古い木造の家が1月にどれくらい寒いか、暖房にいくらかかるか</td><td>最初の寒い夜に体で分かり、電気代の請求で数字でも分かります。</td></tr>
-<tr><td>車なしで毎日の暮らしが回るか</td><td>1週間、買い物や用事を徒歩・バス・自転車で済ませてみると、はっきりします。</td></tr>
+<tr><td>車なしで毎日の暮らしが回るか</td><td>1週間、買い物や用事を徒歩・バス・自転車で済ませてみると、はっきりします。下田の私たちの家は駅から歩いて10分ほどで、スーパー、コンビニ、飲食店が近くにあり、こういう場所なら試しやすいです。</td></tr>
 <tr><td>どこで食料を買うか、店は何時に閉まるか</td><td>食事をほとんど自炊していると、手に入りやすいものとそうでないものが、すぐに分かります。</td></tr>
 <tr><td>その通りのごみの分別の仕組み</td><td>地域の収集カレンダーに合わせて、みんなと同じように出すことになります。英語版があれば、役所でもらっておくと便利です。</td></tr>
 <tr><td>一日仕事をしても回線がもつか</td><td>ビデオ会議も含めて、いつもどおりに働いてみるのが一番の確かめ方です。</td></tr>
 <tr><td>湿気の多い時期や台風で、建物がどうなるか</td><td>同じような家でどこから傷みやすいかは、近所の人や地元の工務店がよく知っています。</td></tr>
-<tr><td>新しく来た人を、近所がどう迎えるか</td><td>あいさつをしたり、清掃の日があれば参加したり、先に移ってきた人にどうなじんだかを聞いたりすると、よく分かります。</td></tr>
+<tr><td>新しく来た人を、近所がどう迎えるか</td><td>あいさつをしたり、清掃の日があれば参加したり、先に移ってきた人にどうなじんだかを聞いたりすると、よく分かります。近所の人は小さなことにも気づきます。下田で回線の工事をしたとき、工事の車をどこに停めたかについて、近所の方から声をかけられました。</td></tr>
 </tbody></table></div>
 <p>どれも、内見では出てこないことばかりです。</p>
 
 <h2>古い家で、住んでみて初めて分かることは何か</h2>
 <p>私たちの経験では、配線と回線です。創業メンバーの1人が、下田の古い家を持ち主から借りて、宿に改修したときに知りました。買ったのではなく借りた家ですが、買った人も同じことにぶつかると私たちは思います。</p>
 <p>古い2芯の配線では、エアコンと冷蔵庫と電子レンジを同時に使えず、ゲストに同時に使わないようお願いすることになりました。配線をやり直すにはそれなりの費用がかかるので、予算を組む前に知っておきたいことです。インターネットの回線工事は、繁忙期だったこともあって申し込みから2か月以上かかり、それまでは置き型のホームルーターでしのぎました。</p>
+<p>これは、安い家すべてに言えることです。売り出し価格は、かかるお金の一部にすぎません。改修、税金、保険、維持費が上乗せされ、建物ごとに大きく変わるので、本当の金額は書面の見積もりを取って初めて分かります。</p>
 
 <h2>町を試すために、日本にどれくらいいられるのか</h2>
 <p>多くの人にとって、しっかり試せるくらいの長さはあります。就労や居住のビザなしで滞在する方法はおもに2つで、下の条件は2026年11月時点のものです。</p>
@@ -191,16 +195,17 @@ ARTICLE = {
 <tr><td><strong>マンスリーの部屋</strong></td><td>1か月以上</td><td>家具付きの部屋を月単位で借ります。小さな町では選べる数が少ないこともあるので、早めに探すと安心です。</td></tr>
 <tr><td><strong>月割のある宿・貸別荘</strong></td><td>1週間〜1か月以上</td><td>海外からいちばん予約しやすいことが多く、何も契約せずに古い家での暮らしを試せます。</td></tr>
 </tbody></table></div>
-<p>お試し住宅はよさそうに見えますが、落とし穴があります。移住する人のための仕組みで、海外から町を試しに来る人向けではないのです。南アルプス市のお試し住宅は、山梨県の外に住民登録があり、市に移住するつもりで、移住の相談に登録した人が対象です[[s:minamialps_trial]]。ページに国籍の条件は書かれていないので、海外に住んでいるなら、対象に入るかは市の移住の窓口に聞けば分かります。</p>
+<p>お試し住宅はよさそうに見えますが、落とし穴があります。移住する人のための仕組みで、海外から町を試しに来る人向けではないのです。南アルプス市のお試し住宅は、山梨県の外に住民登録があり、市に移住するつもりで、移住の相談に登録した人が対象です[[s:minamialps_trial]]。国籍は条件に挙げられていないので、海外に住んでいるなら、対象に入るかは市の移住の窓口に聞けば分かります。</p>
 <p>はっきり書いている市もあります。静岡市の「長期お試し住宅」は、市営住宅に半年以上2年未満住めるものですが、静岡県の外に住んでいて、市への移住を決めた人が対象です。外国籍の人は、永住者・定住者・特別永住者・日本人の配偶者等の在留資格がある場合に限られます（2026年8月更新のページ）[[s:shizuoka_long_trial]]。つまり、観光やデジタルノマドの滞在では使えません。私たちの考えでは、海外から来るなら、マンスリーの部屋か宿のほうが現実的です。どうしてもお試し住宅を使いたいなら、まず町の移住の窓口に連絡してみてください。</p>
 [[ed:伊豆の市町（下田市・南伊豆町・伊豆市）に1か月以上泊まれるお試し住宅があるか、料金、外国籍・海外在住の人が使えるかを問い合わせてください。]]
-<p>東京から行きやすい町のほうが試しやすく、[[l:ja-izu|伊豆半島]]の下田なら直通の電車で3時間かかりません[[s:jreast_odoriko]]（[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]）。候補に入っているなら、下田の私たちの家「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」も、上の選択肢の1つです。旧町内の古い家を長期滞在向けに改修したもので、旅館業法の許可を受けているので一年中泊まれ、週割・月割があります。これまでのゲストは欧米の人が中心で、リモートで働きに来る人もいます。</p>
+<p>東京から行きやすい町のほうが試しやすいです。2026年11月時点で、東京駅から毎日走る直通の電車なら、[[l:ja-izu|伊豆半島]]の下田まで2時間29〜44分です[[s:jre_tt_tokyo]]。くわしくは[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]にまとめています。</p>
+<p>下田が候補に入っているなら、下田の私たちの家「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」も、上の宿の選択肢の1つです。旧町内の古い家を長期滞在向けに改修したもので、旅館業法の許可を受けています。これまでのゲストは欧米の人が中心で、リモートで働きに来る人もいます。</p>
 [[img:node-shimoda|ソファとローテーブル、障子のあるリビング|下田の旧町内にある私たちの家「NODE Shimoda」のリビング。]]
-[[ed:公開前に要確認：月額料金、30泊以上を常に受けられるか、下田の家を「再生した空き家」と呼んでよいか。]]
+[[ed:公開前に要確認：30泊以上を常に受けられるか、下田の家を英語で「older house（古い家）」と呼んでよいか。]]
 
 <h2>お試しの1か月は、どんなふうに過ぎるか</h2>
 <p>ほとんどは、ふだんの暮らしそのものです。そこに、いくつか意識して試すことを入れます。下田で私たちがつまずいたことをもとに、私たちならこう過ごす、という例です。</p>
-<p>最初の1週間は、落ち着くための時間です。スーパー、診療所、バス停、ごみの収集日を覚えます。古い家に泊まっているなら、エアコンと冷蔵庫と電子レンジを同時に動かしてみてください。私たちの家の配線が越えられなかった試験で、古い配線にどこまでできるかの感覚がつかめます。</p>
+<p>最初の1週間は、落ち着くための時間です。スーパー、診療所、バス停、ごみの収集日を覚えます。古い家に泊まっているなら、泊まり先の人に、電気の契約のアンペア数とブレーカーの場所を聞いておきましょう。私たちの家の古い配線では、エアコンと冷蔵庫と電子レンジを同時に使えませんでした。この2つが分かると、古い家の電気でどこまでできるかの感覚がつかめます。</p>
 <p>2週目には、いつもの時間に働き、家で料理をするようになります。ビデオ会議の続く一日に回線がもつか、冷暖房に実際いくらかかるかが分かるのはこの頃です。地元の回線業者に、そこで新しく回線を引くとどれくらいかかるかを聞いておくのもいい時期です。私たちのときは2か月以上かかりました。</p>
 <p>3週目は、聞いてまわる週です。役所の空き家の窓口に行ったり、地元の不動産屋と話したり、工務店に古い家の配線のやり直しがおおよそいくらかを聞いたりできます。湿気の多い夏や台風で家がどうなるかは、近所の人がいちばんよく知っています。</p>
 <p>4週目には、家について、そして自分の暮らし方について、何を変える必要がありそうか、だいたい見えています。費用や迷いを忘れないうちに書きとめておくと、町どうしを比べるときにも、見送ると決めるときにも、ずっと楽になります。</p>
@@ -210,11 +215,11 @@ ARTICLE = {
     ("外国人は日本の不動産を買えますか",
      "2026年11月時点で禁止はありませんが、日本に住んでいない人は外為法にもとづく報告が要り、買った人はみな登記のときに国籍を届け出ます[[s:mof_fefta2026,moj_nationality]]。決まりが変わりつつあるので、自分の場合は弁護士や司法書士に見てもらえます。"),
     ("日本で家を持つと、ビザを取りやすくなりますか",
-     "あてにしないほうがいいと私たちは思います。家とビザは別々の問題として考えているので、長く住むことも計画に入っているなら、買う前に行政書士に聞いてみてください。"),
+     "あてにしないほうがいいと私たちは思います。家とビザは別々の問題として考えているので、長く住むことも計画に入っているなら、買う前に、在留資格（ビザ）の手続きを扱う行政書士に聞いてみてください。"),
     ("日本の安い家は、本当に安いのですか",
      "そうとは限りません。購入価格は、かかるお金の一部です。改修、税金、保険、維持費が上乗せされ、金額は建物によって大きく変わるので、決める前に知るには、書面の見積もりを取るしかありません。"),
     ("外国人でも、自治体のお試し住宅を使えますか",
-     "町しだいです。お試し住宅は、多くが移住するつもりの人向けで、対象をはっきり書いている町もあります。たとえば静岡市の長期お試し住宅は、2026年8月時点で、外国籍の人なら、永住者・定住者などの在留資格か、日本人の配偶者である場合に限られていました[[s:shizuoka_long_trial]]。いまの決まりは、町の移住の窓口が知っています。"),
+     "町しだいです。お試し住宅は、多くが移住するつもりの人向けで、対象をはっきり書いている町もあります。たとえば静岡市の長期お試し住宅は、2026年8月時点で、外国籍の人なら、永住者・定住者・特別永住者の在留資格か、日本人の配偶者である場合に限られていました[[s:shizuoka_long_trial]]。いまの決まりは、町の移住の窓口が知っています。"),
     ("日本に空き家は何戸ありますか",
      "2023年の住宅・土地統計調査によると、2023年10月1日時点で約900万戸、住宅全体の13.8%が空き家でした[[s:stat_housing2023]]。"),
   ],
