@@ -32,8 +32,8 @@ ARTICLE = {
  "kicker": "Food and port towns",
  "h1": "Kinmedai: Japan’s golden-eye snapper and where to eat it",
  "seo_title": "Kinmedai: Japan’s Golden-Eye Snapper and Where to Eat It",
- "description": "Kinmedai is a red, golden-eyed deep-sea fish, best known simmered as nitsuke. What it is, how it differs from nodoguro, when it’s in season and why Shimoda.",
- "dek": "Kinmedai is the red, golden-eyed fish you’ll find on sushi counters and ryokan tables all over Japan. Here’s what it is, how it’s eaten, why it costs more than most fish, and why the port of Shimoda is a good place to try it.",
+ "description": "Kinmedai is a red, golden-eyed deep-sea fish, best known simmered as nitsuke. It’s best in winter and early summer, and Shimoda is the port to try it.",
+ "dek": "Kinmedai is the red, golden-eyed fish you’ll find on sushi counters and ryokan tables all over Japan. It’s a deep-sea fish, best known simmered in soy and sugar, and the port of Shimoda, which calls itself Japan’s top kinmedai port, is a good place to try it.",
  "card": "What kinmedai is, how it differs from nodoguro, how Japan cooks it, its seasons, and why Shimoda, which calls itself Japan’s top kinmedai port, is worth a night.",
  "keywords": [("kinmedai", "4,400", "0")],
  "intent": "Know（知りたい）",
@@ -109,7 +109,7 @@ ARTICLE = {
  "related": ["izu-from-tokyo", "izu"],
  "ja": {
   "h1": "金目鯛とは：日本の「ゴールデンアイ・スナッパー」と、食べられる場所",
-  "dek": "金目鯛は、日本中の寿司屋や旅館で出会う、赤い皮と金色の目の魚です。どんな魚か、どう食べるか、なぜほかの魚より高いのか、そしてなぜ下田の港で食べるのがいいのかをまとめました。",
+  "dek": "金目鯛は、日本中の寿司屋や旅館で出会う、赤い皮と金色の目の魚です。深い海の魚で、醤油と砂糖で煮る煮付けが定番。金目鯛の水揚げ日本一を名乗る下田の港は、食べに行くのにちょうどいい場所です。",
   "review": [
    "【2026-11-15 品質保証部の指摘を受けた書き直し】変えた点: ①東京からの所要時間を、駅探の「約2時間35分」から JR東日本の公式の「2時間49分（2026年11月時点）」に直しました ②地金目・沖金目は「2014年のテレビ東京の番組の説明」として書き、出典にない「メニューで2つの名前を見る」「並べて頼む」を消しました ③「冬が旬」「一年中脂が多い」に、市の広報（2016年）と観光協会のページの出典の印を付けました。旬の表は「冬（12〜2月）＝身が締まる」「初夏（6〜7月）＝いちばん脂が乗る」に ④祭りの出典を旅マガジンから観光協会の公式ページに替え、「2026年11月に確認・ページに年の記載なし・2027年は未発表」と添えました ⑤生息する深さを「数百メートル」から「200メートルより深い」（水産研究・教育機構・水産庁）に ⑥新しい節「なぜ高いのか、のどぐろとの違い」を足しました。値段の数字は書かず、水産庁の事実（深海で、網ではなく延縄で釣る／太平洋の漁獲量は2018年に5,302トンで2010年から減少、2019年度の評価で資源は低位）を並べ、「だから高い」とは言い切らずに「私たちの見方」として書きました。のどぐろは京都府・茨城県の資料で「別の科の魚（アカムツ）、口の中が黒い、80〜150メートルと浅い所にすむ」と書きました ⑦水銀の節を足しました（厚労省: 妊婦は週1回・約80gまで。医療の助言ではないので、医師や助産師に相談を、という書き方） ⑧「describe / say」の重複と、煮付けの意味の言い直しを直しました ⑨FAQ を6問に（のどぐろ・値段・妊娠中・旬を足しました）",
    "【人に確かめてほしい点】①厚労省のいまの注意事項（2010年改訂）のページでキンメダイの区分を開いて確かめ、URL を差し替える（黄色い枠。今回は2005年の厚労省の資料と、いまの注意事項を載せた大阪府のページを出典にしています） ②きんめ祭りが2026年6月に開かれたか、2027年の日程と見学時間（黄色い枠） ③観光協会の「年間1,000トン以上・水揚げの約8割が金目鯛」は年の記載がありません。書いてよいか ④「なぜ高いか」を、水産庁の事実を並べたうえで「私たちの見方」として書いています。この言い方でよいか ⑤紹介している店（市場の食堂 金目亭）を載せてよいか、ほかに案内している店（黄色い枠） ⑥ゲストが金目鯛を買える店（黄色い枠） ⑦見出しの写真は「焼いた赤い魚」で、定番の煮付けとずれます。煮付けか水揚げの自社撮影の写真があると、ずっと良くなります ⑧出典はリサーチ部が検索で確認したもので、本文のページは開けていません。公開前にページを開いて照合してください",

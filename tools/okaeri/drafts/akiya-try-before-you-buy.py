@@ -34,7 +34,7 @@ ARTICLE = {
  "kicker": "Own a home",
  "h1": "Buying an akiya in Japan? Live in one for a month first",
  "seo_title": "Buying an Akiya in Japan? Live in One for a Month First",
- "description": "Japan has about nine million empty homes, and foreigners aren’t banned from buying them. Before you do, spend a month in the town. Here’s what that shows you.",
+ "description": "Japan has about nine million empty homes, and foreigners aren’t banned from buying them. Spend a month in the town first: it tells you more than any listing.",
  "dek": "Japan has about nine million empty homes, and as of November 2026 foreigners aren’t banned from buying one. But the house is the easy part. The town is what you’re really signing up for, and a month there tells you more than any listing.",
  "card": "Japan has about nine million vacant homes, and foreigners can buy them. The town matters more than the house: how long you can stay, where to stay, and what a month shows you.",
  "keywords": [("buying an akiya in japan", "—", "—"), ("akiya", "3,600", "0")],

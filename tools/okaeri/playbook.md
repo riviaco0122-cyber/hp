@@ -37,11 +37,12 @@
 
 **原則: 読み手が「詳しい友人にコーヒーを飲みながら教わっている」と感じる文章にする。** 分かりやすく、簡潔に、英語を母語とする人が引っかからずに読める英語にする。アキヤドの日本語の記事のような、硬い・説明書のような書き方はしない。
 
-説明書っぽく見えるのは、次の4つが重なるとき。どれも避ける。
+説明書っぽく見えるのは、次の5つが重なるとき。どれも避ける。
 1. **命令文が続く**（Check… Visit… Ask… Write down…）。手順以外では、命令文は1段落に1つまで。「you」を主語にして、なぜそうするかを一緒に書く（✕ Check the bus timetable. → ◯ Buses are few, so it’s worth checking the timetable before you head to the beach.）。
 2. **ぶつ切りの短い文・体言止めの連続**（✕ The north is. The south is not.）。短い文は強調したい1か所だけにし、文の長さに変化をつける。
 3. **ラベルと箇条書きばかり**（Week one: settle. / Nitsuke.）。表とリストは比べる・並べるときだけ。理由や感じ方は文章で書く。
 4. **直訳調・お役所言葉**（✕ Here is what it is / It is necessary to / Please be advised / In order to）。日本語から訳したような言い回しを使わない。
+5. **ページ自身の説明・予告**（✕ This page says who we are, how… / Here’s what it is, how it’s eaten and why… / In this guide, we…）。冒頭（dek・description）で中身の目次を読み上げない。読み手にとって意味のあること、答えそのものを最初の一文で言う（◯ We run NODE Shimoda… and we write the guides we wish our guests could read before they arrive.）。「間違いの知らせ方」のような事務的な案内も、冒頭ではなく本文の該当の節に置く。
 
 自然に読める英語の目安:
 - **短縮形を使う**（it’s, you’ll, don’t, isn’t）。会話のくだけ過ぎ（gonna, super, awesome）は使わない。

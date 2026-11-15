@@ -155,6 +155,10 @@ def score(a):
     unknown = sorted({k for m in re.findall(r"\[\[s:([\w,]+)\]\]", body + faq_text) for k in m.split(",")} - set(C.SOURCES))
     if unknown:
         gates.append(f"SOURCES にない出典キー: {', '.join(unknown)}")
+    head = (a.get("dek", "") + " " + a.get("description", "")).lower()
+    meta = [w for w in ("this page", "this article", "this guide", "in this guide", "here’s what", "here's what", "here is what", "we will explain", "we explain") if w in head]
+    if meta:
+        notes.append(f"冒頭でページ自身を説明している（playbook 3-1 の5）: {', '.join(meta)}。答えそのものを最初の一文で言う")
     notes += tone(plain(re.sub(r"<table.*?</table>", " ", body, flags=re.S) + "\n" + faq_text + "\n" + a.get("dek", "")))  # 表のマスは文として数えない
     eds = len(re.findall(r"\[\[ed:", body + faq_text))
     if eds:
