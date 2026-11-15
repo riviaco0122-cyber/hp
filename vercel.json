@@ -7,8 +7,8 @@
       "destination": "/pages/index.html"
     },
     {
-      "source": "/okaeri",
-      "destination": "/okaeri/index.html"
+      "source": "/homeward",
+      "destination": "/homeward/index.html"
     },
     {
       "source": "/robots.txt",
@@ -51,7 +51,7 @@
       ]
     },
     {
-      "source": "/okaeri/assets/(.*)",
+      "source": "/homeward/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

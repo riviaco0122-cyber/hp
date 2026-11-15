@@ -1,14 +1,16 @@
-# Okaeri Japan（仮称）— 海外向け英語メディア
+# Homeward Japan — 海外向け英語メディア
+
+> 2026-11-15 に「Okaeri Japan」から改名（okaeri は欧米の読み手に意味が伝わらないため）。公開URL・公開フォルダ・サイト上の名前は `homeward`。**作業用の名前**（このフォルダ `tools/okaeri/`、部署名 `okaeri-*`、スキル `/okaeri-article`、ブランチ `okaeri-japan`）は旧名のまま。名前とURLは `site.json` の `name`・`prefix` の1か所で決まる。
 
 日本に長く滞在したい海外の人と、日本の空き家を買う・活かすことを考えている海外の人に向けたメディア。
-公開先は https://rivia-co.com/okaeri （アキヤドと同じドメインの下のフォルダ）。
+公開先は https://rivia-co.com/homeward （アキヤドと同じドメインの下のフォルダ）。
 
 ## 使い方
 
 ```
 python3 tools/okaeri/build.py              # okaeri/（公開フォルダ）と tools/okaeri/preview/（試作）を作る
-python3 tools/build.py                     # アキヤド側。robots.txt と llms.txt に Okaeri Japan の案内が入る
-python3 tools/okaeri/seo_check.py          # Okaeri Japan の点検（エラー0で公開）
+python3 tools/build.py                     # アキヤド側。robots.txt と llms.txt に Homeward Japan の案内が入る
+python3 tools/okaeri/seo_check.py          # Homeward Japan の点検（エラー0で公開）
 python3 tools/okaeri/seo_check.py --launch # 公開前の点検（黄色い枠・未接続のフォームもエラーにする）
 python3 tools/seo_check.py                 # アキヤド側の点検
 ```
@@ -55,7 +57,7 @@ python3 tools/seo_check.py                 # アキヤド側の点検
 
 ## アキヤドとの関係
 
-- 同じドメインなので、サイト名の宣言（WebSite）は rivia-co.com のトップだけ。Okaeri Japan には置かない。運営会社は about.html の Organization を同じ @id で参照する。
+- 同じドメインなので、サイト名の宣言（WebSite）は rivia-co.com のトップだけ。Homeward Japan には置かない。運営会社は about.html の Organization を同じ @id で参照する。
 - sitemap は `okaeri/sitemap.xml`（アキヤドの sitemap とは別）。`seo/robots.txt` に2本目の `Sitemap:` として入る。
 - URL はアキヤドと同じ形（末尾スラッシュなし・`.html`）。トップだけ `/okaeri`（`vercel.json` の rewrites で `okaeri/index.html` に対応）。
 - `/en/` はトップへの転送が残っているので使わない。
@@ -67,5 +69,5 @@ python3 tools/seo_check.py                 # アキヤド側の点検
 - 黄色い枠が残っている間は `--launch` の点検が通らない。
 - 更新日（`updated`）は、内容を実際に直したときだけ変える。
 - URL（`slug`）は公開後に変えない。変えるときは `vercel.json` に 301 を足す。
-- テーマ別の一覧（/okaeri/akiya.html など）は、公開記事が3本以上になったテーマだけ自動でできる。
+- テーマ別の一覧（/homeward/akiya.html など）は、公開記事が3本以上になったテーマだけ自動でできる。
 - 英語の記事には、日本語レビュー版（`ja`）を必ず対で書く。

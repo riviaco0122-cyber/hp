@@ -141,8 +141,8 @@ def resolve_file(path: str):
     if path in ("/robots.txt", "/sitemap.xml", "/llms.txt"):  # vercel.json で /seo/ に対応づけ
         cand = ROOT / "seo" / path.lstrip("/")
         return cand if cand.is_file() else None
-    if path == "/okaeri":  # 英語メディア Okaeri Japan のトップ（vercel.json で okaeri/index.html に対応づけ。点検は tools/okaeri/seo_check.py）
-        cand = ROOT / "okaeri" / "index.html"
+    if path == "/homeward":  # 英語メディア Homeward Japan のトップ（vercel.json で homeward/index.html に対応づけ。点検は tools/okaeri/seo_check.py）
+        cand = ROOT / "homeward" / "index.html"
         return cand if cand.is_file() else None
     for cand in (PAGES / path.lstrip("/"), ROOT / path.lstrip("/")):
         if cand.is_file():

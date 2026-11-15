@@ -29,7 +29,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://rivia-co.com"
 HOST = "rivia-co.com"
 ENDPOINT = "https://api.indexnow.org/indexnow"
-SITEMAPS = ["seo/sitemap.xml", "okaeri/sitemap.xml"]  # アキヤド・コーポレートと、英語メディア Okaeri Japan（/okaeri）
+SITEMAPS = ["seo/sitemap.xml", "homeward/sitemap.xml"]  # アキヤド・コーポレートと、英語メディア Homeward Japan（/homeward）
 URL_RE = re.compile(r"<loc>([^<]+)</loc>(?:<lastmod>([^<]+)</lastmod>)?")
 
 

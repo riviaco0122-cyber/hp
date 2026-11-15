@@ -454,7 +454,7 @@ def media_footer():
             <li><a href="media/company.html">運営者情報</a></li>
             <li><a href="{NOTE_STORY_URL}" target="_blank" rel="noopener" data-cta="note-story-footer">代表・片井の体験記（note）</a></li>
             <li><a href="contact.html">ご相談・お問い合わせ</a></li>
-            <li><a href="/okaeri" hreflang="en">海外向けの英語メディア <span lang="en">Okaeri Japan</span></a></li>
+            <li><a href="/homeward" hreflang="en">海外向けの英語メディア <span lang="en">Homeward Japan</span></a></li>
             <li><a href="privacy.html">プライバシーポリシー</a></li>
           </ul></div>
         </div>

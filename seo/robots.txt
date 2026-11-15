@@ -40,4 +40,4 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: https://rivia-co.com/sitemap.xml
-Sitemap: https://rivia-co.com/okaeri/sitemap.xml
+Sitemap: https://rivia-co.com/homeward/sitemap.xml

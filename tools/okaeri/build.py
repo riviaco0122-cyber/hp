@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Okaeri Japan のサイトを作る。
+"""Homeward Japan のサイトを作る。
 
   python3 tools/okaeri/build.py     本番用の okaeri/（https://rivia-co.com/okaeri）と、試作の tools/okaeri/preview/ を作る
 
 記事は tools/okaeri/content.py、設定は tools/okaeri/site.json。okaeri/ の HTML は直接書き換えない。
-アキヤド（tools/build.py）とは別に動く。sitemap は okaeri/sitemap.xml に出し、robots.txt から案内する。
+アキヤド（tools/build.py）とは別に動く。sitemap は <公開フォルダ>/sitemap.xml（いまは homeward/sitemap.xml）に出し、robots.txt から案内する。
 """
 import html as htmllib
 import json
@@ -23,7 +23,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))          # リポジトリの直下
 CFG = json.load(open(os.path.join(HERE, "site.json"), encoding="utf-8"))
 SITE = CFG["origin"].rstrip("/")                        # https://rivia-co.com
-PRE = CFG["prefix"].rstrip("/")                         # /okaeri
+PRE = CFG["prefix"].rstrip("/")                         # /homeward
 DIST = os.path.join(ROOT, PRE.strip("/"))               # 公開フォルダ（URL と同じ場所に置く）
 PREVIEW = os.path.join(HERE, "preview")                 # 試作（.gitignore 済み。公開されない）
 NAME = CFG["name"]
@@ -387,11 +387,11 @@ def page_izu(ctx):
 
 def page_about(ctx):
     body = f"""
-<h2>Who runs Okaeri Japan?</h2>
-<p>Okaeri Japan is run by RIVIA&amp;CO. LLC, a company based in Tokyo that renovates older houses in regional Japan and runs them as places to stay. Our first home, <a href="{C.NODE_URL}" rel="noopener">NODE Shimoda</a>, is in Shimoda on the [[l:izu|Izu Peninsula]]. We are preparing homes in Shuzenji and Yaizu.</p>
+<h2>Who runs Homeward Japan?</h2>
+<p>Homeward Japan is run by RIVIA&amp;CO. LLC, a company based in Tokyo that renovates older houses in regional Japan and runs them as places to stay. Our first home, <a href="{C.NODE_URL}" rel="noopener">NODE Shimoda</a>, is in Shimoda on the [[l:izu|Izu Peninsula]]. We are preparing homes in Shuzenji and Yaizu.</p>
 [[ed:Add the names and short profiles of the people who write and check the guides, with a photo if possible.]]
-<h2>What does “okaeri” mean?</h2>
-<p>Okaeri (おかえり) is what people in Japan say when someone comes home. It means “welcome back”. We chose it because the guests we like best are the ones who return.</p>
+<h2>Why “Homeward”?</h2>
+<p>In Japan, people say <em>okaeri</em> (おかえり) when someone comes home. It means “welcome back”. Homeward is our English way of saying it, because the guests we like best are the ones who come back.</p>
 <h2>How are the guides written?</h2>
 <ul>
 <li><strong>Every figure and rule links to its source.</strong> Where we can, that is a government office or the operator itself, with the date we checked.</li>
@@ -460,14 +460,14 @@ def page_article(ctx, a):
     side_facts = "".join(f"<li>{esc(x)}</li>" for x in C.NODE_FACTS[:3])
     return (f'<header class="arthead"><div class="wrap wide">{crumbs(ctx, trail)}'
             f'<p class="acard__meta">{article_chips(ctx, a)}</p><h1>{a["h1"]}</h1><p class="dek">{a["dek"]}</p>'
-            f'<p class="meta">By the <a href="{ctx.href("about")}">Okaeri Japan team</a> · {upd} <time datetime="{a["updated"]}">{fmt_date(a["updated"])}</time> · {read_min(a)} min read</p>{switch}</div>'
+            f'<p class="meta">By the <a href="{ctx.href("about")}">Homeward Japan team</a> · {upd} <time datetime="{a["updated"]}">{fmt_date(a["updated"])}</time> · {read_min(a)} min read</p>{switch}</div>'
             f'<div class="wrap wide">{img(ctx, name, alt, caption, eager=True, cls="photo photo--lead", sizes="(max-width: 62rem) 100vw, 62rem", want=1200)}</div></header>'
             f'<div class="wrap wide artgrid"><article class="post">'
             f'<div class="points"><p class="points__label">In short</p><ul>{pts}</ul></div>'
             f'<a class="inline-stay" href="{C.NODE_URL}" rel="noopener" data-nosnippet>{img(ctx, "node-shimoda", "", bare=True, sizes="5rem", want=640)}<span>We run NODE Shimoda, a home for week- and month-long stays. <strong>See the home →</strong></span></a>'
             f'<details class="toc toc--inline"><summary>On this page</summary><ol>{toc_html}</ol></details>'
             f'{body}<h2 id="common-questions">Common questions</h2>{faq}{a.get("after_faq", "")}{sources_html(a, "Sources")}'
-            f'<section class="byline" data-nosnippet>{MARK}<div><p><strong>Written by the Okaeri Japan team</strong></p><p>We run homes for long stays in small towns in Shizuoka. '
+            f'<section class="byline" data-nosnippet>{MARK}<div><p><strong>Written by the Homeward Japan team</strong></p><p>We run homes for long stays in small towns in Shizuoka. '
             f'<a href="{ctx.href("about")}">How we write and check our guides</a>.</p></div></section></article>'
             f'<aside class="side" aria-label="On this page"><div class="side__sticky"><nav class="toc"><p class="toc__label">On this page</p><ol>{toc_html}</ol></nav>'
             f'<div class="sidecard" data-nosnippet>{img(ctx, "node-shimoda", "Living room of NODE Shimoda", bare=True, sizes="18rem", want=640)}'
@@ -486,7 +486,7 @@ def page_article_ja(ctx, a):
     rv = "".join(f"<li>{p}</li>" for p in j["review"])
     pts = "".join(f"<li>{p}</li>" for p in j["points"])
     return (f'<div class="wrap"><article class="post"><p class="kicker">日本語レビュー版</p><h1>{j["h1"]}</h1><p class="dek">{j["dek"]}</p>'
-            f'<p class="meta">{fmt_date_ja(a["updated"])} · Okaeri Japan 編集部</p><a class="switch" href="#{a["id"]}">英語の本番記事を見る →</a>'
+            f'<p class="meta">{fmt_date_ja(a["updated"])} · Homeward Japan 編集部</p><a class="switch" href="#{a["id"]}">英語の本番記事を見る →</a>'
             f'<div class="review"><p class="review__label">レビューで見てほしい点</p><ul>{rv}</ul>'
             f'<p class="kw">狙う語：{kws}　／　検索する人の目的：{a["intent"]}</p>'
             f'<p class="review__foot">この日本語版は確認用です。公開するのは英語版だけで、本番のサイトには出力しません。</p></div>'
@@ -511,7 +511,7 @@ def page_ja_notes(ctx):
     return f"""<div class="wrap"><article class="post">
 <p class="kicker">日本語レビュー</p>
 <h1>試作の確認ポイント</h1>
-<p class="dek">英語メディア「Okaeri Japan」（仮称）の確認用ページです。英語の本番記事と、同じ内容の日本語レビュー版を対にしてあります。SEO の方針は<a href="#seo-plan">SEO計画</a>にまとめました。</p>
+<p class="dek">英語メディア「Homeward Japan」の確認用ページです。英語の本番記事と、同じ内容の日本語レビュー版を対にしてあります。SEO の方針は<a href="#seo-plan">SEO計画</a>にまとめました。</p>
 
 <h2>3記事の日本語レビュー版</h2>
 <ul class="checklist">{arts}</ul>
@@ -547,7 +547,7 @@ def page_ja_notes(ctx):
 
 <h2>運営者情報のページ（About）の文言（日本語訳）</h2>
 {table(["英語", "日本語"], R.ABOUT_STRINGS)}
-<p class="fine">「okaeri の意味」の最後に、「いちばんうれしいのは、また帰ってきてくれるゲストだから、この名前にしました」という一文を入れています。実感と違えば差し替えます。</p>
+<p class="fine">「なぜ Homeward か」の節に、「日本の『おかえり』を英語にした名前で、いちばんうれしいのは、また帰ってきてくれるゲストだから」という一文を入れています。実感と違えば差し替えます。</p>
 </article></div>"""
 
 
@@ -562,7 +562,7 @@ def page_seo_plan(ctx):
     pages += [(a["ja"]["h1"], PATHS[a["id"]], a["seo_title"]) for a in C.ARTICLES]
     return f"""<div class="wrap wide"><article class="post">
 <p class="kicker">SEO計画</p>
-<h1>Okaeri Japan の SEO 計画</h1>
+<h1>Homeward Japan の SEO 計画</h1>
 <p class="dek">狙う読み手は2つです。日本に長く滞在したい海外の人と、日本の空き家を買う・活かすことを考えている海外の人。どちらも最後は「まず自社の家に泊まってみる」につなげます。</p>
 
 <div class="points"><p class="points__label">結論</p><ul>
@@ -578,7 +578,7 @@ def page_seo_plan(ctx):
 
 <h2>これから書く記事（優先順）</h2>
 {table(["順", "記事", "狙う語と月間検索", "テーマ", "書き方の要点"], R.ROADMAP)}
-<p class="fine">同じテーマの記事が3本そろうと、テーマ別の一覧ページ（/okaeri/akiya.html など）が自動でできます。</p>
+<p class="fine">同じテーマの記事が3本そろうと、テーマ別の一覧ページ（/homeward/akiya.html など）が自動でできます。</p>
 
 <h2>ページと URL、検索結果に出る題</h2>
 {table(["ページ", "URL", "検索結果に出る題（title）"], pages)}
@@ -678,7 +678,7 @@ def footer(ctx, photos=None):
             f'<nav aria-label="Your plan"><p class="foot__h">Your plan</p><ul>{topics}<li><a href="{ctx.href("guides")}">All guides</a></li></ul></nav>'
             f'<nav aria-label="Places"><p class="foot__h">Places</p><ul><li><a href="{ctx.href("topic-places")}">All places</a></li><li><a href="{ctx.href("izu")}">Izu Peninsula</a></li></ul></nav>'
             f'<nav aria-label="Popular guides"><p class="foot__h">Popular guides</p><ul>{arts}</ul></nav>'
-            f'<nav aria-label="About"><p class="foot__h">Okaeri Japan</p><ul><li><a href="{C.NODE_URL}" rel="noopener">NODE Shimoda</a></li>'
+            f'<nav aria-label="About"><p class="foot__h">Homeward Japan</p><ul><li><a href="{C.NODE_URL}" rel="noopener">NODE Shimoda</a></li>'
             f'<li><a href="{ctx.href("home", "homes")}">Our homes</a></li><li><a href="{ctx.href("about")}">About us</a></li></ul></nav>'
             f'</div>{credits(ctx.photos if photos is None else photos)}</footer>')
 
@@ -823,9 +823,9 @@ def build():
         return {"home": page_home, "guides": page_guides, "izu": page_izu, "about": page_about}[k](ctx) if k in ("home", "guides", "izu", "about") \
             else page_topic(ctx, p["topic"]) if k == "topic" else page_article(ctx, p["article"])
 
-    # ---- 本番 okaeri/
+    # ---- 本番の公開フォルダ（site.json の prefix と同じ名前）
     def out_file(path):
-        return os.path.join(ROOT, "okaeri/index.html" if path == PRE else path.lstrip("/"))
+        return os.path.join(DIST, "index.html") if path == PRE else os.path.join(ROOT, path.lstrip("/"))
 
     ednotes = []
     for p in pages:
@@ -837,14 +837,14 @@ def build():
     shutil.copytree(os.path.join(HERE, "photos"), os.path.join(DIST, "assets/photos"))
     shutil.copytree(os.path.join(HERE, "photos"), os.path.join(PREVIEW, "assets/photos"))
 
-    # sitemap（Okaeri Japan の分だけ。robots.txt に2本目の Sitemap として書く）
+    # sitemap（Homeward Japan の分だけ。robots.txt に2本目の Sitemap として書く）
     newest = max([a["updated"] for a in PUBLISHED] or [TODAY])
     lastmod = {p["path"]: (p["article"]["updated"] if p["kind"] == "article" else newest) for p in pages}
     urls = "\n".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{lastmod[p['path']]}</lastmod></url>" for p in pages if not p.get("noindex"))
     write(os.path.join(DIST, "sitemap.xml"), f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
     # llms.txt に足す段落（アキヤドの build が seo/llms.txt の末尾に付ける）
-    ll = ["## Okaeri Japan (English)", "", "> Okaeri Japan is RIVIA&CO.’s English-language guide for people who want to stay a month in small-town Japan, work remotely or test a town before buying an akiya (vacant house).", "",
-          f"- [Okaeri Japan]({SITE}{PRE}): {C.HOME['description']}", f"- [Izu Peninsula]({SITE}{PATHS['izu']}): {C.IZU['description']}"]
+    ll = ["## Homeward Japan (English)", "", "> Homeward Japan is RIVIA&CO.’s English-language guide for people who want to stay a month in small-town Japan, work remotely or test a town before buying an akiya (vacant house).", "",
+          f"- [Homeward Japan]({SITE}{PRE}): {C.HOME['description']}", f"- [Izu Peninsula]({SITE}{PATHS['izu']}): {C.IZU['description']}"]
     ll += [f"- [{strip_tags(a['h1'])}]({SITE}{PATHS[a['id']]}): {a['description']}" for a in PUBLISHED]
     write(os.path.join(HERE, "llms_section.txt"), "\n".join(ll) + "\n")
 
@@ -862,13 +862,13 @@ def build():
     mains.append(f'<main class="page" data-page="seo-plan" data-title="SEO計画" lang="ja">{page_seo_plan(Ctx("preview", "seo-plan", "ja"))}</main>')
     pctx = Ctx("preview", "home")
     router = """(function(){var pages=[].slice.call(document.querySelectorAll('.page'));function show(first){var h=(location.hash||'').slice(1)||'home';var t=pages.filter(function(p){return p.getAttribute('data-page')===h;})[0];if(!t){var el=h&&document.getElementById(h);if(el){t=el.closest('.page');}}t=t||pages[0];pages.forEach(function(p){p.classList.toggle('is-active',p===t);});document.title=t.getAttribute('data-title');if(!first){window.scrollTo(0,0);}}window.addEventListener('hashchange',function(){show(false);});show(true);})();"""
-    prev = (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Okaeri Japan 試作</title>'
+    prev = (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Homeward Japan 試作</title>'
             f'<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="{FONTS_ALL}" rel="stylesheet"><style>{CSS}</style></head><body>'
             f'<div class="proto" lang="ja"><div class="wrap">試作です（本番は1ページごとに別のURL）。<a href="#ja-notes">日本語レビュー</a>・<a href="#seo-plan">SEO計画</a></div></div>'
             f'{header(pctx, preview=True)}{"".join(mains)}{footer(pctx, list(C.PHOTO_CREDITS))}<script>{router}{FORM_JS}</script></body></html>')
     write(os.path.join(PREVIEW, "index.html"), prev)
 
-    print(f"okaeri/: {len(pages)} ページ ／ 公開記事 {len(PUBLISHED)} 本 ／ テーマ別一覧 {len(HUB_TOPICS)}（検索に載せる {len(INDEXED_TOPICS)}） ／ 黄色い枠 {len(ednotes_en)} か所")
+    print(f"{PRE.strip('/')}/: {len(pages)} ページ ／ 公開記事 {len(PUBLISHED)} 本 ／ テーマ別一覧 {len(HUB_TOPICS)}（検索に載せる {len(INDEXED_TOPICS)}） ／ 黄色い枠 {len(ednotes_en)} か所")
 
 
 ednotes_en = []

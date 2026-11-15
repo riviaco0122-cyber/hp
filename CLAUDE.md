@@ -15,7 +15,7 @@
 | 品質管理部 | `.claude/agents/qa.md` | 採点と差し戻し（評価者） |
 | ブランド学習係 | `.claude/agents/brand-learner.md` | `docs/brand/` の作成・更新 |
 
-英語の海外向けメディア **Okaeri Japan**（`okaeri-japan` ブランチ、`tools/okaeri/`）の記事は、Okaeri 用の部署（`.claude/agents/okaeri-strategist.md`・`okaeri-researcher.md`・`okaeri-writer.md`・`okaeri-engineer.md`・`okaeri-qa.md`）が `/okaeri-article` で分担し、`tools/okaeri/playbook.md` の基準で100点満点・90点以上のものだけを入れる。社長は英語を読まないので、レビューは日本語レビュー版で渡す。
+英語の海外向けメディア **Homeward Japan**（旧 Homeward Japan。公開URLは `/homeward`。作業用の名前（`okaeri-japan` ブランチ、`tools/okaeri/`、部署名 `okaeri-*`）は旧名のまま）の記事は、Okaeri 用の部署（`.claude/agents/okaeri-strategist.md`・`okaeri-researcher.md`・`okaeri-writer.md`・`okaeri-engineer.md`・`okaeri-qa.md`）が `/okaeri-article` で分担し、`tools/okaeri/playbook.md` の基準で100点満点・90点以上のものだけを入れる。社長は英語を読まないので、レビューは日本語レビュー版で渡す。
 
 YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwriter.md`・`yt-video-engineer.md`・`yt-reviewer.md`）は、YouTube「アキヤド 民泊school」の動画を作る（手順・決まりは `docs/youtube/manual.md`）。
 
