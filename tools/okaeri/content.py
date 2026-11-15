@@ -540,7 +540,7 @@ IZU = {
 ABOUT = {
  "h1": "About Noki",
  "seo_title": "About Noki: Who Runs It and How We Write",
- "description": "Noki is run by the team that operates small homes for long stays in Shizuoka, Japan. Who we are, how our guides are sourced and how to reach us.",
+ "description": "Noki is written by the team behind NODE Shimoda, a home for long stays on the Izu Peninsula, for people who want more than a few nights in small-town Japan.",
  "dek": "We run NODE Shimoda, a home for long stays on the Izu Peninsula, and we write the guides we wish our guests could read before they arrive.",
 }
 
