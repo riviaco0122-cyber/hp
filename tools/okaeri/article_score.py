@@ -76,6 +76,27 @@ def sentences(text):
     return out
 
 
+IMPERATIVE = ("check", "visit", "ask", "write", "take", "find", "book", "bring", "try", "go", "plan", "order", "walk", "look",
+              "buy", "get", "make", "use", "avoid", "remember", "consider", "read", "work", "cook", "notice", "stay", "talk", "shop")
+CONTRACTION = re.compile(r"\b\w+(?:’|')(?:s|re|ll|ve|d|t|m)\b", re.I)
+
+
+def tone(text):
+    """説明書っぽさの目安（playbook 3-1）。点数ではなくメモ"""
+    sents = []
+    for block in text.split("\n"):
+        sents += [x for x in re.split(r"(?<=[.!?])\s+(?=[A-Z“\"(])", block.strip()) if len(re.findall(r"[A-Za-z]+", x)) >= 1]
+    if not sents:
+        return []
+    first = [re.sub(r"^[^A-Za-z]+", "", x).split(" ")[0].lower() for x in sents]
+    imp = sum(1 for w in first if w in IMPERATIVE)
+    frag = sum(1 for x in sents if 1 <= len(re.findall(r"[A-Za-z0-9’']+", x)) <= 4)
+    contr = len(CONTRACTION.findall(text))
+    out = [f"トーンの目安: 命令文で始まる文 {imp}/{len(sents)}（{imp / len(sents):.0%}。15%を超えると説明書っぽい）、"
+           f"4語以下の短い文 {frag}、短縮形 {contr}個（0〜2個だと硬い）"]
+    return out
+
+
 def score(a):
     res, gates, notes = [], [], []
     body = a["body"]
@@ -134,6 +155,7 @@ def score(a):
     unknown = sorted({k for m in re.findall(r"\[\[s:([\w,]+)\]\]", body + faq_text) for k in m.split(",")} - set(C.SOURCES))
     if unknown:
         gates.append(f"SOURCES にない出典キー: {', '.join(unknown)}")
+    notes += tone(plain(re.sub(r"<table.*?</table>", " ", body, flags=re.S) + "\n" + faq_text + "\n" + a.get("dek", "")))  # 表のマスは文として数えない
     eds = len(re.findall(r"\[\[ed:", body + faq_text))
     if eds:
         notes.append(f"黄色い枠（未確認の箇所）が {eds} か所（公開前に人が埋める）")
