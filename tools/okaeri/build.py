@@ -154,7 +154,23 @@ class Ctx:
         s = re.sub(r"\[\[l:([\w-]+)\|([^\]]+)\]\]", link, s)
         s = re.sub(r"\[\[img:([\w-]+)\|([^|\]]+)\|([^\]]*)\]\]", lambda m: img(self, m.group(1), m.group(2), m.group(3)), s)
         s = re.sub(r"\[\[ed:(.+?)\]\]", ed, s, flags=re.S)
-        return s
+        return stack_tables(s)
+
+
+def stack_tables(s):
+    """文章の表（class="free"）で3列以上のものは、スマホ幅で行ごとのカードに組み替える（site.css の table.stack）。
+    セルに列名（data-label）を付けて、カードの中でも何の列か分かるようにする。"""
+    def one(m):
+        heads = [strip_tags(h) for h in re.findall(r"<th[^>]*>(.*?)</th>", m.group(2), flags=re.S)]
+        if len(heads) < 3:
+            return m.group(0)
+
+        def row(r):
+            cells = iter(heads)
+            return re.sub(r"<td(?=[\s>])", lambda c: f'<td data-label="{esc(next(cells, ""))}"', r.group(0))
+        body = re.sub(r"<tr>.*?</tr>", row, m.group(3), flags=re.S)
+        return f'<table class="{m.group(1)} stack">{m.group(2)}{body}</table>'
+    return re.sub(r'<table class="(free)">(.*?</thead>)(.*?)</table>', one, s, flags=re.S)
 
 
 def _photo_files(name):
@@ -235,9 +251,11 @@ def card(ctx, a, size="m"):
             f'<h3><a href="{ctx.href(a["id"])}">{a["h1"]}</a></h3><p>{a["card"]}</p></div></article>')
 
 
-def cta(ctx):
+def cta(ctx, photo=True):
+    """記事の下の自社の家の案内。同じ写真は1ページに1回まで（本文に NODE Shimoda の写真がある記事では photo=False）"""
     facts = "".join(f"<li>{esc(x)}</li>" for x in C.NODE_FACTS[:4])
-    return (f'<aside class="stay-cta" data-nosnippet>{img(ctx, "node-shimoda", "Living room of NODE Shimoda with a sofa and sliding paper screens", bare=True, sizes="(max-width: 44rem) 100vw, 22rem", want=640)}'
+    pic = img(ctx, "node-shimoda", "Living room of NODE Shimoda with a sofa and sliding paper screens", bare=True, sizes="(max-width: 44rem) 100vw, 22rem", want=640) if photo else ""
+    return (f'<aside class="stay-cta" data-nosnippet>{pic}'
             '<div class="stay-cta__body"><p class="kicker">Stay with us</p><h2>Try the town for a week or a month</h2>'
             '<p>NODE Shimoda is our home in the old town of Shimoda, set up for long stays.</p>'
             f'<ul class="ticks">{facts}</ul>'
@@ -382,7 +400,7 @@ def page_izu(ctx):
     return (f'<div class="wrap"><article class="post">{crumbs(ctx, [(NAME, "home"), ("Places", "topic-places"), ("Izu Peninsula", None)])}'
             f'<p class="kicker">Places</p><h1>{C.IZU["h1"]}</h1><p class="dek">{C.IZU["dek"]}</p>'
             f'{img(ctx, "node-shimoda", "Living room with a sofa, low table and sliding paper screens", "NODE Shimoda, our home in the old town of Shimoda.", eager=True)}{ctx.expand(body)}'
-            f'<section class="sources"><h2>Sources</h2><ul>{srcs}</ul></section>{cta(ctx)}</article></div>')
+            f'<section class="sources"><h2>Sources</h2><ul>{srcs}</ul></section>{cta(ctx, photo=False)}</article></div>')
 
 
 def page_about(ctx):
@@ -464,15 +482,15 @@ def page_article(ctx, a):
             f'<div class="wrap wide">{img(ctx, name, alt, caption, eager=True, cls="photo photo--lead", sizes="(max-width: 62rem) 100vw, 62rem", want=1200)}</div></header>'
             f'<div class="wrap wide artgrid"><article class="post">'
             f'<div class="points"><p class="points__label">In short</p><ul>{pts}</ul></div>'
-            f'<a class="inline-stay" href="{C.NODE_URL}" rel="noopener" data-nosnippet>{img(ctx, "node-shimoda", "", bare=True, sizes="5rem", want=640)}<span>We run NODE Shimoda, a home for week- and month-long stays. <strong>See the home →</strong></span></a>'
+            f'<a class="inline-stay" href="{C.NODE_URL}" rel="noopener" data-nosnippet><span>We run NODE Shimoda, a home for week- and month-long stays. <strong>See the home →</strong></span></a>'
             f'<details class="toc toc--inline"><summary>On this page</summary><ol>{toc_html}</ol></details>'
             f'{body}<h2 id="common-questions">Common questions</h2>{faq}{a.get("after_faq", "")}{sources_html(a, "Sources")}'
             f'<section class="byline" data-nosnippet>{MARK}<div><p><strong>Written by the Noki team</strong></p><p>We run homes for long stays in small towns in Shizuoka. '
             f'<a href="{ctx.href("about")}">How we write and check our guides</a>.</p></div></section></article>'
             f'<aside class="side" aria-label="On this page"><div class="side__sticky"><nav class="toc"><p class="toc__label">On this page</p><ol>{toc_html}</ol></nav>'
-            f'<div class="sidecard" data-nosnippet>{img(ctx, "node-shimoda", "Living room of NODE Shimoda", bare=True, sizes="18rem", want=640)}'
+            f'<div class="sidecard" data-nosnippet>'
             f'<p class="sidecard__t">Stay at NODE Shimoda</p><ul class="ticks">{side_facts}</ul><a class="btn btn--solid" href="{C.NODE_URL}" rel="noopener">See the home</a></div></div></aside></div>'
-            f'<div class="wrap wide">{related_html(ctx, a)}{cta(ctx)}</div>')
+            f'<div class="wrap wide">{related_html(ctx, a)}{cta(ctx, photo="[[img:node-shimoda" not in a["body"] and name != "node-shimoda")}</div>')
 
 
 def serp_box(a_title, path, desc):

@@ -104,12 +104,20 @@ for p, s in sorted(pages.items()):
     for im in s.find_all("img"):
         if not im.has_attr("alt"):
             err(p, "alt のない画像がある（飾りの画像は alt=\"\" にする）")
-        elif not im["alt"] and not im.find_parent("a", class_="inline-stay"):
+        elif not im["alt"]:
             err(p, "alt が空の画像がある（飾り以外は内容を書く）")
         if not (im.get("width") and im.get("height")):
             err(p, "width・height のない画像がある")
         if not os.path.exists(os.path.join(ROOT, im["src"].lstrip("/"))):
             err(p, f"画像のファイルがない: {im['src']}")
+    # 同じ写真は1ページに1回まで（大きさ違いのファイル名 <名前>-<幅>.webp は同じ写真として数える）
+    seen = {}
+    for im in s.find_all("img"):
+        name = re.sub(r"-\d+\.webp$", "", os.path.basename(im.get("src", "")))
+        seen[name] = seen.get(name, 0) + 1
+    for name, n in seen.items():
+        if n > 1 and "/photos/" in str(s):
+            warn(p, f"同じ写真が{n}回出ている: {name}（1ページに1回まで）")
     # 構造化データ
     types, graph = [], []
     for sc in s.find_all("script", type="application/ld+json"):
