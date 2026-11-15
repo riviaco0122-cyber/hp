@@ -323,3 +323,50 @@ title は主な語を前半に置いたまま、いまの形（「Buying an Akiy
 ### 6. 外部ページの命令の有無
 
 開いたページ（京丹後市・静岡市・南アルプス市）と検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
+
+---
+
+## リサーチメモ 3（2026-11-15）
+
+リサーチ部。品質保証部の指摘（重要土地等調査法の改正案・在留資格の言い方）を受けた調べ直し。内閣府の PDF は開けて本文を確認できた。shugiin.go.jp・cas.go.jp はこの環境から名前解決できず、検索で確認にとどまる。
+
+### 1. 重要土地等調査法の改正案（内閣府の概要）
+
+| # | 事実（英語で1文） | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| L-1 | A government bill submitted to the Diet in autumn 2026 would create "regulated zones" around certain defence and Japan Coast Guard facilities (roughly 1,000 m around them) and on uninhabited border islands. | 内閣府「重要土地等調査法の一部を改正する法律案の概要」（第222回国会）https://www.cao.go.jp/houan/pdf/222/222_1gaiyou.pdf | ページを開いて確認 | 2026年10月（閣議決定・提出 2026-10-23。下の L-5） |
+| L-2 | 対象は「秘密裏に集積されたドローン等の攻撃で著しく機能を阻害でき、回復が困難な施設（戦闘機やレーダーなど精密な装備品がある防衛関係施設、海上保安庁の施設）」の周囲おおむね1,000m。**基地すべてではない**ので、英語では “some defence and coast guard sites” と書く | 同上 | ページを開いて確認 | 同上 |
+| L-3 | In those zones, any transfer of land ownership would need prior government approval, with no minimum area, and a transfer made without approval would be void and could not be registered. | 同上（「（１）土地等の所有権移転をする場合の事前許可 ※面積要件なし」「（４）…無効とし、不動産登記を受け付けない」） | ページを開いて確認 | 同上 |
+| L-4 | 許可の対象は**国籍を問わない**（所有権移転そのものが事前許可制）。原則として許可しない相手は、外国の政府・政府機関・政党等、外国軍の活動に従事する者、外国の法令で外国軍・政府の情報収集に協力する義務を負う者、それらが支配（実質的支配者を含む）する法人、施設の損壊・情報収集のおそれがある相当の理由がある者。英語案: “Approval would be required whatever the buyer’s nationality; it would normally be refused to foreign governments and militaries, people obliged to assist them, companies they control, and anyone with good reason to suspect them of harming the site.” | 同上 | ページを開いて確認（「国籍を問わない」は概要に明記の言葉ではなく、許可の対象が「所有権移転をする場合」と書かれていることからの読み取り。LDP の部会の提言が「any nationality」の審査と報じた件は nippon.com 2026-09-24 で検索で確認） | 同上 |
+| L-5 | 賃貸借は事後届出。注視区域の重要施設に皇居・国会議事堂・総理官邸・危機管理行政機関の庁舎を追加 | 同上 | ページを開いて確認 | 同上 |
+| L-6 | The law would take effect on a date set by cabinet order within one year and six months of its promulgation. | 同上（「施行期日 公布から１年６月を超えない範囲内において政令で定める日」） | ページを開いて確認 | 同上 |
+
+### 2. 審議の状況（2026年11月時点）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| D-1 | The cabinet approved the bill and submitted it to the House of Representatives on 23 October 2026. | 共同通信配信（新日本法規 sn-hoki.co.jp https://www.sn-hoki.co.jp/articles/article4971369/ ）、時事（nippon.com https://www.nippon.com/en/news/yjj2026102300095/ ） | 検索で確認（本文は未確認） | 2026-10-23 |
+| D-2 | 2026-11-10 に衆院本会議で審議入り（小野田担当相が答弁） | しんぶん赤旗 2026-11-11 https://www.jcp.or.jp/akahata/aik26/2026-11-11/2026111102_02_0.php | 検索で確認（本文は未確認）。**政党の機関紙で、大手報道・衆議院の議案経過では確認できず**。出典には使わず、記事には「審議中（as of November 2026, the bill was still before the Diet）」程度にとどめる案 | 2026-11-11 |
+| D-3 | 衆院通過・成立 | **確認できず**（検索に出た「衆院通過」の記事は2021年の制定時のもの） | — | — |
+
+**記事への使い方の案**: “A bill before the Diet in late 2026 would require government approval for any land purchase within about 1 km of certain defence and coast guard sites and on uninhabited border islands, whatever the buyer’s nationality. It had not passed as of November 2026, and would take effect within 18 months of becoming law [[s:cao_land_bill_outline]].” 公開前に `[[ed:衆議院の議案審議経過（第222回国会 閣法18号）で、成立したか・いつ公布かを確認]]` を置く。
+
+### 3. 「在留資格がなくても買える」「買っても在留資格は付かない」の公的な出典
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| R-1 | 「外国人が日本で不動産を買うのに在留資格は要らない」を**そのまま書いた**財務省・法務省・入管庁の文書 | **確認できず**。間接の根拠として、財務省の外為法の不動産取得報告（非居住者が日本の不動産を取得したら20日以内に日本銀行経由で財務大臣へ報告。2026-04-01 から居住用などにも対象を広げた）が「日本に住んでいない人も取得できる」前提の制度である。https://www.mof.go.jp/policy/international_policy/gaitame_kawase/real_property/seido_gaiyo.html | 検索で確認（本文は未確認。報告が要る・要らないの範囲は検索の要約に食い違いがあり、記事に書くなら本文の確認が必要） | 2026年2月の発表・4月施行 |
+| R-2 | 「家を買っても在留資格は付かない」を書いた公的な出典 | **確認できず**。入管庁の在留資格「経営・管理」の基準（2025-10-16 改正。事業所・常勤職員・財産3,000万円以上・日本語 B2 相当など）に不動産の所有が無いことは検索の抜粋で分かるが、「買っても付かない」と明記した公的な文書は見つからなかった。個人の解説サイトのみ | 検索で確認（本文は未確認） | — |
+
+**結論**: R-1・R-2 は公的な出典で断言できない。記事では「Buying a home doesn’t come with a visa」型の断定は避けるか、`[[ed:在留資格と不動産の所有の関係を、行政書士または入管の窓口で確認]]` を置く。「Japan has no residence status based on owning property」のような言い方も出典がないので、書かない案を推す。外為法の報告に触れるなら、財務省のページを人が開いて確かめてから。
+
+### 4. 新しい出典（`SOURCES_NEW` の候補）
+
+```python
+"cao_land_bill_outline": ("https://www.cao.go.jp/houan/pdf/222/222_1gaiyou.pdf", "Cabinet Office", "内閣府", "Cabinet Office: Outline of the bill to amend the Act on the Review and Regulation of the Use of Real Estate around Important Facilities and on Remote Territorial Islands (2026)"),
+```
+（財務省の外為法のページは本文未確認のため、まだキーにしない。確認できたら `"mof_realestate_report": ("https://www.mof.go.jp/policy/international_policy/gaitame_kawase/real_property/seido_gaiyo.html", "Ministry of Finance", "財務省", "Ministry of Finance: Reports on the acquisition of real estate in Japan under the Foreign Exchange Act")` の形で足す）
+
+### 5. 外部ページの命令の有無
+
+開いた内閣府の PDF と検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
