@@ -18,6 +18,9 @@ const files = [
 
 function inspect() {
   const blockOf = el => { while (el.parentElement && getComputedStyle(el).display === 'inline') el = el.parentElement; return el; };
+  // はみ出しは、段落・項目・表のマスなど「幅が決まっている箱」と比べる（inline-block の n-w などは文字に合わせて広がるので比べても分からない。
+  // 表のマスで、改行しない数字のまとまりが隣のマスに重なっていたのを見逃していた。人の指摘 2026-11-15）
+  const boxOf = el => { while (el.parentElement && /^(inline|inline-block|contents)$/.test(getComputedStyle(el).display)) el = el.parentElement; return el; };
   const hidden = el => !!el.closest('.visually-hidden, [aria-hidden="true"], svg, script, style, noscript'); // 飾り・読み上げ用の文字は対象外
   const out = { over: [], open: [] };
   const tw = document.createTreeWalker(document.querySelector('main') || document.body, NodeFilter.SHOW_TEXT);
@@ -32,7 +35,7 @@ function inspect() {
       const c = t.data[i]; if (/\s/.test(c)) continue;
       rng.setStart(t, i); rng.setEnd(t, i + 1);
       const r = rng.getClientRects()[0]; if (!r || !r.width) continue;
-      items.push({ c, r, blk });
+      items.push({ c, r, blk, box: boxOf(pe) });
     }
   }
   const desc = el => el.tagName.toLowerCase() + (el.classList.length ? '.' + [...el.classList].join('.') : '');
@@ -40,15 +43,28 @@ function inspect() {
   const seenOver = new Set(), lines = new Map(); // 枠 → [行ごとの文字数]
   items.forEach((it, k) => {
     // はみ出し：枠（の内側）の右端より外
-    const bs = getComputedStyle(it.blk), br = it.blk.getBoundingClientRect();
-    const right = br.left + it.blk.clientWidth + parseFloat(bs.borderLeftWidth) - parseFloat(bs.paddingRight);
-    if (it.r.right > right + 2 && !seenOver.has(it.blk)) { seenOver.add(it.blk); out.over.push(ctx(k)); }
+    const bs = getComputedStyle(it.box), br = it.box.getBoundingClientRect();
+    const right = br.left + it.box.clientWidth + parseFloat(bs.borderLeftWidth) - parseFloat(bs.paddingRight);
+    if (it.box.clientWidth > 2 && it.r.right > right + 2 && !seenOver.has(it.box)) { seenOver.add(it.box); out.over.push(ctx(k)); }
     const ls = lines.get(it.blk) || []; lines.set(it.blk, ls);
     const pv = items[k - 1];
     if (!pv || pv.blk !== it.blk || it.r.top >= pv.r.bottom - 2) ls.push(0);
     ls[ls.length - 1]++;
     const nx = items[k + 1];
     if (nx && nx.blk === it.blk && nx.r.top >= it.r.bottom - 2 && /[「『（(【〈《［]/.test(it.c)) out.open.push(ctx(k));
+  });
+  // 改行しないマス・まとまり（white-space: nowrap）は、iPhone の Safari では <wbr> でも折れず1行のままになる。
+  // 1行の幅が枠より広いものを数える（Chromium は <wbr> で折るので、文字の位置だけでは見つからない。人の指摘 2026-11-15）
+  document.querySelectorAll('main td, main th').forEach(el => {
+    if (getComputedStyle(el).whiteSpace !== 'nowrap' || el.offsetParent === null) return;
+    const probe = document.createElement('span');
+    probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;';
+    probe.textContent = el.textContent;
+    el.appendChild(probe);
+    const w = probe.getBoundingClientRect().width;
+    probe.remove();
+    const cs = getComputedStyle(el), inner = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    if (w > inner + 2) out.over.push(el.textContent.trim().slice(0, 20) + '\t' + desc(el) + '（1行の幅 ' + Math.round(w) + 'px ＞ マス ' + Math.round(inner) + 'px）');
   });
   return out;
 }

@@ -654,6 +654,7 @@ ARTICLES_AUTO = [
             '国土交通省「建築基準法の一部を改正する法律（平成30年法律第67号）について」（最終更新 2020年7月15日） https://www.mlit.go.jp/jutakukentiku/build/jutakukentiku_house_tk_000097.html',
             '観光庁「民泊制度ポータルサイト」（2026年10月閲覧） https://www.mlit.go.jp/kankocho/minpaku/',
             '創業メンバーによる下田での開業記録（2025年11月執筆）',
+            "Airbnb ヘルプセンター「How do changes to the Japanese Hotels and Inns Act affect hosting on Airbnb?」（届出番号などがない掲載は、新しい予約を受けられないよう停止。2026年11月閲覧） https://www.airbnb.com/help/article/2353",
         ],
     ),
     dict(

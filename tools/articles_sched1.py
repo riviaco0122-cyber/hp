@@ -175,6 +175,7 @@ ARTICLES_SCHED1 = [
             "観光庁「住宅宿泊管理業務の委託」（2026年10月閲覧） https://www.mlit.go.jp/kankocho/minpaku/business/host/entrust.html",
             "総務省消防庁「住宅宿泊事業法に基づく届出住宅等に係る消防法令上の取扱いについて（通知）」（消防予第330号、2017年10月27日） https://www.fdma.go.jp/mission/prevention/suisin/items/291027_yo330.pdf",
             "創業メンバーによる下田での開業記録（2025年11月執筆）",
+            "Airbnb ヘルプセンター「How do changes to the Japanese Hotels and Inns Act affect hosting on Airbnb?」（届出番号などがない掲載は、新しい予約を受けられないよう停止。2026年11月閲覧） https://www.airbnb.com/help/article/2353",
         ],
     ),
     dict(
@@ -589,6 +590,7 @@ ARTICLES_SCHED1 = [
             "国土交通省住宅局・総務省消防庁「住宅宿泊事業における安全確保のための措置に関するQ&A」 https://www.fdma.go.jp/mission/prevention/suisin/items/minpaku_qa.pdf",
             "観光庁「民泊制度ポータルサイト」（2026年10月閲覧） https://www.mlit.go.jp/kankocho/minpaku/",
             "創業メンバーによる下田での開業記録（2025年11月執筆）",
+            "Airbnb ヘルプセンター「How do changes to the Japanese Hotels and Inns Act affect hosting on Airbnb?」（届出番号などがない掲載は、新しい予約を受けられないよう停止。2026年11月閲覧） https://www.airbnb.com/help/article/2353",
         ],
     ),
     dict(
@@ -769,6 +771,7 @@ ARTICLES_SCHED1 = [
             "国土交通省・日本建築防災協会「新耐震基準の木造住宅の耐震性能検証法」 https://www.mlit.go.jp/common/001184898.pdf",
             "国土交通省「建築基準法改正により小規模な建築物の用途変更の手続きが不要となりました」 https://www.mlit.go.jp/common/001299734.pdf",
             "兵庫県「古民家再生促進支援事業」 https://web.pref.hyogo.lg.jp/ks26/wd27_000000038.html",
+            "Airbnb ヘルプセンター「How do changes to the Japanese Hotels and Inns Act affect hosting on Airbnb?」（届出番号などがない掲載は、新しい予約を受けられないよう停止。2026年11月閲覧） https://www.airbnb.com/help/article/2353",
         ],
     ),
     dict(

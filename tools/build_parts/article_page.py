@@ -145,7 +145,9 @@ def article_page(a):
         html = calc_lists(label_lists(html))
         html = auto_stack_tables(html)
         html = html.replace('<table class="table">', '<div class="table-scroll"><table class="table">').replace("</table>", "</table></div>")
-        return re.sub(r"<td>((?:約|―|—)?[0-9０-９.,]+(?:%|倍|か月)?(?:（[^<]{0,12}）)?)</td>", r'<td class="num">\1</td>', html)
+        # 数字のマス（改行しない）は、かっこ書きが4字まで（「（推計）」など）。長い注記つきのマスは改行できるようにする
+        # （iPhone の Safari は改行しないマスを1行のまま隣のマスへはみ出させる。「約30%（開業前の準備期間を含む）」で起きた。人の指摘 2026-11-15）
+        return re.sub(r"<td>((?:約|―|—)?[0-9０-９.,]+(?:%|倍|か月)?(?:（[^<]{0,4}）)?)</td>", r'<td class="num">\1</td>', html)
     def card_headings(html):
         """カルーセル／比較カードの見出し（<p class="carousel__title"|"compare__head">）を本物の見出しにする。
         節内の先行する h3 の下なら h4、そうでなければ h3（見た目は CSS で <p> 時代と同じに固定）。"""
