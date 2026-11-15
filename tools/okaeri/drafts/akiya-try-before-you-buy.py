@@ -15,11 +15,11 @@ SOURCES_NEW = {
     "moj_nationality": ("https://www.moj.go.jp/content/001470076.pdf", "Ministry of Justice", "法務省",
                         "Ministry of Justice: Notice on recording nationality in property registration (4 September 2026)"),
     "cao_land_bill": ("https://www.cao.go.jp/houan/222/index.html", "Cabinet Office", "内閣府", "Cabinet Office: Bills submitted to the 222nd Diet session"),
-    "cao_land_bill_outline": ("https://www.cao.go.jp/houan/pdf/222/222_1gaiyou.pdf", "Cabinet Office", "内閣府",
+    "cao_land_bill_outline": ("https://www.cao.go.jp/houan/pdf/222/222_1gaiyou.pdf", "Cabinet Office (bill outline)", "内閣府（法案の概要）",
                               "Cabinet Office: Outline of the bill to amend the Act on the Review and Regulation of the Use of Real Estate around Important Facilities and on Remote Territorial Islands (2026)"),
     "minamialps_trial": ("https://www.city.minami-alps.yamanashi.jp/docs/12876.html", "Minami-Alps City", "南アルプス市",
                          "Minami-Alps City: Trial homes for people considering a move"),
-    "shizuoka_long_trial": ("https://www.city.shizuoka.lg.jp/ijuteiju/s000158.html", "Shizuoka City", "静岡市",
+    "shizuoka_long_trial": ("https://www.city.shizuoka.lg.jp/ijuteiju/s000158.html", "Shizuoka City (long-term)", "静岡市（長期）",
                             "Shizuoka City: Long-term trial homes for people moving to the city"),
     "jre_tt_tokyo": ("https://timetables.jreast.co.jp/timetable/list1039.html", "JR East timetable, Tokyo Station", "JR東日本 東京駅の時刻表",
                      "JR East, Tokyo Station timetable (November 2026)"),
@@ -58,7 +58,7 @@ ARTICLE = {
 
 <h2>Why live in the town before you buy?</h2>
 <p>Buying the house is the easy part. What you’re really committing to is the town, and a listing can only tell you so much: the price, the floor plan, a few photos. The things that decide whether you’ll be happy there only show up once you’ve lived there for a while.</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>What you want to know</th><th>How a month shows you</th></tr></thead>
 <tbody>
 <tr><td>How cold an old wooden house gets in January, and what heating costs</td><td>You’ll feel it on the first cold night and see it on the electricity bill.</td></tr>
@@ -78,7 +78,7 @@ ARTICLE = {
 
 <h2>How long can you stay in Japan to test a town?</h2>
 <p>Long enough for a proper trial, for most people. There are two main ways to do it without a work or residence visa, and the rules below are as of November 2026.</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>Way to stay</th><th>How long</th><th>Who it’s for</th></tr></thead>
 <tbody>
 <tr><td><strong>Short-term visitor</strong>, visa-exempt</td><td>Up to 90 days for most visa-exempt nationalities. Some get 15 or 30 days, and some passports come with extra conditions [[s:mofa]].</td><td>Anyone from a visa-exempt country or region. The rule for your own passport is the one that counts.</td></tr>
@@ -89,7 +89,7 @@ ARTICLE = {
 
 <h2>Where can you stay for a month to test a town?</h2>
 <p>You’ve got three main choices: a town’s trial home, a monthly rental, or a guesthouse with monthly rates. Which one works depends on the town, and on where you’re coming from.</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>Option</th><th>How long</th><th>Good to know</th></tr></thead>
 <tbody>
 <tr><td><strong>A town’s trial home</strong> (<em>otameshi jutaku</em>)</td><td>From a day or two up to a few months, and in one city up to two years [[s:shizuoka_trial,minamialps_trial,shizuoka_long_trial]]</td><td>Each town sets its own rules, mostly for people planning to move. Minami-Alps City lets one for one to three months at ¥21,000 a month (February 2026) [[s:minamialps_trial]].</td></tr>
@@ -128,7 +128,7 @@ ARTICLE = {
              "isa_nomad_en", "isa_nomad_list", "minamialps_trial", "shizuoka_trial", "shizuoka_long_trial", "jre_tt_tokyo"],
  "related": ["izu-from-tokyo", "izu"],
  "ja": {
-  "h1": "日本で空き家を買う前に、まず1か月住んでみる",
+  "h1": "空き家を買う前に、まず1か月住んでみる",
   "dek": "日本には約900万戸の空き家があり、2026年11月時点で、外国人が買うことは禁止されていません。でも、家を買うのは簡単なほうです。本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
   "review": [
    "【2026-11-15 組み込み前の仕上げ（品質保証部 90点・合格のあとの編集長の指摘8点）】変えた点: ①「家は安いほうの買い物」→「家を買うこと自体は簡単なほう」（リードと FAQ に合わせました）。配線の節の後に、改修・税金・保険・維持費が上乗せされ、本当の金額は書面の見積もりで分かる、の2文を足しました ②FAQ のお試し住宅の答えに特別永住者を足しました ③行政書士を英語で「在留資格（ビザ）の手続きを扱う行政書士（administrative scrivener）」と資格の名前で書きました（本文・FAQ） ④【事実の変更】「下田まで直通で3時間かからない」→「2026年11月時点で、東京駅から毎日走る直通で2時間29〜44分」。出典を編集長が確かめた JR東日本の東京駅の時刻表（jre_tt_tokyo）に替え、踊り子のページ（jreast_odoriko）は外しました ⑤南アルプス市の条件を「国籍は条件に挙げられていない」と制度の側から書きました ⑥NODE Shimoda の段落を3文にし、「一年中泊まれ、週割・月割がある」を削りました（黄色い枠から月額料金も外しました） ⑦「なぜ町で暮らすのか」の表の2行を、確認済みの体験（experience.md 3-2）につなげました。車の行に「下田の家は駅から徒歩10分ほどで、スーパー・コンビニ・飲食店が近い」、近所の行に「回線工事の車の停め方で近所から声をかけられた」 ⑧お試し1週目の「エアコン・冷蔵庫・電子レンジを同時に使ってみる」を、「泊まり先の人に契約のアンペア数とブレーカーの場所を聞く」に替えました。人に確かめてほしい点: 近所の行の書き方（experience.md では「工事の車両の駐車で近隣から指摘を受けた」）が、やわらげすぎ・強すぎになっていないか",
@@ -157,7 +157,7 @@ ARTICLE = {
 
 <h2>なぜ、買う前にその町で暮らすのか</h2>
 <p>家を買うこと自体は、簡単なほうです。本当に引き受けるのは町のほうで、物件情報から分かるのは、価格と間取りと何枚かの写真くらい。そこで楽しく暮らせるかを決めることは、しばらく住んでみて初めて見えてきます。</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>知りたいこと</th><th>1か月暮らすと、こう分かる</th></tr></thead>
 <tbody>
 <tr><td>古い木造の家が1月にどれくらい寒いか、暖房にいくらかかるか</td><td>最初の寒い夜に体で分かり、電気代の請求で数字でも分かります。</td></tr>
@@ -177,7 +177,7 @@ ARTICLE = {
 
 <h2>町を試すために、日本にどれくらいいられるのか</h2>
 <p>多くの人にとって、しっかり試せるくらいの長さはあります。就労や居住のビザなしで滞在する方法はおもに2つで、下の条件は2026年11月時点のものです。</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>滞在のしかた</th><th>期間</th><th>対象</th></tr></thead>
 <tbody>
 <tr><td><strong>短期滞在</strong>（ビザ免除）</td><td>ビザ免除の国・地域の多くは90日まで。15日や30日の国もあり、パスポートに条件が付く場合もあります[[s:mofa]]。</td><td>ビザ免除の国・地域の人。大事なのは、自分のパスポートの条件です。</td></tr>
@@ -188,7 +188,7 @@ ARTICLE = {
 
 <h2>町を試すために1か月泊まれる場所はどこか</h2>
 <p>おもな選択肢は、自治体のお試し住宅、マンスリーの部屋、月割のある宿の3つです。どれが合うかは、町と、どこから来るかによります。</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>選択肢</th><th>期間</th><th>知っておきたいこと</th></tr></thead>
 <tbody>
 <tr><td><strong>自治体のお試し住宅</strong></td><td>町によって、1〜2日から数か月まで。2年まで住める市もあります[[s:shizuoka_trial,minamialps_trial,shizuoka_long_trial]]</td><td>決まりは町ごとで、多くは移住するつもりの人向け。南アルプス市は1〜3か月、月21,000円で貸しています（2026年2月）[[s:minamialps_trial]]。</td></tr>
