@@ -135,6 +135,7 @@ ARTICLES_CASE = [
             "創業メンバーが個人事業として運営した宿の運営データ（2025年7月〜2026年9月）",
             "創業メンバーによる下田での開業記録（2025年11月執筆）",
             "民泊制度ポータルサイト「minpaku」（観光庁、2026年閲覧） https://www.mlit.go.jp/kankocho/minpaku/",
+            "Airbnb ヘルプセンター「How do changes to the Japanese Hotels and Inns Act affect hosting on Airbnb?」（届出番号などがない掲載は、新しい予約を受けられないよう停止。2026年11月閲覧） https://www.airbnb.com/help/article/2353",
         ],
     ),
 ]

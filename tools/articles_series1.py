@@ -949,6 +949,7 @@ ARTICLES_SERIES1 = [
             "日本政府観光局（JNTO）「訪日外客数（2025年12月推計値）」（2026年1月21日発表） https://www.jnto.go.jp/news/press/20260121_monthly.html",
             "総務省統計局「令和5年住宅・土地統計調査 住宅及び世帯に関する基本集計」（2024年公表、e-Stat 統計表ID 0004021421） https://www.e-stat.go.jp/dbview?sid=0004021421",
             "RIVIA&CO.「民泊の家具・家電・設備の初期投資を約14か月でほぼ回収｜下田の賃貸物件の宿」（2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
+            "Airbnb ヘルプセンター「How do changes to the Japanese Hotels and Inns Act affect hosting on Airbnb?」（届出番号などがない掲載は、新しい予約を受けられないよう停止。2026年11月閲覧） https://www.airbnb.com/help/article/2353",
         ],
     ),
     dict(
