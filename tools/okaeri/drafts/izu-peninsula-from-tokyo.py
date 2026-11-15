@@ -117,7 +117,7 @@ ARTICLE = {
    ("Do I need a car on the Izu Peninsula?",
     "Not to get to Shimoda or Shuzenji. You’ll only really miss one when you want to move between beaches."),
  ],
- "sources": ["jre_tt_tokyo", "ekitan_saphir", "jre_odoriko", "jre_fare2026", "jre_widepass", "jrp_price", "jg6305", "jg6311",
+ "sources": ["jre_tt_tokyo", "ekitan_saphir", "jre_fare2026", "jre_widepass", "jrp_price", "jg6305", "jg6311",
              "jg6304", "jnto", "uncharted", "izu_tokko", "shimoda_ohama", "shimoda_beach2026_city", "mlit_izuhakone2022",
              "mlit_izuhakone2026", "pref"],
  "related": ["kinmedai", "izu"],
