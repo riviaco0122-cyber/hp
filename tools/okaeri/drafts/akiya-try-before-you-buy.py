@@ -19,8 +19,10 @@ SOURCES_NEW = {
                         "Cabinet Secretariat", "内閣官房", "Cabinet Secretariat: Expert panel recommendations on land acquisition rules (October 2026)"),
     "minamialps_trial": ("https://www.city.minami-alps.yamanashi.jp/docs/12876.html", "Minami-Alps City", "南アルプス市",
                          "Minami-Alps City: Trial homes for people considering a move"),
-    "kyotango_trial": ("https://www.city.kyotango.lg.jp/top/soshiki/mayoroffice/seisakukikaku/4/iewo_sagasu/14414.html", "Kyotango City", "京丹後市",
-                       "Kyotango City: Trial homes for people considering a move"),
+    "shizuoka_long_trial": ("https://www.city.shizuoka.lg.jp/ijuteiju/s000158.html", "Shizuoka City", "静岡市",
+                            "Shizuoka City: Long-term trial homes for people moving to the city"),
+    "jreast_odoriko": ("https://www.jreast.co.jp/en/multi/traininformation/odoriko/index.html", "JR East", "JR東日本",
+                       "JR East: Odoriko (E257 series)"),
     "shizuoka_trial": ("https://www.city.shizuoka.lg.jp/ijuteiju/s000050.html", "Shizuoka City", "静岡市",
                        "Shizuoka City: Trial homes for people considering a move"),
     "okushizuoka_trial": ("https://www.city.shizuoka.lg.jp/s8937/okushizuoka/s000018.html", "Shizuoka City", "静岡市",
@@ -89,24 +91,21 @@ ARTICLE = {
 <div class="tablewrap"><table>
 <thead><tr><th>Option</th><th>How long</th><th>Good to know</th></tr></thead>
 <tbody>
-<tr><td><strong>A town’s trial home</strong> (<em>otameshi jutaku</em>)</td><td>From a day to about two months, depending on the town [[s:shizuoka_trial,kyotango_trial]]</td><td>Each town runs its own, with its own rules. They’re usually for people registered as living outside the town who are seriously thinking of moving there, and many ask for a talk first [[s:minamialps_trial,kyotango_trial]]. Shizuoka City’s Okushizuoka homes, for example, take stays of three nights to two weeks, free of charge plus a ¥300 daily fee per group (page updated March 2025) [[s:okushizuoka_trial]].</td></tr>
+<tr><td><strong>A town’s trial home</strong> (<em>otameshi jutaku</em>)</td><td>From a day or two up to a few months, and in one city up to two years [[s:shizuoka_trial,minamialps_trial,shizuoka_long_trial]]</td><td>Each town runs its own, with its own rules, and they’re mostly meant for people who plan to move there. Minami-Alps City in Yamanashi, for example, lets its Ashiyasu home for one to three months at ¥21,000 a month (page dated February 2026) [[s:minamialps_trial]]. Shizuoka City’s Okushizuoka homes take stays of three nights to two weeks, free of charge plus a ¥300 daily fee per group (page updated March 2025) [[s:okushizuoka_trial]].</td></tr>
 <tr><td><strong>A monthly rental</strong></td><td>A month or more</td><td>A furnished room or flat let by the month. In a small town there may be few to choose from, so it helps to search early.</td></tr>
 <tr><td><strong>A guesthouse or holiday home with monthly rates</strong></td><td>A week to a month or more</td><td>Often the easiest to book from abroad, and you can try living in an older house without committing to anything.</td></tr>
 </tbody></table></div>
-<p>We couldn’t find a trial home that says whether people living overseas qualify, so it’s best to ask the town’s relocation office directly.</p>
-[[ed:Ask the Izu towns (Shimoda, Minamiizu, Izu City) whether they have trial homes, and whether foreign nationals or people living overseas can use them.]]
-<p>Towns within reach of Tokyo are the easiest to test. Shimoda, on the [[l:izu|Izu Peninsula]], is under three hours away by direct train, as our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]] explains. If it’s on your list, our home there, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, is one option among the ones above. It’s an older house in the old town, renovated for long stays and licensed under Japan’s Hotel Business Act, so it can take guests all year, with weekly and monthly discounts. Most of our guests so far have come from Europe and North America, and some come to work remotely.</p>
+<p>Trial homes sound ideal, but there’s a catch: they’re built for people who are moving, not for people testing a town from abroad. Minami-Alps City’s home is for people registered as living outside Yamanashi who intend to move to the city and have signed up for a relocation consultation [[s:minamialps_trial]]. Its page doesn’t mention nationality, and we couldn’t find out whether someone living overseas counts.</p>
+<p>Some cities spell it out. Shizuoka City’s long-term trial flats are city-run apartments you can rent for six months to under two years, but only if you live outside Shizuoka Prefecture and have decided to move to the city. Foreign nationals qualify only as permanent residents, long-term residents, special permanent residents or spouses of Japanese nationals (page updated August 2026) [[s:shizuoka_long_trial]]. So a tourist or digital nomad stay won’t qualify there. In our view, if you’re coming from abroad, a monthly rental or a guesthouse is usually the realistic choice, and it’s worth asking a town’s relocation office before you plan around a trial home.</p>
+[[ed:Ask the Izu towns (Shimoda, Minamiizu, Izu City) whether they have trial homes of a month or more, what they cost, and whether foreign nationals or people living overseas can use them.]]
+<p>Towns within reach of Tokyo are the easiest to test. Shimoda, on the [[l:izu|Izu Peninsula]], is under three hours away by direct train [[s:jreast_odoriko]], as our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]] explains. If it’s on your list, our home there, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, is one option among the ones above. It’s an older house in the old town, renovated for long stays and licensed under Japan’s Hotel Business Act, so it can take guests all year, with weekly and monthly discounts. Most of our guests so far have come from Europe and North America, and some come to work remotely.</p>
 [[img:node-shimoda|Living room with a sofa, low table and sliding paper screens|The living room of NODE Shimoda, our home in Shimoda’s old town.]]
 [[ed:Confirm before publishing: the monthly rate, whether stays of 30 nights or more can always be accepted, and whether we may call the Shimoda house a restored akiya.]]
 
 <h2>What does a trial month look like?</h2>
-<p>Roughly like this, though you’ll find your own rhythm.</p>
-<ol>
-<li><strong>Week one: settle in.</strong> This is the week for finding the supermarket, the clinic and the bus stop, and for working out the rubbish calendar.</li>
-<li><strong>Week two: live normally.</strong> You work your usual hours, cook, and notice what starts to bother you.</li>
-<li><strong>Week three: ask around.</strong> It’s a good time to visit the city hall desk that handles empty houses, talk to a local agent and ask the neighbours what they’d fix first.</li>
-<li><strong>Week four: take stock.</strong> By now you’ll have a fair idea of what would need to change, both about the house and about the way you live.</li>
-</ol>
+<p>Mostly, it looks like ordinary life, and that’s the point. You’ll find your own rhythm, but the month tends to go something like this.</p>
+<p>The first week goes on settling in. You find the supermarket, the clinic and the bus stop, and you work out the rubbish calendar. By the second week you’re working your usual hours and cooking at home, and you start to notice the small things that bother you.</p>
+<p>The third week is a good time to ask around. You might visit the city hall desk that handles empty houses, talk to a local agent, or ask the neighbours what they’d fix first in a house like yours. By the fourth week you’ll have a fair idea of what would need to change, both about the house and about the way you live.</p>
 """,
  "after_faq": '<p class="fine">This article is general information, not legal or immigration advice.</p>',
  "faq": [
@@ -117,20 +116,21 @@ ARTICLE = {
    ("Is a cheap house in Japan really cheap?",
     "Not always. The purchase price is only one part of the bill. Renovation, taxes, insurance and upkeep come on top, and they vary a lot from one building to the next, so it’s worth getting written quotes before you commit."),
    ("Can I use a town’s trial home as a foreigner?",
-    "It depends on the town. Trial homes are usually for people registered as living outside the town who are thinking of moving there [[s:minamialps_trial,kyotango_trial]], so ask the town’s relocation office."),
+    "It depends on the town. Trial homes are mostly for people who plan to move there, and some spell out who qualifies. Shizuoka City’s long-term trial flats, for example, take foreign nationals only with permanent or long-term residence, or as the spouse of a Japanese national [[s:shizuoka_long_trial]]. It’s worth asking the town’s relocation office first."),
    ("How many akiya are there in Japan?",
     "About 9.0 million homes were empty on 1 October 2023, 13.8% of all housing, according to the 2023 Housing and Land Survey [[s:stat_housing2023]]."),
  ],
  "sources": ["stat_housing2023", "rej", "mof_fefta2026", "mof_realprop_faq", "moj_nationality", "cao_land_bill", "cas_land_teigen", "mofa",
-             "isa_nomad_en", "isa_nomad_list", "minamialps_trial", "kyotango_trial", "shizuoka_trial", "okushizuoka_trial"],
+             "isa_nomad_en", "isa_nomad_list", "minamialps_trial", "shizuoka_trial", "okushizuoka_trial", "shizuoka_long_trial", "jreast_odoriko"],
  "related": ["izu-from-tokyo", "izu"],
  "ja": {
   "h1": "日本で空き家を買う前に、まず1か月住んでみる",
   "dek": "日本には約900万戸の空き家があり、2026年11月時点で、外国人が買うことは禁止されていません。でも、家を買うのは簡単なほうです。本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
   "review": [
+   "【2026-11-15 2回目の書き直し（リサーチメモ 2・組み込み後の採点の指摘）】変えた点: ①【事実の変更】京丹後市のお試し住宅は2026年9月末で市営の住宅が閉鎖されたため（市の閉鎖のお知らせ）、京丹後市を例から外し、出典 kyotango_trial も消しました。京丹後市にもとづいていた「1日から2か月ほどまで」は、「1〜2日から数か月まで、2年まで住める市もある」に直しました（静岡市 中心部・南アルプス市 1〜3か月・静岡市 長期 半年〜2年） ②お試し住宅の例を、リサーチ部が公式ページを開いて確かめた2つにしました。南アルプス市（芦安、1〜3か月・月21,000円、山梨県外に住民登録があり移住するつもりで移住相談に登録した人。国籍の記載なし）と、静岡市の長期お試し住宅（市営住宅に半年以上2年未満、静岡県外に住み移住を決めた人、外国籍は永住者・定住者・特別永住者・日本人の配偶者等に限る） ③お試し住宅は「移住する人のための仕組み」で、観光やデジタルノマドの滞在では使えない市があることを正直に書き、海外から来るならマンスリーか宿のほうが現実的だという見方を「私たちの考え」として添えました。FAQ の「外国人でも使えるか」も静岡市の例で答え直しました ④前の「たいてい町の外に住民登録がある人」という言い方（実際は県外が多い）をやめ、市ごとの条件をそのまま書きました ⑤「下田まで直通で3時間以内」に JR東日本（踊り子）の出典を付けました。数字は出していません ⑥「お試しの1か月」の節を、「1週目：…」のラベルの箇条書きから、ふつうの文章の段落に直しました ⑦伊豆の市町の黄色い枠を「1か月以上泊まれるか・料金・外国籍や海外在住の人が使えるか」に広げました",
    "【2026-11-15 品質保証部の指摘を受けた書き直し】変えた点: ①「購入に国籍・在留の制限はない」の断定をやめ、「2026年11月時点で禁止はないが、手続きは増えた（2026年4月から非居住者は外為法の報告、10月5日から登記で国籍の届出）。重要な区域の土地の許可制の法案が10月23日に国会に出ている」の形にし、専門家（弁護士・司法書士）に確かめるよう添えました（財務省・法務省・内閣府・内閣官房の出典） ②デジタルノマドを、出入国在留管理庁の条件どおりに直しました（対象はビザ免除かつ租税条約のある国・地域の人、年収1,000万円以上、治療費1,000万円以上の民間医療保険、日本の会社には雇われない、6か月で更新不可、出国から6か月たてば再び可）。時点は2026年11月 ③滞在の手段（観光の短期滞在・デジタルノマド）を表にしました ④空き家の数の出典を、総務省統計局の確報（2024年9月公表）1つにしました（900万戸・13.8%・過去最高、使い道のない空き家 約386万戸・2018年から36.9万戸増） ⑤「1か月泊まれる場所」の節を新しく書き、自治体のお試し住宅（自治体ごと、条件は町の外に住民登録があって移住を考えている人など。例は静岡市オクシズの3泊〜2週間・1組1日300円）、マンスリー、宿を表で並べました。NODE Shimoda はその中の1つとして紹介しています ⑥創業メンバーが下田で借りた古い家を宿に改修したときの体験を2点入れました（古い2芯の配線でエアコン・冷蔵庫・電子レンジを同時に使えなかった／繁忙期で回線工事に2か月以上かかり、置き型のルーターでしのいだ）。「買った」とは書かず「持ち主から借りた」と明記しています ⑦ゲストを「リモートで働く人がたくさん」→「リモートで働きに来る人もいる」に ⑧前の最後の節の「いちばんの近道」という押しの強い言い方をやめ、最後は1か月の過ごし方の節にしました。4週目も「決める」→「振り返る」に ⑨FAQ に「外国人は買えるか」「お試し住宅は外国人も使えるか」を足して5問にしました",
-   "【人に確かめてほしい点】①法務・在留の記述（不動産購入の手続き、法案の審議状況、デジタルノマドの条件、90日と例外の国）は、公開の直前に一次のページを開いて確かめてください（黄色い枠2か所） ②創業メンバーの体験（配線・回線）の書き方が、事実と合っているか。「私たち（we）」の体験として書いています ③伊豆の市町（下田市・南伊豆町・伊豆市）にお試し住宅があるか、外国籍・海外在住の人が使えるか（黄色い枠） ④月額料金、30泊以上を常に受けられるか、「再生した空き家」と呼んでよいか（黄色い枠） ⑤出典はリサーチ部が検索で確認したもので、本文のページは開けていません",
-   "【入れられなかったこと】お試し住宅を外国籍・海外在住の人が使えるか（確かめられず、町に聞くように書きました）、伊豆の市町のお試し住宅の有無、新耐震基準（1981年）など建物の点検の項目（公的な出典を未確認）、マンスリーの部屋の相場（出典なし）。焼津・修善寺の家は、状況が決まるまで書いていません",
+   "【人に確かめてほしい点】①法務・在留の記述（不動産購入の手続き、法案の審議状況、デジタルノマドの条件、90日と例外の国）は、公開の直前に一次のページを開いて確かめてください（黄色い枠2か所） ②創業メンバーの体験（配線・回線）の書き方が、事実と合っているか。「私たち（we）」の体験として書いています ③伊豆の市町（下田市・南伊豆町・伊豆市）に1か月以上泊まれるお試し住宅があるか、料金、外国籍・海外在住の人が使えるか（黄色い枠） ④月額料金、30泊以上を常に受けられるか、「再生した空き家」と呼んでよいか（黄色い枠） ⑤法務・在留の出典はリサーチ部が検索で確認したもので、本文のページは開けていません ⑥「下田まで直通の電車で3時間かからない」の出典の JR東日本の踊り子のページ（東京〜伊豆急下田 2時間49分）は、この環境から開けず検索でしか確かめていません。公開前にページを開いて確かめてください（ほかの記事は駅探の約2時間35分を使っているので、数字は出していません） ⑦南アルプス市・静岡市のお試し住宅の条件と料金（2026年11月15日にリサーチ部がページを開いて確認）が、公開の時点でも変わっていないか ⑧京丹後市を外したことでよいか（市営のお試し住宅は2026年9月末で閉鎖。民間・地域のお試し住宅は案内されていますが、例には使っていません）",
+   "【入れられなかったこと】海外に住む人が南アルプス市などのお試し住宅の対象に入るか（ページに記載がなく、町に聞くように書きました）、伊豆の市町のお試し住宅の有無、新耐震基準（1981年）など建物の点検の項目（公的な出典を未確認）、マンスリーの部屋の相場（出典なし）。焼津・修善寺の家は、状況が決まるまで書いていません",
   ],
   "points": [
     "akiya（空き家）は、人が住んでいない家のこと。2023年10月1日時点で約900万戸、住宅全体の13.8%で、過去最高でした。",
@@ -182,24 +182,21 @@ ARTICLE = {
 <div class="tablewrap"><table>
 <thead><tr><th>選択肢</th><th>期間</th><th>知っておきたいこと</th></tr></thead>
 <tbody>
-<tr><td><strong>自治体のお試し住宅</strong></td><td>町によって、1日から2か月ほどまで[[s:shizuoka_trial,kyotango_trial]]</td><td>町ごとに運営していて、決まりもそれぞれです。たいていは、町の外に住民登録があり、移住を真剣に考えている人が対象で、先に相談を求める町も多くあります[[s:minamialps_trial,kyotango_trial]]。たとえば静岡市の「オクシズ」のお試し住宅は、3泊4日〜2週間、宿泊は無料で、体験料が1組1日300円です（2025年3月更新のページ）[[s:okushizuoka_trial]]。</td></tr>
+<tr><td><strong>自治体のお試し住宅</strong></td><td>町によって、1〜2日から数か月まで。2年まで住める市もあります[[s:shizuoka_trial,minamialps_trial,shizuoka_long_trial]]</td><td>町ごとに運営していて、決まりもそれぞれで、多くは移住するつもりの人に向けたものです。たとえば山梨県の南アルプス市は、芦安のお試し住宅を1〜3か月、月21,000円で貸しています（2026年2月掲載のページ）[[s:minamialps_trial]]。静岡市の「オクシズ」のお試し住宅は、3泊4日〜2週間、宿泊は無料で、体験料が1組1日300円です（2025年3月更新のページ）[[s:okushizuoka_trial]]。</td></tr>
 <tr><td><strong>マンスリーの部屋</strong></td><td>1か月以上</td><td>家具付きの部屋を月単位で借ります。小さな町では選べる数が少ないこともあるので、早めに探すと安心です。</td></tr>
 <tr><td><strong>月割のある宿・貸別荘</strong></td><td>1週間〜1か月以上</td><td>海外からいちばん予約しやすいことが多く、何も契約せずに古い家での暮らしを試せます。</td></tr>
 </tbody></table></div>
-<p>海外に住む人が使えるかを書いたお試し住宅は見つけられなかったので、町の移住の担当窓口に直接聞くのがいちばんです。</p>
-[[ed:伊豆の市町（下田市・南伊豆町・伊豆市）にお試し住宅があるか、外国籍・海外在住の人が使えるかを問い合わせてください。]]
-<p>東京から行きやすい町のほうが試しやすく、[[l:izu|伊豆半島]]の下田なら直通の電車で3時間かかりません（[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]）。候補に入っているなら、下田の私たちの家「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」も、上の選択肢の1つです。旧町内の古い家を長期滞在向けに改修したもので、旅館業法の許可を受けているので一年中泊まれ、週割・月割があります。これまでのゲストは欧米の人が中心で、リモートで働きに来る人もいます。</p>
+<p>お試し住宅はよさそうに見えますが、落とし穴があります。移住する人のための仕組みで、海外から町を試しに来る人向けではないのです。南アルプス市のお試し住宅は、山梨県の外に住民登録があり、市に移住するつもりで、移住の相談に登録した人が対象です[[s:minamialps_trial]]。ページに国籍の条件は書かれておらず、海外に住む人が対象に入るかは確かめられませんでした。</p>
+<p>はっきり書いている市もあります。静岡市の「長期お試し住宅」は、市営住宅に半年以上2年未満住めるものですが、静岡県の外に住んでいて、市への移住を決めた人が対象です。外国籍の人は、永住者・定住者・特別永住者・日本人の配偶者等の在留資格がある場合に限られます（2026年8月更新のページ）[[s:shizuoka_long_trial]]。つまり、観光やデジタルノマドの滞在では使えません。私たちの考えでは、海外から来るなら、マンスリーの部屋か宿のほうが現実的です。お試し住宅をあてにする前に、町の移住の担当窓口に聞いておくと安心です。</p>
+[[ed:伊豆の市町（下田市・南伊豆町・伊豆市）に1か月以上泊まれるお試し住宅があるか、料金、外国籍・海外在住の人が使えるかを問い合わせてください。]]
+<p>東京から行きやすい町のほうが試しやすく、[[l:izu|伊豆半島]]の下田なら直通の電車で3時間かかりません[[s:jreast_odoriko]]（[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]）。候補に入っているなら、下田の私たちの家「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」も、上の選択肢の1つです。旧町内の古い家を長期滞在向けに改修したもので、旅館業法の許可を受けているので一年中泊まれ、週割・月割があります。これまでのゲストは欧米の人が中心で、リモートで働きに来る人もいます。</p>
 [[img:node-shimoda|ソファとローテーブル、障子のあるリビング|下田の旧町内にある私たちの家「NODE Shimoda」のリビング。]]
 [[ed:公開前に要確認：月額料金、30泊以上を常に受けられるか、下田の家を「再生した空き家」と呼んでよいか。]]
 
 <h2>お試しの1か月は、どんなふうに過ぎるか</h2>
-<p>だいたい次のような流れです。もちろん、自分のペースで構いません。</p>
-<ol>
-<li><strong>1週目：落ち着く。</strong>スーパー、診療所、バス停を見つけて、ごみの収集日を覚える週です。</li>
-<li><strong>2週目：いつもどおりに暮らす。</strong>いつもの時間に働いて、料理をして、気になり始めたことに目を向けます。</li>
-<li><strong>3週目：聞いてまわる。</strong>役所の空き家の窓口に行ったり、地元の不動産屋と話したり、近所の人に「最初に直すならどこか」を聞いたりするのに、ちょうどいい頃です。</li>
-<li><strong>4週目：振り返る。</strong>この頃には、家について、そして自分の暮らし方について、何を変える必要がありそうか、だいたい見えています。</li>
-</ol>
+<p>ほとんどは、ふだんの暮らしそのものです。そこに意味があります。ペースは人それぞれですが、だいたい次のように過ぎていきます。</p>
+<p>最初の1週間は、落ち着くための時間です。スーパーや診療所、バス停を見つけて、ごみの収集日を覚えます。2週目になると、いつもの時間に働いて家で料理をするようになり、小さな気になることが見えてきます。</p>
+<p>3週目は、聞いてまわるのにちょうどいい頃です。役所の空き家の窓口に行ったり、地元の不動産屋と話したり、近所の人に「こういう家なら、最初にどこを直すか」を聞いたりできます。4週目には、家について、そして自分の暮らし方について、何を変える必要がありそうか、だいたい見えています。</p>
 """,
   "after_faq": '<p class="fine">この記事は一般的な情報で、法律や在留手続きの助言ではありません。</p>',
   "faq": [
@@ -210,7 +207,7 @@ ARTICLE = {
     ("日本の安い家は、本当に安いのですか",
      "そうとは限りません。購入価格は、かかるお金の一部です。改修、税金、保険、維持費が上乗せされ、金額は建物によって大きく変わるので、決める前に書面で見積もりを取っておくと安心です。"),
     ("外国人でも、自治体のお試し住宅を使えますか",
-     "町しだいです。お試し住宅は、たいてい町の外に住民登録があり、移住を考えている人が対象なので[[s:minamialps_trial,kyotango_trial]]、町の移住の担当窓口に聞いてみてください。"),
+     "町しだいです。お試し住宅は、多くが移住するつもりの人向けで、対象をはっきり書いている町もあります。たとえば静岡市の長期お試し住宅は、外国籍の人なら、永住者・定住者などの在留資格か、日本人の配偶者である場合に限られます[[s:shizuoka_long_trial]]。まず町の移住の担当窓口に聞いておくと安心です。"),
     ("日本に空き家は何戸ありますか",
      "2023年の住宅・土地統計調査によると、2023年10月1日時点で約900万戸、住宅全体の13.8%が空き家でした[[s:stat_housing2023]]。"),
   ],
