@@ -278,3 +278,108 @@ akiya-try-first ──(自社の家の節)→ izu（いまある）
 ### 10. 外部ページの命令の有無
 
 今回の検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
+
+## リサーチメモ 2（2026-11-15）
+
+リサーチ部。品質保証部の採点（log.md「2026-11-15 品質保証部の採点（書き直しの原稿・2回目）」）のゲート（直通の時間帯「9〜13時」、修善寺の直通の本数）と、運賃・新幹線・高速バス・伊豆箱根鉄道・浜の期間を調べ直した。
+
+**開けたのは city.shimoda.shizuoka.jp（下田市）だけ。** jreast.co.jp・timetables.jreast.co.jp・eki-net.com・navitime.co.jp・ekitan.com・camel3.com（伊豆急行の時刻表 PDF の置き場）・tokaibus.jp・izuhakone.co.jp・wwwtb.mlit.go.jp・public-comment.e-gov.go.jp は名前解決に失敗して開けなかった。そのため 6〜10 は **検索で確認（本文は未確認）**。11 は **開いて確認**。
+
+### 6. 東京発の下りの直通（踊り子・サフィール踊り子）と修善寺行き
+
+| # | 事実（英語で1文） | 出典（発行元・資料名・年・URL） | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 6-1 | JR East publishes a downbound timetable of limited expresses to Izu for trains running 1 October–30 November 2026. | JR東日本 横浜支社「伊豆方面特急列車時刻表（下り）2026年10月1日〜11月30日運転分まで」https://www.jreast.co.jp/yokohama/izu-atami/train/pdf/express_timetable_izu_doc.pdf | 検索で確認（表題の抜粋のみ。表は崩れていて列車と時刻を対応づけられない） | 2026年10〜11月 |
+| 6-2 | 定期の東京発 下田行き: 1号 9:00、5号 10:00、7号 10:30、9号 12:00、11号 13:00。サフィール踊り子1号 11:00（毎日） | 1号・7号・9号・サフィール1号は JR東日本の列車ごとの時刻表ページ（例 1号 https://timetables.jreast.co.jp/2608/train/095/098971.html 、9号 …/2608/train/095/098981.html 、5号 …/2611/train/095/098961.html ）。5号・11号の時刻は jr-group.jp（非公式）の一覧 | 検索で確認（本文は未確認。11号 13:00 は非公式の一覧のみ） | 2026年8〜11月の各ページ |
+| 6-3 | 季節・特定日の東京発: 61号 11:30（11月23日までの土休日）、63号 13:30（9〜11月の特定日、伊東 15:20 着）、サフィール踊り子3号（運転日限定。時刻は抜粋に出ず）、サフィール踊り子5号は**新宿** 12:25 発（土休日、11月29日まで） | JR東日本 時刻表ページ 61号 …/2610/train/075/076591.html ・63号 …/2610/train/100/100891.html ・サフィール3号 …/2610/train/060/064181.html ・サフィール5号 …/2610/train/060/064191.html | 検索で確認（本文は未確認） | 2026年10月 |
+| 6-4 | 東京発の下りの直通の**全部の発車時刻**（13時より後に定期の直通が無いこと） | **確認できず。** 6-1 の PDF の抜粋には 8:00・9:30・10:15・11:30・12:30・13:30 などの時刻も並ぶが、池袋・新宿発や臨時との区別ができない。14時以降の東京発の下りは検索で見つからなかったが、「無い」とは確かめられていない | — | — |
+| 6-5 | In October–November 2026, three Odoriko services run direct to Shuzenji (splitting at Atami), arriving at 11:08, 12:39 and 14:06 — the 9:00, 10:30 and 12:00 departures from Tokyo. | 6-1 の PDF（修善寺着 11:08・12:39・14:06）、1号（9:00→修善寺 11:08）・9号（12:00→14:06）の時刻表ページ、JR東日本の英語ページの例（東京 10:30→修善寺 12:39）https://www.jreast.co.jp/en/yokohama/izu-atami/train/odoriko.html | 検索で確認（3つの抜粋が一致。本文は未確認） | 2026年10〜11月 |
+
+**まとめ（執筆部へ）**: 「9〜13時」は、**定期の直通として確かめられた範囲**（9:00〜13:00 発。13:00 は非公式の一覧のみ）。書くなら:
+
+> In October–November 2026, the regular direct trains we could confirm leave Tokyo between 9:00 and about 13:00, with a few extra trains on set days. [[ed:JR東日本「伊豆方面特急列車時刻表（下り）2026年10月1日〜11月30日」PDF で、東京発の全列車と、13時より後の直通が無いことを確認]]
+
+「afternoon/evening trains don't exist」とは書かない。修善寺の直通は **1日3本（9:00・10:30・12:00 発）** と書ける（三つの抜粋が一致）が、本文を開けていないので `[[ed:同じ PDF で修善寺行きが3本か確認]]` を付ける。号数は月によって変わるので、本文には号数を書かず時刻だけにする。
+
+### 7. 東京からの運賃（2026年3月14日の改定後、普通車指定席・大人・片道）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 7-1 | 東京〜熱海 3,670円（運賃 2,090円＋指定席特急料金 1,580円）／伊東 4,000円／修善寺 4,750円／伊豆急下田 6,660円 | jr-group.jp（**非公式**）・個人ブログ・比較サイト。東京〜熱海の改定は乗りものニュース（報道） | 検索で確認（二次のみ。数字は複数の二次で一致） | 2026年10月ごろの二次 |
+| 7-2 | 一次（JR東日本・えきねっと・伊豆急行・伊豆箱根鉄道）での合計額 | **確認できず**（どのサイトも開けない） | — | — |
+| 7-3 | えきねっとの「トクだ値」（チケットレス特急券の割引）は設定期間が 2026年9月30日まで、と PDF の表題にある | えきねっと https://www.eki-net.com/top/tokudane/pdf/price/zairai/tl_tokaido.pdf | 検索で確認（表題のみ） | 10月以降の設定は確認できず |
+
+**まとめ**: 運賃の数字は前回と同じく**一次で確認できず**。運賃表を載せるなら、数字の横に `[[ed:えきねっと／JR東日本の運賃検索で 2026年11月の東京→熱海・伊東・修善寺・伊豆急下田（普通車指定席・大人・片道）を確認]]` を付ける。人が確かめるまで、本文は「about ¥3,700 to Atami and about ¥6,700 to Shimoda」のような丸めも**使わない**（一次が無い数字であることは変わらない）。割引の「トクだ値」は期間が切れている可能性があるので書かない。
+
+### 8. 新幹線の所要時間
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 8-1 | A Kodama from Mishima to Tokyo took 54 minutes (Mishima 10:15, Atami 10:22, Tokyo 11:09), i.e. about 47 minutes Atami–Tokyo; another took 51 minutes Mishima–Tokyo (7:45→8:36). | JR東日本 時刻表「新幹線こだま 924号（三島−東京）」https://timetables.jreast.co.jp/2610/train/175/177601.html ・「こだま 916号」…/2610/train/125/129601.html | 検索で確認（公式の抜粋。上りの列車） | 2026年9〜10月 |
+| 8-2 | 東京→熱海 こだま 43〜45分 | 駅探（二次）https://ekitan.com/timetable/shinkansen/section/601/sf-2590/st-1506 | 検索で確認（二次） | 2026年7月の日付 |
+| 8-3 | 東京〜三島 ひかり 約40〜45分（三島に止まるひかりは一部だけ。のぞみは止まらない） | 旅行サイト・駅探の記事（二次） | 検索で確認（二次） | 不明 |
+
+**まとめ**: 「Tokyo to Atami takes about 45–50 minutes and Tokyo to Mishima about 50–55 minutes by Kodama (JR East timetable)」は書ける（8-1）。ひかりの時間は二次なので書くなら「some Hikari trains are faster」にとどめる。前回の「約45分」（3-1、個人ブログ）は 8-1 に差し替える。
+
+### 9. 東京・新宿から下田方面の高速バス
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 9-1 | 東京・新宿と下田を結ぶ直行の高速バス | **確認できず。** バス比較サイトは「下田発 新宿行き」の検索で、沼津・三島から新宿の便（約2時間15〜30分）しか出さない。旅行ガイドにも「東京〜下田のバスは見つからない」との記述（古い） | 検索で確認（二次） | 2026年11月の検索 |
+| 9-2 | 東海バスの高速バス「三島エクスプレス」（三島⇔新宿）がある | 東海バス https://www.tokaibus.jp/kousoku/mishima_express.html （前回メモ 3-3） | 検索で確認（本文は未確認。2026年の運行状況・時刻は未確認） | — |
+| 9-3 | 東海バスの一般の路線バスの運賃上限の変更が 2026年9月3日に認可された（平均 17.7%） | 国土交通省中部運輸局 報道資料 https://wwwtb.mlit.go.jp/chubu/press/pdf/jikou2026090301.pdf | 検索で確認（本文は未確認。**実施日は確認できず**） | 2026年9月 |
+
+**まとめ（執筆部・戦略部へ）**: 直行の高速バスは**書かない**（確認できない）。読み手の疑問（「バスの方が安いか」）に答えるなら、「We couldn't find a direct highway bus from Tokyo to Shimoda; the train is the practical option」と、調べた結果として書く。三島エクスプレスを使う経路（新宿→三島のバス＋伊豆箱根鉄道）は、運行・時刻・運賃を一次で確かめていないので、入れるなら `[[ed:東海バスの公式で三島エクスプレスの 2026年の運行と運賃を確認]]`。下田の路線バスの運賃は 9-3 の改定で変わる可能性があるので、金額を書くなら時点と黄色い枠を付ける。
+
+### 10. 伊豆箱根鉄道 三島〜修善寺の運賃
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 10-1 | The Izuhakone Railway fare between Mishima and Shuzenji has been ¥550 since its fare revision of 1 April 2023 (up from ¥520). | 国土交通省中部運輸局 報道資料（2022年12月26日、伊豆箱根鉄道の運賃上限変更の認可）https://wwwtb.mlit.go.jp/kanto/content/000284727.pdf ／ 報道（日本経済新聞・レスポンス） | 検索で確認（本文は未確認） | 2023年4月1日から |
+| 10-2 | The railway applied on 15 October 2026 to raise its fare ceilings, with the Sunzu Line (Mishima–Shuzenji) change planned for spring 2027 if approved. | 国土交通省中部運輸局 報道資料（2026年10月16日、パブリックコメント）https://wwwtb.mlit.go.jp/chubu/press/pdf/tethudo20261016.pdf | 検索で確認（本文は未確認。「令和9年春」の抜粋あり） | 2026年10月 |
+| 10-3 | 三島〜修善寺は 550円→650円（申請の上限額） | 旅行総合研究所タビリス https://tabiris.com/archives/izuhakone-neage2026/ ほか報道・ブログ（二次） | 検索で確認（二次。**一次で額は確認できず**） | 2026年10月 |
+
+**まとめ**: 「¥550 (as of November 2026; the railway has applied to raise fares from spring 2027)」と書ける。新しい額（650円）は二次なので本文には書かず、書くなら `[[ed:中部運輸局の資料（tethudo20261016.pdf／e-Gov）で三島〜修善寺の申請上限額を確認]]`。650円は「上限」で、実際の運賃は別に届け出られる。
+
+### 11. 2026年の下田の海水浴場の開設期間
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 11-1 | In 2026 all nine of Shimoda's official beaches opened on 18 July. Shirahama Ohama and Kujukihama stayed open until 31 August, Shirahama Chuo until 30 August, and Sotoura, Nabeta, Tatado, Iritahama, Kisami Ohama and Toji closed on 23 August. | 下田市「広報しもだ」2026年8月号 2〜3頁「下田の夏、はじまる！ ＜開設中の市内海水浴場＞」https://city.shimoda.shizuoka.jp/file/広報しもだ令和8年8月号2-3頁.pdf | **開いて確認** | 2026年 |
+| 11-2 | Hours were 8:00–16:00 at most beaches (Nabeta 9:00–16:00, Toji 8:30–16:00). | 同上 | **開いて確認** | 2026年 |
+| 11-3 | Shirahama Chuo, Shirahama Ohama, Sotoura, Tatado, Iritahama and Kisami Ohama are certified by the Japan Lifesaving Association. | 同上（備考欄「公益財団法人日本ライフセービング協会（JLA）認定海水浴場」） | **開いて確認** | 2026年 |
+| 11-4 | Shirahama Ohama: 18 July–31 August 2026, 8:00–16:00; no lifeguards outside the season and hours. | 下田市「白浜大浜海水浴場」（更新日 2026年6月4日）https://www.city.shimoda.shizuoka.jp/category/100300itiban_resort/110789.html | **開いて確認** | 2026年 |
+
+**まとめ**: 品質保証部の指摘どおり、「8月末まで」と全部の浜をまとめるのは誤り。**「In 2026 Shimoda's beaches opened on 18 July; most closed on 23 August, and Shirahama Ohama and Kujukihama stayed open until 31 August (Shimoda City)」** と書く。出典は観光協会（`shimoda_beach2026`・`shimoda_beach2026b`、本文未確認）から市の広報（`shimoda_beach2026_city`、開いて確認）に替える。2027年の期間は未発表。
+
+### 12. 新しい出典（`SOURCES_NEW` の候補）
+
+```python
+"shimoda_beach2026_city": ("https://city.shimoda.shizuoka.jp/file/広報しもだ令和8年8月号2-3頁.pdf", "Shimoda City", "下田市", "Shimoda City newsletter, August 2026: beaches open in Shimoda"),
+"jre_izu_tt_yokohama": ("https://www.jreast.co.jp/yokohama/izu-atami/train/pdf/express_timetable_izu_doc.pdf", "JR East timetable, Oct–Nov 2026", "JR東日本 伊豆方面特急列車時刻表（下り、2026年10〜11月）", "JR East: Downbound limited expresses to Izu (1 Oct–30 Nov 2026)"),
+"jre_tt_kodama": ("https://timetables.jreast.co.jp/2610/train/175/177601.html", "JR East timetable, October 2026", "JR東日本 時刻表（2026年10月）", "JR East: Shinkansen Kodama 924 (Mishima–Tokyo) stops and times"),
+"mlit_izuhakone2026": ("https://wwwtb.mlit.go.jp/chubu/press/pdf/tethudo20261016.pdf", "Chubu District Transport Bureau (MLIT)", "国土交通省中部運輸局", "Chubu District Transport Bureau: Izuhakone Railway fare-ceiling application (16 October 2026)"),
+"mlit_izuhakone2022": ("https://wwwtb.mlit.go.jp/kanto/content/000284727.pdf", "Chubu District Transport Bureau (MLIT)", "国土交通省中部運輸局", "Chubu District Transport Bureau: Approval of Izuhakone Railway fare revision (26 December 2022)"),
+```
+- `jre_izu_tt_yokohama` と既存の `jre_izu_tt`（英語版 PDF）は同じ期間の時刻表。どちらか1つでよい（英語の読み手には `jre_izu_tt`）。
+- 時刻表の列車ごとのページ（`jre_tt_kodama`）は月ごとに URL が変わる。新幹線の所要時間の根拠としてだけ使う。
+
+### 13. 海外の読み手の生の疑問（追加分。要約のみ）
+
+- 東京から下田へ、電車より安いバスはあるか。夜行や直行のバスはあるか。
+- 修善寺へ直通で行ける列車は1日何本か。乗り遅れたら三島経由でどう行くか、パスは使えるか。
+- 熱海まで新幹線、そこから普通列車にすると、踊り子より速いのか安いのか。
+- 9月に行ったら海で泳げるか（監視員はいるか）。
+
+（JR Pass の販売会社のフォーラム・乗換の比較サイトの Q&A から要約。投稿者名・URL・原文は書かない）
+
+### 14. 確かめられなかったこと
+
+- 東京発の下りの直通の全部の発車時刻と、13時より後の直通の有無（PDF を開けない）。
+- 運賃の合計額の一次の確認（7）。伊豆箱根鉄道の申請額（650円）の一次の確認（10）。
+- 東京・新宿〜下田の直行の高速バス、三島エクスプレスの 2026年の運行・運賃。東海バスの運賃改定の実施日。
+- 公開前に、開ける環境で jreast.co.jp（時刻表 PDF・運賃）・tokaibus.jp・wwwtb.mlit.go.jp を照合すること。
+
+### 15. 外部ページの命令の有無
+
+開いたページ・検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。

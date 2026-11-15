@@ -248,3 +248,111 @@
 ### 9. 外部ページの命令の有無
 
 今回の検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
+
+## リサーチメモ 2（2026-11-15）
+
+リサーチ部。品質保証部の採点（log.md「2026-11-15 品質保証部の採点（書き直しの原稿・2回目）」）のゲート2つ（資源の「2010年から減少」、観光協会の「年1,000トン・8割」）と、科名・厚労省の資料名・味の説明を調べ直した。
+
+**今回は一部のページを開けた。** 開けたのは mhlw.go.jp・pref.kanagawa.jp・pref.chiba.lg.jp・pref.shizuoka.jp・fish-exp.pref.shizuoka.jp・pref.kyoto.jp・pref.ibaraki.jp・pref.tokushima.lg.jp・ifarc.metro.tokyo.lg.jp・city.shimoda.shizuoka.jp。**開けなかった**のは jfa.maff.go.jp（水産庁）・abchan.fra.go.jp・fra.repo.nii.ac.jp（水産研究・教育機構）・shimoda-city.info（観光協会）・godac.jamstec.go.jp・gbif.org・fishbase.se・kanagawa-kankou.or.jp。「開いて確認」は PDF の本文を読んで確かめたもの、「検索で確認（本文は未確認）」は検索結果の抜粋だけで確かめたもの。
+
+### 1. 資源・漁獲の推移（ゲート「2010年から減少」）
+
+| # | 事実（英語で1文） | 出典（発行元・資料名・年・URL） | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 1-1 | In 2005–2009 the kinmedai catch of Tokyo, Chiba, Kanagawa and Shizuoka was stable at just under 7,000 t a year, but it has tended to fall since 2010, reaching 3,797 t in 2020; the Fisheries Agency judged the stock level low and the trend decreasing. | 水産庁「太平洋南部キンメダイの広域資源管理」（太平洋広域漁業調整委員会 第30回太平洋南部会 資料、2021年11月22日）。神奈川県のサイトに会議資料一式が載っている https://www.pref.kanagawa.jp/documents/83073/siryou4-1.pdf （8ページ目） | **開いて確認**（原文「1都3県…における2005〜2009年のキンメダイの漁獲量は7,000トン弱で安定していたものの、2010年以降は減少傾向にあり、2020年には3,797トン」「資源の水準は低位、動向は減少」） | 2020年までの漁獲量（2021年11月の資料） |
+| 1-2 | The FY2021 national assessment put the 2020 Pacific-stock catch at 4,617 t (3,797 t from the four Kanto prefectures), estimated the stock at 25,300 t and rated it low. | 同じ資料の3〜8ページ「キンメダイ太平洋系群 令和3年度資源評価結果」（水産庁・水産研究・教育機構） | **開いて確認** | 令和3年度の評価（2020年の値） |
+| 1-3 | A Kanagawa summary says the Pacific stock fell sharply after 2005, and the FY2016 national assessment rated it low and decreasing. | 神奈川県「キンメダイ 資源の動向『低位・増加』」（平成29年12月）https://www.pref.kanagawa.jp/documents/25003/907220.pdf | **開いて確認**（「資源量は2005年を境に大きく減少」） | 2017年12月 |
+| 1-4 | 2018年の漁獲量 5,302トン（うち一都三県 4,298トン）、2010年以降減少、低位 | 水産庁「キンメダイ太平洋系群 令和元年度資源評価結果」index-100（前回 2-4 と同じ） | 検索で確認（本文は未確認。1-2 のグラフの2018年の高さと矛盾しない） | 令和元年度の評価 |
+| 1-5 | The latest assessment (published September 2026) says the catch has fallen over the long term since the 1980s, to 4,300 t in 2025, while the estimated stock rose from 29,500 t in 2015 to 43,700 t in 2025 and the spawning stock from 20,600 t in 2017 to 29,700 t. | 水産庁 資源評価の公表資料（2026年9月2日）https://www.jfa.maff.go.jp/j/press/sigen/attach/pdf/20260902-7.pdf | 検索で確認（本文は未確認。資料名・年度の表記は見えていない） | 2025年の値（令和7年度の評価と思われる） |
+| 1-6 | Chiba Prefecture notes that the national assessment found the 2023 spawning stock off the Kanto coast and Izu Islands above the level that supports maximum sustainable yield, and increasing. | 千葉県「沿岸重要水産資源 令和6年度資源評価 キンメダイ」https://www.pref.chiba.lg.jp/gyoshigen/sigenhyoka/documents/01-r6kinme.pdf | **開いて確認**（備考欄。県の漁獲量は2007年2,263t→2013年1,039t→2023年1,467t、生息水深200〜800m） | 2023年の値（2025年3月作成） |
+| 1-7 | Shizuoka Prefecture says its kinmedai landings have fallen from a peak of 7,000 t to 1,183 t. | 静岡県水産・海洋技術研究所「キンメダイの資源回復に向けた種苗生産技術の開発」（2026年4月）https://fish-exp.pref.shizuoka.jp/03research/pdf/2026/R8/10-kinme.pdf | **開いて確認**（1,183t の年は本文に無い。検索の抜粋では2022年） | 2026年4月作成 |
+
+**まとめ（執筆部へ）**: 「2010年から減少」は、**一都三県の漁獲量について、2020年までの数字としてなら正確**（1-1、開いて確認）。ただし**いまも減っているように書くのは誤り**になる。新しい評価では、資源量・親魚量は2010年代半ばから増えている（1-5・1-6）。書き方の案:
+
+> Catches off the Kanto and Izu coasts held at just under 7,000 tonnes a year in 2005–2009, then fell to about 3,800 tonnes by 2020, and the Fisheries Agency rated the stock low (Fisheries Agency, 2021). More recent assessments show the stock recovering since the late 2010s, but catches are still far below the past (Chiba Prefecture, 2025).
+
+- 出典の印は 1-1（`jfa_kinme_2021`）と 1-6（`chiba_kinme_r6`）。どちらも開いて確かめた。
+- 1-5 の2025年の数字（4.3千トン・43.7千トン）を使うなら `[[ed:水産庁 20260902-7.pdf を開いて、2025年の漁獲量 4.3千トン・資源量の増加の記述と資料名を確認]]`。
+- 「5,302 t in 2018」（1-4）は本文を開けていない。使わなくても上の文で足りる。
+
+### 2. 観光協会の「年1,000トン以上・水揚げの約8割が金目鯛」（ゲート）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 2-1 | 観光協会のページの「年1,000トン以上」「約8割」 | 伊豆下田観光協会 https://www.shimoda-city.info/kinem | **確認できず**（サイトを開けない。今回の検索では「1,000トン」の文言が抜粋に出なかった） | — |
+| 2-2 | 下田の水揚げ量について、二次の数字が食い違う（年約2,000トン＝2014年のテレビ番組の紹介、年3,000〜4,000トン＝旅行サイト。どちらも出典・年の根拠なし） | 検索結果の旅行メディア・番組ページ | 検索で確認（二次） | まちまち |
+| 2-3 | 静岡県全体の水揚げが1,183トン（1-7）なので、「下田だけで年1,000トン以上」はいまの数字としては考えにくい | 1-7 | 開いて確認（1-7） | — |
+| 2-4 | Shizuoka Prefecture's own page calls the Shimoda city fish market "Japan's No. 1 for kinmedai landings". | 静岡県「市場の食堂 金目亭」（更新日 2025年3月13日）https://www.pref.shizuoka.jp/sangyoshigoto/suisan/suisangyo/uocching/1003397/1043925/1028101.html | **開いて確認**（「金目鯛水揚げ日本一の下田市魚市場」） | 2025年3月 |
+| 2-5 | Shimoda City's 2016 newsletter calls Shimoda's kinmedai "Japan's No. 1 by catch". | 下田市「広報しもだ」平成28年6月号16頁（既存 `shimoda_news`） | **開いて確認**（「漁獲量日本一を誇る下田の金目鯛」） | 2016年6月 |
+| 2-6 | Shizuoka Prefecture is Japan's top prefecture for kinmedai landings (prefectural research summary). | 静岡県「試験研究10大トピックス キンメダイの脂肪含有率変化に着目した新たな旬の創設」（研究期間 平成19〜23年度）https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/025/667/06kinme.pdf | **開いて確認** | 2007〜2011年度の研究（古い） |
+
+**まとめ**: 「over 1,000 tonnes a year」と「about 80% of the fish landed」は**書かない**（確認できず。県全体の数字とも合いにくい）。「日本一」は、県（2-4、2025年）と市（2-5、2016年）が言っていることとして書ける: 「Shizuoka Prefecture and Shimoda City both describe Shimoda as Japan's top landing port for kinmedai」。全国の港別統計の順位ではないので「officially ranked」とは書かない。
+
+### 3. キンメダイとアカムツの科名
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 3-1 | Kinmedai (Beryx splendens) belongs to the order Beryciformes, family Berycidae. | 東京都島しょ農林水産総合センター「珍魚採集報告 第217号 キンメダイ標識魚」（2019年11月11日）https://www.ifarc.metro.tokyo.lg.jp/watch/uploads/e1b51dd9a8029f8a3c05613d0c07008c.pdf | **開いて確認**（「キンメダイ目キンメダイ科キンメダイ属」） | 2019年 |
+| 3-2 | Akamutsu, called nodoguro because the inside of its mouth is black, is a member of the family Acropomatidae (order Perciformes) and lives on the shelf and slope at about 100–200 m. | 徳島県「徳島水研だより 第95号 徳島県産アカムツ（ノドグロ）の漁獲量と資源状態」（2015年8月）https://www.pref.tokushima.lg.jp/file/attachment/175834.pdf | **開いて確認**（「スズキ目スズキ亜目ホタルジャコ科の高級魚」「水深100〜200mの陸棚や陸棚斜面の底層」） | 2015年 |
+| 3-3 | 茨城県の資料（`ibaraki_akamutsu`）に**科名は書かれていない**。生息水深は「主に日本海西南海域の水深80〜150m」。また「茨城県では『のどぐろ』はユメカサゴを指す」とある | 茨城県水産試験場「アカムツ」（評価期間 令和7年、更新 2026年3月11日）r7akamutu.pdf | **開いて確認** | 2026年3月 |
+| 3-4 | 京都府の資料も1ページ目に科名は無い。「口腔内が黒いことから一般的には『のどぐろ』」「脂ののった上質な白身で、刺身・塩焼き・煮付けなど」 | 京都府農林水産技術センター海洋センター「季報 第113号 アカムツ（のどぐろ）の資源管理」（令和元年12月）akamutu.pdf | **開いて確認** | 2019年 |
+
+**まとめ**: 「別の科」は 3-1 と 3-2 で出典の印を付けられる（目も違う: キンメダイ目とスズキ目）。前回のメモ 2-7 で「茨城県の資料にホタルジャコ科」としたのは**誤り**（茨城の資料に科名は無い）。科名の出典は `tokyo_kinme_tag` と `tokushima_akamutsu` に替え、茨城は水深だけに使う。地域によって「のどぐろ」が別の魚を指すこと（3-3）は、読み手の混乱の答えとして一言入れてもよい。
+
+日本語版 FAQ の「レッドスナッパー（鯛の仲間）」について: 3-1 のとおりキンメダイはキンメダイ目キンメダイ科で、鯛（タイ科、スズキ目）の仲間ではない。名前に「鯛」が付くだけ、と書くのが正確。
+
+### 4. 厚生労働省の水銀の注意事項（いまの資料）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 4-1 | Japan's health ministry lists kinmedai with swordfish, bluefin tuna and bigeye tuna among fish that pregnant women should limit to about one 80 g serving a week (about 80 g a week). | 厚生労働省 薬事・食品衛生審議会食品衛生分科会乳肉水産食品部会「妊婦への魚介類の摂食と水銀に関する注意事項」（平成17年11月2日、平成22年6月1日改訂）https://www.mhlw.go.jp/topics/bukyoku/iyaku/syoku-anzen/suigin/dl/index-a.pdf | **開いて確認**（2ページ目の表「1回約80gとして妊婦は週に1回まで（1週間当たり80g程度）」にキンメダイ・メカジキ・クロマグロ・メバチ・エッチュウバイガイ・ツチクジラ・マッコウクジラ） | 2010年6月1日改訂（いまの版） |
+| 4-2 | The same advice says one piece of sushi or sashimi is about 15 g, and that the advice is for protecting the fetus, not for children or other adults. | 同上 | **開いて確認** | 同上 |
+| 4-3 | 載っているページ | 厚生労働省「魚介類に含まれる水銀について」https://www.mhlw.go.jp/topics/bukyoku/iyaku/syoku-anzen/suigin/index.html （注意事項本文・Q&A・パンフレットの PDF へのリンク。ページそのものに表は無い） | 開いて確認（文字化けがあり、タイトルは読み取りの近似） | 更新日の表示なし |
+
+**まとめ**: 出典は `mhlw_mercury`（2005年の 050812-1.pdf）から **`mhlw_mercury2010`（index-a.pdf）に差し替える**。区分の表があるのはこの PDF の2ページ目。大阪府（`osaka_mercury`）は不要になる。「寿司1貫は約15g」（4-2）を足すと、旅行者の判断に役立つ（80g は寿司で約5貫）。医療の助言にはしない。
+
+### 5. 味の説明
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 5-1 | Shimoda City describes kinmedai as a white fish that stays fatty all year because it lives in deep water, suits many kinds of dishes, and is said to be at its best in winter, with June, before spawning, also called its fattiest time. | 下田市「広報しもだ」平成28年6月号16頁（既存 `shimoda_news`） | **開いて確認** | 2016年 |
+| 5-2 | The same page says fresh kinmedai have clear golden eyes and bright red skin, turning whitish as they lose freshness, and that the fish turn fully red about 40 minutes after landing. | 同上 | **開いて確認** | 2016年 |
+| 5-3 | A Shizuoka research summary says kinmedai is usually thought best in winter, the hot-pot season, but its fat content peaks in June, and bigger fish carry more fat. | 静岡県「試験研究10大トピックス キンメダイの脂肪含有率変化に着目した新たな旬の創設」06kinme.pdf（2-6 と同じ） | **開いて確認**（稲取漁港の魚を1年測った結果。図で6月が約10%） | 2007〜2011年度の研究 |
+| 5-4 | Shizuoka Prefecture's page on the fish-market restaurant in Shimoda lists dishes such as a three-way kinmedai rice bowl, a whole simmered kinmedai set meal and a seared kinmedai rice bowl. | 静岡県「市場の食堂 金目亭」（2-4 と同じ） | **開いて確認** | 2025年3月 |
+| 5-5 | 千葉県の魚のコラム（「さかな好き父さんのスーパー買物日記」、2024年9月6日更新）に「キンメといえば煮付けが最高」 | 千葉県 https://www.pref.chiba.lg.jp/suisan/sakana/kaimononikki/kinmedai.html | 開いて確認 | 2024年 | 
+
+**まとめ**: 「脂がのった白身で、一年中脂がある・冬が旬とされ、6月も脂が多い・どんな料理にも合う」は 5-1・5-3 で出典の印を付けて書ける。「甘い」「とろける」など**味そのものの形容は公的な出典に無い**ので、書くなら見解として（「many people say」は避け、自社の確認済みの体験があればそれで）。5-5 はコラムなので、事実の根拠にはしない。
+
+### 6. 新しい出典（`SOURCES_NEW` の候補）
+
+```python
+"mhlw_mercury2010": ("https://www.mhlw.go.jp/topics/bukyoku/iyaku/syoku-anzen/suigin/dl/index-a.pdf", "Ministry of Health, Labour and Welfare", "厚生労働省", "MHLW: Advice for pregnant women on fish and mercury (revised June 2010)"),
+"jfa_kinme_2021": ("https://www.pref.kanagawa.jp/documents/83073/siryou4-1.pdf", "Fisheries Agency", "水産庁", "Fisheries Agency: Pacific splendid alfonsino — FY2021 stock assessment and wide-area management (committee papers, November 2021)"),
+"chiba_kinme_r6": ("https://www.pref.chiba.lg.jp/gyoshigen/sigenhyoka/documents/01-r6kinme.pdf", "Chiba Prefecture", "千葉県", "Chiba Prefecture: Coastal fisheries resource assessment FY2024 — splendid alfonsino"),
+"shizuoka_kinme_2026": ("https://fish-exp.pref.shizuoka.jp/03research/pdf/2026/R8/10-kinme.pdf", "Shizuoka Prefecture", "静岡県", "Shizuoka Prefectural Research Institute of Fishery and Ocean: Seed production research for kinmedai recovery (April 2026)"),
+"shizuoka_kinme_fat": ("https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/025/667/06kinme.pdf", "Shizuoka Prefecture", "静岡県", "Shizuoka Prefecture: A new season for kinmedai based on fat content"),
+"shizuoka_kinmetei": ("https://www.pref.shizuoka.jp/sangyoshigoto/suisan/suisangyo/uocching/1003397/1043925/1028101.html", "Shizuoka Prefecture", "静岡県", "Shizuoka Prefecture: Kinmetei, the fish-market restaurant in Shimoda"),
+"tokyo_kinme_tag": ("https://www.ifarc.metro.tokyo.lg.jp/watch/uploads/e1b51dd9a8029f8a3c05613d0c07008c.pdf", "Tokyo Metropolitan Government", "東京都", "Tokyo Metropolitan Islands Area Research and Development Center: Tagged kinmedai report No. 217 (2019)"),
+"tokushima_akamutsu": ("https://www.pref.tokushima.lg.jp/file/attachment/175834.pdf", "Tokushima Prefecture", "徳島県", "Tokushima Prefecture: Akamutsu (nodoguro) catch and stock status (2015)"),
+```
+- 1-5 を使うときだけ: `"jfa_kinme_2026": ("https://www.jfa.maff.go.jp/j/press/sigen/attach/pdf/20260902-7.pdf", "Fisheries Agency", "水産庁", "Fisheries Agency: Splendid alfonsino, Pacific stock assessment (September 2026)")`（本文は未確認）
+- 使わなくなる候補: `mhlw_mercury`（→ `mhlw_mercury2010`）、`osaka_mercury`、`jfa_kinme`（本文未確認。1-1 で足りる）。`ibaraki_akamutsu` の英語名は科名を含めない（水深の出典としてだけ使う）。
+
+### 7. 海外の読み手の生の疑問（追加分。要約のみ）
+
+- 「golden eye snapper」と英語のメニューにあるが、snapper（鯛）なのか。のどぐろ（blackthroat seaperch）と同じ魚か。
+- 金目鯛は資源が減っている（持続可能でない）と聞いた。観光客が食べてもよいのか。
+- 妊娠中、寿司で何貫までなら大丈夫か（80g がどれくらいか分からない）。
+
+（旅行メディアの Q&A・食の解説記事のコメントから要約。投稿者名・URL・原文は書かない）
+
+### 8. 確かめられなかったこと
+
+- 観光協会の「年1,000トン以上」「約8割」（サイトを開けない。数字は書かない）。
+- 水産庁の令和元年度（index-100）・2026年9月（20260902-7）の資料の本文（jfa.maff.go.jp を開けない）。
+- 味そのもの（甘み・食感）を形容した公的な出典。
+- 公開前に、開ける環境で shimoda-city.info（きんめ祭り・旬）と jfa.maff.go.jp を照合すること。
+
+### 9. 外部ページの命令の有無
+
+開いたページ・検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。なお下田市の広報（2016年6月号16頁）には、記事と関係のない市民の子どもの名前と写真が載っている。出典として使うのは金目鯛の記事の部分だけで、名前は書き写さない。
