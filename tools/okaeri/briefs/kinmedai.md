@@ -155,3 +155,96 @@
 ## 外部ページの命令の有無
 
 今回の検索結果（英語・日本語の上位ページ）に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
+
+---
+
+## リサーチメモ（2026-11-15）
+
+リサーチ部。**この作業環境からは WebFetch で外部のページを開けなかった**ため、確認の方法はすべて **検索で確認（本文は未確認）**。「公式の抜粋」は検索結果に出た公式ページの文言で確かめたもの。東京からの所要時間（R10）は `izu-peninsula-from-tokyo.md` のリサーチメモ 1-1・1-2 と共通（JR 東日本の公式で「2 hours 49 minutes」。記事の「2 hours 35 minutes」は直す）。
+
+### 1. 妊婦と水銀（R6・B6）
+
+| # | 事実（英語で1文） | 出典（発行元・資料名・年・URL） | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 1-1 | Japan's health ministry advises pregnant women to limit kinmedai (splendid alfonsino) to about one 80 g serving a week, the same group as swordfish, bluefin tuna and bigeye tuna. | 厚生労働省「妊婦への魚介類の摂食と水銀に関する注意事項」（2005年11月の見直し）https://www.mhlw.go.jp/topics/bukyoku/iyaku/syoku-anzen/suigin/dl/050812-1.pdf ／ いまの注意事項（2010年改訂）を載せている公的なページ: 大阪府 https://www.pref.osaka.lg.jp/o100110/shokuhin/kosodate/hg.html ・広島市 https://www.city.hiroshima.lg.jp/living/eisei/1052189/1052195/1014257.html | 検索で確認（厚労省 PDF・大阪府・広島市の抜粋が一致） | 注意事項は2003年公表、2005年・2010年に見直し。キンメダイの区分は2005年以降「週1回まで（1回約80g）」 |
+| 1-2 | 厚労省の英語版（2005年の仮訳 https://www.mhlw.go.jp/topics/bukyoku/iyaku/syoku-anzen/suigin/dl/051102-1en.pdf ）は表の読み取りがあいまいで、古い英語ページは2003年の「週2回まで」のまま | 同上 | 検索で確認 | 古い |
+
+**まとめ**: 書いてよい（厚労省の区分として）。英語版は古い・あいまいなので**出典に英語版を使わない**。言い方は医療の助言にせず「Japan's Ministry of Health, Labour and Welfare lists kinmedai among fish that pregnant women should limit to about 80 g once a week」。厚労省のいまの注意事項のページ（2010年改訂版）そのものは開けていないので、`[[ed:厚労省の現行ページ（2010年改訂）でキンメダイの区分を開いて確認し、URL を差し替える]]` を付けるか、大阪府のページを出典にする。
+
+### 2. 値段・高い理由・のどぐろとの違い（R3・R7・R8・B3・B5）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 2-1 | Kinmedai live in deep water beyond 200 m, mostly on continental slopes and the slopes and tops of seamounts. | 水産研究・教育機構の研究資料（キンメダイは水深200mを超える深場）https://fra.repo.nii.ac.jp/record/2009184/files/kamisu_s_2018_13.pdf ／ 水産庁「キンメダイ太平洋系群 令和元年度資源評価結果」https://www.jfa.maff.go.jp/j/suisin/s_kouiki/taiheiyo/attach/pdf/index-100.pdf | 検索で確認（本文は未確認） | 2018〜2019年の資料 |
+| 2-2 | Chiba Prefecture's assessment describes kinmedai off its coast at about 200–800 m. | 千葉県「沿岸重要水産資源 平成30年度資源評価 キンメダイ」https://www.pref.chiba.lg.jp/gyoshigen/shingikai/saibai-shigen/kekka/documents/h30sanko3-2.pdf | 検索で確認 | 2018年度 |
+| 2-3 | Off the Pacific coast, kinmedai are caught with vertical and bottom longlines (one hook line at a time), not trawls. | 水産庁「キンメダイ太平洋系群に関する資源管理の基本的な考え方」（2022年12月）https://www.jfa.maff.go.jp/j/council/seisaku/kanri/syuhou/attach/pdf/221220-10.pdf ・同 index-204 | 検索で確認 | 2022年 |
+| 2-4 | The Pacific stock's catch was 5,302 t in 2018 (4,298 t from Chiba, Tokyo, Kanagawa and Shizuoka); it has been falling since 2010 and the stock was judged low. | 水産庁 資源評価（令和元年度）index-100（同 2-1） | 検索で確認 | 2018年の漁獲量（令和元年度の評価） |
+| 2-5 | 金目鯛の市場価格（円/kg）・店の煮付け定食の価格帯 | **確認できず。** 東京都中央卸売市場の週間市況 PDF は見つかったが、キンメダイの単価は抜粋に無い | — | — |
+| 2-6 | 「高いのは○○だから」と因果を言い切る公的な出典 | **確認できず。** 2-1〜2-4（深い・一本ずつ釣る・漁獲が減っている・資源は低位）を事実として並べるところまで | — | — |
+| 2-7 | Nodoguro is the local name for akamutsu (blackthroat seaperch), a different fish in a different family (Acropomatidae) from kinmedai. | 京都府「アカムツ」https://www.pref.kyoto.jp/kaiyo/documents/akamutu.pdf ／ 茨城県水産試験場 https://www.pref.ibaraki.jp/nourinsuisan/suishi/teichaku/documents/r7akamutu.pdf | 検索で確認（ホタルジャコ科・赤い体・口の中が黒い） | 府県の資料（年は資料ごと） |
+| 2-8 | Akamutsu live shallower than kinmedai, around 80–150 m. | 茨城県水産試験場（同上） | 検索で確認 | 同上 |
+| 2-9 | キンメダイがキンメダイ科（Berycidae）であること | 一般的な分類だが、**今回の検索で公的な出典の文言は確認できず** | — | — |
+
+**まとめ**: 「のどぐろとは別の魚（科が違う、のどぐろの方が浅い所にいる）」は府県の資料で書ける。値段の数字は**書かない**（自社の確認済みの体験が入れば別）。「なぜ高いか」は「deep-water fish, caught one line at a time, and catches have fallen since 2010 (Fisheries Agency)」と事実を並べ、「that's why」と言い切らない。生息水深は「usually deeper than 200 m」（水産研究・教育機構・水産庁）に直す（B3）。
+
+### 3. 下田きんめ祭り（R4・B4）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 3-1 | During the Kinme Matsuri you can watch kinmedai being landed at the Shimoda fish market from about 7:30 to 9:00, except on Tuesdays and Saturdays when boats don't go out; times may change. | 伊豆下田観光協会「きんめ祭り」https://www.shimoda-city.info/event/kinme.html | 検索で確認（公式の抜粋。**ページに年の記載なし**） | 年不明（2017年のスタッフブログと同じ内容） |
+| 3-2 | 期間は毎年6月1日〜30日（あじさい祭と同じ時期） | 旅マガジン（二次）・観光協会のスタッフブログ（年は古い） | 検索で確認 | **2026年の期間を書いた公式のページは見つからず** |
+| 3-3 | 2026年に観光協会が出した6月のページは「赤いかキャンペーン（2026年6月1日〜30日）」で、きんめ祭りの2026年の告知は検索に出なかった | 伊豆下田観光協会 https://www.shimoda-city.info/akaika | 検索で確認 | 2026年 |
+| 3-4 | 2027年の予定 | **未発表**（確認できず） | — | — |
+
+**まとめ**: 「毎年6月」は二次と古い資料のみ。書くなら「The festival has been held every June (Shimoda Tourism Association); check dates for the year you visit」とし、`[[ed:2026年に開催されたか、2027年の予定を観光協会に確認]]`。見学時間・休漁日は観光協会のページで書けるが、年が無いので「according to the tourism association's festival page (checked November 2026)」と確認した日を書く。出典は Tabi-mag から観光協会に差し替えられる（B2）。
+
+### 4. 水揚げ日本一の根拠（R1・R2・B1）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 4-1 | Shimoda's tourism association describes Shimoda as Japan's top port for kinmedai landings, with over 1,000 tonnes a year, and says about 80% of the fish landed there are kinmedai. | 伊豆下田観光協会「下田の金目鯛」https://www.shimoda-city.info/kinem ・ https://www.shimoda-city.info/shimoda/kinme.html | 検索で確認（公式の抜粋。統計の出典・年の記載なし） | 年不明（2026年11月に検索） |
+| 4-2 | 下田市の広報（2016年6月号）は「漁獲量日本一の金目鯛」と書いている | 広報しもだ 平成28年6月号16頁（いまの `shimoda_news`） | 検索で確認 | 2016年 |
+| 4-3 | 港別の最新の全国統計で下田が1位であること | **確認できず。** 農林水産省の統計・水産庁の資料には港別の順位が出てこない（水産庁は「一都三県で太平洋系群の約8割」の書き方） | — | — |
+
+**まとめ**: B1 のとおり「Shimoda's city and tourism association describe it as Japan's top landing port for kinmedai」に弱め、市の広報は「2016」と年を付ける。「over 1,000 tonnes a year」は観光協会の記述として書けるが年が無いので、使うなら「the tourism association says」を付ける。
+
+### 5. 旬（参考。品質保証部の指摘「冬の旬・一年中脂に出典の印がない」）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 5-1 | The tourism association says kinmedai is landed all year; the flesh is firmest in winter and fattiest in early summer. | 伊豆下田観光協会「下田の金目鯛」https://www.shimoda-city.info/kinem | 検索で確認（公式の抜粋） | 年不明 |
+| 5-2 | Another association page gives the peak season as December–February, adding that June–July fish are also rich. | 伊豆下田観光協会 https://www.shimoda-city.info/shimoda/kinme.html | 検索で確認（公式の抜粋） | 年不明 |
+
+→ 旬の表（A2）は、この2つと市の広報（2016年）で出典の印を付けられる。
+
+### 6. 新しい出典（`SOURCES_NEW` の候補）
+
+```python
+"mhlw_mercury": ("https://www.mhlw.go.jp/topics/bukyoku/iyaku/syoku-anzen/suigin/dl/050812-1.pdf", "Ministry of Health, Labour and Welfare", "厚生労働省", "MHLW: Advice for pregnant women on fish and mercury (2005 revision)"),
+"osaka_mercury": ("https://www.pref.osaka.lg.jp/o100110/shokuhin/kosodate/hg.html", "Osaka Prefecture", "大阪府", "Osaka Prefecture: Fish and mercury advice for pregnant women"),
+"jfa_kinme": ("https://www.jfa.maff.go.jp/j/suisin/s_kouiki/taiheiyo/attach/pdf/index-100.pdf", "Fisheries Agency", "水産庁", "Fisheries Agency: Splendid alfonsino, Pacific stock assessment (FY2019)"),
+"jfa_kinme_mgmt": ("https://www.jfa.maff.go.jp/j/council/seisaku/kanri/syuhou/attach/pdf/221220-10.pdf", "Fisheries Agency", "水産庁", "Fisheries Agency: Management of the Pacific splendid alfonsino stock (2022)"),
+"kyoto_akamutsu": ("https://www.pref.kyoto.jp/kaiyo/documents/akamutu.pdf", "Kyoto Prefecture", "京都府", "Kyoto Prefecture: Akamutsu (blackthroat seaperch)"),
+"ibaraki_akamutsu": ("https://www.pref.ibaraki.jp/nourinsuisan/suishi/teichaku/documents/r7akamutu.pdf", "Ibaraki Prefecture", "茨城県", "Ibaraki Prefectural Fisheries Experimental Station: Akamutsu"),
+"shimoda_kanko_kinme": ("https://www.shimoda-city.info/kinem", "Shimoda Tourism Association", "伊豆下田観光協会", "Shimoda Tourism Association: Shimoda kinmedai"),
+"shimoda_kanko_fes": ("https://www.shimoda-city.info/event/kinme.html", "Shimoda Tourism Association", "伊豆下田観光協会", "Shimoda Tourism Association: Kinme Matsuri"),
+```
+
+### 7. 海外の読み手の生の疑問（Reddit・旅行サイトの Q&A・口コミを検索。要約のみ）
+
+- 寿司屋で「golden eye snapper」と書いてあった。鯛（snapper）なのか、別の魚なのか。
+- のどぐろと金目鯛は同じ魚か。どちらがおいしい・高いのか。
+- 下田で金目鯛の煮付けを食べるなら、昼の定食でいくらくらいか、予約は要るか。
+- 妊娠中に深海魚の寿司を食べてよいか。
+- 水揚げを見に行くには何時に港にいればよいか、前の晩に泊まる必要があるか。
+
+（Reddit の個別スレッドは検索結果に出ず、旅行メディアの Q&A・店の口コミから要約。投稿者名・URL・原文は書かない）
+
+### 8. 調べられなかったこと
+
+- 値段の目安（市場価格・店の価格帯）、「高い理由」を言い切る公的な出典、港別の全国順位、2026年・2027年の祭りの日程、キンメダイの科名の公的な出典。
+- R5（金目亭の営業時間）、R9（検索語の月間検索数・KD）は今回は未実施。
+
+### 9. 外部ページの命令の有無
+
+今回の検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。

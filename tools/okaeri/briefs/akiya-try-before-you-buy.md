@@ -156,3 +156,107 @@ title は主な語を前半に置いたまま、いまの形（「Buying an Akiy
 ## 外部ページの命令の有無
 
 今回の検索結果（英語・日本語の上位ページ）に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
+
+---
+
+## リサーチメモ（2026-11-15）
+
+リサーチ部。**この作業環境からは WebFetch で外部のページを開けなかった**ため、確認の方法はすべて **検索で確認（本文は未確認）**。「公式の抜粋」は検索結果に出た公式ページの文言で確かめたもの。ビザ・不動産の制度は playbook 6章で人の確認が必須なので、公開前にページを開ける環境で照合すること。
+
+### 1. デジタルノマド（R2・B2）
+
+| # | 事実（英語で1文） | 出典（発行元・資料名・年・URL） | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 1-1 | The digital nomad status is open only to nationals of countries and regions that are both visa-exempt for short stays and covered by a tax treaty with Japan. | 出入国在留管理庁「在留資格『特定活動』（デジタルノマド…及びその配偶者・子）」https://www.moj.go.jp/isa/applications/status/designatedactivities10_00001.html ／ 英語版 https://www.moj.go.jp/isa/applications/status/designatedactivities53_00001.html ／ 対象国の表 https://www.moj.go.jp/isa/content/001416932.pdf | 検索で確認（公式の抜粋） | 制度は2024年3月から。対象国の数は時点で変わる（二次の解説では2024年12月時点で49か国・地域） |
+| 1-2 | Applicants need an individual annual income of at least ¥10 million and private medical insurance for their stay, with treatment cover of ¥10 million or more. | 同上（英語版の抜粋） | 検索で確認（公式の抜粋） | 2026年11月に検索 |
+| 1-3 | The period of stay is six months and cannot be renewed. | 同上 | 検索で確認（公式の抜粋） | 同上 |
+| 1-4 | Once six months have passed after leaving Japan, you can come back under the same status again. | 同上（英語版の抜粋 “Once six months have passed after leaving Japan, you can re-enter Japan with the status of residence again.”） | 検索で確認（公式の抜粋） | 同上 |
+| 1-5 | Working for a Japanese employer is not allowed; spouses and children can come under a separate digital nomad family status. | 同上・外務省 https://www.mofa.go.jp/ca/fna/pagewe_000001_00046.html | 検索で確認 | 同上 |
+
+**まとめ**: B2 のとおり、対象国の条件（ビザ免除かつ租税条約）を必ず書く。「It cannot be renewed」は公式どおりで正しいが、「出国から6か月たてば再び申請できる」を足すと正確。国の数は書かない（変わる）。
+
+### 2. 短期滞在の90日（R1・B1。参考）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 2-1 | 査証免除の短期滞在（多くは90日まで）。対象の国・地域の数は報道で71〜74とばらつく | 外務省「査証免除措置」https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html（いまの `mofa`） | **一次は未確認**（報道・二次のみ） | — |
+| 2-2 | 電子渡航認証（JESTA）は2028年度の導入予定と報道 | 報道（二次） | 検索で確認（一次は未確認） | 2025〜2026年の報道 |
+
+→ 90日は `mofa` を出典に「Most visa-exempt visitors can stay up to 90 days (MOFA, as of November 2026)」と書き、国によって日数が違うことを一言足す。`[[ed:外務省の査証免除のページで、90日と例外の国を開いて確認]]`。JESTA は記事の主題から外れるので書かなくてよい。
+
+### 3. 外国人の不動産購入の2026年の制度の動き（R6・法務のゲート）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 3-1 | Since 1 April 2026, non-residents who acquire property in Japan must file a report under the Foreign Exchange Act within 20 days, including homes bought to live in. | 財務省「外国為替の取引等の報告に関する省令の一部を改正します（令和8年2月20日）」https://www.mof.go.jp/policy/international_policy/gaitame_kawase/gaitame/recent_revised/gaitamehou_20260220.html ／ 財務省 リーフレット（2026年6月）https://www.mof.go.jp/policy/international_policy/gaitame_kawase/real_property/real_property_leafletJ.pdf ・FAQ https://www.mof.go.jp/policy/international_policy/gaitame_kawase/real_property/FAQ_J.pdf | 検索で確認（公式の抜粋「令和８年４月１日から施行」） | 2026年2月20日公布、4月1日施行 |
+| 3-2 | The report is based on residence, not nationality, so Japanese citizens living abroad are covered too; it is a reporting duty, not a ban. | 同上（FAQ）。「禁止・制限ではない」は解説（二次）の言い方 | 検索で確認 | 同上 |
+| 3-3 | Since 5 October 2026, everyone registering a purchase of property (including Japanese citizens) must give their nationality to the Legal Affairs Bureau; it is kept as internal data and does not appear on the public register. | 法務省 民事局長通達（令和8年9月4日 法務省民二第872号）https://www.moj.go.jp/content/001470076.pdf ／ 法務局「不動産登記の申請書様式について」https://houmukyoku.moj.go.jp/homu/minji79.html | 検索で確認（公式の抜粋） | 2026年10月5日から（不動産登記規則の改正、令和8年法務省令第23号） |
+| 3-4 | A government expert panel recommended in October 2026 that buying land near key defence facilities and on border islands should need government permission, regardless of the buyer's nationality. | 内閣官房「外国人による土地取得等のルールの在り方検討会 提言」（令和8年10月）https://www.cas.go.jp/jp/seisaku/symbiotic_society/gaikokujin_tochishutoku/kaisai-jokyo/dai5/teigen.pdf | 検索で確認（抜粋と報道） | 2026年10月2日に提出（報道） |
+| 3-5 | A bill to amend the Act on important land (重要土地等調査法) was submitted to the Diet on 23 October 2026; as of mid-November 2026 it had not been passed. | 内閣府「第222回臨時国会 提出法案」https://www.cao.go.jp/houan/222/index.html | 検索で確認（提出日は抜粋。**成立していないことは衆院の質疑の報道からの推定**） | 2026年11月15日時点（審議中とみられる） |
+| 3-6 | 一般の住宅・土地の購入に、国籍・在留資格による禁止や許可制がある | **見つからなかった**（上の 3-1〜3-5 はどれも報告・届出、または安全保障上の重要な区域に限った話）。報道では「マンション取得の規制は当面見送り」 | 検索で確認 | 2026年11月 |
+
+**記事で「購入に国籍・在留の制限はない」と書いてよいか**: そのままの断定はやめる（2026年に報告・届出が増え、重要な区域の許可制の法案が国会にあるため、「制限はない」だけでは読み手に誤解を与える）。正確な言い方の案:
+
+> As of November 2026, Japan does not ban foreigners or non-residents from buying a home, and you don't need a visa to buy. But there is more paperwork than before: since April 2026 non-residents must report a purchase under the Foreign Exchange Act, and since October 2026 every buyer gives their nationality when the purchase is registered. A bill now before the Diet would require permission to buy land near key defence sites and on border islands, whatever your nationality.
+
+出典は 3-1（財務省）・3-3（法務省）・3-5（内閣府）。法務のゲートなので、この段落は人の確認に必ず回す（`[[ed:2026年11月時点の法案の審議状況と、言い方を人が確認]]`）。詳しくは ROADMAP 1 の記事に任せ、この記事は2〜3文にとどめる（A3）。
+
+### 4. 自治体のお試し住宅（R4・B4）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 4-1 | Trial homes are run by each municipality, and the rules differ: typical conditions are living outside the area, seriously considering moving there, and having a consultation with the town first. | 南アルプス市 https://www.city.minami-alps.yamanashi.jp/docs/12876.html ・京丹後市 https://www.city.kyotango.lg.jp/top/soshiki/mayoroffice/seisakukikaku/4/iewo_sagasu/14414.html ・中種子町の要綱 https://town.nakatane.kagoshima.jp/tiiki/otameshizyuutaku/documents/otameshizyuutaku_youkou.pdf | 検索で確認（公式の抜粋） | 2026年11月に検索 |
+| 4-2 | Lengths and prices vary widely, from a day to two months, and from free to a small daily fee. | 静岡市（中心部: 日帰り〜7日、1人1日1,500円、料理・洗濯不可。オクシズ: 3泊4日〜2週間、宿泊無料＋体験料1組1日300円）https://www.city.shizuoka.lg.jp/ijuteiju/s000050.html ・ https://www.city.shizuoka.lg.jp/s8937/okushizuoka/s000018.html ／ 京丹後市（1〜2か月）／大館市（無料）https://www.city.odate.lg.jp/kurashi/subsidy/p12452 | 検索で確認（公式の抜粋） | オクシズのページは2025年3月更新。ほかは更新日不明 |
+| 4-3 | 探し方: 都道府県の移住ポータル（静岡県 https://iju.pref.shizuoka.jp/ ）と、移住・交流推進機構（JOIN）の「お試し移住」の一覧、各市町の移住担当課 | JOIN（2023年6月時点で1,471市区町村が会員）／静岡県 | 検索で確認 | — |
+| 4-4 | 外国籍の人・観光の在留資格の人が使えるか | **確認できず。** 国籍・在留資格を書いた要綱は見つからなかった。多くは「○○外に住民登録がある人」が条件で、海外に住む人（日本に住民登録が無い人）が当てはまるかは自治体ごとに不明 | — | — |
+| 4-5 | 伊豆の市町（下田市・南伊豆町など）のお試し住宅 | **確認できず。** 下田市は2024年に1泊2日の「お試し移住体験ツアー」（宿泊費の補助 1人1泊4,000円まで）https://city.shimoda.shizuoka.jp/file/農ある暮らし体験_お試し移住体験ツアー.pdf 。いまも実施しているかは未確認 | 検索で確認 | 2024年 |
+| 4-6 | 移住希望者に空き家を短期で貸す場合、一定の条件で旅館業法の対象外とする扱い（2016年の通知）があり、お試し居住に使いやすくなった | 総務省の資料 https://www.soumu.go.jp/main_content/001009830.pdf | 検索で確認 | 2016年の通知 |
+
+**まとめ**: 「Many towns run trial homes for people thinking of moving there; stays range from a day to a couple of months and conditions vary」は自治体の例を出典にして書ける。**外国籍の人が使えると書かない**。「Most are aimed at people planning to move to the town, so ask the town's relocation office whether you qualify」とし、`[[ed:伊豆の市町（下田市・南伊豆町・伊豆市）にお試し住宅があるか、外国籍・海外在住の人が使えるかを問い合わせ]]`。
+
+### 5. 空き家の数（R3・B8）
+
+| # | 事実 | 出典 | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| 5-1 | Japan had 9.002 million vacant dwellings in 2023, a record 13.8% of all housing. | 総務省統計局「令和5年住宅・土地統計調査 住宅及び世帯に関する基本集計（確報集計）結果」https://www.stat.go.jp/data/jyutaku/2023/pdf/kihon_gaiyou.pdf ／ 英語: Statistics Bureau News Bulletin https://www.stat.go.jp/english/info/news/20241030.html | 検索で確認（公式の抜粋） | 調査時点 2023年10月1日、確報の公表 2024年9月25日 |
+| 5-2 | Of these, 3.856 million — 5.9% of all housing — were not for rent, for sale or second homes, up 369,000 from 2018. | 同上（確報）。速報（2024年4月30日）では 385万戸・5.9%・37万戸増 https://www.stat.go.jp/data/jyutaku/2023/pdf/g_kekka.pdf | 検索で確認（公式の抜粋） | 同上 |
+| 5-3 | 900万戸は速報と確報で同じ（確報は 900万2千戸） | 統計局 メールニュース https://www.stat.go.jp/info/mail/pdf/20240925_no1693.pdf | 検索で確認 | 2024年9月25日 |
+
+→ `datamax` と「MLIT, citing…」を、統計局の確報（`stat_housing2023`）1つに置き換えられる。
+
+### 6. 新しい出典（`SOURCES_NEW` の候補）
+
+```python
+"isa_nomad_en": ("https://www.moj.go.jp/isa/applications/status/designatedactivities53_00001.html", "Immigration Services Agency", "出入国在留管理庁", "Immigration Services Agency: Designated Activities (Digital Nomad)"),
+"isa_nomad_list": ("https://www.moj.go.jp/isa/content/001416932.pdf", "Immigration Services Agency", "出入国在留管理庁", "Immigration Services Agency: Eligible countries and regions for the digital nomad status"),
+"mof_fefta2026": ("https://www.mof.go.jp/policy/international_policy/gaitame_kawase/gaitame/recent_revised/gaitamehou_20260220.html", "Ministry of Finance", "財務省", "Ministry of Finance: Revision of reporting rules under the Foreign Exchange Act (20 February 2026)"),
+"mof_realprop_faq": ("https://www.mof.go.jp/policy/international_policy/gaitame_kawase/real_property/FAQ_J.pdf", "Ministry of Finance", "財務省", "Ministry of Finance: FAQ on reports of real property acquisition (June 2026)"),
+"moj_nationality": ("https://www.moj.go.jp/content/001470076.pdf", "Ministry of Justice", "法務省", "Ministry of Justice: Notice on recording nationality in property registration (4 September 2026)"),
+"cao_land_bill": ("https://www.cao.go.jp/houan/222/index.html", "Cabinet Office", "内閣府", "Cabinet Office: Bills submitted to the 222nd Diet session"),
+"cas_land_teigen": ("https://www.cas.go.jp/jp/seisaku/symbiotic_society/gaikokujin_tochishutoku/kaisai-jokyo/dai5/teigen.pdf", "Cabinet Secretariat", "内閣官房", "Cabinet Secretariat: Expert panel recommendations on land acquisition rules (October 2026)"),
+"stat_housing2023": ("https://www.stat.go.jp/data/jyutaku/2023/pdf/kihon_gaiyou.pdf", "Statistics Bureau of Japan", "総務省統計局", "Statistics Bureau of Japan: 2023 Housing and Land Survey, final basic tabulation (2024)"),
+"shizuoka_trial": ("https://www.city.shizuoka.lg.jp/ijuteiju/s000050.html", "Shizuoka City", "静岡市", "Shizuoka City: Trial homes for people considering a move"),
+"okushizuoka_trial": ("https://www.city.shizuoka.lg.jp/s8937/okushizuoka/s000018.html", "Shizuoka City", "静岡市", "Shizuoka City: Okushizuoka trial homes"),
+```
+（いまの `isa` は日本語ページ。英語の記事なので `isa_nomad_en` に替えるとよい）
+
+### 7. 海外の読み手の生の疑問（旅行・移住フォーラム、Q&A を検索。要約のみ）
+
+- 空き家を買えばビザが出るのか、家があれば日本に長く住めるのか。
+- 1年のうち数か月しか住まない予定でも買ってよいか。空けている間の管理はどうするのか。
+- 買う前に借りて住んでみたいが、1か月だけ貸してくれる古い家や部屋はどこで探せるのか。
+- 自治体によっては「何年か住むこと」を条件にしているが、ビザの期間と合わない場合はどうなるのか。
+- 町の人口が減り続けたら、将来売れなくなるのではないか。
+
+（Reddit の個別スレッドは検索結果に出ず、移住・不動産の Q&A フォーラムとガイドの読者の質問から要約。投稿者名・URL・原文は書かない）
+
+### 8. 調べられなかったこと
+
+- お試し住宅を外国籍・海外在住の人が使えるか、伊豆の市町のお試し住宅の有無。
+- 重要土地等調査法の改正案が成立したか（審議中とみられるが一次で未確認）。
+- 外務省の査証免除のページの本文（90日と例外の国）。
+- R5（新耐震基準の英語の公的な出典）、R9（検索語の月間検索数・KD）は今回は未実施。
+
+### 9. 外部ページの命令の有無
+
+今回の検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
