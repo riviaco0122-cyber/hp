@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""okaeri/（Homeward Japan の公開フォルダ）の全ページを点検する。エラーが1件でもあれば終了コード1。
-アキヤドの点検（tools/seo_check.py）は pages/ だけを見るので、Homeward Japan はこちらで見る。
+"""okaeri/（Noki の公開フォルダ）の全ページを点検する。エラーが1件でもあれば終了コード1。
+アキヤドの点検（tools/seo_check.py）は pages/ だけを見るので、Noki はこちらで見る。
 
   python3 tools/okaeri/seo_check.py           点検
   python3 tools/okaeri/seo_check.py --launch  公開前の点検（黄色い枠・未接続のフォームもエラーにする）
@@ -129,7 +129,7 @@ for p, s in sorted(pages.items()):
         else:
             items = bc[0]["itemListElement"]
             if items[0]["name"] != CFG["name"] or items[0]["item"] != SITE + PRE or items[-1]["item"] != SITE + p:
-                err(p, "パンくずが Homeward Japan のトップから始まり自分で終わる形になっていない")
+                err(p, "パンくずが Noki のトップから始まり自分で終わる形になっていない")
             vis = [text(li) for li in s.select(".crumbs li")]
             if vis != [i["name"] for i in items]:
                 err(p, "見えているパンくずと構造化データが違う")
@@ -185,7 +185,7 @@ for u in sitemap:
         err("sitemap.xml", f"存在しない URL: {u}")
 rb = open(os.path.join(ROOT, "seo", "robots.txt"), encoding="utf-8").read()
 if f"Sitemap: {SITE}{PRE}/sitemap.xml" not in rb:
-    err("seo/robots.txt", f"Homeward Japan の sitemap（{PRE}/sitemap.xml）の行がない。tools/build.py を実行する")
+    err("seo/robots.txt", f"Noki の sitemap（{PRE}/sitemap.xml）の行がない。tools/build.py を実行する")
 vj = json.load(open(os.path.join(ROOT, "vercel.json"), encoding="utf-8"))
 if not any(r.get("source") == PRE and r.get("destination") == PRE + "/index.html" for r in vj.get("rewrites", [])):
     err("vercel.json", f"{PRE} → {PRE}/index.html の rewrites がない（トップが開けない）")

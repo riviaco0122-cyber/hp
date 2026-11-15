@@ -7,8 +7,8 @@
       "destination": "/pages/index.html"
     },
     {
-      "source": "/homeward",
-      "destination": "/homeward/index.html"
+      "source": "/noki",
+      "destination": "/noki/index.html"
     },
     {
       "source": "/robots.txt",
@@ -51,7 +51,7 @@
       ]
     },
     {
-      "source": "/homeward/assets/(.*)",
+      "source": "/noki/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

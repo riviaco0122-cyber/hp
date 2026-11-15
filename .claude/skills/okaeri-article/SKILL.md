@@ -1,9 +1,9 @@
 ---
 name: okaeri-article
-description: Homeward Japan（英語の海外向けメディア）の記事を、戦略部→リサーチ部→執筆部→品質保証部→エンジニア部→品質保証部の分担で、1本作る（新規）か見直す（リライト）。100点満点で90点以上のものだけを入れ、社長が読める日本語のレビュー資料をつける。「Homeward Japan（Okaeri）の記事を書いて」「Homeward Japan（Okaeri）の記事を見直して」「/okaeri-article <テーマ or 記事id>」で使う。
+description: Noki（英語の海外向けメディア）の記事を、戦略部→リサーチ部→執筆部→品質保証部→エンジニア部→品質保証部の分担で、1本作る（新規）か見直す（リライト）。100点満点で90点以上のものだけを入れ、社長が読める日本語のレビュー資料をつける。「Noki（Okaeri）の記事を書いて」「Noki（Okaeri）の記事を見直して」「/okaeri-article <テーマ or 記事id>」で使う。
 ---
 
-# Homeward Japan の記事を、部署で分担して作る・見直す
+# Noki の記事を、部署で分担して作る・見直す
 
 基準はすべて `tools/okaeri/playbook.md`。編集長（このセッション）は自分で本文を書かず、部署に振って合否で戻す。
 

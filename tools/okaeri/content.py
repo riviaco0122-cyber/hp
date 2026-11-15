@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Homeward Japan の記事・ページのデータ。HTML は直接書き換えず、ここを直して build.py を実行する。
+"""Noki の記事・ページのデータ。HTML は直接書き換えず、ここを直して build.py を実行する。
 
 本文で使える記法:
   [[s:キー,キー]]   出典を（リンク; リンク）の形で入れる
@@ -43,7 +43,7 @@ SOURCES = {
 }
 
 # ---------------------------------------------------------------- 記事のテーマ
-# テーマ別の一覧ページ（/homeward/akiya.html など）は、公開記事が3本以上になったテーマだけ自動で作る（薄い一覧を作らないため）
+# テーマ別の一覧ページ（/noki/akiya.html など）は、公開記事が3本以上になったテーマだけ自動で作る（薄い一覧を作らないため）
 # 読み手の入口は「どこまで日本に深く関わるか」の1本の軸で分ける（重ならず、漏れない）:
 #   stay = 旅行者として1週間〜1か月滞在する ／ live = 一年の一部を暮らす（数か月・毎年・仕事をしながら）／ own = 家を持つ（空き家を買う・直す・運営する）
 # 記事は必ずこの3つのどれか1つ（"topic"）に入れる。ほかの段階の読み手にも役立つ記事は "also" に足す（一覧の「こちらも役立つ」に出る）。
@@ -521,7 +521,7 @@ ARTICLES = [
 
 # ---------------------------------------------------------------- 固定ページの文言
 HOME = {
- "seo_title": "Homeward Japan | Long Stays in Small-Town Japan",
+ "seo_title": "Noki | Long Stays in Small-Town Japan",
  "description": "Homes for a week, a month or a season in small-town Japan, and plain guides to akiya, remote work and life outside the big cities from the people who run them.",
 }
 GUIDES = {
@@ -538,10 +538,10 @@ IZU = {
  "keywords": [("izu peninsula", "12,100", "7"), ("shimoda japan", "5,400", "21"), ("shuzenji", "1,000", "0")],
 }
 ABOUT = {
- "h1": "About Homeward Japan",
- "seo_title": "About Homeward Japan: Who Runs It and How We Write",
- "description": "Homeward Japan is run by the team that operates small homes for long stays in Shizuoka, Japan. Who we are, how our guides are sourced and how to reach us.",
- "dek": "Homeward Japan is written by the team that runs the homes. This page says who we are, how the guides are put together and how to tell us we got something wrong.",
+ "h1": "About Noki",
+ "seo_title": "About Noki: Who Runs It and How We Write",
+ "description": "Noki is run by the team that operates small homes for long stays in Shizuoka, Japan. Who we are, how our guides are sourced and how to reach us.",
+ "dek": "Noki is written by the team that runs the homes. This page says who we are, how the guides are put together and how to tell us we got something wrong.",
 }
 
 # ---------------------------------------------------------------- 写真・施設
@@ -553,7 +553,7 @@ NODE_URL = "https://nodeshimoda.com/"
 
 # Unsplash の写真の出典（写真の名前 → 撮影者・撮影者ページ・写真ページ・写真ID）。2026-11-14 に download_asset でダウンロードを記録して取得。
 # ページ下の「Photo credits」に、そのページで使った写真の分だけ「Photo by 撮影者 on Unsplash」を出す（build.py の footer）。
-UNSPLASH_UTM = "?utm_source=homeward_japan&utm_medium=referral"
+UNSPLASH_UTM = "?utm_source=noki&utm_medium=referral"
 PHOTO_CREDITS = {
     "coastal-village": ("PJH", "https://unsplash.com/@dokae", "https://unsplash.com/photos/jb0SsX_Bz_E", "jb0SsX_Bz_E"),
     "window-room": ("ZENG YILI", "https://unsplash.com/@zengyili", "https://unsplash.com/photos/fta5pzyM0T8", "fta5pzyM0T8"),

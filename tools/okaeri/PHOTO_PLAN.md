@@ -1,4 +1,4 @@
-# Homeward Japan 写真の差し替え計画（Unsplash）
+# Noki 写真の差し替え計画（Unsplash）
 
 2026-11-15 作成。images.unsplash.com への通信が許可された新しい会話で実行する。
 
@@ -15,7 +15,7 @@
 
 - **場所を名指ししない**：フリー素材を「下田」「伊豆」「焼津」の写真として載せない。alt と説明文は写っているものだけを書く。Unsplash の撮影地情報があり、それが本当にその場所でも、自社の記事の主役の場所としては使わない。
 - **自社の写真はそのまま**：NODE Shimoda のリビング（node-shimoda）、焼津の家のリフォーム前（yaizu-engawa、「before renovation」と明記）は差し替えない。
-- **クレジット**：Unsplash の API 経由で使う写真は「Photo by 撮影者 on Unsplash」を、撮影者ページと Unsplash へのリンク付きで載せる（写真の説明文か、ページ下の「Photo credits」）。リンクには `?utm_source=homeward_japan&utm_medium=referral` を付ける。
+- **クレジット**：Unsplash の API 経由で使う写真は「Photo by 撮影者 on Unsplash」を、撮影者ページと Unsplash へのリンク付きで載せる（写真の説明文か、ページ下の「Photo credits」）。リンクには `?utm_source=noki&utm_medium=referral` を付ける。
 - 人の顔、店の看板・商標がはっきり写ったものは避ける。
 - `content.py` に写真ごとの出典（撮影者名・URL・Unsplash の写真ID）を残す。
 
