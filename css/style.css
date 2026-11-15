@@ -2991,7 +2991,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 /* 見出し：英字のラベルは朱の短い線つき、日本語の見出しは大きく */
 .is-corp .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--c-shu); font-weight: 500; }
 .is-corp .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
-.is-corp .section-title { font-size: clamp(30px, 4.6vw, 58px); font-weight: 300; line-height: 1.45; letter-spacing: 0.06em; }
+.is-corp .section-title { font-size: clamp(min(30px, 8vw), 4.6vw, 58px); font-weight: 300; line-height: 1.45; letter-spacing: 0.06em; }
 .is-corp .section-title em, .is-corp .hero__title em { font-style: normal; color: var(--c-shu); }
 .is-corp .section--soft { background: var(--c-kinari); }
 

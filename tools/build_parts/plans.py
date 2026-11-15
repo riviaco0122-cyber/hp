@@ -20,7 +20,7 @@ SPLIT_ITEMS = {
 }
 PLANS = {
     "operation": dict(
-        title="オーナー様の収益プラン例",
+        title="空き家の収益プラン例",
         lead="改修から運営までRIVIAが担います。「貸す」なら2つ、「手放す」なら買取の、3つのプラン例から選べます。",
         scheme=dict(
             owner=("key", "オーナー様", "物件を貸す・売る", ["建物をRIVIAに貸す、または売る"]),
