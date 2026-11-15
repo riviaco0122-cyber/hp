@@ -6,6 +6,8 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 
 あなたは Noki の **エンジニア部** です。記事をサイトに組み込み、技術面と見た目の崩れをなくします。
 
+**Noki はアキヤドとは別のメディア。Noki の指示書だけを使い、アキヤドの指示書（docs/seo/playbook.md、docs/brand/ の文体・用語、docs/design-guide.md、tools/article_score.py など）と混ぜない。** 分け方は `tools/okaeri/CLAUDE.md`。会社の確認済みの体験（docs/brand/experience.md）だけは共通。
+
 ## 最初に読むもの
 - `tools/okaeri/README.md`（どこを直すか・build の順番）
 - `tools/okaeri/playbook.md` の 4章（ゲートのうち seo_check と表示）

@@ -15,7 +15,7 @@ python3 tools/okaeri/seo_check.py --launch # 公開前の点検（黄色い枠�
 python3 tools/seo_check.py                 # アキヤド側の点検
 ```
 
-順番は「okaeri の build → アキヤドの build → 両方の点検」。
+順番は「Noki の build（tools/okaeri/build.py）→ アキヤドの build → 両方の点検」。
 
 ## 記事の作り方・見直し方（部署の分担と採点）
 
@@ -61,9 +61,11 @@ python3 tools/seo_check.py                 # アキヤド側の点検
 
 ## アキヤドとの関係
 
+**指示書は別**: Noki の作業では Noki の指示書だけを使う（入口は `tools/okaeri/CLAUDE.md`）。以下は、同じドメイン・同じリポジトリにある技術的なつながり。
+
 - 同じドメインなので、サイト名の宣言（WebSite）は rivia-co.com のトップだけ。Noki には置かない。運営会社は about.html の Organization を同じ @id で参照する。
-- sitemap は `okaeri/sitemap.xml`（アキヤドの sitemap とは別）。`seo/robots.txt` に2本目の `Sitemap:` として入る。
-- URL はアキヤドと同じ形（末尾スラッシュなし・`.html`）。トップだけ `/okaeri`（`vercel.json` の rewrites で `okaeri/index.html` に対応）。
+- sitemap は `noki/sitemap.xml`（アキヤドの sitemap とは別）。`seo/robots.txt` に2本目の `Sitemap:` として入る。
+- URL はアキヤドと同じ形（末尾スラッシュなし・`.html`）。トップだけ `/noki`（`vercel.json` の rewrites で `noki/index.html` に対応）。
 - `/en/` はトップへの転送が残っているので使わない。
 - 日本語レビュー版と SEO計画は `tools/okaeri/preview/` にだけ入る（.gitignore 済み。公開されない）。
 

@@ -5,7 +5,7 @@ description: Noki（英語の海外向けメディア）の記事を、戦略部
 
 # Noki の記事を、部署で分担して作る・見直す
 
-基準はすべて `tools/okaeri/playbook.md`。編集長（このセッション）は自分で本文を書かず、部署に振って合否で戻す。
+基準はすべて `tools/okaeri/playbook.md`（指示書の入口は `tools/okaeri/CLAUDE.md`。アキヤドの指示書と混ぜない）。編集長（このセッション）は自分で本文を書かず、部署に振って合否で戻す。
 
 ## 0. 何をするか決める
 - 引数が既存の記事 id（`content.py`）なら **リライト**、テーマなら **新規**、なければ `review_ja.py` の `ROADMAP` の先頭を新規で。
