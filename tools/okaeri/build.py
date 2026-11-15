@@ -482,8 +482,8 @@ def page_article(ctx, a):
             f'<div class="wrap wide">{img(ctx, name, alt, caption, eager=True, cls="photo photo--lead", sizes="(max-width: 62rem) 100vw, 62rem", want=1200)}</div></header>'
             f'<div class="wrap wide artgrid"><article class="post">'
             f'<div class="points"><p class="points__label">In short</p><ul>{pts}</ul></div>'
-            f'<a class="inline-stay" href="{C.NODE_URL}" rel="noopener" data-nosnippet><span>We run NODE Shimoda, a home for week- and month-long stays. <strong>See the home →</strong></span></a>'
-            f'<details class="toc toc--inline"><summary>On this page</summary><ol>{toc_html}</ol></details>'
+            + (f'<a class="inline-stay" href="{C.NODE_URL}" rel="noopener" data-nosnippet><span>We run NODE Shimoda, a home for week- and month-long stays. <strong>See the home →</strong></span></a>' if C.NODE_URL not in a["body"] else '')  # 本文で自社の家に触れている記事では、冒頭の案内を重ねない
+            + f'<details class="toc toc--inline"><summary>On this page</summary><ol>{toc_html}</ol></details>'
             f'{body}<h2 id="common-questions">Common questions</h2>{faq}{a.get("after_faq", "")}{sources_html(a, "Sources")}'
             f'<section class="byline" data-nosnippet>{MARK}<div><p><strong>Written by the Noki team</strong></p><p>We run homes for long stays in small towns in Shizuoka. '
             f'<a href="{ctx.href("about")}">How we write and check our guides</a>.</p></div></section></article>'
