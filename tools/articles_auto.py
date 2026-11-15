@@ -5,7 +5,7 @@
 #     slug="akiya-kaitai-hiyou",                      # URL（/media/<slug>.html）。英小文字とハイフン
 #     date="2026-12-11",                               # 公開日（日本時間）。この日まで一覧などから自動で隠れる
 #     topics=["sell", "money"],                        # テーマ（先頭がカテゴリ）: sell/lend/house/start/money/operate/trend
-#     photo=("old-town-street", "古い町家が並ぶ通り"),   # images/photos/<名前>.jpg と代替テキスト（既存の写真だけ）
+#     photo=("old-town-street", "古い町家が並ぶ通り"),   # images/photos/<名前>.jpg と代替テキスト（1枚を1記事にだけ。新しい写真は docs/photo-credits.md に出典）
 #     guides=[("sell", 2)],                            # ガイドの何番目の Step に入るか: sell/use/side（なければ []）
 #     title="…", short="一覧用の短い題\n2行まで", description="…（50〜140字）",
 #     services=["operation"],                          # 関連サービス: operation/management/partnership/marketing/recruit
@@ -174,7 +174,7 @@ ARTICLES_AUTO = [
     ),
     dict(
         slug="akiya-demolish-or-renovate", related=['new-build-vs-used-house-inn', 'akiya-utilization-options', 'akiya-holding-costs', 'akiya-law-kanri-fuzen', 'remote-renovation-tips', 'kominka-renovation-points'],
-        date="2026-10-13", updated="2026-11-06", topics=["house", "sell"], photo=("old-town-street", "古い家が並ぶ町の通り"),
+        date="2026-10-13", updated="2026-11-06", topics=["house", "sell"], photo=("yaizu-before-tatami-room", "改修前の空き家の部屋"),
         title='空き家は解体か、残して民泊・宿にするか｜費用・税金・補助で比べる',
         short='空き家は解体か、\n残して直すか',
         blurb='税・費用・補助で比べる',
@@ -447,7 +447,7 @@ ARTICLES_AUTO = [
     dict(
         slug="kani-shukusho-kyoka-guide",
         keyword="簡易宿所 許可",
-        date="2026-10-16", updated="2026-10-30", topics=["start", "house"], photo=("old-town-street", "古い家が並ぶ町の通り"),
+        date="2026-10-16", updated="2026-10-30", topics=["start", "house"], photo=("u-washitsu-shoji", "障子から光が入る、がらんとした和室"),
         title='簡易宿所の許可を取るには？民泊を旅館業で始める広さ・相談先・流れ',
         short="簡易宿所の許可の取り方\n広さ・相談先・流れ",
         blurb='初めての人の全体像',
@@ -860,7 +860,7 @@ ARTICLES_AUTO = [
     dict(
         slug="kaishain-minpaku-fukugyo", related=['minpaku-management-company', 'inn-startup-funding', 'minpaku-vs-rental-income', 'minpaku-chintai-start'],
         keyword="会社員 民泊 副業",
-        date="2026-10-18", updated="2026-10-31", topics=["money", "start"], photo=("laptop-dashboard", "ノートパソコンで書類を確認する様子"),
+        date="2026-10-18", updated="2026-10-31", topics=["money", "start"], photo=("u-tokyo-city", "高いビルから見た東京の街"),
         title='会社員の民泊副業｜始める前の確認手順（就業規則・20万円ルール）',
         short="会社員の民泊副業\n就業規則と20万円ルール",
         blurb='会社と税務署に聞く順番',
@@ -997,7 +997,7 @@ ARTICLES_AUTO = [
     dict(
         slug="minpaku-chintai-start", related=['case-rental-house-inn-first-year', 'kaishain-minpaku-fukugyo', 'minpaku-fire-safety'],
         keyword="賃貸 民泊",
-        date="2026-10-19", updated="2026-10-31", topics=["start", "operate"], photo=("white-bedroom", "白い寝具の整った客室"),
+        date="2026-10-19", updated="2026-10-31", topics=["start", "operate"], photo=("u-canal-apartments", "運河沿いに集合住宅が並ぶ街"),
         title='賃貸で民泊を始めるには？転貸の承諾書と管理規約の確認手順',
         short="賃貸で民泊を始めるには\n承諾書と管理規約",
         blurb='貸主の承諾と規約の確かめ方',
@@ -1135,7 +1135,7 @@ ARTICLES_AUTO = [
     ),
     dict(
         slug="minpaku-shukyaku-first-steps", related=['guest-review-tips'],
-        date="2026-10-24", updated="2026-11-06", topics=["operate"], photo=("white-bedroom", "白い寝具の整った客室"),
+        date="2026-10-24", updated="2026-11-06", topics=["operate"], photo=("u-phone-travel", "旅先でスマートフォンを構える手"),
         title='民泊の集客は何から？インスタの前に決める「誰に・何を・どこで」',
         short="民泊の集客は何から？\nインスタの前に決めること",
         blurb='誰に・何を・どこでの決め方',
@@ -1314,7 +1314,7 @@ ARTICLES_AUTO = [
     ),
     dict(
         slug="minpaku-seisou-kojin-kakunin", related=['minpaku-management-company', 'minpaku-break-even'],
-        date="2026-10-25", updated="2026-10-31", topics=["operate"], photo=("white-bed", "白いシーツの整ったベッド"),
+        date="2026-10-25", updated="2026-10-31", topics=["operate"], photo=("u-cleaning-gloves", "手袋をして机をふく清掃の手元"),
         title='民泊の清掃を個人に頼む前の確認｜家主不在・雇用の線引き・欠員対策',
         short="民泊の清掃を個人に頼む前に\n確かめること",
         blurb='家主不在・雇用の線引き・欠員対策',
@@ -1466,7 +1466,7 @@ ARTICLES_AUTO = [
     ),
     dict(
         slug="minpaku-180days-rule", related=['kani-shukusho-kyoka-guide', 'minpaku-break-even', 'minpaku-chintai-start'],
-        date="2026-10-27", updated="2026-11-06", topics=["start", "operate"], photo=("white-bedroom", "白い寝具の整った客室"),
+        date="2026-10-27", updated="2026-11-06", topics=["start", "operate"], photo=("u-calendar-pins", "日付にピンを刺したカレンダー"),
         title='民泊新法の年180日ルール｜数え方・超えたとき・条例で短くなる場合',
         short="民泊の年180日ルール\n数え方と超えたとき",
         blurb='数え方・超過・条例で短縮',
@@ -1612,7 +1612,7 @@ ARTICLES_AUTO = [
     dict(
         slug="minpaku-house-guide",
         keyword="民泊 ゲスト 質問",
-        date="2026-10-31", updated="2026-10-31", topics=["operate"], photo=("white-bedroom", "白い寝具の整った客室"),
+        date="2026-10-31", updated="2026-10-31", topics=["operate"], photo=("u-table-book", "本とコーヒーポットを置いた木のテーブル"),
         title='民泊のゲストからの質問を減らす方法｜実際に届いた質問408件から',
         short="民泊のゲストの質問を減らす案内の送り方",
         blurb='届いた質問408件から',
@@ -1824,7 +1824,7 @@ ARTICLES_AUTO = [
     dict(
         slug="minpaku-bihin-priority", related=['minpaku-start-steps'],
         keyword="民泊 備品",
-        date="2026-11-01", updated="2026-11-01", topics=["start", "operate"], photo=("white-bed", "白いシーツの整ったベッド"),
+        date="2026-11-01", updated="2026-11-01", topics=["start", "operate"], photo=("u-folded-towels", "窓辺にたたんで置かれたタオル"),
         title='民泊の備品は何から買う？買いすぎを防ぐ順番｜ゲストの質問408件から',
         short="民泊の備品は\n何から買う？",
         blurb='買う順番と費用',
@@ -2114,7 +2114,7 @@ ARTICLES_AUTO = [
 dict(
     slug="minpaku-ryokin-kimekata", related=['inn-kpi-basics', 'minpaku-break-even', 'ota-vs-direct-booking', 'airdna-revenue-simulation', 'minpaku-vs-ryokan-law', 'minpaku-off-season'],
     keyword="民泊 料金設定",
-    date="2026-11-14", topics=["operate"], photo=("white-bedroom", "白を基調にした寝室"),
+    date="2026-11-14", topics=["operate"], photo=("u-calc-notebook", "電卓とノートで計算する手元"),
     guides=[("run", 2)],
     title='民泊の料金設定のやり方｜赤字にならない下限から季節の上げ下げまで',
     short="民泊の料金設定\n下限から季節の上げ下げまで",
@@ -2328,7 +2328,7 @@ dict(
 dict(
     slug="minpaku-staff-atsumekata", related=['minpaku-break-even', 'minpaku-remote-operation'],
     keyword="民泊 スタッフ",
-    date="2026-11-15", topics=["operate"], photo=("pillow", "整えられたベッドと縞模様のクッション"),
+    date="2026-11-15", topics=["operate"], photo=("u-made-bed", "整えられた客室のベッド"),
     guides=[("run", 3)],
     title='民泊・小さな宿のスタッフの集め方｜仕事を分けて、地域の人から頼む順番',
     short="民泊・宿のスタッフは\nどう集める？",
@@ -2513,7 +2513,7 @@ dict(
 dict(
     slug="minpaku-kotei-shisanzei",
     keyword="民泊 固定資産税",
-    date="2026-11-16", topics=["money", "start"], photo=("analytics-paper", "数字をまとめた資料"),
+    date="2026-11-16", topics=["money", "start"], photo=("u-calculator-red", "電卓とペン"),
     guides=[("use", 3)],
     related=["minpaku-start-steps", "minpaku-vs-ryokan-law", "akiya-holding-costs", "akiya-demolish-or-renovate", "akiya-law-kanri-fuzen", "souzoku-touki-gimuka", "minpaku-break-even", "akiya-lease-types"],
     title='民泊にすると固定資産税は上がる？｜上がる場合・計算例・確かめ方',

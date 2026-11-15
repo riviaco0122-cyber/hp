@@ -63,7 +63,7 @@ ARTICLES_SERIES2 = [
     ),
     dict(
         slug="akiya-minpaku-suitability", related=['akiya-utilization-options'],
-        date=D, updated="2026-11-06", topics=["house", "start"], photo=("riverside-town", "川沿いの町並み"),
+        date=D, updated="2026-11-06", topics=["house", "start"], photo=("u-wooden-house-garden", "庭のある木造の平屋"),
         title="その空き家、民泊に向いている？立地・建物・法令・運営の4つで見極める",
         keyword="空き家 民泊 向いている",
         short="その空き家は\n民泊に向いている？",
@@ -293,7 +293,7 @@ ARTICLES_SERIES2 = [
     ),
     dict(
         slug="minpaku-neighbor-rules", related=['minpaku-remote-operation'],
-        date=D, updated="2026-11-06", topics=["operate", "start"], photo=("town-railway", "線路沿いの住宅街"),
+        date=D, updated="2026-11-06", topics=["operate", "start"], photo=("u-residential-alley", "住宅が並ぶ静かな路地"),
         title="民泊の近隣トラブルを防ぐには？騒音・ごみ・駐車のルールづくりと伝え方",
         keyword="民泊 近隣トラブル",
         short="近隣トラブルを防ぐ\nルールづくり",
@@ -384,7 +384,7 @@ ARTICLES_SERIES2 = [
     ),
     dict(
         slug="minpaku-off-season", related=['cleaning-linen-operations'],
-        date=D, updated="2026-11-06", topics=["operate", "money"], photo=("mountain-dawn", "朝焼けの山並み"),
+        date=D, updated="2026-11-06", topics=["operate", "money"], photo=("own-fishing-bay", "釣り糸を垂らす静かな海"),
         title="民泊の閑散期をどう乗り越える？下田の宿の月別の稼働率と料金・長期滞在の工夫",
         keyword="民泊 閑散期",
         short="閑散期を\nどう乗り越える？",
@@ -478,7 +478,7 @@ ARTICLES_SERIES2 = [
     ),
     dict(
         slug="minpaku-remote-operation", related=['minpaku-vs-ryokan-law'],
-        date=D, updated="2026-11-06", topics=["operate", "lend"], photo=("laptop-dashboard", "パソコンで予約状況を確認する様子"),
+        date=D, updated="2026-11-06", topics=["operate", "lend"], photo=("u-smart-lock", "スマートフォンで開け閉めするスマートロック"),
         title="遠方の物件でも民泊を運営できる？スマートロック・清掃の外注・遠隔運営の仕組み",
         keyword="民泊 遠隔運営",
         short="遠方の物件でも\n運営できる？",

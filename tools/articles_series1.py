@@ -118,7 +118,7 @@ ARTICLES_SERIES1 = [
     dict(
         slug="why-akiya-utilization-now", related=['akiya-3000man-deduction'],
         keyword="空き家 活用",
-        date=D, updated="2026-11-06", topics=["trend", "sell"], photo=("old-town-street", "古い町家が並ぶ通り"),
+        date=D, updated="2026-11-06", topics=["trend", "sell"], photo=("yaizu-before-backyard", "草の伸びた空き家の裏庭"),
         title="なぜ今「空き家の活用」が注目されるのか｜税の負担・活用の道・民泊の追い風",
         short="なぜ今、空き家の\n活用が注目されるのか",
         description="空き家は、持っているだけで負担が増えるようになりました。市の勧告で土地の税が上がる決まりと相続登記の義務化、負担を減らす4つの活用の道、比べたときに民泊・宿に追い風がある理由を、順に整理します。",
@@ -350,7 +350,7 @@ ARTICLES_SERIES1 = [
     dict(
         slug="souzoku-touki-gimuka", related=['akiya-law-kanri-fuzen'],
         keyword="相続登記 義務化",
-        date=D, updated="2026-11-06", topics=["sell", "money"], photo=("window-garden", "窓から見える庭"),
+        date=D, updated="2026-11-06", topics=["sell", "money"], photo=("u-signing-paper", "書類に記入する手元"),
         title="相続登記の義務化とは？空き家を相続して売る・民泊にする前にやること",
         short="相続登記の義務化と\n最初にやること",
         description="2024年4月から、相続した家や土地の名義を変える手続き（相続登記）が義務になりました。相続で不動産を取得したと知ってから3年以内で、過去の相続分も対象です。怠ると過料（お金の罰）の対象になります。最初にやることを整理します。",
@@ -565,7 +565,7 @@ ARTICLES_SERIES1 = [
     dict(
         slug="akiya-utilization-options", related=['akiya-bank-guide', 'why-minpaku-for-akiya', 'minpaku-vs-rental-income'],
         keyword="空き家 活用方法",
-        date=D, updated="2026-11-06", topics=["house", "lend"], photo=("thatched-house", "かやぶき屋根の古民家"),
+        date=D, updated="2026-11-06", topics=["house", "lend"], photo=("u-old-wooden-house", "古い木造の家"),
         title="空き家の活用方法を比べる｜売る・貸す・民泊にするの向き不向き",
         short="空き家の活用方法を\n比べる",
         blurb="5つの道の分かれ目を実例で",
@@ -717,7 +717,7 @@ ARTICLES_SERIES1 = [
     dict(
         slug="inherited-house-family-talk", related=['why-akiya-utilization-now'],
         keyword="相続 実家 話し合い",
-        date=D, updated="2026-11-06", topics=["sell", "lend"], photo=("irori-room", "囲炉裏のある古い家の居間"),
+        date=D, updated="2026-11-06", topics=["sell", "lend"], photo=("u-old-living-room", "ちゃぶ台のある古い家の居間"),
         title="相続した実家を売る・貸す・民泊にする？家族での話し合いの進め方",
         short="相続した実家を\n家族で決める",
         description="相続した実家を売るか、貸すか、宿にするかを家族で決めるための記事です。先送りで重なる負担、入るお金・手間・控除・家が残るかの比べ方、分け方が決まらないときの期限の守り方、借り上げを選ぶときの注意を整理します。",
@@ -868,7 +868,7 @@ ARTICLES_SERIES1 = [
     dict(
         slug="why-minpaku-for-akiya", related=['japan-tourism-market-data'],
         keyword="空き家 民泊",
-        date=D, updated="2026-11-06", topics=["trend", "start"], photo=("scene-stay", "和室から見える町と山の景色"),
+        date=D, updated="2026-11-06", topics=["trend", "start"], photo=("own-tatami-hall", "長机を置いた畳の広間"),
         title="空き家の活用で、なぜ民泊・小さな宿が選ばれるのか",
         short="空き家の活用で\nなぜ民泊が選ばれるのか",
         description="住まいとして借り手がつかない空き家でも、民泊（住まいに旅行者を有料で泊めること）や小さな宿なら選ばれることがあります。下田の宿のゲストと改修、最初の3か月の売上と運営費、遠方から運営する手順をもとに、その理由と注意点を紹介します。",
@@ -955,7 +955,7 @@ ARTICLES_SERIES1 = [
     dict(
         slug="minpaku-vs-rental-income",
         keyword="民泊 賃貸 収入",
-        date=D, updated="2026-11-06", topics=["money", "lend"], photo=("white-bed", "白いベッドのある寝室"),
+        date=D, updated="2026-11-06", topics=["money", "lend"], photo=("u-calculator-pen", "電卓とペンと計算の紙"),
         title="民泊と普通の賃貸、収入の仕組みはどう違う？売上・費用・手間を比べる",
         short="民泊と賃貸\n収入の仕組みの違い",
         description="空き家を住まいとして貸す場合と、民泊（旅行者を有料で泊めること）・宿にする場合では、収入の決まり方が違います。売上の式と年180日の上限、月ごとの波、かかる費用と手間、波を誰が引き受けるかの4つの貸し方を、下田の宿の数字で比べます。",

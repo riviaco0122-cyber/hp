@@ -509,7 +509,20 @@ def check():
             elif a["published"] > TODAY and slug in listed_l:
                 add("warn", "seo/llms.txt", f"公開日前（{a['published']}）の記事 {slug} が llms.txt に載っている")
 
+    check_photo_dups(add)
     return issues, articles
+
+
+def check_photo_dups(add):
+    """1枚の写真を2つ以上の記事のカードに使っていないか（一覧に同じ写真が並ぶと、記事の見分けがつかない。docs/design-guide.md）"""
+    sys.path.insert(0, str(ROOT / "tools"))
+    from build_parts.media_articles import ARTICLES, ARTICLE_PHOTOS
+    used = {}
+    for a in ARTICLES:
+        used.setdefault(ARTICLE_PHOTOS[a["slug"]][0], []).append(a["slug"])
+    for name, slugs in used.items():
+        if len(slugs) > 1:
+            add("warn", "tools/articles_*.py", f"写真 {name} を {len(slugs)} 本の記事で使っている（{'・'.join(slugs)}）。記事ごとに中身に合う写真を選ぶ")
 
 
 def check_crawl_rules(add, sitemap):
