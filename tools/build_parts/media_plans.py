@@ -96,7 +96,7 @@ def media_plans_page():
                 f'{worries}<span class="mjump__name">→ {e(sv["name"])}</span></a></li>')
     jump = "".join(jump_item(sv) for sv in MEDIA_SERVICES)
     crumbs = media_crumbs([("アキヤド", "media.html"), ("アキヤドのプラン", "")])
-    body = f"""{media_hero("Services", "アキヤドのプラン", "記事を読んで、具体的に考えたくなったら。空き家の買取・借り上げから、民泊の開業・運営まで。宿を運営するアキヤドにご相談いただけることをまとめました。", crumbs)}
+    body = f"""{media_hero("Services", "アキヤドのプラン", "記事を読んで、具体的に考えたくなったら。買取・借り上げから、宿の開業・運営まで。宿を運営するアキヤドに、ご相談ください。", crumbs)}
 
     <section class="section msec msec--first">
       <div class="container">
