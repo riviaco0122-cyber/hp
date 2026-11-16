@@ -117,7 +117,7 @@ th{font-weight:600;color:var(--muted);font-size:.85rem}
 .sources li{margin:.25rem 0;overflow-wrap:anywhere;scroll-margin-top:5rem;border-radius:.3rem}
 .sources li:target{background:var(--surface);outline:2px solid var(--ai);outline-offset:2px}
 sup.cite{font-family:var(--display);font-size:.7em;line-height:0;margin-left:.1em;white-space:nowrap}
-sup.cite a{display:inline-block;padding:.15em .15em;text-decoration:none;font-weight:700;color:var(--ai)}
+sup.cite a{display:inline-block;padding:.35em .3em;margin:-.2em 0;text-decoration:none;font-weight:700;color:var(--ai)}
 .photo{margin:1.4rem 0}
 .photo img{display:block;width:100%;height:auto;border-radius:.6rem;background:var(--line)}
 .photo figcaption{font-family:var(--display);font-size:.85rem;color:var(--muted);margin-top:.4rem}
