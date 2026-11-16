@@ -31,7 +31,7 @@ SOURCES_NEW = {
 
 ARTICLE = {
  "id": "digital-nomad", "slug": "japan-digital-nomad-visa", "topic": "live", "place": None, "also": [],
- "photo": ("TODO-PHOTO", "A laptop open on a wooden desk beside a window", ""),
+ "photo": ("laptop-plants-desk", "A laptop open on a wooden desk among potted plants, with a notebook and pen", ""),
  "published": "2026-11-16", "updated": "2026-11-16",
  "kicker": "Live part-time",
  "h1": "Japan’s digital nomad visa, and where to base yourself",

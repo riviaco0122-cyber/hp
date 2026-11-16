@@ -713,6 +713,7 @@ NODE_URL = "https://nodeshimoda.com/"
 # ページ下の「Photo credits」に、そのページで使った写真の分だけ「Photo by 撮影者 on Unsplash」を出す（build.py の footer）。
 UNSPLASH_UTM = "?utm_source=noki&utm_medium=referral"
 PHOTO_CREDITS = {
+    "laptop-plants-desk": ("Rui Silvestre", "https://unsplash.com/@ruisilvestrecreative", "https://unsplash.com/photos/9vxJQmZmTYU", "9vxJQmZmTYU"),
     "coastal-village": ("PJH", "https://unsplash.com/@dokae", "https://unsplash.com/photos/jb0SsX_Bz_E", "jb0SsX_Bz_E"),
     "window-room": ("ZENG YILI", "https://unsplash.com/@zengyili", "https://unsplash.com/photos/fta5pzyM0T8", "fta5pzyM0T8"),
     "town-lane": ("PJH", "https://unsplash.com/@dokae", "https://unsplash.com/photos/stvwZJNN6Qo", "stvwZJNN6Qo"),

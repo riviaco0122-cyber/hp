@@ -57,3 +57,9 @@
 | 東京から伊豆の記事 | train-window-sea | E401NBqwIGg | realfish |
 
 使わなくなった terraced-fields・scene-stay・town-railway・thatched-house・own-open-sea・own-fishing-bay は photos/ から消した。
+
+## 追加（2026-11-16）
+
+| 枠 | 写真（名前） | Unsplash ID | 撮影者 |
+|---|---|---|---|
+| デジタルノマドの記事の見出し写真（窓のある部屋の仕事の机。人の顔なし・地名なし） | laptop-plants-desk | 9vxJQmZmTYU | Rui Silvestre |
