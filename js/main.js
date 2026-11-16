@@ -766,6 +766,37 @@
     return ls.length > 1 && ls[ls.length - 1].n <= 3;
   };
   var unwrap = function (n) { while (n.firstChild) n.parentNode.insertBefore(n.firstChild, n); n.parentNode.removeChild(n); };
+  // 最後の行に1〜2文字だけはみ出すときは、字間を少しずつ詰めて前の行に収める（人の指摘 2026-11-16：「…運営ま／で。」）。
+  // 詰めるのは最大 0.08em まで・字間がマイナス 0.02em を下回らない範囲。収まらなければ元に戻す。
+  // 実際の表示（iPhone の Safari など、端末ごとのフォントの幅）で測ってから詰めるので、機種による1文字のずれにも合う
+  var tailChars = function (blk) { // 最後の行の文字数（後ろから1文字ずつ位置を測る。3文字まで数えれば足りる）
+    var tw = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), t, nodes = [], r = document.createRange(), tops = [];
+    while ((t = tw.nextNode())) if (t.data.trim()) nodes.push(t);
+    for (var i = nodes.length - 1; i >= 0 && tops.length < 4; i--) {
+      for (var j = nodes[i].length - 1; j >= 0 && tops.length < 4; j--) {
+        if (/\s/.test(nodes[i].data[j])) continue;
+        r.setStart(nodes[i], j); r.setEnd(nodes[i], j + 1);
+        var q = r.getBoundingClientRect(); if (q.width) tops.push(q.top);
+      }
+    }
+    var fs = parseFloat(getComputedStyle(blk).fontSize), n = 0;
+    while (n < tops.length && Math.abs(tops[n] - tops[0]) < fs * 0.6) n++;
+    return n;
+  };
+  // 最後の行に1〜2文字だけはみ出すときは、字間を少しずつ詰めて前の行に収める（人の指摘 2026-11-16：「…運営ま／で。」。3文字は許す）。
+  // 詰めるのは最大 0.15em まで・字間がマイナス 0.05em を下回らない範囲。収まらなければ元に戻す。
+  // 実際の表示（iPhone の Safari など、端末ごとのフォントの幅）で測ってから詰めるので、機種による1文字のずれにも合う
+  var pullTail = function (blk, lines) {
+    var cs = getComputedStyle(blk), fs = parseFloat(cs.fontSize), base = parseFloat(cs.letterSpacing) || 0, n0 = lines.length;
+    for (var k = 1; k <= 15; k++) {
+      var ls = base - fs * 0.01 * k;
+      if (ls < -fs * 0.05) break;
+      blk.style.letterSpacing = ls + 'px';
+      if (lineCount(blk) < n0) { blk.setAttribute('data-pull', ''); return true; }
+    }
+    blk.style.letterSpacing = '';
+    return false;
+  };
   var textBlocks = function () { // 文字が並ぶいちばん内側のまとまり（段落・項目・見出し・表のマスなど）
     return Array.prototype.filter.call(document.querySelectorAll('main :is(p, li, dd, dt, h1, h2, h3, h4, td, th, figcaption, summary, blockquote, .kp__main, .ml-s)'), function (b) {
       return !b.querySelector('p, li, dd, div, ul, ol, table, h2, h3, h4, .kp__main, .ml-s') && b.textContent.trim().length > 0;
@@ -805,6 +836,7 @@
       if (both) box.classList.add('ml-flow');
     });
     document.querySelectorAll('n-b.keep').forEach(unwrap);
+    document.querySelectorAll('[data-pull]').forEach(function (b) { b.style.letterSpacing = ''; b.removeAttribute('data-pull'); });
     document.querySelectorAll('.jfy').forEach(function (b) { b.classList.remove('jfy'); });
     var blocks = textBlocks();
     blocks.forEach(function (blk) {
@@ -813,6 +845,7 @@
       var cs = getComputedStyle(blk), fsz = parseFloat(cs.fontSize);
       var lines = lineBoxes(blk);
       if (!lines.length) return;
+      if (lines.length > 1 && lines[lines.length - 1].n <= 4 && tailChars(blk) <= 2 && pullTail(blk, lines)) lines = lineBoxes(blk);
       // 直前のまとまり（同じ親の中で、すぐ前に並ぶもの）も最後の行が3文字以下なら、続けて起きないように最後の4文字をまとめる。
       // 見出しは文字の大きさも形も違い、続けて並んでも目立たないので数えない（見出しのあとは数え直す）
       // 表のマスも、ほかの文と同じく行末まで詰めるだけにする（隣のマスと比べて送ると、マスの中で右が空くため。人の指摘 2026-11-13）
