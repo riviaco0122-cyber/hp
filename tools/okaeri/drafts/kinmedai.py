@@ -6,8 +6,8 @@ SOURCES_NEW = {
                        "Fisheries Agency: Pacific splendid alfonsino — FY2021 stock assessment and wide-area management (committee papers, November 2021)"),
     "chiba_kinme_r6": ("https://www.pref.chiba.lg.jp/gyoshigen/sigenhyoka/documents/01-r6kinme.pdf", "Chiba Prefecture, 2025", "千葉県 2025年",
                        "Chiba Prefecture: Coastal fisheries resource assessment FY2024 — splendid alfonsino"),
-    "shizuoka_kinme_fat": ("https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/025/667/06kinme.pdf", "Shizuoka Prefecture",
-                           "静岡県", "Shizuoka Prefecture: A new season for kinmedai based on fat content"),
+    "shizuoka_kinme_fat": ("https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/025/667/06kinme.pdf", "Shizuoka Prefecture (fisheries research)",
+                           "静岡県（水産技術研究所）", "Shizuoka Prefecture: A new season for kinmedai based on fat content"),
     "tokyo_kinme_tag": ("https://www.ifarc.metro.tokyo.lg.jp/watch/uploads/e1b51dd9a8029f8a3c05613d0c07008c.pdf", "Tokyo Metropolitan Government",
                         "東京都", "Tokyo Metropolitan Islands Area Research and Development Center: Tagged kinmedai report No. 217 (2019)"),
     "tokushima_akamutsu": ("https://www.pref.tokushima.lg.jp/file/attachment/175834.pdf", "Tokushima Prefecture", "徳島県",
@@ -51,7 +51,7 @@ ARTICLE = {
 
 <h2>What does kinmedai taste like, and how is it eaten?</h2>
 <p>Kinmedai is a rich white fish that carries plenty of fat, and it stays that way all year. Shimoda City puts that down to its life in deep water, and says it works in lots of different dishes [[s:shimoda_news]]. If you only try it once, we’d go for <em>nitsuke</em>, fish simmered in soy sauce and sugar, though in our view it’s just as good raw or lightly seared.</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>Dish</th><th>What it is</th></tr></thead>
 <tbody>
 <tr><td><strong>Nitsuke</strong></td><td>A whole fish or a thick cut, simmered until the sauce turns glossy. Our pick for a first try, and we think a big fish is worth the extra: Shizuoka’s researchers, measuring kinmedai landed at Inatori in Izu (a 2007–2011 study), found that bigger fish carry more fat [[s:shizuoka_kinme_fat]].</td></tr>
@@ -88,7 +88,7 @@ ARTICLE = {
 
 <h2>When is kinmedai in season?</h2>
 <p>Kinmedai is landed all year, but locals point to two times: winter, and around June, when the fish are fattiest.</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>When</th><th>Why</th></tr></thead>
 <tbody>
 <tr><td>Winter</td><td>The traditional season, when kinmedai goes into hot pots [[s:shimoda_news,shizuoka_kinme_fat]].</td></tr>
@@ -151,7 +151,7 @@ ARTICLE = {
 
 <h2>金目鯛はどんな味で、どうやって食べるのか</h2>
 <p>金目鯛は、脂のたっぷりのった、こくのある白身で、それが一年中変わりません。下田市は、深い海にすむからだと説明していて、いろいろな料理に向くそうです[[s:shimoda_news]]。1回だけ食べるなら、私たちは醤油と砂糖で煮る「煮付け」をすすめます。ただ、生でも、さっと炙っても同じくらいおいしいと私たちは思います。</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>料理</th><th>どんなものか</th></tr></thead>
 <tbody>
 <tr><td><strong>煮付け</strong></td><td>丸ごと、または厚い切り身を、たれに照りが出るまで煮たもの。最初の1回に、私たちがすすめる食べ方です。大きめの魚を選ぶ価値があると思います。静岡県の研究者が伊豆の稲取に揚がった金目鯛を測ったところ（2007〜2011年度の調査）、大きい魚ほど脂が多かったからです[[s:shizuoka_kinme_fat]]。</td></tr>
@@ -188,7 +188,7 @@ ARTICLE = {
 
 <h2>金目鯛の旬はいつか</h2>
 <p>金目鯛は一年中揚がりますが、地元で挙がる時期は2つあります。冬と、脂がいちばん乗る6月ごろです。</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>時期</th><th>理由</th></tr></thead>
 <tbody>
 <tr><td>冬</td><td>鍋の季節で、昔からの旬とされる時期です[[s:shimoda_news,shizuoka_kinme_fat]]。</td></tr>
