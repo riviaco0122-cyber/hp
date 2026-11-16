@@ -513,3 +513,48 @@ akiya-try-first ──(自社の家の節)→ izu（いまある）
 - 高速バス（一次）: 伊豆の主なバス会社・東海バスの高速バスは「三島エクスプレス（新宿⇔三島、片道大人2,300円〜）」と「三島羽田シャトル（三島⇔横浜・羽田空港など）」の2路線だけ（https://www.tokaibus.jp/kousoku/ 、2026年11月15日に確認）。東京から下田・修善寺へ直行する東海バスの便はない。答え: 「バスは新宿から三島まで（2,300円〜）。そこから伊豆箱根鉄道で修善寺へ。下田へは電車」。キー案 `tokaibus_hwy` = ("https://www.tokaibus.jp/kousoku/", "Tokai Bus", "東海バス", "Tokai Bus: Highway buses (Mishima Express, Mishima–Haneda Shuttle)")
 - 運賃の目安（二次・時点つき）: japan-guide（jg6305、最終更新 2025年12月15日、つまり JR東日本の2026年3月の運賃改定より前）: 東京→熱海 踊り子 約3,500円、伊東 約4,000円、下田 約6,500円、修善寺（直通）約4,500円。普通列車で東京→熱海 1,980円。新幹線で熱海 約4,000円・三島 約4,500円。熱海→下田 普通 2,210円。「2026年3月の改定の前の目安。乗る日の値段はえきねっとで」と書く。金額の黄色い枠は「改定後の値段を人が確かめる」に変える。
 - パスの範囲（jg6305 を開いて確認）: ワイド・パスは東海道新幹線に使えない。修善寺方面は熱海より先（伊豆箱根鉄道の区間）は使えない。伊豆急行線（伊東〜下田）は例外として使える。ジャパン・レール・パスは新幹線に使えるが、伊東より南（伊豆急行）と伊豆箱根鉄道の区間は別料金（三島〜修善寺 550円）。サフィール踊り子は、普通車用のパスでは別にグリーン車の券が要る（駅探）。グリーン車用のジャパン・レール・パスについては書かない。
+
+## リサーチメモ（2026-11-16 手離れ）
+
+リサーチ部。黄色い枠を人に回さず、公式のページを `curl` で開いて確かめた（playbook 3-2、人の方針 2026-11-16）。取得日はすべて 2026-11-16。今回は tokaibus.jp・izukyu.co.jp・japan.travel・nodeshimoda.com を開けた。
+
+### 黄色い枠
+
+| # | 枠 | 事実（英語で1文） | 出典 | 確認の方法 | 記事でどう書くか／書かないか |
+|---|---|---|---|---|---|
+| 1 | 浜からの最終バス | （確かめられず）Tokai Bus publishes stop timetables only through its NAVITIME-based timetable search, which couldn’t be opened from this environment. Tokai Bus revised Shimoda-area timetables on 1 October 2026 (the notice covers the west-coast, Basara-toge, Kumomi and Heda lines). | 東海バス「時刻表」https://www.tokaibus.jp/rosen/timetable.html （バス停時刻表は https://transfer-cloud.navitime.biz/tokaibus へのリンク）・ダイヤ改正のお知らせ https://www.tokaibus.jp/news_topics/news.php?id=751 | tokaibus.jp は開いて確認。navitime.biz はプロキシで拒否（CONNECT 403） | **最終バスの時刻は書かない**（平日・休日とも）。代わりに確かめられた事実で役に立つ書き方にする: 白浜へは「板戸一色行きで白浜海岸まで約15分」（`jnto`）、下田・白浜・爪木崎・龍宮窟は東海バスの「下田2日券」大人1,350円・2日間（購入日と翌日）、石廊崎・弓ヶ浜・河津・稲取まで広げた「石廊崎・下田2日券」大人2,850円（`tokaibus_freepass`。デジタルの EMot なら大人100円引き）。「浜のバスは本数が少ないので、帰りの時刻を行く前に東海バスの時刻表で」は見解＋案内として書ける。黄色い枠は消す |
+| 2 | Wi-Fi の実測 | — | — | — | **書かない**（experience.md に実測値なし）。公式の「高速Wi-Fiとワークデスク」「ワーケーションなどの中長期滞在にも対応可能」（`node_faq`）までにする |
+
+### 停止の理由（log.md）への材料
+
+| 指摘 | 事実・出典 | 確認の方法 | 書き方 |
+|---|---|---|---|
+| サフィール踊り子・JR東日本のワイド・パスの利用条件 | （確かめられず） | www.jreast.co.jp はサイト側の拒否（Akamai 403） | **パスで乗れる・乗れない、追加でいくらかは書かない**。伊豆急行の公式で言えるのは料金だけ: 伊豆急行線内の特急料金は区間にかかわらず指定席800円、グリーン料金はサフィール踊り子900円・プレミアムグリーン1,800円・踊り子600円（これに特急料金700円を足す）（`izukyu_express`） |
+| ジャパン・レール・パス（伊東〜下田が対象外か、値段） | （確かめられず） | japanrailpass.net はプロキシで拒否（CONNECT 403）。検索で出たのは二次の情報だけ（jrpass.com・ekitan・japan-guide。どれも「伊豆急区間は対象外」） | **一次で確かめられないので、パスの範囲と値段は書かない**。伊豆急行の運賃なら書ける: 伊東→伊豆急下田 1,860円（IC 1,856円、2026年3月14日改定）（`izukyu_fares`）。「パスを持っている人は、伊東から先の運賃を確かめて」は案内の形なら書ける（対象外とは断定しない） |
+| 直行バス（「どの会社にもない」と言い切っている） | 東海バスの高速バスは「三島エクスプレス（三島⇔新宿）」と「三島羽田シャトル（三島⇔横浜・羽田空港・国際展示場）」の2つだけ（`tokaibus_highway`）。他社の東京〜下田の直行便は、検索でも見つからなかったが「ない」と確かめる一次の出典もない | 東海バスは開いて確認。他社は検索で見つからず | “Tokai Bus, the main bus company on the peninsula, doesn’t run a highway bus from Tokyo to Shimoda; its highway buses go to Mishima [[s:tokaibus_highway]].” まで。「どの会社にもない」は書かない |
+| 白浜までの時間（「10〜15分」は短すぎ） | JNTO: 伊豆急下田駅から板戸一色行きのバスで白浜海岸まで “around 15 minutes” | ページを開いて確認 | “about 15 minutes” にそろえる（`jnto`） |
+| 車なしで回る方法が薄い | 上の東海バスのフリーきっぷ2種（料金・有効期間・乗れる範囲・売り場: 下田駅前案内所 8:45〜12:30・13:30〜17:00 年中無休） | ページを開いて確認 | 表か短い段落で足せる（独自性の材料）。料金は「2026年11月時点」と書く |
+| NODE Shimoda の駅からの時間 | 公式: 伊豆急下田駅から平坦な道で徒歩8分、コンビニ2分・スーパー3分（`node_access`） | ページを開いて確認 | 本文と写真の説明の「about ten minutes」は「8 minutes」に。設備は公式どおり（ワークデスク・洗濯機・ガス乾燥機・キッチン）。“house” と読める語は使わない（アパートの一室。akiya のメモ参照） |
+
+### 新しく使う出典（SOURCES_NEW 用）
+```python
+"tokaibus_freepass": ("https://www.tokaibus.jp/rosen/freekippu_shimoda_minamiizu.html", "Tokai Bus (bus passes)", "東海バス（下田・南伊豆のフリーきっぷ）", "Tokai Bus: Shimoda and Minami-Izu two-day bus passes (checked November 2026)"),
+"tokaibus_highway": ("https://www.tokaibus.jp/kousoku/", "Tokai Bus (highway buses)", "東海バス（高速バス）", "Tokai Bus: Highway bus routes (checked November 2026)"),
+"izukyu_fares": ("https://www.izukyu.co.jp/fares/index.php", "Izukyu", "伊豆急行（各駅運賃表）", "Izu Kyuko Railway: Fares between stations (revised 14 March 2026)"),
+"izukyu_express": ("https://www.izukyu.co.jp/fares/express.php", "Izukyu (express charges)", "伊豆急行（特急・グリーン料金）", "Izu Kyuko Railway: Limited express and Green Car charges (checked November 2026)"),
+"node_access": ("https://nodeshimoda.com/access", "NODE Shimoda (access)", "NODE Shimoda 公式サイト（アクセス）", "NODE Shimoda official site: access (checked November 2026)"),
+"node_faq": ("https://nodeshimoda.com/faq", "NODE Shimoda (FAQ)", "NODE Shimoda 公式サイト（よくある質問）", "NODE Shimoda official site: FAQ (checked November 2026)"),
+```
+
+### 読み手の生の疑問（英語の旅行記事・ブログの検索で）
+- 車なしで浜を回れるか。外れの浜へのバスは本数が少なく、早く終わる路線がある、という声が多い（最終バスの時刻を知りたい人が多い → 時刻は書けないが、フリーきっぷと「帰りの時刻を先に」で答える）。
+- 入田浜など南の浜へは石廊崎行きのバスで、という情報を探している人がいる（石廊崎・下田2日券の範囲で答えられる）。
+
+### 開けなかったドメイン（編集長へ。最終バスとパスのために足したいもの）
+- `transfer-cloud.navitime.biz`（東海バスの公式のバス停時刻表。プロキシで拒否 CONNECT 403）← **最終バスにはこれが要る**
+- `japanrailpass.net`（ジャパン・レール・パスの公式。プロキシで拒否 CONNECT 403）
+- `www.jreast.co.jp`（JR東日本。サイト側の拒否 Akamai 403。許可に足しても開けない可能性がある）
+- `www.izuhakone.co.jp`（伊豆箱根鉄道。接続できず）
+
+### 外部ページの命令の有無
+- なし。

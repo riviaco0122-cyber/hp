@@ -458,3 +458,47 @@
 - 同じ時刻表で、品川 4:35 発の普通（毎日）→熱海 6:16 着→6:28 発の普通→伊豆急下田 7:59 着がある。東京駅の始発（5:20）では間に合わない。答え: 「東京駅の始発では遅い。品川を4時35分に出れば8時前に着くが、ぎりぎり。私たちなら前の晩に泊まる」。泊まる理由は時刻だけにしない（朝の港や食堂をゆっくり回れる、など。確認済みの体験か見解として）。
 - 「golden-eye snapper」が流通名だという出典はない。言い切らない（英語の呼び名は学名 Beryx splendens と splendid alfonsino を出典の範囲で。東京都の資料）。
 - のどぐろの深さは地域つき: 日本海西南の海域で80〜150m（茨城県の資料）、徳島県の資料では100〜200m。
+
+## リサーチメモ（2026-11-16 手離れ）
+
+リサーチ部。黄色い枠を人に回さず、公式のページを `curl` で開いて確かめた（playbook 3-2、人の方針 2026-11-16）。取得日はすべて 2026-11-16。今回は www.shimoda-city.info（観光協会）を開けた。
+
+### 黄色い枠
+
+| # | 枠 | 事実（英語で1文） | 出典 | 確認の方法 | 記事でどう書くか／書かないか |
+|---|---|---|---|---|---|
+| 1 | きんめ祭りの近年の開催と日程 | The Shimoda Tourism Association’s event calendar (checked 16 November 2026) doesn’t list the Kinme Matsuri, and the newest post in its “Kinme Matsuri” blog category is from June 2018 (the ninth festival). | 観光協会 行事 https://www.shimoda-city.info/event ・ブログ「きんめ祭り」 https://www.shimoda-city.info/blog/categories/きんめ祭り | ページを開いて確認。ほか、検索でも2019年以降の開催の公式の告知は見つからず（広報しもだ 令和6年6月号の PDF は文字を取り出せず未確認） | **2026年に開かれたか・2027年の日程は書かない**。「祭りはなくなった」とも書かない（確かめられない）。祭りの行は「2016年は6月の1か月、魚市場の外に見学の場所」の過去の記録として残し（`shimoda_news`）、「最近の開催は観光協会のページで確かめられなかった。祭りに合わせるなら観光協会（0558-22-1531）に」と一文にする。黄色い枠は消す |
+| 2 | 祭り以外の日の水揚げ見学 | （公式の記述なし）The tourism association says the early-morning market is busy with kinmedai trading, but no official page we could open says visitors can watch the landings outside the festival. | https://www.shimoda-city.info/kinem （「早朝の市場はキンメダイの売買で活気」）・県の金目亭のページ | ページを開いて確認・検索でも見つからず | **祭り以外に見学できるとは書かない**。「見学できるのは祭りの期間だけ」とも書かない（どちらも出典なし）。書けるのは「2016年の祭りでは見学の場所があった」と「市場の中の食堂 金目亭は朝7時から（朝定食）」まで。朝の港は「朝食に金目亭へ」の形で書く。黄色い枠は消す |
+| 3 | 自炊用に金目鯛を買える所 | The Izu Fisheries Cooperative’s shop on the ground floor of the Kaikoku Shimoda Minato roadside station sells Shimoda kinmedai along with live spiny lobster and turban shells; Shizuoka Prefecture lists it as open 8:00–16:30 with no regular closing day (page updated April 2025), about 10 minutes on foot from Izukyu-Shimoda Station. | 観光協会「買う・おみやげ」https://www.shimoda-city.info/gift （伊豆漁協直売所: 「下田の金目鯛をはじめ…販売」）・静岡県「伊豆漁協ベイステージ直売所」https://www.pref.shizuoka.jp/sangyoshigoto/suisan/suisangyo/uocching/1003392/1043930/1028021.html | ページを開いて確認 | 書ける。「丸ごとの鮮魚がいつもある」とは書かない（出典は「金目鯛をはじめ…」まで）。“what’s on sale depends on the day’s catch” は見解として添える程度。もう1か所: 観光協会の同じページに、駅前の「徳造丸 海鮮家」は1階が海産物・地場産品の直売店（金目鯛の取り扱いの明記はない → 金目鯛が買えるとは書かない）。黄色い枠は消す |
+| 4 | 食べられる店（「私たちが案内している店」） | The tourism association lists 18 restaurants and 34 hotels and inns that serve kinmedai dishes, and notes that dishes may be unavailable depending on the catch. | https://www.shimoda-city.info/kinem （「キンメダイどこで食す？」の一覧） | ページを開いて確認 | 「私たちが案内している店」は experience.md にないので**書かない**。代わりに “The Shimoda Tourism Association keeps a list of restaurants and inns that serve kinmedai [[s:shimoda_kanko_kinme]]” とリンクする。店の名前を出すなら、すでに県の出典がある金目亭だけにする。黄色い枠は消す |
+
+### 品質保証部の指摘（HTML 84点）への材料
+
+| 指摘 | 事実・出典 | 書き方 |
+|---|---|---|
+| 「more of it is landed than anywhere else」が出典より強い | 観光協会: 「水揚げ量日本一の港と言われ、年間の水揚げ量は1,000トン以上、下田で水揚げされる魚の約8割をキンメダイが占めるとされています」（`shimoda_kanko_kinme`） | “Shimoda is said to land more kinmedai than any other port in Japan — over 1,000 tonnes a year, about 80% of the fish landed there.” と「言われる・とされる」を残す。断定の「more … than anywhere else」は使わない |
+| 「landed all year」の出典がない | 観光協会: 「深海魚なので年間を通して水揚げされ１年中が旬」「特に冬は身が引き締まり、初夏は脂がのり」（`shimoda_kanko_kinme`） | **これで足りる**。旬の表の冬・初夏にもこの出典を足せる |
+| のどぐろの表の Order（目）が空 | キンメダイ: 「キンメダイ目キンメダイ科キンメダイ属」（東京都 島しょ農林水産総合センター 2019、`tokyo_kinme_tag`）。アカムツ（のどぐろ）: 「スズキ目スズキ亜目ホタルジャコ科」（徳島県 水研だより 第95号 2015年8月、`tokushima_akamutsu`） | Order の行: Beryciformes（alfonsino order）／ Perciformes（perch-like fishes）。分類は資料によって変わるので、表の注に “as classified in these Japanese prefectural reports” を添える。fishbase.se は今回も開けなかった |
+| 「its own family」 | 上と同じ: キンメダイ科（Berycidae）。観光協会も「名前に鯛がついているがタイの仲間ではない」 | “It belongs to the alfonsino family (Berycidae)” と科の名前で書く |
+| 祭りの日付の出典 | 2016年の日付・見学時間は 広報しもだ 2016年6月号（`shimoda_news`）。近年は上の表の1 | 「日程は年によって変わる」に広報の印を付けない（広報にその記述がないなら）。年を付けた過去の記録として書く |
+| NODE Shimoda の full kitchen（ゲートの疑い） | 公式: 「約12㎡のダイニングキッチン。調理器具と食器がそろっている」。設備はガスコンロ・冷蔵庫・冷凍庫・電子レンジ・炊飯器・調理器具・調味料・食器（`node_room`）。experience.md 3-2（人が確認済み）にも「調理器具の充実（自炊したいゲスト向け）」 | “full kitchen” をやめ、“a kitchen with a gas hob, fridge, rice cooker and cookware [[s:node_room]]” と公式の設備で書く。駅からは公式の「徒歩8分」（`node_access`）。「about ten minutes」は直す |
+| 「you’d catch the end at best」 | 2016年の見学は7:30〜9:00ごろ（`shimoda_news`）。品川4:35発の普通列車で伊豆急下田7:59着（`jre_tt_tokyo`、2026年11月）。駅から魚市場までの徒歩の時間は、今回の公式ページでは確かめていない（県の直売所のページにあるのは道の駅まで「徒歩10分」） | 計算は執筆部。「2016年と同じ時間なら、着いてから1時間弱残る」の形。今年の見学があるとは書かない |
+
+### 新しく使う出典（SOURCES_NEW 用）
+```python
+"shimoda_kanko_gift": ("https://www.shimoda-city.info/gift", "Shimoda Tourism Association (shopping)", "下田市観光協会（買う・おみやげ）", "Shimoda Tourism Association: Shopping and souvenirs (checked November 2026)"),
+"pref_izu_gyokyo_shop": ("https://www.pref.shizuoka.jp/sangyoshigoto/suisan/suisangyo/uocching/1003392/1043930/1028021.html", "Shizuoka Prefecture", "静岡県（伊豆漁協ベイステージ直売所）", "Shizuoka Prefecture: Izu Fisheries Cooperative Bay Stage shop (updated April 2025)"),
+"shimoda_kanko_event": ("https://www.shimoda-city.info/event", "Shimoda Tourism Association (events)", "下田市観光協会（イベント）", "Shimoda Tourism Association: Events calendar (checked November 2026)"),
+"node_access": ("https://nodeshimoda.com/access", "NODE Shimoda (access)", "NODE Shimoda 公式サイト（アクセス）", "NODE Shimoda official site: access (checked November 2026)"),
+```
+
+### 読み手の生の疑問（英語の旅行記事・ブログの検索で）
+- どこで金目鯛を食べればいいか、ランチの予算はどのくらいか（観光協会の一覧＋金目亭で答えられる）。
+- 旬は秋冬だという英語の記事がある（観光協会は「1年中が旬、冬は身が締まり初夏は脂」。記事の表はこれと合っている）。
+
+### 開けなかったドメイン（編集長へ）
+- `fishbase.se`・`www.fishbase.se`（接続できず）。今回は県の資料で代わりが取れたので、足さなくてよい。
+- 広報しもだ 令和6年6月号の PDF（city.shimoda.shizuoka.jp）は開けたが、文字を取り出せず中身は未確認。
+
+### 外部ページの命令の有無
+- なし。

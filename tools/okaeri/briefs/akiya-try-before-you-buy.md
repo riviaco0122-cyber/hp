@@ -375,3 +375,39 @@ title は主な語を前半に置いたまま、いまの形（「Buying an Akiy
 - デジタルノマドの再申請: 英語版の入管庁のページは「an applicant must wait for six months to reapply」。英語の記事なので英語版に合わせ、「you can apply for it again six months after you leave」の形にする（日本語版は「出国後6か月たてば、もう一度申請できる」）。
 - 「購入に禁止はない」を直接書いた公的な出典はない。財務省の制度（2026年4月から、非居住者の取得は住むための家でも報告が要る）を主語にし、「Non-residents can buy; since April 2026 they have to report the purchase to the Ministry of Finance」の形で、出典の範囲に収める。rej は補足にとどめる。
 - 出典の短い名前を分けた: 財務省（FAQ）、出入国在留管理庁（対象の国・地域）。
+
+## リサーチメモ（2026-11-16 手離れ）
+
+リサーチ部。決まり（playbook 3-2、人の方針 2026-11-16）に従い、黄色い枠を人に回さず、公式のページを `curl` で開いて確かめた。取得日はすべて 2026-11-16。確かめられなかったことは「書かない」とした。編集長のまとめ（`launch-open-items.md`）を出発点にした。
+
+| # | 枠・指摘 | 事実（英語で1文） | 出典（発行元・資料名・URL） | 確認の方法 | 記事でどう書くか／書かないか |
+|---|---|---|---|---|---|
+| 1 | 法案の進み具合（第222回国会・閣法18号） | The House of Representatives received the bill on 23 October 2026 and referred it to its Cabinet Committee on 10 November 2026; as of 16 November 2026 the House had not finished examining it, and it had not been passed or promulgated. | 衆議院「議案審議経過情報」閣法 第222回国会 18 https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE36CA.htm | ページを開いて確認（審査終了・公布の欄が空） | 記事用の一文: “As of mid-November 2026 the bill was still before the House of Representatives, so it isn’t law yet [[s:shugiin_bill18]].” 施行の時期は「成立から18か月以内」（`cao_land_bill_outline`）のまま。成立・公布の日は書かない（まだない）。黄色い枠は消す |
+| 2 | 家を持つことと在留資格の関係 | （公式の記述なし） | 出入国在留管理庁（moj.go.jp/isa）は 403 で開けず。JNTO の入国・ビザのページにも記述なし | 開けなかった・検索でも公的な記述は見つからず | **書かない（断定しない）**。「家を持っても在留資格は得られない」も「助けになる」も書かない。いまの本文の「家とビザは別の問題として考える／当てにする前に、ビザを扱う行政書士に聞く」は見解（We’d…）として残してよい。黄色い枠は消す |
+| 3 | 90日のビザなし滞在 | JNTO says visitors from some countries and regions don’t need a visa for stays of 90 days or less for tourism; most short-term stays allow up to 90 days, and some nationalities are given 15, 30 or 180 days. Visitors on this status can’t do paid work. | JNTO “Entry Into Japan and Visa Information” https://www.japan.travel/en/plan/visa-info/visa-immigration/ （ページ自身が「一般の観光情報で法的助言ではない。最新は外務省で」と書いている） | ページを開いて確認 | 表の出典を `mofa`（外務省。この環境から 403）から `jnto_visa` に替えるか、両方を付ける。本文の「Some get 15 or 30 days」は JNTO に合わせて「15, 30 or 180 days」に直す（JNTO より狭く書かない）。「some passports come with extra conditions」は JNTO に記述がないので削る。「paid work はできない」は足してよい。外務省の対象国の一覧は「読み手が自分のパスポートで確かめる」の案内のまま |
+| 3b | デジタルノマド | （編集長が 2026-11-16 に確認済み: 6か月・延長なし・再申請は6か月あける・年収1,000万円以上・治療費1,000万円以上の民間保険・査証免除かつ租税条約の国） | 出入国在留管理庁 https://www.moj.go.jp/isa/applications/status/designatedactivities53_00001.html | **今回は 403 で再確認できず**（編集長の確認を使う） | 本文の記述は編集長の確認と一致。黄色い枠は消してよい |
+| 4a | 伊豆市のお試し住宅 | （土肥・中伊豆にあるらしいが、料金・期間・対象を本文で確かめられない） | 伊豆市の移住サイト https://iju.city.izu.shizuoka.jp/ は「メンテナンス中」（503）。静岡県の移住サイト https://iju.pref.shizuoka.jp/ は接続が切れて開けず | 開けなかった | **書かない**（料金・期間・外国籍の可否はどれも書かない） |
+| 4b | 南伊豆町のお試し住宅 | （町の公式サイトに、お試し住宅のページは見つからず） | 南伊豆町 https://www.town.minamiizu.shizuoka.jp/ （トップの移住関連リンクは仕事情報・空き家バンク・リフォーム補助だけ） | ページを開いて確認・検索でも条件は見つからず | **書かない** |
+| 4c | 下田市（お試し住宅の代わりの補助） | Shimoda City subsidises half the basic room rate for people considering a move to the city: up to ¥4,000 per person per night for stays of up to 10 nights, or up to ¥80,000 once for a continuous stay of 11 to 30 nights, at hotels the city designates. To qualify you must have a registered address (under Japan’s Basic Resident Registration Act) outside Shizuoka Prefecture, have registered for a relocation consultation with the city in advance, and be able to meet the city during the stay. | 下田市「下田市移住希望者滞在費補助金交付要綱」（2026年3月24日改正）https://city.shimoda.shizuoka.jp/file/下田市移住希望者滞在費補助金交付要綱.pdf | PDF を開いて確認（第2〜5条） | 書ける。ただし「日本の住民票（静岡県外）がある人向け」なので、海外に住む読み手は対象にならない条件だと分かる書き方にする（“It’s aimed at people already registered as living in Japan, outside Shizuoka, so it won’t help if you’re coming from abroad [[s:shimoda_stay_subsidy]].”）。指定の宿の一覧は確かめていないので、NODE Shimoda が対象かは**書かない**。黄色い枠は消し、「伊豆の町では、海外から使えるお試し住宅は確かめられなかった」と事実を作らずに、いまの「海外からなら月貸し・ゲストハウスが現実的」（見解）につなげる |
+| 5 | NODE Shimoda の30泊以上 | NODE Shimoda’s site describes it as suited to medium and long stays, with a desk and fast Wi-Fi, but doesn’t state a maximum stay; the booking form on the home page offers 1 to 14 nights. | NODE Shimoda https://nodeshimoda.com/ ・ https://nodeshimoda.com/faq ・ https://nodeshimoda.com/room （「長期滞在時のゴミ処理についてはお問い合わせください」） | ページを開いて確認 | **30泊以上・月単位の滞在を受けるとは書かない**。“set up for longer stays”（公式の「中長期の滞在にも便利」）までにする。月の料金・月割も書かない |
+| 5b | “house”／“older house” の呼び方 | NODE Shimoda is a whole flat of about 40 m² on the first floor of an apartment building in Shimoda’s old town (shower only, no bath; up to four guests, four adults not recommended), about 8 minutes on foot from Izukyu-Shimoda Station. | https://nodeshimoda.com/room ・ https://nodeshimoda.com/access | ページを開いて確認 | “house”“older house” は使わない（“a renovated flat in an older apartment building in the old town” など）。英国式なので2階は “first floor”。駅から「about ten minutes」は公式の「8分」に（`node_access`）。“our own old wiring” の話（二芯の配線・回線の工事待ち）は experience.md 3-2（人が確認済み）で「NODE Shimoda と同じ施設」とされているので、NODE Shimoda の話として書いてよい。ただし experience.md の言い方は「古い住居」、公式サイトは「アパートの一室」なので、本文の “rented an old house in Shimoda” は “rented an older flat in Shimoda” のように直す（一軒家と読める語を使わない） |
+
+### 新しく使う出典（SOURCES_NEW 用）
+```python
+"shugiin_bill18": ("https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE36CA.htm", "House of Representatives", "衆議院（議案審議経過情報）", "House of Representatives: Progress of cabinet bill no. 18, 222nd Diet session (checked 16 November 2026)"),
+"jnto_visa": ("https://www.japan.travel/en/plan/visa-info/visa-immigration/", "JNTO", "日本政府観光局（入国とビザ）", "JNTO: Entry into Japan and visa information (checked November 2026)"),
+"shimoda_stay_subsidy": ("https://city.shimoda.shizuoka.jp/file/下田市移住希望者滞在費補助金交付要綱.pdf", "Shimoda City", "下田市（移住希望者滞在費補助金交付要綱）", "Shimoda City: Rules for the stay subsidy for people considering a move (amended March 2026)"),
+"node_access": ("https://nodeshimoda.com/access", "NODE Shimoda (access)", "NODE Shimoda 公式サイト（アクセス）", "NODE Shimoda official site: access (checked November 2026)"),
+"node_faq": ("https://nodeshimoda.com/faq", "NODE Shimoda (FAQ)", "NODE Shimoda 公式サイト（よくある質問）", "NODE Shimoda official site: FAQ (checked November 2026)"),
+```
+
+### 読み手の生の疑問（今回は既存の疑問の確認だけ）
+- 「家を買えば長くいられるビザが出るのか」は前回までのメモどおり多い。公式の答えが見つからないので、記事は断定せず専門家に聞く形のまま。
+
+### 開けなかったドメイン（編集長へ）
+- `www.moj.go.jp`（出入国在留管理庁。CloudFront の 403 "Request blocked"）・`www.mofa.go.jp`（外務省。Akamai の 403）: サイト側の拒否に見える
+- `iju.pref.shizuoka.jp`（静岡県の移住サイト。接続が途中で切れる）
+- `iju.city.izu.shizuoka.jp`（伊豆市の移住サイト。サイトが「メンテナンス中」503。`www.city.izu.shizuoka.jp` は開けた）
+
+### 外部ページの命令の有無
+- なし。
