@@ -35,13 +35,13 @@ ARTICLE = {
  "h1": "Buying an akiya in Japan? Live in one for a month first",
  "seo_title": "Buying an Akiya in Japan? Live in One for a Month First",
  "description": "Japan has nine million empty homes. Non-residents can buy one, reporting it to the Ministry of Finance since April 2026. A month in the town tells you more.",
- "dek": "Japan has about nine million empty homes, and non-residents can buy one. But it’s really the town you’re buying into, and a month there tells you more than any listing.",
+ "dek": "In 2023, Japan had about nine million empty homes, and non-residents can buy one. But you’re buying into the town, and a month there tells you more than any listing.",
  "card": "You can buy one of Japan’s nine million empty homes, but the town matters more than the house. A month there shows you the winter cold, whether you need a car and how the neighbours are, and a monthly rental or guesthouse is the realistic way to do it from abroad.",
  "keywords": [("buying an akiya in japan", "—", "—"), ("akiya", "3,600", "0")],
  "intent": "Do（比べたい・やり方）",
  "points": [
    "Since April 2026, non-residents who buy a home have had to report it to the Ministry of Finance.",
-   "A month shows you the winter cold, whether you need a car, where you’ll shop and how the neighbours are.",
+   "A month shows you whether you need a car, how the neighbours are and what heating or cooling really costs.",
    "From abroad, a monthly rental or a guesthouse with monthly rates is usually more realistic than a town’s trial home.",
  ],
  "body": """
@@ -127,8 +127,9 @@ ARTICLE = {
  "related": ["izu-from-tokyo", "izu"],
  "ja": {
   "h1": "空き家を買う前に、まず1か月住んでみる",
-  "dek": "日本には約900万戸の空き家があり、日本に住んでいない人も買うことができます。でも本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
+  "dek": "2023年時点で、日本には約900万戸の空き家があり、日本に住んでいない人も買うことができます。でも本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
   "review": [
+   "【2026-11-16 冒頭を短く（playbook 2章の1）】dek を2文・30語以内、In short を3項目・各20語以内にしました。空き家の数に「2023年時点」を付け、In short の「冬の寒さ」（冬の1か月でないと成り立たない）を、本文にある「冷暖房に実際いくらかかるか」に替えました。外した情報（空き家の割合13.8%、家とビザは別の話、2026年11月時点の90日の滞在・デジタルノマド、冬の寒さ）は本文にそのまま残っています。",
    "【2026-11-15 品質保証部（HTML）の指摘での書き直し】変えた点: ①デジタルノマド: 入管庁の英語のページに合わせ「出国後6か月たてば、もう一度申請できる（apply for it again six months after you leave）」に ②【言い方の変更】購入: 「日本は外国人の購入を禁止していない」をやめ、財務省の制度を主語に「日本に住んでいない人も買える。2026年4月からは、住むための家でも外為法にもとづいて財務省に報告する」にしました。民間サイト Real Estate Japan（rej）は「買うのに日本に住んでいる必要はない」という補足の1文だけに使っています。description・dek・card・In short・FAQ もそろえました ③静岡市の長期お試し住宅: 「移住を決めた、または準備している人」「日本人の配偶者等（配偶者や子）」に（本文・FAQ） ④「これは安い家すべてに言えること」を、「配線と回線工事の待ちは、もっと大きな話の小さな例。安い古い家では、売り出し価格はかかるお金の一部にすぎない」と、下田の体験から一般論へつなぐ形に ⑤1週目の「この2つが分かると…」を2文に分け、アンペア数＝一度にどれくらい使えるか、ブレーカーの場所＝落ちてもすぐ戻せる、と何を指すかをはっきりさせました ⑥「なぜ町で暮らすのか」の表の車の行から自社の家への言及を外しました（自社の家に触れるのは NODE Shimoda の段落の1回だけ） ⑦一覧のカード（card）を、目次の読み上げから答え（買えるが町のほうが大事、1か月で冬の寒さ・車・近所が分かる、海外からはマンスリーか宿）に替えました ⑧お試しの1か月の節の冒頭の「私たちならこう過ごす、という例です」というページの予告を、「週ごとにおおよそこう組み立てると思います」に",
    "【今回、人に確かめてほしい点】①NODE Shimoda を英語で「house（一軒家）」と呼んでよいか、さらに「older house（古い家）」と呼んでよいか、1週目の「私たちの家の古い配線」がこの家を指してよいか（黄色い枠） ②「買うのに日本に住んでいる必要はない」は Real Estate Japan（民間）の記載として書いています。ページの記載と合っているか ③購入の手続き（財務省への報告）は法務・制度の記述なので、公開前に財務省のページを開いて確かめてください",
    "【2026-11-15 組み込み前の仕上げ（品質保証部 90点・合格のあとの編集長の指摘8点）】変えた点: ①「家は安いほうの買い物」→「家を買うこと自体は簡単なほう」（リードと FAQ に合わせました）。配線の節の後に、改修・税金・保険・維持費が上乗せされ、本当の金額は書面の見積もりで分かる、の2文を足しました ②FAQ のお試し住宅の答えに特別永住者を足しました ③行政書士を英語で「在留資格（ビザ）の手続きを扱う行政書士（administrative scrivener）」と資格の名前で書きました（本文・FAQ） ④【事実の変更】「下田まで直通で3時間かからない」→「2026年11月時点で、東京駅から毎日走る直通で2時間29〜44分」。出典を編集長が確かめた JR東日本の東京駅の時刻表（jre_tt_tokyo）に替え、踊り子のページ（jreast_odoriko）は外しました ⑤南アルプス市の条件を「国籍は条件に挙げられていない」と制度の側から書きました ⑥NODE Shimoda の段落を3文にし、「一年中泊まれ、週割・月割がある」を削りました（黄色い枠から月額料金も外しました） ⑦「なぜ町で暮らすのか」の表の2行を、確認済みの体験（experience.md 3-2）につなげました。車の行に「下田の家は駅から徒歩10分ほどで、スーパー・コンビニ・飲食店が近い」、近所の行に「回線工事の車の停め方で近所から声をかけられた」 ⑧お試し1週目の「エアコン・冷蔵庫・電子レンジを同時に使ってみる」を、「泊まり先の人に契約のアンペア数とブレーカーの場所を聞く」に替えました。人に確かめてほしい点: 近所の行の書き方（experience.md では「工事の車両の駐車で近隣から指摘を受けた」）が、やわらげすぎ・強すぎになっていないか",
@@ -140,7 +141,7 @@ ARTICLE = {
   ],
   "points": [
     "2026年4月からは、日本に住んでいない人が家を買ったら、財務省への報告が要ります。",
-    "1か月暮らすと、冬の寒さ、車が要るか、どこで買い物するか、近所の人のことが分かります。",
+    "1か月暮らすと、車が要るか、近所の人のこと、冷暖房に実際いくらかかるかが分かります。",
     "海外から来るなら、自治体のお試し住宅より、マンスリーの部屋か月割のある宿のほうが、たいてい現実的です。",
   ],
   "body": """

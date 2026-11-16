@@ -158,7 +158,7 @@ ARTICLES = [
  "points": [
    "Its English name is splendid alfonsino, and whatever a menu calls it, it isn’t a sea bream, snapper or nodoguro.",
    "The white flesh carries fat all year, and we’d start with <em>nitsuke</em>, though raw or lightly seared works too.",
-   "Shimoda’s morning landings are just about reachable on a very early train from Tokyo, so we’d stay the night before.",
+   "During Shimoda’s 2016 festival, landings could be watched about 7:30–9:00; the first Tokyo train arrives 7:59, so we’d stay over.",
  ],
  "body": """
 <h2>What is kinmedai?</h2>
@@ -244,6 +244,7 @@ ARTICLES = [
   "h1": "金目鯛とは：日本の「ゴールデンアイ・スナッパー」と、食べられる場所",
   "dek": "金目鯛は、赤い皮と金色の目をした深海魚で、醤油と砂糖で煮る煮付けでよく食べられます。金目鯛の水揚げ日本一を名乗る下田の港は、食べに行くのにちょうどいい場所です。",
   "review": [
+   "【2026-11-16 冒頭を短く（playbook 2章の1）】dek を2文・30語以内、In short を3項目・各20語以内にしました。水揚げの見学は、出典（下田市の広報 2016年6月号）どおり「2016年の祭りの期間中・7時半〜9時ごろ」と条件と時点を付けました（ふだんの朝に見られるかは本文の黄色い枠で確認待ち）。外した情報（漁獲量の減少と高い理由、のどぐろとの科・目・深さの違い、下田が半島の南端にあること、品川4時35分発）は本文にあります。「寿司屋のメニューや旅館の夕食で見かける」という前置きだけは本文になく、事実ではない導入なので外しました。",
    "【2026-11-16 組み込み前の仕上げ（品質保証部90点のあと）】変えた点: ①英語名 splendid alfonsino・blackthroat seaperch の出典を、名前が書いてある FishBase（品質保証部が確認）に替え・足しました ②料理の表のしゃぶしゃぶは公的な出典が見つからないので、「メニューで見かけたら私たちなら試す」という見解の言い方にしました ③脂の測定に「2007〜2011年度の調査」と時点を足しました（2か所） ④下田の節の「たくさん揚がる場所で食べられる」を「いちばん多く揚がる港で食べられる」（水揚げ日本一を名乗ることの言い換え）にしました ⑤のどぐろとの違い（科・目・すむ深さ・名前の由来）を小さな表にしました。目の名前は出典で確かめられないので「違う目」とだけ書いています（スマホでは表が行ごとのカードになるので、セルをつなげずに両方の列に書きました）",
    "【今回、人に確かめてほしい点】①しゃぶしゃぶの行を見解として残してよいか（消してもかまいません）",
    "【2026-11-15 品質保証部（HTML）の指摘での書き直し】変えた点: ①In short の「健全な水準（healthy level）」を、本文と同じ「目標の水準を上回り（above the target level）」に ②深さ・すむ場所の出典を、開けない水産研究・教育機構（fra_kinme）から水産庁 2021年（jfa_kinme_2021）と千葉県（chiba_kinme_r6）に替え、「千葉の沖では水深200〜800メートルほど」と出典の範囲に。fra_kinme は出典から外しました（FAQ も同じ） ③「見つけた2つの評価を年を付けて書きます」「今年の公式の告知は見つけられていない」など、調べた過程やページの予告の言い方をやめました（「資源についての公的な評価は、ここ数年で変わってきています」「日程や時間は年によって変わることがあるので、その年の内容を先に確かめて」）。「2016年の例を挙げます」も「2016年には〜」に ④「どんな味か」の節の最初の1文で、出典の範囲で答えるようにしました（脂のたっぷりのった、こくのある白身で、一年中変わらない）。「やわらかい」「甘い」は出典にないので書いていません ⑤dek の「日本中の寿司屋や旅館で出会う」を、出典のいらない「寿司屋のメニューや旅館の夕食で見かけることのある」に弱めました ⑥祭りの期間の外に水揚げを見られるかを、黄色い枠で聞く形にしました ⑦一覧のカード（card）を、目次の読み上げから答えそのもの（脂ののった赤い深海魚・煮付け・6月・下田）に替えました ⑧日本語版の伊豆半島のリンクを日本語版の記事（ja-izu）に",
@@ -257,7 +258,7 @@ ARTICLES = [
   "points": [
     "英語の名前は splendid alfonsino。メニューで何と呼ばれていても、鯛でもフエダイ（スナッパー）でもなく、のどぐろとも別の魚です。",
     "白身には一年中脂がのっています。私たちならまず煮付けを選びますが、刺身やさっと炙ったものもおいしいです。",
-    "下田の朝の水揚げには、東京からとても早い電車でぎりぎり間に合います。私たちなら前の晩に泊まります。",
+    "2016年のきんめ祭りの期間中は、朝7時半〜9時ごろに水揚げを見学できました。東京からの始発で着くのは7時59分なので、私たちなら前の晩に泊まります。",
   ],
   "body": """
 <h2>金目鯛とはどんな魚か</h2>
@@ -346,13 +347,13 @@ ARTICLES = [
  "h1": "Buying an akiya in Japan? Live in one for a month first",
  "seo_title": "Buying an Akiya in Japan? Live in One for a Month First",
  "description": "Japan has nine million empty homes. Non-residents can buy one, reporting it to the Ministry of Finance since April 2026. A month in the town tells you more.",
- "dek": "Japan has about nine million empty homes, and non-residents can buy one. But it’s really the town you’re buying into, and a month there tells you more than any listing.",
+ "dek": "In 2023, Japan had about nine million empty homes, and non-residents can buy one. But you’re buying into the town, and a month there tells you more than any listing.",
  "card": "You can buy one of Japan’s nine million empty homes, but the town matters more than the house. A month there shows you the winter cold, whether you need a car and how the neighbours are, and a monthly rental or guesthouse is the realistic way to do it from abroad.",
  "keywords": [("buying an akiya in japan", "—", "—"), ("akiya", "3,600", "0")],
  "intent": "Do（比べたい・やり方）",
  "points": [
    "Since April 2026, non-residents who buy a home have had to report it to the Ministry of Finance.",
-   "A month shows you the winter cold, whether you need a car, where you’ll shop and how the neighbours are.",
+   "A month shows you whether you need a car, how the neighbours are and what heating or cooling really costs.",
    "From abroad, a monthly rental or a guesthouse with monthly rates is usually more realistic than a town’s trial home.",
  ],
  "body": """
@@ -438,8 +439,9 @@ ARTICLES = [
  "related": ["izu-from-tokyo", "izu"],
  "ja": {
   "h1": "空き家を買う前に、まず1か月住んでみる",
-  "dek": "日本には約900万戸の空き家があり、日本に住んでいない人も買うことができます。でも本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
+  "dek": "2023年時点で、日本には約900万戸の空き家があり、日本に住んでいない人も買うことができます。でも本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
   "review": [
+   "【2026-11-16 冒頭を短く（playbook 2章の1）】dek を2文・30語以内、In short を3項目・各20語以内にしました。空き家の数に「2023年時点」を付け、In short の「冬の寒さ」（冬の1か月でないと成り立たない）を、本文にある「冷暖房に実際いくらかかるか」に替えました。外した情報（空き家の割合13.8%、家とビザは別の話、2026年11月時点の90日の滞在・デジタルノマド、冬の寒さ）は本文にそのまま残っています。",
    "【2026-11-15 品質保証部（HTML）の指摘での書き直し】変えた点: ①デジタルノマド: 入管庁の英語のページに合わせ「出国後6か月たてば、もう一度申請できる（apply for it again six months after you leave）」に ②【言い方の変更】購入: 「日本は外国人の購入を禁止していない」をやめ、財務省の制度を主語に「日本に住んでいない人も買える。2026年4月からは、住むための家でも外為法にもとづいて財務省に報告する」にしました。民間サイト Real Estate Japan（rej）は「買うのに日本に住んでいる必要はない」という補足の1文だけに使っています。description・dek・card・In short・FAQ もそろえました ③静岡市の長期お試し住宅: 「移住を決めた、または準備している人」「日本人の配偶者等（配偶者や子）」に（本文・FAQ） ④「これは安い家すべてに言えること」を、「配線と回線工事の待ちは、もっと大きな話の小さな例。安い古い家では、売り出し価格はかかるお金の一部にすぎない」と、下田の体験から一般論へつなぐ形に ⑤1週目の「この2つが分かると…」を2文に分け、アンペア数＝一度にどれくらい使えるか、ブレーカーの場所＝落ちてもすぐ戻せる、と何を指すかをはっきりさせました ⑥「なぜ町で暮らすのか」の表の車の行から自社の家への言及を外しました（自社の家に触れるのは NODE Shimoda の段落の1回だけ） ⑦一覧のカード（card）を、目次の読み上げから答え（買えるが町のほうが大事、1か月で冬の寒さ・車・近所が分かる、海外からはマンスリーか宿）に替えました ⑧お試しの1か月の節の冒頭の「私たちならこう過ごす、という例です」というページの予告を、「週ごとにおおよそこう組み立てると思います」に",
    "【今回、人に確かめてほしい点】①NODE Shimoda を英語で「house（一軒家）」と呼んでよいか、さらに「older house（古い家）」と呼んでよいか、1週目の「私たちの家の古い配線」がこの家を指してよいか（黄色い枠） ②「買うのに日本に住んでいる必要はない」は Real Estate Japan（民間）の記載として書いています。ページの記載と合っているか ③購入の手続き（財務省への報告）は法務・制度の記述なので、公開前に財務省のページを開いて確かめてください",
    "【2026-11-15 組み込み前の仕上げ（品質保証部 90点・合格のあとの編集長の指摘8点）】変えた点: ①「家は安いほうの買い物」→「家を買うこと自体は簡単なほう」（リードと FAQ に合わせました）。配線の節の後に、改修・税金・保険・維持費が上乗せされ、本当の金額は書面の見積もりで分かる、の2文を足しました ②FAQ のお試し住宅の答えに特別永住者を足しました ③行政書士を英語で「在留資格（ビザ）の手続きを扱う行政書士（administrative scrivener）」と資格の名前で書きました（本文・FAQ） ④【事実の変更】「下田まで直通で3時間かからない」→「2026年11月時点で、東京駅から毎日走る直通で2時間29〜44分」。出典を編集長が確かめた JR東日本の東京駅の時刻表（jre_tt_tokyo）に替え、踊り子のページ（jreast_odoriko）は外しました ⑤南アルプス市の条件を「国籍は条件に挙げられていない」と制度の側から書きました ⑥NODE Shimoda の段落を3文にし、「一年中泊まれ、週割・月割がある」を削りました（黄色い枠から月額料金も外しました） ⑦「なぜ町で暮らすのか」の表の2行を、確認済みの体験（experience.md 3-2）につなげました。車の行に「下田の家は駅から徒歩10分ほどで、スーパー・コンビニ・飲食店が近い」、近所の行に「回線工事の車の停め方で近所から声をかけられた」 ⑧お試し1週目の「エアコン・冷蔵庫・電子レンジを同時に使ってみる」を、「泊まり先の人に契約のアンペア数とブレーカーの場所を聞く」に替えました。人に確かめてほしい点: 近所の行の書き方（experience.md では「工事の車両の駐車で近隣から指摘を受けた」）が、やわらげすぎ・強すぎになっていないか",
@@ -451,7 +453,7 @@ ARTICLES = [
   ],
   "points": [
     "2026年4月からは、日本に住んでいない人が家を買ったら、財務省への報告が要ります。",
-    "1か月暮らすと、冬の寒さ、車が要るか、どこで買い物するか、近所の人のことが分かります。",
+    "1か月暮らすと、車が要るか、近所の人のこと、冷暖房に実際いくらかかるかが分かります。",
     "海外から来るなら、自治体のお試し住宅より、マンスリーの部屋か月割のある宿のほうが、たいてい現実的です。",
   ],
   "body": """
@@ -607,6 +609,7 @@ ARTICLES = [
   "h1": "東京から伊豆半島へ：電車・運賃と、1週間泊まる理由",
   "dek": "伊豆半島の南は、日帰りには遠く、1週間ならちょうどいい距離です。下田へは、東京から直通の特急で約2時間35分です。",
   "review": [
+   "【2026-11-16 冒頭を短く（playbook 2章の1）】dek を2文・30語以内、In short を3項目・各20語以内にしました。dek の2文目（ページの予告）を、下田まで直通で約2時間35分という答えに替えました。外した情報（日帰りだと電車に5時間以上）は本文の「日帰りできるか」の節にあります。",
    "【2026-11-15 トーンの書き直し】ぶつ切りの短い文や硬い言い方をやめ、現地に住む友人が話すような文にしました（英語は短縮形と you / we を使う形に）。日本語版も自然な話し言葉寄りにしました。数字・出典・主張は変えていません",
    "【2026-11-15 の見直しで変えた点（見せ方）】「どの町が合うか」を、東京からの時間・町の様子・日帰りか泊まりかの表にしました。季節も表にしました。本文から伊豆半島のページと、空き家の記事（買う前に1か月住む）へのリンクを足しました。狙う検索語から「izu peninsula」を外しました（伊豆半島のページと重ならないように）",
    "【変えた点（言い方を出典の範囲に弱めた）】「港の金目鯛の水揚げは日本一」→「下田市と静岡県が、水揚げ日本一の港と説明している」（出典に静岡県のページを足しました）",
