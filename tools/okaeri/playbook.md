@@ -30,7 +30,7 @@
 
 ## 2. 構成の基準（戦略部・執筆部）
 
-1. **最初の節で答える**。h1 の直後の dek と「In short」（points）だけで、検索した人の疑問に答えが出ている。
+1. **最初の節で答える、短く**。h1 の直後の dek と「In short」（points）だけで、検索した人の疑問に答えが出ている。スマホで本題まで遠くならないよう、**dek は1〜2文・30語以内、In short は3項目・各1文・20語以内**（人と合意 2026-11-16。詳しいことは本文に回す）。
 2. **h2 は4〜8個**。6割以上を、読み手の疑問（What / How / Why / When / Can … ?）か結論の形にする。
 3. **比較は表、手順は番号つきリスト**。文章だけが長く続かない（スマホで1画面に段落3つまで）。
 4. **FAQ は3問以上**。本文で答えたことを短くまとめ直す（本文にないことを FAQ だけに書かない）。
@@ -68,7 +68,7 @@
 - **AI が書いたような語を使わない**: delve, tapestry, testament to, in today’s fast-paced, it’s worth noting, embark on, a myriad of, navigate the complexities, unlock, elevate, seamless。
 - **保証・断定をしない**（ゲート）: guaranteed, risk-free, you will definitely, always profitable, no visa needed for anyone。制度は「誰に・いつ時点で」まで書く。
 - 日本語の固有名詞は、初出でローマ字＋意味（例: *nitsuke*, fish simmered in soy and sugar）。
-- 事実（数字・制度・法律・固有名詞）には `[[s:<出典キー>]]`。見解は “We think …” “In our experience …” のように事実と分けて書く。
+- 事実（数字・制度・法律・固有名詞）には `[[s:<出典キー>]]`（ページでは小さな上付きの番号になり、出典の名前はページ下の一覧にまとまる。文中で出典の名前を書くのは、読み手にとって名前に意味があるときだけ）。見解は “We think …” “In our experience …” のように事実と分けて書く。
 - 自社の体験は `docs/brand/experience.md` の **`<!-- 人が確認済み -->` の節だけ**。確かでないことは `[[ed:…]]`（黄色い枠）で残し、作らない。
 - 日本語レビュー版（`ja`）は、英語版と同じ内容を日本語で書く（人が中身を確かめるため）。`ja.review` に「今回変えた点・人に確かめてほしい点」を箇条書きで書く。
 
@@ -93,7 +93,7 @@
 | title の長さ | 2 | `seo_title` が60字以内 |
 | 主な検索語の位置 | 3 | `keywords` の先頭の語が title の前半に入っている |
 | description | 3 | 120〜160字 |
-| In short（points） | 4 | 3〜5項目 |
+| 冒頭の短さ（dek・In short） | 4 | In short が3項目・各20語以内、かつ dek が30語以内（どちらか一方だけ満たせば2） |
 | h2 の数 | 2 | 4〜8個 |
 | h2 の形 | 2 | 6割以上が疑問・結論の形 |
 | FAQ | 4 | 3問以上 |

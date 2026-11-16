@@ -89,10 +89,15 @@ PUBLISHED = [a for a in C.ARTICLES if a["published"] <= TODAY]
 PATHS = {"home": PRE, "guides": PRE + "/guides.html", "izu": PRE + "/izu-peninsula.html", "about": PRE + "/about.html"}
 for a in C.ARTICLES:
     PATHS[a["id"]] = f"{PRE}/guides/{a['slug']}.html"
-HUB_TOPICS = list(C.TOPICS)  # テーマ別の一覧ページは常に作る（メニューの入口）
 def hub_articles(k):
     """一覧に載る記事。段階（stay/live/own）はその段階の記事、場所（places）は場所のある記事"""
     return [a for a in PUBLISHED if (a.get("place") if k == "places" else a["topic"] == k)]
+
+
+# 入口（テーマ別の一覧ページ・メニュー・トップの道しるべ）は、記事が1本以上あるテーマだけ出す。
+# 中身のない入口（Guides coming soon）は作りかけのサイトに見えるため（2026-11-16）
+HUB_TOPICS = [k for k in C.TOPICS if hub_articles(k)]
+OPEN_PLANS = [k for k in C.PLANS if k in HUB_TOPICS]
 
 
 def hub_also(k):
@@ -123,6 +128,17 @@ class Ctx:
     def __init__(self, mode, page_id, lang="en"):
         self.mode, self.page_id, self.lang = mode, page_id, lang
         self.photos = []  # このページで使った写真（ページ下のクレジット用）
+        self.cites = []   # 本文で出典を挙げた順（番号 = この順。ページ下の出典一覧も同じ順）
+
+    def src_id(self, n):
+        """出典一覧の各行の id。試作は全ページが1ファイルなので、ページIDを付けて重ならないようにする"""
+        return f"src-{n}" if self.mode == "dist" else f"{self.page_id}-src-{n}"
+
+    def sources(self, keys, heading):
+        """ページ下の出典一覧。本文で番号を振った順に並べ、本文で挙げていない出典はその後ろに続ける"""
+        order = self.cites + [k for k in keys if k not in self.cites]
+        items = "".join(f'<li id="{self.src_id(i)}"><a href="{esc(C.SOURCES[k][0])}" rel="noopener">{esc(C.SOURCES[k][3])}</a></li>' for i, k in enumerate(order, 1))
+        return f'<section class="sources"><h2>{heading}</h2><ol>{items}</ol></section>'
 
     def href(self, pid, frag=""):
         if self.mode == "preview":
@@ -134,8 +150,14 @@ class Ctx:
         ja = self.lang == "ja"
 
         def src(m):
-            links = [f'<a href="{esc(C.SOURCES[k][0])}" rel="noopener">{esc(C.SOURCES[k][2 if ja else 1])}</a>' for k in m.group(1).split(",")]
-            return ("（" + "、".join(links) + "）") if ja else (" (" + "; ".join(links) + ")")
+            # 本文の出典は小さな番号にして、名前はページ下の出典一覧にまとめる（名前が文中に続くと読む流れが止まるため。2026-11-16）
+            nums = []
+            for k in m.group(1).split(","):
+                if k not in self.cites:
+                    self.cites.append(k)
+                n = self.cites.index(k) + 1
+                nums.append(f'<a href="#{self.src_id(n)}" title="{esc(C.SOURCES[k][2 if ja else 1])}" aria-label="{"出典" if ja else "Source"} {n}">{n}</a>')
+            return '<sup class="cite">' + (",".join(nums)) + '</sup>'
 
         def bare(m):
             k = m.group(1)
@@ -231,6 +253,8 @@ def plural(n, word):
 
 
 def topic_chip(ctx, k):
+    if k not in HUB_TOPICS:
+        return ""
     return f'<a class="chip t-{k}" href="{ctx.href("topic-" + k)}">{esc(C.TOPICS[k]["name"])}</a>'
 
 
@@ -259,40 +283,29 @@ def cta(ctx, photo=True):
             '<div class="stay-cta__body"><p class="kicker">Stay with us</p><h2>Try the town for a week or a month</h2>'
             '<p>NODE Shimoda is our home in the old town of Shimoda, set up for long stays.</p>'
             f'<ul class="ticks">{facts}</ul>'
-            f'<div class="btns"><a class="btn btn--solid" href="{C.NODE_URL}" rel="noopener">See NODE Shimoda</a>'
-            f'<a class="btn btn--ghost" href="{ctx.href("home", "homes")}">Our towns</a></div></div></aside>')
+            f'<div class="btns"><a class="btn btn--solid" href="{C.NODE_URL}" rel="noopener">See NODE Shimoda</a></div></div></aside>')
 
 
 # ------------------------------------------------------------------ 各ページの本文
 def page_home(ctx):
-    paths = "".join(
-        f'<a class="path t-{k}" href="{ctx.href("topic-" + k)}"><span class="path__seal" lang="ja" aria-hidden="true">{t["kanji"]}</span>{img(ctx, t["photo"], t["photo_alt"], bare=True, sizes="(max-width: 40rem) 100vw, 22rem", want=640)}'
-        f'<span class="path__body"><span class="path__label">{esc(t["path_label"])}</span>'
-        f'<span class="path__desc">{esc(t["path_desc"])}</span>'
-        f'<span class="path__meta">{esc(t["name"])} · {plural(len(hub_articles(k)), "guide") if hub_articles(k) else "Guides coming soon"} →</span></span></a>'
-        for k, t in ((k, C.TOPICS[k]) for k in C.PLANS))
+    """トップ: キャッチコピー → 記事 → 自社の家（1回）。中身のない入口・まだ開いていない町・つながっていないメール登録は出さない（2026-11-16）"""
     feat = PUBLISHED[1] if len(PUBLISHED) > 1 else PUBLISHED[0]
     rest = [a for a in PUBLISHED if a is not feat]
     facts = "".join(f"<li>{esc(x)}</li>" for x in C.NODE_FACTS)
+    kicker = " · ".join(C.TOPICS[k]["name"] for k in OPEN_PLANS)
     return f"""
 <section class="hero">
 {img(ctx, "coastal-village", "Wooden houses along a calm bay below green wooded hills", bare=True, eager=True, sizes="100vw", want=1600)}
 <div class="hero__shade"></div>
-<p class="hero__ja" lang="ja" aria-hidden="true">おかえり</p>
 <div class="wrap wide hero__inner">
-<p class="hero__kicker">Stay longer · Live part-time · Own a home</p>
+<p class="hero__kicker">{esc(kicker)}</p>
 <h1>Live in small-town Japan for a month.</h1>
 <p class="hero__lead">Homes for a week, a month or a season, and straight answers about visas, old houses and daily life outside the big cities, from the people who run them.</p>
-<div class="btns"><a class="btn btn--light" href="#start">Where do I start?</a><a class="btn btn--line" href="{C.NODE_URL}" rel="noopener">See our Shimoda home</a></div>
+<div class="btns"><a class="btn btn--light" href="#start">Read the guides</a></div>
 </div>
 </section>
 
-<section class="paths wrap wide" id="start" aria-labelledby="start-h">
-<h2 id="start-h" class="paths__h">How deep do you want to go?</h2>
-<div class="paths__grid">{paths}</div>
-</section>
-
-<section class="band wrap wide" aria-labelledby="latest-h">
+<section class="band wrap wide" id="start" aria-labelledby="latest-h">
 <div class="band__head"><div><p class="kicker">Guides</p><h2 id="latest-h">Start here</h2></div><a class="more" href="{ctx.href('guides')}">All guides →</a></div>
 <div class="feat">{card(ctx, feat, "l")}<div class="feat__side">{"".join(card(ctx, a, "s") for a in rest)}</div></div>
 </section>
@@ -305,34 +318,8 @@ def page_home(ctx):
 <h2 id="homes-h">A house to come back to</h2>
 <p>We renovate older houses in small towns and open them to guests who stay a while. Our first is NODE Shimoda, a few minutes from the harbour.</p>
 <ul class="ticks">{facts}</ul>
-<div class="btns"><a class="btn btn--light" href="{C.NODE_URL}" rel="noopener">See NODE Shimoda</a></div>
+<div class="btns"><a class="btn btn--light" href="{C.NODE_URL}" rel="noopener">See NODE Shimoda</a><a class="btn btn--line" href="{ctx.href('about')}">How we write our guides</a></div>
 </div>
-</div>
-<div class="wrap wide towns">
-<div class="town"><p class="town__where">Izu Peninsula · south coast</p><h3>Shimoda</h3><p>Port town with white-sand beaches, about 2 h 35 min from Tokyo by direct train.</p><p class="town__state town__state--open">Open now · NODE Shimoda</p><a href="{ctx.href('izu')}">About the Izu Peninsula →</a></div>
-<div class="town"><p class="town__where">Izu Peninsula · inland</p><h3>Shuzenji</h3><p>Hot-spring town along a river, about two hours from Tokyo.</p><p class="town__state">In preparation</p><a href="{ctx.href('izu-from-tokyo')}">Getting there from Tokyo →</a></div>
-<div class="town"><p class="town__where">Shizuoka · Suruga Bay</p><h3>Yaizu</h3><p>Working fishing port on Suruga Bay. We are renovating an older house here.</p><p class="town__state">In preparation</p><a href="{ctx.href('akiya-try-first')}">Why we restore old houses →</a></div>
-</div>
-</section>
-
-<section class="band wrap wide" aria-labelledby="how-h">
-<div class="band__head"><div><p class="kicker">How we write</p><h2 id="how-h">Guides you can check</h2></div><a class="more" href="{ctx.href('about')}">About us →</a></div>
-<div class="trio">
-<div><h3>We run the homes</h3><p>What we say about daily life comes from looking after guests in these towns.</p></div>
-<div><h3>Every figure has a source</h3><p>Visa rules, fares and statistics link to the government office or operator.</p></div>
-<div><h3>Dated when it changes</h3><p>We change the date only when we change the content, so you know what is current.</p></div>
-</div>
-</section>
-
-<section class="news" aria-labelledby="news-h">
-<div class="wrap wide news__inner">
-<div><p class="kicker">Newsletter</p><h2 id="news-h">One email when a new home opens</h2><p>New towns and new homes, plus the guides we are proudest of. Nothing else.</p></div>
-<form class="signup" data-proto>
-<label for="signup-email">Email address</label>
-<input id="signup-email" type="email" autocomplete="email" placeholder="you@example.com">
-<button class="btn btn--solid" type="submit">Notify me</button>
-<p class="formmsg" role="status"></p>
-</form>
 </div>
 </section>"""
 
@@ -340,7 +327,7 @@ def page_home(ctx):
 def page_guides(ctx):
     out = [f'<section class="pagehead"><div class="wrap wide">{crumbs(ctx, [(NAME, "home"), ("Guides", None)])}'
            f'<p class="kicker">Guides</p><h1>{C.GUIDES["h1"]}</h1><p class="dek">{C.GUIDES["dek"]}</p>'
-           '<nav class="chips" aria-label="Topics">' + "".join(topic_chip(ctx, k) for k in C.TOPICS) + '</nav></div></section>'
+           '<nav class="chips" aria-label="Topics">' + "".join(topic_chip(ctx, k) for k in HUB_TOPICS) + '</nav></div></section>'
            '<div class="wrap wide">']
     for k in C.PLANS:
         t = C.TOPICS[k]
@@ -359,7 +346,7 @@ def page_topic(ctx, k):
     arts = hub_articles(k)
     also = [a for a in hub_also(k) if a not in arts]
     coming = "".join(f"<li>{esc(x)}</li>" for x in t.get("coming", []))
-    others = "".join(topic_chip(ctx, o) for o in C.TOPICS if o != k)
+    others = "".join(topic_chip(ctx, o) for o in HUB_TOPICS if o != k)
     if t["kind"] == "place":
         regions = "".join(f'<li><a href="{ctx.href(p["page"])}">{esc(p["name"])}</a></li>' for p in C.PLACES.values())
         first = f'<section class="band"><h2>Regions</h2><ul class="coming">{regions}</ul></section>'
@@ -373,7 +360,7 @@ def page_topic(ctx, k):
             f'<div class="wrap wide topichead__inner">{crumbs(ctx, [(NAME, "home"), ("Guides", "guides"), (t["name"], None)])}'
             f'<h1>{esc(t["name"])}</h1><p>{esc(t["intro"])}</p></div></section>'
             f'<div class="wrap wide">{first}{main}{also_html}'
-            + (f'<section class="band"><h2>Coming next</h2><ul class="coming">{coming}</ul><p class="fine">Get one email when they are out: <a href="{ctx.href("home", "news-h")}">join the newsletter</a>.</p></section>' if coming else "")
+            + (f'<section class="band"><h2>Coming next</h2><ul class="coming">{coming}</ul></section>' if coming else "")
             + f'<section class="band"><h2>Other ways in</h2><nav class="chips" aria-label="Other topics">{others}</nav></section>{cta(ctx)}</div>')
 
 
@@ -396,11 +383,10 @@ def page_izu(ctx):
 </ul>
 [[ed:This hub page will carry each home, a map and a list of places within walking distance. Add them once the home details are confirmed.]]
 """
-    srcs = "".join(f'<li><a href="{esc(C.SOURCES[k][0])}" rel="noopener">{esc(C.SOURCES[k][3])}</a></li>' for k in ["jg6305", "ekitan", "jg6311", "jg6322", "tdn"])
     return (f'<div class="wrap"><article class="post">{crumbs(ctx, [(NAME, "home"), ("Places", "topic-places"), ("Izu Peninsula", None)])}'
             f'<p class="kicker">Places</p><h1>{C.IZU["h1"]}</h1><p class="dek">{C.IZU["dek"]}</p>'
             f'{img(ctx, "node-shimoda", "Living room with a sofa, low table and sliding paper screens", "NODE Shimoda, our home in the old town of Shimoda.", eager=True)}{ctx.expand(body)}'
-            f'<section class="sources"><h2>Sources</h2><ul>{srcs}</ul></section>{cta(ctx, photo=False)}</article></div>')
+            f'{ctx.sources([], "Sources")}{cta(ctx, photo=False)}</article></div>')
 
 
 def page_about(ctx):
@@ -432,11 +418,6 @@ def page_about(ctx):
 
 def faq_html(ctx, faq, heading):
     return f"<h2>{heading}</h2>" + "".join(f"<h3>{q}</h3><p>{ctx.expand(a)}</p>" for q, a in faq)
-
-
-def sources_html(a, heading):
-    items = "".join(f'<li><a href="{esc(C.SOURCES[k][0])}" rel="noopener">{esc(C.SOURCES[k][3])}</a></li>' for k in a["sources"])
-    return f'<section class="sources"><h2>{heading}</h2><ul>{items}</ul></section>'
 
 
 def related_html(ctx, a):
@@ -475,21 +456,17 @@ def page_article(ctx, a):
     toc_html = "".join(f'<li><a href="#{i}">{esc(t)}</a></li>' for i, t in toc)
     name, alt, caption = a["photo"]
     faq = "".join(f"<h3>{q}</h3><p>{ctx.expand(x)}</p>" for q, x in a["faq"])
-    side_facts = "".join(f"<li>{esc(x)}</li>" for x in C.NODE_FACTS[:3])
     return (f'<header class="arthead"><div class="wrap wide">{crumbs(ctx, trail)}'
             f'<p class="acard__meta">{article_chips(ctx, a)}</p><h1>{a["h1"]}</h1><p class="dek">{a["dek"]}</p>'
             f'<p class="meta">By the <a href="{ctx.href("about")}">Noki team</a> · {upd} <time datetime="{a["updated"]}">{fmt_date(a["updated"])}</time> · {read_min(a)} min read</p>{switch}</div>'
             f'<div class="wrap wide">{img(ctx, name, alt, caption, eager=True, cls="photo photo--lead", sizes="(max-width: 62rem) 100vw, 62rem", want=1200)}</div></header>'
             f'<div class="wrap wide artgrid"><article class="post">'
             f'<div class="points"><p class="points__label">In short</p><ul>{pts}</ul></div>'
-            + (f'<a class="inline-stay" href="{C.NODE_URL}" rel="noopener" data-nosnippet><span>We run NODE Shimoda, a home for week- and month-long stays. <strong>See the home →</strong></span></a>' if C.NODE_URL not in a["body"] else '')  # 本文で自社の家に触れている記事では、冒頭の案内を重ねない
             + f'<details class="toc toc--inline"><summary>On this page</summary><ol>{toc_html}</ol></details>'
-            f'{body}<h2 id="common-questions">Common questions</h2>{faq}{a.get("after_faq", "")}{sources_html(a, "Sources")}'
+            f'{body}<h2 id="common-questions">Common questions</h2>{faq}{a.get("after_faq", "")}{ctx.sources(a["sources"], "Sources")}'
             f'<section class="byline" data-nosnippet>{MARK}<div><p><strong>Written by the Noki team</strong></p><p>We run homes for long stays in small towns in Shizuoka. '
             f'<a href="{ctx.href("about")}">How we write and check our guides</a>.</p></div></section></article>'
-            f'<aside class="side" aria-label="On this page"><div class="side__sticky"><nav class="toc"><p class="toc__label">On this page</p><ol>{toc_html}</ol></nav>'
-            f'<div class="sidecard" data-nosnippet>'
-            f'<p class="sidecard__t">Stay at NODE Shimoda</p><ul class="ticks">{side_facts}</ul><a class="btn btn--solid" href="{C.NODE_URL}" rel="noopener">See the home</a></div></div></aside></div>'
+            f'<aside class="side" aria-label="On this page"><div class="side__sticky"><nav class="toc"><p class="toc__label">On this page</p><ol>{toc_html}</ol></nav></div></aside></div>'
             f'<div class="wrap wide">{related_html(ctx, a)}{cta(ctx, photo="[[img:node-shimoda" not in a["body"] and name != "node-shimoda")}</div>')
 
 
@@ -510,7 +487,7 @@ def page_article_ja(ctx, a):
             f'<p class="review__foot">この日本語版は確認用です。公開するのは英語版だけで、本番のサイトには出力しません。</p></div>'
             f'{serp_box(a["seo_title"], PATHS[a["id"]], a["description"])}'
             f'<div class="points"><p class="points__label">この記事のポイント</p><ul>{pts}</ul></div>{ctx.expand(j["body"])}'
-            f'{faq_html(ctx, j["faq"], "よくある質問")}{j.get("after_faq", "")}{sources_html(a, "出典")}</article></div>')
+            f'{faq_html(ctx, j["faq"], "よくある質問")}{j.get("after_faq", "")}{ctx.sources(a["sources"], "出典")}</article></div>')
 
 
 def table(head, rows, cls="free", num_cols=()):
@@ -663,9 +640,9 @@ def ld_for(page):
 # ------------------------------------------------------------------ 本番ページの外枠
 def header(ctx, preview=False):
     extra = ""
-    topics = "".join(f'<li><a href="{ctx.href("topic-" + k)}">{esc(C.TOPICS[k]["name"])}</a></li>' for k in C.TOPICS)
+    topics = "".join(f'<li><a href="{ctx.href("topic-" + k)}">{esc(C.TOPICS[k]["name"])}</a></li>' for k in HUB_TOPICS)
     menu_topics = "".join(
-        f'<li><a href="{ctx.href("topic-" + k)}"><strong>{esc(C.TOPICS[k]["name"])}</strong><span>{esc(C.TOPICS[k]["path_desc"])}</span></a></li>' for k in C.PLANS)
+        f'<li><a href="{ctx.href("topic-" + k)}"><strong>{esc(C.TOPICS[k]["name"])}</strong><span>{esc(C.TOPICS[k]["path_desc"])}</span></a></li>' for k in OPEN_PLANS)
     menu_arts = "".join(f'<li><a href="{ctx.href(a["id"])}">{a["h1"]}</a></li>' for a in PUBLISHED)
     return (f'<header class="top"><div class="wrap wide top__bar"><a class="brand" href="{ctx.href("home")}">{MARK}<span>{NAME}</span></a>'
             f'<nav class="nav" aria-label="Main"><ul>{topics}<li><a href="{ctx.href("about")}">About</a></li></ul></nav>'
@@ -687,7 +664,7 @@ def credits(names):
 
 
 def footer(ctx, photos=None):
-    topics = "".join(f'<li><a href="{ctx.href("topic-" + k)}">{esc(C.TOPICS[k]["name"])}</a></li>' for k in C.PLANS)
+    topics = "".join(f'<li><a href="{ctx.href("topic-" + k)}">{esc(C.TOPICS[k]["name"])}</a></li>' for k in OPEN_PLANS)
     arts = "".join(f'<li><a href="{ctx.href(a["id"])}">{a["h1"]}</a></li>' for a in PUBLISHED[:5])
     corp = "https://rivia-co.com/" if ctx.mode == "preview" else "/"
     return (f'<footer class="foot"><div class="wrap wide foot__grid">'
@@ -699,9 +676,6 @@ def footer(ctx, photos=None):
             f'<nav aria-label="About"><p class="foot__h">Noki</p><ul><li><a href="{C.NODE_URL}" rel="noopener">NODE Shimoda</a></li>'
             f'<li><a href="{ctx.href("home", "homes")}">Our homes</a></li><li><a href="{ctx.href("about")}">About us</a></li></ul></nav>'
             f'</div>{credits(ctx.photos if photos is None else photos)}</footer>')
-
-
-FORM_JS = """document.querySelectorAll('form[data-proto]').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var m=f.parentNode.querySelector('.formmsg');if(m){m.textContent='Sign-up is not open yet. Please check back soon.';}});});"""
 
 
 def dist_html(page, main, ctx):
@@ -736,8 +710,7 @@ def dist_html(page, main, ctx):
         gid = CFG["ga4_id"]
         head.append(f'<script async src="https://www.googletagmanager.com/gtag/js?id={gid}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag("js",new Date());gtag("config","{gid}");</script>')
     return (f'<!DOCTYPE html>\n<html lang="en"><head>\n' + "\n".join(h for h in head if h) + '\n</head><body>'
-            f'<a class="skip" href="#main">Skip to content</a>{header(ctx)}<main id="main" class="page is-static">{main}</main>{footer(ctx)}'
-            f'<script>{FORM_JS}</script></body></html>\n')
+            f'<a class="skip" href="#main">Skip to content</a>{header(ctx)}<main id="main" class="page is-static">{main}</main>{footer(ctx)}</body></html>\n')
 
 
 def write(path, text):
@@ -879,11 +852,11 @@ def build():
     mains.append(f'<main class="page" data-page="ja-notes" data-title="試作の確認ポイント" lang="ja">{page_ja_notes(Ctx("preview", "ja-notes", "ja"))}</main>')
     mains.append(f'<main class="page" data-page="seo-plan" data-title="SEO計画" lang="ja">{page_seo_plan(Ctx("preview", "seo-plan", "ja"))}</main>')
     pctx = Ctx("preview", "home")
-    router = """(function(){var pages=[].slice.call(document.querySelectorAll('.page'));function show(first){var h=(location.hash||'').slice(1)||'home';var t=pages.filter(function(p){return p.getAttribute('data-page')===h;})[0];if(!t){var el=h&&document.getElementById(h);if(el){t=el.closest('.page');}}t=t||pages[0];pages.forEach(function(p){p.classList.toggle('is-active',p===t);});document.title=t.getAttribute('data-title');if(!first){window.scrollTo(0,0);}}window.addEventListener('hashchange',function(){show(false);});show(true);})();"""
+    router = """(function(){var pages=[].slice.call(document.querySelectorAll('.page'));function show(first){var h=(location.hash||'').slice(1)||'home';var t=pages.filter(function(p){return p.getAttribute('data-page')===h;})[0];var el=null;if(!t){el=h&&document.getElementById(h);if(el){t=el.closest('.page');}}t=t||pages[0];pages.forEach(function(p){p.classList.toggle('is-active',p===t);});document.title=t.getAttribute('data-title');if(el){el.scrollIntoView();}else if(!first){window.scrollTo(0,0);}}window.addEventListener('hashchange',function(){show(false);});show(true);})();"""
     prev = (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Noki 試作</title>'
             f'<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="{FONTS_ALL}" rel="stylesheet"><style>{CSS}</style></head><body>'
             f'<div class="proto" lang="ja"><div class="wrap">試作です（本番は1ページごとに別のURL）。<a href="#ja-notes">日本語レビュー</a>・<a href="#seo-plan">SEO計画</a></div></div>'
-            f'{header(pctx, preview=True)}{"".join(mains)}{footer(pctx, list(C.PHOTO_CREDITS))}<script>{router}{FORM_JS}</script></body></html>')
+            f'{header(pctx, preview=True)}{"".join(mains)}{footer(pctx, list(C.PHOTO_CREDITS))}<script>{router}</script></body></html>')
     write(os.path.join(PREVIEW, "index.html"), prev)
 
     print(f"{PRE.strip('/')}/: {len(pages)} ページ ／ 公開記事 {len(PUBLISHED)} 本 ／ テーマ別一覧 {len(HUB_TOPICS)}（検索に載せる {len(INDEXED_TOPICS)}） ／ 黄色い枠 {len(ednotes_en)} か所")

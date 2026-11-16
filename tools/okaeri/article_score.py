@@ -114,8 +114,13 @@ def score(a):
     add("主な検索語の位置", 3 if 0 <= pos <= len(t) / 2 else (1 if pos > 0 else 0), 3, f"「{kw}」の位置 {pos}")
     d = a.get("description", "")
     add("description", 3 if 120 <= len(d) <= 160 else (1 if 100 <= len(d) <= 175 else 0), 3, f"{len(d)}字")
-    n = len(a.get("points", []))
-    add("In short（points）", 4 if 3 <= n <= 5 else 0, 4, f"{n}項目")
+    pts = a.get("points", [])
+    pw = [len(plain(x).split()) for x in pts]
+    dw = len(plain(a.get("dek", "")).split())
+    ok_pts = len(pts) == 3 and max(pw or [99]) <= 20
+    ok_dek = dw <= 30
+    add("冒頭の短さ（dek・In short）", 4 if ok_pts and ok_dek else (2 if ok_pts or ok_dek else 0), 4,
+        f"In short {len(pts)}項目（語数 {pw}。3項目・各20語以内）、dek {dw}語（30語以内）")
     h2 = [plain(h).strip() for h in re.findall(r"<h2[^>]*>(.*?)</h2>", body, flags=re.S)]
     add("h2 の数", 2 if 4 <= len(h2) <= 8 else 0, 2, f"{len(h2)}個")
     qs = [h for h in h2 if h.endswith("?") or h.lower().split(" ")[0] in Q_START or ":" in h]
