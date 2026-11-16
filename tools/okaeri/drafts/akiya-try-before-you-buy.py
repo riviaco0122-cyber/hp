@@ -35,16 +35,14 @@ ARTICLE = {
  "h1": "Buying an akiya in Japan? Live in one for a month first",
  "seo_title": "Buying an Akiya in Japan? Live in One for a Month First",
  "description": "Japan has nine million empty homes. Non-residents can buy one, reporting it to the Ministry of Finance since April 2026. A month in the town tells you more.",
- "dek": "Japan has about nine million empty homes. Non-residents can buy one, and since April 2026 they’ve had to report the purchase to the Ministry of Finance. Still, the house is the easy part. The town is what you’re really signing up for, and a month there tells you more than any listing.",
+ "dek": "Japan has about nine million empty homes, and non-residents can buy one. But it’s really the town you’re buying into, and a month there tells you more than any listing.",
  "card": "You can buy one of Japan’s nine million empty homes, but the town matters more than the house. A month there shows you the winter cold, whether you need a car and how the neighbours are, and a monthly rental or guesthouse is the realistic way to do it from abroad.",
  "keywords": [("buying an akiya in japan", "—", "—"), ("akiya", "3,600", "0")],
  "intent": "Do（比べたい・やり方）",
  "points": [
-   "An akiya is an empty house. Japan had about 9.0 million of them on 1 October 2023, a record 13.8% of all homes.",
-   "Non-residents can buy a home in Japan. Since April 2026 they’ve had to report the purchase to the Ministry of Finance, so there’s more paperwork than before. We wouldn’t count on a house to help with a visa.",
-   "A month in the town shows you what a listing can’t: the winter cold, whether you need a car, where you’ll shop and how the neighbours are.",
-   "As of November 2026, most visa-exempt visitors can stay up to 90 days, and remote workers from certain countries can apply for a six-month digital nomad status.",
-   "For somewhere to stay, you’ve got a town’s trial home, a monthly rental or a guesthouse with monthly rates. From abroad, the last two are usually more realistic.",
+   "Since April 2026, non-residents who buy a home have had to report it to the Ministry of Finance.",
+   "A month shows you the winter cold, whether you need a car, where you’ll shop and how the neighbours are.",
+   "From abroad, a monthly rental or a guesthouse with monthly rates is usually more realistic than a town’s trial home.",
  ],
  "body": """
 <p>An akiya (空き家) is simply a house that nobody lives in. Japan’s 2023 Housing and Land Survey counted 9.0 million of them on 1 October 2023, a record 13.8% of the country’s homes [[s:stat_housing2023]]. About 3.86 million weren’t for rent or sale and weren’t anyone’s second home either, up by 369,000 since 2018 [[s:stat_housing2023]]. In our experience, that’s usually the group people mean when they talk about Japan’s abandoned houses.</p>
@@ -129,7 +127,7 @@ ARTICLE = {
  "related": ["izu-from-tokyo", "izu"],
  "ja": {
   "h1": "空き家を買う前に、まず1か月住んでみる",
-  "dek": "日本には約900万戸の空き家があります。日本に住んでいない人も買うことができ、2026年4月からは、買ったら財務省への報告が要ります。それでも、家を買うのは簡単なほうです。本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
+  "dek": "日本には約900万戸の空き家があり、日本に住んでいない人も買うことができます。でも本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
   "review": [
    "【2026-11-15 品質保証部（HTML）の指摘での書き直し】変えた点: ①デジタルノマド: 入管庁の英語のページに合わせ「出国後6か月たてば、もう一度申請できる（apply for it again six months after you leave）」に ②【言い方の変更】購入: 「日本は外国人の購入を禁止していない」をやめ、財務省の制度を主語に「日本に住んでいない人も買える。2026年4月からは、住むための家でも外為法にもとづいて財務省に報告する」にしました。民間サイト Real Estate Japan（rej）は「買うのに日本に住んでいる必要はない」という補足の1文だけに使っています。description・dek・card・In short・FAQ もそろえました ③静岡市の長期お試し住宅: 「移住を決めた、または準備している人」「日本人の配偶者等（配偶者や子）」に（本文・FAQ） ④「これは安い家すべてに言えること」を、「配線と回線工事の待ちは、もっと大きな話の小さな例。安い古い家では、売り出し価格はかかるお金の一部にすぎない」と、下田の体験から一般論へつなぐ形に ⑤1週目の「この2つが分かると…」を2文に分け、アンペア数＝一度にどれくらい使えるか、ブレーカーの場所＝落ちてもすぐ戻せる、と何を指すかをはっきりさせました ⑥「なぜ町で暮らすのか」の表の車の行から自社の家への言及を外しました（自社の家に触れるのは NODE Shimoda の段落の1回だけ） ⑦一覧のカード（card）を、目次の読み上げから答え（買えるが町のほうが大事、1か月で冬の寒さ・車・近所が分かる、海外からはマンスリーか宿）に替えました ⑧お試しの1か月の節の冒頭の「私たちならこう過ごす、という例です」というページの予告を、「週ごとにおおよそこう組み立てると思います」に",
    "【今回、人に確かめてほしい点】①NODE Shimoda を英語で「house（一軒家）」と呼んでよいか、さらに「older house（古い家）」と呼んでよいか、1週目の「私たちの家の古い配線」がこの家を指してよいか（黄色い枠） ②「買うのに日本に住んでいる必要はない」は Real Estate Japan（民間）の記載として書いています。ページの記載と合っているか ③購入の手続き（財務省への報告）は法務・制度の記述なので、公開前に財務省のページを開いて確かめてください",
@@ -141,11 +139,9 @@ ARTICLE = {
    "【入れられなかったこと】外為法の不動産取得の報告の細かい範囲（財務省の制度の概要のページを本文で確認できていないため）、在留資格と不動産の所有の関係を書いた公的な出典、海外に住む人が南アルプス市などのお試し住宅の対象に入るか（ページに記載がなく、町に聞くように書きました）、伊豆の市町のお試し住宅の有無、新耐震基準（1981年）など建物の点検の項目（公的な出典を未確認）、マンスリーの部屋の相場（出典なし）。焼津・修善寺の家は、状況が決まるまで書いていません",
   ],
   "points": [
-    "akiya（空き家）は、人が住んでいない家のこと。2023年10月1日時点で約900万戸、住宅全体の13.8%で、過去最高でした。",
-    "日本に住んでいない人も、日本の家を買えます。2026年4月からは、買ったら財務省への報告が要るので、手続きは前より増えました。家を持てばビザに有利になる、とは考えないほうがいいと私たちは思います。",
-    "町で1か月暮らすと、物件情報では分からないことが見えてきます。冬の寒さ、車が要るか、どこで買い物するか、近所の人のこと。",
-    "2026年11月時点で、ビザ免除の国の人の多くは90日まで滞在でき、特定の国のリモートワーカーなら6か月の「デジタルノマド」の在留資格もあります。",
-    "泊まる場所は、自治体のお試し住宅、マンスリーの部屋、月割のある宿の3つ。海外から来るなら、たいていは後の2つが現実的です。",
+    "2026年4月からは、日本に住んでいない人が家を買ったら、財務省への報告が要ります。",
+    "1か月暮らすと、冬の寒さ、車が要るか、どこで買い物するか、近所の人のことが分かります。",
+    "海外から来るなら、自治体のお試し住宅より、マンスリーの部屋か月割のある宿のほうが、たいてい現実的です。",
   ],
   "body": """
 <p>akiya（空き家）は、ひとことで言えば、誰も住んでいない家のことです。2023年の住宅・土地統計調査では、2023年10月1日時点で900万戸、日本の住宅の13.8%が空き家で、割合は過去最高でした[[s:stat_housing2023]]。そのうち約386万戸は、貸すためでも売るためでもなく、別荘でもない家で、2018年から36万9千戸増えました[[s:stat_housing2023]]。私たちの感覚では、「日本の放置された家」と言うとき、たいていはこの家のことを指しています。</p>

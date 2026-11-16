@@ -34,15 +34,14 @@ ARTICLE = {
  "h1": "Kinmedai: Japan’s golden-eye snapper and where to eat it",
  "seo_title": "Kinmedai: Japan’s Golden-Eye Snapper and Where to Eat It",
  "description": "Kinmedai is a red, golden-eyed deep-sea fish, often simmered as nitsuke. It’s fattiest around June, and the port of Shimoda in Izu is a good place to try it.",
- "dek": "Kinmedai is the red, golden-eyed fish you may spot on a sushi menu or a ryokan dinner tray in Japan. It’s a deep-sea fish that’s often simmered in soy and sugar, and the port of Shimoda, which calls itself Japan’s top kinmedai port, is a good place to try it.",
+ "dek": "Kinmedai is a red, golden-eyed deep-sea fish, often simmered in soy and sugar. Shimoda, which describes itself as Japan’s top kinmedai port, is a good place to try it.",
  "card": "Kinmedai is a fatty, red deep-sea fish, often simmered in soy and sugar. It’s fattiest around June, and Shimoda, which calls itself Japan’s top kinmedai port, is a good place to try it.",
  "keywords": [("kinmedai", "4,400", "0")],
  "intent": "Know（知りたい）",
  "points": [
-   "Kinmedai is a red deep-sea fish with big golden eyes, called splendid alfonsino in English. Whatever an English menu calls it, it isn’t a sea bream or a snapper, and it isn’t the same fish as nodoguro, which belongs to a different family and lives in shallower water.",
-   "The flesh is white and carries fat all year. You’ll see it simmered as <em>nitsuke</em> (in soy sauce and sugar), raw as sashimi and lightly seared. We’d start with nitsuke.",
-   "Catches off Tokyo, Chiba, Kanagawa and Shizuoka fell from just under 7,000 tonnes a year in 2005–2009 to 3,797 tonnes in 2020. A later national assessment found the breeding stock in 2023 above the target level and rising. We think deep-water fishing and smaller catches are why it isn’t cheap.",
-   "Shimoda, at the southern tip of the Izu Peninsula, describes itself as Japan’s top kinmedai port. The first train from Tokyo Station gets there too late for the morning landings. A 4:35 train from Shinagawa arrives just before 8:00, but that’s tight, so we’d stay the night before.",
+   "Its English name is splendid alfonsino, and whatever a menu calls it, it isn’t a sea bream, snapper or nodoguro.",
+   "The white flesh carries fat all year, and we’d start with <em>nitsuke</em>, though raw or lightly seared works too.",
+   "Shimoda’s morning landings are just about reachable on a very early train from Tokyo, so we’d stay the night before.",
  ],
  "body": """
 <h2>What is kinmedai?</h2>
@@ -126,7 +125,7 @@ ARTICLE = {
  "related": ["izu-from-tokyo", "izu"],
  "ja": {
   "h1": "金目鯛とは：日本の「ゴールデンアイ・スナッパー」と、食べられる場所",
-  "dek": "金目鯛は、日本の寿司屋のメニューや旅館の夕食で見かけることのある、赤い皮と金色の目の魚です。深い海の魚で、醤油と砂糖で煮る煮付けでよく食べられます。金目鯛の水揚げ日本一を名乗る下田の港は、食べに行くのにちょうどいい場所です。",
+  "dek": "金目鯛は、赤い皮と金色の目をした深海魚で、醤油と砂糖で煮る煮付けでよく食べられます。金目鯛の水揚げ日本一を名乗る下田の港は、食べに行くのにちょうどいい場所です。",
   "review": [
    "【2026-11-16 組み込み前の仕上げ（品質保証部90点のあと）】変えた点: ①英語名 splendid alfonsino・blackthroat seaperch の出典を、名前が書いてある FishBase（品質保証部が確認）に替え・足しました ②料理の表のしゃぶしゃぶは公的な出典が見つからないので、「メニューで見かけたら私たちなら試す」という見解の言い方にしました ③脂の測定に「2007〜2011年度の調査」と時点を足しました（2か所） ④下田の節の「たくさん揚がる場所で食べられる」を「いちばん多く揚がる港で食べられる」（水揚げ日本一を名乗ることの言い換え）にしました ⑤のどぐろとの違い（科・目・すむ深さ・名前の由来）を小さな表にしました。目の名前は出典で確かめられないので「違う目」とだけ書いています（スマホでは表が行ごとのカードになるので、セルをつなげずに両方の列に書きました）",
    "【今回、人に確かめてほしい点】①しゃぶしゃぶの行を見解として残してよいか（消してもかまいません）",
@@ -139,10 +138,9 @@ ARTICLE = {
    "【入れられなかったこと】値段の目安（一次の出典なし）。2025年の資源の最新の数字（水産庁 2026年9月の資料は本文を開けていないため）。下田駅から魚市場の見学場所までの歩く時間（確認できず）",
   ],
   "points": [
-    "金目鯛は、赤い皮と大きな金色の目をした深海魚。英語の名前は splendid alfonsino。英語のメニューに何と書いてあっても、鯛やフエダイ（スナッパー）の仲間ではありません。のどぐろとも別の魚で、科が違い、すむ深さもずっと浅い魚です。",
-    "身は一年中脂ののった白身。醤油と砂糖で煮る「煮付け」、刺身、さっと炙ったものなどで出てきます。私たちなら、まず煮付けを選びます。",
-    "東京・千葉・神奈川・静岡の漁獲量は、2005〜09年の年7,000トン弱から、2020年には3,797トンに減りました。その後の国の評価では、2023年の親魚の量は目標の水準を上回り、増えています。深い海で釣ることと、とれる量が減ったことが、安くない理由だと私たちは見ています。",
-    "伊豆半島の南端の下田は、金目鯛の水揚げ日本一の港だと説明しています。東京駅の始発では朝の水揚げに間に合いません。品川を4時35分に出れば8時前に着きますが、ぎりぎりなので、私たちなら前の晩に泊まります。",
+    "英語の名前は splendid alfonsino。メニューで何と呼ばれていても、鯛でもフエダイ（スナッパー）でもなく、のどぐろとも別の魚です。",
+    "白身には一年中脂がのっています。私たちならまず煮付けを選びますが、刺身やさっと炙ったものもおいしいです。",
+    "下田の朝の水揚げには、東京からとても早い電車でぎりぎり間に合います。私たちなら前の晩に泊まります。",
   ],
   "body": """
 <h2>金目鯛とはどんな魚か</h2>

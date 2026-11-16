@@ -151,15 +151,14 @@ ARTICLES = [
  "h1": "Kinmedai: Japan’s golden-eye snapper and where to eat it",
  "seo_title": "Kinmedai: Japan’s Golden-Eye Snapper and Where to Eat It",
  "description": "Kinmedai is a red, golden-eyed deep-sea fish, often simmered as nitsuke. It’s fattiest around June, and the port of Shimoda in Izu is a good place to try it.",
- "dek": "Kinmedai is the red, golden-eyed fish you may spot on a sushi menu or a ryokan dinner tray in Japan. It’s a deep-sea fish that’s often simmered in soy and sugar, and the port of Shimoda, which calls itself Japan’s top kinmedai port, is a good place to try it.",
+ "dek": "Kinmedai is a red, golden-eyed deep-sea fish, often simmered in soy and sugar. Shimoda, which describes itself as Japan’s top kinmedai port, is a good place to try it.",
  "card": "Kinmedai is a fatty, red deep-sea fish, often simmered in soy and sugar. It’s fattiest around June, and Shimoda, which calls itself Japan’s top kinmedai port, is a good place to try it.",
  "keywords": [("kinmedai", "4,400", "0")],
  "intent": "Know（知りたい）",
  "points": [
-   "Kinmedai is a red deep-sea fish with big golden eyes, called splendid alfonsino in English. Whatever an English menu calls it, it isn’t a sea bream or a snapper, and it isn’t the same fish as nodoguro, which belongs to a different family and lives in shallower water.",
-   "The flesh is white and carries fat all year. You’ll see it simmered as <em>nitsuke</em> (in soy sauce and sugar), raw as sashimi and lightly seared. We’d start with nitsuke.",
-   "Catches off Tokyo, Chiba, Kanagawa and Shizuoka fell from just under 7,000 tonnes a year in 2005–2009 to 3,797 tonnes in 2020. A later national assessment found the breeding stock in 2023 above the target level and rising. We think deep-water fishing and smaller catches are why it isn’t cheap.",
-   "Shimoda, at the southern tip of the Izu Peninsula, describes itself as Japan’s top kinmedai port. The first train from Tokyo Station gets there too late for the morning landings. A 4:35 train from Shinagawa arrives just before 8:00, but that’s tight, so we’d stay the night before.",
+   "Its English name is splendid alfonsino, and whatever a menu calls it, it isn’t a sea bream, snapper or nodoguro.",
+   "The white flesh carries fat all year, and we’d start with <em>nitsuke</em>, though raw or lightly seared works too.",
+   "Shimoda’s morning landings are just about reachable on a very early train from Tokyo, so we’d stay the night before.",
  ],
  "body": """
 <h2>What is kinmedai?</h2>
@@ -243,7 +242,7 @@ ARTICLES = [
  "related": ["izu-from-tokyo", "izu"],
  "ja": {
   "h1": "金目鯛とは：日本の「ゴールデンアイ・スナッパー」と、食べられる場所",
-  "dek": "金目鯛は、日本の寿司屋のメニューや旅館の夕食で見かけることのある、赤い皮と金色の目の魚です。深い海の魚で、醤油と砂糖で煮る煮付けでよく食べられます。金目鯛の水揚げ日本一を名乗る下田の港は、食べに行くのにちょうどいい場所です。",
+  "dek": "金目鯛は、赤い皮と金色の目をした深海魚で、醤油と砂糖で煮る煮付けでよく食べられます。金目鯛の水揚げ日本一を名乗る下田の港は、食べに行くのにちょうどいい場所です。",
   "review": [
    "【2026-11-16 組み込み前の仕上げ（品質保証部90点のあと）】変えた点: ①英語名 splendid alfonsino・blackthroat seaperch の出典を、名前が書いてある FishBase（品質保証部が確認）に替え・足しました ②料理の表のしゃぶしゃぶは公的な出典が見つからないので、「メニューで見かけたら私たちなら試す」という見解の言い方にしました ③脂の測定に「2007〜2011年度の調査」と時点を足しました（2か所） ④下田の節の「たくさん揚がる場所で食べられる」を「いちばん多く揚がる港で食べられる」（水揚げ日本一を名乗ることの言い換え）にしました ⑤のどぐろとの違い（科・目・すむ深さ・名前の由来）を小さな表にしました。目の名前は出典で確かめられないので「違う目」とだけ書いています（スマホでは表が行ごとのカードになるので、セルをつなげずに両方の列に書きました）",
    "【今回、人に確かめてほしい点】①しゃぶしゃぶの行を見解として残してよいか（消してもかまいません）",
@@ -256,10 +255,9 @@ ARTICLES = [
    "【入れられなかったこと】値段の目安（一次の出典なし）。2025年の資源の最新の数字（水産庁 2026年9月の資料は本文を開けていないため）。下田駅から魚市場の見学場所までの歩く時間（確認できず）",
   ],
   "points": [
-    "金目鯛は、赤い皮と大きな金色の目をした深海魚。英語の名前は splendid alfonsino。英語のメニューに何と書いてあっても、鯛やフエダイ（スナッパー）の仲間ではありません。のどぐろとも別の魚で、科が違い、すむ深さもずっと浅い魚です。",
-    "身は一年中脂ののった白身。醤油と砂糖で煮る「煮付け」、刺身、さっと炙ったものなどで出てきます。私たちなら、まず煮付けを選びます。",
-    "東京・千葉・神奈川・静岡の漁獲量は、2005〜09年の年7,000トン弱から、2020年には3,797トンに減りました。その後の国の評価では、2023年の親魚の量は目標の水準を上回り、増えています。深い海で釣ることと、とれる量が減ったことが、安くない理由だと私たちは見ています。",
-    "伊豆半島の南端の下田は、金目鯛の水揚げ日本一の港だと説明しています。東京駅の始発では朝の水揚げに間に合いません。品川を4時35分に出れば8時前に着きますが、ぎりぎりなので、私たちなら前の晩に泊まります。",
+    "英語の名前は splendid alfonsino。メニューで何と呼ばれていても、鯛でもフエダイ（スナッパー）でもなく、のどぐろとも別の魚です。",
+    "白身には一年中脂がのっています。私たちならまず煮付けを選びますが、刺身やさっと炙ったものもおいしいです。",
+    "下田の朝の水揚げには、東京からとても早い電車でぎりぎり間に合います。私たちなら前の晩に泊まります。",
   ],
   "body": """
 <h2>金目鯛とはどんな魚か</h2>
@@ -348,16 +346,14 @@ ARTICLES = [
  "h1": "Buying an akiya in Japan? Live in one for a month first",
  "seo_title": "Buying an Akiya in Japan? Live in One for a Month First",
  "description": "Japan has nine million empty homes. Non-residents can buy one, reporting it to the Ministry of Finance since April 2026. A month in the town tells you more.",
- "dek": "Japan has about nine million empty homes. Non-residents can buy one, and since April 2026 they’ve had to report the purchase to the Ministry of Finance. Still, the house is the easy part. The town is what you’re really signing up for, and a month there tells you more than any listing.",
+ "dek": "Japan has about nine million empty homes, and non-residents can buy one. But it’s really the town you’re buying into, and a month there tells you more than any listing.",
  "card": "You can buy one of Japan’s nine million empty homes, but the town matters more than the house. A month there shows you the winter cold, whether you need a car and how the neighbours are, and a monthly rental or guesthouse is the realistic way to do it from abroad.",
  "keywords": [("buying an akiya in japan", "—", "—"), ("akiya", "3,600", "0")],
  "intent": "Do（比べたい・やり方）",
  "points": [
-   "An akiya is an empty house. Japan had about 9.0 million of them on 1 October 2023, a record 13.8% of all homes.",
-   "Non-residents can buy a home in Japan. Since April 2026 they’ve had to report the purchase to the Ministry of Finance, so there’s more paperwork than before. We wouldn’t count on a house to help with a visa.",
-   "A month in the town shows you what a listing can’t: the winter cold, whether you need a car, where you’ll shop and how the neighbours are.",
-   "As of November 2026, most visa-exempt visitors can stay up to 90 days, and remote workers from certain countries can apply for a six-month digital nomad status.",
-   "For somewhere to stay, you’ve got a town’s trial home, a monthly rental or a guesthouse with monthly rates. From abroad, the last two are usually more realistic.",
+   "Since April 2026, non-residents who buy a home have had to report it to the Ministry of Finance.",
+   "A month shows you the winter cold, whether you need a car, where you’ll shop and how the neighbours are.",
+   "From abroad, a monthly rental or a guesthouse with monthly rates is usually more realistic than a town’s trial home.",
  ],
  "body": """
 <p>An akiya (空き家) is simply a house that nobody lives in. Japan’s 2023 Housing and Land Survey counted 9.0 million of them on 1 October 2023, a record 13.8% of the country’s homes [[s:stat_housing2023]]. About 3.86 million weren’t for rent or sale and weren’t anyone’s second home either, up by 369,000 since 2018 [[s:stat_housing2023]]. In our experience, that’s usually the group people mean when they talk about Japan’s abandoned houses.</p>
@@ -442,7 +438,7 @@ ARTICLES = [
  "related": ["izu-from-tokyo", "izu"],
  "ja": {
   "h1": "空き家を買う前に、まず1か月住んでみる",
-  "dek": "日本には約900万戸の空き家があります。日本に住んでいない人も買うことができ、2026年4月からは、買ったら財務省への報告が要ります。それでも、家を買うのは簡単なほうです。本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
+  "dek": "日本には約900万戸の空き家があり、日本に住んでいない人も買うことができます。でも本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
   "review": [
    "【2026-11-15 品質保証部（HTML）の指摘での書き直し】変えた点: ①デジタルノマド: 入管庁の英語のページに合わせ「出国後6か月たてば、もう一度申請できる（apply for it again six months after you leave）」に ②【言い方の変更】購入: 「日本は外国人の購入を禁止していない」をやめ、財務省の制度を主語に「日本に住んでいない人も買える。2026年4月からは、住むための家でも外為法にもとづいて財務省に報告する」にしました。民間サイト Real Estate Japan（rej）は「買うのに日本に住んでいる必要はない」という補足の1文だけに使っています。description・dek・card・In short・FAQ もそろえました ③静岡市の長期お試し住宅: 「移住を決めた、または準備している人」「日本人の配偶者等（配偶者や子）」に（本文・FAQ） ④「これは安い家すべてに言えること」を、「配線と回線工事の待ちは、もっと大きな話の小さな例。安い古い家では、売り出し価格はかかるお金の一部にすぎない」と、下田の体験から一般論へつなぐ形に ⑤1週目の「この2つが分かると…」を2文に分け、アンペア数＝一度にどれくらい使えるか、ブレーカーの場所＝落ちてもすぐ戻せる、と何を指すかをはっきりさせました ⑥「なぜ町で暮らすのか」の表の車の行から自社の家への言及を外しました（自社の家に触れるのは NODE Shimoda の段落の1回だけ） ⑦一覧のカード（card）を、目次の読み上げから答え（買えるが町のほうが大事、1か月で冬の寒さ・車・近所が分かる、海外からはマンスリーか宿）に替えました ⑧お試しの1か月の節の冒頭の「私たちならこう過ごす、という例です」というページの予告を、「週ごとにおおよそこう組み立てると思います」に",
    "【今回、人に確かめてほしい点】①NODE Shimoda を英語で「house（一軒家）」と呼んでよいか、さらに「older house（古い家）」と呼んでよいか、1週目の「私たちの家の古い配線」がこの家を指してよいか（黄色い枠） ②「買うのに日本に住んでいる必要はない」は Real Estate Japan（民間）の記載として書いています。ページの記載と合っているか ③購入の手続き（財務省への報告）は法務・制度の記述なので、公開前に財務省のページを開いて確かめてください",
@@ -454,11 +450,9 @@ ARTICLES = [
    "【入れられなかったこと】外為法の不動産取得の報告の細かい範囲（財務省の制度の概要のページを本文で確認できていないため）、在留資格と不動産の所有の関係を書いた公的な出典、海外に住む人が南アルプス市などのお試し住宅の対象に入るか（ページに記載がなく、町に聞くように書きました）、伊豆の市町のお試し住宅の有無、新耐震基準（1981年）など建物の点検の項目（公的な出典を未確認）、マンスリーの部屋の相場（出典なし）。焼津・修善寺の家は、状況が決まるまで書いていません",
   ],
   "points": [
-    "akiya（空き家）は、人が住んでいない家のこと。2023年10月1日時点で約900万戸、住宅全体の13.8%で、過去最高でした。",
-    "日本に住んでいない人も、日本の家を買えます。2026年4月からは、買ったら財務省への報告が要るので、手続きは前より増えました。家を持てばビザに有利になる、とは考えないほうがいいと私たちは思います。",
-    "町で1か月暮らすと、物件情報では分からないことが見えてきます。冬の寒さ、車が要るか、どこで買い物するか、近所の人のこと。",
-    "2026年11月時点で、ビザ免除の国の人の多くは90日まで滞在でき、特定の国のリモートワーカーなら6か月の「デジタルノマド」の在留資格もあります。",
-    "泊まる場所は、自治体のお試し住宅、マンスリーの部屋、月割のある宿の3つ。海外から来るなら、たいていは後の2つが現実的です。",
+    "2026年4月からは、日本に住んでいない人が家を買ったら、財務省への報告が要ります。",
+    "1か月暮らすと、冬の寒さ、車が要るか、どこで買い物するか、近所の人のことが分かります。",
+    "海外から来るなら、自治体のお試し住宅より、マンスリーの部屋か月割のある宿のほうが、たいてい現実的です。",
   ],
   "body": """
 <p>akiya（空き家）は、ひとことで言えば、誰も住んでいない家のことです。2023年の住宅・土地統計調査では、2023年10月1日時点で900万戸、日本の住宅の13.8%が空き家で、割合は過去最高でした[[s:stat_housing2023]]。そのうち約386万戸は、貸すためでも売るためでもなく、別荘でもない家で、2018年から36万9千戸増えました[[s:stat_housing2023]]。私たちの感覚では、「日本の放置された家」と言うとき、たいていはこの家のことを指しています。</p>
@@ -549,15 +543,14 @@ ARTICLES = [
  "h1": "Izu Peninsula from Tokyo: trains, fares and why to stay a week",
  "seo_title": "Izu Peninsula from Tokyo: Trains, Fares and Where to Stay",
  "description": "How to get from Tokyo to the Izu Peninsula by train, with times and fares to Atami, Ito, Shimoda and Shuzenji, the best season and why a house beats a day trip.",
- "dek": "The south of the Izu Peninsula is too far for a day trip and just right for a week. Here’s how to get there, when to go, and the downsides nobody mentions.",
+ "dek": "The southern Izu Peninsula is too far for a day trip but just right for a week. Shimoda is about 2 hours 35 minutes from Tokyo by direct train.",
  "card": "Train routes, times and fares from Tokyo to Atami, Ito, Shimoda and Shuzenji, plus the seasons and the drawbacks nobody mentions.",
  "keywords": [("izu peninsula from tokyo", "260", "7"), ("tokyo to izu peninsula", "260", "—")],
  "intent": "Do（やり方を知りたい）",
  "points": [
-   "Shimoda is about 2 hours 35 minutes from Tokyo on the direct limited express, so a day trip means more than five hours on the train.",
-   "Shuzenji is about two hours away, either direct or by Shinkansen to Mishima and a 35-minute local line.",
-   "The official swimming season runs from mid-July to late August, and that’s the only time lifeguards are on duty.",
-   "Buses are few and many shops close early outside summer, which is why a house with a kitchen makes such a difference.",
+   "Shuzenji is about two hours away, direct or by Shinkansen to Mishima and a 35-minute local line.",
+   "The official swimming season runs from mid-July to late August, the only time lifeguards are on duty.",
+   "Buses are few and many shops close early outside summer, so a house with a kitchen makes a big difference.",
  ],
  "body": """
 <h2>How do you get to the Izu Peninsula from Tokyo?</h2>
@@ -612,7 +605,7 @@ ARTICLES = [
  "related": ["kinmedai", "izu"],
  "ja": {
   "h1": "東京から伊豆半島へ：電車・運賃と、1週間泊まる理由",
-  "dek": "伊豆半島の南は、日帰りには遠く、1週間ならちょうどいい距離です。行き方、いつ行くか、そしてあまり語られない弱点をまとめました。",
+  "dek": "伊豆半島の南は、日帰りには遠く、1週間ならちょうどいい距離です。下田へは、東京から直通の特急で約2時間35分です。",
   "review": [
    "【2026-11-15 トーンの書き直し】ぶつ切りの短い文や硬い言い方をやめ、現地に住む友人が話すような文にしました（英語は短縮形と you / we を使う形に）。日本語版も自然な話し言葉寄りにしました。数字・出典・主張は変えていません",
    "【2026-11-15 の見直しで変えた点（見せ方）】「どの町が合うか」を、東京からの時間・町の様子・日帰りか泊まりかの表にしました。季節も表にしました。本文から伊豆半島のページと、空き家の記事（買う前に1か月住む）へのリンクを足しました。狙う検索語から「izu peninsula」を外しました（伊豆半島のページと重ならないように）",
@@ -621,10 +614,9 @@ ARTICLES = [
    "【まだ入れていないこと（出典の確認待ち）】新幹線で熱海へ出て乗り換える行き方と高速バスの比較、ジャパン・レール・パスと JR東京ワイド・パスの違い、直通の踊り子の本数。公式の値を確かめてから足します",
   ],
   "points": [
-    "下田は、東京から直通の特急で約2時間35分。日帰りだと、電車に5時間以上乗ることになります。",
     "修善寺は約2時間。直通の特急か、新幹線で三島へ出てローカル線で35分です。",
     "正式な海水浴シーズンは7月中旬から8月下旬で、ライフガードがいるのもこの期間だけです。",
-    "夏以外はバスが少なく、早く閉まる店も多いので、キッチンのある家だと過ごしやすさがまるで違います。",
+    "バスは少なく、夏以外は早く閉まる店も多いので、キッチンのある家だと過ごしやすさがまるで違います。",
   ],
   "body": """
 <h2>東京から伊豆半島への行き方</h2>
