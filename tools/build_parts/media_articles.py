@@ -188,6 +188,28 @@ def eyecatch_path(a):
     return f"{rel}?v={asset_version(rel)}"
 
 
+EYECATCH_WEBP_WIDTHS = (800, 1200)
+
+
+def eyecatch_srcset(a):
+    """アイキャッチの軽い版（WebP・幅800と1200）を images/eyecatch/w/ に作り、srcset を返す。
+    記事トップの写真は、JPEG（平均約100KB）より WebP（幅1200で約50KB・幅800で約28KB）のほうが速く出る（人の指摘 2026-11-16）。
+    元の JPEG は OGP（SNS で共有したときの画像）にそのまま使う"""
+    from PIL import Image
+    src = os.path.join(OUT, "images", "eyecatch", f"{a['slug']}.jpg")
+    out_dir = os.path.join(OUT, "images", "eyecatch", "w")
+    os.makedirs(out_dir, exist_ok=True)
+    parts = []
+    for w in EYECATCH_WEBP_WIDTHS:
+        rel = f"images/eyecatch/w/{a['slug']}-{w}.webp"
+        dst = os.path.join(OUT, rel)
+        if not (os.path.exists(dst) and os.path.getmtime(dst) >= os.path.getmtime(src)):
+            im = Image.open(src).convert("RGB")
+            im.resize((w, round(im.size[1] * w / im.size[0])), Image.LANCZOS).save(dst, "WEBP", quality=80, method=6)
+        parts.append(f"{rel}?v={asset_version(rel)} {w}w")
+    return ", ".join(parts)
+
+
 def has_eyecatch(a):
     """tools/eyecatch.py で作ったアイキャッチ（記事トップ・OGP用）があるか"""
     return os.path.exists(os.path.join(OUT, "images", "eyecatch", a["slug"] + ".jpg"))
@@ -198,7 +220,7 @@ def thumb(a, size=""):
     name, alt = ARTICLE_PHOTOS[a["slug"]]
     if size == "hero":
         if has_eyecatch(a):
-            return f"""<figure class="article__photo article__photo--eyecatch"><img src="{eyecatch_path(a)}" alt="{e(a["short"].replace(chr(10), ""))}" width="1200" height="630" fetchpriority="high" decoding="async"></figure>"""
+            return f"""<figure class="article__photo article__photo--eyecatch"><img src="{eyecatch_path(a)}" srcset="{eyecatch_srcset(a)}" sizes="(max-width: 899px) 100vw, 800px" alt="{e(a["short"].replace(chr(10), ""))}" width="1200" height="630" fetchpriority="high"></figure>"""
         return f"""<figure class="article__photo">{photo(name, alt=alt, width=1600, height=700, sizes="(max-width: 899px) 100vw, 800px", lazy=False, priority=True)}</figure>"""
     return f"""<div class="thumb thumb--photo">
               {photo(name, width=720, height=450, sizes="(max-width: 899px) 90vw, 400px")}
