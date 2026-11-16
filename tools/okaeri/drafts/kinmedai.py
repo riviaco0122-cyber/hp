@@ -41,7 +41,7 @@ ARTICLE = {
  "points": [
    "Its English name is splendid alfonsino, and whatever a menu calls it, it isn’t a sea bream, snapper or nodoguro.",
    "The white flesh carries fat all year, and we’d start with <em>nitsuke</em>, though raw or lightly seared works too.",
-   "During Shimoda’s 2016 festival, landings could be watched about 7:30–9:00; the first Tokyo train arrives 7:59, so we’d stay over.",
+   "During Shimoda’s 2016 festival, landings could be watched about 7:30–9:00; the 4:35 from Shinagawa arrives 7:59, so we’d stay over.",
  ],
  "body": """
 <h2>What is kinmedai?</h2>
@@ -141,7 +141,7 @@ ARTICLE = {
   "points": [
     "英語の名前は splendid alfonsino。メニューで何と呼ばれていても、鯛でもフエダイ（スナッパー）でもなく、のどぐろとも別の魚です。",
     "白身には一年中脂がのっています。私たちならまず煮付けを選びますが、刺身やさっと炙ったものもおいしいです。",
-    "2016年のきんめ祭りの期間中は、朝7時半〜9時ごろに水揚げを見学できました。東京からの始発で着くのは7時59分なので、私たちなら前の晩に泊まります。",
+    "2016年のきんめ祭りの期間中は、朝7時半〜9時ごろに水揚げを見学できました。品川4時35分発の電車で7時59分着なので、私たちなら前の晩に泊まります。",
   ],
   "body": """
 <h2>金目鯛とはどんな魚か</h2>
