@@ -63,3 +63,4 @@
 | 枠 | 写真（名前） | Unsplash ID | 撮影者 |
 |---|---|---|---|
 | デジタルノマドの記事の見出し写真（窓のある部屋の仕事の机。人の顔なし・地名なし） | laptop-plants-desk | 9vxJQmZmTYU | Rui Silvestre |
+| 1か月の部屋の記事の見出し写真（家具付きの小さな部屋。人なし・地名なし） | studio-apartment | hrY-pZqFGyI | Aquilion Property |

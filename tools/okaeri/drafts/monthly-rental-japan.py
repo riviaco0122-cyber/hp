@@ -36,7 +36,7 @@ SOURCES_NEW = {
 
 ARTICLE = {
  "id": "monthly-rental", "slug": "monthly-rental-japan", "topic": "live", "place": None, "also": ["stay"],
- "photo": ("TODO-PHOTO", "A small furnished room with a kitchen and a desk by the window", ""),
+ "photo": ("studio-apartment", "A small furnished studio with a compact kitchen, a dining table and a long wooden floor", ""),
  "published": "2026-11-16", "updated": "2026-11-16",
  "kicker": "Live part-time",
  "h1": "Monthly rentals in Japan: how to rent a place for a month",

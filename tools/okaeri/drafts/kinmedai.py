@@ -49,7 +49,7 @@ ARTICLE = {
  "points": [
    "Its English name is splendid alfonsino, and whatever a menu calls it, it isn’t a sea bream, snapper or nodoguro.",
    "The white flesh carries fat all year, and we’d start with <em>nitsuke</em>, though raw or lightly seared works too.",
-   "We’d spend a night in Shimoda, so you can have kinmedai for dinner and breakfast at the fish-market canteen.",
+   "We’d spend a night in Shimoda: kinmedai for dinner, then breakfast at the fish-market canteen next morning.",
  ],
  "body": """
 <h2>What is kinmedai?</h2>
@@ -83,14 +83,14 @@ ARTICLE = {
 <tr><td><strong>Depth</strong></td><td>About 200–800 m off Chiba [[s:chiba_kinme_r6]]</td><td>About 80–150 m in the south-western Sea of Japan [[s:ibaraki_akamutsu]], about 100–200 m in Tokushima’s account [[s:tokushima_akamutsu]]</td></tr>
 <tr><td><strong>Name</strong></td><td>金目鯛, “golden-eye sea bream”</td><td>“Black throat”, for the black lining inside its mouth [[s:kyoto_akamutsu]]</td></tr>
 </tbody></table></div>
-<p>The order and family follow the Japanese prefectural reports we cite. Fish classification gets revised now and then, so other books may file them a little differently.</p>
+<p>The order and family here are as given by Tokyo and Tokushima’s fisheries reports. Fish classification gets revised now and then, so other books may file them a little differently.</p>
 
 <h2>Is kinmedai safe to eat when you’re pregnant?</h2>
 <p>Because of mercury, Japan’s health ministry advises pregnant women to limit some fish to about one 80 g serving a week. Kinmedai is on that list, along with swordfish, bluefin tuna and bigeye tuna [[s:mhlw_mercury2010]]. The same advice puts one piece of sushi or sashimi at about 15 g, so 80 g is roughly five pieces. It’s meant to protect the unborn baby, not children or other adults [[s:mhlw_mercury2010]]. It’s general public guidance rather than medical advice, so if you’re pregnant, your own doctor or midwife is the person to ask.</p>
 
 <h2>Where can you eat kinmedai in Shimoda?</h2>
-<p>Plenty of places in town serve it, and the local tourism association keeps a list to start from. When we checked in November 2026, it named 18 restaurants and 34 hotels and inns that serve kinmedai dishes, with a note that some may be off the menu depending on the catch [[s:shimoda_kanko_kinme]].</p>
-<p>Shimoda sits at the southern tip of the [[l:izu|Izu Peninsula]]. According to the tourism association, it’s said to be Japan’s top kinmedai port, landing over 1,000 tonnes a year, about 80% of all the fish landed there [[s:shimoda_kanko_kinme]]. You may also hear two local names. A 2014 TV Tokyo programme on Shimoda explained that <em>jikinme</em> are caught in nearby waters between Oshima and Kozushima, while <em>oki-kinme</em> come from grounds further out [[s:tvtokyo]].</p>
+<p>Plenty of places in town serve it, and the local tourism association keeps a list to start from. As of November 2026, it names 19 restaurants and 34 hotels and inns that serve kinmedai dishes, with a note that some may be off the menu depending on the catch [[s:shimoda_kanko_kinme]].</p>
+<p>Shimoda sits at the southern tip of the [[l:izu|Izu Peninsula]]. According to the tourism association, it’s said to be Japan’s top kinmedai port. As of November 2026, its page puts landings at over 1,000 tonnes a year, about 80% of all the fish landed there [[s:shimoda_kanko_kinme]]. You may also hear two local names. A 2014 TV Tokyo programme on Shimoda explained that <em>jikinme</em> are caught in nearby waters between Oshima and Kozushima, while <em>oki-kinme</em> come from grounds further out [[s:tvtokyo]].</p>
 <p>The easiest place to start is Ichiba no Shokudo Kinmetei, a canteen inside the Shimoda fish market about ten minutes on foot from Izukyu-Shimoda Station. Its menu includes a kinmedai rice bowl served three ways and a whole simmered kinmedai set. Shizuoka Prefecture’s page, updated in March 2025, lists the hours as 7:00 to 9:30 for the morning set and 11:00 to 15:00 for lunch, closed on Tuesdays [[s:pref]]. Hours do change, so a quick check before you walk over saves a wasted trip.</p>
 
 <h2>When is kinmedai in season?</h2>
@@ -102,12 +102,12 @@ ARTICLE = {
 <tr><td>Around June</td><td>Before spawning, when the fish carry the most fat. In Shizuoka’s year of measuring fish from Inatori (part of a 2007–2011 study), the fat peaked in June at about 10% [[s:shimoda_news,shizuoka_kinme_fat]].</td></tr>
 <tr><td>Kinme Matsuri (all of June in 2016)</td><td>In 2016 there was a viewing spot outside the fish market, open from about 7:30 to 9:00 a.m. except on Tuesdays and Saturdays, and bad weather could cancel it [[s:shimoda_news]].</td></tr>
 </tbody></table></div>
-<p>We can’t tell you whether the festival still runs. When we checked in November 2026, the tourism association’s events calendar didn’t list it [[s:shimoda_kanko_event]]. If you’d like to plan a trip around it, the association is the one to ask.</p>
+<p>In 2016, then, the festival gave visitors a place to watch the morning landings in June. For this year’s events, the tourism association’s events calendar is the place to look [[s:shimoda_kanko_event]], and the association can help if you’d like to plan a trip around one.</p>
 
 <h2>Why stay overnight instead of visiting for the day?</h2>
-<p>In our view, a night in town is what makes a kinmedai trip relaxed. You get kinmedai for dinner, then an unhurried morning: a walk down to the harbour, breakfast at the market canteen from 7:00 [[s:pref]], and no train to rush back for.</p>
-<p>A day trip is possible, but the mornings are tight. The first Tokaido Line train from Tokyo Station leaves at 5:20 and doesn’t reach Atami until 7:08. The one earlier option is a 4:35 local from Shinagawa, which connects at Atami and reaches Izukyu-Shimoda at 7:59 on JR East’s November 2026 timetable [[s:jre_tt_tokyo]]. If a festival viewing kept the 2016 hours of about 7:30 to 9:00 [[s:shimoda_news]], you’d still have most of an hour after the ten-minute walk to the market. Routes are in our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]].</p>
-<p>If you’d like to cook a fish yourself, the Izu Fisheries Cooperative runs a shop on the ground floor of the Kaikoku Shimoda Minato roadside station that sells Shimoda kinmedai [[s:shimoda_kanko_gift]]. Shizuoka Prefecture lists it as open 8:00 to 16:30 with no regular closing day, about ten minutes on foot from the station (page updated April 2025) [[s:pref_izu_gyokyo_shop]]. What’s on the counter will depend on the day’s catch, we’d expect. Our apartment in the old town, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, has a kitchen with a gas hob, fridge, rice cooker and cookware [[s:node_room]], and it’s eight minutes’ walk from the station [[s:node_access]].</p>
+<p>In our view, a night in town is what makes a kinmedai trip relaxed. You get kinmedai for dinner, then an unhurried morning: a walk down to the harbour, breakfast at the market canteen from 7:00, where the morning set changes daily with the catch [[s:pref]], and no train to rush back for.</p>
+<p>A day trip is possible, but the mornings are tight. The first Tokaido Line train from Tokyo Station leaves at 5:20 and doesn’t reach Atami until 7:08. The one earlier option is a 4:35 local from Shinagawa, which connects at Atami. On JR East’s November 2026 timetable, it reaches Izukyu-Shimoda at 7:59 [[s:jre_tt_tokyo]]. If a festival viewing kept the 2016 hours of about 7:30 to 9:00 [[s:shimoda_news]], you’d still have most of an hour after the ten-minute walk to the market. Routes are in our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]].</p>
+<p>If you’d like to cook a fish yourself, the Izu Fisheries Cooperative runs a shop on the ground floor of the Kaikoku Shimoda Minato roadside station that sells Shimoda kinmedai [[s:shimoda_kanko_gift]]. Shizuoka Prefecture lists it as open 8:00 to 16:30 with no regular closing day, about ten minutes on foot from the station (page updated April 2025) [[s:pref_izu_gyokyo_shop]]. Our apartment in the old town, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, has a kitchen with a gas hob, fridge, rice cooker and cookware [[s:node_room]], and it’s eight minutes’ walk from the station [[s:node_access]].</p>
 """,
  "faq": [
    ("Is kinmedai the same as red snapper?",
@@ -121,7 +121,7 @@ ARTICLE = {
    ("When is kinmedai in season?",
     "It’s landed all year, and Shimoda’s tourism association calls it in season all year [[s:shimoda_kanko_kinme]]. Winter is the traditional season, and the fish are fattiest around June [[s:shimoda_news,shizuoka_kinme_fat]]."),
    ("Can I see the kinmedai landings on a day trip from Tokyo?",
-    "The viewing we know of was during the June 2016 festival, from about 7:30 to 9:00 [[s:shimoda_news]], and we couldn’t find the festival on the tourism association’s calendar in November 2026 [[s:shimoda_kanko_event]]. Trains are tight too: the earliest we found, a 4:35 local from Shinagawa, reaches Shimoda at 7:59 [[s:jre_tt_tokyo]]. We’d stay the night before and have breakfast at the market canteen."),
+    "In 2016, visitors could watch the landings during the June festival, from about 7:30 to 9:00 [[s:shimoda_news]]. This year’s events are on the tourism association’s events calendar [[s:shimoda_kanko_event]]. Trains are tight too: a 4:35 local from Shinagawa reaches Shimoda at 7:59 [[s:jre_tt_tokyo]]. We’d stay the night before and have breakfast at the market canteen."),
    ("How do you say kinmedai?",
     "Roughly “kin-meh-dye”. Locals often shorten it to <em>kinme</em>."),
  ],
@@ -134,13 +134,13 @@ ARTICLE = {
   "h1": "金目鯛とは：日本の「ゴールデンアイ・スナッパー」と、食べられる場所",
   "dek": "金目鯛は、赤い皮と金色の目をした深海魚で、醤油と砂糖で煮る煮付けでよく食べられます。金目鯛の水揚げ日本一と言われる下田は、食べに行くのにちょうどいい場所です。",
   "review": [
-   "【2026-11-16 書き直し（品質保証部の HTML 84点・原稿 85点の指摘と、黄色い枠をなくす決まり〔playbook 3-2〕）】変えた点: ①黄色い枠をすべてなくしました。公式のページで確かめられたことだけで書き、確かめられないこと（いまの祭りの開催、祭り以外の日の見学、私たちが案内している店）は書いていません ②下田の水揚げは「日本一の港と言われ、年1,000トン以上、下田で揚がる魚の約8割」と観光協会の言い方のまま書き、時点（観光協会のページ、2026年11月時点）を付けました。dek・card も「日本一と言われる」に ③「一年中揚がる・1年中が旬」「冬は身が引き締まる」に観光協会の出典を付けました ④きんめ祭りは2016年の記録（6月、市場の外で7時半〜9時ごろ、火・土は休み、天候で中止あり）として表に残し、「いまの行事は観光協会の行事のページで。行事に合わせるなら観光協会に」としました。調べた過程（「確かめられなかった」など）は書いていません ⑤日帰り: 「間に合っても終わりのほうだけ」を「2016年と同じ時間なら、駅から約10分歩いても1時間近く残る」に直しました ⑥In short の3つ目を「1泊して、夕食に金目鯛、翌朝は市場の食堂で朝ごはん」に（朝も金目鯛が出るとは書いていません。金目亭の朝は日替わり定食のみで、その日の水揚げで変わるため。本文にもそう書きました） ⑦のどぐろとの表の「目」の行に キンメダイ目／スズキ目 を入れ、「東京都と徳島県の水産の資料での分け方。分類は見直されることがある」と添えました。「独自の科」はやめ、キンメダイ科（Berycidae）と書きました ⑧出典名の二重かっこをやめ、出典は番号だけにしました ⑨食べられる店は、観光協会の一覧（飲食店19軒・宿34軒）へのリンクにしました。店名は県の出典がある金目亭だけです ⑩自炊用に買える所として、道の駅 開国下田みなと1階の伊豆漁協の直売所（観光協会と県のページ。住所・電話が同じ同じ店）を足しました ⑪NODE Shimoda は「旧町内のアパートの一室」とし、キッチンの設備は公式サイトの記載（ガスコンロ・冷蔵庫・炊飯器・調理器具）、駅から徒歩8分（公式のアクセス）で書きました。触れるのは本文で1回です ⑫新しい出典: shimoda_kanko_event・shimoda_kanko_gift・pref_izu_gyokyo_shop・node_access（SOURCES_NEW）",
+   "【2026-11-16 書き直し（品質保証部の HTML 84点・原稿 85点の指摘と、黄色い枠をなくす決まり〔playbook 3-2〕）】変えた点: ①黄色い枠をすべてなくしました。公式のページで確かめられたことだけで書き、確かめられないこと（いまの祭りの開催、祭り以外の日の見学、私たちが案内している店）は書いていません ②下田の水揚げは「日本一の港と言われ、年1,000トン以上・下田で揚がる魚の約8割」と観光協会の言い方のまま書き、時点（観光協会のページ、2026年11月時点）を付けました。dek・card も「日本一と言われる」に ③「一年中揚がる・1年中が旬」「冬は身が引き締まる」に観光協会の出典を付けました ④きんめ祭りは2016年の記録（6月、市場の外で7時半〜9時ごろ、火・土は休み、天候で中止あり）として表に残し、「いまの行事は観光協会の行事のページで。行事に合わせるなら観光協会に」としました。調べた過程（「確かめられなかった」など）は書いていません ⑤日帰り: 「間に合っても終わりのほうだけ」を「2016年と同じ時間なら、駅から約10分歩いても1時間近く残る」に直しました ⑥In short の3つ目を「1泊して、夕食に金目鯛、翌朝は市場の食堂で朝ごはん」に（朝も金目鯛が出るとは書いていません。金目亭の朝は日替わり定食のみで、その日の水揚げで変わるため。本文にもそう書きました） ⑦のどぐろとの表の「目」の行に キンメダイ目／スズキ目 を入れ、「東京都と徳島県の水産の資料での分け方。分類は見直されることがある」と添えました。「独自の科」はやめ、キンメダイ科（Berycidae）と書きました ⑧出典名の二重かっこをやめ、出典は番号だけにしました ⑨食べられる店は、観光協会の一覧（飲食店19軒・宿34軒）へのリンクにしました。店名は県の出典がある金目亭だけです ⑩自炊用に買える所として、道の駅 開国下田みなと1階の伊豆漁協の直売所（観光協会と県のページ。住所・電話が同じ同じ店）を足しました ⑪NODE Shimoda は「旧町内のアパートの一室」とし、キッチンの設備は公式サイトの記載（ガスコンロ・冷蔵庫・炊飯器・調理器具）、駅から徒歩8分（公式のアクセス）で書きました。触れるのは本文で1回です ⑫新しい出典: shimoda_kanko_event・shimoda_kanko_gift・pref_izu_gyokyo_shop・node_access（SOURCES_NEW）",
    "【変わりやすい数字（確認した日）】観光協会の一覧の店の数（飲食店19軒・宿34軒、2026-11-16）、年1,000トン以上・約8割（観光協会のページ、2026-11-16）、金目亭の営業時間（静岡県のページ 2025年3月更新）、伊豆漁協の直売所の営業時間（静岡県のページ 2025年4月更新）、品川4:35発→伊豆急下田7:59着（JR東日本の時刻表 2026年11月）、NODE Shimoda の徒歩8分と設備（公式サイト、2026-11-16）",
   ],
   "points": [
     "英語の名前は splendid alfonsino。メニューで何と呼ばれていても、鯛でもフエダイ（スナッパー）でもなく、のどぐろとも別の魚です。",
     "白身には一年中脂がのっています。私たちならまず煮付けを選びますが、刺身やさっと炙ったものもおいしいです。",
-    "私たちなら下田に1泊します。夕食に金目鯛を食べて、朝は魚市場の食堂で朝ごはんにできるからです。",
+    "私たちなら下田に1泊します。夕食に金目鯛を食べて、翌朝は魚市場の食堂で朝ごはんです。",
   ],
   "body": """
 <h2>金目鯛とはどんな魚か</h2>
@@ -174,14 +174,14 @@ ARTICLE = {
 <tr><td><strong>すむ深さ</strong></td><td>千葉の沖で200〜800メートルほど[[s:chiba_kinme_r6]]</td><td>日本海の南西の海域で80〜150メートルほど[[s:ibaraki_akamutsu]]、徳島県の資料では100〜200メートルほど[[s:tokushima_akamutsu]]</td></tr>
 <tr><td><strong>名前の由来</strong></td><td>漢字で「金目鯛」（金色の目の鯛）</td><td>口の中（のど）が黒いこと[[s:kyoto_akamutsu]]</td></tr>
 </tbody></table></div>
-<p>目と科は、引用している県の資料に従っています。魚の分類はときどき見直されるので、本によっては少し違う分け方をしていることがあります。</p>
+<p>目と科は、東京都と徳島県の水産の資料での分け方です。魚の分類はときどき見直されるので、本によっては少し違う分け方をしていることがあります。</p>
 
 <h2>妊娠中に金目鯛を食べてもいいか</h2>
 <p>厚生労働省は、水銀のために、妊婦が食べる量を「週1回・1回約80gまで」とする魚に、メカジキ、クロマグロ、メバチと並んで金目鯛を入れています[[s:mhlw_mercury2010]]。同じ注意事項では、寿司や刺身1貫は約15gなので、80gは寿司でだいたい5貫です。これはおなかの赤ちゃんを守るための目安で、子どもやほかの大人向けではありません[[s:mhlw_mercury2010]]。一般向けの目安で、医療の助言ではないので、妊娠中なら、かかりつけの医師や助産師に聞くのがいちばんです。</p>
 
 <h2>下田のどこで金目鯛を食べられるか</h2>
-<p>町には金目鯛を出す店がたくさんあります。手始めには、観光協会の一覧が便利です。2026年11月に見たときは、金目鯛の料理を出す飲食店18軒と、ホテル・旅館34軒が載っていて、水揚げによっては出せない日もある、と添えてありました[[s:shimoda_kanko_kinme]]。</p>
-<p>下田は[[l:ja-izu|伊豆半島]]の南端にあります。観光協会によると、下田港は金目鯛の水揚げ量日本一の港と言われ、年1,000トン以上、下田で揚がる魚の約8割を金目鯛が占めるそうです[[s:shimoda_kanko_kinme]]。地元では、2つの呼び名を耳にするかもしれません。2014年のテレビ東京の下田の番組では、「地金目」は大島から神津島にかけての近海でとれたもの、「沖金目」はもっと遠くの漁場でとれたもの、と説明していました[[s:tvtokyo]]。</p>
+<p>町には金目鯛を出す店がたくさんあります。手始めには、観光協会の一覧が便利です。2026年11月の時点で、金目鯛の料理を出す飲食店19軒と、ホテル・旅館34軒が載っていて、水揚げによっては出せない日もある、と添えてありました[[s:shimoda_kanko_kinme]]。</p>
+<p>下田は[[l:ja-izu|伊豆半島]]の南端にあります。観光協会によると、下田港は金目鯛の水揚げ量日本一の港と言われ、年1,000トン以上（観光協会のページ、2026年11月時点）、下田で揚がる魚の約8割を金目鯛が占めるそうです[[s:shimoda_kanko_kinme]]。地元では、2つの呼び名を耳にするかもしれません。2014年のテレビ東京の下田の番組では、「地金目」は大島から神津島にかけての近海でとれたもの、「沖金目」はもっと遠くの漁場でとれたもの、と説明していました[[s:tvtokyo]]。</p>
 <p>手始めにいちばん行きやすいのは、下田市魚市場の中にある食堂「市場の食堂 金目亭」で、伊豆急下田駅から歩いて約10分です。金目鯛を3通りで味わう丼や、丸ごとの煮付けの定食があります。静岡県のページ（2025年3月更新）によると、朝定食が7時〜9時30分、昼が11時〜15時で、火曜が定休日です[[s:pref]]。営業時間は変わることがあるので、出かける前にさっと確かめておくと、無駄足になりません。</p>
 
 <h2>金目鯛の旬はいつか</h2>
@@ -193,12 +193,12 @@ ARTICLE = {
 <tr><td>6月ごろ</td><td>産卵の前で、脂がいちばん多い時期。静岡県が稲取の魚を1年間測ったところ（2007〜2011年度の調査）、脂は6月に最も多く、約10%でした[[s:shimoda_news,shizuoka_kinme_fat]]。</td></tr>
 <tr><td>きんめ祭り（2016年は6月いっぱい）</td><td>2016年は、魚市場の外に見学場所があり、朝7時半〜9時ごろに水揚げを見られました（火曜・土曜は休み、天候で中止もあり）[[s:shimoda_news]]。</td></tr>
 </tbody></table></div>
-<p>祭りがいまも開かれているかは、私たちには分かりません。2026年11月に観光協会の行事のページを見たときには、載っていませんでした[[s:shimoda_kanko_event]]。祭りに合わせて旅を組みたいなら、観光協会に聞くのが確実です。</p>
+<p>2016年は、6月の祭りの期間に、朝の水揚げを見られる場所がありました。いまの行事は、観光協会の行事のページで見られます[[s:shimoda_kanko_event]]。行事に合わせて旅を組みたいなら、観光協会に聞くのが確実です。</p>
 
 <h2>日帰りではなく、泊まったほうがいい理由</h2>
-<p>私たちは、町に1泊すると金目鯛の旅がずっとゆったりすると思っています。夕食に金目鯛を食べて、朝は港までのんびり歩き、市場の食堂で7時からの朝ごはん[[s:pref]]。帰りの電車に追われることもありません。</p>
+<p>私たちは、町に1泊すると金目鯛の旅がずっとゆったりすると思っています。夕食に金目鯛を食べて、朝は港までのんびり歩き、市場の食堂で7時からの朝ごはん（朝はその日の水揚げで変わる日替わりの定食です）[[s:pref]]。帰りの電車に追われることもありません。</p>
 <p>日帰りもできますが、朝はかなり慌ただしくなります。東京駅の始発の東海道線は5:20発で、熱海に着くのは7:08です。それより早い行き方は1つで、品川4:35発の普通に乗って熱海で乗り継ぐと、JR東日本の2026年11月の時刻表で伊豆急下田に7:59に着きます[[s:jre_tt_tokyo]]。祭りの見学が2016年と同じ朝7時半〜9時ごろなら[[s:shimoda_news]]、駅から市場まで約10分歩いても、1時間近く残ります。行き方は、[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]にまとめています。</p>
-<p>魚を自分で料理してみたいなら、道の駅「開国下田みなと」の1階で、伊豆漁協が下田の金目鯛などを売る店を開いています[[s:shimoda_kanko_gift]]。静岡県のページ（2025年4月更新）では、8時〜16時30分・定休日なしで、駅から歩いて約10分です[[s:pref_izu_gyokyo_shop]]。並ぶものはその日の水揚げ次第だろう、と私たちは思います。旧町内にある私たちのアパート「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」には、ガスコンロ・冷蔵庫・炊飯器・調理器具のそろったキッチンがあり[[s:node_room]]、駅から歩いて8分です[[s:node_access]]。</p>
+<p>魚を自分で料理してみたいなら、道の駅「開国下田みなと」の1階で、伊豆漁協が下田の金目鯛などを売る店を開いています[[s:shimoda_kanko_gift]]。静岡県のページ（2025年4月更新）では、8時〜16時30分・定休日なしで、駅から歩いて約10分です[[s:pref_izu_gyokyo_shop]]。旧町内にある私たちのアパートの一室「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」には、ガスコンロ・冷蔵庫・炊飯器・調理器具のそろったキッチンがあり[[s:node_room]]、駅から歩いて8分です[[s:node_access]]。</p>
 """,
   "faq": [
     ("金目鯛は、レッドスナッパーと同じですか",
@@ -212,7 +212,7 @@ ARTICLE = {
     ("金目鯛の旬はいつですか",
      "一年中揚がり、下田の観光協会は「1年中が旬」と言っています[[s:shimoda_kanko_kinme]]。昔からの旬は冬で、脂がいちばん乗るのは6月ごろです[[s:shimoda_news,shizuoka_kinme_fat]]。"),
     ("東京から日帰りで、金目鯛の水揚げを見られますか",
-     "私たちが知っている見学は、2016年6月のきんめ祭りの期間中、朝7時半〜9時ごろのものです[[s:shimoda_news]]。2026年11月には、観光協会の行事のページに祭りは載っていませんでした[[s:shimoda_kanko_event]]。電車も慌ただしく、私たちが見つけたいちばん早い行き方は品川4:35発の普通で、下田に7:59着です[[s:jre_tt_tokyo]]。私たちなら前の晩に泊まって、市場の食堂で朝ごはんにします。"),
+     "2016年は、6月のきんめ祭りの期間に、朝7時半〜9時ごろ水揚げを見学できました[[s:shimoda_news]]。いまの行事は、観光協会の行事のページで見られます[[s:shimoda_kanko_event]]。電車も慌ただしく、品川4:35発の普通で下田に7:59着です[[s:jre_tt_tokyo]]。私たちなら前の晩に泊まって、市場の食堂で朝ごはんにします。"),
     ("kinmedai はどう発音しますか",
      "英語を話す人には “kin-meh-dye” が近い音です。地元では「キンメ」と略すこともよくあります。"),
   ],
