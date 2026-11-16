@@ -15,7 +15,7 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 
 ## つくるもの: `tools/okaeri/drafts/<slug>.py`
 `ARTICLE = {...}` に、`content.py` の `ARTICLES` の1件と同じキーで書く（id, slug, topic, place, also, photo, published, updated, kicker, h1, seo_title, description, dek, card, points, body, faq, sources, keywords, intent, related, ja）。新しい出典は `SOURCES_NEW = {...}` に書く。
-- 記法: 出典 `[[s:キー]]`、内部リンク `[[l:記事id|text]]`、写真 `[[img:名前|alt|説明]]`、人に確かめる箇所 `[[ed:…]]`。
+- 記法: 出典 `[[s:キー]]`、内部リンク `[[l:記事id|text]]`、写真 `[[img:名前|alt|説明]]`、黄色い枠 `[[ed:…]]` は使わない（確かめられないことは書かない。playbook 3-2）。
 - `ja` は `{"h1", "dek", "points", "body", "faq", "review"}`。`body` と `faq` は英語版と同じ順・同じ数で、日本語として自然に。`review` には「今回書いた・変えた点」と「人に確かめてほしい点」を箇条書きで（社長はこれを読んで判断する）。
 - リライトのときは、いまの記事データを写して直す。`id`・`slug`・`published` は変えない。中身を直したら `updated` を今日（日本時間）にする。
 

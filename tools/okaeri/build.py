@@ -315,8 +315,8 @@ def page_home(ctx):
 <div class="homes__photo">{img(ctx, "node-shimoda", "Living room with a grey sofa, low table and sliding paper screens", "NODE Shimoda, in the old town of Shimoda on the Izu Peninsula.", sizes="(max-width: 52rem) 100vw, 30rem")}</div>
 <div class="homes__body">
 <p class="kicker">Our homes</p>
-<h2 id="homes-h">A house to come back to</h2>
-<p>We renovate older houses in small towns and open them to guests who stay a while. Our first is NODE Shimoda, a few minutes from the harbour.</p>
+<h2 id="homes-h">A place to come back to</h2>
+<p>We renovate older places in small towns and open them to guests who stay a while. Our first is NODE Shimoda, a renovated apartment in the old town of Shimoda, sleeping up to four.</p>
 <ul class="ticks">{facts}</ul>
 <div class="btns"><a class="btn btn--light" href="{C.NODE_URL}" rel="noopener">See NODE Shimoda</a><a class="btn btn--line" href="{ctx.href('about')}">How we write our guides</a></div>
 </div>
@@ -367,10 +367,10 @@ def page_topic(ctx, k):
 def page_izu(ctx):
     body = f"""
 <h2>Where is the Izu Peninsula?</h2>
-<p>The Izu Peninsula is in Shizuoka Prefecture, south-west of Tokyo. Atami, at its northern end, is about 80 minutes from Tokyo by limited express, and Shimoda, at the southern tip, is about 2 hours 35 minutes by direct train [[s:jg6305,ekitan]]. Full routes and fares are in [[l:izu-from-tokyo|Izu Peninsula from Tokyo: trains, fares and why to stay a week]].</p>
+<p>The Izu Peninsula is in Shizuoka Prefecture, south-west of Tokyo. Atami, at its northern end, is about 80 minutes from Tokyo by limited express, and Shimoda, at the southern tip, is 2 hours 29 to 44 minutes on the daily direct limited express (November 2026 timetable) [[s:jg6305,jre_tt_tokyo]]. Full routes and fares are in [[l:izu-from-tokyo|Izu Peninsula from Tokyo: trains, fares and why to stay a week]].</p>
 <h2>Which towns are on the Izu Peninsula?</h2>
 <ul>
-<li><strong>Shimoda.</strong> Port town at the southern tip. Beaches, a fish market and Japan’s largest [[l:kinmedai|kinmedai]] landings.</li>
+<li><strong>Shimoda.</strong> Port town at the southern tip. Beaches, a fish market and more than 1,000 tonnes of [[l:kinmedai|kinmedai]] landed a year, which the local tourism association says is the most of any port in Japan [[s:shimoda_kanko_kinme]].</li>
 <li><strong>Shuzenji.</strong> Inland hot-spring town, 35 minutes by local line from Mishima [[s:jg6311]].</li>
 <li><strong>Atami and Ito.</strong> The closest towns to Tokyo, with the most hotels.</li>
 </ul>
@@ -381,7 +381,8 @@ def page_izu(ctx):
 <li>[[l:izu-from-tokyo|Izu Peninsula from Tokyo: trains, fares and why to stay a week]]</li>
 <li>[[l:kinmedai|Kinmedai: Japan’s golden-eye snapper and where to eat it]]</li>
 </ul>
-[[ed:This hub page will carry each home, a map and a list of places within walking distance. Add them once the home details are confirmed.]]
+<h2>Where do we stay in Shimoda?</h2>
+<p>Our place is <a href="{C.NODE_URL}" rel="noopener">NODE Shimoda</a>, a renovated apartment of about 40 m² on the second floor of a building in the old town. It’s 8 minutes on foot from Izukyu-Shimoda Station on a flat road, with a convenience store 2 minutes away, a supermarket 3 minutes away and Perry Road 5 minutes away [[s:node_site]]. There’s a shower but no bathtub, and about 13 steps up to the door [[s:node_room]].</p>
 """
     return (f'<div class="wrap"><article class="post">{crumbs(ctx, [(NAME, "home"), ("Places", "topic-places"), ("Izu Peninsula", None)])}'
             f'<p class="kicker">Places</p><h1>{C.IZU["h1"]}</h1><p class="dek">{C.IZU["dek"]}</p>'
@@ -392,8 +393,7 @@ def page_izu(ctx):
 def page_about(ctx):
     body = f"""
 <h2>Who runs Noki?</h2>
-<p>Noki is run by RIVIA&amp;CO. LLC, a company based in Tokyo that renovates older houses in regional Japan and runs them as places to stay. Our first home, <a href="{C.NODE_URL}" rel="noopener">NODE Shimoda</a>, is in Shimoda on the [[l:izu|Izu Peninsula]]. We are preparing homes in Shuzenji and Yaizu.</p>
-[[ed:Add the names and short profiles of the people who write and check the guides, with a photo if possible.]]
+<p>Noki is run by RIVIA&amp;CO. LLC, a company based in Tokyo that renovates older houses in regional Japan and runs them as places to stay. Our first place to stay, <a href="{C.NODE_URL}" rel="noopener">NODE Shimoda</a>, is in Shimoda on the [[l:izu|Izu Peninsula]], and we are renovating an older house in Yaizu on Suruga Bay. The guides are written and checked by the same team that runs NODE Shimoda.</p>
 <h2>Why “Noki”?</h2>
 <p><em>Noki</em> (軒) are the eaves of a Japanese house. Swallows build their nests under them and often come back to the same one each spring. It’s also the word Japanese uses to count houses, one <em>ken</em> at a time. We hope you’ll find a place here that you keep coming back to.</p>
 <h2>How are the guides written?</h2>
@@ -404,8 +404,7 @@ def page_about(ctx):
 <li><strong>We do not sell houses or give legal advice.</strong> Guides about akiya and visas are general information.</li>
 </ul>
 <h2>How do you tell us something is wrong?</h2>
-<p>Write to us and we will check the source and correct the guide.</p>
-[[ed:Add the contact address or form, and the legal operator details required for a lodging business.]]
+<p>Write to us through our <a href="{SITE}/contact.html" hreflang="ja">contact form</a> (the form is in Japanese, but you’re welcome to write in English) and we will check the source and correct the guide. Company details, including our registered address, are on the <a href="{SITE}/about.html" hreflang="ja">RIVIA&amp;CO. company page</a> (in Japanese).</p>
 <h2>Where to start</h2>
 <ul>
 <li>[[l:guides|All guides to long stays and akiya in Japan]]</li>

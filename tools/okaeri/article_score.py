@@ -167,7 +167,7 @@ def score(a):
     notes += tone(plain(re.sub(r"<table.*?</table>", " ", body, flags=re.S) + "\n" + faq_text + "\n" + a.get("dek", "")))  # 表のマスは文として数えない
     eds = len(re.findall(r"\[\[ed:", body + faq_text))
     if eds:
-        notes.append(f"黄色い枠（未確認の箇所）が {eds} か所（公開前に人が埋める）")
+        gates.append(f"黄色い枠（[[ed:…]]）が {eds} か所。人に聞かずに仕上げる決まり（playbook 3-2）: 公式ページで確かめて書くか、確かめられないことは書かない")
     total = sum(r["点"] for r in res)
     return {"id": a.get("id"), "機械採点": total, "満点": 40, "内訳": res, "ゲート違反": gates, "メモ": notes}
 

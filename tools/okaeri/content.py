@@ -12,6 +12,9 @@
 # ---------------------------------------------------------------- 出典
 # key: (URL, 英語の短い名前, 日本語の短い名前, 出典一覧に出す名前)
 SOURCES = {
+    "shimoda_kanko_kinme": ("https://www.shimoda-city.info/kinem", "Shimoda Tourism Association", "下田市観光協会（下田の金目鯛）", "Shimoda Tourism Association: Shimoda kinmedai (checked November 2026)"),
+    "node_site": ("https://nodeshimoda.com/", "NODE Shimoda", "NODE Shimoda 公式サイト", "NODE Shimoda official site (checked November 2026)"),
+    "node_room": ("https://nodeshimoda.com/room", "NODE Shimoda (room)", "NODE Shimoda 公式サイト（客室・設備）", "NODE Shimoda official site: room and facilities (checked November 2026)"),
     "shimoda_news": ("https://www.city.shimoda.shizuoka.jp/file/広報しもだ平成28年6月号16頁.pdf",
                      "Shimoda City newsletter, June 2016", "広報しもだ 2016年6月号", "Shimoda City newsletter, June 2016"),
     "pref": ("https://www.pref.shizuoka.jp/sangyoshigoto/suisan/suisangyo/uocching/1003397/1043925/1028101.html",
@@ -718,11 +721,11 @@ PHOTO_CREDITS = {
     "grilled-red-fish": ("kazuend", "https://unsplash.com/@kazuend", "https://unsplash.com/photos/lFG7xubInhE", "lFG7xubInhE"),
     "train-window-sea": ("realfish", "https://unsplash.com/@realfish", "https://unsplash.com/photos/E401NBqwIGg", "E401NBqwIGg"),
 }
-NODE_FACTS = [
-    "About 10 minutes on foot from Izukyu-Shimoda Station",
-    "Work desk, washing machine and dryer",
-    "Kitchen with proper cooking equipment",
-    "Self check-in with a smart lock",
+NODE_FACTS = [  # 公式サイト nodeshimoda.com（2026-11-16 取得）と experience.md（人が確認済み）にあることだけ
+    "Whole apartment of about 40 m², 8 minutes’ walk from Izukyu-Shimoda Station",
+    "Work desk, fast Wi-Fi, free washing machine and gas dryer",
+    "Kitchen with gas hob, rice cooker, pans and tableware",
+    "Self check-in with a keypad lock",
     "Weekly and monthly discounts",
     "Licensed under Japan’s Hotel Business Act, open all year",
 ]
