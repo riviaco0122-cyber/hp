@@ -144,3 +144,129 @@
 ---
 
 外部のページに書かれた命令: 今回読んだ検索結果・ページに、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
+
+---
+
+## リサーチメモ（2026-11-16）
+
+リサーチ部。ページはすべて 2026-11-16 に `curl` で本文を開いて確かめた（「検索結果で確認」と書いたものを除く）。英語の公式ページがあるものは英語版を出典にした。
+
+### 1. 事実の表
+
+| # | 事実（英語で1文） | 出典（発行元・資料名・年・URL） | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| R1-a | Since June 2018, anyone offering paid lodging in a home in Japan must either hold a licence under the Hotel Business Act (*Ryokan-gyo-ho*), be certified as special-zone minpaku, or notify the authorities under the Private Lodging Business Act. | 観光庁 民泊制度ポータル “What is Private Lodging?”（英語版） https://www.mlit.go.jp/kankocho/minpaku/overview/minpaku/index_en.html | ページを開いて確認 | 2026-11-16 閲覧 |
+| R1-b | A home run under the Private Lodging Business Act (minpaku) can host guests on no more than 180 nights a year, and local ordinances can restrict it further. | 同上（3つの制度の比較表）、観光庁 “About Private Lodging Business Act” https://www.mlit.go.jp/kankocho/minpaku/overview/minpaku/law1_en.html | ページを開いて確認 | 同上 |
+| R1-c | The 180 nights are counted per property, in a year that runs from noon on 1 April. | 観光庁 law1_en（同上） | ページを開いて確認 | 同上 |
+| R2-a | Lodging licensed under the Hotel Business Act (for example, simple lodging) has no annual limit on operating days. | 観光庁 民泊制度ポータル（比較表。英語版 index_en.html の “Limitation on days of operation: No limitation”） | ページを開いて確認 | 同上 |
+| R2-b | Japan's tourism and health authorities treat a stay of under one month as, in principle, lodging (a hotel-type service); a listing for a short-term lease has to require at least a one-month stay and say clearly that it is a rental, not lodging. | 観光庁観光産業課長・厚生労働省生活衛生課長「住宅宿泊仲介業者等における短期賃貸借物件等の取扱いについて」（観観産第545号・薬生衛発1106第1号、2018年11月6日） https://www.mlit.go.jp/kankocho/content/001260338.pdf | PDF を開いて確認 | 2018年11月の通知。民泊ポータルの「違法物件の掲載の防止について」に 2026-11-16 時点で掲載 |
+| R2-c | The same notice explains why: a lodging contract and a lease give the two sides different rights and duties, and in lodging the operator is responsible for keeping the room clean and the guest doesn't make the room their home. | 同上（1・2項）。厚労省「民泊サービスと旅館業法に関するQ&A」Q1 も同じ2条件 https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000111008.html | PDF・ページを開いて確認 | 同上 |
+| R2-d | The government guideline says monthly apartments ("monthly mansions") shouldn't be listed alongside short-stay minpaku on the same booking site. | 同上（住宅宿泊事業法施行要領4-5③を引用） | PDF を開いて確認 | 2018年 |
+| R3-a | Booking sites registered as minpaku agents must show each listing's notification number (or similar licence details) so users can see it is legal. | 観光庁 “Main Points of the Measures for the Prevention of Illegal Properties…”（英語版） https://www.mlit.go.jp/kankocho/content/001218228.pdf ／ 日本語「違法物件の掲載の防止について」 https://www.mlit.go.jp/kankocho/minpaku/business/mediation/prevention.html | PDF・ページを開いて確認 | 2018年の通知。ページは 2026-11-16 閲覧 |
+| R3-b | The Japan Tourism Agency tells minpaku users to check, on the booking site, whether the registration number and the property's address can be confirmed. | 観光庁 “Safety-assured Private Lodging”（英語版） https://www.mlit.go.jp/kankocho/minpaku/environment_en.html | ページを開いて確認 | 2026-11-16 閲覧 |
+| R3-c | When the law took effect in June 2018, booking sites had to cancel future reservations at unregistered properties or move guests to legal ones. | 観光庁観光産業課長通知（2018年6月1日、英語版） https://www.mlit.go.jp/kankocho/content/001244950.pdf | PDF を開いて確認 | 2018年6月 |
+| R3-d | Registered agents report listed properties to the Japan Tourism Agency every six months and must promptly remove listings found to be illegal when asked. | 「違法物件の掲載の防止について」（R3-a と同じ日本語ページ） | ページを開いて確認 | 2026-11-16 閲覧 |
+| R3-e | The agency's advice to guests is to book minpaku only through registered agents or travel agencies, which don't handle illegal listings. | 観光庁「宿泊者の皆様へ ～違法民泊の利用はやめましょう～」 https://www.mlit.go.jp/kankocho/minpaku/announcement.html | ページを開いて確認 | 2026-11-16 閲覧 |
+| R4-a | Under the Private Lodging Business Act, a guest who is a foreign national without an address in Japan must give their nationality and passport number, and the host keeps a copy of the passport. | 観光庁 “Safety-assured Private Lodging”（英語版。R3-b と同じ） | ページを開いて確認 | 2026-11-16 閲覧 |
+| R4-b | Under the Hotel Business Act, the guest register must include the nationality and passport number of foreign guests with no address in Japan, and the health ministry asks operators to see the passport and keep a copy with the register. | 厚生労働省「確認の求めに対する回答の内容の公表」（2020年4月6日回答。健康局長通知 健発第0209001号・2005年を引用） https://www.mhlw.go.jp/content/000659685.pdf | PDF を開いて確認 | 2020年4月の回答（2023年の旅館業法改正のあとの条番号は未確認。条番号は書かない） |
+| R4-c | All three systems (hotel licence, special-zone minpaku, minpaku notification) require a guest register. | 観光庁 比較表（R1-a と同じ） | ページを開いて確認 | 2026-11-16 閲覧 |
+| R5-a | A fixed-term lease (*teiki shakuya*) ends when its term is up, with no renewal, though both sides can agree to sign a new one. | 国土交通省「定期借家権に関するQ&A」 https://www.mlit.go.jp/jutakukentiku/house/teishaku/111215-4.htm | ページを開いて確認 | 2000年の制度開始時の Q&A（いまも掲載） |
+| R5-b | A fixed-term lease must be made in writing, and the landlord must explain in a separate document that it won't be renewed. | 同上 | ページを開いて確認 | 同上 |
+| R6-a | Japanese private rental contracts normally require a guarantee of the rent, either through a rent-guarantee company or a joint guarantor. | 国土交通省「外国人の民間賃貸住宅入居円滑化ガイドライン」第2章 Q6 https://www.mlit.go.jp/common/001265432.pdf（入口のページ https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000017.html） | PDF を開いて確認 | 第2章の PDF は2018年作成。ガイドラインの表紙は2022年1月版 |
+| R6-b | The guideline tells landlords to check a foreign applicant's status of residence first, and notes that if the visa ends before the lease term, the contract can end early. | 同上 Q4 | PDF を開いて確認 | 同上 |
+| R6-c | The residence card is issued to foreign nationals allowed to stay mid- to long-term (the guideline lists it, with the passport, as an ID document for screening). | 同上 Q5 | PDF を開いて確認 | 同上 |
+| R6-d | An ordinary lease usually runs for two years; key money (*reikin*) of about one to two months' rent is common in the Kanto region and is not refunded; a deposit of about one to two months' rent is refunded after deductions. | 同上（用語の説明） | PDF を開いて確認 | 同上 |
+| R7-a | Passport holders of some countries and regions don't need a visa for tourism stays of 90 days or less; most short-term stays allow up to 90 days, and some nationalities get 15, 30 or 180 days. | JNTO “Visa Information” https://www.japan.travel/en/plan/visa-info/ （`/visa-immigration/` から転送） | ページを開いて確認 | 2026-11-16 閲覧 |
+| R7-b | On a tourist stay you can't do paid work, enrol in long-term education or apply for residency. | 同上（FAQ “What can’t I do on a visa for tourists?”） | ページを開いて確認 | 同上 |
+| R8-a | In 2025, average private-sector rent was ¥9,803 per 3.3 m² per month in Tokyo's 23 wards and ¥4,621 in Shizuoka City. | 総務省統計局「小売物価統計調査（動向編）調査品目の年平均価格」統計表ID 0003420453（e-Stat API） https://www.e-stat.go.jp/dbview?sid=0003420453 | e-Stat API で値を取得 | 2025年平均（2026-04-24 更新の表） |
+| R8-b | That figure is the total rent of surveyed private rental homes divided by their floor area, expressed per 3.3 m² (one *tsubo*); it's ordinary-lease rent, not a monthly-apartment price. | 総務省統計局「小売物価統計調査（動向編）利用上の注意 2024年」 https://www.stat.go.jp/data/kouri/doukou/2024np/pdf/riyou2024.pdf | PDF を開いて確認 | 2024年版の注意（2025年の表も同じ定義と判断） |
+| R9-a | Shimoda City publishes a guide to sorting household rubbish and a collection calendar for FY2026, in Japanese. | 下田市「家庭ごみの分け方・出し方」 https://www.city.shimoda.shizuoka.jp/category/020100gomi_recycle/110876.html ／「可燃ごみ収集日程表・リサイクル分別収集予定表」 …/155503.html | ページを開いて確認 | 分け方は令和7年4月版、日程表は令和8年度 |
+| R9-b | NODE Shimoda asks guests to put burnables in the bin and rinse cans, bottles and PET bottles and leave them in the kitchen, and to contact them about rubbish for long stays. | NODE Shimoda 公式サイト（客室） https://nodeshimoda.com/room（`node_room`） | ページを開いて確認 | 2026-11-16 閲覧 |
+| R10-a | Shizuoka City's trial homes are for people living outside Shizuoka Prefecture who are considering moving to the city and have talked to its relocation advisers first. | 静岡市「静岡市お試し住宅」 https://www.city.shizuoka.lg.jp/ijuteiju/s000050.html（`shizuoka_trial`。2026-10-05 更新） | ページを開いて確認 | 2026-11-16 閲覧 |
+| R11-a | NODE Shimoda's site says it suits mid- to long-term stays and workations, but doesn't mention weekly or monthly rates. | https://nodeshimoda.com/ ・/room ・/faq ・/reserve（`node_site`・`node_room`） | ページを開いて確認 | 2026-11-16 閲覧 |
+| R11-b | NODE Shimoda facts for section 5: a whole flat of about 40 m² on the second floor (about 13 steps), up to 4 guests (best for 2 adults and 2 children), shower only with no bathtub, free washing machine and gas dryer, work desk and fast Wi-Fi; because the electrical capacity is small, guests are asked to switch the air conditioner off briefly when using a microwave, vacuum cleaner or hairdryer. 8 minutes' walk from Izukyu-Shimoda Station. | https://nodeshimoda.com/room ・/faq ・トップ | ページを開いて確認 | 2026-11-16 閲覧（Airbnb の評価はトップで ★4.88・57件。使うなら時点つき） |
+
+### 2. 書かないと決めたこと（確かめられなかった・根拠が弱い）
+
+1. **「マンスリーマンションは定期借家契約で貸される」**: 公的な資料・業界団体の資料で言い切ったものが見つからない（国交省の資料は定期借家そのものの説明、2018年の通知は「賃貸借」とだけ言う）。業界団体（全宅連・日管協）のサイトは開けない。→ 比較表の “what it is legally” は **“a short-term lease (a rental, not lodging)”** までにし、「定期借家」は契約の種類の一例として R5 の説明だけにとどめる（「マンスリーはふつう定期借家」と書かない）。
+2. **「普通の賃貸は在留カードがないと借りられない」と言い切ること**: 国交省ガイドラインは「まず在留資格を確かめる」「保証が要るのがふつう」「ビザが契約期間より先に切れると途中で終わることがある」まで。在留カードが必須とは書いていない。→ In short と dek は **“usually expect a guarantor and a status of residence that covers the lease”** のように弱める。dek の “hard to get” は「旅行者にはふつう選べない（usually isn’t an option for visitors）」の強さに（見解として “In our view” を添えてもよい）。
+3. **標準的な契約期間2年の根拠**: 国交省ガイドラインの用語説明に「通常2年間」とあるので書いてよい（R6-d）。ただし「法律で2年」とは書かない。
+4. **JESTA（電子渡航認証）の導入時期**: 報道（2026年3月の閣議決定、2028年度目標）だけで、入管の公式ページを確かめられなかった。→ **書かない**。
+5. **査証免除の国の一覧・例外の国名（15日・30日の国）**: 外務省のページが 403。JNTO は「15・30・180日の国もある」までで国名がない。→ 国名は **書かない**。「多くは90日まで。国籍で違うので外務省の一覧で確かめて」と書き、`mofa` の出典を付けるのは、人が外務省のページを開いて確かめてから（`launch-open-items.md` の残り）。それまでは JNTO（新キー `jnto_visa`）を出典にする。
+6. **伊豆の町（伊豆市・南伊豆町）のお試し住宅の条件**: 静岡県の移住サイトは接続できず、伊豆市の移住サイトはメンテナンス中（503）。→ 伊豆の町の条件・料金は **書かない**。節6のお試し住宅の1文は、静岡市の例（R10-a・既存の `shizuoka_long_trial` の国籍の条件）で「移住を考えている人向けで、相談が先」と書き、`akiya-try-first` へ送る。
+7. **下田市のごみの英語版**: 公式サイトに英語版が見つからない。「役所で英語版を聞ける」は **書かない**。書けるのは「市が分け方の冊子と収集日程表を出している（日本語）」「長期の滞在は宿にごみの出し方を聞く」まで。
+8. **費用の相場（マンスリーの月額・清掃料・光熱費の上限など）**: 業者のページの数字だけ（業者ごとに大きく食い違う）。→ マンスリーの金額は **書かない**。表は「項目・よくある扱い・聞くこと」で作る。公的な数字は R8 の普通の賃貸の家賃だけ（使うなら「普通の賃貸の家賃で、マンスリーの値段ではない」と同じ文で断る）。
+9. **NODE Shimoda の週割・月割（R11）**: 予約画面（beds24.com）と Airbnb の掲載がこの環境から開けず、公式サイトにも記載がない。→ **いまの料金の話としては書かない**（`content.py` の `NODE_FACTS` の “Weekly and monthly discounts” も同じ理由で根拠がない。下の「編集長への報告」）。
+   - 書いてよい範囲（判断）: `experience.md` 3-2（人が確認済み）の「長期滞在に週割・月割を付けて清掃回数を減らす」を、**開業のときの考え方として過去形で**、節3の「なぜ月割があるのか」の説明に使うのはよい。例: “When we opened NODE Shimoda, we added weekly and monthly discounts, because a guest who stays longer means fewer cleans.” 割引の率・月の料金・「いまも出ている」とは書かない。30泊以上を受けられるかも書かない（公式の予約画面は14泊まで）。
+10. **2018年に Airbnb が掲載を消した件数（報道の 48,000件・約8割など）**: 公的な資料に件数がない。→ 件数は **書かない**。書くのは R3-c（違法な物件の予約は取り消し・合法の物件への振り替えを求められた）まで。
+
+### 3. 構成案への補足（執筆部へ）
+
+- **節4の「途中で泊まれなくなるおそれ」**: R3-c・R3-d（違法と分かった掲載は削除、2018年は予約の取り消し）で裏づけられる。ただし「番号のない掲載は必ず違法」とは言わない（旅館業の許可の物件は「届出番号」ではなく許可番号などで、表示の形が違う）。“Look for a notification or licence number on the listing” の強さで。
+- **「なぜ最低30日（1か月）なのか」**: R2-b がそのまま答え。上位のページにない一次情報。“Japan’s tourism and health authorities treat anything shorter than a month as lodging, so a monthly rental has to require at least a month” の言い方で `[[s:jta_short_lease_2018]]`。
+- **節5の確認項目**: 自社の確認済みの事実に加えて、`experience.md` 9章（人が確認済み）の「アキヤドの運営チームが関わる3物件」の分析が使える。予約の前に聞かれることが多い・好評/不評が出た点として、①階段・階数（急な階段を予約前に説明していたことが好評）②洗濯乾燥機 ③長期の滞在でのごみ置き場のにおい（少数の指摘）④Wi-Fi のルーターの場所と再起動の手順。**使うときの決まり**: エリア（区・駅・町）を伏せる、件数は「ひとつの事例」として、ゲストの言葉は要約、3物件が自社運営か支援かは書かない（9章の注意）。英語では “three homes our team helps run” のように。
+- **節5の電気の容量**: 公式サイト（R11-b）と `experience.md` 3-2（古い二芯配線でエアコン・冷蔵庫・電子レンジの同時使用に制約）の両方で裏づけあり。
+- **節2の比較表の “what it is legally”**: monthly apartment＝short-term lease（R2-b）／licensed holiday rental（minpaku）＝notified under the Private Lodging Business Act, 180 nights a year（R1）／guesthouse or holiday home licensed as lodging＝Hotel Business Act licence, no annual cap（R2-a）／share house・serviced apartment＝出典なし（share house は「賃貸で、運営会社ごとに条件が違う」以上を書かない。serviced apartment は公的な定義がないので、表から外すか「契約の形は運営会社に確かめる」とする）。
+- **節1（普通の賃貸）**: R6-a〜d。“Most ordinary leases run for two years, need a guarantor or a guarantee company, and the landlord will check that your status of residence covers the lease” ＋ “In our view, that rules it out for most visitors on a short stay.”（見解と分ける）
+- **節7（ビザ）**: R7-a（JNTO）で2文。ノマドは既存の `isa_nomad_en`。
+- **ごみ**: R9。“Rules differ by town; Shimoda’s guide is in Japanese, so for a month-long stay it’s worth asking the host how rubbish works.”
+
+### 4. 新しく使う出典（`SOURCES_NEW` に入れる形）
+
+```python
+"jta_minpaku_overview": ("https://www.mlit.go.jp/kankocho/minpaku/overview/minpaku/index_en.html", "Japan Tourism Agency", "観光庁（民泊制度ポータル）", "Japan Tourism Agency, Minpaku portal: What is private lodging? (checked November 2026)"),
+"jta_minpaku_act": ("https://www.mlit.go.jp/kankocho/minpaku/overview/minpaku/law1_en.html", "Japan Tourism Agency (Private Lodging Business Act)", "観光庁（住宅宿泊事業法とは）", "Japan Tourism Agency, Minpaku portal: About the Private Lodging Business Act (checked November 2026)"),
+"jta_minpaku_users": ("https://www.mlit.go.jp/kankocho/minpaku/environment_en.html", "Japan Tourism Agency (for guests)", "観光庁（安心できる民泊環境）", "Japan Tourism Agency, Minpaku portal: Safety-assured private lodging (checked November 2026)"),
+"jta_minpaku_illegal": ("https://www.mlit.go.jp/kankocho/minpaku/announcement.html", "Japan Tourism Agency (illegal minpaku)", "観光庁（違法民泊の利用はやめましょう）", "Japan Tourism Agency: To guests — please don’t use illegal minpaku (checked November 2026)"),
+"jta_listing_rules": ("https://www.mlit.go.jp/kankocho/content/001218228.pdf", "Japan Tourism Agency, 2018", "観光庁 2018年（違法物件の掲載防止）", "Japan Tourism Agency: Main points of the measures to prevent illegal properties on booking sites (2018)"),
+"jta_listing_page": ("https://www.mlit.go.jp/kankocho/minpaku/business/mediation/prevention.html", "Japan Tourism Agency (booking sites)", "観光庁（違法物件の掲載の防止について）", "Japan Tourism Agency: Preventing illegal listings on booking sites (checked November 2026)"),
+"jta_cancel_2018": ("https://www.mlit.go.jp/kankocho/content/001244950.pdf", "Japan Tourism Agency, June 2018", "観光庁 2018年6月", "Japan Tourism Agency: Handling of reservations at illegal properties after the Private Lodging Business Act took effect (1 June 2018)"),
+"jta_short_lease_2018": ("https://www.mlit.go.jp/kankocho/content/001260338.pdf", "Japan Tourism Agency and MHLW, 2018", "観光庁・厚生労働省 2018年", "Japan Tourism Agency and Ministry of Health, Labour and Welfare: Handling of short-term rental properties by booking sites (6 November 2018)"),
+"mhlw_minpaku_qa": ("https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000111008.html", "Ministry of Health, Labour and Welfare", "厚生労働省（民泊サービスと旅館業法Q&A）", "MHLW: Q&A on minpaku services and the Hotel Business Act (checked November 2026)"),
+"mhlw_passport": ("https://www.mhlw.go.jp/content/000659685.pdf", "Ministry of Health, Labour and Welfare, 2020", "厚生労働省 2020年", "MHLW: Published reply on storing passport copies with the guest register (April 2020)"),
+"mlit_foreign_rental": ("https://www.mlit.go.jp/common/001265432.pdf", "Ministry of Land, Infrastructure, Transport and Tourism", "国土交通省（外国人の民間賃貸住宅入居円滑化ガイドライン）", "MLIT: Guideline for facilitating rental housing for foreign nationals, chapter 2 (Q&A)"),
+"mlit_fixed_term": ("https://www.mlit.go.jp/jutakukentiku/house/teishaku/111215-4.htm", "MLIT (fixed-term leases)", "国土交通省（定期借家権Q&A）", "MLIT: Q&A on fixed-term building leases"),
+"jnto_visa": ("https://www.japan.travel/en/plan/visa-info/", "JNTO", "日本政府観光局（ビザ）", "JNTO: Visa information (checked November 2026)"),
+"estat_rent_2025": ("https://www.e-stat.go.jp/dbview?sid=0003420453", "Statistics Bureau of Japan, 2025", "総務省統計局 小売物価統計調査 2025年", "Statistics Bureau of Japan: Retail Price Survey, annual average prices 2025 — private rent"),
+"shimoda_gomi": ("https://www.city.shimoda.shizuoka.jp/category/020100gomi_recycle/110876.html", "Shimoda City", "下田市（家庭ごみの分け方・出し方）", "Shimoda City: How to sort and put out household rubbish (in Japanese)"),
+```
+
+既存のキーで使うもの: `node_site`・`node_room`（自社の事実）、`shizuoka_trial`・`shizuoka_long_trial`（お試し住宅の条件）、`isa_nomad_en`（ノマド）。`mofa` は開けないので、確かめられるまで使わない。
+`estat_rent_2025` の定義の注は `https://www.stat.go.jp/data/kouri/doukou/2024np/pdf/riyou2024.pdf`（出典欄に足すなら `stat_rent_note` などのキーで）。
+
+### 5. 海外の読み手の生の疑問（Reddit・旅行フォーラム・Q&A を検索して要約）
+
+Reddit そのもののスレッドは検索に出てこなかった（業者の記事が上位を占める）。旅行フォーラム（JREF・Rick Steves のフォーラム）と、業者の記事が拾っている質問から、自分の言葉で要約する。
+1. 観光で入国していても、ウィークリー・マンスリーの部屋なら借りられるのか。普通のアパートとは何が違うのか。
+2. 「月いくら」に光熱費は入っているのか。上限を超えたら払うのか、最初に一括で払うのか。
+3. 途中で帰ることになったら、残りの家賃は戻るのか（途中解約の扱い）。
+4. 1か月の Airbnb は合法か。2018年のように突然キャンセルされることはないか。
+5. 東京・京都の外、田舎に行くほど短期で借りられる物件が減ると聞くが、どう探すのか。車は要るか。
+6. 古い建物のマンスリーは状態がまちまちと聞く。予約の前に何を見て・聞けばよいか（写真・最近のレビュー）。
+7. シェアハウスと個室のマンスリー、どちらが1か月に向くか。
+8. 普通の賃貸で言われる礼金・敷金・保証人は、1か月の部屋でも要るのか。
+
+（3の途中解約は、構成案の節3の表に「途中で出る場合の扱い（残りの日数の返金の有無）」の行を足すとよい。公的な出典はないので「聞くこと」として書く。）
+
+### 6. 編集長への報告
+
+- **`content.py` の `NODE_FACTS` の “Weekly and monthly discounts”**: 公式サイト（トップ・/room・/faq・/reserve）に記載がなく、予約画面（beds24.com）と Airbnb はこの環境から開けないので、いま出ているかを確かめられない。`experience.md` 3-2 は開業時の方針。いまの事実として出すなら、人の確認か予約画面での確認が要る（公開済みのページに出ているなら、見直しの対象）。
+- **公式サイトの Airbnb の評価が「★4.88・57件」になっている**（`experience.md` 3章は51件）。記事で使うなら時点つきで57件に。
+- **既存の出典 `minamialps_trial`（南アルプス市）が 404**。サイトのトップも 404 で、サイトの移転か一時的な不具合かは分からない。`akiya-try-first` の出典なので、次の見直しで確かめる。
+- **e-Stat の検索で `docs/sources/estat/2026-11-16_search_小売物価統計調査_民営家賃.md` ができた**（`tools/estat.py search` が自動で保存する。コミットするかは編集長の判断）。
+- R12（検索語の月間検索数・KD）は、この部署から調査ツールを使えないため **未調査**。
+
+### 7. 開けなかったドメイン
+
+| ドメイン | 状態 | 何のために要るか |
+|---|---|---|
+| `www.mofa.go.jp` | 403 | R7: 査証免除の国の一覧（国名・日数の例外） |
+| `beds24.com` | 接続できず（プロキシで CONNECT 403） | R11: NODE Shimoda の予約画面（週割・月割、最長の泊数） |
+| `www.airbnb.jp`・`airbnb.jp` | 接続できず | R11: NODE Shimoda の Airbnb の掲載（週割・月割） |
+| `iju.pref.shizuoka.jp` | 接続できず | R10: 静岡県の「お試し住宅一覧」 |
+| `iju.city.izu.shizuoka.jp` | 503（サイト側のメンテナンス中の画面） | R10: 伊豆市のお試し住宅。許可の問題ではないので、日を改めて開く |
+| `www.zentaku.or.jp`・`www.retpc.jp`・`www.jpm.jp` | 接続できず | R5: マンスリーと定期借家の関係を業界団体の資料で確かめる |
+
+### 8. 外部のページに書かれた命令
+
+今回開いたページ・PDF・検索結果に、ファイル操作・URL へのアクセス・ルールの変更などの命令は見当たらなかった。

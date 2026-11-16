@@ -140,3 +140,116 @@
 ---
 
 外部のページに書かれた命令: 今回読んだ検索結果・ページに、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
+
+---
+
+## リサーチメモ（2026-11-16 リサーチ部）
+
+取得はすべて 2026-11-16（日本時間）。「開いて確認」= curl でページ本文を読んだ。「検索で確認」= 入管・外務省・在外公館のページがこの環境から開けず（403 またはプロキシで遮断）、検索結果の要約・抜粋で中身を確かめた（ページ本文は未読）。**入管（www.moj.go.jp/isa・www.isa.go.jp）の英語版の文言は開けず確かめられなかった**ので、英語の言い回しは JNTO（開いて確認）と e-Gov の条文（日本語。英訳は執筆部）にそろえる。
+
+### A. 制度（R1〜R4・R9・R10）
+
+| # | 事実（英語で1文） | 出典（発行元・資料名・年・URL） | 確認の方法 | 時点 |
+|---|---|---|---|---|
+| R1 | The status is “Designated Activities (Digital Nomad)”, and its family version is “Designated Activities (Spouse or Child of Digital Nomad)”. | JNTO「Digital Nomad Visa」 https://www.japan.travel/en/plan/digital-nomad-visa/ （既存 `isa_nomad_en` も同じ名前） | 開いて確認（JNTO）。入管の告示番号（53号・54号）は検索で確認 | 2026-11-16 |
+| R1 | The scheme started on 31 March 2024. | 外務省の査証ページ（令和6年3月31日の掲載）・Baker McKenzie（“effective 31 March 2024”） | 検索で確認（外務省は開けず） | 2024-03-31 開始 |
+| R1 | It covers remote work for an employer set up under foreign law, or paid services and sales to people outside Japan, done online from Japan — so freelancers with overseas clients fit the wording too. | 出入国管理及び難民認定法施行規則 第19条の5 第3号（e-Gov） https://laws.e-gov.go.jp/law/356M50000010054 | 開いて確認（e-Gov API の条文） | 2026-10-01 施行の版 |
+| R1 | You can’t take a job with a Japanese employer on it, and permission for other work is not granted in principle. | 出入国在留管理庁（`isa_nomad_en`）・入管の配偶者/子の説明 | 検索で確認（入管の文言「本邦の公私の機関との雇用契約等に基づく就労活動は不可」「資格外活動許可は原則認められない」） | 2026-11 |
+| 共通 | The stay is six months, with no extension. | JNTO（“Six months (No extension will be granted)”）・`isa_nomad_en`（「在留期間 6月（更新不可）」） | JNTO は開いて確認、入管は検索で確認＋編集長の確認（launch-open-items） | 2026-11-16 |
+| 共通 | You can come back on the same status once six months have passed since you left Japan. | `isa_nomad_en`（「出国後6か月以降は再度本在留資格で本邦滞在が可能」）・Japan Times 2024-02-02 | 検索で確認＋編集長の確認 | 2026-11 |
+| 共通 | The applicant’s own annual income must be ¥10 million or more at the time of application. | `isa_nomad_en`（「申請時点で申請人個人の年収が1,000万円以上」）・JNTO（“a minimum of 10 million yen for the applicant’s income”） | JNTO 開いて確認・入管は検索で確認 | 2026-11 |
+| 共通 | You need travel or medical insurance covering death, injury and illness for the whole stay, with at least ¥10 million of cover for medical treatment. | `isa_nomad_en` | 検索で確認＋編集長の確認 | 2026-11 |
+| R4 | Eligibility is limited to nationals of countries and regions on the immigration agency’s list, which is built from places that have both a visa exemption and a tax treaty with Japan. | `isa_nomad_list`（PDF）・Japan Times 2024-02-02 | PDF は開けず。条件の考え方は検索で確認＋編集長の確認 | 2026-11 |
+| R4 | At launch, the list was reported as 49 countries and regions, including the United States, the United Kingdom and Canada. | Japan Times「Japan’s digital nomad visas to require ¥10 million in income」2024-02-02 https://www.japantimes.co.jp/news/2024/02/02/japan/society/digital-nomad-visa-march/ | 検索で確認（ページは開けず） | 2024-02 時点の報道 |
+| R2 | A spouse or child supported by the nomad can come on a separate family status for the same short stay; they can’t work in principle, also need insurance, also get no residence card, and must be nationals of a listed country. | `isa_nomad_en`（告示54号）・施行規則 第19条の5 第4号（e-Gov）・JNTO（“Spouse or child accompanying …”） | 在留カードなしは e-Gov で開いて確認。帯同できることは JNTO で開いて確認。働けない・保険・国籍は検索で確認 | 2026-11 |
+| R3 | You apply for the visa at a Japanese embassy or consulate, and the document list is on the Ministry of Foreign Affairs page. | JNTO（MOFA の pagewe_000001_00046 へ誘導） | 開いて確認（JNTO）。MOFA 本体は開けず | 2026-11-16 |
+| R3 | Changing from a short-term (tourist) stay to another status inside Japan is only allowed for “unavoidable special circumstances”. | 出入国管理及び難民認定法 第20条第3項ただし書（e-Gov） https://laws.e-gov.go.jp/law/326CO0000000319 | 開いて確認（条文） | 2026-10-01 施行の版 |
+| R5 | People given three months or less, short-term visitors, and people named in a ministry ordinance — which includes digital nomads and their families — are not “mid- to long-term residents” and don’t get a residence card. | 入管法 第19条の3・施行規則 第19条の5 第3号・第4号（e-Gov） | 開いて確認（条文） | 2026-10-01 施行の版 |
+| R5 | Foreign nationals go on the resident register (juminhyo) as “mid- to long-term residents”, i.e. people who are issued a residence card. | 総務省「外国人住民に係る住民基本台帳制度」（英語版） https://www.soumu.go.jp/main_sosiki/jichi_gyousei/c-gyousei/zairyu/english/index.html ・住民基本台帳法 第30条の45（e-Gov） | 開いて確認 | 2026-11-16 |
+| R6 | Foreign nationals who are not registered foreign residents are excluded from National Health Insurance (the rule has narrow exceptions for people already enrolled). | 国民健康保険法 第6条第11号・国民健康保険法施行規則 第1条第1号（e-Gov） https://laws.e-gov.go.jp/law/333M50000100053 | 開いて確認（条文） | 2026-10-01 施行の版 |
+| R7 | The government’s guideline for landlords lists a passport and a residence card as examples of ID for tenant screening, and leaves what to ask for to the landlord and tenant. | 国土交通省「外国人の民間賃貸住宅入居円滑化ガイドライン」第2章 Q5 https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000017.html （PDF /common/001265432.pdf） | 開いて確認 | 第2章 PDF は 2018年の版（ページは 2026-11-16 確認） |
+| R7 | The same guideline says landlords should ask whether you have a Japanese bank account and a phone that works in Japan, and talk about alternatives if you don’t. | 同上 第2章 | 開いて確認 | 同上 |
+| R8 | For income tax, you’re a resident if you have a domicile in Japan or have lived here continuously for a year or more; everyone else is a non-resident. | 国税庁 タックスアンサー No.2875 https://www.nta.go.jp/taxes/shiraberu/taxanswer/gensen/2875.htm ・英語 No.12006 https://www.nta.go.jp/english/taxes/individual/12006.htm | 開いて確認 | 令和8年4月1日現在の法令 |
+| R8 | Non-residents are taxed only on Japan-source income, and pay for work done in Japan counts as Japan-source income (tax treaties can change this). | 国税庁 No.12006（2(12)）・No.2875（租税条約） | 開いて確認 | 同上 |
+| R8 | 国税庁・財務省のデジタルノマド専用の案内 | 見つからなかった | 検索で確認 | 2026-11-16 |
+| R9 | JNTO’s English page matches the immigration rules on six months, no extension, ¥10 million income and family members; it doesn’t give the insurance amount and sends readers to the immigration list and MOFA documents. | JNTO（R1と同じ） | 開いて確認 | 2026-11-16（JNTO は「掲載時点の情報」と注記） |
+| R10 | Visitors from visa-exempt countries can usually stay up to 90 days for tourism (some nationalities get 15, 30 or 180 days) and can’t do paid work. | JNTO「Entry Into Japan and Visa Information」 https://www.japan.travel/en/plan/visa-info/visa-immigration/ （既存 `mofa` は開けず） | 開いて確認（JNTO） | 2026-11-16 |
+
+### B. 拠点選び（R11）
+
+| # | 事実（英語で1文） | 出典 | 確認の方法 | 時点 |
+|---|---|---|---|---|
+| R11 | Fibre broadband covered an estimated 97.13% of households in Japan, 96.7% in Shizuoka Prefecture, 96.3% in Tokyo and about 93.8% in Shimoda. | 総務省「令和6年度末FTTH世帯カバー率（都道府県別・市区町村別）」 https://www.soumu.go.jp/main_content/001088979.xlsx ・報道資料 https://www.soumu.go.jp/menu_news/s-news/01kiban07_02000124.html | 開いて確認（Excel の値） | 2025年3月末（推計。公表は 2026-08-28） |
+| R11 | 伊豆の他の市町（同じ表）: 伊東 95.6%・伊豆 95.3%・伊豆の国 90.6%・東伊豆 95.0%・河津 92.5%・南伊豆 93.4%・松崎 91.9%・西伊豆 93.8%・熱海 93.4% | 同上 | 開いて確認 | 同上 |
+| R11 | JNTO has an English search for medical institutions by prefecture, language and department, and says to check each one before you go. | JNTO「Guide for when you are feeling ill」 https://www.jnto.go.jp/emergency/eng/mi_guide.html | 開いて確認 | 2026-11-16 |
+| 自社 | NODE Shimoda is a private apartment of about 40 m², 8 minutes’ walk from Izukyu-Shimoda Station, with a work desk, high-speed Wi-Fi, a kitchen, a washing machine and a gas dryer; there is a shower booth, no bathtub. | `node_site`・`node_room` | 開いて確認 | 2026-11-16 |
+| 自社 | （体験）長期滞在とセルフチェックインを前提に設計／家具は睡眠（マットレス）と仕事（ワークデスク）に投資／洗濯機・乾燥機と調理器具がレビューで評価された／**開業時、Wi-Fi の工事は申し込みから2か月以上かかり、据え置き型のホームルーターでしのいだ** | `docs/brand/experience.md` 3-2（人が確認済み） | 照合済み | 開業時 |
+
+- 回線の数字の注意: 「世帯カバー率」は、光回線を**引ける**世帯の割合の推計（実際の速さではない）。書くなら “an estimated … of households can get fibre” とし、2025年3月末と書く。宿の回線の実測値は書かない。
+- 最後の Wi-Fi 工事の話は「町を選ぶとき、回線がもう入っている部屋を選ぶ」理由として節7で使える（体験として “When we opened …”）。
+
+### C. 書かないと決めたこと（確かめられなかった）
+
+1. **対象国・地域の今の数**と一覧の版（PDF が開けない。49・50・51 と食い違い）→ 数は書かず「一覧の PDF で確かめて」と案内。2024年2月の報道の「49」は、使うなら “was reported as 49 at launch” と時点つきでのみ。
+2. **短期滞在のまま日本でノマドに切り替えられるか**（ノマド専用の可否は確かめられず）→ 入管法 第20条第3項の一般のルールだけ示し、「出発前に申請するつもりで」と書く。
+3. **在留資格認定証明書（COE）が要るか・2つの申請の道**（米国の在外公館のページ題に “without a Certificate of Eligibility” があるが、ページは開けず）→ 書かない。
+4. **審査の期間・手数料**（在外公館の資料で「COE ありは5営業日・なしは未定」との検索結果、手数料が2026年に変わったとの記述もあるが未確認）→ 書かない。
+5. **必要書類の細目**（外務省のページは開けず）→ 種類を並べず、外務省のページへ。
+6. **家族の保険を本人の保険でまとめられるか**（食い違い）→ 書かない。「家族も保険が要る」までにする。
+7. **発給の件数**（2024年 257件・2025年 646件という外務省の査証統計の二次集計と Japan Times の記事が検索に出たが、一次の外務省統計を開けず）→ 書かない。
+8. **携帯・銀行口座が在留カードなしで作れるか**の公的な出典 → 見つからない。国交省のガイドラインで「大家が聞くもの」として出ている範囲までにする。
+9. **外国語対応の病院の、伊豆の具体的な名前・数**（静岡県の一覧は今回未調査）→ JNTO の検索で確かめられる、までにする。
+10. **R12 の検索数・KD** → この部署から調査ツールが使えなかった。戦略部が同じ方法で取り直す。
+
+### D. 新しく使う出典（`SOURCES_NEW` 用）
+
+```python
+"jnto_nomad": ("https://www.japan.travel/en/plan/digital-nomad-visa/", "JNTO", "日本政府観光局（デジタルノマドビザ）", "JNTO: Digital Nomad Visa (checked November 2026)"),
+"jnto_visa": ("https://www.japan.travel/en/plan/visa-info/visa-immigration/", "JNTO", "日本政府観光局（入国とビザ）", "JNTO: Entry into Japan and visa information (checked November 2026)"),
+"egov_immig_act": ("https://laws.e-gov.go.jp/law/326CO0000000319", "Immigration Control Act", "出入国管理及び難民認定法（e-Gov法令検索）", "Immigration Control and Refugee Recognition Act, Articles 19-3 and 20 (e-Gov, version in force 1 October 2026)"),
+"egov_immig_rules": ("https://laws.e-gov.go.jp/law/356M50000010054", "Immigration Control Act ordinance", "出入国管理及び難民認定法施行規則（e-Gov法令検索）", "Ordinance for Enforcement of the Immigration Control and Refugee Recognition Act, Article 19-5 (e-Gov, version in force 1 October 2026)"),
+"soumu_juki": ("https://www.soumu.go.jp/main_sosiki/jichi_gyousei/c-gyousei/zairyu/english/index.html", "Ministry of Internal Affairs and Communications", "総務省（外国人住民の住民基本台帳制度）", "Ministry of Internal Affairs and Communications: Basic Resident Registration System for foreign residents"),
+"egov_nhi_rules": ("https://laws.e-gov.go.jp/law/333M50000100053", "National Health Insurance Act ordinance", "国民健康保険法施行規則（e-Gov法令検索）", "Ordinance for Enforcement of the National Health Insurance Act, Article 1 (e-Gov, version in force 1 October 2026)"),
+"mlit_foreign_rental": ("https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000017.html", "Ministry of Land, Infrastructure, Transport and Tourism", "国土交通省（外国人の民間賃貸住宅入居円滑化ガイドライン）", "MLIT: Guideline for Facilitating Looking for and Moving in Rental Housing for Foreign Nationals"),
+"nta_2875": ("https://www.nta.go.jp/taxes/shiraberu/taxanswer/gensen/2875.htm", "National Tax Agency", "国税庁（タックスアンサー No.2875）", "National Tax Agency: Tax Answer No.2875, residents and non-residents (law as of 1 April 2026)"),
+"nta_nonresident": ("https://www.nta.go.jp/english/taxes/individual/12006.htm", "National Tax Agency", "国税庁（非居住者の課税）", "National Tax Agency: No.12006 Tax on the income of a non-resident"),
+"soumu_ftth_2025": ("https://www.soumu.go.jp/main_content/001088979.xlsx", "MIC, 2025", "総務省（令和6年度末 FTTH世帯カバー率）", "Ministry of Internal Affairs and Communications: Fibre household coverage by prefecture and municipality, end of March 2025"),
+"jnto_medical": ("https://www.jnto.go.jp/emergency/eng/mi_guide.html", "JNTO", "日本政府観光局（医療機関の検索）", "JNTO: Guide for when you are feeling ill (medical institution search)"),
+```
+
+- 既存の `isa_nomad_en`・`isa_nomad_list`・`node_site`・`node_room` はそのまま使う。`mofa` は開けなかったので、90日の行は `jnto_visa` を使う。
+- `japantimes_nomad_2024`（49か国の報道）を使う場合だけ: `("https://www.japantimes.co.jp/news/2024/02/02/japan/society/digital-nomad-visa-march/", "The Japan Times, 2024", "ジャパンタイムズ 2024年", "The Japan Times: Japan’s digital nomad visas to require ¥10 million in income (2 February 2024)")`（ページは開けず、検索で確認）。
+
+### E. 書き方の注意（断定しすぎない）
+
+- ビザ・在留の条件は **出入国在留管理庁の2026年11月時点** と書く（“As of November 2026, the Immigration Services Agency says …”）。「個別の判断は在外公館・入管か行政書士へ」を節6に1回。
+- 国保は「対象外」と言い切れる根拠が条文（施行規則 第1条第1号）にあるが、例外の書き方が細かいので “Because you won’t be on the resident register, you can’t join National Health Insurance, which is why private cover is a condition.” 程度に留める。
+- 賃貸は「借りられない」と書かない。国交省のガイドラインは在留カードを**例として**挙げているだけ。“Many ordinary leases expect a residence card, a Japanese bank account and a local phone number, so …” と見解寄りに書くなら “In our experience / we think” を付ける（自社の体験には賃貸の審査の話はないので、見解として書く）。
+- 税は定義（No.2875）と「日本での仕事への報酬は国内源泉所得」（No.12006）まで。「183日未満なら非課税」とは書かない。租税条約で変わりうると添えて、税理士へ。
+
+### F. 海外の読み手の生の疑問（Reddit・旅行フォーラム・体験記。要約）
+
+1. 在留カードは空港でもらえるのか、もらえないのか（ブログと掲示板で答えが割れている）。
+2. 国民健康保険に入れないなら、どんな保険なら大使館で通るのか。手持ちの保険の証書に「日本でも有効」と明記がなく、旅行保険を買い足した、という声。
+3. 会社員でなくフリーランス（海外の取引先）でも対象か。収入は何で証明するのか。
+4. 結婚していないパートナーは一緒に来られるのか。
+5. 6か月のあと、いったん出て戻ってこられるのか。何か月あければよいのか。
+6. 観光で入ってから、日本の中で切り替えられるのか。
+7. 家具付きの部屋を予約したら写真と違った、という不満。在留カードなしで普通の部屋を借りられるのか。
+8. 東京以外の町だと回線は大丈夫か、コワーキングはあるか、現金しか使えない店が多いのでは。
+9. 日本で家を買えばビザが出るのか（出ない、という前提の確認）。
+10. 年収1,000万円は、手取りか税引き前か、家族の収入を足してよいか（入管は「申請人個人の年収」）。
+
+### G. 開けなかったドメイン（編集長へ）
+
+| ドメイン | 状態 | 何に要るか |
+|---|---|---|
+| `www.moj.go.jp`（入管のノマドのページ・対象国 PDF・Q&A） | 403（CloudFront。curl・WebFetch とも） | R1〜R4 の英語の文言、対象国の今の数、家族の条件の原文 |
+| `www.isa.go.jp` | 403 | 同上（英語版） |
+| `www.mofa.go.jp` | 403 | R3（必要書類・COE・手数料）、R10、査証発給統計（件数） |
+| `*.emb-japan.go.jp`（在外公館。例 www.fi.emb-japan.go.jp・www.houston.us.emb-japan.go.jp・www.chicago.us.emb-japan.go.jp） | プロキシで遮断（接続 000・名前解決できず） | COE なしの申請の道・審査期間 |
+| `www.japantimes.co.jp` | プロキシで遮断（000） | 開始時の対象国の数（49）・2025年の発給件数の報道 |
+
+### H. 外部のページに書かれた命令
+
+今回読んだページ・検索結果に、ファイル操作・URL へのアクセス・ルールの変更などの命令は見当たらなかった。

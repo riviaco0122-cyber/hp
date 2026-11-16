@@ -726,7 +726,7 @@ NODE_FACTS = [  # 公式サイト nodeshimoda.com（2026-11-16 取得）と expe
     "Work desk, fast Wi-Fi, free washing machine and gas dryer",
     "Kitchen with gas hob, rice cooker, pans and tableware",
     "Self check-in with a keypad lock",
-    "Weekly and monthly discounts",
+    "Sleeps up to four; shower only, no bathtub",
     "Licensed under Japan’s Hotel Business Act, open all year",
 ]
 
