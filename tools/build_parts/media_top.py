@@ -127,7 +127,7 @@ def media_index_page():
     # ファーストビューの「主な事例」: 自分たちの運営事例と、オーナー取材の事例（新しい順）。アイキャッチの画像で見せる
     top_cases = [ARTICLE_BY_SLUG[sl] for sl in ["case-rental-house-inn-first-year"] + CASE_SLUGS if sl in ARTICLE_BY_SLUG]
     top_case_cards = "\n".join(f'''            <a href="media/{a["slug"]}.html" class="mtop-case" data-date="{a["date"]}">
-              <span class="mtop-case__img"><img src="{eyecatch_path(a)}" alt="" width="1200" height="630" loading="{"eager" if i < 2 else "lazy"}" decoding="async"></span>
+              <span class="mtop-case__img"><img src="{eyecatch_path(a)}" srcset="{eyecatch_srcset(a)}" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="{"eager" if i < 2 else "lazy"}" decoding="async"></span>
               <span class="mtop-case__body"><span class="mtop-case__tag">{"運営事例" if not a["slug"].startswith("case-owner-") else "オーナー取材"}</span><span class="mtop-case__title">{e(a["title"])}</span></span>
             </a>''' for i, a in enumerate(top_cases))
     _guide = {g["key"]: g for g in MEDIA_GUIDES}
