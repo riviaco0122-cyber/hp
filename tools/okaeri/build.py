@@ -50,7 +50,7 @@ MARK_SHAPES = [
 
 def mark_svg(colors=None, attrs='class="mark" aria-hidden="true"'):
     """ロゴの SVG。colors を渡すと色を固定する（ファビコン用）"""
-    c = colors or {"ink": "currentColor", "paper": "var(--paper)", "red": "var(--shu)"}
+    c = colors or {"ink": "var(--mark-body,currentColor)", "paper": "var(--mark-light,var(--paper))", "red": "var(--shu)"}  # ダークモードでは site.css の --mark-body・--mark-light で体を明るい青、お腹と目を白にする（反転すると口を開けた顔に見えるため）
     parts = [f'<circle cx="{v[0]}" cy="{v[1]}" r="{v[2]}" fill="{c[k]}"/>' if isinstance(v, tuple) else f'<path fill="{c[k]}" d="{v}"/>'
              for k, v in MARK_SHAPES]
     return f'<svg {attrs} viewBox="0 0 64 64">{"".join(parts)}</svg>'

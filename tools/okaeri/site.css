@@ -14,13 +14,13 @@
   :root:not([data-theme="light"]){
     --paper:#12161f; --surface:#1a202c; --ink:#ece6d8; --muted:#aaa69c; --line:#2f3546;
     --ai:#93b3e6; --shu:#ff8a70; --note:#3a3215; --review:#1c2b46;
-    --sakura:#f0a6ba; --aoba:#9cc77e; --momiji:#f2a26c; --yuki:#a9bdd4; color-scheme:dark;
+    --sakura:#f0a6ba; --aoba:#9cc77e; --momiji:#f2a26c; --yuki:#a9bdd4; color-scheme:dark; --mark-body:#93b3e6; --mark-light:#f7f3ea;
   }
 }
 :root[data-theme="dark"]{
   --paper:#12161f; --surface:#1a202c; --ink:#ece6d8; --muted:#aaa69c; --line:#2f3546;
   --ai:#93b3e6; --shu:#ff8a70; --note:#3a3215; --review:#1c2b46;
-  --sakura:#f0a6ba; --aoba:#9cc77e; --momiji:#f2a26c; --yuki:#a9bdd4; color-scheme:dark;
+  --sakura:#f0a6ba; --aoba:#9cc77e; --momiji:#f2a26c; --yuki:#a9bdd4; color-scheme:dark; --mark-body:#93b3e6; --mark-light:#f7f3ea;
 }
 /* 入口ごとの季節の色（春=旅、夏=暮らし、秋=家、冬=場所） */
 .t-stay{--season:var(--sakura)} .t-live{--season:var(--aoba)} .t-own{--season:var(--momiji)} .t-places{--season:var(--yuki)}
