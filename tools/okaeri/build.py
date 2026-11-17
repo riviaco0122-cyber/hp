@@ -171,7 +171,7 @@ class Ctx:
             label = "運営者の一次情報で埋める箇所" if ja else "Editor’s note · remove before publishing"
             return f'<aside class="ednote"><p class="ednote__label">{label}</p><p>{m.group(1)}</p></aside>'
 
-        s = re.sub(r" ?\[\[s:([\w,]+)\]\]", src, s)
+        s = re.sub(r"\s*\[\[s:([\w,]+)\]\]", src, s)
         s = re.sub(r"\[\[a:(\w+)\]\]", bare, s)
         s = re.sub(r"\[\[l:([\w-]+)\|([^\]]+)\]\]", link, s)
         s = re.sub(r"\[\[img:([\w-]+)\|([^|\]]+)\|([^\]]*)\]\]", lambda m: img(self, m.group(1), m.group(2), m.group(3)), s)
