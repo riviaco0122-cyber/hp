@@ -29,3 +29,20 @@
 - 家を持つことと在留資格の関係（公的な出典なし。行政書士か入管）
 - ビザなしで90日いられる条件（外務省のページはこの環境から開けない。外務省のページは人が開いて確かめる）
 - About: 書いている人の名前と紹介、問い合わせ先、宿の運営者としての表示（簡易宿所の許可番号など）
+
+## 追加の確認（2026-11-17・許可を足したドメイン）
+
+リサーチ部。取得日はすべて 2026-11-17。ページは `curl -sL --compressed -m 30`（User-Agent の偽装なし）で開いた。
+
+| 項目 | 分かったこと（事実） | 出典URL | 記事でどう書けるか |
+|---|---|---|---|
+| 1. 浜から伊豆急下田駅への最終バス | **確かめられなかった**。東海バス公式の時刻表のページ（https://www.tokaibus.jp/rosen/timetable.html）の「バス停時刻表」は `https://transfer-cloud.navitime.biz/tokaibus?feature=timetable` に向く。この URL も、個別のバス停のページ（`/tokaibus/courses?busstop=00470461`、`/en/tokaibus/courses?busstop=00470461`）も、すべて CloudFront の 403（Request blocked）。プロキシではなく相手側（CloudFront）が拒んでいる。WebFetch は名前解決できない。検索結果の要約では、白浜海岸のバス停には S05・S30・S31・S32・S33 の系統があり、行き先に「下田駅」があるが、時刻は読めなかった | https://www.tokaibus.jp/rosen/timetable.html ・ https://transfer-cloud.navitime.biz/tokaibus?feature=timetable（403） | **最終バスの時刻は書かない**（3-2）。書けるのは「東海バスの路線バスが白浜海岸などから下田駅へ走っている。最終便は季節で変わるので、東海バスの時刻表で確かめて」まで。時刻表へのリンクは東海バスの公式ページ（tokaibus.jp/rosen/timetable.html）を使う。※バス会社以外の乗換サイト（ジョルダンなど）は出典にしない |
+| 2a. JR Pass で乗れる区間 | 全国版の JR Pass は JR の在来線・特急に乗れる（東京〜熱海〜伊東は JR 東日本の線なので、パスの範囲）。**JR 以外の会社の区間は、運賃・料金を別に払う**。公式の「JR 以外の線に乗り入れる主な列車」の表に、**踊り子・サフィール踊り子：伊東〜伊豆急下田（伊豆急行）**、**踊り子：三島〜修善寺（伊豆箱根鉄道）** が「別に運賃・料金が要る区間」として載っている | https://japanrailpass.net/en/about_jrp/route/ ・ https://japanrailpass.net/en/use/conditions-for-use/ （「current as of April 2026」と記載） | “The JR Pass covers JR lines from Tokyo to Ito. South of Ito, the Izukyu line is a separate company, so you pay the fare (and limited-express charge on the Odoriko) for Ito–Izukyu-Shimoda. The same applies to Mishima–Shuzenji on the Izuhakone Railway.” と書ける（出典: JAPAN RAIL PASS 公式） |
+| 2b. 特急・グリーン車 | 普通車用のパスで特急の普通車は追加料金なし。普通車用のパスでグリーン車に乗ると、グリーン料金と特急料金が要る。JR 東日本の「プレミアムグリーン」と、グリーン個室（サフィール踊り子などにある、と公式に記載）は、どちらのパスでも別料金 | https://japanrailpass.net/en/about_jrp/vehicle/ ・ conditions-for-use | 「サフィール踊り子の個室・プレミアムグリーンはパスでも別料金」は書ける。**サフィール踊り子が全車グリーン車かどうかは、この公式サイトに書いていない**ので、「普通車用のパスでは乗れない」とは書かない（書くなら JR 東日本の公式で別に確かめる） |
+| 2c. 値段 | 公式サイトで買う場合（大人／子ども）: 普通車 7日 50,000円／25,000円、14日 80,000円／40,000円、21日 100,000円／50,000円。グリーン車 7日 70,000円／35,000円、14日 110,000円／55,000円、21日 140,000円／70,000円。海外の指定代理店で買う場合は高い（普通車 7日 53,000円、14日 84,000円、21日 105,000円、グリーン車 7日 74,000円、14日 116,000円、21日 147,000円）。子どもは6〜11歳。価格の日付は価格ページにはなく、利用条件のページに「2026年4月時点」 | https://japanrailpass.net/en/purchase/price/ | “As of November 2026, the official site lists the 7-day Ordinary pass at ¥50,000 for adults (bought online).” のように、確認した日を付けて書ける。利用できるのは「短期滞在（Temporary Visitor）」で入国した外国人（https://japanrailpass.net/en/about_jrp/riyou/）。長く住む人は使えないことも書ける |
+| 3a. NODE Shimoda の予約画面（Beds24） | nodeshimoda.com の「空室・料金を見る」は `/reserve` に向き、その中に Beds24 の予約画面（propid=288579）と Airbnb へのリンクがある。Beds24 の泊数の選び肢は **1〜90泊**（11-16 の確認では14泊までだったが、11-17 には90泊まで選べる）。料金・週割・月割・最低泊数は、JavaScript で読み込むため本文に出ない（日付と泊数を付けて開いても、料金は出なかった） | https://nodeshimoda.com/reserve ・ https://beds24.com/booking2.php?propid=288579&referer=iframe | 「予約画面では90泊まで選べる」は事実として書けるが、**選べる＝その日程で空いている・その料金で受ける、ではない**ので、“You can request stays of up to 90 nights on our booking page” 程度にとどめる。週割・月割・最低泊数は**書かない**。※泊数の上限を変えたのが人の判断かどうかは、人に確かめる（宿の方針として書くなら人の確認が要る） |
+| 3b. Airbnb のページ | 題名「【下田駅徒歩８分】下田市旧町内中心部の日常を体感できる滞在型アパート」、種類は「借りられるアパート」、定員4人。サービスの欄に「**長期滞在OK：28泊以上のステイもできます**」。最低泊数・最長泊数・週割・月割は、ページの本文に出ない（割引の欄は空＝JavaScript・日程の指定で出る） | https://www.airbnb.jp/rooms/1444912427010224732 | “Our Airbnb listing accepts stays of 28 nights or more.” と書ける。割引・最低泊数は**書かない** |
+
+**開けなかったドメイン**: `transfer-cloud.navitime.biz`（ネットワークの許可は通るが、相手の CloudFront が 403 で拒む。WebFetch は名前解決できない）。User-Agent の偽装はしていない。最終バスの時刻は、人がブラウザで時刻表を開いて確かめる（「人にしか答えられないもの」に残す）。nodeshimoda.com は `/`・`/room`・`/access` が今回 403、`/faq`・`/reserve` は開けた（相手側の制限とみられる）。
+
+**外部ページの命令**: 従うべきでない命令は見当たらなかった。なお Beds24 の予約画面には宿の側で足した CSS があり、「利用できません」の赤い警告を隠す指定（`.b24alert-danger { display: none }`）が入っている。予約できない日程でも警告が出ない可能性があるので、人に報告する（記事の内容には関係しない）。
