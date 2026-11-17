@@ -50,7 +50,7 @@ ARTICLE = {
  "points": [
    "Ordinary leases usually run for two years and need a rent guarantee, so they rarely suit a one-month stay.",
    "Monthly apartments and licensed holiday rentals with monthly rates are the realistic choices for a visitor.",
-   "A legal holiday rental shows its licence or notification number, and you’ll be asked for your passport.",
+   "Registered booking sites show a legal rental’s licence or notification number, and you’ll be asked for your passport.",
  ],
  "body": """
 <p>A month is too long for a hotel to feel like home, and far too short for a normal Japanese lease. Japan has a few legal ways to fill that gap, and they aren’t the same thing in law. That difference decides who cleans, what you pay and what happens if a listing turns out to be illegal.</p>
@@ -65,17 +65,17 @@ ARTICLE = {
 <div class="tablewrap"><table class="free">
 <thead><tr><th>Type</th><th>What it is in law</th><th>Shortest stay</th><th>Good to know</th></tr></thead>
 <tbody>
-<tr><td><strong>Monthly apartment</strong> (“monthly mansion”)</td><td>A short-term lease: a rental, not lodging [[s:jta_short_lease_2018]]</td><td>A month [[s:jta_short_lease_2018]]</td><td>A furnished flat let by the month. You sign a rental contract, so read what the rent covers.</td></tr>
+<tr><td><strong>Monthly apartment</strong> (“monthly mansion”)</td><td>A short-term lease: a rental, not lodging [[s:jta_short_lease_2018]]</td><td>Usually a month [[s:jta_short_lease_2018]]</td><td>A furnished flat let by the month. You sign a rental contract, so read what the rent covers.</td></tr>
 <tr><td><strong>Licensed holiday rental</strong> (<em>minpaku</em>)</td><td>A home notified to the authorities under the Private Lodging Business Act [[s:jta_minpaku_overview]]</td><td>Set by the host</td><td>It can host guests on no more than 180 nights a year, and local rules can cut that further [[s:jta_minpaku_act]].</td></tr>
 <tr><td><strong>Guesthouse or holiday home</strong> with a lodging licence</td><td>Licensed under the Hotel Business Act, for example as simple lodging [[s:jta_minpaku_overview]]</td><td>Set by the host</td><td>There’s no yearly limit on operating days, so it can take guests all year [[s:jta_minpaku_overview]].</td></tr>
 <tr><td><strong>Share house</strong></td><td>Usually a rental, on terms set by each operator</td><td>Set by the operator</td><td>Your own bedroom, with the kitchen and bathroom shared. Terms vary a lot, so it helps to get them in writing.</td></tr>
 </tbody></table></div>
-<p>Why does a monthly apartment always ask for at least a month? Japan’s tourism and health authorities treat a stay of under a month as, in principle, lodging. So a short-term lease listed on a booking site has to require at least a month and say clearly that it’s a rental [[s:jta_short_lease_2018]]. The same notice says monthly apartments shouldn’t be listed next to short-stay holiday rentals on the same site, so you’ll often find them in different places [[s:jta_short_lease_2018]].</p>
-<p>The two give you different things, too. In lodging, the operator is responsible for keeping the room clean and you don’t make it your home, while a lease works the other way round [[s:jta_short_lease_2018]]. Whichever you choose, it’s worth asking who cleans, and how often.</p>
-<p>Some leases are fixed-term (<em>teiki shakuya</em>). A fixed-term lease ends on the date in the contract and isn’t renewed, though you and the landlord can agree a new one. It has to be in writing, and the landlord must explain in a separate document that it won’t be renewed [[s:mlit_fixed_term]].</p>
+<p>Why does a monthly apartment usually ask for at least a month? Japan’s tourism and health authorities treat a stay of under a month as, in principle, lodging. Their guidance for booking sites is that a short-term lease should normally require at least a month and say clearly that it’s a rental, though a local authority can use a different yardstick [[s:jta_short_lease_2018]]. The same notice says monthly apartments shouldn’t be listed next to short-stay holiday rentals on the same site, so you’ll often find them in different places [[s:jta_short_lease_2018]].</p>
+<p>The two give you different things, too. With lodging, keeping the room clean is the operator’s job, and you’re a guest rather than someone who lives there. With a lease, the place is your home for the length of the contract [[s:jta_short_lease_2018]]. Whichever you choose, it’s worth asking who cleans, and how often.</p>
+<p>You may also see the term fixed-term lease (<em>teiki shakuya</em>). It’s a type of Japanese lease, not another name for a monthly apartment, and what it means for you is that you can’t count on extending. It ends on the date in the contract and isn’t renewed, though you and the landlord can agree a new one. It has to be in writing, and the landlord must explain in a separate document that it won’t be renewed [[s:mlit_fixed_term]].</p>
 
 <h2>What does a month cost, and what’s included?</h2>
-<p>More than the headline rate, so compare the total. Prices vary too much from place to place for one figure to help, but the parts of the bill are much the same everywhere.</p>
+<p>A month costs the rent plus cleaning, utilities, internet, any deposit and booking fees, so the total is what to compare. Prices vary too much from place to place for one figure to help, but the parts of the bill are much the same everywhere.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>What you pay for</th><th>Why it matters</th><th>What to ask</th></tr></thead>
 <tbody>
@@ -103,7 +103,7 @@ ARTICLE = {
 <li><strong>Electricity.</strong> How much can you run at once? In our first flat, the old two-wire wiring couldn’t run the air conditioner, fridge and microwave together, so knowing where the breaker box is helps too.</li>
 <li><strong>Heating and cooling.</strong> Is there an air conditioner in the room you’ll sleep in, and is the electricity for it included?</li>
 <li><strong>Washing.</strong> Is there a washing machine, and a dryer? Our guests have praised both in their reviews, and a month of rainy-season laundry explains why.</li>
-<li><strong>Rubbish.</strong> How does it work on a long stay? Each town has its own sorting rules and collection days, and Shimoda’s guide, for example, is only in Japanese [[s:shimoda_gomi]]. At the three homes our team helps run, a few long-stay guests mentioned smells from the bin area.</li>
+<li><strong>Rubbish.</strong> How does it work on a long stay? Each town has its own sorting rules and collection days. In Shimoda, for example, the city’s guide is in Japanese [[s:shimoda_gomi]]. At the three homes our team helps run, a small number of reviews from long stays mentioned smells from the bin area.</li>
 <li><strong>Cleaning and bedding.</strong> Is there a clean or a change of sheets during the stay, or is it all on you?</li>
 <li><strong>Stairs and bathroom.</strong> Which floor is it on, is there a lift, and is there a bath or only a shower? At one of the homes our team helps run, explaining the steep stairs before people booked went down well.</li>
 <li><strong>Getting around.</strong> Is there parking, or a bus stop and a supermarket within walking distance?</li>
@@ -119,7 +119,7 @@ ARTICLE = {
 <p>You may also read about towns’ trial homes (<em>otameshi jutaku</em>). They’re mostly for people planning to move. Shizuoka City’s, for example, are for people living outside Shizuoka Prefecture who are thinking of moving there and have talked to its relocation advisers first [[s:shizuoka_trial]]. We look at them in [[l:akiya-try-first|living in a town for a month before you buy]].</p>
 
 <h2>Do you need a visa to stay for a month?</h2>
-<p>For many visitors, no. Passport holders of many countries and regions can visit Japan for tourism without a visa, most for up to 90 days. Some nationalities are given 15, 30 or 180 days instead [[s:jnto_visa]].</p>
+<p>For many visitors, no. As of November 2026, passport holders of many countries and regions can visit Japan for tourism without a visa, most for up to 90 days. Some nationalities are given 15, 30 or 180 days instead [[s:jnto_visa]].</p>
 <p>On that kind of stay you can’t do paid work, and the rule for your own passport is the one that counts [[s:jnto_visa]]. If you’d like to work remotely from Japan for longer, [[l:digital-nomad|Japan’s digital nomad visa]] allows a stay of up to six months for some nationalities [[s:isa_nomad_en]].</p>
 <p class="fine">This is general information, not legal or immigration advice. Rules can change, so check the official pages for your own case.</p>
 """,
@@ -143,16 +143,17 @@ ARTICLE = {
   "h1": "日本で1か月、部屋を借りるには",
   "dek": "日本のふつうの賃貸は、旅行で来る人にはたいてい選べません。1か月なら、マンスリーの部屋か、月割のある許可・届出済みの貸し部屋（民泊など）を探すことになります。",
   "review": [
+   "【2026-11-17 品質保証部（原稿 89点・ゲート1）の指摘での書き直し】変えた点: ①【ゲート】ごみ: 「下田市の案内は日本語だけ」→「日本語で書かれている」（確かめた範囲だけ。英語版の有無は書いていません） ②【言い方の変更】2018年11月の通知は「原則1か月が望ましい・自治体に別の目安があればそれで判断」までなので、「決まって1か月以上」→「たいてい1か月以上」、表の最短を「たいてい1か月」にし、「自治体が別の目安を使うこともある」を足しました ③ビザの節に「2026年11月時点」 ④宿泊と賃貸の違いの文を「宿泊では掃除は運営者の仕事で、あなたは住む人ではなく泊まる客。賃貸では契約の期間そこがあなたの住まい」に書き直しました ⑤定期借家の段落に「日本の賃貸契約の種類の1つで、マンスリーの別名ではない」「借りる側にとっては延長をあてにできない」を足しました ⑥費用の節の最初の文を、内訳（家賃・清掃・光熱費・ネット・保証金・手数料）を挙げて「比べるのは合計」と言い切る形に ⑦3物件のごみ置き場のにおいを「長期滞在のレビューの一部」に ⑧In short の3項目めを「登録した予約サイトでは、掲載に許可番号か届出番号が出る」と、予約サイトの掲載の話と分かる形に ⑨人に確かめてほしい点から、写真（編集長が studio-apartment を入れ済み）と、ノマドの記事へのリンクの扱い（同時に公開する前提）を消しました",
    "【2026-11-16 新規（執筆部）】書いた点: ①1記事1主張は「1か月なら、ふつうの賃貸ではなく“1か月から借りられる合法の部屋”を選び、合計の費用と暮らしの設備を予約の前に確かめる」 ②h2 は構成案どおり7つ（借りられるか／種類の比較表／費用の内訳表／合法かの見分け方とパスポート／予約前に聞くことの番号つきリスト／東京の外／ビザ）、FAQ 5問 ③事実はリサーチメモの公的な出典だけで書きました（国交省の外国人の賃貸ガイドライン・定期借家Q&A、観光庁の民泊ポータルと2018年の通知、厚労省の回答、日本政府観光局のビザのページ、総務省の小売物価統計、下田市のごみのページ、NODE Shimoda の公式サイト）。リサーチメモで「書かない」と決めた10件（マンスリー＝定期借家と言い切る、在留カード必須と言い切る、法律で2年、JESTA、査証免除の国名、伊豆の町のお試し住宅、下田市のごみの英語版、マンスリーの相場、NODE Shimoda のいまの週割・月割、2018年の削除件数）は書いていません ④黄色い枠はありません",
    "【自社の体験の使い方（experience.md の人が確認済みの節だけ）】3-2: 開業時に週割・月割を付けた（過去形。「最初の宿」とだけ書き、いまの割引・月額・30泊以上は書いていません）／許可番号が出るまで Airbnb で予約を受けられなかった／古い2芯の配線でエアコン・冷蔵庫・電子レンジを同時に使えなかった／洗濯機と乾燥機がレビューで評価された／夏は海水浴・サーフィンの客が来る。9章: 「私たちのチームが関わる3つの家」として、名簿の質問が多い種類の1つだった・長期滞在のゴミ置き場のにおいの指摘が少しあった・急な階段を予約前に説明したことが好評だった（エリア・件数・自社運営か支援かは書いていません）",
    "【NODE Shimoda に触れるのは節5の最後の1回】公式サイトの客室のページの事実だけ: 約40㎡の一室・階段約13段・シャワーのみでバスタブなし・ワークデスク・高速 Wi-Fi・無料の洗濯機とガス乾燥機・電気の容量が小さいので電子レンジ・掃除機・ドライヤーの間はエアコンを一時止めてもらう・燃えるごみは袋へ、缶やびんはすすいで台所へ、長期滞在はごみについて連絡してもらう。“house” とは呼ばず “flat” にしています。英国英語の “second floor” は日本の3階の意味になるので、階数は書かず「階段約13段」にしました",
    "【検索語】構成案の主な語は “monthly rental japan” ですが、題の “Monthly Rental in Japan” にそのまま入らないため、keywords の先頭を同じ検索の自然な形 “monthly rental in japan” にし、“monthly rental japan”（170・KD16）を2番目に残しました（akiya-try-first の “buying an akiya in japan” と同じ扱い）",
-   "【人に確かめてほしい点】①写真: 合う写真が手元にないので “TODO-PHOTO” にしています。欲しいのは「家具付きの小さな部屋で暮らす気配（窓辺の机、キッチンのある明るい部屋、洗濯物など）」の写真です。既存の写真はどれも入口や他の記事で使っているため使えません。Unsplash で探すとき（PHOTO_PLAN.md の手順）、デジタルノマドの記事（仕事の机の絵）と似ないよう「暮らしの部屋」寄りで。alt は仮に「窓辺に机のある、キッチン付きの家具付きの小さな部屋」にしてあるので、写真に合わせて直してください ②内部リンク: 節7からデジタルノマドの記事（id: digital-nomad、別の執筆部が書いている）へ1本張っています。同時に公開しない場合は、そのリンクを外してください（本文のほかのリンク2本で基準は満たします。related は公開済みの記事だけが出るので、そのままで大丈夫です） ③出典 jnto_visa は akiya-try-first の下書きと同じ定義（URL も同じ）にしてあります。リサーチメモでは転送先の /visa-info/ を挙げていますが、同じページです ④法律・制度の記述（playbook 6章）: 賃貸のガイドライン、定期借家、民泊の180日・届出番号の表示・2018年の取り消し、1か月未満は宿泊として扱う通知（2018年11月）、パスポートの写しの保存、ビザなしの滞在日数。どれも 2026-11-16 にリサーチ部が公式ページで確かめたものです ⑤変わりやすい数字: 下田までの直通 2時間29〜44分（2026年11月の時刻表）、2025年の民営家賃（東京都区部 3.3㎡あたり月9,803円・静岡市 4,621円）",
+   "【人に確かめてほしい点】①出典 jnto_visa は akiya-try-first の下書きと同じ定義（URL も同じ）にしてあります。リサーチメモでは転送先の /visa-info/ を挙げていますが、同じページです ②法律・制度の記述（playbook 6章）: 賃貸のガイドライン、定期借家、民泊の180日・届出番号の表示・2018年の取り消し、1か月未満は宿泊として扱う通知（2018年11月）、パスポートの写しの保存、ビザなしの滞在日数。どれも 2026-11-16 にリサーチ部が公式ページで確かめたものです ③変わりやすい数字: 下田までの直通 2時間29〜44分（2026年11月の時刻表）、2025年の民営家賃（東京都区部 3.3㎡あたり月9,803円・静岡市 4,621円）",
   ],
   "points": [
     "ふつうの賃貸は2年契約が多く、家賃の保証も求められるので、1か月の滞在にはまず向きません。",
     "旅行で来る人に現実的なのは、マンスリーの部屋か、月割のある許可・届出済みの貸し部屋です。",
-    "合法の民泊なら掲載に届出番号か許可番号が出ていて、宿泊のときにパスポートを求められます。",
+    "登録した予約サイトでは、合法の貸し部屋の掲載に許可番号か届出番号が出ていて、泊まるときはパスポートを求められます。",
   ],
   "body": """
 <p>1か月は、ホテルでは落ち着かないほど長く、日本のふつうの賃貸を借りるには短すぎます。そのすき間を埋める合法の方法はいくつかありますが、法律の上では同じものではありません。その違いで、掃除を誰がするか、何にお金を払うか、掲載が違法だったときにどうなるかが変わります。</p>
@@ -167,17 +168,17 @@ ARTICLE = {
 <div class="tablewrap"><table class="free">
 <thead><tr><th>種類</th><th>法律の上では</th><th>最短の日数</th><th>知っておきたいこと</th></tr></thead>
 <tbody>
-<tr><td><strong>マンスリーの部屋</strong>（マンスリーマンション）</td><td>短期の賃貸借。宿泊ではなく賃貸です[[s:jta_short_lease_2018]]</td><td>1か月[[s:jta_short_lease_2018]]</td><td>家具付きの部屋を月単位で借ります。賃貸の契約を結ぶので、家賃に何が含まれるかを読んでおきます。</td></tr>
+<tr><td><strong>マンスリーの部屋</strong>（マンスリーマンション）</td><td>短期の賃貸借。宿泊ではなく賃貸です[[s:jta_short_lease_2018]]</td><td>たいてい1か月[[s:jta_short_lease_2018]]</td><td>家具付きの部屋を月単位で借ります。賃貸の契約を結ぶので、家賃に何が含まれるかを読んでおきます。</td></tr>
 <tr><td><strong>民泊</strong>（届出済みの貸し部屋）</td><td>住宅宿泊事業法にもとづいて届け出た住宅[[s:jta_minpaku_overview]]</td><td>ホストが決める</td><td>ゲストを泊められるのは年180日までで、自治体の条例でさらに制限されることもあります[[s:jta_minpaku_act]]。</td></tr>
 <tr><td><strong>宿・貸別荘</strong>（旅館業の許可あり）</td><td>旅館業法の許可を受けたもの。たとえば簡易宿所[[s:jta_minpaku_overview]]</td><td>ホストが決める</td><td>営業日数の上限がないので、一年中泊められます[[s:jta_minpaku_overview]]。</td></tr>
 <tr><td><strong>シェアハウス</strong></td><td>たいていは賃貸で、条件は運営会社ごと</td><td>運営会社が決める</td><td>寝室は自分だけ、台所と浴室は共用です。条件の差が大きいので、書面でもらっておくと安心です。</td></tr>
 </tbody></table></div>
-<p>マンスリーの部屋が、なぜ決まって1か月以上なのか。観光庁と厚生労働省は、1か月に満たない滞在を、原則として宿泊として扱っています。そのため、予約サイトに載せる短期の賃貸は、1か月以上の滞在を条件にし、宿泊ではなく賃貸だとはっきり書く必要があります[[s:jta_short_lease_2018]]。同じ通知には、マンスリーを短期の民泊と同じサイトに並べて載せないこととも書かれているので、探す場所が分かれていることがよくあります[[s:jta_short_lease_2018]]。</p>
-<p>受けられるものも違います。宿泊では、部屋を清潔に保つのは運営者の責任で、泊まる人はそこを生活の本拠にはしません。賃貸はその逆です[[s:jta_short_lease_2018]]。どちらを選ぶにしても、掃除を誰がどれくらいの頻度でするかは、聞いておくといいと思います。</p>
-<p>賃貸の中には「定期借家」もあります。定期借家は、契約に書いた日で終わり、更新はありません。ただし、貸す人と借りる人が合意すれば、新しく契約を結べます。書面で契約し、更新がないことを、貸す人が別の書面で説明しなければなりません[[s:mlit_fixed_term]]。</p>
+<p>マンスリーの部屋が、なぜたいてい1か月以上なのか。観光庁と厚生労働省は、1か月に満たない滞在を、原則として宿泊として扱っています。予約サイト向けの考え方では、短期の賃貸は原則1か月以上の滞在を条件にし、宿泊ではなく賃貸だとはっきり書くこととされています。ただし、自治体が別の目安を使うこともあります[[s:jta_short_lease_2018]]。同じ通知には、マンスリーを短期の民泊と同じサイトに並べて載せないこととも書かれているので、探す場所が分かれていることがよくあります[[s:jta_short_lease_2018]]。</p>
+<p>受けられるものも違います。宿泊では、部屋を清潔に保つのは運営者の仕事で、あなたはそこに住む人ではなく、泊まる客です。賃貸では、契約の期間、そこがあなたの住まいになります[[s:jta_short_lease_2018]]。どちらを選ぶにしても、掃除を誰がどれくらいの頻度でするかは、聞いておくといいと思います。</p>
+<p>「定期借家」という言葉を目にすることもあるかもしれません。これは日本の賃貸契約の種類の1つで、マンスリーの部屋の別名ではありません。借りる側にとっての意味は、延長をあてにできないことです。契約に書いた日で終わり、更新はありません。ただし、貸す人と借りる人が合意すれば、新しく契約を結べます。書面で契約し、更新がないことを、貸す人が別の書面で説明しなければなりません[[s:mlit_fixed_term]]。</p>
 
 <h2>1か月いくらかかり、何が含まれるか</h2>
-<p>表に出ている料金だけでは分からないので、合計で比べます。値段は場所によって違いすぎて、1つの数字では役に立ちませんが、費用の内訳はどこでもだいたい同じです。</p>
+<p>1か月の費用は、家賃に、清掃・光熱費・インターネット・保証金・予約サイトの手数料が加わったもので、比べるべきは合計です。値段は場所によって違いすぎて、1つの数字では役に立ちませんが、費用の内訳はどこでもだいたい同じです。</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>何に払うか</th><th>なぜ大事か</th><th>聞くこと</th></tr></thead>
 <tbody>
@@ -205,7 +206,7 @@ ARTICLE = {
 <li><strong>電気</strong>　一度にどれくらい使えるか。私たちの最初の部屋では、古い2芯の配線で、エアコンと冷蔵庫と電子レンジを同時に使えませんでした。ブレーカーの場所を知っておくのも役に立ちます。</li>
 <li><strong>冷暖房</strong>　寝る部屋にエアコンがあるか。その電気代は含まれているか。</li>
 <li><strong>洗濯</strong>　洗濯機と乾燥機はあるか。私たちのゲストもレビューで両方をほめてくれました。梅雨の1か月の洗濯を考えれば、理由は分かると思います。</li>
-<li><strong>ごみ</strong>　長期の滞在ではどうするか。分け方と収集日は町ごとに違い、たとえば下田市の案内は日本語だけです[[s:shimoda_gomi]]。私たちのチームが関わる3つの家では、長期滞在のゲストから、ごみ置き場のにおいの指摘が少しありました。</li>
+<li><strong>ごみ</strong>　長期の滞在ではどうするか。分け方と収集日は町ごとに違い、たとえば下田市の案内は日本語で書かれています[[s:shimoda_gomi]]。私たちのチームが関わる3つの家では、長期滞在のレビューの一部に、ごみ置き場のにおいの指摘がありました。</li>
 <li><strong>清掃と寝具</strong>　滞在中に清掃やシーツの交換はあるか。それとも全部自分でするのか。</li>
 <li><strong>階段と浴室</strong>　何階か、エレベーターはあるか、浴槽はあるかシャワーだけか。私たちのチームが関わる家の1つでは、急な階段のことを予約の前に説明しておいたのが好評でした。</li>
 <li><strong>移動</strong>　駐車場はあるか。バス停やスーパーは歩いて行けるか。</li>
@@ -221,7 +222,7 @@ ARTICLE = {
 <p>自治体の「お試し住宅」を目にすることもあると思います。多くは移住するつもりの人向けで、たとえば静岡市のお試し住宅は、静岡県の外に住んでいて、市への移住を考えていて、先に市の移住の相談員と話した人が対象です[[s:shizuoka_trial]]。お試し住宅のことは、[[l:ja-akiya-try-first|買う前にその町で1か月暮らす記事]]で取り上げています。</p>
 
 <h2>1か月いるのに、ビザは要るか</h2>
-<p>多くの人は要りません。多くの国・地域のパスポートを持つ人は、観光ならビザなしで日本に来られ、ほとんどは90日までです。ただし、国籍によっては15日・30日・180日のこともあります[[s:jnto_visa]]。</p>
+<p>多くの人は要りません。2026年11月時点で、多くの国・地域のパスポートを持つ人は、観光ならビザなしで日本に来られ、ほとんどは90日までです。ただし、国籍によっては15日・30日・180日のこともあります[[s:jnto_visa]]。</p>
 <p>この滞在では、報酬を得る仕事はできません。大事なのは、自分のパスポートの条件です[[s:jnto_visa]]。もっと長く、日本からリモートで働きたいなら、[[l:ja-digital-nomad|日本のデジタルノマドビザ]]で、一部の国籍の人は最長6か月滞在できます[[s:isa_nomad_en]]。</p>
 <p class="fine">これは一般的な情報で、法律や在留手続きの助言ではありません。決まりは変わることがあるので、自分の場合は公式のページで確かめてください。</p>
 """,

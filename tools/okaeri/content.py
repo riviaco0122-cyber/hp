@@ -25,7 +25,6 @@ SOURCES = {
     "ekitan": ("https://ekitan.com/en/article/odoriko", "Ekitan", "駅探", "Ekitan: Limited Express Odoriko"),
     "rej": ("https://resources.realestate.co.jp/buy/what-restrictions-are-there-on-foreigners-buying-a-home-in-japan-compared-to-other-countries/",
             "Real Estate Japan", "Real Estate Japan", "Real Estate Japan: restrictions on foreign buyers"),
-    "mofa": ("https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html", "Ministry of Foreign Affairs of Japan", "外務省", "Ministry of Foreign Affairs of Japan: Exemption of Visa (Short-Term Stay)"),
     "jg6305": ("https://japan-guide.com/e/e6305.html", "japan-guide.com", "japan-guide.com", "japan-guide.com: Getting to Izu Peninsula"),
     "jg6311": ("https://japan-guide.com/e/e6311.html", "japan-guide.com", "japan-guide.com", "japan-guide.com: Shuzenji access"),
     "jg6322": ("https://japan-guide.com/e/e6322.html", "japan-guide.com", "japan-guide.com", "japan-guide.com: Izu beaches"),
@@ -79,6 +78,20 @@ SOURCES = {
         "FishBase: Beryx splendens, splendid alfonsino"),
     "fishbase_nodoguro": ("https://fishbase.se/summary/4599", "FishBase", "FishBase",
         "FishBase: Doederleinia berycoides, blackthroat seaperch"),
+    "shimoda_kanko_event": ("https://www.shimoda-city.info/event", "Shimoda Tourism Association (events)", "下田市観光協会（イベント）",
+                            "Shimoda Tourism Association: Events calendar (checked November 2026)"),
+    "shimoda_kanko_gift": ("https://www.shimoda-city.info/gift", "Shimoda Tourism Association (shopping)", "下田市観光協会（買う・おみやげ）",
+                           "Shimoda Tourism Association: Shopping and souvenirs (checked November 2026)"),
+    "pref_izu_gyokyo_shop": ("https://www.pref.shizuoka.jp/sangyoshigoto/suisan/suisangyo/uocching/1003392/1043930/1028021.html", "Shizuoka Prefecture (fish shop)",
+                             "静岡県（伊豆漁協ベイステージ直売所）", "Shizuoka Prefecture: Izu Fisheries Cooperative Bay Stage shop (updated April 2025)"),
+    "node_access": ("https://nodeshimoda.com/access", "NODE Shimoda (access)", "NODE Shimoda 公式サイト（アクセス）",
+                    "NODE Shimoda official site: access (checked November 2026)"),
+    "shugiin_bill18": ("https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE36CA.htm", "House of Representatives", "衆議院（議案審議経過情報）",
+                       "House of Representatives: Progress of cabinet bill no. 18, 222nd Diet session (checked 16 November 2026)"),
+    "jnto_visa": ("https://www.japan.travel/en/plan/visa-info/visa-immigration/", "JNTO", "日本政府観光局（入国とビザ）",
+                  "JNTO: Entry into Japan and visa information (checked November 2026)"),
+    "shimoda_stay_subsidy": ("https://city.shimoda.shizuoka.jp/file/下田市移住希望者滞在費補助金交付要綱.pdf", "Shimoda City", "下田市（移住希望者滞在費補助金交付要綱）",
+                             "Shimoda City: Rules for the stay subsidy for people considering a move (amended March 2026)"),
 }
 
 # ---------------------------------------------------------------- 記事のテーマ
@@ -154,19 +167,19 @@ ARTICLES = [
  "h1": "Kinmedai: Japan’s golden-eye snapper and where to eat it",
  "seo_title": "Kinmedai: Japan’s Golden-Eye Snapper and Where to Eat It",
  "description": "Kinmedai is a red, golden-eyed deep-sea fish, often simmered as nitsuke. It’s fattiest around June, and the port of Shimoda in Izu is a good place to try it.",
- "dek": "Kinmedai is a red, golden-eyed deep-sea fish, often simmered in soy and sugar. Shimoda, which describes itself as Japan’s top kinmedai port, is a good place to try it.",
- "card": "Kinmedai is a fatty, red deep-sea fish, often simmered in soy and sugar. It’s fattiest around June, and Shimoda, which calls itself Japan’s top kinmedai port, is a good place to try it.",
+ "dek": "Kinmedai is a red, golden-eyed deep-sea fish, often simmered in soy and sugar. Shimoda, said to be Japan’s top kinmedai port, is a good place to try it.",
+ "card": "Kinmedai is a fatty, red deep-sea fish, often simmered in soy and sugar. It’s fattiest around June, and Shimoda, said to be Japan’s top kinmedai port, is a good place to try it.",
  "keywords": [("kinmedai", "4,400", "0")],
  "intent": "Know（知りたい）",
  "points": [
    "Its English name is splendid alfonsino, and whatever a menu calls it, it isn’t a sea bream, snapper or nodoguro.",
    "The white flesh carries fat all year, and we’d start with <em>nitsuke</em>, though raw or lightly seared works too.",
-   "During Shimoda’s 2016 festival, landings could be watched about 7:30–9:00; the 4:35 from Shinagawa arrives 7:59, so we’d stay over.",
+   "We’d spend a night in Shimoda: kinmedai for dinner, then breakfast at the fish-market canteen next morning.",
  ],
  "body": """
 <h2>What is kinmedai?</h2>
 <p>Kinmedai is a deep-sea fish with red skin and big golden eyes, known in English as splendid alfonsino (<em>Beryx splendens</em>) [[s:fishbase_beryx]]. It lives on continental slopes and on the sides and tops of underwater mountains, at around 200 to 800 metres off Chiba [[s:jfa_kinme_2021,chiba_kinme_r6]]. Shimoda’s city newsletter talks about eyes that shine gold and skin that turns red all over about 40 minutes after the fish is landed [[s:shimoda_news]].</p>
-<p>The name is written 金目鯛, which literally means “golden-eye sea bream”. If you’ve seen it called golden-eye snapper on an English menu, it’s the same fish, but it belongs to its own family, the alfonsinos (Berycidae), not the sea bream or snapper families [[s:tokyo_kinme_tag]].</p>
+<p>The name is written 金目鯛, which literally means “golden-eye sea bream”. If you’ve seen it called golden-eye snapper on an English menu, it’s the same fish. Despite the name, it isn’t a sea bream [[s:shimoda_kanko_kinme]], and it isn’t a snapper either: it belongs to the alfonsino family, Berycidae [[s:tokyo_kinme_tag]].</p>
 
 <h2>What does kinmedai taste like, and how is it eaten?</h2>
 <p>Kinmedai is a rich white fish that carries plenty of fat, and it stays that way all year. Shimoda City puts that down to its life in deep water, and says it works in lots of different dishes [[s:shimoda_news]]. If you only try it once, we’d go for <em>nitsuke</em>, fish simmered in soy sauce and sugar, though in our view it’s just as good raw or lightly seared.</p>
@@ -186,42 +199,40 @@ ARTICLES = [
 <p>That target is the level that should allow the largest catch year after year without shrinking the stock. For you, it means kinmedai isn’t a fish to avoid, but it isn’t plentiful either. Chiba’s own landings were 1,467 tonnes in 2023, against 2,263 tonnes in 2007 [[s:chiba_kinme_r6]].</p>
 
 <h2>How is kinmedai different from nodoguro?</h2>
-<p>Nodoguro is a different fish altogether: it’s the market name for <em>akamutsu</em>, known in English as blackthroat seaperch [[s:kyoto_akamutsu,fishbase_nodoguro]]. The two are easy to mix up, since both are red and both are prized, but they sit in different families and even different orders, and nodoguro lives much shallower. If a menu offers both, you’re choosing between two different fish.</p>
+<p>Nodoguro is a different fish altogether: it’s the market name for <em>akamutsu</em>, known in English as blackthroat seaperch [[s:kyoto_akamutsu,fishbase_nodoguro]]. The two are easy to mix up, since both are red and both are prized. But they sit in different families and different orders, and nodoguro lives much shallower. If a menu offers both, you’re choosing between two different fish.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th></th><th>Kinmedai</th><th>Nodoguro</th></tr></thead>
 <tbody>
+<tr><td><strong>Order</strong></td><td>Beryciformes, the alfonsino order [[s:tokyo_kinme_tag]]</td><td>Perciformes, the perch-like fishes [[s:tokushima_akamutsu]]</td></tr>
 <tr><td><strong>Family</strong></td><td>Alfonsinos (Berycidae) [[s:tokyo_kinme_tag]]</td><td>Acropomatidae [[s:tokushima_akamutsu]]</td></tr>
-<tr><td><strong>Order</strong></td><td>Not the same order as nodoguro [[s:tokyo_kinme_tag]]</td><td>Not the same order as kinmedai [[s:tokushima_akamutsu]]</td></tr>
 <tr><td><strong>Depth</strong></td><td>About 200–800 m off Chiba [[s:chiba_kinme_r6]]</td><td>About 80–150 m in the south-western Sea of Japan [[s:ibaraki_akamutsu]], about 100–200 m in Tokushima’s account [[s:tokushima_akamutsu]]</td></tr>
 <tr><td><strong>Name</strong></td><td>金目鯛, “golden-eye sea bream”</td><td>“Black throat”, for the black lining inside its mouth [[s:kyoto_akamutsu]]</td></tr>
 </tbody></table></div>
+<p>The order and family here are as given by Tokyo and Tokushima’s fisheries reports. Fish classification gets revised now and then, so other books may file them a little differently.</p>
 
 <h2>Is kinmedai safe to eat when you’re pregnant?</h2>
 <p>Because of mercury, Japan’s health ministry advises pregnant women to limit some fish to about one 80 g serving a week. Kinmedai is on that list, along with swordfish, bluefin tuna and bigeye tuna [[s:mhlw_mercury2010]]. The same advice puts one piece of sushi or sashimi at about 15 g, so 80 g is roughly five pieces. It’s meant to protect the unborn baby, not children or other adults [[s:mhlw_mercury2010]]. It’s general public guidance rather than medical advice, so if you’re pregnant, your own doctor or midwife is the person to ask.</p>
 
-<h2>Why is Shimoda the place to eat kinmedai?</h2>
-<p>Shimoda, at the southern tip of the [[l:izu|Izu Peninsula]], calls itself Japan’s top landing port for kinmedai, and Shizuoka Prefecture describes the town’s fish market the same way [[s:shimoda_news,pref]]. In other words, you’re eating it where more of it is landed than anywhere else.</p>
-<p>You may hear two local names. A 2014 TV Tokyo programme on Shimoda explained that <em>jikinme</em> are caught in nearby waters between Oshima and Kozushima, while <em>oki-kinme</em> come from grounds further out [[s:tvtokyo]].</p>
-<p>The easiest place to start is Ichiba no Shokudo Kinmetei, a canteen inside the Shimoda fish market about ten minutes on foot from Izukyu-Shimoda Station. Its menu includes a kinmedai rice bowl served three ways and a whole simmered kinmedai set. Shizuoka Prefecture lists its hours as 7:00 to 9:30 for the morning set and 11:00 to 15:00 for lunch, closed on Tuesdays ([[a:pref]], page updated March 2025). Hours do change, so a quick check before you walk over saves a wasted trip.</p>
-[[ed:Add the two or three places we actually send guests, with walking time from the house and what we order there.]]
+<h2>Where can you eat kinmedai in Shimoda?</h2>
+<p>Plenty of places in town serve it, and the local tourism association keeps a list to start from. As of November 2026, it names 19 restaurants and 34 hotels and inns that serve kinmedai dishes, with a note that some may be off the menu depending on the catch [[s:shimoda_kanko_kinme]].</p>
+<p>Shimoda sits at the southern tip of the [[l:izu|Izu Peninsula]]. According to the tourism association, it’s said to be Japan’s top kinmedai port. As of November 2026, its page puts landings at over 1,000 tonnes a year, about 80% of all the fish landed there [[s:shimoda_kanko_kinme]]. You may also hear two local names. A 2014 TV Tokyo programme on Shimoda explained that <em>jikinme</em> are caught in nearby waters between Oshima and Kozushima, while <em>oki-kinme</em> come from grounds further out [[s:tvtokyo]].</p>
+<p>The easiest place to start is Ichiba no Shokudo Kinmetei, a canteen inside the Shimoda fish market about ten minutes on foot from Izukyu-Shimoda Station. Its menu includes a kinmedai rice bowl served three ways and a whole simmered kinmedai set. Shizuoka Prefecture’s page, updated in March 2025, lists the hours as 7:00 to 9:30 for the morning set and 11:00 to 15:00 for lunch, closed on Tuesdays [[s:pref]]. Hours do change, so a quick check before you walk over saves a wasted trip.</p>
 
 <h2>When is kinmedai in season?</h2>
-<p>Kinmedai is landed all year, but locals point to two times: winter, and around June, when the fish are fattiest.</p>
+<p>Kinmedai is a deep-sea fish, so it’s landed all year, and the tourism association says it’s in season all year too [[s:shimoda_kanko_kinme]]. Locals still point to two high points: winter, and early summer around June, when the fish are fattiest.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>When</th><th>Why</th></tr></thead>
 <tbody>
-<tr><td>Winter</td><td>The traditional season, when kinmedai goes into hot pots [[s:shimoda_news,shizuoka_kinme_fat]].</td></tr>
+<tr><td>Winter</td><td>The traditional season, when kinmedai goes into hot pots [[s:shimoda_news,shizuoka_kinme_fat]] and the flesh is at its firmest [[s:shimoda_kanko_kinme]].</td></tr>
 <tr><td>Around June</td><td>Before spawning, when the fish carry the most fat. In Shizuoka’s year of measuring fish from Inatori (part of a 2007–2011 study), the fat peaked in June at about 10% [[s:shimoda_news,shizuoka_kinme_fat]].</td></tr>
-<tr><td>Kinme Matsuri (all of June in 2016)</td><td>In 2016 there was a viewing spot outside the fish market, open from about 7:30 to 9:00 a.m. except on Tuesdays and Saturdays [[s:shimoda_news]].</td></tr>
+<tr><td>Kinme Matsuri (all of June in 2016)</td><td>In 2016 there was a viewing spot outside the fish market, open from about 7:30 to 9:00 a.m. except on Tuesdays and Saturdays, and bad weather could cancel it [[s:shimoda_news]].</td></tr>
 </tbody></table></div>
-<p>The festival dates and viewing times can change from year to year, and bad weather can cancel the viewing [[s:shimoda_news]]. If you’re planning a trip around it, check that year’s details first.</p>
-[[ed:Confirm with the Shimoda Tourism Association whether the Kinme Matsuri ran in June 2026, and the dates and viewing times for 2027.]]
+<p>In 2016, then, the festival gave visitors a place to watch the morning landings in June. For this year’s events, the tourism association’s events calendar is the place to look [[s:shimoda_kanko_event]], and the association can help if you’d like to plan a trip around one.</p>
 
 <h2>Why stay overnight instead of visiting for the day?</h2>
-<p>You can just about reach the morning landings from Tokyo, but only on a very early train, so we’d stay the night before. The first Tokaido Line train from Tokyo Station leaves at 5:20 and doesn’t reach Atami until 7:08. There’s one earlier option: a 4:35 local from Shinagawa connects at Atami and gets to Izukyu-Shimoda at 7:59 (JR East timetable, November 2026) [[s:jre_tt_tokyo]]. In 2016 the viewing ran from about 7:30 to 9:00 [[s:shimoda_news]], so you’d catch the end at best.</p>
-<p>Timing isn’t the only reason, though. In our view, a night in town gives you kinmedai for dinner and an unhurried morning: a walk down to the harbour, breakfast at the canteen, and no train to rush back for. Routes are in our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]]. If you’d like to cook a fish yourself, our home in the old town, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, has a full kitchen and is about ten minutes on foot from the station.</p>
-[[ed:Name where guests can buy kinmedai to cook at home.]]
-[[ed:Outside the June festival, can visitors watch the morning kinmedai landings at the Shimoda fish market? If yes, add where and roughly when. If not, add one line saying the landings are only open to visitors during the festival.]]
+<p>In our view, a night in town is what makes a kinmedai trip relaxed. You get kinmedai for dinner, then an unhurried morning: a walk down to the harbour, breakfast at the market canteen from 7:00, where the morning set changes daily with the catch [[s:pref]], and no train to rush back for.</p>
+<p>A day trip is possible, but the mornings are tight. The first Tokaido Line train from Tokyo Station leaves at 5:20 and doesn’t reach Atami until 7:08. The one earlier option is a 4:35 local from Shinagawa, which connects at Atami. On JR East’s November 2026 timetable, it reaches Izukyu-Shimoda at 7:59 [[s:jre_tt_tokyo]]. If a festival viewing kept the 2016 hours of about 7:30 to 9:00 [[s:shimoda_news]], you’d still have most of an hour after the ten-minute walk to the market. Routes are in our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]].</p>
+<p>If you’d like to cook a fish yourself, the Izu Fisheries Cooperative runs a shop on the ground floor of the Kaikoku Shimoda Minato roadside station that sells Shimoda kinmedai [[s:shimoda_kanko_gift]]. Shizuoka Prefecture lists it as open 8:00 to 16:30 with no regular closing day, about ten minutes on foot from the station (page updated April 2025) [[s:pref_izu_gyokyo_shop]]. Our apartment in the old town, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, has a kitchen with a gas hob, fridge, rice cooker and cookware [[s:node_room]], and it’s eight minutes’ walk from the station [[s:node_access]].</p>
 """,
  "faq": [
    ("Is kinmedai the same as red snapper?",
@@ -229,44 +240,37 @@ ARTICLES = [
    ("Why is kinmedai so expensive?",
     "We think it’s mainly how it’s caught and how much. It lives deep, at around 200 to 800 metres off Chiba, and is caught on hook-and-line gear, mostly vertical longlines [[s:jfa_kinme_2021,chiba_kinme_r6]]. Catches off Tokyo, Chiba, Kanagawa and Shizuoka fell from just under 7,000 tonnes a year in 2005–2009 to 3,797 tonnes in 2020 [[s:jfa_kinme_2021]]. A later national assessment found the 2023 breeding stock above its target level and rising [[s:chiba_kinme_r6]]."),
    ("Is kinmedai the same as nodoguro?",
-    "No. Nodoguro is the market name for akamutsu, or blackthroat seaperch [[s:fishbase_nodoguro]], a red fish from a different family (Acropomatidae). It lives in shallower water, at around 80 to 200 metres depending on the area [[s:tokushima_akamutsu,ibaraki_akamutsu]]."),
+    "No. Nodoguro is the market name for akamutsu, or blackthroat seaperch [[s:fishbase_nodoguro]], a red fish from a different order and family (Perciformes, Acropomatidae). It lives in shallower water, at around 80 to 200 metres depending on the area [[s:tokushima_akamutsu,ibaraki_akamutsu]]."),
    ("Can I eat kinmedai when I’m pregnant?",
     "Japan’s health ministry advises pregnant women to keep kinmedai to about one 80 g serving a week because of mercury, which is roughly five pieces of sushi [[s:mhlw_mercury2010]]. Your doctor or midwife can tell you what applies to you."),
    ("When is kinmedai in season?",
-    "It’s landed all year. Winter is the traditional season, and the fish are fattiest around June [[s:shimoda_news,shizuoka_kinme_fat]]."),
+    "It’s landed all year, and Shimoda’s tourism association calls it in season all year [[s:shimoda_kanko_kinme]]. Winter is the traditional season, and the fish are fattiest around June [[s:shimoda_news,shizuoka_kinme_fat]]."),
    ("Can I see the kinmedai landings on a day trip from Tokyo?",
-    "Only just. The first train from Tokyo Station is too late, and a 4:35 local from Shinagawa gets to Shimoda at 7:59 [[s:jre_tt_tokyo]], near the end of the 2016 viewing hours [[s:shimoda_news]]. We’d stay the night before, which also gives you a slow morning at the harbour."),
+    "In 2016, visitors could watch the landings during the June festival, from about 7:30 to 9:00 [[s:shimoda_news]]. This year’s events are on the tourism association’s events calendar [[s:shimoda_kanko_event]]. Trains are tight too: a 4:35 local from Shinagawa reaches Shimoda at 7:59 [[s:jre_tt_tokyo]]. We’d stay the night before and have breakfast at the market canteen."),
    ("How do you say kinmedai?",
     "Roughly “kin-meh-dye”. Locals often shorten it to <em>kinme</em>."),
  ],
- "sources": ["shimoda_news", "pref", "shizuoka_kinme_fat", "chiba_kinme_r6", "jfa_kinme_2021",
+ "sources": ["shimoda_kanko_kinme", "shimoda_news", "pref", "shizuoka_kinme_fat", "chiba_kinme_r6", "jfa_kinme_2021",
              "tokyo_kinme_tag", "tokushima_akamutsu", "kyoto_akamutsu", "ibaraki_akamutsu", "mhlw_mercury2010",
-             "tvtokyo", "tabimag", "jre_tt_tokyo", "fishbase_beryx", "fishbase_nodoguro"],
+             "tvtokyo", "tabimag", "jre_tt_tokyo", "shimoda_kanko_event", "shimoda_kanko_gift", "pref_izu_gyokyo_shop",
+             "node_room", "node_access", "fishbase_beryx", "fishbase_nodoguro"],
  "related": ["izu-from-tokyo", "izu"],
  "ja": {
   "h1": "金目鯛とは：日本の「ゴールデンアイ・スナッパー」と、食べられる場所",
-  "dek": "金目鯛は、赤い皮と金色の目をした深海魚で、醤油と砂糖で煮る煮付けでよく食べられます。金目鯛の水揚げ日本一を名乗る下田の港は、食べに行くのにちょうどいい場所です。",
+  "dek": "金目鯛は、赤い皮と金色の目をした深海魚で、醤油と砂糖で煮る煮付けでよく食べられます。金目鯛の水揚げ日本一と言われる下田は、食べに行くのにちょうどいい場所です。",
   "review": [
-   "【2026-11-16 冒頭を短く（playbook 2章の1）】dek を2文・30語以内、In short を3項目・各20語以内にしました。水揚げの見学は、出典（下田市の広報 2016年6月号）どおり「2016年の祭りの期間中・7時半〜9時ごろ」と条件と時点を付けました（ふだんの朝に見られるかは本文の黄色い枠で確認待ち）。外した情報（漁獲量の減少と高い理由、のどぐろとの科・目・深さの違い、下田が半島の南端にあること、品川4時35分発）は本文にあります。「寿司屋のメニューや旅館の夕食で見かける」という前置きだけは本文になく、事実ではない導入なので外しました。",
-   "【2026-11-16 組み込み前の仕上げ（品質保証部90点のあと）】変えた点: ①英語名 splendid alfonsino・blackthroat seaperch の出典を、名前が書いてある FishBase（品質保証部が確認）に替え・足しました ②料理の表のしゃぶしゃぶは公的な出典が見つからないので、「メニューで見かけたら私たちなら試す」という見解の言い方にしました ③脂の測定に「2007〜2011年度の調査」と時点を足しました（2か所） ④下田の節の「たくさん揚がる場所で食べられる」を「いちばん多く揚がる港で食べられる」（水揚げ日本一を名乗ることの言い換え）にしました ⑤のどぐろとの違い（科・目・すむ深さ・名前の由来）を小さな表にしました。目の名前は出典で確かめられないので「違う目」とだけ書いています（スマホでは表が行ごとのカードになるので、セルをつなげずに両方の列に書きました）",
-   "【今回、人に確かめてほしい点】①しゃぶしゃぶの行を見解として残してよいか（消してもかまいません）",
-   "【2026-11-15 品質保証部（HTML）の指摘での書き直し】変えた点: ①In short の「健全な水準（healthy level）」を、本文と同じ「目標の水準を上回り（above the target level）」に ②深さ・すむ場所の出典を、開けない水産研究・教育機構（fra_kinme）から水産庁 2021年（jfa_kinme_2021）と千葉県（chiba_kinme_r6）に替え、「千葉の沖では水深200〜800メートルほど」と出典の範囲に。fra_kinme は出典から外しました（FAQ も同じ） ③「見つけた2つの評価を年を付けて書きます」「今年の公式の告知は見つけられていない」など、調べた過程やページの予告の言い方をやめました（「資源についての公的な評価は、ここ数年で変わってきています」「日程や時間は年によって変わることがあるので、その年の内容を先に確かめて」）。「2016年の例を挙げます」も「2016年には〜」に ④「どんな味か」の節の最初の1文で、出典の範囲で答えるようにしました（脂のたっぷりのった、こくのある白身で、一年中変わらない）。「やわらかい」「甘い」は出典にないので書いていません ⑤dek の「日本中の寿司屋や旅館で出会う」を、出典のいらない「寿司屋のメニューや旅館の夕食で見かけることのある」に弱めました ⑥祭りの期間の外に水揚げを見られるかを、黄色い枠で聞く形にしました ⑦一覧のカード（card）を、目次の読み上げから答えそのもの（脂ののった赤い深海魚・煮付け・6月・下田）に替えました ⑧日本語版の伊豆半島のリンクを日本語版の記事（ja-izu）に",
-   "【今回、人に確かめてほしい点】①祭りの期間の外に、旅行者が魚市場で朝の水揚げを見られるか（新しい黄色い枠） ②「こくのある（rich）白身」という言い方は、出典の「脂ののった白身」を言い換えたものです。言い過ぎでないか",
-   "【2026-11-15 3回目の書き直し（事実の変更あり）】変えた点: ①日帰りの話: 「朝4時半ごろ出発」（根拠のない逆算）を消し、JR東日本の東京駅の時刻表（2026年11月、編集長が開いて確認）の事実に替えました。東京の始発の東海道線は5:20発・熱海7:08着、熱海から伊豆急下田は普通で約1時間半なので、日帰りでは朝の水揚げに間に合わない→前の晩に下田に泊まる、と書いています。出典は新しく jre_tt_tokyo。前の出典 jre_izu（2時間49分）は外しました。同じ内容の FAQ「東京から日帰りで水揚げを見られるか」を1問足しました ②見解を事実の形で書いていた所を直しました: 「多くの人は煮付けが目当て」「多くの人のお目当て」→「1回だけなら私たちは煮付けをすすめる」「私たちのおすすめ」、「生でも炙っても同じくらいおいしい」→「私たちの見方では」。In short・dek・description の「煮付けで知られる」も「よく煮付けにされる」に弱めました ③資源: 「その後、回復してきている（since）」をやめ、2つの評価を年を付けて別々に書きました。水産庁 2021年の評価＝2020年は「低位」、親魚量はそれまで5年ほど横ばい／千葉県が紹介する国の評価＝2023年の親魚量は目標の水準（MSY）を上回り増加。MSY は「資源を減らさずに、毎年いちばん多くとり続けられる水準」と平たく説明し、「避ける魚ではないが、たくさんいるわけでもない」と旅行者にとっての意味を1文で添えました ④祭り・見学: 出典を観光協会のページ（開けない）から下田市の広報 2016年6月号（shimoda_news、リサーチ部が開いて確認）に替え、「2016年の例では、6月1〜30日、市場の外の見学場所で朝7時半〜9時ごろ、火・土は休み、天候で変更・中止あり」と年を付けました。「今年の開催は公式の告知を見つけられていないので、確かめてから」と書いています。表の行も「きんめ祭り（2016年は6月いっぱい）」に。前の「火・土は漁が休みなので水揚げがない」は広報に理由が書かれていないので、「見学は休み」に直しました。旬の節の冒頭の「船を見たいなら6月がおすすめ」も消しました ⑤漁法: 「網ではなく延縄」（出典 jfa_kinme_mgmt は本文未確認）を、「関東の沖と伊豆諸島では、主に釣り（立縄・底立延縄）で、深い海に下ろす」に替えました。出典は jfa_kinme_2021・chiba_kinme_r6（どちらも開いて確認）。「網ではない」とは書いていません（同じ系群でも底刺し網などで獲る海域があるため）。jfa_kinme_mgmt は出典から外しました ⑥「なぜ高いか」と「のどぐろとの違い」の h2 を分けました（h2 は8個）。のどぐろの節は「のどぐろはまったく別の魚」から始めています。FAQ も「なぜ高いか」の次に「のどぐろと同じか」の順にしました",
-   "【人に確かめてほしい点】①きんめ祭りが2026年6月に開かれたか、2027年の日程と見学の時間（黄色い枠。観光協会のページは開けていません） ②「なぜ高いか」は、事実を並べたうえで「私たちの見方」として書いています。この言い方でよいか ③「避ける魚ではないが、たくさんいるわけでもない」という読み手への一言が、資源の書き方として強すぎ・弱すぎでないか ④紹介している店（市場の食堂 金目亭。営業時間は静岡県の2025年3月更新のページ）を載せてよいか、ほかに案内している店（黄色い枠） ⑤ゲストが金目鯛を買える店（黄色い枠） ⑥深さ・すむ場所は、水産庁 2021年（陸棚斜面、海山や海丘の斜面・頂上）と千葉県（水深200〜800m）の範囲で書きました ⑦見出しの写真は「焼いた赤い魚」で、本文のおすすめ（煮付け）とずれます。煮付けか水揚げの自社撮影の写真があると良くなります（手持ちの写真では替えられませんでした） ⑧「煮付けをすすめる」のは私たちの見方として書いています。運営者の感覚と合うか",
-   "【2026-11-15 4回目の書き直し（品質保証部の指摘・編集長の追記3）】変えた点: ①日帰りの答え: 「東京駅の始発（5:20発・熱海7:08着）では間に合わない。品川4:35発の普通→熱海で乗り継ぎ→伊豆急下田7:59着ならぎりぎり間に合うが、2016年の見学（7時半〜9時ごろ）の終わりのほう。私たちなら前の晩に泊まる」に直しました（In short 4点目・泊まる理由の節・FAQ）。泊まる理由に、時間のほかに「前の晩に金目鯛の夕食、朝は港をのんびり歩き、食堂で朝ごはん、帰りの電車に追われない」（私たちの見方）を足しました。NODE Shimoda はキッチンの一言に縮め、宿の案内で節を終えないようにしました ②「どんな料理にも合う」→「いろいろな料理に向く」 ③のどぐろの深さを地域つきに（茨城県の資料: 日本海の南西の海域で80〜150m、徳島県の資料: 100〜200m。FAQ は「海域によって80〜200mほど」） ④「golden-eye snapper」を英語の呼び名・流通名と言い切るのをやめました。英語の名前は splendid alfonsino（東京都の資料）だけにし、「英語のメニューで golden-eye snapper と見かけたなら同じ魚だが、スナッパーではない」と読み手の場面として書いています。h1・title の「golden-eye snapper」はそのままです ⑤下田の節の「2016年6月号の広報で〜、2025年3月更新のページで〜」をやめ、「水揚げ日本一の港を名乗り、静岡県も魚市場を同じように紹介している。たくさん揚がる場所でそのまま食べられる」に（出典の印はそのまま） ⑥旬の節: 2016年の見学の時間（7時半〜9時ごろ、火・土は休み）は表の行だけに書き、下の段落は「日程や時間は年によって変わり、天候で中止もある。その年の内容を確かめて」の2文に縮めました ⑦料理の表の煮付けの行に「静岡県の研究者が稲取に揚がった金目鯛を測ったら、大きい魚ほど脂が多かった→大きめの魚を選ぶ価値があると私たちは思う」を入れ、旬の表の6月の行に「稲取の魚を1年測って、脂は6月に最も多く約10%」を入れました（約10%は資料の図から読んだ値）",
-   "【今回、人に確かめてほしい点】①品川4:35発→熱海6:16着→6:28発→伊豆急下田7:59着が毎日走るか（編集長の追記3。品質保証部が11月の時刻表で照合） ②駅から魚市場の見学場所までの歩く時間は分からないので、「間に合っても終わりのほうだけ」と書いています ③「前の晩に金目鯛の夕食、朝は港をのんびり」は私たちの見方として書いています。運営者の感覚と合うか ④脂の「約10%」は静岡県の資料の図から読んだ値です ⑤h1・title に「golden-eye snapper」を残してよいか（検索語として残しています）",
-   "【入れられなかったこと】値段の目安（一次の出典なし）。2025年の資源の最新の数字（水産庁 2026年9月の資料は本文を開けていないため）。下田駅から魚市場の見学場所までの歩く時間（確認できず）",
+   "【2026-11-16 書き直し（品質保証部の HTML 84点・原稿 85点の指摘と、黄色い枠をなくす決まり〔playbook 3-2〕）】変えた点: ①黄色い枠をすべてなくしました。公式のページで確かめられたことだけで書き、確かめられないこと（いまの祭りの開催、祭り以外の日の見学、私たちが案内している店）は書いていません ②下田の水揚げは「日本一の港と言われ、年1,000トン以上・下田で揚がる魚の約8割」と観光協会の言い方のまま書き、時点（観光協会のページ、2026年11月時点）を付けました。dek・card も「日本一と言われる」に ③「一年中揚がる・1年中が旬」「冬は身が引き締まる」に観光協会の出典を付けました ④きんめ祭りは2016年の記録（6月、市場の外で7時半〜9時ごろ、火・土は休み、天候で中止あり）として表に残し、「いまの行事は観光協会の行事のページで。行事に合わせるなら観光協会に」としました。調べた過程（「確かめられなかった」など）は書いていません ⑤日帰り: 「間に合っても終わりのほうだけ」を「2016年と同じ時間なら、駅から約10分歩いても1時間近く残る」に直しました ⑥In short の3つ目を「1泊して、夕食に金目鯛、翌朝は市場の食堂で朝ごはん」に（朝も金目鯛が出るとは書いていません。金目亭の朝は日替わり定食のみで、その日の水揚げで変わるため。本文にもそう書きました） ⑦のどぐろとの表の「目」の行に キンメダイ目／スズキ目 を入れ、「東京都と徳島県の水産の資料での分け方。分類は見直されることがある」と添えました。「独自の科」はやめ、キンメダイ科（Berycidae）と書きました ⑧出典名の二重かっこをやめ、出典は番号だけにしました ⑨食べられる店は、観光協会の一覧（飲食店19軒・宿34軒）へのリンクにしました。店名は県の出典がある金目亭だけです ⑩自炊用に買える所として、道の駅 開国下田みなと1階の伊豆漁協の直売所（観光協会と県のページ。住所・電話が同じ同じ店）を足しました ⑪NODE Shimoda は「旧町内のアパートの一室」とし、キッチンの設備は公式サイトの記載（ガスコンロ・冷蔵庫・炊飯器・調理器具）、駅から徒歩8分（公式のアクセス）で書きました。触れるのは本文で1回です ⑫新しい出典: shimoda_kanko_event・shimoda_kanko_gift・pref_izu_gyokyo_shop・node_access（SOURCES_NEW）",
+   "【変わりやすい数字（確認した日）】観光協会の一覧の店の数（飲食店19軒・宿34軒、2026-11-16）、年1,000トン以上・約8割（観光協会のページ、2026-11-16）、金目亭の営業時間（静岡県のページ 2025年3月更新）、伊豆漁協の直売所の営業時間（静岡県のページ 2025年4月更新）、品川4:35発→伊豆急下田7:59着（JR東日本の時刻表 2026年11月）、NODE Shimoda の徒歩8分と設備（公式サイト、2026-11-16）",
   ],
   "points": [
     "英語の名前は splendid alfonsino。メニューで何と呼ばれていても、鯛でもフエダイ（スナッパー）でもなく、のどぐろとも別の魚です。",
     "白身には一年中脂がのっています。私たちならまず煮付けを選びますが、刺身やさっと炙ったものもおいしいです。",
-    "2016年のきんめ祭りの期間中は、朝7時半〜9時ごろに水揚げを見学できました。品川4時35分発の電車で7時59分着なので、私たちなら前の晩に泊まります。",
+    "私たちなら下田に1泊します。夕食に金目鯛を食べて、翌朝は魚市場の食堂で朝ごはんです。",
   ],
   "body": """
 <h2>金目鯛とはどんな魚か</h2>
 <p>金目鯛は、赤い皮と大きな金色の目をした深海魚です。英語では splendid alfonsino（学名 <em>Beryx splendens</em>）と呼ばれます[[s:fishbase_beryx]]。大陸斜面や、海の中の山の斜面・頂上にすんでいて、千葉の沖では水深200〜800メートルほどの所です[[s:jfa_kinme_2021,chiba_kinme_r6]]。下田市の広報によると、目は金色に輝き、水揚げから40分ほどで全身が赤くなるそうです[[s:shimoda_news]]。</p>
-<p>漢字では「金目鯛」と書きます。英語のメニューで golden-eye snapper と見かけたなら同じ魚ですが、鯛の仲間でもフエダイ（スナッパー）の仲間でもなく、キンメダイ科という独自の科の魚です[[s:tokyo_kinme_tag]]。</p>
+<p>漢字では「金目鯛」と書きます。英語のメニューで golden-eye snapper と見かけたなら同じ魚です。名前に「鯛」がついていますが鯛の仲間ではなく[[s:shimoda_kanko_kinme]]、フエダイ（スナッパー）の仲間でもありません。キンメダイ科（Berycidae）の魚です[[s:tokyo_kinme_tag]]。</p>
 
 <h2>金目鯛はどんな味で、どうやって食べるのか</h2>
 <p>金目鯛は、脂のたっぷりのった、こくのある白身で、それが一年中変わりません。下田市は、深い海にすむからだと説明していて、いろいろな料理に向くそうです[[s:shimoda_news]]。1回だけ食べるなら、私たちは醤油と砂糖で煮る「煮付け」をすすめます。ただ、生でも、さっと炙っても同じくらいおいしいと私たちは思います。</p>
@@ -286,42 +290,40 @@ ARTICLES = [
 <p>この目標の水準（MSY）は、資源を減らさずに、毎年いちばん多くとり続けられる量の目安です。旅行者にとっては、避けるべき魚ではないけれど、たくさんいるわけでもない、ということです。千葉県の水揚げは2023年に1,467トンで、2007年の2,263トンには届いていません[[s:chiba_kinme_r6]]。</p>
 
 <h2>金目鯛とのどぐろは、どう違うのか</h2>
-<p>のどぐろは、まったく別の魚です。「アカムツ」の市場での呼び名で、英語では blackthroat seaperch と呼ばれます[[s:kyoto_akamutsu,fishbase_nodoguro]]。どちらも赤くて高級なので混同されがちですが、科も目（もく）も違い、のどぐろのほうがずっと浅い所にすんでいます。メニューに両方あれば、2つの違う魚から選んでいることになります。</p>
+<p>のどぐろは、まったく別の魚です。「アカムツ」の市場での呼び名で、英語では blackthroat seaperch と呼ばれます[[s:kyoto_akamutsu,fishbase_nodoguro]]。どちらも赤くて高級なので混同されがちです。でも、科も目（もく）も違い、のどぐろのほうがずっと浅い所にすんでいます。メニューに両方あれば、2つの違う魚から選んでいることになります。</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th></th><th>金目鯛</th><th>のどぐろ</th></tr></thead>
 <tbody>
+<tr><td><strong>目（もく）</strong></td><td>キンメダイ目[[s:tokyo_kinme_tag]]</td><td>スズキ目[[s:tokushima_akamutsu]]</td></tr>
 <tr><td><strong>科</strong></td><td>キンメダイ科[[s:tokyo_kinme_tag]]</td><td>ホタルジャコ科[[s:tokushima_akamutsu]]</td></tr>
-<tr><td><strong>目（もく）</strong></td><td>のどぐろとは違う目[[s:tokyo_kinme_tag]]</td><td>金目鯛とは違う目[[s:tokushima_akamutsu]]</td></tr>
 <tr><td><strong>すむ深さ</strong></td><td>千葉の沖で200〜800メートルほど[[s:chiba_kinme_r6]]</td><td>日本海の南西の海域で80〜150メートルほど[[s:ibaraki_akamutsu]]、徳島県の資料では100〜200メートルほど[[s:tokushima_akamutsu]]</td></tr>
 <tr><td><strong>名前の由来</strong></td><td>漢字で「金目鯛」（金色の目の鯛）</td><td>口の中（のど）が黒いこと[[s:kyoto_akamutsu]]</td></tr>
 </tbody></table></div>
+<p>目と科は、東京都と徳島県の水産の資料での分け方です。魚の分類はときどき見直されるので、本によっては少し違う分け方をしていることがあります。</p>
 
 <h2>妊娠中に金目鯛を食べてもいいか</h2>
 <p>厚生労働省は、水銀のために、妊婦が食べる量を「週1回・1回約80gまで」とする魚に、メカジキ、クロマグロ、メバチと並んで金目鯛を入れています[[s:mhlw_mercury2010]]。同じ注意事項では、寿司や刺身1貫は約15gなので、80gは寿司でだいたい5貫です。これはおなかの赤ちゃんを守るための目安で、子どもやほかの大人向けではありません[[s:mhlw_mercury2010]]。一般向けの目安で、医療の助言ではないので、妊娠中なら、かかりつけの医師や助産師に聞くのがいちばんです。</p>
 
-<h2>なぜ下田で食べるのがいいのか</h2>
-<p>[[l:ja-izu|伊豆半島]]の南端にある下田は、金目鯛の水揚げ日本一の港を名乗っていて、静岡県も下田の魚市場を同じように紹介しています[[s:shimoda_news,pref]]。いちばん多く揚がる港で食べられる、ということです。</p>
-<p>地元では、2つの呼び名を耳にするかもしれません。2014年のテレビ東京の下田の番組では、「地金目」は大島から神津島にかけての近海でとれたもの、「沖金目」はもっと遠くの漁場でとれたもの、と説明していました[[s:tvtokyo]]。</p>
-<p>手始めにいちばん行きやすいのは、下田市魚市場の中にある食堂「市場の食堂 金目亭」で、伊豆急下田駅から歩いて約10分です。金目鯛を3通りで味わう丼や、丸ごとの煮付けの定食があります。静岡県のページによると、朝定食が7時〜9時30分、昼が11時〜15時で、火曜が定休日です（[[a:pref]]、2025年3月更新）。営業時間は変わることがあるので、出かける前にさっと確かめておくと、無駄足になりません。</p>
-[[ed:実際にゲストへ案内している店を2〜3軒、家からの徒歩時間と、そこで頼むものを添えて入れてください。]]
+<h2>下田のどこで金目鯛を食べられるか</h2>
+<p>町には金目鯛を出す店がたくさんあります。手始めには、観光協会の一覧が便利です。2026年11月の時点で、金目鯛の料理を出す飲食店19軒と、ホテル・旅館34軒が載っていて、水揚げによっては出せない日もある、と添えてありました[[s:shimoda_kanko_kinme]]。</p>
+<p>下田は[[l:ja-izu|伊豆半島]]の南端にあります。観光協会によると、下田港は金目鯛の水揚げ量日本一の港と言われ、年1,000トン以上（観光協会のページ、2026年11月時点）、下田で揚がる魚の約8割を金目鯛が占めるそうです[[s:shimoda_kanko_kinme]]。地元では、2つの呼び名を耳にするかもしれません。2014年のテレビ東京の下田の番組では、「地金目」は大島から神津島にかけての近海でとれたもの、「沖金目」はもっと遠くの漁場でとれたもの、と説明していました[[s:tvtokyo]]。</p>
+<p>手始めにいちばん行きやすいのは、下田市魚市場の中にある食堂「市場の食堂 金目亭」で、伊豆急下田駅から歩いて約10分です。金目鯛を3通りで味わう丼や、丸ごとの煮付けの定食があります。静岡県のページ（2025年3月更新）によると、朝定食が7時〜9時30分、昼が11時〜15時で、火曜が定休日です[[s:pref]]。営業時間は変わることがあるので、出かける前にさっと確かめておくと、無駄足になりません。</p>
 
 <h2>金目鯛の旬はいつか</h2>
-<p>金目鯛は一年中揚がりますが、地元で挙がる時期は2つあります。冬と、脂がいちばん乗る6月ごろです。</p>
+<p>金目鯛は深海魚なので一年中揚がり、観光協会は「1年中が旬」と言っています[[s:shimoda_kanko_kinme]]。それでも地元で挙がる時期は2つあります。冬と、脂がいちばん乗る初夏の6月ごろです。</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>時期</th><th>理由</th></tr></thead>
 <tbody>
-<tr><td>冬</td><td>鍋の季節で、昔からの旬とされる時期です[[s:shimoda_news,shizuoka_kinme_fat]]。</td></tr>
+<tr><td>冬</td><td>鍋の季節で、昔からの旬とされる時期です[[s:shimoda_news,shizuoka_kinme_fat]]。身がいちばん引き締まります[[s:shimoda_kanko_kinme]]。</td></tr>
 <tr><td>6月ごろ</td><td>産卵の前で、脂がいちばん多い時期。静岡県が稲取の魚を1年間測ったところ（2007〜2011年度の調査）、脂は6月に最も多く、約10%でした[[s:shimoda_news,shizuoka_kinme_fat]]。</td></tr>
-<tr><td>きんめ祭り（2016年は6月いっぱい）</td><td>2016年は、魚市場の外に見学場所があり、朝7時半〜9時ごろに水揚げを見られました（火曜・土曜は休み）[[s:shimoda_news]]。</td></tr>
+<tr><td>きんめ祭り（2016年は6月いっぱい）</td><td>2016年は、魚市場の外に見学場所があり、朝7時半〜9時ごろに水揚げを見られました（火曜・土曜は休み、天候で中止もあり）[[s:shimoda_news]]。</td></tr>
 </tbody></table></div>
-<p>祭りの日程や見学の時間は年によって変わることがあり、天候で見学が中止になることもあります[[s:shimoda_news]]。祭りに合わせて旅を組むなら、その年の内容を先に確かめておくと安心です。</p>
-[[ed:きんめ祭りが2026年6月に開かれたか、2027年の日程と見学の時間を、伊豆下田観光協会に確かめてください。]]
+<p>2016年は、6月の祭りの期間に、朝の水揚げを見られる場所がありました。いまの行事は、観光協会の行事のページで見られます[[s:shimoda_kanko_event]]。行事に合わせて旅を組みたいなら、観光協会に聞くのが確実です。</p>
 
 <h2>日帰りではなく、泊まったほうがいい理由</h2>
-<p>東京から朝の水揚げに間に合わせることはできなくはありませんが、かなり早い電車に乗ることになるので、私たちなら前の晩に泊まります。東京駅の始発の東海道線は5:20発で、熱海に着くのは7:08です。もっと早い行き方が1つあり、品川4:35発の普通に乗って熱海で乗り継ぐと、伊豆急下田に7:59に着きます（JR東日本の時刻表、2026年11月）[[s:jre_tt_tokyo]]。2016年の見学は朝7時半〜9時ごろだったので[[s:shimoda_news]]、間に合っても終わりのほうだけです。</p>
-<p>泊まる理由は時間だけではありません。前の晩に金目鯛の夕食を食べて、朝は港までのんびり歩き、食堂で朝ごはんを食べて、帰りの電車に追われない。私たちは、そのほうがずっと楽しめると思います。行き方は、[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]にまとめています。魚を自分で料理してみたいなら、旧町内にある私たちの家「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」にはキッチンがそろっていて、駅から歩いて約10分です。</p>
-[[ed:ゲストが金目鯛を買える店の名前を入れてください。]]
-[[ed:6月のきんめ祭りの期間の外でも、旅行者が下田魚市場で朝の水揚げを見られるか教えてください。見られるなら、場所とおおよその時間を。見られないなら「見学できるのは祭りの期間だけ」と一言入れます。]]
+<p>私たちは、町に1泊すると金目鯛の旅がずっとゆったりすると思っています。夕食に金目鯛を食べて、朝は港までのんびり歩き、市場の食堂で7時からの朝ごはん（朝はその日の水揚げで変わる日替わりの定食です）[[s:pref]]。帰りの電車に追われることもありません。</p>
+<p>日帰りもできますが、朝はかなり慌ただしくなります。東京駅の始発の東海道線は5:20発で、熱海に着くのは7:08です。それより早い行き方は1つで、品川4:35発の普通に乗って熱海で乗り継ぐと、JR東日本の2026年11月の時刻表で伊豆急下田に7:59に着きます[[s:jre_tt_tokyo]]。祭りの見学が2016年と同じ朝7時半〜9時ごろなら[[s:shimoda_news]]、駅から市場まで約10分歩いても、1時間近く残ります。行き方は、[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]にまとめています。</p>
+<p>魚を自分で料理してみたいなら、道の駅「開国下田みなと」の1階で、伊豆漁協が下田の金目鯛などを売る店を開いています[[s:shimoda_kanko_gift]]。静岡県のページ（2025年4月更新）では、8時〜16時30分・定休日なしで、駅から歩いて約10分です[[s:pref_izu_gyokyo_shop]]。旧町内にある私たちのアパートの一室「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」には、ガスコンロ・冷蔵庫・炊飯器・調理器具のそろったキッチンがあり[[s:node_room]]、駅から歩いて8分です[[s:node_access]]。</p>
 """,
   "faq": [
     ("金目鯛は、レッドスナッパーと同じですか",
@@ -329,13 +331,13 @@ ARTICLES = [
     ("金目鯛はなぜ高いのですか",
      "とり方と、とれる量が大きいと私たちは見ています。千葉の沖では水深200〜800メートルほどの深い所にすみ、主に釣り（おもに立縄）でとります[[s:jfa_kinme_2021,chiba_kinme_r6]]。東京・千葉・神奈川・静岡の漁獲量は、2005〜09年の年7,000トン弱から2020年には3,797トンに減りました[[s:jfa_kinme_2021]]。その後の国の評価では、2023年の親魚の量は目標の水準を上回り、増えています[[s:chiba_kinme_r6]]。"),
     ("金目鯛とのどぐろは同じ魚ですか",
-     "違います。のどぐろは「アカムツ」の呼び名で、ホタルジャコ科という別の科の赤い魚です。すむ深さは、海域によって80〜200メートルほどと、金目鯛より浅い所です[[s:tokushima_akamutsu,ibaraki_akamutsu]]。"),
+     "違います。のどぐろは「アカムツ」の呼び名で[[s:fishbase_nodoguro]]、スズキ目ホタルジャコ科という、目も科も違う赤い魚です。すむ深さは、海域によって80〜200メートルほどと、金目鯛より浅い所です[[s:tokushima_akamutsu,ibaraki_akamutsu]]。"),
     ("妊娠中に金目鯛を食べてもいいですか",
      "厚生労働省は、水銀のために、妊婦は金目鯛を「週1回・1回約80gまで」にするよう勧めています。寿司ならだいたい5貫です[[s:mhlw_mercury2010]]。自分の場合どうかは、医師や助産師に聞いてください。"),
     ("金目鯛の旬はいつですか",
-     "一年中揚がります。昔からの旬は冬で、脂がいちばん乗るのは6月ごろです[[s:shimoda_news,shizuoka_kinme_fat]]。"),
+     "一年中揚がり、下田の観光協会は「1年中が旬」と言っています[[s:shimoda_kanko_kinme]]。昔からの旬は冬で、脂がいちばん乗るのは6月ごろです[[s:shimoda_news,shizuoka_kinme_fat]]。"),
     ("東京から日帰りで、金目鯛の水揚げを見られますか",
-     "ぎりぎりです。東京駅の始発では遅く、品川4:35発の普通なら下田に7:59に着きますが[[s:jre_tt_tokyo]]、2016年の見学の時間の終わりのほうです[[s:shimoda_news]]。私たちなら前の晩に泊まります。朝の港をゆっくり歩けるのもいいところです。"),
+     "2016年は、6月のきんめ祭りの期間に、朝7時半〜9時ごろ水揚げを見学できました[[s:shimoda_news]]。いまの行事は、観光協会の行事のページで見られます[[s:shimoda_kanko_event]]。電車も慌ただしく、品川4:35発の普通で下田に7:59着です[[s:jre_tt_tokyo]]。私たちなら前の晩に泊まって、市場の食堂で朝ごはんにします。"),
     ("kinmedai はどう発音しますか",
      "英語を話す人には “kin-meh-dye” が近い音です。地元では「キンメ」と略すこともよくあります。"),
   ],
@@ -345,7 +347,7 @@ ARTICLES = [
 {
  "id": "akiya-try-first", "slug": "akiya-try-before-you-buy", "topic": "own", "place": None, "also": ["live"],
  "photo": ("yaizu-engawa", "Old wooden house with a long veranda and an overgrown garden", "An older house in Iwashigashima, Yaizu, before renovation."),
- "published": "2026-11-14", "updated": "2026-11-15",
+ "published": "2026-11-14", "updated": "2026-11-16",
  "kicker": "Own a home",
  "h1": "Buying an akiya in Japan? Live in one for a month first",
  "seo_title": "Buying an Akiya in Japan? Live in One for a Month First",
@@ -364,10 +366,8 @@ ARTICLES = [
 
 <h2>Can foreigners buy an akiya?</h2>
 <p>Yes. Non-residents can buy, and the Ministry of Finance’s rules spell out what they need to do. Since April 2026, a non-resident who buys property in Japan has to report the purchase to the ministry under the Foreign Exchange Act, even a home they plan to live in [[s:mof_fefta2026,mof_realprop_faq]]. Real Estate Japan, a property site for foreign buyers, makes the same point: you don’t need to live in Japan to buy [[s:rej]]. Since 5 October 2026, every buyer, Japanese or not, gives their nationality when the purchase is registered [[s:moj_nationality]].</p>
-<p>The rules are still moving. As of November 2026, a bill before the Diet would create new zones within about 1 km of some defence and coast guard sites, and on uninhabited border islands [[s:cao_land_bill,cao_land_bill_outline]]. Every transfer of land ownership in those zones would need the government’s approval in advance, and the law would take effect within 18 months of becoming law [[s:cao_land_bill_outline]].</p>
-[[ed:Check the bill’s progress in the House of Representatives (222nd Diet, cabinet bill no. 18): has it passed, when was it promulgated, and when does it take effect?]]
+<p>The rules are still moving. A bill before the Diet would create new zones within about 1 km of some defence and coast guard sites, and on uninhabited border islands [[s:cao_land_bill,cao_land_bill_outline]]. Every transfer of land ownership in those zones would need the government’s approval in advance, and the changes would take effect within 18 months of the act being promulgated [[s:cao_land_bill_outline]]. As of mid-November 2026, the bill was still before the House of Representatives, so it isn’t law yet [[s:shugiin_bill18]].</p>
 <p>We’d also treat a house and a visa as two separate questions. If you’re hoping that owning a home will help you stay in Japan longer, ask an administrative scrivener (<em>gyoseishoshi</em>) who handles visas before you count on it. With the rules changing this fast, we think it’s sensible to have a lawyer or judicial scrivener (<em>shiho shoshi</em>) look at your own case before you sign.</p>
-[[ed:Confirm with a gyoseishoshi or the Immigration Services Agency how owning property relates to residence status. No official source has been found for this yet.]]
 
 <h2>Why live in the town before you buy?</h2>
 <p>Buying the house is the easy part. What you’re really committing to is the town, and a listing can only tell you so much: the price, the floor plan, a few photos. The things that decide whether you’ll be happy there only show up once you’ve lived there for a while.</p>
@@ -385,7 +385,7 @@ ARTICLES = [
 <p>None of this comes up in a viewing.</p>
 
 <h2>What only shows up once you live in an old house?</h2>
-<p>The wiring and the internet, in our experience. We learnt this when one of our founding members rented an old house in Shimoda from its owner and turned it into a guesthouse. We rented rather than bought, but we think a buyer would run into the same things.</p>
+<p>The wiring and the internet, in our experience. We learnt this when one of our founding members rented an older flat in Shimoda from its owner and turned it into a guesthouse. We rented rather than bought, but we think a buyer would run into the same things.</p>
 <p>The old two-wire electrics couldn’t run the air conditioner, the fridge and the microwave all at once, so we had to ask guests not to use them together. Upgrading the wiring costs real money, so it’s something to find out before you budget, not after. Getting broadband put in took more than two months because it was the busy season, and we got by on a plug-in home router until then.</p>
 <p>The wiring and the wait for broadband are small examples of a bigger point. With a cheap old house, the asking price is only part of what you’ll pay. Renovation, taxes, insurance and upkeep come on top, and they vary so much from one building to the next that only written quotes will tell you the real figure.</p>
 
@@ -394,11 +394,10 @@ ARTICLES = [
 <div class="tablewrap"><table class="free">
 <thead><tr><th>Way to stay</th><th>How long</th><th>Who it’s for</th></tr></thead>
 <tbody>
-<tr><td><strong>Short-term visitor</strong>, visa-exempt</td><td>Up to 90 days for most visa-exempt nationalities. Some get 15 or 30 days, and some passports come with extra conditions [[s:mofa]].</td><td>Anyone from a visa-exempt country or region. The rule for your own passport is the one that counts.</td></tr>
+<tr><td><strong>Short-term visitor</strong>, visa-exempt</td><td>Up to 90 days for most visa-exempt nationalities, though some are given 15, 30 or 180 days [[s:jnto_visa]].</td><td>Anyone from a visa-exempt country or region. You can’t do paid work on this status, and the rule for your own passport is the one that counts [[s:jnto_visa]].</td></tr>
 <tr><td><strong>Digital nomad</strong> status</td><td>Six months, and it can’t be renewed. You can apply for it again six months after you leave Japan [[s:isa_nomad_en]].</td><td>Nationals of countries and regions that are both visa-exempt and have a tax treaty with Japan [[s:isa_nomad_list]]. You need an annual income of at least ¥10 million and private medical insurance with at least ¥10 million of treatment cover, and you can’t work for a Japanese employer [[s:isa_nomad_en]].</td></tr>
 </tbody></table></div>
 <p class="fine">This is general information, not immigration advice. The list of eligible countries for the digital nomad status changes, so check it for your own passport.</p>
-[[ed:Open MOFA’s visa exemption page and confirm the 90-day rule and the exceptions; open the Immigration Services Agency’s digital nomad page and list of eligible countries, and confirm each condition as of the publishing date.]]
 
 <h2>Where can you stay for a month to test a town?</h2>
 <p>You’ve got three main choices: a town’s trial home, a monthly rental, or a guesthouse with monthly rates. Which one works depends on the town, and on where you’re coming from.</p>
@@ -407,19 +406,18 @@ ARTICLES = [
 <tbody>
 <tr><td><strong>A town’s trial home</strong> (<em>otameshi jutaku</em>)</td><td>From a day or two up to a few months, and in one city for up to just under two years [[s:shizuoka_trial,minamialps_trial,shizuoka_long_trial]]</td><td>Each town sets its own rules, mostly for people planning to move. Minami-Alps City rents its trial home for one to three months at ¥21,000 a month (February 2026) [[s:minamialps_trial]].</td></tr>
 <tr><td><strong>A monthly rental</strong></td><td>A month or more</td><td>A furnished room or flat let by the month. In a small town there may be few to choose from, so it helps to search early.</td></tr>
-<tr><td><strong>A guesthouse or holiday home with monthly rates</strong></td><td>A week to a month or more</td><td>Often the easiest to book from abroad, and you can try living in an older house without committing to anything.</td></tr>
+<tr><td><strong>A guesthouse or holiday home with monthly rates</strong></td><td>A week to a month or more</td><td>Often the easiest to book from abroad, and you can try daily life in the town without committing to anything.</td></tr>
 </tbody></table></div>
 <p>Trial homes sound ideal, but there’s a catch: they’re built for people who are moving, not for people testing a town from abroad. Minami-Alps City’s home is for people registered as living outside Yamanashi who intend to move to the city and have signed up for a relocation consultation [[s:minamialps_trial]]. Nationality isn’t one of the listed conditions, so if you live overseas, the city’s relocation desk can tell you whether you’d qualify.</p>
 <p>Some cities spell it out. Shizuoka City’s long-term trial flats are city-run apartments you can rent for six months to under two years, but only if you live outside Shizuoka Prefecture and have decided, or are preparing, to move to the city. Foreign nationals qualify only as permanent residents, long-term residents, special permanent residents, or the spouse or child of a Japanese national (page updated August 2026) [[s:shizuoka_long_trial]]. So a tourist or digital nomad stay won’t qualify there. In our view, if you’re coming from abroad, a monthly rental or a guesthouse is usually the realistic choice. If you’ve set your heart on a trial home, the town’s relocation office is the first call to make.</p>
-[[ed:Ask the Izu towns (Shimoda, Minamiizu, Izu City) whether they have trial homes of a month or more, what they cost, and whether foreign nationals or people living overseas can use them.]]
+<p>Shimoda City takes another route. Under rules in force since April 2026, it pays half the rate at designated hotels for people thinking of moving there, up to ¥4,000 a night for stays of up to 10 nights [[s:shimoda_stay_subsidy]]. But you need to be registered as living in Japan outside Shizuoka Prefecture, so it won’t help if you’re coming from abroad [[s:shimoda_stay_subsidy]].</p>
 <p>Towns within reach of Tokyo are the easiest to test. As of November 2026, the daily direct trains from Tokyo Station reach Shimoda, on the [[l:izu|Izu Peninsula]], in 2 hours 29 to 44 minutes [[s:jre_tt_tokyo]]. Our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]] has the details.</p>
-<p>If Shimoda is on your list, our own home there, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, is one of the guesthouse options above. It’s an older house in the old town, renovated for long stays and licensed under Japan’s Hotel Business Act. Most of our guests so far have come from Europe and North America, and some come to work remotely.</p>
-[[img:node-shimoda|Living room with a sofa, low table and sliding paper screens|The living room of NODE Shimoda, our home in Shimoda’s old town.]]
-[[ed:Confirm before publishing: whether stays of 30 nights or more can always be accepted; whether we may call NODE Shimoda a “house” (a detached house) at all, and an “older house” in particular; and whether “our own old wiring” in the trial-month section can refer to it.]]
+<p>If Shimoda is on your list, we run a small place there called <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, which can be a base while you get a feel for the town. It’s a renovated flat of about 40 m² in an apartment building in the old town, 8 minutes’ walk from Izukyu-Shimoda Station [[s:node_room,node_access]]. Our site describes it as handy for medium and long stays [[s:node_site]], and it’s licensed under Japan’s Hotel Business Act. Most of our guests so far have come from Europe and North America, and some come to work remotely.</p>
+[[img:node-shimoda|Living room with a sofa, low table and sliding paper screens|The living room of NODE Shimoda, our flat in Shimoda’s old town.]]
 
 <h2>What does a trial month look like?</h2>
 <p>Mostly, it looks like ordinary life, with a few deliberate tests built in. Based on what caught us out in Shimoda, we’d plan it roughly week by week.</p>
-<p>The first week goes on settling in: the supermarket, the clinic, the bus stop and the rubbish calendar. If you’re staying in an older house, ask your host what amperage the electricity contract allows and where the breaker box is. Our own old wiring couldn’t run the air conditioner, fridge and microwave at the same time. The amperage tells you roughly how much you can run at once, and knowing where the breaker box is turns a tripped switch into a quick fix.</p>
+<p>The first week goes on settling in: the supermarket, the clinic, the bus stop and the rubbish calendar. If you’re staying in an older building, ask your host what amperage the electricity contract allows and where the breaker box is. The old wiring in our Shimoda flat couldn’t run the air conditioner, fridge and microwave at the same time. The amperage tells you roughly how much you can run at once, and knowing where the breaker box is turns a tripped switch into a quick fix.</p>
 <p>By the second week you’re working your usual hours and cooking at home. That’s when you find out whether the connection survives a day of video calls, and you’ll see what heating or cooling really costs. It’s also a good moment to ask a local provider how long a new line takes there, since ours took more than two months.</p>
 <p>The third week is for asking around. You might visit the city hall desk that handles empty houses, talk to a local agent, or ask a builder roughly what rewiring an old house costs. Neighbours are often the best people to tell you what humid summers and typhoons do to houses like theirs.</p>
 <p>By the fourth week you’ll have a fair idea of what would need to change, about the house and about the way you live. Writing those costs and doubts down while they’re fresh makes it much easier to compare towns, or to walk away.</p>
@@ -437,21 +435,25 @@ ARTICLES = [
    ("How many akiya are there in Japan?",
     "About 9.0 million homes were empty on 1 October 2023, 13.8% of all housing, according to the 2023 Housing and Land Survey [[s:stat_housing2023]]."),
  ],
- "sources": ["stat_housing2023", "rej", "mof_fefta2026", "mof_realprop_faq", "moj_nationality", "cao_land_bill", "cao_land_bill_outline", "mofa",
-             "isa_nomad_en", "isa_nomad_list", "minamialps_trial", "shizuoka_trial", "shizuoka_long_trial", "jre_tt_tokyo"],
+ "sources": ["stat_housing2023", "rej", "mof_fefta2026", "mof_realprop_faq", "moj_nationality", "cao_land_bill", "cao_land_bill_outline", "shugiin_bill18", "jnto_visa",
+             "isa_nomad_en", "isa_nomad_list", "minamialps_trial", "shizuoka_trial", "shizuoka_long_trial", "shimoda_stay_subsidy", "jre_tt_tokyo",
+             "node_site", "node_room", "node_access"],
  "related": ["izu-from-tokyo", "izu"],
  "ja": {
   "h1": "空き家を買う前に、まず1か月住んでみる",
   "dek": "2023年時点で、日本には約900万戸の空き家があり、日本に住んでいない人も買うことができます。でも本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
   "review": [
+   "【2026-11-16 品質保証部（91点・ゲート違反1）の指摘での直し】変えた点: ①【ゲート】NODE Shimoda の段落の「上の宿の選択肢の1つ」をやめ、表の「月割のある宿（1か月以上）」の行とつながらないようにしました。「町の様子をつかむあいだの拠点にしてもらえる」「公式サイトでは中長期の滞在にも便利な宿として紹介」までにし、月割や1か月以上泊まれるとは書いていません ②下田市の補助に「2026年4月施行の要綱」と時点を足し、1〜2文に短くしました（1泊4,000円までと、海外からは使えないことだけ。11〜30泊の80,000円は本文から外しました） ③法案の施行を「公布から18か月以内（within 18 months of the act being promulgated）」にそろえ、law の重なりをなくしました ④法案の段落の時点を「2026年11月中旬」の1回だけにしました（冒頭の「2026年11月時点で」を削除）",
+   "【2026-11-16 手離れ（黄色い枠をすべてなくした。playbook 3-2）】変えた点: ①【事実の追加】土地の法案: 衆議院の議案審議経過で「2026年11月中旬の時点で、まだ衆議院で審議中。法律になっていない」と書きました（出典 shugiin_bill18。10月23日受理・11月10日に内閣委員会に付託、成立・公布はまだ）。施行は「公布から18か月（1年6か月）以内」に英語版・日本語版ともそろえました ②【事実の変更】ビザなしの短期滞在: 出典を外務省（この環境から開けない mofa）から日本政府観光局の入国・ビザのページ（jnto_visa）に替え、「15日や30日の国もある」→「15日・30日・180日の国もある」に。「パスポートに条件が付く場合もある」は出典にないので削り、「この滞在では報酬を得る仕事はできない」を足しました ③デジタルノマドは編集長が出入国在留管理庁のページで確かめた内容と一致しているので、本文はそのままで枠だけ外しました ④家と在留資格の関係は公的な出典が見つからないため、断定は書かず、「家とビザは別の問題として考え、あてにする前に行政書士に聞く」という私たちの見方だけを残しました ⑤【事実の追加】伊豆の町のお試し住宅（伊豆市・南伊豆町）は公式ページで確かめられなかったので書いていません。代わりに、下田市の移住希望者の滞在費補助（市が指定する宿の宿泊料の半分、10泊まで1泊4,000円まで、11〜30泊続けてなら80,000円まで）を書き、対象が「静岡県外ですでに日本に住民登録があり、移住相談に登録した人」なので、海外から来る人は使えないと分かるようにしました（出典 shimoda_stay_subsidy。2026年3月改正の要綱） ⑥【事実の変更】NODE Shimoda を「古い家（older house）」→「旧町内のアパートの一室（約40㎡）を改装したもの、伊豆急下田駅から徒歩8分」に（公式サイトの客室・アクセスのページ）。「長めの滞在にも向く」は公式サイトの「中長期の滞在にも便利」にもとづき、30泊以上を受けるとは書いていません。写真の説明も「私たちの部屋」に ⑦体験の節の「下田の古い家を借りた」→「下田の古い部屋（older flat）を借りた」、1週目の「私たちの家の古い配線」→「下田の私たちの部屋の古い配線」に（experience.md 3-2 で NODE Shimoda と同じ施設と確認済み）。一軒家と読める言い方をなくしました ⑧宿の行の「古い家での暮らしを試せる」→「その町での暮らしを試せる」、1週目の「古い家に泊まっているなら」→「古い建物に泊まっているなら」 ⑨出典: shugiin_bill18・jnto_visa・shimoda_stay_subsidy・node_access を新しく（SOURCES_NEW）、node_site・node_room を使い、mofa を外しました",
+   "【今回、人に確かめてほしい点】なし（黄色い枠はありません）。参考までに: 下田市の補助の対象の宿の一覧は確かめていないので、NODE Shimoda が対象かは書いていません。デジタルノマドの条件は、出入国在留管理庁のページがこの環境から開けず、編集長が2026-11-16に確かめた内容を使っています",
    "【2026-11-16 冒頭を短く（playbook 2章の1）】dek を2文・30語以内、In short を3項目・各20語以内にしました。空き家の数に「2023年時点」を付け、In short の「冬の寒さ」（冬の1か月でないと成り立たない）を、本文にある「冷暖房に実際いくらかかるか」に替えました。外した情報（空き家の割合13.8%、家とビザは別の話、2026年11月時点の90日の滞在・デジタルノマド、冬の寒さ）は本文にそのまま残っています。",
    "【2026-11-15 品質保証部（HTML）の指摘での書き直し】変えた点: ①デジタルノマド: 入管庁の英語のページに合わせ「出国後6か月たてば、もう一度申請できる（apply for it again six months after you leave）」に ②【言い方の変更】購入: 「日本は外国人の購入を禁止していない」をやめ、財務省の制度を主語に「日本に住んでいない人も買える。2026年4月からは、住むための家でも外為法にもとづいて財務省に報告する」にしました。民間サイト Real Estate Japan（rej）は「買うのに日本に住んでいる必要はない」という補足の1文だけに使っています。description・dek・card・In short・FAQ もそろえました ③静岡市の長期お試し住宅: 「移住を決めた、または準備している人」「日本人の配偶者等（配偶者や子）」に（本文・FAQ） ④「これは安い家すべてに言えること」を、「配線と回線工事の待ちは、もっと大きな話の小さな例。安い古い家では、売り出し価格はかかるお金の一部にすぎない」と、下田の体験から一般論へつなぐ形に ⑤1週目の「この2つが分かると…」を2文に分け、アンペア数＝一度にどれくらい使えるか、ブレーカーの場所＝落ちてもすぐ戻せる、と何を指すかをはっきりさせました ⑥「なぜ町で暮らすのか」の表の車の行から自社の家への言及を外しました（自社の家に触れるのは NODE Shimoda の段落の1回だけ） ⑦一覧のカード（card）を、目次の読み上げから答え（買えるが町のほうが大事、1か月で冬の寒さ・車・近所が分かる、海外からはマンスリーか宿）に替えました ⑧お試しの1か月の節の冒頭の「私たちならこう過ごす、という例です」というページの予告を、「週ごとにおおよそこう組み立てると思います」に",
-   "【今回、人に確かめてほしい点】①NODE Shimoda を英語で「house（一軒家）」と呼んでよいか、さらに「older house（古い家）」と呼んでよいか、1週目の「私たちの家の古い配線」がこの家を指してよいか（黄色い枠） ②「買うのに日本に住んでいる必要はない」は Real Estate Japan（民間）の記載として書いています。ページの記載と合っているか ③購入の手続き（財務省への報告）は法務・制度の記述なので、公開前に財務省のページを開いて確かめてください",
+   "【2026-11-15 時点の確認事項（2026-11-16 にすべて解決）】①NODE Shimoda を英語で「house（一軒家）」と呼んでよいか、さらに「older house（古い家）」と呼んでよいか、1週目の「私たちの家の古い配線」がこの家を指してよいか（黄色い枠） ②「買うのに日本に住んでいる必要はない」は Real Estate Japan（民間）の記載として書いています。ページの記載と合っているか ③購入の手続き（財務省への報告）は法務・制度の記述なので、公開前に財務省のページを開いて確かめてください",
    "【2026-11-15 組み込み前の仕上げ（品質保証部 90点・合格のあとの編集長の指摘8点）】変えた点: ①「家は安いほうの買い物」→「家を買うこと自体は簡単なほう」（リードと FAQ に合わせました）。配線の節の後に、改修・税金・保険・維持費が上乗せされ、本当の金額は書面の見積もりで分かる、の2文を足しました ②FAQ のお試し住宅の答えに特別永住者を足しました ③行政書士を英語で「在留資格（ビザ）の手続きを扱う行政書士（administrative scrivener）」と資格の名前で書きました（本文・FAQ） ④【事実の変更】「下田まで直通で3時間かからない」→「2026年11月時点で、東京駅から毎日走る直通で2時間29〜44分」。出典を編集長が確かめた JR東日本の東京駅の時刻表（jre_tt_tokyo）に替え、踊り子のページ（jreast_odoriko）は外しました ⑤南アルプス市の条件を「国籍は条件に挙げられていない」と制度の側から書きました ⑥NODE Shimoda の段落を3文にし、「一年中泊まれ、週割・月割がある」を削りました（黄色い枠から月額料金も外しました） ⑦「なぜ町で暮らすのか」の表の2行を、確認済みの体験（experience.md 3-2）につなげました。車の行に「下田の家は駅から徒歩10分ほどで、スーパー・コンビニ・飲食店が近い」、近所の行に「回線工事の車の停め方で近所から声をかけられた」 ⑧お試し1週目の「エアコン・冷蔵庫・電子レンジを同時に使ってみる」を、「泊まり先の人に契約のアンペア数とブレーカーの場所を聞く」に替えました。人に確かめてほしい点: 近所の行の書き方（experience.md では「工事の車両の駐車で近隣から指摘を受けた」）が、やわらげすぎ・強すぎになっていないか",
    "【2026-11-15 3回目の書き直し（品質保証部 84点・ゲート違反1、リサーチメモ 3）】変えた点: ①【事実の変更】土地の法案を、内閣府の法案の概要どおりに直しました。「重要な防衛施設の周りや国境の離島、国籍を問わず許可」→「一部の防衛関係施設と海上保安庁の施設の周り（おおむね1km）と無人の国境離島に区域をつくり、区域内の土地の所有権の移転はすべて事前許可。公布から1年6か月以内に施行」。審議の状況は「2026年11月時点で国会にかかっている」だけにし、10月23日の日付と内閣官房の提言の出典（cas_land_teigen）は外しました。新しい出典 cao_land_bill_outline を足しました ②【主張の変更】「家を買っても在留資格は付かない」「買うのにビザは要らない」は公的な出典が見つからなかったので、断定をやめました。本文・In short・FAQ とも「家とビザは別々の問題として考える、あてにする前に行政書士に聞く」という私たちの見方にし、黄色い枠を足しました ③description・card・In short の4項目目に「2026年11月時点」、FAQ のお試し住宅に「2026年8月時点」を入れました ④「海外に住む人が対象か確かめられなかった」という調べた側の言い方をやめ、「市の移住の窓口に聞けば分かる」にしました ⑤「it’s worth …」を7回から1回に減らし、締めの言い方を変えました（日本語版の「〜しておくと安心です」も同じように減らしました） ⑥「泊まれる場所」の節の最初の文で3つの選択肢の名前を言い、表のお試し住宅の欄を短くしました（静岡市オクシズの例と出典 okushizuoka_trial は外しました） ⑦「お試しの1か月」の節を、下田での体験（配線・回線工事の待ち）と表の項目につなげ、週ごとに試すこと（家電の同時使用、ビデオ会議と冷暖房費、回線工事にかかる期間を業者に聞く、配線のやり直しの費用を工務店に聞く、湿気・台風のことを近所に聞く、費用と迷いを書きとめる）を具体的にしました。新しい事実は足していません ⑧日本語版の伊豆半島への内部リンクを、日本語版の記事（ja-izu）に向くよう直しました ⑨In short の5項目目に「海外からならマンスリーか宿が現実的」を足しました（本文の見方と同じ）",
    "【2026-11-15 2回目の書き直し（リサーチメモ 2・組み込み後の採点の指摘）】変えた点: ①【事実の変更】京丹後市のお試し住宅は2026年9月末で市営の住宅が閉鎖されたため（市の閉鎖のお知らせ）、京丹後市を例から外し、出典 kyotango_trial も消しました。京丹後市にもとづいていた「1日から2か月ほどまで」は、「1〜2日から数か月まで、2年まで住める市もある」に直しました（静岡市 中心部・南アルプス市 1〜3か月・静岡市 長期 半年〜2年） ②お試し住宅の例を、リサーチ部が公式ページを開いて確かめた2つにしました。南アルプス市（芦安、1〜3か月・月21,000円、山梨県外に住民登録があり移住するつもりで移住相談に登録した人。国籍の記載なし）と、静岡市の長期お試し住宅（市営住宅に半年以上2年未満、静岡県外に住み移住を決めた人、外国籍は永住者・定住者・特別永住者・日本人の配偶者等に限る） ③お試し住宅は「移住する人のための仕組み」で、観光やデジタルノマドの滞在では使えない市があることを正直に書き、海外から来るならマンスリーか宿のほうが現実的だという見方を「私たちの考え」として添えました。FAQ の「外国人でも使えるか」も静岡市の例で答え直しました ④前の「たいてい町の外に住民登録がある人」という言い方（実際は県外が多い）をやめ、市ごとの条件をそのまま書きました ⑤「下田まで直通で3時間以内」に JR東日本（踊り子）の出典を付けました。数字は出していません ⑥「お試しの1か月」の節を、「1週目：…」のラベルの箇条書きから、ふつうの文章の段落に直しました ⑦伊豆の市町の黄色い枠を「1か月以上泊まれるか・料金・外国籍や海外在住の人が使えるか」に広げました",
    "【2026-11-15 品質保証部の指摘を受けた書き直し】変えた点: ①「購入に国籍・在留の制限はない」の断定をやめ、「2026年11月時点で禁止はないが、手続きは増えた（2026年4月から非居住者は外為法の報告、10月5日から登記で国籍の届出）。重要な区域の土地の許可制の法案が10月23日に国会に出ている」の形にし、専門家（弁護士・司法書士）に確かめるよう添えました（財務省・法務省・内閣府・内閣官房の出典） ②デジタルノマドを、出入国在留管理庁の条件どおりに直しました（対象はビザ免除かつ租税条約のある国・地域の人、年収1,000万円以上、治療費1,000万円以上の民間医療保険、日本の会社には雇われない、6か月で更新不可、出国から6か月たてば再び可）。時点は2026年11月 ③滞在の手段（観光の短期滞在・デジタルノマド）を表にしました ④空き家の数の出典を、総務省統計局の確報（2024年9月公表）1つにしました（900万戸・13.8%・過去最高、使い道のない空き家 約386万戸・2018年から36.9万戸増） ⑤「1か月泊まれる場所」の節を新しく書き、自治体のお試し住宅（自治体ごと、条件は町の外に住民登録があって移住を考えている人など。例は静岡市オクシズの3泊〜2週間・1組1日300円）、マンスリー、宿を表で並べました。NODE Shimoda はその中の1つとして紹介しています ⑥創業メンバーが下田で借りた古い家を宿に改修したときの体験を2点入れました（古い2芯の配線でエアコン・冷蔵庫・電子レンジを同時に使えなかった／繁忙期で回線工事に2か月以上かかり、置き型のルーターでしのいだ）。「買った」とは書かず「持ち主から借りた」と明記しています ⑦ゲストを「リモートで働く人がたくさん」→「リモートで働きに来る人もいる」に ⑧前の最後の節の「いちばんの近道」という押しの強い言い方をやめ、最後は1か月の過ごし方の節にしました。4週目も「決める」→「振り返る」に ⑨FAQ に「外国人は買えるか」「お試し住宅は外国人も使えるか」を足して5問にしました",
-   "【人に確かめてほしい点】⓪【今回】(a) 土地の法案が成立したか、いつ公布・施行か（黄色い枠。審議入りの報道は政党の機関紙でしか確認できず、記事には「国会にかかっている」とだけ書いています） (b)「外国人が家を買うことは禁止されていない」の出典の1つ rej（Real Estate Japan）は民間の不動産サイトです。もう1つは財務省の FAQ ですが、在留資格と不動産の関係は公的な出典が見つからず、行政書士か入管で確かめてほしい点として黄色い枠を置きました (c) NODE Shimoda を英語で「older house」（古い家）と呼んでよいか（experience.md では「旧町内の空き家を改修した」とあり、築年数は未確認） (d)「お試しの1か月」の節の「私たちならこう過ごす」は私たちの見方として書いています。言い方に違和感がないか ①法務・在留の記述（不動産購入の手続き、法案の審議状況、デジタルノマドの条件、90日と例外の国）は、公開の直前に一次のページを開いて確かめてください（黄色い枠4か所） ②創業メンバーの体験（配線・回線）の書き方が、事実と合っているか。「私たち（we）」の体験として書いています ③伊豆の市町（下田市・南伊豆町・伊豆市）に1か月以上泊まれるお試し住宅があるか、料金、外国籍・海外在住の人が使えるか（黄色い枠） ④月額料金、30泊以上を常に受けられるか、「再生した空き家」と呼んでよいか（黄色い枠） ⑤法務・在留の出典はリサーチ部が検索で確認したもので、本文のページは開けていません ⑥「下田まで直通の電車で3時間かからない」の出典の JR東日本の踊り子のページ（東京〜伊豆急下田 2時間49分）は、この環境から開けず検索でしか確かめていません。公開前にページを開いて確かめてください（ほかの記事は駅探の約2時間35分を使っているので、数字は出していません） ⑦南アルプス市・静岡市のお試し住宅の条件と料金（2026年11月15日にリサーチ部がページを開いて確認）が、公開の時点でも変わっていないか ⑧京丹後市を外したことでよいか（市営のお試し住宅は2026年9月末で閉鎖。民間・地域のお試し住宅は案内されていますが、例には使っていません）",
+   "【以前の確認事項（2026-11-16 の手離れで解決・または書かないことにした）】⓪(a) 土地の法案が成立したか、いつ公布・施行か（黄色い枠。審議入りの報道は政党の機関紙でしか確認できず、記事には「国会にかかっている」とだけ書いています） (b)「外国人が家を買うことは禁止されていない」の出典の1つ rej（Real Estate Japan）は民間の不動産サイトです。もう1つは財務省の FAQ ですが、在留資格と不動産の関係は公的な出典が見つからず、行政書士か入管で確かめてほしい点として黄色い枠を置きました (c) NODE Shimoda を英語で「older house」（古い家）と呼んでよいか（experience.md では「旧町内の空き家を改修した」とあり、築年数は未確認） (d)「お試しの1か月」の節の「私たちならこう過ごす」は私たちの見方として書いています。言い方に違和感がないか ①法務・在留の記述（不動産購入の手続き、法案の審議状況、デジタルノマドの条件、90日と例外の国）は、公開の直前に一次のページを開いて確かめてください（黄色い枠4か所） ②創業メンバーの体験（配線・回線）の書き方が、事実と合っているか。「私たち（we）」の体験として書いています ③伊豆の市町（下田市・南伊豆町・伊豆市）に1か月以上泊まれるお試し住宅があるか、料金、外国籍・海外在住の人が使えるか（黄色い枠） ④月額料金、30泊以上を常に受けられるか、「再生した空き家」と呼んでよいか（黄色い枠） ⑤法務・在留の出典はリサーチ部が検索で確認したもので、本文のページは開けていません ⑥「下田まで直通の電車で3時間かからない」の出典の JR東日本の踊り子のページ（東京〜伊豆急下田 2時間49分）は、この環境から開けず検索でしか確かめていません。公開前にページを開いて確かめてください（ほかの記事は駅探の約2時間35分を使っているので、数字は出していません） ⑦南アルプス市・静岡市のお試し住宅の条件と料金（2026年11月15日にリサーチ部がページを開いて確認）が、公開の時点でも変わっていないか ⑧京丹後市を外したことでよいか（市営のお試し住宅は2026年9月末で閉鎖。民間・地域のお試し住宅は案内されていますが、例には使っていません）",
    "【入れられなかったこと】外為法の不動産取得の報告の細かい範囲（財務省の制度の概要のページを本文で確認できていないため）、在留資格と不動産の所有の関係を書いた公的な出典、海外に住む人が南アルプス市などのお試し住宅の対象に入るか（ページに記載がなく、町に聞くように書きました）、伊豆の市町のお試し住宅の有無、新耐震基準（1981年）など建物の点検の項目（公的な出典を未確認）、マンスリーの部屋の相場（出典なし）。焼津・修善寺の家は、状況が決まるまで書いていません",
   ],
   "points": [
@@ -464,10 +466,8 @@ ARTICLES = [
 
 <h2>外国人は空き家を買えるのか</h2>
 <p>買えます。日本に住んでいない人も買うことができ、何をすればいいかは財務省の決まりに書かれています。2026年4月から、日本に住んでいない人が日本の不動産を買うと、住むための家でも、外為法にもとづいて財務省に報告することになりました[[s:mof_fefta2026,mof_realprop_faq]]。外国からの買い手向けの不動産サイト Real Estate Japan も、買うのに日本に住んでいる必要はないと書いています[[s:rej]]。2026年10月5日からは、日本人も含めて、買った人はみな登記のときに国籍を届け出ます[[s:moj_nationality]]。</p>
-<p>決まりは、まだ動いています。2026年11月時点で国会にかかっている法案は、一部の防衛関係施設と海上保安庁の施設の周り（おおむね1km）と、無人の国境離島に、新しい区域をつくる内容です[[s:cao_land_bill,cao_land_bill_outline]]。その区域で土地の所有権を移すときは、すべて事前に国の許可が要り、法律は公布から1年6か月以内に施行されます[[s:cao_land_bill_outline]]。</p>
-[[ed:衆議院の議案審議経過（第222回国会 閣法18号）で、成立したか、いつ公布・施行かを確かめてください。]]
+<p>決まりは、まだ動いています。国会に出ている法案は、一部の防衛関係施設と海上保安庁の施設の周り（おおむね1km）と、無人の国境離島に、新しい区域をつくる内容です[[s:cao_land_bill,cao_land_bill_outline]]。その区域で土地の所有権を移すときは、すべて事前に国の許可が要り、法律は公布から1年6か月以内に施行されます[[s:cao_land_bill_outline]]。2026年11月中旬の時点で、法案はまだ衆議院で審議中で、法律にはなっていません[[s:shugiin_bill18]]。</p>
 <p>家とビザは、別々の問題として考えたほうがいいと私たちは思います。家を持つことで日本に長くいられるようになると期待しているなら、あてにする前に、在留資格（ビザ）の手続きを扱う行政書士に聞いてみてください。決まりがこれだけ速く変わっているので、契約の前に、自分の場合を弁護士や司法書士に見てもらうのが賢明だと思います。</p>
-[[ed:不動産を持つことと在留資格の関係を、行政書士か出入国在留管理庁に確かめてください。いまのところ公的な出典は見つかっていません。]]
 
 <h2>なぜ、買う前にその町で暮らすのか</h2>
 <p>家を買うこと自体は、簡単なほうです。本当に引き受けるのは町のほうで、物件情報から分かるのは、価格と間取りと何枚かの写真くらい。そこで楽しく暮らせるかを決めることは、しばらく住んでみて初めて見えてきます。</p>
@@ -485,7 +485,7 @@ ARTICLES = [
 <p>どれも、内見では出てこないことばかりです。</p>
 
 <h2>古い家で、住んでみて初めて分かることは何か</h2>
-<p>私たちの経験では、配線と回線です。創業メンバーの1人が、下田の古い家を持ち主から借りて、宿に改修したときに知りました。買ったのではなく借りた家ですが、買った人も同じことにぶつかると私たちは思います。</p>
+<p>私たちの経験では、配線と回線です。創業メンバーの1人が、下田の古い部屋を持ち主から借りて、宿に改修したときに知りました。買ったのではなく借りた部屋ですが、買った人も同じことにぶつかると私たちは思います。</p>
 <p>古い2芯の配線では、エアコンと冷蔵庫と電子レンジを同時に使えず、ゲストに同時に使わないようお願いすることになりました。配線をやり直すにはそれなりの費用がかかるので、予算を組む前に知っておきたいことです。インターネットの回線工事は、繁忙期だったこともあって申し込みから2か月以上かかり、それまでは置き型のホームルーターでしのぎました。</p>
 <p>配線と回線工事の待ちは、もっと大きな話の小さな例です。安い古い家では、売り出し価格は、かかるお金の一部にすぎません。改修、税金、保険、維持費が上乗せされ、建物ごとに大きく変わるので、本当の金額は書面の見積もりを取って初めて分かります。</p>
 
@@ -494,11 +494,10 @@ ARTICLES = [
 <div class="tablewrap"><table class="free">
 <thead><tr><th>滞在のしかた</th><th>期間</th><th>対象</th></tr></thead>
 <tbody>
-<tr><td><strong>短期滞在</strong>（ビザ免除）</td><td>ビザ免除の国・地域の多くは90日まで。15日や30日の国もあり、パスポートに条件が付く場合もあります[[s:mofa]]。</td><td>ビザ免除の国・地域の人。大事なのは、自分のパスポートの条件です。</td></tr>
+<tr><td><strong>短期滞在</strong>（ビザ免除）</td><td>ビザ免除の国・地域の多くは90日まで。15日・30日・180日の国もあります[[s:jnto_visa]]。</td><td>ビザ免除の国・地域の人。この滞在では報酬を得る仕事はできません。大事なのは、自分のパスポートの条件です[[s:jnto_visa]]。</td></tr>
 <tr><td><strong>デジタルノマド</strong>の在留資格</td><td>6か月で、更新はできません。出国後6か月たてば、もう一度申請できます[[s:isa_nomad_en]]。</td><td>ビザ免除で、かつ日本と租税条約のある国・地域の人[[s:isa_nomad_list]]。年収1,000万円以上と、治療費1,000万円以上を補償する民間の医療保険が必要で、日本の会社に雇われて働くことはできません[[s:isa_nomad_en]]。</td></tr>
 </tbody></table></div>
 <p class="fine">これは一般的な情報で、在留手続きの助言ではありません。デジタルノマドの対象の国は変わるので、自分のパスポートで確かめてください。</p>
-[[ed:外務省の査証免除のページで90日と例外の国を、出入国在留管理庁のデジタルノマドのページと対象国の一覧で各条件を、公開の時点で開いて確かめてください。]]
 
 <h2>町を試すために1か月泊まれる場所はどこか</h2>
 <p>おもな選択肢は、自治体のお試し住宅、マンスリーの部屋、月割のある宿の3つです。どれが合うかは、町と、どこから来るかによります。</p>
@@ -507,19 +506,18 @@ ARTICLES = [
 <tbody>
 <tr><td><strong>自治体のお試し住宅</strong></td><td>町によって、1〜2日から数か月まで。2年近く住める市もあります[[s:shizuoka_trial,minamialps_trial,shizuoka_long_trial]]</td><td>決まりは町ごとで、多くは移住するつもりの人向け。南アルプス市は1〜3か月、月21,000円で貸しています（2026年2月）[[s:minamialps_trial]]。</td></tr>
 <tr><td><strong>マンスリーの部屋</strong></td><td>1か月以上</td><td>家具付きの部屋を月単位で借ります。小さな町では選べる数が少ないこともあるので、早めに探すと安心です。</td></tr>
-<tr><td><strong>月割のある宿・貸別荘</strong></td><td>1週間〜1か月以上</td><td>海外からいちばん予約しやすいことが多く、何も契約せずに古い家での暮らしを試せます。</td></tr>
+<tr><td><strong>月割のある宿・貸別荘</strong></td><td>1週間〜1か月以上</td><td>海外からいちばん予約しやすいことが多く、何も契約せずにその町での暮らしを試せます。</td></tr>
 </tbody></table></div>
 <p>お試し住宅はよさそうに見えますが、落とし穴があります。移住する人のための仕組みで、海外から町を試しに来る人向けではないのです。南アルプス市のお試し住宅は、山梨県の外に住民登録があり、市に移住するつもりで、移住の相談に登録した人が対象です[[s:minamialps_trial]]。国籍は条件に挙げられていないので、海外に住んでいるなら、対象に入るかは市の移住の窓口に聞けば分かります。</p>
 <p>はっきり書いている市もあります。静岡市の「長期お試し住宅」は、市営住宅に半年以上2年未満住めるものですが、静岡県の外に住んでいて、市への移住を決めた、または準備している人が対象です。外国籍の人は、永住者・定住者・特別永住者・日本人の配偶者等（日本人の配偶者や子）の在留資格がある場合に限られます（2026年8月更新のページ）[[s:shizuoka_long_trial]]。つまり、観光やデジタルノマドの滞在では使えません。私たちの考えでは、海外から来るなら、マンスリーの部屋か宿のほうが現実的です。どうしてもお試し住宅を使いたいなら、まず町の移住の窓口に連絡してみてください。</p>
-[[ed:伊豆の市町（下田市・南伊豆町・伊豆市）に1か月以上泊まれるお試し住宅があるか、料金、外国籍・海外在住の人が使えるかを問い合わせてください。]]
+<p>下田市は別の形をとっています。2026年4月施行の要綱で、移住を考えている人が市の指定する宿に泊まると、10泊までなら宿泊料の半分（1泊4,000円まで）を補助しています[[s:shimoda_stay_subsidy]]。ただし静岡県の外で日本に住民登録がある人が対象なので、海外から来る場合は使えません[[s:shimoda_stay_subsidy]]。</p>
 <p>東京から行きやすい町のほうが試しやすいです。2026年11月時点で、東京駅から毎日走る直通の電車なら、[[l:ja-izu|伊豆半島]]の下田まで2時間29〜44分です[[s:jre_tt_tokyo]]。くわしくは[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]にまとめています。</p>
-<p>下田が候補に入っているなら、下田の私たちの家「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」も、上の宿の選択肢の1つです。旧町内の古い家を長期滞在向けに改修したもので、旅館業法の許可を受けています。これまでのゲストは欧米の人が中心で、リモートで働きに来る人もいます。</p>
-[[img:node-shimoda|ソファとローテーブル、障子のあるリビング|下田の旧町内にある私たちの家「NODE Shimoda」のリビング。]]
-[[ed:公開前に要確認：30泊以上を常に受けられるか。NODE Shimoda を英語で「house（一軒家）」と呼んでよいか、さらに「older house（古い家）」と呼んでよいか。お試しの1か月の節の「私たちの家の古い配線」がこの家を指してよいか。]]
+<p>下田が候補に入っているなら、私たちが下田で営んでいる小さな宿「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」を、町の様子をつかむあいだの拠点にしてもらえます。旧町内のアパートの一室（約40㎡）を改装したもので、伊豆急下田駅から歩いて8分です[[s:node_room,node_access]]。公式サイトでは中長期の滞在にも便利な宿として紹介していて[[s:node_site]]、旅館業法の許可を受けています。これまでのゲストは欧米の人が中心で、リモートで働きに来る人もいます。</p>
+[[img:node-shimoda|ソファとローテーブル、障子のあるリビング|下田の旧町内にある私たちの部屋「NODE Shimoda」のリビング。]]
 
 <h2>お試しの1か月は、どんなふうに過ぎるか</h2>
 <p>ほとんどは、ふだんの暮らしそのものです。そこに、いくつか意識して試すことを入れます。下田で私たちがつまずいたことをもとに、週ごとにおおよそこう組み立てると思います。</p>
-<p>最初の1週間は、落ち着くための時間です。スーパー、診療所、バス停、ごみの収集日を覚えます。古い家に泊まっているなら、泊まり先の人に、電気の契約のアンペア数とブレーカーの場所を聞いておきましょう。私たちの家の古い配線では、エアコンと冷蔵庫と電子レンジを同時に使えませんでした。アンペア数が分かれば、一度にどれくらい使えるかの見当がつきます。ブレーカーの場所を知っていれば、落ちてもすぐに戻せます。</p>
+<p>最初の1週間は、落ち着くための時間です。スーパー、診療所、バス停、ごみの収集日を覚えます。古い建物に泊まっているなら、泊まり先の人に、電気の契約のアンペア数とブレーカーの場所を聞いておきましょう。下田の私たちの部屋の古い配線では、エアコンと冷蔵庫と電子レンジを同時に使えませんでした。アンペア数が分かれば、一度にどれくらい使えるかの見当がつきます。ブレーカーの場所を知っていれば、落ちてもすぐに戻せます。</p>
 <p>2週目には、いつもの時間に働き、家で料理をするようになります。ビデオ会議の続く一日に回線がもつか、冷暖房に実際いくらかかるかが分かるのはこの頃です。地元の回線業者に、そこで新しく回線を引くとどれくらいかかるかを聞いておくのもいい時期です。私たちのときは2か月以上かかりました。</p>
 <p>3週目は、聞いてまわる週です。役所の空き家の窓口に行ったり、地元の不動産屋と話したり、工務店に古い家の配線のやり直しがおおよそいくらかを聞いたりできます。湿気の多い夏や台風で家がどうなるかは、近所の人がいちばんよく知っています。</p>
 <p>4週目には、家について、そして自分の暮らし方について、何を変える必要がありそうか、だいたい見えています。費用や迷いを忘れないうちに書きとめておくと、町どうしを比べるときにも、見送ると決めるときにも、ずっと楽になります。</p>
