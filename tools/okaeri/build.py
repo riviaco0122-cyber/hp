@@ -155,9 +155,9 @@ class Ctx:
             for k in m.group(1).split(","):
                 if k not in self.cites:
                     self.cites.append(k)
-                n = self.cites.index(k) + 1
-                nums.append(f'<a href="#{self.src_id(n)}" title="{esc(C.SOURCES[k][2 if ja else 1])}" aria-label="{"出典" if ja else "Source"} {n}">{n}</a>')
-            return '<sup class="cite">' + (",".join(nums)) + '</sup>'
+                nums.append((self.cites.index(k) + 1, k))
+            links = [f'<a href="#{self.src_id(n)}" title="{esc(C.SOURCES[k][2 if ja else 1])}" aria-label="{"出典" if ja else "Source"} {n}">{n}</a>' for n, k in sorted(nums)]  # 1か所に並ぶ番号は小さい順
+            return '<sup class="cite">' + ",".join(links) + '</sup>'
 
         def bare(m):
             k = m.group(1)
