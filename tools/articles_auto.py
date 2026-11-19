@@ -2738,7 +2738,7 @@ dict(
 dict(
     slug="minpaku-mujin-checkin",
     keyword="民泊 チェックイン",
-    date="2026-11-20", topics=["operate", "start"], photo=("white-bed", "白いシーツと枕を整えた客室のベッド"),
+    date="2026-11-21", topics=["operate", "start"], photo=("white-bed", "白いシーツと枕を整えた客室のベッド"),
     guides=[("run", 3)],
     related=["minpaku-remote-operation", "minpaku-house-guide", "minpaku-break-even"],
     title='民泊のチェックインは無人でできる？｜鍵の渡し方と本人確認のやり方',

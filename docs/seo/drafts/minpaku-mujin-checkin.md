@@ -7,7 +7,7 @@ topics: operate,start
 services: management,operation
 guides: run-3
 related: minpaku-remote-operation,minpaku-house-guide,minpaku-break-even
-date: 2026-11-20
+date: 2026-11-21
 reading_time: 16
 short: 民泊のチェックインは\n無人でできる？
 blurb: 鍵の渡し方と本人確認
