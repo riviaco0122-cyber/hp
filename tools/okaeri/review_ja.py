@@ -94,8 +94,8 @@ FROM_AKIYADO = [
 ]
 
 HOME_STRINGS = [
- ("Live in small-town Japan for a month.", "日本の小さな町に、1か月暮らしてみる。（FVの見出し）"),
- ("Homes for a week, a month or a season, and straight answers about visas, old houses and daily life outside the big cities, from the people who run them.", "1週間、1か月、ひと季節泊まれる家と、ビザ・古い家・大都市の外での暮らしについての率直な答え。家を運営している本人たちから。"),
+ ("Small-town Japan, beyond a quick visit.", "短い旅行より長く、日本の小さな町で過ごす。（FVの見出し。1か月に限らない）"),
+ ("Straight answers about longer trips, living here part of the year and buying an old house outside the big cities, from the people who run a place to stay in Shimoda.", "長めの旅、一年の一部を暮らすこと、地方の古い家を買うことに、下田で宿を営む私たちがまっすぐ答えます。（FVの説明）"),
  ("Read the guides", "記事を読む（ボタン）"),
  ("Start here", "まずはここから（おすすめ記事）"),
  ("A house to come back to", "また帰ってきたくなる家（NODE Shimoda の紹介）"),
