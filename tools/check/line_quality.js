@@ -18,8 +18,11 @@ const files = [
 
 function inspect() {
   const blockOf = el => { while (el.parentElement && getComputedStyle(el).display === 'inline') el = el.parentElement; return el; };
+  // はみ出しは、段落・項目・表のマスなど「幅が決まっている箱」と比べる（inline-block の n-w などは文字に合わせて広がるので比べても分からない。
+  // 表のマスで、改行しない数字のまとまりが隣のマスに重なっていたのを見逃していた。人の指摘 2026-11-15）
+  const boxOf = el => { while (el.parentElement && /^(inline|inline-block|contents)$/.test(getComputedStyle(el).display)) el = el.parentElement; return el; };
   const hidden = el => !!el.closest('.visually-hidden, [aria-hidden="true"], svg, script, style, noscript'); // 飾り・読み上げ用の文字は対象外
-  const out = { over: [], open: [] };
+  const out = { over: [], open: [], orphan: [] };
   const tw = document.createTreeWalker(document.querySelector('main') || document.body, NodeFilter.SHOW_TEXT);
   const items = []; let t;
   const rng = document.createRange();
@@ -32,7 +35,7 @@ function inspect() {
       const c = t.data[i]; if (/\s/.test(c)) continue;
       rng.setStart(t, i); rng.setEnd(t, i + 1);
       const r = rng.getClientRects()[0]; if (!r || !r.width) continue;
-      items.push({ c, r, blk });
+      items.push({ c, r, blk, box: boxOf(pe) });
     }
   }
   const desc = el => el.tagName.toLowerCase() + (el.classList.length ? '.' + [...el.classList].join('.') : '');
@@ -40,9 +43,9 @@ function inspect() {
   const seenOver = new Set(), lines = new Map(); // 枠 → [行ごとの文字数]
   items.forEach((it, k) => {
     // はみ出し：枠（の内側）の右端より外
-    const bs = getComputedStyle(it.blk), br = it.blk.getBoundingClientRect();
-    const right = br.left + it.blk.clientWidth + parseFloat(bs.borderLeftWidth) - parseFloat(bs.paddingRight);
-    if (it.r.right > right + 2 && !seenOver.has(it.blk)) { seenOver.add(it.blk); out.over.push(ctx(k)); }
+    const bs = getComputedStyle(it.box), br = it.box.getBoundingClientRect();
+    const right = br.left + it.box.clientWidth + parseFloat(bs.borderLeftWidth) - parseFloat(bs.paddingRight);
+    if (it.box.clientWidth > 2 && it.r.right > right + 2 && !seenOver.has(it.box)) { seenOver.add(it.box); out.over.push(ctx(k)); }
     const ls = lines.get(it.blk) || []; lines.set(it.blk, ls);
     const pv = items[k - 1];
     if (!pv || pv.blk !== it.blk || it.r.top >= pv.r.bottom - 2) ls.push(0);
@@ -50,12 +53,39 @@ function inspect() {
     const nx = items[k + 1];
     if (nx && nx.blk === it.blk && nx.r.top >= it.r.bottom - 2 && /[「『（(【〈《［]/.test(it.c)) out.open.push(ctx(k));
   });
+  // 改行しないマス・まとまり（white-space: nowrap）は、iPhone の Safari では <wbr> でも折れず1行のままになる。
+  // 1行の幅が枠より広いものを数える（Chromium は <wbr> で折るので、文字の位置だけでは見つからない。人の指摘 2026-11-15）
+  document.querySelectorAll('main td, main th').forEach(el => {
+    if (getComputedStyle(el).whiteSpace !== 'nowrap' || el.offsetParent === null) return;
+    const probe = document.createElement('span');
+    probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;';
+    probe.textContent = el.textContent;
+    el.appendChild(probe);
+    const w = probe.getBoundingClientRect().width;
+    probe.remove();
+    const cs = getComputedStyle(el), inner = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    if (w > inner + 2) out.over.push(el.textContent.trim().slice(0, 20) + '\t' + desc(el) + '（1行の幅 ' + Math.round(w) + 'px ＞ マス ' + Math.round(inner) + 'px）');
+  });
+  // 見出しの最後の行に1〜2文字だけ落ちているもの（「…プラン／例」。design-guide 1章）
+  document.querySelectorAll('main h1, main h2, main h3').forEach(el => {
+    if (el.offsetParent === null) return;
+    const rg = document.createRange(); rg.selectNodeContents(el);
+    const rects = [...rg.getClientRects()].filter(q => q.width > 1);
+    const tops = [...new Set(rects.map(q => Math.round(q.top)))];
+    if (tops.length < 2) return;
+    const last = tops[tops.length - 1];
+    const chars = [...el.textContent.replace(/\s/g, '')].length;
+    // 最後の行の幅が2文字ぶん以下なら、1〜2文字だけ落ちている（Safari と Chrome で1文字ずれるため2文字まで見る）
+    const lastW = rects.filter(q => Math.round(q.top) === last).reduce((s, q) => s + q.width, 0);
+    const em = parseFloat(getComputedStyle(el).fontSize);
+    if (chars > 2 && lastW < em * 2.4) out.orphan.push(el.textContent.trim().slice(0, 30) + '\t' + desc(el));
+  });
   return out;
 }
 
 (async () => {
   const browser = await chromium.launch();
-  const rows = [], sum = { over: 0, open: 0 };
+  const rows = [], sum = { over: 0, open: 0, orphan: 0 };
   for (const w of WIDTHS) {
     const page = await browser.newPage({ viewport: { width: w, height: 800 } });
     for (const f of files) {
@@ -69,8 +99,8 @@ function inspect() {
     await page.close();
   }
   await browser.close();
-  const head = `改行の質（幅 ${WIDTHS.join('・')}px）: はみ出し ${sum.over}件 ／ 開きかっこが行末 ${sum.open}件`;
+  const head = `改行の質（幅 ${WIDTHS.join('・')}px）: はみ出し ${sum.over}件 ／ 開きかっこが行末 ${sum.open}件 ／ 見出しの最後の行が1〜2文字 ${sum.orphan}件`;
   const text = [head, ...rows].join('\n') + '\n';
   if (OUT) { fs.writeFileSync(OUT, text); console.log(head); } else process.stdout.write(text);
-  process.exit(sum.over || sum.open ? 1 : 0);
+  process.exit(sum.over || sum.open ? 1 : 0); // 見出しの1〜2文字は、全体の見直しが済むまで報告だけ（2026-11-15 時点 119件）
 })();

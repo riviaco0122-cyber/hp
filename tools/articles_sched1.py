@@ -119,8 +119,8 @@ ARTICLES_SCHED1 = [
             ("money", "民泊を始めるお金はいくら？補助金は使える？", """
 <p>始めるお金は、物件を買うか借りるかで大きく変わります。下田の宿は物件を借りたので、初期費用は改修工事と家具・備品だけで、合わせて約650万円でした。</p>
 <div class="stats" role="group" aria-label="下田の宿の初期費用と資金">
-<div class="stat stat--accent"><span class="stat__num">約410<small>万円</small></span><span class="stat__label">改修工事</span><span class="stat__note">物件は賃貸</span></div>
-<div class="stat"><span class="stat__num">約240<small>万円</small></span><span class="stat__label">家具・備品</span><span class="stat__note">家電を含む</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>410<small>万円</small></span><span class="stat__label">改修工事</span><span class="stat__note">物件は賃貸</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>240<small>万円</small></span><span class="stat__label">家具・備品</span><span class="stat__note">家電を含む</span></div>
 <div class="stat"><span class="stat__num">50<small>万円</small></span><span class="stat__label">補助金</span><span class="stat__note">自治体の制度</span></div>
 </div>
 <p>資金は、日本政策金融公庫の融資200万円、自治体の補助金50万円、残りを自己資金で用意しました。</p>
@@ -175,6 +175,7 @@ ARTICLES_SCHED1 = [
             "観光庁「住宅宿泊管理業務の委託」（2026年10月閲覧） https://www.mlit.go.jp/kankocho/minpaku/business/host/entrust.html",
             "総務省消防庁「住宅宿泊事業法に基づく届出住宅等に係る消防法令上の取扱いについて（通知）」（消防予第330号、2017年10月27日） https://www.fdma.go.jp/mission/prevention/suisin/items/291027_yo330.pdf",
             "創業メンバーによる下田での開業記録（2025年11月執筆）",
+            "Airbnb ヘルプセンター「How do changes to the Japanese Hotels and Inns Act affect hosting on Airbnb?」（届出番号などがない掲載は、新しい予約を受けられないよう停止。2026年11月閲覧） https://www.airbnb.com/help/article/2353",
         ],
     ),
     dict(
@@ -199,9 +200,9 @@ ARTICLES_SCHED1 = [
 <p>仕組みとしては、売りたい・貸したい所有者と、買いたい・借りたい人をつなぐ、自治体などの情報提供の場です。自治体は情報を出すのが中心で、契約の仲介はしないことが多く、宅地建物取引業者（不動産会社）が間に入る場合もあります。複数の自治体の物件をまとめて探せる「全国版空き家・空き地バンク」もあり、国土交通省が選んだ事業者が運営しています。</p>
 <p>では、対象になりうる家はどれくらいあるのでしょう。数字で見ると、かなりの数です。なお、空き家率は、全部の家のうち空き家が占める割合のことです。</p>
 <div class="stats" role="group" aria-label="全国の空き家数">
-<div class="stat stat--accent"><span class="stat__num">約900<small>万戸</small></span><span class="stat__label">空き家</span><span class="stat__note">空き家率13.8%</span></div>
-<div class="stat"><span class="stat__num">約444<small>万戸</small></span><span class="stat__label">賃貸用</span><span class="stat__note">2023年10月</span></div>
-<div class="stat"><span class="stat__num">約386<small>万戸</small></span><span class="stat__label">その他</span><span class="stat__note">市場に出ていない</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>900<small>万戸</small></span><span class="stat__label">空き家</span><span class="stat__note">空き家率13.8%</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>444<small>万戸</small></span><span class="stat__label">賃貸用</span><span class="stat__note">2023年10月</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>386<small>万戸</small></span><span class="stat__label">その他</span><span class="stat__note">市場に出ていない</span></div>
 </div>
 <p>空き家900万戸の内訳は、賃貸用が約444万戸、売却用が約33万戸、別荘などの二次的住宅が約38万戸です。残りの約386万戸は、そのどれでもない空き家で、市場に出ていません。こうした家が使われるための入口の一つが、空き家バンクです。</p>
 <p>下田市のように空き家が多い地域なら、物件の候補が見つかる場合があります。下田市の空き家は4,170戸で、空き家率は31.3%と全国の約2.3倍です。そのうち2,010戸が、賃貸用・売却用・二次的住宅以外の空き家です。</p>
@@ -324,7 +325,7 @@ ARTICLES_SCHED1 = [
 <div class="stats" role="group" aria-label="客室稼働率の比較">
 <div class="stat"><span class="stat__num">29.6<small>%</small></span><span class="stat__label">全国平均</span><span class="stat__note">簡易宿所・2025年</span></div>
 <div class="stat"><span class="stat__num">24.6<small>%</small></span><span class="stat__label">静岡県</span><span class="stat__note">簡易宿所・2025年</span></div>
-<div class="stat stat--accent"><span class="stat__num">約53<small>%</small></span><span class="stat__label">私たちの宿</span><span class="stat__note">1年目の平均</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>53<small>%</small></span><span class="stat__label">私たちの宿</span><span class="stat__note">1年目の平均</span></div>
 </div>
 <p class="table-note">※ 全国・静岡県は観光庁「宿泊旅行統計調査」（2025年・年間値の確定値）の簡易宿所の客室稼働率です。全施設の平均は全国61.6%、静岡県56.0%でした。私たちの宿の1年目は、2025年7月中旬〜2026年3月の約8.5か月分です。</p>
 <p>自分の宿の数字が、全国の簡易宿所の平均より上か下かを見る目安にしてみてください。</p>
@@ -589,6 +590,7 @@ ARTICLES_SCHED1 = [
             "国土交通省住宅局・総務省消防庁「住宅宿泊事業における安全確保のための措置に関するQ&A」 https://www.fdma.go.jp/mission/prevention/suisin/items/minpaku_qa.pdf",
             "観光庁「民泊制度ポータルサイト」（2026年10月閲覧） https://www.mlit.go.jp/kankocho/minpaku/",
             "創業メンバーによる下田での開業記録（2025年11月執筆）",
+            "Airbnb ヘルプセンター「How do changes to the Japanese Hotels and Inns Act affect hosting on Airbnb?」（届出番号などがない掲載は、新しい予約を受けられないよう停止。2026年11月閲覧） https://www.airbnb.com/help/article/2353",
         ],
     ),
     dict(
@@ -611,8 +613,8 @@ ARTICLES_SCHED1 = [
             ("fee", "予約サイトの手数料は、売上のどれくらい？", """
 <p>予約サイトの入金額を見て、「思ったより引かれているな」と感じたことはないでしょうか。創業メンバーが下田で運営する宿では、予約サイト（OTA、Airbnb のようなオンライン旅行会社）の手数料は売上の約14〜15%でした。1万円の宿泊なら、約1,400〜1,500円が引かれる計算です。清掃の委託（1年目で約16%）と並ぶ、大きな費用です。</p>
 <div class="stats stats--2" role="group" aria-label="予約サイトの手数料の割合">
-<div class="stat"><span class="stat__num">約14<small>%</small></span><span class="stat__label">1年目</span><span class="stat__note">売上に対する割合</span></div>
-<div class="stat stat--accent"><span class="stat__num">約15<small>%</small></span><span class="stat__label">2年目上半期</span><span class="stat__note">売上に対する割合</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>14<small>%</small></span><span class="stat__label">1年目</span><span class="stat__note">売上に対する割合</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>15<small>%</small></span><span class="stat__label">2年目上半期</span><span class="stat__note">売上に対する割合</span></div>
 </div>
 <p class="table-note">※ 下田の宿の運営データで、使った予約サイトの手数料を合わせた率です。サイトごとの率は、各サイトの規定や料金の方式で違います。</p>
 <p>2年目は、客室単価（1泊の平均料金）が1年目の約1.4倍に上がりました。単価が上がれば、売上に連動する手数料の金額も増えます。この手数料は、世界中の旅行者に見つけてもらうための費用だと考えると、判断しやすくなります。予約サイトと自社予約の違いを、表で比べてみましょう。</p>
@@ -769,6 +771,7 @@ ARTICLES_SCHED1 = [
             "国土交通省・日本建築防災協会「新耐震基準の木造住宅の耐震性能検証法」 https://www.mlit.go.jp/common/001184898.pdf",
             "国土交通省「建築基準法改正により小規模な建築物の用途変更の手続きが不要となりました」 https://www.mlit.go.jp/common/001299734.pdf",
             "兵庫県「古民家再生促進支援事業」 https://web.pref.hyogo.lg.jp/ks26/wd27_000000038.html",
+            "Airbnb ヘルプセンター「How do changes to the Japanese Hotels and Inns Act affect hosting on Airbnb?」（届出番号などがない掲載は、新しい予約を受けられないよう停止。2026年11月閲覧） https://www.airbnb.com/help/article/2353",
         ],
     ),
     dict(
@@ -863,8 +866,8 @@ ARTICLES_SCHED1 = [
             ("cost", "清掃の費用はいくら？回数を減らすには？", """
 <p>清掃の費用は、泊まる回数に合わせて増えていきます。下田の宿でも、開業直後と1年目の通しでは、見え方がかなり違いました。</p>
 <div class="stats stats--2" role="group" aria-label="下田の宿の清掃の費用">
-<div class="stat"><span class="stat__num">月2<small>万円</small></span><span class="stat__label">試運転期間</span><span class="stat__note">2025年・開業3か月</span></div>
-<div class="stat stat--accent"><span class="stat__num">約16<small>%</small></span><span class="stat__label">1年目の通し</span><span class="stat__note">売上に対する割合</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">月</small>2<small>万円</small></span><span class="stat__label">試運転期間</span><span class="stat__note">2025年・開業3か月</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>16<small>%</small></span><span class="stat__label">1年目の通し</span><span class="stat__note">売上に対する割合</span></div>
 </div>
 <p>月2万円は、開業から3か月の試運転期間の資料の値です。本格的に予約が入り始める前の数字なので、相場としては見ないでください。1年目を通すと、清掃の委託は売上の約16%になり、予約サイトの手数料（約14%）と並ぶ大きな費用になりました。</p>
 <p>費用を抑えたいなら、清掃の回数そのものを減らします。下田の宿は、長期滞在とセルフチェックインを前提に設計し、長期滞在には週割・月割を付けました。</p>

@@ -1134,16 +1134,6 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 .form__error:empty { display: none; }
 button.is-sending { opacity: .6; pointer-events: none; }
 
-/* NODE Shimoda のゲストレビュー */
-.reviews { margin-top: 40px; }
-.reviews__head { font-family: var(--font-serif); font-size: 17px; letter-spacing: 0.08em; margin-bottom: 16px; }
-.reviews__head span { margin-left: 12px; font-family: var(--font-sans); font-size: 12px; color: var(--c-muted); letter-spacing: 0.06em; }
-.reviews__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.review { margin: 0; padding: 24px; background: var(--c-bg); border: 1px solid var(--c-card-line); border-radius: var(--radius); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
-.review__text { margin: 0; font-family: var(--font-serif); font-size: 15px; line-height: 1.9; letter-spacing: 0.04em; }
-.review__who { font-size: 12px; color: var(--c-muted); letter-spacing: 0.06em; }
-.review__who span { margin-left: 10px; }
-@media (max-width: 899px) { .reviews__list { grid-template-columns: 1fr; gap: 10px; } .review { padding: 18px 20px; } }
 
 /* お悩みカード（PC）：左の「お悩み」を右の「打ち手」の高さに対して中央に置き、上下の余白をそろえる */
 @media (min-width: 900px) {
@@ -2603,7 +2593,6 @@ body.is-media .plan-brand { color: var(--m-green); font-family: var(--font-round
   .flow__title { margin-top: 0; font-size: 16px; }
   .flow__desc { margin-top: 0; font-size: 12.5px; line-height: 1.8; }
   .flow__step:not(:last-child)::after { display: none; }
-  .reviews__list .review:nth-child(n+3) { display: none; } /* スマホのゲストの声は2つまで（人の指摘 2026-11-07） */
 }
 @media (max-width: 899px) {
   .vision__step, .vision__step + .vision__step, .vision__step:nth-child(3) { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 2px 14px; padding: 20px 0 22px; }
@@ -2902,6 +2891,7 @@ body.is-media .article__section .compare__col--c :is(h3, h4).compare__head { bor
 .article__section .stat { margin: 0; padding: 14px 8px 12px; border-radius: 14px; background: var(--m-sand); text-align: center; }
 .article__section .stat__num { display: block; margin: 0; font-family: var(--font-en); font-weight: 700; font-size: 30px; line-height: 1.2; color: var(--m-green); letter-spacing: 0; white-space: nowrap; }
 .article__section .stat__num small { font-size: 14px; font-weight: 700; margin-left: 1px; }
+.article__section .stat__num small.stat__pre { margin: 0 2px 0 0; } /* 数字の前の「約」なども単位と同じ小ささにする（数字がいちばん大きく見えるように。人の指摘 2026-11-15） */
 .article__section .stat__label { display: block; margin: 6px 0 0; font-size: 12px; line-height: 1.6; color: var(--m-ink); font-weight: 700; }
 .article__section .stat__note { display: block; margin: 2px 0 0; font-size: 11px; line-height: 1.5; color: var(--c-muted); }
 .article__section .stat--accent .stat__num { color: var(--m-cta); }
@@ -3001,7 +2991,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 /* 見出し：英字のラベルは朱の短い線つき、日本語の見出しは大きく */
 .is-corp .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--c-shu); font-weight: 500; }
 .is-corp .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
-.is-corp .section-title { font-size: clamp(30px, 4.6vw, 58px); font-weight: 300; line-height: 1.45; letter-spacing: 0.06em; }
+.is-corp .section-title { font-size: clamp(min(30px, 8vw), 4.6vw, 58px); font-weight: 300; line-height: 1.45; letter-spacing: 0.06em; }
 .is-corp .section-title em, .is-corp .hero__title em { font-style: normal; color: var(--c-shu); }
 .is-corp .section--soft { background: var(--c-kinari); }
 

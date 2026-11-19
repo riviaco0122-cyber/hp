@@ -6,7 +6,7 @@ D = "2026-10-11"
 ARTICLES_SERIES3 = [
     dict(
         slug="akiyado-what-we-do",
-        date=D, updated="2026-11-06", topics=["lend", "start"], photo=("irori-room", "囲炉裏のある居間"),
+        date=D, updated="2026-11-06", topics=["lend", "start"], photo=("u-waterside-house", "水辺に建つ木造の日本家屋"),
         keyword="空き家 買取 借り上げ",
         title="アキヤドができること｜空き家の買取・借り上げから、民泊の開業・運営まで",
         short="アキヤドが\nできること",
@@ -87,7 +87,7 @@ ARTICLES_SERIES3 = [
     ),
     dict(
         slug="akiyado-consultation-flow",
-        date=D, updated="2026-11-06", topics=["start", "lend"], photo=("hotel-room", "整えられた客室"),
+        date=D, updated="2026-11-06", topics=["start", "lend"], photo=("u-laptop-notepad", "ノートパソコンとメモ帳を広げた机"),
         keyword="空き家 民泊 相談",
         title="空き家・民泊の相談から開業までの流れ｜初回に聞かれること・準備するもの",
         short="相談から開業までの\n流れ",
@@ -264,7 +264,7 @@ ARTICLES_SERIES3 = [
 ARTICLES_SERIES3 += [
     dict(
         slug="remote-renovation-tips", related=['kominka-renovation-points'],
-        date=D, updated="2026-11-06", topics=["house", "start"], photo=("dark-room", "改修された和室"),
+        date=D, updated="2026-11-06", topics=["house", "start"], photo=("yaizu-before-floor-open", "床をはがして改修を進めている部屋"),
         keyword="空き家 民泊 改修",
         title="空き家を民泊に改修する進め方｜遠方でも追加費用を防ぐ相見積もり・記録・配線確認",
         short="遠方からの\n改修工事の進め方",
@@ -326,7 +326,7 @@ ARTICLES_SERIES3 += [
     ),
     dict(
         slug="long-stay-guest-equipment", related=['long-stay-travel-demand', 'inn-startup-funding'],
-        date=D, updated="2026-11-06", topics=["operate", "house"], photo=("white-bedroom", "ワークデスクのある寝室"),
+        date=D, updated="2026-11-06", topics=["operate", "house"], photo=("hotel-room", "窓の外に街が見える客室"),
         keyword="民泊 長期滞在 設備",
         title="民泊で長期滞在・海外のゲストに選ばれる設備と備品｜キッチン・乾燥機・Wi-Fi",
         short="長期滞在のゲストに\n選ばれる設備",

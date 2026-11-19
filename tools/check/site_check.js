@@ -212,7 +212,9 @@ async function prepare(page, { reveal = false } = {}) {
   await page.addStyleTag({ content: '*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}' });
   await page.evaluate(async (reveal) => {
     await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 5000))]); // Webフォントで組んだ改行で撮る
-    document.querySelectorAll('img[loading=lazy]').forEach(i => { i.loading = 'eager'; });
+    // 表示されない画像（hidden のカードなど）は、実際のブラウザでも読み込まれないので、早めず、待たない（画像の重さを実際どおりに数える）
+    const shown = i => i.getClientRects().length > 0;
+    document.querySelectorAll('img[loading=lazy]').forEach(i => { if (shown(i)) i.loading = 'eager'; });
     if (reveal) document.querySelectorAll('.reveal').forEach(e => e.classList.add('is-visible'));
     const step = Math.max(400, Math.floor(innerHeight * 0.9));
     for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
@@ -222,7 +224,7 @@ async function prepare(page, { reveal = false } = {}) {
     window.scrollTo(0, document.documentElement.scrollHeight);
     await new Promise(r => setTimeout(r, 120));
     window.scrollTo(0, 0);
-    const imgs = [...document.images];
+    const imgs = [...document.images].filter(shown);
     await Promise.race([
       Promise.all(imgs.map(i => (i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })))),
       new Promise(r => setTimeout(r, 10000)),
@@ -280,7 +282,8 @@ function inspectInPage() {
     }
     for (const el of over) { if (!over.has(el.parentElement)) offenders.push(desc(el) + `（右端 ${Math.round(el.getBoundingClientRect().right)}px）`); if (offenders.length >= 5) break; }
   }
-  const imgs = [...document.images].filter(i => (i.currentSrc || i.src) && !(i.currentSrc || i.src).startsWith('data:'));
+  // 表示されない画像（hidden のカードなど）は読み込まれないので、欠け・読み込み中の点検から外す
+  const imgs = [...document.images].filter(i => i.getClientRects().length > 0 && (i.currentSrc || i.src) && !(i.currentSrc || i.src).startsWith('data:'));
   const broken = imgs.filter(i => i.complete && i.naturalWidth === 0).map(i => i.currentSrc || i.src);
   const pending = imgs.filter(i => !i.complete).map(i => i.currentSrc || i.src);
   const ids = [...document.querySelectorAll('[id]')].map(e => e.id).concat([...document.querySelectorAll('a[name]')].map(e => e.getAttribute('name')));

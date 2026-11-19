@@ -122,30 +122,30 @@ ARTICLE_PHOTOS = {
     "akiya-regional-revitalization": ("rural-station", "田園と山に囲まれた地方の駅と町並み"),
     "minpaku-vs-ryokan-law": ("temple-bridge", "緑に囲まれた寺院と朱色の橋"),
     "airdna-revenue-simulation": ("koi-pond", "鯉の泳ぐ池"),
-    "small-inn-subsidies": ("dark-room", "障子越しに光の入る和室"),
+    "small-inn-subsidies": ("u-filling-forms", "机で書類に記入する様子"),
     "new-build-vs-used-house-inn": ("thatched-house", "田園に佇む茅葺きの古民家"),
     "shizuoka-yaizu-akiya-inn": ("town-railway", "住宅街を抜ける線路と町並み"),
-    "minpaku-start-steps": ("white-bedroom", "白を基調とした明るい寝室"),
+    "minpaku-start-steps": ("u-lit-tatami", "明かりのともる畳の部屋"),
     "akiya-bank-guide": ("green-hills", "緑の丘が連なる山あいの風景"),
     "inn-kpi-basics": ("pillow", "整えられた寝具と枕"),
     "long-stay-travel-demand": ("scene-stay", "縁側の向こうに山と町並みを望む和室"),
-    "minpaku-fire-safety": ("hotel-room", "夜の客室"),
+    "minpaku-fire-safety": ("u-fire-extinguisher", "壁に掛けられた消火器"),
     "ota-vs-direct-booking": ("fuji-rapeseed", "菜の花畑と富士山"),
     "kominka-renovation-points": ("irori-room", "囲炉裏のある古民家の座敷"),
     "inn-local-economy": ("scene-walk", "灯りのともる夜の路地"),
-    "cleaning-linen-operations": ("white-bed", "白いシーツの整ったベッド"),
+    "cleaning-linen-operations": ("u-futon-room", "布団の敷かれた和室"),
     "inbound-regional-dispersion": ("fuji-train", "富士山を背に走る列車"),
     "minpaku-management-company": ("gassho-village", "合掌造りの家と山並み"),
     "akiya-lease-types": ("window-garden", "和室の窓から望む庭"),
-    "listing-photo-tips": ("autumn-garden", "紅葉に彩られた日本庭園"),
+    "listing-photo-tips": ("u-camera-tripod", "部屋に三脚を立てて写真を撮る準備"),
     "tourism-labor-shortage": ("terraced-fields", "海を望む棚田と茅葺きの小屋"),
     "inn-startup-funding": ("fuji-lupin", "花畑の向こうに望む富士山"),
-    "guest-review-tips": ("garden-boat", "庭園の池に浮かぶ舟"),
+    "guest-review-tips": ("u-tea-room", "床の間のある和室"),
     "accommodation-tax": ("oshino-mill", "茅葺きの水車小屋と富士山"),
     "akiya-3000man-deduction": ("cherry-river", "川沿いの桜並木"),
     "kankei-jinko-and-inns": ("shrine-path", "木々に囲まれた参道"),
     "minpaku-investment-yield": ("mountain-dawn", "朝の光に照らされた山並み"),
-    "case-rental-house-inn-first-year": ("analytics-paper", "数字の推移をまとめた資料（イメージ）"),
+    "case-rental-house-inn-first-year": ("own-sofa-room", "ソファとテーブルをそろえた宿のリビング"),
 }
 # 体系的に学ぶシリーズの記事は、記事データに写真（photo）と図解（figure）を持つ
 for _a in ARTICLES:
@@ -188,6 +188,28 @@ def eyecatch_path(a):
     return f"{rel}?v={asset_version(rel)}"
 
 
+EYECATCH_WEBP_WIDTHS = (800, 1200)
+
+
+def eyecatch_srcset(a):
+    """アイキャッチの軽い版（WebP・幅800と1200）を images/eyecatch/w/ に作り、srcset を返す。
+    記事トップの写真は、JPEG（平均約100KB）より WebP（幅1200で約50KB・幅800で約28KB）のほうが速く出る（人の指摘 2026-11-16）。
+    元の JPEG は OGP（SNS で共有したときの画像）にそのまま使う"""
+    from PIL import Image
+    src = os.path.join(OUT, "images", "eyecatch", f"{a['slug']}.jpg")
+    out_dir = os.path.join(OUT, "images", "eyecatch", "w")
+    os.makedirs(out_dir, exist_ok=True)
+    parts = []
+    for w in EYECATCH_WEBP_WIDTHS:
+        rel = f"images/eyecatch/w/{a['slug']}-{w}.webp"
+        dst = os.path.join(OUT, rel)
+        if not (os.path.exists(dst) and os.path.getmtime(dst) >= os.path.getmtime(src)):
+            im = Image.open(src).convert("RGB")
+            im.resize((w, round(im.size[1] * w / im.size[0])), Image.LANCZOS).save(dst, "WEBP", quality=80, method=6)
+        parts.append(f"{rel}?v={asset_version(rel)} {w}w")
+    return ", ".join(parts)
+
+
 def has_eyecatch(a):
     """tools/eyecatch.py で作ったアイキャッチ（記事トップ・OGP用）があるか"""
     return os.path.exists(os.path.join(OUT, "images", "eyecatch", a["slug"] + ".jpg"))
@@ -198,7 +220,7 @@ def thumb(a, size=""):
     name, alt = ARTICLE_PHOTOS[a["slug"]]
     if size == "hero":
         if has_eyecatch(a):
-            return f"""<figure class="article__photo article__photo--eyecatch"><img src="{eyecatch_path(a)}" alt="{e(a["short"].replace(chr(10), ""))}" width="1200" height="630" fetchpriority="high" decoding="async"></figure>"""
+            return f"""<figure class="article__photo article__photo--eyecatch"><img src="{eyecatch_path(a)}" srcset="{eyecatch_srcset(a)}" sizes="(max-width: 899px) 100vw, 800px" alt="{e(a["short"].replace(chr(10), ""))}" width="1200" height="630" fetchpriority="high"></figure>"""
         return f"""<figure class="article__photo">{photo(name, alt=alt, width=1600, height=700, sizes="(max-width: 899px) 100vw, 800px", lazy=False, priority=True)}</figure>"""
     return f"""<div class="thumb thumb--photo">
               {photo(name, width=720, height=450, sizes="(max-width: 899px) 90vw, 400px")}

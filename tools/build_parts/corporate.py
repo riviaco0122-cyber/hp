@@ -167,7 +167,7 @@ def index_page():
           <h2 class="section-title">運営実績</h2>
         </div>
 {project_card()}
-{reviews_html()}      </div>
+      </div>
     </section>
 
 {media_intro()}

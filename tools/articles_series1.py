@@ -118,7 +118,7 @@ ARTICLES_SERIES1 = [
     dict(
         slug="why-akiya-utilization-now", related=['akiya-3000man-deduction'],
         keyword="空き家 活用",
-        date=D, updated="2026-11-06", topics=["trend", "sell"], photo=("old-town-street", "古い町家が並ぶ通り"),
+        date=D, updated="2026-11-06", topics=["trend", "sell"], photo=("yaizu-before-backyard", "草の伸びた空き家の裏庭"),
         title="なぜ今「空き家の活用」が注目されるのか｜税の負担・活用の道・民泊の追い風",
         short="なぜ今、空き家の\n活用が注目されるのか",
         description="空き家は、持っているだけで負担が増えるようになりました。市の勧告で土地の税が上がる決まりと相続登記の義務化、負担を減らす4つの活用の道、比べたときに民泊・宿に追い風がある理由を、順に整理します。",
@@ -350,7 +350,7 @@ ARTICLES_SERIES1 = [
     dict(
         slug="souzoku-touki-gimuka", related=['akiya-law-kanri-fuzen'],
         keyword="相続登記 義務化",
-        date=D, updated="2026-11-06", topics=["sell", "money"], photo=("window-garden", "窓から見える庭"),
+        date=D, updated="2026-11-06", topics=["sell", "money"], photo=("u-signing-paper", "書類に記入する手元"),
         title="相続登記の義務化とは？空き家を相続して売る・民泊にする前にやること",
         short="相続登記の義務化と\n最初にやること",
         description="2024年4月から、相続した家や土地の名義を変える手続き（相続登記）が義務になりました。相続で不動産を取得したと知ってから3年以内で、過去の相続分も対象です。怠ると過料（お金の罰）の対象になります。最初にやることを整理します。",
@@ -565,7 +565,7 @@ ARTICLES_SERIES1 = [
     dict(
         slug="akiya-utilization-options", related=['akiya-bank-guide', 'why-minpaku-for-akiya', 'minpaku-vs-rental-income'],
         keyword="空き家 活用方法",
-        date=D, updated="2026-11-06", topics=["house", "lend"], photo=("thatched-house", "かやぶき屋根の古民家"),
+        date=D, updated="2026-11-06", topics=["house", "lend"], photo=("u-old-wooden-house", "古い木造の家"),
         title="空き家の活用方法を比べる｜売る・貸す・民泊にするの向き不向き",
         short="空き家の活用方法を\n比べる",
         blurb="5つの道の分かれ目を実例で",
@@ -717,7 +717,7 @@ ARTICLES_SERIES1 = [
     dict(
         slug="inherited-house-family-talk", related=['why-akiya-utilization-now'],
         keyword="相続 実家 話し合い",
-        date=D, updated="2026-11-06", topics=["sell", "lend"], photo=("irori-room", "囲炉裏のある古い家の居間"),
+        date=D, updated="2026-11-06", topics=["sell", "lend"], photo=("u-old-living-room", "ちゃぶ台のある古い家の居間"),
         title="相続した実家を売る・貸す・民泊にする？家族での話し合いの進め方",
         short="相続した実家を\n家族で決める",
         description="相続した実家を売るか、貸すか、宿にするかを家族で決めるための記事です。先送りで重なる負担、入るお金・手間・控除・家が残るかの比べ方、分け方が決まらないときの期限の守り方、借り上げを選ぶときの注意を整理します。",
@@ -868,7 +868,7 @@ ARTICLES_SERIES1 = [
     dict(
         slug="why-minpaku-for-akiya", related=['japan-tourism-market-data'],
         keyword="空き家 民泊",
-        date=D, updated="2026-11-06", topics=["trend", "start"], photo=("scene-stay", "和室から見える町と山の景色"),
+        date=D, updated="2026-11-06", topics=["trend", "start"], photo=("own-tatami-hall", "長机を置いた畳の広間"),
         title="空き家の活用で、なぜ民泊・小さな宿が選ばれるのか",
         short="空き家の活用で\nなぜ民泊が選ばれるのか",
         description="住まいとして借り手がつかない空き家でも、民泊（住まいに旅行者を有料で泊めること）や小さな宿なら選ばれることがあります。下田の宿のゲストと改修、最初の3か月の売上と運営費、遠方から運営する手順をもとに、その理由と注意点を紹介します。",
@@ -886,7 +886,7 @@ ARTICLES_SERIES1 = [
 <p class="table-note">※ 総務省「令和5年住宅・土地統計調査」、2023年10月1日時点。</p>
 <div class="stats stats--2" role="group" aria-label="下田市の空き家と、宿の稼働">
 <div class="stat"><span class="stat__num">31.3<small>%</small></span><span class="stat__label">下田市の空き家率</span><span class="stat__note">全国は13.8%</span></div>
-<div class="stat stat--accent"><span class="stat__num">約53<small>%</small></span><span class="stat__label">宿の1年目の稼働率</span><span class="stat__note">2025年7月中旬〜2026年3月</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>53<small>%</small></span><span class="stat__label">宿の1年目の稼働率</span><span class="stat__note">2025年7月中旬〜2026年3月</span></div>
 </div>
 <p>同じ町で、創業メンバーが借りて運営する宿（NODE Shimoda。運営施設の一例）の1年目の稼働率は約53%でした。ゲストは海外からの訪日客が中心で、ワーケーションやサーフィンが目的の人もいます。夏は長期の滞在が多めです。</p>
 <p>こうした旅行者は増えています。2025年の訪日外客数（日本を訪れた外国人旅行者の数）は約4,268万人で、過去最多でした（日本政府観光局・推計値）。台所や広い居間がある一軒家は、家族や長く滞在する旅行者にとって使いやすい宿になります。</p>
@@ -902,9 +902,9 @@ ARTICLES_SERIES1 = [
 <p>持ち家を宿にすれば、家を手放さずに収入を得られます。ただ、手元に残るのは売上から運営費を引いた分で、季節の波もあります。</p>
 <p>目安として、創業メンバーが借りて運営する下田の宿の、最初の3か月の数字を見てみましょう。この宿は賃貸の物件なので、持ち家を残した例ではありません。宿の売上と運営費の規模をつかむための数字です。稼働率は、泊まれる日数のうち実際に泊まった日の割合です。</p>
 <div class="stats" role="group" aria-label="私たちの宿の最初の3か月">
-<div class="stat"><span class="stat__num">約52<small>%</small></span><span class="stat__label">稼働率</span><span class="stat__note">3か月の平均</span></div>
-<div class="stat"><span class="stat__num">約100<small>万円</small></span><span class="stat__label">売上</span><span class="stat__note">3か月の合計</span></div>
-<div class="stat stat--accent"><span class="stat__num">約45<small>万円</small></span><span class="stat__label">営業利益</span><span class="stat__note">3か月の合計</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>52<small>%</small></span><span class="stat__label">稼働率</span><span class="stat__note">3か月の平均</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>100<small>万円</small></span><span class="stat__label">売上</span><span class="stat__note">3か月の合計</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>45<small>万円</small></span><span class="stat__label">営業利益</span><span class="stat__note">3か月の合計</span></div>
 </div>
 <p>この3か月は、本格営業の前の試運転の期間です。営業利益は、売上から運営費を引いた利益のことです。月の売上は最大で約60万円で、本格稼働のあとは、売上も利益もさらに伸びました。</p>
 <p>毎月の運営費は計18万円で、内訳は次のとおりです。</p>
@@ -949,12 +949,13 @@ ARTICLES_SERIES1 = [
             "日本政府観光局（JNTO）「訪日外客数（2025年12月推計値）」（2026年1月21日発表） https://www.jnto.go.jp/news/press/20260121_monthly.html",
             "総務省統計局「令和5年住宅・土地統計調査 住宅及び世帯に関する基本集計」（2024年公表、e-Stat 統計表ID 0004021421） https://www.e-stat.go.jp/dbview?sid=0004021421",
             "RIVIA&CO.「民泊の家具・家電・設備の初期投資を約14か月でほぼ回収｜下田の賃貸物件の宿」（2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
+            "Airbnb ヘルプセンター「How do changes to the Japanese Hotels and Inns Act affect hosting on Airbnb?」（届出番号などがない掲載は、新しい予約を受けられないよう停止。2026年11月閲覧） https://www.airbnb.com/help/article/2353",
         ],
     ),
     dict(
         slug="minpaku-vs-rental-income",
         keyword="民泊 賃貸 収入",
-        date=D, updated="2026-11-06", topics=["money", "lend"], photo=("white-bed", "白いベッドのある寝室"),
+        date=D, updated="2026-11-06", topics=["money", "lend"], photo=("u-calculator-pen", "電卓とペンと計算の紙"),
         title="民泊と普通の賃貸、収入の仕組みはどう違う？売上・費用・手間を比べる",
         short="民泊と賃貸\n収入の仕組みの違い",
         description="空き家を住まいとして貸す場合と、民泊（旅行者を有料で泊めること）・宿にする場合では、収入の決まり方が違います。売上の式と年180日の上限、月ごとの波、かかる費用と手間、波を誰が引き受けるかの4つの貸し方を、下田の宿の数字で比べます。",
@@ -974,7 +975,7 @@ ARTICLES_SERIES1 = [
 <p>次の「稼働率」は、月ごとに大きく動きます。下田の宿の1年目は、平均すると約53%でしたが、月別では次のように開きました。</p>
 <div class="stats" role="group" aria-label="下田の宿の1年目の月別稼働率">
 <div class="stat stat--accent"><span class="stat__num">71<small>%</small></span><span class="stat__label">いちばん高い月</span><span class="stat__note">12月</span></div>
-<div class="stat"><span class="stat__num">約53<small>%</small></span><span class="stat__label">1年目の平均</span><span class="stat__note">2025年7月中旬〜2026年3月</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>53<small>%</small></span><span class="stat__label">1年目の平均</span><span class="stat__note">2025年7月中旬〜2026年3月</span></div>
 <div class="stat"><span class="stat__num">33<small>%</small></span><span class="stat__label">いちばん低い月</span><span class="stat__note">11月</span></div>
 </div>
 <p class="table-note">※ 月別は、8月58%・9月60%・10月52%・11月33%・12月71%・1月39%・2月57%・3月61%です（開業月の7月を除く）。運営施設の一例の数字です。</p>

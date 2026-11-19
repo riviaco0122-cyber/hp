@@ -63,7 +63,7 @@ ARTICLES_SERIES2 = [
     ),
     dict(
         slug="akiya-minpaku-suitability", related=['akiya-utilization-options'],
-        date=D, updated="2026-11-06", topics=["house", "start"], photo=("riverside-town", "川沿いの町並み"),
+        date=D, updated="2026-11-06", topics=["house", "start"], photo=("u-wooden-house-garden", "庭のある木造の平屋"),
         title="その空き家、民泊に向いている？立地・建物・法令・運営の4つで見極める",
         keyword="空き家 民泊 向いている",
         short="その空き家は\n民泊に向いている？",
@@ -111,8 +111,8 @@ ARTICLES_SERIES2 = [
 </table>
 <p>配線のほうは、ゲストに同時に使わないよう案内して運営しました。3芯化の工事は費用がかかるので、早めに確かめて資金計画に入れておく。これが私たちの学びです。</p>
 <div class="stats stats--2" role="group" aria-label="開業時にかかった費用">
-<div class="stat stat--accent"><span class="stat__num">約410<small>万円</small></span><span class="stat__label">改修工事</span><span class="stat__note">3社を比較</span></div>
-<div class="stat"><span class="stat__num">約240<small>万円</small></span><span class="stat__label">家具・家電</span><span class="stat__note">備品を含む</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>410<small>万円</small></span><span class="stat__label">改修工事</span><span class="stat__note">3社を比較</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>240<small>万円</small></span><span class="stat__label">家具・家電</span><span class="stat__note">備品を含む</span></div>
 </div>
 <p>改修工事は3社の見積もりを比べて、見積額がいちばん低かった会社に頼みました。進み具合は、写真とビデオ通話で共有してもらえて助かりました。</p>
 <p>ただ、工事が終わって支払ったあとに、思ってもいなかった追加の請求が届きました。相談のうえ、支払いは一部にとどめています。ここで学んだのは、やりとりを文書で残すことと、どんな宿にしたいかを最初に言葉にして共有することです。</p>
@@ -200,7 +200,9 @@ ARTICLES_SERIES2 = [
             ("民泊新法と簡易宿所は、どちらで始めましたか？", "旅館業法の簡易宿所の許可を取りました。民泊新法の年180日の上限を避けて、通年で営業するためです。どちらが合うかは物件や目的で変わるので、保健所や自治体に確かめてみてください。"),
             ("向いていないと分かった場合は？", "売る、貸す、解体して土地を売る、持ち続ける、といった道と並べて比べてみてください。売るなら3,000万円特別控除の条件、解体なら自治体の補助の対象条件など、道ごとの分かれ目は、記事「空き家の活用方法を比べる」にまとめています。"),
         ],
-        sources=["観光庁「民泊制度ポータルサイト」（2026年閲覧） https://www.mlit.go.jp/kankocho/minpaku/", "厚生労働省「旅館業法について」", "創業メンバーによる下田市での宿の開業記録（2025年11月執筆・個人事業としての開業）"],
+        sources=["観光庁「民泊制度ポータルサイト」（2026年閲覧） https://www.mlit.go.jp/kankocho/minpaku/", "厚生労働省「旅館業法について」", "創業メンバーによる下田市での宿の開業記録（2025年11月執筆・個人事業としての開業）",
+            "Airbnb ヘルプセンター「How do changes to the Japanese Hotels and Inns Act affect hosting on Airbnb?」（届出番号などがない掲載は、新しい予約を受けられないよう停止。2026年11月閲覧） https://www.airbnb.com/help/article/2353",
+        ],
     ),
     dict(
         slug="minpaku-hard-truth", related=['minpaku-neighbor-rules'],
@@ -253,8 +255,8 @@ ARTICLES_SERIES2 = [
             ("money", "初期費用は、どこで膨らみ、どう抑えたのか？", """
 <p>初期費用は、改修の追加費用で膨らみやすくなります。下田の宿では、自分でできる解体は自分でやり、補助金も組み合わせて抑えました。</p>
 <div class="stats stats--2" role="group" aria-label="下田の宿の初期費用">
-<div class="stat stat--accent"><span class="stat__num">約410<small>万円</small></span><span class="stat__label">改修工事</span></div>
-<div class="stat"><span class="stat__num">約240<small>万円</small></span><span class="stat__label">家具・家電・備品</span></div>
+<div class="stat stat--accent"><span class="stat__num"><small class="stat__pre">約</small>410<small>万円</small></span><span class="stat__label">改修工事</span></div>
+<div class="stat"><span class="stat__num"><small class="stat__pre">約</small>240<small>万円</small></span><span class="stat__label">家具・家電・備品</span></div>
 </div>
 <p>抑えるためにしたことと、膨らんだことを表にまとめました。</p>
 <table class="table">
@@ -291,7 +293,7 @@ ARTICLES_SERIES2 = [
     ),
     dict(
         slug="minpaku-neighbor-rules", related=['minpaku-remote-operation'],
-        date=D, updated="2026-11-06", topics=["operate", "start"], photo=("town-railway", "線路沿いの住宅街"),
+        date=D, updated="2026-11-06", topics=["operate", "start"], photo=("u-residential-alley", "住宅が並ぶ静かな路地"),
         title="民泊の近隣トラブルを防ぐには？騒音・ごみ・駐車のルールづくりと伝え方",
         keyword="民泊 近隣トラブル",
         short="近隣トラブルを防ぐ\nルールづくり",
@@ -382,7 +384,7 @@ ARTICLES_SERIES2 = [
     ),
     dict(
         slug="minpaku-off-season", related=['cleaning-linen-operations'],
-        date=D, updated="2026-11-06", topics=["operate", "money"], photo=("mountain-dawn", "朝焼けの山並み"),
+        date=D, updated="2026-11-06", topics=["operate", "money"], photo=("own-fishing-bay", "釣り糸を垂らす静かな海"),
         title="民泊の閑散期をどう乗り越える？下田の宿の月別の稼働率と料金・長期滞在の工夫",
         keyword="民泊 閑散期",
         short="閑散期を\nどう乗り越える？",
@@ -476,7 +478,7 @@ ARTICLES_SERIES2 = [
     ),
     dict(
         slug="minpaku-remote-operation", related=['minpaku-vs-ryokan-law'],
-        date=D, updated="2026-11-06", topics=["operate", "lend"], photo=("laptop-dashboard", "パソコンで予約状況を確認する様子"),
+        date=D, updated="2026-11-06", topics=["operate", "lend"], photo=("u-smart-lock", "スマートフォンで開け閉めするスマートロック"),
         title="遠方の物件でも民泊を運営できる？スマートロック・清掃の外注・遠隔運営の仕組み",
         keyword="民泊 遠隔運営",
         short="遠方の物件でも\n運営できる？",
