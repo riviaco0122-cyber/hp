@@ -154,6 +154,8 @@ def footer():
     links = [("about.html", "私たちについて"), ("services.html", "事業内容"), ("index.html#project", "実績"),
              ("media.html", "メディア"), ("careers.html", "採用情報"), ("contact.html", "お問い合わせ")]
     nav = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in links)
+    # 海外向けの英語メディア Noki（tools/okaeri/ が /noki に作る。作業用のフォルダ名は旧名のまま）。同じドメインの中からの入口
+    nav += '<li><a href="/noki" hreflang="en" lang="en">Noki (English)</a></li>'
     # 目的・お悩みから探す（Serviceメニューと同じ「〜したい」の一覧）
     # 各サービスの案内（サービス名の下に、ページ内の主な項目へのリンク）
     names = dict(SERVICES)

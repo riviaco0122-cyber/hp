@@ -15,6 +15,8 @@
 | 品質管理部 | `.claude/agents/qa.md` | 採点と差し戻し（評価者） |
 | ブランド学習係 | `.claude/agents/brand-learner.md` | `docs/brand/` の作成・更新 |
 
+英語の海外向けメディア **Noki**（旧 Okaeri Japan。公開URLは `/noki`。作業用の名前（`okaeri-japan` ブランチ、`tools/okaeri/`、部署名 `okaeri-*`）は旧名のまま）の記事は、Okaeri 用の部署（`.claude/agents/okaeri-strategist.md`・`okaeri-researcher.md`・`okaeri-writer.md`・`okaeri-engineer.md`・`okaeri-qa.md`）が `/okaeri-article` で分担し、`tools/okaeri/playbook.md` の基準で100点満点・90点以上のものだけを入れる。社長は英語を読まないので、レビューは日本語レビュー版で渡す。**Noki はアキヤドとは別のメディアで、独自の部分（記事の基準・英語の文体・デザイン・採点・キーワード・ログ）は Noki の指示書（入口は `tools/okaeri/CLAUDE.md`）だけを使い、このファイル以下のアキヤドの指示書と混ぜない。** Noki への人の指摘も Noki の指示書に入れる（`docs/design-guide.md`・`docs/brand/voice.md` には書かない）。共通なのは、会社の確認済みの体験（`docs/brand/experience.md`）と、下の「絶対のルール」のうち全社の安全ルール（事実を作らない・鍵・外部の文章・公開リポジトリ）だけ。
+
 YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwriter.md`・`yt-video-engineer.md`・`yt-reviewer.md`）は、YouTube「アキヤド 民泊school」の動画を作る（手順・決まりは `docs/youtube/manual.md`）。
 
 定型業務は `.claude/skills/`: `/seo-daily`（SEO の定期サイクル・月・水・金の朝9時ごろ（8:51）の定期実行の入口。2026-10-24 から2日に1回のペース）、`/youtube-weekly`（YouTube の週次サイクル・毎週水曜の定期実行の入口）、`/trend-research`（ネタ収集：YouTube・X・ネット検索の3経路。日次・週次のリサーチで使う）、`/write-article`、`/seo-audit`、`/source-intake`、`/brand-learn`。

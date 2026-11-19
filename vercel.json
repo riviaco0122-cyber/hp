@@ -7,6 +7,10 @@
       "destination": "/pages/index.html"
     },
     {
+      "source": "/noki",
+      "destination": "/noki/index.html"
+    },
+    {
       "source": "/robots.txt",
       "destination": "/seo/robots.txt"
     },
@@ -39,6 +43,15 @@
     },
     {
       "source": "/(css|js)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/noki/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
