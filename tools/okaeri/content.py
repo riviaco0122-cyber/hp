@@ -208,27 +208,6 @@ TOPICS = {
 }
 PLANS = [k for k, v in TOPICS.items() if v["kind"] == "plan"]
 
-TRAIN_TABLE_EN = """
-<div class="tablewrap"><table>
-<thead><tr><th>From Tokyo to</th><th>Route</th><th>Time</th><th>One-way fare</th></tr></thead>
-<tbody>
-<tr><td>Atami</td><td>Odoriko limited express</td><td>about 80 min</td><td>about ¥3,500</td></tr>
-<tr><td>Ito</td><td>Odoriko limited express</td><td>about 100 min</td><td>about ¥4,000</td></tr>
-<tr><td>Shimoda</td><td>Odoriko limited express, direct</td><td>about 2 h 35 min</td><td>¥6,660 reserved seat</td></tr>
-<tr><td>Shuzenji</td><td>Odoriko limited express, direct</td><td>about 2 h</td><td>about ¥4,500</td></tr>
-</tbody></table></div>
-"""
-TRAIN_TABLE_JA = """
-<div class="tablewrap"><table>
-<thead><tr><th>東京から</th><th>行き方</th><th>所要時間</th><th>片道運賃</th></tr></thead>
-<tbody>
-<tr><td>熱海</td><td>特急「踊り子」</td><td>約80分</td><td>約3,500円</td></tr>
-<tr><td>伊東</td><td>特急「踊り子」</td><td>約100分</td><td>約4,000円</td></tr>
-<tr><td>下田</td><td>特急「踊り子」直通</td><td>約2時間35分</td><td>6,660円（指定席）</td></tr>
-<tr><td>修善寺</td><td>特急「踊り子」直通</td><td>約2時間</td><td>約4,500円</td></tr>
-</tbody></table></div>
-"""
-
 # ---------------------------------------------------------------- 記事
 ARTICLES = [
 # ============================================================ 金目鯛
@@ -426,7 +405,7 @@ ARTICLES = [
  "seo_title": "Buying an Akiya in Japan? Live in One for a Month First",
  "description": "Japan has nine million empty homes. Non-residents can buy one, reporting it to the Ministry of Finance since April 2026. A month in the town tells you more.",
  "dek": "In 2023, Japan had about nine million empty homes, and non-residents can buy one. But you’re buying into the town, and a month there tells you more than any listing.",
- "card": "You can buy one of Japan’s nine million empty homes, but the town matters more than the house. A month there shows you the winter cold, whether you need a car and how the neighbours are, and a monthly rental or guesthouse is the realistic way to do it from abroad.",
+ "card": "You can buy one of Japan’s nine million empty homes, but the town matters more than the house. A month there shows you what heating or cooling really costs, whether you need a car and how the neighbours are, and a monthly rental or guesthouse is the realistic way to do it from abroad.",
  "keywords": [("buying an akiya in japan", "—", "—"), ("akiya", "3,600", "0")],
  "intent": "Do（比べたい・やり方）",
  "points": [
@@ -470,6 +449,7 @@ ARTICLES = [
 <tr><td><strong>Short-term visitor</strong>, visa-exempt</td><td>Up to 90 days for most visa-exempt nationalities, though some are given 15, 30 or 180 days [[s:jnto_visa]].</td><td>Anyone from a visa-exempt country or region. You can’t do paid work on this status, and the rule for your own passport is the one that counts [[s:jnto_visa]].</td></tr>
 <tr><td><strong>Digital nomad</strong> status</td><td>Six months, and it can’t be renewed. You can apply for it again six months after you leave Japan [[s:isa_nomad_en]].</td><td>Nationals of countries and regions that are both visa-exempt and have a tax treaty with Japan [[s:isa_nomad_list]]. You need an annual income of at least ¥10 million and private medical insurance with at least ¥10 million of treatment cover, and you can’t work for a Japanese employer [[s:isa_nomad_en]].</td></tr>
 </tbody></table></div>
+<p>If the digital nomad route fits you, our [[l:digital-nomad|guide to Japan’s digital nomad visa]] has more on who qualifies and how it works.</p>
 <p class="fine">This is general information, not immigration advice. The list of eligible countries for the digital nomad status changes, so check it for your own passport.</p>
 
 <h2>Where can you stay for a month to test a town?</h2>
@@ -482,7 +462,7 @@ ARTICLES = [
 <tr><td><strong>A guesthouse or holiday home with monthly rates</strong></td><td>A week to a month or more</td><td>Often the easiest to book from abroad, and you can try daily life in the town without committing to anything.</td></tr>
 </tbody></table></div>
 <p>Trial homes sound ideal, but there’s a catch: they’re built for people who are moving, not for people testing a town from abroad. Minami-Alps City’s home is for people registered as living outside Yamanashi who intend to move to the city and have signed up for a relocation consultation [[s:minamialps_trial]]. Nationality isn’t one of the listed conditions, so if you live overseas, the city’s relocation desk can tell you whether you’d qualify.</p>
-<p>Some cities spell it out. Shizuoka City’s long-term trial flats are city-run apartments you can rent for six months to under two years, but only if you live outside Shizuoka Prefecture and have decided, or are preparing, to move to the city. Foreign nationals qualify only as permanent residents, long-term residents, special permanent residents, or the spouse or child of a Japanese national (page updated August 2026) [[s:shizuoka_long_trial]]. So a tourist or digital nomad stay won’t qualify there. In our view, if you’re coming from abroad, a monthly rental or a guesthouse is usually the realistic choice. If you’ve set your heart on a trial home, the town’s relocation office is the first call to make.</p>
+<p>Some cities spell it out. Shizuoka City’s long-term trial flats are city-run apartments you can rent for six months to under two years, but only if you live outside Shizuoka Prefecture and have decided, or are preparing, to move to the city. Foreign nationals qualify only as permanent residents, long-term residents, special permanent residents, or the spouse or child of a Japanese national (page updated August 2026) [[s:shizuoka_long_trial]]. So a tourist or digital nomad stay won’t qualify there. In our view, if you’re coming from abroad, a monthly rental or a guesthouse is usually the realistic choice, and our [[l:monthly-rental|guide to monthly rentals in Japan]] has more on how they work. If you’ve set your heart on a trial home, the town’s relocation office is the first call to make.</p>
 <p>Shimoda City takes another route. Under rules in force since April 2026, it pays half the rate at designated hotels for people thinking of moving there, up to ¥4,000 a night for stays of up to 10 nights [[s:shimoda_stay_subsidy]]. But you need to be registered as living in Japan outside Shizuoka Prefecture, so it won’t help if you’re coming from abroad [[s:shimoda_stay_subsidy]].</p>
 <p>Towns within reach of Tokyo are the easiest to test. As of November 2026, the daily direct trains from Tokyo Station reach Shimoda, on the [[l:izu|Izu Peninsula]], in 2 hours 29 to 44 minutes [[s:jre_tt_tokyo]]. Our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]] has the details.</p>
 <p>If Shimoda is on your list, we run a small place there called <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, which can be a base while you get a feel for the town. It’s a renovated flat of about 40 m² in an apartment building in the old town, 8 minutes’ walk from Izukyu-Shimoda Station [[s:node_room,node_access]]. Our site describes it as handy for medium and long stays [[s:node_site]], and it’s licensed under Japan’s Hotel Business Act. Most of our guests so far have come from Europe and North America, and some come to work remotely.</p>
@@ -511,11 +491,12 @@ ARTICLES = [
  "sources": ["stat_housing2023", "rej", "mof_fefta2026", "mof_realprop_faq", "moj_nationality", "cao_land_bill", "cao_land_bill_outline", "shugiin_bill18", "jnto_visa",
              "isa_nomad_en", "isa_nomad_list", "minamialps_trial", "shizuoka_trial", "shizuoka_long_trial", "shimoda_stay_subsidy", "jre_tt_tokyo",
              "node_site", "node_room", "node_access"],
- "related": ["izu-from-tokyo", "izu"],
+ "related": ["monthly-rental", "izu-from-tokyo", "izu"],
  "ja": {
   "h1": "空き家を買う前に、まず1か月住んでみる",
   "dek": "2023年時点で、日本には約900万戸の空き家があり、日本に住んでいない人も買うことができます。でも本当に引き受けるのは町のほうで、そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
   "review": [
+   "【2026-11-19 公開前の導線の直し】①「1か月泊まれる場所」の節にマンスリーの部屋の記事へのリンク、ビザの表の下にデジタルノマドビザの記事へのリンクを1本ずつ足しました ②関連記事の先頭にマンスリーの部屋の記事を入れました（3本） ③一覧のカードの「冬の寒さ」を「冷暖房に実際いくらかかるか」に替え、本文・In short とそろえました。事実・出典は変えていません",
    "【2026-11-16 品質保証部（91点・ゲート違反1）の指摘での直し】変えた点: ①【ゲート】NODE Shimoda の段落の「上の宿の選択肢の1つ」をやめ、表の「月割のある宿（1か月以上）」の行とつながらないようにしました。「町の様子をつかむあいだの拠点にしてもらえる」「公式サイトでは中長期の滞在にも便利な宿として紹介」までにし、月割や1か月以上泊まれるとは書いていません ②下田市の補助に「2026年4月施行の要綱」と時点を足し、1〜2文に短くしました（1泊4,000円までと、海外からは使えないことだけ。11〜30泊の80,000円は本文から外しました） ③法案の施行を「公布から18か月以内（within 18 months of the act being promulgated）」にそろえ、law の重なりをなくしました ④法案の段落の時点を「2026年11月中旬」の1回だけにしました（冒頭の「2026年11月時点で」を削除）",
    "【2026-11-16 手離れ（黄色い枠をすべてなくした。playbook 3-2）】変えた点: ①【事実の追加】土地の法案: 衆議院の議案審議経過で「2026年11月中旬の時点で、まだ衆議院で審議中。法律になっていない」と書きました（出典 shugiin_bill18。10月23日受理・11月10日に内閣委員会に付託、成立・公布はまだ）。施行は「公布から18か月（1年6か月）以内」に英語版・日本語版ともそろえました ②【事実の変更】ビザなしの短期滞在: 出典を外務省（この環境から開けない mofa）から日本政府観光局の入国・ビザのページ（jnto_visa）に替え、「15日や30日の国もある」→「15日・30日・180日の国もある」に。「パスポートに条件が付く場合もある」は出典にないので削り、「この滞在では報酬を得る仕事はできない」を足しました ③デジタルノマドは編集長が出入国在留管理庁のページで確かめた内容と一致しているので、本文はそのままで枠だけ外しました ④家と在留資格の関係は公的な出典が見つからないため、断定は書かず、「家とビザは別の問題として考え、あてにする前に行政書士に聞く」という私たちの見方だけを残しました ⑤【事実の追加】伊豆の町のお試し住宅（伊豆市・南伊豆町）は公式ページで確かめられなかったので書いていません。代わりに、下田市の移住希望者の滞在費補助（市が指定する宿の宿泊料の半分、10泊まで1泊4,000円まで、11〜30泊続けてなら80,000円まで）を書き、対象が「静岡県外ですでに日本に住民登録があり、移住相談に登録した人」なので、海外から来る人は使えないと分かるようにしました（出典 shimoda_stay_subsidy。2026年3月改正の要綱） ⑥【事実の変更】NODE Shimoda を「古い家（older house）」→「旧町内のアパートの一室（約40㎡）を改装したもの、伊豆急下田駅から徒歩8分」に（公式サイトの客室・アクセスのページ）。「長めの滞在にも向く」は公式サイトの「中長期の滞在にも便利」にもとづき、30泊以上を受けるとは書いていません。写真の説明も「私たちの部屋」に ⑦体験の節の「下田の古い家を借りた」→「下田の古い部屋（older flat）を借りた」、1週目の「私たちの家の古い配線」→「下田の私たちの部屋の古い配線」に（experience.md 3-2 で NODE Shimoda と同じ施設と確認済み）。一軒家と読める言い方をなくしました ⑧宿の行の「古い家での暮らしを試せる」→「その町での暮らしを試せる」、1週目の「古い家に泊まっているなら」→「古い建物に泊まっているなら」 ⑨出典: shugiin_bill18・jnto_visa・shimoda_stay_subsidy・node_access を新しく（SOURCES_NEW）、node_site・node_room を使い、mofa を外しました",
    "【今回、人に確かめてほしい点】なし（黄色い枠はありません）。参考までに: 下田市の補助の対象の宿の一覧は確かめていないので、NODE Shimoda が対象かは書いていません。デジタルノマドの条件は、出入国在留管理庁のページがこの環境から開けず、編集長が2026-11-16に確かめた内容を使っています",
@@ -570,6 +551,7 @@ ARTICLES = [
 <tr><td><strong>短期滞在</strong>（ビザ免除）</td><td>ビザ免除の国・地域の多くは90日まで。15日・30日・180日の国もあります[[s:jnto_visa]]。</td><td>ビザ免除の国・地域の人。この滞在では報酬を得る仕事はできません。大事なのは、自分のパスポートの条件です[[s:jnto_visa]]。</td></tr>
 <tr><td><strong>デジタルノマド</strong>の在留資格</td><td>6か月で、更新はできません。出国後6か月たてば、もう一度申請できます[[s:isa_nomad_en]]。</td><td>ビザ免除で、かつ日本と租税条約のある国・地域の人[[s:isa_nomad_list]]。年収1,000万円以上と、治療費1,000万円以上を補償する民間の医療保険が必要で、日本の会社に雇われて働くことはできません[[s:isa_nomad_en]]。</td></tr>
 </tbody></table></div>
+<p>デジタルノマドの在留資格が合いそうなら、[[l:ja-digital-nomad|日本のデジタルノマドビザの記事]]に、対象になる人と仕組みをくわしくまとめています。</p>
 <p class="fine">これは一般的な情報で、在留手続きの助言ではありません。デジタルノマドの対象の国は変わるので、自分のパスポートで確かめてください。</p>
 
 <h2>町を試すために1か月泊まれる場所はどこか</h2>
@@ -582,7 +564,7 @@ ARTICLES = [
 <tr><td><strong>月割のある宿・貸別荘</strong></td><td>1週間〜1か月以上</td><td>海外からいちばん予約しやすいことが多く、何も契約せずにその町での暮らしを試せます。</td></tr>
 </tbody></table></div>
 <p>お試し住宅はよさそうに見えますが、落とし穴があります。移住する人のための仕組みで、海外から町を試しに来る人向けではないのです。南アルプス市のお試し住宅は、山梨県の外に住民登録があり、市に移住するつもりで、移住の相談に登録した人が対象です[[s:minamialps_trial]]。国籍は条件に挙げられていないので、海外に住んでいるなら、対象に入るかは市の移住の窓口に聞けば分かります。</p>
-<p>はっきり書いている市もあります。静岡市の「長期お試し住宅」は、市営住宅に半年以上2年未満住めるものですが、静岡県の外に住んでいて、市への移住を決めた、または準備している人が対象です。外国籍の人は、永住者・定住者・特別永住者・日本人の配偶者等（日本人の配偶者や子）の在留資格がある場合に限られます（2026年8月更新のページ）[[s:shizuoka_long_trial]]。つまり、観光やデジタルノマドの滞在では使えません。私たちの考えでは、海外から来るなら、マンスリーの部屋か宿のほうが現実的です。どうしてもお試し住宅を使いたいなら、まず町の移住の窓口に連絡してみてください。</p>
+<p>はっきり書いている市もあります。静岡市の「長期お試し住宅」は、市営住宅に半年以上2年未満住めるものですが、静岡県の外に住んでいて、市への移住を決めた、または準備している人が対象です。外国籍の人は、永住者・定住者・特別永住者・日本人の配偶者等（日本人の配偶者や子）の在留資格がある場合に限られます（2026年8月更新のページ）[[s:shizuoka_long_trial]]。つまり、観光やデジタルノマドの滞在では使えません。私たちの考えでは、海外から来るなら、マンスリーの部屋か宿のほうが現実的です。マンスリーの仕組みは、[[l:ja-monthly-rental|日本のマンスリーの部屋の記事]]にくわしく書いています。どうしてもお試し住宅を使いたいなら、まず町の移住の窓口に連絡してみてください。</p>
 <p>下田市は別の形をとっています。2026年4月施行の要綱で、移住を考えている人が市の指定する宿に泊まると、10泊までなら宿泊料の半分（1泊4,000円まで）を補助しています[[s:shimoda_stay_subsidy]]。ただし静岡県の外で日本に住民登録がある人が対象なので、海外から来る場合は使えません[[s:shimoda_stay_subsidy]]。</p>
 <p>東京から行きやすい町のほうが試しやすいです。2026年11月時点で、東京駅から毎日走る直通の電車なら、[[l:ja-izu|伊豆半島]]の下田まで2時間29〜44分です[[s:jre_tt_tokyo]]。くわしくは[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]にまとめています。</p>
 <p>下田が候補に入っているなら、私たちが下田で営んでいる小さな宿「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」を、町の様子をつかむあいだの拠点にしてもらえます。旧町内のアパートの一室（約40㎡）を改装したもので、伊豆急下田駅から歩いて8分です[[s:node_room,node_access]]。公式サイトでは中長期の滞在にも便利な宿として紹介していて[[s:node_site]]、旅館業法の許可を受けています。これまでのゲストは欧米の人が中心で、リモートで働きに来る人もいます。</p>
@@ -898,7 +880,7 @@ ARTICLES = [
 <tr><td>National Health Insurance</td><td>Open to registered foreign residents [[s:egov_nhi_rules]]</td><td>You can’t join it [[s:egov_nhi_rules]]. Separately, the status requires private insurance [[s:isa_nomad_en]]</td></tr>
 <tr><td>An ordinary lease</td><td>The government’s guideline for landlords gives the card as one example of ID [[s:mlit_foreign_rental]]</td><td>Harder, in our view. A furnished monthly place is usually simpler</td></tr>
 </tbody></table></div>
-<p>Renting is where you’ll feel it most. The government’s guideline for landlords lists a passport and a residence card as examples of ID, and leaves what to ask for to the landlord and tenant [[s:mlit_foreign_rental]]. It also says landlords should ask whether you have a Japanese bank account and a phone that works in Japan [[s:mlit_foreign_rental]]. Without a card or a local account, we think a furnished place rented by the month is the easier route.</p>
+<p>Renting is where you’ll feel it most. The government’s guideline for landlords lists a passport and a residence card as examples of ID, and leaves what to ask for to the landlord and tenant [[s:mlit_foreign_rental]]. It also says landlords should ask whether you have a Japanese bank account and a phone that works in Japan [[s:mlit_foreign_rental]]. Without a card or a local account, we think a furnished place rented by the month is the easier route. Our guide to [[l:monthly-rental|renting a place by the month in Japan]] covers how to find one.</p>
 <p>Tax is the other thing people get wrong. For Japanese income tax, you’re a resident if you have a domicile here, or have lived here continuously for a year or more [[s:nta_2875]]. Non-residents are taxed only on Japan-source income, and pay for work done in Japan counts as Japan-source income [[s:nta_nonresident]]. Tax treaties can change that [[s:nta_2875]], so “six months means no tax” is too simple. A tax adviser who knows your home country’s treaty with Japan is the person to ask.</p>
 <p>Everything here describes the rules as of November 2026. For your own case, the Ministry of Foreign Affairs, the Immigration Services Agency or an administrative scrivener (<em>gyoseishoshi</em>) who handles visas is the place to check.</p>
 
@@ -1001,7 +983,7 @@ ARTICLES = [
 <tr><td>国民健康保険</td><td>登録された外国人住民が入れる[[s:egov_nhi_rules]]</td><td>入れない[[s:egov_nhi_rules]]。それとは別に、この在留資格では民間の保険が条件になっている[[s:isa_nomad_en]]</td></tr>
 <tr><td>普通の賃貸</td><td>国の大家さん向けのガイドラインが、本人確認の書類の例の1つにカードを挙げている[[s:mlit_foreign_rental]]</td><td>私たちの見方では難しい。家具付きの月単位の部屋のほうがたいてい簡単</td></tr>
 </tbody></table></div>
-<p>いちばん影響を感じるのは部屋を借りるときです。国の大家さん向けのガイドラインは、本人確認の書類の例にパスポートと在留カードを挙げ、何を求めるかは大家さんと借りる人の間に任せています[[s:mlit_foreign_rental]]。日本の銀行口座と、日本で使える電話があるかも聞くように書いています[[s:mlit_foreign_rental]]。カードも日本の口座もないなら、家具付きで月単位に借りる部屋のほうが楽だと私たちは考えています。</p>
+<p>いちばん影響を感じるのは部屋を借りるときです。国の大家さん向けのガイドラインは、本人確認の書類の例にパスポートと在留カードを挙げ、何を求めるかは大家さんと借りる人の間に任せています[[s:mlit_foreign_rental]]。日本の銀行口座と、日本で使える電話があるかも聞くように書いています[[s:mlit_foreign_rental]]。カードも日本の口座もないなら、家具付きで月単位に借りる部屋のほうが楽だと私たちは考えています。探し方は[[l:ja-monthly-rental|日本で部屋を月単位で借りる記事]]にまとめています。</p>
 <p>税金も、よく誤解されるところです。日本の所得税では、日本に住所があるか、1年以上続けて住んでいる人が居住者になります[[s:nta_2875]]。非居住者は日本の国内源泉所得にだけ課税され、日本でした仕事への報酬は国内源泉所得に当たります[[s:nta_nonresident]]。租税条約で変わることもあるので[[s:nta_2875]]、「6か月なら税金はかからない」は単純すぎます。自分の国と日本の租税条約に詳しい税理士に聞くのがいちばんです。</p>
 <p>ここに書いたのは、すべて2026年11月時点の決まりです。自分の場合については、外務省、出入国在留管理庁、またはビザを扱う行政書士に確かめてください。</p>
 
