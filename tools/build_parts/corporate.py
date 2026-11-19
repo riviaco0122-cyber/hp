@@ -3,6 +3,40 @@
 # 単独では動かない。build.py が決まった順番で読み込み、1つのファイルとして実行する
 # （ほかの部分の関数・定数はそのまま使える。import は不要）。
 
+# ---------------------------------------------------------------- Noki（海外向けの英語メディア）の紹介
+# アキヤドの紹介（media_intro）と同じ形で、トップに置く（人の方針 2026-11-19）。Noki は tools/okaeri/ が /noki に作る
+NOKI_INTRO = [("/noki/stay.html", "長めに|旅したい方へ", "1週間〜1か月、小さな町に|泊まる旅。行き方や食を英語で"),
+              ("/noki/live.html", "一年の一部を|暮らしたい方へ", "月単位の部屋探しや|デジタルノマドビザを英語で"),
+              ("/noki/own.html", "日本の家を|持ちたい方へ", "空き家を買う前に|知っておきたいことを英語で")]
+
+
+def noki_intro():
+    entries = "".join(
+        f'<li><a href="{u}" class="mintro__entry" hreflang="en"><span class="mintro__who">{lines_html(w)}</span>'
+        f'<span class="mintro__desc">{lines_html(d)}</span><span class="mintro__arrow">{ARROW}</span></a></li>'
+        for u, w, d in NOKI_INTRO)
+    return f"""    <section class="section mintro mintro--noki">
+      <div class="container">
+        <div class="mintro__grid">
+          <div class="mintro__text">
+            <span class="eyebrow reveal">Media</span>
+            <h2 class="section-title section-title--logo reveal"><a href="/noki" class="tlogo" hreflang="en" aria-label="Noki（海外の方向けの英語メディア）"><img class="tlogo__mark" src="/noki/assets/favicon.svg" alt="" width="40" height="40"><span class="tlogo__ja" translate="no" lang="en">Noki</span></a><span class="tlogo__sub">海外の方向けの英語メディア</span></h2>
+            <p class="mintro__copy reveal" data-delay="1">日本の小さな町に、<br>1か月暮らしてみる。</p>
+            <p class="mintro__lead reveal" data-delay="1">下田で宿を運営する私たちが、日本の地方に長く滞在したい<br class="pc-only">海外の方へ、旅・暮らし・家のことを英語でお届けするメディアです。</p>
+            <div class="mintro__btns reveal" data-delay="2">
+              <a href="/noki" class="btn" hreflang="en">Noki を見る（英語） {ARROW}</a>
+            </div>
+          </div>
+          <a href="/noki" class="mintro__shots reveal" data-delay="1" aria-label="Noki を見る（英語）" hreflang="en">
+            <span class="mintro__pc"><span class="mintro__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="images/noki-preview-pc.webp?v={asset_version("images/noki-preview-pc.webp")}" alt="Noki のトップページ（パソコン表示）" width="1440" height="900" loading="lazy" decoding="async"></span>
+            <span class="mintro__sp"><img src="images/noki-preview-sp.webp?v={asset_version("images/noki-preview-sp.webp")}" alt="Noki のトップページ（スマホ表示）" width="520" height="1040" loading="lazy" decoding="async"></span>
+          </a>
+        </div>
+        <ul class="mintro__entries mintro__entries--3 reveal">{entries}</ul>
+      </div>
+    </section>"""
+
+
 # ---------------------------------------------------------------- index
 def service_groups_html():
     """事業の一覧（左に届ける価値、右に事業のカード）。トップの「事業紹介」と事業内容のページで共通"""
@@ -171,6 +205,8 @@ def index_page():
     </section>
 
 {media_intro()}
+
+{noki_intro()}
 
 {flow_section()}
 
