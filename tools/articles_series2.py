@@ -477,7 +477,7 @@ ARTICLES_SERIES2 = [
         sources=["アキヤドが運営に関わる宿（静岡県下田市）の運営記録（月別の稼働率、運営費、価格運用。2025年7月〜2026年9月）", "創業メンバーによる下田市での宿の開業記録（2025年11月執筆・個人事業としての開業）"],
     ),
     dict(
-        slug="minpaku-remote-operation", related=['minpaku-vs-ryokan-law'],
+        slug="minpaku-remote-operation", related=['minpaku-vs-ryokan-law', 'minpaku-mujin-checkin'],
         date=D, updated="2026-11-06", topics=["operate", "lend"], photo=("u-smart-lock", "スマートフォンで開け閉めするスマートロック"),
         title="遠方の物件でも民泊を運営できる？スマートロック・清掃の外注・遠隔運営の仕組み",
         keyword="民泊 遠隔運営",

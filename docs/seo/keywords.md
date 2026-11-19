@@ -3,7 +3,7 @@
 企画・マーケ部が管理する。1行＝1つの検索意図。既存記事と意図が重なる場合は「担当記事」にその記事を書き、新規記事は作らない。
 状態: `候補` ／ `記事化予定` ／ `予約中`（HTML はあるが公開日前） ／ `公開済み` ／ `改善対象`（Search Console で順位5〜20位など）
 
-最終更新: 2026-10-26（状態を公開済みに更新。企画・マーケ部）。2026-10-25 時点の Search Console: 表示185・クリック47。順位5〜20位で表示20回以上のキーワードはなし。記事で表示が最も多いのは `akiya-bank-guide`（18回・11.9位・クリック0）→ 改善施策 E-20261025-01
+最終更新: 2026-11-16（3章に2行追加）。その前: 2026-10-26（状態を公開済みに更新。企画・マーケ部）。2026-10-25 時点の Search Console: 表示185・クリック47。順位5〜20位で表示20回以上のキーワードはなし。記事で表示が最も多いのは `akiya-bank-guide`（18回・11.9位・クリック0）→ 改善施策 E-20261025-01
 - 集客データ: GA4 は直近28日で表示回数19（ほぼ Direct）、Search Console はデータ 0 件。順位・表示回数にもとづく `改善対象` はまだない。データがたまったら（目安 2026年12月〜）メモ欄に順位・表示回数を書き足す。
 - 状態の判定日は 2026-10-10。公開日がそれ以前なら `公開済み`、それより後なら `予約中`。
 
@@ -92,6 +92,8 @@
 | （既存記事の強化）レビューで褒められる点：`guest-review-tips`・訪日客の国と季節：`japan-tourism-market-data`／`inbound-regional-dispersion`・定期借家の割合：`akiya-lease-types` | ③／market／akiya | — | 各記事 | 改善候補 | 根拠: `experience.md` 9-2、`docs/sources/research/2026-10-26-owner-public-data-reports.md`（原典で値を確かめてから使う）。2026-10-26 追加 |
 | 民泊 スタッフ／民泊 スタッフ 募集・求人／民泊 業務委託／民泊 駆けつけ スタッフ（宿の仕事を分けて仕組みで減らし、地域の人→スキマバイト→続けて頼む順に集める。人手の入口） | ④ | WEB採用、開業・運営支援 | `media/minpaku-staff-atsumekata.html` | 記事化予定（公開予定 2026-11-14。構成案 `briefs/2026-11-14-minpaku-staff-atsumekata.md`） | サジェスト「民泊 スタッフ」6候補・「民泊 業務委託」4候補（2026-11-12）。`minpaku-break-even` の深掘りで、人手の小さなハブ（清掃の細部・雇用の線引きは `minpaku-seisou-kojin-kakunin`、人手不足の考え方は `tourism-labor-shortage` に渡す）。主語を「清掃スタッフ」にしない。2026-11-12 追加 |
 | 民泊 固定資産税／民泊 住宅用地／民泊 固定資産税 上がる・計算方法・経費（家の一部・全部を宿にしたとき住宅用地の特例が外れるか、計算例、自治体への確かめ方） | ①② お金 | 開業・運営支援、空き家再生 | `media/minpaku-kotei-shisanzei.html` | PR待ち（公開予定 2026-11-16） | 需要: サジェスト「民泊 固定資産税」9候補（住宅用地／総務省／東京都／上がる／大阪市／経費／計算方法／京都市）・「民泊 住宅用地」3候補（2026-11-14取得。ボリュームは未確認。Search Console に表示なし）。ハブ `minpaku-start-steps` の深掘り（guide-use Step 3）。税は人の確認対象。共食い注意: `akiya-holding-costs`（空き家の維持費・固定資産税の一般論）。2026-11-14 追加 |
+| 民泊 チェックイン／民泊 無人 チェックイン／民泊 本人確認／民泊 鍵 受け渡し／民泊 キーボックス（会わないチェックインはできるか、鍵の渡し方の比較、本人確認と名簿の決まり、ゲストがつまずく所） | ② 開業・運営 | 開業・運営支援 | `media/minpaku-mujin-checkin.html` | PR待ち（公開予定 2026-11-18） | 需要: サジェスト「民泊 無人」8・「民泊 チェックイン」7・「民泊 本人確認」7・「民泊 キーボックス」8・「民泊 鍵」6・「民泊 スマートロック」6（2026-11-16 取得。ボリュームは未確認。Search Console に表示なし）。ハブ `minpaku-break-even` の深掘り。一次情報: `experience.md` 3-2・9-1・9-2。法律は人の確認対象。共食い注意: `minpaku-remote-operation`（遠隔運営の全体）・`minpaku-house-guide`（名簿の依頼文）。2026-11-16 追加 |
+| 民泊 予約サイト 比較／民泊 OTA 手数料／airbnb 手数料 ホスト／booking.com 民泊 登録（予約サイトごとの手数料・客層・掲載の手間） | ③ | WEB集客 | — | 候補（優先度: 高。資料待ち） | 需要: サジェスト「民泊 OTA」6（otaとは・手数料・おすすめ・比較）・「民泊 予約サイト」5（おすすめ・手数料・ランキング）・「airbnb 手数料」5・「booking.com 民泊」4（2026-11-16 取得）。上の「Airbnb Booking.com 違い」の行と同じ意図。airbnb.jp・booking.com・partner.booking.com を実行環境から開けず、手数料を公式で照合できないため保留（ネットワーク許可が要る）。共食い注意: `ota-vs-direct-booking`（使い分けの考え方・下田の手数料の割合）。2026-11-16 追加 |
 
 ## 入口の記事（ハブ）と深掘りの記事（クラスタ）の対応表（2026-10-31・人の方針）
 検索上位の記事は、広い問いに1本で全体を答える入口の記事を持つ（`docs/seo/benchmark-2026-10-31.md`）。アキヤドも、入口の記事（ハブ）を3本決め、深掘りの記事（クラスタ）を必ずどれかのハブにつなげる。**新しい記事は、公開前に、どのハブの深掘りかを決め、ハブ→新記事・新記事→ハブの両方にリンクを1文ずつ入れる。**
@@ -100,7 +102,7 @@
 |---|---|---|
 | `minpaku-start-steps`（民泊を始めるには何から？） | 民泊 始め方、空き家 民泊 | minpaku-vs-ryokan-law／minpaku-180days-rule／kani-shukusho-kyoka-guide／minpaku-fire-safety／minpaku-management-company／minpaku-chintai-start／kaishain-minpaku-fukugyo／inn-startup-funding／small-inn-subsidies／accommodation-tax／minpaku-bihin-priority／minpaku-house-guide／minpaku-kotei-shisanzei |
 | `akiya-utilization-options`（空き家の使い道） | 空き家 活用、空き家 どうする | akiya-holding-costs／akiya-law-kanri-fuzen／souzoku-touki-gimuka／akiya-3000man-deduction／akiya-bank-guide／akiya-demolish-or-renovate／akiya-lease-types／inherited-house-family-talk／akiya-minpaku-suitability／why-minpaku-for-akiya／why-akiya-utilization-now／minpaku-vs-rental-income／akiya-inherited-house-to-inn |
-| `minpaku-break-even`（民泊の収支と運営） | 民泊 収支、民泊 運営 | inn-kpi-basics／minpaku-off-season／minpaku-investment-yield／ota-vs-direct-booking／listing-photo-tips／guest-review-tips／minpaku-shukyaku-first-steps／minpaku-neighbor-rules／cleaning-linen-operations／minpaku-seisou-kojin-kakunin／minpaku-remote-operation／long-stay-travel-demand／long-stay-guest-equipment／minpaku-bihin-priority／minpaku-house-guide |
+| `minpaku-break-even`（民泊の収支と運営） | 民泊 収支、民泊 運営 | inn-kpi-basics／minpaku-off-season／minpaku-investment-yield／ota-vs-direct-booking／listing-photo-tips／guest-review-tips／minpaku-shukyaku-first-steps／minpaku-neighbor-rules／cleaning-linen-operations／minpaku-seisou-kojin-kakunin／minpaku-remote-operation／long-stay-travel-demand／long-stay-guest-equipment／minpaku-bihin-priority／minpaku-house-guide／minpaku-mujin-checkin |
 
 - リンクの確認は、2026-10-31 に機械的に行い、足りなかった6か所に足した。新しい記事を足したら、同じ確認（ハブ→クラスタ、クラスタ→ハブ）を行う。
 - ハブは、広い検索語に1本で答える作りにする（定義・比較表・条件の表・メリット・デメリット・補助金・FAQ。`minpaku-start-steps` が最初の例）。`akiya-utilization-options` と `minpaku-break-even` は、次の底上げ（水曜）で、同じ作りに強化する。
