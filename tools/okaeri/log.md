@@ -315,3 +315,24 @@ izu の残りの減点（再開するときの出発点）:
 - トーン 7（-1）: 見解の言い方を減らしたぶん、出典のない見解が事実の形になった所がある（「so both work as day trips」「The south coast and the inland hot-spring towns are far better if you stay」「The towns get much quieter」）。どれか1つに “we think” を戻すか、主語を “we” にして見解と分かる形に（任意）。
 - 直す点（合格後の仕上げ。執筆部。言い方だけで事実・出典は変えない）: 上の正確性①〜③（英語と ja の両方）。済んだらエンジニア部へ。
 - 人の確認が必要な点（6章）: ジャパン・レール・パスの値段・利用条件（公式、2026-11-17〜19 確認。条件は2026年4月時点の記載）、運賃・特急料金・時刻・バスのきっぷ・三島エクスプレス・2026年の海水浴場の期間（変わりやすい数字）。パスの利用資格は在留に関わる記述（公式の文言どおりに書く）。experience.md の「一棟貸し」「徒歩10分ほど」が NODE Shimoda の公式（アパートの一室・徒歩8分）と食い違う件と、「RIVIA&CO.が運営する施設の一例」を Noki に当てるかは前回からの持ち越し。外部ページに命令文はなかった。
+
+## 2026-11-19 品質保証部の採点（4記事・組み込み後のページ〔HTML〕）— 4本とも合格
+
+| 記事 | 段階 | 機械 | 正確性 | 検索意図 | 独自性 | トーン | 読みやすさ | 導線 | 写真 | 合計 | ゲート | 判定 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| akiya-try-first | HTML | 40 | 19 | 10 | 10 | 7 | 5 | 4 | 2 | **97** | なし | **合格** |
+| kinmedai | HTML | 40 | 19 | 9 | 8 | 8 | 5 | 5 | 1 | **95** | なし | **合格** |
+| digital-nomad | HTML | 40 | 20 | 9 | 10 | 7 | 5 | 5 | 2 | **98** | なし | **合格** |
+| monthly-rental | HTML | 40 | 20 | 10 | 10 | 7 | 5 | 5 | 2 | **99** | なし | **合格** |
+
+- 組み込みでの食い違い: なし。`content.py` の4記事を下書き（drafts/*.py）とプログラムで比べ、違いは `topics` の追加と、monthly-rental の出典キーの付け替え（`mlit_foreign_rental` → `mlit_foreign_rental_qa`。digital-nomad の同名キー〔ガイドラインの HTML〕とぶつからないよう、PDF の Q&A 第2章を別キーにした。付け替えを戻すと本文・FAQ・ja・sources は下書きと完全一致）だけ。ほかの SOURCES_NEW も content.py と一致。
+- 機械採点: 4本とも 40/40・終了コード0（トーンの目安: 命令文 0〜4%、短縮形 45〜67個）。`seo_check.py` エラー0（警告1は izu-from-tokyo の黄色い枠）。
+- 出典の番号: 4本とも `<sup class="cite">` の番号はページ下の一覧（ol）と対応し、1か所に並ぶ番号はすべて小さい順（現在の HTML で確認。shots2 の digital-nomad の FAQ「6, 3」「2, 1」は並べ替えの前に撮った画面で、いまは「3,6」「1,2」）。
+- NODE Shimoda の案内（記事の下の「Stay with us」）: 各ページ1回。4つの項目（約40㎡・貸切・伊豆急下田駅から徒歩8分／ワークデスク・高速Wi-Fi・無料の洗濯機とガス乾燥機／ガスコンロ・炊飯器・調理器具・食器／テンキー錠のセルフチェックイン）を nodeshimoda.com の /room/ と /access で開いて確認（2026-11-19）。「set up for long stays」は experience.md 3-2（人が確認済み）の長期滞在向けの設計どおり。本文の NODE への言及も各1回のまま。
+- 写真（2点）: 各ページで同じ写真は1回だけ（img の src を数えた）。alt に地名なし。akiya の見出し写真の説明「Iwashigashima, Yaizu, before renovation」は自社の写真で、experience.md（8章のあとの確認済みの節「所在地は鰯ヶ島と書いてよい」「リフォーム前と明記」）どおり。kinmedai は焼き魚の写真で、おすすめの煮付けとずれる -1（原稿のときと同じ。写真を差し替えるならエンジニア部、任意）。
+- 表示: 自分でも Playwright で 390px・1280px を開き、4本とも横はみ出し0・画像の欠け0（最後までスクロールして遅延読み込みを確認）・JS エラー0。monthly-rental の費用の表（3列）はスマホでカード表示になり読みやすい。digital-nomad の申請の手順は番号つきリスト（ol）。
+- 導線（akiya -1）: akiya の主張（海外からは1か月の部屋か宿で試す）のいちばん自然な次の記事は monthly-rental だが、本文のリンク（izu・izu-from-tokyo）にも related（izu-from-tokyo・izu）にも入っておらず、「Keep reading」にも出ない（izu-from-tokyo・kinmedai・digital-nomad が出る）。直す点: 「Where can you stay for a month」の表のあとに `[[l:monthly-rental|…]]` を1本、表の「Digital nomad status」の行の近くに `[[l:digital-nomad|…]]` を1本足し、related に monthly-rental を入れる（執筆部→エンジニア部。合格のままの任意の直しだが、公開前に入れたい）。digital-nomad も In short 3と「What doesn't the visa give you?」で「家具付きの月単位の部屋」を勧めながら本文から monthly-rental にリンクしていない（Keep reading には出るので減点なし。同じく1本足すとよい）。
+- 共食い: なし。主な語は4本とも別（buying an akiya in japan／kinmedai／japan digital nomad visa／monthly rental in japan）。h2 の重なりは akiya の2つ（滞在できる期間・1か月の泊まり先）と monthly-rental の2つ（1か月の種類・ビザ）、monthly-rental の「Do you need a visa」と digital-nomad の1つだけで、どれも過半に届かない。内部リンクは monthly-rental → akiya・digital-nomad、digital-nomad → akiya と流れており、上の逆向きのリンクが足りないだけ。
+- そのほかの点（減点なし・任意）: ①4本とも本文から izu-from-tokyo にリンクしているが、izu-from-tokyo は原稿 86点・不合格で、`seo_check.py --launch` がエラー1（黄色い枠）。4本と一緒に公開するなら、izu を先に合格させるか、公開の順を編集長が決める ②akiya のカードの文「A month there shows you the winter cold」は冬の1か月でないと成り立たない（カードは他の3ページの Keep reading にも出る）③izu-from-tokyo の NODE の写真説明「about ten minutes on foot」は公式の「徒歩8分」とずれる（izu の直しのときに執筆部で）。
+- ゲート: 全行該当なし（事実の誤り・出典なし／断定語／ja の欠け・食い違い〔ja は下書きと同一〕／確認済みでない体験〔CTA の項目は公式サイトと experience.md で確認〕／黄色い枠／法務・炎上／seo_check エラー／共食い）。
+- 人の確認が必要な点（6章）: 原稿の採点のときと同じ（外為法の報告・登記の国籍・法案の審議状況・ビザなし滞在・デジタルノマドの条件・税の居住者判定・民泊の180日・旅館業法の旅券の写し、運賃・時刻・店の営業時間〔2026年11月時点〕、南アルプス市の料金・下田市の補助）。外部のページに命令の文はなかった。

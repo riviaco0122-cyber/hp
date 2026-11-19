@@ -56,7 +56,7 @@ ARTICLE = {
  "body": """
 <h2>How do you get to the Izu Peninsula from Tokyo?</h2>
 <p>The easiest way is the Odoriko limited express, which runs from Tokyo down the east coast of the [[l:izu|Izu Peninsula]] to Shimoda without a change. In JR East’s November 2026 timetable, five leave Tokyo every day, on the hour from 9:00 to 13:00. They take 1 hour 36 to 45 minutes to Ito and 2 hours 29 to 44 minutes to Izukyu-Shimoda [[s:jre_tt_tokyo]]. If you’re heading inland to Shuzenji, the Shinkansen and a short local line often suit you better.</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>Route</th><th>Changes</th><th>Time</th><th>Good to know</th></tr></thead>
 <tbody>
 <tr><td><strong>Direct Odoriko</strong> to Ito and Izukyu-Shimoda</td><td>None</td><td>About 1 h 40 min to Ito, 2 h 29 min to 2 h 44 min to Shimoda [[s:jre_tt_tokyo]]</td><td>Five a day, leaving Tokyo at 9:00, 10:00, 11:00, 12:00 and 13:00, with extra trains on set days [[s:jre_tt_tokyo]]. The 11:00 is the Saphir Odoriko, which only has Green Car and premium seats [[s:izukyu_express]].</td></tr>
@@ -69,7 +69,7 @@ ARTICLE = {
 
 <h2>How much does the train from Tokyo to Izu cost?</h2>
 <p>To Shimoda on the direct Odoriko, you’ll pay about ¥6,660 one way with a reserved seat. That’s the ¥4,280 fare, from Izukyu’s tables revised on 14 March 2026, plus a ¥2,380 seat charge bought before you board, from its charge table for journeys since 1 February 2025 [[s:izukyu_fares,izukyu_express]].</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>What you pay</th><th>One way, adult</th></tr></thead>
 <tbody>
 <tr><td>Fare, Tokyo to Izukyu-Shimoda</td><td>¥4,280 (¥4,276 with an IC card) [[s:izukyu_fares]]</td></tr>
@@ -93,7 +93,7 @@ ARTICLE = {
 
 <h2>Which Izu town suits you?</h2>
 <p>It mostly comes down to how far you want to go and how long you can stay.</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>Town</th><th>From Tokyo</th><th>What it’s like</th><th>Day trip or stay?</th></tr></thead>
 <tbody>
 <tr><td><strong>Atami and Ito</strong></td><td>Atami 43–45 min by Shinkansen; Ito about 1 h 40 min direct</td><td>The two towns nearest Tokyo, on the east coast.</td><td>A day trip works</td></tr>
@@ -103,7 +103,7 @@ ARTICLE = {
 
 <h2>Can you get around southern Izu without a car?</h2>
 <p>Yes, for the town and the nearby beaches. Shirahama Beach is about 15 minutes by bus from Izukyu-Shimoda Station, on a bus bound for Itadoichiki [[s:jnto]]. Tokai Bus sells two-day passes that cover most of what you’d want to see, valid on the day you buy them and the next [[s:tokaibus_freepass]].</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>Pass</th><th>Adult price</th><th>Where it takes you</th></tr></thead>
 <tbody>
 <tr><td><strong>Shimoda 2-day pass</strong></td><td>¥1,350</td><td>Shimoda town, Ryugu cave, Tsumekizaki and Shirahama [[s:tokaibus_freepass]]</td></tr>
@@ -113,7 +113,7 @@ ARTICLE = {
 
 <h2>When is the best time to visit the Izu Peninsula?</h2>
 <p>For swimming in Shimoda, the 2026 season ran from mid-July to late August. For a quieter stay, we’d pick the months either side.</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>When</th><th>What to expect</th></tr></thead>
 <tbody>
 <tr><td>Swimming season in Shimoda (in 2026, from 18 July to between 23 and 31 August, depending on the beach)</td><td>All nine of Shimoda’s official beaches opened on 18 July 2026, mostly from 8:00 to 16:00. Shirahama Ohama and Kujukihama stayed open until 31 August and Shirahama Chuo until 30 August, but the other six closed on 23 August [[s:shimoda_beach2026_city]]. Outside the season and those hours, there are no lifeguards [[s:shimoda_ohama]].</td></tr>
@@ -163,7 +163,7 @@ ARTICLE = {
   "body": """
 <h2>東京から伊豆半島へは、どう行くか</h2>
 <p>いちばん簡単なのは、特急「踊り子」です。東京から[[l:ja-izu|伊豆半島]]の東海岸を下田まで、乗り換えなしで走ります。JR東日本の2026年11月の時刻表では、毎日5本が、9時から13時まで毎時ちょうどに東京を出ます。伊東まで1時間36〜45分、伊豆急下田まで2時間29〜44分です[[s:jre_tt_tokyo]]。内陸の修善寺へ行くなら、新幹線と短いローカル線のほうが合うことが多いです。</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>行き方</th><th>乗り換え</th><th>所要時間</th><th>知っておきたいこと</th></tr></thead>
 <tbody>
 <tr><td><strong>直通の「踊り子」</strong>で伊東・伊豆急下田へ</td><td>なし</td><td>伊東まで約1時間40分、下田まで2時間29分〜2時間44分[[s:jre_tt_tokyo]]</td><td>毎日5本で、東京を9:00・10:00・11:00・12:00・13:00に出ます。決まった日だけ走る列車もあります[[s:jre_tt_tokyo]]。11:00発は「サフィール踊り子」で、グリーン車とその上の席だけの列車です[[s:izukyu_express]]。</td></tr>
@@ -176,7 +176,7 @@ ARTICLE = {
 
 <h2>東京から伊豆までの電車代は、いくらか</h2>
 <p>直通の「踊り子」で下田まで、指定席で片道約6,660円です。2026年3月14日に改定された伊豆急行の運賃表の運賃4,280円に、2025年2月1日以降の乗車分の料金表の特急料金2,380円（乗る前に買う場合）を足した額です[[s:izukyu_fares,izukyu_express]]。</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>払うもの</th><th>片道・大人</th></tr></thead>
 <tbody>
 <tr><td>運賃（東京〜伊豆急下田）</td><td>4,280円（IC カードは4,276円）[[s:izukyu_fares]]</td></tr>
@@ -200,7 +200,7 @@ ARTICLE = {
 
 <h2>伊豆のどの町が合うか</h2>
 <p>決め手は、どこまで行きたいかと、どれくらいいられるかです。</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>町</th><th>東京から</th><th>どんな町か</th><th>日帰りか、泊まりか</th></tr></thead>
 <tbody>
 <tr><td><strong>熱海と伊東</strong></td><td>熱海まで新幹線で43〜45分、伊東まで直通で約1時間40分</td><td>東海岸の、東京にいちばん近い2つの町です。</td><td>日帰りでも楽しめる</td></tr>
@@ -210,7 +210,7 @@ ARTICLE = {
 
 <h2>南伊豆は、車なしで回れるか</h2>
 <p>町と近くの浜なら、回れます。白浜海岸へは、伊豆急下田駅から板戸一色行きのバスで約15分です[[s:jnto]]。東海バスが、見たい所の多くを回れる2日間のフリーきっぷを出していて、買った日と次の日に使えます[[s:tokaibus_freepass]]。</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>きっぷ</th><th>大人の値段</th><th>行ける所</th></tr></thead>
 <tbody>
 <tr><td><strong>下田2日券</strong></td><td>1,350円</td><td>下田の町、龍宮窟、爪木崎、白浜[[s:tokaibus_freepass]]</td></tr>
@@ -220,7 +220,7 @@ ARTICLE = {
 
 <h2>伊豆半島はいつ行くのがいいか</h2>
 <p>下田で泳ぐなら、2026年の期間は7月中旬から8月下旬でした。静かに過ごしたいなら、私たちはその前後の月を選びます。</p>
-<div class="tablewrap"><table>
+<div class="tablewrap"><table class="free">
 <thead><tr><th>時期</th><th>どんな感じか</th></tr></thead>
 <tbody>
 <tr><td>下田の海水浴の期間（2026年は7月18日から、浜によって8月23〜31日まで）</td><td>2026年は、下田の9つの海水浴場がすべて7月18日に開き、多くは8時〜16時でした。白浜大浜と九十浜は8月31日まで、白浜中央は8月30日まで開いていましたが、ほかの6つは8月23日に閉じました[[s:shimoda_beach2026_city]]。期間外と時間外は、監視員がいません[[s:shimoda_ohama]]。</td></tr>
