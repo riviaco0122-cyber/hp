@@ -393,7 +393,13 @@ def page_izu(ctx):
 def page_about(ctx):
     body = f"""
 <h2>Who runs Noki?</h2>
-<p>Noki is run by RIVIA&amp;CO. LLC, a company based in Tokyo that renovates older houses in regional Japan and runs them as places to stay. Our first place to stay, <a href="{C.NODE_URL}" rel="noopener">NODE Shimoda</a>, is in Shimoda on the [[l:izu|Izu Peninsula]], and we are renovating an older house in Yaizu on Suruga Bay. The guides are written and checked by the same team that runs NODE Shimoda.</p>
+<p>Noki is run by RIVIA&amp;CO. LLC, a company based in Tokyo that renovates older houses in regional Japan and runs them as places to stay. Our first place to stay, <a href="{C.NODE_URL}" rel="noopener">NODE Shimoda</a>, is in Shimoda on the [[l:izu|Izu Peninsula]], and we are renovating an older house in Yaizu on Suruga Bay.</p>
+<h2>Who writes the guides?</h2>
+<p>Noki is put together by the two founders of RIVIA&amp;CO. We research and draft the guides with the help of AI tools, check every figure and rule against its source, and one of us reads each guide before it goes live.</p>
+<ul class="people">
+<li><strong>Shinta Katai</strong>, co-founder. Grew up in Shizuoka Prefecture and started his career at the Shizuoka Prefectural Government, then worked at a large manufacturer, at Recruit and at start-ups in HR tech and location data. He has run NODE Shimoda since July 2025.</li>
+<li><strong>Yuma Ishihara</strong>, co-founder. From Osaka. He started in Recruit’s new-business development office and went on to build new businesses at start-ups in HR tech and cybersecurity.</li>
+</ul>
 <h2>Why “Noki”?</h2>
 <p><em>Noki</em> (軒) are the eaves of a Japanese house. Swallows build their nests under them and often come back to the same one each spring. It’s also the word Japanese uses to count houses, one <em>ken</em> at a time. We hope you’ll find a place here that you keep coming back to.</p>
 <h2>How are the guides written?</h2>
@@ -463,7 +469,7 @@ def page_article(ctx, a):
             f'<div class="points"><p class="points__label">In short</p><ul>{pts}</ul></div>'
             + f'<details class="toc toc--inline"><summary>On this page</summary><ol>{toc_html}</ol></details>'
             f'{body}<h2 id="common-questions">Common questions</h2>{faq}{a.get("after_faq", "")}{ctx.sources(a["sources"], "Sources")}'
-            f'<section class="byline" data-nosnippet>{MARK}<div><p><strong>Written by the Noki team</strong></p><p>We run homes for long stays in small towns in Shizuoka. '
+            f'<section class="byline" data-nosnippet>{MARK}<div><p><strong>Written by the Noki team</strong></p><p>Shinta Katai and Yuma Ishihara, the founders of RIVIA&amp;CO., who run NODE Shimoda, a place for long stays in Shimoda. '
             f'<a href="{ctx.href("about")}">How we write and check our guides</a>.</p></div></section></article>'
             f'<aside class="side" aria-label="On this page"><div class="side__sticky"><nav class="toc"><p class="toc__label">On this page</p><ol>{toc_html}</ol></nav></div></aside></div>'
             f'<div class="wrap wide">{related_html(ctx, a)}{cta(ctx, photo="[[img:node-shimoda" not in a["body"] and name != "node-shimoda")}</div>')
@@ -589,6 +595,10 @@ def page_seo_plan(ctx):
 
 
 # ------------------------------------------------------------------ 構造化データ
+# 書き手（About の「Who writes the guides?」と同じ2人。人の了承 2026-11-19）
+AUTHORS = [{"@type": "Person", "name": n, "jobTitle": "Co-founder", "worksFor": {"@id": ORG_ID}, "url": SITE + PATHS["about"]} for n in ("Shinta Katai", "Yuma Ishihara")]
+
+
 def org_ld():
     """運営会社。本体はアキヤド側の about.html にあり、ここでは同じ @id で参照する"""
     return {"@type": "Organization", "@id": ORG_ID, "name": CFG["operator_name"], "alternateName": CFG["operator_alt"], "url": SITE + "/",
@@ -626,7 +636,7 @@ def ld_for(page):
         a = page["article"]
         g += [{"@type": "Article", "@id": url + "#article", "headline": strip_tags(a["h1"]), "description": a["description"],
                "image": [SITE + PRE + f"/assets/og/{a['slug']}.png"] + ([SITE + PRE + "/assets/photos/node-shimoda-1200.webp"] if "[[img:node-shimoda" in a["body"] else []), "datePublished": a["published"], "dateModified": a["updated"], "inLanguage": "en",
-               "author": {"@id": ORG_ID}, "publisher": {"@id": ORG_ID}, "isPartOf": part,
+               "author": AUTHORS, "publisher": {"@id": ORG_ID}, "isPartOf": part,
                "mainEntityOfPage": {"@type": "WebPage", "@id": url}},
               org_ld(), crumb_ld(page["trail"]),
               {"@type": "FAQPage", "@id": url + "#faq", "mainEntity": [
