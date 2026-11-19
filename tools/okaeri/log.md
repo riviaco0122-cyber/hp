@@ -336,3 +336,23 @@ izu の残りの減点（再開するときの出発点）:
 - そのほかの点（減点なし・任意）: ①4本とも本文から izu-from-tokyo にリンクしているが、izu-from-tokyo は原稿 86点・不合格で、`seo_check.py --launch` がエラー1（黄色い枠）。4本と一緒に公開するなら、izu を先に合格させるか、公開の順を編集長が決める ②akiya のカードの文「A month there shows you the winter cold」は冬の1か月でないと成り立たない（カードは他の3ページの Keep reading にも出る）③izu-from-tokyo の NODE の写真説明「about ten minutes on foot」は公式の「徒歩8分」とずれる（izu の直しのときに執筆部で）。
 - ゲート: 全行該当なし（事実の誤り・出典なし／断定語／ja の欠け・食い違い〔ja は下書きと同一〕／確認済みでない体験〔CTA の項目は公式サイトと experience.md で確認〕／黄色い枠／法務・炎上／seo_check エラー／共食い）。
 - 人の確認が必要な点（6章）: 原稿の採点のときと同じ（外為法の報告・登記の国籍・法案の審議状況・ビザなし滞在・デジタルノマドの条件・税の居住者判定・民泊の180日・旅館業法の旅券の写し、運賃・時刻・店の営業時間〔2026年11月時点〕、南アルプス市の料金・下田市の補助）。外部のページに命令の文はなかった。
+
+## 2026-11-19 品質保証部の採点（izu-from-tokyo・組み込み後のページ〔HTML〕）と、akiya・digital-nomad のリンクの直しの確認
+
+| 記事 | 段階 | 機械 | 正確性 | 検索意図 | 独自性 | トーン | 読みやすさ | 導線 | 写真 | 合計 | ゲート | 判定 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| izu-from-tokyo | HTML | 40 | 20 | 7 | 10 | 8 | 5 | 5 | 2 | **97** | なし | **合格** |
+| akiya-try-first | HTML（リンクの直しのあと） | 40 | 19 | 10 | 10 | 7 | 5 | 5 | 2 | **98** | なし | **合格**（導線 4→5） |
+| digital-nomad | HTML（リンクの直しのあと） | 40 | 20 | 9 | 10 | 7 | 5 | 5 | 2 | **98** | なし | **合格**（点は変わらず） |
+
+- izu: `content.py` の記事データは下書き（drafts/izu-peninsula-from-tokyo.py）と一致（違いは `topics` だけ。SOURCES_NEW も一致）。機械 40/40・終了コード0（命令文0%・短縮形30）。`seo_check.py --launch` エラー0・警告0（黄色い枠0）。
+- izu・合格後の言い方の直し（英語と ja の両方）を確認: ①パスの対象＝「mainly for visitors who enter Japan as a “Temporary Visitor”, and the official site sets out who else qualifies」／ja「おもに『Temporary Visitor』のスタンプで入国した人。ほかの条件は公式サイト」②「¥550 from Mishima on a local train」／ja「普通列車で550円」③In short 3「you pay the fare and limited-express charge」／ja「運賃と特急料金を払います」④見解の文は「so we think both work as day trips」「in our experience, are far better if you stay」「We find the towns much quieter」で見解と分かる形に。→ 正確性 15→20、トーン 7→8。
+- izu の残る減点: 検索意図 7（-3。熱海・修善寺までの合計額が出ない。JR の運賃を公式で取れないためで、原稿のときと同じ。JR東海などの公式で取れれば足せる。任意・リサーチ部）。
+- izu の表示: 表5つすべてに `class="free"`。エンジニア部の shots4 と自分の Playwright（390px・1280px）で、横はみ出し0・画像の欠け0・JS エラー0。運賃の表（2列）は表のまま、経路の表・町の表（4列）はスマホでカード表示になり読める。出典の番号は小さい順。
+- izu の写真: 見出し写真 train-window-sea（電車の窓からの海。記事に合う、alt に地名なし）と本文の node-shimoda（説明「eight minutes on foot」で公式の徒歩8分にそろった）。各1回、記事の下の案内は写真なし。NODE Shimoda への言及は最後の節の1回＋記事の下の案内1回。
+- izu の任意の点（減点なし）: ①NODE の「about 40 m² on the first floor」は英国式で正しい（公式の2階）が、米国の読み手には1階に読める。「up about 13 steps」など階段で言うと両方に通じる（執筆部、任意）②ja.review の古い履歴（2026-11-17 の節）に「使えるのは短期滞在（Temporary Visitor）で入国した人だけ」が残っている。本文は直っているので、履歴だと分かればよい。
+- akiya: 本文に `[[l:digital-nomad]]`（ビザの表のあと）と `[[l:monthly-rental]]`（「Where can you stay」の静岡市の段落の最後）、related の先頭に monthly-rental、ja にも同じリンク。ページの「Keep reading」の先頭に monthly-rental が出る。card は「what heating or cooling really costs」になり、本文（In short 2・2週目の段落）と合う。導線の減点（-1）は解消して 98。機械 40/40。
+- digital-nomad: 「What doesn’t the visa give you?」の部屋の段落の最後に `[[l:monthly-rental]]`（ja も同じ）。点は 98 のまま。機械 40/40。
+- 共食い: なし（izu の主な語は izu peninsula from tokyo。ほかの4本と h2 は重ならない）。内部リンク: izu → kinmedai・akiya、akiya ⇄ monthly-rental・digital-nomad、digital-nomad ⇄ monthly-rental、4本 → izu-from-tokyo で、5本がつながった。
+- ゲート（izu）: 全行該当なし。
+- 人の確認が必要な点（6章）: izu は原稿のときと同じ（ジャパン・レール・パスの値段・利用条件〔公式、2026-11-17〜19 確認、条件は2026年4月時点〕、運賃・特急料金・時刻・バスのきっぷ・三島エクスプレス・2026年の海水浴場の期間）。experience.md の「一棟貸し」「徒歩10分ほど」と NODE Shimoda 公式（アパートの一室・徒歩8分）の食い違いの持ち越し。外部ページに命令文はなかった。
