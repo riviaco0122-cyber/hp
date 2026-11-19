@@ -1,9 +1,9 @@
-# 本番ブランチ（デフォルトブランチ）に sitemap の変化が入ったら、変わった URL を IndexNow で
+# 本番ブランチ（デフォルトブランチ）に sitemap（アキヤドか Noki）の変化が入ったら、変わった URL を IndexNow で
 # Bing などに知らせる（tools/indexnow.py。ChatGPT の検索・Copilot は Bing の索引を使う）。
 name: IndexNow
 on:
   push:
-    paths: ["seo/sitemap.xml"]
+    paths: ["seo/sitemap.xml", "noki/sitemap.xml"]  # アキヤド・コーポレートと、英語メディア Noki
   workflow_dispatch:
 jobs:
   ping:
