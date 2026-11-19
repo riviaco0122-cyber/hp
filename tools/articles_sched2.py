@@ -85,7 +85,7 @@ ARTICLES_SCHED2 = [
             "国土交通省・観光庁「民泊制度ポータルサイト 管理業務の委託について」（2026年10月閲覧） https://www.mlit.go.jp/kankocho/minpaku/business/host/entrust.html",
             "国土交通省・観光庁「民泊制度ポータルサイト 住宅宿泊管理業者の業務」（2026年10月閲覧） https://www.mlit.go.jp/kankocho/minpaku/business/acting/affairs.html",
             "国土交通省・観光庁「民泊制度ポータルサイト 住宅宿泊事業法（民泊新法）とは？」（2026年10月閲覧） https://www.mlit.go.jp/kankocho/minpaku/overview/minpaku/law1.html",
-            "アキヤド「【運営事例】下田の賃貸一軒家を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
+            "アキヤド「【運営事例】下田の賃貸アパートの一室を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
         ],
     ),
     dict(
@@ -170,7 +170,7 @@ ARTICLES_SCHED2 = [
         sources=[
             "借地借家法（第28条・第38条、2026年10月時点）e-Gov法令検索 https://laws.e-gov.go.jp/law/403AC0000000090",
             "国土交通省「『サブリース住宅標準契約書』について」（転貸借の契約書のひな形。2026年10月閲覧） https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000018.html",
-            "アキヤド「【運営事例】下田の賃貸一軒家を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
+            "アキヤド「【運営事例】下田の賃貸アパートの一室を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
         ],
     ),
     dict(
@@ -274,7 +274,7 @@ ARTICLES_SCHED2 = [
         ],
         sources=[
             "消費者庁「景品表示法（不当表示の禁止）」 https://www.caa.go.jp/policies/policy/representation/fair_labeling/",
-            "アキヤド「【運営事例】下田の賃貸一軒家を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
+            "アキヤド「【運営事例】下田の賃貸アパートの一室を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
         ],
     ),
     dict(
@@ -346,7 +346,7 @@ ARTICLES_SCHED2 = [
             ("bubble", "問い合わせ", "定型文とAIチャットボット", ["日英の定型文と自動翻訳", "FAQを読み込ませたチャットボット"]),
         ])),
         sources=[
-            "アキヤド「【運営事例】下田の賃貸一軒家を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
+            "アキヤド「【運営事例】下田の賃貸アパートの一室を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
             "出入国在留管理庁「特定技能制度」 https://www.moj.go.jp/isa/policies/ssw/nyuukokukanri07_00202.html",
             "出入国在留管理庁 https://www.moj.go.jp/isa/",
         ],
@@ -383,7 +383,7 @@ ARTICLES_SCHED2 = [
 <tr><td><a href="media/case-owner-subsidy-akiya.html">Cさん</a></td><td>購入した古民家の改装</td><td>約450万円</td><td>自己資金100万円＋補助金150万円＋公庫200万円</td></tr>
 <tr><td><a href="media/case-owner-castle-town-nagaya.html">Hさんご夫婦</a></td><td>買い受けた古い木造長屋</td><td>約450万円</td><td>自己資金150万円＋公庫300万円</td></tr>
 <tr><td><a href="media/case-owner-fishing-port.html">Dさんご夫婦</a></td><td>借りた元・仕出し屋。水回り・消防設備</td><td>約500万円</td><td>自己資金100万円＋公庫400万円</td></tr>
-<tr><td><a href="media/case-rental-house-inn-first-year.html">創業メンバー</a></td><td>借りた一軒家。和室を洋室に改修</td><td>約650万円（改修約410万円、家具・家電・備品約240万円）</td><td>公庫200万円＋補助金50万円＋残りは自己資金</td></tr>
+<tr><td><a href="media/case-rental-house-inn-first-year.html">創業メンバー</a></td><td>借りたアパートの一室。和室を洋室に改修</td><td>約650万円（改修約410万円、家具・家電・備品約240万円）</td><td>公庫200万円＋補助金50万円＋残りは自己資金</td></tr>
 </tbody>
 </table>
 <p class="table-note">※ 取材した事例の数字は、取材時点のオーナー本人の申告です。物件の購入費を含むかなど、費用の範囲は事例ごとに違い、同じ条件の比較ではありません。創業メンバーの数字は、本人の開業記録（2025年11月執筆）にもとづきます。</p>
@@ -502,7 +502,7 @@ ARTICLES_SCHED2 = [
         ],
         sources=[
             "創業メンバー本人による開業記録（2025年11月執筆）にもとづく、RIVIA&CO.の経験の要約",
-            "RIVIA&CO.「アキヤド【運営事例】下田の賃貸一軒家を小さな宿に」 https://rivia-co.com/media/case-rental-house-inn-first-year.html",
+            "RIVIA&CO.「アキヤド【運営事例】下田の賃貸アパートの一室を小さな宿に」 https://rivia-co.com/media/case-rental-house-inn-first-year.html",
             "アキヤドの民泊オーナー取材（2025年9月〜12月、2026年1月〜3月）。数字はオーナー本人の申告",
             "西伊豆町「空き家改修等補助金」 https://www.town.nishiizu.shizuoka.jp/kakuka/machizukuri/kikaku/akiyahojo.html",
             "松崎町「空き家改修等補助金」 https://www.town.matsuzaki.shizuoka.jp/docs/2018060500048",
@@ -538,7 +538,7 @@ ARTICLES_SCHED2 = [
 <div class="stat"><span class="stat__num">51<small>件</small></span><span class="stat__label">レビュー数</span><span class="stat__note">サイト掲載時点</span></div>
 <div class="stat"><span class="stat__num">★5</span><span class="stat__label">最初のゲスト</span><span class="stat__note">開業直後</span></div>
 </div>
-<p>NODE Shimodaは、下田市の旧町内にある、賃貸の物件を改修した一棟貸しの宿です。創業メンバーが会社を作る前に、個人事業として開業しました。想定したゲストは、欧米を中心とした外国人の長期滞在者（ノマドワーカー）です。</p>
+<p>NODE Shimodaは、下田市の旧町内にある、賃貸のアパートの一室を改修した貸切の宿です。創業メンバーが会社を作る前に、個人事業として開業しました。想定したゲストは、欧米を中心とした外国人の長期滞在者（ノマドワーカー）です。</p>
 <p class="table-note">※ 同じ結果になることを保証するものではありません。</p>
 <p>ここからは、評価を保つために現場でやってきたことを、順に紹介していきます。どれも私たちの宿での経験です。まずは、レビューが0件の開業直後に、料金をどう決めたかからお話しします。</p>
 """),
@@ -639,7 +639,7 @@ ARTICLES_SCHED2 = [
         sources=[
             "RIVIA&CO.「NODE Shimoda（運営施設の一例）」Airbnb評価・ゲストのレビュー（サイト掲載時点、2026年） https://nodeshimoda.com/",
             "創業メンバーの開業記録（2025年11月執筆）",
-            "アキヤド「【運営事例】下田の賃貸一軒家を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
+            "アキヤド「【運営事例】下田の賃貸アパートの一室を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
         ],
     ),
     dict(
@@ -885,7 +885,7 @@ ARTICLES_SCHED2 = [
         sources=[
             "総務省「地域おこし協力隊〜移住・地域活性化の仕事へのチャレンジを支援します！〜」（2026年10月閲覧） https://www.soumu.go.jp/main_sosiki/jichi_gyousei/c-gyousei/02gyosei08_03000066.html",
             "総務省「関係人口ポータルサイト」 https://www.soumu.go.jp/kankeijinkou/",
-            "アキヤド「【運営事例】下田の賃貸一軒家を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
+            "アキヤド「【運営事例】下田の賃貸アパートの一室を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
         ],
     ),
     dict(
@@ -921,7 +921,7 @@ ARTICLES_SCHED2 = [
 """),
             ("actual", "宿の売上のうち、実際にどれだけ残ったのか？", """
 <p><strong>手元に残る額は、売上ではなく営業利益で見るとつかめます。</strong>営業利益は、売上から運営費を引いた残りのことです。</p>
-<p>ここでは、下田市の一棟貸し（建物をまるごと貸す形）の宿の実績を見てみます。創業メンバーが個人事業として始めた運営施設の一例で、物件はほかの人から借りています。開業から最初の3か月は、<strong>本格稼働の前の試運転期間</strong>でした。</p>
+<p>ここでは、下田市の貸切の宿（アパートの一室をまるごと貸す形）の実績を見てみます。創業メンバーが個人事業として始めた運営施設の一例で、物件はほかの人から借りています。開業から最初の3か月は、<strong>本格稼働の前の試運転期間</strong>でした。</p>
 <table class="table">
 <thead><tr><th>項目</th><th>試運転の3か月</th></tr></thead>
 <tbody>
@@ -982,7 +982,7 @@ ARTICLES_SCHED2 = [
 </tbody>
 </table>
 <p class="table-note">※ 観光庁「宿泊旅行統計調査」（総務省「社会・人口統計体系」収録値、e-Stat）。県全体の推移を見るための値で、観光庁が発表する全施設の合計とは一致しません。個々の宿の稼働を示す数字ではありません。</p>
-<p>とはいえ、需要が伸びている地域の中でも、宿ごとの稼働は、物件の立地や客層との相性で分かれます。この宿は、外国人の長期滞在者を主な客層にして、駅から歩いて10分ほどの場所で運営しています。</p>
+<p>とはいえ、需要が伸びている地域の中でも、宿ごとの稼働は、物件の立地や客層との相性で分かれます。この宿は、外国人の長期滞在者を主な客層にして、駅から歩いて8分ほどの場所で運営しています。</p>
 <p>需要が伸びていても、収益には波があります。最後に、その備え方を見ておきましょう。</p>
 """),
             ("risk", "収益が変動するリスクには、どう備えるのか？", """

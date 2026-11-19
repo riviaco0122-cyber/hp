@@ -447,7 +447,7 @@ def project_card(compact=False):
           <div>
             <span class="project__badge">運営施設の一例</span>
             <h3 class="project__name">NODE Shimoda<span class="project__ext" aria-hidden="true">↗</span><span class="visually-hidden">（施設サイトを別タブで開きます）</span></h3>
-            <p class="project__meta">静岡県下田市 ｜ 一棟貸しバケーションレンタル</p>
+            <p class="project__meta">静岡県下田市 ｜ 貸切のバケーションレンタル（アパートの一室）</p>
             <p class="project__desc">{lines_html("下田市旧町内の空き家を改修した滞在型アパート。RIVIAが運営・集客・DX化を担っています。")}</p>
             <div class="project__rating"><strong><span class="project__star" aria-hidden="true">★</span><span data-count="4.88">4.88</span></strong><span>Airbnb評価（51件）</span></div>
           </div>
