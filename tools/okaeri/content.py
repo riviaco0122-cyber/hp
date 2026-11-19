@@ -1227,14 +1227,14 @@ ARTICLES = [
 
 # ---------------------------------------------------------------- 固定ページの文言
 HOME = {
- "seo_title": "Noki | Long Stays in Small-Town Japan",
- "description": "Homes for a week, a month or a season in small-town Japan, and plain guides to akiya, remote work and life outside the big cities from the people who run them.",
+ "seo_title": "Noki | Slow Travel, Part-Time Life and Akiya in Japan",
+ "description": "Plain guides to longer trips, living part of the year and buying an akiya in small-town Japan, from the people who run a place to stay in Shimoda.",
 }
 GUIDES = {
  "h1": "Guides to long stays and akiya in Japan",
  "seo_title": "Guides to Long Stays and Akiya in Japan",
- "description": "Guides for people who want more than a holiday in Japan: akiya and old houses, month-long stays, remote work and the small towns where we run homes.",
- "dek": "For people who want more than a holiday in Japan: old houses, month-long stays, remote work and the small towns where we run homes.",
+ "description": "Guides for people who want more than a quick holiday in Japan: longer trips, remote work, monthly rentals, akiya and old houses, and the small towns we know.",
+ "dek": "For people who want more than a quick holiday in Japan: longer trips, living here part of the year and old houses."
 }
 IZU = {
  "h1": "Izu Peninsula",

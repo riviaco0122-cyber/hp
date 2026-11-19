@@ -299,8 +299,8 @@ def page_home(ctx):
 <div class="hero__shade"></div>
 <div class="wrap wide hero__inner">
 <p class="hero__kicker">{esc(kicker)}</p>
-<h1>Live in small-town Japan for a month.</h1>
-<p class="hero__lead">Homes for a week, a month or a season, and straight answers about visas, old houses and daily life outside the big cities, from the people who run them.</p>
+<h1>Small-town Japan, beyond a quick visit.</h1>
+<p class="hero__lead">Straight answers about longer trips, living here part of the year and buying an old house outside the big cities, from the people who run a place to stay in Shimoda.</p>
 <div class="btns"><a class="btn btn--light" href="#start">Read the guides</a></div>
 </div>
 </section>
@@ -843,7 +843,7 @@ def build():
     urls = "\n".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{lastmod[p['path']]}</lastmod></url>" for p in pages if not p.get("noindex"))
     write(os.path.join(DIST, "sitemap.xml"), f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
     # llms.txt に足す段落（アキヤドの build が seo/llms.txt の末尾に付ける）
-    ll = ["## Noki (English)", "", "> Noki is RIVIA&CO.’s English-language guide for people who want to stay a month in small-town Japan, work remotely or test a town before buying an akiya (vacant house).", "",
+    ll = ["## Noki (English)", "", "> Noki is RIVIA&CO.’s English-language guide for people who want to travel slowly in small-town Japan, live here part of the year, work remotely or buy an akiya (vacant house).", "",
           f"- [Noki]({SITE}{PRE}): {C.HOME['description']}", f"- [Izu Peninsula]({SITE}{PATHS['izu']}): {C.IZU['description']}"]
     ll += [f"- [{strip_tags(a['h1'])}]({SITE}{PATHS[a['id']]}): {a['description']}" for a in PUBLISHED]
     write(os.path.join(HERE, "llms_section.txt"), "\n".join(ll) + "\n")
