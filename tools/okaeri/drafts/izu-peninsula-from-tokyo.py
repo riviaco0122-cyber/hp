@@ -39,7 +39,7 @@ SOURCES_NEW = {
 ARTICLE = {
  "id": "izu-from-tokyo", "slug": "izu-peninsula-from-tokyo", "topic": "stay", "place": "izu", "also": ["live"],
  "photo": ("train-window-sea", "The sea and breaking waves seen through a train window", ""),
- "published": "2026-11-14", "updated": "2026-11-17",
+ "published": "2026-11-14", "updated": "2026-11-19",
  "kicker": "Izu Peninsula",
  "h1": "Izu Peninsula from Tokyo: trains, fares and why to stay a week",
  "seo_title": "Izu Peninsula from Tokyo: Trains, Fares and Where to Stay",
@@ -51,7 +51,7 @@ ARTICLE = {
  "points": [
    "Shimoda is about 2½ hours on the direct Odoriko, about ¥6,660 with a reserved seat (November 2026).",
    "Shuzenji is about two hours direct, or about 50 minutes by Shinkansen to Mishima plus a 35-minute local line.",
-   "The Japan Rail Pass covers JR to Ito and Mishima; beyond them, you pay the Izukyu or Izuhakone fare.",
+   "The Japan Rail Pass covers JR to Ito and Mishima; beyond, you pay the fare and limited-express charge.",
  ],
  "body": """
 <h2>How do you get to the Izu Peninsula from Tokyo?</h2>
@@ -85,11 +85,11 @@ ARTICLE = {
 
 <h2>Can you use the Japan Rail Pass to get to Izu?</h2>
 <p>Yes, as far as Ito and Mishima. The pass covers ordinary cars on JR lines, including Kodama Shinkansen trains and limited expresses like the Odoriko [[s:jrp_conditions,jrp_vehicle]]. South of Ito, the line belongs to Izukyu, and from Mishima to Shuzenji it’s the Izuhakone Railway. On those stretches you pay the fare and charges yourself, even if you stay on the same Odoriko [[s:jrp_route]].</p>
-<p>So on an ordinary pass to Shimoda, you’ll pay Izukyu for the last leg: ¥1,860 from Ito, and Izukyu’s limited express charge is ¥800 for any distance on its line [[s:izukyu_fares,izukyu_express]]. To Shuzenji, it’s ¥550 from Mishima [[s:izuhakone_fares]]. If you sit in a Green Car on an ordinary pass, you pay the Green Car charge and the limited express charge too [[s:jrp_conditions]]. That matters for the Saphir Odoriko, which has no ordinary seats [[s:izukyu_express]].</p>
-<p>As of November 2026, the official site lists a 7-day ordinary pass at ¥50,000 for adults bought online, or ¥53,000 through an overseas agent [[s:jrp_price]]. It’s only for visitors who enter Japan as a “Temporary Visitor” [[s:jrp_eligibility]]. With a Tokyo–Shimoda trip at about ¥6,660 each way, we think the pass only pays off when Izu is one stop on a longer journey around Japan.</p>
+<p>So on an ordinary pass to Shimoda, you’ll pay Izukyu for the last leg: ¥1,860 from Ito, and Izukyu’s limited express charge is ¥800 for any distance on its line [[s:izukyu_fares,izukyu_express]]. To Shuzenji, it’s ¥550 from Mishima on a local train [[s:izuhakone_fares]]. If you sit in a Green Car on an ordinary pass, you pay the Green Car charge and the limited express charge too [[s:jrp_conditions]]. That matters for the Saphir Odoriko, which has no ordinary seats [[s:izukyu_express]].</p>
+<p>As of November 2026, the official site lists a 7-day ordinary pass at ¥50,000 for adults bought online, or ¥53,000 through an overseas agent [[s:jrp_price]]. It’s mainly for visitors who enter Japan as a “Temporary Visitor”, and the official site sets out who else qualifies [[s:jrp_eligibility]]. With a Tokyo–Shimoda trip at about ¥6,660 each way, we think the pass only pays off when Izu is one stop on a longer journey around Japan.</p>
 
 <h2>Is the Izu Peninsula a day trip from Tokyo?</h2>
-<p>The north is, but the south really isn’t. Even on the direct train, Shimoda is about two and a half hours from Tokyo [[s:jre_tt_tokyo]], so a return trip means about five hours on the train for a few hours on the beach. Atami is about 45 minutes away by Shinkansen and Ito about 1 hour 40 minutes on the direct train, so both work as day trips. The south coast and the inland hot-spring towns are far better if you stay.</p>
+<p>The north is, but the south really isn’t. Even on the direct train, Shimoda is about two and a half hours from Tokyo [[s:jre_tt_tokyo]], so a return trip means about five hours on the train for a few hours on the beach. Atami is about 45 minutes away by Shinkansen and Ito about 1 hour 40 minutes on the direct train, so we think both work as day trips. The south coast and the inland hot-spring towns, in our experience, are far better if you stay.</p>
 
 <h2>Which Izu town suits you?</h2>
 <p>It mostly comes down to how far you want to go and how long you can stay.</p>
@@ -117,7 +117,7 @@ ARTICLE = {
 <thead><tr><th>When</th><th>What to expect</th></tr></thead>
 <tbody>
 <tr><td>Swimming season in Shimoda (in 2026, from 18 July to between 23 and 31 August, depending on the beach)</td><td>All nine of Shimoda’s official beaches opened on 18 July 2026, mostly from 8:00 to 16:00. Shirahama Ohama and Kujukihama stayed open until 31 August and Shirahama Chuo until 30 August, but the other six closed on 23 August [[s:shimoda_beach2026_city]]. Outside the season and those hours, there are no lifeguards [[s:shimoda_ohama]].</td></tr>
-<tr><td>The rest of the year</td><td>The towns get much quieter, and it’s the easiest time for hot springs and long walks.</td></tr>
+<tr><td>The rest of the year</td><td>We find the towns much quieter then, and it’s the easiest time for hot springs and long walks.</td></tr>
 </tbody></table></div>
 <p class="fine">The city sets the beach dates each year, so if you’re planning a late-August trip, it’s a good idea to see which beaches will still be open.</p>
 
@@ -150,6 +150,7 @@ ARTICLE = {
   "h1": "東京から伊豆半島へ：電車・運賃と、1週間泊まる理由",
   "dek": "伊豆半島の南は、日帰りには遠く、1週間ならちょうどいい距離です。下田へは、東京から直通の特急で2時間29〜44分です（2026年11月）。",
   "review": [
+   "【2026-11-19 合格（91点）のあとの言い方の直し（事実・出典は変えていない）】①パスの使える人を「おもに『Temporary Visitor』のスタンプで入国した人。ほかの条件は公式サイトで」に（海外に住む日本人の条件を落とさないため）②修善寺の550円に「普通列車で」を付けました ③In short の3項目目を「その先は運賃と特急料金を払う」に ④出典のない見解（熱海・伊東は日帰り向き、南は泊まるほうがずっといい、それ以外の時期は町が静か）を、私たちの見方・実感と分かる形にしました",
    "【2026-11-17 品質保証部（86点）の指摘での2回目の直し】変えた点: ①ジャパン・レール・パスの節を新しく作りました（JAPAN RAIL PASS の公式で確認）。JR の普通車（こだまや踊り子などの特急を含む）にパスで乗れる＝伊東・三島まで。伊東〜伊豆急下田（伊豆急行）と三島〜修善寺（伊豆箱根鉄道）は、同じ踊り子に乗ったままでも運賃・料金を別に払う。下田まで行くなら伊東〜下田の1,860円と、伊豆急行線内の特急料金800円（区間にかかわらず同じ）。修善寺へは三島から550円。普通車用のパスでグリーン車に乗るとグリーン料金と特急料金が要り、サフィール踊り子は普通車がない。値段は2026年11月に公式サイトで見た値（7日間の普通車、オンラインで大人50,000円、海外の代理店で53,000円）。使えるのは「短期滞在（Temporary Visitor）」で入国した人だけ。「東京〜下田が片道約6,660円なので、伊豆だけならパスは元が取れず、日本を長く回る旅の途中なら」という私たちの見方を1文。FAQ にも1問足しました。ワイド・パスなどほかのきっぷは書いていません ②運賃の表に、伊豆急行の同じ運賃表にある東京〜伊東 2,420円を足しました（踊り子の特急料金は別）。熱海・三島までの JR の運賃は公式の表で取れないので書いていません ③冒頭で値段に答えるよう、In short を「下田は直通の踊り子で約2時間半、指定席で約6,660円（2026年11月）」「修善寺」「ジャパン・レール・パスは伊東・三島まで、その先は伊豆急行・伊豆箱根鉄道の運賃」の3つにしました（海水浴と路線バスの項目は本文に） ④正確性: 運賃（2026年3月14日改定）と特急料金（2025年2月1日以降の乗車分の料金表）の時点を分けて書きました。「半島のおもなバス会社」を消し「東海バスは東京から下田・修善寺への高速バスを走らせていない」に。海水浴の期間は「下田で、2026年は7月中旬〜8月下旬」と場所と年を付けました（季節の表の見出しも） ⑤独自性: 町の表の熱海・伊東の行を短くしました。experience.md の確認済みの節（ゲストの層: 訪日客が中心、ワーケーションやサーフィンの人もいる、夏は長期滞在が多め）を NODE Shimoda の段落に1文入れました ⑥トーン: description の後半を目次から答え（パスは伊東まで、その先は伊豆急行に払う）に。「私たちは思う／見ている」を減らし（見解の形は、パスの元が取れるか・下田が1週間に合う・季節の選び方など4か所に）、「〜だろうと見ています」の推測文（三島で乗り換える人が多いだろう・シーズン前後は人が少ないだろう）をなくしました。季節の表の「シーズンの前後」の行は外しました ⑦出典: jre_tt_tokyo と node_access は content.py にあるので SOURCES_NEW から外しました。JAPAN RAIL PASS の公式（jrp_route・jrp_conditions・jrp_vehicle・jrp_price・jrp_eligibility）を足しました。updated を 2026-11-17 に",
    "【2026-11-16 手離れでの書き直し（事実・出典の変更あり）】変えた点: 黄色い枠を4つともなくしました。運賃を伊豆急行・伊豆箱根鉄道の公式の運賃表に（japan-guide の改定前の目安をやめた）。三島〜修善寺は公式の時刻表で約35分、値上げは2027年春の予定（公式の申請のお知らせ）。直行バスは「東海バスにはない」まで。車なしで回る節（白浜までバスで約15分、下田2日券1,350円・石廊崎・下田2日券2,850円）を新しく作りました。修善寺の足湯（河原湯・杉の湯）は伊豆市の公式で確認。修善寺の所要時間を「直通で約2時間、または新幹線で三島まで約50分＋35分」に直しました。東京〜下田は JR東日本の時刻表（2026年11月）の2時間29〜44分にそろえました。NODE Shimoda は公式サイトどおり「アパートの一室」・約40㎡・2階・徒歩8分に。浜からの最終バスと Wi-Fi の実測は書いていません",
    "【人に確かめてほしい点】①変わりやすい数字: 運賃・特急料金（伊豆急行・伊豆箱根鉄道、2026-11-16 確認）、ジャパン・レール・パスの値段と利用条件（公式、2026-11-17 確認。利用条件は2026年4月時点の記載）、時刻（JR東日本 2026年11月・伊豆箱根鉄道 2025年3月改正）、東海バスのきっぷと三島エクスプレスの値段（2026-11-16 確認）、2026年の下田の海水浴場の期間",
@@ -157,7 +158,7 @@ ARTICLE = {
   "points": [
     "下田へは直通の踊り子で約2時間半、指定席で約6,660円です（2026年11月）。",
     "修善寺は直通で約2時間。または新幹線で三島まで約50分、そこからローカル線で35分です。",
-    "ジャパン・レール・パスは伊東と三島までの JR で使えます。その先は、伊豆急行か伊豆箱根鉄道の運賃を払います。",
+    "ジャパン・レール・パスは伊東と三島までの JR で使えます。その先は、運賃と特急料金を払います。",
   ],
   "body": """
 <h2>東京から伊豆半島へは、どう行くか</h2>
@@ -191,11 +192,11 @@ ARTICLE = {
 
 <h2>伊豆へ行くのに、ジャパン・レール・パスは使えるか</h2>
 <p>使えます。ただし伊東と三島までです。パスでは、こだまの新幹線や踊り子のような特急を含め、JR の線の普通車に乗れます[[s:jrp_conditions,jrp_vehicle]]。伊東より南は伊豆急行の線、三島から修善寺までは伊豆箱根鉄道の線で、この区間は、同じ踊り子に乗ったままでも、運賃と料金を自分で払います[[s:jrp_route]]。</p>
-<p>なので、普通車用のパスで下田へ行くなら、最後の区間は伊豆急行に払います。伊東から1,860円で、伊豆急行線内の特急料金は、区間にかかわらず800円です[[s:izukyu_fares,izukyu_express]]。修善寺へは、三島から550円です[[s:izuhakone_fares]]。普通車用のパスでグリーン車に座ると、グリーン料金と特急料金も要ります[[s:jrp_conditions]]。普通車のないサフィール踊り子では、ここが効いてきます[[s:izukyu_express]]。</p>
-<p>2026年11月時点で、公式サイトの値段は、7日間の普通車用がオンラインで大人50,000円、海外の代理店で53,000円です[[s:jrp_price]]。使えるのは、「短期滞在（Temporary Visitor）」で入国した人だけです[[s:jrp_eligibility]]。東京〜下田が片道約6,660円なので、パスの元が取れるのは、伊豆が日本を長く回る旅の途中のひとつのときだけだと私たちは思います。</p>
+<p>なので、普通車用のパスで下田へ行くなら、最後の区間は伊豆急行に払います。伊東から1,860円で、伊豆急行線内の特急料金は、区間にかかわらず800円です[[s:izukyu_fares,izukyu_express]]。修善寺へは、三島から普通列車で550円です[[s:izuhakone_fares]]。普通車用のパスでグリーン車に座ると、グリーン料金と特急料金も要ります[[s:jrp_conditions]]。普通車のないサフィール踊り子では、ここが効いてきます[[s:izukyu_express]]。</p>
+<p>2026年11月時点で、公式サイトの値段は、7日間の普通車用がオンラインで大人50,000円、海外の代理店で53,000円です[[s:jrp_price]]。使えるのはおもに「Temporary Visitor」のスタンプで入国した人で、ほかに使える人の条件はパスの公式サイトに書いてあります[[s:jrp_eligibility]]。東京〜下田が片道約6,660円なので、パスの元が取れるのは、伊豆が日本を長く回る旅の途中のひとつのときだけだと私たちは思います。</p>
 
 <h2>伊豆半島は、東京から日帰りできるか</h2>
-<p>北のほうはできますが、南はあまり向きません。直通の電車でも下田まで2時間半ほどかかるので[[s:jre_tt_tokyo]]、往復すると、浜で過ごす数時間のために5時間ほど電車に乗ることになります。熱海は新幹線で45分ほど、伊東は直通で1時間40分ほどなので、どちらも日帰りで楽しめます。南の海岸と内陸の温泉町は、泊まったほうがずっと楽しめます。</p>
+<p>北のほうはできますが、南はあまり向きません。直通の電車でも下田まで2時間半ほどかかるので[[s:jre_tt_tokyo]]、往復すると、浜で過ごす数時間のために5時間ほど電車に乗ることになります。熱海は新幹線で45分ほど、伊東は直通で1時間40分ほどなので、どちらも日帰りで楽しめると私たちは思います。南の海岸と内陸の温泉町は、泊まったほうがずっと楽しめるというのが私たちの実感です。</p>
 
 <h2>伊豆のどの町が合うか</h2>
 <p>決め手は、どこまで行きたいかと、どれくらいいられるかです。</p>
@@ -223,7 +224,7 @@ ARTICLE = {
 <thead><tr><th>時期</th><th>どんな感じか</th></tr></thead>
 <tbody>
 <tr><td>下田の海水浴の期間（2026年は7月18日から、浜によって8月23〜31日まで）</td><td>2026年は、下田の9つの海水浴場がすべて7月18日に開き、多くは8時〜16時でした。白浜大浜と九十浜は8月31日まで、白浜中央は8月30日まで開いていましたが、ほかの6つは8月23日に閉じました[[s:shimoda_beach2026_city]]。期間外と時間外は、監視員がいません[[s:shimoda_ohama]]。</td></tr>
-<tr><td>それ以外</td><td>町はぐっと静かになり、温泉や長い散歩にはいちばん過ごしやすい時期です。</td></tr>
+<tr><td>それ以外</td><td>町はぐっと静かになると私たちは感じていて、温泉や長い散歩にはいちばん過ごしやすい時期です。</td></tr>
 </tbody></table></div>
 <p class="fine">海水浴場の期間は、市が毎年決めます。8月の終わりに行くなら、どの浜がまだ開いているかを見ておくと安心です。</p>
 
