@@ -101,7 +101,7 @@ ARTICLE = {
 <tr><td>National Health Insurance</td><td>Open to registered foreign residents [[s:egov_nhi_rules]]</td><td>You can’t join it [[s:egov_nhi_rules]]. Separately, the status requires private insurance [[s:isa_nomad_en]]</td></tr>
 <tr><td>An ordinary lease</td><td>The government’s guideline for landlords gives the card as one example of ID [[s:mlit_foreign_rental]]</td><td>Harder, in our view. A furnished monthly place is usually simpler</td></tr>
 </tbody></table></div>
-<p>Renting is where you’ll feel it most. The government’s guideline for landlords lists a passport and a residence card as examples of ID, and leaves what to ask for to the landlord and tenant [[s:mlit_foreign_rental]]. It also says landlords should ask whether you have a Japanese bank account and a phone that works in Japan [[s:mlit_foreign_rental]]. Without a card or a local account, we think a furnished place rented by the month is the easier route.</p>
+<p>Renting is where you’ll feel it most. The government’s guideline for landlords lists a passport and a residence card as examples of ID, and leaves what to ask for to the landlord and tenant [[s:mlit_foreign_rental]]. It also says landlords should ask whether you have a Japanese bank account and a phone that works in Japan [[s:mlit_foreign_rental]]. Without a card or a local account, we think a furnished place rented by the month is the easier route. Our guide to [[l:monthly-rental|renting a place by the month in Japan]] covers how to find one.</p>
 <p>Tax is the other thing people get wrong. For Japanese income tax, you’re a resident if you have a domicile here, or have lived here continuously for a year or more [[s:nta_2875]]. Non-residents are taxed only on Japan-source income, and pay for work done in Japan counts as Japan-source income [[s:nta_nonresident]]. Tax treaties can change that [[s:nta_2875]], so “six months means no tax” is too simple. A tax adviser who knows your home country’s treaty with Japan is the person to ask.</p>
 <p>Everything here describes the rules as of November 2026. For your own case, the Ministry of Foreign Affairs, the Immigration Services Agency or an administrative scrivener (<em>gyoseishoshi</em>) who handles visas is the place to check.</p>
 
@@ -204,7 +204,7 @@ ARTICLE = {
 <tr><td>国民健康保険</td><td>登録された外国人住民が入れる[[s:egov_nhi_rules]]</td><td>入れない[[s:egov_nhi_rules]]。それとは別に、この在留資格では民間の保険が条件になっている[[s:isa_nomad_en]]</td></tr>
 <tr><td>普通の賃貸</td><td>国の大家さん向けのガイドラインが、本人確認の書類の例の1つにカードを挙げている[[s:mlit_foreign_rental]]</td><td>私たちの見方では難しい。家具付きの月単位の部屋のほうがたいてい簡単</td></tr>
 </tbody></table></div>
-<p>いちばん影響を感じるのは部屋を借りるときです。国の大家さん向けのガイドラインは、本人確認の書類の例にパスポートと在留カードを挙げ、何を求めるかは大家さんと借りる人の間に任せています[[s:mlit_foreign_rental]]。日本の銀行口座と、日本で使える電話があるかも聞くように書いています[[s:mlit_foreign_rental]]。カードも日本の口座もないなら、家具付きで月単位に借りる部屋のほうが楽だと私たちは考えています。</p>
+<p>いちばん影響を感じるのは部屋を借りるときです。国の大家さん向けのガイドラインは、本人確認の書類の例にパスポートと在留カードを挙げ、何を求めるかは大家さんと借りる人の間に任せています[[s:mlit_foreign_rental]]。日本の銀行口座と、日本で使える電話があるかも聞くように書いています[[s:mlit_foreign_rental]]。カードも日本の口座もないなら、家具付きで月単位に借りる部屋のほうが楽だと私たちは考えています。探し方は[[l:ja-monthly-rental|日本で部屋を月単位で借りる記事]]にまとめています。</p>
 <p>税金も、よく誤解されるところです。日本の所得税では、日本に住所があるか、1年以上続けて住んでいる人が居住者になります[[s:nta_2875]]。非居住者は日本の国内源泉所得にだけ課税され、日本でした仕事への報酬は国内源泉所得に当たります[[s:nta_nonresident]]。租税条約で変わることもあるので[[s:nta_2875]]、「6か月なら税金はかからない」は単純すぎます。自分の国と日本の租税条約に詳しい税理士に聞くのがいちばんです。</p>
 <p>ここに書いたのは、すべて2026年11月時点の決まりです。自分の場合については、外務省、出入国在留管理庁、またはビザを扱う行政書士に確かめてください。</p>
 
