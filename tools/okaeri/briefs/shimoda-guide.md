@@ -58,20 +58,20 @@
 ## 5. 構成
 
 ### title（`seo_title`）案
-- **Shimoda, Japan: Beaches, Old Town and a Week-Long Stay**（52字・「shimoda」が先頭）
+- **Shimoda, Japan: Beaches, Old Town and a Week-Long Stay**（54字・「shimoda」が先頭）
 - 予備: Shimoda, Japan: A Guide for a Week or Longer（44字）
 
 ### h1 案
 - Shimoda, Japan: a guide for a week or longer
 
 ### description 案（120〜160字。リサーチの結果に合わせて数字を入れ直す）
-- Shimoda is a port town at the tip of the Izu Peninsula with nine official beaches. Which beach suits what, what to do on rainy days, and how a week there works.（157字）
+- Shimoda is a port town at the tip of the Izu Peninsula with nine official beaches. Which beach suits what, what to do on rainy days, and how a week there works.（160字・上限ちょうど。数字が変わったら縮める）
 
 ### dek 案（30語以内）
 - Shimoda is a small port town at the southern tip of the Izu Peninsula. A week gives you time for several beaches, the old town and an unhurried routine.（29語）
 
 ### In short（3項目・各1文・20語以内）
-1. Pick a beach by what you want: calm water for swimming, surf beaches for boards, or a quiet cove.（18語。浜の性格は R3・R4 の結果で言い直す）
+1. Pick a beach by what you want: calm water for swimming, surf beaches for boards, or a quiet cove.（19語。浜の性格は R3・R4 の結果で言い直す）
 2. The old town is walkable, with Perry Road, temples, the port and food shops close together.（16語。R2・R13）
 3. Outside summer, the town is quieter, with flower festivals in winter and early summer.（14語。R6 の結果で行事名を入れる）
 
