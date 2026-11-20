@@ -1,7 +1,7 @@
 ARTICLE = {
  "id": "izu-from-tokyo", "slug": "izu-peninsula-from-tokyo", "topic": "stay", "place": "izu", "also": ["live"],
  "photo": ("train-window-sea", "The sea and breaking waves seen through a train window", ""),
- "published": "2026-11-14", "updated": "2026-11-20",
+ "published": "2026-11-14", "updated": "2026-11-19",
  "kicker": "Izu Peninsula",
  "h1": "Izu Peninsula from Tokyo: trains, fares and why to stay a week",
  "seo_title": "Izu Peninsula from Tokyo: Trains, Fares and Where to Stay",
@@ -18,7 +18,7 @@ ARTICLE = {
  "body": """
 <h2>How do you get to the Izu Peninsula from Tokyo?</h2>
 <p>The easiest way is the Odoriko limited express. It runs from Tokyo down the east coast of the [[l:izu|Izu Peninsula]] all the way to Shimoda, so you can settle in for the whole ride without changing trains. Five leave Tokyo each day, on the hour between 9:00 and 13:00 [[s:jre_tt_tokyo]]. You’ll reach Ito in about 1 hour 40 minutes and Izukyu-Shimoda in about two and a half hours [[s:jre_tt_tokyo]].</p>
-<p>If you’re heading inland to Shuzenji, the Shinkansen and a short local line often suit you better. The table has the details for each route.</p>
+<p>If you’re heading inland to Shuzenji, the Shinkansen and a short local line often suit you better. The table below compares the four routes.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>Route</th><th>Changes</th><th>Time</th><th>Good to know</th></tr></thead>
 <tbody>
@@ -31,7 +31,7 @@ ARTICLE = {
 <p>What about the bus? Tokai Bus doesn’t run a highway bus from Tokyo to Shimoda or Shuzenji. The closest you’ll get is its Mishima Express from Shinjuku to Mishima, from ¥2,300 one way [[s:tokaibus_highway]]. From there, the Izuhakone Railway takes you on to Shuzenji [[s:izuhakone_tt]]. For Shimoda, the train really is the simple answer.</p>
 
 <h2>How much does the train from Tokyo to Izu cost?</h2>
-<p>To Shimoda on the direct Odoriko, you’ll pay about ¥6,660 one way with a reserved seat. That’s the ¥4,280 fare plus a ¥2,380 seat charge [[s:izukyu_fares,izukyu_express]]. It’s worth buying the seat before you board, because it costs more on the train. If you’re mixing routes or using a rail pass, the table below has the other pieces.</p>
+<p>To Shimoda on the direct Odoriko, you’ll pay about ¥6,660 one way with a reserved seat. That’s the ¥4,280 fare plus a ¥2,380 seat charge [[s:izukyu_fares,izukyu_express]]. It’s worth buying the seat before you board, because it costs more on the train [[s:izukyu_express]]. If you’re mixing routes or using a rail pass, the table below breaks down the other fares and charges.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>What you pay</th><th>One way, adult</th></tr></thead>
 <tbody>
@@ -44,12 +44,12 @@ ARTICLE = {
 <tr><td>Izu Kyuko line, Ito to Shimoda</td><td>¥1,860 (¥1,856 with an IC card) [[s:izukyu_fares]]</td></tr>
 <tr><td>Izuhakone Railway, Mishima to Shuzenji</td><td>¥550 [[s:izuhakone_fares]]</td></tr>
 </tbody></table></div>
-<p class="fine">Fares and charges as of November 2026. Izukyu’s fares are from its table revised on 14 March 2026. Its seat charges are for journeys since 1 February 2025 [[s:izukyu_fares,izukyu_express]]. The Izuhakone Railway applied in October 2026 to raise its fares, with the change on the Mishima–Shuzenji line planned for spring 2027 [[s:izuhakone_fare2026]].</p>
+<p class="fine">Fares and charges as of November 2026. Izukyu’s fares are from its table revised on 14 March 2026. The Izuhakone Railway applied in October 2026 to raise its fares, with the change on the Mishima–Shuzenji line planned for spring 2027 [[s:izuhakone_fare2026]].</p>
 
 <h2>Can you use the Japan Rail Pass to get to Izu?</h2>
 <p>Yes, as far as Ito and Mishima. The pass covers ordinary cars on JR lines, including Kodama Shinkansen trains and limited expresses like the Odoriko [[s:jrp_conditions,jrp_vehicle]]. South of Ito, the line belongs to Izukyu, and from Mishima to Shuzenji it’s the Izuhakone Railway. On those stretches you pay the fare and charges yourself, even if you stay on the same Odoriko [[s:jrp_route]].</p>
 <p>So on an ordinary pass to Shimoda, you’ll still pay Izukyu for the last leg. That’s ¥1,860 from Ito, plus Izukyu’s limited express charge of ¥800, which is the same for any distance on its line [[s:izukyu_fares,izukyu_express]]. To Shuzenji, it’s ¥550 from Mishima on a local train [[s:izuhakone_fares]]. If you sit in a Green Car on an ordinary pass, you pay the Green Car charge and the limited express charge too [[s:jrp_conditions]]. That matters most on the Saphir Odoriko, which has no ordinary seats at all [[s:izukyu_express]].</p>
-<p>A 7-day ordinary pass is ¥50,000 for adults if you buy it online [[s:jrp_price]]. Through an overseas agent, it’s ¥53,000 (prices as of November 2026) [[s:jrp_price]]. It’s mainly for visitors who enter Japan as a “Temporary Visitor”, and the official site sets out who else qualifies [[s:jrp_eligibility]]. With a Tokyo–Shimoda trip at about ¥6,660 each way, we think the pass only pays off when Izu is one stop on a longer journey around Japan.</p>
+<p>As of November 2026, a 7-day ordinary pass costs adults ¥50,000 online, or ¥53,000 through an overseas agent [[s:jrp_price]]. It’s mainly for visitors who enter Japan as a “Temporary Visitor”, and the official site sets out who else qualifies [[s:jrp_eligibility]]. With a Tokyo–Shimoda trip at about ¥6,660 each way, we think the pass only pays off when Izu is one stop on a longer journey around Japan.</p>
 
 <h2>Is the Izu Peninsula a day trip from Tokyo?</h2>
 <p>The north is, but the south really isn’t. Even on the direct train, Shimoda is about two and a half hours from Tokyo [[s:jre_tt_tokyo]], so a return trip means about five hours on the train for a few hours on the beach. Atami and Ito are a different story. Atami is about 45 minutes by Shinkansen, and Ito is under two hours on the direct train, so we think both work well as day trips. The south coast and the inland hot-spring towns, in our experience, are far better if you stay a few nights and let the days slow down.</p>
@@ -61,7 +61,7 @@ ARTICLE = {
 <tbody>
 <tr><td><strong>Atami and Ito</strong></td><td>Atami 43–45 min by Shinkansen; Ito about 1 h 40 min direct</td><td>The two towns nearest Tokyo, on the east coast.</td><td>A day trip works</td></tr>
 <tr><td><strong>Shuzenji</strong></td><td>50–53 min to Mishima, then about 35 min; or about 2 h direct</td><td>An inland hot-spring town, said to be the oldest in Izu. You can look at the Tokko-no-yu spring but not bathe in it, and there are two foot baths nearby, Kawara-yu and Sugi-no-yu [[s:izu_tokko]]. It suits a quiet night or two more than a rushed visit.</td><td>Better to stay</td></tr>
-<tr><td><strong>Shimoda</strong></td><td>2 h 29 min to 2 h 44 min direct</td><td>A port town at the southern tip, with nine official swimming beaches in 2026 [[s:shimoda_beach2026_city]]. The prefecture describes its fish market as Japan’s top landing port for [[l:kinmedai|kinmedai]] [[s:pref]]. In our view, it’s the town that suits a week best, and our [[l:shimoda-guide|Shimoda guide]] covers how to spend one.</td><td>Better to stay</td></tr>
+<tr><td><strong>Shimoda</strong></td><td>2 h 29 min to 2 h 44 min direct</td><td>A port town at the southern tip, with nine official swimming beaches in 2026 [[s:shimoda_beach2026_city]]. The prefecture calls Shimoda Japan’s top port for landing [[l:kinmedai|kinmedai]] [[s:pref]]. In our view, it’s the town that suits a week best, and our [[l:shimoda-guide|Shimoda guide]] covers how to spend one.</td><td>Better to stay</td></tr>
 </tbody></table></div>
 
 <h2>Can you get around southern Izu without a car?</h2>
@@ -72,7 +72,7 @@ ARTICLE = {
 <tr><td><strong>Shimoda 2-day pass</strong></td><td>¥1,350</td><td>Shimoda town, Ryugu cave, Tsumekizaki and Shirahama [[s:tokaibus_freepass]]</td></tr>
 <tr><td><strong>Irozaki–Shimoda 2-day pass</strong></td><td>¥2,850</td><td>All of the above, plus Cape Irozaki, Yumigahama, Shimokamo, Kawazu and Inatori [[s:tokaibus_freepass]]</td></tr>
 </tbody></table></div>
-<p>You can buy both at Tokai Bus’s office by Shimoda Station. It’s open every day from 8:45 to 12:30 [[s:tokaibus_freepass]]. It then shuts for an hour and reopens from 13:30 to 17:00 [[s:tokaibus_freepass]]. Buses to the outer beaches don’t run often, so it’s a good idea to look up the return times before you head out. If you want to hop between several beaches in one day, an e-bike or a rental car makes life much easier.</p>
+<p>You can buy both at Tokai Bus’s office by Shimoda Station. It’s open every day from 8:45 to 17:00, with a lunch break from 12:30 to 13:30 [[s:tokaibus_freepass]]. Buses to the outer beaches don’t run often, so check the return times before you head out. If you want to hop between several beaches in one day, an e-bike or a rental car makes life much easier.</p>
 
 <h2>When is the best time to visit the Izu Peninsula?</h2>
 <p>For swimming in Shimoda, the 2026 season ran from mid-July to late August. For a quieter stay, we’d pick the months either side.</p>
@@ -82,7 +82,7 @@ ARTICLE = {
 <tr><td>Swimming season in Shimoda (in 2026, from 18 July to between 23 and 31 August, depending on the beach)</td><td>All nine of Shimoda’s official beaches opened on 18 July 2026, mostly from 8:00 to 16:00. Shirahama Ohama and Kujuppama stayed open until 31 August and Shirahama Chuo until 30 August, but the other six closed on 23 August [[s:shimoda_beach2026_city]]. Outside the season and those hours, there are no lifeguards [[s:shimoda_ohama]].</td></tr>
 <tr><td>The rest of the year</td><td>We find the towns much quieter then, and it’s the easiest time for hot springs and long walks.</td></tr>
 </tbody></table></div>
-<p class="fine">The city sets the beach dates each year, so if you’re planning a late-August trip, it’s a good idea to see which beaches will still be open.</p>
+<p class="fine">The city sets the beach dates each year, so if you’re planning a late-August trip, check which beaches will still be open before you book.</p>
 
 <h2>Why stay a week in Izu rather than a night?</h2>
 <p>A week turns a trip into ordinary life, and that’s when the slow pace of the south starts to make sense. A hotel room is built around one or two nights and a set dinner time. A place with a kitchen and a washing machine lets you work in the morning, head to the beach or a hot spring in the afternoon, and eat in when you don’t feel like going out.</p>
@@ -98,7 +98,7 @@ ARTICLE = {
    ("Can I use the Japan Rail Pass to get to Izu?",
     "Yes, on JR as far as Ito and Mishima. From Ito to Izukyu-Shimoda and from Mishima to Shuzenji, you pay the fare and charges separately, even on the Odoriko [[s:jrp_route]]. A week-long ordinary pass costs ¥50,000 online, as of November 2026 [[s:jrp_price]]."),
    ("What’s the best way to get to Shuzenji?",
-    "Usually, the Shinkansen to Mishima is the way to go, at 50 to 53 minutes on a Kodama [[s:jre_tt_tokyo]]. From there, the Izuhakone Railway gets you to Shuzenji in about 35 minutes for ¥550 [[s:izuhakone_tt,izuhakone_fares]]. If you’d rather not change, two direct Odoriko trains run every day, at 9:00 and 12:00, and take about two hours [[s:jre_tt_tokyo]]."),
+    "For most people, we think the Shinkansen to Mishima is the easiest way: 50 to 53 minutes on a Kodama [[s:jre_tt_tokyo]]. From there, the Izuhakone Railway gets you to Shuzenji in about 35 minutes for ¥550 [[s:izuhakone_tt,izuhakone_fares]]. If you’d rather not change, two direct Odoriko trains run every day, at 9:00 and 12:00, and take about two hours [[s:jre_tt_tokyo]]."),
    ("Is there a bus from Tokyo to Shimoda?",
     "Tokai Bus doesn’t run one. Its highway buses go to Mishima instead, including the Mishima Express from Shinjuku from ¥2,300 [[s:tokaibus_highway]]. For Shimoda, the train really is the simple answer."),
    ("Do I need a car on the Izu Peninsula?",
@@ -140,7 +140,7 @@ ARTICLE = {
 <p>バスはどうでしょう。東海バスは、東京から下田や修善寺への高速バスを走らせていません。いちばん近いのは新宿から三島までの「三島エクスプレス」で、片道2,300円からです[[s:tokaibus_highway]]。三島からは、伊豆箱根鉄道で修善寺へ行けます[[s:izuhakone_tt]]。下田へは、やはり電車がいちばん簡単です。</p>
 
 <h2>東京から伊豆までの電車代は、いくらか</h2>
-<p>直通の「踊り子」で下田まで、指定席で片道約6,660円です。運賃4,280円に、特急料金2,380円を足した額です[[s:izukyu_fares,izukyu_express]]。特急券は車内で買うと高くなるので、乗る前に買っておくのがおすすめです。ほかの行き方を組み合わせるときや、レールパスを使うときは、下の表を見てください。</p>
+<p>直通の「踊り子」で下田まで、指定席で片道約6,660円です。運賃4,280円に、特急料金2,380円を足した額です[[s:izukyu_fares,izukyu_express]]。特急券は車内で買うと高くなるので、乗る前に買っておくのがおすすめです[[s:izukyu_express]]。ほかの行き方を組み合わせるときや、レールパスを使うときは、下の表を見てください。</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>払うもの</th><th>片道・大人</th></tr></thead>
 <tbody>
@@ -153,12 +153,12 @@ ARTICLE = {
 <tr><td>伊豆急行線（伊東〜下田）</td><td>1,860円（IC カードは1,856円）[[s:izukyu_fares]]</td></tr>
 <tr><td>伊豆箱根鉄道（三島〜修善寺）</td><td>550円[[s:izuhakone_fares]]</td></tr>
 </tbody></table></div>
-<p class="fine">2026年11月時点の運賃・料金です。伊豆急行の運賃は2026年3月14日に改定された運賃表、特急料金は2025年2月1日以降の乗車分の料金表によります[[s:izukyu_fares,izukyu_express]]。伊豆箱根鉄道は2026年10月に運賃の値上げを申請していて、三島〜修善寺の線は2027年春に変わる予定です[[s:izuhakone_fare2026]]。</p>
+<p class="fine">2026年11月時点の運賃・料金です。伊豆急行の運賃は2026年3月14日に改定された運賃表によります[[s:izukyu_fares,izukyu_express]]。伊豆箱根鉄道は2026年10月に運賃の値上げを申請していて、三島〜修善寺の線は2027年春に変わる予定です[[s:izuhakone_fare2026]]。</p>
 
 <h2>伊豆へ行くのに、ジャパン・レール・パスは使えるか</h2>
 <p>使えます。ただし伊東と三島までです。パスでは、こだまの新幹線や踊り子のような特急を含め、JR の線の普通車に乗れます[[s:jrp_conditions,jrp_vehicle]]。伊東より南は伊豆急行の線、三島から修善寺までは伊豆箱根鉄道の線で、この区間は、同じ踊り子に乗ったままでも、運賃と料金を自分で払います[[s:jrp_route]]。</p>
-<p>なので、普通車用のパスで下田へ行っても、最後の区間は伊豆急行に払うことになります。伊東から1,860円と、伊豆急行線内の特急料金800円です。特急料金は、区間にかかわらず同じです[[s:izukyu_fares,izukyu_express]]。修善寺へは、三島から普通列車で550円です[[s:izuhakone_fares]]。普通車用のパスでグリーン車に座ると、グリーン料金と特急料金も要ります[[s:jrp_conditions]]。普通車がまったくないサフィール踊り子では、ここがいちばん効いてきます[[s:izukyu_express]]。</p>
-<p>7日間の普通車用は、オンラインで買うと大人50,000円です[[s:jrp_price]]。海外の代理店で買うと53,000円です（どちらも2026年11月時点）[[s:jrp_price]]。使えるのはおもに「Temporary Visitor」のスタンプで入国した人で、ほかに使える人の条件はパスの公式サイトに書いてあります[[s:jrp_eligibility]]。東京〜下田が片道約6,660円なので、パスの元が取れるのは、伊豆が日本を長く回る旅の途中のひとつのときだけだと私たちは思います。</p>
+<p>つまり、普通車用のパスで下田へ行っても、最後の区間は伊豆急行に払うことになります。伊東から1,860円と、伊豆急行線内の特急料金800円です。特急料金は、区間にかかわらず同じです[[s:izukyu_fares,izukyu_express]]。修善寺へは、三島から普通列車で550円です[[s:izuhakone_fares]]。普通車用のパスでグリーン車に座ると、グリーン料金と特急料金も要ります[[s:jrp_conditions]]。普通車がまったくないサフィール踊り子では、ここがいちばん効いてきます[[s:izukyu_express]]。</p>
+<p>7日間の普通車用は、2026年11月時点で、オンラインなら大人50,000円、海外の代理店なら53,000円です[[s:jrp_price]]。使えるのはおもに「Temporary Visitor」のスタンプで入国した人で、ほかに使える人の条件はパスの公式サイトに書いてあります[[s:jrp_eligibility]]。東京〜下田が片道約6,660円なので、パスの元が取れるのは、日本をあちこち回る長い旅の途中に伊豆を入れるときだけだと私たちは思います。</p>
 
 <h2>伊豆半島は、東京から日帰りできるか</h2>
 <p>北のほうはできますが、南はあまり向きません。直通の電車でも下田まで2時間半ほどかかるので[[s:jre_tt_tokyo]]、往復すると、浜で過ごす数時間のために5時間ほど電車に乗ることになります。熱海と伊東は話が別です。熱海は新幹線で45分ほど、伊東は直通で2時間かからないので、どちらも日帰りで十分楽しめると私たちは思います。南の海岸と内陸の温泉町は、何泊かして、日々のペースをゆるめたほうがずっと楽しめるというのが私たちの実感です。</p>
@@ -170,7 +170,7 @@ ARTICLE = {
 <tbody>
 <tr><td><strong>熱海と伊東</strong></td><td>熱海まで新幹線で43〜45分、伊東まで直通で約1時間40分</td><td>東海岸の、東京にいちばん近い2つの町です。</td><td>日帰りでも楽しめる</td></tr>
 <tr><td><strong>修善寺</strong></td><td>三島まで50〜53分、そこから約35分。または直通で約2時間</td><td>伊豆でいちばん古いと言われる、内陸の温泉町です。「独鈷の湯」は見るだけで入れませんが、近くに「河原湯」と「杉の湯」の2つの足湯があります[[s:izu_tokko]]。慌ただしく立ち寄るより、1〜2泊して静かに過ごすのが合う町です。</td><td>泊まるのがおすすめ</td></tr>
-<tr><td><strong>下田</strong></td><td>直通で2時間29分〜2時間44分</td><td>半島の南端の港町で、2026年は正式な海水浴場が9つありました[[s:shimoda_beach2026_city]]。静岡県は、下田の魚市場を[[l:ja-kinmedai|金目鯛]]の水揚げ日本一と紹介しています[[s:pref]]。1週間過ごすのにいちばん合う町だと、私たちは思います。過ごし方は[[l:ja-shimoda-guide|下田のガイド]]にまとめました。</td><td>泊まるのがおすすめ</td></tr>
+<tr><td><strong>下田</strong></td><td>直通で2時間29分〜2時間44分</td><td>半島の南端の港町で、2026年は正式な海水浴場が9つありました[[s:shimoda_beach2026_city]]。静岡県は、下田を[[l:ja-kinmedai|金目鯛]]の水揚げ日本一の港と紹介しています[[s:pref]]。1週間過ごすのにいちばん合う町だと、私たちは思います。過ごし方は[[l:ja-shimoda-guide|下田のガイド]]にまとめました。</td><td>泊まるのがおすすめ</td></tr>
 </tbody></table></div>
 
 <h2>南伊豆は、車なしで回れるか</h2>
@@ -181,7 +181,7 @@ ARTICLE = {
 <tr><td><strong>下田2日券</strong></td><td>1,350円</td><td>下田の町、龍宮窟、爪木崎、白浜[[s:tokaibus_freepass]]</td></tr>
 <tr><td><strong>石廊崎・下田2日券</strong></td><td>2,850円</td><td>上の範囲に加えて、石廊崎、弓ヶ浜、下賀茂、河津、稲取[[s:tokaibus_freepass]]</td></tr>
 </tbody></table></div>
-<p>どちらのきっぷも、下田駅前の東海バスの案内所で買えます。毎日8:45〜12:30に開いていて[[s:tokaibus_freepass]]、そのあと1時間閉まり、13:30〜17:00にまた開きます[[s:tokaibus_freepass]]。外れの浜へのバスは本数が多くないので、出かける前に帰りの時刻を調べておくと安心です。1日にいくつもの浜を回りたいなら、電動自転車かレンタカーがあると、ぐっと動きやすくなります。</p>
+<p>どちらのきっぷも、下田駅前の東海バスの案内所で買えます。毎日8:45〜17:00に開いていて、12:30〜13:30は昼休みです[[s:tokaibus_freepass]]。外れの浜へのバスは本数が多くないので、出かける前に帰りの時刻を調べておくと安心です。1日にいくつもの浜を回りたいなら、電動自転車かレンタカーがあると、ぐっと動きやすくなります。</p>
 
 <h2>伊豆半島はいつ行くのがいいか</h2>
 <p>下田で泳ぐなら、2026年の期間は7月中旬から8月下旬でした。静かに過ごしたいなら、私たちはその前後の月を選びます。</p>
@@ -207,9 +207,9 @@ ARTICLE = {
     ("伊豆へ行くのに、ジャパン・レール・パスは使えますか",
      "伊東と三島までの JR で使えます。伊東〜伊豆急下田と三島〜修善寺は、踊り子に乗ったままでも運賃と料金を別に払います[[s:jrp_route]]。7日間の普通車用は、オンラインで50,000円です（2026年11月時点）[[s:jrp_price]]。"),
     ("修善寺へは、どう行くのがいいですか",
-     "たいていは、新幹線で三島へ出るのがいいです。こだまで50〜53分です[[s:jre_tt_tokyo]]。三島からは伊豆箱根鉄道で、修善寺まで約35分、550円です[[s:izuhakone_tt,izuhakone_fares]]。乗り換えたくなければ、直通の「踊り子」も毎日2本（9:00・12:00発）あり、約2時間です[[s:jre_tt_tokyo]]。"),
+     "多くの人には、新幹線で三島へ出るのがいちばん楽だと私たちは思います。こだまで50〜53分です[[s:jre_tt_tokyo]]。三島からは伊豆箱根鉄道で、修善寺まで約35分、550円です[[s:izuhakone_tt,izuhakone_fares]]。乗り換えたくなければ、直通の「踊り子」も毎日2本（9:00・12:00発）あり、約2時間です[[s:jre_tt_tokyo]]。"),
     ("東京から下田へのバスはありますか",
-     "東海バスは走らせていません。東海バスの高速バスは、かわりに三島へ行きます。新宿からの「三島エクスプレス」は2,300円からです[[s:tokaibus_highway]]。下田へは、電車がいちばん簡単です。"),
+     "東海バスは走らせていません。東海バスの高速バスで行けるのは三島までです。新宿からの「三島エクスプレス」は2,300円からです[[s:tokaibus_highway]]。下田へは、電車がいちばん簡単です。"),
     ("伊豆半島で車は必要ですか",
      "下田の町と近くの浜なら要りません。白浜へは駅からバスで約15分で[[s:jnto]]、東海バスの「下田2日券」は1,350円です[[s:tokaibus_freepass]]。車があると助かるのは、浜から浜へ動きたいときくらいです。"),
   ],

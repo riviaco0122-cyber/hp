@@ -1,7 +1,7 @@
 ARTICLE = {
  "id": "akiya-try-first", "slug": "akiya-try-before-you-buy", "topic": "own", "place": None, "also": ["live"],
  "photo": ("yaizu-engawa", "Old wooden house with a long veranda and an overgrown garden", "An older house in Iwashigashima, Yaizu, before renovation."),
- "published": "2026-11-14", "updated": "2026-11-20",
+ "published": "2026-11-14", "updated": "2026-11-16",
  "kicker": "Own a home",
  "h1": "Buying an akiya in Japan? Live in one for a month first",
  "seo_title": "Buying an Akiya in Japan? Live in One for a Month First",
@@ -16,12 +16,12 @@ ARTICLE = {
    "From abroad, a monthly rental or a guesthouse with monthly rates is usually more realistic than a town’s trial home.",
  ],
  "body": """
-<p>An akiya (空き家) is simply a house that nobody lives in, and Japan has a lot of them. The government’s housing survey counted 9.0 million in October 2023 [[s:stat_housing2023]]. That’s a record 13.8% of all the homes in the country. About 3.86 million of them weren’t for rent or sale, and weren’t anyone’s second home either [[s:stat_housing2023]]. That group grew by 369,000 since 2018, and in our experience it’s the one people mean when they talk about Japan’s abandoned houses.</p>
+<p>An akiya (空き家) is simply a house that nobody lives in, and Japan has a lot of them. The government’s housing survey counted 9.0 million in October 2023 [[s:stat_housing2023]]. That’s a record 13.8% of all the homes in the country. About 3.86 million of them weren’t for rent or sale, and weren’t anyone’s second home either [[s:stat_housing2023]]. That group has grown by 369,000 since 2018, and in our experience it’s the one people mean when they talk about Japan’s abandoned houses.</p>
 
 <h2>Can foreigners buy an akiya?</h2>
 <p>Yes, non-residents can buy. What’s changed is the paperwork, and the Ministry of Finance’s rules spell it out. Since April 2026, if you buy property in Japan while living abroad, you have to report it to the ministry under the Foreign Exchange Act, even if it’s a home you plan to live in [[s:mof_fefta2026,mof_realprop_faq]]. Real Estate Japan, a property site for foreign buyers, puts it simply: you don’t need to live in Japan to buy [[s:rej]]. And since 5 October 2026, every buyer, Japanese or not, gives their nationality when the purchase is registered [[s:moj_nationality]].</p>
 <p>The rules are still moving, though. A bill before the Diet would create new zones within about 1 km of some defence and coast guard sites, and on uninhabited border islands [[s:cao_land_bill,cao_land_bill_outline]]. Inside those zones, every transfer of land ownership would need the government’s approval in advance. The changes would take effect within 18 months of the act being promulgated [[s:cao_land_bill_outline]]. As of mid-November 2026, the bill was still before the House of Representatives, so it isn’t law yet [[s:shugiin_bill18]]. If a house you like is near one of those sites, that bill is the one to keep an eye on.</p>
-<p>We’d also treat a house and a visa as two separate questions. If you’re hoping that owning a home will help you stay in Japan longer, an administrative scrivener (<em>gyoseishoshi</em>) who handles visas can tell you before you count on it. And with the rules changing this fast, we think it’s sensible to have a lawyer or judicial scrivener (<em>shiho shoshi</em>) look at your own case before you sign.</p>
+<p>We’d also treat a house and a visa as two separate questions. If you’re hoping that owning a home will help you stay in Japan longer, it’s worth checking with an administrative scrivener (<em>gyoseishoshi</em>) who handles visas before you count on it. And with the rules changing this fast, we think it’s sensible to have a lawyer or judicial scrivener (<em>shiho shoshi</em>) look at your own case before you sign.</p>
 
 <h2>Why live in the town before you buy?</h2>
 <p>Buying the house is the easy part. What you’re really committing to is the town, and a listing can only tell you so much: the price, the floor plan, a few photos. The things that decide whether you’ll be happy there only show up once you’ve lived there for a while.</p>
@@ -43,8 +43,8 @@ ARTICLE = {
 <p>The old two-wire electrics couldn’t run the air conditioner, the fridge and the microwave all at once, so we had to ask guests not to use them together. Upgrading the wiring costs real money, so it’s something to find out before you budget, not after. Getting broadband put in took more than two months because it was the busy season, and we got by on a plug-in home router until then.</p>
 <p>The wiring and the wait for broadband are small examples of a bigger point. With a cheap old house, the asking price is only part of what you’ll pay. Renovation, taxes, insurance and upkeep come on top, and they vary so much from one building to the next that only written quotes will tell you the real figure.</p>
 
-<h2>Can you stay long enough to get to know a town without a work visa?</h2>
-<p>For most people, yes. Two ways of staying work without a work or residence visa, and both give you plenty of time to settle into a town and see how it suits you. The rules below are as of November 2026.</p>
+<h2>Which ways of staying let you try out a town properly?</h2>
+<p>For most people, there are two: a visa-free short stay and the six-month digital nomad status. Neither needs a work visa or a move to Japan, and both give you plenty of time to settle into a town and see how it suits you. The rules below are as of November 2026.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>Way to stay</th><th>How long</th><th>Who it’s for</th></tr></thead>
 <tbody>
@@ -68,7 +68,7 @@ ARTICLE = {
 <p>Some cities spell it out. Shizuoka City’s long-term trial flats are city-run apartments you can rent for six months to under two years. They’re only for people who live outside Shizuoka Prefecture and have decided, or are preparing, to move to the city. If you’re not Japanese, you also need permanent or long-term residence, special permanent residence, or to be the spouse or child of a Japanese national (August 2026) [[s:shizuoka_long_trial]]. So a tourist or digital nomad stay won’t get you in.</p>
 <p>That’s why, if you’re coming from abroad, we think a monthly rental or a guesthouse is usually the realistic choice. Our [[l:monthly-rental|guide to monthly rentals in Japan]] explains how they work. If you’ve set your heart on a trial home, the town’s relocation office is the first call to make.</p>
 <p>Shimoda City does it differently. Under rules in force since April 2026, it pays half the rate at designated hotels for people thinking of moving there [[s:shimoda_stay_subsidy]]. The help covers up to 10 nights, at up to ¥4,000 a night [[s:shimoda_stay_subsidy]]. The catch is that you need to be registered as living in Japan outside Shizuoka Prefecture, so it won’t help if you’re coming from abroad [[s:shimoda_stay_subsidy]].</p>
-<p>Towns within easy reach of Tokyo are the simplest to test, because getting there and back is no big trip. Shimoda, on the [[l:izu|Izu Peninsula]], is one of them: the daily direct trains from Tokyo Station take 2 hours 29–44 minutes [[s:jre_tt_tokyo]]. That’s the November 2026 timetable, and our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]] has the details.</p>
+<p>Towns within easy reach of Tokyo are the simplest to test, because getting there and back is easy. Shimoda, on the [[l:izu|Izu Peninsula]], is one of them: direct trains from Tokyo Station run every day and take about two and a half hours (2 hours 29 to 44 minutes on the November 2026 timetable) [[s:jre_tt_tokyo]], and our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]] has the details.</p>
 <p>If Shimoda is on your list, we run a small place there called <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, which can be a base while you get a feel for the town. It’s a renovated flat of about 40 m² in an apartment building in the old town, 8 minutes’ walk from Izukyu-Shimoda Station [[s:node_room,node_access]]. Our site describes it as handy for medium and long stays [[s:node_site]], and it’s licensed under Japan’s Hotel Business Act. Most of our guests so far have come from Europe and North America, and some come to work remotely.</p>
 [[img:node-shimoda|Living room with a sofa, low table and sliding paper screens|The living room of NODE Shimoda, our flat in Shimoda’s old town.]]
 
@@ -100,7 +100,7 @@ ARTICLE = {
   "h1": "空き家を買う前に、まず1か月住んでみる",
   "dek": "2023年、日本には約900万戸の空き家があり、日本に住んでいない人も買えます。でも、買うことで引き受けるのは町のほう。そこで1か月暮らすと、物件情報よりずっと多くのことが分かります。",
   "review": [
-   "2026-11-20 見せ方のリライト: 友人が話すような語り口に直しました。①1文に数字や条件を詰めた文（空き家の数・下田市の補助・東京からの所要時間・FAQ の2問）を2〜3文に分け、詰め込みすぎの文を6件から0件にしました ②在留資格の節の見出しを「1か月」に縛られない「就労ビザなしで、町を知るのに十分な期間いられるか」にし、最初の文で答えを言う形に ③静岡市のお試し住宅の段落を2つに分け、「だから海外からならマンスリーか宿」という私たちの見方を独立させました。法案の段落に「気になる家がそうした施設の近くなら気にかけておきたい」と読み手にとっての意味を1文足しました ④命令文（ask…）を「聞いておくと安心」の形に。事実・数値・出典・リンク・体験の中身は変えていません（空き家の数の「10月1日」を「10月」に、FAQ の答えから調査日を省いただけです）。人に確かめてほしい点: なし",
+   "2026-11-20 見せ方のリライト: 友人が話すような語り口に直しました。①1文に数字や条件を詰めた文（空き家の数・下田市の補助・東京からの所要時間・FAQ の2問）を2〜3文に分け、詰め込みすぎの文を6件から0件にしました ②在留資格の節の見出しを「1か月」に縛られない「町をじっくり試すには、どんな滞在のしかたがあるか」にし、最初の文で2つの方法を言う形に ③静岡市のお試し住宅の段落を2つに分け、「だから海外からならマンスリーか宿」という私たちの見方を独立させました。法案の段落に「気になる家がそうした施設の近くなら気にかけておきたい」と読み手にとっての意味を1文足しました ④命令文（ask…）を「聞いておくと安心」の形に。事実・数値・出典・リンク・体験の中身は変えていません（空き家の数の「10月1日」を「10月」に、FAQ の答えから調査日を省いただけです）。人に確かめてほしい点: なし",
    "【2026-11-19 公開前の導線の直し】①「1か月泊まれる場所」の節にマンスリーの部屋の記事へのリンク、ビザの表の下にデジタルノマドビザの記事へのリンクを1本ずつ足しました ②関連記事の先頭にマンスリーの部屋の記事を入れました（3本） ③一覧のカードの「冬の寒さ」を「冷暖房に実際いくらかかるか」に替え、本文・In short とそろえました。事実・出典は変えていません",
    "【2026-11-16 品質保証部（91点・ゲート違反1）の指摘での直し】変えた点: ①【ゲート】NODE Shimoda の段落の「上の宿の選択肢の1つ」をやめ、表の「月割のある宿（1か月以上）」の行とつながらないようにしました。「町の様子をつかむあいだの拠点にしてもらえる」「公式サイトでは中長期の滞在にも便利な宿として紹介」までにし、月割や1か月以上泊まれるとは書いていません ②下田市の補助に「2026年4月施行の要綱」と時点を足し、1〜2文に短くしました（1泊4,000円までと、海外からは使えないことだけ。11〜30泊の80,000円は本文から外しました） ③法案の施行を「公布から18か月以内（within 18 months of the act being promulgated）」にそろえ、law の重なりをなくしました ④法案の段落の時点を「2026年11月中旬」の1回だけにしました（冒頭の「2026年11月時点で」を削除）",
    "【2026-11-16 手離れ（黄色い枠をすべてなくした。playbook 3-2）】変えた点: ①【事実の追加】土地の法案: 衆議院の議案審議経過で「2026年11月中旬の時点で、まだ衆議院で審議中。法律になっていない」と書きました（出典 shugiin_bill18。10月23日受理・11月10日に内閣委員会に付託、成立・公布はまだ）。施行は「公布から18か月（1年6か月）以内」に英語版・日本語版ともそろえました ②【事実の変更】ビザなしの短期滞在: 出典を外務省（この環境から開けない mofa）から日本政府観光局の入国・ビザのページ（jnto_visa）に替え、「15日や30日の国もある」→「15日・30日・180日の国もある」に。「パスポートに条件が付く場合もある」は出典にないので削り、「この滞在では報酬を得る仕事はできない」を足しました ③デジタルノマドは編集長が出入国在留管理庁のページで確かめた内容と一致しているので、本文はそのままで枠だけ外しました ④家と在留資格の関係は公的な出典が見つからないため、断定は書かず、「家とビザは別の問題として考え、あてにする前に行政書士に聞く」という私たちの見方だけを残しました ⑤【事実の追加】伊豆の町のお試し住宅（伊豆市・南伊豆町）は公式ページで確かめられなかったので書いていません。代わりに、下田市の移住希望者の滞在費補助（市が指定する宿の宿泊料の半分、10泊まで1泊4,000円まで、11〜30泊続けてなら80,000円まで）を書き、対象が「静岡県外ですでに日本に住民登録があり、移住相談に登録した人」なので、海外から来る人は使えないと分かるようにしました（出典 shimoda_stay_subsidy。2026年3月改正の要綱） ⑥【事実の変更】NODE Shimoda を「古い家（older house）」→「旧町内のアパートの一室（約40㎡）を改装したもの、伊豆急下田駅から徒歩8分」に（公式サイトの客室・アクセスのページ）。「長めの滞在にも向く」は公式サイトの「中長期の滞在にも便利」にもとづき、30泊以上を受けるとは書いていません。写真の説明も「私たちの部屋」に ⑦体験の節の「下田の古い家を借りた」→「下田の古い部屋（older flat）を借りた」、1週目の「私たちの家の古い配線」→「下田の私たちの部屋の古い配線」に（experience.md 3-2 で NODE Shimoda と同じ施設と確認済み）。一軒家と読める言い方をなくしました ⑧宿の行の「古い家での暮らしを試せる」→「その町での暮らしを試せる」、1週目の「古い家に泊まっているなら」→「古い建物に泊まっているなら」 ⑨出典: shugiin_bill18・jnto_visa・shimoda_stay_subsidy・node_access を新しく（SOURCES_NEW）、node_site・node_room を使い、mofa を外しました",
@@ -121,12 +121,12 @@ ARTICLE = {
     "海外から来るなら、自治体のお試し住宅より、マンスリーの部屋か月割のある宿のほうが、たいてい現実的です。",
   ],
   "body": """
-<p>akiya（空き家）は、ひとことで言えば、誰も住んでいない家のことで、日本にはとてもたくさんあります。国の住宅の調査では、2023年10月時点で900万戸[[s:stat_housing2023]]。日本の住宅の13.8%にあたり、過去最高です。そのうち約386万戸は、貸すためでも売るためでもなく、別荘でもない家でした[[s:stat_housing2023]]。この家は2018年から36万9千戸増えていて、私たちの感覚では、「日本の放置された家」と言うとき、たいていはこの家のことを指しています。</p>
+<p>akiya（空き家）は、ひとことで言えば、誰も住んでいない家のことで、日本にはとてもたくさんあります。国の住宅の調査では、2023年10月時点で900万戸[[s:stat_housing2023]]。日本の住宅の13.8%にあたり、過去最高です。そのうち約386万戸は、貸すためでも売るためでもなく、別荘でもない家でした[[s:stat_housing2023]]。こうした家は2018年から36万9千戸増えていて、私たちの感覚では、「日本の放置された家」と言うとき、たいていはこの家のことを指しています。</p>
 
 <h2>外国人は空き家を買えるのか</h2>
-<p>買えます。日本に住んでいない人も買えます。変わったのは手続きのほうで、何をすればいいかは財務省の決まりに書かれています。2026年4月から、海外に住んだまま日本の不動産を買うと、住むための家でも、外為法にもとづいて財務省に報告することになりました[[s:mof_fefta2026,mof_realprop_faq]]。外国からの買い手向けの不動産サイト Real Estate Japan も、買うのに日本に住んでいる必要はないと、あっさり書いています[[s:rej]]。それから2026年10月5日からは、日本人も含めて、買った人はみな登記のときに国籍を届け出ます[[s:moj_nationality]]。</p>
+<p>買えます。日本に住んでいない人も買えます。変わったのは手続きのほうで、何をすればいいかは財務省の決まりに書かれています。2026年4月から、海外に住んだまま日本の不動産を買うと、住むための家でも、外為法にもとづいて財務省に報告することになりました[[s:mof_fefta2026,mof_realprop_faq]]。外国からの買い手向けの不動産サイト Real Estate Japan も、買うのに日本に住んでいる必要はないと、はっきり書いています[[s:rej]]。それから2026年10月5日からは、日本人も含めて、買った人はみな登記のときに国籍を届け出ます[[s:moj_nationality]]。</p>
 <p>ただ、決まりはまだ動いています。国会に出ている法案は、一部の防衛関係施設と海上保安庁の施設の周り（おおむね1km）と、無人の国境離島に、新しい区域をつくる内容です[[s:cao_land_bill,cao_land_bill_outline]]。その区域で土地の所有権を移すときは、すべて事前に国の許可が要ります。施行は、公布から1年6か月以内です[[s:cao_land_bill_outline]]。2026年11月中旬の時点で、法案はまだ衆議院で審議中で、法律にはなっていません[[s:shugiin_bill18]]。気になる家がそうした施設の近くにあるなら、この法案は気にかけておきたいところです。</p>
-<p>家とビザは、別々の問題として考えたほうがいいと私たちは思います。家を持つことで日本に長くいられるようになると期待しているなら、あてにする前に、在留資格（ビザ）の手続きを扱う行政書士に聞けば教えてもらえます。それに、決まりがこれだけ速く変わっているので、契約の前に、自分の場合を弁護士や司法書士に見てもらうのが賢明だと思います。</p>
+<p>家とビザは、別々の問題として考えたほうがいいと私たちは思います。家を持つことで日本に長くいられるようになると期待しているなら、あてにする前に、在留資格（ビザ）の手続きを扱う行政書士に確かめておくと安心です。それに、決まりがこれだけ速く変わっているので、契約の前に、自分の場合を弁護士や司法書士に見てもらうのが賢明だと思います。</p>
 
 <h2>なぜ、買う前にその町で暮らすのか</h2>
 <p>家を買うこと自体は、簡単なほうです。本当に引き受けるのは町のほうで、物件情報から分かるのは、価格と間取りと何枚かの写真くらい。そこで楽しく暮らせるかを決めることは、しばらく住んでみて初めて見えてきます。</p>
@@ -148,8 +148,8 @@ ARTICLE = {
 <p>古い2芯の配線では、エアコンと冷蔵庫と電子レンジを同時に使えず、ゲストに同時に使わないようお願いすることになりました。配線をやり直すにはそれなりの費用がかかるので、予算を組む前に知っておきたいことです。インターネットの回線工事は、繁忙期だったこともあって申し込みから2か月以上かかり、それまでは置き型のホームルーターでしのぎました。</p>
 <p>配線と回線工事の待ちは、もっと大きな話の小さな例です。安い古い家では、売り出し価格は、かかるお金の一部にすぎません。改修、税金、保険、維持費が上乗せされ、建物ごとに大きく変わるので、本当の金額は書面の見積もりを取って初めて分かります。</p>
 
-<h2>就労ビザなしで、町を知るのに十分な期間いられるか</h2>
-<p>多くの人は、いられます。就労や居住のビザがなくても使える方法が2つあり、どちらも、町に落ち着いて自分に合うかを確かめるのに十分な期間があります。下の条件は2026年11月時点のものです。</p>
+<h2>町をじっくり試すには、どんな滞在のしかたがあるか</h2>
+<p>多くの人には2つあります。ビザなしの短期滞在と、6か月のデジタルノマドの在留資格です。どちらも就労ビザや日本への移住は要らず、町に落ち着いて自分に合うかを確かめるのに十分な期間があります。下の条件は2026年11月時点のものです。</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>滞在のしかた</th><th>期間</th><th>対象</th></tr></thead>
 <tbody>
@@ -187,7 +187,7 @@ ARTICLE = {
   "after_faq": '<p class="fine">この記事は一般的な情報で、法律や在留手続きの助言ではありません。</p>',
   "faq": [
     ("外国人は日本の不動産を買えますか",
-     "買えます。日本に住んでいない人も買うことができ、2026年4月からは、外為法にもとづいて財務省に報告することになりました。買った人はみな、登記のときに国籍も届け出ます[[s:mof_fefta2026,moj_nationality]]。決まりが変わりつつあるので、自分の場合は弁護士や司法書士に見てもらえます。"),
+     "買えます。日本に住んでいない人も買うことができ、2026年4月からは、外為法にもとづいて財務省に報告することになりました。買った人はみな、登記のときに国籍も届け出ます[[s:mof_fefta2026,moj_nationality]]。決まりが変わりつつあるので、自分の場合は弁護士や司法書士に見てもらうと安心です。"),
     ("日本で家を持つと、ビザを取りやすくなりますか",
      "あてにしないほうがいいと私たちは思います。家とビザは別々の問題として考えているので、長く住むことも計画に入っているなら、買う前に、在留資格（ビザ）の手続きを扱う行政書士に聞いてみてください。"),
     ("日本の安い家は、本当に安いのですか",
