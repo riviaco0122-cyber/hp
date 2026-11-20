@@ -5,8 +5,8 @@
 
 # ---------------------------------------------------------------- Noki（海外向けの英語メディア）の紹介
 # アキヤドの紹介（media_intro）と同じ形で、トップに置く（人の方針 2026-11-19）。Noki は tools/okaeri/ が /noki に作る
-NOKI_INTRO = [("/noki/stay.html", "長めに|旅をしたい方へ", "下田・伊豆への行き方や、|土地の食べもの"),
-              ("/noki/live.html", "日本で|暮らしてみたい方へ", "部屋の借り方や、|デジタルノマドビザのこと"),
+NOKI_INTRO = [("/noki/stay.html", "ゆっくり|旅したい方へ", "伊豆・下田への行き方、|旬の食べもの"),
+              ("/noki/live.html", "日本で|暮らしたい方へ", "部屋の借り方、|ビザのこと"),
               ("/noki/own.html", "日本で|家を持ちたい方へ", "空き家を買う前に|知っておきたいこと")]
 
 
@@ -21,8 +21,8 @@ def noki_intro():
           <div class="mintro__text">
             <span class="eyebrow reveal">Media</span>
             <h2 class="section-title section-title--logo reveal"><a href="/noki" class="tlogo" hreflang="en" aria-label="Noki（海外の方向けの英語メディア）"><img class="tlogo__mark" src="/noki/assets/favicon.svg" alt="" width="40" height="40"><span class="tlogo__ja" translate="no" lang="en">Noki</span></a><span class="tlogo__sub">海外の方向けの英語メディア</span></h2>
-            <p class="mintro__copy reveal" data-delay="1">旅行よりも長く、<br>日本の地方で過ごす。</p>
-            <p class="mintro__lead reveal" data-delay="1">海外から日本に来る方に向けた、英語のメディアです。<br class="pc-only">長めの旅から、季節ごとの暮らし、空き家を買うことまで、<br class="pc-only">下田で宿を営む私たちが調べてまとめています。</p>
+            <p class="mintro__copy reveal" data-delay="1">日本を旅する。暮らす。<br>家を持つ。</p>
+            <p class="mintro__lead reveal" data-delay="1">自ら宿を運営する私たちが、日本の地方での旅や暮らしについて、<br class="pc-only">海外の方に英語でお伝えするメディアです。</p>
             <div class="mintro__btns reveal" data-delay="2">
               <a href="/noki" class="btn" hreflang="en">Noki を見る（英語） {ARROW}</a>
             </div>
