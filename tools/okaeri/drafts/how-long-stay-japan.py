@@ -29,7 +29,7 @@ ARTICLE = {
  "h1": "How long can you stay in Japan? 90 days, and the ways to stay longer",
  "seo_title": "How Long Can I Stay in Japan? 90 Days and Longer Stays",
  "description": "Most visa-free visitors can stay in Japan for up to 90 days, and extensions need good reason. For six months or a year, pick the right status before you come.",
- "dek": "Visa-free visitors can usually stay up to 90 days, though some nationalities get 15, 30 or 180. For six months or a year, pick the right status before you come.",
+ "dek": "Visa-free visitors usually get up to 90 days, though some nationalities may get 15, 30 or 180. For six months or a year, pick the right status before you come.",
  "card": "Visa-free visitors usually get up to 90 days, though JNTO notes some nationalities may be granted 15, 30 or 180. Extensions need good reason and every entry is checked again, so for six months or a year it’s better to choose the right status before you travel.",
  "keywords": [("how long can i stay in japan", "170", "3"), ("how long can you stay in japan", "—", "—"),
               ("japan visa free stay / japan 90 day rule", "—", "—"), ("extend stay in japan / stay in japan for 6 months", "—", "—")],
@@ -60,13 +60,13 @@ ARTICLE = {
 <h2>Which status fits six months or a year?</h2>
 <p>If you aren’t taking a job here, there are two main routes past 90 days. One is the digital nomad status, for up to six months. The other is a long stay for sightseeing and recreation, for up to a year.</p>
 <div class="tablewrap"><table class="free">
-<thead><tr><th>Status</th><th>Period granted on entry</th><th>Who it’s for</th><th>Residence card</th></tr></thead>
+<thead><tr><th>Status</th><th>How long</th><th>Who it’s for</th><th>Residence card</th></tr></thead>
 <tbody>
 <tr><td><strong>Temporary Visitor</strong>, visa-exempt</td><td>Usually up to 90 days. JNTO notes some nationalities may be granted 15, 30 or 180 days [[s:jnto_visa]]</td><td>Short stays such as sightseeing. No paid work [[s:egov_immig_act,jnto_visa]]</td><td>No [[s:egov_immig_act]]</td></tr>
 <tr><td><strong>Digital nomad</strong> (Designated Activities)</td><td>Up to six months, with no extension [[s:isa_nomad_en]]</td><td>Remote workers with an employer or clients outside Japan who meet the income and insurance rules [[s:isa_nomad_en]]</td><td>No [[s:egov_immig_act,egov_immig_rules]]</td></tr>
 <tr><td><strong>Long stay for sightseeing and recreation</strong> (Designated Activities)</td><td>A stay of up to one year [[s:egov_nhi_rules]]</td><td>People aged 18 or over staying for sightseeing and recreation, and a spouse who comes with them [[s:egov_nhi_rules]]</td><td>Yes, if you’re given more than three months [[s:egov_immig_act,egov_immig_rules]]</td></tr>
 </tbody></table></div>
-<p>Study, work and family statuses work differently. For those, the law lets you apply in advance for a Certificate of Eligibility from the Minister of Justice, and someone at the school or company taking you on can apply for you [[s:egov_immig_act]]. The visa itself is issued by the Ministry of Foreign Affairs [[s:jnto_nomad]].</p>
+<p>Study, work and family statuses work differently. For those, the law lets you apply in advance for a Certificate of Eligibility from the Minister of Justice, and someone at the school or company taking you on can apply for you [[s:egov_immig_act]].</p>
 <p>The digital nomad status suits people who want to keep working for an employer or clients abroad. It needs ¥10 million a year in income [[s:isa_nomad_en]], and our [[l:digital-nomad|guide to Japan’s digital nomad visa]] covers who qualifies and what it’s like to live here without a residence card.</p>
 <p>The long stay for sightseeing is less well known. It does come with a residence card for stays of more than three months, but it still doesn’t let you join National Health Insurance [[s:egov_immig_act,egov_immig_rules,egov_nhi_rules]], so you’ll want private health cover. Its other conditions, such as which passports qualify and what you need to show, are best checked with a Japanese embassy or consulate in your country.</p>
 <p>For many people, though, 90 days is plenty for a first season. It’s enough to [[l:akiya-try-first|live in a town for a month or two before you buy a house]]. Our guide to [[l:monthly-rental|renting a place by the month]] covers where you’d stay.</p>
@@ -107,13 +107,13 @@ ARTICLE = {
    ("What happens if I overstay in Japan?",
     "Overstaying is a ground for deportation and a crime [[s:egov_immig_act]]. A first deportation keeps you out for five years, while leaving under a departure order usually means one year [[s:egov_immig_act]]."),
  ],
- "sources": ["jnto_visa", "egov_immig_act", "egov_immig_rules", "egov_nhi_rules", "isa_nomad_en", "jnto_nomad", "shugiin_bill221_20", "egov_immig_act_jesta", "jta_jesta"],
+ "sources": ["jnto_visa", "egov_immig_act", "egov_immig_rules", "egov_nhi_rules", "isa_nomad_en", "shugiin_bill221_20", "egov_immig_act_jesta", "jta_jesta"],
  "related": ["digital-nomad", "monthly-rental", "akiya-try-first"],
  "ja": {
   "h1": "日本に何日いられる？ 90日と、もっと長くいる方法",
   "dek": "ビザなしの滞在は、たいてい最長90日です。国籍によっては15日・30日・180日のこともあります。半年や1年いたいなら、来る前に合った在留資格を選びましょう。",
   "review": [
-   "【2026-11-20 品質保証部の1回目（86点・ゲート違反3）を受けた直し（執筆部）】変えた点: ①【事実の変更】留学・仕事・家族の在留資格の1文: 「来る前に大使館・総領事館で手続き」をやめ、入管法 第7条の2（現行。e-Gov で条文を確認）どおり「法務大臣に在留資格認定証明書を前もって申請でき、受け入れる学校や会社の人が代わりに申請できる」と、「ビザそのものは外務省が出す」（jnto_nomad）にしました ②【事実の変更】短期滞在の日数: JNTO の言い方にそろえ、「たいてい最長90日。国籍によっては15日・30日・180日が認められることもある」にしました（dek・In short・本文・表・FAQ1。akiya-try-first・monthly-rental と同じ）。施行規則の「90日・30日・15日以内」は本文から外しました。表の列名は「入国のときに決まる期間（Period granted on entry）」です ③ja 本文の「ソウルへ短い旅」の文を消しました（英語版の「a short trip abroad」の文も、下の④の形に置き換えました） ④出て戻る節: 「1年に上限はあるか」に、「法律が定めているのは審査そのもので、入国のたびに審査官が第7条の上陸の条件（滞在の目的が本当か など）で判断する」までを出典つきで書き、出入りをくり返す前提の計画はすすめない形にしました。「上限はない」とは書いていません。FAQ3 も同じ形にしました ⑤年収1,000万円に出典（isa_nomad_en）を付けました ⑥リモートワーク: 「日本で報酬を受ける仕事はできない」をやめ、法律の言い方（許可なしに報酬を受ける活動はできない）で始め、「お金が海外から払われるから大丈夫、とは考えないほうがいい」を足しました ⑦節3の「In our view」を1回にしました",
+   "【2026-11-20 品質保証部の1回目（86点・ゲート違反3）を受けた直し（執筆部）】変えた点: ①【事実の変更】留学・仕事・家族の在留資格の1文: 「来る前に大使館・総領事館で手続き」をやめ、入管法 第7条の2（現行。e-Gov で条文を確認）どおり「法務大臣に在留資格認定証明書を前もって申請でき、受け入れる学校や会社の人が代わりに申請できる」にしました ②【事実の変更】短期滞在の日数: JNTO の言い方にそろえ、「たいてい最長90日。国籍によっては15日・30日・180日が認められることもある」にしました（dek・In short・本文・表・FAQ1。akiya-try-first・monthly-rental と同じ）。施行規則の「90日・30日・15日以内」は本文から外しました。表の列名は「期間（How long）」です ③ja 本文の「ソウルへ短い旅」の文を消しました（英語版の「a short trip abroad」の文も、下の④の形に置き換えました） ④出て戻る節: 「1年に上限はあるか」に、「法律が定めているのは審査そのもので、入国のたびに審査官が第7条の上陸の条件（滞在の目的が本当か など）で判断する」までを出典つきで書き、出入りをくり返す前提の計画はすすめない形にしました。「上限はない」とは書いていません。FAQ3 も同じ形にしました ⑤年収1,000万円に出典（isa_nomad_en）を付けました ⑥リモートワーク: 「日本で報酬を受ける仕事はできない」をやめ、法律の言い方（許可なしに報酬を受ける活動はできない）で始め、「お金が海外から払われるから大丈夫、とは考えないほうがいい」を足しました ⑦節3の「In our view」を1回にしました",
    "【2026-11-20 新規の下書き（執筆部）】書いた点: 1記事1主張は「何日いられるかはパスポートと在留資格で決まる。90日を超えたいなら、出入国をくり返すより、来る前に合った在留資格を選ぶ」。h2 は7つで、すべて疑問形です。制度の事実は、開いて確かめた条文（e-Gov の入管法・施行規則は2026年10月1日施行の版、国保法施行規則）、JNTO、衆議院の議案審議経過、観光庁の資料によります。延長は「相当の理由があるときに限り許可」（第21条）と、申請中の2か月の猶予（第20条第6項。30日以下の人は除く）、日本の中での変更は「やむを得ない特別の事情」があるときだけ（第20条第3項）。地図の表は3行（短期滞在／デジタルノマド／観光・保養の長期滞在）で、長期滞在は「最長1年・18歳以上・同行する配偶者・3か月を超えれば在留カード・国民健康保険に入れない」だけを書き、ほかの条件は大使館・総領事館へ。オーバーステイは罰則と上陸拒否の期間の表（2026年10月1日施行の版）と出国命令の条件。JESTA は成立・公布・観光庁の予定（2028年度）・施行の期限（2029年3月31日までの政令で定める日）・2026年11月時点で未施行まで。NODE Shimoda と自社の体験には触れていません",
    "【人に確かめてほしい点】①ビザ・在留・JESTA の記述すべて（playbook 6章。2026年11月時点）。特に、観光・保養の長期滞在に「3か月を超えて決まれば在留カードが出る」と書いた点は、入管法 第19条の3・施行規則 第19条の5 の条文の読みによります",
    "【書かなかったこと（公式の出典を開けないため）】ワーキングホリデー、取り決めで最長6か月まで延長できる国、「1年に180日」、短期滞在の更新が認められる例（病気など）、観光・保養の長期滞在の預貯金・対象国・保険・最初の期間と更新・申請先、査証免除の国・地域の数、短期滞在中のリモートワークの公式の扱い",
@@ -146,13 +146,13 @@ ARTICLE = {
 <h2>半年や1年なら、どの在留資格が合うのか</h2>
 <p>日本で仕事に就くのでなければ、90日を超える道は主に2つです。1つは最長6か月のデジタルノマドの在留資格、もう1つは最長1年の観光・保養の長期滞在です。</p>
 <div class="tablewrap"><table class="free">
-<thead><tr><th>在留資格</th><th>入国のときに決まる期間</th><th>対象</th><th>在留カード</th></tr></thead>
+<thead><tr><th>在留資格</th><th>期間</th><th>対象</th><th>在留カード</th></tr></thead>
 <tbody>
 <tr><td><strong>短期滞在</strong>（査証免除）</td><td>たいてい最長90日。JNTO によると、国籍によっては15日・30日・180日[[s:jnto_visa]]</td><td>観光などの短い滞在。報酬を受ける仕事はできない[[s:egov_immig_act,jnto_visa]]</td><td>出ない[[s:egov_immig_act]]</td></tr>
 <tr><td><strong>デジタルノマド</strong>（特定活動）</td><td>最長6か月。延長なし[[s:isa_nomad_en]]</td><td>日本の外の雇用主や取引先のために働くリモートワーカーで、収入と保険の条件を満たす人[[s:isa_nomad_en]]</td><td>出ない[[s:egov_immig_act,egov_immig_rules]]</td></tr>
 <tr><td><strong>観光・保養の長期滞在</strong>（特定活動）</td><td>最長1年の滞在[[s:egov_nhi_rules]]</td><td>観光・保養のために滞在する18歳以上の人と、同行する配偶者[[s:egov_nhi_rules]]</td><td>3か月を超えて決まれば出る[[s:egov_immig_act,egov_immig_rules]]</td></tr>
 </tbody></table></div>
-<p>留学・仕事・家族のための在留資格は、仕組みが違います。これらは、法務大臣に在留資格認定証明書を前もって申請でき、受け入れる学校や会社の人が代わりに申請することもできます[[s:egov_immig_act]]。ビザそのものは外務省が出します[[s:jnto_nomad]]。</p>
+<p>留学・仕事・家族のための在留資格は、仕組みが違います。これらは、法務大臣に在留資格認定証明書を前もって申請でき、受け入れる学校や会社の人が代わりに申請することもできます[[s:egov_immig_act]]。</p>
 <p>デジタルノマドの在留資格は、海外の雇用主や取引先の仕事を続けたい人に向いています。年収1,000万円以上が必要で[[s:isa_nomad_en]]、対象になる人や、在留カードなしで暮らすとどうなるかは、[[l:ja-digital-nomad|日本のデジタルノマドビザの記事]]にまとめています。</p>
 <p>観光・保養の長期滞在は、あまり知られていません。3か月を超える滞在なら在留カードが出ますが、それでも国民健康保険には入れないので[[s:egov_immig_act,egov_immig_rules,egov_nhi_rules]]、民間の医療保険があると安心です。どのパスポートが対象か、何を示す必要があるかといった、ほかの条件は、計画を立てる前に自分の国の日本大使館・総領事館で確かめるのがいいと思います。</p>
 <p>とはいえ、最初のひと季節なら、90日で十分という人も多いはずです。[[l:ja-akiya-try-first|家を買う前に1〜2か月その町で暮らしてみる]]には足りますし、どこに泊まるかは[[l:ja-monthly-rental|月単位で部屋を借りる記事]]にまとめています。</p>
