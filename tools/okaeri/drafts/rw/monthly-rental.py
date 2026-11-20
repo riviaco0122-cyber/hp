@@ -1,7 +1,7 @@
 ARTICLE = {
  "id": "monthly-rental", "slug": "monthly-rental-japan", "topic": "live", "place": None, "also": ["stay"],
  "photo": ("studio-apartment", "A small furnished studio with a compact kitchen, a dining table and a long wooden floor", ""),
- "published": "2026-11-16", "updated": "2026-11-16",
+ "published": "2026-11-16", "updated": "2026-11-20",
  "kicker": "Live part-time",
  "h1": "Monthly rentals in Japan: how to rent a place for a month",
  "seo_title": "Monthly Rental in Japan: How to Rent a Place for a Month",

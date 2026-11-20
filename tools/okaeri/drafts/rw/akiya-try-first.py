@@ -1,7 +1,7 @@
 ARTICLE = {
  "id": "akiya-try-first", "slug": "akiya-try-before-you-buy", "topic": "own", "place": None, "also": ["live"],
  "photo": ("yaizu-engawa", "Old wooden house with a long veranda and an overgrown garden", "An older house in Iwashigashima, Yaizu, before renovation."),
- "published": "2026-11-14", "updated": "2026-11-16",
+ "published": "2026-11-14", "updated": "2026-11-20",
  "kicker": "Own a home",
  "h1": "Buying an akiya in Japan? Live in one for a month first",
  "seo_title": "Buying an Akiya in Japan? Live in One for a Month First",
