@@ -51,6 +51,12 @@
 3. **ラベルと箇条書きばかり**（Week one: settle. / Nitsuke.）。表とリストは比べる・並べるときだけ。理由や感じ方は文章で書く。
 4. **直訳調・お役所言葉**（✕ Here is what it is / It is necessary to / Please be advised / In order to）。日本語から訳したような言い回しを使わない。
 5. **ページ自身の説明・予告**（✕ This page says who we are, how… / Here’s what it is, how it’s eaten and why… / In this guide, we…）。冒頭（dek・description）で中身の目次を読み上げない。読み手にとって意味のあること、答えそのものを最初の一文で言う（◯ We run NODE Shimoda… and we write the guides we wish our guests could read before they arrive.）。「間違いの知らせ方」のような事務的な案内も、冒頭ではなく本文の該当の節に置く。
+6. **ガイドブックのような固さ（人の方針 2026-11-20）**。原則: **事実を正確に積み上げるほど、読み物としての流れが消える。読み手が知りたいのは「全部の事実」ではなく「自分にとってどうか」。** 次のどれかが起きていたら、ガイドブック調になっている。
+   - 1文に数字・料金・時間・条件・決まりを3つ以上詰めている（✕ The footbath is free, open 9:00–17:00 except Tuesdays, and 5 minutes from the station.）→ 読み手の判断に要るものだけを文に残し、細かい数字・営業時間・禁止事項は表か短いリストに移す。
+   - 出典や制度の説明が、本文の流れを止めている（✕ According to the official site of …, which was last updated in …）→ 出典は番号の注に任せ、本文では言い切る。
+   - 名所・事実の並べ立てで、理由や感じ方がない（✕ X is famous for Y. Z has a long history.）→ 「なぜ行く価値があるか」「行くとどう感じるか」「どんな人に合うか」を友人が話すように添える。1つの話題に、事実1つと、読み手にとっての意味1つ。
+   - 歴史・背景の固い決まり文句（✕ has a big place in history / is known for its rich culture / offers a variety of）→ 具体的な一場面で言う。
+   直し方の目安: 声に出して読んで、友人に話すときに言わない言い回し・息が続かない文は書き直す。正確さは変えない（事実・数値・出典は同じまま、見せ方と語り口だけを変える）。
 
 自然に読める英語の目安:
 - **短縮形を使う**（it’s, you’ll, don’t, isn’t）。会話のくだけ過ぎ（gonna, super, awesome）は使わない。

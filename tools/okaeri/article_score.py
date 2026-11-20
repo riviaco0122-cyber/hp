@@ -94,6 +94,11 @@ def tone(text):
     contr = len(CONTRACTION.findall(text))
     out = [f"トーンの目安: 命令文で始まる文 {imp}/{len(sents)}（{imp / len(sents):.0%}。15%を超えると説明書っぽい）、"
            f"4語以下の短い文 {frag}、短縮形 {contr}個（0〜2個だと硬い）"]
+    # ガイドブック調（playbook 3-1 の6）: 数字を3つ以上、または読点を4つ以上詰めた文
+    packed = [x for x in sents if len(re.findall(r"\d[\d,.:–-]*", x)) >= 3 or x.count(",") >= 4]
+    if packed:
+        out.append(f"詰め込みすぎの文（数字3つ以上か読点4つ以上。playbook 3-1 の6）{len(packed)}件: "
+                   + " / ".join(x[:70] + "…" for x in packed[:5]))
     return out
 
 
