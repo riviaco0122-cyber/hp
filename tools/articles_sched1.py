@@ -999,12 +999,12 @@ ARTICLES_SCHED1 = [
 <p>用意したいのは、外国語の案内、災害時の連絡の仕組み、現地に行かなくても回る運営の3つです。旅館業の許可で営業する私たちの宿も、日英の定型文と災害時のメッセージ対応を実際に運用しています。</p>
 <div class="carousel" role="group" aria-label="地方の小さな宿が整えること（横にスワイプ）">
 <div class="carousel__card"><span class="carousel__no">1</span><p class="carousel__title">外国語で案内する</p><p class="carousel__text">民泊新法では、設備の使い方、交通手段、災害時の通報連絡先を外国語で案内することが事業者の義務です。</p></div>
-<div class="carousel__card"><span class="carousel__no">2</span><p class="carousel__title">災害時にすぐ伝える</p><p class="carousel__text">津波注意報のとき、メッセージで状況と避難の必要性を逐次伝えました。</p></div>
+<div class="carousel__card"><span class="carousel__no">2</span><p class="carousel__title">災害時にすぐ伝える</p><p class="carousel__text">津波警報・注意報のとき、メッセージで状況と避難の必要性を逐次伝えました。</p></div>
 <div class="carousel__card"><span class="carousel__no">3</span><p class="carousel__title">翻訳と自動化で回す</p><p class="carousel__text">自動翻訳、日英の定型文、AIチャットボットで対応し、現地に行くのは数か月に1回ほどです。</p></div>
 <div class="carousel__card"><span class="carousel__no">4</span><p class="carousel__title">道のりを伝える</p><p class="carousel__text">私たちの宿は駅から徒歩8分。駅からの行き方を、外国語で分かりやすく案内します。</p></div>
 </div>
 <p class="carousel__hint">横にスワイプで続きを見られます</p>
-<p>2025年7月末の津波注意報のときは、外国人のゲストに、状況と避難の必要性をメッセージで逐次伝えました。ゲストの意向でキャンセル・返金に応じ、のちにゲストから感謝のレビューと★5の評価をもらっています。</p>
+<p>2025年7月末に津波警報・注意報が出たときは、外国人のゲストに、状況と避難の必要性をメッセージで逐次伝えました。ゲストの意向でキャンセル・返金に応じ、のちにゲストから感謝のレビューと★5の評価をもらっています。</p>
 <p>焼津市の鰯ヶ島で2026年末の開業を予定している宿は、食事を出さない泊食分離にして、朝の魚屋や町の食堂を使ってもらう計画です（計画段階の内容です）。観光地でなくても、「その町の日常」は旅の目的になります。</p>
 <p>物件が宿に向くかの見方は、「<a href="media/akiya-minpaku-suitability.html">その空き家、民泊に向いている？</a>」で説明しています。</p>
 """),

@@ -146,3 +146,142 @@
 ---
 
 外部のページに書かれた命令: 今回読んだ検索結果・ページに、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
+
+---
+
+## リサーチメモ（2026-11-20）
+
+リサーチ部。条文は e-Gov 法令 API（`laws.e-gov.go.jp/api/2/`）で、**2026年10月1日施行の版（令和8年法律第32号の一部施行後。e-Gov の「現在施行中」）**を開いて読んだ。外務省（`www.mofa.go.jp`）と入管（`www.moj.go.jp/isa`）は開けなかったので、その2つの中身は「検索結果で確認」にとどまり、**記事には書かない**扱いにした（3-2）。
+
+### 0. 戦略部に戻すかの判断に必要な結論（R4・R5）
+
+- **R4（長期観光の特定活動）: 一部だけ確かめられた。** 開いた一次の出典（国民健康保険法施行規則 第1条第3号・第4号、e-Gov）で、「法務大臣が定める特定活動のうち、**1年を超えない期間**滞在して**観光・保養**などを行う**18歳以上**の人と、**同行する配偶者**」という区分があることは書ける。入管法 第19条の3・施行規則 第19条の5 から、この区分は在留カードの対象から外れていない（＝3か月を超える期間なら在留カードが出る）ことも条文で言える。**預貯金3,000万円・最初の6か月と更新で最長1年・対象国（査証免除の国）・医療保険・申請先**は、外務省のページを開けず検索結果でしか見ていないので、**書かない**。
+- **R5（ワーキングホリデー）: 確かめられなかった。** 外務省（403）・在外公館（プロキシで接続できない）・JNTO（ワーキングホリデーの案内ページは今は visa-info のトップと同じ中身で、説明がない）・e-Gov（条文・規則に載っていない）のどれでも、一次の出典を開けなかった。年齢・期間・国・国の数は**すべて書かない**。
+- **判断材料**: 地図の表は、今のままだと「①短期滞在 90日 ②ノマド 6か月 ③観光・保養の特定活動 最長1年（条件は公式へ送る形）」の3行まではできる。ワーキングホリデーの行は作れない。構成案の決まり（R4・R5 が取れなければ戦略部へ戻す）に厳密に当てはめると、**R5 が取れていないので戻す条件に当たる**。ただし、R4 の行が条文で立つので、akiya-try-first の表（短期滞在とノマドの2行）とは中身が分かれる。**在外公館のドメイン（`*.emb-japan.go.jp`）を許可に足せば、R4・R5・R2③ の多くが開けそうなので（下の「開けなかったドメイン」）、まず許可の相談、だめなら戦略部へ戻す**のがよいと考える。
+
+### 1. 事実の表（記事に使ってよいもの）
+
+| # | 事実（英語で1文） | 出典（発行元・資料名・年・URL） | 確認の方法 | いつ時点 |
+|---|---|---|---|---|
+| R1 | Japan’s immigration rules set the period for a Temporary Visitor at 90, 30 or 15 days (or a number of days up to 90 set for the person). | 法務省令「出入国管理及び難民認定法施行規則」別表第二（第3条関係）・e-Gov https://laws.e-gov.go.jp/law/356M50000010054 | ページ（API）を開いて確認 | 2026-10-01 施行の版 |
+| R1 | The Temporary Visitor status covers short stays for sightseeing, recreation, sports, visiting relatives, inspection tours, attending classes or meetings, business liaison and similar activities. | 入管法 別表第一の三（短期滞在）・e-Gov https://laws.e-gov.go.jp/law/326CO0000000319 | 開いて確認 | 2026-10-01 施行の版 |
+| R1 | JNTO says passport holders of some countries and regions do not need a visa for stays of 90 days or less for tourism, that most short stays allow up to 90 days, and that some nationalities may be granted 15, 30 or 180 days. | JNTO「Entry into Japan and Visa Information」 `jnto_visa` | 開いて確認 | 2026-11-19 取得 |
+| R1 | JNTO says a visitor on a tourist stay cannot do paid work, enrol in long-term education or apply for residency, and points to the Ministry of Foreign Affairs list for which passports are visa-exempt. | `jnto_visa` | 開いて確認 | 2026-11-19 |
+| R1 補足 | JNTO の「180日」は、別表第二の短期滞在の期間（最長90日）にないので、**入国時にもらえる日数ではない**。取り決めで延長できる国のことと考えられるが、JNTO はそう書いていない → 記事では「180日」を書かない。 | — | 条文との照合（解釈） | — |
+| R2 | A foreign resident may apply to the Minister of Justice to renew their period of stay, and the Minister may grant it only when there are reasonable grounds shown in the documents submitted. | 入管法 第21条第1項〜第3項 | 開いて確認 | 2026-10-01 |
+| R2 | If you apply to renew before your period of stay ends and the decision has not been made by then, you may stay until the decision or two months after the old expiry date, whichever comes first — but this does not apply if your period of stay was 30 days or less. | 入管法 第20条第6項（第21条第4項で準用） | 開いて確認 | 2026-10-01 |
+| R2 | （書かない）入管は短期滞在の更新を「原則として、人道上のやむを得ない事情など特別な事情（病気の治療など）がある場合に限る」としている。 | 出入国在留管理庁「在留期間更新許可申請」 https://www.moj.go.jp/isa/applications/procedures/16-3.html | **検索結果でのみ確認（403 で開けない）** | 不明 |
+| R2③ | （書かない）外務省の一覧の注記で、オーストリア・ドイツ・アイルランド・リヒテンシュタイン・スイス・英国（注8）、メキシコ（注7）は、取り決めで最長6か月までいられ、90日を超えるには入管で延長の申請が要る。 | 外務省「Exemption of Visa」 https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html | **検索結果でのみ確認（403）** | 不明 |
+| R3 | At every entry, an immigration inspector must check that the person’s passport is valid, that the activity they plan in Japan is not false and fits a status of residence, and that the requested period fits the rules. | 入管法 第7条第1項第1〜4号 | 開いて確認 | 2026-10-01 |
+| R3 | The person applying to land must prove that they meet these conditions. | 入管法 第7条第2項 | 開いて確認 | 2026-10-01 |
+| R3 補足 | 入管法・施行規則には、短期滞在の**回数や1年間の合計日数の上限を定めた条文は見当たらなかった**（第7条・別表第二を読んだ範囲）。一方、**在スウェーデン日本大使館のページに「12か月で合計180日まで」とある**と検索結果に出た（開けない）。→ 記事は「1年に180日」を**決まりとして書かない**。同時に「公式の上限はない」とも**書かない**（在外公館が上限を示している可能性があるため）。書けるのは「法律は入国のたびに審査すると定め、自分で立証する」まで。 | 在スウェーデン日本大使館 https://www.se.emb-japan.go.jp/itpr_sv/visa_important_notes.html | 検索結果でのみ（プロキシで接続できない） | 不明 |
+| R4 | Japan’s health insurance rules refer to a designated activity for people aged 18 or over who stay up to one year for sightseeing, recreation or similar activities, and to the spouse who comes with them, and exclude both from National Health Insurance. | 厚生労働省令「国民健康保険法施行規則」第1条第3号・第4号・e-Gov `egov_nhi_rules` | 開いて確認 | e-Gov 現在施行中の版（2026-11-20 取得） |
+| R4/R9 | A residence card is issued to people with a status of residence except those given three months or less, Temporary Visitors, diplomats and officials, and groups listed in the ordinance. | 入管法 第19条の3 | 開いて確認 | 2026-10-01 |
+| R4/R9 | The ordinance’s list of people who get no residence card includes the digital nomad and their family, but not the sightseeing-and-recreation long stay. | 施行規則 第19条の5 | 開いて確認（解釈: 3か月を超えて決定されれば在留カードが出る） | 2026-10-01 |
+| R6 | People on statuses in Appended Table I, part 3 (which includes Temporary Visitor) may not run a business that brings in income or do activities for which they receive remuneration, unless they have permission. | 入管法 第19条第1項第2号 | 開いて確認 | 2026-10-01 |
+| R6 | A person who clearly does mainly paid work in breach of Article 19(1) can be punished. | 入管法 第70条第1項第4号 | 開いて確認 | 2026-10-01 |
+| R6 補足 | **短期滞在中に海外の雇用主のためにリモートで働くこと**について、入管・外務省の公式の見解は見つからなかった。内閣府の資料（地方創生推進事務局、`www.chisou.go.jp`、接続できない）が「海外企業に勤める人がリモートワークしながら観光する場合は短期滞在・最長90日」と書いていると検索結果に出たが、開けない。→ 記事は**断定しない**。書けるのは「短期滞在では報酬を受ける活動はできない（条文・JNTO）」「海外の仕事を続けながら長くいる人向けの在留資格がノマド（施行規則 第19条の5第3号）」まで。 | — | — | — |
+| R7 | Staying past your period of stay without renewal or change is a ground for deportation. | 入管法 第24条第4号ロ | 開いて確認 | 2026-10-01 |
+| R7 | It is also a crime punishable by up to three years’ imprisonment, a fine of up to ¥3 million, or both. | 入管法 第70条第1項第5号 | 開いて確認 | 2026-10-01 |
+| R7 | A person deported from Japan for the first time is generally refused landing for five years from departure, and for ten years if deported before or previously ordered to leave. | 入管法 第5条第1項第9号ハ・ニ | 開いて確認 | 2026-10-01 |
+| R7 | A person who left under a departure order is refused landing for one year — but five years if they only declared their intention to leave after the investigation began and want to come back as a Temporary Visitor. | 入管法 第5条第1項第9号ホ・ヘ（第24条の3第1号ロ） | 開いて確認 | **2026-10-01 からの新しい形**（ヘは今回の改正で入った区分。構成案の「出国命令は1年」は、短期滞在で戻りたい人に限り5年の例外がある） |
+| R7 | A deportee who left by the date set under Article 52(5) is refused landing for one year, except when they want to return as a Temporary Visitor. | 入管法 第5条第1項第9号ロ | 開いて確認 | 2026-10-01（記事では細かすぎるので省いてよい） |
+| R7 | A departure order is available if the overstayer turns up at an immigration office on their own before an investigation starts (or says they will leave before a set notice), has not been deported or ordered to leave before, has no listed criminal convictions, and is sure to leave promptly. | 入管法 第24条の3 | 開いて確認 | 2026-10-01 |
+| R7 | 2026年の改正（令和8年法律第32号）は、上の上陸拒否の期間に第9号ロ・ヘを足した（2026-10-01 施行）。ほかの年数（5年・10年・1年）はそのまま。 | e-Gov 改正履歴 https://laws.e-gov.go.jp/api/2/law_revisions/326CO0000000319 | 開いて確認 | 2026-11-20 |
+| R8 | The bill to amend the Immigration Control Act (cabinet bill no. 20, 221st Diet) passed the House of Representatives on 28 April 2026 and the House of Councillors on 29 May 2026, and was promulgated on 5 June 2026 as Act No. 32 of 2026. | 衆議院「議案審議経過情報」 https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1F16.htm | 開いて確認 | 2026-11-20 |
+| R8 | The amended Act adds Article 7-2, under which visa-exempt travellers planning a Temporary Visitor stay can give information online in advance and be authorised by the Immigration Services Agency. | 入管法（令和8年法律第32号による改正後・未施行の版）第7条の2・e-Gov https://laws.e-gov.go.jp/law/326CO0000000319/20290331_508AC0000000032 | 開いて確認 | 未施行（e-Gov の注記「令和11年3月31日までの間において政令で定める日」） |
+| R8 | The Japan Tourism Agency says this system, called JESTA, is planned to start during fiscal 2028 (April 2028 to March 2029). | 観光庁「電子渡航認証制度（JESTA）の導入に伴う外国人旅行者向け消費税免税制度の確認事務等の見直し」 https://www.mlit.go.jp/kankocho/content/002019837.pdf | 開いて確認 | 2026-11-20 取得 |
+| R8 | 2026年11月時点で、第7条の2 は**まだ施行されていない**（e-Gov の状態が UnEnforced）。施行の日は政令で決まり、まだ決まっていない（e-Gov に予定日の記載なし、期限だけ）。 | e-Gov 改正履歴 | 開いて確認 | 2026-11-20 |
+| R10 | （書かない）入管の英語の在留資格一覧は開けなかった（403）。行⑤は「留学・就労・家族の在留資格は別の仕組みで、多くは在留カードが出る」を条文（第19条の3）の範囲で1文にとどめる。 | — | — | — |
+| R11 | （書かない）査証免除の国・地域の数は、検索結果に「74」と出たが、外務省のページを開けない。**数は書かない**。 | — | 検索結果のみ | — |
+| R12 | （未実施）月間検索数・KD を取る道具がこの作業の中で使えなかった。主な語（170・KD 3）だけで進めるか、編集長が別に取る。 | — | — | — |
+
+### 2. 構成案への注意（調べて分かったこと）
+
+- **節2**: 「延長は原則難しい」は、条文（第21条第3項「相当の理由があるときに限り」）までなら書ける。「病気などの特別な事情」は入管のページが開けないので書かない（開ければ書ける）。英・独などの「最長6か月」も書かない。In short 2 の「a few nationalities can apply for up to six months」は**足さない**。
+- **節3**: 「回数の決まりは見当たらない」は、**法律（入管法・施行規則）の中に**という限定を付けるなら書ける。「公式の上限はない」とは書かない（大使館のページに180日の記述がある可能性）。
+- **節4**: ワーキングホリデーの行は作れない。長期観光の行は「up to one year, 18 or over, a spouse can come too, a residence card is issued, no National Health Insurance; check the conditions with a Japanese embassy」程度。**預貯金の額は書かない**。
+- **節6**: 「出国命令は1年」は、**短期滞在で戻りたい人が調査の開始後に申し出た場合は5年**という新しい例外があるので、表は「deported (first time) 5 years／deported again 10 years／departure order 1 year (in some cases 5)」の形にする。罰則（3年以下・300万円以下）を足せる。
+- **JESTA**: 「2026年に成立（5月29日）・2026年6月5日に公布・2028年度中の導入を目指す・法律上は2029年3月31日までに政令で決める日に施行・2026年11月時点では始まっていない」まで書ける。
+
+### 3. 新しい出典（`SOURCES_NEW` に入れる形）
+
+```python
+"egov_immig_act": ("https://laws.e-gov.go.jp/law/326CO0000000319", "Immigration Control Act", "出入国管理及び難民認定法（e-Gov法令検索）",
+                   "Immigration Control and Refugee Recognition Act, Articles 5, 7, 19, 19-3, 20, 21, 24, 24-3, 70 and Appended Table I (e-Gov, version in force 1 October 2026)"),  # 既存キー。正式名だけ条番号を足す
+"egov_immig_rules": ("https://laws.e-gov.go.jp/law/356M50000010054", "Immigration Control Act ordinance", "出入国管理及び難民認定法施行規則（e-Gov法令検索）",
+                     "Ordinance for Enforcement of the Immigration Control and Refugee Recognition Act, Article 19-5 and Appended Table II (e-Gov, version in force 1 October 2026)"),  # 既存キー。正式名に別表第二を足す
+"egov_nhi_rules": 既存キーのまま（第1条第3号・第4号を使う。正式名に条番号を足すなら "Article 1"）
+"egov_immig_act_jesta": ("https://laws.e-gov.go.jp/law/326CO0000000319/20290331_508AC0000000032", "Immigration Control Act (amended, not yet in force)",
+                         "出入国管理及び難民認定法（令和8年法律第32号による改正後・未施行）（e-Gov法令検索）",
+                         "Immigration Control and Refugee Recognition Act as amended by Act No. 32 of 2026, Article 7-2 (e-Gov, not yet in force; checked 20 November 2026)"),
+"shugiin_bill221_20": ("https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1F16.htm", "House of Representatives", "衆議院（議案審議経過情報）",
+                       "House of Representatives: Progress of cabinet bill no. 20, 221st Diet session (checked 20 November 2026)"),
+"jta_jesta": ("https://www.mlit.go.jp/kankocho/content/002019837.pdf", "Japan Tourism Agency", "観光庁（JESTA の導入に伴う免税制度の見直し）",
+              "Japan Tourism Agency: Review of tax-free shopping checks following the introduction of JESTA (2026)"),
+```
+
+### 4. 海外の読み手の生の疑問（Reddit・FlyerTalk・JREF・expat フォーラムなど。要約）
+
+- 90日いて隣の国に数日出て、戻ればまた90日もらえるか。何日外にいればよいか（決まった日数を求める声が多い）。
+- 出入国をくり返して、入国審査で目的を細かく聞かれた・入国を断られたという体験談があり、自分も断られないか不安。
+- 自分の国籍は「90日」なのか「6か月まで延長できる」国なのか、ブログごとに違って分からない。
+- 観光で来て、自国の会社の仕事をリモートで続けてよいのか（「グレー」「だめ」「黙認」と答えが割れている）。
+- 3か月を超えて、仕事をせずに半年〜1年いる方法はあるか（年齢・貯金の条件で使えない人が多い）。
+- 帰りの便が遅れる・病気などで90日を少し過ぎそうなとき、どうすればよいか。
+- これから事前の電子申請（JESTA）が要るようになるのか、いつからか。
+
+### 5. 開けなかったドメイン（2026-11-20、この環境から）
+
+**許可に足せば開けそうなもの（プロキシで止められた: CONNECT 403 / 接続 000）**
+- `*.emb-japan.go.jp`（在外公館。例 `www.uk.emb-japan.go.jp`・`www.us.emb-japan.go.jp`・`www.ie.emb-japan.go.jp`・`www.se.emb-japan.go.jp`）→ R2③（6か月の国）・R3（180日の記述）・R4（長期観光の条件）・R5（ワーキングホリデー）の多くはここで取れそう。**いちばん効果が大きい**。
+- `www.chisou.go.jp`（内閣府 地方創生推進事務局）→ R6（短期滞在中のリモートワークの扱い）
+- `www.sangiin.go.jp`（R8 は衆議院で足りたので不要）
+- （参考）`www.gov.uk`・`travel.state.gov`・`www.canada.ca` なども止められているが、日本の政府の出典ではないので優先度は低い。
+
+**相手側が拒んでいるもの（403。サーバーは Akamai）**
+- `www.mofa.go.jp`（外務省。R1・R2③・R4・R5・R11）。WebFetch は「許可されていないドメイン」として名前解決に失敗し、curl はつながるが相手が 403。
+- `www.moj.go.jp`（入管。`www.isa.go.jp` はここへ転送される。R2・R10）。2026-11-15 にはこの環境から取れた記録があり、相手側の自動判定で止められている可能性。
+
+### 6. 外部のページに書かれた命令
+
+今回読んだページ・検索結果に、ファイル操作・URL へのアクセス・ルールの変更などの命令は見当たらなかった。
+
+### 7. 追記（2026-11-20・許可を足したあとの確かめ直し）
+
+許可に足した4つのドメインを、同じ日にもう一度開いた（curl。User-Agent の偽装はしない）。
+
+| ドメイン | 結果（2026-11-20） | 理由 |
+|---|---|---|
+| `www.uk.emb-japan.go.jp`（在英国大使館。英国の人向け） | **403**（トップ・ワーキングホリデーのページ・robots.txt まで） | プロキシは通るようになったが、相手のサーバー（Akamai）が拒んでいる。外務省・入管と同じ止め方 |
+| `www.us.emb-japan.go.jp`（在米国大使館。米国の人向け） | **403**（トップ・「Visa (Others)」・PDF） | 同上 |
+| `www.au.emb-japan.go.jp`（在豪州大使館。豪州の人向け） | **403**（トップ・robots.txt） | 同上 |
+| `www.chisou.go.jp`（内閣府 地方創生） | **404**（トップを含め、どのパスも「ページが見つかりません」） | つながるが、サイトの中身がない（移転したと見られる）。検索結果のリモートワーカーの資料（`/tiiki/kokusentoc/pdf/punch/RemoteWorker_1.pdf`）も 404 |
+| （参考）WebFetch | 4つとも「許可されていないドメイン」で名前解決に失敗 | WebFetch 側の許可は別の設定と見られる |
+
+ほかの道も探した。
+- 観光庁の「国際的なリモートワーカー（デジタルノマド）に関する調査報告書」（2025年5月、`www.mlit.go.jp/kankocho/content/001891364.pdf`）は開けた。ただし、短期滞在中のリモートワークの扱いは書かれていない。
+- 内閣府の資料の写しが `www.kantei.go.jp` にあると検索結果に出たが、プロキシで接続できない。
+
+**確かめ直しの結果**
+- **R4（観光・保養の特定活動）**: 新しく確かめられたことはない。メモの1章のとおり、条文（国民健康保険法施行規則 第1条第3号・第4号、入管法 第19条の3、施行規則 第19条の5）の範囲だけ書ける。具体的には「最長1年・18歳以上・配偶者の同行・在留カードが出る・国民健康保険に入れない」。預貯金の額・対象国・最初の期間と更新・医療保険・申請先は**書かない**。
+- **R5（ワーキングホリデー）**: **確かめられなかった**。年齢・期間・国・国の数は書かない。
+- **R2③（取り決めで6か月まで延長できる国）**: **確かめられなかった**。書かない。
+- **短期滞在中のリモートワーク（R6）**: **公式の見解は確かめられなかった**。記事は断定しない。書けるのは「短期滞在では報酬を受ける活動はできない（入管法 第19条第1項第2号・JNTO）」「海外の仕事を続けながら長くいる人の在留資格がノマド（施行規則 第19条の5第3号、既存の `isa_nomad_en`・`jnto_nomad`）」まで。
+
+**結論: 地図の表に書けるのは3行**
+1. **短期滞在（査証免除）**: 90日・30日・15日（施行規則 別表第二）。何日になるかはパスポートで決まる。報酬を受ける仕事はできない。在留カードは出ない。
+2. **デジタルノマド（特定活動）**: 6か月・更新なし・年収などの条件（既存の出典）。在留カードは出ない。
+3. **観光・保養の長期滞在（特定活動）**: 最長1年・18歳以上・配偶者も同行できる・在留カードが出る・国民健康保険に入れない（条文）。**条件（貯金の額・対象国・保険）は書かず、「日本大使館・総領事館で確かめる」と送る**。
+
+- **ワーキングホリデーの行は作れない**。「留学・就労・家族」の行も、一覧の公式のページを開けないので、表の行にはしない。「仕事や学びのための在留資格は別にあり、多くは在留カードが出る（入管法 第19条の3）」と、表の下に1文で書く程度にとどめる。
+- 構成案の決まりでは、R5 が取れないので**戦略部に戻す条件に当たる**。判断材料は次の2つ。
+  - 3行目（観光・保養の長期滞在）が条文で立つので、akiya-try-first の2行の表とは中身が分かれる。
+  - 一方、ワーキングホリデーは「1年いたい若い人」の主な道で、この記事の疑問4（半年・1年）への答えが欠ける。
+
+**残る、開けなかったドメイン**
+- **相手側が拒んでいる（Akamai の 403）**: `www.mofa.go.jp`、`www.moj.go.jp`、`www.uk.emb-japan.go.jp`、`www.us.emb-japan.go.jp`、`www.au.emb-japan.go.jp`。許可に足しても開けない。人のブラウザで中身を写してもらう以外に道は見当たらない（ただし手離れの方針 3-2 に当たるので、編集長の判断）。
+- **プロキシで止められている**: `www.kantei.go.jp`（内閣府の資料の写し）、ほかの国の在外公館。
+- **中身がない**: `www.chisou.go.jp`（404）。
+
+外部のページに書かれた命令は、今回も見当たらなかった。

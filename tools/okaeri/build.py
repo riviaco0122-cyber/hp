@@ -176,6 +176,7 @@ class Ctx:
         s = re.sub(r"\[\[l:([\w-]+)\|([^\]]+)\]\]", link, s)
         s = re.sub(r"\[\[img:([\w-]+)\|([^|\]]+)\|([^\]]*)\]\]", lambda m: img(self, m.group(1), m.group(2), m.group(3)), s)
         s = re.sub(r"\[\[ed:(.+?)\]\]", ed, s, flags=re.S)
+        s = re.sub(r"(\d) (m²|m|km|min)\b", "\\1&nbsp;\\2", s)  # 数字と単位を行末で切り離さない（例: 470 m）
         return stack_tables(s)
 
 
@@ -283,7 +284,7 @@ def cta(ctx, photo=True):
             '<div class="stay-cta__body"><p class="kicker">Stay with us</p><h2>Try the town for a week or a month</h2>'
             '<p>NODE Shimoda is our home in the old town of Shimoda, set up for long stays.</p>'
             f'<ul class="ticks">{facts}</ul>'
-            f'<div class="btns"><a class="btn btn--solid" href="{C.NODE_URL}" rel="noopener">See NODE Shimoda</a></div></div></aside>')
+            f'<div class="btns"><a class="btn btn--solid" href="{C.BOOK_URL}" rel="noopener">See NODE Shimoda on Airbnb</a></div></div></aside>')
 
 
 # ------------------------------------------------------------------ 各ページの本文
@@ -318,7 +319,7 @@ def page_home(ctx):
 <h2 id="homes-h">A place to come back to</h2>
 <p>We renovate older places in small towns and open them to guests who stay a while. Our first is NODE Shimoda, a renovated apartment in the old town of Shimoda, sleeping up to four.</p>
 <ul class="ticks">{facts}</ul>
-<div class="btns"><a class="btn btn--light" href="{C.NODE_URL}" rel="noopener">See NODE Shimoda</a><a class="btn btn--line" href="{ctx.href('about')}">How we write our guides</a></div>
+<div class="btns"><a class="btn btn--light" href="{C.BOOK_URL}" rel="noopener">See NODE Shimoda on Airbnb</a><a class="btn btn--line" href="{ctx.href('about')}">How we write our guides</a></div>
 </div>
 </div>
 </section>"""
@@ -378,6 +379,7 @@ def page_izu(ctx):
 <p>The official swimming season at Izu beaches runs from around mid-July to late August [[s:jg6322]]. Outside summer the towns are much quieter, and many restaurants and shops close early [[s:tdn]]. That quiet is the reason to come for a week instead of a weekend.</p>
 <h2>Guides to the Izu Peninsula</h2>
 <ul>
+<li>[[l:shimoda-guide|Shimoda, Japan: a guide for a week or longer]]</li>
 <li>[[l:izu-from-tokyo|Izu Peninsula from Tokyo: trains, fares and why to stay a week]]</li>
 <li>[[l:kinmedai|Kinmedai: Japan’s golden-eye snapper and where to eat it]]</li>
 </ul>
@@ -469,7 +471,7 @@ def page_article(ctx, a):
             f'<div class="points"><p class="points__label">In short</p><ul>{pts}</ul></div>'
             + f'<details class="toc toc--inline"><summary>On this page</summary><ol>{toc_html}</ol></details>'
             f'{body}<h2 id="common-questions">Common questions</h2>{faq}{a.get("after_faq", "")}{ctx.sources(a["sources"], "Sources")}'
-            f'<section class="byline" data-nosnippet>{MARK}<div><p><strong>Written by the Noki team</strong></p><p>Shinta Katai and Yuma Ishihara, the founders of RIVIA&amp;CO., who run NODE Shimoda, a place for long stays in Shimoda. '
+            f'<section class="byline" data-nosnippet>{MARK}<div><p><strong>Written by the Noki team</strong></p><p>Shinta Katai and Yuma Ishihara, the founders of RIVIA&amp;CO. Shinta runs NODE Shimoda, a place for long stays in Shimoda. '
             f'<a href="{ctx.href("about")}">How we write and check our guides</a>.</p></div></section></article>'
             f'<aside class="side" aria-label="On this page"><div class="side__sticky"><nav class="toc"><p class="toc__label">On this page</p><ol>{toc_html}</ol></nav></div></aside></div>'
             f'<div class="wrap wide">{related_html(ctx, a)}{cta(ctx, photo="[[img:node-shimoda" not in a["body"] and name != "node-shimoda")}</div>')
@@ -655,13 +657,13 @@ def header(ctx, preview=False):
     menu_arts = "".join(f'<li><a href="{ctx.href(a["id"])}">{a["h1"]}</a></li>' for a in PUBLISHED)
     return (f'<header class="top"><div class="wrap wide top__bar"><a class="brand" href="{ctx.href("home")}">{MARK}<span>{NAME}</span></a>'
             f'<nav class="nav" aria-label="Main"><ul>{topics}<li><a href="{ctx.href("about")}">About</a></li></ul></nav>'
-            f'{extra}<a class="btn btn--solid btn--sm top__cta" href="{C.NODE_URL}" rel="noopener">Stay with us</a>'
+            f'{extra}<a class="btn btn--solid btn--sm top__cta" href="{C.BOOK_URL}" rel="noopener">Stay with us</a>'
             f'<details class="menu"><summary aria-label="Menu"><span></span><span></span><span></span></summary>'
             f'<div class="menu__panel"><p class="menu__h">Your plan</p><ul class="menu__topics">{menu_topics}</ul>'
             f'<p class="menu__h">Places</p><ul class="menu__list">' + "".join(f'<li><a href="{ctx.href(p["page"])}">{esc(p["name"])}</a></li>' for p in C.PLACES.values()) + f'<li><a href="{ctx.href("topic-places")}">All places</a></li></ul>'
             f'<p class="menu__h">Latest guides</p><ul class="menu__list">{menu_arts}</ul>'
             f'<ul class="menu__list"><li><a href="{ctx.href("guides")}">All guides</a></li><li><a href="{ctx.href("about")}">About us</a></li></ul>'
-            f'<a class="btn btn--solid" href="{C.NODE_URL}" rel="noopener">Stay at NODE Shimoda</a></div></details></div></header>')
+            f'<a class="btn btn--solid" href="{C.BOOK_URL}" rel="noopener">Stay at NODE Shimoda</a></div></details></div></header>')
 
 
 def credits(names):
@@ -685,6 +687,12 @@ def footer(ctx, photos=None):
             f'<nav aria-label="About"><p class="foot__h">Noki</p><ul><li><a href="{C.NODE_URL}" rel="noopener">NODE Shimoda</a></li>'
             f'<li><a href="{ctx.href("home", "homes")}">Our homes</a></li><li><a href="{ctx.href("about")}">About us</a></li></ul></nav>'
             f'</div>{credits(ctx.photos if photos is None else photos)}</footer>')
+
+
+# 宿の予約ページ（Airbnb）・公式サイトへのクリックを GA4 のイベント cta_click として記録する（アキヤドと同じイベント名。どの記事から予約に向かったかを見るため）
+CTA_JS = ("document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;"
+          "var h=a.getAttribute('href');if(h.indexOf('airbnb.com/rooms')<0&&h.indexOf('nodeshimoda.com')<0)return;"
+          "gtag('event','cta_click',{cta:'node_shimoda',site:'noki',link_url:h,link_text:(a.textContent||'').trim().slice(0,60),page_path:location.pathname});});")
 
 
 def dist_html(page, main, ctx):
@@ -719,7 +727,8 @@ def dist_html(page, main, ctx):
         gid = CFG["ga4_id"]
         head.append(f'<script async src="https://www.googletagmanager.com/gtag/js?id={gid}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag("js",new Date());gtag("config","{gid}");</script>')
     return (f'<!DOCTYPE html>\n<html lang="en"><head>\n' + "\n".join(h for h in head if h) + '\n</head><body>'
-            f'<a class="skip" href="#main">Skip to content</a>{header(ctx)}<main id="main" class="page is-static">{main}</main>{footer(ctx)}</body></html>\n')
+            f'<a class="skip" href="#main">Skip to content</a>{header(ctx)}<main id="main" class="page is-static">{main}</main>{footer(ctx)}'
+            + (f'<script>{CTA_JS}</script>' if CFG.get("ga4_id") else "") + '</body></html>\n')
 
 
 def write(path, text):
