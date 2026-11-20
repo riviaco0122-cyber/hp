@@ -145,7 +145,7 @@ ARTICLE = {
 <div class="tablewrap"><table class="free">
 <thead><tr><th>When</th><th>What’s on</th></tr></thead>
 <tbody>
-<tr><td>20 December to 31 January</td><td>The daffodil festival at Tsumekizaki, with up to about 3 million flowers, usually at their best in January. The bus from stop 10 outside the station takes about 20 minutes [[s:shimoda_kanko_suisen]].</td></tr>
+<tr><td>20 December to 31 January</td><td>The daffodil festival at Tsumekizaki, with up to about 3 million flowers, usually at their best in January. The bus from stand 10 outside the station takes about 20 minutes [[s:shimoda_kanko_suisen]].</td></tr>
 <tr><td>Winter into early spring</td><td>Camellias in Shimoda Park, with about 160 garden varieties [[s:shimoda_park]]. Cherry blossoms follow from mid-March to early April [[s:shimoda_kanko_event]].</td></tr>
 <tr><td>May</td><td>The Black Ship Festival, held since 1934. In 2026 it ran from 15 to 17 May, with fireworks over the port, a US–Japan parade and a re-enactment of the Shimoda Treaty at Ryosenji [[s:shimoda_kanko_kurofune]].</td></tr>
 <tr><td>June</td><td>The hydrangea festival in Shimoda Park, with about 3 million blooms of over 100 varieties (1 to 30 June in 2026). The park is hilly, and carts are on hand for people who find walking hard [[s:shimoda_kanko_ajisai]].</td></tr>
