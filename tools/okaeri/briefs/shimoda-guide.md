@@ -154,3 +154,238 @@
 ---
 
 外部のページに書かれた命令: 今回読んだ検索結果・ページに、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
+
+---
+
+## リサーチメモ（2026-11-20 リサーチ部）
+
+取得日はすべて 2026-11-19〜20。ページは `curl -sL --compressed -m 30`（User-Agent の偽装なし）で開き、本文を読んで確かめた（「開いて確認」）。検索の要約だけのものは「検索で確認」と書き、事実の根拠にはしていない。
+
+### 結論の早見（執筆部・戦略部へ）
+
+- **書ける**: 人口（約18,400人・2026年11月1日）、開港の歴史（神奈川で日米和親条約→了仙寺で下田条約→玉泉寺に最初の米国総領事館）、9つの海水浴場の性格・長さ・サーフィン区域の有無・駅からのバス、水質（2026年度は9か所すべて AA）、季節の行事（水仙・黒船祭・あじさい・椿など）、日帰り入浴の施設、レンタサイクル、旧町内への徒歩の目安、津波警報と注意報の意味、市の津波ハザードマップ、Safety tips アプリ。
+- **書かない（確かめられなかった）**: 下田ロープウェイの運賃・所要時間・運行時間（公式サイトがこの環境から開けない）、月別の平年の気温・降水量（気象庁のデータのサイトが開けない。年の平均だけ市の紹介にある）、津波の到達時間の想定、ブルーフラッグなど入田浜の「水質の認証」、東海バスの系統名・時刻、道の駅全体の営業時間、スーパーの店名、英語のごみ分別表（見つからない）、R14 の検索数（このエージェントに調査ツールがない）。
+- **体験との食い違いに注意（重要）**: 自社の体験は「2025年7月末の**津波注意報**」だが、気象庁の発表では 2025年7月30日 09:40 に**静岡県には「津波警報」**が出ていて、18:30 の時点で「津波注意報」に下がっている（31日 10:45 の時点の一覧には静岡県はない＝解除済み）。体験の文を書くときは、**種類を書かずに “tsunami alerts in late July 2025”**（「2025年7月末の津波の警報・注意報のとき」）とするか、気象庁の事実として「静岡県に津波警報、のちに注意報」を出典つきで書き、体験は「そのとき、ゲストに状況と避難の必要性を逐次伝えた」とする。体験に「警報」と書き換えるのは人の確認が要る（experience.md は「注意報」）。
+
+### R1 人口
+
+| 事実（英語） | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| Shimoda had a registered population of 18,433 on 1 November 2026 (resident register). | 下田市「男女別人口・世帯数」 https://www.city.shimoda.shizuoka.jp/category/070200shinogaiyou/155431.html | 開いて確認。※ページの表記は「18.433」（小数点の誤記）。前月 18,457・前々月 18,501 から見て 18,433 人。記事では “about 18,400” が安全 | 2026年11月1日 |
+| The city covers 104.38 km², with about 47 km of coastline; average annual temperature is about 17°C and annual rainfall a little over 1,900 mm. | 下田市「下田市の紹介」 https://www.city.shimoda.shizuoka.jp/category/070200shinogaiyou/110963.html | 開いて確認 | ページ更新 2023-03-05（気候の数字の統計期間は書いていない→“the city says” で） |
+
+### R2 開港の歴史
+
+| 事実（英語） | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| The Treaty of Kanagawa (Japan–US Treaty of Peace and Amity) was signed on 3rd day of the 3rd month, 1854 (Japanese calendar), and opened Shimoda immediately and Hakodate a year later. | 下田市「ペリー黒船艦隊来航と日本開国」 https://www.city.shimoda.shizuoka.jp/category/100400shimodanorekishi/110778.html | 開いて確認。市のページは条約の調印場所を「江戸湾」の交渉の流れで書き、下田とは書いていない。**了仙寺は付録の下田条約** | 歴史 |
+| Perry’s ships arrived in Shimoda from the 18th to 21st of the 3rd month, 1854. | 同上 | 開いて確認 | 歴史 |
+| The supplementary Shimoda Treaty (13 articles) was signed in the main hall of Ryosenji temple on the 22nd day of the 5th month, 1854. Before the talks, Perry marched about 300 sailors to Ryosenji. | 同上・下田市「了仙寺」 https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110768.html | 開いて確認 | 歴史 |
+| Perry Road takes its name from the route Perry’s party marched to Ryosenji for the Shimoda Treaty; its stone paving runs for about 500 metres along the Hiranamegawa stream. | 下田市「ペリーロード」 https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110766.html | 開いて確認（観光協会のレンタサイクルのページも同じ由来） | ページ更新 2023-03-05 |
+| Townsend Harris arrived in 1856 as US Consul General and set up Japan’s first US consulate at Gyokusenji temple in Kakisaki; it closed when Yokohama opened in 1859. Gyokusenji is a national historic site. | 下田市「日本における初代米国総領事ハリス」 https://www.city.shimoda.shizuoka.jp/category/100400shimodanorekishi/110776.html ・「玉泉寺」 https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110756.html | 開いて確認 | 歴史 |
+| In 1854 (11th month) a large earthquake and tsunami (the Ansei tsunami) swept Shimoda Bay, washing away or destroying most houses in town. | 下田市「プチャーチンによるディアナ号来航と『安政の大津波』」 https://www.city.shimoda.shizuoka.jp/category/100400shimodanorekishi/110777.html | 開いて確認（節6で「町は津波を経験してきた」と1文添えるなら使える。死者数は書かなくてよい） | 歴史 |
+
+- **正しい書き方**: “The Treaty of Kanagawa opened Shimoda as one of Japan’s first two ports in 1854. A few weeks later, the follow-up Shimoda Treaty was signed at Ryosenji, and Perry Road is named after the route his men marched there.” 日付は和暦の月日なので、西暦の月日に直さない（“in 1854” でとどめる）。
+
+### R3・R4 浜（比較表の材料）
+
+出典: 下田市観光協会の浜ごとのページ（2026年の開設期間が入っている＝2026年版）、下田市「海水浴場」 https://www.city.shimoda.shizuoka.jp/category/100100midokoro/155720.html 、静岡県「令和8年度 海水浴場水質調査結果一覧」 https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/050/681/r8kaisuiyokujoitiran.pdf 。すべて開いて確認。バスの「乗り場」は伊豆急下田駅前のバス乗り場の番号（観光協会の記載）。
+
+| 浜（観光協会のローマ字） | 長さ | 性格（観光協会・市の説明の要約） | サーフィン区域（観光協会） | 駅から（観光協会） | 観光協会のページ |
+|---|---|---|---|---|---|
+| Shirahama Chuo (Nagatahama) | 720 m | 白浜海岸の北端、磯遊びの家族連れが多い静かな浜。下田で唯一 BBQ ができる。快水浴場百選 | あり | 9番 白浜行き 約18分、古根 下車 徒歩1分 | https://www.shimoda-city.info/shirahama-chuo |
+| Shirahama Ohama | 700 m（市・観光協会の一覧）／770 m（観光協会の浜のページ）※食い違い | 伊豆最大級、国道沿い、サーファーと若い人でにぎわう | あり | 9番 白浜行き 約15分、レスポ白浜 下車 | https://www.shimoda-city.info/shirahama-ohama |
+| Sotoura | 470 m | 入り江で遠浅・波が穏やか、子ども連れに人気。沖はシーカヤック。快水浴場百選。ユニバーサルビーチ（市）の会場 | なし | 9番 白浜行き 約10分、外浦口 下車 徒歩3分 | https://www.shimoda-city.info/sotoura |
+| Kujuppama | 50 m | 須崎御用邸の隣の小さな浜、波が穏やか、両側が岩場で磯遊び。大きなテント・タープ不可 | なし | 10番 爪木崎行き 約15分、グリーンエリア前 下車 徒歩3分 | https://www.shimoda-city.info/kujupama |
+| Nabetahama | 130 m | 市街にいちばん近い。入り江でほとんど波がない。和歌の浦遊歩道の端。駐車場・シャワーなし | なし | 3番・4番 約7分、鍋田口 下車 徒歩5分 | https://www.shimoda-city.info/nabeta |
+| Tatadohama | 450 m | サーフィン・ボディボードで有名、全国大会も。年間を通して使える温水シャワー | あり | 3番・4番 約7分、多々戸 下車 徒歩3分 | https://www.shimoda-city.info/tatado |
+| Iritahama | 400 m | ソテツ並木、落ち着いた浜、ロケ地。サーファーも | あり | 3番・4番 約8分、入田 下車 徒歩3分 | https://www.shimoda-city.info/irita |
+| Kisami Ohama | 770 m | 大きな浜、国道から離れて静か、サーファーと家族連れ。近くにカフェ | あり | 3番・4番 約10分、吉佐美 下車 徒歩8分 | https://www.shimoda-city.info/kisami |
+| Toji | 410 m | 入り組んだ海岸、混みにくい。近くに龍宮窟とサンドスキー場。シャワー・レンタルなし | あり | 2番 田牛行き 約18分、田牛 下車すぐ。**1日4〜5便** | https://www.shimoda-city.info/toji |
+
+| 事実（英語） | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| In the 2026 survey, all nine Shimoda beaches were rated AA, the top grade for water quality (Iritahama was A in 2025). | 静岡県 令和8年度 海水浴場水質調査結果一覧（上記 PDF） | 開いて確認 | 2026年度の調査 |
+| Shirahama Chuo and Sotoura are on the Ministry of the Environment’s list of 100 best swimming beaches (Kaisuiyokujo Hyakusen). | 下田市観光協会「下田の海」 https://www.shimoda-city.info/umi （市のページは白浜中央について「平成18年度 快水浴場百選」） | 開いて確認（環境省のページは開いていない→“the tourism association says”） | 2006年度の選定 |
+| Six beaches — Shirahama Chuo, Shirahama Ohama, Sotoura, Tatadohama, Iritahama and Kisami Ohama — are certified by the Japan Lifesaving Association (JLA) for beach safety. | 下田市「海水浴場」（上記） | 開いて確認。九十浜・鍋田浜・田牛には記載なし | 2026年11月の掲載 |
+| Outside the official season and hours, no lifeguards are on duty. | 同上（既存 `shimoda_ohama` と同じ趣旨） | 開いて確認 | — |
+| Banned on Shimoda’s swimming beaches in season: tents (sunshades allowed), open fires and barbecues (except part of Shirahama Chuo), fireworks, camping overnight, and since 2025 amplified speakers. | 観光協会「下田の海」の禁止事項 | 開いて確認 | 2026年度のルール |
+
+- **サーフィンの区域の分け方**: 観光協会の各浜のページに「サーフィンエリア：あり／なし」があるだけで、区域の線引きの決まりの本文は確かめていない（観光協会の「利用者ルール（PDF）」は開いていない）。→ 書けるのは「どの浜にサーフィンの区域があるか」まで。
+- **入田浜の「水質の認証」（上位ページの記述）**: ブルーフラッグなどの認証は公式で確かめられなかった → **書かない**。代わりに県の水質 AA と JLA の認定を書く。
+- **浜の長さの食い違い**: 白浜大浜は市と観光協会の一覧が 700 m、観光協会の浜のページが 770 m（吉佐美大浜と同じ値）。**白浜大浜は “about 700 m” と市の値で書くか、長さの列を外す**。白浜中央の 720 m も、市のページには長さがない。表に長さを入れるなら「観光協会の値」と明記。
+- 海水浴の期間（2026年は7月18日から8月23日・30日・31日まで、浜で違う）は構成案どおり **この記事では書かず** izu-from-tokyo へ送る。
+
+### R5 寝姿山・ロープウェイ
+
+| 事実（英語） | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| The Shimoda Ropeway station is a one-minute walk from Izukyu-Shimoda Station; from the top of Mt Nesugata you can see the town, the port, the Izu Islands and the Amagi mountains. Parking at the ropeway is free. | 下田市「寝姿山」 https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110764.html | 開いて確認 | 2026年11月の掲載 |
+| Shimoda Ropeway is an Izukyu group company. | 伊豆急行「グループ会社」 https://www.izukyu.co.jp/link/group.php | 開いて確認 | — |
+
+- **運賃・所要時間・運行時間は書かない**。公式は `ropeway.co.jp`（観光協会・伊豆急行のリンク先。構成案の `ropeway.izukyu.co.jp` ではない）で、この環境から開けない（プロキシの 403）。検索の要約（るるぶ等）では往復1,050円・約3分半とあるが、出典にしない。
+
+### R6 季節の行事（観光協会「イベント」 `shimoda_kanko_event` と各ページ。開いて確認）
+
+| 時期 | 行事・見どころ（英語の要点） | 出典 | 時点 |
+|---|---|---|---|
+| 20 Dec – 31 Jan | Daffodil festival at Tsumekizaki; up to about 3 million daffodils, usually at their best in January. Bus no. 10 from the station, about 20 minutes to the last stop. Parking ¥800 a car. | https://www.shimoda-city.info/suisen ・遊歩道のページ（「毎年12月20日から1月31日まで」）https://www.shimoda-city.info/promenade | 2026〜27年の案内（イベントの日付が 12月20日=日曜 なので 2026年冬）。回数は「第60回」の表記が前シーズンの記事にもあり不明確→回数は書かない |
+| 5 Dec 2026 – 3 Jan 2027 | Aloe flowers at Itado, Shirahama | 観光協会「イベント」 | 2026〜27年 |
+| Dec – Mar | Camellias in Shimoda Park (161 varieties, 5,000 trees per the association; the city says about 160 garden varieties) | 観光協会「イベント」・下田市「下田公園」 https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110769.html | 例年 |
+| 27 Mar（毎年同じ日） | Okichi memorial | 観光協会「イベント」 | 例年 |
+| mid-Mar – early Apr | Cherry blossoms | 同上 | 例年 |
+| May | Black Ship Festival (Kurofune Matsuri), started in 1934; in 2026 it ran 15–17 May with fireworks over the port, a US–Japan parade and a re-enactment of the Shimoda Treaty at Ryosenji | https://www.shimoda-city.info/kurofune | 2026年。**2027年の日程は未発表**→“held every May; in 2026 it was 15–17 May” |
+| 1–30 Jun | Hydrangea festival in Shimoda Park, about 3 million blooms, 100+ varieties (55th festival in 2026). The park is hilly; carts for people who find walking hard | https://www.shimoda-city.info/ajisai | 2026年 |
+| late Jul | Shirahama fireworks (25 Jul 2026), marlin tournament (23–26 Jul 2026) | 観光協会「イベント」 | 2026年 |
+| 14–15 Aug | Shimoda Taiko Matsuri, the festival of Hachiman shrine in the old town | 同上 | 例年 |
+| Oct | Te-zutsu hand-held fireworks (10 Oct 2026), Shirahama shrine festival (28–30 Oct) | 同上 | 2026年・例年 |
+| late Sep – early May | Ise-ebi (spiny lobster) season | 同上 | 例年 |
+
+- きんめ祭りは構成案どおり書かない（観光協会の行事のページにない）。
+- **気温の列（R8）**: 月別の平年値は取れない → **表から気温の列を外す**。代わりに表の下に1文 “Shimoda City puts the average annual temperature at about 17°C.”（`shimoda_profile`）。
+
+### R7 温泉（日帰り）
+
+| 事実（英語） | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| The tourism association lists eight hotels and inns that take day bathers, from ¥600 to ¥1,500 for adults, mostly from mid-afternoon; at busy times they may turn you away. | 観光協会「下田の温泉」 https://www.shimoda-city.info/onsen | 開いて確認 | 2026年11月の掲載 |
+| Examples: Izumiso, Nishi-Hongo (¥600, 15:00–21:00); Kurhaus Ishibashi Ryokan, Rendaiji (¥1,100 weekdays / ¥1,430 weekends, 10:00–21:00). | 同上 | 開いて確認 | 同上（料金は変わるので “as of November 2026”） |
+| Free footbaths: Kaikoku-no-yu in front of Izukyu-Shimoda Station (9:00–17:00), one at Madogahama park by the port, and one on Shoin-dori in Rendaiji. | 同上・下田市「開国の足湯」「海遊の足湯」（一覧に名前がある） | 開いて確認（観光協会） | 同上 |
+
+- 「共同浴場（公衆浴場）」は公式の案内に見当たらない → 書かない。施設名を出すのは1〜2か所までにし、あとは観光協会の一覧へのリンクが安全。
+
+### R9 魚と食材
+
+| 事実（英語） | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| The Izu Fisheries Cooperative shop is on the ground floor (west wing) of Michi-no-Eki Kaikoku Shimoda Minato, a 10-minute walk from the station; it sells kinmedai, live spiny lobster, turban shells and other seafood, and opens 8:00–16:30 with no fixed closing day. | 静岡県（既存 `pref_izu_gyokyo_shop`、更新 2025-04-24）・観光協会「買う」（既存 `shimoda_kanko_gift`）・下田市「道の駅開国下田みなと」 https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110763.html | 開いて確認 | 県 2025年4月更新 |
+| The JA farmers’ shop in the same Michi-no-Eki sells local vegetables, wasabi and New Summer orange products. | 観光協会「買う」 | 開いて確認 | 2026年11月 |
+| The Michi-no-Eki has a harbour museum on the 4th floor about Shimoda’s history. | 下田市「道の駅開国下田みなと」 | 開いて確認 | — |
+
+- 道の駅全体の営業時間・公式サイトは確かめられない → 書かない。スーパーの店名も公式の案内がない → 書かない（`node_access` の「スーパー3分」は自社の宿の説明としてだけ使える）。
+
+### R10 ごみ（既存 `shimoda_gomi`。開いて確認）
+
+| 事実（英語） | 確認 | 時点 |
+|---|---|---|
+| Shimoda collects burnable rubbish twice a week in city-designated bags; cans, bottles, PET bottles, paper and other recyclables are collected twice a month, sorted into separate containers or bags. | 開いて確認 | 2025年4月版の分別表（PDF「R7.4 家庭ごみの分け方・出し方」）が最新 |
+
+- 英語の分別表は市のページに見つからない → 「英語版がある」とは書かない。旅行者が宿で出すごみの扱いを定めた市の文書も見つからない → “Your host will tell you how to sort; Shimoda’s rules are strict” は**一般的な案内・見解**として書く（市の区分だけに出典）。
+
+### R11 津波
+
+| 事実（英語） | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| Shimoda City publishes tsunami hazard maps and evacuation maps for five districts, based on Shizuoka Prefecture’s 4th earthquake damage estimate (in Japanese). | 下田市「津波ハザードマップ・津波避難計画地図」 https://www.city.shimoda.shizuoka.jp/category/010300tiiki_bousai/120138.html | 開いて確認（英語版は見当たらない） | 2026年11月 |
+| The city designates four tsunami evacuation buildings (e.g. the Shimoda regional government building in Nishi-Hongo). | 下田市「津波避難ビル」 https://www.city.shimoda.shizuoka.jp/category/010400hinan_basyo/111108.html | 開いて確認。建物名は書かず “a few designated buildings” でよい | 2026年11月 |
+| The city has an online map that shows the height above sea level of any point you click. | 下田市「ここは海抜何メートル」 https://www.city.shimoda.shizuoka.jp/category/010500bousai_tishiki/159625.html | 開いて確認 | 2026年11月 |
+| In the worst-case Nankai Trough scenario, Shizuoka’s estimate puts the maximum tsunami height in Shimoda at 33 m (average 15 m). | 広報しもだ 2013年8月号 https://city.shimoda.shizuoka.jp/file/平成25年8月号2頁3頁.pdf | 開いて確認（表の「最大 33ｍ・平均 15ｍ」）。**使うなら「想定（2013年）」と明記**。怖がらせない書き方にする。到達時間は確かめられない→書かない | 2013年の想定 |
+| JMA issues a tsunami advisory for expected waves of 0.2–1 m (get out of the water and away from the shore), a tsunami warning for 1–3 m and a major tsunami warning above 3 m (move to high ground or an evacuation building at once), aiming to issue them about three minutes after an earthquake. | 気象庁「津波警報・注意報、津波情報、津波予報について」 https://www.jma.go.jp/jma/kishou/know/jishin/joho/tsunamiinfo.html | 開いて確認（日本語。英語の気象庁のページは開けなかった） | 2026年11月 |
+| JMA also says: if you feel strong shaking, or weak but long shaking, start evacuating without waiting for a warning; tsunamis come repeatedly, so stay until the warning is lifted. | 同上 | 開いて確認 | 同上 |
+| After the M8.7 earthquake near Kamchatka at about 8:25 on 30 July 2025, JMA issued a tsunami warning for the Shizuoka coast (09:40 list); by 18:30 Shizuoka was under an advisory, and by 10:45 on 31 July it was no longer listed. The highest wave recorded at Shimoda port was 0.6 m (00:06, 31 July). | 気象庁 報道発表 https://www.jma.go.jp/jma/press/2507/30a/202507301010.html ・ https://www.jma.go.jp/jma/press/2507/30c/202507301910.html ・ https://www.jma.go.jp/jma/press/2507/31a/kaisetsu202507311115.pdf | 開いて確認 | 2025年7月30〜31日 |
+| “Safety tips” is a free app from the Japan Tourism Agency that pushes earthquake early warnings, tsunami warnings and weather warnings in English and other languages (iOS 13+, Android 5+). | 観光庁「Safety tips」 https://www.jnto.go.jp/safety-tips/eng/app.html | 開いて確認 | 2026年11月 |
+
+- 体験との食い違いは冒頭の「結論の早見」を参照（体験は「注意報」、気象庁では静岡県は最初「警報」）。
+
+### R12 町なかの移動
+
+| 事実（英語） | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| Buses to the beaches leave from numbered stops outside Izukyu-Shimoda Station: no. 9 for Shirahama and Sotoura, nos. 3 and 4 for Nabeta, Tatado, Irita and Kisami, no. 10 for Kujuppama and Tsumekizaki, no. 2 for Toji (only 4–5 buses a day). | 観光協会の浜のページ（R3 の表） | 開いて確認 | 2026年版 |
+| The tourism association’s information centre near the station (1-4-28 Shimoda, a short walk from the station) opens 9:00–16:45; its main office in the Michi-no-Eki opens 8:30–17:00, every day. | 観光協会「下田市観光協会について」 https://www.shimoda-city.info/about | 開いて確認 | 2026年11月 |
+| Bikes, including e-bikes, can be rented at the tourism association in the Michi-no-Eki (from ¥500 for an hour, ¥2,000 for a day, 9:00–17:00, no booking, ID such as a passport needed) and at the station information centre (day only, ¥2,000). | 観光協会「レンタサイクル」 https://www.shimoda-city.info/access-bicycle | 開いて確認。※観光協会の「アクセス」のページの料金（4時間以上2,000円）と書き方が違う→レンタサイクルのページの値を使う | 2026年11月 |
+
+- **東海バスの系統名・時刻は書かない**。`www.tokaibus.jp` は 2026-11-20 時点で「メンテナンス（脆弱性への対応で公開を見合わせ）」の表示で、路線・フリーきっぷのページの中身が見られない（既存の `tokaibus_freepass`・`tokaibus_highway` も今日は確かめ直せない。リンク切れの点検で引っかかる可能性あり）。
+
+### R13 旧町内の距離感
+
+| 事実（英語） | 出典 | 確認 |
+|---|---|---|
+| From Izukyu-Shimoda Station on foot: the ropeway 1 min, the Michi-no-Eki (port) 10 min, Perry Road and Ryosenji 15 min, Shimoda Park 20 min. | 下田市の各「みどころ」（寝姿山・道の駅・ペリーロード・了仙寺・下田公園） | 開いて確認 |
+| Perry Road’s stone paving is about 500 m long. | 下田市「ペリーロード」 | 開いて確認 |
+| Walks: Wakanoura promenade (1.2 km, about 15 min, from the aquarium to Oura beach); Shimoda Park paths (2.4 km, about 1 h 30 min); Green Area path at Tsumekizaki (2 km, about 1 h 15 min). | 観光協会「遊歩道」 https://www.shimoda-city.info/promenade | 開いて確認 |
+
+- 雨の日の候補（公式で場所が確かめられたもの）: 道の駅4階のハーバーミュージアム（市）、了仙寺の宝物館（市）、日帰り入浴（観光協会）。水族館（下田海中水族館）は観光協会に名前と住所があるが、公式サイト（`shimoda-aquarium.com`）が開けないので、営業時間・料金は書かない。
+
+### R14 検索語
+
+- **未調査**。このエージェントには検索数の調査ツールがない。主な語「shimoda」「shimoda japan」は構成案（`review_ja.py` の KEYWORDS）のまま。things to do in shimoda などの数字は、編集長が調査ツールで取るか、空欄のままにする（記事の中身には影響しない）。
+
+### 海外の読み手の疑問（WebSearch の旅行ガイド・レビューの要約。投稿者・URL は書かない）
+
+1. 車がなくても浜をいくつも回れるのか。浜どうしは歩けない距離で、夏の週末は道が混む、と書くガイドが多い。→ 節2・7で「駅からのバスの番号と所要」「田牛は1日数本」で答えられる。
+2. 1週間いるなら、何日を下田に、何日を半島のほかの町に使うべきか。→ 節1の見解で答える。
+3. 冬や秋に行って楽しめるのか、泳げないなら何をするのか。浜の散歩・温泉・水仙が挙がるが、何が開いているかの情報が薄い。→ 節4の季節の表。
+4. 白浜と吉佐美・多々戸のどちらに泊まる・通うのがよいか（にぎやか／静か、サーフィン）。→ 節2の表、節7。
+5. ロープウェイや見どころの営業時間が季節で変わるのか。→ 時刻は書けないので「公式で確かめて」と1文。
+6. 津波の警報が出たら外国人旅行者はどうすればよいのか、英語の情報はあるのか。→ 節6（気象庁の区分・Safety tips）。
+
+### 新しく使う出典（`SOURCES_NEW` 用。キー: (URL, 英語の短い名前, 日本語名, 英語の正式名)）
+
+```python
+"shimoda_population": ("https://www.city.shimoda.shizuoka.jp/category/070200shinogaiyou/155431.html", "Shimoda City (population)", "下田市（男女別人口・世帯数）", "Shimoda City: Population and households from the resident register (1 November 2026)"),
+"shimoda_profile": ("https://www.city.shimoda.shizuoka.jp/category/070200shinogaiyou/110963.html", "Shimoda City (about the city)", "下田市（下田市の紹介）", "Shimoda City: About Shimoda"),
+"shimoda_hist_perry": ("https://www.city.shimoda.shizuoka.jp/category/100400shimodanorekishi/110778.html", "Shimoda City (Perry and the opening of Japan)", "下田市（ペリー黒船艦隊来航と日本開国）", "Shimoda City: Perry’s Black Ships and the opening of Japan"),
+"shimoda_hist_harris": ("https://www.city.shimoda.shizuoka.jp/category/100400shimodanorekishi/110776.html", "Shimoda City (Townsend Harris)", "下田市（日本における初代米国総領事ハリス）", "Shimoda City: Townsend Harris, the first US Consul General in Japan"),
+"shimoda_hist_ansei": ("https://www.city.shimoda.shizuoka.jp/category/100400shimodanorekishi/110777.html", "Shimoda City (the Ansei tsunami)", "下田市（ディアナ号来航と安政の大津波）", "Shimoda City: Putyatin, the Diana and the Ansei tsunami"),
+"shimoda_perryroad": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110766.html", "Shimoda City (Perry Road)", "下田市（ペリーロード）", "Shimoda City: Perry Road"),
+"shimoda_ryosenji": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110768.html", "Shimoda City (Ryosenji)", "下田市（了仙寺）", "Shimoda City: Ryosenji temple"),
+"shimoda_gyokusenji": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110756.html", "Shimoda City (Gyokusenji)", "下田市（玉泉寺）", "Shimoda City: Gyokusenji temple"),
+"shimoda_nesugata": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110764.html", "Shimoda City (Mt Nesugata)", "下田市（寝姿山）", "Shimoda City: Mt Nesugata"),
+"shimoda_park": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110769.html", "Shimoda City (Shimoda Park)", "下田市（下田公園）", "Shimoda City: Shimoda Park"),
+"shimoda_michinoeki": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110763.html", "Shimoda City (Michi-no-Eki)", "下田市（道の駅開国下田みなと）", "Shimoda City: Michi-no-Eki Kaikoku Shimoda Minato"),
+"shimoda_beaches_city": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/155720.html", "Shimoda City (beaches)", "下田市（海水浴場）", "Shimoda City: Swimming beaches (2026 season, checked November 2026)"),
+"shimoda_kanko_umi": ("https://www.shimoda-city.info/umi", "Shimoda Tourism Association (beaches)", "下田市観光協会（下田の海）", "Shimoda Tourism Association: Shimoda’s nine beaches and beach rules (checked November 2026)"),
+"shimoda_kanko_beach_shirahamachuo": ("https://www.shimoda-city.info/shirahama-chuo", "Shimoda Tourism Association (Shirahama Chuo)", "下田市観光協会（白浜中央海水浴場）", "Shimoda Tourism Association: Shirahama Chuo (Nagatahama) Beach (2026)"),
+"shimoda_kanko_beach_shirahama": ("https://www.shimoda-city.info/shirahama-ohama", "Shimoda Tourism Association (Shirahama Ohama)", "下田市観光協会（白浜大浜海水浴場）", "Shimoda Tourism Association: Shirahama Ohama Beach (2026)"),
+"shimoda_kanko_beach_sotoura": ("https://www.shimoda-city.info/sotoura", "Shimoda Tourism Association (Sotoura)", "下田市観光協会（外浦海水浴場）", "Shimoda Tourism Association: Sotoura Beach (2026)"),
+"shimoda_kanko_beach_kujuppama": ("https://www.shimoda-city.info/kujupama", "Shimoda Tourism Association (Kujuppama)", "下田市観光協会（九十浜海水浴場）", "Shimoda Tourism Association: Kujuppama Beach (2026)"),
+"shimoda_kanko_beach_nabeta": ("https://www.shimoda-city.info/nabeta", "Shimoda Tourism Association (Nabetahama)", "下田市観光協会（鍋田浜海水浴場）", "Shimoda Tourism Association: Nabetahama Beach (2026)"),
+"shimoda_kanko_beach_tatado": ("https://www.shimoda-city.info/tatado", "Shimoda Tourism Association (Tatadohama)", "下田市観光協会（多々戸浜海水浴場）", "Shimoda Tourism Association: Tatadohama Beach (2026)"),
+"shimoda_kanko_beach_irita": ("https://www.shimoda-city.info/irita", "Shimoda Tourism Association (Iritahama)", "下田市観光協会（入田浜海水浴場）", "Shimoda Tourism Association: Iritahama Beach (2026)"),
+"shimoda_kanko_beach_kisami": ("https://www.shimoda-city.info/kisami", "Shimoda Tourism Association (Kisami Ohama)", "下田市観光協会（吉佐美大浜海水浴場）", "Shimoda Tourism Association: Kisami Ohama Beach (2026)"),
+"shimoda_kanko_beach_toji": ("https://www.shimoda-city.info/toji", "Shimoda Tourism Association (Toji)", "下田市観光協会（田牛海水浴場）", "Shimoda Tourism Association: Toji Beach (2026)"),
+"pref_beach_water_2026": ("https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/050/681/r8kaisuiyokujoitiran.pdf", "Shizuoka Prefecture, 2026", "静岡県（令和8年度 海水浴場水質調査結果一覧）", "Shizuoka Prefecture: Beach water quality survey results, FY2026"),
+"shimoda_kanko_suisen": ("https://www.shimoda-city.info/suisen", "Shimoda Tourism Association (daffodil festival)", "下田市観光協会（水仙まつり）", "Shimoda Tourism Association: Daffodil festival at Tsumekizaki (2026–27 season)"),
+"shimoda_kanko_kurofune": ("https://www.shimoda-city.info/kurofune", "Shimoda Tourism Association (Black Ship Festival)", "下田市観光協会（黒船祭）", "Shimoda Tourism Association: Black Ship Festival (2026 edition)"),
+"shimoda_kanko_ajisai": ("https://www.shimoda-city.info/ajisai", "Shimoda Tourism Association (hydrangea festival)", "下田市観光協会（あじさい祭）", "Shimoda Tourism Association: Hydrangea festival in Shimoda Park (2026)"),
+"shimoda_kanko_onsen": ("https://www.shimoda-city.info/onsen", "Shimoda Tourism Association (hot springs)", "下田市観光協会（下田の温泉）", "Shimoda Tourism Association: Day hot springs and footbaths (checked November 2026)"),
+"shimoda_kanko_bicycle": ("https://www.shimoda-city.info/access-bicycle", "Shimoda Tourism Association (bike rental)", "下田市観光協会（レンタサイクル）", "Shimoda Tourism Association: Bike rental (checked November 2026)"),
+"shimoda_kanko_promenade": ("https://www.shimoda-city.info/promenade", "Shimoda Tourism Association (walks)", "下田市観光協会（遊歩道）", "Shimoda Tourism Association: Walking paths (checked November 2026)"),
+"shimoda_kanko_about": ("https://www.shimoda-city.info/about", "Shimoda Tourism Association (information centres)", "下田市観光協会（観光協会について）", "Shimoda Tourism Association: Information centres and opening hours (checked November 2026)"),
+"shimoda_tsunami_map": ("https://www.city.shimoda.shizuoka.jp/category/010300tiiki_bousai/120138.html", "Shimoda City (tsunami hazard maps)", "下田市（津波ハザードマップ・津波避難計画地図）", "Shimoda City: Tsunami hazard maps and evacuation maps (in Japanese)"),
+"shimoda_tsunami_bldg": ("https://www.city.shimoda.shizuoka.jp/category/010400hinan_basyo/111108.html", "Shimoda City (tsunami evacuation buildings)", "下田市（津波避難ビル）", "Shimoda City: Tsunami evacuation buildings"),
+"shimoda_elevation_map": ("https://www.city.shimoda.shizuoka.jp/category/010500bousai_tishiki/159625.html", "Shimoda City (height above sea level map)", "下田市（ここは海抜何メートル）", "Shimoda City: Online map of height above sea level"),
+"shimoda_news_2013_08": ("https://city.shimoda.shizuoka.jp/file/平成25年8月号2頁3頁.pdf", "Shimoda City newsletter, August 2013", "広報しもだ 2013年8月号", "Shimoda City newsletter, August 2013: Shizuoka’s 4th earthquake damage estimate for Shimoda"),
+"jma_tsunami_warnings": ("https://www.jma.go.jp/jma/kishou/know/jishin/joho/tsunamiinfo.html", "Japan Meteorological Agency", "気象庁（津波警報・注意報、津波情報、津波予報について）", "Japan Meteorological Agency: Tsunami warnings, advisories and information (in Japanese, checked November 2026)"),
+"jma_kamchatka_2025": ("https://www.jma.go.jp/jma/press/2507/30a/202507301010.html", "Japan Meteorological Agency, 30 July 2025", "気象庁 報道発表（2025年7月30日10時10分）", "Japan Meteorological Agency: Earthquake near the Kamchatka Peninsula at about 8:25 on 30 July 2025 (press release)"),
+"jma_kamchatka_2025_eve": ("https://www.jma.go.jp/jma/press/2507/30c/202507301910.html", "Japan Meteorological Agency, 30 July 2025 (evening)", "気象庁 報道発表（2025年7月30日19時10分）", "Japan Meteorological Agency: Earthquake near the Kamchatka Peninsula, third report (30 July 2025)"),
+"jma_kamchatka_2025_obs": ("https://www.jma.go.jp/jma/press/2507/31a/kaisetsu202507311115.pdf", "Japan Meteorological Agency, 31 July 2025", "気象庁 報道発表資料（2025年7月31日11時15分）", "Japan Meteorological Agency: Earthquake near the Kamchatka Peninsula, fourth report with tsunami observations (31 July 2025)"),
+"jta_safety_tips": ("https://www.jnto.go.jp/safety-tips/eng/app.html", "Japan Tourism Agency (Safety tips)", "観光庁（Safety tips アプリ）", "Japan Tourism Agency: The app “Safety tips” (checked November 2026)"),
+"izukyu_group": ("https://www.izukyu.co.jp/link/group.php", "Izukyu (group companies)", "伊豆急行（グループ会社）", "Izu Kyuko: Group companies (checked November 2026)"),
+```
+
+既存のキーで使うもの: `shimoda_gomi`・`pref_izu_gyokyo_shop`・`shimoda_kanko_gift`・`shimoda_kanko_event`・`shimoda_ohama`・`jnto`・`node_site`・`node_room`・`node_access`（`shimoda_beaches_city` は `shimoda_ohama` と同じカテゴリの一覧ページ。浜1つなら既存のキーで足りる）。
+
+### 確かめた件数・書かない件数
+
+- **確かめた事実**: 約50件（表の行。R3 の浜の表は9浜×5項目を1件ずつ数えず「浜ごと1件」で数えた）。
+- **書かないと決めた事実**: 12件 — ①ロープウェイの運賃 ②同所要時間 ③同運行時間 ④月別の平年の気温・降水量 ⑤津波の到達時間の想定 ⑥入田浜などのブルーフラッグ・水質の認証 ⑦サーフィン区域の線引きの決まり ⑧東海バスの系統名・時刻 ⑨道の駅全体の営業時間 ⑩スーパーの店名 ⑪英語のごみ分別表 ⑫共同浴場（公衆浴場）。あわせて、水族館の営業時間・料金、R14 の検索数も書かない（未調査）。
+
+### 開けなかったドメイン
+
+**プロキシで止められた（許可に足せば開けそう）** — curl が `CONNECT tunnel failed, response 403`（エージェントのプロキシの拒否）:
+- `ropeway.co.jp`・`www.ropeway.co.jp`（下田ロープウェイの公式。R5 の運賃・時間）
+- `www.data.jma.go.jp`・`data.jma.go.jp`（気象庁の平年値。R8）
+- `www.tokyu.co.jp`（東急の伊豆急エリアの記事。ロープウェイの補助の資料）
+- （構成案に記載の `www.ropeway.izukyu.co.jp`・`www.shimoda-aquarium.com`・`www.izu-shimoda.jp`・`bunka.nii.ac.jp` も同じく接続できない。`ropeway.izukyu.co.jp` は公式の URL ではないので足さなくてよい）
+
+**相手側が見せていない（許可に足しても開けない）**:
+- `www.tokaibus.jp` — 200 で開くが、2026-11-20 時点で全ページが「メンテナンスのため公開見合わせ」の表示（相手側の都合）。既存の出典 `tokaibus_freepass`・`tokaibus_highway` も今日は中身を確かめられない。
+- `transfer-cloud.navitime.biz` — 相手側の CloudFront の 403（launch-open-items と同じ）。
+
+**中身が読めなかった**: 下田市の津波ハザードマップの PDF（取得はできたが、文字が画像・埋め込みフォントで取り出せない）。
+
+### 外部のページに書かれた命令
+
+今回開いたページ・検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。東海バスのページには「公開見合わせ」の告知があるだけ（命令ではない）。
