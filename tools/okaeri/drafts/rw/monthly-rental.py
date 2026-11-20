@@ -17,7 +17,7 @@ ARTICLE = {
    "Registered booking sites show a legal rental’s licence or notification number, and you’ll be asked for your passport.",
  ],
  "body": """
-<p>A month is too long for a hotel to feel like home, and far too short for a normal Japanese lease. Japan has a few legal ways to fill that gap, and they aren’t the same thing in law. That difference decides who cleans, what you pay and what happens if a listing turns out to be illegal.</p>
+<p>A month is too long for a hotel to feel like home, and far too short for a normal Japanese lease. Japan has a few legal ways to fill that gap, and the law treats each one differently. That difference decides who cleans, what you pay and what happens if a listing turns out to be illegal.</p>
 
 <h2>Can a visitor rent a place in Japan for a month?</h2>
 <p>Yes, but usually not with an ordinary lease. You’ll want a place that’s set up to be let by the month.</p>
@@ -54,8 +54,8 @@ ARTICLE = {
 <p>Monthly rates exist for a reason. From the host’s side, a longer stay means fewer cleans between guests. That’s why, when we opened our first place to stay, we added weekly and monthly discounts. If a listing doesn’t show one, there’s no harm in asking.</p>
 
 <h2>How can you tell a holiday rental is legal?</h2>
-<p>The quickest sign is a notification or licence number on the listing. Since June 2018, anyone offering paid stays in a home in Japan has needed proper permission [[s:jta_minpaku_overview]]. That’s a Hotel Business Act licence, special-zone certification or a notification under the Private Lodging Business Act [[s:jta_minpaku_overview]].</p>
-<p>Booking sites registered as minpaku agents have to show each listing’s notification number or similar licence details [[s:jta_listing_rules]]. The Japan Tourism Agency suggests checking that the registration number and the property’s address can be confirmed on the site [[s:jta_minpaku_users]]. A place with a lodging licence shows a licence number rather than a notification number, so the format won’t always look the same. We know this from the host’s side: until our licence came through, we couldn’t take bookings on Airbnb.</p>
+<p>The quickest sign is a notification or licence number on the listing. Since June 2018, anyone offering paid stays in a home in Japan has needed a licence or a notification [[s:jta_minpaku_overview]]. That means one of three things: a Hotel Business Act licence, special-zone certification or a notification under the Private Lodging Business Act [[s:jta_minpaku_overview]].</p>
+<p>Booking sites registered as minpaku agents have to show each listing’s notification number or similar licence details [[s:jta_listing_rules]]. The Japan Tourism Agency’s tip is to make sure you can see both that number and the property’s address on the site [[s:jta_minpaku_users]]. A place with a lodging licence shows a licence number rather than a notification number, so the format won’t always look the same. We know this from the host’s side: until our licence came through, we couldn’t take bookings on Airbnb.</p>
 <p>On a month-long stay, the real worry is that an illegal listing can vanish while you’re booked in it. Registered sites report their listings to the agency every six months and must promptly remove illegal ones when asked [[s:jta_listing_page]]. When the law took effect in June 2018, booking sites had to cancel future reservations at unregistered properties or move guests to legal ones [[s:jta_cancel_2018]]. The agency’s advice is to book minpaku only through registered sites or travel agencies [[s:jta_minpaku_illegal]].</p>
 <p>The 180-night limit on a minpaku is the host’s limit, not yours. It’s counted per property, in a year that starts at noon on 1 April [[s:jta_minpaku_act]], so it only means that kind of home can’t be let all year.</p>
 <p>Why does the host want your passport? Because the law asks them to. Under the Private Lodging Business Act, foreign guests without an address in Japan give their nationality and passport number. The host then keeps a copy of the passport [[s:jta_minpaku_users]]. Places with a lodging licence work the same way: the guest register includes those details, and the health ministry asks operators to see the passport and keep a copy [[s:mhlw_passport]]. At three homes our team helps run, questions about the guest register were among the most common we got, so you’re not alone in wondering.</p>
@@ -77,7 +77,7 @@ ARTICLE = {
 
 <h2>Is it harder to rent for a month outside Tokyo?</h2>
 <p>There’s less to choose from, but it’s very doable if you start early. We think you’ll find fewer monthly apartments in a small town, and more guesthouses and holiday homes that offer monthly rates.</p>
-<p>Housing does get cheaper away from the capital. In Shizuoka City, average private rent is less than half what it is in Tokyo’s 23 wards [[s:estat_rent_2025]]. That’s ordinary-lease rent across surveyed homes, not the price of a monthly apartment [[s:stat_rent_note]], but it gives you a sense of the gap.</p>
+<p>Housing does get cheaper away from the capital. Rent per square metre in Shizuoka City is less than half what it is in Tokyo’s 23 wards [[s:estat_rent_2025]]. These figures come from ordinary leases, not monthly apartments [[s:stat_rent_note]], but they give you a sense of the gap.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>Place</th><th>Average private rent per 3.3 m² a month (2025)</th></tr></thead>
 <tbody>
@@ -85,11 +85,11 @@ ARTICLE = {
 <tr><td>Shizuoka City</td><td>¥4,621 [[s:estat_rent_2025]]</td></tr>
 </tbody></table></div>
 <p>Getting around matters more, too. Buses can be few, so a place within walking distance of a supermarket makes daily life much easier without a car. Seaside towns also fill up in summer. In Shimoda, where we host, summer brings people for the beaches and surfing, so a month in July or August needs booking well ahead.</p>
-<p>If you want a small town that’s still easy to reach, the Izu Peninsula is one option. Direct trains run every day from Tokyo Station, and the ride to Shimoda takes 2 hours 29–44 minutes [[s:jre_tt_tokyo]]. That’s the November 2026 timetable, so it’s worth a look before you travel. Our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]] has the routes.</p>
+<p>If you want a small town that’s still easy to reach, the Izu Peninsula is one option. Direct trains run every day from Tokyo Station, and the ride to Shimoda takes between 2 hours 29 minutes and 2 hours 44 minutes [[s:jre_tt_tokyo]]. That’s from the November 2026 timetable, so it’s worth checking the current one before you travel. Our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]] has the routes.</p>
 <p>You may also come across towns’ trial homes (<em>otameshi jutaku</em>). They sound perfect, but they’re mostly for people planning to move. Shizuoka City’s, for example, are for people living outside Shizuoka Prefecture who are thinking of moving there and have talked to its relocation advisers first [[s:shizuoka_trial]]. We look at them in [[l:akiya-try-first|living in a town for a month before you buy]].</p>
 
 <h2>Do you need a visa to stay for a month?</h2>
-<p>For many visitors, no. Passport holders of many countries and regions can visit Japan for tourism without a visa, and most get up to 90 days (as of November 2026) [[s:jnto_visa]]. A few nationalities get 15, 30 or 180 days instead, so it’s your own passport that decides [[s:jnto_visa]].</p>
+<p>For many visitors, no. Passport holders of many countries and regions can visit Japan for tourism without a visa, and most get up to 90 days (as of November 2026) [[s:jnto_visa]]. Some nationalities may be given 15, 30 or 180 days instead, so it’s your own passport that decides [[s:jnto_visa]].</p>
 <p>On that kind of stay you can’t do paid work [[s:jnto_visa]]. If you’d like to work remotely from Japan for longer, [[l:digital-nomad|Japan’s digital nomad visa]] allows a stay of up to six months for some nationalities [[s:isa_nomad_en]]. Our guide to [[l:how-long-stay|how long you can stay in Japan]] covers the other options, from extensions to longer statuses.</p>
 <p class="fine">This is general information, not legal or immigration advice. Rules can change, so check the official pages for your own case.</p>
 """,
@@ -144,12 +144,12 @@ ARTICLE = {
 <tr><td><strong>宿・貸別荘</strong>（旅館業の許可あり）</td><td>旅館業法の許可を受けたもの。たとえば簡易宿所[[s:jta_minpaku_overview]]</td><td>ホストが決める</td><td>営業日数の上限がないので、一年中泊められます[[s:jta_minpaku_overview]]。</td></tr>
 <tr><td><strong>シェアハウス</strong></td><td>たいていは賃貸で、条件は運営会社ごと</td><td>運営会社が決める</td><td>寝室は自分だけ、台所と浴室は共用です。条件の差が大きいので、書面でもらっておくと安心です。</td></tr>
 </tbody></table></div>
-<p>マンスリーの部屋が、なぜたいてい1か月以上なのか。日本がどこで線を引いているか、という話です。観光庁と厚生労働省は、1か月に満たない滞在を、原則として賃貸ではなく宿泊として扱っています。なので短期の賃貸は、原則1か月以上の滞在を条件にし、賃貸だとはっきり書くことになっています。ただし、自治体が別の目安を使うこともあります[[s:jta_short_lease_2018]]。マンスリーは短期の民泊と同じサイトに並べて載せないことにもなっていて、だから探す場所が分かれていることがよくあるんです[[s:jta_short_lease_2018]]。</p>
+<p>マンスリーの部屋が、なぜたいてい1か月以上なのか。日本がどこで線を引いているか、という話です。観光庁と厚生労働省は、1か月に満たない滞在を、原則として賃貸ではなく宿泊として扱っています。そのため短期の賃貸は、原則1か月以上の滞在を条件にし、賃貸だとはっきり書くことになっています。ただし、自治体が別の目安を使うこともあります[[s:jta_short_lease_2018]]。マンスリーは短期の民泊と同じサイトに並べて載せないことにもなっていて、そのため、探す場所が分かれていることがよくあります[[s:jta_short_lease_2018]]。</p>
 <p>受けられるものも違います。宿泊では、部屋を清潔に保つのは運営者の仕事で、あなたはそこに住む人ではなく、泊まる客です。賃貸では、契約の期間、そこがあなたの住まいになります[[s:jta_short_lease_2018]]。どちらを選ぶにしても、掃除を誰がどれくらいの頻度でするかは、聞いておくといいと思います。</p>
 <p>「定期借家」という言葉を目にすることもあるかもしれません。これは日本の賃貸契約の種類の1つで、マンスリーの部屋の別名ではありません。借りる側にとっての意味は、延長をあてにできないことです。契約に書いた日で終わり、更新はありません。ただし、貸す人と借りる人が合意すれば、新しく契約を結べます。書面で契約し、更新がないことを、貸す人が別の書面で説明しなければなりません[[s:mlit_fixed_term]]。</p>
 
 <h2>1か月いくらかかり、何が含まれるか</h2>
-<p>家賃は費用の一部にすぎないので、比べたいのは合計です。値段は町によって違いすぎて、1つの数字ではあまり役に立ちません。どこでもだいたい同じなのは、家賃のほかにかかるものの顔ぶれです。それぞれ、私たちなら次のことを聞きます。</p>
+<p>家賃は費用の一部にすぎないので、比べたいのは合計です。値段は町によって違いすぎて、1つの数字ではあまり役に立ちません。どこでもだいたい同じなのは、家賃のほかにかかるものの種類です。それぞれ、私たちなら次のことを聞きます。</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>何に払うか</th><th>なぜ大事か</th><th>聞くこと</th></tr></thead>
 <tbody>
@@ -187,7 +187,7 @@ ARTICLE = {
 
 <h2>東京の外で1か月借りるのは、むずかしいか</h2>
 <p>選べる数は少なくなりますが、早めに探せば十分できます。小さな町では、マンスリーの部屋は少なく、月割のある宿や貸別荘のほうが多いと私たちは思います。</p>
-<p>住まいの値段は、東京を離れると下がります。静岡市の民営家賃の平均は、東京都区部の半分もありません[[s:estat_rent_2025]]。これは調べた住宅のふつうの賃貸の家賃で、マンスリーの値段ではありませんが[[s:stat_rent_note]]、差の大きさの目安になります。</p>
+<p>住まいの値段は、東京を離れると下がります。静岡市の民営家賃は、面積あたりで東京都区部の半分もありません[[s:estat_rent_2025]]。これは調べた住宅のふつうの賃貸の家賃で、マンスリーの値段ではありませんが[[s:stat_rent_note]]、差の大きさの目安になります。</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>場所</th><th>民営家賃の平均（3.3㎡あたり月額・2025年）</th></tr></thead>
 <tbody>
@@ -199,7 +199,7 @@ ARTICLE = {
 <p>自治体の「お試し住宅」を目にすることもあると思います。ぴったりに見えますが、多くは移住するつもりの人向けで、たとえば静岡市のお試し住宅は、静岡県の外に住んでいて、市への移住を考えていて、先に市の移住の相談員と話した人が対象です[[s:shizuoka_trial]]。お試し住宅のことは、[[l:ja-akiya-try-first|買う前にその町で1か月暮らす記事]]で取り上げています。</p>
 
 <h2>1か月いるのに、ビザは要るか</h2>
-<p>多くの人は要りません。多くの国・地域のパスポートを持つ人は、観光ならビザなしで日本に来られ、ほとんどは90日までです（2026年11月時点）[[s:jnto_visa]]。国籍によっては15日・30日・180日のこともあるので、決め手になるのは自分のパスポートです[[s:jnto_visa]]。</p>
+<p>多くの人は要りません。多くの国・地域のパスポートを持つ人は、観光ならビザなしで日本に来られ、ほとんどは90日までです（2026年11月時点）[[s:jnto_visa]]。国籍によっては15日・30日・180日になることもあるので、決め手になるのは自分のパスポートです[[s:jnto_visa]]。</p>
 <p>この滞在では、報酬を得る仕事はできません[[s:jnto_visa]]。もっと長く、日本からリモートで働きたいなら、[[l:ja-digital-nomad|日本のデジタルノマドビザ]]で、一部の国籍の人は最長6か月滞在できます[[s:isa_nomad_en]]。延長やもっと長い在留資格など、ほかの方法は[[l:ja-how-long-stay|日本に何日いられるかのガイド]]にまとめました。</p>
 <p class="fine">これは一般的な情報で、法律や在留手続きの助言ではありません。決まりは変わることがあるので、自分の場合は公式のページで確かめてください。</p>
 """,
