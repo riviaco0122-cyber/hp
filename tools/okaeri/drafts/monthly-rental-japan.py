@@ -120,7 +120,7 @@ ARTICLE = {
 
 <h2>Do you need a visa to stay for a month?</h2>
 <p>For many visitors, no. As of November 2026, passport holders of many countries and regions can visit Japan for tourism without a visa, most for up to 90 days. Some nationalities are given 15, 30 or 180 days instead [[s:jnto_visa]].</p>
-<p>On that kind of stay you can’t do paid work, and the rule for your own passport is the one that counts [[s:jnto_visa]]. If you’d like to work remotely from Japan for longer, [[l:digital-nomad|Japan’s digital nomad visa]] allows a stay of up to six months for some nationalities [[s:isa_nomad_en]].</p>
+<p>On that kind of stay you can’t do paid work, and the rule for your own passport is the one that counts [[s:jnto_visa]]. If you’d like to work remotely from Japan for longer, [[l:digital-nomad|Japan’s digital nomad visa]] allows a stay of up to six months for some nationalities [[s:isa_nomad_en]]. Our guide to [[l:how-long-stay|how long you can stay in Japan]] covers the other options, from extensions to longer statuses.</p>
 <p class="fine">This is general information, not legal or immigration advice. Rules can change, so check the official pages for your own case.</p>
 """,
  "faq": [
@@ -223,7 +223,7 @@ ARTICLE = {
 
 <h2>1か月いるのに、ビザは要るか</h2>
 <p>多くの人は要りません。2026年11月時点で、多くの国・地域のパスポートを持つ人は、観光ならビザなしで日本に来られ、ほとんどは90日までです。ただし、国籍によっては15日・30日・180日のこともあります[[s:jnto_visa]]。</p>
-<p>この滞在では、報酬を得る仕事はできません。大事なのは、自分のパスポートの条件です[[s:jnto_visa]]。もっと長く、日本からリモートで働きたいなら、[[l:ja-digital-nomad|日本のデジタルノマドビザ]]で、一部の国籍の人は最長6か月滞在できます[[s:isa_nomad_en]]。</p>
+<p>この滞在では、報酬を得る仕事はできません。大事なのは、自分のパスポートの条件です[[s:jnto_visa]]。もっと長く、日本からリモートで働きたいなら、[[l:ja-digital-nomad|日本のデジタルノマドビザ]]で、一部の国籍の人は最長6か月滞在できます[[s:isa_nomad_en]]。延長やもっと長い在留資格など、ほかの方法は[[l:ja-how-long-stay|日本に何日いられるかのガイド]]にまとめました。</p>
 <p class="fine">これは一般的な情報で、法律や在留手続きの助言ではありません。決まりは変わることがあるので、自分の場合は公式のページで確かめてください。</p>
 """,
   "faq": [

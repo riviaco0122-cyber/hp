@@ -67,7 +67,7 @@ ARTICLE = {
 <p>The list is a PDF, and it’s the only place to check your own passport [[s:isa_nomad_list]]. Counts on other sites go out of date, so the current version is the one to trust. The income test is about the applicant, so it’s safer not to count on adding a partner’s earnings.</p>
 
 <h2>How long can you stay, and can you renew it?</h2>
-<p>Six months at most, and it can’t be extended [[s:isa_nomad_en,jnto_nomad]]. You can come back on the same status once six months have passed since you left Japan [[s:isa_nomad_en]]. So the rhythm is six months in Japan, then six months somewhere else.</p>
+<p>Six months at most, and it can’t be extended [[s:isa_nomad_en,jnto_nomad]]. You can come back on the same status once six months have passed since you left Japan [[s:isa_nomad_en]]. So the rhythm is six months in Japan, then six months somewhere else. If you’re weighing it against other ways to stay, our guide to [[l:how-long-stay|how long you can stay in Japan]] compares them.</p>
 <p>Some sites still say you get one extension. The agency’s own page says you don’t, and that’s the version to plan around. Here’s how it compares with an ordinary visa-free visit.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th></th><th>Short-term visitor (visa-exempt)</th><th>Digital nomad</th></tr></thead>
@@ -170,7 +170,7 @@ ARTICLE = {
 <p>一覧は PDF で、自分のパスポートが対象かを確かめられるのはそこだけです[[s:isa_nomad_list]]。ほかのサイトに載っている国の数は古くなるので、信頼できるのはいまの版です。収入の条件は申請する本人のものなので、パートナーの収入を足して届かせることはあてにしないほうが安全です。</p>
 
 <h2>どれくらいいられて、更新はできるのか</h2>
-<p>最長6か月で、延長はできません[[s:isa_nomad_en,jnto_nomad]]。日本を出てから6か月たてば、同じ在留資格でまた来られます[[s:isa_nomad_en]]。つまり、日本で6か月、ほかの場所で6か月というリズムになります。</p>
+<p>最長6か月で、延長はできません[[s:isa_nomad_en,jnto_nomad]]。日本を出てから6か月たてば、同じ在留資格でまた来られます[[s:isa_nomad_en]]。つまり、日本で6か月、ほかの場所で6か月というリズムになります。ほかの滞在のしかたと比べたいなら、[[l:ja-how-long-stay|日本に何日いられるかのガイド]]も読んでみてください。</p>
 <p>いまでも「1回だけ延長できる」と書いているサイトがあります。入管庁のページには延長できないとあり、計画はそちらに合わせるのがいいと思います。ふつうのビザなしの滞在と比べると、次のとおりです。</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th></th><th>短期滞在（査証免除）</th><th>デジタルノマド</th></tr></thead>

@@ -105,7 +105,7 @@ ARTICLE = {
 <p>In 2016, then, the festival gave visitors a place to watch the morning landings in June. For this year’s events, the tourism association’s events calendar is the place to look [[s:shimoda_kanko_event]], and the association can help if you’d like to plan a trip around one.</p>
 
 <h2>Why stay overnight instead of visiting for the day?</h2>
-<p>In our view, a night in town is what makes a kinmedai trip relaxed. You get kinmedai for dinner, then an unhurried morning: a walk down to the harbour, breakfast at the market canteen from 7:00, where the morning set changes daily with the catch [[s:pref]], and no train to rush back for.</p>
+<p>In our view, a night in town is what makes a kinmedai trip relaxed. You get kinmedai for dinner, then an unhurried morning: a walk down to the harbour, breakfast at the market canteen from 7:00, where the morning set changes daily with the catch [[s:pref]], and no train to rush back for. If you can stay longer, our [[l:shimoda-guide|guide to a week in Shimoda]] covers the beaches and the rest of the town.</p>
 <p>A day trip is possible, but the mornings are tight. The first Tokaido Line train from Tokyo Station leaves at 5:20 and doesn’t reach Atami until 7:08. The one earlier option is a 4:35 local from Shinagawa, which connects at Atami. On JR East’s November 2026 timetable, it reaches Izukyu-Shimoda at 7:59 [[s:jre_tt_tokyo]]. If a festival viewing kept the 2016 hours of about 7:30 to 9:00 [[s:shimoda_news]], you’d still have most of an hour after the ten-minute walk to the market. Routes are in our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]].</p>
 <p>If you’d like to cook a fish yourself, the Izu Fisheries Cooperative runs a shop on the ground floor of the Kaikoku Shimoda Minato roadside station that sells Shimoda kinmedai [[s:shimoda_kanko_gift]]. Shizuoka Prefecture lists it as open 8:00 to 16:30 with no regular closing day, about ten minutes on foot from the station (page updated April 2025) [[s:pref_izu_gyokyo_shop]]. Our apartment in the old town, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, has a kitchen with a gas hob, fridge, rice cooker and cookware [[s:node_room]], and it’s eight minutes’ walk from the station [[s:node_access]].</p>
 """,
@@ -196,7 +196,7 @@ ARTICLE = {
 <p>2016年は、6月の祭りの期間に、朝の水揚げを見られる場所がありました。いまの行事は、観光協会の行事のページで見られます[[s:shimoda_kanko_event]]。行事に合わせて旅を組みたいなら、観光協会に聞くのが確実です。</p>
 
 <h2>日帰りではなく、泊まったほうがいい理由</h2>
-<p>私たちは、町に1泊すると金目鯛の旅がずっとゆったりすると思っています。夕食に金目鯛を食べて、朝は港までのんびり歩き、市場の食堂で7時からの朝ごはん（朝はその日の水揚げで変わる日替わりの定食です）[[s:pref]]。帰りの電車に追われることもありません。</p>
+<p>私たちは、町に1泊すると金目鯛の旅がずっとゆったりすると思っています。夕食に金目鯛を食べて、朝は港までのんびり歩き、市場の食堂で7時からの朝ごはん（朝はその日の水揚げで変わる日替わりの定食です）[[s:pref]]。帰りの電車に追われることもありません。もっと長くいられるなら、浜や町の過ごし方を[[l:ja-shimoda-guide|下田で1週間過ごすためのガイド]]にまとめました。</p>
 <p>日帰りもできますが、朝はかなり慌ただしくなります。東京駅の始発の東海道線は5:20発で、熱海に着くのは7:08です。それより早い行き方は1つで、品川4:35発の普通に乗って熱海で乗り継ぐと、JR東日本の2026年11月の時刻表で伊豆急下田に7:59に着きます[[s:jre_tt_tokyo]]。祭りの見学が2016年と同じ朝7時半〜9時ごろなら[[s:shimoda_news]]、駅から市場まで約10分歩いても、1時間近く残ります。行き方は、[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]にまとめています。</p>
 <p>魚を自分で料理してみたいなら、道の駅「開国下田みなと」の1階で、伊豆漁協が下田の金目鯛などを売る店を開いています[[s:shimoda_kanko_gift]]。静岡県のページ（2025年4月更新）では、8時〜16時30分・定休日なしで、駅から歩いて約10分です[[s:pref_izu_gyokyo_shop]]。旧町内にある私たちのアパートの一室「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」には、ガスコンロ・冷蔵庫・炊飯器・調理器具のそろったキッチンがあり[[s:node_room]]、駅から歩いて8分です[[s:node_access]]。</p>
 """,
