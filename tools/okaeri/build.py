@@ -176,6 +176,7 @@ class Ctx:
         s = re.sub(r"\[\[l:([\w-]+)\|([^\]]+)\]\]", link, s)
         s = re.sub(r"\[\[img:([\w-]+)\|([^|\]]+)\|([^\]]*)\]\]", lambda m: img(self, m.group(1), m.group(2), m.group(3)), s)
         s = re.sub(r"\[\[ed:(.+?)\]\]", ed, s, flags=re.S)
+        s = re.sub(r"(\d) (m²|m|km|min)\b", "\\1&nbsp;\\2", s)  # 数字と単位を行末で切り離さない（例: 470 m）
         return stack_tables(s)
 
 
@@ -378,6 +379,7 @@ def page_izu(ctx):
 <p>The official swimming season at Izu beaches runs from around mid-July to late August [[s:jg6322]]. Outside summer the towns are much quieter, and many restaurants and shops close early [[s:tdn]]. That quiet is the reason to come for a week instead of a weekend.</p>
 <h2>Guides to the Izu Peninsula</h2>
 <ul>
+<li>[[l:shimoda-guide|Shimoda, Japan: a guide for a week or longer]]</li>
 <li>[[l:izu-from-tokyo|Izu Peninsula from Tokyo: trains, fares and why to stay a week]]</li>
 <li>[[l:kinmedai|Kinmedai: Japan’s golden-eye snapper and where to eat it]]</li>
 </ul>

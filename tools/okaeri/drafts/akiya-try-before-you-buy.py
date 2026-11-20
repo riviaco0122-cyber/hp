@@ -80,8 +80,8 @@ ARTICLE = {
 <p>The old two-wire electrics couldn’t run the air conditioner, the fridge and the microwave all at once, so we had to ask guests not to use them together. Upgrading the wiring costs real money, so it’s something to find out before you budget, not after. Getting broadband put in took more than two months because it was the busy season, and we got by on a plug-in home router until then.</p>
 <p>The wiring and the wait for broadband are small examples of a bigger point. With a cheap old house, the asking price is only part of what you’ll pay. Renovation, taxes, insurance and upkeep come on top, and they vary so much from one building to the next that only written quotes will tell you the real figure.</p>
 
-<h2>How long can you stay in Japan to test a town?</h2>
-<p>Long enough for a proper trial, for most people. There are two main ways to do it without a work or residence visa, and the rules below are as of November 2026.</p>
+<h2>Which visa lets you spend a trial month in a town?</h2>
+<p>For most people, either of two ways works without a work or residence visa, and both give you long enough for a proper trial. The rules below are as of November 2026.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>Way to stay</th><th>How long</th><th>Who it’s for</th></tr></thead>
 <tbody>
@@ -89,6 +89,7 @@ ARTICLE = {
 <tr><td><strong>Digital nomad</strong> status</td><td>Six months, and it can’t be renewed. You can apply for it again six months after you leave Japan [[s:isa_nomad_en]].</td><td>Nationals of countries and regions that are both visa-exempt and have a tax treaty with Japan [[s:isa_nomad_list]]. You need an annual income of at least ¥10 million and private medical insurance with at least ¥10 million of treatment cover, and you can’t work for a Japanese employer [[s:isa_nomad_en]].</td></tr>
 </tbody></table></div>
 <p>If the digital nomad route fits you, our [[l:digital-nomad|guide to Japan’s digital nomad visa]] has more on who qualifies and how it works.</p>
+<p>For extensions, longer statuses and what happens if you leave and come back, see our guide to [[l:how-long-stay|how long you can stay in Japan]].</p>
 <p class="fine">This is general information, not immigration advice. The list of eligible countries for the digital nomad status changes, so check it for your own passport.</p>
 
 <h2>Where can you stay for a month to test a town?</h2>
@@ -182,8 +183,8 @@ ARTICLE = {
 <p>古い2芯の配線では、エアコンと冷蔵庫と電子レンジを同時に使えず、ゲストに同時に使わないようお願いすることになりました。配線をやり直すにはそれなりの費用がかかるので、予算を組む前に知っておきたいことです。インターネットの回線工事は、繁忙期だったこともあって申し込みから2か月以上かかり、それまでは置き型のホームルーターでしのぎました。</p>
 <p>配線と回線工事の待ちは、もっと大きな話の小さな例です。安い古い家では、売り出し価格は、かかるお金の一部にすぎません。改修、税金、保険、維持費が上乗せされ、建物ごとに大きく変わるので、本当の金額は書面の見積もりを取って初めて分かります。</p>
 
-<h2>町を試すために、日本にどれくらいいられるのか</h2>
-<p>多くの人にとって、しっかり試せるくらいの長さはあります。就労や居住のビザなしで滞在する方法はおもに2つで、下の条件は2026年11月時点のものです。</p>
+<h2>町で1か月を試すには、どの在留資格が合うか</h2>
+<p>多くの人は、就労や居住のビザなしで、しっかり試せるくらいの期間いられます。方法はおもに2つで、下の条件は2026年11月時点のものです。</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>滞在のしかた</th><th>期間</th><th>対象</th></tr></thead>
 <tbody>
@@ -191,6 +192,7 @@ ARTICLE = {
 <tr><td><strong>デジタルノマド</strong>の在留資格</td><td>6か月で、更新はできません。出国後6か月たてば、もう一度申請できます[[s:isa_nomad_en]]。</td><td>ビザ免除で、かつ日本と租税条約のある国・地域の人[[s:isa_nomad_list]]。年収1,000万円以上と、治療費1,000万円以上を補償する民間の医療保険が必要で、日本の会社に雇われて働くことはできません[[s:isa_nomad_en]]。</td></tr>
 </tbody></table></div>
 <p>デジタルノマドの在留資格が合いそうなら、[[l:ja-digital-nomad|日本のデジタルノマドビザの記事]]に、対象になる人と仕組みをくわしくまとめています。</p>
+<p>延長、もっと長い在留資格、いったん出国してまた来る場合のことは、[[l:ja-how-long-stay|日本に何日いられるかのガイド]]にまとめました。</p>
 <p class="fine">これは一般的な情報で、在留手続きの助言ではありません。デジタルノマドの対象の国は変わるので、自分のパスポートで確かめてください。</p>
 
 <h2>町を試すために1か月泊まれる場所はどこか</h2>

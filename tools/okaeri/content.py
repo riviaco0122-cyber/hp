@@ -90,7 +90,7 @@ SOURCES = {
     "jnto_nomad": ("https://www.japan.travel/en/plan/digital-nomad-visa/", "JNTO", "日本政府観光局（デジタルノマドビザ）",
                    "JNTO: Digital Nomad Visa (checked November 2026)"),
     "egov_immig_act": ("https://laws.e-gov.go.jp/law/326CO0000000319", "Immigration Control Act", "出入国管理及び難民認定法（e-Gov法令検索）",
-                       "Immigration Control and Refugee Recognition Act, Articles 19-3 and 20 (e-Gov, version in force 1 October 2026)"),
+                       "Immigration Control and Refugee Recognition Act, Articles 5, 7, 7-2, 19, 19-3, 20, 21, 24, 24-3, 70 and Appended Table I (e-Gov, version in force 1 October 2026)"),
     "egov_immig_rules": ("https://laws.e-gov.go.jp/law/356M50000010054", "Immigration Control Act ordinance", "出入国管理及び難民認定法施行規則（e-Gov法令検索）",
                          "Ordinance for Enforcement of the Immigration Control and Refugee Recognition Act, Article 19-5 (e-Gov, version in force 1 October 2026)"),
     "soumu_juki": ("https://www.soumu.go.jp/main_sosiki/jichi_gyousei/c-gyousei/zairyu/english/index.html", "Ministry of Internal Affairs and Communications",
@@ -165,6 +165,93 @@ SOURCES = {
                       "Shimoda City: Shirahama Ohama Beach"),
     "shimoda_beach2026_city": ("https://city.shimoda.shizuoka.jp/file/広報しもだ令和8年8月号2-3頁.pdf", "Shimoda City newsletter, August 2026",
                                "広報しもだ 2026年8月号", "Shimoda City newsletter, August 2026: beaches open in Shimoda"),
+    "shimoda_population": ("https://www.city.shimoda.shizuoka.jp/category/070200shinogaiyou/155431.html", "Shimoda City (population)",
+                           "下田市（男女別人口・世帯数）", "Shimoda City: Population and households from the resident register (1 November 2026)"),
+    "shimoda_profile": ("https://www.city.shimoda.shizuoka.jp/category/070200shinogaiyou/110963.html", "Shimoda City (about the city)",
+                        "下田市（下田市の紹介）", "Shimoda City: About Shimoda"),
+    "shimoda_hist_perry": ("https://www.city.shimoda.shizuoka.jp/category/100400shimodanorekishi/110778.html", "Shimoda City (Perry and the opening of Japan)",
+                           "下田市（ペリー黒船艦隊来航と日本開国）", "Shimoda City: Perry’s Black Ships and the opening of Japan"),
+    "shimoda_hist_harris": ("https://www.city.shimoda.shizuoka.jp/category/100400shimodanorekishi/110776.html", "Shimoda City (Townsend Harris)",
+                            "下田市（日本における初代米国総領事ハリス）", "Shimoda City: Townsend Harris, the first US Consul General in Japan"),
+    "shimoda_hist_ansei": ("https://www.city.shimoda.shizuoka.jp/category/100400shimodanorekishi/110777.html", "Shimoda City (the Ansei tsunami)",
+                           "下田市（ディアナ号来航と安政の大津波）", "Shimoda City: Putyatin, the Diana and the Ansei tsunami"),
+    "shimoda_perryroad": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110766.html", "Shimoda City (Perry Road)",
+                          "下田市（ペリーロード）", "Shimoda City: Perry Road"),
+    "shimoda_ryosenji": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110768.html", "Shimoda City (Ryosenji)",
+                         "下田市（了仙寺）", "Shimoda City: Ryosenji temple"),
+    "shimoda_gyokusenji": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110756.html", "Shimoda City (Gyokusenji)",
+                           "下田市（玉泉寺）", "Shimoda City: Gyokusenji temple"),
+    "shimoda_nesugata": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110764.html", "Shimoda City (Mt Nesugata)",
+                         "下田市（寝姿山）", "Shimoda City: Mt Nesugata"),
+    "shimoda_park": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110769.html", "Shimoda City (Shimoda Park)",
+                     "下田市（下田公園）", "Shimoda City: Shimoda Park"),
+    "shimoda_michinoeki": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/110763.html", "Shimoda City (Michi-no-Eki)",
+                           "下田市（道の駅開国下田みなと）", "Shimoda City: Michi-no-Eki Kaikoku Shimoda Minato"),
+    "shimoda_beaches_city": ("https://www.city.shimoda.shizuoka.jp/category/100100midokoro/155720.html", "Shimoda City (beaches)",
+                             "下田市（海水浴場）", "Shimoda City: Swimming beaches (2026 season, checked November 2026)"),
+    "shimoda_kanko_umi": ("https://www.shimoda-city.info/umi", "Shimoda Tourism Association (beaches)", "下田市観光協会（下田の海）",
+                          "Shimoda Tourism Association: Shimoda’s nine beaches and beach rules (checked November 2026)"),
+    "shimoda_kanko_beach_shirahamachuo": ("https://www.shimoda-city.info/shirahama-chuo", "Shimoda Tourism Association (Shirahama Chuo)",
+                                          "下田市観光協会（白浜中央海水浴場）", "Shimoda Tourism Association: Shirahama Chuo (Nagatahama) Beach (2026)"),
+    "shimoda_kanko_beach_shirahama": ("https://www.shimoda-city.info/shirahama-ohama", "Shimoda Tourism Association (Shirahama Ohama)",
+                                      "下田市観光協会（白浜大浜海水浴場）", "Shimoda Tourism Association: Shirahama Ohama Beach (2026)"),
+    "shimoda_kanko_beach_sotoura": ("https://www.shimoda-city.info/sotoura", "Shimoda Tourism Association (Sotoura)",
+                                    "下田市観光協会（外浦海水浴場）", "Shimoda Tourism Association: Sotoura Beach (2026)"),
+    "shimoda_kanko_beach_kujuppama": ("https://www.shimoda-city.info/kujupama", "Shimoda Tourism Association (Kujuppama)",
+                                      "下田市観光協会（九十浜海水浴場）", "Shimoda Tourism Association: Kujuppama Beach (2026)"),
+    "shimoda_kanko_beach_nabeta": ("https://www.shimoda-city.info/nabeta", "Shimoda Tourism Association (Nabetahama)",
+                                   "下田市観光協会（鍋田浜海水浴場）", "Shimoda Tourism Association: Nabetahama Beach (2026)"),
+    "shimoda_kanko_beach_tatado": ("https://www.shimoda-city.info/tatado", "Shimoda Tourism Association (Tatadohama)",
+                                   "下田市観光協会（多々戸浜海水浴場）", "Shimoda Tourism Association: Tatadohama Beach (2026)"),
+    "shimoda_kanko_beach_irita": ("https://www.shimoda-city.info/irita", "Shimoda Tourism Association (Iritahama)",
+                                  "下田市観光協会（入田浜海水浴場）", "Shimoda Tourism Association: Iritahama Beach (2026)"),
+    "shimoda_kanko_beach_kisami": ("https://www.shimoda-city.info/kisami", "Shimoda Tourism Association (Kisami Ohama)",
+                                   "下田市観光協会（吉佐美大浜海水浴場）", "Shimoda Tourism Association: Kisami Ohama Beach (2026)"),
+    "shimoda_kanko_beach_toji": ("https://www.shimoda-city.info/toji", "Shimoda Tourism Association (Toji)",
+                                 "下田市観光協会（田牛海水浴場）", "Shimoda Tourism Association: Toji Beach (2026)"),
+    "pref_beach_water_2026": ("https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/050/681/r8kaisuiyokujoitiran.pdf",
+                              "Shizuoka Prefecture, 2026", "静岡県（令和8年度 海水浴場水質調査結果一覧）",
+                              "Shizuoka Prefecture: Beach water quality survey results, FY2026"),
+    "shimoda_kanko_suisen": ("https://www.shimoda-city.info/suisen", "Shimoda Tourism Association (daffodil festival)", "下田市観光協会（水仙まつり）",
+                             "Shimoda Tourism Association: Daffodil festival at Tsumekizaki (2026–27 season)"),
+    "shimoda_kanko_kurofune": ("https://www.shimoda-city.info/kurofune", "Shimoda Tourism Association (Black Ship Festival)", "下田市観光協会（黒船祭）",
+                               "Shimoda Tourism Association: Black Ship Festival (2026 edition)"),
+    "shimoda_kanko_ajisai": ("https://www.shimoda-city.info/ajisai", "Shimoda Tourism Association (hydrangea festival)", "下田市観光協会（あじさい祭）",
+                             "Shimoda Tourism Association: Hydrangea festival in Shimoda Park (2026)"),
+    "shimoda_kanko_onsen": ("https://www.shimoda-city.info/onsen", "Shimoda Tourism Association (hot springs)", "下田市観光協会（下田の温泉）",
+                            "Shimoda Tourism Association: Day hot springs and footbaths (checked November 2026)"),
+    "shimoda_kanko_bicycle": ("https://www.shimoda-city.info/access-bicycle", "Shimoda Tourism Association (bike rental)", "下田市観光協会（レンタサイクル）",
+                              "Shimoda Tourism Association: Bike rental (checked November 2026)"),
+    "shimoda_kanko_promenade": ("https://www.shimoda-city.info/promenade", "Shimoda Tourism Association (walks)", "下田市観光協会（遊歩道）",
+                                "Shimoda Tourism Association: Walking paths (checked November 2026)"),
+    "shimoda_kanko_about": ("https://www.shimoda-city.info/about", "Shimoda Tourism Association (information centres)", "下田市観光協会（観光協会について）",
+                            "Shimoda Tourism Association: Information centres and opening hours (checked November 2026)"),
+    "shimoda_tsunami_map": ("https://www.city.shimoda.shizuoka.jp/category/010300tiiki_bousai/120138.html", "Shimoda City (tsunami hazard maps)",
+                            "下田市（津波ハザードマップ・津波避難計画地図）", "Shimoda City: Tsunami hazard maps and evacuation maps (in Japanese)"),
+    "shimoda_tsunami_bldg": ("https://www.city.shimoda.shizuoka.jp/category/010400hinan_basyo/111108.html", "Shimoda City (tsunami evacuation buildings)",
+                             "下田市（津波避難ビル）", "Shimoda City: Tsunami evacuation buildings"),
+    "shimoda_elevation_map": ("https://www.city.shimoda.shizuoka.jp/category/010500bousai_tishiki/159625.html", "Shimoda City (height above sea level map)",
+                              "下田市（ここは海抜何メートル）", "Shimoda City: Online map of height above sea level"),
+    "shimoda_news_2013_08": ("https://city.shimoda.shizuoka.jp/file/平成25年8月号2頁3頁.pdf", "Shimoda City newsletter, August 2013",
+                             "広報しもだ 2013年8月号", "Shimoda City newsletter, August 2013: Shizuoka’s 4th earthquake damage estimate for Shimoda"),
+    "jma_tsunami_warnings": ("https://www.jma.go.jp/jma/kishou/know/jishin/joho/tsunamiinfo.html", "Japan Meteorological Agency",
+                             "気象庁（津波警報・注意報、津波情報、津波予報について）",
+                             "Japan Meteorological Agency: Tsunami warnings, advisories and information (in Japanese, checked November 2026)"),
+    "jma_kamchatka_2025": ("https://www.jma.go.jp/jma/press/2507/30a/202507301010.html", "Japan Meteorological Agency, 30 July 2025",
+                           "気象庁 報道発表（2025年7月30日10時10分）",
+                           "Japan Meteorological Agency: Earthquake near the Kamchatka Peninsula at about 8:25 on 30 July 2025 (press release)"),
+    "jma_kamchatka_2025_eve": ("https://www.jma.go.jp/jma/press/2507/30c/202507301910.html", "Japan Meteorological Agency, 30 July 2025 (evening)",
+                               "気象庁 報道発表（2025年7月30日19時10分）",
+                               "Japan Meteorological Agency: Earthquake near the Kamchatka Peninsula, third report (30 July 2025)"),
+    "jta_safety_tips": ("https://www.jnto.go.jp/safety-tips/eng/app.html", "Japan Tourism Agency (Safety tips)", "観光庁（Safety tips アプリ）",
+                        "Japan Tourism Agency: The app “Safety tips” (checked November 2026)"),
+    "egov_immig_act_jesta": ("https://laws.e-gov.go.jp/law/326CO0000000319/20290331_508AC0000000032", "Immigration Control Act (amended, not yet in force)",
+                             "出入国管理及び難民認定法（令和8年法律第32号による改正後・未施行）（e-Gov法令検索）",
+                             "Immigration Control and Refugee Recognition Act as amended by Act No. 32 of 2026, Article 7-2 (e-Gov, not yet in force; checked 20 November 2026)"),
+    "shugiin_bill221_20": ("https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE1F16.htm", "House of Representatives", "衆議院（議案審議経過情報）",
+                           "House of Representatives: Progress of cabinet bill no. 20, 221st Diet session (checked 20 November 2026)"),
+    "jta_jesta": ("https://www.mlit.go.jp/kankocho/content/002019837.pdf", "Japan Tourism Agency", "観光庁（JESTA の導入に伴う免税制度の見直し）",
+                  "Japan Tourism Agency: Review of tax-free shopping checks following the introduction of JESTA (2026)"),
 }
 
 # ---------------------------------------------------------------- 記事のテーマ
@@ -282,7 +369,7 @@ ARTICLES = [
 <p>In 2016, then, the festival gave visitors a place to watch the morning landings in June. For this year’s events, the tourism association’s events calendar is the place to look [[s:shimoda_kanko_event]], and the association can help if you’d like to plan a trip around one.</p>
 
 <h2>Why stay overnight instead of visiting for the day?</h2>
-<p>In our view, a night in town is what makes a kinmedai trip relaxed. You get kinmedai for dinner, then an unhurried morning: a walk down to the harbour, breakfast at the market canteen from 7:00, where the morning set changes daily with the catch [[s:pref]], and no train to rush back for.</p>
+<p>In our view, a night in town is what makes a kinmedai trip relaxed. You get kinmedai for dinner, then an unhurried morning: a walk down to the harbour, breakfast at the market canteen from 7:00, where the morning set changes daily with the catch [[s:pref]], and no train to rush back for. If you can stay longer, our [[l:shimoda-guide|guide to a week in Shimoda]] covers the beaches and the rest of the town.</p>
 <p>A day trip is possible, but the mornings are tight. The first Tokaido Line train from Tokyo Station leaves at 5:20 and doesn’t reach Atami until 7:08. The one earlier option is a 4:35 local from Shinagawa, which connects at Atami. On JR East’s November 2026 timetable, it reaches Izukyu-Shimoda at 7:59 [[s:jre_tt_tokyo]]. If a festival viewing kept the 2016 hours of about 7:30 to 9:00 [[s:shimoda_news]], you’d still have most of an hour after the ten-minute walk to the market. Routes are in our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]].</p>
 <p>If you’d like to cook a fish yourself, the Izu Fisheries Cooperative runs a shop on the ground floor of the Kaikoku Shimoda Minato roadside station that sells Shimoda kinmedai [[s:shimoda_kanko_gift]]. Shizuoka Prefecture lists it as open 8:00 to 16:30 with no regular closing day, about ten minutes on foot from the station (page updated April 2025) [[s:pref_izu_gyokyo_shop]]. Our apartment in the old town, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, has a kitchen with a gas hob, fridge, rice cooker and cookware [[s:node_room]], and it’s eight minutes’ walk from the station [[s:node_access]].</p>
 """,
@@ -373,7 +460,7 @@ ARTICLES = [
 <p>2016年は、6月の祭りの期間に、朝の水揚げを見られる場所がありました。いまの行事は、観光協会の行事のページで見られます[[s:shimoda_kanko_event]]。行事に合わせて旅を組みたいなら、観光協会に聞くのが確実です。</p>
 
 <h2>日帰りではなく、泊まったほうがいい理由</h2>
-<p>私たちは、町に1泊すると金目鯛の旅がずっとゆったりすると思っています。夕食に金目鯛を食べて、朝は港までのんびり歩き、市場の食堂で7時からの朝ごはん（朝はその日の水揚げで変わる日替わりの定食です）[[s:pref]]。帰りの電車に追われることもありません。</p>
+<p>私たちは、町に1泊すると金目鯛の旅がずっとゆったりすると思っています。夕食に金目鯛を食べて、朝は港までのんびり歩き、市場の食堂で7時からの朝ごはん（朝はその日の水揚げで変わる日替わりの定食です）[[s:pref]]。帰りの電車に追われることもありません。もっと長くいられるなら、浜や町の過ごし方を[[l:ja-shimoda-guide|下田で1週間過ごすためのガイド]]にまとめました。</p>
 <p>日帰りもできますが、朝はかなり慌ただしくなります。東京駅の始発の東海道線は5:20発で、熱海に着くのは7:08です。それより早い行き方は1つで、品川4:35発の普通に乗って熱海で乗り継ぐと、JR東日本の2026年11月の時刻表で伊豆急下田に7:59に着きます[[s:jre_tt_tokyo]]。祭りの見学が2016年と同じ朝7時半〜9時ごろなら[[s:shimoda_news]]、駅から市場まで約10分歩いても、1時間近く残ります。行き方は、[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]にまとめています。</p>
 <p>魚を自分で料理してみたいなら、道の駅「開国下田みなと」の1階で、伊豆漁協が下田の金目鯛などを売る店を開いています[[s:shimoda_kanko_gift]]。静岡県のページ（2025年4月更新）では、8時〜16時30分・定休日なしで、駅から歩いて約10分です[[s:pref_izu_gyokyo_shop]]。旧町内にある私たちのアパートの一室「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」には、ガスコンロ・冷蔵庫・炊飯器・調理器具のそろったキッチンがあり[[s:node_room]]、駅から歩いて8分です[[s:node_access]]。</p>
 """,
@@ -441,8 +528,8 @@ ARTICLES = [
 <p>The old two-wire electrics couldn’t run the air conditioner, the fridge and the microwave all at once, so we had to ask guests not to use them together. Upgrading the wiring costs real money, so it’s something to find out before you budget, not after. Getting broadband put in took more than two months because it was the busy season, and we got by on a plug-in home router until then.</p>
 <p>The wiring and the wait for broadband are small examples of a bigger point. With a cheap old house, the asking price is only part of what you’ll pay. Renovation, taxes, insurance and upkeep come on top, and they vary so much from one building to the next that only written quotes will tell you the real figure.</p>
 
-<h2>How long can you stay in Japan to test a town?</h2>
-<p>Long enough for a proper trial, for most people. There are two main ways to do it without a work or residence visa, and the rules below are as of November 2026.</p>
+<h2>Which visa lets you spend a trial month in a town?</h2>
+<p>For most people, either of two ways works without a work or residence visa, and both give you long enough for a proper trial. The rules below are as of November 2026.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>Way to stay</th><th>How long</th><th>Who it’s for</th></tr></thead>
 <tbody>
@@ -450,6 +537,7 @@ ARTICLES = [
 <tr><td><strong>Digital nomad</strong> status</td><td>Six months, and it can’t be renewed. You can apply for it again six months after you leave Japan [[s:isa_nomad_en]].</td><td>Nationals of countries and regions that are both visa-exempt and have a tax treaty with Japan [[s:isa_nomad_list]]. You need an annual income of at least ¥10 million and private medical insurance with at least ¥10 million of treatment cover, and you can’t work for a Japanese employer [[s:isa_nomad_en]].</td></tr>
 </tbody></table></div>
 <p>If the digital nomad route fits you, our [[l:digital-nomad|guide to Japan’s digital nomad visa]] has more on who qualifies and how it works.</p>
+<p>For extensions, longer statuses and what happens if you leave and come back, see our guide to [[l:how-long-stay|how long you can stay in Japan]].</p>
 <p class="fine">This is general information, not immigration advice. The list of eligible countries for the digital nomad status changes, so check it for your own passport.</p>
 
 <h2>Where can you stay for a month to test a town?</h2>
@@ -543,8 +631,8 @@ ARTICLES = [
 <p>古い2芯の配線では、エアコンと冷蔵庫と電子レンジを同時に使えず、ゲストに同時に使わないようお願いすることになりました。配線をやり直すにはそれなりの費用がかかるので、予算を組む前に知っておきたいことです。インターネットの回線工事は、繁忙期だったこともあって申し込みから2か月以上かかり、それまでは置き型のホームルーターでしのぎました。</p>
 <p>配線と回線工事の待ちは、もっと大きな話の小さな例です。安い古い家では、売り出し価格は、かかるお金の一部にすぎません。改修、税金、保険、維持費が上乗せされ、建物ごとに大きく変わるので、本当の金額は書面の見積もりを取って初めて分かります。</p>
 
-<h2>町を試すために、日本にどれくらいいられるのか</h2>
-<p>多くの人にとって、しっかり試せるくらいの長さはあります。就労や居住のビザなしで滞在する方法はおもに2つで、下の条件は2026年11月時点のものです。</p>
+<h2>町で1か月を試すには、どの在留資格が合うか</h2>
+<p>多くの人は、就労や居住のビザなしで、しっかり試せるくらいの期間いられます。方法はおもに2つで、下の条件は2026年11月時点のものです。</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>滞在のしかた</th><th>期間</th><th>対象</th></tr></thead>
 <tbody>
@@ -552,6 +640,7 @@ ARTICLES = [
 <tr><td><strong>デジタルノマド</strong>の在留資格</td><td>6か月で、更新はできません。出国後6か月たてば、もう一度申請できます[[s:isa_nomad_en]]。</td><td>ビザ免除で、かつ日本と租税条約のある国・地域の人[[s:isa_nomad_list]]。年収1,000万円以上と、治療費1,000万円以上を補償する民間の医療保険が必要で、日本の会社に雇われて働くことはできません[[s:isa_nomad_en]]。</td></tr>
 </tbody></table></div>
 <p>デジタルノマドの在留資格が合いそうなら、[[l:ja-digital-nomad|日本のデジタルノマドビザの記事]]に、対象になる人と仕組みをくわしくまとめています。</p>
+<p>延長、もっと長い在留資格、いったん出国してまた来る場合のことは、[[l:ja-how-long-stay|日本に何日いられるかのガイド]]にまとめました。</p>
 <p class="fine">これは一般的な情報で、在留手続きの助言ではありません。デジタルノマドの対象の国は変わるので、自分のパスポートで確かめてください。</p>
 
 <h2>町を試すために1か月泊まれる場所はどこか</h2>
@@ -655,7 +744,7 @@ ARTICLES = [
 <tbody>
 <tr><td><strong>Atami and Ito</strong></td><td>Atami 43–45 min by Shinkansen; Ito about 1 h 40 min direct</td><td>The two towns nearest Tokyo, on the east coast.</td><td>A day trip works</td></tr>
 <tr><td><strong>Shuzenji</strong></td><td>50–53 min to Mishima, then about 35 min; or about 2 h direct</td><td>An inland hot-spring town, said to be the oldest in Izu. You can look at the Tokko-no-yu spring but not bathe in it, and there are two foot baths nearby, Kawara-yu and Sugi-no-yu [[s:izu_tokko]]. It suits a quiet night or two more than a rushed visit.</td><td>Better to stay</td></tr>
-<tr><td><strong>Shimoda</strong></td><td>2 h 29 min to 2 h 44 min direct</td><td>A port town at the southern tip, with nine official swimming beaches in 2026 [[s:shimoda_beach2026_city]]. The prefecture describes its fish market as Japan’s top landing port for [[l:kinmedai|kinmedai]] [[s:pref]]. In our view, it’s the town that suits a week best.</td><td>Better to stay</td></tr>
+<tr><td><strong>Shimoda</strong></td><td>2 h 29 min to 2 h 44 min direct</td><td>A port town at the southern tip, with nine official swimming beaches in 2026 [[s:shimoda_beach2026_city]]. The prefecture describes its fish market as Japan’s top landing port for [[l:kinmedai|kinmedai]] [[s:pref]]. In our view, it’s the town that suits a week best, and our [[l:shimoda-guide|Shimoda guide]] covers how to spend one.</td><td>Better to stay</td></tr>
 </tbody></table></div>
 
 <h2>Can you get around southern Izu without a car?</h2>
@@ -673,7 +762,7 @@ ARTICLES = [
 <div class="tablewrap"><table class="free">
 <thead><tr><th>When</th><th>What to expect</th></tr></thead>
 <tbody>
-<tr><td>Swimming season in Shimoda (in 2026, from 18 July to between 23 and 31 August, depending on the beach)</td><td>All nine of Shimoda’s official beaches opened on 18 July 2026, mostly from 8:00 to 16:00. Shirahama Ohama and Kujukihama stayed open until 31 August and Shirahama Chuo until 30 August, but the other six closed on 23 August [[s:shimoda_beach2026_city]]. Outside the season and those hours, there are no lifeguards [[s:shimoda_ohama]].</td></tr>
+<tr><td>Swimming season in Shimoda (in 2026, from 18 July to between 23 and 31 August, depending on the beach)</td><td>All nine of Shimoda’s official beaches opened on 18 July 2026, mostly from 8:00 to 16:00. Shirahama Ohama and Kujuppama stayed open until 31 August and Shirahama Chuo until 30 August, but the other six closed on 23 August [[s:shimoda_beach2026_city]]. Outside the season and those hours, there are no lifeguards [[s:shimoda_ohama]].</td></tr>
 <tr><td>The rest of the year</td><td>We find the towns much quieter then, and it’s the easiest time for hot springs and long walks.</td></tr>
 </tbody></table></div>
 <p class="fine">The city sets the beach dates each year, so if you’re planning a late-August trip, it’s a good idea to see which beaches will still be open.</p>
@@ -762,7 +851,7 @@ ARTICLES = [
 <tbody>
 <tr><td><strong>熱海と伊東</strong></td><td>熱海まで新幹線で43〜45分、伊東まで直通で約1時間40分</td><td>東海岸の、東京にいちばん近い2つの町です。</td><td>日帰りでも楽しめる</td></tr>
 <tr><td><strong>修善寺</strong></td><td>三島まで50〜53分、そこから約35分。または直通で約2時間</td><td>伊豆でいちばん古いと言われる、内陸の温泉町です。「独鈷の湯」は見るだけで入れませんが、近くに「河原湯」と「杉の湯」の2つの足湯があります[[s:izu_tokko]]。慌ただしく立ち寄るより、1〜2泊して静かに過ごすのが合う町です。</td><td>泊まるのがおすすめ</td></tr>
-<tr><td><strong>下田</strong></td><td>直通で2時間29分〜2時間44分</td><td>半島の南端の港町で、2026年は正式な海水浴場が9つありました[[s:shimoda_beach2026_city]]。静岡県は、下田の魚市場を[[l:ja-kinmedai|金目鯛]]の水揚げ日本一と紹介しています[[s:pref]]。1週間過ごすのにいちばん合う町だと、私たちは思います。</td><td>泊まるのがおすすめ</td></tr>
+<tr><td><strong>下田</strong></td><td>直通で2時間29分〜2時間44分</td><td>半島の南端の港町で、2026年は正式な海水浴場が9つありました[[s:shimoda_beach2026_city]]。静岡県は、下田の魚市場を[[l:ja-kinmedai|金目鯛]]の水揚げ日本一と紹介しています[[s:pref]]。1週間過ごすのにいちばん合う町だと、私たちは思います。過ごし方は[[l:ja-shimoda-guide|下田のガイド]]にまとめました。</td><td>泊まるのがおすすめ</td></tr>
 </tbody></table></div>
 
 <h2>南伊豆は、車なしで回れるか</h2>
@@ -846,7 +935,7 @@ ARTICLES = [
 <p>The list is a PDF, and it’s the only place to check your own passport [[s:isa_nomad_list]]. Counts on other sites go out of date, so the current version is the one to trust. The income test is about the applicant, so it’s safer not to count on adding a partner’s earnings.</p>
 
 <h2>How long can you stay, and can you renew it?</h2>
-<p>Six months at most, and it can’t be extended [[s:isa_nomad_en,jnto_nomad]]. You can come back on the same status once six months have passed since you left Japan [[s:isa_nomad_en]]. So the rhythm is six months in Japan, then six months somewhere else.</p>
+<p>Six months at most, and it can’t be extended [[s:isa_nomad_en,jnto_nomad]]. You can come back on the same status once six months have passed since you left Japan [[s:isa_nomad_en]]. So the rhythm is six months in Japan, then six months somewhere else. If you’re weighing it against other ways to stay, our guide to [[l:how-long-stay|how long you can stay in Japan]] compares them.</p>
 <p>Some sites still say you get one extension. The agency’s own page says you don’t, and that’s the version to plan around. Here’s how it compares with an ordinary visa-free visit.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th></th><th>Short-term visitor (visa-exempt)</th><th>Digital nomad</th></tr></thead>
@@ -949,7 +1038,7 @@ ARTICLES = [
 <p>一覧は PDF で、自分のパスポートが対象かを確かめられるのはそこだけです[[s:isa_nomad_list]]。ほかのサイトに載っている国の数は古くなるので、信頼できるのはいまの版です。収入の条件は申請する本人のものなので、パートナーの収入を足して届かせることはあてにしないほうが安全です。</p>
 
 <h2>どれくらいいられて、更新はできるのか</h2>
-<p>最長6か月で、延長はできません[[s:isa_nomad_en,jnto_nomad]]。日本を出てから6か月たてば、同じ在留資格でまた来られます[[s:isa_nomad_en]]。つまり、日本で6か月、ほかの場所で6か月というリズムになります。</p>
+<p>最長6か月で、延長はできません[[s:isa_nomad_en,jnto_nomad]]。日本を出てから6か月たてば、同じ在留資格でまた来られます[[s:isa_nomad_en]]。つまり、日本で6か月、ほかの場所で6か月というリズムになります。ほかの滞在のしかたと比べたいなら、[[l:ja-how-long-stay|日本に何日いられるかのガイド]]も読んでみてください。</p>
 <p>いまでも「1回だけ延長できる」と書いているサイトがあります。入管庁のページには延長できないとあり、計画はそちらに合わせるのがいいと思います。ふつうのビザなしの滞在と比べると、次のとおりです。</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th></th><th>短期滞在（査証免除）</th><th>デジタルノマド</th></tr></thead>
@@ -1103,7 +1192,7 @@ ARTICLES = [
 
 <h2>Do you need a visa to stay for a month?</h2>
 <p>For many visitors, no. As of November 2026, passport holders of many countries and regions can visit Japan for tourism without a visa, most for up to 90 days. Some nationalities are given 15, 30 or 180 days instead [[s:jnto_visa]].</p>
-<p>On that kind of stay you can’t do paid work, and the rule for your own passport is the one that counts [[s:jnto_visa]]. If you’d like to work remotely from Japan for longer, [[l:digital-nomad|Japan’s digital nomad visa]] allows a stay of up to six months for some nationalities [[s:isa_nomad_en]].</p>
+<p>On that kind of stay you can’t do paid work, and the rule for your own passport is the one that counts [[s:jnto_visa]]. If you’d like to work remotely from Japan for longer, [[l:digital-nomad|Japan’s digital nomad visa]] allows a stay of up to six months for some nationalities [[s:isa_nomad_en]]. Our guide to [[l:how-long-stay|how long you can stay in Japan]] covers the other options, from extensions to longer statuses.</p>
 <p class="fine">This is general information, not legal or immigration advice. Rules can change, so check the official pages for your own case.</p>
 """,
  "faq": [
@@ -1206,7 +1295,7 @@ ARTICLES = [
 
 <h2>1か月いるのに、ビザは要るか</h2>
 <p>多くの人は要りません。2026年11月時点で、多くの国・地域のパスポートを持つ人は、観光ならビザなしで日本に来られ、ほとんどは90日までです。ただし、国籍によっては15日・30日・180日のこともあります[[s:jnto_visa]]。</p>
-<p>この滞在では、報酬を得る仕事はできません。大事なのは、自分のパスポートの条件です[[s:jnto_visa]]。もっと長く、日本からリモートで働きたいなら、[[l:ja-digital-nomad|日本のデジタルノマドビザ]]で、一部の国籍の人は最長6か月滞在できます[[s:isa_nomad_en]]。</p>
+<p>この滞在では、報酬を得る仕事はできません。大事なのは、自分のパスポートの条件です[[s:jnto_visa]]。もっと長く、日本からリモートで働きたいなら、[[l:ja-digital-nomad|日本のデジタルノマドビザ]]で、一部の国籍の人は最長6か月滞在できます[[s:isa_nomad_en]]。延長やもっと長い在留資格など、ほかの方法は[[l:ja-how-long-stay|日本に何日いられるかのガイド]]にまとめました。</p>
 <p class="fine">これは一般的な情報で、法律や在留手続きの助言ではありません。決まりは変わることがあるので、自分の場合は公式のページで確かめてください。</p>
 """,
   "faq": [
@@ -1220,6 +1309,413 @@ ARTICLES = [
      "部屋によります。込みのところも、上限つきのところも、使った分だけ払うところもあるので、予約の前に聞いて、月の料金ではなく合計で比べるのがいちばんです。"),
     ("東京の外で、マンスリーの部屋は見つかりやすいですか",
      "選べる数は少ないので、早めに探してください。小さな町では、月割のある宿や貸別荘が選択肢の多くを占めると私たちは思います。海の町は夏に混みます。"),
+  ],
+ },
+},
+# ============================================================ 下田
+{
+ "id": "shimoda-guide", "slug": "shimoda-guide", "topic": "stay", "place": "izu", "also": ["live"],
+ "photo": ("stony-shore-waves", "Waves breaking on a stony beach under a clear blue sky, with one person walking at the water’s edge", ""),
+ "published": "2026-11-20", "updated": "2026-11-20",
+ "kicker": "Izu Peninsula",
+ "h1": "Shimoda, Japan: a guide for a week or longer",
+ "seo_title": "Shimoda, Japan: Beaches, Old Town and a Week-Long Stay",
+ "description": "Shimoda is a small port town at the tip of Izu with nine official beaches. A week lets you pick beaches by mood, walk the old town and cook local fish.",
+ "dek": "Shimoda is a small port town at the southern tip of the Izu Peninsula. In a week, you can pick beaches by mood, cook local fish and settle in.",
+ "card": "Shimoda is a port town at the southern tip of Izu, with nine official beaches and an old town you can walk. A week gives you time to pick beaches by mood, shop for fish and cook, and see the town outside the summer rush.",
+ "keywords": [("shimoda", "5,400", "21"), ("shimoda japan", "5,400", "21"), ("shimoda beaches", "210", "—")],
+ "intent": "Know → Do（どんな町か → 1週間をどう過ごすか）",
+ "points": [
+   "Pick a beach by what you want: calm coves for children, surf beaches, or a quieter stretch of sand.",
+   "The old town is easy on foot: the ropeway, port and Perry Road are within 15 minutes of the station.",
+   "Outside summer it’s quieter, with daffodils in winter, the Black Ship Festival in May and hydrangeas in June.",
+ ],
+ "body": """
+<h2>Is Shimoda worth a week?</h2>
+<p>We think so, if you want more than one beach and a quick look at the station area. A night is enough to swim once and eat well. A week lets you try different beaches, find a café you like and fall into the town’s slower rhythm.</p>
+<p>Shimoda sits at the southern tip of the [[l:izu|Izu Peninsula]]. It’s a small place, with about 18,400 people on the register in November 2026 [[s:shimoda_population]], and around 47 kilometres of coastline [[s:shimoda_profile]]. It also has a big place in history: the 1854 Treaty of Kanagawa made Shimoda one of the country’s first two open ports [[s:shimoda_hist_perry]].</p>
+<p>The train ride from Tokyo is long enough that you’ll want to stay put once you’re here. We’ve covered trains, fares and bus passes in [[l:izu-from-tokyo|our guide to getting to Izu from Tokyo]]. If you have more than a week, we’d spend most of it in Shimoda and add a night or two elsewhere on the peninsula.</p>
+
+<h2>Which Shimoda beach suits you?</h2>
+<p>It depends on what you want from the day, because Shimoda’s nine official beaches are surprisingly different. Some are sheltered coves where small children can paddle, and others are known for surfing.</p>
+<div class="tablewrap"><table class="free">
+<thead><tr><th>Beach</th><th>What it’s like</th><th>Good for</th><th>From Izukyu-Shimoda Station</th></tr></thead>
+<tbody>
+<tr><td><strong>Nabetahama</strong> (130 m)</td><td>The beach closest to town, in an inlet with hardly any waves. There’s no car park or shower [[s:shimoda_kanko_beach_nabeta]].</td><td>A quick swim, small children</td><td>Bus from stand 3 or 4, about 7 min, then 5 min on foot [[s:shimoda_kanko_beach_nabeta]]</td></tr>
+<tr><td><strong>Sotoura</strong> (470 m)</td><td>A cove with shallow, calm water, popular with families. People sea-kayak further out. No surfing area [[s:shimoda_kanko_beach_sotoura]].</td><td>Children, calm swimming</td><td>Bus from stand 9, about 10 min, then 3 min on foot [[s:shimoda_kanko_beach_sotoura]]</td></tr>
+<tr><td><strong>Shirahama Chuo</strong> (720 m)</td><td>The quiet north end of the Shirahama coast, with rock pools. It’s the only beach in Shimoda where you can barbecue [[s:shimoda_kanko_beach_shirahamachuo]].</td><td>Families, rock pools</td><td>Bus from stand 9, about 18 min, then 1 min on foot [[s:shimoda_kanko_beach_shirahamachuo]]</td></tr>
+<tr><td><strong>Shirahama Ohama</strong> (about 700 m)</td><td>One of the largest beaches in Izu, by the main coast road and busy with surfers and young people [[s:shimoda_beaches_city,shimoda_kanko_beach_shirahama]].</td><td>A lively day, surfing</td><td>Bus from stand 9, about 15 min [[s:shimoda_kanko_beach_shirahama]]</td></tr>
+<tr><td><strong>Tatadohama</strong> (450 m)</td><td>Well known for surfing and bodyboarding, with national contests. It has warm showers you can use all year [[s:shimoda_kanko_beach_tatado]].</td><td>Surfing</td><td>Bus from stand 3 or 4, about 7 min, then 3 min on foot [[s:shimoda_kanko_beach_tatado]]</td></tr>
+<tr><td><strong>Kisami Ohama</strong> (770 m)</td><td>A big beach away from the main road, so it feels quieter. Surfers and families share it, and there are cafés nearby [[s:shimoda_kanko_beach_kisami]].</td><td>A long, quieter day</td><td>Bus from stand 3 or 4, about 10 min, then 8 min on foot [[s:shimoda_kanko_beach_kisami]]</td></tr>
+</tbody></table></div>
+<p class="fine">Beach lengths are the tourism association’s figures; for Shirahama Ohama, the city’s list. The “stand” is the numbered bus stop outside the station.</p>
+<p>That leaves three more. Iritahama is a calm beach lined with cycad trees, and surfers use it too [[s:shimoda_kanko_beach_irita]]. Kujuppama is a 50-metre cove next to the Suzaki Imperial Villa, with rock pools on both sides and no large tents allowed [[s:shimoda_kanko_beach_kujuppama]]. Toji is rarely crowded and close to the Ryugu sea cave, but only four or five buses a day go there [[s:shimoda_kanko_beach_toji]].</p>
+<p>The water is clean, too. In Shizuoka Prefecture’s 2026 survey, all nine beaches got the top AA grade [[s:pref_beach_water_2026]]. Six of them are also certified for safety by the Japan Lifesaving Association: Shirahama Chuo, Shirahama Ohama, Sotoura, Tatadohama, Iritahama and Kisami Ohama [[s:shimoda_beaches_city]].</p>
+<p>Lifeguards only work during the official season, which the city sets each year [[s:shimoda_ohama]]. Our [[l:izu-from-tokyo|Izu travel guide]] has this year’s dates. In season, the beaches ban tents (sunshades are fine), open fires and barbecues outside part of Shirahama Chuo, fireworks, overnight camping and, since 2025, amplified speakers [[s:shimoda_kanko_umi]].</p>
+
+<h2>What can you do in Shimoda besides the beach?</h2>
+<p>Quite a lot, and most of it is within a short walk of the station. On a day off the sand, we’d start high up, wander the old town and finish in a hot bath.</p>
+<p>The Shimoda Ropeway station is a one-minute walk from Izukyu-Shimoda Station. From the top of Mt Nesugata you can see the town, the port, the Izu Islands and the Amagi mountains [[s:shimoda_nesugata]]. Back down, the port and the Michi-no-Eki, a roadside market building, are about 10 minutes away on foot [[s:shimoda_michinoeki]].</p>
+<p>Perry Road and Ryosenji temple are about 15 minutes from the station [[s:shimoda_perryroad,shimoda_ryosenji]]. Later in 1854, the follow-up Shimoda Treaty was signed in Ryosenji’s main hall. Perry Road is named after the route Perry’s men marched to the temple, and its stone paving runs for about 500 metres along a small stream [[s:shimoda_hist_perry,shimoda_perryroad]]. Further out, Gyokusenji temple housed Japan’s first US consulate, opened by Townsend Harris in 1856 [[s:shimoda_hist_harris,shimoda_gyokusenji]].</p>
+<p>For a bath, the tourism association lists eight hotels and inns that take day visitors. As of November 2026 they charge ¥600 to ¥1,500 for adults, and opening times vary from 10:00 to 15:00. They may turn you away when they’re busy [[s:shimoda_kanko_onsen]]. There’s also a footbath, Kaikoku-no-yu, in front of the station, open from 9:00 to 17:00 [[s:shimoda_kanko_onsen]].</p>
+<p>Rain doesn’t have to ruin the day. The Michi-no-Eki has a harbour museum about the town’s history on its fourth floor [[s:shimoda_michinoeki]], and Ryosenji has a treasure hall [[s:shimoda_ryosenji]]. On drier days, the Wakanoura promenade is a 1.2-kilometre, 15-minute coastal walk, and the paths round Shimoda Park take about an hour and a half [[s:shimoda_kanko_promenade]].</p>
+
+<h2>Is Shimoda worth visiting outside summer?</h2>
+<p>Yes. The beaches are quiet, but there’s something on in most seasons, and the city puts the average annual temperature at about 17°C [[s:shimoda_profile]].</p>
+<div class="tablewrap"><table class="free">
+<thead><tr><th>When</th><th>What’s on</th></tr></thead>
+<tbody>
+<tr><td>20 December to 31 January</td><td>The daffodil festival at Tsumekizaki, with up to about 3 million flowers, usually at their best in January. The bus from stand 10 outside the station takes about 20 minutes [[s:shimoda_kanko_suisen]].</td></tr>
+<tr><td>Winter into early spring</td><td>Camellias in Shimoda Park, with about 160 garden varieties [[s:shimoda_park]]. Cherry blossoms follow from mid-March to early April [[s:shimoda_kanko_event]].</td></tr>
+<tr><td>May</td><td>The Black Ship Festival, held since 1934. In 2026 it ran from 15 to 17 May, with fireworks over the port, a US–Japan parade and a re-enactment of the Shimoda Treaty at Ryosenji [[s:shimoda_kanko_kurofune]].</td></tr>
+<tr><td>June</td><td>The hydrangea festival in Shimoda Park, with about 3 million blooms of over 100 varieties (1 to 30 June in 2026). The park is hilly, and carts are on hand for people who find walking hard [[s:shimoda_kanko_ajisai]].</td></tr>
+<tr><td>July and August</td><td>Beach season. In 2026 there were fireworks at Shirahama on 25 July, and the old town’s Taiko Matsuri drum festival is held on 14 and 15 August [[s:shimoda_kanko_event]].</td></tr>
+<tr><td>Autumn</td><td>Hand-held <em>te-zutsu</em> fireworks (10 October in 2026), the Shirahama shrine festival in late October, and the start of the spiny lobster (<em>ise-ebi</em>) season, which runs to early May [[s:shimoda_kanko_event]].</td></tr>
+</tbody></table></div>
+<p>Summer is when the town fills up, and in our experience it’s also when more of our guests stay for longer. If you’d rather walk, soak and eat well than swim, we’d pick the cooler months.</p>
+
+<h2>How do you shop and cook for a week in Shimoda?</h2>
+<p>Buy your fish at the port and cook it yourself. The Izu Fisheries Cooperative shop is on the ground floor of the Michi-no-Eki Kaikoku Shimoda Minato. It sells kinmedai, live spiny lobster, turban shells and other seafood, and the prefecture’s page (updated April 2025) lists it as open from 8:00 to 16:30 with no fixed closing day [[s:pref_izu_gyokyo_shop,shimoda_kanko_gift]]. The JA farmers’ shop in the same building has local vegetables, wasabi and products made from New Summer oranges [[s:shimoda_kanko_gift]].</p>
+<p>If you’d rather have someone else cook the town’s famous red fish, our [[l:kinmedai|guide to kinmedai]] covers where to eat it. For everyday shopping, there are supermarkets and convenience stores in town, so a kitchen makes a week much cheaper and more relaxed.</p>
+<p>Rubbish takes a little learning. Shimoda collects burnable rubbish twice a week in city bags, and cans, bottles, PET bottles and paper twice a month, each sorted separately [[s:shimoda_gomi]]. Where you stay will have its own system, so it’s easiest to ask your host on the first day. On your first day, we’d also do this:</p>
+<ol>
+<li>Find the nearest supermarket and the fish shop at the Michi-no-Eki.</li>
+<li>Ask your host how to sort rubbish and where it goes.</li>
+<li>Pick up a map at the tourism information centre near the station, open from 9:00 to 16:45 [[s:shimoda_kanko_about]].</li>
+<li>Look up the bus times for the beaches you want, since some routes run only a few times a day.</li>
+<li>Find the nearest high ground from where you’re staying (see the next section).</li>
+</ol>
+
+<h2>What should you know about tsunamis in Shimoda?</h2>
+<p>If you feel a strong earthquake near the coast, go to high ground straight away, without waiting for a warning [[s:jma_tsunami_warnings]]. Shimoda faces the open sea, and in 1854 the Ansei tsunami swept Shimoda Bay and destroyed most of the town’s houses [[s:shimoda_hist_ansei]].</p>
+<p>Shizuoka Prefecture’s 2013 estimate looked at the worst case, which it describes as extremely unlikely, and put the highest possible tsunami in Shimoda at 33 metres [[s:shimoda_news_2013_08]]. It isn’t a forecast, but it’s why the advice is to get up high, fast. Japan’s weather agency, JMA, aims to issue alerts about three minutes after an earthquake [[s:jma_tsunami_warnings]].</p>
+<div class="tablewrap"><table class="free">
+<thead><tr><th>Alert</th><th>Expected wave</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>Tsunami advisory</strong></td><td>0.2 to 1 m</td><td>Get out of the water and away from the shore [[s:jma_tsunami_warnings]]</td></tr>
+<tr><td><strong>Tsunami warning</strong></td><td>1 to 3 m</td><td>Move to high ground or an evacuation building at once [[s:jma_tsunami_warnings]]</td></tr>
+<tr><td><strong>Major tsunami warning</strong></td><td>Over 3 m</td><td>Move to high ground or an evacuation building at once [[s:jma_tsunami_warnings]]</td></tr>
+</tbody></table></div>
+<p>Tsunamis come in several waves, so JMA advises you to stay on high ground until the warning or advisory is lifted [[s:jma_tsunami_warnings]]. The city publishes hazard and evacuation maps, though only in Japanese [[s:shimoda_tsunami_map]]. It has also named a few tsunami evacuation buildings [[s:shimoda_tsunami_bldg]], and it runs an online map that shows the height above sea level of any spot you tap [[s:shimoda_elevation_map]].</p>
+<p>The Japan Tourism Agency’s free app, Safety tips, sends earthquake, tsunami and weather warnings in English and other languages [[s:jta_safety_tips]]. We’d install it before you arrive. In late July 2025, there was a tsunami warning for the Shizuoka coast, later downgraded to an advisory [[s:jma_kamchatka_2025,jma_kamchatka_2025_eve]]. We sent our overseas guests messages as things changed, explaining what was happening and that they needed to evacuate. Guests thanked us afterwards.</p>
+
+<h2>Where should you stay in Shimoda for a week?</h2>
+<p>Without a car, we’d stay in the old town near the station. Shops, the port and every bus route are close by. If the beach is the whole point of your trip, staying near it saves you the bus rides.</p>
+<div class="tablewrap"><table class="free">
+<thead><tr><th>Area</th><th>Suits you if…</th><th>Keep in mind</th></tr></thead>
+<tbody>
+<tr><td><strong>Old town, near the station</strong></td><td>You want to walk to shops, the port and Perry Road, and reach any beach by bus.</td><td>You’ll need a bus or a bike for most beaches.</td></tr>
+<tr><td><strong>Shirahama</strong></td><td>You want the big beaches on your doorstep.</td><td>It’s about 15 minutes by bus from town [[s:shimoda_kanko_beach_shirahama]], so evenings out mean a ride back.</td></tr>
+<tr><td><strong>Southern beaches</strong> (Tatado, Irita, Kisami)</td><td>You’re here to surf or want a quieter beach.</td><td>They’re 7 to 10 minutes by bus from the station [[s:shimoda_kanko_beach_tatado,shimoda_kanko_beach_kisami]], plus a short walk.</td></tr>
+</tbody></table></div>
+<p>Bikes help a lot. The tourism association rents bikes and e-bikes at the Michi-no-Eki from ¥500 for an hour or ¥2,000 for a day, from 9:00 to 17:00. You don’t need to book, but you’ll need ID such as a passport [[s:shimoda_kanko_bicycle]].</p>
+<p>We run <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, an apartment of about 40 m² in the old town for up to four guests. It has a kitchen, a washing machine and gas dryer, and a work desk. It’s on the first floor, up about 13 steps, with a shower but no bath [[s:node_room]]. It’s eight minutes’ walk on the flat from the station, with a supermarket three minutes away and Perry Road five [[s:node_access]]. One guest who stayed in January wrote that the sea was close by, they could see the year’s first sunrise, and the supermarket was handy.</p>
+<p>If a week turns into thoughts of a month or more, our guide to [[l:monthly-rental|renting a place by the month in Japan]] explains how that works.</p>
+""",
+ "faq": [
+   ("Is Shimoda worth visiting?",
+    "Yes, especially for a week. It’s a small port town at the tip of Izu with nine official beaches, a walkable old town and seasonal festivals [[s:shimoda_population,shimoda_kanko_umi,shimoda_kanko_event]]. A week lets you try several beaches and live at the town’s pace."),
+   ("What is the best beach in Shimoda?",
+    "It depends on what you want. Sotoura and Nabetahama are calm coves that suit children [[s:shimoda_kanko_beach_sotoura,shimoda_kanko_beach_nabeta]]. Tatadohama is especially well known among surfers [[s:shimoda_kanko_beach_tatado]], and Kisami Ohama is big and quieter [[s:shimoda_kanko_beach_kisami]]."),
+   ("Can you swim in Shimoda outside summer?",
+    "Lifeguards only work during the official season, which the city sets each year, so outside it you swim without them [[s:shimoda_ohama]]. Tatadohama has warm showers you can use all year [[s:shimoda_kanko_beach_tatado]]."),
+   ("What is there to do in Shimoda in winter?",
+    "The daffodil festival at Tsumekizaki runs from 20 December to 31 January [[s:shimoda_kanko_suisen]], and camellias bloom in Shimoda Park [[s:shimoda_park]]. Day hot springs, the ropeway and coastal walks fill the rest of the week [[s:shimoda_kanko_onsen,shimoda_nesugata,shimoda_kanko_promenade]]."),
+   ("What should I do if there’s a tsunami warning in Shimoda?",
+    "Move to high ground or an evacuation building at once, and stay until the warning is lifted. If you feel strong shaking near the coast, go without waiting for a warning [[s:jma_tsunami_warnings]]. The free Safety tips app sends alerts in English [[s:jta_safety_tips]]."),
+ ],
+ "sources": ["shimoda_population", "shimoda_profile", "shimoda_hist_perry", "shimoda_hist_harris", "shimoda_hist_ansei",
+             "shimoda_perryroad", "shimoda_ryosenji", "shimoda_gyokusenji", "shimoda_nesugata", "shimoda_park", "shimoda_michinoeki",
+             "shimoda_beaches_city", "shimoda_kanko_umi", "shimoda_kanko_beach_nabeta", "shimoda_kanko_beach_sotoura",
+             "shimoda_kanko_beach_shirahamachuo", "shimoda_kanko_beach_shirahama", "shimoda_kanko_beach_tatado",
+             "shimoda_kanko_beach_kisami", "shimoda_kanko_beach_irita", "shimoda_kanko_beach_kujuppama", "shimoda_kanko_beach_toji",
+             "pref_beach_water_2026", "shimoda_ohama", "shimoda_kanko_onsen", "shimoda_kanko_promenade", "shimoda_kanko_suisen",
+             "shimoda_kanko_event", "shimoda_kanko_kurofune", "shimoda_kanko_ajisai", "pref_izu_gyokyo_shop", "shimoda_kanko_gift",
+             "shimoda_gomi", "shimoda_kanko_about", "jma_tsunami_warnings", "jma_kamchatka_2025", "jma_kamchatka_2025_eve", "shimoda_news_2013_08", "shimoda_tsunami_map",
+             "shimoda_tsunami_bldg", "shimoda_elevation_map", "jta_safety_tips", "shimoda_kanko_bicycle", "node_room", "node_access"],
+ "related": ["izu-from-tokyo", "kinmedai", "monthly-rental"],
+ "ja": {
+  "h1": "下田（日本）：1週間以上いる人のためのガイド",
+  "dek": "下田は、伊豆半島の南端にある小さな港町です。1週間いれば、その日の気分で浜を選び、地元の魚を料理して、町の暮らしになじめます。",
+  "review": [
+   "【2026-11-20 品質保証部（83点・ゲート違反1）の指摘での直し（英語と日本語の両方）】①駅前の足湯「開国の湯」の「無料」を消しました（公式の出典に料金の記載がないため。時間9時〜17時だけ） ②日帰り入浴の「多くは午後の半ばから」を「開く時間は10時〜15時と施設によって違う」に ③FAQ の多々戸浜を「いちばん知られた」から「サーファーの間で特に有名」に ④「残りの3つは小さめ」をやめました（入田浜400m・田牛410mは鍋田浜より長いため） ⑤下田条約の時期を「同じ1854年のうちに」に（英語の Later in 1854 と同じ） ⑥漁協の直売所の時間に「県のページ、2025年4月更新」を付けました ⑦水仙まつりへのバスを「駅前の10番乗り場から」に（英語も stop 10） ⑧気象庁の呼びかけを「解除されるまで高い所にとどまる」に ⑨33mの文は「発生する頻度は極めて低い（出典の記載）」を同じ文に入れ、「怖がらせたいのではありません」の文を消しました ⑩津波の体験は、experience.md の記録（2026-11-20 人の了承で直った）どおり「2025年7月末、静岡県の沿岸に津波警報が出て、のちに注意報に切り替わった」と気象庁の報道発表を出典に書き、最後を「ゲストからは、あとで感謝の言葉をもらった」にしました（新しい出典 jma_kamchatka_2025・jma_kamchatka_2025_eve） ⑪1月のゲストの声を「海が近く、初日の出も見られ、スーパーも便利」の並列に（因果を足さない）",
+   "【2026-11-20 新規の下書き（執筆部）】書いた点: ①7つの節（1週間いる価値／浜の選び方／浜以外の過ごし方／夏以外の季節／買い物と料理・ごみ／津波／どこに泊まるか）。事実はすべて、市・県・観光協会・気象庁・観光庁の公式のページによります ②浜の表は6つ（鍋田浜・外浦・白浜中央・白浜大浜・多々戸浜・吉佐美大浜）、残りの3つ（入田浜・九十浜・田牛）は文章で。白浜大浜の長さは市の一覧の「約700m」、ほかの長さは観光協会の値です ③人口は「約18,400人（2026年11月の住民基本台帳）」。日米和親条約は「1854年に下田を最初に開いた2つの港の1つにした」とだけ書き、調印の場所は書いていません。了仙寺は付録の「下田条約」の場として書きました ④静岡県の2013年の想定（最悪の場合、下田の最大の津波の高さ33m。発生頻度は極めて低い）を1文入れました。到達時間は書いていません ⑤NODE Shimoda は最後の節で1回だけ（アパートの一室・約40㎡・最大4名・2階で階段約13段・シャワーのみ・駅から平坦な道で徒歩8分・スーパー3分・ペリーロード5分）。料金・週割・泊数の上限は書かず、本文に写真も入れていません ⑥共食いを避けるため、行き方・運賃・フリーきっぷ・2026年の海水浴の期間は書かず、izu-from-tokyo へリンクで送りました。店で食べる金目鯛は kinmedai、1か月以上の部屋は monthly-rental へ ⑦確かめられなかったこと（ロープウェイの運賃・時間、月別の平年値、津波の到達時間、水質の「認証」、サーフィン区域の線引き、バスの系統名・時刻、道の駅全体の営業時間、スーパーの店名、英語のごみ分別表、共同浴場、水族館の営業時間・料金）は書いていません ⑧見出し写真は stony-shore-waves（石の多い浜と青い海。alt に地名なし）",
+   "【人に確かめてほしい点】変わりやすい数字（2026年11月に確認）: 日帰り入浴の料金（600〜1,500円）と開く時間、レンタサイクルの料金と時間、観光案内所の時間、漁協の直売所の時間（県のページは2025年4月更新）、行事の日付（黒船祭・あじさい祭・花火は2026年の日付、水仙まつりは毎年12月20日〜1月31日）、2026年度の水質",
+   "【エンジニア部へ】組み込みのときに、IZU の keywords から「shimoda japan」を外してこの記事に移し、IZU・izu-from-tokyo・kinmedai からこの記事へのリンクを足す（構成案の依頼）",
+  ],
+  "points": [
+    "浜は、目的で選びます。子ども連れには穏やかな入り江、サーフィンならサーフィンの浜、静かに過ごすなら広い浜です。",
+    "旧町内は歩いて回れます。ロープウェイ、港、ペリーロードは、どれも駅から15分以内です。",
+    "夏以外は静かで、冬は水仙、5月は黒船祭、6月はあじさいがあります。",
+  ],
+  "body": """
+<h2>下田に1週間いる価値はあるか</h2>
+<p>浜を1つ見て駅前を少し歩くだけでは物足りないなら、あると私たちは思います。1泊なら、1回泳いでおいしいものを食べれば終わりです。1週間あれば、いろいろな浜を試し、気に入ったカフェを見つけ、町のゆっくりした調子に体がなじんでいきます。</p>
+<p>下田は[[l:ja-izu|伊豆半島]]の南端にあります。住民基本台帳の人口は2026年11月で約18,400人の小さな町で[[s:shimoda_population]]、海岸線は約47kmあります[[s:shimoda_profile]]。日本が外に開いた最初の町のひとつでもあり、1854年の日米和親条約で、下田は日本で最初に開かれた2つの港の1つになりました[[s:shimoda_hist_perry]]。</p>
+<p>東京からの電車はそれなりに長いので、着いたら腰を落ち着けたくなるはずです。電車・運賃・バスのきっぷは、[[l:ja-izu-from-tokyo|東京から伊豆への行き方の記事]]にまとめています。1週間より長くいられるなら、私たちならほとんどを下田で過ごし、半島のほかの町に1〜2泊足します。</p>
+
+<h2>下田のどの浜が合うか</h2>
+<p>その日に何をしたいかで決まります。下田の9つの海水浴場は、思った以上に性格が違うからです。小さな子どもが水遊びできる穏やかな入り江もあれば、サーフィンで知られる浜もあります。</p>
+<div class="tablewrap"><table class="free">
+<thead><tr><th>浜</th><th>どんな浜か</th><th>向いていること</th><th>伊豆急下田駅から</th></tr></thead>
+<tbody>
+<tr><td><strong>鍋田浜</strong>（130m）</td><td>町にいちばん近い浜で、入り江のためほとんど波がありません。駐車場とシャワーはありません[[s:shimoda_kanko_beach_nabeta]]。</td><td>ちょっと泳ぐ、小さな子ども</td><td>3番か4番乗り場のバスで約7分、そこから徒歩5分[[s:shimoda_kanko_beach_nabeta]]</td></tr>
+<tr><td><strong>外浦</strong>（470m）</td><td>遠浅で波の穏やかな入り江で、家族連れに人気です。沖ではシーカヤックをする人もいます。サーフィンの区域はありません[[s:shimoda_kanko_beach_sotoura]]。</td><td>子ども連れ、穏やかに泳ぐ</td><td>9番乗り場のバスで約10分、そこから徒歩3分[[s:shimoda_kanko_beach_sotoura]]</td></tr>
+<tr><td><strong>白浜中央</strong>（720m）</td><td>白浜海岸の北の端の静かな浜で、磯遊びができます。下田で唯一バーベキューができる浜です[[s:shimoda_kanko_beach_shirahamachuo]]。</td><td>家族連れ、磯遊び</td><td>9番乗り場のバスで約18分、そこから徒歩1分[[s:shimoda_kanko_beach_shirahamachuo]]</td></tr>
+<tr><td><strong>白浜大浜</strong>（約700m）</td><td>伊豆でも最大級の浜で、国道沿いにあり、サーファーや若い人でにぎわいます[[s:shimoda_beaches_city,shimoda_kanko_beach_shirahama]]。</td><td>にぎやかな1日、サーフィン</td><td>9番乗り場のバスで約15分[[s:shimoda_kanko_beach_shirahama]]</td></tr>
+<tr><td><strong>多々戸浜</strong>（450m）</td><td>サーフィンとボディボードで知られ、全国大会も開かれます。一年中使える温水シャワーがあります[[s:shimoda_kanko_beach_tatado]]。</td><td>サーフィン</td><td>3番か4番乗り場のバスで約7分、そこから徒歩3分[[s:shimoda_kanko_beach_tatado]]</td></tr>
+<tr><td><strong>吉佐美大浜</strong>（770m）</td><td>国道から離れた大きな浜で、静かに感じます。サーファーと家族連れが一緒に使い、近くにカフェもあります[[s:shimoda_kanko_beach_kisami]]。</td><td>長く、静かに過ごす1日</td><td>3番か4番乗り場のバスで約10分、そこから徒歩8分[[s:shimoda_kanko_beach_kisami]]</td></tr>
+</tbody></table></div>
+<p class="fine">浜の長さは観光協会の値です（白浜大浜は市の一覧の値）。「乗り場」は、駅前のバス乗り場の番号です。</p>
+<p>残りの3つは、こんな浜です。入田浜はソテツの並ぶ落ち着いた浜で、サーファーも使います[[s:shimoda_kanko_beach_irita]]。九十浜は須崎御用邸の隣の50mの入り江で、両側の岩場で磯遊びができ、大きなテントは使えません[[s:shimoda_kanko_beach_kujuppama]]。田牛は混みにくく龍宮窟にも近いのですが、バスは1日4〜5本だけです[[s:shimoda_kanko_beach_toji]]。</p>
+<p>水もきれいです。静岡県の2026年度の調査で、9つの浜はすべていちばん上の「AA」でした[[s:pref_beach_water_2026]]。そのうち白浜中央・白浜大浜・外浦・多々戸浜・入田浜・吉佐美大浜の6つは、日本ライフセービング協会の安全の認定も受けています[[s:shimoda_beaches_city]]。</p>
+<p>監視員がいるのは、市が毎年決める海水浴の期間だけです[[s:shimoda_ohama]]。今年の期間は[[l:ja-izu-from-tokyo|伊豆の旅の記事]]に載せています。期間中の浜では、テント（日よけのパラソルはよい）、直火とバーベキュー（白浜中央の一部を除く）、花火、泊まりがけのキャンプ、そして2025年からは音を大きくするスピーカーが禁止されています[[s:shimoda_kanko_umi]]。</p>
+
+<h2>下田で、浜のほかに何ができるか</h2>
+<p>けっこうたくさんあり、ほとんどが駅から歩いて行けます。浜に行かない日なら、私たちは高い所から始めて、旧町内を歩き、最後に温泉に入ります。</p>
+<p>下田ロープウェイの乗り場は、伊豆急下田駅から歩いて1分です。寝姿山の山頂からは、町、港、伊豆諸島、天城の山々が見えます[[s:shimoda_nesugata]]。下りたら、港と道の駅（道路沿いの市場のような建物）までは歩いて約10分です[[s:shimoda_michinoeki]]。</p>
+<p>ペリーロードと了仙寺は、駅から約15分です[[s:shimoda_perryroad,shimoda_ryosenji]]。同じ1854年のうちに、日米和親条約の付録の「下田条約」が了仙寺の本堂で結ばれました。ペリーロードの名前は、ペリーの一行が了仙寺まで行進した道に由来し、石畳が小さな川に沿って約500m続きます[[s:shimoda_hist_perry,shimoda_perryroad]]。少し離れた玉泉寺には、1856年にハリスが開いた日本で最初の米国総領事館が置かれました[[s:shimoda_hist_harris,shimoda_gyokusenji]]。</p>
+<p>温泉なら、観光協会が日帰り入浴のできるホテル・旅館を8軒載せています。2026年11月時点で大人600〜1,500円、開く時間は10時〜15時と施設によって違い、混んでいるときは断られることもあります[[s:shimoda_kanko_onsen]]。駅前には、足湯「開国の湯」もあり、9時〜17時に使えます[[s:shimoda_kanko_onsen]]。</p>
+<p>雨の日も、楽しみ方はあります。道の駅の4階には町の歴史を伝えるハーバーミュージアムがあり[[s:shimoda_michinoeki]]、了仙寺には宝物館があります[[s:shimoda_ryosenji]]。晴れた日なら、和歌の浦遊歩道は海沿いを1.2km・約15分で歩け、下田公園の遊歩道はひと回り約1時間半です[[s:shimoda_kanko_promenade]]。</p>
+
+<h2>夏以外の下田は、行く価値があるか</h2>
+<p>あります。浜は静かですが、たいていの季節に何かしらの行事があり、市は年の平均気温を約17℃としています[[s:shimoda_profile]]。</p>
+<div class="tablewrap"><table class="free">
+<thead><tr><th>時期</th><th>行事・見どころ</th></tr></thead>
+<tbody>
+<tr><td>12月20日〜1月31日</td><td>爪木崎の水仙まつり。最大で約300万本の水仙が咲き、見ごろはたいてい1月です。駅前の10番乗り場から、バスで約20分です[[s:shimoda_kanko_suisen]]。</td></tr>
+<tr><td>冬から早春</td><td>下田公園の椿。園芸品種は約160種あります[[s:shimoda_park]]。3月中旬〜4月上旬は桜です[[s:shimoda_kanko_event]]。</td></tr>
+<tr><td>5月</td><td>1934年から続く黒船祭。2026年は5月15〜17日で、港の花火、日米のパレード、了仙寺での下田条約の再現がありました[[s:shimoda_kanko_kurofune]]。</td></tr>
+<tr><td>6月</td><td>下田公園のあじさい祭。100種以上・約300万輪が咲きます（2026年は6月1〜30日）。公園は坂が多く、歩くのがつらい人のためのカートがあります[[s:shimoda_kanko_ajisai]]。</td></tr>
+<tr><td>7月・8月</td><td>海水浴の季節。2026年は7月25日に白浜で花火があり、旧町内の太鼓祭りは8月14・15日です[[s:shimoda_kanko_event]]。</td></tr>
+<tr><td>秋</td><td>手筒花火（2026年は10月10日）、10月下旬の白浜神社の例大祭、そして5月上旬まで続く伊勢海老の季節の始まりです[[s:shimoda_kanko_event]]。</td></tr>
+</tbody></table></div>
+<p>町がいちばんにぎわうのは夏で、私たちの宿でも、夏は長く泊まる人が増えます。泳ぐより、歩いて、温泉に入って、おいしいものを食べたいなら、私たちは涼しい季節を選びます。</p>
+
+<h2>下田で1週間、どう買い物して料理するか</h2>
+<p>魚は港で買って、自分で料理するのがおすすめです。伊豆漁協の直売所は、道の駅「開国下田みなと」の1階にあります。金目鯛、生きた伊勢海老、サザエなどの魚介を売っていて、静岡県のページ（2025年4月更新）では8時〜16時30分・定休日なしです[[s:pref_izu_gyokyo_shop,shimoda_kanko_gift]]。同じ建物の JA の直売所には、地元の野菜、わさび、ニューサマーオレンジを使った品があります[[s:shimoda_kanko_gift]]。</p>
+<p>町の名物の赤い魚を誰かに料理してもらいたいなら、[[l:ja-kinmedai|金目鯛の記事]]に食べられる所をまとめています。日々の買い物には町なかにスーパーやコンビニがあるので、キッチンがあれば、1週間がずっと安く、気楽になります。</p>
+<p>ごみの出し方は、少し慣れが要ります。下田市は、燃えるごみを週2回、市の指定袋で集め、缶・びん・ペットボトル・紙などは月2回、それぞれ分けて集めます[[s:shimoda_gomi]]。泊まる所ごとにやり方があるので、初日に宿の人に聞くのがいちばん簡単です。初日には、私たちならこんなこともします。</p>
+<ol>
+<li>いちばん近いスーパーと、道の駅の魚の直売所の場所を確かめる。</li>
+<li>ごみの分け方と出す場所を、宿の人に聞く。</li>
+<li>駅の近くの観光案内所（9時〜16時45分）で地図をもらう[[s:shimoda_kanko_about]]。</li>
+<li>行きたい浜のバスの時刻を調べる。1日に数本しかない路線もあります。</li>
+<li>泊まる所から、いちばん近い高い場所を確かめる（次の節）。</li>
+</ol>
+
+<h2>下田の津波について、何を知っておくべきか</h2>
+<p>海の近くで強い揺れを感じたら、警報を待たずに、すぐ高い所へ逃げてください[[s:jma_tsunami_warnings]]。下田は外洋に面していて、1854年には安政の大津波が下田湾を襲い、町の家のほとんどが流されたり壊れたりしました[[s:shimoda_hist_ansei]]。</p>
+<p>静岡県の2013年の想定では、発生する頻度は極めて低いものの、最悪の場合の下田の最大の津波の高さを33mとしています[[s:shimoda_news_2013_08]]。予報ではありませんが、「とにかく早く高い所へ」と言われるのはそのためです。気象庁は、地震からおよそ3分で津波の警報・注意報を出すことを目指しています[[s:jma_tsunami_warnings]]。</p>
+<div class="tablewrap"><table class="free">
+<thead><tr><th>発表</th><th>予想される高さ</th><th>すること</th></tr></thead>
+<tbody>
+<tr><td><strong>津波注意報</strong></td><td>0.2〜1m</td><td>海から上がり、海岸から離れる[[s:jma_tsunami_warnings]]</td></tr>
+<tr><td><strong>津波警報</strong></td><td>1〜3m</td><td>すぐに高台か避難ビルへ[[s:jma_tsunami_warnings]]</td></tr>
+<tr><td><strong>大津波警報</strong></td><td>3mを超える</td><td>すぐに高台か避難ビルへ[[s:jma_tsunami_warnings]]</td></tr>
+</tbody></table></div>
+<p>津波は何度も来るので、気象庁は、警報・注意報が解除されるまで高い所にとどまるよう呼びかけています[[s:jma_tsunami_warnings]]。市は津波ハザードマップと避難の地図を出していますが、日本語だけです[[s:shimoda_tsunami_map]]。津波避難ビルもいくつか指定していて[[s:shimoda_tsunami_bldg]]、地図の上でたたいた場所の海抜が分かる、オンラインの地図もあります[[s:shimoda_elevation_map]]。</p>
+<p>観光庁の無料のアプリ「Safety tips」は、地震・津波・気象の警報を英語などで知らせてくれます[[s:jta_safety_tips]]。着く前に入れておくのがおすすめです。2025年7月末には、静岡県の沿岸に津波警報が出て、のちに津波注意報に切り替わりました[[s:jma_kamchatka_2025,jma_kamchatka_2025_eve]]。私たちは海外からのゲストに、状況が変わるたびにメッセージを送り、何が起きているかと、避難が必要なことを伝えました。ゲストからは、あとで感謝の言葉をもらいました。</p>
+
+<h2>下田で1週間、どこに泊まるか</h2>
+<p>車がないなら、私たちは駅に近い旧町内に泊まります。店も港も、どのバスの路線もすぐ近くです。浜が旅のいちばんの目的なら、浜の近くに泊まればバスに乗らずに済みます。</p>
+<div class="tablewrap"><table class="free">
+<thead><tr><th>地区</th><th>こんな人に合う</th><th>知っておきたいこと</th></tr></thead>
+<tbody>
+<tr><td><strong>旧町内（駅の周り）</strong></td><td>店・港・ペリーロードに歩いて行き、浜へはバスで行きたい人。</td><td>たいていの浜へは、バスか自転車が要ります。</td></tr>
+<tr><td><strong>白浜</strong></td><td>大きな浜をすぐ目の前にしたい人。</td><td>町からバスで約15分なので[[s:shimoda_kanko_beach_shirahama]]、夜に町へ出ると帰りもバスです。</td></tr>
+<tr><td><strong>南の浜</strong>（多々戸・入田・吉佐美）</td><td>サーフィンが目的の人、静かな浜がいい人。</td><td>駅からバスで7〜10分[[s:shimoda_kanko_beach_tatado,shimoda_kanko_beach_kisami]]、そこから少し歩きます。</td></tr>
+</tbody></table></div>
+<p>自転車があると、ぐっと楽になります。観光協会が道の駅で、自転車と電動自転車を1時間500円から、1日2,000円で貸していて、時間は9時〜17時です。予約は要りませんが、パスポートなどの身分証が要ります[[s:shimoda_kanko_bicycle]]。</p>
+<p>私たちは、旧町内で「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」を運営しています。約40㎡のアパートの一室で、最大4名まで泊まれます。キッチン、洗濯機とガス乾燥機、ワークデスクがあります。2階で階段は約13段、浴室はシャワーだけで浴槽はありません[[s:node_room]]。駅から平坦な道を歩いて8分で、スーパーまで3分、ペリーロードまで5分です[[s:node_access]]。1月に泊まったゲストは、海が近く、初日の出も見られ、スーパーも近くて便利だったとレビューに書いてくれました。</p>
+<p>1週間が、1か月以上いたい気持ちに変わったら、[[l:ja-monthly-rental|日本で1か月単位で部屋を借りる記事]]に仕組みをまとめています。</p>
+""",
+  "faq": [
+    ("下田は行く価値がありますか",
+     "あります。特に1週間いるなら。伊豆の南端の小さな港町で、9つの海水浴場、歩いて回れる旧町内、季節の行事があります[[s:shimoda_population,shimoda_kanko_umi,shimoda_kanko_event]]。1週間あれば、いくつもの浜を試し、町の調子で暮らせます。"),
+    ("下田でいちばんいい浜はどこですか",
+     "何をしたいかによります。外浦と鍋田浜は穏やかな入り江で、子ども連れに合います[[s:shimoda_kanko_beach_sotoura,shimoda_kanko_beach_nabeta]]。多々戸浜はサーファーの間で特に有名で[[s:shimoda_kanko_beach_tatado]]、吉佐美大浜は大きくて静かめです[[s:shimoda_kanko_beach_kisami]]。"),
+    ("夏以外でも、下田で泳げますか",
+     "監視員がいるのは市が毎年決める海水浴の期間だけなので、期間外は監視員なしで泳ぐことになります[[s:shimoda_ohama]]。多々戸浜には一年中使える温水シャワーがあります[[s:shimoda_kanko_beach_tatado]]。"),
+    ("冬の下田では、何ができますか",
+     "爪木崎の水仙まつりが12月20日〜1月31日にあり[[s:shimoda_kanko_suisen]]、下田公園では椿が咲きます[[s:shimoda_park]]。日帰り温泉、ロープウェイ、海沿いの散歩で、1週間はすぐに埋まります[[s:shimoda_kanko_onsen,shimoda_nesugata,shimoda_kanko_promenade]]。"),
+    ("下田で津波警報が出たら、どうすればいいですか",
+     "すぐに高台か避難ビルへ移り、警報が解除されるまでとどまります。海の近くで強い揺れを感じたら、警報を待たずに逃げます[[s:jma_tsunami_warnings]]。無料のアプリ「Safety tips」が英語で知らせてくれます[[s:jta_safety_tips]]。"),
+  ],
+ },
+},
+# ============================================================ 日本に何日いられるか
+{
+ "id": "how-long-stay", "slug": "how-long-can-you-stay-in-japan", "topic": "live", "place": None, "also": ["stay"],
+ "photo": ("passport-stamps", "An open passport with colourful entry and exit stamps on its pages", ""),
+ "published": "2026-11-20", "updated": "2026-11-20",
+ "kicker": "Live part-time",
+ "h1": "How long can you stay in Japan? 90 days, and the ways to stay longer",
+ "seo_title": "How Long Can I Stay in Japan? 90 Days and Longer Stays",
+ "description": "Most visa-free visitors can stay in Japan for up to 90 days, and extensions need good reason. For six months or a year, pick the right status before you come.",
+ "dek": "Visa-free visitors usually get up to 90 days, though some nationalities may get 15, 30 or 180. For six months or a year, pick the right status before you come.",
+ "card": "Visa-free visitors usually get up to 90 days, though JNTO notes some nationalities may be granted 15, 30 or 180. Extensions need good reason and every entry is checked again, so for six months or a year it’s better to choose the right status before you travel.",
+ "keywords": [("how long can i stay in japan", "170", "3"), ("how long can you stay in japan", "—", "—"),
+              ("japan visa free stay / japan 90 day rule", "—", "—"), ("extend stay in japan / stay in japan for 6 months", "—", "—")],
+ "intent": "Know（自分は何日いられるか）→ Do（もっと長くいるには何を選ぶか）",
+ "points": [
+   "Visa-free stays are usually up to 90 days, though JNTO notes some nationalities may get 15, 30 or 180.",
+   "Extensions need good reason, and every time you come back, you’re checked again at the border.",
+   "For six months or a year, look at the digital nomad status or the long stay for sightseeing.",
+ ],
+ "body": """
+<p>Ask online how long you can stay in Japan and you’ll get answers from 90 days to a year, sometimes in the same thread. The real answer depends on two things: the passport you hold and the status you enter on. Everything below describes the rules as of November 2026.</p>
+
+<h2>How long can you stay in Japan without a visa?</h2>
+<p>Usually up to 90 days. JNTO says most short-term stays allow up to 90 days, and notes that some nationalities may be granted 15, 30 or 180 days [[s:jnto_visa]]. Officially, you enter as a Temporary Visitor.</p>
+<p>Which one you get comes down to your passport. JNTO points to the Ministry of Foreign Affairs list of visa-exempt countries and regions, and that list is the one to trust for your own case [[s:jnto_visa]]. If your passport isn’t on it, you’ll need a visa before you travel.</p>
+<p>The status is meant for short stays: sightseeing, recreation, sport, visiting relatives, attending meetings and business liaison, among other things [[s:egov_immig_act]]. It doesn’t cover paid work, long-term study or applying to live here [[s:jnto_visa]].</p>
+
+<h2>Can you extend a visa-free stay?</h2>
+<p>You can apply, but we wouldn’t plan a trip around it. Japan’s Immigration Control Act lets you apply to renew your period of stay, and the Minister of Justice can grant it only when there are reasonable grounds [[s:egov_immig_act]].</p>
+<p>Timing matters if your plans fall apart near the end. Say you apply before your period of stay ends and there’s no decision yet. You can then stay until the decision or two months after your old expiry date, whichever comes first [[s:egov_immig_act]]. That grace period doesn’t apply if you were given 30 days or less [[s:egov_immig_act]]. So if you think you’ll go over, it’s worth talking to the immigration authorities before the date, not after.</p>
+<p>Switching to another status from inside Japan is just as narrow. For a short-term visitor, the Act only allows a change of status when there are unavoidable special circumstances [[s:egov_immig_act]]. That’s why we’d sort out any longer status before you fly.</p>
+
+<h2>Can you leave Japan and come back for another 90 days?</h2>
+<p>You can come back, but a new entry isn’t a fresh 90 days by right. Each time you land, an immigration inspector checks that your passport is valid and that what you plan to do here is genuine and fits your status. They also check that the period fits the rules [[s:egov_immig_act]]. It’s up to you to show that you meet those conditions [[s:egov_immig_act]].</p>
+<p>People often ask how many days they need to spend abroad before coming back, or whether there’s a limit per year. What the law sets out is the check itself. At every entry, the inspector decides on the landing conditions in Article 7 of the Act, such as whether the purpose of your stay is genuine [[s:egov_immig_act]]. We don’t know of a number of days that makes the next entry safe, so we wouldn’t build a plan on leaving and coming back again and again.</p>
+<p>In our view, the better plan for anything beyond 90 days is to pick a status that fits the length of your stay, before you come.</p>
+
+<h2>Which status fits six months or a year?</h2>
+<p>If you aren’t taking a job here, there are two main routes past 90 days. One is the digital nomad status, for up to six months. The other is a long stay for sightseeing and recreation, for up to a year.</p>
+<div class="tablewrap"><table class="free">
+<thead><tr><th>Status</th><th>How long</th><th>Who it’s for</th><th>Residence card</th></tr></thead>
+<tbody>
+<tr><td><strong>Temporary Visitor</strong>, visa-exempt</td><td>Usually up to 90 days. JNTO notes some nationalities may be granted 15, 30 or 180 days [[s:jnto_visa]]</td><td>Short stays such as sightseeing. No paid work [[s:egov_immig_act,jnto_visa]]</td><td>No [[s:egov_immig_act]]</td></tr>
+<tr><td><strong>Digital nomad</strong> (Designated Activities)</td><td>Up to six months, with no extension [[s:isa_nomad_en]]</td><td>Remote workers with an employer or clients outside Japan who meet the income and insurance rules [[s:isa_nomad_en]]</td><td>No [[s:egov_immig_act,egov_immig_rules]]</td></tr>
+<tr><td><strong>Long stay for sightseeing and recreation</strong> (Designated Activities)</td><td>A stay of up to one year [[s:egov_nhi_rules]]</td><td>People aged 18 or over staying for sightseeing and recreation, and a spouse who comes with them [[s:egov_nhi_rules]]</td><td>Yes, if you’re given more than three months [[s:egov_immig_act,egov_immig_rules]]</td></tr>
+</tbody></table></div>
+<p>Study, work and family statuses work differently. For those, the law lets you apply in advance for a Certificate of Eligibility from the Minister of Justice, and someone at the school or company taking you on can apply for you [[s:egov_immig_act]].</p>
+<p>The digital nomad status suits people who want to keep working for an employer or clients abroad. It needs ¥10 million a year in income [[s:isa_nomad_en]], and our [[l:digital-nomad|guide to Japan’s digital nomad visa]] covers who qualifies and what it’s like to live here without a residence card.</p>
+<p>The long stay for sightseeing is less well known. It does come with a residence card for stays of more than three months, but it still doesn’t let you join National Health Insurance [[s:egov_immig_act,egov_immig_rules,egov_nhi_rules]], so you’ll want private health cover. Its other conditions, such as which passports qualify and what you need to show, are best checked with a Japanese embassy or consulate in your country.</p>
+<p>For many people, though, 90 days is plenty for a first season. It’s enough to [[l:akiya-try-first|live in a town for a month or two before you buy a house]]. Our guide to [[l:monthly-rental|renting a place by the month]] covers where you’d stay.</p>
+
+<h2>Can you work remotely while visiting Japan?</h2>
+<p>The law says a short-term visitor can’t run a business that brings in income or do activities they’re paid for without permission [[s:egov_immig_act]]. JNTO also says a tourist stay doesn’t allow paid work [[s:jnto_visa]]. So we wouldn’t assume it’s fine just because the money comes from abroad. How the rule applies to your own job is a question for the immigration authorities.</p>
+<p>Whether answering a few emails for your employer counts depends on what you actually do, and we won’t guess at it for you. What’s clear is that Japan has a status built for remote work. If you want to keep working for an employer or clients abroad while you stay longer, the digital nomad status is the one written for that [[s:egov_immig_rules,isa_nomad_en]].</p>
+
+<h2>What happens if you overstay?</h2>
+<p>It’s serious, and it can keep you out of Japan for years. Staying past your period of stay without renewing or changing it is a ground for deportation [[s:egov_immig_act]]. It’s also a crime, with up to three years’ imprisonment, a fine of up to ¥3 million, or both [[s:egov_immig_act]].</p>
+<p>How long you’re kept out depends on how you leave. Here’s how the Act sets it out, in the version in force from 1 October 2026 [[s:egov_immig_act]].</p>
+<div class="tablewrap"><table class="free">
+<thead><tr><th>How you leave</th><th>How long you can’t come back</th></tr></thead>
+<tbody>
+<tr><td>Deported for the first time</td><td>Five years from your departure [[s:egov_immig_act]]</td></tr>
+<tr><td>Deported after an earlier deportation or departure order</td><td>Ten years [[s:egov_immig_act]]</td></tr>
+<tr><td>Under a departure order</td><td>One year. It’s five years if you only said you’d leave after an investigation began and you want to come back as a visitor [[s:egov_immig_act]]</td></tr>
+</tbody></table></div>
+<p>A departure order is the gentler route, and it’s mostly in your hands. You may get one if you go to an immigration office yourself, intending to leave quickly. You also need a clean record: no past deportation or departure order, no listed criminal convictions, and a departure that’s sure to happen promptly [[s:egov_immig_act]]. If you realise you’ve gone over, going in early is far better than waiting.</p>
+
+<h2>Is anything changing for visa-free visitors?</h2>
+<p>Yes, but not yet. In June 2026, Japan promulgated an amendment to the Immigration Control Act, Act No. 32 of 2026, after it passed the Diet on 29 May [[s:shugiin_bill221_20]]. It adds a system that lets visa-exempt short-term visitors give their details online in advance and be authorised by the Immigration Services Agency [[s:egov_immig_act_jesta]].</p>
+<p>The Japan Tourism Agency calls the system JESTA and says it’s planned to start in the 2028 financial year, which runs from April 2028 to March 2029 [[s:jta_jesta]]. Under the Act, that part comes into force on a date set by cabinet order, no later than 31 March 2029, and as of November 2026 it isn’t in force [[s:egov_immig_act_jesta]]. Until then, nothing about it changes your trip.</p>
+<p>All of this is general information as of November 2026, not immigration advice. For your own case, it’s best to check with a Japanese embassy or consulate, the Immigration Services Agency, or an administrative scrivener (<em>gyoseishoshi</em>) who handles visas.</p>
+""",
+ "after_faq": '<p class="fine">This article is general information, not legal or immigration advice.</p>',
+ "faq": [
+   ("How long can I stay in Japan without a visa?",
+    "Usually up to 90 days. JNTO notes that some nationalities may be granted 15, 30 or 180 days [[s:jnto_visa]]. The Ministry of Foreign Affairs list, which JNTO links to, is where to check yours [[s:jnto_visa]]."),
+   ("Can I extend my 90-day stay in Japan?",
+    "You can apply, but it’s only granted when there are reasonable grounds [[s:egov_immig_act]]. If you might go over, talk to the immigration authorities before your stay ends, not after."),
+   ("Can I leave Japan and come back for another 90 days?",
+    "You can come back, but each entry is checked again. The inspector decides on the landing conditions, such as whether your plans are genuine and fit your status, and it’s up to you to show that [[s:egov_immig_act]]. We don’t know of a number of days abroad, or a yearly pattern, that makes the next entry safe, so we wouldn’t plan on going in and out."),
+   ("Can I stay in Japan for six months or a year without a job?",
+    "There are two main routes. One is the digital nomad status, for up to six months with no extension [[s:isa_nomad_en]]. The other is a long stay for sightseeing and recreation of up to a year, for people aged 18 or over [[s:egov_nhi_rules]]. A Japanese embassy or consulate can tell you whether you qualify."),
+   ("Can I work remotely on a visa-free stay in Japan?",
+    "A short-term visitor can’t do activities they’re paid for without permission [[s:egov_immig_act,jnto_visa]]. How that applies to your own job is a question for the immigration authorities. If you want to keep working for an employer or clients abroad for longer, the digital nomad status is built for that [[s:isa_nomad_en]]."),
+   ("What happens if I overstay in Japan?",
+    "Overstaying is a ground for deportation and a crime [[s:egov_immig_act]]. A first deportation keeps you out for five years, while leaving under a departure order usually means one year [[s:egov_immig_act]]."),
+ ],
+ "sources": ["jnto_visa", "egov_immig_act", "egov_immig_rules", "egov_nhi_rules", "isa_nomad_en", "shugiin_bill221_20", "egov_immig_act_jesta", "jta_jesta"],
+ "related": ["digital-nomad", "monthly-rental", "akiya-try-first"],
+ "ja": {
+  "h1": "日本に何日いられる？ 90日と、もっと長くいる方法",
+  "dek": "ビザなしの滞在は、たいてい最長90日です。国籍によっては15日・30日・180日のこともあります。半年や1年いたいなら、来る前に合った在留資格を選びましょう。",
+  "review": [
+   "【2026-11-20 品質保証部の1回目（86点・ゲート違反3）を受けた直し（執筆部）】変えた点: ①【事実の変更】留学・仕事・家族の在留資格の1文: 「来る前に大使館・総領事館で手続き」をやめ、入管法 第7条の2（現行。e-Gov で条文を確認）どおり「法務大臣に在留資格認定証明書を前もって申請でき、受け入れる学校や会社の人が代わりに申請できる」にしました ②【事実の変更】短期滞在の日数: JNTO の言い方にそろえ、「たいてい最長90日。国籍によっては15日・30日・180日が認められることもある」にしました（dek・In short・本文・表・FAQ1。akiya-try-first・monthly-rental と同じ）。施行規則の「90日・30日・15日以内」は本文から外しました。表の列名は「期間（How long）」です ③ja 本文の「ソウルへ短い旅」の文を消しました（英語版の「a short trip abroad」の文も、下の④の形に置き換えました） ④出て戻る節: 「1年に上限はあるか」に、「法律が定めているのは審査そのもので、入国のたびに審査官が第7条の上陸の条件（滞在の目的が本当か など）で判断する」までを出典つきで書き、出入りをくり返す前提の計画はすすめない形にしました。「上限はない」とは書いていません。FAQ3 も同じ形にしました ⑤年収1,000万円に出典（isa_nomad_en）を付けました ⑥リモートワーク: 「日本で報酬を受ける仕事はできない」をやめ、法律の言い方（許可なしに報酬を受ける活動はできない）で始め、「お金が海外から払われるから大丈夫、とは考えないほうがいい」を足しました ⑦節3の「In our view」を1回にしました",
+   "【2026-11-20 新規の下書き（執筆部）】書いた点: 1記事1主張は「何日いられるかはパスポートと在留資格で決まる。90日を超えたいなら、出入国をくり返すより、来る前に合った在留資格を選ぶ」。h2 は7つで、すべて疑問形です。制度の事実は、開いて確かめた条文（e-Gov の入管法・施行規則は2026年10月1日施行の版、国保法施行規則）、JNTO、衆議院の議案審議経過、観光庁の資料によります。延長は「相当の理由があるときに限り許可」（第21条）と、申請中の2か月の猶予（第20条第6項。30日以下の人は除く）、日本の中での変更は「やむを得ない特別の事情」があるときだけ（第20条第3項）。地図の表は3行（短期滞在／デジタルノマド／観光・保養の長期滞在）で、長期滞在は「最長1年・18歳以上・同行する配偶者・3か月を超えれば在留カード・国民健康保険に入れない」だけを書き、ほかの条件は大使館・総領事館へ。オーバーステイは罰則と上陸拒否の期間の表（2026年10月1日施行の版）と出国命令の条件。JESTA は成立・公布・観光庁の予定（2028年度）・施行の期限（2029年3月31日までの政令で定める日）・2026年11月時点で未施行まで。NODE Shimoda と自社の体験には触れていません",
+   "【人に確かめてほしい点】①ビザ・在留・JESTA の記述すべて（playbook 6章。2026年11月時点）。特に、観光・保養の長期滞在に「3か月を超えて決まれば在留カードが出る」と書いた点は、入管法 第19条の3・施行規則 第19条の5 の条文の読みによります",
+   "【書かなかったこと（公式の出典を開けないため）】ワーキングホリデー、取り決めで最長6か月まで延長できる国、「1年に180日」、短期滞在の更新が認められる例（病気など）、観光・保養の長期滞在の預貯金・対象国・保険・最初の期間と更新・申請先、査証免除の国・地域の数、短期滞在中のリモートワークの公式の扱い",
+   "【写真】編集長が入れた passport-stamps（スタンプの押されたパスポート）をそのまま使っています",
+   "【エンジニア部へ】①SOURCES_NEW の egov_immig_act・egov_immig_rules は既存のキーの上書きです。egov_immig_act は正式名に条番号（第7条の2 など）を足しただけ、egov_immig_rules は既存と同じ中身です（URL・短い名前は同じ。既存記事の表示に問題なし） ②akiya-try-first の h2「How long can you stay in Japan to test a town?」の言い換えとこの記事へのリンク、monthly-rental・digital-nomad からこの記事へのリンクを、この記事の公開と同じ PR で",
+  ],
+  "points": [
+    "ビザなしの滞在はたいてい最長90日です。JNTO によると、国籍によっては15日・30日・180日のこともあります。",
+    "延長には相当の理由が要ります。また、出て戻るたびに、入国のときにあらためて審査されます。",
+    "半年や1年なら、デジタルノマドの在留資格か、観光・保養の長期滞在を考えてみてください。",
+  ],
+  "body": """
+<p>日本に何日いられるかをネットで調べると、90日から1年まで、同じスレッドの中でさえ答えがばらばらです。本当の答えは、持っているパスポートと、何の在留資格で入るかの2つで決まります。以下はすべて2026年11月時点の決まりです。</p>
+
+<h2>ビザなしで、日本に何日いられるのか</h2>
+<p>たいてい最長90日です。JNTO は、短い滞在の多くは最長90日で、国籍によっては15日・30日・180日が認められることもある、としています[[s:jnto_visa]]。正式には「短期滞在」の在留資格で入国します。</p>
+<p>どれになるかは、パスポートで決まります。JNTO は外務省の査証免除の国・地域の一覧を案内していて、自分の場合はその一覧がいちばん確かです[[s:jnto_visa]]。パスポートが一覧にないなら、出発の前にビザが要ります。</p>
+<p>この在留資格は短い滞在のためのもので、観光、保養、スポーツ、親族の訪問、会議への参加、業務連絡などが当たります[[s:egov_immig_act]]。報酬を受ける仕事、長い期間の勉強、日本に住むための申請はできません[[s:jnto_visa]]。</p>
+
+<h2>ビザなしの滞在は延長できるのか</h2>
+<p>申請はできますが、延長をあてにして旅の計画を立てるのはおすすめしません。入管法では在留期間の更新を申請できますが、法務大臣が許可できるのは、相当の理由があるときに限られます[[s:egov_immig_act]]。</p>
+<p>終わり近くで予定が崩れたときは、タイミングが大事です。在留期間が終わる前に申請して、まだ決定が出ていなければ、決定の日か、元の期限から2か月のどちらか早い日まではいられます[[s:egov_immig_act]]。ただし、もらった期間が30日以下なら、この猶予はありません[[s:egov_immig_act]]。過ぎてしまいそうなら、期限の後ではなく前に、入管に相談するのがいいと思います。</p>
+<p>日本の中で別の在留資格に切り替えるのも、同じくらい狭き門です。入管法では、短期滞在の人が在留資格を変えられるのは、やむを得ない特別の事情があるときだけです[[s:egov_immig_act]]。だから、長くいるための在留資格は、飛行機に乗る前に済ませておくのがいいと私たちは考えています。</p>
+
+<h2>一度出国して戻れば、また90日いられるのか</h2>
+<p>戻ってくることはできますが、入国すれば当然にまた90日もらえるわけではありません。入国のたびに、入国審査官が、パスポートが有効か、日本でする予定のことが本当で在留資格に当たるか、期間が決まりに合っているかを確かめます[[s:egov_immig_act]]。条件を満たしていることは、自分で示す必要があります[[s:egov_immig_act]]。</p>
+<p>何日、日本の外にいればまた入れるのか、1年に上限はあるのか、とよく聞かれます。法律が定めているのは、審査そのものです。入国のたびに、審査官が入管法 第7条の上陸の条件、たとえば滞在の目的が本当かどうかで判断します[[s:egov_immig_act]]。次の入国が安全になる日数を私たちは知らないので、出入りをくり返す前提で計画を立てることはおすすめしません。</p>
+<p>90日を超えて過ごしたいなら、来る前に、滞在の長さに合った在留資格を選ぶほうがいい、と私たちは考えています。</p>
+
+<h2>半年や1年なら、どの在留資格が合うのか</h2>
+<p>日本で仕事に就くのでなければ、90日を超える道は主に2つです。1つは最長6か月のデジタルノマドの在留資格、もう1つは最長1年の観光・保養の長期滞在です。</p>
+<div class="tablewrap"><table class="free">
+<thead><tr><th>在留資格</th><th>期間</th><th>対象</th><th>在留カード</th></tr></thead>
+<tbody>
+<tr><td><strong>短期滞在</strong>（査証免除）</td><td>たいてい最長90日。JNTO によると、国籍によっては15日・30日・180日[[s:jnto_visa]]</td><td>観光などの短い滞在。報酬を受ける仕事はできない[[s:egov_immig_act,jnto_visa]]</td><td>出ない[[s:egov_immig_act]]</td></tr>
+<tr><td><strong>デジタルノマド</strong>（特定活動）</td><td>最長6か月。延長なし[[s:isa_nomad_en]]</td><td>日本の外の雇用主や取引先のために働くリモートワーカーで、収入と保険の条件を満たす人[[s:isa_nomad_en]]</td><td>出ない[[s:egov_immig_act,egov_immig_rules]]</td></tr>
+<tr><td><strong>観光・保養の長期滞在</strong>（特定活動）</td><td>最長1年の滞在[[s:egov_nhi_rules]]</td><td>観光・保養のために滞在する18歳以上の人と、同行する配偶者[[s:egov_nhi_rules]]</td><td>3か月を超えて決まれば出る[[s:egov_immig_act,egov_immig_rules]]</td></tr>
+</tbody></table></div>
+<p>留学・仕事・家族のための在留資格は、仕組みが違います。これらは、法務大臣に在留資格認定証明書を前もって申請でき、受け入れる学校や会社の人が代わりに申請することもできます[[s:egov_immig_act]]。</p>
+<p>デジタルノマドの在留資格は、海外の雇用主や取引先の仕事を続けたい人に向いています。年収1,000万円以上が必要で[[s:isa_nomad_en]]、対象になる人や、在留カードなしで暮らすとどうなるかは、[[l:ja-digital-nomad|日本のデジタルノマドビザの記事]]にまとめています。</p>
+<p>観光・保養の長期滞在は、あまり知られていません。3か月を超える滞在なら在留カードが出ますが、それでも国民健康保険には入れないので[[s:egov_immig_act,egov_immig_rules,egov_nhi_rules]]、民間の医療保険があると安心です。どのパスポートが対象か、何を示す必要があるかといった、ほかの条件は、計画を立てる前に自分の国の日本大使館・総領事館で確かめるのがいいと思います。</p>
+<p>とはいえ、最初のひと季節なら、90日で十分という人も多いはずです。[[l:ja-akiya-try-first|家を買う前に1〜2か月その町で暮らしてみる]]には足りますし、どこに泊まるかは[[l:ja-monthly-rental|月単位で部屋を借りる記事]]にまとめています。</p>
+
+<h2>旅行中に、リモートで仕事をしてもいいのか</h2>
+<p>法律では、短期滞在の人は、許可なしに収入を伴う事業を営んだり、報酬を受ける活動をしたりできません[[s:egov_immig_act]]。JNTO も、観光の滞在では報酬を受ける仕事はできないとしています[[s:jnto_visa]]。なので、お金が海外から払われるから大丈夫、とは考えないほうがいいと思います。自分の仕事にどう当たるかは、入管に聞くべきことです。</p>
+<p>雇い主からのメールに少し返事をするのがそれに当たるかは、実際に何をするかによるので、私たちが代わりに判断することはしません。はっきりしているのは、日本にはリモートワークのための在留資格があることです。海外の雇用主や取引先の仕事を続けながら長くいたいなら、そのために作られたのがデジタルノマドの在留資格です[[s:egov_immig_rules,isa_nomad_en]]。</p>
+
+<h2>オーバーステイすると、どうなるのか</h2>
+<p>重いことで、何年も日本に入れなくなることがあります。更新や変更をせずに在留期間を過ぎると、退去強制の理由になります[[s:egov_immig_act]]。犯罪でもあり、3年以下の拘禁刑か300万円以下の罰金、またはその両方が科されることがあります[[s:egov_immig_act]]。</p>
+<p>どれくらい入れなくなるかは、どう出国するかで変わります。2026年10月1日から施行されている入管法では、次のとおりです[[s:egov_immig_act]]。</p>
+<div class="tablewrap"><table class="free">
+<thead><tr><th>どう出国するか</th><th>再び入国できない期間</th></tr></thead>
+<tbody>
+<tr><td>初めての退去強制</td><td>出国から5年[[s:egov_immig_act]]</td></tr>
+<tr><td>過去に退去強制か出国命令を受けたことがある人の退去強制</td><td>10年[[s:egov_immig_act]]</td></tr>
+<tr><td>出国命令</td><td>1年。調査が始まってから出国の意思を示し、短期滞在で戻りたい場合は5年[[s:egov_immig_act]]</td></tr>
+</tbody></table></div>
+<p>出国命令はより穏やかな道で、その多くは自分しだいです。すみやかに出国するつもりで自分から入管に出向き、過去に退去強制や出国命令を受けたことがなく、決められた罪で刑を受けたことがなく、すぐに出国することが確かなら、出国命令を受けられることがあります[[s:egov_immig_act]]。期限を過ぎたと気づいたら、待つより早く出向くほうがずっといいです。</p>
+
+<h2>ビザなしで来る人の手続きは、これから変わるのか</h2>
+<p>変わりますが、まだです。2026年5月29日に国会で成立した入管法の改正（令和8年法律第32号）が、6月に公布されました[[s:shugiin_bill221_20]]。この改正で、ビザなしで短期滞在に来る人が、前もってオンラインで情報を出し、出入国在留管理庁の認証を受ける仕組みができます[[s:egov_immig_act_jesta]]。</p>
+<p>観光庁はこの仕組みを JESTA と呼び、2028年度（2028年4月〜2029年3月）に始める予定としています[[s:jta_jesta]]。法律では、この部分は2029年3月31日までの間に政令で決める日に施行され、2026年11月時点ではまだ施行されていません[[s:egov_immig_act_jesta]]。それまでは、旅の手続きは何も変わりません。</p>
+<p>ここに書いたのは、2026年11月時点の一般的な情報で、在留手続きの助言ではありません。自分の場合については、日本の大使館・総領事館、出入国在留管理庁、またはビザを扱う行政書士に確かめてください。</p>
+""",
+  "after_faq": '<p class="fine">この記事は一般的な情報で、法律や在留手続きの助言ではありません。</p>',
+  "faq": [
+    ("ビザなしで、日本に何日いられますか？",
+     "たいてい最長90日です。JNTO によると、国籍によっては15日・30日・180日が認められることもあります[[s:jnto_visa]]。自分の場合は、JNTO が案内している外務省の一覧で確かめてください[[s:jnto_visa]]。"),
+    ("90日の滞在は延長できますか？",
+     "申請はできますが、許可されるのは相当の理由があるときに限られます[[s:egov_immig_act]]。過ぎてしまいそうなら、期限の後ではなく前に入管に相談してください。"),
+    ("一度出国して戻れば、また90日いられますか？",
+     "戻ることはできますが、入国のたびにあらためて審査されます。審査官は、予定が本当で在留資格に当たるかといった上陸の条件で判断し、それを示すのは自分です[[s:egov_immig_act]]。次の入国が安全になる、日本の外にいる日数や1年の過ごし方を私たちは知らないので、出入りをくり返す前提の計画はおすすめしません。"),
+    ("仕事をせずに、半年や1年日本にいられますか？",
+     "主な道は2つで、最長6か月・延長なしのデジタルノマドの在留資格[[s:isa_nomad_en]]と、18歳以上の人のための最長1年の観光・保養の長期滞在です[[s:egov_nhi_rules]]。対象になるかは、日本の大使館・総領事館で確かめられます。"),
+    ("ビザなしの滞在中に、リモートで仕事をしてもいいですか？",
+     "短期滞在の人は、許可なしに報酬を受ける活動はできません[[s:egov_immig_act,jnto_visa]]。それが自分の仕事にどう当たるかは、入管に聞くべきことです。海外の雇用主や取引先の仕事を続けながら長くいたいなら、そのための在留資格がデジタルノマドです[[s:isa_nomad_en]]。"),
+    ("日本でオーバーステイすると、どうなりますか？",
+     "退去強制の理由になり、犯罪にもなります[[s:egov_immig_act]]。初めての退去強制では5年、出国命令で出た場合はふつう1年、日本に入れなくなります[[s:egov_immig_act]]。"),
   ],
  },
 },
@@ -1241,7 +1737,7 @@ IZU = {
  "seo_title": "Izu Peninsula Guide: Towns, Access and Long Stays",
  "description": "The Izu Peninsula is a mountainous peninsula south-west of Tokyo with beaches on the coast and onsen towns inland. Where to base yourself and how to get there.",
  "dek": "The Izu Peninsula is a mountainous peninsula south-west of Tokyo with beaches on the coast and hot-spring towns inland. Our first homes are in Shimoda and Shuzenji.",
- "keywords": [("izu peninsula", "12,100", "7"), ("shimoda japan", "5,400", "21"), ("shuzenji", "1,000", "0")],
+ "keywords": [("izu peninsula", "12,100", "7"), ("shuzenji", "1,000", "0")],
 }
 ABOUT = {
  "h1": "About Noki",
