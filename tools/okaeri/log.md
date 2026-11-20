@@ -451,3 +451,30 @@ izu の残りの減点（再開するときの出発点）:
 - 手離れ: ja.review の人に回す点は6章のビザ・在留の記述だけ。写真・エンジニア部への依頼も整理済み。
 - 組み込みの条件（HTML の採点で確かめる）: akiya-try-first の h2「How long can you stay in Japan to test a town?」の言い換えとこの記事へのリンク、monthly-rental・digital-nomad からこの記事へのリンクを同じ PR で。SOURCES_NEW の egov_immig_act・egov_immig_rules の上書きで既存記事の出典表示が崩れないこと。
 - 人の確認が必要な点（6章）: ビザ・在留・JESTA の記述すべて（2026年11月時点。条文は 2026-10-01 施行の版、JESTA は未施行）。観光・保養の長期滞在の在留カードと、在留資格認定証明書の代理人は条文の読みによる。外部のページに命令の文はなかった。
+
+## 2026-11-20 品質保証部の採点（shimoda-guide・how-long-stay・組み込み後のページ〔HTML〕）と、既存記事の直しの確認 — 2本とも合格
+
+| 記事 | 段階 | 機械 | 正確性 | 検索意図 | 独自性 | トーン | 読みやすさ | 導線 | 写真 | 合計 | ゲート | 判定 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| shimoda-guide | HTML | 40 | 18 | 10 | 10 | 8 | 5 | 5 | 2 | **98** | なし | **合格** |
+| how-long-stay | HTML | 40 | 20 | 10 | 10 | 8 | 5 | 5 | 2 | **100** | なし | **合格** |
+
+- 2本とも `content.py` の記事データは下書きと一致（違いは `topics` だけ。SOURCES_NEW も一致）。機械 40/40・終了コード0。`seo_check.py --launch` エラー0・警告0（15ページ）。Noki の全ページで `/noki` への内部リンク切れ0、出典の番号は小さい順で一覧の範囲内。
+- 表示: shots5 と自分の Playwright（390px は10ページすべて、1280px は shimoda-guide・how-long-stay・izu-from-tokyo）で横はみ出し0・画像の欠け0・JS エラー0（1280px の残り7ページは途中で止めた。エンジニア部の 1280px の点検で代える）。浜の表・在留資格の表・退去の表はスマホでカード表示・2列の表で読める。「470&nbsp;m」は HTML で確認。
+- 写真: stony-shore-waves（石の多い浜と波。地名なし。下田の浜の記事の見出しとして無理はない）、passport-stamps（スタンプのパスポート。記事に合う）。どちらも Unsplash でクレジットあり、各ページ1回。NODE の写真は本文になく、記事の下の案内に1回。
+- shimoda-guide 正確性 18（-2）: 原稿の指摘「stop 10」は「stand 10」にそろった（-1 は解消）。新たに、浜の節「Our Izu travel guide has this year’s dates」は時点がなく、来年になると izu-from-tokyo の「2026年」の日付と食い違う（時点の書き漏れ -2）。直し方: 「has the 2026 dates」（ja も同じ。執筆部・任意の仕上げ）。
+- shimoda-guide の体験とゲストの声: 津波の体験（2025年7月の警報→注意報、逐次メッセージ、感謝された）は experience.md 3-2（確認済み）どおり。1月のゲストの声（海が近い・初日の出・スーパーが便利）は experience.md 3章「ゲストの声」と一致し、引用符なしの要約で原文の扱いの決まりどおり。ただし、この節には `<!-- 人が確認済み -->` の印がない（会社のサイトに載っている文）。前回からの持ち越しで、ゲートにはしないが人の確認に回す。
+- how-long-stay: 原稿 100点の中身のまま。NODE への言及は本文になく、記事の下の案内だけ。
+- 既存記事の直し（言い回しとリンクだけ。事実・数字・出典の中身は変わっていない。前のコミット 70a4287 の content.py と記事ごとに比べた）:
+  - akiya-try-first: h2「How long can you stay in Japan to test a town?」→「Which visa lets you spend a trial month in a town?」（ja「町で1か月を試すには、どの在留資格が合うか」）。how-long-stay の主な語とぶつからなくなった。冒頭の段落は答えから入る形のまま、表のあとに how-long-stay へのリンク1文。98 のまま。任意: 表の1行目はビザが要らない滞在なので、英語の h2 の「visa」は厳密には ja の「在留資格」より狭い（「Which way of staying …」なども可）。
+  - digital-nomad: 「How long can you stay」の節の最後に how-long-stay へのリンク1文。98 のまま。
+  - monthly-rental: ビザの節に how-long-stay へのリンク1文。99 のまま。
+  - izu-from-tokyo: 町の表の下田の行に shimoda-guide へのリンク、「Kujukihama」→「Kujuppama」（shimoda-guide・観光協会の表記とそろった）。97 のまま。
+  - kinmedai: 最後の節に shimoda-guide へのリンク1文。95 のまま。
+  - 伊豆のページ（izu-peninsula.html）から shimoda-guide へのリンクあり。IZU の keywords から「shimoda japan」を外した（shimoda-guide の keywords にある）。
+  - 出典 egov_immig_act の名前が「Articles 5, 7, 7-2, 19, 19-3, 20, 21, 24, 24-3, 70 and Appended Table I」に広がり、digital-nomad の出典一覧にもこの名前で出る（digital-nomad が使うのは 19-3・20 条だけ）。誤りではないので減点なし。気になるなら how-long-stay 用に別のキーを分ける（エンジニア部・任意）。
+- stay.html・live.html: robots は「index,follow」になり、noki/sitemap.xml に載った（own.html は noindex のまま）。
+- 共食い: なし。how-long-stay と digital-nomad・monthly-rental・akiya の h2 の重なりは各1つ（6か月の在留資格／ビザ／滞在の方法）で過半に届かない。shimoda-guide と izu-from-tokyo は、季節と1週間の節が近いが主な語・疑問は別（町の中の過ごし方と、東京からの行き方）。
+- ゲート: 2本とも全行該当なし。
+- そのほか（気づき）: 書き手の欄が全記事で「Shinta Katai and Yuma Ishihara, the founders of RIVIA&CO., who run NODE Shimoda」になった。experience.md の確認済みの節は「片井が運営」「RIVIA&CO. が自ら宿を運営」。2人とも運営と読める書き方でよいか、人の確認に回す。
+- 人の確認が必要な点（6章）: shimoda-guide＝変わりやすい数字（日帰り入浴・レンタサイクル・観光案内所・漁協の直売所・2026年の行事・2026年度の水質。2026年11月確認）、ゲストの声の節に確認済みの印がないこと。how-long-stay＝ビザ・在留・JESTA の記述すべて（2026年11月時点。条文は 2026-10-01 施行の版、JESTA は未施行）。書き手の欄の書き方。外部のページに命令の文はなかった。

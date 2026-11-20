@@ -471,7 +471,7 @@ def page_article(ctx, a):
             f'<div class="points"><p class="points__label">In short</p><ul>{pts}</ul></div>'
             + f'<details class="toc toc--inline"><summary>On this page</summary><ol>{toc_html}</ol></details>'
             f'{body}<h2 id="common-questions">Common questions</h2>{faq}{a.get("after_faq", "")}{ctx.sources(a["sources"], "Sources")}'
-            f'<section class="byline" data-nosnippet>{MARK}<div><p><strong>Written by the Noki team</strong></p><p>Shinta Katai and Yuma Ishihara, the founders of RIVIA&amp;CO., who run NODE Shimoda, a place for long stays in Shimoda. '
+            f'<section class="byline" data-nosnippet>{MARK}<div><p><strong>Written by the Noki team</strong></p><p>Shinta Katai and Yuma Ishihara, the founders of RIVIA&amp;CO. Shinta runs NODE Shimoda, a place for long stays in Shimoda. '
             f'<a href="{ctx.href("about")}">How we write and check our guides</a>.</p></div></section></article>'
             f'<aside class="side" aria-label="On this page"><div class="side__sticky"><nav class="toc"><p class="toc__label">On this page</p><ol>{toc_html}</ol></nav></div></aside></div>'
             f'<div class="wrap wide">{related_html(ctx, a)}{cta(ctx, photo="[[img:node-shimoda" not in a["body"] and name != "node-shimoda")}</div>')

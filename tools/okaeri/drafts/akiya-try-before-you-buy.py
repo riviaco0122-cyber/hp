@@ -80,7 +80,7 @@ ARTICLE = {
 <p>The old two-wire electrics couldn’t run the air conditioner, the fridge and the microwave all at once, so we had to ask guests not to use them together. Upgrading the wiring costs real money, so it’s something to find out before you budget, not after. Getting broadband put in took more than two months because it was the busy season, and we got by on a plug-in home router until then.</p>
 <p>The wiring and the wait for broadband are small examples of a bigger point. With a cheap old house, the asking price is only part of what you’ll pay. Renovation, taxes, insurance and upkeep come on top, and they vary so much from one building to the next that only written quotes will tell you the real figure.</p>
 
-<h2>Which visa lets you spend a trial month in a town?</h2>
+<h2>Which way of staying lets you spend a trial month in a town?</h2>
 <p>For most people, either of two ways works without a work or residence visa, and both give you long enough for a proper trial. The rules below are as of November 2026.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>Way to stay</th><th>How long</th><th>Who it’s for</th></tr></thead>

@@ -131,7 +131,7 @@ ARTICLE = {
 <p class="fine">Beach lengths are the tourism association’s figures; for Shirahama Ohama, the city’s list. The “stand” is the numbered bus stop outside the station.</p>
 <p>That leaves three more. Iritahama is a calm beach lined with cycad trees, and surfers use it too [[s:shimoda_kanko_beach_irita]]. Kujuppama is a 50-metre cove next to the Suzaki Imperial Villa, with rock pools on both sides and no large tents allowed [[s:shimoda_kanko_beach_kujuppama]]. Toji is rarely crowded and close to the Ryugu sea cave, but only four or five buses a day go there [[s:shimoda_kanko_beach_toji]].</p>
 <p>The water is clean, too. In Shizuoka Prefecture’s 2026 survey, all nine beaches got the top AA grade [[s:pref_beach_water_2026]]. Six of them are also certified for safety by the Japan Lifesaving Association: Shirahama Chuo, Shirahama Ohama, Sotoura, Tatadohama, Iritahama and Kisami Ohama [[s:shimoda_beaches_city]].</p>
-<p>Lifeguards only work during the official season, which the city sets each year [[s:shimoda_ohama]]. Our [[l:izu-from-tokyo|Izu travel guide]] has this year’s dates. In season, the beaches ban tents (sunshades are fine), open fires and barbecues outside part of Shirahama Chuo, fireworks, overnight camping and, since 2025, amplified speakers [[s:shimoda_kanko_umi]].</p>
+<p>Lifeguards only work during the official season, which the city sets each year [[s:shimoda_ohama]]. Our [[l:izu-from-tokyo|Izu travel guide]] has the 2026 dates. In season, the beaches ban tents (sunshades are fine), open fires and barbecues outside part of Shirahama Chuo, fireworks, overnight camping and, since 2025, amplified speakers [[s:shimoda_kanko_umi]].</p>
 
 <h2>What can you do in Shimoda besides the beach?</h2>
 <p>Quite a lot, and most of it is within a short walk of the station. On a day off the sand, we’d start high up, wander the old town and finish in a hot bath.</p>
@@ -249,7 +249,7 @@ ARTICLE = {
 <p class="fine">浜の長さは観光協会の値です（白浜大浜は市の一覧の値）。「乗り場」は、駅前のバス乗り場の番号です。</p>
 <p>残りの3つは、こんな浜です。入田浜はソテツの並ぶ落ち着いた浜で、サーファーも使います[[s:shimoda_kanko_beach_irita]]。九十浜は須崎御用邸の隣の50mの入り江で、両側の岩場で磯遊びができ、大きなテントは使えません[[s:shimoda_kanko_beach_kujuppama]]。田牛は混みにくく龍宮窟にも近いのですが、バスは1日4〜5本だけです[[s:shimoda_kanko_beach_toji]]。</p>
 <p>水もきれいです。静岡県の2026年度の調査で、9つの浜はすべていちばん上の「AA」でした[[s:pref_beach_water_2026]]。そのうち白浜中央・白浜大浜・外浦・多々戸浜・入田浜・吉佐美大浜の6つは、日本ライフセービング協会の安全の認定も受けています[[s:shimoda_beaches_city]]。</p>
-<p>監視員がいるのは、市が毎年決める海水浴の期間だけです[[s:shimoda_ohama]]。今年の期間は[[l:ja-izu-from-tokyo|伊豆の旅の記事]]に載せています。期間中の浜では、テント（日よけのパラソルはよい）、直火とバーベキュー（白浜中央の一部を除く）、花火、泊まりがけのキャンプ、そして2025年からは音を大きくするスピーカーが禁止されています[[s:shimoda_kanko_umi]]。</p>
+<p>監視員がいるのは、市が毎年決める海水浴の期間だけです[[s:shimoda_ohama]]。2026年の期間は[[l:ja-izu-from-tokyo|伊豆の旅の記事]]に載せています。期間中の浜では、テント（日よけのパラソルはよい）、直火とバーベキュー（白浜中央の一部を除く）、花火、泊まりがけのキャンプ、そして2025年からは音を大きくするスピーカーが禁止されています[[s:shimoda_kanko_umi]]。</p>
 
 <h2>下田で、浜のほかに何ができるか</h2>
 <p>けっこうたくさんあり、ほとんどが駅から歩いて行けます。浜に行かない日なら、私たちは高い所から始めて、旧町内を歩き、最後に温泉に入ります。</p>
