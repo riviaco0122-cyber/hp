@@ -8,7 +8,7 @@
 部屋の借り方は monthly-rental へリンクで送る。
 既存の出典（content.py の SOURCES）: shimoda_ohama・shimoda_gomi・pref_izu_gyokyo_shop・shimoda_kanko_gift・
 shimoda_kanko_event・node_room・node_access。ここには新しいものだけを書く。
-見出し写真は編集長が Unsplash で用意する（"TODO-PHOTO"）。"""
+見出し写真は編集長が入れた stony-shore-waves（Unsplash。石の多い浜と青い海）。"""
 
 SOURCES_NEW = {
     "shimoda_population": ("https://www.city.shimoda.shizuoka.jp/category/070200shinogaiyou/155431.html", "Shimoda City (population)",
@@ -83,6 +83,12 @@ SOURCES_NEW = {
     "jma_tsunami_warnings": ("https://www.jma.go.jp/jma/kishou/know/jishin/joho/tsunamiinfo.html", "Japan Meteorological Agency",
                              "気象庁（津波警報・注意報、津波情報、津波予報について）",
                              "Japan Meteorological Agency: Tsunami warnings, advisories and information (in Japanese, checked November 2026)"),
+    "jma_kamchatka_2025": ("https://www.jma.go.jp/jma/press/2507/30a/202507301010.html", "Japan Meteorological Agency, 30 July 2025",
+                           "気象庁 報道発表（2025年7月30日10時10分）",
+                           "Japan Meteorological Agency: Earthquake near the Kamchatka Peninsula at about 8:25 on 30 July 2025 (press release)"),
+    "jma_kamchatka_2025_eve": ("https://www.jma.go.jp/jma/press/2507/30c/202507301910.html", "Japan Meteorological Agency, 30 July 2025 (evening)",
+                               "気象庁 報道発表（2025年7月30日19時10分）",
+                               "Japan Meteorological Agency: Earthquake near the Kamchatka Peninsula, third report (30 July 2025)"),
     "jta_safety_tips": ("https://www.jnto.go.jp/safety-tips/eng/app.html", "Japan Tourism Agency (Safety tips)", "観光庁（Safety tips アプリ）",
                         "Japan Tourism Agency: The app “Safety tips” (checked November 2026)"),
 }
@@ -123,7 +129,7 @@ ARTICLE = {
 <tr><td><strong>Kisami Ohama</strong> (770 m)</td><td>A big beach away from the main road, so it feels quieter. Surfers and families share it, and there are cafés nearby [[s:shimoda_kanko_beach_kisami]].</td><td>A long, quieter day</td><td>Bus from stand 3 or 4, about 10 min, then 8 min on foot [[s:shimoda_kanko_beach_kisami]]</td></tr>
 </tbody></table></div>
 <p class="fine">Beach lengths are the tourism association’s figures; for Shirahama Ohama, the city’s list. The “stand” is the numbered bus stop outside the station.</p>
-<p>The other three are smaller. Iritahama is a calm beach lined with cycad trees, and surfers use it too [[s:shimoda_kanko_beach_irita]]. Kujuppama is a 50-metre cove next to the Suzaki Imperial Villa, with rock pools on both sides and no large tents allowed [[s:shimoda_kanko_beach_kujuppama]]. Toji is rarely crowded and close to the Ryugu sea cave, but only four or five buses a day go there [[s:shimoda_kanko_beach_toji]].</p>
+<p>That leaves three more. Iritahama is a calm beach lined with cycad trees, and surfers use it too [[s:shimoda_kanko_beach_irita]]. Kujuppama is a 50-metre cove next to the Suzaki Imperial Villa, with rock pools on both sides and no large tents allowed [[s:shimoda_kanko_beach_kujuppama]]. Toji is rarely crowded and close to the Ryugu sea cave, but only four or five buses a day go there [[s:shimoda_kanko_beach_toji]].</p>
 <p>The water is clean, too. In Shizuoka Prefecture’s 2026 survey, all nine beaches got the top AA grade [[s:pref_beach_water_2026]]. Six of them are also certified for safety by the Japan Lifesaving Association: Shirahama Chuo, Shirahama Ohama, Sotoura, Tatadohama, Iritahama and Kisami Ohama [[s:shimoda_beaches_city]].</p>
 <p>Lifeguards only work during the official season, which the city sets each year [[s:shimoda_ohama]]. Our [[l:izu-from-tokyo|Izu travel guide]] has this year’s dates. In season, the beaches ban tents (sunshades are fine), open fires and barbecues outside part of Shirahama Chuo, fireworks, overnight camping and, since 2025, amplified speakers [[s:shimoda_kanko_umi]].</p>
 
@@ -131,7 +137,7 @@ ARTICLE = {
 <p>Quite a lot, and most of it is within a short walk of the station. On a day off the sand, we’d start high up, wander the old town and finish in a hot bath.</p>
 <p>The Shimoda Ropeway station is a one-minute walk from Izukyu-Shimoda Station. From the top of Mt Nesugata you can see the town, the port, the Izu Islands and the Amagi mountains [[s:shimoda_nesugata]]. Back down, the port and the Michi-no-Eki, a roadside market building, are about 10 minutes away on foot [[s:shimoda_michinoeki]].</p>
 <p>Perry Road and Ryosenji temple are about 15 minutes from the station [[s:shimoda_perryroad,shimoda_ryosenji]]. Later in 1854, the follow-up Shimoda Treaty was signed in Ryosenji’s main hall. Perry Road is named after the route Perry’s men marched to the temple, and its stone paving runs for about 500 metres along a small stream [[s:shimoda_hist_perry,shimoda_perryroad]]. Further out, Gyokusenji temple housed Japan’s first US consulate, opened by Townsend Harris in 1856 [[s:shimoda_hist_harris,shimoda_gyokusenji]].</p>
-<p>For a bath, the tourism association lists eight hotels and inns that take day visitors. As of November 2026 they charge ¥600 to ¥1,500 for adults, mostly from mid-afternoon, and they may turn you away when they’re busy [[s:shimoda_kanko_onsen]]. There’s also a free footbath, Kaikoku-no-yu, in front of the station, open from 9:00 to 17:00 [[s:shimoda_kanko_onsen]].</p>
+<p>For a bath, the tourism association lists eight hotels and inns that take day visitors. As of November 2026 they charge ¥600 to ¥1,500 for adults, and opening times vary from 10:00 to 15:00. They may turn you away when they’re busy [[s:shimoda_kanko_onsen]]. There’s also a footbath, Kaikoku-no-yu, in front of the station, open from 9:00 to 17:00 [[s:shimoda_kanko_onsen]].</p>
 <p>Rain doesn’t have to ruin the day. The Michi-no-Eki has a harbour museum about the town’s history on its fourth floor [[s:shimoda_michinoeki]], and Ryosenji has a treasure hall [[s:shimoda_ryosenji]]. On drier days, the Wakanoura promenade is a 1.2-kilometre, 15-minute coastal walk, and the paths round Shimoda Park take about an hour and a half [[s:shimoda_kanko_promenade]].</p>
 
 <h2>Is Shimoda worth visiting outside summer?</h2>
@@ -139,7 +145,7 @@ ARTICLE = {
 <div class="tablewrap"><table class="free">
 <thead><tr><th>When</th><th>What’s on</th></tr></thead>
 <tbody>
-<tr><td>20 December to 31 January</td><td>The daffodil festival at Tsumekizaki, with up to about 3 million flowers, usually at their best in January. Bus no. 10 from the station takes about 20 minutes [[s:shimoda_kanko_suisen]].</td></tr>
+<tr><td>20 December to 31 January</td><td>The daffodil festival at Tsumekizaki, with up to about 3 million flowers, usually at their best in January. The bus from stop 10 outside the station takes about 20 minutes [[s:shimoda_kanko_suisen]].</td></tr>
 <tr><td>Winter into early spring</td><td>Camellias in Shimoda Park, with about 160 garden varieties [[s:shimoda_park]]. Cherry blossoms follow from mid-March to early April [[s:shimoda_kanko_event]].</td></tr>
 <tr><td>May</td><td>The Black Ship Festival, held since 1934. In 2026 it ran from 15 to 17 May, with fireworks over the port, a US–Japan parade and a re-enactment of the Shimoda Treaty at Ryosenji [[s:shimoda_kanko_kurofune]].</td></tr>
 <tr><td>June</td><td>The hydrangea festival in Shimoda Park, with about 3 million blooms of over 100 varieties (1 to 30 June in 2026). The park is hilly, and carts are on hand for people who find walking hard [[s:shimoda_kanko_ajisai]].</td></tr>
@@ -149,7 +155,7 @@ ARTICLE = {
 <p>Summer is when the town fills up, and in our experience it’s also when more of our guests stay for longer. If you’d rather walk, soak and eat well than swim, we’d pick the cooler months.</p>
 
 <h2>How do you shop and cook for a week in Shimoda?</h2>
-<p>Buy your fish at the port and cook it yourself. The Izu Fisheries Cooperative shop is on the ground floor of the Michi-no-Eki Kaikoku Shimoda Minato. It sells kinmedai, live spiny lobster, turban shells and other seafood, and the prefecture lists it as open from 8:00 to 16:30 with no fixed closing day [[s:pref_izu_gyokyo_shop,shimoda_kanko_gift]]. The JA farmers’ shop in the same building has local vegetables, wasabi and products made from New Summer oranges [[s:shimoda_kanko_gift]].</p>
+<p>Buy your fish at the port and cook it yourself. The Izu Fisheries Cooperative shop is on the ground floor of the Michi-no-Eki Kaikoku Shimoda Minato. It sells kinmedai, live spiny lobster, turban shells and other seafood, and the prefecture’s page (updated April 2025) lists it as open from 8:00 to 16:30 with no fixed closing day [[s:pref_izu_gyokyo_shop,shimoda_kanko_gift]]. The JA farmers’ shop in the same building has local vegetables, wasabi and products made from New Summer oranges [[s:shimoda_kanko_gift]].</p>
 <p>If you’d rather have someone else cook the town’s famous red fish, our [[l:kinmedai|guide to kinmedai]] covers where to eat it. For everyday shopping, there are supermarkets and convenience stores in town, so a kitchen makes a week much cheaper and more relaxed.</p>
 <p>Rubbish takes a little learning. Shimoda collects burnable rubbish twice a week in city bags, and cans, bottles, PET bottles and paper twice a month, each sorted separately [[s:shimoda_gomi]]. Where you stay will have its own system, so it’s easiest to ask your host on the first day. On your first day, we’d also do this:</p>
 <ol>
@@ -162,7 +168,7 @@ ARTICLE = {
 
 <h2>What should you know about tsunamis in Shimoda?</h2>
 <p>If you feel a strong earthquake near the coast, go to high ground straight away, without waiting for a warning [[s:jma_tsunami_warnings]]. Shimoda faces the open sea, and in 1854 the Ansei tsunami swept Shimoda Bay and destroyed most of the town’s houses [[s:shimoda_hist_ansei]].</p>
-<p>We don’t say that to scare you. Shizuoka Prefecture’s 2013 estimate put the highest possible tsunami in Shimoda, in the worst case, at 33 metres [[s:shimoda_news_2013_08]]. It’s a worst case rather than a forecast, but it’s why the advice is to get up high, fast. Japan’s weather agency, JMA, aims to issue alerts about three minutes after an earthquake [[s:jma_tsunami_warnings]].</p>
+<p>Shizuoka Prefecture’s 2013 estimate looked at the worst case, which it describes as extremely unlikely, and put the highest possible tsunami in Shimoda at 33 metres [[s:shimoda_news_2013_08]]. It isn’t a forecast, but it’s why the advice is to get up high, fast. Japan’s weather agency, JMA, aims to issue alerts about three minutes after an earthquake [[s:jma_tsunami_warnings]].</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>Alert</th><th>Expected wave</th><th>What to do</th></tr></thead>
 <tbody>
@@ -170,8 +176,8 @@ ARTICLE = {
 <tr><td><strong>Tsunami warning</strong></td><td>1 to 3 m</td><td>Move to high ground or an evacuation building at once [[s:jma_tsunami_warnings]]</td></tr>
 <tr><td><strong>Major tsunami warning</strong></td><td>Over 3 m</td><td>Move to high ground or an evacuation building at once [[s:jma_tsunami_warnings]]</td></tr>
 </tbody></table></div>
-<p>Tsunamis come in several waves, so JMA advises staying put until the alert is lifted [[s:jma_tsunami_warnings]]. The city publishes hazard and evacuation maps, though only in Japanese [[s:shimoda_tsunami_map]]. It has also named a few tsunami evacuation buildings [[s:shimoda_tsunami_bldg]], and it runs an online map that shows the height above sea level of any spot you tap [[s:shimoda_elevation_map]].</p>
-<p>The Japan Tourism Agency’s free app, Safety tips, sends earthquake, tsunami and weather warnings in English and other languages [[s:jta_safety_tips]]. We’d install it before you arrive. During the tsunami alerts in late July 2025, we sent our overseas guests messages as things changed, explaining what was happening and that they needed to evacuate. In our experience, a clear message in English makes a big difference.</p>
+<p>Tsunamis come in several waves, so JMA advises you to stay on high ground until the warning or advisory is lifted [[s:jma_tsunami_warnings]]. The city publishes hazard and evacuation maps, though only in Japanese [[s:shimoda_tsunami_map]]. It has also named a few tsunami evacuation buildings [[s:shimoda_tsunami_bldg]], and it runs an online map that shows the height above sea level of any spot you tap [[s:shimoda_elevation_map]].</p>
+<p>The Japan Tourism Agency’s free app, Safety tips, sends earthquake, tsunami and weather warnings in English and other languages [[s:jta_safety_tips]]. We’d install it before you arrive. In late July 2025, there was a tsunami warning for the Shizuoka coast, later downgraded to an advisory [[s:jma_kamchatka_2025,jma_kamchatka_2025_eve]]. We sent our overseas guests messages as things changed, explaining what was happening and that they needed to evacuate. Guests thanked us afterwards.</p>
 
 <h2>Where should you stay in Shimoda for a week?</h2>
 <p>Without a car, we’d stay in the old town near the station. Shops, the port and every bus route are close by. If the beach is the whole point of your trip, staying near it saves you the bus rides.</p>
@@ -183,14 +189,14 @@ ARTICLE = {
 <tr><td><strong>Southern beaches</strong> (Tatado, Irita, Kisami)</td><td>You’re here to surf or want a quieter beach.</td><td>They’re 7 to 10 minutes by bus from the station [[s:shimoda_kanko_beach_tatado,shimoda_kanko_beach_kisami]], plus a short walk.</td></tr>
 </tbody></table></div>
 <p>Bikes help a lot. The tourism association rents bikes and e-bikes at the Michi-no-Eki from ¥500 for an hour or ¥2,000 for a day, from 9:00 to 17:00. You don’t need to book, but you’ll need ID such as a passport [[s:shimoda_kanko_bicycle]].</p>
-<p>We run <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, an apartment of about 40 m² in the old town for up to four guests. It has a kitchen, a washing machine and gas dryer, and a work desk. It’s on the first floor, up about 13 steps, with a shower but no bath [[s:node_room]]. It’s eight minutes’ walk on the flat from the station, with a supermarket three minutes away and Perry Road five [[s:node_access]]. One guest who stayed in January wrote that the sea was close enough to watch the year’s first sunrise, and the supermarket was handy.</p>
+<p>We run <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, an apartment of about 40 m² in the old town for up to four guests. It has a kitchen, a washing machine and gas dryer, and a work desk. It’s on the first floor, up about 13 steps, with a shower but no bath [[s:node_room]]. It’s eight minutes’ walk on the flat from the station, with a supermarket three minutes away and Perry Road five [[s:node_access]]. One guest who stayed in January wrote that the sea was close by, they could see the year’s first sunrise, and the supermarket was handy.</p>
 <p>If a week turns into thoughts of a month or more, our guide to [[l:monthly-rental|renting a place by the month in Japan]] explains how that works.</p>
 """,
  "faq": [
    ("Is Shimoda worth visiting?",
     "Yes, especially for a week. It’s a small port town at the tip of Izu with nine official beaches, a walkable old town and seasonal festivals [[s:shimoda_population,shimoda_kanko_umi,shimoda_kanko_event]]. A week lets you try several beaches and live at the town’s pace."),
    ("What is the best beach in Shimoda?",
-    "It depends on what you want. Sotoura and Nabetahama are calm coves that suit children [[s:shimoda_kanko_beach_sotoura,shimoda_kanko_beach_nabeta]]. Tatadohama is the best-known surf beach [[s:shimoda_kanko_beach_tatado]], and Kisami Ohama is big and quieter [[s:shimoda_kanko_beach_kisami]]."),
+    "It depends on what you want. Sotoura and Nabetahama are calm coves that suit children [[s:shimoda_kanko_beach_sotoura,shimoda_kanko_beach_nabeta]]. Tatadohama is especially well known among surfers [[s:shimoda_kanko_beach_tatado]], and Kisami Ohama is big and quieter [[s:shimoda_kanko_beach_kisami]]."),
    ("Can you swim in Shimoda outside summer?",
     "Lifeguards only work during the official season, which the city sets each year, so outside it you swim without them [[s:shimoda_ohama]]. Tatadohama has warm showers you can use all year [[s:shimoda_kanko_beach_tatado]]."),
    ("What is there to do in Shimoda in winter?",
@@ -205,15 +211,17 @@ ARTICLE = {
              "shimoda_kanko_beach_kisami", "shimoda_kanko_beach_irita", "shimoda_kanko_beach_kujuppama", "shimoda_kanko_beach_toji",
              "pref_beach_water_2026", "shimoda_ohama", "shimoda_kanko_onsen", "shimoda_kanko_promenade", "shimoda_kanko_suisen",
              "shimoda_kanko_event", "shimoda_kanko_kurofune", "shimoda_kanko_ajisai", "pref_izu_gyokyo_shop", "shimoda_kanko_gift",
-             "shimoda_gomi", "shimoda_kanko_about", "jma_tsunami_warnings", "shimoda_news_2013_08", "shimoda_tsunami_map",
+             "shimoda_gomi", "shimoda_kanko_about", "jma_tsunami_warnings", "jma_kamchatka_2025", "jma_kamchatka_2025_eve", "shimoda_news_2013_08", "shimoda_tsunami_map",
              "shimoda_tsunami_bldg", "shimoda_elevation_map", "jta_safety_tips", "shimoda_kanko_bicycle", "node_room", "node_access"],
  "related": ["izu-from-tokyo", "kinmedai", "monthly-rental"],
  "ja": {
   "h1": "下田（日本）：1週間以上いる人のためのガイド",
   "dek": "下田は、伊豆半島の南端にある小さな港町です。1週間いれば、その日の気分で浜を選び、地元の魚を料理して、町の暮らしになじめます。",
   "review": [
-   "【2026-11-20 新規の下書き（執筆部）】書いた点: ①7つの節（1週間いる価値／浜の選び方／浜以外の過ごし方／夏以外の季節／買い物と料理・ごみ／津波／どこに泊まるか）。事実はすべて、リサーチメモで開いて確かめた市・県・観光協会・気象庁・観光庁のページによります ②浜の表は6つ（鍋田浜・外浦・白浜中央・白浜大浜・多々戸浜・吉佐美大浜）、残りの3つ（入田浜・九十浜・田牛）は文章で。白浜大浜の長さは市の一覧の「約700m」、ほかの長さは観光協会の値です ③人口は「約18,400人（2026年11月の住民基本台帳）」。日米和親条約は「1854年に下田を最初に開いた2つの港の1つにした」とだけ書き、調印の場所は書いていません。了仙寺は付録の「下田条約」の場として書きました（和暦の月日は西暦に直さず、年だけ） ④津波の体験は、種類（警報・注意報）を書かず「2025年7月末の津波の警報のとき（tsunami alerts）」とし、中身は「外国人ゲストに状況と避難の必要性を、状況が変わるたびにメッセージで伝えた」だけにしました（キャンセル・返金の話は入れていません） ⑤静岡県の2013年の想定（下田の最大の津波の高さ33m）を「最悪の場合の想定で、予報ではない」と添えて1文入れました。到達時間は書いていません ⑥NODE Shimoda は最後の節で1回だけ（アパートの一室・約40㎡・最大4名・2階で階段約13段・シャワーのみ・駅から平坦な道で徒歩8分・スーパー3分・ペリーロード5分）。料金・週割・泊数の上限は書いていません。写真は本文に入れていません ⑦ゲストの声（2026年1月）は「初日の出が見えるほど海が近かった」と要約して1回だけ使いました（引用符・名前なし） ⑧共食いを避けるため、行き方・運賃・フリーきっぷ・2026年の海水浴の期間は書かず、izu-from-tokyo へリンクで送りました（本文から2回）。店で食べる金目鯛は kinmedai、1か月以上の部屋は monthly-rental へ ⑨書かないと決めたこと（ロープウェイの運賃・時間、月別の平年値、津波の到達時間、水質の「認証」、サーフィン区域の線引き、バスの系統名・時刻、道の駅全体の営業時間、スーパーの店名、英語のごみ分別表、共同浴場、水族館の営業時間・料金）は書いていません ⑩見出し写真は TODO-PHOTO（編集長が Unsplash で人の少ない白い砂浜を用意）。alt は地名なしの案です",
-   "【人に確かめてほしい点】①津波の体験の書き方: experience.md は「津波注意報」ですが、気象庁の記録では静岡県は最初「津波警報」で、のちに注意報に下がりました。記事では種類を書かず “tsunami alerts” としています。この書き方でよいか ②変わりやすい数字（2026年11月に確認）: 日帰り入浴の料金（600〜1,500円）、レンタサイクルの料金と時間、観光案内所の時間、漁協の直売所の時間（県のページは2025年4月更新）、行事の日付（黒船祭・あじさい祭・花火は2026年の日付、水仙まつりは毎年12月20日〜1月31日） ③33mの想定を入れるか（怖がらせない書き方にしたつもりです。外してもよい） ④NODE Shimoda の「2階で階段約13段・シャワーのみ」を正直に書きました（公式サイトの記載どおり）。長く泊まる人の判断に役立つと考えています ⑤IZU のページの keywords から「shimoda japan」を外してこの記事に移すこと、IZU・izu-from-tokyo・kinmedai からこの記事へのリンクを足すことは、エンジニア部の作業です（構成案の依頼）",
+   "【2026-11-20 品質保証部（83点・ゲート違反1）の指摘での直し（英語と日本語の両方）】①駅前の足湯「開国の湯」の「無料」を消しました（公式の出典に料金の記載がないため。時間9時〜17時だけ） ②日帰り入浴の「多くは午後の半ばから」を「開く時間は10時〜15時と施設によって違う」に ③FAQ の多々戸浜を「いちばん知られた」から「サーファーの間で特に有名」に ④「残りの3つは小さめ」をやめました（入田浜400m・田牛410mは鍋田浜より長いため） ⑤下田条約の時期を「同じ1854年のうちに」に（英語の Later in 1854 と同じ） ⑥漁協の直売所の時間に「県のページ、2025年4月更新」を付けました ⑦水仙まつりへのバスを「駅前の10番乗り場から」に（英語も stop 10） ⑧気象庁の呼びかけを「解除されるまで高い所にとどまる」に ⑨33mの文は「発生する頻度は極めて低い（出典の記載）」を同じ文に入れ、「怖がらせたいのではありません」の文を消しました ⑩津波の体験は、experience.md の記録（2026-11-20 人の了承で直った）どおり「2025年7月末、静岡県の沿岸に津波警報が出て、のちに注意報に切り替わった」と気象庁の報道発表を出典に書き、最後を「ゲストからは、あとで感謝の言葉をもらった」にしました（新しい出典 jma_kamchatka_2025・jma_kamchatka_2025_eve） ⑪1月のゲストの声を「海が近く、初日の出も見られ、スーパーも便利」の並列に（因果を足さない）",
+   "【2026-11-20 新規の下書き（執筆部）】書いた点: ①7つの節（1週間いる価値／浜の選び方／浜以外の過ごし方／夏以外の季節／買い物と料理・ごみ／津波／どこに泊まるか）。事実はすべて、市・県・観光協会・気象庁・観光庁の公式のページによります ②浜の表は6つ（鍋田浜・外浦・白浜中央・白浜大浜・多々戸浜・吉佐美大浜）、残りの3つ（入田浜・九十浜・田牛）は文章で。白浜大浜の長さは市の一覧の「約700m」、ほかの長さは観光協会の値です ③人口は「約18,400人（2026年11月の住民基本台帳）」。日米和親条約は「1854年に下田を最初に開いた2つの港の1つにした」とだけ書き、調印の場所は書いていません。了仙寺は付録の「下田条約」の場として書きました ④静岡県の2013年の想定（最悪の場合、下田の最大の津波の高さ33m。発生頻度は極めて低い）を1文入れました。到達時間は書いていません ⑤NODE Shimoda は最後の節で1回だけ（アパートの一室・約40㎡・最大4名・2階で階段約13段・シャワーのみ・駅から平坦な道で徒歩8分・スーパー3分・ペリーロード5分）。料金・週割・泊数の上限は書かず、本文に写真も入れていません ⑥共食いを避けるため、行き方・運賃・フリーきっぷ・2026年の海水浴の期間は書かず、izu-from-tokyo へリンクで送りました。店で食べる金目鯛は kinmedai、1か月以上の部屋は monthly-rental へ ⑦確かめられなかったこと（ロープウェイの運賃・時間、月別の平年値、津波の到達時間、水質の「認証」、サーフィン区域の線引き、バスの系統名・時刻、道の駅全体の営業時間、スーパーの店名、英語のごみ分別表、共同浴場、水族館の営業時間・料金）は書いていません ⑧見出し写真は stony-shore-waves（石の多い浜と青い海。alt に地名なし）",
+   "【人に確かめてほしい点】変わりやすい数字（2026年11月に確認）: 日帰り入浴の料金（600〜1,500円）と開く時間、レンタサイクルの料金と時間、観光案内所の時間、漁協の直売所の時間（県のページは2025年4月更新）、行事の日付（黒船祭・あじさい祭・花火は2026年の日付、水仙まつりは毎年12月20日〜1月31日）、2026年度の水質",
+   "【エンジニア部へ】組み込みのときに、IZU の keywords から「shimoda japan」を外してこの記事に移し、IZU・izu-from-tokyo・kinmedai からこの記事へのリンクを足す（構成案の依頼）",
   ],
   "points": [
     "浜は、目的で選びます。子ども連れには穏やかな入り江、サーフィンならサーフィンの浜、静かに過ごすなら広い浜です。",
@@ -239,15 +247,15 @@ ARTICLE = {
 <tr><td><strong>吉佐美大浜</strong>（770m）</td><td>国道から離れた大きな浜で、静かに感じます。サーファーと家族連れが一緒に使い、近くにカフェもあります[[s:shimoda_kanko_beach_kisami]]。</td><td>長く、静かに過ごす1日</td><td>3番か4番乗り場のバスで約10分、そこから徒歩8分[[s:shimoda_kanko_beach_kisami]]</td></tr>
 </tbody></table></div>
 <p class="fine">浜の長さは観光協会の値です（白浜大浜は市の一覧の値）。「乗り場」は、駅前のバス乗り場の番号です。</p>
-<p>残りの3つは小さめです。入田浜はソテツの並ぶ落ち着いた浜で、サーファーも使います[[s:shimoda_kanko_beach_irita]]。九十浜は須崎御用邸の隣の50mの入り江で、両側の岩場で磯遊びができ、大きなテントは使えません[[s:shimoda_kanko_beach_kujuppama]]。田牛は混みにくく龍宮窟にも近いのですが、バスは1日4〜5本だけです[[s:shimoda_kanko_beach_toji]]。</p>
+<p>残りの3つは、こんな浜です。入田浜はソテツの並ぶ落ち着いた浜で、サーファーも使います[[s:shimoda_kanko_beach_irita]]。九十浜は須崎御用邸の隣の50mの入り江で、両側の岩場で磯遊びができ、大きなテントは使えません[[s:shimoda_kanko_beach_kujuppama]]。田牛は混みにくく龍宮窟にも近いのですが、バスは1日4〜5本だけです[[s:shimoda_kanko_beach_toji]]。</p>
 <p>水もきれいです。静岡県の2026年度の調査で、9つの浜はすべていちばん上の「AA」でした[[s:pref_beach_water_2026]]。そのうち白浜中央・白浜大浜・外浦・多々戸浜・入田浜・吉佐美大浜の6つは、日本ライフセービング協会の安全の認定も受けています[[s:shimoda_beaches_city]]。</p>
 <p>監視員がいるのは、市が毎年決める海水浴の期間だけです[[s:shimoda_ohama]]。今年の期間は[[l:ja-izu-from-tokyo|伊豆の旅の記事]]に載せています。期間中の浜では、テント（日よけのパラソルはよい）、直火とバーベキュー（白浜中央の一部を除く）、花火、泊まりがけのキャンプ、そして2025年からは音を大きくするスピーカーが禁止されています[[s:shimoda_kanko_umi]]。</p>
 
 <h2>下田で、浜のほかに何ができるか</h2>
 <p>けっこうたくさんあり、ほとんどが駅から歩いて行けます。浜に行かない日なら、私たちは高い所から始めて、旧町内を歩き、最後に温泉に入ります。</p>
 <p>下田ロープウェイの乗り場は、伊豆急下田駅から歩いて1分です。寝姿山の山頂からは、町、港、伊豆諸島、天城の山々が見えます[[s:shimoda_nesugata]]。下りたら、港と道の駅（道路沿いの市場のような建物）までは歩いて約10分です[[s:shimoda_michinoeki]]。</p>
-<p>ペリーロードと了仙寺は、駅から約15分です[[s:shimoda_perryroad,shimoda_ryosenji]]。同じ1854年の後半に、日米和親条約の付録の「下田条約」が了仙寺の本堂で結ばれました。ペリーロードの名前は、ペリーの一行が了仙寺まで行進した道に由来し、石畳が小さな川に沿って約500m続きます[[s:shimoda_hist_perry,shimoda_perryroad]]。少し離れた玉泉寺には、1856年にハリスが開いた日本で最初の米国総領事館が置かれました[[s:shimoda_hist_harris,shimoda_gyokusenji]]。</p>
-<p>温泉なら、観光協会が日帰り入浴のできるホテル・旅館を8軒載せています。2026年11月時点で大人600〜1,500円、多くは午後の半ばからで、混んでいるときは断られることもあります[[s:shimoda_kanko_onsen]]。駅前には、無料の足湯「開国の湯」もあり、9時〜17時に使えます[[s:shimoda_kanko_onsen]]。</p>
+<p>ペリーロードと了仙寺は、駅から約15分です[[s:shimoda_perryroad,shimoda_ryosenji]]。同じ1854年のうちに、日米和親条約の付録の「下田条約」が了仙寺の本堂で結ばれました。ペリーロードの名前は、ペリーの一行が了仙寺まで行進した道に由来し、石畳が小さな川に沿って約500m続きます[[s:shimoda_hist_perry,shimoda_perryroad]]。少し離れた玉泉寺には、1856年にハリスが開いた日本で最初の米国総領事館が置かれました[[s:shimoda_hist_harris,shimoda_gyokusenji]]。</p>
+<p>温泉なら、観光協会が日帰り入浴のできるホテル・旅館を8軒載せています。2026年11月時点で大人600〜1,500円、開く時間は10時〜15時と施設によって違い、混んでいるときは断られることもあります[[s:shimoda_kanko_onsen]]。駅前には、足湯「開国の湯」もあり、9時〜17時に使えます[[s:shimoda_kanko_onsen]]。</p>
 <p>雨の日も、楽しみ方はあります。道の駅の4階には町の歴史を伝えるハーバーミュージアムがあり[[s:shimoda_michinoeki]]、了仙寺には宝物館があります[[s:shimoda_ryosenji]]。晴れた日なら、和歌の浦遊歩道は海沿いを1.2km・約15分で歩け、下田公園の遊歩道はひと回り約1時間半です[[s:shimoda_kanko_promenade]]。</p>
 
 <h2>夏以外の下田は、行く価値があるか</h2>
@@ -255,7 +263,7 @@ ARTICLE = {
 <div class="tablewrap"><table class="free">
 <thead><tr><th>時期</th><th>行事・見どころ</th></tr></thead>
 <tbody>
-<tr><td>12月20日〜1月31日</td><td>爪木崎の水仙まつり。最大で約300万本の水仙が咲き、見ごろはたいてい1月です。駅から10番乗り場のバスで約20分です[[s:shimoda_kanko_suisen]]。</td></tr>
+<tr><td>12月20日〜1月31日</td><td>爪木崎の水仙まつり。最大で約300万本の水仙が咲き、見ごろはたいてい1月です。駅前の10番乗り場から、バスで約20分です[[s:shimoda_kanko_suisen]]。</td></tr>
 <tr><td>冬から早春</td><td>下田公園の椿。園芸品種は約160種あります[[s:shimoda_park]]。3月中旬〜4月上旬は桜です[[s:shimoda_kanko_event]]。</td></tr>
 <tr><td>5月</td><td>1934年から続く黒船祭。2026年は5月15〜17日で、港の花火、日米のパレード、了仙寺での下田条約の再現がありました[[s:shimoda_kanko_kurofune]]。</td></tr>
 <tr><td>6月</td><td>下田公園のあじさい祭。100種以上・約300万輪が咲きます（2026年は6月1〜30日）。公園は坂が多く、歩くのがつらい人のためのカートがあります[[s:shimoda_kanko_ajisai]]。</td></tr>
@@ -265,7 +273,7 @@ ARTICLE = {
 <p>町がいちばんにぎわうのは夏で、私たちの宿でも、夏は長く泊まる人が増えます。泳ぐより、歩いて、温泉に入って、おいしいものを食べたいなら、私たちは涼しい季節を選びます。</p>
 
 <h2>下田で1週間、どう買い物して料理するか</h2>
-<p>魚は港で買って、自分で料理するのがおすすめです。伊豆漁協の直売所は、道の駅「開国下田みなと」の1階にあります。金目鯛、生きた伊勢海老、サザエなどの魚介を売っていて、静岡県のページでは8時〜16時30分・定休日なしです[[s:pref_izu_gyokyo_shop,shimoda_kanko_gift]]。同じ建物の JA の直売所には、地元の野菜、わさび、ニューサマーオレンジを使った品があります[[s:shimoda_kanko_gift]]。</p>
+<p>魚は港で買って、自分で料理するのがおすすめです。伊豆漁協の直売所は、道の駅「開国下田みなと」の1階にあります。金目鯛、生きた伊勢海老、サザエなどの魚介を売っていて、静岡県のページ（2025年4月更新）では8時〜16時30分・定休日なしです[[s:pref_izu_gyokyo_shop,shimoda_kanko_gift]]。同じ建物の JA の直売所には、地元の野菜、わさび、ニューサマーオレンジを使った品があります[[s:shimoda_kanko_gift]]。</p>
 <p>町の名物の赤い魚を誰かに料理してもらいたいなら、[[l:ja-kinmedai|金目鯛の記事]]に食べられる所をまとめています。日々の買い物には町なかにスーパーやコンビニがあるので、キッチンがあれば、1週間がずっと安く、気楽になります。</p>
 <p>ごみの出し方は、少し慣れが要ります。下田市は、燃えるごみを週2回、市の指定袋で集め、缶・びん・ペットボトル・紙などは月2回、それぞれ分けて集めます[[s:shimoda_gomi]]。泊まる所ごとにやり方があるので、初日に宿の人に聞くのがいちばん簡単です。初日には、私たちならこんなこともします。</p>
 <ol>
@@ -278,7 +286,7 @@ ARTICLE = {
 
 <h2>下田の津波について、何を知っておくべきか</h2>
 <p>海の近くで強い揺れを感じたら、警報を待たずに、すぐ高い所へ逃げてください[[s:jma_tsunami_warnings]]。下田は外洋に面していて、1854年には安政の大津波が下田湾を襲い、町の家のほとんどが流されたり壊れたりしました[[s:shimoda_hist_ansei]]。</p>
-<p>怖がらせたいのではありません。静岡県の2013年の想定では、最悪の場合、下田の最大の津波の高さは33mでした[[s:shimoda_news_2013_08]]。予報ではなく最悪の場合の想定ですが、「とにかく早く高い所へ」と言われるのはそのためです。気象庁は、地震からおよそ3分で津波の警報・注意報を出すことを目指しています[[s:jma_tsunami_warnings]]。</p>
+<p>静岡県の2013年の想定では、発生する頻度は極めて低いものの、最悪の場合の下田の最大の津波の高さを33mとしています[[s:shimoda_news_2013_08]]。予報ではありませんが、「とにかく早く高い所へ」と言われるのはそのためです。気象庁は、地震からおよそ3分で津波の警報・注意報を出すことを目指しています[[s:jma_tsunami_warnings]]。</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>発表</th><th>予想される高さ</th><th>すること</th></tr></thead>
 <tbody>
@@ -286,8 +294,8 @@ ARTICLE = {
 <tr><td><strong>津波警報</strong></td><td>1〜3m</td><td>すぐに高台か避難ビルへ[[s:jma_tsunami_warnings]]</td></tr>
 <tr><td><strong>大津波警報</strong></td><td>3mを超える</td><td>すぐに高台か避難ビルへ[[s:jma_tsunami_warnings]]</td></tr>
 </tbody></table></div>
-<p>津波は何度も来るので、気象庁は、警報・注意報が解除されるまで避難を続けるよう呼びかけています[[s:jma_tsunami_warnings]]。市は津波ハザードマップと避難の地図を出していますが、日本語だけです[[s:shimoda_tsunami_map]]。津波避難ビルもいくつか指定していて[[s:shimoda_tsunami_bldg]]、地図の上でたたいた場所の海抜が分かる、オンラインの地図もあります[[s:shimoda_elevation_map]]。</p>
-<p>観光庁の無料のアプリ「Safety tips」は、地震・津波・気象の警報を英語などで知らせてくれます[[s:jta_safety_tips]]。着く前に入れておくのがおすすめです。2025年7月末の津波の警報のとき、私たちは海外からのゲストに、状況が変わるたびにメッセージを送り、何が起きているかと、避難が必要なことを伝えました。英語ではっきり伝えることが大きな違いになる、というのが私たちの実感です。</p>
+<p>津波は何度も来るので、気象庁は、警報・注意報が解除されるまで高い所にとどまるよう呼びかけています[[s:jma_tsunami_warnings]]。市は津波ハザードマップと避難の地図を出していますが、日本語だけです[[s:shimoda_tsunami_map]]。津波避難ビルもいくつか指定していて[[s:shimoda_tsunami_bldg]]、地図の上でたたいた場所の海抜が分かる、オンラインの地図もあります[[s:shimoda_elevation_map]]。</p>
+<p>観光庁の無料のアプリ「Safety tips」は、地震・津波・気象の警報を英語などで知らせてくれます[[s:jta_safety_tips]]。着く前に入れておくのがおすすめです。2025年7月末には、静岡県の沿岸に津波警報が出て、のちに津波注意報に切り替わりました[[s:jma_kamchatka_2025,jma_kamchatka_2025_eve]]。私たちは海外からのゲストに、状況が変わるたびにメッセージを送り、何が起きているかと、避難が必要なことを伝えました。ゲストからは、あとで感謝の言葉をもらいました。</p>
 
 <h2>下田で1週間、どこに泊まるか</h2>
 <p>車がないなら、私たちは駅に近い旧町内に泊まります。店も港も、どのバスの路線もすぐ近くです。浜が旅のいちばんの目的なら、浜の近くに泊まればバスに乗らずに済みます。</p>
@@ -299,14 +307,14 @@ ARTICLE = {
 <tr><td><strong>南の浜</strong>（多々戸・入田・吉佐美）</td><td>サーフィンが目的の人、静かな浜がいい人。</td><td>駅からバスで7〜10分[[s:shimoda_kanko_beach_tatado,shimoda_kanko_beach_kisami]]、そこから少し歩きます。</td></tr>
 </tbody></table></div>
 <p>自転車があると、ぐっと楽になります。観光協会が道の駅で、自転車と電動自転車を1時間500円から、1日2,000円で貸していて、時間は9時〜17時です。予約は要りませんが、パスポートなどの身分証が要ります[[s:shimoda_kanko_bicycle]]。</p>
-<p>私たちは、旧町内で「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」を運営しています。約40㎡のアパートの一室で、最大4名まで泊まれます。キッチン、洗濯機とガス乾燥機、ワークデスクがあります。2階で階段は約13段、浴室はシャワーだけで浴槽はありません[[s:node_room]]。駅から平坦な道を歩いて8分で、スーパーまで3分、ペリーロードまで5分です[[s:node_access]]。1月に泊まったゲストは、初日の出が見えるほど海が近く、スーパーも近くて便利だったとレビューに書いてくれました。</p>
+<p>私たちは、旧町内で「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」を運営しています。約40㎡のアパートの一室で、最大4名まで泊まれます。キッチン、洗濯機とガス乾燥機、ワークデスクがあります。2階で階段は約13段、浴室はシャワーだけで浴槽はありません[[s:node_room]]。駅から平坦な道を歩いて8分で、スーパーまで3分、ペリーロードまで5分です[[s:node_access]]。1月に泊まったゲストは、海が近く、初日の出も見られ、スーパーも近くて便利だったとレビューに書いてくれました。</p>
 <p>1週間が、1か月以上いたい気持ちに変わったら、[[l:ja-monthly-rental|日本で1か月単位で部屋を借りる記事]]に仕組みをまとめています。</p>
 """,
   "faq": [
     ("下田は行く価値がありますか",
      "あります。特に1週間いるなら。伊豆の南端の小さな港町で、9つの海水浴場、歩いて回れる旧町内、季節の行事があります[[s:shimoda_population,shimoda_kanko_umi,shimoda_kanko_event]]。1週間あれば、いくつもの浜を試し、町の調子で暮らせます。"),
     ("下田でいちばんいい浜はどこですか",
-     "何をしたいかによります。外浦と鍋田浜は穏やかな入り江で、子ども連れに合います[[s:shimoda_kanko_beach_sotoura,shimoda_kanko_beach_nabeta]]。多々戸浜はいちばん知られたサーフィンの浜で[[s:shimoda_kanko_beach_tatado]]、吉佐美大浜は大きくて静かめです[[s:shimoda_kanko_beach_kisami]]。"),
+     "何をしたいかによります。外浦と鍋田浜は穏やかな入り江で、子ども連れに合います[[s:shimoda_kanko_beach_sotoura,shimoda_kanko_beach_nabeta]]。多々戸浜はサーファーの間で特に有名で[[s:shimoda_kanko_beach_tatado]]、吉佐美大浜は大きくて静かめです[[s:shimoda_kanko_beach_kisami]]。"),
     ("夏以外でも、下田で泳げますか",
      "監視員がいるのは市が毎年決める海水浴の期間だけなので、期間外は監視員なしで泳ぐことになります[[s:shimoda_ohama]]。多々戸浜には一年中使える温水シャワーがあります[[s:shimoda_kanko_beach_tatado]]。"),
     ("冬の下田では、何ができますか",
