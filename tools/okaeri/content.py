@@ -1263,6 +1263,7 @@ BOOK_URL = "https://www.airbnb.com/rooms/1444912427010224732"
 # ページ下の「Photo credits」に、そのページで使った写真の分だけ「Photo by 撮影者 on Unsplash」を出す（build.py の footer）。
 UNSPLASH_UTM = "?utm_source=noki&utm_medium=referral"
 PHOTO_CREDITS = {
+    "passport-stamps": ("Kit (formerly ConvertKit)", "https://unsplash.com/@kit", "https://unsplash.com/photos/htQznS-Rx7w", "htQznS-Rx7w"),
     "stony-shore-waves": ("Jivan Garcha", "https://unsplash.com/@jivangarcha", "https://unsplash.com/photos/okKMbCtaNNQ", "okKMbCtaNNQ"),
     "studio-apartment": ("Aquilion Property", "https://unsplash.com/@aquilionproperty", "https://unsplash.com/photos/hrY-pZqFGyI", "hrY-pZqFGyI"),
     "laptop-plants-desk": ("Rui Silvestre", "https://unsplash.com/@ruisilvestrecreative", "https://unsplash.com/photos/9vxJQmZmTYU", "9vxJQmZmTYU"),
