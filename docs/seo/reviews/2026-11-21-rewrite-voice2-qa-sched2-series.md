@@ -190,3 +190,30 @@ Experience が「なし」（捏造）の記事はない。Trustworthiness が�
 - `guest-review-tips` の ★4.88（51件）は「サイト掲載時点」の値（experience.md 91行: 記事に書く前に最新値を人に確認）。書き直し前から同じ
 - `accommodation-tax`・`akiya-3000man-deduction`・`inn-startup-funding`: 税・補助金・融資の記述（2026年10月時点の内容。今回は数字を変えていない）
 - `listing-photo-tips`・`guest-review-tips`・`minpaku-off-season`・`remote-renovation-tips` は、参考資料が少なく機械採点が 38〜39点（書き直し前から）。執筆が足した資料を編集長が外したので、資料を足すかは人が決める
+
+## 再採点（2026-11-21。編集長の直しのあと）
+
+直しは `git diff 0be6acf -- tools/articles_sched2.py tools/articles_series2.py tools/articles_series3.py` で全部見た。変わったのは下の7か所だけで、ほかの事実・数字・title・id の変更はない。
+
+| 記事 | 直した所 | 判定 |
+|---|---|---|
+| akiyado-what-we-do | series3 39「借りた側が改修して宿を開きました」、55「和室の間取りを」 | 書き直し前と同じ事実に戻った（experience.md 129・135 と一致）。DIY と読める所はなくなった |
+| minpaku-management-company | ポイント1「客室にする部屋が6室以上か、家主が留守になる民泊は、管理を専門の事業者に任せます。」、description「客室にする部屋が6室以上」 | 見える1文目に条件（客室で数える）が入った。本文の「居室が5を超える」と一致。description の「部屋が6室以上」も直った |
+| akiya-minpaku-suitability | series2 118「〜共有することを学びました」 | experience.md 135（学び）と一致 |
+| minpaku-off-season | series2 447「閑散期に売上が減っても、家賃などの固定費は減りません」 | 言い過ぎが解けた。同じ記事の固定費の文とそろった |
+| long-stay-guest-equipment | 見出し「遠くから運営するなら、なぜ長期滞在のゲストが合うのか？」（id `why` は同じ） | 自然になった。節の中身（清掃の回数を抑えられる）と合う |
+
+不合格だった2本を最初から採点し直した:
+
+| 記事 | 機械 | 品質 | 合計 | ゲート | 判定 |
+|---|---|---|---|---|---|
+| akiyado-what-we-do | 40 | 59 | 99 | なし | **合格** |
+| minpaku-management-company | 40 | 59 | 99 | なし | **合格** |
+
+- akiyado-what-we-do 読みやすさ -1: series3 39「創業メンバーは〜借り、借りた側が改修して」は、主語が2つ重なって少しくどい（任意。例「創業メンバーは下田で賃貸物件を借り、自分たちの費用で改修して宿を開きました」）
+- minpaku-management-company 読みやすさ -1: ポイント1「6室以上か、家主が留守になる民泊は」は、前半の「民泊」が省かれて並びがずれる（任意。例「客室にする部屋が6室以上の民泊と、家主が留守になる民泊は、〜」。45字を超えないかは要確認）
+- E-E-A-T: 2本とも Experience・Expertise・Authoritativeness・Trustworthiness すべて「あり」
+- 機械: `article_score.py --slug` で2本とも 40/40・ゲートなし・日本語の自然さ 0件。long-stay-guest-equipment も 40/40 のまま
+- 合格だった minpaku-off-season は 57/60（97点）、akiya-minpaku-suitability は 60/60（100点）に上がる（必ず直す所が直ったため）
+
+**結論（再採点後）: 17本すべて合格。** 人の確認が必要な点は、上の節のとおり（変わらない）。
