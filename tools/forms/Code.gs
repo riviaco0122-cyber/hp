@@ -154,13 +154,22 @@ var LABELS = { name: 'お名前', email: 'メールアドレス', tel: '電話�
 // ===== 受け口 =====
 function doPost(e) {
   try {
-    var data = JSON.parse(e.postData.contents);
+    // サイトの JS は JSON（text/plain）で送る。JS を通らない送信（JS が動かない環境や、フォームに直接送るボット）は
+    // 「_hp=...&name=...」の形（URL エンコード）で届くので、JSON として読まずに e.parameter から項目を取る
+    var raw = (e && e.postData && e.postData.contents) || '';
+    var viaJs = /^\s*\{/.test(raw);
+    var data = viaJs ? JSON.parse(raw) : { fields: (e && e.parameter) || {} };
     var fields = data.fields || {};
     var files = data.files || [];
 
     // 迷惑送信の対策：人には見えない項目（_hp）に入力があれば「迷惑の疑い」として扱う。
     // ブラウザの自動入力で人が誤判定されることもあるので、捨てずに記録・社内通知し、自動返信だけ送らない。
     var suspected = !!(fields._hp || fields._gotcha || fields.website);
+    // JS を通らずに届き、しかも _hp に入力があるものは、ほぼ確実にボット。記録だけして、通知メールは送らない
+    if (suspected && !viaJs) {
+      if (fields.name && fields.email) record(['contact', 'akiyado', 'careers'].indexOf(fields._form) >= 0 ? fields._form : 'contact', fields, [], true);
+      return json({ ok: true });
+    }
 
     var email = String(fields.email || '').trim();
     var name = String(fields.name || '').trim();
