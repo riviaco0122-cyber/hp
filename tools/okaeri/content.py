@@ -82,7 +82,7 @@ SOURCES = {
     "node_access": ("https://nodeshimoda.com/access", "NODE Shimoda (access)", "NODE Shimoda 公式サイト（アクセス）",
                     "NODE Shimoda official site: access (checked November 2026)"),
     "shugiin_bill18": ("https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE36CA.htm", "House of Representatives", "衆議院（議案審議経過情報）",
-                       "House of Representatives: Progress of cabinet bill no. 18, 222nd Diet session (checked 16 November 2026)"),
+                       "House of Representatives: Progress of cabinet bill no. 18, 222nd Diet session (checked 21 November 2026)"),
     "jnto_visa": ("https://www.japan.travel/en/plan/visa-info/visa-immigration/", "JNTO", "日本政府観光局（入国とビザ）",
                   "JNTO: Entry into Japan and visa information (checked November 2026)"),
     "shimoda_stay_subsidy": ("https://city.shimoda.shizuoka.jp/file/下田市移住希望者滞在費補助金交付要綱.pdf", "Shimoda City", "下田市（移住希望者滞在費補助金交付要綱）",
@@ -1909,17 +1909,17 @@ ARTICLES = [
 <tbody>
 <tr><td><strong>Repairs and renovation</strong></td><td>Old wiring, plumbing, roofs and damp differ from house to house. Written quotes are the only way to know.</td><td>Before you move in</td></tr>
 <tr><td><strong>An earthquake check</strong></td><td>Houses built to the standard used before June 1981 often aren’t strong enough, and the government urges owners to get them assessed. National and local governments help pay for assessments and strengthening work [[s:mlit_seismic,mlit_seismic_1981]].</td><td>Before you buy</td></tr>
-<tr><td><strong>The agent’s fee</strong></td><td>On a home priced at ¥8 million or less, an agent can charge up to ¥300,000 plus tax, which they have to explain and agree with you in advance [[s:mlit_brokerage_fee2024]]. On a very cheap house, that can be a big share of the price.</td><td>When you buy</td></tr>
+<tr><td><strong>The agent’s fee</strong></td><td>Since July 2024, on a home priced at ¥8 million or less, an agent can charge up to ¥300,000 plus tax, which they have to explain and agree with you in advance [[s:mlit_brokerage_fee2024]]. On a very cheap house, that can be a big share of the price.</td><td>When you buy</td></tr>
 <tr><td><strong>Registration and taxes on the purchase</strong></td><td>Even a free house has them. One town’s zero-yen scheme leaves the registration costs and the taxes on acquiring the property to the new owner [[s:kamiichi_zero_yen_flow]].</td><td>Around the purchase</td></tr>
 <tr><td><strong>Property tax and upkeep</strong></td><td>You pay these every year. If the town formally warns that a house is badly kept, the land can lose its property tax reduction [[s:mlit_akiya_act2023]].</td><td>Every year</td></tr>
 </tbody></table></div>
 <p>We think that last row also gives some owners a reason to sell. Since an amendment in December 2023, a house left to decay can cost its owner more in tax once the town steps in [[s:mlit_akiya_act2023]].</p>
-<p>We haven’t bought an akiya ourselves, so we can only give you a sense of scale. One of our founding members rented an older flat in Shimoda from its owner and turned it into a guesthouse. The building work alone came to about ¥4.1 million, and that was a rented flat, not a house we bought.</p>
+<p>Our own experience is with a rented flat, not a house we bought, so we can only give you a sense of scale. One of our founding members rented an older flat in Shimoda from its owner and turned it into a guesthouse. The building work alone came to about ¥4.1 million, and that was a rented flat, not a house we bought.</p>
 <p>Furniture, appliances and supplies added roughly ¥2.4 million, and getting it all ready took about seven months. A whole house would usually be a bigger job, so we’d get quotes before treating any asking price as the real cost. If you’re seriously thinking about it, we’d suggest [[l:akiya-try-first|living in the town for a month before you buy]].</p>
 
 <h2>Where do you find an akiya for sale?</h2>
 <p>Mostly through akiya banks, lists of empty homes that towns and cities put together, though ordinary estate agents sell them too. The government has a national akiya bank, run by two property companies, LIFULL and At Home, where you can search many towns’ listings in one place [[s:mlit_akiya_bank]].</p>
-<p>It doesn’t cover everywhere, though. As of October 2026, more than 1,100 towns and cities take part [[s:mlit_akiya_bank_outline]], so if a town you like isn’t on it, its own website is worth a look. Each bank also sets its own rules. Shizuoka City’s, for example, only covers homes in the city’s designated urban area, and only estate agents can list properties on it [[s:shizuoka_akiya_bank]].</p>
+<p>It doesn’t cover everywhere, though. As of October 2026, more than 1,100 towns and cities take part [[s:mlit_akiya_bank_outline]], so if a town you like isn’t on it, its own website is worth a look. Each bank also sets its own rules. Shizuoka City’s main bank, for example, only covers homes in the city’s designated urban area, and only estate agents can list properties on it; homes in its hill and mountain districts go on a separate bank [[s:shizuoka_akiya_bank]].</p>
 <p>A few towns go further. Kamiichi, a town in Toyama, runs a zero-yen akiya bank where owners give away the house and land for free [[s:kamiichi_zero_yen]]. The town only passes on the information, though. You deal with the owner directly and pay for the registration, repairs, moving and taxes yourself [[s:kamiichi_zero_yen_flow]].</p>
 <p>If you want to start looking, this is the order we’d go in:</p>
 <ol>
@@ -1933,7 +1933,7 @@ ARTICLES = [
 
 <h2>Can you buy one if you live outside Japan?</h2>
 <p>Yes. Living abroad doesn’t stop you buying, though there’s a little more paperwork than there used to be. Since April 2026, non-residents who buy property in Japan, even a home to live in, have had to report it to the Ministry of Finance afterwards [[s:mof_fefta2026,mof_realprop_faq]]. And since October 2026, every buyer, Japanese or not, gives their nationality when the purchase is registered [[s:moj_nationality]].</p>
-<p>The rules are still moving. A land bill before the Diet would add new limits in some areas, but it hadn’t passed as of November 2026 [[s:shugiin_bill18]]. We’d also treat a house and a visa as separate questions, so our guide to [[l:how-long-stay|how long you can stay in Japan]] is worth reading alongside this. Our guide to [[l:akiya-try-first|living in the town before you buy]] goes into the buying rules in more detail.</p>
+<p>The rules are still moving. A land bill before the Diet would add new limits in some areas [[s:cao_land_bill_outline]], but it hadn’t passed as of November 2026 [[s:shugiin_bill18]]. We’d also treat a house and a visa as separate questions, so our guide to [[l:how-long-stay|how long you can stay in Japan]] is worth reading alongside this. Our guide to [[l:akiya-try-first|living in the town before you buy]] goes into the buying rules in more detail.</p>
 """,
  "after_faq": '<p class="fine">This article is general information, not legal, tax or property advice.</p>',
  "faq": [
@@ -1947,7 +1947,7 @@ ARTICLES = [
     "It depends on the house. Homes built to the standard used before June 1981 often aren’t strong enough, so it’s sensible to get one assessed before you buy. National and local governments help pay for assessments and strengthening work [[s:mlit_seismic,mlit_seismic_1981]]."),
  ],
  "sources": ["stat_housing2023", "stat_housing2023_terms", "egov_akiya_act", "mlit_akiya_guideline", "mlit_owner_survey2024", "mlit_owner_survey2024_report",
-             "egov_registration_act", "mlit_seismic", "mlit_seismic_1981", "mlit_brokerage_fee2024", "kamiichi_zero_yen", "kamiichi_zero_yen_flow", "mlit_akiya_act2023",
+             "egov_registration_act", "cao_land_bill_outline", "mlit_seismic", "mlit_seismic_1981", "mlit_brokerage_fee2024", "kamiichi_zero_yen", "kamiichi_zero_yen_flow", "mlit_akiya_act2023",
              "mlit_akiya_bank", "mlit_akiya_bank_outline", "shizuoka_akiya_bank", "mof_fefta2026", "mof_realprop_faq", "moj_nationality", "shugiin_bill18"],
  "related": ["akiya-try-first", "how-long-stay", "monthly-rental"],
  "ja": {
@@ -2015,17 +2015,17 @@ ARTICLES = [
 <tbody>
 <tr><td><strong>修繕・改修</strong></td><td>古い配線、水回り、屋根、湿気の傷みは家ごとに違います。書面の見積もりでしか分かりません。</td><td>住みはじめる前</td></tr>
 <tr><td><strong>耐震の確認</strong></td><td>1981年6月より前の基準で建てられた家は、強さが足りないことが多く、国は持ち主に耐震診断を勧めています。診断や補強の工事には、国と自治体の補助があります[[s:mlit_seismic,mlit_seismic_1981]]。</td><td>買う前</td></tr>
-<tr><td><strong>仲介手数料</strong></td><td>800万円以下の家では、不動産会社は最大30万円＋税を受け取れます。事前に説明し、合意することになっています[[s:mlit_brokerage_fee2024]]。とても安い家だと、価格に対して大きな割合になります。</td><td>買うとき</td></tr>
+<tr><td><strong>仲介手数料</strong></td><td>2024年7月から、800万円以下の家では、不動産会社は最大30万円＋税を受け取れます。事前に説明し、合意することになっています[[s:mlit_brokerage_fee2024]]。とても安い家だと、価格に対して大きな割合になります。</td><td>買うとき</td></tr>
 <tr><td><strong>登記と、買ったときの税金</strong></td><td>タダの家でもかかります。ある町の0円の空き家バンクでは、登記の費用と、不動産を手に入れたときの税金は、新しい持ち主が払います[[s:kamiichi_zero_yen_flow]]。</td><td>買うころ</td></tr>
 <tr><td><strong>固定資産税と維持費</strong></td><td>毎年払います。手入れが悪いと町から正式に勧告されると、土地の固定資産税の軽減がなくなることがあります[[s:mlit_akiya_act2023]]。</td><td>毎年</td></tr>
 </tbody></table></div>
 <p>この最後の行も、持ち主が売ろうと考える理由の1つになっていると私たちは思います。2023年12月の法律の改正から、傷むまま放っておいた家は、町が動くと、持ち主の税金が増えることがあるのです[[s:mlit_akiya_act2023]]。</p>
-<p>私たち自身は空き家を買ったことがないので、規模の感じをお伝えすることしかできません。創業メンバーの1人が、下田の古い部屋を持ち主から借りて、宿に改修しました。工事だけで約410万円かかりました。しかもこれは借りた部屋で、買った家ではありません。</p>
+<p>私たちの経験は、買った家ではなく借りた部屋のものなので、規模の感じをお伝えすることしかできません。創業メンバーの1人が、下田の古い部屋を持ち主から借りて、宿に改修しました。工事だけで約410万円かかりました。しかもこれは借りた部屋で、買った家ではありません。</p>
 <p>家具・家電・備品でさらに約240万円かかり、準備には全部で約7か月かかりました。一軒家まるごとなら、たいていもっと大きな工事になるので、どんな売り出し価格も、見積もりを取るまでは本当の費用だと考えないようにしています。本気で考えているなら、[[l:ja-akiya-try-first|買う前に、その町で1か月暮らしてみる]]ことをおすすめします。</p>
 
 <h2>売りに出ている空き家は、どこで探す？</h2>
 <p>おもに空き家バンクです。市町村がまとめている空き家の一覧で、ふつうの不動産会社が売っている空き家もあります。国が用意した全国版の空き家バンクは、不動産会社2社（LIFULL とアットホーム）が運営していて、たくさんの町の物件を1か所で探せます[[s:mlit_akiya_bank]]。</p>
-<p>ただし、すべての町が載っているわけではありません。2026年10月時点で、参加している市町村は1,100を超えます[[s:mlit_akiya_bank_outline]]。気になる町が載っていなければ、町のサイトも見てみる価値があります。決まりも空き家バンクごとに違います。たとえば静岡市の空き家バンクは、市街化区域の中の家だけが対象で、物件を載せられるのは不動産会社だけです[[s:shizuoka_akiya_bank]]。</p>
+<p>ただし、すべての町が載っているわけではありません。2026年10月時点で、参加している市町村は1,100を超えます[[s:mlit_akiya_bank_outline]]。気になる町が載っていなければ、町のサイトも見てみる価値があります。決まりも空き家バンクごとに違います。たとえば静岡市の主な空き家バンクは、市街化区域の中の家だけが対象で、物件を載せられるのは不動産会社だけです。中山間地域の家は、別の空き家バンクに載ります[[s:shizuoka_akiya_bank]]。</p>
 <p>もっと踏み込んだ町もあります。富山県の上市町は「0円空家バンク」を運営していて、持ち主が土地と家をタダで譲ります[[s:kamiichi_zero_yen]]。ただし、町は情報を紹介するだけです。持ち主と直接やりとりし、登記、修繕、引っ越し、税金は自分で払います[[s:kamiichi_zero_yen_flow]]。</p>
 <p>探しはじめるなら、私たちならこの順番で進めます。</p>
 <ol>
@@ -2039,7 +2039,7 @@ ARTICLES = [
 
 <h2>海外に住んでいても買える？</h2>
 <p>買えます。海外に住んでいても買えますが、手続きは前より少し増えました。2026年4月から、日本に住んでいない人が日本の不動産を買うと、住むための家でも、買ったあとに財務省に報告することになっています[[s:mof_fefta2026,mof_realprop_faq]]。また2026年10月からは、日本人も含めて、買った人はみな登記のときに国籍を届け出ます[[s:moj_nationality]]。</p>
-<p>決まりは、まだ動いています。国会に出ている土地の法案は、一部の区域に新しい制限を加える内容ですが、2026年11月時点では成立していません[[s:shugiin_bill18]]。家とビザは別々の問題として考えたほうがいいと私たちは思うので、[[l:ja-how-long-stay|日本に何日いられるかのガイド]]もあわせて読んでみてください。買うときの決まりは、[[l:ja-akiya-try-first|買う前にその町で暮らしてみる記事]]でくわしく書いています。</p>
+<p>決まりは、まだ動いています。国会に出ている土地の法案は、一部の区域に新しい制限を加える内容ですが[[s:cao_land_bill_outline]]、2026年11月時点では成立していません[[s:shugiin_bill18]]。家とビザは別々の問題として考えたほうがいいと私たちは思うので、[[l:ja-how-long-stay|日本に何日いられるかのガイド]]もあわせて読んでみてください。買うときの決まりは、[[l:ja-akiya-try-first|買う前にその町で暮らしてみる記事]]でくわしく書いています。</p>
 """,
   "after_faq": '<p class="fine">この記事は一般的な情報で、法律・税金・不動産の助言ではありません。</p>',
   "faq": [
