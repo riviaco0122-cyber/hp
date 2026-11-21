@@ -105,6 +105,7 @@ table.stack,table.stack tbody,table.stack tr,table.stack td{display:block}
 table.stack tr{padding:.7rem .8rem;border-bottom:1px solid var(--line)}
 table.stack tbody tr:last-child{border-bottom:0}
 table.stack td{border:0;padding:.15rem 0;min-width:0;white-space:normal}
+table.stack td:empty{display:none}
 table.stack td:first-child{font-weight:600;padding-bottom:.35rem}
 table.stack td:not(:first-child)::before{content:attr(data-label);display:block;font-size:.8rem;font-weight:600;color:var(--muted)}
 table.stack td+td+td{margin-top:.35rem}
