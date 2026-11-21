@@ -1192,7 +1192,7 @@ ARTICLES_AUTO = [
 <details class="fold">
 <summary>下調べにつかえる公的な統計</summary>
 <p>観光庁『宿泊旅行統計調査』は日本人と外国人の延べ宿泊者数を、JNTO『訪日外客統計』は国籍・月別の訪日外客数を、観光庁『インバウンド消費動向調査』は訪日外国人旅行者の旅行中の消費を公表しています。どの国の人が、いつ来るかを調べる入口になります。</p>
-<p>需要の全体像は<a href="media/japan-tourism-market-data.html">訪日市場データの記事</a>、長く泊まる旅行者のことは<a href="media/long-stay-travel-demand.html">長期滞在の需要の記事</a>にあります。</p>
+<p>需要の全体像は<a href="media/japan-tourism-market-data.html">訪日市場データの記事</a>、長く泊まる旅行者については<a href="media/long-stay-travel-demand.html">長期滞在の需要を読む記事</a>にあります。</p>
 </details>
 <p>相手が決まったら、次はその人に何を用意して、何を約束するかです。</p>
 """),
