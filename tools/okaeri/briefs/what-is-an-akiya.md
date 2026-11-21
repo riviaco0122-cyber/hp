@@ -172,3 +172,196 @@ h2 は7つ・すべて疑問形（機械採点の条件を満たす）。
 ## 8. 外部のページの命令
 
 検索結果の要約に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。akiyajapan.com・akiya2.com・tokyocheapo.com は環境のネットワークで開けず、中身は検索結果の要約だけで判断した（上位ページの穴の判断を確かめるなら、編集長がこの3つを許可に足す）。
+
+---
+
+## リサーチメモ（2026-11-21）
+
+リサーチ部。すべて 2026-11-21 に確認。「開いて確認」＝ curl でページ・PDF を開いて本文を読んだもの。「検索結果で確認」＝ ページが開けず、検索結果の要約だけで確かめたもの（執筆部は数字の言い切りを避け、出典の扱いに注意）。
+
+### R1 空き家の数と区分（2023年住宅・土地統計調査）
+
+| 事実（英語で1文） | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| Japan had 9,002,000 vacant dwellings, a record high, and 13.8% of all housing (also a record). | 総務省統計局「令和5年住宅・土地統計調査 住宅及び世帯に関する基本集計（確報集計）結果の概要」2024-09-25 `stat_housing2023`（既存） | 開いて確認 | 2023-10-01 |
+| That was up 513,000 from 8,489,000 in 2018 (13.6%); the number has roughly doubled in the 30 years since 1993. | 同上 | 開いて確認 | 2018→2023 |
+| By type (thousand): for rent 4,436 (2018: 4,327, +109) / for sale 326 (293, +33) / second homes 384 (381, +3) / “other” vacant (not for rent, sale or second use) 3,856 (3,487, +369). | 同上 表2-1 | 開いて確認 | 2023-10-01 |
+| The “other” group is 5.9% of all housing and 42.8% of vacant homes; for rent is 49.3%. | 同上 | 開いて確認 | 同上 |
+| Of 3.52 million vacant detached houses, 80.9% (2.85 million) are in the “other” group; 78.5% of vacant apartment units are for rent. | 同上 表2-2 | 開いて確認 | 同上 |
+| The survey counts a dwelling as vacant if no household usually lives there on the survey day; the “other” group includes homes empty for a long time because the occupant moved or is in hospital, and homes due to be torn down. | 総務省統計局（英語）“Explanation of Terms of the 2023 Survey” | 開いて確認 | 2023年調査 |
+| The survey is held every five years (since 1948; 2023 was the 16th). | `stat_housing2023` | 開いて確認 | — |
+
+- 記事での書き方: 段落は「約900万戸・13.8%・過去最多」と「“other” が約386万戸」の2つだけ。表は4区分×2023年×2018年からの増減（上の数字）。“For sale” はわずか約33万戸＝「売りに出ている空き家はごく一部」が読み手にとっての意味（ただし統計の「売却用」は売り出し中の空き家の数で、空き家バンクの件数とは別物）。廃屋に近い層は一戸建てに偏る、も1文で使える。
+- In short 2 の “Most are waiting for a tenant or buyer” は、賃貸用＋売却用＝約476万戸（52.9%）なので「半分強」と書くのが正確。
+- 英語の区分名は統計局の英訳に合わせる: For Rent / For Sale / As Second Dwellings / “Vacant, Excluding For Rent, For Sale and As Second Dwellings”。
+
+### R2 法律の定義
+
+| 事実 | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| Under the Act on Special Measures concerning Vacant Houses (2014), a “vacant house” is a building that is normally not lived in or otherwise used, together with its land (houses owned by the state or local governments are excluded). | e-Gov 法令検索「空家等対策の推進に関する特別措置法」（平成26年法律第127号）第2条1項 | 開いて確認（e-Gov API） | 2026-09-03 施行の版 |
+| The national guideline says that a building showing no use for roughly a whole year is one yardstick for “normally not used”. | 国交省「空家等に関する施策を総合的かつ計画的に実施するための基本的な指針」（最終改正 2026-09-03） | 開いて確認 | 同上 |
+| A “specified vacant house” is one that, if left alone, risks collapse or is seriously unsanitary, unsightly, or otherwise harmful to the neighbourhood. | 同法 第2条2項 | 開いて確認 | 同上 |
+
+- 記事での書き方: 「統計は調査日に人が住んでいない住宅をすべて数える／法律はおおむね1年使われていない建物を扱い、市町村が持ち主に助言・指導できる」。「6か月以上空いている家」という定義は、公的な出典が見つからないので書かない。
+- 法令名の英訳は政府の公式英訳を確認できていない。“a law on empty houses (often called the Vacant Houses Act)” のように説明で書き、正式な英語名として断定しない。
+
+### R3 都道府県別（2023年）
+
+| 事実 | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| Highest vacancy rates: Tokushima 21.3%, Wakayama 21.2%, Kagoshima 20.5% (next Yamanashi 20.4%, Kochi 20.3%, Nagano 20.1%). | `stat_housing2023` 付表（都道府県別の主な指標） | 開いて確認 | 2023-10-01 |
+| Lowest: Saitama 9.3%, Okinawa 9.4%, Kanagawa 9.8%. | 同上 | 開いて確認 | 同上 |
+| Tokyo has the most vacant homes of any prefecture, 897,000 (10.9%), followed by Osaka 702,000; but only 214,000 of Tokyo’s are in the “other” group (2.6% of housing). | 同上 | 開いて確認 | 同上 |
+| Shizuoka: 296,000 vacant, 16.7%. | 同上 | 開いて確認 | 同上 |
+
+- 記事での書き方: 表に高い3県・低い3県・東京都。読み手にとっての意味＝「戸数は都会に多いが、その多くは空室の賃貸。放置型が多いのは地方」（東京は“other”の割合が2.6%、和歌山・徳島は12%台）。
+
+### R4 持ち主の実態（国交省 令和6年空き家所有者実態調査。2025-08-29 公表。令和元年版より新しいのでこちらを使う）
+
+| 事実 | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| About 58% (57.9%) of owned vacant homes were inherited. | 国交省「令和6年空き家所有者実態調査 結果のポイント」 | 開いて確認 | 調査基準日 2024-12-01 |
+| Of inherited vacant homes, over 70% were built in 1980 or earlier, and about 58% became empty when the occupant died (11.3% after moving into a care home). | 同上 | 開いて確認 | 同上 |
+| About 80% of vacant homes are within an hour (on foot, or by car or train) of the owner’s home. | 同報告書（図表3関連「所有世帯の居住地からの所要時間」） | 開いて確認 | 同上 |
+| Owners who plan to keep a home empty most often say they need it for storage (56%), don’t want to pay for demolition (47%), or the house is too old (37%); 28% say demolishing would raise their property tax. | 同報告書 図表3-45（複数回答、N=32.3万世帯） | 開いて確認 | 同上 |
+| Among owners of unused vacant homes, about 40% plan to keep them empty, and just under 40% plan to demolish or sell. | 結果のポイント | 開いて確認 | 同上 |
+| In the 2023 housing survey too, 61.6% of household-owned “other” vacant homes were acquired by inheritance or gift, and about 70% were built in 1980 or earlier. | 総務省統計局「住宅の構造等に関する集計（確報集計）結果の概要」2025-01-29 | 開いて確認 | 2023-10-01 |
+
+- 記事での書き方: 「約6割が相続」「多くは持ち主の死がきっかけ」「物置に使う・解体費を払いたくない・古すぎる」。ブリーフの仮説「持ち主は遠くに住む」は**逆**: 約8割は1時間以内に住んでいる。「離れて暮らす子が相続」とは書かない。「新築を好む傾向」は今回の公的な出典で確認していないので書かない。
+
+### R4b 相続登記の義務化
+
+| 事実 | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| Heirs who acquire real estate must apply to register the transfer within three years of learning they inherited it; failing to do so without good reason can bring a non-criminal fine of up to ¥100,000. | e-Gov「不動産登記法」第76条の2・第164条 | 開いて確認 | 現行（2026-06-24 施行の版） |
+| The duty took effect on 1 April 2024 and also covers inheritances before that date; those must be registered by 31 March 2027. | 法務省「相続登記の申請義務化について」 | **検索結果で確認**（moj.go.jp が開けない） | — |
+
+- 記事での書き方: 「2024年から、家を相続したら3年以内に登記することが義務になった。持ち主の分からない家や土地を減らすため」。目的の言い回しは法務省のページを読めていないので、「持ち主を分かるようにするため」程度の一般的な説明にとどめる。過料の額は書かなくてよい（読み手に不要）。
+
+### R5 2023年の空家法の改正
+
+| 事実 | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| An amendment in force since 13 December 2023 created a new category of “poorly managed vacant houses” that could become dangerous if left alone; the town can give the owner guidance and then a formal recommendation. | 国交省「空家等対策の推進に関する特別措置法の一部を改正する法律」概要（令和5年法律第50号）／e-Gov 同法 第13条 | 開いて確認 | 施行 2023-12-13 |
+| Once such a recommendation is issued, the land loses the residential-land property tax reduction (which cuts the tax base to 1/6, among other rates). | 国交省 改正法の概要 | 開いて確認 | 同上 |
+
+- 記事での書き方: 「放置して“管理が不十分”と勧告されると、土地の税の軽減が外れうる」→ 売り手が手放したい理由の1つ。「税が6倍になる」とは書かない（軽減が外れる仕組みの説明にとどめる）。
+
+### R6 耐震
+
+| 事実 | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| Buildings designed under the older seismic standard, before the revised standard applied from June 1981, often lack enough earthquake resistance; the ministry urges owners of pre-1981 buildings to get a seismic assessment. | 国交省「住宅・建築物の耐震化について」／国交省資料「新耐震基準（昭和56年6月～）」 | 開いて確認 | — |
+| National and local governments offer joint support for seismic assessments and retrofits. | 国交省「住宅・建築物の耐震化について」 | 開いて確認 | — |
+| About 70% of household-owned “other” vacant homes were built in 1980 or earlier. | `stat_housing2023_structure` | 開いて確認 | 2023-10-01 |
+
+- 記事での書き方: 「1981年6月より前の基準で建てられた家かどうか」。日付（6月1日）までは出さない（判定は建築確認の日による、など細かいため）。補助の額は書かない（自治体で違う）。
+
+### R7 空き家バンク
+
+| 事実 | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| The ministry’s national akiya bank lets you search listings from many municipalities in one place; it is run by two companies chosen by public tender, LIFULL and At Home, and has been fully running since April 2018. | 国交省「空き家・空き地バンク総合情報ページ」／「『全国版空き家・空き地バンク』について」 | 開いて確認 | — |
+| 1,155 municipalities take part, 750 of them currently have listings, and about 29,000 properties have found buyers or tenants (municipal survey estimate). | 国交省「『全国版空き家・空き地バンク』について」 | 開いて確認 | 2026-10-31 |
+| About 20,000 listings were live at the end of the month (both sites combined, with duplicates). | 国交省「参加自治体数・物件掲載件数推移」 | 開いて確認 | 2026-10末 |
+| Nationwide, 65.5% of municipalities take part, so some towns’ banks are not on the national site. | 国交省「都道府県別 参加表明状況」 | 開いて確認 | 2026-10末 |
+| Banks differ by town: Shizuoka City’s bank covers only homes inside its urbanised zone, and only real-estate agents can list properties. | 静岡市「静岡市空き家情報バンク」 | 開いて確認 | 2026-11 |
+| Kamiichi Town (Toyama) runs a “zero-yen” akiya bank where owners give away land and house free; two houses (built 1965 and 1968) were listed as of 18 November 2026. | 上市町「上市町0円空家バンク」（更新 2026-11-18） | 開いて確認 | 2026-11-18 |
+| In Kamiichi’s scheme, the town only shares information; buyer and owner negotiate directly, and the new owner pays registration costs, repairs, moving, gift tax, real-estate acquisition tax and property tax. | 上市町「0円空家バンク及び空家解消特別推進事業の流れ」 | 開いて確認 | — |
+
+- 記事での書き方: FAQ 3（free akiya）は**残してよい**。上市町を例に「0円の家は実在するが、税・登記・修繕は自分持ち」。物件の詳細（住所・番号）は書かない（すぐ変わる）。
+- **書かないこと**: 「英語で検索できるか」— 全国版の2サイト（homes.co.jp・akiya-athome.jp）が開けず確認できない。FAQ 4 は外すか、「自治体のページは基本的に日本語」も含めて確認できるまで書かない。伊豆の町の利用者側の条件（移住の意思など）は確認できなかったので書かない（下田市の空き家バンクの本体ページは見つからず）。
+
+### R8 仲介手数料の特例
+
+| 事実 | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| Since 1 July 2024, for properties priced at ¥8 million or less, an agent may charge up to ¥300,000 plus tax (×1.1) per client, above the normal percentage cap, to cover the cost of handling them; the agent must explain and agree the fee in advance. | 国交省「空き家等に係る媒介報酬規制の見直し」（令和6年6月公布・7月1日施行） | 開いて確認 | 2024-07-01 施行 |
+
+- 記事での書き方: 「安い家ほど、仲介手数料が価格に比べて高くなることがある（上限 30万円＋税）」。
+
+### R9 外国人の購入（akiya-try-first と同じ出典の更新）
+
+| 事実 | 出典 | 確認 | 時点 |
+|---|---|---|---|
+| From 1 April 2026, non-residents buying Japanese property, including homes to live in, must file an after-the-fact report with the Ministry of Finance (within 20 days of acquisition). | `mof_fefta2026`・`mof_realprop_faq` | 開いて確認 | 2026-11-21 時点で変更なし |
+| Buyers state their nationality at registration from 5 October 2026. | `moj_nationality` | **今回は開けず**（moj.go.jp）。既存記事で確認済みの内容をそのまま使う | 前回確認 |
+| The land bill (cabinet bill no. 18, 222nd Diet) was received by the House of Representatives on 23 October 2026 and referred to the Cabinet Committee on 10 November 2026; it has not passed. | `shugiin_bill18` | 開いて確認 | 2026-11-21 |
+
+- 記事での書き方: 「国会で土地の法案を審議中（2026年11月時点で未成立）」。内容の細部は akiya-try-first に任せる。
+
+### R10 検索数 → 書かない（未調査）
+
+キーワード調査のツール（OpenRush・OpenSEO）がこの部署の実行環境で使えず、数字を取れなかった。1節目の表は戦略部の既存の数字のまま。編集長側で必要なら別途。
+
+### R11 取引価格の実例 → 書かない
+
+国交省 不動産情報ライブラリの API は鍵が必要（401）、Web 画面は curl では中身が取れない。確認できなかったので記事に使わない。
+
+### ブリーフの仮説で直すべき点（執筆部へ）
+
+- 「離れて暮らす子が相続し…」→ 所有者の約8割は1時間以内に住む。「相続した家を、物置にしたり解体費を惜しんだりして置いておく」に書き換える。
+- 「新築を好む傾向」→ 公的出典なし。書かない。
+- 「6か月以上」の定義 → 公的出典なし。誤りとして触れるなら「公式の定義ではない」とだけ。
+- 法令名の英語の正式名 → 未確認。説明的に書く。
+
+### 海外の読み手の疑問（検索で集めたもの。要約）
+
+- 0円・数百ドルの家は本当にあるのか、なぜそんなに安いのか（裏に何があるのか）。
+- 外国人・日本に住んでいない人が買えるか。家を持てば住めるのか（ビザ）。
+- 日本に住んでいないとローンが組めず、現金で買うしかないのか。
+- 直す費用が値段を大きく上回るのでは。建て替えが前提なのか。
+- 買ったあとの税金や、放置したときのペナルティ。
+- 田舎すぎて車がない・店がない場所ばかりではないか。
+- 物件を英語で探せるか、どこから始めればよいか。
+
+### 新しく使う出典（`SOURCES_NEW` 用）
+
+```python
+"stat_housing2023_terms": ("https://www.stat.go.jp/english/data/jyutaku/pdf/05terms.pdf", "Statistics Bureau of Japan (terms)", "総務省統計局（用語の解説・英語）",
+                           "Statistics Bureau of Japan: Explanation of Terms of the 2023 Housing and Land Survey"),
+"stat_housing2023_structure": ("https://www.stat.go.jp/data/jyutaku/2023/pdf/kouzou_gaiyou.pdf", "Statistics Bureau of Japan, 2025", "総務省統計局（住宅の構造等に関する集計）",
+                               "Statistics Bureau of Japan: 2023 Housing and Land Survey, tabulation on housing structure (January 2025)"),
+"egov_akiya_act": ("https://laws.e-gov.go.jp/law/426AC1000000127", "Vacant Houses Act", "空家等対策の推進に関する特別措置法（e-Gov法令検索）",
+                   "Act on Special Measures concerning the Promotion of Measures for Vacant Houses, Act No. 127 of 2014 (e-Gov, version in force from 3 September 2026)"),
+"mlit_akiya_guideline": ("https://www.mlit.go.jp/jutakukentiku/house/content/002020062.pdf", "MLIT (basic guideline)", "国土交通省（空家等の基本指針）",
+                         "MLIT and MIC: Basic guideline on measures for vacant houses (revised 3 September 2026)"),
+"mlit_akiya_act2023": ("https://www.mlit.go.jp/jutakukentiku/house/content/001621960.pdf", "MLIT, 2023", "国土交通省（改正空家法の概要）",
+                       "MLIT: Outline of the 2023 amendment to the Vacant Houses Act (in force 13 December 2023)"),
+"mlit_owner_survey2024": ("https://www.mlit.go.jp/jutakukentiku/house/content/001907473.pdf", "MLIT, 2025", "国土交通省（令和6年空き家所有者実態調査・結果のポイント）",
+                          "MLIT: 2024 Survey of Vacant House Owners, key results (August 2025)"),
+"mlit_owner_survey2024_report": ("https://www.mlit.go.jp/jutakukentiku/house/content/001907478.pdf", "MLIT, 2025 (report)", "国土交通省（令和6年空き家所有者実態調査・報告書）",
+                                 "MLIT: 2024 Survey of Vacant House Owners, full report (August 2025)"),
+"egov_registration_act": ("https://laws.e-gov.go.jp/law/416AC0000000123", "Real Property Registration Act", "不動産登記法（e-Gov法令検索）",
+                          "Real Property Registration Act, Act No. 123 of 2004, Articles 76-2 and 164 (e-Gov)"),
+"moj_inheritance_reg": ("https://www.moj.go.jp/MINJI/minji05_00565.html", "Ministry of Justice", "法務省（相続登記の申請義務化）",
+                        "Ministry of Justice: Mandatory registration of inherited real estate"),  # 今回は検索結果でのみ確認
+"mlit_seismic": ("https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_fr_000043.html", "MLIT (seismic retrofit)", "国土交通省（住宅・建築物の耐震化）",
+                 "MLIT: Making homes and buildings earthquake-resistant"),
+"mlit_seismic_1981": ("https://www.mlit.go.jp/common/001184897.pdf", "MLIT (1981 standard)", "国土交通省（新耐震基準の木造住宅の耐震性能検証法）",
+                      "MLIT: Verification method for wooden houses built to the post-June 1981 seismic standard"),
+"mlit_akiya_bank": ("https://www.mlit.go.jp/totikensangyo/const/sosei_const_tk3_000131.html", "MLIT (akiya bank)", "国土交通省（空き家・空き地バンク総合情報ページ）",
+                    "MLIT: National akiya bank information page (figures as of end of October 2026)"),
+"mlit_akiya_bank_outline": ("https://www.mlit.go.jp/totikensangyo/const/content/002045626.pdf", "MLIT (akiya bank outline)", "国土交通省（全国版空き家・空き地バンクについて）",
+                            "MLIT: About the national akiya bank (as of 31 October 2026)"),
+"shizuoka_akiya_bank": ("https://www.city.shizuoka.lg.jp/s7345/s000893.html", "Shizuoka City (akiya bank)", "静岡市（空き家情報バンク）",
+                        "Shizuoka City: Shizuoka City akiya bank (checked November 2026)"),
+"kamiichi_zero_yen": ("https://www.town.kamiichi.toyama.jp/page/1934.html", "Kamiichi Town", "上市町（0円空家バンク）",
+                      "Kamiichi Town, Toyama: Zero-yen akiya bank (updated 18 November 2026)"),
+"kamiichi_zero_yen_flow": ("https://www.town.kamiichi.toyama.jp/uploaded/attachment/3448.pdf", "Kamiichi Town (process)", "上市町（0円空家バンクの流れ）",
+                           "Kamiichi Town, Toyama: How the zero-yen akiya bank works"),
+"mlit_brokerage_fee2024": ("https://www.mlit.go.jp/tochi_fudousan_kensetsugyo/const/content/001749923.pdf", "MLIT, 2024", "国土交通省（空き家等に係る媒介報酬規制の見直し）",
+                           "MLIT: Revised brokerage fee rules for low-priced and long-vacant properties (in force 1 July 2024)"),
+```
+
+### 開けなかったドメイン
+
+- `www.moj.go.jp`・`houmukyoku.moj.go.jp`（CloudFront の 403 “Request blocked”。相続登記のページ、`moj_nationality` の PDF）
+- `www.gov-online.go.jp`（プロキシで拒否）
+- `www.homes.co.jp`・`www.akiya-athome.jp`（全国版空き家バンクの2サイト。接続できず → 英語で検索できるかを確認できない）
+- `www.reinfolib.mlit.go.jp` の API（鍵が必要。ネットワークではなく認証の問題）
+
+### 外部ページの命令
+
+開いたページ・検索結果に、ファイル操作・URL へのアクセス・ルール変更などの命令は見当たらなかった。
