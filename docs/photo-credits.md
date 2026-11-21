@@ -32,6 +32,7 @@
 | `u-shop-bicycles.jpg` | case-owner-setouchi-cycling | Rob Maxwell（@robmaxwell） | https://unsplash.com/photos/eKUOT14SJxY |
 | `u-phone-travel.jpg` | minpaku-shukyaku-first-steps | Dominik Dancs（@dodancs） | https://unsplash.com/photos/YumiD4DmYBA |
 | `u-made-bed.jpg` | minpaku-staff-atsumekata | Dave Photoz（@mirapolis） | https://unsplash.com/photos/6MYm-cUJRB0 |
+| `u-phone-map.jpg` | minpaku-google-map | henry perks（@hjkp） | https://unsplash.com/photos/BJXAxQ1L7dI |
 | `u-filling-forms.jpg` | small-inn-subsidies | Romain Dancre（@romaindancre） | https://unsplash.com/photos/doplSDELX7E |
 | `u-calculator-pen.jpg` | minpaku-vs-rental-income | Aaron Lefler（@alefler） | https://unsplash.com/photos/Vs6ip7fsld8 |
 | `u-tea-room.jpg` | guest-review-tips | Jens F（@jensscapes） | https://unsplash.com/photos/VE11r3TJH70 |
