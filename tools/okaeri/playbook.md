@@ -56,6 +56,10 @@
    - 出典や制度の説明が、本文の流れを止めている（✕ According to the official site of …, which was last updated in …）→ 出典は番号の注に任せ、本文では言い切る。
    - 名所・事実の並べ立てで、理由や感じ方がない（✕ X is famous for Y. Z has a long history.）→ 「なぜ行く価値があるか」「行くとどう感じるか」「どんな人に合うか」を友人が話すように添える。1つの話題に、事実1つと、読み手にとっての意味1つ。
    - 歴史・背景の固い決まり文句（✕ has a big place in history / is known for its rich culture / offers a variety of）→ 具体的な一場面で言う。
+   - **段落で数字が続く**（1文ずつは短くても、数字の文が3つ以上続くと統計の読み上げになる）→ 段落で言う数字は、読み手の判断に要る1〜2個にし、残りは表か、意味に言い換える（✕ 9.0 million… 13.8%… 3.86 million… 369,000… → ◯ 「9 million empty homes, a record. The ones people mean by “abandoned” are about 3.9 million of those.」）。
+   - **百科事典・図鑑の書き出し**（分類・生息域・定義から入る）→ 友人が最初に言うこと（見た目・味・何がうれしいか・読み手の疑問への答え）から入り、定義や分類はあとに回す。
+   - **お役所言葉の正式名から入る**（✕ apply for a Certificate of Eligibility from the Minister of Justice）→ 普通の言葉で言い、正式名はかっこで添える（◯ get a pre-approval document (officially a Certificate of Eligibility) from Japan’s immigration authorities）。正式名は、読み手が書類や窓口で探すときに要るので消さない。
+   （2026-11-21 追加。人の方針「ネイティブ感を上げる」）
    直し方の目安: 声に出して読んで、友人に話すときに言わない言い回し・息が続かない文は書き直す。正確さは変えない（事実・数値・出典は同じまま、見せ方と語り口だけを変える）。
 
 自然に読める英語の目安:

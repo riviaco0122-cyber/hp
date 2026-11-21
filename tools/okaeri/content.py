@@ -317,7 +317,7 @@ ARTICLES = [
  ],
  "body": """
 <h2>What is kinmedai?</h2>
-<p>Kinmedai is a deep-sea fish with red skin and big golden eyes, known in English as splendid alfonsino (<em>Beryx splendens</em>) [[s:fishbase_beryx]]. It lives on continental slopes and on the sides and tops of underwater mountains, at around 200 to 800 metres off Chiba [[s:jfa_kinme_2021,chiba_kinme_r6]]. Once it’s landed, the skin turns red all over in about 40 minutes [[s:shimoda_news]].</p>
+<p>Kinmedai is the bright red fish with big golden eyes, and in Shimoda it’s the fish everyone wants you to try. In English it’s called splendid alfonsino (<em>Beryx splendens</em>) [[s:fishbase_beryx]]. It lives deep down, at around 200 to 800 metres off Chiba [[s:jfa_kinme_2021,chiba_kinme_r6]], and once it’s landed, the skin turns red all over in about 40 minutes [[s:shimoda_news]].</p>
 <p>The name is written 金目鯛, which literally means “golden-eye sea bream”. If you’ve seen it called golden-eye snapper on an English menu, it’s the same fish. Despite the name, it isn’t a sea bream [[s:shimoda_kanko_kinme]], and it isn’t a snapper either: it belongs to the alfonsino family, Berycidae [[s:tokyo_kinme_tag]].</p>
 
 <h2>What does kinmedai taste like, and how is it eaten?</h2>
@@ -360,7 +360,7 @@ ARTICLES = [
 
 <h2>Where can you eat kinmedai in Shimoda?</h2>
 <p>Plenty of places in town serve it, and the tourism association’s list is a good place to start. It’s a long one, with 19 restaurants and 34 hotels and inns on it in November 2026 [[s:shimoda_kanko_kinme]]. Some may take kinmedai off the menu depending on the catch, so it’s not a bad idea to ask when you book [[s:shimoda_kanko_kinme]].</p>
-<p>No wonder it’s on so many menus. Shimoda sits at the southern tip of the [[l:izu|Izu Peninsula]], and it’s said to be Japan’s top kinmedai port. In November 2026, the tourism association put landings at over 1,000 tonnes a year. That’s about 80% of all the fish landed there [[s:shimoda_kanko_kinme]]. You may hear locals talk about two kinds: <em>jikinme</em>, caught close by between Oshima and Kozushima, and <em>oki-kinme</em>, from grounds further out (as a 2014 TV Tokyo programme put it) [[s:tvtokyo]].</p>
+<p>No wonder it’s on so many menus. Shimoda, at the southern tip of the [[l:izu|Izu Peninsula]], is said to be Japan’s top kinmedai port, and kinmedai make up about 80% of the fish landed there (over 1,000 tonnes a year, by the tourism association’s count in November 2026) [[s:shimoda_kanko_kinme]]. You may hear locals talk about two kinds: <em>jikinme</em>, caught close by between Oshima and Kozushima, and <em>oki-kinme</em>, from grounds further out (as a 2014 TV Tokyo programme put it) [[s:tvtokyo]].</p>
 <p>If you only have time for one meal, we’d start at Ichiba no Shokudo Kinmetei, a canteen inside the Shimoda fish market. You can have a kinmedai rice bowl served three ways, or a whole simmered kinmedai set [[s:pref]]. Hours do change, so a quick check before you walk over can save a wasted trip.</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>Kinmetei</th><th>Details</th></tr></thead>
@@ -384,7 +384,7 @@ ARTICLES = [
 
 <h2>Why stay overnight instead of visiting for the day?</h2>
 <p>In our view, a night in town is what makes a kinmedai trip relaxed. You can have kinmedai for dinner and wake up with nowhere you need to be. There’s time for a walk down to the harbour, then breakfast at the market canteen, which opens at 7:00 [[s:pref]]. The morning set changes daily with the catch [[s:pref]], and there’s no train to rush back for. If you can stay longer, our [[l:shimoda-guide|guide to a week in Shimoda]] covers the beaches and the rest of the town.</p>
-<p>A day trip is possible, but you’d be up very early. The first Tokaido Line train from Tokyo Station leaves at 5:20 and doesn’t reach Atami until 7:08. Your one earlier option is a 4:35 local from Shinagawa, which connects at Atami. On JR East’s November 2026 timetable, that gets you to Izukyu-Shimoda at 7:59 [[s:jre_tt_tokyo]]. If the viewing still ran until about 9:00, as it did in 2016 [[s:shimoda_news]], you’d still have most of an hour after the ten-minute walk to the market. Routes are in our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]].</p>
+<p>A day trip is possible, but only just. The earliest you can reach Izukyu-Shimoda is 7:59, on a 4:35 local from Shinagawa that connects at Atami (JR East’s November 2026 timetable) [[s:jre_tt_tokyo]]. If the viewing still ran until about 9:00, as it did in 2016 [[s:shimoda_news]], you’d still have most of an hour after the ten-minute walk to the market. Routes are in our guide to [[l:izu-from-tokyo|getting to the Izu Peninsula from Tokyo]].</p>
 <p>If you’d like to cook a fish yourself, the Izu Fisheries Cooperative runs a shop on the ground floor of the Kaikoku Shimoda Minato roadside station that sells Shimoda kinmedai [[s:shimoda_kanko_gift]]. It’s about ten minutes on foot from the station [[s:pref_izu_gyokyo_shop]]. It’s open 8:00 to 16:30, with no regular closing day [[s:pref_izu_gyokyo_shop]]. Those are the hours as of April 2025, so a quick check before you go is a good idea. You’ll need a kitchen, of course. Our apartment in the old town, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, is eight minutes’ walk from the station [[s:node_access]]. Its kitchen has a gas hob, fridge, rice cooker and cookware [[s:node_room]].</p>
 """,
  "faq": [
@@ -423,7 +423,7 @@ ARTICLES = [
   ],
   "body": """
 <h2>金目鯛とはどんな魚か</h2>
-<p>金目鯛は、赤い皮と大きな金色の目をした深海魚です。英語では splendid alfonsino（学名 <em>Beryx splendens</em>）と呼ばれます[[s:fishbase_beryx]]。大陸斜面や、海の中の山の斜面・頂上にすんでいて、千葉の沖では水深200〜800メートルほどの所です[[s:jfa_kinme_2021,chiba_kinme_r6]]。水揚げされると、40分ほどで全身が赤くなります[[s:shimoda_news]]。</p>
+<p>金目鯛は、真っ赤な体に大きな金色の目をした魚で、下田に来たらまず食べてほしいと、町じゅうがすすめる魚です。英語では splendid alfonsino（学名 <em>Beryx splendens</em>）と呼ばれます[[s:fishbase_beryx]]。千葉の沖では水深200〜800メートルほどの深い所にすみ[[s:jfa_kinme_2021,chiba_kinme_r6]]、水揚げされると、40分ほどで全身が赤くなります[[s:shimoda_news]]。</p>
 <p>漢字では「金目鯛」と書きます。英語のメニューで golden-eye snapper と見かけたなら同じ魚です。名前に「鯛」がついていますが鯛の仲間ではなく[[s:shimoda_kanko_kinme]]、フエダイ（スナッパー）の仲間でもありません。キンメダイ科（Berycidae）の魚です[[s:tokyo_kinme_tag]]。</p>
 
 <h2>金目鯛はどんな味で、どうやって食べるのか</h2>
@@ -490,7 +490,7 @@ ARTICLES = [
 
 <h2>日帰りではなく、泊まったほうがいい理由</h2>
 <p>私たちは、町に1泊すると金目鯛の旅がずっとゆったりすると思っています。夕食に金目鯛を食べたら、翌朝は急ぐ用事もありません。港までのんびり歩いて、7時に開く市場の食堂で朝ごはん[[s:pref]]。朝はその日の水揚げで変わる日替わりの定食です[[s:pref]]。帰りの電車に追われることもありません。もっと長くいられるなら、浜や町の過ごし方を[[l:ja-shimoda-guide|下田で1週間過ごすためのガイド]]にまとめました。</p>
-<p>日帰りもできますが、かなりの早起きになります。東京駅の始発の東海道線は5:20発で、熱海に着くのは7:08です。それより早い行き方は1つだけで、品川4:35発の普通に乗って熱海で乗り継ぎます。JR東日本の2026年11月の時刻表では、伊豆急下田に7:59に着きます[[s:jre_tt_tokyo]]。2016年のように見学が9時ごろまであれば[[s:shimoda_news]]、駅から市場まで約10分歩いても、1時間近く残ります。行き方は、[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]にまとめています。</p>
+<p>日帰りもできますが、ぎりぎりです。いちばん早く伊豆急下田に着けるのは、品川4:35発の普通で熱海で乗り継ぐ行き方で、7:59着です（JR東日本の2026年11月の時刻表）[[s:jre_tt_tokyo]]。2016年のように見学が9時ごろまであれば[[s:shimoda_news]]、駅から市場まで約10分歩いても、1時間近く残ります。行き方は、[[l:ja-izu-from-tokyo|東京から伊豆半島への行き方の記事]]にまとめています。</p>
 <p>魚を自分で料理してみたいなら、道の駅「開国下田みなと」の1階で、伊豆漁協が下田の金目鯛などを売る店を開いています[[s:shimoda_kanko_gift]]。駅から歩いて約10分です[[s:pref_izu_gyokyo_shop]]。営業は8時〜16時30分で、定休日はありません[[s:pref_izu_gyokyo_shop]]。2025年4月時点の営業時間なので、出かける前にさっと確かめておくと安心です。もちろん、料理するにはキッチンが要ります。旧町内にある私たちのアパートの一室「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」は、駅から歩いて8分です[[s:node_access]]。キッチンには、ガスコンロ・冷蔵庫・炊飯器・調理器具がそろっています[[s:node_room]]。</p>
 """,
   "faq": [
@@ -530,7 +530,7 @@ ARTICLES = [
    "From abroad, a monthly rental or a guesthouse with monthly rates is usually more realistic than a town’s trial home.",
  ],
  "body": """
-<p>An akiya (空き家) is simply a house that nobody lives in, and Japan has a lot of them. The government’s housing survey counted 9.0 million in October 2023 [[s:stat_housing2023]]. That’s a record 13.8% of all the homes in the country. About 3.86 million of them weren’t for rent or sale, and weren’t anyone’s second home either [[s:stat_housing2023]]. That group has grown by 369,000 since 2018, and in our experience it’s the one people mean when they talk about Japan’s abandoned houses.</p>
+<p>An akiya (空き家) is simply a house that nobody lives in, and Japan has a record number of them: about 9 million in the 2023 housing survey, or 13.8% of all homes [[s:stat_housing2023]]. Plenty of those are just waiting for a tenant or a buyer, though. The ones people mean when they talk about Japan’s abandoned houses, in our experience, are the 3.86 million that aren’t for rent, for sale or anyone’s second home, and that group has kept growing since the 2018 survey [[s:stat_housing2023]].</p>
 
 <h2>Can foreigners buy an akiya?</h2>
 <p>Yes, non-residents can buy. What’s changed is the paperwork, and the Ministry of Finance’s rules spell it out. Since April 2026, if you buy property in Japan while living abroad, you have to report it to the ministry under the Foreign Exchange Act, even if it’s a home you plan to live in [[s:mof_fefta2026,mof_realprop_faq]]. Real Estate Japan, a property site for foreign buyers, puts it simply: you don’t need to live in Japan to buy [[s:rej]]. And since 5 October 2026, every buyer, Japanese or not, gives their nationality when the purchase is registered [[s:moj_nationality]].</p>
@@ -635,7 +635,7 @@ ARTICLES = [
     "海外から来るなら、自治体のお試し住宅より、マンスリーの部屋か月割のある宿のほうが、たいてい現実的です。",
   ],
   "body": """
-<p>akiya（空き家）は、ひとことで言えば、誰も住んでいない家のことで、日本にはとてもたくさんあります。国の住宅の調査では、2023年10月時点で900万戸[[s:stat_housing2023]]。日本の住宅の13.8%にあたり、過去最高です。そのうち約386万戸は、貸すためでも売るためでもなく、別荘でもない家でした[[s:stat_housing2023]]。こうした家は2018年から36万9千戸増えていて、私たちの感覚では、「日本の放置された家」と言うとき、たいていはこの家のことを指しています。</p>
+<p>akiya（空き家）は、ひとことで言えば、誰も住んでいない家のことです。日本には過去最多の約900万戸があり、2023年の住宅の調査で、住宅全体の13.8%にあたります[[s:stat_housing2023]]。ただ、その中には、次の借り手や買い手を待っているだけの家もたくさんあります。私たちの感覚では、「日本の放置された家」と言うときに指しているのは、貸すためでも売るためでも別荘でもない約386万戸のほうで、2018年の調査から増え続けています[[s:stat_housing2023]]。</p>
 
 <h2>外国人は空き家を買えるのか</h2>
 <p>買えます。日本に住んでいない人も買えます。変わったのは手続きのほうで、何をすればいいかは財務省の決まりに書かれています。2026年4月から、海外に住んだまま日本の不動産を買うと、住むための家でも、外為法にもとづいて財務省に報告することになりました[[s:mof_fefta2026,mof_realprop_faq]]。外国からの買い手向けの不動産サイト Real Estate Japan も、買うのに日本に住んでいる必要はないと、はっきり書いています[[s:rej]]。それから2026年10月5日からは、日本人も含めて、買った人はみな登記のときに国籍を届け出ます[[s:moj_nationality]]。</p>
@@ -985,12 +985,12 @@ ARTICLES = [
 <p>Their conditions are a little different from yours. Family members need a passport from a visa-exempt country or region, and the tax treaty test applies only to you [[s:isa_nomad_en]]. Each of them also needs their own policy on the same terms as yours, covering death, injury and illness, with at least ¥10 million for treatment [[s:isa_nomad_en]]. If you and your partner aren’t married, it’s worth asking the agency before you plan around it, because the status is written for a spouse or a child.</p>
 
 <h2>How do you apply?</h2>
-<p>The details are split across two official pages, which can feel a little scattered at first. The Ministry of Foreign Affairs issues the visa, and JNTO points you to its page for the documents [[s:jnto_nomad]]. If it’s your first entry on this status, the Immigration Services Agency explains how to apply for a Certificate of Eligibility [[s:isa_nomad_en]].</p>
+<p>The details are split across two official pages, which can feel a little scattered at first. The Ministry of Foreign Affairs issues the visa, and JNTO points you to its page for the documents [[s:jnto_nomad]]. If it’s your first entry on this status, the Immigration Services Agency explains how to get the pre-approval document you’ll need (officially a Certificate of Eligibility) [[s:isa_nomad_en]].</p>
 <ol>
 <li>Find your passport’s country or region on the agency’s list [[s:isa_nomad_list]].</li>
 <li>Gather proof of your income and an insurance policy that meets the conditions [[s:isa_nomad_en]].</li>
 <li>Read the Ministry of Foreign Affairs page that JNTO links to for the current visa documents [[s:jnto_nomad]].</li>
-<li>Read the agency’s guidance on the Certificate of Eligibility for a first entry on this status [[s:isa_nomad_en]].</li>
+<li>Read the agency’s guidance on getting that pre-approval document (Certificate of Eligibility) for a first entry [[s:isa_nomad_en]].</li>
 <li>Plan your exit date, since the stay ends at six months [[s:isa_nomad_en]].</li>
 </ol>
 <p>It makes sense to sort out the status before you fly, rather than arrive as a tourist and try to switch. Switching inside Japan is harder than many people hope: a short-term visitor can only change status here when there are “unavoidable special circumstances” [[s:egov_immig_act]]. For anything the two pages don’t answer, ask the ministry or the agency.</p>
@@ -1652,13 +1652,13 @@ ARTICLES = [
 <p>The status is built for short stays like a holiday, sport, visiting family, or business meetings [[s:egov_immig_act]]. It doesn’t cover paid work, long-term study or applying to live here [[s:jnto_visa]]. So it suits a holiday or a family visit, but it isn’t a way to move here.</p>
 
 <h2>Can you extend a visa-free stay?</h2>
-<p>You can apply, but we wouldn’t plan a trip around it. The Immigration Control Act lets you apply to renew your period of stay, but the Minister of Justice can grant it only when there are reasonable grounds [[s:egov_immig_act]].</p>
+<p>You can apply, but we wouldn’t plan a trip around it. You can apply to extend your stay, but it’s granted only when there are reasonable grounds [[s:egov_immig_act]].</p>
 <p>Timing matters if your plans fall apart near the end. Say you apply before your period of stay ends and there’s no decision yet. You can then stay until the decision or two months after your old expiry date, whichever comes first [[s:egov_immig_act]]. That grace period doesn’t apply if you were given 30 days or less [[s:egov_immig_act]]. So if you think you’ll go over, it’s worth talking to the immigration authorities before the date, not after.</p>
 <p>Switching to another status from inside Japan is just as narrow. For a short-term visitor, the Act only allows a change of status when there are unavoidable special circumstances [[s:egov_immig_act]]. That’s why we’d sort out any longer status before you fly.</p>
 
 <h2>Can you leave Japan and come back for another 90 days?</h2>
 <p>You can come back, but a new entry isn’t a fresh 90 days by right. Each time you land, an immigration inspector checks that your passport is valid and that what you plan to do here is genuine and fits your status. They also check that the period fits the rules [[s:egov_immig_act]]. It’s up to you to show that you meet those conditions [[s:egov_immig_act]].</p>
-<p>People often ask how many days they need to spend abroad before coming back, or whether there’s a limit per year. What the law sets out is the check itself. Each time, the officer at the border decides whether you meet the entry conditions in Article 7, such as whether the purpose of your trip is genuine [[s:egov_immig_act]]. We don’t know of a number of days that makes the next entry safe, so we wouldn’t build a plan on leaving and coming back again and again.</p>
+<p>People often ask how many days they need to spend abroad before coming back, or whether there’s a limit per year. What the law sets out is the check itself. Each time, the officer at the border decides whether you meet the entry conditions, such as whether the purpose of your trip is genuine [[s:egov_immig_act]]. We don’t know of a number of days that makes the next entry safe, so we wouldn’t build a plan on leaving and coming back again and again.</p>
 <p>In our view, the better plan for anything beyond 90 days is to pick a status that fits the length of your stay, before you come.</p>
 
 <h2>Which status fits six months or a year?</h2>
@@ -1670,7 +1670,7 @@ ARTICLES = [
 <tr><td><strong>Digital nomad</strong> (Designated Activities)</td><td>Up to six months, with no extension [[s:isa_nomad_en]]</td><td>Remote workers with an employer or clients outside Japan who meet the income and insurance rules [[s:isa_nomad_en]]</td><td>No [[s:egov_immig_act,egov_immig_rules]]</td></tr>
 <tr><td><strong>Long stay for sightseeing and recreation</strong> (Designated Activities)</td><td>A stay of up to one year [[s:egov_nhi_rules]]</td><td>People aged 18 or over staying for sightseeing and recreation, and a spouse who comes with them [[s:egov_nhi_rules]]</td><td>Yes, if you’re given more than three months [[s:egov_immig_act,egov_immig_rules]]</td></tr>
 </tbody></table></div>
-<p>Study, work and family statuses work differently. For those, the law lets you apply in advance for a Certificate of Eligibility from the Minister of Justice, and someone at the school or company taking you on can apply for you [[s:egov_immig_act]].</p>
+<p>Study, work and family statuses work differently. For those, you can get a pre-approval document from Japan’s immigration authorities before you travel (officially a Certificate of Eligibility), and someone at the school or company taking you on can apply for it on your behalf [[s:egov_immig_act]].</p>
 <p>The digital nomad status suits people who want to keep working for an employer or clients abroad. It needs ¥10 million a year in income [[s:isa_nomad_en]], and our [[l:digital-nomad|guide to Japan’s digital nomad visa]] covers who qualifies and what it’s like to live here without a residence card.</p>
 <p>The long stay for sightseeing is less well known. It does come with a residence card for stays of more than three months, but it still doesn’t let you join National Health Insurance [[s:egov_immig_act,egov_immig_rules,egov_nhi_rules]], so you’ll want private health cover. Its other conditions, such as which passports qualify and what you need to show, are best checked with a Japanese embassy or consulate in your country.</p>
 <p>For many people, though, 90 days is plenty for a first season. It’s enough to [[l:akiya-try-first|live in a town for a month or two before you buy a house]]. Our guide to [[l:monthly-rental|renting a place by the month]] covers where you’d stay.</p>
@@ -1680,7 +1680,7 @@ ARTICLES = [
 <p>Whether answering a few emails for your employer counts depends on what you actually do, and we won’t guess at it for you. What’s clear is that Japan has a status built for remote work. If you want to keep working for an employer or clients abroad while you stay longer, the digital nomad status is the one written for that [[s:egov_immig_rules,isa_nomad_en]].</p>
 
 <h2>What happens if you overstay?</h2>
-<p>It’s serious, and it can keep you out of Japan for years. Staying past your period of stay without renewing or changing it is a ground for deportation [[s:egov_immig_act]]. It’s also a crime, with up to three years’ imprisonment, a fine of up to ¥3 million, or both [[s:egov_immig_act]].</p>
+<p>It’s serious, and it can keep you out of Japan for years. If you stay past your permitted date without extending or changing your status, you can be deported [[s:egov_immig_act]]. It’s also a crime, with up to three years’ imprisonment, a fine of up to ¥3 million, or both [[s:egov_immig_act]].</p>
 <p>How long you’re kept out depends on how you leave. Here’s how the Act sets it out, in the version in force from 1 October 2026 [[s:egov_immig_act]].</p>
 <div class="tablewrap"><table class="free">
 <thead><tr><th>How you leave</th><th>How long you can’t come back</th></tr></thead>
@@ -1703,13 +1703,13 @@ ARTICLES = [
    ("Can I extend my 90-day stay in Japan?",
     "You can apply, but it’s only granted when there are reasonable grounds [[s:egov_immig_act]]. If you might go over, talk to the immigration authorities before your stay ends, not after."),
    ("Can I leave Japan and come back for another 90 days?",
-    "You can come back, but each entry is checked again. The inspector decides on the landing conditions, such as whether your plans are genuine and fit your status, and it’s up to you to show that [[s:egov_immig_act]]. We don’t know of a number of days abroad, or a yearly pattern, that makes the next entry safe, so we wouldn’t plan on going in and out."),
+    "You can come back, but each entry is checked again. The border officer decides whether you meet the entry conditions, such as whether your plans are genuine and fit your status, and it’s up to you to show that [[s:egov_immig_act]]. We don’t know of a number of days abroad, or a yearly pattern, that makes the next entry safe, so we wouldn’t plan on going in and out."),
    ("Can I stay in Japan for six months or a year without a job?",
     "There are two main routes. One is the digital nomad status, for up to six months with no extension [[s:isa_nomad_en]]. The other is a long stay for sightseeing and recreation of up to a year, for people aged 18 or over [[s:egov_nhi_rules]]. A Japanese embassy or consulate can tell you whether you qualify."),
    ("Can I work remotely on a visa-free stay in Japan?",
     "A short-term visitor can’t do activities they’re paid for without permission [[s:egov_immig_act,jnto_visa]]. How that applies to your own job is a question for the immigration authorities. If you want to keep working for an employer or clients abroad for longer, the digital nomad status is built for that [[s:isa_nomad_en]]."),
    ("What happens if I overstay in Japan?",
-    "Overstaying is a ground for deportation and a crime [[s:egov_immig_act]]. A first deportation keeps you out for five years, while leaving under a departure order usually means one year [[s:egov_immig_act]]."),
+    "Overstaying can get you deported, and it’s also a crime [[s:egov_immig_act]]. A first deportation keeps you out for five years, while leaving under a departure order usually means one year [[s:egov_immig_act]]."),
  ],
  "sources": ["jnto_visa", "egov_immig_act", "egov_immig_rules", "egov_nhi_rules", "isa_nomad_en", "shugiin_bill221_20", "egov_immig_act_jesta", "jta_jesta"],
  "related": ["digital-nomad", "monthly-rental", "akiya-try-first"],
@@ -1757,7 +1757,7 @@ ARTICLES = [
 <tr><td><strong>デジタルノマド</strong>（特定活動）</td><td>最長6か月。延長なし[[s:isa_nomad_en]]</td><td>日本の外の雇用主や取引先のために働くリモートワーカーで、収入と保険の条件を満たす人[[s:isa_nomad_en]]</td><td>出ない[[s:egov_immig_act,egov_immig_rules]]</td></tr>
 <tr><td><strong>観光・保養の長期滞在</strong>（特定活動）</td><td>最長1年の滞在[[s:egov_nhi_rules]]</td><td>観光・保養のために滞在する18歳以上の人と、同行する配偶者[[s:egov_nhi_rules]]</td><td>3か月を超えて決まれば出る[[s:egov_immig_act,egov_immig_rules]]</td></tr>
 </tbody></table></div>
-<p>留学・仕事・家族のための在留資格は、仕組みが違います。これらは、法務大臣に在留資格認定証明書を前もって申請でき、受け入れる学校や会社の人が代わりに申請することもできます[[s:egov_immig_act]]。</p>
+<p>留学・仕事・家族のための在留資格は、仕組みが違います。これらは、来る前に入管で事前の審査を受けて証明書（在留資格認定証明書）をもらう形で、受け入れる学校や会社の人が代わりに申請することもできます[[s:egov_immig_act]]。</p>
 <p>デジタルノマドの在留資格は、海外の雇用主や取引先の仕事を続けたい人に向いています。年収1,000万円以上が必要で[[s:isa_nomad_en]]、対象になる人や、在留カードなしで暮らすとどうなるかは、[[l:ja-digital-nomad|日本のデジタルノマドビザの記事]]にまとめています。</p>
 <p>観光・保養の長期滞在は、あまり知られていません。3か月を超える滞在なら在留カードが出ますが、それでも国民健康保険には入れないので[[s:egov_immig_act,egov_immig_rules,egov_nhi_rules]]、民間の医療保険があると安心です。どのパスポートが対象か、何を示す必要があるかといった、ほかの条件は、計画を立てる前に自分の国の日本大使館・総領事館で確かめるのがいいと思います。</p>
 <p>とはいえ、最初のひと季節なら、90日で十分という人も多いはずです。[[l:ja-akiya-try-first|家を買う前に1〜2か月その町で暮らしてみる]]には足りますし、どこに泊まるかは[[l:ja-monthly-rental|月単位で部屋を借りる記事]]にまとめています。</p>
