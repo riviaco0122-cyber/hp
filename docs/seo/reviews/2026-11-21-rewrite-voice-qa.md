@@ -216,3 +216,27 @@ Experience が「なし」（捏造）の記事はない。Trustworthiness が�
 - `article_score.py --slug`: 上の14本すべて 40/40・ゲートなし。不合格だった6本は自然さ0件。japan-tourism-market-data に「の」の3連続が1件残る（title「〜地方の民泊・宿の5つの課題」。今回の直しの対象外の title なので触っていない）
 - `seo_check.py`: エラー0・警告0
 - 人の確認: why-akiya-utilization-now の title は、書き直し前（「税の負担・活用の道・民泊の追い風」）から文言が変わる（意味は同じ）
+
+## 再採点（品質管理部・2026-11-21、コミット 8bc7e61）
+
+不合格だった6本を、書き直し前の `c3d6e6f` と今の記事データを比べて、最初から採点し直した。
+
+| 記事 | 機械 | 品質 | 合計 | ゲート | 判定 |
+|---|---|---|---|---|---|
+| small-inn-subsidies | 40 | 60 | 100 | なし | 合格 |
+| why-akiya-utilization-now | 40 | 60 | 100 | なし | 合格 |
+| minpaku-vs-ryokan-law | 40 | 58 | 98 | なし | 合格（独自性 -2 は書き直し前から） |
+| minpaku-start-steps | 40 | 60 | 100 | なし | 合格 |
+| minpaku-fire-safety | 40 | 60 | 100 | なし | 合格 |
+| kominka-renovation-points | 40 | 60 | 100 | なし | 合格 |
+
+確かめたこと:
+- small-inn-subsidies base 570「融資200万円と自己資金を中心に、自治体の補助金50万円も使ってまかないました」。表・experience.md 121・132行と一致。583「創業メンバーは、担当者によって対応が変わることもあると感じました」。感想として書かれ、experience.md と一致。605・607・624 の軽い直しも反映済み
+- why-akiya-utilization-now: **title は `c3d6e6f` と全く同じ**（「〜｜税の負担・活用の道・民泊の追い風」）なので、公開済み記事の title の変更には当たらない。series1 171 の主語は「宿を運営する人」に直り、下田の実例（借りて運営）と合う。※ 上の「執筆の直し」#3 には「税負担・活用法4つ」とあるが、データは書き直し前の title に戻っている（表の記載が古い）。自然さの検出1件は、この元の title の「の」の3連続で、書き直し前からある
+- minpaku-vs-ryokan-law base 361「民泊をする人がこの法律で届出をすれば」。352「1年中稼ぎやすくなります」、366「1年を通して営業できる場合があります」。書き直し前の条件に戻った
+- minpaku-start-steps・minpaku-fire-safety・kominka-renovation-points: 「許可番号がないと、Airbnb で予約を受けられません」（書き直し前の言い方）。3ファイルとも「宿の持ち主」は0件
+- 数字の変化なし。`article_score.py --slug` 6本とも 40/40・ゲートなし／`seo_check` エラー0・警告0／`site_check --no-visual` 重大0（警告2件は search.html の画像の重さで、今回の直しとは関係ない）
+
+E-E-A-T: 6本とも Trustworthiness はあり（食い違いがなくなった）。Experience は、minpaku-vs-ryokan-law だけ「弱い」、ほかは「あり」。
+
+結論: **23本すべて合格（90点以上・ゲートなし）**。見せ方だけの書き直しとして、自分でマージしてよい条件に当たる。人の確認が必要な点は、前の節のうち、title の変更を除いたもの（ゴミの主語・補助金の時点・参考資料がない補助金の記述）。
