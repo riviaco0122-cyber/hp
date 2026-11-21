@@ -95,7 +95,7 @@ ARTICLE = {
 <li>the house is too old</li>
 <li>there’d be no use for the land even if the house came down</li>
 </ul>
-<p>Some also worry that pulling the house down would raise their property tax [[s:mlit_owner_survey2024_report]]. The law is nudging things along, though. Under the current law, heirs must register an inherited property within three years of learning about it [[s:egov_registration_act]]. We think that should make it easier to find out who owns an empty house. So many akiya owners aren’t trying to sell. They’re waiting, and a house that isn’t listed anywhere may still have an owner who’d talk.</p>
+<p>Some also worry that pulling the house down would raise their property tax [[s:mlit_owner_survey2024_report]]. The law is nudging things along, though. Under the current law, heirs must register an inherited property within three years of learning about it [[s:egov_registration_act]]. We think that should make it easier to find out who owns an empty house. The upshot for you is that plenty of akiya owners aren’t trying to sell. They’re waiting, and a house that isn’t listed anywhere may still have an owner who’d talk.</p>
 
 <h2>Are akiya only in the countryside?</h2>
 <p>No. Tokyo has more empty homes than any other prefecture, but only about 214,000 of them are the left-unused kind (2.6% of homes) [[s:stat_housing2023]]. The share of homes standing empty is highest in rural prefectures.</p>
@@ -126,11 +126,12 @@ ARTICLE = {
 <tr><td><strong>Property tax and upkeep</strong></td><td>You pay these every year. If the town formally warns that a house is badly kept, the land can lose its property tax reduction [[s:mlit_akiya_act2023]].</td><td>Every year</td></tr>
 </tbody></table></div>
 <p>We think that last row also gives some owners a reason to sell. Since an amendment in December 2023, a house left to decay can cost its owner more in tax once the town steps in [[s:mlit_akiya_act2023]].</p>
-<p>We haven’t bought an akiya ourselves, so we can only give you a sense of scale. One of our founding members rented an older flat in Shimoda from its owner and turned it into a guesthouse. The building work alone came to about ¥4.1 million, and that was a rented flat, not a house we bought. Furniture, appliances and supplies added roughly ¥2.4 million. Getting it all ready took about seven months. A whole house would usually be a bigger job, so we’d get quotes before treating any asking price as the real cost. If you’re seriously thinking about it, we’d suggest [[l:akiya-try-first|living in the town for a month before you buy]].</p>
+<p>We haven’t bought an akiya ourselves, so we can only give you a sense of scale. One of our founding members rented an older flat in Shimoda from its owner and turned it into a guesthouse. The building work alone came to about ¥4.1 million, and that was a rented flat, not a house we bought.</p>
+<p>Furniture, appliances and supplies added roughly ¥2.4 million, and getting it all ready took about seven months. A whole house would usually be a bigger job, so we’d get quotes before treating any asking price as the real cost. If you’re seriously thinking about it, we’d suggest [[l:akiya-try-first|living in the town for a month before you buy]].</p>
 
 <h2>Where do you find an akiya for sale?</h2>
 <p>Mostly through akiya banks, lists of empty homes that towns and cities put together, though ordinary estate agents sell them too. The government has a national akiya bank, run by two property companies, LIFULL and At Home, where you can search many towns’ listings in one place [[s:mlit_akiya_bank]].</p>
-<p>It doesn’t cover everywhere, though. As of October 2026, more than 1,100 towns and cities take part. Towns that aren’t part of it keep their banks on their own websites [[s:mlit_akiya_bank_outline]]. Each bank also sets its own rules. Shizuoka City’s, for example, only covers homes in the city’s designated urban area, and only estate agents can list properties on it [[s:shizuoka_akiya_bank]].</p>
+<p>It doesn’t cover everywhere, though. As of October 2026, more than 1,100 towns and cities take part [[s:mlit_akiya_bank_outline]], so if a town you like isn’t on it, its own website is worth a look. Each bank also sets its own rules. Shizuoka City’s, for example, only covers homes in the city’s designated urban area, and only estate agents can list properties on it [[s:shizuoka_akiya_bank]].</p>
 <p>A few towns go further. Kamiichi, a town in Toyama, runs a zero-yen akiya bank where owners give away the house and land for free [[s:kamiichi_zero_yen]]. The town only passes on the information, though. You deal with the owner directly and pay for the registration, repairs, moving and taxes yourself [[s:kamiichi_zero_yen_flow]].</p>
 <p>If you want to start looking, this is the order we’d go in:</p>
 <ol>
@@ -174,8 +175,8 @@ ARTICLE = {
 
 <h2>akiya って、そもそもどういう意味？</h2>
 <p>ふだんの日本語では、ただ「人が住んでいない家」のことです。ややこしいのは、日本では空き家の数え方が2通りあって、ニュースはたいてい広いほうを使っていることです。</p>
-<p>広いほうは、5年に1度の国の住宅の調査（住宅・土地統計調査）の数え方です。調査の日に、ふだん住んでいる世帯がいない住宅を、すべて数えます[[s:stat_housing2023_terms]]。つまり、次の借り手を待っている部屋も、売りに出ている家も、別荘も入ります。住んでいた人が入院して空いた家や、取り壊す予定の家も入ります[[s:stat_housing2023_terms]]。</p>
-<p>狭いほうは、空き家の対策の法律（空家等対策の推進に関する特別措置法、いわゆる空家法）の考え方です。ふだん住んだり使ったりしていない建物と、その土地が対象です[[s:egov_akiya_act]]。国の指針では、1年ほど使われた様子がないことが、目安の1つになっています[[s:mlit_akiya_guideline]]。空き家が傷みはじめたとき、町が手を打てるのは、この法律があるからです。ですから、ニュースで大きな空き家の数を見たら、それは調査の数で、その多くは次の借り手を待っているだけの家です。</p>
+<p>広いほうは、5年に1度の国の住宅の調査（住宅・土地統計調査）の数え方です。調査の日に、ふだん住んでいる世帯がいない住宅を数えます[[s:stat_housing2023_terms]]。つまり、次の借り手を待っている部屋も、売りに出ている家も、別荘も入ります。住んでいた人が入院して空いた家や、取り壊す予定の家も入ります[[s:stat_housing2023_terms]]。</p>
+<p>狭いほうは、空き家の対策の法律（空家等対策の推進に関する特別措置法、いわゆる空家法）の考え方です。ふだん住んだり使ったりしていない建物と、その土地が対象です[[s:egov_akiya_act]]。国の指針では、1年ほど使われた様子がないことが、目安の1つになっています[[s:mlit_akiya_guideline]]。空き家が傷みはじめたとき、町が手を打てるのは、この法律があるからです。ですから、ニュースで大きな空き家の数を見たら、それは調査の数で、その中には、次の借り手を待っているだけの家もたくさん入っています。</p>
 
 <h2>空き家はいくつあって、本当に放置されているのはどれくらい？</h2>
 <p>約900万戸で、過去最多です。「放置された家」と言うときに指しているのは、そのうち約390万戸です[[s:stat_housing2023]]。残りには、どれも使い道があります。半分強は貸すためか売るための家で、少しは別荘です。</p>
@@ -231,11 +232,12 @@ ARTICLE = {
 <tr><td><strong>固定資産税と維持費</strong></td><td>毎年払います。手入れが悪いと町から正式に勧告されると、土地の固定資産税の軽減がなくなることがあります[[s:mlit_akiya_act2023]]。</td><td>毎年</td></tr>
 </tbody></table></div>
 <p>この最後の行も、持ち主が売ろうと考える理由の1つになっていると私たちは思います。2023年12月の法律の改正から、傷むまま放っておいた家は、町が動くと、持ち主の税金が増えることがあるのです[[s:mlit_akiya_act2023]]。</p>
-<p>私たち自身は空き家を買ったことがないので、規模の感じをお伝えすることしかできません。創業メンバーの1人が、下田の古い部屋を持ち主から借りて、宿に改修しました。工事だけで約410万円かかりました。しかもこれは借りた部屋で、買った家ではありません。家具・家電・備品で、さらに約240万円かかりました。準備には全部で約7か月かかっています。一軒家まるごとなら、たいていもっと大きな工事になるので、どんな売り出し価格も、見積もりを取るまでは本当の費用だと考えないようにしています。本気で考えているなら、[[l:ja-akiya-try-first|買う前に、その町で1か月暮らしてみる]]ことをおすすめします。</p>
+<p>私たち自身は空き家を買ったことがないので、規模の感じをお伝えすることしかできません。創業メンバーの1人が、下田の古い部屋を持ち主から借りて、宿に改修しました。工事だけで約410万円かかりました。しかもこれは借りた部屋で、買った家ではありません。</p>
+<p>家具・家電・備品でさらに約240万円かかり、準備には全部で約7か月かかりました。一軒家まるごとなら、たいていもっと大きな工事になるので、どんな売り出し価格も、見積もりを取るまでは本当の費用だと考えないようにしています。本気で考えているなら、[[l:ja-akiya-try-first|買う前に、その町で1か月暮らしてみる]]ことをおすすめします。</p>
 
 <h2>売りに出ている空き家は、どこで探す？</h2>
 <p>おもに空き家バンクです。市町村がまとめている空き家の一覧で、ふつうの不動産会社が売っている空き家もあります。国が用意した全国版の空き家バンクは、不動産会社2社（LIFULL とアットホーム）が運営していて、たくさんの町の物件を1か所で探せます[[s:mlit_akiya_bank]]。</p>
-<p>ただし、すべての町が載っているわけではありません。2026年10月時点で、参加している市町村は1,100を超えますが、参加していない町もあり、そういう町の空き家バンクは町のサイトにしかありません[[s:mlit_akiya_bank_outline]]。決まりも空き家バンクごとに違います。たとえば静岡市の空き家バンクは、市街化区域の中の家だけが対象で、物件を載せられるのは不動産会社だけです[[s:shizuoka_akiya_bank]]。</p>
+<p>ただし、すべての町が載っているわけではありません。2026年10月時点で、参加している市町村は1,100を超えます[[s:mlit_akiya_bank_outline]]。気になる町が載っていなければ、町のサイトも見てみる価値があります。決まりも空き家バンクごとに違います。たとえば静岡市の空き家バンクは、市街化区域の中の家だけが対象で、物件を載せられるのは不動産会社だけです[[s:shizuoka_akiya_bank]]。</p>
 <p>もっと踏み込んだ町もあります。富山県の上市町は「0円空家バンク」を運営していて、持ち主が土地と家をタダで譲ります[[s:kamiichi_zero_yen]]。ただし、町は情報を紹介するだけです。持ち主と直接やりとりし、登記、修繕、引っ越し、税金は自分で払います[[s:kamiichi_zero_yen_flow]]。</p>
 <p>探しはじめるなら、私たちならこの順番で進めます。</p>
 <ol>

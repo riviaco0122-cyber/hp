@@ -82,7 +82,7 @@ ARTICLE = {
    "Rubbish rules, shop hours and the snow or typhoon season differ by town, so ask on your first day.",
  ],
  "body": """
-<p>Most guides to rural Japan are lists of pretty villages, written for a night or two. Once you’re staying a week or longer, the question changes. It’s less “where’s beautiful?” and more “where can I actually live for a while?” That’s the question our guests ask us most, so it’s the one we’ll answer here.</p>
+<p>Most guides to rural Japan are lists of pretty villages, written for a night or two. Once you’re staying a week or longer, the question changes. It’s less “where’s beautiful?” and more “where can I actually live for a while?” We think it’s the question that matters most, so it’s the one we’ll answer here.</p>
 
 <h2>What is a longer stay in rural Japan really like?</h2>
 <p>It’s slower and more ordinary than a tour, and we think that’s the point. You unpack once, find a supermarket, learn when the bus comes and go back to the same beach or bakery until people start to nod at you.</p>
@@ -101,13 +101,13 @@ ARTICLE = {
 <tr><td><strong>A clinic or hospital nearby</strong></td><td>Peace of mind, especially with children</td><td>JNTO’s medical institution search [[s:jnto_medical]]</td></tr>
 <tr><td><strong>The season</strong></td><td>Snow, typhoons and the rainy season change what you can do</td><td>The season table further down</td></tr>
 </tbody></table></div>
-<p>Once those basics are covered, the kind of place is a matter of taste. Seaside towns suit people who want to swim, surf or walk by the water every day. Hot-spring towns suit a slower winter stay, though many places to stay there are inns without kitchens. Mountain and farming areas are the quietest, and we think they’re easiest if you’re happy to drive.</p>
+<p>Once those basics are covered, the kind of place is a matter of taste. Seaside towns suit people who want to swim, surf or walk by the water every day. Hot-spring towns suit a slower winter stay, though in our view you’ll find more inns than places with kitchens. Mountain and farming areas are the quietest, and we think they’re easiest if you’re happy to drive.</p>
 <p>If you’d like a concrete example, the seaside towns of [[l:izu|the Izu Peninsula]] are about two and a half hours from Tokyo by direct train [[s:jre_tt_tokyo]]. Our [[l:shimoda-guide|Shimoda guide]] shows what daily life in one of those towns looks like.</p>
 
 <h2>Do you need a car in rural Japan?</h2>
 <p>Not if you choose your base well, but a car does widen what you can reach. Without one, you’ll live by the bus timetable, and that’s fine once you know how it works.</p>
 <p>Local buses are under pressure. About 15,800 km of local bus routes were cut across Japan over nine years up to 2024, largely because of driver shortages and shrinking towns [[s:mlit_transport_wp2026]]. On a quiet route, the last bus can shape your evening more than any restaurant does.</p>
-<p>Outside the main cities, many buses charge by distance, and the routine is simple once you’ve done it once [[s:jnto_buses]]:</p>
+<p>Outside the main cities, some buses charge by distance, and the routine is simple once you’ve done it once [[s:jnto_buses]]:</p>
 <ol>
 <li>Get on by the centre door and take a small numbered ticket.</li>
 <li>Watch the screen at the front, which shows the fare for your ticket number.</li>
@@ -123,7 +123,7 @@ ARTICLE = {
 <tr><td><strong>Bicycle</strong></td><td>Daily shopping and short trips</td><td>Hills, rain and summer heat</td></tr>
 <tr><td><strong>Hire car</strong></td><td>Farms, mountains and day trips</td><td>You’ll need the right permit (below)</td></tr>
 </tbody></table></div>
-<p>Many towns run a community bus or an on-demand shared taxi (<em>demand kōtsū</em>) to fill gaps in the network [[s:mlit_pri_demand]]. Some are aimed at residents, so it’s worth asking at the town office or tourist information centre whether you can ride.</p>
+<p>Some towns run a community bus or an on-demand shared taxi (<em>demand kōtsū</em>) to fill gaps in the network [[s:mlit_pri_demand]]. Some are aimed at residents, so it’s worth asking at the town office or tourist information centre whether you can ride.</p>
 <p>If you’d like to drive, Japan only accepts an international driving permit issued under the 1949 Geneva Convention, not the 1968 Vienna one [[s:mpd_idp_en]]. You can drive on it for up to a year from the day you arrive, or until it expires, whichever comes first [[s:kyoto_police_driving]]. A few places, including France, Germany and Switzerland, use a different route: your own licence plus an approved Japanese translation [[s:mpd_foreign_licence_en]]. For Izu in particular, our guide to [[l:izu-from-tokyo|getting to Izu from Tokyo]] covers the trains and how far you’ll get without a car.</p>
 
 <h2>Where can you stay in the countryside for a week or more?</h2>
@@ -139,11 +139,11 @@ ARTICLE = {
 <tr><td><strong>Town trial home</strong> (<em>otameshi jutaku</em>)</td><td>People thinking of moving</td><td>Usually for would-be residents, not holidaymakers [[s:shizuoka_trial]]</td></tr>
 </tbody></table></div>
 <p>We think inns are lovely for a few nights but get expensive over a long stay, and you can’t cook for yourself. Town trial homes are another thing you’ll read about. Shizuoka City’s, for example, are for people living outside the prefecture who are thinking of moving and have spoken to its relocation advisers first [[s:shizuoka_trial]]. We look at them in [[l:akiya-try-first|trying out a town before you buy]].</p>
-<p>To check that a rental is legal and know what to ask before you book a month, see our guide to [[l:monthly-rental|renting a place by the month]]. As one example of the checklist in practice, our own place, <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>, is a renovated flat of about 40 m² in Shimoda’s old town, eight minutes’ walk from the station [[s:node_room,node_access]]. There’s a convenience store two minutes away and a supermarket three [[s:node_access]], plus a kitchen, a washing machine and a gas dryer [[s:node_room]].</p>
+<p>To check that a rental is legal and know what to ask before you book a month, see our guide to [[l:monthly-rental|renting a place by the month]]. Here’s the checklist applied to our own place. <a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a> is a renovated flat of about 40 m² in Shimoda’s old town, eight minutes’ walk from the station [[s:node_room,node_access]]. There’s a convenience store two minutes away and a supermarket three [[s:node_access]], plus a kitchen, a washing machine and a gas dryer [[s:node_room]].</p>
 
 <h2>How do shops, cash and rubbish work in a small town?</h2>
-<p>Shops are usually clustered near the station or along the main road, so whether you can walk to them depends on the town. That’s why it’s near the top of the base checklist.</p>
-<p>Roadside stations (<em>michi-no-eki</em>) are worth knowing about. Japan had 1,234 of them as of September 2026 [[s:mlit_michinoeki_2026]], and they’re good places to buy fresh local produce [[s:jnto_michinoeki]]. Many sit on main roads, so we’d check for a bus stop before setting out without a car.</p>
+<p>Whether you can walk to the shops depends on the town, which is why a shop on foot is near the top of the base checklist. Once you’ve found one, the rest of daily life gets much easier.</p>
+<p>Roadside stations (<em>michi-no-eki</em>) are worth knowing about. Japan had 1,234 of them as of September 2026 [[s:mlit_michinoeki_2026]], and they’re good places to buy fresh local produce [[s:jnto_michinoeki]]. We think many are easiest to reach by car, so we’d check for a bus stop before setting out without one.</p>
 <p>Bring a card, but don’t rely on it alone. In a government survey of departing visitors in 2025, about one in ten had trouble paying by card, most often in restaurants [[s:jta_visitor_survey_2025]]. We’d keep some cash for small shops and the bus.</p>
 <p>Rubbish is the part that surprises people. Each town sets its own sorting rules and collection days, so what you learn in one place won’t quite match the next [[s:egov_waste_act]]. Many holiday rentals are in residential streets, which is why JNTO asks guests to sort rubbish properly and keep the noise down [[s:jnto_homestay]]. Where we host, guests gather their rubbish indoors and our cleaning partner does the sorting, so it’s worth asking whether your host has a system like that.</p>
 <p>When you arrive, it’s worth asking your host four things:</p>
@@ -166,8 +166,8 @@ ARTICLE = {
 <tr><td><strong>A doctor who speaks your language</strong></td><td>JNTO’s medical institution search [[s:jnto_medical]]</td><td>Filter by area and language, then confirm with the clinic</td></tr>
 <tr><td><strong>Earthquake and weather alerts</strong></td><td>The Safety tips app [[s:jta_safety_tips]]</td><td>Free, with alerts in English</td></tr>
 </tbody></table></div>
-<p>The ambulance ride itself is free, but hospital treatment isn’t [[s:iwate_emergency_en]]. In a few places, such as Ibaraki Prefecture, some large hospitals add a fee if the case turns out not to be urgent [[s:ibaraki_ambulance_fee]]. Travel insurance that covers medical costs takes most of the worry out of this.</p>
-<p>How much English you’ll hear depends on the town, and in a small one it may not be much. Certified tourist information centres can help, and their signs show how much language support each one offers [[s:jnto_tic,jnto_tic_cert]]. In our view, a translation app on your phone and a bit of patience go a long way.</p>
+<p>The ambulance ride itself is free, but hospital treatment isn’t [[s:iwate_emergency_en]]. In a few places, such as Ibaraki Prefecture, some large hospitals add a fee if the case turns out not to be urgent [[s:ibaraki_ambulance_fee]]. We’d travel with insurance that covers medical costs, which takes most of the worry out of this.</p>
+<p>How much English you’ll hear depends on the town, and in a small one it may not be much. Certified tourist information centres can help, and they’re graded by how much language support they offer [[s:jnto_tic,jnto_tic_cert]]. In our view, a translation app on your phone and a bit of patience go a long way.</p>
 
 <h2>When is the best season for a longer countryside stay?</h2>
 <p>We think spring and autumn are the easiest for most people, but the right season depends on what you want to do. The rainy season, typhoons and snow are the things that change daily life on a longer stay.</p>
@@ -183,11 +183,11 @@ ARTICLE = {
 """,
  "faq": [
    ("Can you visit the Japanese countryside without a car?",
-    "Yes, if you pick a base with a station, shops on foot and a bus service. Many rural buses charge by distance and may not take IC cards, so carry some cash [[s:jnto_buses]]. A car widens what you can reach, but you’ll need a 1949 Geneva Convention permit or an approved licence translation [[s:mpd_idp_en,mpd_foreign_licence_en]]."),
+    "Yes, if you pick a base with a station, shops on foot and a bus service. Some rural buses charge by distance and may not take IC cards, so carry some cash [[s:jnto_buses]]. A car widens what you can reach, but you’ll need a 1949 Geneva Convention permit or an approved licence translation [[s:mpd_idp_en,mpd_foreign_licence_en]]."),
    ("Where should you stay in rural Japan for a week?",
     "We’d choose a whole flat or house with a kitchen and a washing machine, often a holiday rental (minpaku). Ryokan and minshuku suit a few nights better, and town trial homes are usually for people planning to move [[s:shizuoka_trial]]."),
    ("Do people speak English in rural Japan?",
-    "It depends on the town, and in small ones it may not be much. The Japan Visitor Hotline helps in English 24 hours a day [[s:jnto_hotline]], and certified tourist information centres show their language support [[s:jnto_tic_cert]]. A translation app helps too."),
+    "It depends on the town, and in small ones it may not be much. The Japan Visitor Hotline helps in English 24 hours a day [[s:jnto_hotline]], and certified tourist information centres are graded by their language support [[s:jnto_tic_cert]]. A translation app helps too."),
    ("How does rubbish sorting work in rural Japan?",
     "Each town sets its own sorting rules and collection days [[s:egov_waste_act]], so ask your host on the first day. Some hosts gather and sort the rubbish for you."),
    ("What is the best time of year to visit the Japanese countryside?",
@@ -206,9 +206,9 @@ ARTICLE = {
    "【2026-11-21 新規（執筆部）】書いた点: ①1記事1主張は「田舎で長く過ごせるかは、地域の景色より拠点の選び方で決まる。駅・歩いて行ける店・時刻を確かめられるバスがある町なら、車がなくても日本語ができなくても数日〜数週間を暮らすように過ごせる」 ②h2 は構成案どおり7つ（長い滞在はどんなものか／拠点の選び方の表／車は要るか（バスの乗り方の番号つきリスト・移動手段の表・国際運転免許）／泊まる場所の表／店・現金・ごみ（着いた日に聞く4つ）／病気・英語（連絡先の表）／季節の表）、FAQ 5問 ③事実はリサーチメモで「開いた」と確認した公的な出典だけで書きました。名所の並べ立てにはせず、場所の性格（海沿い・温泉町・山や農村）は「どんな人に合うか」だけを1段落で書きました ④3-1 の6に合わせ、統計の数字は1段落に2つまで、気象の数字は季節の表に入れました。窓口は普通の言葉が先で、正式名（Japan Visitor Hotline など）は表の中だけにしました",
    "【書かなかったこと（リサーチメモ・編集長の指示どおり）】キャッシュレスの割合、VoiceTra などのアプリ名、乗合タクシーを走らせる市町村の全国の数、検索数、運転免許のエストニア、#7119 が英語で使えるか。救急車は「完全に無料」とは書かず「救急車で運ばれること自体は無料、病院の治療は有料。茨城県など、緊急でなかったときに一部の大病院が費用を取る地域がある」と書きました。「旅館・民宿は長くいると割高」は「私たちは思う」の見解にしています。お試し住宅の出典は shizuoka_trial だけです（minamialps_trial は使っていません）",
    "【既存記事との分け方】伊豆の運賃・時刻・JR Pass、下田の店・浜・津波、合法な民泊の見分け方と1か月の契約、お試し住宅の条件の詳細、ビザ・回線の数字は書かず、how-long-stay・digital-nomad・izu・shimoda-guide・izu-from-tokyo・monthly-rental・akiya-try-first へリンクで送りました。伊豆の例は「東京から直通の電車で約2時間半」の1文だけです（既存の出典 jre_tt_tokyo、2026年11月の時刻表）",
-   "【自社の体験（experience.md の人が確認済みの節だけ）】①ゲストは欧米からの長期滞在が中心、リモートワークやサーフィン目的の人も（2026-10-11 回答・3-2） ②ごみは室内にまとめてもらい、清掃パートナーが分別（3-2） ③夏は長期滞在が多め（2026-10-11 回答）。冒頭の「いちばん多い質問」は「ゲストから聞かれる質問」として一般的に書いています（下の確認点①）",
+   "【自社の体験（experience.md の人が確認済みの節だけ）】①ゲストは欧米からの長期滞在が中心、リモートワークやサーフィン目的の人も（2026-10-11 回答・3-2） ②ごみは室内にまとめてもらい、清掃パートナーが分別（3-2） ③夏は長期滞在が多め（2026-10-11 回答）。ゲストから聞かれる質問の多さなど、体験にない言い方はしていません",
    "【NODE Shimoda に触れるのは泊まる場所の節の最後の1回】公式サイトの客室・アクセスのページ（2026-11-21 に確認）の事実だけ: 旧町内のアパートの一室を改装した約40㎡・駅から徒歩8分・コンビニ徒歩2分・スーパー徒歩3分・キッチン・洗濯機・ガス乾燥機。“house” とは呼ばず “flat” です。料金・割引・最低泊数は書いていません",
-   "【人に確かめてほしい点】①冒頭の「それが、ゲストからいちばんよく聞かれる質問です」は、experience.md に直接の記載がありません。言い過ぎなら「よく聞かれる」に弱めるか、文ごと消してください ②見出し写真が未定です（執筆部の環境に Unsplash がなく、仮の名前 rural-village-fields と仮の alt。エンジニア部が構成案7章の絵で選び、PHOTO_CREDIT_NEW と alt を直します） ③変わりやすい数字（playbook 6章）: 道の駅 1,234（2026年9月）、農泊の地域 約700（2025年度）、Japan Visitor Hotline の番号、#7119、バス路線の廃止 約15,800km（2016〜2024年度）、外国人の宿泊の3分の2が大都市圏（2025年） ④法律・制度の記述: 国際運転免許（1949年ジュネーブ条約・入国から1年まで・6つの国と地域は翻訳文）、ごみの分別は市町村が決める（廃棄物処理法6条）、救急車の費用 ⑤リサーチメモでは過疎地域の面積が 63.1% と 63.2% で1点違うため「約60%」と丸めました"
+   "【人に確かめてほしい点】①冒頭の「ゲストのほとんどが欧米から来て、しばらく滞在する」は experience.md の「欧米からの長期滞在が中心」の言い換えです ②見出し写真が未定です（執筆部の環境に Unsplash がなく、仮の名前 rural-village-fields と仮の alt。エンジニア部が構成案7章の絵で選び、PHOTO_CREDIT_NEW と alt を直します） ③変わりやすい数字（playbook 6章）: 道の駅 1,234（2026年9月）、農泊の地域 約700（2025年度）、Japan Visitor Hotline の番号、#7119、バス路線の廃止 約15,800km（2016〜2024年度）、外国人の宿泊の3分の2が大都市圏（2025年） ④法律・制度の記述: 国際運転免許（1949年ジュネーブ条約・入国から1年まで・6つの国と地域は翻訳文）、ごみの分別は市町村が決める（廃棄物処理法6条）、救急車の費用 ⑤リサーチメモでは過疎地域の面積が 63.1% と 63.2% で1点違うため「約60%」と丸めました"
   ],
   "points": [
     "地域より先に拠点を選びます。駅があり、歩いて行けるスーパーがあり、時刻を確かめられるバスがある町です。",
@@ -216,7 +216,7 @@ ARTICLE = {
     "ごみの決まり、店の閉まる時間、雪や台風の季節は町ごとに違うので、着いた日に聞いておきます。",
   ],
   "body": """
-<p>日本の田舎のガイドの多くは、きれいな村の一覧で、1〜2泊の旅のために書かれています。1週間以上いるとなると、問いが変わります。「どこがきれいか」より、「どこならしばらく暮らせるか」です。それが、私たちがゲストからいちばんよく聞かれる質問なので、ここではそれに答えます。</p>
+<p>日本の田舎のガイドの多くは、きれいな村の一覧で、1〜2泊の旅のために書かれています。1週間以上いるとなると、問いが変わります。「どこがきれいか」より、「どこならしばらく暮らせるか」です。私たちはそれがいちばん大事な問いだと思うので、ここではそれに答えます。</p>
 
 <h2>田舎に長くいるのは、実際どんな感じか</h2>
 <p>ツアーよりゆっくりで、ふつうの毎日です。私たちは、そこがいいところだと思っています。荷ほどきは1回だけ。スーパーを見つけ、バスの来る時間を覚え、同じ浜やパン屋に何度も通ううちに、町の人が会釈してくれるようになります。</p>
@@ -235,13 +235,13 @@ ARTICLE = {
 <tr><td><strong>近くの診療所・病院</strong></td><td>とくに子ども連れなら安心につながる</td><td>日本政府観光局の医療機関の検索[[s:jnto_medical]]</td></tr>
 <tr><td><strong>季節</strong></td><td>雪・台風・梅雨で、できることが変わる</td><td>このページの下の季節の表</td></tr>
 </tbody></table></div>
-<p>この基本がそろえば、どんな場所にするかは好みです。海沿いの町は、毎日泳ぎたい、サーフィンしたい、海辺を歩きたい人に向きます。温泉町はゆっくりした冬の滞在に向きますが、泊まる所は台所のない宿が多くなります。山あいや農村はいちばん静かで、運転をいとわない人のほうが過ごしやすいと私たちは思います。</p>
+<p>この基本がそろえば、どんな場所にするかは好みです。海沿いの町は、毎日泳ぎたい、サーフィンしたい、海辺を歩きたい人に向きます。温泉町はゆっくりした冬の滞在に向きますが、私たちの見方では、台所のある所より宿のほうが多くなります。山あいや農村はいちばん静かで、運転をいとわない人のほうが過ごしやすいと私たちは思います。</p>
 <p>具体的な例を1つ挙げると、[[l:ja-izu|伊豆半島]]の海沿いの町は、東京から直通の電車で約2時間半です[[s:jre_tt_tokyo]]。そうした町の1つでの毎日がどんなものかは、[[l:ja-shimoda-guide|下田のガイド]]にまとめています。</p>
 
 <h2>田舎で車は要るか</h2>
 <p>拠点をうまく選べば要りません。ただ、車があれば行ける範囲は広がります。車がなければバスの時刻表に合わせて暮らすことになりますが、仕組みが分かれば大丈夫です。</p>
 <p>地方のバスは厳しい状況にあります。2024年度までの9年間で、全国で約15,800kmの路線バスが廃止されました。おもな理由は運転手の不足と人口の減少です[[s:mlit_transport_wp2026]]。本数の少ない路線では、どのレストランよりも、最終バスのほうが夜の過ごし方を決めます。</p>
-<p>大きな都市の外では、乗った距離で運賃が決まるバスが多く、1回乗れば流れはかんたんです[[s:jnto_buses]]。</p>
+<p>大きな都市の外では、乗った距離で運賃が決まるバスがあり、1回乗れば流れはかんたんです[[s:jnto_buses]]。</p>
 <ol>
 <li>真ん中のドアから乗り、番号の書かれた小さな券（整理券）を取ります。</li>
 <li>前の画面を見ます。自分の券の番号の運賃が出ています。</li>
@@ -257,7 +257,7 @@ ARTICLE = {
 <tr><td><strong>自転車</strong></td><td>毎日の買い物や近場</td><td>坂・雨・夏の暑さ</td></tr>
 <tr><td><strong>レンタカー</strong></td><td>農村・山・日帰りの遠出</td><td>決まった免許証が要る（下に）</td></tr>
 </tbody></table></div>
-<p>多くの町は、路線の足りないところを埋めるために、コミュニティバスや予約制の乗合タクシー（デマンド交通）を走らせています[[s:mlit_pri_demand]]。住民向けのものもあるので、乗れるかどうかは、役場か観光案内所に聞いてみてください。</p>
+<p>路線の足りないところを埋めるために、、コミュニティバスや予約制の乗合タクシー（デマンド交通）を走らせている町もあります[[s:mlit_pri_demand]]。住民向けのものもあるので、乗れるかどうかは、役場か観光案内所に聞いてみてください。</p>
 <p>運転するなら、日本で使える国際運転免許証は、1949年のジュネーブ条約にもとづくものだけで、1968年のウィーン条約のものは使えません[[s:mpd_idp_en]]。運転できるのは、日本に着いた日から1年まで、または免許証の期限まで、どちらか早いほうです[[s:kyoto_police_driving]]。フランス・ドイツ・スイスなど、いくつかの国と地域は別の方法で、自分の免許証と、認められた日本語の翻訳文で運転します[[s:mpd_foreign_licence_en]]。伊豆については、[[l:ja-izu-from-tokyo|東京から伊豆への行き方のガイド]]で、電車と、車なしでどこまで行けるかをまとめています。</p>
 
 <h2>田舎で1週間以上泊まるなら、どこがいいか</h2>
@@ -273,11 +273,11 @@ ARTICLE = {
 <tr><td><strong>自治体のお試し住宅</strong></td><td>移住を考えている人</td><td>たいていは移住を考える人向けで、旅行者向けではない[[s:shizuoka_trial]]</td></tr>
 </tbody></table></div>
 <p>旅館は数泊ならすてきですが、長くいると割高になり、自分で料理もできない、と私たちは思います。自治体のお試し住宅のことを目にすることもあるでしょう。たとえば静岡市のお試し住宅は、静岡県の外に住んでいて、移住を考えていて、先に市の移住の相談員と話した人が対象です[[s:shizuoka_trial]]。くわしくは[[l:ja-akiya-try-first|買う前にその町で暮らしてみる記事]]で取り上げています。</p>
-<p>合法な貸し部屋かの見分け方と、1か月予約する前に聞くことは、[[l:ja-monthly-rental|1か月部屋を借りるガイド]]にまとめました。このチェックリストを実際に当てはめた例として、私たちの宿「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」は、下田の旧町内にあるアパートの一室（約40㎡）を改装したもので、駅から歩いて8分です[[s:node_room,node_access]]。コンビニまで2分、スーパーまで3分で[[s:node_access]]、台所・洗濯機・ガス乾燥機があります[[s:node_room]]。</p>
+<p>合法な貸し部屋かの見分け方と、1か月予約する前に聞くことは、[[l:ja-monthly-rental|1か月部屋を借りるガイド]]にまとめました。このチェックリストを、私たちの宿に当てはめてみます。「<a href="https://nodeshimoda.com/" rel="noopener">NODE Shimoda</a>」は、下田の旧町内にあるアパートの一室（約40㎡）を改装したもので、駅から歩いて8分です[[s:node_room,node_access]]。コンビニまで2分、スーパーまで3分で[[s:node_access]]、台所・洗濯機・ガス乾燥機があります[[s:node_room]]。</p>
 
 <h2>小さな町の店・現金・ごみは、どうなっているか</h2>
-<p>店はたいてい駅の近くか大きな道沿いに集まっているので、歩いて行けるかどうかは町しだいです。だから、拠点のチェックリストの上のほうに入れています。</p>
-<p>道の駅は知っておくと便利です。2026年9月の時点で全国に1,234あり[[s:mlit_michinoeki_2026]]、地元の新鮮な野菜や魚などを買うのにいい場所です[[s:jnto_michinoeki]]。大きな道沿いにあることが多いので、車なしで出かけるなら、先にバス停があるかを確かめると思います。</p>
+<p>店まで歩いて行けるかどうかは町しだいなので、歩いて行ける店は、拠点のチェックリストの上のほうに入れています。1軒見つかれば、毎日の暮らしはずっと楽になります。</p>
+<p>道の駅は知っておくと便利です。2026年9月の時点で全国に1,234あり[[s:mlit_michinoeki_2026]]、地元の新鮮な農産物などを買うのにいい場所です[[s:jnto_michinoeki]]。車で行きやすい所が多いと思うので、車なしで出かけるなら、私たちなら先にバス停があるかを確かめます。</p>
 <p>カードは持っていきつつ、カードだけに頼らないほうがいいです。2025年に日本を出国する旅行者に国が聞いた調査では、約10人に1人がカードの支払いで困っていて、いちばん多い場所は飲食店でした[[s:jta_visitor_survey_2025]]。小さな店やバスのために、現金も少し持っておくと思います。</p>
 <p>みんなが驚くのが、ごみです。分け方と収集日は町ごとに決めているので、ある町で覚えたやり方は、次の町ではそのまま通じません[[s:egov_waste_act]]。民泊の多くは住宅街にあるので、日本政府観光局も、ごみを正しく分けて出すこと、静かにすることを呼びかけています[[s:jnto_homestay]]。私たちの宿では、ゲストにごみを部屋の中にまとめてもらい、清掃のパートナーが分別しています。ホストにそういう仕組みがあるか、聞いてみるといいと思います。</p>
 <p>着いたら、ホストに次の4つを聞いておくといいと思います。</p>
@@ -300,8 +300,8 @@ ARTICLE = {
 <tr><td><strong>自分の言葉が通じる医師</strong></td><td>日本政府観光局の医療機関の検索[[s:jnto_medical]]</td><td>地域と言語で絞り、病院にも確かめる</td></tr>
 <tr><td><strong>地震や天気の警報</strong></td><td>Safety tips アプリ[[s:jta_safety_tips]]</td><td>無料。英語で警報が届く</td></tr>
 </tbody></table></div>
-<p>救急車で運ばれること自体は無料ですが、病院の治療にはお金がかかります[[s:iwate_emergency_en]]。茨城県など一部の地域では、緊急でなかったと判断されると、大きな病院の一部が費用を取ることがあります[[s:ibaraki_ambulance_fee]]。医療費を補う旅行保険に入っておけば、この心配はほとんどなくなります。</p>
-<p>英語がどれくらい通じるかは町しだいで、小さな町ではあまり通じないかもしれません。認定された観光案内所なら手伝ってもらえますし、どのくらい外国語に対応しているかが表示でわかります[[s:jnto_tic,jnto_tic_cert]]。私たちの見方では、スマホの翻訳アプリと、少しの気長さがあれば、たいていなんとかなります。</p>
+<p>救急車で運ばれること自体は無料ですが、病院の治療にはお金がかかります[[s:iwate_emergency_en]]。茨城県など一部の地域では、緊急でなかったと判断されると、大きな病院の一部が費用を取ることがあります[[s:ibaraki_ambulance_fee]]。私たちなら医療費を補う旅行保険に入っておきます。そうすれば、この心配はほとんどなくなります。</p>
+<p>英語がどれくらい通じるかは町しだいで、小さな町ではあまり通じないかもしれません。認定された観光案内所なら手伝ってもらえます。案内所は、外国語にどのくらい対応できるかで区分されています[[s:jnto_tic,jnto_tic_cert]]。私たちの見方では、スマホの翻訳アプリと、少しの気長さがあれば、たいていなんとかなります。</p>
 
 <h2>田舎に長くいるなら、いつがいいか</h2>
 <p>多くの人にとっていちばん楽なのは春と秋だと思いますが、何をしたいかで変わります。長くいるときの毎日を変えるのは、梅雨・台風・雪です。</p>
@@ -317,11 +317,11 @@ ARTICLE = {
 """,
   "faq": [
     ("日本の田舎には、車なしで行けますか",
-     "行けます。駅があり、歩いて行ける店があり、バスが走っている拠点を選べば大丈夫です。田舎のバスの多くは乗った距離で運賃が決まり、IC カードが使えないこともあるので、現金を持っておきます[[s:jnto_buses]]。車があれば行ける範囲は広がりますが、1949年のジュネーブ条約の国際運転免許証か、認められた翻訳文が要ります[[s:mpd_idp_en,mpd_foreign_licence_en]]。"),
+     "行けます。駅があり、歩いて行ける店があり、バスが走っている拠点を選べば大丈夫です。乗った距離で運賃が決まる田舎のバスがあり、IC カードが使えないこともあるので、現金を持っておきます[[s:jnto_buses]]。車があれば行ける範囲は広がりますが、1949年のジュネーブ条約の国際運転免許証か、認められた翻訳文が要ります[[s:mpd_idp_en,mpd_foreign_licence_en]]。"),
     ("田舎で1週間泊まるなら、どこがいいですか",
      "私たちなら、台所と洗濯機のある部屋か家をまるごと借ります。多くは民泊です。旅館や民宿は数泊のほうが向き、自治体のお試し住宅は、たいてい移住を考える人向けです[[s:shizuoka_trial]]。"),
     ("日本の田舎で、英語は通じますか",
-     "町によります。小さな町ではあまり通じないかもしれません。Japan Visitor Hotline なら24時間英語で相談でき[[s:jnto_hotline]]、認定された観光案内所は外国語の対応の程度を表示しています[[s:jnto_tic_cert]]。翻訳アプリも役に立ちます。"),
+     "町によります。小さな町ではあまり通じないかもしれません。Japan Visitor Hotline なら24時間英語で相談でき[[s:jnto_hotline]]、認定された観光案内所は外国語の対応の程度で区分されています[[s:jnto_tic_cert]]。翻訳アプリも役に立ちます。"),
     ("田舎のごみの分け方は、どうなっていますか",
      "分け方と収集日は町ごとに決めているので[[s:egov_waste_act]]、着いた日にホストに聞きます。ホストがまとめて分別してくれるところもあります。"),
     ("日本の田舎に行くなら、いつがいいですか",
