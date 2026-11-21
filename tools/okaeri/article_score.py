@@ -169,6 +169,17 @@ def score(a):
     meta = [w for w in ("this page", "this article", "this guide", "in this guide", "here’s what", "here's what", "here is what", "we will explain", "we explain") if w in head]
     if meta:
         notes.append(f"冒頭でページ自身を説明している（playbook 3-1 の5）: {', '.join(meta)}。答えそのものを最初の一文で言う")
+    # 段落で数字が続く（playbook 3-1 の6）: 数字を含む文が3つ以上続く段落
+    dense = []
+    for para in re.findall(r"<p>(.*?)</p>", body, flags=re.S):
+        run = best = 0
+        for x in re.split(r"(?<=[.!?])\s+(?=[A-Z“\"(])", plain(para).strip()):
+            run = run + 1 if re.search(r"\d", x) else 0
+            best = max(best, run)
+        if best >= 3:
+            dense.append(plain(para).strip()[:60])
+    if dense:
+        notes.append(f"数字の文が3つ以上続く段落（playbook 3-1 の6）{len(dense)}件: " + " / ".join(d + "…" for d in dense[:5]))
     notes += tone(plain(re.sub(r"<table.*?</table>", " ", body, flags=re.S) + "\n" + faq_text + "\n" + a.get("dek", "")))  # 表のマスは文として数えない
     eds = len(re.findall(r"\[\[ed:", body + faq_text))
     if eds:
