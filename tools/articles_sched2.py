@@ -528,7 +528,7 @@ ARTICLES_SCHED2 = [
             ("result", "実際に、どのくらいの評価を保てているのか？", """
 <div class="callout callout--answer">
 <p class="callout__label">結論</p>
-<p>RIVIA&amp;CO.が運営する施設の一例、NODE Shimoda（静岡県下田市）は、Airbnbで<strong>★4.88（51件）</strong>の評価をもらっています。高い評価は、予約を迷う人の安心材料になります。</p>
+<p>RIVIA&amp;CO.が運営する施設の一例、NODE Shimoda（静岡県下田市）は、Airbnbで<strong>★4.88（51件）</strong>の評価をもらっています。高い評価は、予約を迷う人の安心材料になるはずです。</p>
 </div>
 <div class="stats" role="group" aria-label="NODE Shimodaの評価">
 <div class="stat stat--accent"><span class="stat__num">4.88</span><span class="stat__label">Airbnb評価</span><span class="stat__note">サイト掲載時点</span></div>
@@ -622,7 +622,7 @@ ARTICLES_SCHED2 = [
 <p>清掃・リネンの仕組みは「<a href="media/cleaning-linen-operations.html">小さな宿の清掃・リネン運用ガイド</a>」で紹介しています。</p>
 """),
             ("summary", "まとめ：先に伝える、仕組みにする、非常時は誠実に動く", """
-<p>振り返ると、私たちの宿で評価を保つのに効いたと思うのは、次の5つです。</p>
+<p>振り返って、私たちの宿で評価を保つうえで効いたと思うことを5つ挙げます。</p>
 <ul>
 <li>開業直後は料金を安めにして、レビューを集めた</li>
 <li>設備は、睡眠・仕事・洗濯に絞ってお金をかけた</li>
