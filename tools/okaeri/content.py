@@ -1914,8 +1914,8 @@ ARTICLES = [
 <tr><td><strong>Property tax and upkeep</strong></td><td>You pay these every year. If the town formally warns that a house is badly kept, the land can lose its property tax reduction [[s:mlit_akiya_act2023]].</td><td>Every year</td></tr>
 </tbody></table></div>
 <p>We think that last row also gives some owners a reason to sell. Since an amendment in December 2023, a house left to decay can cost its owner more in tax once the town steps in [[s:mlit_akiya_act2023]].</p>
-<p>Our own experience is with a rented flat, not a house we bought, so we can only give you a sense of scale. One of our founding members rented an older flat in Shimoda from its owner and turned it into a guesthouse. The building work alone came to about ¥4.1 million, and that was a rented flat, not a house we bought.</p>
-<p>Furniture, appliances and supplies added roughly ¥2.4 million, and getting it all ready took about seven months. A whole house would usually be a bigger job, so we’d get quotes before treating any asking price as the real cost. If you’re seriously thinking about it, we’d suggest [[l:akiya-try-first|living in the town for a month before you buy]].</p>
+<p>Our place in Shimoda is a rented flat, not an akiya we bought, but it gives you a rough idea of the numbers. When we turned that older flat into a guesthouse, the building work alone came to about ¥4.1 million. Furniture, appliances and supplies added roughly ¥2.4 million, and it took about seven months to get ready.</p>
+<p>A whole house is usually a much bigger job, so we wouldn’t trust any asking price until we’d seen a builder’s quote. If you’re seriously thinking about it, we’d suggest [[l:akiya-try-first|living in the town for a month before you buy]].</p>
 
 <h2>Where do you find an akiya for sale?</h2>
 <p>Mostly through akiya banks, lists of empty homes that towns and cities put together, though ordinary estate agents sell them too. The government has a national akiya bank, run by two property companies, LIFULL and At Home, where you can search many towns’ listings in one place [[s:mlit_akiya_bank]].</p>
@@ -2020,8 +2020,8 @@ ARTICLES = [
 <tr><td><strong>固定資産税と維持費</strong></td><td>毎年払います。手入れが悪いと町から正式に勧告されると、土地の固定資産税の軽減がなくなることがあります[[s:mlit_akiya_act2023]]。</td><td>毎年</td></tr>
 </tbody></table></div>
 <p>この最後の行も、持ち主が売ろうと考える理由の1つになっていると私たちは思います。2023年12月の法律の改正から、傷むまま放っておいた家は、町が動くと、持ち主の税金が増えることがあるのです[[s:mlit_akiya_act2023]]。</p>
-<p>私たちの経験は、買った家ではなく借りた部屋のものなので、規模の感じをお伝えすることしかできません。創業メンバーの1人が、下田の古い部屋を持ち主から借りて、宿に改修しました。工事だけで約410万円かかりました。しかもこれは借りた部屋で、買った家ではありません。</p>
-<p>家具・家電・備品でさらに約240万円かかり、準備には全部で約7か月かかりました。一軒家まるごとなら、たいていもっと大きな工事になるので、どんな売り出し価格も、見積もりを取るまでは本当の費用だと考えないようにしています。本気で考えているなら、[[l:ja-akiya-try-first|買う前に、その町で1か月暮らしてみる]]ことをおすすめします。</p>
+<p>下田の私たちの宿は、空き家を買ったものではなく借りた部屋ですが、目安にはなると思います。その古い部屋を宿に直したとき、工事だけで約410万円かかりました。家具・家電・備品でさらに約240万円、準備には約7か月かかっています。</p>
+<p>一軒家なら、たいていもっと大きな工事になります。売り出し価格は、工事の見積もりを見るまで本当の値段だと思わないほうがいいです。本気で考えているなら、[[l:ja-akiya-try-first|買う前に、その町で1か月暮らしてみる]]ことをおすすめします。</p>
 
 <h2>売りに出ている空き家は、どこで探す？</h2>
 <p>おもに空き家バンクです。市町村がまとめている空き家の一覧で、ふつうの不動産会社が売っている空き家もあります。国が用意した全国版の空き家バンクは、不動産会社2社（LIFULL とアットホーム）が運営していて、たくさんの町の物件を1か所で探せます[[s:mlit_akiya_bank]]。</p>
