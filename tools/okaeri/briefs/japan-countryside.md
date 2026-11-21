@@ -157,3 +157,110 @@
 
 ### 外部ページの命令について
 - 今回読んだ検索結果・JNTO のページに、従うべきでない命令（ファイル操作・URL へのアクセス・ルールの変更など）は見当たらなかった。
+
+## リサーチメモ（2026-11-21）
+
+リサーチ部。取得日はすべて 2026-11-21（日本時間）。確認の方法は「開いた」＝この環境から `curl` でページ・PDF を開いて本文を確認、「検索」＝検索結果でだけ確認（公式のページは開けていない）。**「検索」だけの事実は、記事に書かない**（開けたら使う）。
+
+### 事実の表
+
+| # | 事実（英語で1文） | 出典（発行元・資料名・年）／URL | 確認 | いつ時点 | 記事でどう書けるか |
+|---|---|---|---|---|---|
+| R1 | Depopulated areas (*kaso*) cover about 63% of Japan's land and 885 of its 1,719 municipalities (51.5%), but hold only 9.3% of the population. | 総務省「令和6年度版 過疎対策の現況（概要版）」2026年3月 https://www.soumu.go.jp/main_content/001065428.pdf | 開いた | 市町村数は2025-04-01、人口・面積は2020年国勢調査 | 節1で “About six in ten square kilometres of Japan count as officially depopulated, yet fewer than one in ten people live there” の形。面積は表で63.1%、グラフで63.2%と1点違うので **「about 60%」と丸めて書く** |
+| R2 | In 2025, 33.7% of foreign guest nights in Japan were outside the eight big-city prefectures; 66.3% were in them. | 観光庁「宿泊旅行統計調査（2025年・年間値（確定値））」2026-07-06 https://www.mlit.go.jp/kankocho/content/002026763.pdf | 開いた | 2025年1〜12月の確定値 | 「三大都市圏」＝東京・神奈川・千葉・埼玉・愛知・大阪・京都・兵庫の8都府県（定義を1語で添える: “Tokyo, Osaka, Kyoto, Nagoya and their neighbours”）。地方部は前年比 +19.1%（三大都市圏 +5.1%）。“About two in three foreign guest nights are still spent in and around the big cities” と1文。2024年は 69.1%／30.9% |
+| R3 | Outside the main cities, some buses charge by distance: you board at the centre door, take a numbered ticket, check the fare for that number on the screen at the front, pay the exact fare in the box by the driver and leave by the front door; IC cards may not work. | JNTO “Buses in Japan” https://www.japan.travel/en/plan/getting-around/buses/ | 開いた | ページに日付なし（取得日で示す） | 番号つきリストの根拠として使える（1 center door から乗り整理券 2 前の画面で番号の運賃を見る 3 運転席の横の箱に運賃ちょうどを入れ、前から降りる）。**「後ろのドア」ではなく JNTO の言い方は “centre door”**（綴りは英国式に）。「IC カードが使えない路線がある」は “may not be possible” の弱さで書く。両替機の有無は JNTO に書いていないので書かない |
+| R4① | Between FY2016 and FY2024, 15,804 km of local bus routes were abolished in Japan, including 3,887 km in FY2024 alone. | 国土交通省「令和8年版交通政策白書について」2026年7月 https://www.mlit.go.jp/sogoseisaku/transport/content/002018763.pdf （国交省物流・自動車局調べ） | 開いた（PDF のありかは検索で見つけた） | 2016〜2024年度 | 節3で1文: “Bus routes are shrinking: about 15,800 km were cut nationwide in 2016–2024.” 同資料に、運転手不足と人口減で路線廃止が進む、の説明もある |
+| R4② | On-demand transport (*demand kōtsū*) is a bus or shared taxi without fixed routes or timetables that runs to users' requests; a community bus is run or contracted by a municipality to fill gaps in service. | 国土交通政策研究所「多様な地域公共交通サービスの導入状況に関する調査研究」（国土交通政策研究第147号）2018年6月 https://www.mlit.go.jp/pri/houkoku/gaiyou/pdf/kkk147.pdf | 開いた | 2018年の定義 | 用語の説明にだけ使う。**全国の導入市町村数は、公的な最新の数字を見つけられなかったので書かない**。**旅行者が乗れるか（住民登録が要るか）も、全国の公的な説明がないので書かない** →「使えるかは町の役場か観光案内所に聞く」と行動の形で書く |
+| R5① | Japan only accepts International Driving Permits issued under the 1949 Geneva Convention (not the 1968/1969 Vienna Convention), and you may drive on one for up to one year from your entry to Japan. | 警視庁 “Valid International Driving Permit in Japan”（英語PDF）https://www.keishicho.metro.tokyo.lg.jp/multilingual/english/traffic_safety/drivers_licenses/index.files/kokusaimenkyo_english.pdf ／ 京都府警 “To drive legally in Japan”（2024-09-12更新）https://www.pref.kyoto.jp/fukei/foreign/s_men1/gaimen/unten.html | 開いた | 警視庁の日本語の同ページは2025-08-05更新 | “up to one year from the day you arrive, or until the permit expires, whichever is sooner”（京都府警の表現）。3か月ルールは住民登録のある人向けなので、旅行者向けの記事では書かなくてよい |
+| R5② | Licences from Belgium, France, Germany, Monaco, Switzerland and Taiwan can be used in Japan with an approved Japanese translation (e.g. from JAF or the issuing country's embassy), for up to one year from entry. | 警視庁 “Valid Foreign Driving License in Japan”（英語PDF、2026-06-12付）https://www.keishicho.metro.tokyo.lg.jp/multilingual/english/traffic_safety/drivers_licenses/index.files/gaikokumenkyo_english.pdf | 開いた | 2026-06-12 | 構成案の「エストニア」は **警視庁・京都府警とも一覧にない**ので書かない（6つの国・地域だけ）。翻訳文を出す機関は JAF・大使館など。JAF のページ（jaf.or.jp）は開けなかった。警察庁（npa.go.jp）も開けなかったが、警視庁の英語ページで足りる |
+| R6 | （候補）Japan's cashless payment ratio was 58.0% in 2025 on METI's new domestic measure (46.3% on the older international-comparison measure). | 経済産業省 2026-03-31 公表（**meti.go.jp は 403 で開けない**）。報道: Impress Watch https://www.watch.impress.co.jp/docs/news/2099068.html ほか | 検索のみ | 2025年 | **このままでは書かない**。meti.go.jp が開けたら、公表資料で値と指標の名前を確かめて使う。指標が2つあるので、書くなら “about half of payments” と幅を持たせ、どの指標かを出典で示す。「田舎ほど現金」は公的な出典がないので書かない。代わりに観光庁の調査（R13）の「クレジット/デビットカードの利用で困った」10.7%（場所は飲食店32%が最多）は使える |
+| R7① | Each municipality must draw up its own waste plan, which sets which kinds of household waste are collected separately and how they are sorted. | 廃棄物の処理及び清掃に関する法律 第6条第2項第3号・第6条の2（e-Gov 法令検索）https://laws.e-gov.go.jp/law/345AC0000000137 | 開いた（e-Gov の API で条文） | 現行法 | “Sorting rules are set by each town, so they really do differ from place to place.” の根拠。環境省（env.go.jp は開けた）の英語ページで同じ説明は見つけられなかった。法の英訳（japaneselawtranslation.go.jp）は開いていない |
+| R7② | JNTO advises minpaku guests to sort and put out rubbish the right way and to keep noise down, as many minpaku are in residential areas. | JNTO “Homestays, Farmstays and WWOOFing in Japan” https://www.japan.travel/en/guide/homestay-farmstay/ | 開いた | 日付なし | ページの題は “Countryside Stays” ではなく上の名前。出典の短い名前もこれに合わせる |
+| R8① | Call 119 for an ambulance; the Fire and Disaster Management Agency publishes an English ambulance guide for visitors. | 総務省消防庁「救急車利用ガイド」英語版 https://www.fdma.go.jp/publication/portal/items/portal001_pamphiet_english.pdf （入口: https://www.fdma.go.jp/publication/portal/post1.html ） | 開いた | 日付なし | 119 と、通報で聞かれること（場所・症状）を書ける。**消防庁のガイドには「無料」の記述がない** |
+| R8①' | Ambulance transport itself is free, but you pay for treatment; in Ibaraki Prefecture some large hospitals add a fee if the call is judged not urgent. | 岩手県 “Emergency Medical Care”（英語）https://www.pref.iwate.jp/kyouikubunka/kokusai/1006971/1006994/1006997/1006999.html ／ 茨城県「救急搬送における選定療養費の徴収について」（2026-10-01更新）https://www.pref.ibaraki.jp/hokenfukushi/iryo/iryo/isei/sentei_ryoyohi.html | 開いた | 2026-10-01 | 構成案の「119（無料）」は **“The ambulance ride itself is free, but hospital treatment is not”** と書く。「完全に無料」とは書かない（茨城県など、緊急でなかったときに一部の大病院が選定療養費を取る地域がある。県は「救急車の有料化ではない」と説明）。1文で足りる |
+| R8② | #7119, a phone line where nurses and doctors help you decide whether to call an ambulance, runs in 42 areas, not nationwide; hours and age limits vary by area. | 総務省消防庁「救急安心センター事業（♯7119）ってナニ？」https://www.fdma.go.jp/mission/enrichment/appropriate/appropriate007.html | 開いた | ページの「現在、全国42地域」（日付の記載なし） | “available in many prefectures but not everywhere”。対応言語の記載はない → **英語で使えるとは書かない**（日本語の相談窓口と分かる書き方に） |
+| R8③ | The Japan Visitor Hotline (050-3816-2787, from overseas +81-50-3816-2787) runs 24 hours a day, 365 days a year, in English, Chinese and Korean, for emergencies, disasters and general tourist information. | JNTO “Japan Visitor Hotline” https://www.japan.travel/en/plan/hotline/ | 開いた | 日付なし | 表にそのまま。同じページに 110（警察）・119（消防・救急） |
+| R8④ | JNTO's Medical Institution Search lets you filter hospitals by area, language and department; it lists basic information only. | JNTO（既存 `jnto_medical`）https://www.jnto.go.jp/emergency/eng/mi_guide.html | 開いた | — | 「対応言語は各病院に確かめる」の注意つき |
+| R9 | （候補）VoiceTra is a free speech-translation app from Japan's National Institute of Information and Communications Technology (NICT), translating between 33 languages. | NICT VoiceTra https://voicetra.nict.go.jp/en/ （**開けない**） | 検索のみ | 2026-02の ver.9.2.0 の時点と検索結果にあり | **このままでは書かない**。voicetra.nict.go.jp が開けたら、言語数（音声入力は24言語など一部）と「無料（通信料は別）」を確かめて使う。開けないままなら「翻訳アプリ」と一般に書き、アプリ名は出さない |
+| R10① | The rainy season usually starts around 10 May in Okinawa, early June in Kyushu to Kanto, and mid-June in Tohoku, and ends around 21 June in Okinawa, mid-to-late July in most of Honshu and around 28 July in northern Tohoku; Hokkaido has no official rainy season. | 気象庁「過去の梅雨入りと梅雨明け」https://www.data.jma.go.jp/cpd/baiu/index.html ／「梅雨について」https://www.jma.go.jp/jma/kishou/know/faq/faq33.html | 開いた | 平年＝1991〜2020年 | 平年値: 沖縄 5/10頃〜6/21頃、奄美 5/12〜6/29、九州南部 5/30〜7/15、九州北部 6/4〜7/19、四国 6/5〜7/17、中国・近畿・東海 6/6〜7/19、関東甲信 6/7〜7/19、北陸 6/11〜7/23、東北南部 6/12〜7/24、東北北部 6/15〜7/28。表では “Okinawa: May–June / Kyushu to Tohoku: early June to late July / Hokkaido: no rainy season” の幅で |
+| R10② | On average (1991–2020), 25.1 typhoons form each year, 11.7 come close to Japan and 3.0 make landfall on the main islands; August and September see the most. | 気象庁「台風の平年値」https://www.data.jma.go.jp/yoho/typhoon/statistics/average/average.html | 開いた | 1991〜2020年の平年値 | 接近: 7月2.1・8月3.3・9月3.3・10月1.7。上陸: 8月0.9・9月1.0。沖縄・奄美への接近は年7.9、本土は5.8。表では “Aug–Sep: most typhoons” |
+| R10③ | Heavy-snow areas cover about 51% of Japan's land (532 of 1,719 municipalities), and "special" heavy-snow areas about 20% (201 municipalities). | 国土交通省「豪雪地帯及び特別豪雪地帯の指定について（概要）」https://www.mlit.go.jp/kokudoseisaku/chisei/content/001881217.pdf | 開いた | 市町村数は2026-04-01、面積は2025-10-01 | 豪雪地帯 50.8%、特別豪雪地帯 19.8%。人口は14.5%（2020年国勢調査）。“About half of Japan's land is officially classed as heavy-snow country” |
+| R11① | *Nōhaku* (farm, mountain and fishing-village stays) means staying in a rural village and enjoying meals and activities based on local resources; in FY2025 there were 701 *nōhaku* areas with 9.1 million guest nights, about 1.05 million of them by foreign guests. | 農林水産省「農泊の推進について」https://www.maff.go.jp/j/nousin/kouryu/nouhakusuishin/nouhaku_top.html ／「農泊をめぐる状況について」（2026-11-20時点）https://www.maff.go.jp/j/nousin/kouryu/nouhakusuishin/attach/pdf/nouhaku_top-141.pdf | 開いた | 2025年度（R7） | 英語の言い方は JNTO の “*nouhaku* … staying in a rural area while enjoying things like farming, forestry, and fishing” を使う（農水省の英語ページは確認していない）。数字は「700ほどの地域」の1つまで |
+| R11② | JNTO describes *minpaku* as staying in someone's home (a room or a whole house, sometimes a *kominka*, a traditional house), *nouhaku* as rural stays with farming, forestry or fishing. | JNTO “Homestays, Farmstays and WWOOFing in Japan”（R7② と同じ） | 開いた | — | 表の説明に使う。民泊の制度の説明が要るときだけ既存 `jta_minpaku_overview` |
+| R11③ | JNTO describes *minshuku* as often family-run, B&B-style lodgings in the owner's home, often in rural or resort areas, with shared bathrooms and guests putting away their own futons; a ryokan stay typically includes a multi-course dinner and breakfast. | JNTO “Minshuku and Guesthouses in Japan” https://www.japan.travel/en/guide/guesthouse-budget-accommodation/ ／ JNTO “Japanese Ryokan Guide” https://www.japan.travel/en/guide/japanese-ryokan/ | 開いた | — | 旅館・民宿の違いはこの2ページで書ける。「長くいると割高」は出典がないので **見解（we think）** にする |
+| R11④ | お試し住宅の既存出典 | `shizuoka_trial`・`shizuoka_long_trial` は開けた（200）。**`minamialps_trial`（city.minami-alps.yamanashi.jp）は 404、サイトの入口も 404** | 開いた | — | お試し住宅の1行は `shizuoka_trial` だけで書く。`minamialps_trial` は使わない（他の記事で使っていれば、編集長に知らせる。山梨県の一覧 https://www.pref.yamanashi.jp/osaka/otameshi.html が代わりの候補だが未確認） |
+| R12① | JNTO and the Japan Tourism Agency certify more than 1,500 tourist information centres across Japan in three categories by language service; the certification is valid for three years. | JNTO “JNTO Tourist Information Center” https://www.japan.travel/en/tic/ ／ “TIC Certification Program” https://www.japan.travel/en/plan/tic-certification/ | 開いた | 日付なし。東京・丸の内の JNTO の対面窓口は2026-03-31で終了（同ページ） | 「どこで確かめるか」の列に “a certified tourist information centre”。カテゴリー1〜3（3は常勤の外国語スタッフなし、翻訳アプリなどで対応）。**検索ページ（tic.jnto.go.jp）は開けなかった**ので、リンクは japan.travel/en/tic/ にする |
+| R12② | 病院の検索 | 既存 `jnto_medical`（英語で使える。R8④） | 開いた | — | — |
+| R13 | In the Japan Tourism Agency's FY2025 survey of departing visitors, 11.3% had trouble using transport, and in regional areas the bus was the most common place of trouble (42%), mainly finding routes and stops. | 観光庁「訪日外国人旅行者の受入環境に関する調査を実施しました」2026-04-28 https://www.mlit.go.jp/kankocho/news08_00039.html | 開いた | 調査 2025-11-18〜2026-01-13、4,110件、5空港 | 上位: ごみ箱の少なさ17.2%、施設スタッフとの意思疎通15.4%、混雑12.9%、交通機関11.3%、多言語表示10.9%、カード10.7%。「困ったことはなかった」43.7%。多言語表示で困った場所は、地方部では飲食店（23%）。混雑で困ったのは都市部のみの訪問者14%、地方部のみ6%。節3（バス）か節6（言葉）で1つだけ使う |
+| R14 | There are 1,234 *michi-no-eki* (roadside stations) in Japan, each with free 24-hour parking and toilets, and most sell local produce. | 国土交通省「『道の駅』の第65回登録について ～全国で1,234駅に～」2026-09-04 https://www.mlit.go.jp/report/press/road01_hh_002138.html ／ 国交省「道の駅案内」（地方別の数の合計も1,234）https://www.mlit.go.jp/road/Michi-no-Eki/index.html ／ JNTO “Michi-no-Eki — Japan's roadside stations” https://www.japan.travel/en/guide/michi-no-eki/ | 開いた | 2026-09-04 | 「地元の野菜や魚」は JNTO の “regional produce”“fresh local produce” の範囲で。英語の公式の説明は JNTO を使う（国交省の英語ページは見つからなかった）。**車で行く場所が多い**ことを一言添えると、車なしの読み手に親切（これは見解） |
+| R15 | 検索語の月間検索数と KD | — | 未調査 | — | この部署の道具に検索数の調査ツールがなかった。**戦略部か編集長が KEYWORDS と同じ方法で取る**。記事の事実ではないので、本文には影響しない |
+
+### 新しく使う出典（`SOURCES_NEW` 用）
+
+```python
+"soumu_kaso_r6": ("https://www.soumu.go.jp/main_content/001065428.pdf", "MIC: depopulated areas, FY2024", "総務省「令和6年度版 過疎対策の現況（概要版）」", "Ministry of Internal Affairs and Communications, Current State of Measures for Depopulated Areas, FY2024 edition (summary), March 2026"),
+"jta_lodging_2025": ("https://www.mlit.go.jp/kankocho/content/002026763.pdf", "JTA: lodging statistics 2025", "観光庁「宿泊旅行統計調査（2025年・年間値（確定値））」", "Japan Tourism Agency, Overnight Travel Statistics Survey, 2025 annual (final), July 2026"),
+"jnto_buses": ("https://www.japan.travel/en/plan/getting-around/buses/", "JNTO: Buses in Japan", "JNTO「Buses in Japan」", "Japan National Tourism Organization, Buses in Japan"),
+"mlit_transport_wp2026": ("https://www.mlit.go.jp/sogoseisaku/transport/content/002018763.pdf", "MLIT: Transport white paper 2026", "国土交通省「令和8年版交通政策白書について」", "Ministry of Land, Infrastructure, Transport and Tourism, White Paper on Transport Policy 2026 (summary), July 2026"),
+"mlit_pri_demand": ("https://www.mlit.go.jp/pri/houkoku/gaiyou/pdf/kkk147.pdf", "MLIT PRI: local transport services", "国土交通政策研究所「多様な地域公共交通サービスの導入状況に関する調査研究」", "MLIT Policy Research Institute, Study on Diverse Local Public Transport Services, June 2018"),
+"mpd_idp_en": ("https://www.keishicho.metro.tokyo.lg.jp/multilingual/english/traffic_safety/drivers_licenses/index.files/kokusaimenkyo_english.pdf", "Tokyo police: IDP", "警視庁「Valid International Driving Permit in Japan」", "Tokyo Metropolitan Police Department, Valid International Driving Permit in Japan"),
+"mpd_foreign_licence_en": ("https://www.keishicho.metro.tokyo.lg.jp/multilingual/english/traffic_safety/drivers_licenses/index.files/gaikokumenkyo_english.pdf", "Tokyo police: foreign licences", "警視庁「Valid Foreign Driving License in Japan」", "Tokyo Metropolitan Police Department, Valid Foreign Driving License in Japan, June 2026"),
+"kyoto_police_driving": ("https://www.pref.kyoto.jp/fukei/foreign/s_men1/gaimen/unten.html", "Kyoto police: driving in Japan", "京都府警察「To drive legally in Japan」", "Kyoto Prefectural Police, To Drive Legally in Japan, September 2024"),
+"egov_waste_act": ("https://laws.e-gov.go.jp/law/345AC0000000137", "Waste Management Act", "廃棄物の処理及び清掃に関する法律", "Act on Waste Management and Public Cleaning (Act No. 137 of 1970), Articles 6 and 6-2"),
+"jnto_homestay": ("https://www.japan.travel/en/guide/homestay-farmstay/", "JNTO: homestays and farmstays", "JNTO「Homestays, Farmstays and WWOOFing in Japan」", "Japan National Tourism Organization, Homestays, Farmstays and WWOOFing in Japan"),
+"fdma_ambulance_en": ("https://www.fdma.go.jp/publication/portal/items/portal001_pamphiet_english.pdf", "FDMA: ambulance guide", "総務省消防庁「救急車利用ガイド（英語版）」", "Fire and Disaster Management Agency, Ambulance Usage Guide for Visitors (English)"),
+"iwate_emergency_en": ("https://www.pref.iwate.jp/kyouikubunka/kokusai/1006971/1006994/1006997/1006999.html", "Iwate: emergency medical care", "岩手県「Emergency Medical Care」", "Iwate Prefecture, Emergency Medical Care"),
+"ibaraki_ambulance_fee": ("https://www.pref.ibaraki.jp/hokenfukushi/iryo/iryo/isei/sentei_ryoyohi.html", "Ibaraki: non-urgent ambulance fee", "茨城県「救急搬送における選定療養費の徴収について」", "Ibaraki Prefecture, Fees for Non-urgent Ambulance Transport, updated October 2026"),
+"fdma_7119": ("https://www.fdma.go.jp/mission/enrichment/appropriate/appropriate007.html", "FDMA: #7119", "総務省消防庁「救急安心センター事業（♯7119）ってナニ？」", "Fire and Disaster Management Agency, Emergency Medical Telephone Consultation (#7119)"),
+"jnto_hotline": ("https://www.japan.travel/en/plan/hotline/", "JNTO: Japan Visitor Hotline", "JNTO「Japan Visitor Hotline」", "Japan National Tourism Organization, Japan Visitor Hotline"),
+"jma_baiu": ("https://www.data.jma.go.jp/cpd/baiu/index.html", "JMA: rainy season dates", "気象庁「過去の梅雨入りと梅雨明け」", "Japan Meteorological Agency, Start and End of the Rainy Season (normals 1991–2020)"),
+"jma_baiu_faq": ("https://www.jma.go.jp/jma/kishou/know/faq/faq33.html", "JMA: about the rainy season", "気象庁「梅雨について」", "Japan Meteorological Agency, FAQ: The Rainy Season"),
+"jma_typhoon_normals": ("https://www.data.jma.go.jp/yoho/typhoon/statistics/average/average.html", "JMA: typhoon normals", "気象庁「台風の平年値」", "Japan Meteorological Agency, Typhoon Normals (1991–2020)"),
+"mlit_snow_areas": ("https://www.mlit.go.jp/kokudoseisaku/chisei/content/001881217.pdf", "MLIT: heavy-snow areas", "国土交通省「豪雪地帯及び特別豪雪地帯の指定について（概要）」", "Ministry of Land, Infrastructure, Transport and Tourism, Designated Heavy-snow Areas (as of April 2026)"),
+"maff_nouhaku": ("https://www.maff.go.jp/j/nousin/kouryu/nouhakusuishin/nouhaku_top.html", "MAFF: nouhaku", "農林水産省「農泊の推進について」", "Ministry of Agriculture, Forestry and Fisheries, Promotion of Nouhaku (Rural Stays)"),
+"maff_nouhaku_status": ("https://www.maff.go.jp/j/nousin/kouryu/nouhakusuishin/attach/pdf/nouhaku_top-141.pdf", "MAFF: nouhaku status 2026", "農林水産省「農泊をめぐる状況について」", "Ministry of Agriculture, Forestry and Fisheries, The State of Nouhaku (as of 20 November 2026)"),
+"jnto_minshuku": ("https://www.japan.travel/en/guide/guesthouse-budget-accommodation/", "JNTO: minshuku and guesthouses", "JNTO「Minshuku and Guesthouses in Japan」", "Japan National Tourism Organization, Minshuku and Guesthouses in Japan"),
+"jnto_ryokan": ("https://www.japan.travel/en/guide/japanese-ryokan/", "JNTO: ryokan guide", "JNTO「Japanese Ryokan Guide」", "Japan National Tourism Organization, Japanese Ryokan Guide"),
+"jnto_tic": ("https://www.japan.travel/en/tic/", "JNTO: tourist information centres", "JNTO「Tourist Information Center」", "Japan National Tourism Organization, Tourist Information Center"),
+"jnto_tic_cert": ("https://www.japan.travel/en/plan/tic-certification/", "JNTO: TIC certification", "JNTO「TIC Certification Program」", "Japan National Tourism Organization, TIC Certification Program"),
+"jta_visitor_survey_2025": ("https://www.mlit.go.jp/kankocho/news08_00039.html", "JTA: visitor survey FY2025", "観光庁「訪日外国人旅行者の受入環境に関する調査」（令和7年度）", "Japan Tourism Agency, Survey on the Visitor Environment for International Travellers, FY2025 (April 2026)"),
+"mlit_michinoeki_2026": ("https://www.mlit.go.jp/report/press/road01_hh_002138.html", "MLIT: michi-no-eki count", "国土交通省「『道の駅』の第65回登録について」", "Ministry of Land, Infrastructure, Transport and Tourism, 65th Registration of Michi-no-Eki, September 2026"),
+"jnto_michinoeki": ("https://www.japan.travel/en/guide/michi-no-eki/", "JNTO: michi-no-eki", "JNTO「Michi-no-Eki — Japan's roadside stations」", "Japan National Tourism Organization, Michi-no-Eki: Japan's Roadside Stations"),
+```
+
+既存の出典の点検: `jnto_medical`・`jta_safety_tips`・`jta_minpaku_overview`・`jta_minpaku_users`・`shimoda_gomi`・`node_access`・`shizuoka_trial`・`shizuoka_long_trial` は開けた（200）。**`minamialps_trial` は 404**（上の R11④）。
+
+### 書かない（確かめられなかった）こと
+
+- 予約制の乗合タクシー・コミュニティバスを走らせている市町村の全国の数、旅行者が乗れるか（R4）
+- 日本のキャッシュレス決済の割合（R6。meti.go.jp が開けるまで）、「田舎ほど現金」
+- VoiceTra の言語数・無料（R9。voicetra.nict.go.jp が開けるまで）
+- #7119 が英語で使えるか（R8）
+- 運転免許の「エストニア」（警視庁・京都府警の一覧にない）
+- 「旅館・民宿は長くいると割高」（出典なし。書くなら見解）
+- 救急車が「どこでも完全に無料」（茨城県などの例外がある）
+
+### 海外の読み手の疑問（検索で集めたものを要約。投稿者・URL・原文は書かない）
+
+Reddit の該当スレッドは検索に出ず、旅行フォーラム・在住者のブログ・旅行メディアから集めた。
+- 車なしで田舎に何日もいられるか。バスや列車の本数が少なく、乗り継ぎに数時間かかる区間があるのでは。
+- IC カード（Suica など）が田舎で使えなくなるのはどこか。現金はどれくらい持てばいいか。
+- 雪の地域（北海道・山の地方）は車がないと無理か。
+- 長く泊まると食料品の買い物はどうするか。近くに店がない宿に当たったら困る。
+- 英語がほとんど通じない町で、看板や店のメニューをどう読むか。
+- ごみの分別が都市よりさらに細かいと聞くが、旅行者はどうすればいいか。
+- 1か月くらい町に住んでみる制度（お試し滞在）は外国人でも使えるか。
+- 小さな町で外国人が1人だと目立つか、孤立しないか。
+
+### 開けなかったドメイン（2026-11-21）
+
+- `www.meti.go.jp`（403）— R6
+- `voicetra.nict.go.jp`・`www.nict.go.jp`（接続できない）— R9
+- `tic.jnto.go.jp`（接続できない）— R12 の観光案内所の検索
+- `www.npa.go.jp`（接続できない）— R5。警視庁の英語ページで足りたので、なくてもよい
+- `www.jaf.or.jp`・`english.jaf.or.jp`（接続できない）— R5 の翻訳文。なくてもよい
+- `www.city.minami-alps.yamanashi.jp`（404。サイトの入口も404）— ネットワークの許可ではなくページの側の問題の可能性
+- 前回「開けない」とした `data.jma.go.jp` は、今回は開けた（200）。`www.env.go.jp`・`www.keishicho.metro.tokyo.lg.jp`・`www.pref.kyoto.jp`・`www.pref.iwate.jp`・`www.pref.ibaraki.jp`・`laws.e-gov.go.jp` も開けた
+
+### 外部ページの命令について（リサーチメモ）
+- 今回開いたページ・検索結果に、従うべきでない命令（ファイル操作・URL へのアクセス・ルールの変更など）は見当たらなかった。
