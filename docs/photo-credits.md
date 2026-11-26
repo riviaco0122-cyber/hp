@@ -40,3 +40,6 @@
 | `u-laptop-notepad.jpg` | akiyado-consultation-flow | Nick Morrison（@nickmorrison） | https://unsplash.com/photos/FHnnjk1Yj7Y |
 | `u-table-book.jpg` | minpaku-house-guide | Nik（@helloimnik） | https://unsplash.com/photos/pqjKwhfk5oI |
 | `u-waterside-house.jpg` | akiyado-what-we-do | Tsuyoshi Kozu（@tsuyoshikozu） | https://unsplash.com/photos/PtS-c6NRlvM |
+
+| `hero-engawa-autumn.jpg` | トップの背景（1枚目） | Figma の画像生成（gpt-image-2.5-sunburst）で作成 | ファイル「アキヤド 図解リデザイン」 |
+| `hero-mist-village.jpg` | トップの背景（2枚目） | Figma の画像生成（gpt-image-2.5-sunburst）で作成 | ファイル「アキヤド 図解リデザイン」 |
