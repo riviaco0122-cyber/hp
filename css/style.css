@@ -2209,6 +2209,15 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
 .fig-model__name { font-family: var(--font-round); font-weight: 700; font-size: 14px; line-height: 1.6; }
 .fig-model__sub { font-size: 12px; line-height: 1.7; color: var(--fig-sub); }
 @media (max-width: 899px) { .fig-model__list { grid-template-columns: 1fr; } .fig-model__pin { width: 20px; height: 20px; margin: -10px 0 0 -10px; font-size: 11px; } }
+/* 見出しつきの箇条書き（「<strong>見出し</strong>：説明」の並び）を、カード型の図にする（article_page.py の label_cards） */
+body.is-media .article__section .fig-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 24px 0 28px; padding: 0; list-style: none; counter-reset: fc; }
+body.is-media .article__section .fig-cards--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+body.is-media .article__section .fig-cards > li { position: relative; margin: 0; padding: 18px 18px 16px; border-radius: 14px; background: var(--m-sand, #eef3ee); counter-increment: fc; }
+body.is-media .article__section .fig-cards > li::before { content: ""; display: block; width: 24px; height: 3px; margin-bottom: 10px; border-radius: 2px; background: var(--m-green, #2e6b47); }
+body.is-media .article__section .fig-cards--steps > li::before { content: counter(fc, decimal-leading-zero); width: auto; height: auto; background: none; font-family: var(--font-en); font-size: 12px; letter-spacing: 0.16em; color: var(--m-green, #2e6b47); }
+body.is-media .article__section .fig-cards__name { font-family: var(--font-round); font-weight: 700; font-size: 15.5px; line-height: 1.5; color: var(--m-ink, #262a27); }
+body.is-media .article__section .fig-cards__text { margin-top: 6px; font-size: 14px; line-height: 1.85; color: var(--m-sub, #555b56); }
+@media (max-width: 899px) { body.is-media .article__section .fig-cards, body.is-media .article__section .fig-cards--3 { grid-template-columns: 1fr; gap: 8px; } }
 /* 内訳：1本の帯＋色見本つきの一覧。部分の境目は2pxのすき間で分ける（線で囲まない） */
 .fig-share { display: flex; gap: 2px; height: 32px; margin-bottom: 16px; }
 .fig-share__seg { display: flex; align-items: center; min-width: 4px; padding-left: 8px; border-radius: 4px; overflow: hidden; white-space: nowrap; font-family: var(--font-round); font-weight: 700; font-size: 12.5px; color: #1f2a22; font-variant-numeric: tabular-nums; }
