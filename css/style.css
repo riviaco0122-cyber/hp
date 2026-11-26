@@ -2165,12 +2165,22 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
 .fig-bars { display: grid; gap: 10px; }
 .fig-bar { display: grid; grid-template-columns: 11em minmax(0, 1fr) 4em; align-items: center; gap: 2px 14px; }
 .fig-bar__label { font-size: 13.5px; font-weight: 500; }
-.fig-bar__track { height: 14px; border-radius: 999px; background: #fff; overflow: hidden; }
-.fig-bar__fill { display: block; height: 100%; border-radius: 999px; background: #a9c7b2; }
+.fig-bar__track { height: 12px; border-radius: 0 4px 4px 0; background: #fff; overflow: hidden; }
+.fig-bar__fill { display: block; height: 100%; border-radius: 0 4px 4px 0; background: #a9c7b2; }
 .fig-bar.is-top .fig-bar__fill { background: var(--m-green, #2e6b47); }
 .fig-bar__value { font-family: var(--font-round); font-weight: 700; font-size: 14px; text-align: right; }
 .fig-bar.is-top .fig-bar__value { color: var(--m-green, #2e6b47); }
 .fig-bar__sub { grid-column: 2 / 4; margin-top: -2px; font-size: 11.5px; color: var(--c-muted); }
+/* 内訳（ひとつの全体を分けた図）：1本の帯＋色見本つきの一覧。部分の境目は2pxのすき間で分ける（線で囲まない） */
+.fig-share { display: flex; gap: 2px; height: 32px; margin-bottom: 16px; }
+.fig-share__seg { display: flex; align-items: center; min-width: 4px; padding-left: 8px; border-radius: 4px; overflow: hidden; white-space: nowrap; font-family: var(--font-round); font-weight: 700; font-size: 12.5px; color: #1f2a22; font-variant-numeric: tabular-nums; }
+.fig-share__seg.is-dark { color: #fff; }
+.fig-share__list { display: grid; gap: 2px; border-radius: 12px; overflow: hidden; }
+.fig-share__row { display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; align-items: center; gap: 0 12px; padding: 10px 14px; background: #fff; }
+.fig-share__sw { width: 12px; height: 12px; border-radius: 3px; }
+.fig-share__label { font-size: 13.5px; font-weight: 500; line-height: 1.5; }
+.fig-share__sub { grid-column: 2 / -1; font-size: 11.5px; line-height: 1.6; color: var(--m-sub, #555b56); }
+.fig-share__value { font-family: var(--font-round); font-weight: 700; font-size: 14px; font-variant-numeric: tabular-nums; }
 @media (max-width: 899px) {
   .fig { margin: 24px -4px 28px; padding: 22px 16px 18px; border-radius: 16px; }
   .fig-cols--2 { grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -2193,12 +2203,9 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
   .fig-points, .fig-points--2, .fig-points--4 { grid-template-columns: 1fr; }
   .fig-cyc__node { font-size: 11.5px; }
   .fig-cyc__center { font-size: 13px; }
-  .fig-term { min-width: 0; flex: 1 1 40%; padding: 12px 10px; }
-  .fig-term--result { flex-basis: 100%; }
-  .fig-formula .fig-op:first-of-type { flex-basis: 100%; text-align: center; }
-  .fig-bar { grid-template-columns: minmax(0, 1fr) 3.5em; }
-  .fig-bar__label { grid-column: 1 / -1; font-size: 13px; }
-  .fig-bar__track { grid-column: 1; }
+  .fig-bar { grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; }
+  .fig-bar__label { font-size: 13px; }
+  .fig-bar__track { grid-column: 1 / -1; grid-row: 2; }
   .fig-bar__sub { grid-column: 1 / -1; }
 }
 /* 記事本文の箇条書き・段落の書式が、図の中に入り込まないようにする */
@@ -2218,11 +2225,15 @@ body.is-media .header--media .mnav__list a[aria-current] { border-bottom-color: 
 @media (max-width: 899px) {
   .article__section .fig .fig-col__list li { font-size: 12.5px; }
   .article__section .fig .fig-cyc__node { font-size: 11.5px; }
-  .fig-formula { flex-direction: column; gap: 6px; }
-  .fig-term, .fig-term--result { flex: none; width: 100%; }
-  .fig-group { align-self: stretch; gap: 4px; }
-  .fig-group .fig-term { flex: 1 1 0; align-self: stretch; width: auto; min-width: 0; }
-  .fig-formula .fig-op:first-of-type { flex-basis: auto; }
+  .fig-formula { display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: center; gap: 6px 8px; }
+  .fig-formula > .fig-op { grid-column: 1; text-align: center; font-size: 18px; }
+  .fig-formula > .fig-term, .fig-group { grid-column: 2; }
+  .fig-formula > .fig-term--result { grid-column: 1 / -1; }
+  .fig-formula > .fig-term { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 10px; min-width: 0; padding: 12px 14px; text-align: left; }
+  .fig-formula > .fig-term b { font-size: 15px; }
+  .fig-group { gap: 4px; }
+  .fig-group .fig-term { flex: 1 1 0; align-self: stretch; min-width: 0; padding: 10px 8px; }
+  .fig-group .fig-op { font-size: 16px; }
 }
 @media (min-width: 900px) { .article__section .fig .fig-steps--7 .fig-step__name { font-size: 12.5px; } }
 .article__section .fig ul li::before, .article__section .fig ol li::before { content: none; }

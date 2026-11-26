@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../../css/style.css?v=1918a179">
+  <link rel="stylesheet" href="../../css/style.css?v=17786c87">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -222,13 +222,14 @@
           <h2><n-w class="h">見本：下田の<wbr>宿の<wbr>運営費で<wbr>計算すると、<wbr>いくら<n-b>に<n-b>なる？</n-b></n-b></n-w></h2>
 <p><strong>仮の分け方で計算すると、下田の宿で黒字になる境目は、稼働率でおよそ<n-b>18%</n-b>で<n-b>した。</n-b></strong><n-w>使ったのは、<wbr>創業メンバーが<wbr>下田で<wbr>開業した<wbr>宿<wbr><n-b>（N</n-b>ODE Shimoda）の、<wbr>開業から<wbr><n-b>3か月</n-b><wbr>の<wbr>試運転期間<wbr><n-b>（本</n-b>格稼働の<wbr>前の<wbr>期間）の<wbr>数<n-b>字<n-b>です。</n-b></n-b></n-w></p>
 <p><n-w>月々の<wbr>運営費は、<wbr>合計<wbr><n-b>18万円</n-b><wbr>で<n-b>した。</n-b><wbr>内訳は、<wbr>家賃<wbr><n-b>5万円、</n-b><wbr>清掃委託<wbr><n-b>2万円、</n-b><wbr>予約サイトの<wbr>手数料などの<wbr>システム利用料<wbr><n-b>8万円、</n-b><wbr><n-b class="num">光熱水費・</n-b><n-b class="num"><n-b>Wi-Fi</n-b>・</n-b><n-b class="num">消耗品</n-b><wbr><n-b>3万円</n-b><wbr><n-b>です。</n-b><wbr>この<wbr><n-b>4つ</n-b><wbr>を、<wbr>次のように<wbr><n-b>2つ</n-b><wbr>に<wbr>分けて<n-b>み<n-b>ます。</n-b></n-b></n-w></p>
-          <figure class="fig fig--bars">
+          <figure class="fig fig--share">
             <p class="fig__title"><n-w class="h">運営費18万円の<wbr>内訳<wbr><n-b>（割</n-b>合<n-b>は計算）</n-b></n-w></p>
-            <ul class="fig-bars">
-              <li class="fig-bar is-top"><span class="fig-bar__label"><n-w class="h"><n-b>システム利用料</n-b></n-w></span><span class="fig-bar__track"><span class="fig-bar__fill" style="width:100%"></span></span><span class="fig-bar__value"><n-w class="h">約44%</n-w></span><span class="fig-bar__sub"><n-w class="h">8<n-b>万円・泊数</n-b><n-b>で増える</n-b></n-w></span></li>
-              <li class="fig-bar"><span class="fig-bar__label"><n-w class="h">家賃</n-w></span><span class="fig-bar__track"><span class="fig-bar__fill" style="width:64%"></span></span><span class="fig-bar__value"><n-w class="h">約28%</n-w></span><span class="fig-bar__sub"><n-w class="h">5万円・<n-b>毎月同じ</n-b></n-w></span></li>
-              <li class="fig-bar"><span class="fig-bar__label"><n-w class="h">光熱水費など</n-w></span><span class="fig-bar__track"><span class="fig-bar__fill" style="width:39%"></span></span><span class="fig-bar__value"><n-w class="h">約17%</n-w></span><span class="fig-bar__sub"><n-w class="h"><n-b>3<n-b>万円・毎月</n-b></n-b><wbr>同じ<n-b>と仮置き</n-b></n-w></span></li>
-              <li class="fig-bar"><span class="fig-bar__label"><n-w class="h">清掃委託</n-w></span><span class="fig-bar__track"><span class="fig-bar__fill" style="width:25%"></span></span><span class="fig-bar__value"><n-w class="h">約11%</n-w></span><span class="fig-bar__sub"><n-w class="h">2<n-b>万円・泊数</n-b><n-b>で増える</n-b></n-w></span></li>
+            <div class="fig-share" role="img" aria-label="システム利用料 約44%、家賃 約28%、光熱水費など 約17%、清掃委託 約11%"><span class="fig-share__seg is-dark" style="flex-grow:44.0;background:#24573a">44%</span><span class="fig-share__seg is-dark" style="flex-grow:28.0;background:#3f7d56">28%</span><span class="fig-share__seg" style="flex-grow:17.0;background:#6a9e7b">17%</span><span class="fig-share__seg" style="flex-grow:11.0;background:#97bfa3"></span></div>
+            <ul class="fig-share__list">
+              <li class="fig-share__row"><span class="fig-share__sw" style="background:#24573a"></span><span class="fig-share__label"><n-w class="h"><n-b>システム利用料</n-b></n-w></span><span class="fig-share__value"><n-w class="h">約44%</n-w></span><span class="fig-share__sub"><n-w class="h">8<n-b>万円・泊数</n-b><n-b>で増える</n-b></n-w></span></li>
+              <li class="fig-share__row"><span class="fig-share__sw" style="background:#3f7d56"></span><span class="fig-share__label"><n-w class="h">家賃</n-w></span><span class="fig-share__value"><n-w class="h">約28%</n-w></span><span class="fig-share__sub"><n-w class="h">5万円・<n-b>毎月同じ</n-b></n-w></span></li>
+              <li class="fig-share__row"><span class="fig-share__sw" style="background:#6a9e7b"></span><span class="fig-share__label"><n-w class="h">光熱水費など</n-w></span><span class="fig-share__value"><n-w class="h">約17%</n-w></span><span class="fig-share__sub"><n-w class="h"><n-b>3<n-b>万円・毎月</n-b></n-b><wbr>同じ<n-b>と仮置き</n-b></n-w></span></li>
+              <li class="fig-share__row"><span class="fig-share__sw" style="background:#97bfa3"></span><span class="fig-share__label"><n-w class="h">清掃委託</n-w></span><span class="fig-share__value"><n-w class="h">約11%</n-w></span><span class="fig-share__sub"><n-w class="h">2<n-b>万円・泊数</n-b><n-b>で増える</n-b></n-w></span></li>
             </ul>
             <figcaption class="fig__note"><n-w class="h">※ 分け方は<wbr>私たちの<wbr>仮置<n-b>き<n-b>です。</n-b></n-b><br class="sb">実際の<wbr>請求の<wbr>分類ではあり<n-b>ま<n-b>せん。</n-b></n-b></n-w></figcaption>
           </figure>

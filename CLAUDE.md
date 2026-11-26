@@ -49,6 +49,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 - サイトの仕様（文言・構成・デザイン方針）: `docs/site-spec.md` ← ページを変えたらここも一致させる
 - **デザイン・文言の決まり**（見出し・数字・改行・色・表・フォーム）: `docs/design-guide.md` ← 人の指摘を一般化して足していく。ページや図を作る・直すときは必ず守る
 - SEO/AIO の基準と品質の採点基準: `docs/seo/playbook.md`
+- **外部ツール（プラグイン）の使い分け**（OpenSEO・OpenRush・Firecrawl・Figma・Higgsfield・Mobbin など。クレジットの上限つき）: playbook 17章。図・グラフは playbook 15-4（dataviz スキル）
 - ブランド（文体・用語・思想・体験・NG）: `docs/brand/`
 - 一次情報の置き場と扱い方: `docs/sources/README.md`（人が `docs/sources/inbox/` にメモを置く）
 - **CV 計画（目標）**: `docs/seo/plan.md`（実行ごとの判定・週次レポート・毎月の見直しはこの計画に対して行う）
