@@ -802,6 +802,27 @@
       return !b.querySelector('p, li, dd, div, ul, ol, table, h2, h3, h4, .kp__main, .ml-s') && b.textContent.trim().length > 0;
     });
   };
+  // 中央揃えの文は、About us の紹介文のように「キリの良いところ」で改行する（人の方針 2026-11-26）。
+  // 「、」「。」などで区切った節を1つのかたまり（n-c、inline-block）にまとめ、改行は節と節の間でだけ起こす。
+  // 1行に入らない長い節だけは、節の中の言葉の切れ目（<wbr>）で折れる。一度まとめたら、やり直さない
+  var CLAUSE_END = /[、。！？!?」』）]$/;
+  var clauseChunks = function (n) {
+    if (n.dataset.cl) return;
+    n.dataset.cl = '1';
+    // 文字の途中にある句読点のあとで、文字のまとまりを分ける（「地域には、まだ」→「地域には、」「まだ」）
+    Array.prototype.slice.call(n.childNodes).forEach(function (t) {
+      if (t.nodeType !== 3) return;
+      var m;
+      while ((m = /[、。！？!?](?=[^、。！？!?」』）])/.exec(t.data)) && m.index + 1 < t.data.length) t = t.splitText(m.index + 1);
+    });
+    var nodes = Array.prototype.slice.call(n.childNodes), cur = null, chunks = 0;
+    nodes.forEach(function (x) {
+      if (!cur) { cur = document.createElement('n-c'); n.insertBefore(cur, x); chunks++; }
+      cur.appendChild(x);
+      if (CLAUSE_END.test((x.textContent || '').trim())) cur = null;
+    });
+    if (chunks < 2) { n.querySelectorAll('n-c').forEach(unwrap); } // 節が1つだけなら、まとめる意味がない
+  };
   var fitLines = function () {
     // 文ごとの改行（br.sb。build が短い文に入れる）は、どの文も1行に収まるときだけ残す。そうでなければ文をつなげて流す
     // （PC の狭いカードで「受け付けて／います。」のように行が増え、ページが無駄に縦に長くなるため。人の指摘 2026-11-07）
@@ -817,7 +838,9 @@
     // 中央揃えの文（トップのコンセプトなど）は、右詰めにならないので、これまでどおり言葉の切れ目でだけ改行する（n-w.c・.ml-c。人のお手本 2026-11-07）
     document.querySelectorAll('n-w').forEach(function (n) {
       var p = n.parentElement; if (!p || !n.querySelector('wbr')) return;
-      n.classList.toggle('c', getComputedStyle(p).textAlign === 'center');
+      var c = getComputedStyle(p).textAlign === 'center';
+      n.classList.toggle('c', c);
+      if (c) clauseChunks(n);
     });
     document.querySelectorAll('.ml-s').forEach(function (m) { m.classList.toggle('ml-c', getComputedStyle(m).textAlign === 'center'); });
     // 1文ごとに改行するリード（.ml-s）で、短い最後の行（4文字以下。「す。」「います。」）が2文続くときは、
