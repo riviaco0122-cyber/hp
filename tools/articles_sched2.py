@@ -271,6 +271,7 @@ ARTICLES_SCHED2 = [
         ],
         sources=[
             "消費者庁「景品表示法（不当表示の禁止）」 https://www.caa.go.jp/policies/policy/representation/fair_labeling/",
+            "消費者庁「優良誤認とは」（2026年11月確認） https://www.caa.go.jp/policies/policy/representation/fair_labeling/representation_regulation/misleading_representation/",
             "アキヤド「【運営事例】下田の賃貸アパートの一室を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
         ],
     ),
@@ -639,6 +640,7 @@ ARTICLES_SCHED2 = [
             ("災害のときに、キャンセルや返金には応じるべきですか？", "予約サイトの規定やキャンセルポリシーによって変わります。私たちは2025年7月末に津波警報・注意報が出たとき、状況をこまめに伝えたうえで、ゲストの意向に合わせて返金しました。個別の扱いは、各予約サイトのヘルプで確かめてください。"),
         ],
         sources=[
+            '気象庁「津波警報・注意報、津波情報、津波予報について」（2026年11月確認） https://www.data.jma.go.jp/eqev/data/joho/tsunamiinfo.html',
             "RIVIA&CO.「NODE Shimoda（運営施設の一例）」Airbnb評価・ゲストのレビュー（サイト掲載時点、2026年） https://nodeshimoda.com/",
             "創業メンバーの開業記録（2025年11月執筆）",
             "アキヤド「【運営事例】下田の賃貸アパートの一室を小さな宿に」（RIVIA&CO.、2026年） https://rivia-co.com/media/case-rental-house-inn-first-year.html",
