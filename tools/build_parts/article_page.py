@@ -121,7 +121,33 @@ def article_page(a):
                 return m.group(1) + head + "</strong>" + rest + "</p>"
             inner = inner.replace("<strong>", "").replace("</strong>", "")
             return m.group(1) + inner + "</p>"
-        return re.sub(r"(<p(?: [^>]*)?>)(.*?)</p>", p_fix, html, flags=re.S)
+        html = re.sub(r"(<p(?: [^>]*)?>)(.*?)</p>", p_fix, html, flags=re.S)
+        return html if not first[0] else mark_answer(html)
+    # 前置き（読み手の気持ち・場面の説明）に多い言い方。これを含む文は「答え」ではないので、印を付けない
+    LEAD_IN = ("？", "?", "そんなとき", "そう期待", "迷って", "迷う", "でしょうか", "かもしれません", "と思う", "ありませんか", "ではないか",
+               "もともと", "概要です", "まとめました", "紹介します", "見ていきます", "そのまま確認")
+    def mark_answer(html):
+        """節の中に太字が1つもないときは、節の最初の「答え」の一文を太字（黄色の蛍光ペン）にする（人の依頼 2026-11-26。
+        記事は各節を答えから書く決まり（playbook 3章）なので、最初の段落の最初の文が答えになる。前置きの文は飛ばし、
+        次の文を使う。リンクなどのタグが文の途中で切れる文、短すぎる文には付けない）"""
+        for m in re.finditer(r"<p>(.*?)</p>", html, flags=re.S):
+            inner, pos = m.group(1), 0
+            for s in re.finditer(r"[^。]*?。(?![）」』])", inner):
+                sent = s.group(0)
+                text = re.sub(r"<[^>]+>", "", sent).strip()
+                ok = (len(text) >= 14 and not any(w in text for w in LEAD_IN) and text.endswith(("す。", "た。", "ん。"))  # 「〜楽になる。」のような心の声は答えではない
+                      and len(re.findall(r"<[a-z]", sent)) == len(re.findall(r"</[a-z]", sent)))
+                if ok:
+                    a, b = s.start() + (len(sent) - len(sent.lstrip())), s.end()
+                    new = inner[:a] + "<strong>" + inner[a:b] + "</strong>" + inner[b:]
+                    return html[:m.start(1)] + new + html[m.end(1):]
+                pos += 1
+                if pos >= 2:  # 最初の段落の2文までに答えがなければ、次の段落を見る
+                    break
+            # 2つ目の段落まで見て見つからなければ、印を付けない（無理に付けると前置きに色が付く）
+            if m.start() > 0 and html[:m.start()].count("<p>") >= 1:
+                return html
+        return html
     def talk_lists(html):
         """会話の吹き出しの直後の箇条書きは、話している人の言葉の続きとして吹き出しの中に入れる"""
         return re.sub(r'(<div class="talk__body">(?:(?!</div>).)*?)</div></div>\s*(<(ul|ol)>.*?</\3>)',
