@@ -3,6 +3,52 @@
 # 単独では動かない。build.py が決まった順番で読み込み、1つのファイルとして実行する
 # （ほかの部分の関数・定数はそのまま使える。import は不要）。
 
+# アキヤドの特徴（人の依頼 2026-11-27：メディアのデザインの刷新）。ビジュアルは Figma で作った模型の画像（images/illust/）、
+# 数字と言葉は HTML。番号・見出し・本文・要点を、ビジュアルと左右交互に並べる
+MFEATURES = [
+    dict(img="feat-operator", alt="小さな部屋を宿にした模型。白いシーツのベッド、食卓、小さな台所、洗濯機がある",
+         title="宿を運営する当事者が答える", text="記事の数字もご提案の見込みも、私たちの運営記録が元です。",
+         facts=[("1年目の稼働率", "約", "53", "%"), ("開業費用をほぼ回収", "約", "14", "か月")],
+         cap="運営している宿の一例：静岡県下田市・アパートの一室を貸切"),
+    dict(img="feat-compare", alt="古い木造の空き家の模型が、台の上に置かれている",
+         title="売る・貸す・はじめるを並べて比べられる", text="売却・借り上げ・自分で運営の見込みを、並べてお出しします。",
+         ways=[("売る", "売却額の目安"), ("借り上げ", "家を残して収入"), ("自分で運営", "宿の収支見込み")],
+         cap="※ 収益を保証するものではありません。"),
+    dict(img="feat-remote", alt="宿の玄関の模型。扉にスマートロックがあり、横にスマートフォンが置かれている",
+         title="遠方の家でも回る運営の仕組み", text="開業2か月目には、現地に行かなくても回る体制にしました。",
+         big=("現地に行くのは", "数か月に1回", "ほど"),
+         rows=[("清掃", "近隣の方に依頼"), ("入室", "スマートロック"), ("問い合わせ", "翻訳とAIチャット"), ("価格", "時期に合わせて調整")]),
+]
+
+
+def mfeature_items():
+    out = []
+    for i, f in enumerate(MFEATURES, 1):
+        extra = ""
+        if f.get("facts"):
+            extra = '<dl class="mfeat__facts">' + "".join(
+                f'<div><dt>{e(k)}</dt><dd class="mfeat__num"><small>{e(pre)}</small>{n}<small>{e(u)}</small></dd></div>'
+                for k, pre, n, u in f["facts"]) + "</dl>"
+        if f.get("ways"):
+            extra = '<ol class="mfeat__ways">' + "".join(
+                f'<li><b>{e(w)}</b><span>{e(d)}</span></li>' for w, d in f["ways"]) + "</ol>"
+        if f.get("big"):
+            a, b, c = f["big"]
+            extra = (f'<p class="mfeat__big">{e(a)}<b>{e(b)}</b>{e(c)}</p><dl class="mfeat__rows">'
+                     + "".join(f"<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>" for k, v in f["rows"]) + "</dl>")
+        cap = f'<p class="mfeat__cap">{e(f["cap"])}</p>' if f.get("cap") else ""
+        out.append(f"""          <li class="mfeat reveal">
+            <figure class="mfeat__visual"><img src="images/illust/{f["img"]}.webp" srcset="images/illust/{f["img"]}-768.webp 768w, images/illust/{f["img"]}.webp 1536w" sizes="(max-width: 899px) 100vw, 560px" width="1536" height="1152" alt="{e(f["alt"])}" loading="lazy" decoding="async"></figure>
+            <div class="mfeat__body">
+              <p class="mfeat__no">{i:02d}</p>
+              <h3 class="mfeat__title">{e(f["title"])}</h3>
+              <p class="mfeat__text">{e(f["text"])}</p>
+              {extra}{cap}
+            </div>
+          </li>""")
+    return "\n".join(out)
+
+
 def media_tabs(current=""):
     """PC のヘッダー下のタブ。読者の状況（ガイド）・記事検索・プランに絞る（残りは右上のメニューに入れる）"""
     items = [(g["key"], f"media/guide-{g['key']}.html", g["label"]) for g in MEDIA_GUIDES] + [("search", "media/search.html", "記事をさがす"), ("plans", "media/plans.html", "アキヤドのプラン")]
@@ -137,6 +183,7 @@ def media_index_page():
           <span class="mservice__text">{e(sv["lead"])}</span>
           <span class="mservice__more">詳しく見る <span aria-hidden="true"></span></span></a></li>''' for i, sv in enumerate(MEDIA_SERVICES))
     guides = "\n".join(guide_card(g, i) for i, g in enumerate(MEDIA_GUIDES))
+    feat_items = mfeature_items()
     labels = {g["key"]: g["label"] for g in MEDIA_GUIDES}
     questions = "\n".join(f"""          <li data-date="{ARTICLE_BY_SLUG[slug]["date"]}"><a href="media/{slug}.html" class="mq__item">
             <span class="mq__who">{e(labels[k])}</span><span class="mq__q">{e(q)}</span><span class="mq__arrow">{ARROW}</span></a></li>""" for k, q, slug in MEDIA_QUESTIONS)
@@ -183,48 +230,9 @@ def media_index_page():
     <section class="section msec mfeatures">
       <div class="container">
         <div class="mcenter-head reveal"><p class="msec__en">Features</p><h2 class="mcenter-head__title">アキヤドの特徴</h2></div>
-        <ul class="mfeat-cards">
-          <li class="mfeat reveal">
-            <p class="mfeat__head"><span class="mfeat__no">01</span>宿を運営する<br>当事者が答える</p>
-            <div class="mfeat__fig">
-              <p class="mfeat-case">運営している宿の一例<span>静岡県下田市・アパートの一室を貸切</span></p>
-              <div class="mfeat-stats">
-                <div class="mfeat-stat"><svg class="mfeat-donut" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16" pathLength="100"/><circle class="mfeat-donut__v" cx="21" cy="21" r="16" pathLength="100" stroke-dasharray="53 47"/></svg><p class="mfeat-stat__n"><small class="mfeat-stat__pre">約</small>53<small>%</small></p><p class="mfeat-stat__k">1年目の稼働率</p></div>
-                <div class="mfeat-stat"><p class="mfeat-stat__n mfeat-stat__n--top"><small class="mfeat-stat__pre">約</small>14<small>か月</small></p><span class="mfeat-bar" aria-hidden="true"><i></i></span><p class="mfeat-stat__k">開業費用をほぼ回収</p></div>
-              </div>
-            </div>
-            <p class="mfeat__text">{lines_html("記事の数字もご提案の見込みも、私たちの運営記録が元です。")}</p>
-          </li>
-          <li class="mfeat reveal" data-delay="1">
-            <p class="mfeat__head"><span class="mfeat__no">02</span>売る・貸す・はじめるを<br>並べて比べられる</p>
-            <div class="mfeat__fig">
-              <p class="mfeat-pill">あなたの空き家</p>
-              <svg class="mfeat-branch" viewBox="0 0 300 36" preserveAspectRatio="none" aria-hidden="true"><path d="M150 0v12M50 36V22a10 10 0 0 1 10-10h180a10 10 0 0 1 10 10v14M150 12v24"/></svg>
-              <div class="mfeat-three">
-                <p><span class="mfeat-three__no">1</span><b>売る</b>売却額の目安</p>
-                <p><span class="mfeat-three__no">2</span><b>借り上げ</b>家を残して収入</p>
-                <p><span class="mfeat-three__no">3</span><b>自分で運営</b>宿の収支見込み</p>
-              </div>
-              <svg class="mfeat-branch mfeat-branch--in" viewBox="0 0 300 36" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0v14a10 10 0 0 0 10 10h180a10 10 0 0 0 10-10V0M150 0v36"/></svg>
-              <p class="mfeat-goal"><span>ご家族が<b>納得できる方法</b>を選べる</span></p>
-            </div>
-            <p class="mfeat__text">{lines_html("売却・借り上げ・自分で運営の見込みを、並べてお出しします。")}</p>
-            <p class="mfeat__note">※ 収益を保証するものではありません。</p>
-          </li>
-          <li class="mfeat reveal" data-delay="2">
-            <p class="mfeat__head"><span class="mfeat__no">03</span>遠方の家でも<br>回る運営の仕組み</p>
-            <div class="mfeat__fig">
-              <p class="mfeat-big"><span>現地に行くのは</span><b>数か月に1回</b><span>ほど</span></p>
-              <ul class="mfeat-rows">
-                <li><span class="mfeat-rows__k">清掃</span><b>近隣の方に依頼</b></li>
-                <li><span class="mfeat-rows__k">入室</span><b>スマートロック</b></li>
-                <li><span class="mfeat-rows__k">問い合わせ</span><b>翻訳とAIチャット</b></li>
-                <li><span class="mfeat-rows__k">価格</span><b>時期に合わせて調整</b></li>
-              </ul>
-            </div>
-            <p class="mfeat__text">{lines_html("開業2か月目には、現地に行かなくても回る体制にしました。")}</p>
-          </li>
-        </ul>
+        <ol class="mfeat-list">
+{feat_items}
+        </ol>
       </div>
     </section>
 
