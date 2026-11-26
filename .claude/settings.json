@@ -2,6 +2,9 @@
   "permissions": {
     "deny": [
       "Read(./js/media-index.js)"
+    ],
+    "allow": [
+      "mcp__Figma"
     ]
   }
 }
