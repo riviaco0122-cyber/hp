@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../css/style.css?v=124e5f57">
+  <link rel="stylesheet" href="../css/style.css?v=9ee7cc63">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -175,48 +175,35 @@
     <section class="section msec mfeatures">
       <div class="container">
         <div class="mcenter-head reveal"><p class="msec__en">Features</p><h2 class="mcenter-head__title"><n-w class="h"><n-b>アキヤドの特徴</n-b></n-w></h2></div>
-        <ul class="mfeat-cards">
+        <ol class="mfeat-list">
           <li class="mfeat reveal">
-            <p class="mfeat__head"><span class="mfeat__no">01</span><n-w class="h">宿を運営する</n-w><br><n-w class="h">当事者<n-b>が答える</n-b></n-w></p>
-            <div class="mfeat__fig">
-              <p class="mfeat-case"><n-w class="h">運営している<wbr><n-b>宿の一例</n-b></n-w><span><n-w class="h"><n-b><n-b class="num">静岡県下田市・</n-b><n-b class="num">アパート</n-b>の</n-b><wbr><n-b>一室を貸切</n-b></n-w></span></p>
-              <div class="mfeat-stats">
-                <div class="mfeat-stat"><svg class="mfeat-donut" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16" pathLength="100"/><circle class="mfeat-donut__v" cx="21" cy="21" r="16" pathLength="100" stroke-dasharray="53 47"/></svg><p class="mfeat-stat__n"><small class="mfeat-stat__pre"><n-w class="h">約</n-w></small>53<small>%</small></p><p class="mfeat-stat__k"><n-w class="h">1年目<n-b>の稼働率</n-b></n-w></p></div>
-                <div class="mfeat-stat"><p class="mfeat-stat__n mfeat-stat__n--top"><small class="mfeat-stat__pre"><n-w class="h">約</n-w></small>14<small><n-w class="h">か月</n-w></small></p><span class="mfeat-bar" aria-hidden="true"><i></i></span><p class="mfeat-stat__k"><n-w class="h">開業費用を<wbr><n-b>ほぼ回収</n-b></n-w></p></div>
-              </div>
+            <figure class="mfeat__visual"><img src="../images/illust/feat-operator.webp" srcset="../images/illust/feat-operator-768.webp 768w, ../images/illust/feat-operator.webp 1536w" sizes="(max-width: 899px) 100vw, 560px" width="1536" height="1152" alt="小さな部屋を宿にした模型。白いシーツのベッド、食卓、小さな台所、洗濯機がある" loading="lazy" decoding="async"></figure>
+            <div class="mfeat__body">
+              <p class="mfeat__no">01</p>
+              <h3 class="mfeat__title"><n-w class="h">宿を<wbr>運営する<wbr>当事者<n-b>が答える</n-b></n-w></h3>
+              <p class="mfeat__text"><n-w class="h">記事の<wbr>数字も<wbr>ご提案の<wbr>見込みも、<wbr>私たちの<wbr>運営記録が<wbr><n-b>元<n-b>です。</n-b></n-b></n-w></p>
+              <dl class="mfeat__facts"><div><dt><n-w class="h">1年目<n-b>の稼働率</n-b></n-w></dt><dd class="mfeat__num"><small><n-w class="h">約</n-w></small>53<small>%</small></dd></div><div><dt><n-w class="h">開業費用を<wbr><n-b>ほぼ回収</n-b></n-w></dt><dd class="mfeat__num"><small><n-w class="h">約</n-w></small>14<small><n-w class="h">か月</n-w></small></dd></div></dl><p class="mfeat__cap"><n-w class="h">運営している<wbr>宿の<wbr>一例：<n-b class="num">静岡県下田市・</n-b><n-b class="num">アパート</n-b>の<wbr><n-b>一室を貸切</n-b></n-w></p>
             </div>
-            <p class="mfeat__text"><span class="ml-s"><span><n-w class="h">記事の<wbr>数字も<wbr>ご提案の<wbr><n-b>見込みも、</n-b></n-w></span><span><n-w class="h">私たちの<wbr>運営記録が<wbr><n-b>元<n-b>です。</n-b></n-b></n-w></span></span></p>
           </li>
-          <li class="mfeat reveal" data-delay="1">
-            <p class="mfeat__head"><span class="mfeat__no">02</span><n-w class="h">売<n-b>る・貸</n-b><n-b>す・は</n-b><n-b>じめるを</n-b></n-w><br><n-w class="h">並べて<wbr>比<n-b>べられる</n-b></n-w></p>
-            <div class="mfeat__fig">
-              <p class="mfeat-pill"><n-w class="h">あなた<n-b>の空き家</n-b></n-w></p>
-              <svg class="mfeat-branch" viewBox="0 0 300 36" preserveAspectRatio="none" aria-hidden="true"><path d="M150 0v12M50 36V22a10 10 0 0 1 10-10h180a10 10 0 0 1 10 10v14M150 12v24"/></svg>
-              <div class="mfeat-three">
-                <p><span class="mfeat-three__no">1</span><b><n-w class="h">売る</n-w></b><n-w class="h">売却額の目安</n-w></p>
-                <p><span class="mfeat-three__no">2</span><b><n-w class="h">借り上げ</n-w></b><n-w class="h">家を<wbr>残<n-b>して収入</n-b></n-w></p>
-                <p><span class="mfeat-three__no">3</span><b><n-w class="h">自分で運営</n-w></b><n-w class="h">宿の<wbr><n-b>収支見込み</n-b></n-w></p>
-              </div>
-              <svg class="mfeat-branch mfeat-branch--in" viewBox="0 0 300 36" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0v14a10 10 0 0 0 10 10h180a10 10 0 0 0 10-10V0M150 0v36"/></svg>
-              <p class="mfeat-goal"><span><n-w class="h">ご家族が</n-w><b><n-w class="h">納得で<n-b>きる方法</n-b></n-w></b><n-w class="h">を選べる</n-w></span></p>
+          <li class="mfeat reveal">
+            <figure class="mfeat__visual"><img src="../images/illust/feat-compare.webp" srcset="../images/illust/feat-compare-768.webp 768w, ../images/illust/feat-compare.webp 1536w" sizes="(max-width: 899px) 100vw, 560px" width="1536" height="1152" alt="古い木造の空き家の模型が、台の上に置かれている" loading="lazy" decoding="async"></figure>
+            <div class="mfeat__body">
+              <p class="mfeat__no">02</p>
+              <h3 class="mfeat__title"><n-w class="h">売る<n-b>・貸<n-b>す・は</n-b>じめるを</n-b><wbr>並べて<wbr>比<n-b>べられる</n-b></n-w></h3>
+              <p class="mfeat__text"><n-w class="h"><n-b><n-b>売却・借</n-b>り上<n-b>げ・自分</n-b>で</n-b><wbr>運営の<wbr>見込みを、<wbr>並べて<wbr>お出し<n-b>し<n-b>ます。</n-b></n-b></n-w></p>
+              <ol class="mfeat__ways"><li><b><n-w class="h">売る</n-w></b><span><n-w class="h">売却額の目安</n-w></span></li><li><b><n-w class="h">借り上げ</n-w></b><span><n-w class="h">家を<wbr>残<n-b>して収入</n-b></n-w></span></li><li><b><n-w class="h">自分で運営</n-w></b><span><n-w class="h">宿の<wbr><n-b>収支見込み</n-b></n-w></span></li></ol><p class="mfeat__cap"><n-w class="h">※ 収益を<wbr>保証する<wbr>ものではあり<n-b>ま<n-b>せん。</n-b></n-b></n-w></p>
             </div>
-            <p class="mfeat__text"><span class="ml-s"><span class="ml-l"><n-w class="h"><n-b><n-b>売却・借</n-b>り上<n-b>げ・自分</n-b>で</n-b><wbr>運営の<wbr><n-b>見込みを、</n-b></n-w></span><span><n-w class="h">並べて<wbr>お出し<n-b>し<n-b>ます。</n-b></n-b></n-w></span></span></p>
-            <p class="mfeat__note"><n-w class="h">※ 収益を<wbr>保証する<wbr>ものではあり<n-b>ま<n-b>せん。</n-b></n-b></n-w></p>
           </li>
-          <li class="mfeat reveal" data-delay="2">
-            <p class="mfeat__head"><span class="mfeat__no">03</span><n-w class="h">遠方の家でも</n-w><br><n-w class="h">回る<wbr>運営<n-b>の仕組み</n-b></n-w></p>
-            <div class="mfeat__fig">
-              <p class="mfeat-big"><span><n-w class="h">現地に<wbr><n-b>行くのは</n-b></n-w></span><b><n-w class="h">数か月に1回</n-w></b><span><n-w class="h">ほど</n-w></span></p>
-              <ul class="mfeat-rows">
-                <li><span class="mfeat-rows__k"><n-w class="h">清掃</n-w></span><b><n-w class="h">近隣の<wbr><n-b>方に依頼</n-b></n-w></b></li>
-                <li><span class="mfeat-rows__k"><n-w class="h">入室</n-w></span><b><n-w class="h"><n-b>スマートロック</n-b></n-w></b></li>
-                <li><span class="mfeat-rows__k"><n-w class="h">問い合わせ</n-w></span><b><n-w class="h">翻訳と<wbr>AI<n-b>チャット</n-b></n-w></b></li>
-                <li><span class="mfeat-rows__k"><n-w class="h">価格</n-w></span><b><n-w class="h">時期に<wbr>合わ<n-b>せて調整</n-b></n-w></b></li>
-              </ul>
+          <li class="mfeat reveal">
+            <figure class="mfeat__visual"><img src="../images/illust/feat-remote.webp" srcset="../images/illust/feat-remote-768.webp 768w, ../images/illust/feat-remote.webp 1536w" sizes="(max-width: 899px) 100vw, 560px" width="1536" height="1152" alt="宿の玄関の模型。扉にスマートロックがあり、横にスマートフォンが置かれている" loading="lazy" decoding="async"></figure>
+            <div class="mfeat__body">
+              <p class="mfeat__no">03</p>
+              <h3 class="mfeat__title"><n-w class="h">遠方の<wbr>家でも<wbr>回る<wbr>運営<n-b>の仕組み</n-b></n-w></h3>
+              <p class="mfeat__text"><n-w class="h">開業2か<wbr>月目には、<wbr>現地に<wbr>行かなくても<wbr>回る<wbr>体制に<wbr>し<n-b>ま<n-b>した。</n-b></n-b></n-w></p>
+              <p class="mfeat__big"><n-w class="h">現地に<wbr><n-b>行くのは</n-b></n-w><n-b><b><n-w class="h">数か月に1回</n-w></b>ほど</n-b></p><dl class="mfeat__rows"><div><dt><n-w class="h">清掃</n-w></dt><dd><n-w class="h">近隣の<wbr><n-b>方に依頼</n-b></n-w></dd></div><div><dt><n-w class="h">入室</n-w></dt><dd><n-w class="h"><n-b>スマートロック</n-b></n-w></dd></div><div><dt><n-w class="h">問い合わせ</n-w></dt><dd><n-w class="h">翻訳と<wbr>AI<n-b>チャット</n-b></n-w></dd></div><div><dt><n-w class="h">価格</n-w></dt><dd><n-w class="h">時期に<wbr>合わ<n-b>せて調整</n-b></n-w></dd></div></dl>
             </div>
-            <p class="mfeat__text"><span class="ml-s"><span><n-w class="h">開業2か<wbr><n-b>月目には、</n-b></n-w></span><span class="ml-l"><n-w class="h">現地に<wbr>行かなくても<wbr>回る<wbr>体制に<wbr>し<n-b>ま<n-b>した。</n-b></n-b></n-w></span></span></p>
           </li>
-        </ul>
+        </ol>
       </div>
     </section>
 
