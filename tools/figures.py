@@ -103,19 +103,54 @@ def formula(title, terms, result=None, note=""):
     return _figure("formula", title, f'            <div class="fig-formula">{"".join(parts)}</div>', note)
 
 
-def bars(title, items, note="", unit="%", top=1, mark=None, approx=None):
+# 内訳（ひとつの全体を分けた図）の色：大きい順に濃い緑から薄い緑へ。「その他」は灰色（色だけに頼らず、一覧に名前と値を必ず並べる）
+SHARE_COLORS = ["#24573a", "#3f7d56", "#6a9e7b", "#97bfa3", "#bfd8c6", "#dcebe0"]
+SHARE_OTHER = "#c4c9c5"
+
+
+def bars(title, items, note="", unit="%", top=1, mark=None, approx=None, whole=None):
     """割合・件数：items = [(項目, 値, 一言)]。上位 top 個を濃い色で強調する（mark に項目名の一覧を渡すと、その項目だけを強調する）。
-    unit が % のときは「約◯%」、それ以外（件など）は「◯件」と値をそのまま出す（approx=False で、% でも「約」を付けない）"""
+    unit が % のときは「約◯%」、それ以外（件など）は「◯件」と値をそのまま出す（approx=False で、% でも「約」を付けない）。
+    ひとつの全体の内訳（% の合計がほぼ100、または whole=True）は、1本の帯（内訳バー）＋色見本つきの一覧で見せる
+    （棒を項目ごとに並べるより、全体のうちどこが大きいかがひと目で分かり、スマホで縦に長くならない）"""
     if approx is None:
         approx = unit == "%"
+    total = sum(v for _, v, _ in items)
+    if whole is None:
+        whole = unit == "%" and 95 <= total <= 105 and len(items) >= 2
+    val = lambda v: f"{'約' if approx else ''}{v}{unit}"
+    if whole:
+        return _share(title, items, note, val, total, mark)
     biggest = max(v for _, v, _ in items)
     cut = sorted((v for _, v, _ in items), reverse=True)[min(top, len(items)) - 1]
     rows = "\n".join(
         f"""              <li class="fig-bar{' is-top' if (l in mark if mark else v >= cut) else ''}"><span class="fig-bar__label">{e(l)}</span>"""
         f"""<span class="fig-bar__track"><span class="fig-bar__fill" style="width:{v / biggest * 100:.0f}%"></span></span>"""
-        f"""<span class="fig-bar__value">{'約' if approx else ''}{v}{unit}</span>{f'<span class="fig-bar__sub">{e(s)}</span>' if s else ''}</li>"""
+        f"""<span class="fig-bar__value">{val(v)}</span>{f'<span class="fig-bar__sub">{e(s)}</span>' if s else ''}</li>"""
         for l, v, s in items)
     return _figure("bars", title, f'            <ul class="fig-bars">\n{rows}\n            </ul>', note)
+
+
+def _share(title, items, note, val, total, mark):
+    """内訳バー：全体を1本の帯に分け、大きい部分には割合を帯の中に書く。下の一覧（色見本・名前・値）が凡例と数字の表を兼ねる"""
+    colors, k = [], 0
+    for l, v, s in items:
+        if l == "その他" or (mark and l not in mark):
+            colors.append(SHARE_OTHER if l == "その他" else SHARE_COLORS[min(len(SHARE_COLORS) - 1, 2 + k)]); k += l != "その他"
+        else:
+            colors.append(SHARE_COLORS[0 if mark else min(k, len(SHARE_COLORS) - 1)]); k += not mark
+    pct = [v / total * 100 for _, v, _ in items]
+    segs = "".join(
+        f'<span class="fig-share__seg{" is-dark" if c in SHARE_COLORS[:2] else ""}" style="flex-grow:{p:.1f};background:{c}">'
+        f'{f"{p:.0f}%" if p >= 12 else ""}</span>' for p, c in zip(pct, colors))
+    rows = "\n".join(
+        f"""              <li class="fig-share__row"><span class="fig-share__sw" style="background:{c}"></span><span class="fig-share__label">{e(l)}</span>"""
+        f"""<span class="fig-share__value">{val(v)}</span>{f'<span class="fig-share__sub">{e(s)}</span>' if s else ''}</li>"""
+        for (l, v, s), c in zip(items, colors))
+    label = "、".join(f"{l} {val(v)}" for l, v, _ in items)
+    inner = (f'            <div class="fig-share" role="img" aria-label="{e(label)}">{segs}</div>\n'
+             f'            <ul class="fig-share__list">\n{rows}\n            </ul>')
+    return _figure("share", title, inner, note)
 
 
 def points(title, items, note=""):
@@ -124,6 +159,18 @@ def points(title, items, note=""):
         f"""              <li class="fig-point"><span class="fig-point__no">{i:02d}</span><p class="fig-point__name">{e(n)}</p><p class="fig-point__sub">{e(s)}</p></li>"""
         for i, (ic, n, s) in enumerate(items, 1))
     return _figure("points", title, f'            <ul class="fig-points fig-points--{len(items)}">\n{cards}\n            </ul>', note)
+
+
+def model(title, name, alt, pins, note="", ratio="3 / 2"):
+    """解説模型：Figma で作った模型の画像（images/illust/<name>.webp と -768.webp。文字なし）に番号の印を重ね、下に番号つきの説明を並べる。
+    文字は画像に入れず HTML に書く（検索・AI・読み上げに読めるように）。pins = [(x%, y%, 名前, 一言)]（x・y はイラスト上の位置）"""
+    marks = "".join(f'<span class="fig-model__pin" style="left:{x}%;top:{y}%" aria-hidden="true">{i}</span>'
+                    for i, (x, y, *_r) in enumerate(pins, 1))
+    rows = "\n".join(f'              <li class="fig-model__item"><span class="fig-model__no">{i}</span><span class="fig-model__name">{e(n)}</span>'
+                     f'<span class="fig-model__sub">{e(sub)}</span></li>' for i, (_x, _y, n, sub) in enumerate(pins, 1))
+    inner = (f'            <div class="fig-model__stage" style="aspect-ratio:{ratio}"><img src="/images/illust/{name}.webp" srcset="/images/illust/{name}-768.webp 768w, /images/illust/{name}.webp 1536w" sizes="(max-width: 899px) 100vw, 560px" width="1536" height="1024" alt="{e(alt)}" loading="lazy" decoding="async">{marks}</div>\n'
+             f'            <ol class="fig-model__list">\n{rows}\n            </ol>')
+    return _figure("model", title, inner, note)
 
 
 # 記事ごとの図：slug → (入れる節のid, 図)
@@ -141,9 +188,6 @@ ARTICLE_FIGURES = {
         ("globe", "情報発信の遅れ", "多言語の案内や予約の導線が弱い"),
         ("leaf", "担い手の減少", "人口減少で、支える人が減っていく"),
     ])),
-    "akiya-regional-revitalization": ("cycles", cycle("空き家の再生から始まる、地域の循環", "地域に、人とお金がめぐる", [
-        ("house", "空き家を宿に再生"), ("plane", "旅行者が訪れる"), ("store", "地域でお金が使われる"), ("users", "仕事と担い手が育つ"),
-    ])),
     "minpaku-vs-ryokan-law": ("compare", compare("民泊新法と旅館業（簡易宿所）の違い", [
         ("house", "民泊新法", "住宅宿泊事業法", ["届出で始められる", "営業は年180日まで", "住宅のまま使える"]),
         ("bed", "旅館業（簡易宿所）", "旅館業法", ["許可が必要", "営業日数の上限なし", "用途や設備の基準を満たす"]),
@@ -151,12 +195,6 @@ ARTICLE_FIGURES = {
     "airdna-revenue-simulation": ("formula", formula("収益シミュレーションの基本式", [
         ("販売できる日数", "年間の営業日"), "×", ("稼働率", "埋まった日の割合"), "×", ("客室単価", "1泊あたりの料金"),
     ], result=("売上", "1年間"), note="ここから予約サイトの手数料・清掃費・光熱費などを引いたものが、手元に残る利益です。")),
-    "small-inn-subsidies": ("types", points("小規模宿で検討しやすい補助金・支援制度", [
-        ("bubble", "集客の仕組みづくり", "小規模事業者持続化補助金"),
-        ("chart", "システムの導入", "IT導入補助金"),
-        ("house", "改修・起業", "自治体の空き家改修補助・起業支援"),
-        ("plane", "宿泊業の受け入れ整備", "観光庁などの事業"),
-    ], "※ 公募の時期や条件は年度ごとに変わります。最新の公募要領をご確認ください。")),
     "new-build-vs-used-house-inn": ("compare", compare("新築と中古（空き家の改修）の違い", [
         ("house", "中古（空き家の改修）", "既存の建物を活かす", ["費用を抑えやすい", "開業までが早い", "建物の状態の見極めが必要"], True),
         ("tool", "新築", "一から建てる", ["間取りや設備を自由に設計", "初期費用が大きい", "工期が長くなりやすい"]),
@@ -168,10 +206,6 @@ ARTICLE_FIGURES = {
         ("doc", "制度と条例", "旅館業か民泊新法か、区域や営業日の制限"),
         ("chart", "収支の見通し", "悲観的な想定でも赤字にならないか"),
     ])),
-    "minpaku-start-steps": ("flow", flow("民泊の開業までの7ステップ", [
-        ("house", "物件と方針を決める", ""), ("doc", "法令・条例・規約を確認", ""), ("fire", "消防署に相談", ""),
-        ("tool", "設備を整える", ""), ("check", "届出をする", ""), ("users", "運営体制をつくる", ""), ("camera", "集客を始める", ""),
-    ])),
     "akiya-bank-guide": ("what", flow("空き家バンクのしくみ", [
         ("house", "所有者が登録", "自治体に物件の情報を届け出る"),
         ("globe", "自治体が掲載", "ホームページなどで紹介する"),
@@ -181,29 +215,15 @@ ARTICLE_FIGURES = {
     "inn-kpi-basics": ("three", formula("宿の売上を読み解く3つの指標", [
         ("稼働率", "販売できた日のうち、埋まった割合"), "×", ("客室単価（ADR）", "1泊あたりの平均料金"),
     ], result=("RevPAR", "販売できる1日あたりの売上"), note="稼働率だけ、単価だけではなく、両方をかけたRevPARで売上の効率を見ます。")),
-    "long-stay-travel-demand": ("change", compare("旅のスタイルの変化", [
-        ("route", "巡る旅", "これまで", ["名所を短い日程で回る", "泊まる場所は寝るだけ"]),
-        ("bed", "滞在する旅", "これから", ["ひとつの土地に長く泊まる", "暮らすように過ごす"], True),
-    ])),
     "minpaku-fire-safety": ("process", flow("開業までの消防の手続き", [
         ("doc", "事前相談", "図面を持って消防署へ"),
         ("tool", "設備の工事", "資格者に依頼して設置"),
         ("check", "検査・通知書", "消防法令適合通知書の交付"),
         ("key", "届出・許可申請", "通知書を添えて申請"),
     ])),
-    "ota-vs-direct-booking": ("compare", compare("予約サイト（OTA）と自社予約の違い", [
-        ("globe", "予約サイト（OTA）", "新しいお客様との出会い", ["集客力が大きい", "手数料がかかる", "開業直後から使える"]),
-        ("heart", "自社予約", "お客様との関係づくり", ["手数料を抑えられる", "リピーターとつながれる", "集客は自分で育てる"], True),
-    ], "開業直後は予約サイトで知ってもらい、少しずつ自社予約を育てるのが現実的です。")),
     "kominka-renovation-points": ("concept", compare("改修の前に決める「残すもの」と「変えるもの」", [
         ("leaf", "残すもの", "時間が生む魅力", ["太い梁や柱、吹き抜け", "土間・縁側・囲炉裏", "格子戸・欄間などの建具", "庭や周辺の景色"]),
         ("tool", "変えるもの", "快適さと安全", ["浴室・トイレ・キッチン", "断熱・すきま風対策", "照明・コンセント・Wi-Fi", "耐震性・防火性"], True),
-    ])),
-    "inn-local-economy": ("flow", flow("旅行者のお金が、地域に広がる流れ", [
-        ("bed", "宿泊", "宿の運営者と建物の所有者の収入に"),
-        ("store", "宿の外での消費", "飲食店・商店・温泉・体験の売上に"),
-        ("box", "宿からの発注", "清掃・リネン・食材・修繕の仕事に"),
-        ("users", "雇用と所得", "働く人の所得が、地域での消費に"),
     ])),
     "cleaning-linen-operations": ("system", points("清掃の品質を安定させる3つの仕組み", [
         ("check", "チェックリスト", "掃除する場所と確認項目を、順番どおりに"),
@@ -222,24 +242,10 @@ ARTICLE_FIGURES = {
         ("clock", "定期借家契約", "将来、使う・売るかもしれない", ["期間が来れば終了", "再契約もできる"]),
         ("handshake", "借り上げ（サブリース）", "運営の手間をかけたくない", ["事業者が借りて宿などに", "毎月の家賃を受け取る"], True),
     ])),
-    "listing-photo-tips": ("order", flow("予約ページの写真の並べ方", [
-        ("sparkle", "いちばんの魅力", "外観・印象的な空間"), ("house", "過ごす場所", "リビング・居間"), ("bed", "寝室", "ベッドの数と配置"),
-        ("tool", "水回り", "キッチン・浴室・トイレ"), ("map", "周辺", "景色・近くの店・自然"),
-    ])),
-    "tourism-labor-shortage": ("summary", compare("人手不足に、3つを同時に", [
-        ("bubble", "採用", "魅力を伝える", ["仕事の内容と地域の暮らしを伝える"]),
-        ("heart", "定着", "働き続けやすく", ["無理のない働き方と、育てる仕組み"]),
-        ("chart", "効率化", "人に頼り切らない", ["予約・鍵・清掃の報告を仕組みに"]),
-    ])),
     "inn-startup-funding": ("sources", compare("開業資金の、主な用意の仕方", [
         ("yen", "自己資金", "計画の土台", ["多いほど返済の負担が軽い", "融資の審査でも重視される"]),
         ("handshake", "融資", "日本政策金融公庫・地域の金融機関", ["創業向けの制度がある", "自治体の制度融資も"]),
         ("doc", "補助金・助成金", "条件に合えば上乗せ", ["多くは後払い", "採択されるとは限らない"]),
-    ])),
-    "guest-review-tips": ("gap", flow("評価を上げる、お客様との接点", [
-        ("calendar", "予約から到着まで", "案内で期待をそろえる"), ("key", "到着", "迷わない道順と鍵の受け渡し"),
-        ("bed", "滞在中", "困りごとにすぐ応える"), ("heart", "チェックアウト後", "お礼とレビューのお願い"),
-        ("bubble", "レビューへの返信", "次のお客様も読んでいる"),
     ])),
     "accommodation-tax": ("what", flow("宿泊税のしくみ", [
         ("users", "宿泊者が支払う", "宿泊料金とあわせて"),
@@ -247,38 +253,58 @@ ARTICLE_FIGURES = {
         ("doc", "自治体に納める", "定められた期限までに申告・納付"),
         ("map", "観光に使われる", "受け入れ環境の整備や観光振興に"),
     ])),
-    "akiya-3000man-deduction": ("conditions", points("「3,000万円特別控除」の主な条件", [
-        ("house", "1981年5月31日以前の家", "区分所有建物を除く"),
-        ("users", "亡くなった方が一人で住んでいた", "老人ホーム入所などの例外あり"),
-        ("key", "相続後は使っていない", "事業・貸付・居住に使っていない"),
-        ("calendar", "期限内に売る", "相続から3年目の年末まで"),
-        ("yen", "売却価格1億円以下", ""),
-        ("tool", "耐震改修または解体", "売った翌年2月15日までに買主が行うことも可"),
-    ], "※ 主な条件の要約です。国税庁の案内や税理士にご確認ください。")),
-    "kankei-jinko-and-inns": ("what", flow("地域との関わり方のグラデーション", [
-        ("plane", "交流人口", "観光などで一時的に訪れる人"),
-        ("heart", "関係人口", "地域と継続的に関わる人"),
-        ("house", "定住人口", "その地域に住む人"),
-    ], "宿は、旅行者が「また来たい」から「関わりたい」へ進む入口になれます。")),
     "minpaku-investment-yield": ("yield", formula("宿の利回りは「運営費を引いて」見る", [
         "（", ("売上", "宿泊料金の合計"), "−", ("運営費", "手数料・清掃・光熱費など"), "）", "÷", ("投資額", "取得費・改修費など"),
     ], result=("実質利回り", "1年間"), note="宿は賃貸より運営費が大きいため、売上だけで見ると利回りを高く見誤ります。")),
     "case-rental-house-inn-first-year": ("invest", bars("初期投資の内訳（全体を100としたとき）", [
-        ("家電", 44, "エアコン・冷蔵庫・洗濯機・ガス衣類乾燥機など"), ("家具", 15, ""), ("設備工事", 13, "電気工事"), ("寝具", 9, ""),
+        ("家電", 44, "エアコン・冷蔵庫・洗濯機・ガス衣類乾燥機など"), ("家具", 15, ""), ("電気工事", 13, ""), ("寝具", 9, ""),
         ("写真・ロゴ・看板", 6, ""), ("鍵・チェックイン・防犯", 5, ""), ("その他", 8, "キッチン用品・リネン・消防用品など"),
     ])),
 }
 
 
+# 解説模型（Figma で作ったイラスト。playbook 15-4）：slug → (入れる節のid, 図)
+MODELS = {
+    "minpaku-start-steps": ("house", model("宿にした空き家で、先に確かめる場所", "inn-house-model",
+        "2階建ての古い木造の家を宿にした模型。1階に台所・木の浴槽の浴室・玄関と消火器、2階に布団を敷いた和室がある", [
+        (34, 59, "台所", "届出に要る4つの設備（台所・浴室・便所・洗面）の1つ"),
+        (47, 68, "浴室", "便所・洗面とあわせて、使える状態かを確かめる"),
+        (50, 40, "客室", "どの消防設備が要るかは、図面を持って消防署に相談して決める"),
+        (64, 76, "消火器", "消防署の指導に合わせて置く"),
+        (68, 64, "玄関の鍵", "鍵の受け渡しを誰が担当するかを決めておく"),
+    ], "※ イラストはイメージです。必要な設備は、物件と自治体の条件で変わります。")),
+    "akiya-holding-costs": ("items", model("空き家を持っているだけで、毎年かかるもの", "akiya-upkeep",
+        "雨戸を閉めた平屋の空き家の模型。庭に草が伸び、作業着の人が見回りをしている。外壁に電気のメーターがある", [
+        (52, 23, "土地と建物", "固定資産税：住んでいなくても、毎年かかる"),
+        (68, 45, "建物", "火災保険：建物の状態と補償の範囲で変わる"),
+        (42, 73, "庭", "草刈り：機械での草刈りは1時間1,379円からの例（処分費は別）"),
+        (29, 49, "見回り", "1回3,000円、月1回で年36,000円の例"),
+        (53, 51, "電気・水道", "契約を続ける間は、基本料金がかかる"),
+    ], "※ イラストはイメージです。金額は本文の表の例で、地域や業者で変わります。")),
+    "cleaning-linen-operations": ("linen", model("小さな宿の清掃とリネンの回し方", "cleaning-turnover",
+        "宿の寝室の模型。清掃する人がシーツを整え、部屋の奥に洗濯機と乾燥機、棚にたたんだタオル、三脚にスマートフォンがある", [
+        (60, 29, "洗濯機と乾燥機", "まず宿で洗う形から始めれば十分"),
+        (69, 36, "たたんだリネン", "干したりしまったりする場所が要る"),
+        (35, 54, "清掃する人", "手順書の順番どおりに清掃する"),
+        (61, 51, "写真で報告", "清掃後の写真で、離れていても仕上がりを確かめる"),
+    ], "※ イラストはイメージです。")),
+}
+
+
 def insert_figure(slug, sid, html, own=None):
-    """節の最初の段落のあとに図を入れる（段落がなければ見出しの直後）。own は記事データが持つ図"""
-    fig = own or ARTICLE_FIGURES.get(slug)
-    if not fig or fig[0] != sid:
-        return html
+    """節の最初の段落のあとに図を入れる（段落がなければ見出しの直後）。own は記事データが持つ図。
+    ARTICLE_FIGURES と MODELS（解説模型）の両方から、この節の図を入れる（1つの記事に図が2つあってもよい）"""
+    figs = [f for f in (own or ARTICLE_FIGURES.get(slug), MODELS.get(slug)) if f and f[0] == sid]
+    for fig in figs:
+        html = _insert_one(html, fig[1])
+    return html
+
+
+def _insert_one(html, fig):
     if html.lstrip().startswith('<div class="callout'):
         # 冒頭が「結論」の枠なら、枠の中ではなく枠の次に図を置く（結論の文を先に読ませる）
         j = html.find("</div>")
         if j >= 0:
-            return html[:j + 6] + "\n" + fig[1] + "\n" + html[j + 6:]
+            return html[:j + 6] + "\n" + fig + "\n" + html[j + 6:]
     i = html.find("</p>")
-    return (html[:i + 4] + "\n" + fig[1] + "\n" + html[i + 4:]) if i >= 0 else fig[1] + "\n" + html
+    return (html[:i + 4] + "\n" + fig + "\n" + html[i + 4:]) if i >= 0 else fig + "\n" + html
