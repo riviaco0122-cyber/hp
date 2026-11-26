@@ -319,7 +319,9 @@ ARTICLES_SERIES3 += [
             ("自分で解体してもよいのですか？", "撤去してよい間仕切りや設備なら、自分で解体して費用を抑える方法もあります。ただ、構造に関わる部分は、必ず専門家に確かめてください。"),
             ("電気の配線は、どうやって確かめますか？", "分電盤や、電力会社との契約内容で確かめられます。分からなければ、電気工事の事業者に見てもらうと安心です。"),
         ],
-        sources=["創業メンバーによる下田での開業記録（2025年11月執筆）", "国土交通省「住宅リフォームに関する情報」"],
+        sources=["創業メンバーによる下田での開業記録（2025年11月執筆）", "国土交通省「住宅リフォームに関する情報」",
+                 "河津町「空き家活用支援補助金」（2026年11月確認） https://www.town.kawazu.shizuoka.jp/ijuu/akiyakatsuyoshien/",
+                 "西伊豆町「空き家改修等補助金」（2026年11月確認） https://www.town.nishiizu.shizuoka.jp/kakuka/machizukuri/kikaku/akiyahojo.html"],
     ),
     dict(
         slug="long-stay-guest-equipment", related=['long-stay-travel-demand', 'inn-startup-funding'],

@@ -680,6 +680,8 @@ ARTICLES_SERIES1 = [
             ("活用を始めたあとで、売ることはできますか？", "できます。ただ、貸している場合は、契約の内容によって手続きが変わります。相続した家の3,000万円控除には「相続開始から3年を経過する日の属する年の12月31日まで」という期限があるので、売る可能性があるなら先に期限を確かめておきましょう。"),
         ],
         sources=[
+            '下田市議会「令和5年12月定例会 一般質問の会議録」（PDF、2026年11月確認） https://www.city.shimoda.shizuoka.jp/file/r05.12-eda.pdf',
+            '富士宮市「富士宮市空家等除却費補助金交付制度」（2025年8月29日更新、2026年11月確認） https://www.city.fujinomiya.lg.jp/1040610000/p000592.html',
             '国税庁「No.3306 相続した家屋や敷地を売ったときの特例」（令和8年4月1日現在） https://www.nta.go.jp/taxes/shiraberu/taxanswer/joto/3306.htm',
             '総務省「やさしい地方税 固定資産税」（2026年閲覧） https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/150790_15.html',
             '国土交通省「空き家対策特設サイト」（2024年） https://www.mlit.go.jp/jutakukentiku/house/akiya-taisaku/articles/2024020105.html',

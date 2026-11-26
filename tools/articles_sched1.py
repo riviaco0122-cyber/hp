@@ -160,6 +160,8 @@ ARTICLES_SCHED1 = [
             ("空き家でなくても、民泊は始められますか？", "はい、始められます。観光庁の説明では、民泊の対象は住宅の全部または一部で、戸建てのほか、マンションなどの共同住宅も含みます。空き家である必要はありません。届出（民泊新法）の場合は、台所・浴室・便所・洗面設備があることや、人が暮らす家であることなどを確かめます。借りた部屋なら、貸主が民泊を承諾していることも要ります。手順は「賃貸で民泊を始めるには？転貸の承諾書と管理規約の確認手順」で説明しています。"),
         ],
         sources=[
+            '河津町「空き家活用支援補助金」（2026年10月閲覧） https://www.town.kawazu.shizuoka.jp/ijuu/akiyakatsuyoshien/',
+            '西伊豆町「空き家改修等補助金」（2026年10月閲覧） https://www.town.nishiizu.shizuoka.jp/kakuka/machizukuri/kikaku/akiyahojo.html',
             "観光庁「民泊制度ポータルサイト はじめに『民泊』とは」（3つの制度の比較表、2026年10月閲覧） https://www.mlit.go.jp/kankocho/minpaku/overview/minpaku/index.html",
             "観光庁「民泊制度ポータルサイト」（2026年10月閲覧） https://www.mlit.go.jp/kankocho/minpaku/",
             "観光庁「対象となる住宅」（2026年10月閲覧） https://www.mlit.go.jp/kankocho/minpaku/business/host/target.html",
