@@ -147,8 +147,8 @@ def spec_md():
     w("")
     w("### RIVIAが選ばれる理由（追加）")
     w(f"    {REASONS_LEAD}")
-    for i, (t, d, c) in enumerate(REASONS, 1):
-        w(f"    {i}. **{t}** — {d}（経歴: {c}）")
+    for i, (en, t, d, tags) in enumerate(REASONS, 1):
+        w(f"    {i}. **{t}**（{en}） — {d}（{' ／ '.join(tags)}）")
     w("")
     w("### Project（運営実績）")
     w("* お悩み別導線より下に1か所だけ配置。カード全体がリンクで、施設サイト（https://nodeshimoda.com/）を別タブで開く。ホバーで写真が少し拡大。")

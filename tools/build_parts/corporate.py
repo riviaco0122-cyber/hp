@@ -123,13 +123,13 @@ def index_page():
     </section>"""
     cards = service_groups_html()
     reasons = "\n".join(
-        f"""          <li class="reason reveal" data-delay="{i - 1}">
-            <span class="reason__num">{i:02d}</span>
-            <h3 class="reason__title">{e(t)}</h3>
-            <p class="reason__text">{e(d)}</p>
-            <p class="reason__career"><span>Career</span>{e(c).replace("|", "<wbr>")}</p>
+        f"""          <li class="why reveal" data-delay="{(i - 1) % 2}">
+            <p class="why__head"><span class="why__num">{i:02d}</span><span class="why__en">{en}</span></p>
+            <h3 class="why__title">{e(t)}</h3>
+            <p class="why__text">{e(d)}</p>
+            <ul class="why__tags">{"".join(f"<li>{e(x)}</li>" for x in tags)}</ul>
           </li>"""
-        for i, (t, d, c) in enumerate(REASONS, 1)
+        for i, (en, t, d, tags) in enumerate(REASONS, 1)
     )
     slides = "\n".join(
         f'        <img class="hero__bg{" is-active" if i == 0 else ""}" src="images/photos/{n}.jpg" alt="" width="{w}" height="{h}" style="object-position:{pos}"'
@@ -183,14 +183,20 @@ def index_page():
 
     <section class="section reasons-sec">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Why RIVIA</span>
-          <h2 class="section-title">RIVIAが選ばれる理由</h2>
-          <p class="section-lead">{e(REASONS_LEAD)}</p>
-        </div>
-        <ol class="reasons">
+        <div class="why-grid">
+          <div class="why-intro reveal">
+            <span class="eyebrow">Why RIVIA</span>
+            <h2 class="section-title">RIVIAが<br>選ばれる理由</h2>
+            <p class="section-lead">{e(REASONS_LEAD)}</p>
+            <a href="about.html#founders" class="why-founders">
+              <span class="why-founders__faces"><img src="images/founder-ishihara.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"><img src="images/founder-katai.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></span>
+              <span class="why-founders__txt"><b>創業者 石原・片井</b><span>経歴を見る</span></span>
+            </a>
+          </div>
+          <ol class="why-list">
 {reasons}
-        </ol>
+          </ol>
+        </div>
       </div>
     </section>
 

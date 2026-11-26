@@ -44,7 +44,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap"></noscript>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700&text=%E3%82%A2%E3%82%AD%E3%83%A4%E3%83%89&display=swap" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="../css/style.css?v=02a65a47">
+  <link rel="stylesheet" href="../css/style.css?v=76f394ad">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -215,31 +215,43 @@
 
     <section class="section reasons-sec">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Why RIVIA</span>
-          <h2 class="section-title"><n-w class="h">RIVIAが<wbr>選ば<n-b>れる理由</n-b></n-w></h2>
-          <p class="section-lead"><n-w class="h">創業者2人は、<wbr><n-b><n-b class="num">官・</n-b><n-b class="num">大手・</n-b><n-b class="num">ベンチャー</n-b></n-b><n-b>出身<n-b>です。</n-b></n-b><br class="sb">自ら宿を<wbr>運営する<wbr>知見と<wbr>あわせて<wbr>支援<n-b>し<n-b>ます。</n-b></n-b></n-w></p>
+        <div class="why-grid">
+          <div class="why-intro reveal">
+            <span class="eyebrow">Why RIVIA</span>
+            <h2 class="section-title"><n-w class="h">RIVIAが</n-w><br><n-w class="h">選ばれる理由</n-w></h2>
+            <p class="section-lead"><n-w class="h"><n-b><n-b><n-b class="num">官・</n-b><n-b class="num">大手・</n-b><n-b class="num">ベンチャー</n-b></n-b>の</n-b><wbr>経験と、<wbr>自ら宿を<wbr>運営す<n-b>る現場。</n-b><br class="sb">4つの<wbr>力を、<wbr>ひとつの<wbr><n-b>チームで。</n-b></n-w></p>
+            <a href="about.html#founders" class="why-founders">
+              <span class="why-founders__faces"><img src="../images/founder-ishihara.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"><img src="../images/founder-katai.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></span>
+              <span class="why-founders__txt"><b><n-w class="h">創業者 <n-b><n-b>石原・片井</n-b></n-b></n-w></b><span><n-w class="h">経歴を見る</n-w></span></span>
+            </a>
+          </div>
+          <ol class="why-list">
+          <li class="why reveal" data-delay="0">
+            <p class="why__head"><span class="why__num">01</span><span class="why__en">Business</span></p>
+            <h3 class="why__title"><n-w class="h">事業を<wbr><n-b>つくる力</n-b></n-w></h3>
+            <p class="why__text"><n-w class="h">2人とも<wbr><n-b>リクルート出身。</n-b><br class="sb">新規事業の<wbr>立ち上げと、<wbr>ベンチャーでの<wbr><n-b>事業・組織</n-b>づくり<n-b>を経験。</n-b></n-w></p>
+            <ul class="why__tags"><li><n-w class="h">リクルート</n-w></li><li>HR Tech</li><li><n-w class="h">サイ<n-b>バーセキュリティ</n-b></n-w></li></ul>
+          </li>
+          <li class="why reveal" data-delay="1">
+            <p class="why__head"><span class="why__num">02</span><span class="why__en">Public</span></p>
+            <h3 class="why__title"><n-w class="h">地域と<wbr>行政を<wbr><n-b>知る視点</n-b></n-w></h3>
+            <p class="why__text"><n-w class="h">片井は<wbr>静岡県庁<n-b>の出身。</n-b><br class="sb">自治体や<wbr>地域の<wbr>方々と、<wbr>官民両方の<wbr>視点で<wbr>話を<wbr>進<n-b>め<n-b>ます。</n-b></n-b></n-w></p>
+            <ul class="why__tags"><li><n-w class="h">静岡県庁</n-w></li><li><n-w class="h">大手メーカー</n-w></li></ul>
+          </li>
+          <li class="why reveal" data-delay="0">
+            <p class="why__head"><span class="why__num">03</span><span class="why__en">Data</span></p>
+            <h3 class="why__title"><n-w class="h">数字で<wbr>見極<n-b>める判断</n-b></n-w></h3>
+            <p class="why__text"><n-w class="h">位置情報データや<wbr>テクノロジーの<wbr>経験から、<wbr>需要と<wbr>収支を<wbr>数字で<wbr>確か<n-b>め<n-b>ます。</n-b></n-b></n-w></p>
+            <ul class="why__tags"><li><n-w class="h"><n-b>位置情報データ</n-b></n-w></li><li><n-w class="h"><n-b>複数企業の経営</n-b></n-w></li></ul>
+          </li>
+          <li class="why reveal" data-delay="1">
+            <p class="why__head"><span class="why__num">04</span><span class="why__en">Field</span></p>
+            <h3 class="why__title"><n-w class="h">自ら宿を<wbr>運営<n-b>する現場</n-b></n-w></h3>
+            <p class="why__text"><n-w class="h">静岡県下田市で<wbr>宿<n-b>を運営。</n-b><br class="sb">ご提案の<wbr>数字は、<wbr>私たちの<wbr>運営記録が<wbr><n-b>元<n-b>です。</n-b></n-b></n-w></p>
+            <ul class="why__tags"><li><n-w class="h">下田で<wbr><n-b>宿を運営</n-b></n-w></li><li><n-w class="h">焼津で<wbr><n-b>開業準備中</n-b></n-w></li></ul>
+          </li>
+          </ol>
         </div>
-        <ol class="reasons">
-          <li class="reason reveal" data-delay="0">
-            <span class="reason__num">01</span>
-            <h3 class="reason__title"><n-w class="h">リクルート出身の、<wbr>事業を<wbr><n-b>つくる力</n-b></n-w></h3>
-            <p class="reason__text"><n-w>代表の<wbr><n-b>2人</n-b><wbr>は、ともに<wbr>リクルート出身。<wbr>新規事業開発室での<wbr>ゼロイチの<wbr>立ち上げや、<wbr>ベンチャーでの<wbr><n-b><n-b class="num">事業創出・</n-b><n-b class="num">組織拡大</n-b></n-b>の<wbr>経験を、<wbr>宿と<wbr>地域の<wbr>事業づくりに<wbr>活か<n-b>し<n-b>ます。</n-b></n-b></n-w></p>
-            <p class="reason__career"><span>Career</span><n-w class="h">リクルート ／ HR T<n-b>ech・</n-b></n-w><n-w class="h">サイ<n-b>バーセキュリティ</n-b></n-w><wbr><n-b>ベンチャー</n-b></p>
-          </li>
-          <li class="reason reveal" data-delay="1">
-            <span class="reason__num">02</span>
-            <h3 class="reason__title"><n-w class="h">県庁出身の、<wbr>地域と<wbr>行政を<wbr><n-b>知る視点</n-b></n-w></h3>
-            <p class="reason__text"><n-w>代表の<wbr>片井は<wbr>静岡県庁の<wbr>出身。<wbr>行政の<wbr>立場で<wbr>地域課題に<wbr>向き合ってきた<wbr>経験から、<wbr>自治体や<wbr>地域の<wbr>方々との<wbr>対話を、<wbr>官民両方の<wbr>視点で<wbr>進<n-b>め<n-b>ます。</n-b></n-b></n-w></p>
-            <p class="reason__career"><span>Career</span><n-w class="h">静岡県庁 ／ 大手<n-b>メーカー</n-b></n-w></p>
-          </li>
-          <li class="reason reveal" data-delay="2">
-            <span class="reason__num">03</span>
-            <h3 class="reason__title"><n-w class="h">データにもとづく、<wbr>根拠の<wbr><n-b>ある判断</n-b></n-w></h3>
-            <p class="reason__text"><n-w>位置情報データを<wbr>扱う<wbr>ベンチャーや<wbr>テクノロジー企業での<wbr>経験を<wbr>活かし、<wbr>需要や<wbr>収支を<wbr>数字で<wbr>見極め<n-b>ます。</n-b><wbr>感覚に<wbr>頼らない<wbr>意思決定を<wbr>支<n-b>え<n-b>ます。</n-b></n-b></n-w></p>
-            <p class="reason__career"><span>Career</span><n-w class="h">位置情報データベンチャー ／ <n-b>複数企業の経営</n-b></n-w></p>
-          </li>
-        </ol>
       </div>
     </section>
 
