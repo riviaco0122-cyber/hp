@@ -53,6 +53,8 @@ body {
 }
 .vision__lead n-w, n-w.c { word-break: keep-all; } /* 中央揃えの文は、言葉の切れ目（<wbr>）でだけ改行する（js/main.js が .c を付ける） */
 .vision__lead n-b, n-w.c n-b { white-space: nowrap; } /* トップのコンセプト（人のお手本 2026-11-07）は、右詰めにせず言葉の区切りで改行する */
+n-c { display: inline; }
+n-w.c n-c { display: inline-block; max-width: 100%; } /* 中央揃えの文は「、」「。」で区切った節ごとにまとめ、節と節の間でだけ改行する（js/main.js。About us の紹介文と同じ形。人の方針 2026-11-26） */
 n-b.nu, n-b.keep { white-space: nowrap; } /* 改行しないのは、数字と単位と、最後の行の短さが続くときの最後の4文字だけ（js/main.js）。ほかの文字は言葉の切れ目を待たずに行末まで詰めて折り返す（人の方針 2026-11-13） */
 img { max-width: 100%; height: auto; display: block; }
 /* hidden 属性は、各要素の display 指定より常に優先して非表示にする（絞り込み・予約公開で使用） */
