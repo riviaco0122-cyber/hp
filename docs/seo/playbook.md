@@ -529,6 +529,7 @@ AI は、サイトの外で「誰がこの分野で語られているか」も�
   - **順位・比べる量** → `bars()` の棒（大きい順。強調は1本だけ）。**順番** → `flow()`。**式** → `formula()`（スマホでは記号を左に置いた筆算の形）。**向き不向き・違い** → `compare()`。**要点** → `points()`。
 - グラフを新しく作る・部品を直すときは、先に **dataviz スキル**（データ可視化の基準）を読む。守ること：形はデータの役割で選ぶ（内訳＝帯、順位＝棒、推移＝折れ線）／縦軸は1本だけ／棒は細く、根元は四角・先だけ少し丸く／部分の境目は線でなく2pxのすき間／数字の色は文字の色（系列の色は色見本で示す）／色だけで区別させない（名前と値を必ず並べる）。
 - 図・表を直したら、スマホ幅で撮って目で見る（site_check に加えて、`docs/design-guide.md` 8章）。
+- **ビジュアルは写真が基本。解説模型は、写真では説明できないとき（家の中の設備の場所、物の仕組みや順番を番号で指す図）だけに使う**（人の方針 2026-11-27：Unsplash の写真は質が高いので、模型を不必要に入れない）。
 - **解説模型・イラストは Figma で作る（人の方針 2026-11-26：苦手な手描きの SVG や、平たいクリップアート調で作らない）。** 手順：①Figma のファイル「アキヤド 図解リデザイン」に `generate_image`（1536×1024）で作る。プロンプトの型は「Premium architectural cutaway model, isometric 3D render in the style of a high-end architecture studio presentation（建築事務所のプレゼン模型）＋中身＋ natural wood, off-white plaster, matte clay-like finish, soft global illumination, deep forest green accents, plain warm off-white (#f6f8f4) background, no text, no letters, no numbers」。人物は小さな模型の人形にする ②`get_screenshot` で見て、部屋や設備が記事の内容と合っているかを確かめる（合わなければ作り直す） ③返ってきた URL から PNG を取り、`images/illust/<名前>.webp`（1536px）と `-768.webp` にする ④記事には `figures.py` の `MODELS` に `model()` で入れる。番号の印と説明は HTML の文字で書き、画像には文字を入れない（検索・AI・読み上げに読めるように）。番号は絵の要の部分（人の顔など）を隠さない位置に置く。説明は記事の本文にある事実だけにし、「※ イラストはイメージです」を添える。
 
 ## 5-6 事例記事（オーナー取材）は別の採点（人の方針 2026-10-15）
