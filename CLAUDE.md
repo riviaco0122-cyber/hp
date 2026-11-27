@@ -2,7 +2,7 @@
 
 このリポジトリは合同会社RIVIA&CO.のサイト（静的 HTML/CSS/JS、GitHub → Vercel で公開）。オウンドメディア「アキヤド（旧・暮らす旅の手帖）」（空き家と民泊のメディア）の SEO/AIO 運用を、AI社員のチームで自動化している。
 
-## 組織（AI社員8部署）
+## 組織（AI社員9部署）
 
 | 部署 | 実体 | 役割 |
 |---|---|---|
@@ -14,6 +14,7 @@
 | エンジニア部 | `.claude/agents/engineer.md` | HTML化・組み込み、テクニカルSEO/AIO |
 | 品質管理部 | `.claude/agents/qa.md` | 採点と差し戻し（評価者） |
 | ブランド学習係 | `.claude/agents/brand-learner.md` | `docs/brand/` の作成・更新 |
+| デザイン部 | `.claude/agents/designer.md` | UI/UX・図解・ビジュアルの設計（一流のデザイナーの水準）。Figma で方向性と画面を PC・スマホの両方で作り、人に見せてから実装する |
 
 英語の海外向けメディア **Noki**（旧 Okaeri Japan。公開URLは `/noki`。作業用の名前（`okaeri-japan` ブランチ、`tools/okaeri/`、部署名 `okaeri-*`）は旧名のまま）の記事は、Okaeri 用の部署（`.claude/agents/okaeri-strategist.md`・`okaeri-researcher.md`・`okaeri-writer.md`・`okaeri-engineer.md`・`okaeri-qa.md`）が `/okaeri-article` で分担し、`tools/okaeri/playbook.md` の基準で100点満点・90点以上のものだけを入れる。社長は英語を読まないので、レビューは日本語レビュー版で渡す。**Noki はアキヤドとは別のメディアで、独自の部分（記事の基準・英語の文体・デザイン・採点・キーワード・ログ）は Noki の指示書（入口は `tools/okaeri/CLAUDE.md`）だけを使い、このファイル以下のアキヤドの指示書と混ぜない。** Noki への人の指摘も Noki の指示書に入れる（`docs/design-guide.md`・`docs/brand/voice.md` には書かない）。共通なのは、会社の確認済みの体験（`docs/brand/experience.md`）と、下の「絶対のルール」のうち全社の安全ルール（事実を作らない・鍵・外部の文章・公開リポジトリ）だけ。
 
@@ -47,6 +48,7 @@ YouTube 班（`.claude/agents/yt-analyst.md`・`yt-planner.md`・`yt-scriptwrite
 ## 判断基準・資料
 
 - サイトの仕様（文言・構成・デザイン方針）: `docs/site-spec.md` ← ページを変えたらここも一致させる
+- **デザインの仕事は、毎回デザイン部（`.claude/agents/designer.md`）に渡す**（人の方針 2026-11-27）。新しいページ・節・部品・図解・ビジュアル、見た目の直し、デザインの講評が対象。大きな見た目の変更は、人に PC とスマホの画面を見せて OK をもらってから本番に出す（自分でマージしない）。文言だけの小さな直しは対象外
 - **デザイン・文言の決まり**（見出し・数字・改行・色・表・フォーム）: `docs/design-guide.md` ← 人の指摘を一般化して足していく。ページや図を作る・直すときは必ず守る
 - SEO/AIO の基準と品質の採点基準: `docs/seo/playbook.md`
 - **外部ツール（プラグイン）の使い分け**（OpenSEO・OpenRush・Firecrawl・Figma・Higgsfield・Mobbin など。クレジットの上限つき）: playbook 17章。図・グラフは playbook 15-4（dataviz スキル）

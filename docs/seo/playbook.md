@@ -580,9 +580,9 @@ AI は、サイトの外で「誰がこの分野で語られているか」も�
 | 順位・流入（自社） | 既存の `tools/analytics.py`（GA4/Search Console） | OpenSEO・OpenRush の GA/SC 連携は、つながっているときの予備 |
 | Semrush | （2026-11-26 時点で API の残りが0。使えない） | 人が API の枠を足したら、`keyword_research`・`organic_research` を OpenSEO の代わりに使ってよい |
 | 写真 | **Unsplash**（`docs/design-guide.md` のとおり。出典は `docs/photo-credits.md`） | — |
-| ページ・部品のデザインの参考 | **Mobbin**（`search_sections`・`search_screens`） | 新しいページの型・部品を作る前に、似た部品の実例を見る。見た目の写しはしない |
+| ページ・部品のデザインの参考 | **UI Design Review（UXKIN）**・**Design** プラグイン（入っていれば） | デザイン部（`.claude/agents/designer.md`）が使う。実在の一流の画面と比べ、講評する。Mobbin は有料プランが必要で使えない（2026-11-27） |
 | 解説模型・イラスト | **Figma**（`generate_image` の 3D 模型。確認なしで使ってよい。人の方針 2026-11-26） | 15-4 の手順。`generate_vector_illustration` の平たい絵は安っぽく見えるので使わない |
-| デザインの確認・共有 | **Figma**（`html_to_figma` で部品集を送る。`mcp.figma.com` の通信許可が要る） | 部品の実装はコード（`tools/figures.py`・`css/style.css`） |
+| 画面のデザイン・方向性の見本 | **Figma**（`use_figma`。ファイル「アキヤド 図解リデザイン」、ページ「01 方向性の見本」） | デザイン部が PC（1440）とスマホ（390）の両方で作り、人に見せてから実装する。Figma は確認なしで使ってよい |
 | アイキャッチの背景・飾りの絵・動画 | **Higgsfield**（画像・動画の生成。無料プランでは安い動画モデルが使えない） | 文字・数字・図解は生成させない（日本語が崩れ、事実の図にならない）。人物の写真風の画像は「実在の体験」に見えるので使わない。無料枠は少ない（2026-11-26 時点で10クレジット）ので、使う前に人に聞く |
 | 数字のグラフ・表 | **dataviz スキル**（15-4） | 数字は画像にしない（HTML で書く）。画像生成は使わない |
 | 手書き風の構想図（社内の検討用） | Excalidraw | 記事には載せない |

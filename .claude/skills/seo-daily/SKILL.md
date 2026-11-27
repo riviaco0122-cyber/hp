@@ -93,7 +93,7 @@ description: アキヤドの日次SEO/AIOサイクル（調査→企画→執筆
 
 ## テーマは必ず需要を確かめてから決める（人の方針 2026-10-15）
 - **需要が確認できたテーマだけを採用する。** 素材（体験・条文・データ）が揃っているだけでは採用しない。順番は「①需要の確認 → ②素材が取れるか → ③既存記事との重なり」。
-- 需要の確認は playbook 14-1・15章どおり、次を順に使い、**根拠を `docs/seo/calendar.md` に1行（使った語・結果）書く**: ① Search Console（表示・クエリ） ②サジェスト（`python3 tools/suggest.py`。**候補のテーマの語で、その日にもう一度取る**。昔のファイルの流用はしない） ③YouTube（`yt_trend.py`・`youtube_research.py`）と X（WebSearch を x.com に絞る。`/trend-research`） ④相談フォーム・GA4 ⑤取材・一次情報。 検索数・検索結果の形・AI の引用は、プラグイン（OpenSEO・OpenRush・Firecrawl）で補う。使い分けとクレジットの上限は playbook 17章。図・グラフを作るときは dataviz スキルを読む（playbook 15-4）。
+- 需要の確認は playbook 14-1・15章どおり、次を順に使い、**根拠を `docs/seo/calendar.md` に1行（使った語・結果）書く**: ① Search Console（表示・クエリ） ②サジェスト（`python3 tools/suggest.py`。**候補のテーマの語で、その日にもう一度取る**。昔のファイルの流用はしない） ③YouTube（`yt_trend.py`・`youtube_research.py`）と X（WebSearch を x.com に絞る。`/trend-research`） ④相談フォーム・GA4 ⑤取材・一次情報。 検索数・検索結果の形・AI の引用は、プラグイン（OpenSEO・OpenRush・Firecrawl）で補う。使い分けとクレジットの上限は playbook 17章。図・グラフを作るときは dataviz スキルを読む（playbook 15-4）。 新しい図解・ビジュアル・ページの見た目は、デザイン部（`.claude/agents/designer.md`）に渡す。
 - **採用の目安は、候補の主な語がサジェストに複数出る、または Search Console に表示がある、のどちらか。** どれでも確かめられないテーマは「需要未確認」として見送り、別のテーマを探す（見送った理由は通知に書く）。
 - 需要の確認結果（使った語・サジェストの件数・判断）は、記事を採用してもしなくても、最終メッセージと PR の説明に書く。
 
