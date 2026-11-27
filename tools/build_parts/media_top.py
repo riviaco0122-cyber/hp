@@ -1,24 +1,25 @@
-# -*- coding: utf-8 -*-
-# build.py の一部：アキヤド：ナビ・トップ・テーマ別・ガイド・検索のページ。
-# 単独では動かない。build.py が決まった順番で読み込み、1つのファイルとして実行する
-# （ほかの部分の関数・定数はそのまま使える。import は不要）。
-
-# アキヤドの特徴（人の依頼 2026-11-27：メディアのデザインの刷新）。ビジュアルは Figma で作った模型の画像（images/illust/）、
-# 数字と言葉は HTML。番号・見出し・本文・要点を、ビジュアルと左右交互に並べる
+# アキヤドの特徴（人の依頼 2026-11-27：メディアのデザインの刷新）。ビジュアルは写真（人の方針 2026-11-27：写真が基本）、
+# 数字と言葉は HTML。番号・見出し・本文・要点を、写真と左右交互に並べる（スマホは写真を小さく見出しの横に置いて詰める）
 MFEATURES = [
-    dict(img="feat-operator", alt="アパートの一室を貸切の宿にした模型。ベッド、食卓、小さな台所、洗濯機がある",
+    dict(photo="own-renovation-room", alt="私たちが手を入れた部屋。木のテーブルと革の椅子",
          title="宿を運営する当事者が答える", text="記事の数字もご提案の見込みも、私たちの運営記録が元です。",
          facts=[("1年目の稼働率", "約", "53", "%"), ("開業費用をほぼ回収", "約", "14", "か月")],
          cap="運営している宿の一例：静岡県下田市・アパートの一室を貸切"),
-    dict(img="feat-compare", alt="古い木造の空き家の模型が、台の上に置かれている",
+    dict(photo="u-two-houses", alt="並んで建つ2軒の古い家と細い路地（イメージ）",
          title="売る・貸す・はじめるを並べて比べられる", text="売却・借り上げ・自分で運営の見込みを、並べてお出しします。",
          ways=[("売る", "売却額の目安"), ("借り上げ", "家を残して収入"), ("自分で運営", "宿の収支見込み")],
          cap="※ 収益を保証するものではありません。"),
-    dict(img="feat-remote", alt="宿の玄関の模型。緑の扉、石の土間、腰かけの上にスマートフォンがある",
+    dict(photo="u-lit-entrance", alt="明かりのともる古い家の玄関と植え込み（イメージ）",
          title="遠方の家でも回る運営の仕組み", text="開業2か月目には、現地に行かなくても回る体制にしました。",
          big=("現地に行くのは", "数か月に1回", "ほど"),
          rows=[("清掃", "近隣の方に依頼"), ("入室", "スマートロック"), ("問い合わせ", "翻訳とAIチャット"), ("価格", "時期に合わせて調整")]),
 ]
+# サービスのカードの写真（ガイドのカードと同じ写真を使わない。1枚の写真は1か所だけ）
+MSERVICE_PHOTOS = {
+    "sell": ("u-weathered-roof-house", "瓦屋根の古い空き家（イメージ）"),
+    "use": ("u-renovated-engawa", "手を入れた古い家の縁側（イメージ）"),
+    "side": ("u-sunlit-tatami", "日の差す畳の客間（イメージ）"),
+}
 
 
 def mfeature_items():
@@ -38,15 +39,25 @@ def mfeature_items():
                      + "".join(f"<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>" for k, v in f["rows"]) + "</dl>")
         cap = f'<p class="mfeat__cap">{e(f["cap"])}</p>' if f.get("cap") else ""
         out.append(f"""          <li class="mfeat reveal">
-            <figure class="mfeat__visual"><img src="images/illust/{f["img"]}.webp" srcset="images/illust/{f["img"]}-768.webp 768w, images/illust/{f["img"]}.webp 1280w" sizes="(max-width: 899px) 100vw, 560px" width="1280" height="960" alt="{e(f["alt"])}" loading="lazy" decoding="async"></figure>
+            <figure class="mfeat__visual">{photo(f["photo"], alt=f["alt"], width=1200, height=900, sizes="(max-width: 899px) 120px, 560px")}</figure>
+            <p class="mfeat__no">{i:02d}</p>
+            <h3 class="mfeat__title">{e(f["title"])}</h3>
             <div class="mfeat__body">
-              <p class="mfeat__no">{i:02d}</p>
-              <h3 class="mfeat__title">{e(f["title"])}</h3>
               <p class="mfeat__text">{e(f["text"])}</p>
               {extra}{cap}
             </div>
           </li>""")
     return "\n".join(out)
+
+
+def msec_head(en, title, more=""):
+    """節の見出し（全部の節で同じ形：小さな英字＋見出し、右に「一覧へ」）"""
+    return f'<div class="msec__head reveal"><div><p class="msec__en">{e(en)}</p><h2 class="msec__title">{e(title)}</h2></div>{more}</div>'
+
+
+def swipe_hint(n, what="件"):
+    """スマホで横にスワイプする並びの、枚数と案内（PC では出さない。design-guide 3章）"""
+    return f'<p class="mswipe" aria-hidden="true">全{n}{what}・横にスワイプ →</p>'
 
 
 def media_tabs(current=""):
@@ -176,9 +187,9 @@ def media_index_page():
               <span class="mtop-case__img"><img src="{eyecatch_path(a)}" srcset="{eyecatch_srcset(a)}" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="{"eager" if i < 2 else "lazy"}" decoding="async"></span>
               <span class="mtop-case__body"><span class="mtop-case__tag">{"運営事例" if not a["slug"].startswith("case-owner-") else "オーナー取材"}</span><span class="mtop-case__title">{e(a["title"])}</span></span>
             </a>''' for i, a in enumerate(top_cases))
-    _guide = {g["key"]: g for g in MEDIA_GUIDES}
+    n_sv = len(MEDIA_SERVICES)
     service_cards = "".join(f'''<li class="reveal" data-delay="{i}"><a href="media/{sv["slug"]}.html" class="mservice">
-          <span class="mservice__img">{photo(_guide[sv["key"]]["photo"], width=720, height=450, sizes="(max-width: 899px) 100vw, 360px")}</span>
+          <span class="mservice__img">{photo(MSERVICE_PHOTOS[sv["key"]][0], alt=MSERVICE_PHOTOS[sv["key"]][1], width=720, height=480, sizes="(max-width: 899px) 80vw, 380px")}<span class="mservice__count" aria-hidden="true">{i + 1} / {n_sv}</span></span>
           <span class="mservice__who">{e(sv["eyebrow"])}</span><span class="mservice__name">{e(sv["name"])}</span>
           <span class="mservice__text">{e(sv["lead"])}</span>
           <span class="mservice__more">詳しく見る <span aria-hidden="true"></span></span></a></li>''' for i, sv in enumerate(MEDIA_SERVICES))
@@ -187,21 +198,17 @@ def media_index_page():
     labels = {g["key"]: g["label"] for g in MEDIA_GUIDES}
     questions = "\n".join(f"""          <li data-date="{ARTICLE_BY_SLUG[slug]["date"]}"><a href="media/{slug}.html" class="mq__item">
             <span class="mq__who">{e(labels[k])}</span><span class="mq__q">{e(q)}</span><span class="mq__arrow">{ARROW}</span></a></li>""" for k, q, slug in MEDIA_QUESTIONS)
-    entries = "".join(f'<li><a href="media/guide-{g["key"]}.html">{e(g["label"])} {ARROW}</a></li>' for g in MEDIA_GUIDES)
-    tiles = "".join(
-        f'<li><a href="media/guide-{g["key"]}.html" class="mtile"><span class="mtile__img">{photo(g["photo"], width=720, height=450, sizes="72px")}</span>'
-        f'<span class="mtile__label">{e(g["label"])}</span><span class="mtile__arrow" aria-hidden="true">→</span></a></li>' for g in MEDIA_GUIDES)
+    more = lambda href, label: f'<a href="{href}" class="msec__more">{e(label)} {ARROW}</a>'
     body = f"""    <section class="mtop">
       <div class="container mtop__inner">
         <div class="mtop__text">
           <p class="mtop__eyebrow reveal">空き家と民泊のメディア「アキヤド」</p>
           <h1 class="mtop__title reveal" data-delay="1"><span class="mtop__line">空き家を</span><span class="mtop__line"><em>売る。活かす。</em></span><span class="mtop__line"><em>民泊</em>をはじめる。</span></h1>
-          <p class="mtop__lead reveal" data-delay="1">{lines_html("宿を運営する私たちが、空き家と民泊の悩みに、実際の数字でお答えします。")}</p>
+          <p class="mtop__lead reveal" data-delay="1">{lines_html("宿を運営する私たちが、空き家と民泊の悩みに、|実際の数字でお答えします。")}</p>
           <div class="mtop__btns reveal" data-delay="2">
             <a href="contact.html?category=operation&amp;from=akiyado-fv" class="mbtn mtop__btn" data-cta="media-fv">無料で相談する {ARROW}</a>
             <a href="contact.html?category=document&amp;from=akiyado-fv" class="mtop__btn mtop__btn--sub" data-cta="media-fv-doc">資料をダウンロード</a>
           </div>{search_form("media/search.html").replace('class="msearch reveal"', 'class="msearch msearch--top reveal" data-delay="3"').replace('placeholder="キーワード（例：相続、補助金）"', 'placeholder="キーワードで記事をさがす"')}
-          <ul class="mtop__chips reveal" data-delay="3">{"".join(f'<li><a href="media/guide-{g["key"]}.html">{e(g["label"])}</a></li>' for g in MEDIA_GUIDES)}</ul>
         </div>
         <div class="mtop__cases reveal" data-delay="2" data-carousel>
           <div class="mtop__cases-head">
@@ -219,26 +226,9 @@ def media_index_page():
       </div>
     </section>
 
-    <section class="section msec mservices" id="services">
-      <div class="container">
-        <div class="mcenter-head reveal"><p class="msec__en">Services</p><h2 class="mcenter-head__title">アキヤドのサービス</h2><p class="mcenter-head__lead">{lines_html("空き家の状況とご希望に合わせて、個別にご提案しています。")}</p></div>
-        <ul class="mservice-cards">{service_cards}</ul>
-        <p class="mservices__more reveal">プランごとの条件の目安は「<a href="media/plans.html">アキヤドのプラン</a>」、相談から開業までの流れは「<a href="media/akiyado-consultation-flow.html">相談から開業までの流れ</a>」で紹介しています。</p>
-      </div>
-    </section>
-
-    <section class="section msec mfeatures">
-      <div class="container">
-        <div class="mcenter-head reveal"><p class="msec__en">Features</p><h2 class="mcenter-head__title">アキヤドの特徴</h2></div>
-        <ol class="mfeat-list">
-{feat_items}
-        </ol>
-      </div>
-    </section>
-
     <section class="section msec">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">For you</p><h2 class="msec__title">ご自身の状況から読む</h2></div></div>
+        {msec_head("For you", "ご自身の状況から読む")}
         <p class="msec__lead">{lines_html("いまの状況に近いものを選んでください。知っておきたいことを、悩みが生まれる順に並べたガイドをご用意しています。")}</p>
         <div class="persona-cards">
 {guides}
@@ -246,11 +236,31 @@ def media_index_page():
       </div>
     </section>
 
+    <section class="section msec mservices" id="services">
+      <div class="container">
+        {msec_head("Services", "アキヤドのサービス", more("media/plans.html", "プランの条件を見る"))}
+        <p class="msec__lead">{lines_html("空き家の状況とご希望に合わせて、個別にご提案しています。")}</p>
+        {swipe_hint(n_sv)}
+        <ul class="mservice-cards">{service_cards}</ul>
+        <p class="mservices__more reveal">相談から開業までの流れは「<a href="media/akiyado-consultation-flow.html">相談から開業までの流れ</a>」で紹介しています。</p>
+      </div>
+    </section>
+
+    <section class="section section--soft msec mfeatures">
+      <div class="container">
+        {msec_head("Features", "アキヤドの特徴")}
+        <ol class="mfeat-list">
+{feat_items}
+        </ol>
+      </div>
+    </section>
+
     <section class="section msec" id="cases">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Cases</p><h2 class="msec__title">民泊オーナーの事例</h2></div></div>
+        {msec_head("Cases", "民泊オーナーの事例")}
         <p class="msec__lead">{lines_html("実際に民泊を運営しているオーナーへの取材です。初期費用・月商・純利益と、うまくいかなかったことまで、自分に近い事例から読めます。")}</p>
-        <div class="media-grid media-grid--scroll" data-limit="{len(CASE_SLUGS)}">
+        {swipe_hint(len(CASE_SLUGS))}
+        <div class="media-grid media-grid--scroll media-grid--cases" data-limit="{len(CASE_SLUGS)}">
 {case_cards}
         </div>
       </div>
@@ -258,7 +268,7 @@ def media_index_page():
 
     <section class="section section--soft msec">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Questions</p><h2 class="msec__title">よくある悩みから探す</h2></div></div>
+        {msec_head("Questions", "よくある悩みから探す")}
         <ul class="mq reveal">
 {questions}
         </ul>
@@ -267,23 +277,14 @@ def media_index_page():
 
     <section class="section msec">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Learn</p><h2 class="msec__title">ゼロから体系的に学ぶ</h2></div><a href="media/learn.html" class="msec__more">コースの一覧へ {ARROW}</a></div>
+        {msec_head("Learn", "ゼロから体系的に学ぶ", more("media/learn.html", "コースの一覧へ"))}
         <ul class="lcards">{"".join(f'<li class="reveal"><a href="media/learn.html#{c["key"]}" class="lcard"><span class="lcard__en">{e(c["en"])}</span><span class="lcard__title">{e(c["title"])}</span><span class="lcard__text">{e(c["lead"])}</span><span class="lcard__count">全{len(c["chapters"])}章</span></a></li>' for c in MEDIA_COURSES)}</ul>
-      </div>
-    </section>
-
-    <section class="section msec">
-      <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Latest</p><h2 class="msec__title">新着記事</h2></div></div>
-        <div class="media-grid media-grid--feature" data-limit="4">
-{cards}
-        </div>
       </div>
     </section>
 
     <section class="section msec" id="all">
       <div class="container">
-        <div class="msec__head reveal"><div><p class="msec__en">Archive</p><h2 class="msec__title">すべての記事</h2></div></div>
+        {msec_head("Latest", "新着記事", more("media/search.html", "記事をさがす"))}
         <div id="themes" class="ttags-wrap reveal"><p class="ttags__label">テーマから探す</p>{theme_tags("all")}</div>
         <div class="media-grid" id="media-list" data-page-size="9">
 {cards}
