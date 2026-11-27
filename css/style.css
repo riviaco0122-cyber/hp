@@ -3911,7 +3911,7 @@ body.is-media .mcenter-head__title { margin-top: 6px; font-family: var(--font-ro
 .mfeat { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; gap: 56px; }
 .mfeat:nth-child(even) .mfeat__visual { order: 2; }
 .mfeat__visual { overflow: hidden; border-radius: 24px; background: #f4f5f0; aspect-ratio: 4 / 3; }
-.mfeat__visual img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.mfeat__visual img { display: block; width: 100%; height: 100%; object-fit: contain; padding: 3%; transition: transform 1.2s var(--ease); }
 .mfeat:hover .mfeat__visual img { transform: scale(1.03); }
 .mfeat__no { font-family: var(--font-en); font-size: 13px; letter-spacing: 0.24em; color: var(--m-green); }
 .mfeat__no::after { content: ""; display: inline-block; width: 36px; height: 1px; margin-left: 12px; vertical-align: middle; background: var(--m-green); }

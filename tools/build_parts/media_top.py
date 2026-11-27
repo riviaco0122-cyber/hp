@@ -6,7 +6,7 @@
 # アキヤドの特徴（人の依頼 2026-11-27：メディアのデザインの刷新）。ビジュアルは Figma で作った模型の画像（images/illust/）、
 # 数字と言葉は HTML。番号・見出し・本文・要点を、ビジュアルと左右交互に並べる
 MFEATURES = [
-    dict(img="feat-operator", alt="小さな部屋を宿にした模型。白いシーツのベッド、食卓、小さな台所、洗濯機がある",
+    dict(img="feat-operator", alt="アパートの一室を貸切の宿にした模型。ベッド、食卓、小さな台所、洗濯機がある",
          title="宿を運営する当事者が答える", text="記事の数字もご提案の見込みも、私たちの運営記録が元です。",
          facts=[("1年目の稼働率", "約", "53", "%"), ("開業費用をほぼ回収", "約", "14", "か月")],
          cap="運営している宿の一例：静岡県下田市・アパートの一室を貸切"),
@@ -14,7 +14,7 @@ MFEATURES = [
          title="売る・貸す・はじめるを並べて比べられる", text="売却・借り上げ・自分で運営の見込みを、並べてお出しします。",
          ways=[("売る", "売却額の目安"), ("借り上げ", "家を残して収入"), ("自分で運営", "宿の収支見込み")],
          cap="※ 収益を保証するものではありません。"),
-    dict(img="feat-remote", alt="宿の玄関の模型。扉にスマートロックがあり、横にスマートフォンが置かれている",
+    dict(img="feat-remote", alt="宿の玄関の模型。緑の扉、石の土間、腰かけの上にスマートフォンがある",
          title="遠方の家でも回る運営の仕組み", text="開業2か月目には、現地に行かなくても回る体制にしました。",
          big=("現地に行くのは", "数か月に1回", "ほど"),
          rows=[("清掃", "近隣の方に依頼"), ("入室", "スマートロック"), ("問い合わせ", "翻訳とAIチャット"), ("価格", "時期に合わせて調整")]),
@@ -38,7 +38,7 @@ def mfeature_items():
                      + "".join(f"<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>" for k, v in f["rows"]) + "</dl>")
         cap = f'<p class="mfeat__cap">{e(f["cap"])}</p>' if f.get("cap") else ""
         out.append(f"""          <li class="mfeat reveal">
-            <figure class="mfeat__visual"><img src="images/illust/{f["img"]}.webp" srcset="images/illust/{f["img"]}-768.webp 768w, images/illust/{f["img"]}.webp 1536w" sizes="(max-width: 899px) 100vw, 560px" width="1536" height="1152" alt="{e(f["alt"])}" loading="lazy" decoding="async"></figure>
+            <figure class="mfeat__visual"><img src="images/illust/{f["img"]}.webp" srcset="images/illust/{f["img"]}-768.webp 768w, images/illust/{f["img"]}.webp 1280w" sizes="(max-width: 899px) 100vw, 560px" width="1280" height="960" alt="{e(f["alt"])}" loading="lazy" decoding="async"></figure>
             <div class="mfeat__body">
               <p class="mfeat__no">{i:02d}</p>
               <h3 class="mfeat__title">{e(f["title"])}</h3>
