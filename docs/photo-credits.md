@@ -40,3 +40,8 @@
 | `u-laptop-notepad.jpg` | akiyado-consultation-flow | Nick Morrison（@nickmorrison） | https://unsplash.com/photos/FHnnjk1Yj7Y |
 | `u-table-book.jpg` | minpaku-house-guide | Nik（@helloimnik） | https://unsplash.com/photos/pqjKwhfk5oI |
 | `u-waterside-house.jpg` | akiyado-what-we-do | Tsuyoshi Kozu（@tsuyoshikozu） | https://unsplash.com/photos/PtS-c6NRlvM |
+| `u-weathered-roof-house.jpg` | アキヤドのトップ（サービス：買取プラン） | t Penguin（@tpenguin） | https://unsplash.com/photos/qIYHKSZoT1Q |
+| `u-renovated-engawa.jpg` | アキヤドのトップ（サービス：借り上げプラン） | Marek Okon（@marekokon） | https://unsplash.com/photos/8VT1rJqRysI |
+| `u-sunlit-tatami.jpg` | アキヤドのトップ（サービス：開業・運営プラン） | Mmoka .（@pedarun） | https://unsplash.com/photos/mhBIl-xKUDE |
+| `u-two-houses.jpg` | アキヤドのトップ（特徴 02） | Nguyen Minh（@ngminh8895） | https://unsplash.com/photos/46r7-8b3oVE |
+| `u-lit-entrance.jpg` | アキヤドのトップ（特徴 03） | Se. Tsuchiya（@s_tsuchiya） | https://unsplash.com/photos/CqndW-gBY6U |

@@ -252,11 +252,6 @@
     }
   });
 
-  // 新着記事：公開済みの先頭の1本を大きく見せる
-  document.querySelectorAll('.media-grid--feature').forEach(function (grid) {
-    var lead = grid.querySelector('.media-card:not([hidden])');
-    if (lead) lead.classList.add('is-lead');
-  });
   // よくある悩み：公開前の記事への質問は出さない
   // 基礎から学ぶ：公開前の記事は隠し、記事がひとつもない章も隠す
   document.querySelectorAll('.lchap__list li[data-date]').forEach(function (li) {
@@ -410,7 +405,7 @@
   }
   var fixedMedia = document.querySelector('.fixed-cta');
   // 冒頭の入口・フォーム・相談ブロックが見えている間は、下に固定した相談ボタンを隠す（重なりを防ぐ）
-  var hideTargets = document.querySelectorAll('.mfv, .qform, .mcta__box, .msv-band, .inline-cta, .article-cta');
+  var hideTargets = document.querySelectorAll('.qform, .mcta__box, .msv-band, .inline-cta, .article-cta');
   if (hideTargets.length && fixedMedia && 'IntersectionObserver' in window) {
     var visible = new Set();
     var io = new IntersectionObserver(function (en) {

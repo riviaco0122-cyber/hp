@@ -1,16 +1,17 @@
 # アキヤドの特徴（人の依頼 2026-11-27：メディアのデザインの刷新）。ビジュアルは写真（人の方針 2026-11-27：写真が基本）、
-# 数字と言葉は HTML。番号・見出し・本文・要点を、写真と左右交互に並べる（スマホは写真を小さく見出しの横に置いて詰める）
+# 数字と言葉は HTML。番号・見出し・本文・要点を、写真と左右交互に並べる（スマホは写真を小さく見出しの横に置いて詰める）。
+# 見出しの「|」は、スマホで折り返す位置（語の途中で折れないように）
 MFEATURES = [
     dict(photo="own-renovation-room", alt="私たちが手を入れた部屋。木のテーブルと革の椅子",
-         title="宿を運営する当事者が答える", text="記事の数字もご提案の見込みも、私たちの運営記録が元です。",
+         title="宿を運営する|当事者が答える", text="記事の数字もご提案の見込みも、私たちの運営記録が元です。",
          facts=[("1年目の稼働率", "約", "53", "%"), ("開業費用をほぼ回収", "約", "14", "か月")],
          cap="運営している宿の一例：静岡県下田市・アパートの一室を貸切"),
     dict(photo="u-two-houses", alt="並んで建つ2軒の古い家と細い路地（イメージ）",
-         title="売る・貸す・はじめるを並べて比べられる", text="売却・借り上げ・自分で運営の見込みを、並べてお出しします。",
+         title="売る・貸す・はじめるを|並べて比べられる", text="売却・借り上げ・自分で運営の見込みを、並べてお出しします。",
          ways=[("売る", "売却額の目安"), ("借り上げ", "家を残して収入"), ("自分で運営", "宿の収支見込み")],
          cap="※ 収益を保証するものではありません。"),
     dict(photo="u-lit-entrance", alt="明かりのともる古い家の玄関と植え込み（イメージ）",
-         title="遠方の家でも回る運営の仕組み", text="開業2か月目には、現地に行かなくても回る体制にしました。",
+         title="遠方の家でも回る|運営の仕組み", text="開業2か月目には、現地に行かなくても回る体制にしました。",
          big=("現地に行くのは", "数か月に1回", "ほど"),
          rows=[("清掃", "近隣の方に依頼"), ("入室", "スマートロック"), ("問い合わせ", "翻訳とAIチャット"), ("価格", "時期に合わせて調整")]),
 ]
@@ -41,7 +42,7 @@ def mfeature_items():
         out.append(f"""          <li class="mfeat reveal">
             <figure class="mfeat__visual">{photo(f["photo"], alt=f["alt"], width=1200, height=900, sizes="(max-width: 899px) 120px, 560px")}</figure>
             <p class="mfeat__no">{i:02d}</p>
-            <h3 class="mfeat__title">{e(f["title"])}</h3>
+            <h3 class="mfeat__title">{lines_html(f["title"])}</h3>
             <div class="mfeat__body">
               <p class="mfeat__text">{e(f["text"])}</p>
               {extra}{cap}
@@ -170,7 +171,7 @@ def guide_card(g, i):
             <div class="persona-card__photo">{photo(g["photo"], width=720, height=450, sizes="(max-width: 899px) 34vw, 400px")}</div>
             <div class="persona-card__body">
               <p class="persona-card__who">{e(g["who"])}</p>
-              <h3 class="persona-card__title">{e(g["label"])}</h3>
+              <h3 class="persona-card__title">{lines_html(g["label"].replace("を", "を|", 1))}</h3>
               <ul class="persona-card__worries">{worries}</ul>
               <span class="persona-card__more">ガイドを見る {ARROW}</span>
             </div>
@@ -260,7 +261,7 @@ def media_index_page():
         {msec_head("Cases", "民泊オーナーの事例")}
         <p class="msec__lead">{lines_html("実際に民泊を運営しているオーナーへの取材です。初期費用・月商・純利益と、うまくいかなかったことまで、自分に近い事例から読めます。")}</p>
         {swipe_hint(len(CASE_SLUGS))}
-        <div class="media-grid media-grid--scroll media-grid--cases" data-limit="{len(CASE_SLUGS)}">
+        <div class="media-grid media-grid--scroll" data-limit="{len(CASE_SLUGS)}">
 {case_cards}
         </div>
       </div>
