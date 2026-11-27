@@ -291,12 +291,46 @@ MODELS = {
 }
 
 
+# 文字ばかりで読みにくい記事に足した図（人の指摘 2026-11-27）。本文にある数字・言葉だけで作る。slug → [(節のid, 図)]
+MORE_FIGURES = {
+    "akiya-bank-guide": [("what", bars("全国の空き家 約900万戸の内訳（2023年）", [
+        ("賃貸用", 444, ""),
+        ("売りにも貸しにも出ていない", 386, "空き家バンクの候補になりうる家"),
+        ("別荘などの二次的住宅", 38, ""),
+        ("売却用", 33, ""),
+    ], "出典：総務省「令和5年住宅・土地統計調査」", unit="万戸", approx=True, whole=True, mark=["売りにも貸しにも出ていない"]))],
+    "shizuoka-yaizu-akiya-inn": [("area", bars("空き家率の比較（2023年）", [
+        ("静岡県", 16.7, ""), ("静岡市", 15.2, ""), ("全国", 13.8, ""), ("焼津市", 12.6, ""),
+    ], "出典：総務省「令和5年住宅・土地統計調査」", approx=False, mark=["焼津市"]))],
+    "small-inn-subsidies": [("case", points("下田の宿の初期費用 約650万円のまかない方", [
+        ("", "公庫の融資", "200万円"),
+        ("", "自治体の補助金", "50万円（市内の工務店との契約が条件）"),
+        ("", "残り", "自己資金"),
+    ], "※ 初期費用は、改修工事 約410万円と家具・家電・備品 約240万円の合計です。"))],
+    "guest-review-tips": [("price", flow("開業直後の料金の決め方（下田の宿）", [
+        ("", "開業直後", "安めの料金で、先に高評価を集める"),
+        ("", "高評価が5件ほどたまったら", "少しずつ料金を上げる"),
+    ]))],
+    "listing-photo-tips": [("photo", flow("予約ページの写真は、この順に並べる", [
+        ("", "宿の魅力が一番伝わる写真", "外観・印象的な空間"),
+        ("", "過ごす時間が長い場所", "リビング・居間"),
+        ("", "寝室", "ベッドの数や配置が分かるように"),
+        ("", "水回り", "キッチン・浴室・トイレ"),
+        ("", "周辺", "景色・近くの店・自然"),
+    ]))],
+    "ota-vs-direct-booking": [("step", formula("手数料の割合は、毎月この式で記録する", [
+        ("予約サイトの手数料", "その月の合計"), "÷", ("売上", "その月の合計"),
+    ], result=("手数料の割合", "下田の宿は14%から15%へ")))],
+}
+
+
 def insert_figure(slug, sid, html, own=None):
     """節の最初の段落のあとに図を入れる（段落がなければ見出しの直後）。own は記事データが持つ図。
-    ARTICLE_FIGURES と MODELS（解説模型）の両方から、この節の図を入れる（1つの記事に図が2つあってもよい）"""
-    figs = [f for f in (own or ARTICLE_FIGURES.get(slug), MODELS.get(slug)) if f and f[0] == sid]
-    for fig in figs:
-        html = _insert_one(html, fig[1])
+    ARTICLE_FIGURES・MODELS（解説模型）・MORE_FIGURES（文字の多い記事に足した図）から、この節の図を入れる"""
+    cands = [own or ARTICLE_FIGURES.get(slug), MODELS.get(slug)] + list(MORE_FIGURES.get(slug, []))
+    for fig in cands:
+        if fig and fig[0] == sid:
+            html = _insert_one(html, fig[1])
     return html
 
 

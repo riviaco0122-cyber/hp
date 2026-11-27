@@ -103,6 +103,19 @@ def article_page(a):
                 return t
             return '<div class="table-scroll table-scroll--stack"><table class="table table--stack">' + t[len('<table class="table">'):]
         return re.sub(r'<table class="table">.*?</table>', conv, html, flags=re.S)
+    def label_cards(html):
+        """「<strong>見出し</strong>：説明」だけが2〜6個並ぶ箇条書きを、カード型の図（fig-cards）にする（人の指摘 2026-11-27：
+        文字ばかりで読むのがしんどい）。順番のある <ol> は番号つきの手順カードにする。中身の言葉は変えない"""
+        def conv(m):
+            tag, body = m.group(1), m.group(2)
+            items = re.findall(r"<li>(.*?)</li>", body, flags=re.S)
+            parts = [re.match(r"\s*<strong>([^<]{1,24})</strong>\s*[：:]\s*(.*)", x, flags=re.S) for x in items]
+            if not (2 <= len(items) <= 6) or not all(parts):
+                return m.group(0)
+            lis = "".join(f'<li><p class="fig-cards__name">{q.group(1)}</p><p class="fig-cards__text">{q.group(2).strip()}</p></li>' for q in parts)
+            steps = " fig-cards--steps" if tag == "ol" else ""
+            return f'<{tag} class="fig-cards fig-cards--{len(items)}{steps}">{lis}</{tag}>'
+        return re.sub(r"<(ul|ol)>((?:(?!</\1>).)*)</\1>", conv, html, flags=re.S)
     def thin_strong(html):
         """強調（太字）を絞る（playbook 13-4。人の方針 2026-10-12）。段落（<p>）の中の太字は、節の最初の太字（結論の1文）だけ残し、
         あとは太字を外す。箇条書きの項目名・表・注意枠の見出しの太字は、構造なので残す。"""
@@ -194,7 +207,7 @@ def article_page(a):
           <h2>{e(h)}</h2>
 {lead_sentence(html.strip())}
         </section>"""
-        for sid, h, html in [(x, y, insert_figure(a["slug"], x, card_headings(tables(thin_strong(z))), a.get("figure"))) for x, y, z in a["sections"]]
+        for sid, h, html in [(x, y, insert_figure(a["slug"], x, card_headings(tables(thin_strong(label_cards(z)))), a.get("figure"))) for x, y, z in a["sections"]]
     )
     sources = "".join(source_li(s) for s in a["sources"])
     svc = a["services"][0]
