@@ -1,7 +1,8 @@
 // 文字の左右の余白の点検（人の指摘 2026-11-27：スマホの最初の画面で文字が左に寄りすぎていた）。
 // スマホ幅で全ページ（または --only のページ）を開き、文字のかたまり（段落・見出し・ボタン・入力欄）について
 //   ①画面の端からの余白が、決まりの最小値（既定 16px）より狭い
-//   ②左右の余白が大きく違う（中央揃えの文や、横幅いっぱいのボタン・入力欄で、差が 6px を超える）
+//   ②左右の余白が大きく違う（中央揃えの文や、横幅いっぱいのボタン・入力欄で、差が 6px を超える。
+//     左揃えの文は数えない：手順の線・番号の分だけ左を下げた文は、意図した字下げのため。端からの余白は①で見る）
 // を数える。横にスクロールする並び（カルーセル）の中や、見えない要素は数えない。
 // 使い方: node tools/check/gutters.js [--widths 375,390] [--only media,index] [--min 16]
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
@@ -37,7 +38,7 @@ if (only.length) pages = pages.filter(p => only.some(o => p.endsWith('/' + o + '
           const name = (el.className && String(el.className).split(' ')[0]) || el.tagName.toLowerCase();
           const txt = (el.textContent || el.placeholder || '').trim().slice(0, 18);
           if (L < MIN - 0.5 || R < MIN - 0.5) res.push(`余白が狭い 左${L}px・右${R}px ${name}「${txt}」`);
-          else if (((s.textAlign === 'center' && r.width > W * 0.6) || r.width > W * 0.8) && Math.abs(L - R) > 6) res.push(`左右がそろっていない 左${L}px・右${R}px ${name}「${txt}」`);
+          else if (((s.textAlign === 'center' && r.width > W * 0.6) || (r.width > W * 0.8 && el.matches('input, button, .btn, a[class*="btn"]'))) && Math.abs(L - R) > 6) res.push(`左右がそろっていない 左${L}px・右${R}px ${name}「${txt}」`);
         });
         return res;
       }, { MIN });
