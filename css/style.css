@@ -1780,7 +1780,8 @@ body.is-media {
   background: var(--m-bg); color: var(--m-ink);
 }
 @media (max-width: 899px) {
-  body.is-media { --m-fs-h3: 16px; --m-fs-body: 14.5px; --section-y: 72px; --m-head: 28px; --m-gap: 12px; --m-pad: 18px; --m-r: 16px; --m-r-s: 10px; }
+  /* 左右の余白はメディアの全部のページで同じ 24px（写真を端まで出す所も、その下の文字はこの余白に戻す。design-guide 5章） */
+  body.is-media { --gutter: 24px; --m-fs-h3: 16px; --m-fs-body: 14.5px; --section-y: 72px; --m-head: 28px; --m-gap: 12px; --m-pad: 18px; --m-r: 16px; --m-r-s: 10px; }
 }
 body.is-media :is(.mlogo__ja, .mhero__title, .article__title, .article__section h2, .article__section h3, .guide-stage__title, .media-card__title, .guide-step__title, .keypoints__title, .guide-box__title, .author__name) {
   font-family: var(--font-round); font-weight: 500; letter-spacing: 0.04em;
@@ -2150,7 +2151,7 @@ body.is-media .article__section .fig-cards__text { margin-top: 6px; font-size: 1
   .article__section .fig .fig-col__name { font-size: 14.5px; }
   .article__section .fig .fig-col__list li { font-size: 12.5px; }
   /* 比較の図（3列・4列）は文字が多く縦に長くなるので、横にスワイプするカルーセルにする */
-  .fig--compare .fig-cols--3, .fig--compare .fig-cols--4 { display: flex; gap: 12px; margin: 0 -16px; padding: 4px 16px 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 16px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+  .fig--compare .fig-cols--3, .fig--compare .fig-cols--4 { display: flex; gap: 12px; margin: 0 calc(-1 * var(--gutter)); padding: 4px var(--gutter) 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: var(--gutter); -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
   .fig--compare .fig-cols--3 .fig-col, .fig--compare .fig-cols--4 .fig-col { flex: 0 0 78%; max-width: 300px; scroll-snap-align: start; grid-column: auto; }
   /* 1枚目だけで全部だと思われないよう、枚数とスワイプの案内を出す */
   .fig--compare .fig-col__count { display: block; margin-bottom: 4px; font-family: var(--font-en); font-size: 11px; letter-spacing: .12em; color: var(--fig-g); }
@@ -2696,7 +2697,6 @@ body.is-media .toc li::before { color: var(--m-green); }
 /* 固定の相談ボタンが本文・末尾を隠さない余白 */
 @media (max-width: 899px) {
   body.is-media:has(.fixed-cta--media) { padding-bottom: 96px; }
-  body.is-media .article__body.container--article { --gutter: 22px; }
   body.is-media .article__section { margin-top: 68px; }
   body.is-media .article__section h2 { font-size: 21px; }
 }
@@ -3883,6 +3883,8 @@ body.is-media .persona-card__title { order: -1; font-family: var(--font-round); 
   .mfeat__num { font-size: 36px; }
   .mfeat__ways li { padding: 10px 12px; }
   .mfeat__big b { font-size: 24px; }
+  .mfeat__proof--facts { padding: 14px; }
+  .mfeat__facts dt { font-size: 11.5px; white-space: nowrap; }
   .mfeat__rows > div { padding: 9px 10px; }
   .mfeat__rows dd { font-size: 13px; }
 }
