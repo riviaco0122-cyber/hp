@@ -2,10 +2,11 @@
 # 数字と言葉は HTML。番号・見出し・本文・要点を、写真と左右交互に並べる（スマホは写真を小さく見出しの横に置いて詰める）。
 # 見出しの「|」は、スマホで折り返す位置（語の途中で折れないように）
 MFEATURES = [
-    dict(photo="own-renovation-room", alt="私たちが手を入れた部屋。木のテーブルと革の椅子",
+    dict(photo="u-bright-tatami-room", alt="障子から光の入る、手を入れた古い家の畳の部屋（イメージ）",
          title="宿を運営する|当事者が答える", text="記事の数字もご提案の見込みも、私たちの運営記録が元です。",
          facts=[("1年目の稼働率", "約", "53", "%"), ("開業費用をほぼ回収", "約", "14", "か月")],
-         cap="運営している宿の一例：静岡県下田市・アパートの一室を貸切"),
+         cap="運営している宿の一例：静岡県下田市・アパートの一室を貸切",
+         link=("media/case-rental-house-inn-first-year.html", "この宿の運営事例を読む")),
     dict(photo="u-two-houses", alt="並んで建つ2軒の古い家と細い路地（イメージ）",
          title="売る・貸す・はじめるを|並べて比べられる", text="売却・借り上げ・自分で運営の見込みを、並べてお出しします。",
          ways=[("売る", "売却額の目安"), ("借り上げ", "家を残して収入"), ("自分で運営", "宿の収支見込み")],
@@ -39,6 +40,8 @@ def mfeature_items():
             extra = (f'<p class="mfeat__big">{e(a)}<b>{e(b)}</b>{e(c)}</p><dl class="mfeat__rows">'
                      + "".join(f"<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>" for k, v in f["rows"]) + "</dl>")
         cap = f'<p class="mfeat__cap">{e(f["cap"])}</p>' if f.get("cap") else ""
+        if f.get("link"):
+            cap += f'<a href="{f["link"][0]}" class="mfeat__link">{e(f["link"][1])} {ARROW}</a>'
         out.append(f"""          <li class="mfeat reveal">
             <figure class="mfeat__visual">{photo(f["photo"], alt=f["alt"], width=1200, height=900, sizes="(max-width: 899px) 120px, 560px")}</figure>
             <p class="mfeat__no">{i:02d}</p>
@@ -182,12 +185,6 @@ def media_index_page():
     ordered = sorted(ARTICLES, key=lambda a: a["date"], reverse=True)
     cards = "\n".join(article_card(a) for a in ordered)
     case_cards = "\n".join(article_card(ARTICLE_BY_SLUG[sl]) for sl in CASE_SLUGS)
-    # ファーストビューの「主な事例」: 自分たちの運営事例と、オーナー取材の事例（新しい順）。アイキャッチの画像で見せる
-    top_cases = [ARTICLE_BY_SLUG[sl] for sl in ["case-rental-house-inn-first-year"] + CASE_SLUGS if sl in ARTICLE_BY_SLUG]
-    top_case_cards = "\n".join(f'''            <a href="media/{a["slug"]}.html" class="mtop-case" data-date="{a["date"]}">
-              <span class="mtop-case__img"><img src="{eyecatch_path(a)}" srcset="{eyecatch_srcset(a)}" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="{"eager" if i < 2 else "lazy"}" decoding="async"></span>
-              <span class="mtop-case__body"><span class="mtop-case__tag">{"運営事例" if not a["slug"].startswith("case-owner-") else "オーナー取材"}</span><span class="mtop-case__title">{e(a["title"])}</span></span>
-            </a>''' for i, a in enumerate(top_cases))
     n_sv = len(MEDIA_SERVICES)
     service_cards = "".join(f'''<li class="reveal" data-delay="{i}"><a href="media/{sv["slug"]}.html" class="mservice">
           <span class="mservice__img">{photo(MSERVICE_PHOTOS[sv["key"]][0], alt=MSERVICE_PHOTOS[sv["key"]][1], width=720, height=480, sizes="(max-width: 899px) 80vw, 380px")}<span class="mservice__count" aria-hidden="true">{i + 1} / {n_sv}</span></span>
@@ -201,6 +198,7 @@ def media_index_page():
             <span class="mq__who">{e(labels[k])}</span><span class="mq__q">{e(q)}</span><span class="mq__arrow">{ARROW}</span></a></li>""" for k, q, slug in MEDIA_QUESTIONS)
     more = lambda href, label: f'<a href="{href}" class="msec__more">{e(label)} {ARROW}</a>'
     body = f"""    <section class="mtop">
+      <figure class="mtop__photo">{photo("u-thatched-village", alt="山あいの集落に建つ茅葺きの家と棚田（イメージ）", width=1920, height=2412, sizes="(max-width: 899px) 100vw, 50vw", lazy=False, priority=True)}</figure>
       <div class="container mtop__inner">
         <div class="mtop__text">
           <p class="mtop__eyebrow reveal">空き家と民泊のメディア「アキヤド」</p>
@@ -210,19 +208,6 @@ def media_index_page():
             <a href="contact.html?category=operation&amp;from=akiyado-fv" class="mbtn mtop__btn" data-cta="media-fv">無料で相談する {ARROW}</a>
             <a href="contact.html?category=document&amp;from=akiyado-fv" class="mtop__btn mtop__btn--sub" data-cta="media-fv-doc">資料をダウンロード</a>
           </div>{search_form("media/search.html").replace('class="msearch reveal"', 'class="msearch msearch--top reveal" data-delay="3"').replace('placeholder="キーワード（例：相続、補助金）"', 'placeholder="キーワードで記事をさがす"')}
-        </div>
-        <div class="mtop__cases reveal" data-delay="2" data-carousel>
-          <div class="mtop__cases-head">
-            <p class="mtop__cases-label">取材した<b>主な事例</b></p>
-            <div class="mtop__nav">
-              <button type="button" class="mtop__arrow" data-dir="-1" aria-label="前の事例">‹</button>
-              <span class="mtop__count" aria-live="polite"><span data-cur>1</span> / <span data-total>{len(top_cases)}</span></span>
-              <button type="button" class="mtop__arrow" data-dir="1" aria-label="次の事例">›</button>
-            </div>
-          </div>
-          <div class="mtop__track" tabindex="0" aria-label="主な事例（横にスワイプ）">
-{top_case_cards}
-          </div>
         </div>
       </div>
     </section>

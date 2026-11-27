@@ -3751,49 +3751,34 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 @media (max-width: 899px) { .pd__value { font-size: clamp(17px, 5vw, 22px); } }
 
 /* ---------- アキヤドのトップ（2026-11-27 作り直し）。値は body.is-media の変数（色・文字・余白・角丸・影）だけを使う ---------- */
-/* 最初の画面：左に見出し・相談・検索、右に主な事例のカルーセル。飾りの図形は置かず、砂色の地と余白で見せる */
-.mtop { padding: 88px 0 var(--section-y); background: linear-gradient(180deg, var(--m-sand) 0%, var(--m-bg) 100%); }
-.mtop__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center; }
+/* 最初の画面：右半分（スマホは上）を写真で見せ、左に見出し・相談・検索。事例のカードは置かない（2026-11-27 編集長の講評） */
+.mtop { position: relative; overflow: hidden; background: var(--m-sand); }
+.mtop__photo { position: absolute; top: 0; right: 0; bottom: 0; width: 50%; margin: 0; background: var(--m-line); }
+.mtop__photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 62%; }
+.mtop__inner { display: flex; align-items: center; min-height: clamp(580px, calc(100svh - var(--header-h)), 760px); padding-top: 72px; padding-bottom: 72px; }
+.mtop__text { width: calc(50% - 64px); }
 .mtop__eyebrow { color: var(--m-green); font-size: var(--m-fs-small); font-weight: 700; letter-spacing: 0.12em; }
-body.is-media .mtop__title { margin-top: 20px; font-family: var(--font-round); font-weight: 700; font-size: clamp(34px, 4.4vw, 58px); line-height: 1.32; letter-spacing: 0.04em; color: var(--m-ink); }
+body.is-media .mtop__title { margin-top: 20px; font-family: var(--font-round); font-weight: 700; font-size: clamp(34px, 4.2vw, 56px); line-height: 1.32; letter-spacing: 0.04em; color: var(--m-ink); }
 .mtop__title em { font-style: normal; color: var(--m-green); }
 .mtop__line { display: block; white-space: nowrap; }
 .mtop__lead { margin-top: 24px; color: var(--m-sub); font-size: 16px; line-height: 1.9; }
 .mtop__btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
-.mtop__btn { min-width: 220px; min-height: 56px; padding: 0 30px; font-size: 16px; }
+.mtop__btn { min-width: 210px; min-height: 56px; padding: 0 28px; font-size: 16px; }
 .mtop__btn--sub { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; background: var(--m-card); color: var(--m-cta); box-shadow: inset 0 0 0 2px var(--m-cta); font-family: var(--font-round); font-weight: 700; letter-spacing: 0.08em; transition: background .2s, color .2s; }
 .mtop__btn--sub:hover { background: var(--m-cta); color: #fff; }
-.mtop .msearch--top { max-width: 480px; margin-top: 20px; }
-.mtop__cases { min-width: 0; }
-.mtop__cases-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
-.mtop__cases-label { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; }
-.mtop__cases-label b { color: var(--m-green); }
-.mtop__nav { display: flex; align-items: center; gap: 8px; }
-.mtop__count { min-width: 3.5em; text-align: center; font-size: 14px; font-variant-numeric: tabular-nums; }
-.mtop__arrow { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--m-green); color: #fff; font-size: 22px; line-height: 1; cursor: pointer; transition: opacity .2s; }
-.mtop__arrow:disabled { background: var(--m-line); color: var(--m-mute); cursor: default; }
-.mtop__track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 4px 4px 24px; margin: -4px -4px 0; }
-.mtop__track::-webkit-scrollbar { display: none; }
-.mtop-case { flex: 0 0 88%; scroll-snap-align: start; display: flex; flex-direction: column; overflow: hidden; border-radius: var(--m-r); background: var(--m-card); box-shadow: var(--m-shadow); transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
-.mtop-case[hidden] { display: none; }
-.mtop-case:hover { transform: translateY(-3px); box-shadow: var(--m-shadow-h); }
-.mtop-case__img { display: block; aspect-ratio: 1200 / 630; overflow: hidden; }
-.mtop-case__img img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.mtop-case__body { display: flex; flex-direction: column; gap: 10px; padding: 20px var(--m-pad) 24px; }
-.mtop-case__tag { align-self: flex-start; padding: 3px 10px; border-radius: 999px; background: var(--m-green-soft); color: var(--m-green); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; }
-.mtop-case__title { font-family: var(--font-round); font-weight: 700; font-size: 15px; line-height: 1.7; color: var(--m-ink); }
+.mtop .msearch--top { max-width: 460px; margin-top: 20px; }
 @media (max-width: 899px) {
-  .mtop { padding: 32px 0 var(--section-y); }
-  .mtop__inner { grid-template-columns: minmax(0, 1fr); gap: 44px; }
-  body.is-media .mtop__title { margin-top: 14px; font-size: clamp(31px, 8.8vw, 40px); }
-  .mtop__lead { margin-top: 16px; font-size: 14.5px; }
-  /* 2つのボタンは横に並べて、1画面に見出し・相談・検索まで入れる */
-  .mtop__btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
+  .mtop__photo { position: relative; width: 100%; aspect-ratio: 3 / 2; }
+  .mtop__photo img { object-position: center 70%; }
+  .mtop__inner { display: block; min-height: 0; padding-top: 28px; padding-bottom: var(--section-y); }
+  .mtop__text { width: auto; }
+  body.is-media .mtop__title { margin-top: 12px; font-size: clamp(31px, 8.8vw, 40px); }
+  .mtop__lead { margin-top: 14px; font-size: 14.5px; }
+  /* 2つのボタンは横に並べて、写真・見出し・相談までを1画面に入れる */
+  .mtop__btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 22px; }
   .mtop__btn { width: 100%; min-width: 0; min-height: 52px; padding: 0 8px; gap: 6px; font-size: 14px; letter-spacing: 0.04em; box-shadow: none; }
-  .mtop__btn .arrow, .mtop__btn svg { display: none; }
+  .mtop__btn .arrow { display: none; }
   .mtop .msearch--top { margin-top: 12px; }
-  .mtop-case { flex-basis: 86%; }
-  .mtop-case__body { padding: 16px var(--m-pad) 18px; }
 }
 
 /* 状況から選ぶ：写真と状況の名前のカード。PC は4列、スマホは2列のタイル（悩みの例は PC だけ） */
@@ -3861,10 +3846,12 @@ body.is-media .persona-card__title { order: -1; font-family: var(--font-round); 
 .mfeat__no { grid-area: no; font-family: var(--font-en); font-size: 13px; letter-spacing: 0.24em; color: var(--m-green); }
 .mfeat__no::after { content: ""; display: inline-block; width: 36px; height: 1px; margin-left: 12px; vertical-align: middle; background: var(--m-green); }
 .mfeat__title { grid-area: title; margin-top: 12px; font-family: var(--font-round); font-weight: 700; font-size: clamp(22px, 2.1vw, 27px); line-height: 1.5; letter-spacing: 0.04em; color: var(--m-ink); text-wrap: balance; }
-.mfeat__title .ml-s > span, .persona-card__title .ml-s > span { display: inline-block; } /* 見出しは「|」の位置で折る（語の途中で折らない。design-guide 1章） */
+.mfeat__title .ml-s > span, .persona-card__title .ml-s > span, .mtop__lead .ml-s > span { display: inline-block; } /* 見出しは「|」の位置で折る（語の途中で折らない。design-guide 1章） */
 .mfeat__body { grid-area: body; }
 .mfeat__text { margin-top: 14px; font-size: var(--m-fs-body); line-height: 1.95; color: var(--m-sub); }
 .mfeat__cap { margin-top: 12px; font-size: 12px; line-height: 1.7; color: var(--m-mute); }
+.mfeat__link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; margin-top: 4px; color: var(--m-green); font-family: var(--font-round); font-weight: 700; font-size: 14px; }
+.mfeat__link:hover { text-decoration: underline; text-underline-offset: 4px; }
 /* 01：運営記録の数字（数字を大きく、前置きと単位は小さく） */
 .mfeat__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
 .mfeat__facts > div { padding: 18px 20px; border-radius: var(--m-r-s); background: var(--m-card); }

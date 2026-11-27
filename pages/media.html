@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Maru+Gothic:wght@500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="../css/style.css?v=c09d4091">
+  <link rel="stylesheet" href="../css/style.css?v=185ae30c">
   <script>
     // JS が有効なときだけアニメーション用の非表示を使う。
     // main.js が読み込めなかった場合は 2 秒後に全コンテンツを表示する（表示抜けの防止）。
@@ -81,6 +81,7 @@
 
   <main>
     <section class="mtop">
+      <figure class="mtop__photo"><img src="../images/photos/u-thatched-village.jpg" srcset="../images/photos/w/u-thatched-village-800.webp 800w, ../images/photos/u-thatched-village.jpg 1920w" sizes="(max-width: 899px) 100vw, 50vw" alt="山あいの集落に建つ茅葺きの家と棚田（イメージ）" width="1920" height="2412" fetchpriority="high" decoding="async"></figure>
       <div class="container mtop__inner">
         <div class="mtop__text">
           <p class="mtop__eyebrow reveal"><n-w class="h">空き家と<wbr>民泊の<wbr>メディア<wbr>「<n-b>アキヤド」</n-b></n-w></p>
@@ -95,58 +96,6 @@
           <input class="msearch__input" id="msearch-q" type="search" name="q" value="" placeholder="キーワードで記事をさがす" autocomplete="off">
           <button class="msearch__btn" type="submit"><n-w class="h">検索</n-w></button>
         </form>
-        </div>
-        <div class="mtop__cases reveal" data-delay="2" data-carousel>
-          <div class="mtop__cases-head">
-            <p class="mtop__cases-label"><n-w class="h">取材した</n-w><b><n-w class="h">主な事例</n-w></b></p>
-            <div class="mtop__nav">
-              <button type="button" class="mtop__arrow" data-dir="-1" aria-label="前の事例">‹</button>
-              <span class="mtop__count" aria-live="polite"><span data-cur>1</span> / <span data-total>10</span></span>
-              <button type="button" class="mtop__arrow" data-dir="1" aria-label="次の事例">›</button>
-            </div>
-          </div>
-          <div class="mtop__track" tabindex="0" aria-label="主な事例（横にスワイプ）">
-            <a href="media/case-rental-house-inn-first-year.html" class="mtop-case" data-date="2026-10-11">
-              <span class="mtop-case__img"><img src="../images/eyecatch/case-rental-house-inn-first-year.jpg?v=58379368" srcset="../images/eyecatch/w/case-rental-house-inn-first-year-800.webp?v=c27ee07e 800w, ../images/eyecatch/w/case-rental-house-inn-first-year-1200.webp?v=adac98e9 1200w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="eager" decoding="async"></span>
-              <span class="mtop-case__body"><span class="mtop-case__tag"><n-w class="h">運営事例</n-w></span><span class="mtop-case__title"><n-w class="h">民泊の<wbr><n-b><n-b><n-b class="num">家具・</n-b><n-b class="num">家電・</n-b><n-b class="num">設備</n-b></n-b>の</n-b><wbr>初期投資を<wbr>約14か月で<wbr>ほぼ回収｜下田の<wbr><n-b>賃貸物件の宿</n-b></n-w></span></span>
-            </a>
-            <a href="media/case-owner-satoyama-airdna.html" class="mtop-case" data-date="2026-10-27">
-              <span class="mtop-case__img"><img src="../images/eyecatch/case-owner-satoyama-airdna.jpg?v=b832e645" srcset="../images/eyecatch/w/case-owner-satoyama-airdna-800.webp?v=6c1ae263 800w, ../images/eyecatch/w/case-owner-satoyama-airdna-1200.webp?v=1abf9a86 1200w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="eager" decoding="async"></span>
-              <span class="mtop-case__body"><span class="mtop-case__tag"><n-w class="h">オーナー取材</n-w></span><span class="mtop-case__title"><n-w class="h">里山の<wbr>古民家を<wbr>民泊に<wbr>｜AirDNAの<wbr>データで<wbr>融資を<wbr>通した<wbr>総予算<n-b>350万円</n-b></n-w></span></span>
-            </a>
-            <a href="media/case-owner-castle-town-nagaya.html" class="mtop-case" data-date="2026-10-25">
-              <span class="mtop-case__img"><img src="../images/eyecatch/case-owner-castle-town-nagaya.jpg?v=59f3d191" srcset="../images/eyecatch/w/case-owner-castle-town-nagaya-800.webp?v=3daecc4a 800w, ../images/eyecatch/w/case-owner-castle-town-nagaya-1200.webp?v=f2a61bb0 1200w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
-              <span class="mtop-case__body"><span class="mtop-case__tag"><n-w class="h">オーナー取材</n-w></span><span class="mtop-case__title"><n-w class="h">城下町の<wbr>古い<wbr>長屋を<wbr>民泊に<wbr>再生｜<wbr>公庫融資の<wbr>3つの<wbr>関門と、<wbr>総予算<n-b>450万円の事例</n-b></n-w></span></span>
-            </a>
-            <a href="media/case-owner-setouchi-cycling.html" class="mtop-case" data-date="2026-10-23">
-              <span class="mtop-case__img"><img src="../images/eyecatch/case-owner-setouchi-cycling.jpg?v=a0a9fee5" srcset="../images/eyecatch/w/case-owner-setouchi-cycling-800.webp?v=a9e96a8a 800w, ../images/eyecatch/w/case-owner-setouchi-cycling-1200.webp?v=fc98d8fe 1200w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
-              <span class="mtop-case__body"><span class="mtop-case__tag"><n-w class="h">オーナー取材</n-w></span><span class="mtop-case__title"><n-w class="h">空き店舗を<wbr>サイクリストの<wbr>民泊に<wbr><n-b>｜総予算400<n-b>万円・月</n-b>の</n-b><wbr>純利益12〜<n-b>15万円</n-b></n-w></span></span>
-            </a>
-            <a href="media/case-owner-pricing-mistake.html" class="mtop-case" data-date="2026-10-14">
-              <span class="mtop-case__img"><img src="../images/eyecatch/case-owner-pricing-mistake.jpg?v=8a06a4ce" srcset="../images/eyecatch/w/case-owner-pricing-mistake-800.webp?v=5891f11d 800w, ../images/eyecatch/w/case-owner-pricing-mistake-1200.webp?v=0ecd9a0f 1200w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
-              <span class="mtop-case__body"><span class="mtop-case__tag"><n-w class="h">オーナー取材</n-w></span><span class="mtop-case__title"><n-w class="h">民泊の<wbr>価格設定で<wbr>失敗した<wbr>事例｜<wbr>ほぼ<wbr>満室でも<wbr>赤字から、<wbr>単価1.9倍で<wbr>立て<n-b>直すまで</n-b></n-w></span></span>
-            </a>
-            <a href="media/case-owner-diy-cottage.html" class="mtop-case" data-date="2026-10-14">
-              <span class="mtop-case__img"><img src="../images/eyecatch/case-owner-diy-cottage.jpg?v=79f3c9f1" srcset="../images/eyecatch/w/case-owner-diy-cottage-800.webp?v=cf4af359 800w, ../images/eyecatch/w/case-owner-diy-cottage-1200.webp?v=50d823a2 1200w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
-              <span class="mtop-case__body"><span class="mtop-case__tag"><n-w class="h">オーナー取材</n-w></span><span class="mtop-case__title"><n-w class="h">解体に<wbr>200万〜300万円かかる<wbr>別荘を<wbr>週末DIYで<wbr>民泊に<wbr>｜改修費<n-b>約80万円の事例</n-b></n-w></span></span>
-            </a>
-            <a href="media/case-owner-subsidy-akiya.html" class="mtop-case" data-date="2026-10-14">
-              <span class="mtop-case__img"><img src="../images/eyecatch/case-owner-subsidy-akiya.jpg?v=c3977da4" srcset="../images/eyecatch/w/case-owner-subsidy-akiya-800.webp?v=97c8b2d1 800w, ../images/eyecatch/w/case-owner-subsidy-akiya-1200.webp?v=c7bd317e 1200w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
-              <span class="mtop-case__body"><span class="mtop-case__tag"><n-w class="h">オーナー取材</n-w></span><span class="mtop-case__title"><n-w class="h">改装の<wbr>自己資金100万円で<wbr>空き家を<wbr>宿に<wbr>｜補助金と<wbr>公庫融資の<wbr><n-b>民泊事例</n-b></n-w></span></span>
-            </a>
-            <a href="media/case-owner-fishing-port.html" class="mtop-case" data-date="2026-10-14">
-              <span class="mtop-case__img"><img src="../images/eyecatch/case-owner-fishing-port.jpg?v=1d2755b2" srcset="../images/eyecatch/w/case-owner-fishing-port-800.webp?v=a68ab9df 800w, ../images/eyecatch/w/case-owner-fishing-port-1200.webp?v=effe73f3 1200w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
-              <span class="mtop-case__body"><span class="mtop-case__tag"><n-w class="h">オーナー取材</n-w></span><span class="mtop-case__title"><n-w class="h">実績ゼロで<wbr>民泊開業、<wbr>公庫融資400万円｜<n-b>元・仕出</n-b>し屋を<wbr>漁港体験の<wbr>宿に<wbr><n-b>した事例</n-b></n-w></span></span>
-            </a>
-            <a href="media/case-owner-rental-side-business.html" class="mtop-case" data-date="2026-10-14">
-              <span class="mtop-case__img"><img src="../images/eyecatch/case-owner-rental-side-business.jpg?v=4e7a0ab3" srcset="../images/eyecatch/w/case-owner-rental-side-business-800.webp?v=9dd953d2 800w, ../images/eyecatch/w/case-owner-rental-side-business-1200.webp?v=ea195f78 1200w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
-              <span class="mtop-case__body"><span class="mtop-case__tag"><n-w class="h">オーナー取材</n-w></span><span class="mtop-case__title"><n-w class="h">会社員の<wbr>まま<wbr>週1〜2時間で<wbr>民泊副業｜2025年時点で<wbr>純利益月12〜<n-b>15万円の事例</n-b></n-w></span></span>
-            </a>
-            <a href="media/case-owner-licensed-akiya.html" class="mtop-case" data-date="2026-10-14">
-              <span class="mtop-case__img"><img src="../images/eyecatch/case-owner-licensed-akiya.jpg?v=a85fa7ba" srcset="../images/eyecatch/w/case-owner-licensed-akiya-800.webp?v=b8f6843d 800w, ../images/eyecatch/w/case-owner-licensed-akiya-1200.webp?v=43ba1c67 1200w" sizes="(max-width: 899px) 90vw, 400px" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
-              <span class="mtop-case__body"><span class="mtop-case__tag"><n-w class="h">オーナー取材</n-w></span><span class="mtop-case__title"><n-w class="h">空き家を<wbr>旅館業の<wbr>許可で<wbr>民泊に<wbr>｜初期費用400<n-b>万円・月</n-b>の<wbr>純利益は<wbr>平均<n-b>25万円</n-b></n-w></span></span>
-            </a>
-          </div>
         </div>
       </div>
     </section>
@@ -223,12 +172,12 @@
         <div class="msec__head reveal"><div><p class="msec__en">Features</p><h2 class="msec__title"><n-w class="h"><n-b>アキヤドの特徴</n-b></n-w></h2></div></div>
         <ol class="mfeat-list">
           <li class="mfeat reveal">
-            <figure class="mfeat__visual"><img src="../images/photos/own-renovation-room.jpg" srcset="../images/photos/w/own-renovation-room-800.webp 800w, ../images/photos/own-renovation-room.jpg 1502w" sizes="(max-width: 899px) 120px, 560px" alt="私たちが手を入れた部屋。木のテーブルと革の椅子" width="1200" height="900" loading="lazy" decoding="async"></figure>
+            <figure class="mfeat__visual"><img src="../images/photos/u-bright-tatami-room.jpg" srcset="../images/photos/w/u-bright-tatami-room-800.webp 800w, ../images/photos/u-bright-tatami-room.jpg 1920w" sizes="(max-width: 899px) 120px, 560px" alt="障子から光の入る、手を入れた古い家の畳の部屋（イメージ）" width="1200" height="900" loading="lazy" decoding="async"></figure>
             <p class="mfeat__no">01</p>
             <h3 class="mfeat__title"><span class="ml-s"><span><n-w class="h">宿を運営する</n-w></span><span><n-w class="h">当事者<n-b>が答える</n-b></n-w></span></span></h3>
             <div class="mfeat__body">
               <p class="mfeat__text"><n-w class="h">記事の<wbr>数字も<wbr>ご提案の<wbr>見込みも、<wbr>私たちの<wbr>運営記録が<wbr><n-b>元<n-b>です。</n-b></n-b></n-w></p>
-              <dl class="mfeat__facts"><div><dt><n-w class="h">1年目<n-b>の稼働率</n-b></n-w></dt><dd class="mfeat__num"><small><n-w class="h">約</n-w></small>53<small>%</small></dd></div><div><dt><n-w class="h">開業費用を<wbr><n-b>ほぼ回収</n-b></n-w></dt><dd class="mfeat__num"><small><n-w class="h">約</n-w></small>14<small><n-w class="h">か月</n-w></small></dd></div></dl><p class="mfeat__cap"><n-w class="h">運営している<wbr>宿の<wbr>一例：<n-b class="num">静岡県下田市・</n-b><n-b class="num">アパート</n-b>の<wbr><n-b>一室を貸切</n-b></n-w></p>
+              <dl class="mfeat__facts"><div><dt><n-w class="h">1年目<n-b>の稼働率</n-b></n-w></dt><dd class="mfeat__num"><small><n-w class="h">約</n-w></small>53<small>%</small></dd></div><div><dt><n-w class="h">開業費用を<wbr><n-b>ほぼ回収</n-b></n-w></dt><dd class="mfeat__num"><small><n-w class="h">約</n-w></small>14<small><n-w class="h">か月</n-w></small></dd></div></dl><p class="mfeat__cap"><n-w class="h">運営している<wbr>宿の<wbr>一例：<n-b class="num">静岡県下田市・</n-b><n-b class="num">アパート</n-b>の<wbr><n-b>一室を貸切</n-b></n-w></p><a href="media/case-rental-house-inn-first-year.html" class="mfeat__link"><n-w class="h">この<wbr>宿の<wbr><n-b>運営事例を読む</n-b></n-w> <span class="arrow" aria-hidden="true"></span></a>
             </div>
           </li>
           <li class="mfeat reveal">
@@ -1257,6 +1206,6 @@
     </div>
   </footer>
   <div class="fixed-cta fixed-cta--media"><a href="media/contact.html?category=operation&amp;from=akiyado" class="btn" data-cta="media-fixed"><n-w class="h">無料で<wbr><n-b>相談する</n-b></n-w> <span class="arrow" aria-hidden="true"></span></a></div>
-  <script src="../js/main.js?v=5db9bd5d"></script>
+  <script src="../js/main.js?v=dcdf221a"></script>
 </body>
 </html>
