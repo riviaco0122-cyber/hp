@@ -3836,57 +3836,55 @@ body.is-media .persona-card__title { order: -1; font-family: var(--font-round); 
   .mservices__more { margin-top: 16px; font-size: 13px; text-align: left; }
 }
 
-/* 特徴：写真と、番号・見出し・本文・要点を左右交互に。スマホは小さな写真を見出しの横に置いて詰める */
-.mfeat-list { display: grid; gap: 96px; }
-.mfeat { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); grid-template-areas: "visual ." "visual no" "visual title" "visual body" "visual ."; grid-template-rows: 1fr auto auto auto 1fr; column-gap: 72px; }
-.mfeat:nth-child(even) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); grid-template-areas: ". visual" "no visual" "title visual" "body visual" ". visual"; }
-.mfeat__visual { grid-area: visual; overflow: hidden; border-radius: var(--m-r); aspect-ratio: 4 / 3; background: var(--m-line); }
-.mfeat__visual img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
-.mfeat:hover .mfeat__visual img { transform: scale(1.03); }
-.mfeat__no { grid-area: no; font-family: var(--font-en); font-size: 13px; letter-spacing: 0.24em; color: var(--m-green); }
-.mfeat__no::after { content: ""; display: inline-block; width: 36px; height: 1px; margin-left: 12px; vertical-align: middle; background: var(--m-green); }
-.mfeat__title { grid-area: title; margin-top: 12px; font-family: var(--font-round); font-weight: 700; font-size: clamp(22px, 2.1vw, 27px); line-height: 1.5; letter-spacing: 0.04em; color: var(--m-ink); text-wrap: balance; }
-.mfeat__title .ml-s > span, .persona-card__title .ml-s > span, .mtop__lead .ml-s > span { display: inline-block; } /* 見出しは「|」の位置で折る（語の途中で折らない。design-guide 1章） */
-.mfeat__body { grid-area: body; }
-.mfeat__text { margin-top: 14px; font-size: var(--m-fs-body); line-height: 1.95; color: var(--m-sub); }
-.mfeat__cap { margin-top: 12px; font-size: 12px; line-height: 1.7; color: var(--m-mute); }
-.mfeat__link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; margin-top: 4px; color: var(--m-green); font-family: var(--font-round); font-weight: 700; font-size: 14px; }
+/* 特徴：3つの理由を同じ形のカードに並べ、それぞれの証拠（数字・3つの道・仕組み）を大きく見せる。写真は使わない。
+   PC は3列（行を subgrid でそろえ、見出し・本文・証拠の高さを横にそろえる）、スマホは横にスワイプ（2026-11-27 作り直し） */
+.mfeat-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(5, auto); column-gap: var(--m-gap); }
+.mfeat { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; padding: 32px var(--m-pad) 28px; border-radius: var(--m-r); background: var(--m-card); box-shadow: var(--m-shadow); }
+.mfeat__no { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-en); font-size: 13px; letter-spacing: 0.24em; color: var(--m-green); }
+.mfeat__count { display: none; }
+.mfeat__title { margin-top: 14px; font-family: var(--font-round); font-weight: 700; font-size: 21px; line-height: 1.5; letter-spacing: 0.04em; color: var(--m-ink); }
+.mfeat__title .ml-s > span, .persona-card__title .ml-s > span, .mtop__lead .ml-s > span { display: inline-block; } /* 見出し・リードは「|」の位置で折る（語の途中で折らない。design-guide 1章） */
+.mfeat__text { margin-top: 12px; font-size: 14px; line-height: 1.9; color: var(--m-sub); }
+.mfeat__proof { align-self: start; margin-top: 24px; }
+.mfeat__foot { margin-top: 12px; }
+.mfeat__cap { font-size: 12px; line-height: 1.7; color: var(--m-mute); }
+.mfeat__link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: var(--m-green); font-family: var(--font-round); font-weight: 700; font-size: 14px; }
 .mfeat__link:hover { text-decoration: underline; text-underline-offset: 4px; }
-/* 01：運営記録の数字（数字を大きく、前置きと単位は小さく） */
-.mfeat__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
-.mfeat__facts > div { padding: 18px 20px; border-radius: var(--m-r-s); background: var(--m-card); }
+/* 01：運営記録の数字。どの宿の数字かを、数字と同じ枠の上に書く */
+.mfeat__proof--facts { padding: 16px 18px 18px; border-radius: var(--m-r-s); background: var(--m-green-soft); }
+.mfeat__src { font-size: 12px; line-height: 1.6; color: var(--m-green); font-weight: 700; }
+.mfeat__src .ml-s > span { display: inline-block; }
+.mfeat__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 10px; }
 .mfeat__facts dt { font-size: 12.5px; line-height: 1.5; color: var(--m-sub); }
-.mfeat__num { margin-top: 4px; font-family: var(--font-round); font-weight: 700; font-size: 44px; line-height: 1.1; color: var(--m-green); }
+.mfeat__num { margin-top: 2px; font-family: var(--font-round); font-weight: 700; font-size: 44px; line-height: 1.1; color: var(--m-green); }
 .mfeat__num small { font-size: 15px; }
-/* 02：3つの道 */
-.mfeat__ways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 24px; counter-reset: way; }
-.mfeat__ways li { display: grid; gap: 4px; padding: 16px 14px; border-radius: var(--m-r-s); background: var(--m-card); counter-increment: way; }
-.mfeat__ways li::before { content: counter(way, decimal-leading-zero); font-family: var(--font-en); font-size: 11px; letter-spacing: 0.16em; color: var(--m-green); }
-.mfeat__ways b { font-family: var(--font-round); font-size: 16px; color: var(--m-ink); }
-.mfeat__ways span { font-size: 12.5px; line-height: 1.6; color: var(--m-sub); }
-/* 03：遠方でも回る */
-.mfeat__big { margin-top: 22px; font-size: 14px; color: var(--m-sub); }
-.mfeat__big b { margin: 0 6px; font-family: var(--font-round); font-weight: 700; font-size: 30px; color: var(--m-green); }
-.mfeat__rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
-.mfeat__rows > div { display: grid; gap: 2px; padding: 12px 14px; border-radius: var(--m-r-s); background: var(--m-card); }
+/* 02：3つの道（道の名前と、何が分かるかを1行ずつ） */
+.mfeat__ways { display: grid; gap: 6px; counter-reset: way; }
+.mfeat__ways li { display: grid; grid-template-columns: 22px 6.5em minmax(0, 1fr); align-items: baseline; gap: 8px; padding: 12px 14px; border-radius: var(--m-r-s); background: var(--m-sand); counter-increment: way; }
+.mfeat__ways li::before { content: counter(way, decimal-leading-zero); font-family: var(--font-en); font-size: 11px; letter-spacing: 0.12em; color: var(--m-green); }
+.mfeat__ways b { font-family: var(--font-round); font-size: 15px; color: var(--m-ink); }
+.mfeat__ways span { font-size: 13px; line-height: 1.6; color: var(--m-sub); }
+/* 03：遠方でも回る（大きな言葉と、4つの仕組み） */
+.mfeat__big { font-size: 13px; color: var(--m-sub); }
+.mfeat__big b { margin: 0 6px; font-family: var(--font-round); font-weight: 700; font-size: 28px; color: var(--m-green); }
+.mfeat__rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+.mfeat__rows > div { display: grid; gap: 2px; padding: 10px 12px; border-radius: var(--m-r-s); background: var(--m-sand); }
 .mfeat__rows dt { font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: var(--m-green); }
-.mfeat__rows dd { font-size: 14px; font-weight: 700; line-height: 1.6; color: var(--m-ink); }
+.mfeat__rows dd { font-size: 13.5px; font-weight: 700; line-height: 1.6; color: var(--m-ink); }
 @media (max-width: 899px) {
-  .mfeat-list { gap: 40px; }
-  .mfeat, .mfeat:nth-child(even) { grid-template-columns: 104px minmax(0, 1fr); grid-template-areas: "visual no" "visual title" "body body"; grid-template-rows: auto 1fr auto; column-gap: 16px; align-items: start; }
-  .mfeat__visual { aspect-ratio: 1; border-radius: var(--m-r-s); }
-  .mfeat__no { align-self: start; font-size: 12px; }
-  .mfeat__no::after { width: 24px; margin-left: 8px; }
-  .mfeat__title { margin-top: 6px; font-size: 18px; line-height: 1.5; text-wrap: auto; }
-  .mfeat__text { margin-top: 14px; font-size: 14px; line-height: 1.9; }
-  .mfeat__facts { gap: 8px; margin-top: 14px; }
-  .mfeat__facts > div { padding: 12px 14px; }
-  .mfeat__num { font-size: 34px; }
-  .mfeat__ways { gap: 6px; margin-top: 14px; }
-  .mfeat__ways li { padding: 12px 10px; }
-  .mfeat__ways b { font-size: 14.5px; }
-  .mfeat__big { margin-top: 14px; }
+  .mfeat-list { display: flex; gap: var(--m-gap); margin: 0 calc(-1 * var(--gutter)); padding: 8px var(--gutter) 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); overscroll-behavior-x: contain; scrollbar-width: none; }
+  .mfeat-list::-webkit-scrollbar { display: none; }
+  .mfeat { flex: 0 0 86%; display: flex; flex-direction: column; scroll-snap-align: start; padding: 22px var(--m-pad) 18px; }
+  .mfeat__count { display: block; font-family: var(--font-sans); font-size: 12px; letter-spacing: 0; color: var(--m-mute); font-variant-numeric: tabular-nums; }
+  .mfeat__title { margin-top: 8px; font-size: 18px; }
+  .mfeat__text { margin-top: 8px; font-size: 13.5px; line-height: 1.85; }
+  .mfeat__proof { margin-top: 16px; }
+  .mfeat__foot { margin-top: auto; padding-top: 8px; }
+  .mfeat__num { font-size: 36px; }
+  .mfeat__ways li { padding: 10px 12px; }
   .mfeat__big b { font-size: 24px; }
+  .mfeat__rows > div { padding: 9px 10px; }
+  .mfeat__rows dd { font-size: 13px; }
 }
 
 /* よくある悩み：白い行のカード。PC は2列、スマホは1列で先頭の5件（残りはボタンで開く） */

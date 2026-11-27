@@ -43,7 +43,4 @@
 | `u-weathered-roof-house.jpg` | アキヤドのトップ（サービス：買取プラン） | t Penguin（@tpenguin） | https://unsplash.com/photos/qIYHKSZoT1Q |
 | `u-renovated-engawa.jpg` | アキヤドのトップ（サービス：借り上げプラン） | Marek Okon（@marekokon） | https://unsplash.com/photos/8VT1rJqRysI |
 | `u-sunlit-tatami.jpg` | アキヤドのトップ（サービス：開業・運営プラン） | Mmoka .（@pedarun） | https://unsplash.com/photos/mhBIl-xKUDE |
-| `u-two-houses.jpg` | アキヤドのトップ（特徴 02） | Nguyen Minh（@ngminh8895） | https://unsplash.com/photos/46r7-8b3oVE |
-| `u-lit-entrance.jpg` | アキヤドのトップ（特徴 03） | Se. Tsuchiya（@s_tsuchiya） | https://unsplash.com/photos/CqndW-gBY6U |
 | `u-thatched-village.jpg` | アキヤドのトップ（最初の画面） | Shing（@imshing） | https://unsplash.com/photos/Y3JwjdIt5eE |
-| `u-bright-tatami-room.jpg` | アキヤドのトップ（特徴 01） | Marek Okon（@marekokon） | https://unsplash.com/photos/6CKzlX70Xqo |
