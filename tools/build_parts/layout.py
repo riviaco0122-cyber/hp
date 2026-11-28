@@ -141,7 +141,7 @@ def header(current):
             </ul>
           </li>
           <li><a href="index.html#project" class="gnav__link">実績</a></li>
-          <li><a href="media.html" class="gnav__link"{cur("media")}>メディア</a></li>
+          <li><a href="media.html" class="gnav__link"{cur("media")}>アキヤド</a></li>
           <li><a href="careers.html" class="gnav__link"{cur("careers")}>採用情報</a></li>
           <li><a href="contact.html{"?category=" + current if current in SERVICE_NAMES else ""}" class="gnav__link"{cur("contact")}>お問い合わせ</a></li>
         </ul>
@@ -155,9 +155,10 @@ def header(current):
 def footer():
     # 文字を詰め込まず、ロゴ・相談ボタン・主要リンクだけのシンプルな構成にする
     links = [("about.html", "私たちについて"), ("services.html", "事業内容"), ("index.html#project", "実績"),
-             ("media.html", "メディア"), ("careers.html", "採用情報"), ("contact.html", "お問い合わせ")]
+             ("media.html", "アキヤド"), ("careers.html", "採用情報"), ("contact.html", "お問い合わせ")]
     nav = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in links)
-    # 海外向けの英語メディア Noki（tools/okaeri/ が /noki に作る。作業用のフォルダ名は旧名のまま）。同じドメインの中からの入口
+    # 海外向けの英語メディア Noki（tools/okaeri/ が /noki に作る。作業用のフォルダ名は旧名のまま）。同じドメインの中からの入口。
+    # アキヤドも Noki もメディアなので、「メディア」という種類の名前ではなく、どちらもメディアの名前で並べる（人の指摘 2026-11-28）
     nav += '<li><a href="/noki" hreflang="en" lang="en">Noki (English)</a></li>'
     # 目的・お悩みから探す（Serviceメニューと同じ「〜したい」の一覧）
     # 各サービスの案内（サービス名の下に、ページ内の主な項目へのリンク）

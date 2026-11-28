@@ -103,7 +103,7 @@
       "id": "media-top-lead",
       "status": "baseline",
       "page": "media.html",
-      "selector": ".mtop__lead",
+      "selector": ".mcover__lead",
       "note": "メディアのトップのリード（lines_html）",
       "expect": {
         "375": [
@@ -113,24 +113,6 @@
         "390": [
           "宿を運営する私たちが、空き家と民泊の悩みに、",
           "実際の数字でお答えします。"
-        ]
-      }
-    },
-    {
-      "id": "media-feat-01",
-      "status": "baseline",
-      "page": "media.html",
-      "selector": ".mfeat__text",
-      "contains": "運営記録",
-      "note": "メディアの特徴カード",
-      "expect": {
-        "375": [
-          "記事の数字もご提案の見込みも、私たちの運",
-          "営記録が元です。"
-        ],
-        "390": [
-          "記事の数字もご提案の見込みも、私たちの運営",
-          "記録が元です。"
         ]
       }
     },
