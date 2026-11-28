@@ -7,3 +7,4 @@ docs/media/*.mp4
 
 # Okaeri Japan の試作（日本語レビュー版つき。公開しない）
 tools/okaeri/preview/
+.claude/worktrees/
