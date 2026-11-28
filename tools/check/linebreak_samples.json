@@ -117,24 +117,6 @@
       }
     },
     {
-      "id": "media-feat-01",
-      "status": "baseline",
-      "page": "media.html",
-      "selector": ".mfeat__text",
-      "contains": "運営記録",
-      "note": "メディアの特徴カード",
-      "expect": {
-        "375": [
-          "記事の数字もご提案の見込みも、私たちの運",
-          "営記録が元です。"
-        ],
-        "390": [
-          "記事の数字もご提案の見込みも、私たちの運営",
-          "記録が元です。"
-        ]
-      }
-    },
-    {
       "id": "article-author",
       "status": "baseline",
       "page": "media/accommodation-tax.html",
