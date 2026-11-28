@@ -1423,6 +1423,99 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
   .pd__cta wbr { display: none; }
 }
 @media (max-width: 899px) { .pd__name { white-space: nowrap; font-size: 10.5px; }  }
+/* 空き家の収益プラン：だれが何をするか（.role）と、プランごとの試算（.psim）。PC は表、スマホは .role をタブで1列ずつ、.psim を3列のまま縦に詰める */
+.role, .psim { margin-top: 72px; padding: 48px 48px 40px; background: var(--c-bg); border: 1px solid var(--c-card-line); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.plans__h { font-family: var(--font-serif); font-size: 26px; font-weight: 400; line-height: 1.6; letter-spacing: 0.06em; }
+.role__radio, .role__tabs { display: none; }
+.role__table, .psim__table { width: 100%; margin-top: 36px; border-collapse: collapse; table-layout: fixed; }
+.role__table thead td, .psim__table thead td { width: 24%; }
+.role__table thead th, .psim__table thead th { padding: 0 12px 18px; text-align: center; vertical-align: bottom; font-weight: 400; }
+.role__colv, .psim__colv { display: block; font-family: var(--font-serif); font-size: 22px; letter-spacing: 0.06em; }
+.role__coln, .psim__coln { display: block; margin-top: 4px; font-size: 12px; color: var(--c-muted); letter-spacing: 0.04em; }
+.role__table .is-rec, .psim__table .is-rec { background: #f3f7f4; }
+.role__table thead .is-rec, .psim__table thead .is-rec { border-radius: var(--radius) var(--radius) 0 0; box-shadow: inset 0 3px 0 var(--c-rivia); padding-top: 18px; }
+.role__group th { padding: 28px 0 10px; border-bottom: 1px solid var(--c-text); text-align: left; font-size: 12px; font-weight: 500; color: var(--c-rivia); letter-spacing: 0.14em; }
+.role__row th, .psim__row th { padding: 16px 12px 16px 0; text-align: left; font-size: 14px; font-weight: 400; line-height: 1.6; }
+.role__row > *, .psim__row > * { border-bottom: 1px solid var(--c-line); }
+.role__c { padding: 14px 12px; text-align: center; vertical-align: middle; }
+.role__who { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; }
+.role__who i { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.role__who--rivia { color: var(--c-rivia); } .role__who--rivia i { background: var(--c-rivia); }
+.role__who--owner { color: var(--c-owner); } .role__who--owner i { background: var(--c-owner); }
+.role__who--share { padding: 4px 12px 4px 10px; border-radius: 999px; background: #fdf1e9; color: #8a3a14; box-shadow: inset 0 0 0 1px #efc9b2; } .role__who--share i { background: linear-gradient(90deg, var(--c-owner) 50%, var(--c-rivia) 50%); }
+.role__rec, .psim__rec { display: inline-block; margin-bottom: 8px; padding: 1px 10px; border-radius: 999px; background: var(--c-rivia); color: #fff; font-size: 11px; letter-spacing: 0.08em; }
+.role__do { display: block; font-family: var(--font-serif); font-size: 17px; font-weight: 400; letter-spacing: 0.06em; }
+.role__note, .psim__note { display: block; margin-top: 4px; font-size: 12px; line-height: 1.7; color: var(--c-muted); }
+.psim__model { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 20px; font-size: 13px; color: var(--c-sub); }
+.psim__badge { padding: 3px 12px; border-radius: 999px; background: var(--c-rivia-soft); color: var(--c-rivia); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; }
+.psim__model ul { display: flex; flex-wrap: wrap; gap: 4px 0; }
+.psim__model li + li::before { content: "／"; margin: 0 6px; color: var(--c-line-strong); }
+.psim__c { padding: 20px 12px; text-align: center; vertical-align: bottom; }
+.psim__v { font-family: var(--font-serif); font-size: 19px; line-height: 1.4; letter-spacing: 0.04em; }
+.psim__v.is-num { font-size: 34px; line-height: 1.2; letter-spacing: 0.01em; }
+.psim__v small { margin: 0 2px; font-size: 13px; letter-spacing: 0.04em; }
+.psim__bar { display: block; width: 56px; height: calc(4px + 150px * var(--r)); margin: 0 auto 14px; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, #4c6f56, var(--c-rivia)); }
+.psim__bar--none { height: 0; }
+.psim__row--future .psim__v.is-num { color: var(--c-rivia); }
+.psim__ref { margin-top: 22px; font-size: 13px; line-height: 1.9; color: var(--c-sub); }
+.psim__ref b { font-weight: 500; color: var(--c-text); }
+.psim__fold { margin-top: 16px; border-top: 1px solid var(--c-line); }
+.psim__fold summary { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 10px 0; font-size: 13px; font-weight: 500; cursor: pointer; list-style: none; }
+.psim__fold summary::-webkit-details-marker { display: none; }
+.psim__fold summary::after { content: "＋"; margin-left: auto; color: var(--c-muted); }
+.psim__fold[open] summary::after { content: "－"; }
+.psim__fold ul { display: grid; gap: 6px; padding-bottom: 8px; font-size: 12.5px; line-height: 1.85; color: var(--c-sub); list-style: disc; padding-left: 1.4em; }
+.psim__srcs { display: flex; flex-wrap: wrap; gap: 4px 20px; padding-bottom: 16px; font-size: 12.5px; }
+.psim__srcs a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; text-decoration: underline; text-underline-offset: 4px; }
+.psim__disclaim { margin-top: 8px; font-size: 12px; line-height: 1.9; color: var(--c-muted); }
+.psim__disclaim strong { font-weight: 500; color: var(--c-text); }
+@media (max-width: 899px) {
+  .role, .psim { margin-top: 48px; padding: 28px 20px 24px; }
+  .plans__h { font-size: 20px; letter-spacing: 0.04em; }
+  /* だれが何をするか：プランのタブを押すと、その列だけを見せる */
+  .role__radio { display: block; position: absolute; opacity: 0; pointer-events: none; }
+  .role__tabs { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 24px; border: 1px solid var(--c-rivia); border-radius: 999px; overflow: hidden; }
+  .role__tab { display: grid; place-items: center; min-height: 44px; font-size: 13px; letter-spacing: 0.04em; color: var(--c-rivia); cursor: pointer; }
+  .role__tab + .role__tab { border-left: 1px solid var(--c-rivia); }
+  .role__radio--1:checked ~ .role__tabs .role__tab--1, .role__radio--2:checked ~ .role__tabs .role__tab--2, .role__radio--3:checked ~ .role__tabs .role__tab--3 { background: var(--c-rivia); color: #fff; }
+  .role__radio--1:focus-visible ~ .role__tabs .role__tab--1, .role__radio--2:focus-visible ~ .role__tabs .role__tab--2, .role__radio--3:focus-visible ~ .role__tabs .role__tab--3 { outline: 2px solid var(--c-accent); outline-offset: -4px; }
+  .role__radio--1:checked ~ .role__table .role__c:not(.role__c--1), .role__radio--2:checked ~ .role__table .role__c:not(.role__c--2), .role__radio--3:checked ~ .role__table .role__c:not(.role__c--3) { display: none; }
+  .role__table, .role__table tbody { display: block; margin-top: 8px; }
+  .role__table thead { display: none; }
+  .role__row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; border-bottom: 1px solid var(--c-line); }
+  .role__row > * { border-bottom: 0; }
+  .role__group { display: block; }
+  .role__group th { display: block; }
+  .role__table .is-rec { background: none; }
+  .role__group th { padding: 22px 0 8px; font-size: 11.5px; }
+  .role__row th { padding: 13px 12px 13px 0; font-size: 14px; }
+  .role__c { padding: 13px 0; text-align: right; }
+  .role__row--do .role__c { text-align: right; }
+  .role__do { font-size: 16px; }
+  .role__who { font-size: 13.5px; }
+  /* 試算：3つのプランは横に並べたまま、行の名前を上に置く */
+  .psim__model { gap: 10px; font-size: 12.5px; }
+  .psim__model ul { gap: 6px; }
+  .psim__model li + li::before { content: none; }
+  .psim__model li { padding: 2px 10px; border-radius: 4px; background: var(--c-bg-soft); line-height: 1.7; }
+  .psim__table, .psim__table tbody { display: block; }
+  .psim__table thead tr, .psim__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .psim__table thead td { display: none; }
+  .psim__table thead th { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding: 14px 4px 12px; }
+  .psim__table thead .is-rec { padding-top: 14px; }
+  .psim__colv { font-size: 15px; letter-spacing: 0; white-space: nowrap; }
+  .psim__rec { margin-bottom: 6px; font-size: 10px; letter-spacing: 0.04em; }
+  .psim__coln { display: none; }
+  .psim__row th { grid-column: 1 / -1; padding: 16px 0 6px; border-bottom: 0; font-size: 12px; font-weight: 500; color: var(--c-rivia); letter-spacing: 0.1em; }
+  .psim__c { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding: 6px 4px 14px; }
+  .psim__c--bar { justify-content: flex-end; }
+  .psim__v { font-size: 15px; }
+  .psim__v.is-num { font-size: 24px; }
+  .psim__v small { margin: 0 1px; font-size: 11px; }
+  .psim__note { font-size: 11px; line-height: 1.6; }
+  .psim__bar { width: 40px; height: calc(4px + 96px * var(--r)); margin-bottom: 10px; }
+  .psim__ref { font-size: 12.5px; }
+}
 /* フッター：目的・お悩みから探す */
 .footer__intents { display: grid; grid-template-columns: 1fr 2fr; gap: 24px 48px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--c-line); }
 .footer__aud p { font-size: 11.5px; color: var(--c-accent); letter-spacing: 0.14em; }

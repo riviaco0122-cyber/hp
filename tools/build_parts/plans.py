@@ -208,6 +208,143 @@ PLAN_DIAGRAM = {
 }
 
 
+# ---------------------------------------------------------------- 空き家の収益プラン：だれが何をするか（対応の表）と、プランごとの試算
+# 中身はすべて、すでにあるデータから組み立てる（新しい数字・事実を作らない）。
+#   費用の負担：SPLIT_ITEMS["operation"] と各プランの split（初期費用の負担）
+#   作業：PLANS["operation"]["scheme"]["rivia"] の項目（改修・家具など開業準備／集客・予約・清掃・接客）
+#   受け取り・家：PLANS の monthly・ratings、PLAN_DIAGRAM の「物件」（売却／残る）
+#   10年の試算：MEDIA_SIM["use"]（アキヤドの借り上げページと同じモデル物件・前提）
+# 表とアキヤドのページで同じ断り書きを使う（収益を保証しないこと）
+SIM_DISCLAIMER = ("この試算は、架空のモデル物件でのシミュレーションです。", "将来の収益や金額を保証・約束するものではありません。",
+                  "実際の収支は、物件・立地・季節・運営によって大きく変わります。お持ちの物件は、現地を拝見したうえで試算します。")
+PLAN_ROLES = {
+    "operation": dict(
+        title="改修も運営もRIVIA。|違うのは、お金の出し方です",
+        # (グループ, [(作業, {プラン名: 担当} または SPLIT_ITEMS の番号)])。担当：owner / rivia / share
+        groups=[("オーナー様がすること", "owner_do"),
+                ("RIVIAがすること", [("改修・家具など開業準備", "*rivia"), ("集客・予約・清掃・接客", "*rivia")]),
+                ("初期費用の負担", [0, 1, 2, 3]),
+                ("開業後の費用", [4])],
+        owner_do={"アキヤド買取プラン": ("家を売る", "売買契約・お引き渡し"),
+                  "アキヤドおまかせプラン": ("家を貸す", "賃貸借契約を結ぶ"),
+                  "アキヤド売上シェアプラン": ("家を貸す", "賃貸借契約＋補修・内装の共同出資")},
+    ),
+}
+# 試算の表：(行の名前, {プラン名: (前置き, 数字・言葉, 単位, 添え書き)})。10年の手元は MEDIA_SIM["use"] から引く
+PLAN_SIM_ROWS = {
+    "operation": [
+        ("最初に出すお金", {"アキヤド買取プラン": ("", "なし", "", "相談・査定は無料"),
+                         "アキヤドおまかせプラン": ("", "ほぼなし", "", "改修・家具などはRIVIAがほぼ全額を負担"),
+                         "アキヤド売上シェアプラン": ("例", "100", "万円", "補修・内装の共同出資（仮定）")}),
+        ("毎月の受け取り", {"アキヤド買取プラン": ("", "なし", "", "売却代金をまとめて受け取る"),
+                         "アキヤドおまかせプラン": ("毎月", "3", "万円", "決まった額の家賃（例）"),
+                         "アキヤド売上シェアプラン": ("約", "7", "万円", "最低保証2.5万円＋売上の10%")}),
+        ("10年後の手元", "future"),
+        ("家は", {"アキヤド買取プラン": ("", "手放す", "", "RIVIAに売却"),
+                 "アキヤドおまかせプラン": ("", "残る", "", "オーナー様のまま"),
+                 "アキヤド売上シェアプラン": ("", "残る", "", "オーナー様のまま")}),
+    ],
+}
+SIM_FUTURE_NAME = {"アキヤドおまかせプラン": "おまかせプラン", "アキヤド売上シェアプラン": "売上シェアプラン"}  # MEDIA_SIM の行の名前
+SIM_SELL_NOTE = ("売却代金", "金額は現地を拝見して査定")  # 買取は未来の収支を出さない（MEDIA_SIM の方針）。代金は査定で決まる
+
+
+def plan_roles_html(key):
+    """だれが何をするかの表。PC は作業×プランの表、スマホはプランのタブで1列ずつ見る（同じ表を CSS で切り替える）"""
+    if key not in PLAN_ROLES:
+        return ""
+    r = PLAN_ROLES[key]
+    by_name = {p["name"]: p for p in PLANS[key]["plans"]}
+    order = [(n, v, by_name[n]) for n, v, *_ in PLAN_DIAGRAM[key]["plans"]]
+    _, split_items = SPLIT_ITEMS[key]
+    word = {"owner": "オーナー様", "rivia": "RIVIA", "share": "共同出資"}
+
+    def who(w):
+        return f'<span class="role__who role__who--{w}"><i aria-hidden="true"></i>{word[w]}</span>'
+
+    tabs = "".join(f'<input type="radio" name="role-{key}" id="role-{key}-{i}" class="role__radio role__radio--{i}" aria-label="{e(v)}（{e(n)}）の分担を見る"{" checked" if p["rec"] else ""}>'
+                   for i, (n, v, p) in enumerate(order, 1))
+    labels = "".join(f'<label for="role-{key}-{i}" class="role__tab role__tab--{i}">{e(v)}</label>' for i, (_, v, _) in enumerate(order, 1))
+    head = "".join(f'<th scope="col" class="role__col role__col--{i}{" is-rec" if p["rec"] else ""}">{'<span class="role__rec">おすすめ</span>' if p["rec"] else ""}<span class="role__colv">{e(v)}</span><span class="role__coln">{e(n)}</span></th>'
+                   for i, (n, v, p) in enumerate(order, 1))
+    body = []
+    for g, rows in r["groups"]:
+        body.append(f'<tr class="role__group"><th scope="rowgroup" colspan="4">{e(g)}</th></tr>')
+        if rows == "owner_do":
+            cells = "".join(f'<td class="role__c role__c--{i}{" is-rec" if p["rec"] else ""}"><b class="role__do">{e(r["owner_do"][n][0])}</b><span class="role__note">{e(r["owner_do"][n][1])}</span></td>'
+                            for i, (n, _, p) in enumerate(order, 1))
+            body.append(f'<tr class="role__row role__row--do"><th scope="row">手続き</th>{cells}</tr>')
+            continue
+        for item in rows:
+            name, spec = (split_items[item], None) if isinstance(item, int) else item
+            cells = []
+            for i, (n, _, p) in enumerate(order, 1):
+                w = spec[1:] if spec else p["split"][item]
+                cells.append(f'<td class="role__c role__c--{i}{" is-rec" if p["rec"] else ""}">{who(w)}</td>')
+            body.append(f'<tr class="role__row"><th scope="row">{e(name)}</th>{"".join(cells)}</tr>')
+    return f"""        <div class="role reveal">
+          <h3 class="plans__h">{lines_html(r["title"])}</h3>
+          {tabs}
+          <div class="role__tabs">{labels}</div>
+          <table class="role__table">
+            <thead><tr><td></td>{head}</tr></thead>
+            <tbody>{"".join(body)}</tbody>
+          </table>
+        </div>"""
+
+
+def plan_sim_html(key):
+    """プランごとの試算：最初に出すお金・毎月の受け取り・10年後の手元・家。モデル物件と前提は MEDIA_SIM["use"] と共通"""
+    if key not in PLAN_SIM_ROWS:
+        return ""
+    sm = MEDIA_SIM["use"]
+    by_name = {p["name"]: p for p in PLANS[key]["plans"]}
+    order = [(n, v, by_name[n]) for n, v, *_ in PLAN_DIAGRAM[key]["plans"]]
+    fut_t, fut_rows = sm["future"]
+    # 元が取れる月の言葉は、グラフの印（marks）から引く。行の順番＝線（series）の順番
+    mark = {c: t for _, _, t, c, _ in sm["chart"]["marks"] if t}
+    fut = {n: (v, mark.get(c, "毎月の家賃が積み上がる")) for (n, v, _, _), (c, _) in zip(fut_rows, sm["chart"]["series"])}
+    top = max(v for v, _ in fut.values())
+    head = "".join(f'<th scope="col" class="psim__col{" is-rec" if p["rec"] else ""}">{'<span class="psim__rec">おすすめ</span>' if p["rec"] else ""}<span class="psim__colv">{e(v)}</span><span class="psim__coln">{e(n)}</span></th>'
+                   for n, v, p in order)
+
+    def val(pre, num, unit, note):
+        big = num[0].isdigit()
+        return (f'<p class="psim__v{" is-num" if big else ""}">{f"<small>{e(pre)}</small>" if pre else ""}{e(num)}{f"<small>{e(unit)}</small>" if unit else ""}</p>'
+                f'<p class="psim__note">{e(note)}</p>')
+    rows = []
+    for label, cells in PLAN_SIM_ROWS[key]:
+        tds = []
+        for n, _, p in order:
+            rec = " is-rec" if p["rec"] else ""
+            if cells == "future":
+                if n in SIM_FUTURE_NAME:
+                    v, nt = fut[SIM_FUTURE_NAME[n]]
+                    note = nt
+                    tds.append(f'<td class="psim__c psim__c--bar{rec}"><span class="psim__bar" style="--r:{v / top:.2f}" aria-hidden="true"></span>{val("＋", f"{v:,}", "万円", note)}</td>')
+                else:
+                    tds.append(f'<td class="psim__c psim__c--bar{rec}"><span class="psim__bar psim__bar--none" aria-hidden="true"></span>{val("", SIM_SELL_NOTE[0], "", SIM_SELL_NOTE[1])}</td>')
+            else:
+                tds.append(f'<td class="psim__c{rec}">{val(*cells[n])}</td>')
+        rows.append(f'<tr class="psim__row{" psim__row--future" if cells == "future" else ""}"><th scope="row">{e(label)}</th>{"".join(tds)}</tr>')
+    specs = "".join(f"<li>{e(x)}</li>" for x in MEDIA_SIM_MODEL)
+    assum = "".join(f"<li>{e(x)}</li>" for x in sm["assumptions"] + [MEDIA_SERVICE_LP["sell"]["price"]["note"]])
+    srcs = "".join(f'<a href="media/{sl}.html">{e(ARTICLE_BY_SLUG[sl]["title"])} {ARROW}</a>' for sl in sm["srcs"])
+    a, b, c = SIM_DISCLAIMER
+    keep_n, keep_u, *_ = next(x for x in MEDIA_SERVICE_LP["use"]["risk"] if "10年で出ていく" in x[2])  # 空き家のままの10年（約63万円）
+    return f"""        <div class="psim reveal">
+          <h3 class="plans__h">{e(fut_t)}</h3>
+          <div class="psim__model"><span class="psim__badge">モデル物件（架空）</span><ul>{specs}</ul></div>
+          <table class="psim__table">
+            <thead><tr><td></td>{head}</tr></thead>
+            <tbody>{"".join(rows)}</tbody>
+          </table>
+          <p class="psim__ref">参考：空き家のまま持ち続けると、10年で<b>{e(keep_n)}{e(keep_u)}</b>が出ていきます（土地の固定資産税と見回りの費用）。</p>
+          <details class="psim__fold"><summary>試算の前提</summary><ul>{assum}</ul><p class="psim__srcs">{srcs}</p></details>
+          <p class="psim__disclaim">{e(a)}<strong>{e(b)}</strong>{e(c)}</p>
+        </div>"""
+
+
 def brand_kicker(p):
     """コースの上に、属する「アキヤド〇〇プラン」の名前を小さく出す"""
     return f'<span class="plan-brand">{e(p["brand"])}</span>' if p.get("brand") else ""
@@ -359,6 +496,8 @@ def plans_section(key):
 
 {scheme_html}
 {plans_html}
+{plan_roles_html(key)}
+{plan_sim_html(key)}
         <p class="plans__note">{e(d["note"])}</p>
         <div class="plans__advice reveal"><span class="plans__advice-label">RIVIAからのアドバイス</span><p class="plans__advice-text">{d["advice"]}</p></div>
       </div>

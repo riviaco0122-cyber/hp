@@ -335,7 +335,7 @@ def sim_html(key):
         </div>
         <p class="msim__extra reveal">{e(sm["extra"])}</p>
         <details class="mlp-fold msim__fold reveal"><summary>試算の前提</summary><ul>{assum}</ul><p class="msim__srcs">{srcs}</p></details>
-        <p class="msim__disclaim">この試算は、架空のモデル物件でのシミュレーションです。<strong>将来の収益や金額を保証・約束するものではありません。</strong>実際の収支は、物件・立地・季節・運営によって大きく変わります。お持ちの物件は、現地を拝見したうえで試算します。</p>
+        <p class="msim__disclaim">{e(SIM_DISCLAIMER[0])}<strong>{e(SIM_DISCLAIMER[1])}</strong>{e(SIM_DISCLAIMER[2])}</p>
       </div>
     </section>
 """
