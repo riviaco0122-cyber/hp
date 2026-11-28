@@ -31,17 +31,17 @@
 .mchk__help a { color: var(--m-green); text-decoration: underline; text-underline-offset: 3px; }
 .mchk__opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
 .mchk__opts--6 { grid-template-columns: 1fr 1fr; }
+.mchk__opts--5 { grid-template-columns: 1fr; }
 .mchk__opt { position: relative; display: block; cursor: pointer; }
 .mchk__opt input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
-.mchk__opt span { display: flex; align-items: center; gap: 12px; height: 100%; min-height: 56px; padding: 12px 16px; border: 1.5px solid var(--m-line); border-radius: var(--m-r-s); background: var(--m-card); font-size: var(--m-fs-body); line-height: 1.6; color: var(--m-ink); transition: border-color .2s, background .2s; }
-.mchk__opt span::before { content: ""; flex: none; width: 18px; height: 18px; border: 1.5px solid var(--m-line); border-radius: 50%; background: var(--m-card); transition: border-color .2s, box-shadow .2s; }
+.mchk__opt > span { display: flex; align-items: center; gap: 12px; height: 100%; min-height: 56px; padding: 12px 16px; border: 1.5px solid var(--m-line); border-radius: var(--m-r-s); background: var(--m-card); font-size: var(--m-fs-body); line-height: 1.6; color: var(--m-ink); transition: border-color .2s, background .2s; }
+.mchk__opt > span::before { content: ""; flex: none; width: 18px; height: 18px; border: 1.5px solid var(--m-line); border-radius: 50%; background: var(--m-card); transition: border-color .2s, box-shadow .2s; }
 .mchk__opt input:checked + span { border-color: var(--m-green); background: var(--m-green-soft); font-weight: 700; }
 .mchk__opt input:checked + span::before { border-color: var(--m-green); box-shadow: inset 0 0 0 4px var(--m-card), inset 0 0 0 9px var(--m-green); }
 .mchk__opt input:focus-visible + span { outline: 2px solid var(--m-green); outline-offset: 2px; }
-@media (hover: hover) { .mchk__opt:hover span { border-color: var(--m-green); } }
-.mchk__more { grid-column: 1 / -1; margin-top: 6px; }
-.mchk__more > summary { display: inline-flex; align-items: center; min-height: 44px; color: var(--m-green); font-size: var(--m-fs-small); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
-.mchk__more > .mchk__opts { margin-top: 8px; }
+@media (hover: hover) { .mchk__opt:hover > span { border-color: var(--m-green); } }
+.mchk__opt-main { display: flex; flex-direction: column; gap: 2px; font-weight: inherit; }
+.mchk__opt-main small { color: var(--m-sub); font-size: var(--m-fs-small); font-weight: 400; line-height: 1.6; }
 .mchk__nav { display: flex; justify-content: flex-end; margin-top: calc(var(--m-head) * 0.75); }
 .mchk__next { min-width: 200px; }
 .mchk__next:disabled { opacity: .4; box-shadow: none; cursor: default; transform: none; }
@@ -88,6 +88,8 @@
 .mchk-law__name { font-family: var(--font-round); font-weight: 700; font-size: var(--m-fs-h3); color: var(--m-ink); line-height: 1.5; }
 .mchk-law__name small { display: block; color: var(--m-mute); font-family: var(--font-sans); font-weight: 400; font-size: 12px; }
 .mchk-law__res { margin-top: 2px; font-family: var(--font-round); font-weight: 700; font-size: 18px; color: var(--m-ink); }
+.mchk-law__yen { margin-top: 6px; color: var(--m-sub); font-size: var(--m-fs-small); }
+.mchk-law__yen b { margin-left: 4px; color: var(--m-ink); font-size: var(--m-fs-body); }
 .mchk-law__item.is-ok .mchk-law__res { color: var(--m-green); }
 .mchk-law__note { margin-top: 4px; color: var(--m-sub); font-size: var(--m-fs-small); line-height: 1.8; }
 
@@ -178,7 +180,7 @@
   .mchk__step { margin-top: 20px; }
   .mchk__opts, .mchk__opts--6 { grid-template-columns: 1fr; gap: 8px; margin-top: 16px; }
   .mchk__opts--4:has(input[name="area"]) { grid-template-columns: 1fr 1fr; }
-  .mchk__opt span { min-height: 52px; padding: 10px 14px; }
+  .mchk__opt > span { min-height: 52px; padding: 10px 14px; }
   .mchk__nav { margin-top: 24px; }
   .mchk__next { width: 100%; }
   .mchk-res__grid, .mchk-know, .mchk-nums__grid, .mchk-plans__list.is-2, .mchk-plans__list.is-2:not(:has(.mchk-plan:not(.is-main))) { grid-template-columns: 1fr; }

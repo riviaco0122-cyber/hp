@@ -12,9 +12,12 @@ CHECK_QUESTIONS = [
       [("izu", "伊豆半島"), ("shizuoka", "静岡県のそのほか"), ("other", "静岡県の外")])],
     [("type", "建物の種類を選んでください", "",
       [("house", "一戸建て"), ("condo", "マンション・アパートの1室")])],
-    [("zone", "家のまわりは、どんな様子ですか？", 'zone',
-      [("street", "家が建ち並ぶ、静かな住宅地"), ("road", "大きな道路沿い・駅やお店の近く"),
-       ("rural", "田んぼ・畑・山が多く、家がまばら"), ("factory", "工場や倉庫が多い"), ("unknown", "わからない")])],
+    [("zone", "用途地域はわかりますか？", 'zone',
+      [("unknown", "わからない｜旅館業と民泊新法、両方の場合の結果を出します"),
+       ("both", "旅館業も民泊新法もできる地域｜第一種住居・第二種住居・準住居・近隣商業・商業・準工業地域、用途地域の指定がない区域"),
+       ("minpaku", "民泊新法だけできる地域｜低層住居専用・中高層住居専用・田園住居地域、工業地域"),
+       ("indx", "どちらも難しい地域｜工業専用地域"),
+       ("chosei", "個別の相談が必要な地域｜市街化調整区域")])],
     [("hazard", "大雨のときの水や、がけ崩れの心配はありますか？", 'hazard',
       [("none", "ハザードマップで確かめて、色は付いていなかった"), ("colored", "川・海・がけの近くで心配がある（色が付いていた）"), ("unknown", "わからない")])],
     [("area", "家の広さは、どれくらいですか？", "",
@@ -24,28 +27,33 @@ CHECK_QUESTIONS = [
     [("goal", "この家を、どうしたいですか？", "",
       [("sell", "売りたい・手放したい"), ("lend", "貸したい・任せたい"), ("start", "自分で宿をはじめたい"), ("undecided", "まだ決めていない")])],
 ]
-# 「用途地域」（土地ごとに建ててよい建物を決めた区分）がわかる人だけ、折りたたみから選ぶ
-CHECK_ZONE_DETAIL = [("excl", "低層・中高層の住居専用地域（田園住居を含む）"), ("res", "第一種住居・第二種住居・準住居地域"),
-                     ("com", "近隣商業・商業・準工業地域"), ("ind", "工業地域"), ("indx", "工業専用地域"),
-                     ("chosei", "市街化調整区域"), ("nonzone", "用途地域の指定がない区域")]
 CHECK_HELP = {
-    "zone": "まわりの様子から、宿にできそうな場所かの目安を出します。わからなくても大丈夫です。",
+    "zone": ('用途地域は、土地ごとに建ててよい建物を決めた区分です。<b>1年中営業できる「旅館業」の許可がとれるかは、これで決まります。</b>'
+             'わからなければ、両方の場合の結果を出します。<br>調べ方：市町村のウェブサイトの「都市計画図」、国土交通省の'
+             '<a href="https://www.reinfolib.mlit.go.jp/" target="_blank" rel="noopener">不動産情報ライブラリ</a>（住所で地図を開く）、'
+             '市町村の都市計画の窓口（住所を伝えて聞く）、家を買ったときの重要事項説明書。'),
     "hazard": 'ハザードマップは、災害の心配がある場所を色で示した地図です。<a href="https://disaportal.gsi.go.jp/" target="_blank" rel="noopener">国土交通省のサイト</a>で、住所を入れると見られます。わからなければ、そのまま進めます。',
 }
 
 # 下田の宿の1年目の月別稼働率（仕様 3-3。docs/brand/experience.md 確認済み。開業月の7月を除く）
 CHECK_OCC = [("8月", 58), ("9月", 60), ("10月", 52), ("11月", 33), ("12月", 71), ("1月", 39), ("2月", 57), ("3月", 61)]
 CHECK_OCC_AVG = 53
+CHECK_CASE_MONTHLY = [40, 55]  # オーナーの事例の月の売上（万円。docs/brand/experience.md・サービスページと同じ出典）
 CHECK_CASE_SRCS = ["case-rental-house-inn-first-year", "case-owner-setouchi-cycling", "case-owner-castle-town-nagaya", "case-owner-satoyama-airdna"]
 
 CHECK_FAQ = [
-    ("不動産や民泊にくわしくなくても、診断できますか？",
-     "できます。質問は、家のまわりの様子や広さなど、見ればわかることだけです。わからない質問は「わからない」を選べば進めます。くわしい区分（用途地域）は、ご相談のときに私たちが無料で調べます。"),
+    ("用途地域がわからなくても、診断できますか？",
+     "できます。「わからない」を選ぶと、旅館業の許可がとれた場合と、民泊新法で届け出た場合の、両方の結果を出します。用途地域は、市町村の都市計画図や国土交通省の不動産情報ライブラリで調べられます。ご相談いただければ、私たちが無料で調べます。"),
     ("民泊新法と旅館業は、何が違いますか？",
      "民泊新法（住宅宿泊事業）は、住居専用地域でも届出ができますが、営業は年180日までです。旅館業（簡易宿所）は通年で営業できますが、営業できる用途地域が決まっています。"),
     ("診断で出る売上は、私の家でも見込めますか？",
      "お約束するものではありません。表示する数字は、オーナーの事例と、私たちが下田で運営する宿の1年目の実績です。その場所の料金の相場や建物の状態は、現地を見て無料で確かめます。"),
 ]
+
+
+def _opt_text(t):
+    main, _, sub = t.partition("｜")
+    return f'<span class="mchk__opt-main">{e(main)}<small>{e(sub)}</small></span>' if sub else e(main)
 
 
 def _check_step(i, groups):
@@ -54,12 +62,8 @@ def _check_step(i, groups):
     inner = []
     for gi, (name, q, help_key, opts) in enumerate(groups):
         qid = f"mchk-q-{name}"
-        items = "".join(f'<label class="mchk__opt"><input type="radio" name="{name}" value="{v}"><span>{e(t)}</span></label>' for v, t in opts)
+        items = "".join(f'<label class="mchk__opt"><input type="radio" name="{name}" value="{v}"><span>{_opt_text(t)}</span></label>' for v, t in opts)
         help_html = f'<p class="mchk__help">{CHECK_HELP[help_key]}</p>' if help_key else ""
-        if name == "zone":
-            items += ('<details class="mchk__more"><summary>「用途地域」がわかる方は、こちらから選べます</summary>'
-                      '<p class="mchk__help">用途地域は、土地ごとに建ててよい建物を決めた区分です。市町村の「都市計画図」に書かれています。</p>'
-                      f'<div class="mchk__opts">{"".join(f"<label class=\"mchk__opt\"><input type=\"radio\" name=\"zone\" value=\"{v}\"><span>{e(t)}</span></label>" for v, t in CHECK_ZONE_DETAIL)}</div></details>')
         head = (f'<h2 class="mchk__q" id="{qid}" tabindex="-1">{e(q)}</h2>' if gi == 0 and not multi else
                 f'<p class="mchk__subq" id="{qid}">{e(q)}</p>')
         inner.append(f"""<div class="mchk__group" role="radiogroup" aria-labelledby="{qid}">{head}{help_html}
@@ -86,13 +90,12 @@ def _check_chart():
 def media_check_page():
     n = len(CHECK_QUESTIONS)
     steps = "\n".join(_check_step(i, g) for i, g in enumerate(CHECK_QUESTIONS, 1))
-    labels = {name: dict(opts) for groups in CHECK_QUESTIONS for name, _, _, opts in groups}
-    labels["zone"].update(CHECK_ZONE_DETAIL)
+    labels = {name: {v: t.partition("｜")[0] for v, t in opts} for groups in CHECK_QUESTIONS for name, _, _, opts in groups}
     order = [name for groups in CHECK_QUESTIONS for name, _, _, _ in groups]
-    short = dict(place="場所", type="建物", zone="まわりの様子", hazard="災害の心配", area="広さ", state="建物の状態", goal="ご希望")  # 相談のメッセージ欄に入れる見出し
+    short = dict(place="場所", type="建物", zone="用途地域", hazard="災害の心配", area="広さ", state="建物の状態", goal="ご希望")  # 相談のメッセージ欄に入れる見出し
     plans = {sv["key"]: dict(name=sv["name"], who=sv["eyebrow"], title=sv["title"].replace("\n", ""), href=f"{sv['slug']}.html")
              for sv in MEDIA_SERVICES}
-    data = dict(n=n, labels=labels, order=order, short=short, plans=plans, occAvg=CHECK_OCC_AVG)
+    data = dict(n=n, labels=labels, order=order, short=short, plans=plans, occAvg=CHECK_OCC_AVG, caseMonthly=CHECK_CASE_MONTHLY)
     srcs = "".join(f'<li><a href="media/{sl}.html">{e(ARTICLE_BY_SLUG[sl]["title"])}</a></li>' for sl in CHECK_CASE_SRCS if sl in ARTICLE_BY_SLUG)
     crumbs = media_crumbs([("アキヤド", "media.html"), ("民泊できる？1分診断", "")])
     score_rows = "".join(f"<tr><th scope=\"row\">{e(k)}</th><td>{p}点</td><td>{e(d)}</td></tr>" for k, p, d in [
@@ -140,7 +143,7 @@ def media_check_page():
                 <ul class="mchk-break" data-out="break"></ul>
               </div>
               <div class="mchk-card mchk-law">
-                <p class="mchk-card__label">宿にする2つの方法</p>
+                <p class="mchk-card__label">宿にする2つの方法と、売上の目安</p>
                 <ul class="mchk-law__list" data-out="law"></ul>
               </div>
             </div>
@@ -177,7 +180,7 @@ def media_check_page():
     <section class="mchk-doc">
       <div class="container mchk-doc__wrap">
         <h2 class="mchk-doc__title">判定のしくみ</h2>
-        <p>用途地域（土地ごとに建ててよい建物を決めた区分）がわからない方は、家のまわりの様子から目安を出し、正しくはご相談のときに私たちが調べます。</p>
+        <p>用途地域がわからない方には、旅館業の許可がとれた場合と、民泊新法で届け出た場合の、両方の結果を出します。売上の目安は、オーナーの事例の月の売上（約40万〜55万円）を1年分にしたものです。民泊新法は、下田の宿と同じくらい泊まりが入る（年 約190泊）として、上限の180泊に減らして計算しています。</p>
         <p>制度は、用途地域と建物の種類・広さで判定します。旅館業（簡易宿所）は、建築基準法の別表第二で、第一種住居・第二種住居・準住居地域と、近隣商業・商業・準工業地域で営業できそうと判定します（第一種住居地域は3,000㎡以下）。民泊新法（住宅宿泊事業）は住居専用地域でも届出ができますが、年180日までで、条例で日数・区域が制限されることがあります（住宅宿泊事業法 第18条）。工業専用地域は住宅が建てられないため対象外です。</p>
         <p>市街化調整区域は、旅館業では用途の変更に許可が要り、難しいことが多く、民泊新法は自治体の判断によるため、保健所・市町村への事前の相談が必要と出します。マンション・アパートの1室は、管理規約で民泊が禁止されていないことが必要で、旅館業は現実的に難しい扱いにしています。200㎡を超える建物を旅館業にするには、用途変更の確認申請が要ります（2019年の建築基準法の改正で、200㎡以下は不要になりました）。</p>
         <div class="mchk-doc__table"><table>
