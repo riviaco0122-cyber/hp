@@ -39,6 +39,9 @@
 .mchk__opt input:checked + span::before { border-color: var(--m-green); box-shadow: inset 0 0 0 4px var(--m-card), inset 0 0 0 9px var(--m-green); }
 .mchk__opt input:focus-visible + span { outline: 2px solid var(--m-green); outline-offset: 2px; }
 @media (hover: hover) { .mchk__opt:hover span { border-color: var(--m-green); } }
+.mchk__more { grid-column: 1 / -1; margin-top: 6px; }
+.mchk__more > summary { display: inline-flex; align-items: center; min-height: 44px; color: var(--m-green); font-size: var(--m-fs-small); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.mchk__more > .mchk__opts { margin-top: 8px; }
 .mchk__nav { display: flex; justify-content: flex-end; margin-top: calc(var(--m-head) * 0.75); }
 .mchk__next { min-width: 200px; }
 .mchk__next:disabled { opacity: .4; box-shadow: none; cursor: default; transform: none; }
@@ -188,3 +191,6 @@
   .mchk-plan__more { margin: 0 auto; }
   .mchk-doc__table td:nth-child(2) { white-space: normal; }
 }
+
+/* このページでは診断そのものが相談の入口。画面下の固定ボタンは「次へ」に重なるので出さない */
+.fixed-cta { display: none; }

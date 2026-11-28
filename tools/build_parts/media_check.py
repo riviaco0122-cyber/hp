@@ -12,21 +12,25 @@ CHECK_QUESTIONS = [
       [("izu", "伊豆半島"), ("shizuoka", "静岡県のそのほか"), ("other", "静岡県の外")])],
     [("type", "建物の種類を選んでください", "",
       [("house", "一戸建て"), ("condo", "マンション・アパートの1室")])],
-    [("zone", "用途地域は、どれですか？", 'zone',
-      [("excl", "低層・中高層の住居専用地域（田園住居を含む）"), ("res", "第一種住居・第二種住居・準住居地域"),
-       ("com", "近隣商業・商業・準工業地域"), ("ind", "工業地域"), ("indx", "工業専用地域"), ("chosei", "市街化調整区域"), ("unknown", "わからない")])],
-    [("hazard", "ハザードマップで、色が付いていますか？", 'hazard',
-      [("none", "色が付いていない"), ("colored", "浸水・土砂災害などの色が付いている"), ("unknown", "わからない")])],
-    [("area", "延床面積は、どれくらいですか？", "",
-      [("lt60", "60㎡未満"), ("m60", "60〜150㎡"), ("m150", "150〜200㎡"), ("gt200", "200㎡超")]),
+    [("zone", "家のまわりは、どんな様子ですか？", 'zone',
+      [("street", "家が建ち並ぶ、静かな住宅地"), ("road", "大きな道路沿い・駅やお店の近く"),
+       ("rural", "田んぼ・畑・山が多く、家がまばら"), ("factory", "工場や倉庫が多い"), ("unknown", "わからない")])],
+    [("hazard", "大雨のときの水や、がけ崩れの心配はありますか？", 'hazard',
+      [("none", "ハザードマップで確かめて、色は付いていなかった"), ("colored", "川・海・がけの近くで心配がある（色が付いていた）"), ("unknown", "わからない")])],
+    [("area", "家の広さは、どれくらいですか？", "",
+      [("lt60", "小さめ（2DKくらいまで）"), ("m60", "ふつうの一戸建て（3〜5LDKくらい）"), ("m150", "大きめの家・古民家"), ("gt200", "とても大きい（部屋が10以上など）")]),
      ("state", "建物の状態は？", "",
-      [("ready", "すぐ住める"), ("care", "手入れが必要"), ("major", "大きな修繕が必要")])],
+      [("ready", "今すぐ住める"), ("care", "掃除や小さな修理が必要"), ("major", "雨もり・傾きなど、大きな修理が必要")])],
     [("goal", "この家を、どうしたいですか？", "",
       [("sell", "売りたい・手放したい"), ("lend", "貸したい・任せたい"), ("start", "自分で宿をはじめたい"), ("undecided", "まだ決めていない")])],
 ]
+# 「用途地域」（土地ごとに建ててよい建物を決めた区分）がわかる人だけ、折りたたみから選ぶ
+CHECK_ZONE_DETAIL = [("excl", "低層・中高層の住居専用地域（田園住居を含む）"), ("res", "第一種住居・第二種住居・準住居地域"),
+                     ("com", "近隣商業・商業・準工業地域"), ("ind", "工業地域"), ("indx", "工業専用地域"),
+                     ("chosei", "市街化調整区域"), ("nonzone", "用途地域の指定がない区域")]
 CHECK_HELP = {
-    "zone": "市町村のホームページにある「都市計画図」で調べられます。わからなければ「わからない」を選んでください。",
-    "hazard": '<a href="https://disaportal.gsi.go.jp/" target="_blank" rel="noopener">国土交通省 ハザードマップポータルサイト</a>で、住所を入れて確かめられます。',
+    "zone": "まわりの様子から、宿にできそうな場所かの目安を出します。わからなくても大丈夫です。",
+    "hazard": 'ハザードマップは、災害の心配がある場所を色で示した地図です。<a href="https://disaportal.gsi.go.jp/" target="_blank" rel="noopener">国土交通省のサイト</a>で、住所を入れると見られます。わからなければ、そのまま進めます。',
 }
 
 # 下田の宿の1年目の月別稼働率（仕様 3-3。docs/brand/experience.md 確認済み。開業月の7月を除く）
@@ -35,8 +39,8 @@ CHECK_OCC_AVG = 53
 CHECK_CASE_SRCS = ["case-rental-house-inn-first-year", "case-owner-setouchi-cycling", "case-owner-castle-town-nagaya", "case-owner-satoyama-airdna"]
 
 CHECK_FAQ = [
-    ("用途地域がわからなくても、診断できますか？",
-     "できます。「わからない」を選ぶと、制度の判定を保留にして、点数は中間にします。用途地域は、市町村の都市計画図で調べられます。"),
+    ("不動産や民泊にくわしくなくても、診断できますか？",
+     "できます。質問は、家のまわりの様子や広さなど、見ればわかることだけです。わからない質問は「わからない」を選べば進めます。くわしい区分（用途地域）は、ご相談のときに私たちが無料で調べます。"),
     ("民泊新法と旅館業は、何が違いますか？",
      "民泊新法（住宅宿泊事業）は、住居専用地域でも届出ができますが、営業は年180日までです。旅館業（簡易宿所）は通年で営業できますが、営業できる用途地域が決まっています。"),
     ("診断で出る売上は、私の家でも見込めますか？",
@@ -52,6 +56,10 @@ def _check_step(i, groups):
         qid = f"mchk-q-{name}"
         items = "".join(f'<label class="mchk__opt"><input type="radio" name="{name}" value="{v}"><span>{e(t)}</span></label>' for v, t in opts)
         help_html = f'<p class="mchk__help">{CHECK_HELP[help_key]}</p>' if help_key else ""
+        if name == "zone":
+            items += ('<details class="mchk__more"><summary>「用途地域」がわかる方は、こちらから選べます</summary>'
+                      '<p class="mchk__help">用途地域は、土地ごとに建ててよい建物を決めた区分です。市町村の「都市計画図」に書かれています。</p>'
+                      f'<div class="mchk__opts">{"".join(f"<label class=\"mchk__opt\"><input type=\"radio\" name=\"zone\" value=\"{v}\"><span>{e(t)}</span></label>" for v, t in CHECK_ZONE_DETAIL)}</div></details>')
         head = (f'<h2 class="mchk__q" id="{qid}" tabindex="-1">{e(q)}</h2>' if gi == 0 and not multi else
                 f'<p class="mchk__subq" id="{qid}">{e(q)}</p>')
         inner.append(f"""<div class="mchk__group" role="radiogroup" aria-labelledby="{qid}">{head}{help_html}
@@ -67,7 +75,7 @@ def _check_chart():
                    f'<span class="mchk-bars__bar" aria-hidden="true"></span><span class="mchk-bars__m">{m}</span></li>' for m, v in CHECK_OCC)
     alt = "下田の宿の1年目の月別稼働率。" + "、".join(f"{m} {v}%" for m, v in CHECK_OCC) + f"。平均は約{CHECK_OCC_AVG}%。"
     return f"""<figure class="mchk-chart" role="img" aria-label="{e(alt)}">
-              <figcaption class="mchk-chart__cap"><b>下田の宿の1年目の稼働率</b><span>月別・開業月を除く</span><span class="mchk-chart__avg" aria-hidden="true">平均 約{CHECK_OCC_AVG}%</span></figcaption>
+              <figcaption class="mchk-chart__cap"><b>下田の宿の1年目、泊まりが入った日の割合</b><span>稼働率・月別・開業月を除く</span><span class="mchk-chart__avg" aria-hidden="true">平均 約{CHECK_OCC_AVG}%</span></figcaption>
               <div class="mchk-bars" style="--avg:{CHECK_OCC_AVG}" aria-hidden="true">
                 <span class="mchk-bars__avg"></span>
                 <ol>{bars}</ol>
@@ -79,15 +87,16 @@ def media_check_page():
     n = len(CHECK_QUESTIONS)
     steps = "\n".join(_check_step(i, g) for i, g in enumerate(CHECK_QUESTIONS, 1))
     labels = {name: dict(opts) for groups in CHECK_QUESTIONS for name, _, _, opts in groups}
+    labels["zone"].update(CHECK_ZONE_DETAIL)
     order = [name for groups in CHECK_QUESTIONS for name, _, _, _ in groups]
-    short = dict(place="場所", type="建物", zone="用途地域", hazard="ハザードマップ", area="延床面積", state="建物の状態", goal="ご希望")  # 相談のメッセージ欄に入れる見出し
+    short = dict(place="場所", type="建物", zone="まわりの様子", hazard="災害の心配", area="広さ", state="建物の状態", goal="ご希望")  # 相談のメッセージ欄に入れる見出し
     plans = {sv["key"]: dict(name=sv["name"], who=sv["eyebrow"], title=sv["title"].replace("\n", ""), href=f"{sv['slug']}.html")
              for sv in MEDIA_SERVICES}
     data = dict(n=n, labels=labels, order=order, short=short, plans=plans, occAvg=CHECK_OCC_AVG)
     srcs = "".join(f'<li><a href="media/{sl}.html">{e(ARTICLE_BY_SLUG[sl]["title"])}</a></li>' for sl in CHECK_CASE_SRCS if sl in ARTICLE_BY_SLUG)
     crumbs = media_crumbs([("アキヤド", "media.html"), ("民泊できる？1分診断", "")])
     score_rows = "".join(f"<tr><th scope=\"row\">{e(k)}</th><td>{p}点</td><td>{e(d)}</td></tr>" for k, p, d in [
-        ("制度", 40, "旅館業できそう 40／民泊新法のみ 25／わからない・要相談 20／難しい 0"),
+        ("宿にできるか", 40, "旅館業できそう 40／民泊新法のみ 25／わからない・要相談 20／難しい 0"),
         ("災害", 20, "色なし 20／わからない 10／色あり 5"),
         ("建物の状態", 25, "すぐ住める 25／手入れが必要 15／大きな修繕が必要 5"),
         ("広さ", 15, "60〜150㎡ 15／150〜200㎡ 12／60㎡未満 8／200㎡超 8")])
@@ -95,7 +104,7 @@ def media_check_page():
       <div class="container">{crumbs}
         <p class="mhero__en">Check</p>
         <h1 class="mhero__title mchk-hero__title">空き家で民泊できる？<br>1分診断</h1>
-        <p class="mchk-hero__lead">6つの質問に答えると、営業できそうな制度と、宿としての目安の点数、事例の数字がわかります。</p>
+        <p class="mchk-hero__lead">6つの質問に答えると、宿として営業できそうかと、目安の点数、事例の数字がわかります。</p>
         <ul class="mchk-hero__chips"><li>全{n}問</li><li>約1分</li><li>名前・連絡先の入力なし</li></ul>
       </div>
     </section>
@@ -131,7 +140,7 @@ def media_check_page():
                 <ul class="mchk-break" data-out="break"></ul>
               </div>
               <div class="mchk-card mchk-law">
-                <p class="mchk-card__label">営業できそうな制度</p>
+                <p class="mchk-card__label">宿にする2つの方法</p>
                 <ul class="mchk-law__list" data-out="law"></ul>
               </div>
             </div>
@@ -140,7 +149,7 @@ def media_check_page():
               <p class="mchk-card__label">事例の数字</p>
               <div class="mchk-nums__grid">
                 <dl class="mchk-stats">
-                  <div class="mchk-stat"><dt>一棟貸しの宿の売上</dt><dd><small>月 約</small>40万〜55万<small>円</small></dd><p>オーナーの事例</p></div>
+                  <div class="mchk-stat"><dt>家をまるごと貸す宿の売上</dt><dd><small>月 約</small>40万〜55万<small>円</small></dd><p>オーナーの事例</p></div>
                   <div class="mchk-stat" data-out="cost"></div>
                 </dl>
                 {_check_chart()}
@@ -168,6 +177,7 @@ def media_check_page():
     <section class="mchk-doc">
       <div class="container mchk-doc__wrap">
         <h2 class="mchk-doc__title">判定のしくみ</h2>
+        <p>用途地域（土地ごとに建ててよい建物を決めた区分）がわからない方は、家のまわりの様子から目安を出し、正しくはご相談のときに私たちが調べます。</p>
         <p>制度は、用途地域と建物の種類・広さで判定します。旅館業（簡易宿所）は、建築基準法の別表第二で、第一種住居・第二種住居・準住居地域と、近隣商業・商業・準工業地域で営業できそうと判定します（第一種住居地域は3,000㎡以下）。民泊新法（住宅宿泊事業）は住居専用地域でも届出ができますが、年180日までで、条例で日数・区域が制限されることがあります（住宅宿泊事業法 第18条）。工業専用地域は住宅が建てられないため対象外です。</p>
         <p>市街化調整区域は、旅館業では用途の変更に許可が要り、難しいことが多く、民泊新法は自治体の判断によるため、保健所・市町村への事前の相談が必要と出します。マンション・アパートの1室は、管理規約で民泊が禁止されていないことが必要で、旅館業は現実的に難しい扱いにしています。200㎡を超える建物を旅館業にするには、用途変更の確認申請が要ります（2019年の建築基準法の改正で、200㎡以下は不要になりました）。</p>
         <div class="mchk-doc__table"><table>

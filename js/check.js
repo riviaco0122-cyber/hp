@@ -30,16 +30,25 @@
   function judge(a) {
     var condo = a.type === 'condo', z = a.zone;
     var ryokan, minpaku;
-    if (z === 'unknown') ryokan = { s: 'hold', t: '判定を保留', n: '用途地域がわかると判定できます。' };
+    // まわりの様子（street/road/rural/factory）は目安。用途地域（それ以外）がわかれば、それで判定する
+    var C = function (n) { return { s: 'consult', t: '確かめが必要', n: n }; };
+    var big = a.area === 'gt200' ? 'とても大きい家は、建物の用途を変える手続き（確認申請）が要ります。' : '';
+    if (z === 'unknown') ryokan = { s: 'hold', t: '判定を保留', n: 'まわりの様子か用途地域がわかると、目安を出せます。' };
     else if (condo) ryokan = { s: 'hard', t: '難しい', n: 'マンション・アパートの1室は、旅館業は現実的に難しい扱いです。' };
-    else if (z === 'res' || z === 'com') ryokan = { s: 'ok', t: 'できそう', n: '通年で営業できる制度です。' + (z === 'res' ? '第一種住居地域は3,000㎡以下です。' : '') + (a.area === 'gt200' ? '200㎡を超えるため、用途変更の確認申請が要ります。' : '') };
-    else if (z === 'chosei') ryokan = { s: 'consult', t: '要相談', n: '用途の変更に許可が要り、難しいことが多いです。' };
+    else if (z === 'res' || z === 'com') ryokan = { s: 'ok', t: 'できそう', n: '1年中、営業できる許可です。' + (z === 'res' ? '第一種住居地域は3,000㎡以下です。' : '') + big };
+    else if (z === 'nonzone') ryokan = { s: 'ok', t: 'できそう', n: '用途地域による建物の制限はありません。市町村の決まりは確かめます。' + big };
+    else if (z === 'road') ryokan = { s: 'ok', t: 'できそう（目安）', n: '道路沿いやお店の近くは、旅館業ができる地域のことが多いです。正しくは用途地域で確かめます。' + big };
+    else if (z === 'street') ryokan = C('静かな住宅地は、旅館業ができない「住居専用地域」のこともあります。用途地域で確かめます。');
+    else if (z === 'rural') ryokan = C('田畑や山の多い所は、旅館業がしやすい区域のことも、建物の用途を変えにくい「市街化調整区域」のこともあります。');
+    else if (z === 'factory') ryokan = C('工場の多い地域は、旅館業ができる所とできない所があります。用途地域で確かめます。');
+    else if (z === 'chosei') ryokan = C('建物の用途を変えるのに許可が要り、難しいことが多いです。');
     else ryokan = { s: 'hard', t: '難しい', n: 'この用途地域では、旅館業の営業はできません。' };
 
-    if (z === 'unknown') minpaku = { s: 'hold', t: '判定を保留', n: '用途地域がわかると判定できます。' };
-    else if (z === 'chosei') minpaku = { s: 'consult', t: '要相談', n: '自治体の判断によります。保健所・市町村への事前の相談が必要です。' };
+    if (z === 'unknown') minpaku = { s: 'hold', t: '判定を保留', n: 'まわりの様子か用途地域がわかると、目安を出せます。' };
+    else if (z === 'chosei' || z === 'rural') minpaku = C('市町村の判断によります。保健所・市町村に、前もって相談します。');
     else if (z === 'indx') minpaku = { s: 'hard', t: '難しい', n: '工業専用地域は、住宅が建てられないため対象外です。' };
-    else minpaku = { s: 'ok', t: '届出できそう', n: '条例で日数・区域が制限されることがあります。' + (condo ? '管理規約で民泊が禁止されていないことが必要です。' : '') };
+    else if (z === 'factory') minpaku = C('工場だけの地域（工業専用地域）は対象外です。用途地域で確かめます。');
+    else minpaku = { s: 'ok', t: '届出でできそう', n: '市町村の決まりで、日数や場所が限られることがあります。' + (condo ? 'マンションは、管理規約で民泊が禁止されていないことが必要です。' : '') };
 
     var seido = ryokan.s === 'ok' ? 'ryokan' : minpaku.s === 'ok' ? 'minpaku' : (ryokan.s === 'hard' && minpaku.s === 'hard') ? 'hard' : 'consult';
     var pts = {
@@ -128,27 +137,28 @@
     out('band').textContent = BAND[r.band];
     out('band').className = 'mchk-score__band is-' + r.band;
     out('meter').style.width = r.score + '%';
-    out('break').innerHTML = [['制度', r.pts.seido, 40], ['災害', r.pts.hazard, 20], ['建物の状態', r.pts.state, 25], ['広さ', r.pts.area, 15]].map(function (x) {
+    out('break').innerHTML = [['宿にできるか', r.pts.seido, 40], ['災害', r.pts.hazard, 20], ['建物の状態', r.pts.state, 25], ['広さ', r.pts.area, 15]].map(function (x) {
       return '<li><span>' + x[0] + '</span><i style="--p:' + (x[1] / x[2] * 100) + '%" aria-hidden="true"></i><b>' + x[1] + '<small>/' + x[2] + '</small></b></li>';
     }).join('');
-    out('law').innerHTML = [['旅館業（簡易宿所）', '通年で営業できる', r.ryokan], ['民泊新法（住宅宿泊事業）', '年180日まで', r.minpaku]].map(function (x) {
+    out('law').innerHTML = [['旅館業（簡易宿所）', '許可をとれば、1年中営業できる', r.ryokan], ['民泊新法（住宅宿泊事業）', '届出だけで始められる。年180日まで', r.minpaku]].map(function (x) {
       return '<li class="mchk-law__item is-' + x[2].s + '"><span class="mchk-law__mark" aria-hidden="true">' + MARK[x[2].s] + '</span>' +
         '<div><p class="mchk-law__name">' + x[0] + '<small>' + x[1] + '</small></p><p class="mchk-law__res">' + x[2].t + '</p><p class="mchk-law__note">' + x[2].n + '</p></div></li>';
     }).join('');
     out('cost').innerHTML = a.state === 'major'
       ? '<dt>初期費用</dt><dd class="is-text">見積が必要</dd><p>大きな修繕は、事例の範囲を超えることがあります</p>'
-      : '<dt>初期費用（総予算）</dt><dd><small>約</small>350万〜450万<small>円</small></dd><p>オーナーの事例。下田の宿（賃貸・家具家電込み）は、改修 約410万円＋家具・家電・備品 約240万円</p>';
+      : '<dt>はじめにかかる費用（総額）</dt><dd><small>約</small>350万〜450万<small>円</small></dd><p>オーナーの事例。下田の宿（賃貸・家具家電込み）は、改修 約410万円＋家具・家電・備品 約240万円</p>';
     var n180 = out('note180');
     n180.hidden = r.seido !== 'minpaku';
-    n180.innerHTML = '民泊新法は、年180日が上限です。下田の宿の1年目の稼働率 約' + D.occAvg + '%は、年に約' + r.nights + '泊ぶん。同じくらい埋まる宿では、180日の上限で売上が頭打ちになります。';
-    out('place').textContent = a.place === 'izu' ? '稼働率は、同じ伊豆半島の下田の宿の数字です。' : '稼働率は、静岡県下田市の宿の数字です。場所によって、数字は変わります。';
+    n180.innerHTML = '民泊新法は、営業できるのが年180日までです。下田の宿の1年目は、泊まりが入った日が約' + D.occAvg + '%（稼働率）で、年に約' + r.nights + '泊ぶん。同じくらい埋まる宿では、180日の上限で売上が頭打ちになります。';
+    out('place').textContent = a.place === 'izu' ? '泊まりが入った日の割合（稼働率）は、同じ伊豆半島の下田の宿の数字です。' : '泊まりが入った日の割合（稼働率）は、静岡県下田市の宿の数字です。場所によって、数字は変わります。';
 
     var law = { ryokan: '旅館業（簡易宿所）で、通年で営業できそうです。', minpaku: '民泊新法なら、届出できそうです（年180日まで）。',
-      consult: a.zone === 'unknown' ? '用途地域がわかると、使える制度を判定できます。' : '制度は、保健所・市町村への事前の相談で決まります。',
-      hard: 'この用途地域では、宿として営業するのは難しそうです。売る・任せるなど、ほかの道を比べるのがおすすめです。' }[r.seido];
+      consult: a.zone === 'unknown' ? 'まわりの様子がわかると、宿にできるかの目安を出せます。' : '宿にできるかは、用途地域（土地ごとに建ててよい建物の区分）で決まります。私たちが無料で調べます。',
+      hard: 'この場所では、宿として営業するのは難しそうです。売る・任せるなど、ほかの道を比べるのがおすすめです。' }[r.seido];
     var haz = { none: 'ハザードマップで、浸水・土砂災害などの色が付いていません。', colored: '浸水・土砂災害などの色が付いている場所です。', unknown: 'ハザードマップは、まだ確かめていません。' }[a.hazard];
-    out('found').innerHTML = [law, haz, L('type', a.type) + '（' + L('area', a.area) + '・' + L('state', a.state) + '）です。'].map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
-    var unk = ['建物の傷み・改修の見積（現地を見ないとわかりません）', '条例の日数の制限と、保健所・消防との事前の相談', 'その場所の1泊の料金の相場と、予約の入り方'];
+    out('found').innerHTML = [law, haz, '広さは「' + L('area', a.area) + '」、状態は「' + L('state', a.state) + '」の' + L('type', a.type) + 'です。'].map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
+    var unk = ['建物の傷みと、直すのにかかる費用（現地を見ないとわかりません）', '市町村の決まり（営業できる日数など）と、保健所・消防への事前の相談', 'その場所で1泊いくらにできるか、どれくらい予約が入るか'];
+    if (['street', 'road', 'rural', 'factory', 'unknown'].indexOf(a.zone) >= 0) unk.unshift('用途地域（土地ごとに建ててよい建物の区分）。私たちが無料で調べます');
     if (a.type === 'condo') unk.push('マンションの管理規約');
     out('unknown').innerHTML = unk.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
 
