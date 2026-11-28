@@ -159,7 +159,7 @@ def parse_html(text):
     # リンクの href（資料名がリンクになっている参考資料）も、URL ありと数える
     d["sources"] = [(strip_tags(x).strip() + " " + " ".join(re.findall(r'href="(https?://[^"]+)"', x))).strip() for x in re.findall(r"<li>(.*?)</li>", m.group(0), re.S)] if m else []
     links = re.findall(r'href="([^"]+)"', body)
-    rel = re.search(r'<span class="eyebrow">Related</span>.*?</section>', text, re.S)  # 記事の最後の「あわせて読みたい」
+    rel = re.search(r'(?:<span class="eyebrow">|<p class="msec__en">)Related<.*?</section>', text, re.S)  # 記事の最後の「あわせて読みたい」
     links += re.findall(r'href="([^"]+)"', rel.group(0)) if rel else []
     d["article_links"] = sorted({l for l in links if re.search(r"media/[a-z0-9-]+\.html", l) and "category-" not in l and "guide-" not in l})
     cta = re.search(r'<aside class="article-cta">.*?</aside>', text, re.S)

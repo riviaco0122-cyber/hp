@@ -380,6 +380,23 @@
   // 記事の目次：スマホでは折りたたみ（既定）、PC幅では開いておく
   var tocDetails = document.querySelector('.toc__details');
   if (tocDetails && window.matchMedia('(min-width: 900px)').matches) tocDetails.open = true;
+  // PC の右の目次：今読んでいる節に印を付ける（画面の上から3割の線を越えた最後の節）
+  if (tocDetails && 'IntersectionObserver' in window) {
+    var tocLinks = Array.prototype.slice.call(tocDetails.querySelectorAll('a[href^="#"]'));
+    var tocSecs = tocLinks.map(function (l) { return document.getElementById(l.getAttribute('href').slice(1)); });
+    var markToc = function () {
+      var line = window.innerHeight * 0.3, cur = -1;
+      tocSecs.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < line) cur = i; });
+      tocLinks.forEach(function (l, i) { l.classList.toggle('is-current', i === cur); });
+    };
+    var tocSpyTick = false;
+    window.addEventListener('scroll', function () {
+      if (tocSpyTick) return;
+      tocSpyTick = true;
+      requestAnimationFrame(function () { markToc(); tocSpyTick = false; });
+    }, { passive: true });
+    markToc();
+  }
   // 「目次に戻る」：目次より下で、上にスクロールしたときだけ右下に出す（読み進めている間は、読んでいる行を隠さない。
   // スマホで読む一般の方に負担をかけない形。docs/seo/benchmark-2026-11-12.md）。押したら目次を開く
   var toToc = document.querySelector('.to-toc'), tocNav = document.getElementById('toc');

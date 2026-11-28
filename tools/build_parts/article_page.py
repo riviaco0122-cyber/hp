@@ -202,13 +202,17 @@ def article_page(a):
             pos = m.end()
         out.append(html[pos:])
         return "".join(out)
-    sections = "\n".join(
-        f"""        <section class="article__section" id="{sid}">
+    secs = [(x, y, insert_figure(a["slug"], x, card_headings(tables(thin_strong(label_cards(z)))), a.get("figure"))) for x, y, z in a["sections"]]
+    # 記事の途中の相談の案内は、本文のなかほど（節の半分を読んだところ）に置く。読み始める前（ポイントの直後）に出すと、
+    # まだ何も読んでいない人に相談を迫る形になるため。スマホは画面下の固定ボタンがあるので、途中は1か所だけ
+    mid = max(1, len(secs) // 2)
+    def sec_html(sid, h, html):
+        return f"""        <section class="article__section" id="{sid}">
           <h2>{e(h)}</h2>
 {lead_sentence(html.strip())}
         </section>"""
-        for sid, h, html in [(x, y, insert_figure(a["slug"], x, card_headings(tables(thin_strong(label_cards(z)))), a.get("figure"))) for x, y, z in a["sections"]]
-    )
+    sections = "\n".join(sec_html(*x) for x in secs[:mid])
+    sections_after = "\n".join(sec_html(*x) for x in secs[mid:])
     sources = "".join(source_li(s) for s in a["sources"])
     svc = a["services"][0]
     svc_links = "".join(
@@ -260,49 +264,61 @@ def article_page(a):
           <a href="media/guide-{g["key"]}.html" class="guide-box__all">ガイドを全部見る {ARROW}</a>
         </nav>
 """
+    toc_rows = 3 + len(secs) + 1  # PC の右の目次が並ぶ範囲（リード・ポイント・目次・本文の節・相談の案内・よくある質問）。CSS の --toc-rows
+    sup = SUPERVISOR
     body = f"""    <article class="article" data-publish="{a["date"]}">
       <header class="article__header">
         <div class="container container--article">
           {media_crumbs([("アキヤド", "media.html"), (MEDIA_CAT_NAMES[a["category"]], f"media/category-{a['category']}.html")]).strip()}
-          <div class="article__cats">{"".join(f'<a href="media/category-{t}.html" class="tag article__cat">{e(MEDIA_CAT_NAMES[t])}</a>' for t in a["topics"])}</div>
-          <h1 class="article__title">{e(a["title"])}</h1>
-          <p class="article__meta">
-            <span>公開日 <time datetime="{a["date"]}">{fmt_date(a["date"])}</time></span>
-            <span>更新日 <time datetime="{a["updated"]}">{fmt_date(a["updated"])}</time></span>
-            <span>読了目安 約{read_minutes(a)}分</span>
-            <span>執筆：アキヤド編集部</span>
-            <span>監修：{e(SUPERVISOR["name"])}</span>
-          </p>
-          {for_html}
-          {thumb(a, "hero")}
+          <div class="article__cover">
+            <div class="article__head">
+              <div class="article__cats">{"".join(f'<a href="media/category-{t}.html" class="tag article__cat">{e(MEDIA_CAT_NAMES[t])}</a>' for t in a["topics"])}</div>
+              <h1 class="article__title">{e(a["title"])}</h1>
+              <div class="article__byline">
+                <a href="#credit" class="article__face" aria-hidden="true" tabindex="-1"><img src="images/{sup["photo"]}" alt="" width="600" height="600" decoding="async"></a>
+                <p class="article__by"><span>監修：<a href="#credit">{e(sup["name"])}</a></span><span>執筆：アキヤド編集部</span></p>
+              </div>
+              <p class="article__meta">
+                <span>公開日 <time datetime="{a["date"]}">{fmt_date(a["date"])}</time></span>
+                <span>更新日 <time datetime="{a["updated"]}">{fmt_date(a["updated"])}</time></span>
+                <span>読了目安 約{read_minutes(a)}分</span>
+              </p>
+              {for_html}
+            </div>
+            {thumb(a, "hero")}
+          </div>
         </div>
       </header>
 
-      <div class="container container--article article__body">
+      <div class="container container--article article__body" style="--toc-rows: {toc_rows}">
         <p class="article__lead">{lines_html(a["description"])}</p>
 
         <section class="keypoints" aria-labelledby="keypoints-title">
+          <p class="keypoints__en" aria-hidden="true">Summary</p>
           <h2 id="keypoints-title" class="keypoints__title">この記事のポイント</h2>
-          <ul>{keypoints}</ul>
+          <ol>{keypoints}</ol>
         </section>
-
-        <aside class="inline-cta">
-          <p class="inline-cta__text">{e(cv_text)}</p>
-          <div class="inline-cta__actions">
-            <a href="contact.html?category={a["services"][0]}&amp;from=akiyado" class="btn mbtn" data-cta="media-inline">無料で相談する {ARROW}</a>
-            <a href="{cv_href}" class="inline-cta__plan">サービスとプランを見る {ARROW}</a>
-          </div>
-        </aside>
 
         <a class="to-toc" href="#toc" hidden>目次に戻る<span aria-hidden="true"> ↑</span></a>
         <nav class="toc" id="toc" aria-label="目次">
           <details class="toc__details">
-            <summary class="toc__title">目次を開く（全{len(a["sections"]) + 1}章）</summary>
+            <summary class="toc__title"><span class="toc__en" aria-hidden="true">Contents</span>目次<span class="toc__count">全{len(a["sections"]) + 1}章</span></summary>
             <ol>{toc}<li><a href="#faq">よくある質問</a></li></ol>
           </details>
         </nav>
 
 {sections}
+
+        <aside class="inline-cta">
+          <p class="inline-cta__en" aria-hidden="true">Consultation</p>
+          <p class="inline-cta__text">{e(cv_text)}</p>
+          <div class="inline-cta__actions">
+            <a href="contact.html?category={a["services"][0]}&amp;from=akiyado" class="mbtn" data-cta="media-inline">無料で相談する {ARROW}</a>
+            <a href="{cv_href}" class="inline-cta__plan">サービスとプランを見る {ARROW}</a>
+          </div>
+        </aside>
+
+{sections_after}
 
         <section class="article__section" id="faq">
           <h2>よくある質問</h2>
@@ -319,7 +335,30 @@ def article_page(a):
           </details>
         </section>
 
-{guide_box}
+        <section class="credit" id="credit" aria-label="この記事の監修者と執筆者" data-nosnippet>
+          <div class="credit__row">
+            <figure class="credit__photo"><img src="images/{sup["photo"]}" alt="{e(sup["name"])}の写真" width="600" height="600" loading="lazy" decoding="async"></figure>
+            <div class="credit__body">
+              <p class="credit__label">この記事の監修者</p>
+              <p class="credit__name">{e(sup["name"])}<span class="credit__role">{e(sup["role"])}</span></p>
+              <p class="credit__text">{e(sup["bio"])}</p>
+              <div class="credit__links">
+                <a href="about.html#founders" class="credit__more">プロフィールを見る {ARROW}</a>
+                <ul>{"".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in sup["links"])}</ul>
+              </div>
+            </div>
+          </div>
+          <div class="credit__row">
+            <span class="credit__photo credit__photo--mark">{AKIYADO_MARK}</span>
+            <div class="credit__body">
+              <p class="credit__label">この記事を書いた人</p>
+              <p class="credit__name">アキヤド編集部</p>
+              <p class="credit__text">合同会社RIVIA&amp;CO.のメディア編集部。空き家の再生から宿泊施設の運営・開業支援、WEB集客・採用支援まで、自ら宿を運営する当事者の視点で、地域の価値を活かすための情報をお届けします。</p>
+              <p class="credit__text">実績：「NODE Shimoda」（静岡県下田市）を開業・運営。アキヤドの運営チームが関わる3物件では、ゲストの質問408件とレビュー79件を分析して記事にまとめています（2026年）。</p>
+            </div>
+          </div>
+        </section>
+
         <div class="share">
           <p class="share__label">この記事をシェアする</p>
           <ul class="share__list">
@@ -330,35 +369,28 @@ def article_page(a):
           </ul>
         </div>
 
-        <section class="author" data-nosnippet>
-          <p class="author__label">この記事を書いた人</p>
-          <p class="author__name">アキヤド編集部</p>
-          <p class="author__text">合同会社RIVIA&amp;CO.のメディア編集部。空き家の再生から宿泊施設の運営・開業支援、WEB集客・採用支援まで、自ら宿を運営する当事者の視点で、地域の価値を活かすための情報をお届けします。</p>
-          <p class="author__text">実績：「NODE Shimoda」（静岡県下田市）を開業・運営。アキヤドの運営チームが関わる3物件では、ゲストの質問408件とレビュー79件を分析して記事にまとめています（2026年）。</p>
-        </section>
-
-        <section class="supervisor" data-nosnippet>
-          <figure class="supervisor__photo"><img src="images/{SUPERVISOR["photo"]}" alt="{e(SUPERVISOR["name"])}の写真" width="600" height="600" loading="lazy" decoding="async"></figure>
-          <div>
-            <p class="author__label">この記事の監修者</p>
-            <p class="author__name">{e(SUPERVISOR["name"])}<span class="supervisor__role">{e(SUPERVISOR["role"])}</span></p>
-            <p class="author__text">{e(SUPERVISOR["bio"])}</p>
-            <div class="supervisor__links">
-              <a href="about.html#founders" class="supervisor__more">プロフィールを見る {ARROW}</a>
-              <ul>{"".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in SUPERVISOR["links"])}</ul>
-            </div>
-          </div>
-        </section>
-
         <aside class="article-cta">
-          <p class="article-cta__title">この記事に関連するサービス</p>
-          <ul class="article-cta__links">{svc_links}</ul>
-          <a href="contact.html?category={svc}" class="btn btn--lg">無料で相談する {ARROW}</a>
+          <p class="mcta__en">Consultation</p>
+          <p class="mcta__title">{media_cta_title("marketing" if svc in ("marketing", "recruit") else "")}</p>
+          <ul class="mcta__points"><li>相談・お見積りは無料</li><li>全国対応・オンライン可</li><li>しつこい営業はしません</li></ul>
+          <a href="contact.html?category={svc}&amp;from=akiyado" class="mbtn" data-cta="media-article-bottom">無料で相談する {ARROW}</a>
+          <div class="article-cta__svc">
+            <p class="article-cta__title">この記事に関連するサービス</p>
+            <ul class="article-cta__links">{svc_links}</ul>
+          </div>
         </aside>
+{guide_box}
       </div>
     </article>
 
-{media_section(related, eyebrow="Related", title="あわせて読みたい記事", more=False, keep_order=True)}"""
+    <section class="section arel">
+      <div class="container">
+        {msec_head("Related", "あわせて読みたい記事")}
+        <div class="media-grid media-grid--scroll" data-limit="3">
+{chr(10).join(article_card(x) for x in related)}
+        </div>
+      </div>
+    </section>"""
 
     ld = [
         {
