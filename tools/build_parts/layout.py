@@ -85,7 +85,7 @@ VALUES = [
 ]
 
 
-# ご相談の流れ（トップ・お問い合わせで共通）
+# ご相談の流れ（事業内容・お問い合わせで共通。ホームページには置かない：最後の相談の節からお問い合わせへ進む）
 FLOW = [
     ("お問い合わせ", "フォームから24時間受け付けています。2営業日以内に担当者がご連絡します。"),
     ("無料ヒアリング", "現状と課題、目指す姿をお聞きします。考えがまとまる前でも大丈夫です。"),
@@ -418,7 +418,7 @@ def cta(category="", title="まずは、現状をお聞かせください。", t
     </section>"""
 
 
-def flow_section(soft=False):
+def flow_section():
     steps = "\n".join(
         f"""          <li class="flow__step reveal" data-delay="{i - 1}">
             <span class="flow__num">{i:02d}</span>
@@ -427,7 +427,7 @@ def flow_section(soft=False):
           </li>"""
         for i, (t, d) in enumerate(FLOW, 1)
     )
-    return f"""    <section class="section{' section--soft' if soft else ''}">
+    return f"""    <section class="section section--soft">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Flow</span>
@@ -454,17 +454,23 @@ NODE_REVIEWS = [
 ]
 
 
+def project_body(indent="            "):
+    """運営施設（NODE Shimoda）の名前・場所・説明・評価。事業内容のページのカードと、ホームページの運営実績で共通"""
+    return "\n".join(indent + x for x in [
+        '<span class="project__badge">運営施設の一例</span>',
+        '<h3 class="project__name">NODE Shimoda<span class="project__ext" aria-hidden="true">↗</span><span class="visually-hidden">（施設サイトを別タブで開きます）</span></h3>',
+        '<p class="project__meta">静岡県下田市 ｜ 貸切のバケーションレンタル（アパートの一室）</p>',
+        f'<p class="project__desc">{lines_html("下田市旧町内の空き家を改修した滞在型アパート。RIVIAが運営・集客・DX化を担っています。")}</p>',
+        '<div class="project__rating"><strong><span class="project__star" aria-hidden="true">★</span><span data-count="4.88">4.88</span></strong><span>Airbnb評価（51件）</span></div>'])
+
+
 def project_card(compact=False):
     return f"""        <a href="https://nodeshimoda.com/" class="project{' project--compact' if compact else ''} reveal" target="_blank" rel="noopener">
           <div class="project__img">
             <div class="project__photo" role="img" aria-label="NODE Shimoda のリビング"></div>
           </div>
           <div>
-            <span class="project__badge">運営施設の一例</span>
-            <h3 class="project__name">NODE Shimoda<span class="project__ext" aria-hidden="true">↗</span><span class="visually-hidden">（施設サイトを別タブで開きます）</span></h3>
-            <p class="project__meta">静岡県下田市 ｜ 貸切のバケーションレンタル（アパートの一室）</p>
-            <p class="project__desc">{lines_html("下田市旧町内の空き家を改修した滞在型アパート。RIVIAが運営・集客・DX化を担っています。")}</p>
-            <div class="project__rating"><strong><span class="project__star" aria-hidden="true">★</span><span data-count="4.88">4.88</span></strong><span>Airbnb評価（51件）</span></div>
+{project_body()}
           </div>
         </a>"""
 

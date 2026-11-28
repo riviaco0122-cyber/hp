@@ -3,43 +3,63 @@
 # 単独では動かない。build.py が決まった順番で読み込み、1つのファイルとして実行する
 # （ほかの部分の関数・定数はそのまま使える。import は不要）。
 
-# ---------------------------------------------------------------- Noki（海外向けの英語メディア）の紹介
-# アキヤドの紹介（media_intro）と同じ形で、トップに置く（人の方針 2026-11-19）。Noki は tools/okaeri/ が /noki に作る
+# ---------------------------------------------------------------- メディア（アキヤド・Noki）の紹介
+# ホームページでは、2つのメディアを1つの節に並べる（人の参考 2026-11-28：同じ長い形を2回くり返さない）。
+# Noki は tools/okaeri/ が /noki に作る。入り口（状況別のページ）は「|」の位置で折る（lines_html）
 NOKI_INTRO = [("/noki/stay.html", "ゆっくり|旅したい方へ", "伊豆・下田への行き方、|旬の食べもの"),
               ("/noki/live.html", "日本で|暮らしたい方へ", "部屋の借り方、|ビザのこと"),
               ("/noki/own.html", "日本で|家を持ちたい方へ", "空き家を買う前に|知っておきたいこと")]
 
 
-def noki_intro():
+def media_col(key):
+    """メディア1つぶんの列（画面の見本・名前・ひとこと・状況別の入り口・ボタン）"""
+    if key == "akiyado":
+        href, en = "media.html", ""
+        logo = f'<a href="{href}" class="tlogo" aria-label="アキヤド（空き家と民泊のメディア）">{AKIYADO_MARK}<span class="tlogo__ja" translate="no">アキヤド</span></a><span class="tlogo__sub">空き家と民泊のメディア</span>'
+        copy, lead = "空き家を売る。活かす。<br>民泊をはじめる。", "自ら宿を運営する私たちが、空き家と民泊の悩みに順を追ってお答えするメディアです。"
+        img, name, btn = "media", "アキヤド", "アキヤドを見る"
+        rows = [(f"media/guide-{g['key']}.html", MEDIA_INTRO_WHO[g["key"]], MEDIA_INTRO_DESC[g["key"]]) for g in MEDIA_GUIDES]
+    else:
+        href, en = "/noki", ' hreflang="en"'
+        logo = f'<a href="{href}" class="tlogo" hreflang="en" aria-label="Noki（海外の方向けの英語メディア）"><img class="tlogo__mark" src="/noki/assets/favicon.svg" alt="" width="40" height="40"><span class="tlogo__ja" translate="no" lang="en">Noki</span></a><span class="tlogo__sub">海外の方向けの英語メディア</span>'
+        copy, lead = "日本を旅する。暮らす。<br>家を持つ。", "自ら宿を運営する私たちが、日本の地方での旅や暮らしについて、海外の方に英語でお伝えするメディアです。"
+        img, name, btn = "noki", "Noki", "Noki を見る（英語）"
+        rows = NOKI_INTRO
     entries = "".join(
-        f'<li><a href="{u}" class="mintro__entry" hreflang="en"><span class="mintro__who">{lines_html(w)}</span>'
-        f'<span class="mintro__desc">{lines_html(d)}</span><span class="mintro__arrow">{ARROW}</span></a></li>'
-        for u, w, d in NOKI_INTRO)
-    return f"""    <section class="section mintro mintro--noki">
+        f'<li><a href="{u}" class="mcol__entry"{en}><span class="mcol__who">{lines_html(w)}</span>'
+        f'<span class="mcol__desc">{lines_html(d)}</span><span class="mcol__arrow">{ARROW}</span></a></li>'
+        for u, w, d in rows)
+    return f"""          <div class="mcol reveal">
+            <a href="{href}" class="mcol__shots" aria-label="{btn}"{en} tabindex="-1">
+              <span class="mcol__pc"><img src="images/{img}-preview-pc.webp?v={asset_version(f"images/{img}-preview-pc.webp")}" alt="{name} のトップページ（パソコン表示）" width="1440" height="900" loading="lazy" decoding="async"></span>
+              <span class="mcol__sp"><img src="images/{img}-preview-sp.webp?v={asset_version(f"images/{img}-preview-sp.webp")}" alt="{name} のトップページ（スマホ表示）" width="520" height="1040" loading="lazy" decoding="async"></span>
+            </a>
+            <h3 class="mcol__name">{logo}</h3>
+            <p class="mcol__copy">{copy}</p>
+            <p class="mcol__lead">{lead}</p>
+            <ul class="mcol__entries">{entries}</ul>
+            <a href="{href}" class="btn btn--ghost mcol__btn"{en}>{btn} {ARROW}</a>
+          </div>"""
+
+
+def media_pair():
+    return f"""    <section class="section medias">
       <div class="container">
-        <div class="mintro__grid">
-          <div class="mintro__text">
-            <span class="eyebrow reveal">Media</span>
-            <h2 class="section-title section-title--logo reveal"><a href="/noki" class="tlogo" hreflang="en" aria-label="Noki（海外の方向けの英語メディア）"><img class="tlogo__mark" src="/noki/assets/favicon.svg" alt="" width="40" height="40"><span class="tlogo__ja" translate="no" lang="en">Noki</span></a><span class="tlogo__sub">海外の方向けの英語メディア</span></h2>
-            <p class="mintro__copy reveal" data-delay="1">日本を旅する。暮らす。<br>家を持つ。</p>
-            <p class="mintro__lead reveal" data-delay="1">自ら宿を運営する私たちが、日本の地方での旅や暮らしについて、<br class="pc-only">海外の方に英語でお伝えするメディアです。</p>
-            <div class="mintro__btns reveal" data-delay="2">
-              <a href="/noki" class="btn" hreflang="en">Noki を見る（英語） {ARROW}</a>
-            </div>
-          </div>
-          <a href="/noki" class="mintro__shots reveal" data-delay="1" aria-label="Noki を見る（英語）" hreflang="en">
-            <span class="mintro__pc"><span class="mintro__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="images/noki-preview-pc.webp?v={asset_version("images/noki-preview-pc.webp")}" alt="Noki のトップページ（パソコン表示）" width="1440" height="900" loading="lazy" decoding="async"></span>
-            <span class="mintro__sp"><img src="images/noki-preview-sp.webp?v={asset_version("images/noki-preview-sp.webp")}" alt="Noki のトップページ（スマホ表示）" width="520" height="1040" loading="lazy" decoding="async"></span>
-          </a>
+        <div class="section-head reveal">
+          <span class="eyebrow">Media</span>
+          <h2 class="section-title">私たちのメディア</h2>
         </div>
-        <ul class="mintro__entries mintro__entries--3 reveal">{entries}</ul>
+        <div class="medias__grid">
+{media_col("akiyado")}
+{media_col("noki")}
+        </div>
       </div>
     </section>"""
 
 
 # ---------------------------------------------------------------- index
 def service_groups_html():
-    """事業の一覧（左に届ける価値、右に事業のカード）。トップの「事業紹介」と事業内容のページで共通"""
+    """事業の一覧（左に届ける価値、右に事業のカード）。事業内容のページで使う（ホームページは biz_html()）"""
     names = dict(SERVICES)
     num = 0
     groups_html = []
@@ -69,6 +89,61 @@ def service_groups_html():
           </div>
         </div>""")
     return "\n".join(groups_html)
+
+
+# ホームページの事業紹介：1事業＝大きな写真1枚と名前（人の参考 2026-11-28：NOT A HOTEL の一覧）。写真は Unsplash（docs/photo-credits.md）。
+# 事業内容のページ（services.html）は service_groups_html() の形のまま
+BIZ_PHOTOS = {
+    "operation": ("u-old-house-hall", "庭に面した古い木造の家の縁側"),
+    "management": ("u-ryokan-gate", "提灯のともる宿の玄関"),
+    "partnership": ("u-dusk-corner", "夕暮れの町かどに建つ木造の建物"),
+    "marketing": ("u-lantern-shop", "提灯を掲げた夜の商店"),
+    "recruit": ("u-oden-street", "商店の並ぶ通りを歩く人"),
+}
+
+
+def biz_html():
+    names = dict(SERVICES)
+    num = 0
+    out = []
+    for g in GROUPS:
+        v = TOP_VALUES[g["key"]]
+        items = []
+        for k in g["services"]:
+            num += 1
+            ph, alt = BIZ_PHOTOS[k]
+            items.append(f"""            <li><a href="service-{k}.html" class="biz__item">
+              <span class="biz__ph">{photo(ph, alt=alt, width=1600, height=1067, sizes="(max-width: 899px) 100vw, 600px")}</span>
+              <span class="biz__catch"><span class="biz__num">{num:02d}</span>{e(SERVICE_CATCH[k])}</span>
+              <h3 class="biz__name">{e(names[k])}{ARROW}</h3>
+              <p class="biz__text">{e(SERVICE_INTRO[k][1])}</p>
+            </a></li>""")
+        out.append(f"""        <div class="biz reveal">
+          <div class="biz__head">
+            <p class="biz__group"><span>{e(v["en"])}</span>{e(g["name"])}</p>
+            <p class="biz__value">{v["value"]}</p>
+          </div>
+          <ul class="biz__list biz__list--{len(items)}">
+{chr(10).join(items)}
+          </ul>
+        </div>""")
+    return "\n".join(out)
+
+
+def project_feature():
+    """運営実績：画面の幅いっぱいの宿の写真に、名前と評価を重ねる（人の参考 2026-11-28：NOT A HOTEL の「1節1写真」）"""
+    return f"""    <section class="pj" id="project">
+      <div class="pj__photo"><img src="images/photos/node-shimoda.avif" alt="NODE Shimoda のリビング" width="1600" height="1067" loading="lazy" decoding="async"></div>
+      <div class="container">
+        <div class="pj__card reveal">
+          <span class="eyebrow">Project</span>
+          <h2 class="section-title">運営実績</h2>
+          <a href="https://nodeshimoda.com/" class="pj__link" target="_blank" rel="noopener">
+{project_body()}
+          </a>
+        </div>
+      </div>
+    </section>"""
 
 
 # 会社サイトの主要ページ（ヘッダーのメニューと同じ並び・同じ名前）。トップで SiteNavigationElement として伝える
@@ -161,7 +236,6 @@ def index_page():
         </div>
       </div>
     </section>"""
-    cards = service_groups_html()
     reasons = "\n".join(
         f"""          <li class="why reveal" data-delay="{(i - 1) % 2}">
             <p class="why__head"><span class="why__num">{i:02d}</span><span class="why__en">{en}</span></p>
@@ -201,33 +275,20 @@ def index_page():
       </div>
     </section>
 
-    <section class="section">
-      <div class="container news">
-        <div class="reveal">
-          <span class="eyebrow">News &amp; Topics</span>
-          <h2 class="section-title">お知らせ</h2>
-        </div>
-        <ul class="news__list reveal" data-delay="1">
-          <li class="news__item">
-            <time class="news__date" datetime="2026-09-01">2026.09.01</time>
-            <span class="tag">News</span>
-            <p class="news__title">合同会社RIVIA&amp;CO.を設立いたしました。</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="service">
+    <section class="section biz-sec" id="service">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Service</span>
-          <h2 class="section-title">事業紹介</h2>
+        <div class="section-head section-head--split reveal">
+          <div>
+            <span class="eyebrow">Service</span>
+            <h2 class="section-title">事業紹介</h2>
+          </div>
+          <a href="services.html" class="more-link">事業内容の一覧を見る {ARROW}</a>
         </div>
-{cards}
+{biz_html()}
       </div>
     </section>
 
-    <section class="section reasons-sec">
+    <section class="section section--soft reasons-sec">
       <div class="container">
         <div class="why-grid">
           <div class="why-intro reveal">
@@ -246,27 +307,25 @@ def index_page():
       </div>
     </section>
 
-    <section class="section section--soft" id="project">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Project</span>
-          <h2 class="section-title">運営実績</h2>
-        </div>
-{project_card()}
-      </div>
-    </section>
+{project_feature()}
 
-{media_intro()}
-
-{noki_intro()}
-
-{flow_section()}
+{media_pair()}
 
 {cta(text=OPEN_MSG, stream=stream_html())}
 
-    <section class="section">
-      <div class="container">
-        <a href="careers.html" class="careers-cta reveal">
+    <section class="section info">
+      <div class="container info__grid">
+        <div class="info__news reveal">
+          <h2 class="info__title"><span class="eyebrow">News &amp; Topics</span>お知らせ</h2>
+          <ul class="news__list">
+            <li class="news__item">
+              <time class="news__date" datetime="2026-09-01">2026.09.01</time>
+              <span class="tag">News</span>
+              <p class="news__title">合同会社RIVIA&amp;CO.を設立いたしました。</p>
+            </li>
+          </ul>
+        </div>
+        <a href="careers.html" class="careers-cta reveal" data-delay="1">
           <div class="careers-cta__body">
             <p class="careers-cta__title">CAREERS</p>
             <div class="careers-cta__row">
@@ -696,7 +755,7 @@ def contact_page():
       </div>
     </section>
 
-{flow_section(soft=True)}"""
+{flow_section()}"""
     page("contact.html", "お問い合わせ", "合同会社RIVIA&CO.へのお問い合わせはこちらから。ご相談は無料です。2営業日以内に担当者よりご連絡いたします。", body, current="contact")
 
 

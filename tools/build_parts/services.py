@@ -137,7 +137,7 @@ def services_page():
       </div>
     </section>
 
-{flow_section(soft=True)}
+{flow_section()}
 
 {cta(text=OPEN_MSG)}"""
     ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "事業内容", "url": f"{SITE}/services.html",
