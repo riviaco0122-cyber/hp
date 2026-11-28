@@ -796,6 +796,33 @@ a:hover > .arrow, .btn:hover .arrow, a:hover .arrow { transform: translateX(6px)
 }
 
 /* 相談CTA：写真の上に白文字 */
+/* 最後の相談：写真が上下に流れる帯（ホームページ）。左に文字、右に2列の写真を逆向きに流す。スマホは写真の窓を上に */
+.cta--stream { text-align: left; background: var(--c-bg-soft); overflow: hidden; }
+.cta__grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); align-items: center; gap: 96px; }
+.cta--stream .cta__body { grid-column: 2; grid-row: 1; }
+.is-corp .cta--stream .cta__title { font-size: clamp(26px, 3.1vw, 42px); } /* 半分の幅の列に入るので、全幅の相談より小さく */
+.stream { grid-column: 1; grid-row: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; height: 640px; overflow: hidden; }
+.stream__col { overflow: hidden; }
+.stream__col--rev { margin-top: -120px; }
+.stream__track { display: flex; flex-direction: column; animation: stream 70s linear infinite; animation-play-state: paused; }
+.stream__col--rev .stream__track { animation-direction: reverse; animation-duration: 80s; }
+.stream.is-on .stream__track { animation-play-state: running; }
+.stream.is-on:hover .stream__track { animation-play-state: paused; }
+@keyframes stream { to { transform: translateY(-50%); } }
+.stream__set { display: flex; flex-direction: column; gap: 6px; padding-bottom: 6px; }
+.stream__ph { display: block; overflow: hidden; background: var(--c-line); }
+.stream__ph img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+@media (max-width: 899px) {
+  .cta--stream { text-align: center; padding-top: 0; }
+  .cta__grid { display: block; }
+  .stream { height: 380px; gap: 4px; margin: 0 calc(-1 * var(--gutter)) 56px; }
+  .stream__set { gap: 4px; padding-bottom: 4px; }
+  .stream__col--rev { margin-top: -90px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stream__track { animation: none; }
+  .stream__set[aria-hidden] { display: none; }
+}
 .cta--photo { position: relative; isolation: isolate; overflow: hidden; color: #fff; background: #1c241c; }
 .cta__bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
 .cta--photo::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(10, 16, 12, 0.6); }
@@ -3918,8 +3945,8 @@ body.is-media .mindex__title { font-family: var(--font-round); font-weight: 700;
 .reel__ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 899px) {
   .reel__set { gap: 3px; padding-right: 3px; }
-  .reel__col { gap: 3px; width: 160px; height: 252px; }
-  .reel__col--tall { width: 190px; }
+  .reel__col { gap: 3px; width: 118px; height: 184px; }
+  .reel__col--tall { width: 136px; }
   .reel__track { animation-duration: 70s; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -3929,15 +3956,17 @@ body.is-media .mindex__title { font-family: var(--font-round); font-weight: 700;
 
 /* 当事者の記録：濃い緑の帯。実物の宿の写真と、大きな数字（どの宿の・いつの数字かを数字のすぐ下に書く） */
 .mrecord { background: var(--m-deep); color: #fff; }
-.mrecord__grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); align-items: center; gap: 72px; }
-.mrecord__photo { margin: 0; }
-.mrecord__photo img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--m-r); }
+.mrecord__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); grid-template-rows: auto auto auto auto 1fr; align-items: start; gap: 0 80px; }
+/* PC：宿の写真を横長で全幅に出し（部屋全体＝障子・ソファ・窓辺が見える構図）、その下に見出し（左）と数字（右）を並べる */
+.mrecord__body { display: contents; }
+.mrecord__photo { grid-column: 1 / -1; margin: 0 0 64px; }
+.mrecord__photo img { display: block; width: 100%; aspect-ratio: 21 / 9; object-fit: cover; object-position: 50% 62%; border-radius: var(--m-r); }
 .mrecord__photo figcaption { margin-top: 12px; font-size: var(--m-fs-small); line-height: 1.7; color: rgba(255, 255, 255, 0.78); }
 body.is-media .mrecord :is(.msec__en, .msec__title) { color: #fff; }
 .mrecord .msec__en { opacity: 0.8; }
 .msec__title .ml-s > span { display: inline-block; }
 .mrecord__lead { margin-top: calc(var(--m-head) * -0.5); font-size: var(--m-fs-body); line-height: 1.9; color: rgba(255, 255, 255, 0.86); }
-.mrecord__facts { margin-top: 36px; border-top: 1px solid rgba(255, 255, 255, 0.22); }
+.mrecord__facts { grid-column: 2; grid-row: 2 / span 4; border-top: 1px solid rgba(255, 255, 255, 0.22); }
 .mrecord__fact { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 2px 24px; padding: 20px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.22); }
 .mrecord__fact dt { font-family: var(--font-round); font-weight: 700; font-size: 15px; letter-spacing: 0.04em; }
 .mrecord__num { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-family: var(--font-en); font-weight: 500; font-size: var(--m-fs-num); line-height: 1; letter-spacing: 0.01em; white-space: nowrap; color: #fff; }
@@ -3945,11 +3974,13 @@ body.is-media .mrecord :is(.msec__en, .msec__title) { color: #fff; }
 .mrecord__num .mrecord__pre { margin: 0 4px 0 0; }
 .mrecord__note { grid-column: 1; font-size: 12.5px; line-height: 1.7; color: rgba(255, 255, 255, 0.72); }
 .mrecord__src { margin-top: 16px; font-size: 12px; line-height: 1.7; color: rgba(255, 255, 255, 0.72); }
-.mrecord__link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; margin-top: 12px; font-family: var(--font-round); font-weight: 700; letter-spacing: 0.04em; color: #fff; border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+.mrecord__link { justify-self: start; display: inline-flex; align-items: center; gap: 12px; min-height: 44px; margin-top: 12px; font-family: var(--font-round); font-weight: 700; letter-spacing: 0.04em; color: #fff; border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
 .mrecord__link:hover { border-bottom-color: #fff; }
 @media (max-width: 899px) {
-  .mrecord__grid { grid-template-columns: 1fr; gap: 28px; }
-  .mrecord__photo { margin: 0 calc(-1 * var(--gutter)); }
+  .mrecord__grid { display: block; }
+  .mrecord__body { display: block; }
+  .mrecord__facts { margin-top: 28px; }
+  .mrecord__photo { margin: 0 calc(-1 * var(--gutter)) 28px; }
   .mrecord__photo img { aspect-ratio: 3 / 2; border-radius: 0; }
   .mrecord__photo figcaption { padding: 0 var(--gutter); }
   .mrecord__facts { margin-top: 24px; }

@@ -279,6 +279,12 @@
     view.addEventListener('touchend', release, { passive: true });
     view.addEventListener('scroll', function () { hold(); release(); }, { passive: true });
   });
+  // 上下に流れる写真の帯（ホームページの最後）：画面に入っているときだけ流す
+  document.querySelectorAll('.stream').forEach(function (st) {
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (en) { st.classList.toggle('is-on', en.isIntersecting); }); }).observe(st);
+    } else st.classList.add('is-on');
+  });
   // ガイド：公開前の記事は「公開予定」として表示し、リンクにしない
   document.querySelectorAll('.guide-step[data-date]').forEach(function (li) {
     var d = li.getAttribute('data-date');

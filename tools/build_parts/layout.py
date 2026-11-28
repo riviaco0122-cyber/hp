@@ -392,12 +392,23 @@ def relative_to_root(html, filename):
 OPEN_MSG = "観光地でなくても、収益物件になり得ます。お気軽にお問い合わせください。"
 
 
-def cta(category="", title="まずは、現状をお聞かせください。", text=""):
+def cta(category="", title="まずは、現状をお聞かせください。", text="", stream=""):
     q = f"?category={category}" if category else ""
     # 見出しは読点の後で改行（スマホ）。一言は文ごとに改行して、変な位置で折り返さないようにする
     head_, sep_, rest_ = e(title).partition("、")
     title_html = f'{head_}{sep_}<br class="sp-only"><n-b>{rest_}</n-b>' if sep_ else e(title)
     sub = ("\n        " + f'<p class="cta__text">{"<br>".join(e(t) + "。" for t in text.split("。") if t)}</p>') if text else ""
+    if stream:
+        # 写真が上下に流れる帯を右（スマホは上）に置く形（ホームページの最後。人の参考 2026-11-28：SANU）
+        return f"""    <section class="section cta cta--stream">
+      <div class="container cta__grid">
+{stream}
+        <div class="cta__body reveal">
+          <h2 class="cta__title">{f'{head_}{sep_}<br><n-b>{rest_}</n-b>' if sep_ else e(title)}</h2>
+          <div class="cta__btn"><a href="contact.html{q}" class="btn btn--lg">ご相談はこちらから {ARROW}</a></div>{sub}
+        </div>
+      </div>
+    </section>"""
     return f"""    <section class="section cta cta--photo">
       <img class="cta__bg" src="images/photos/garden-boat.jpg" alt="" width="1617" height="1079" loading="lazy" decoding="async">
       <div class="container reveal">

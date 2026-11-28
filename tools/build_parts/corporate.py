@@ -101,6 +101,24 @@ def reel_set(hidden=False):
     return f'<div class="reel__set"{" aria-hidden=\"true\"" if hidden else ""}>{"".join(cols)}</div>'
 
 
+# 上下に流れる写真の帯（ホームページの最後の相談の節。2列を逆向きに、ゆっくり流す）。写真は Unsplash（docs/photo-credits.md）
+STREAM = [
+    [("u-woods-path", "木漏れ日の小道を歩く人"), ("u-mountain-house", "山の斜面に建つ古い家"), ("u-hearth-window", "囲炉裏と障子の窓のある部屋"), ("u-forest-road", "森の中の道を歩く二人")],
+    [("u-thatched-field", "田畑の奥に建つ茅葺きの家"), ("u-forest-couple", "森の小道を歩く二人"), ("u-miyama-walk", "山あいの集落を歩く人")],
+]
+
+
+def stream_html():
+    """上下に流れる写真の帯。ループのため、各列に同じ組を2つ並べる（2つ目は読み上げない）"""
+    cols = []
+    for i, col in enumerate(STREAM):
+        def one(hidden):
+            imgs = "".join(f'<span class="stream__ph">{photo(n, alt="" if hidden else a, width=800, height=1000, sizes="(max-width: 899px) 50vw, 330px")}</span>' for n, a in col)
+            return f'<div class="stream__set"{" aria-hidden=\"true\"" if hidden else ""}>{imgs}</div>'
+        cols.append(f'<div class="stream__col{" stream__col--rev" if i else ""}"><div class="stream__track">{one(False)}{one(True)}</div></div>')
+    return f'        <div class="stream" role="group" aria-label="地方の暮らしと、宿のまわりの写真">{"".join(cols)}</div>'
+
+
 def index_page():
     vsteps = "\n".join(
         f"""          <li class="vision__step reveal" data-delay="{i - 1}">
@@ -244,7 +262,7 @@ def index_page():
 
 {flow_section()}
 
-{cta(text=OPEN_MSG)}
+{cta(text=OPEN_MSG, stream=stream_html())}
 
     <section class="section">
       <div class="container">
