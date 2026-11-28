@@ -3771,7 +3771,8 @@ body.is-media .mtop__title { margin-top: 20px; font-family: var(--font-round); f
   .mtop__photo { position: relative; width: 100%; aspect-ratio: 3 / 2; }
   .mtop__photo img { object-position: center 70%; }
   .mtop__inner { display: block; min-height: 0; padding-top: 28px; padding-bottom: var(--section-y); }
-  .mtop__text { width: auto; }
+  /* スマホは写真の下の文字を中央揃えにする。写真が画面の幅いっぱいなので、左揃えだと文字が左に寄って、右に大きな空きが残る（人の指摘 2026-11-28） */
+  .mtop__text { width: auto; text-align: center; }
   body.is-media .mtop__title { margin-top: 12px; font-size: clamp(31px, 8.8vw, 40px); }
   .mtop__lead { margin-top: 14px; font-size: 14.5px; }
   /* 2つのボタンは横に並べて、写真・見出し・相談までを1画面に入れる */
