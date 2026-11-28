@@ -288,7 +288,7 @@ function inspectInPage() {
   const pending = imgs.filter(i => !i.complete).map(i => i.currentSrc || i.src);
   const ids = [...document.querySelectorAll('[id]')].map(e => e.id).concat([...document.querySelectorAll('a[name]')].map(e => e.getAttribute('name')));
   const links = [...document.querySelectorAll('a[href]')].map(a => a.getAttribute('href'));
-  const sel = '.media-card[data-date], .mq li[data-date], .lchap__list li[data-date], .guide-box__list li[data-date]';
+  const sel = '.media-card[data-date], .mq li[data-date], .mcases__list li[data-date], .lchap__list li[data-date], .guide-box__list li[data-date]';
   const futureVisible = [...document.querySelectorAll(sel)].filter(e => e.getAttribute('data-date') > today && visible(e))
     .map(e => (e.getAttribute('href') || (e.querySelector('a') && e.querySelector('a').getAttribute('href')) || desc(e)) + `（公開日 ${e.getAttribute('data-date')}）`);
   const guideFutureLinked = [...document.querySelectorAll('.guide-step[data-date]')].filter(li => li.getAttribute('data-date') > today && li.querySelector('a'))
@@ -296,7 +296,7 @@ function inspectInPage() {
   const unrevealed = [...document.querySelectorAll('.reveal')].filter(e => !e.classList.contains('is-visible') && visible(e)).map(desc);
   const mediaList = document.querySelector('#media-list');
   // 一覧・関連記事・ガイド・よくある悩み・体系的に学ぶ・検索結果に見えている記事へのリンク（公開日はページの外で確かめる）
-  const listSel = '.media-card, .mq li a, .lchap__list li a, .guide-box__list li a, .guide-step a, .msearch-weak__item';
+  const listSel = '.media-card, .mq li a, .mcases__list li a, .mcase--lead, .lchap__list li a, .guide-box__list li a, .guide-step a, .msearch-weak__item';
   const listed = [...new Set([...document.querySelectorAll(listSel)].filter(visible).map(e => e.getAttribute('href')).filter(Boolean))];
   const sr = document.getElementById('search-results');
   return {

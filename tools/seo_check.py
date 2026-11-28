@@ -561,7 +561,7 @@ def check_article(add, pp, page_url, text, p, ld_objs, types, sitemap, articles,
     if "FAQPage" not in types:
         add("warn", pp, "構造化データ FAQPage がない（AIO向けに推奨）")
     # 大きい数字の前置き（「約」など）は、単位と同じく <small> で小さくする（漢字は数字より大きく見える。design-guide 2章。人の指摘 2026-11-15）
-    for m in re.finditer(r'class="(stat__num|msv-stats__num|mrisk__num|mprice__card-num|mfeat__num)"[^>]*>((?:<(?!small)[^>]+>)*)([^<\d+\-★]+?)(?=\d|<)', text):
+    for m in re.finditer(r'class="(stat__num|msv-stats__num|mrisk__num|mprice__card-num|mrecord__num)"[^>]*>((?:<(?!small)[^>]+>)*)([^<\d+\-★]+?)(?=\d|<)', text):
         if re.search(r'[\u3040-\u30ff\u3400-\u9fff]', m.group(3)):
             add("error", pp, f"大きい数字の前の「{m.group(3).strip()}」が数字と同じ大きさ（<small class=\"…__pre\"> で小さくする。design-guide 2章）")
     if 'class="keypoints' not in text:

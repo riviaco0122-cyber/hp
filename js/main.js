@@ -246,19 +246,20 @@
       if (no) no.textContent = '第' + n + '章';
     });
   });
-  document.querySelectorAll('.mq li[data-date]').forEach(function (li) {
+  document.querySelectorAll('[data-fold-sp] > li[data-date]').forEach(function (li) {
     if (li.getAttribute('data-date') > today) li.hidden = true;
   });
-  // スマホでは、よくある悩みを先頭の5件だけ出し、残りはボタンで開く
+  // スマホでは、長い一覧（事例・よくある悩み）を先頭の数件だけ出し、残りはボタンで開く（件数は data-fold-sp）
   if (window.matchMedia('(max-width: 899px)').matches) {
-    document.querySelectorAll('.mq').forEach(function (list) {
-      var rest = Array.prototype.slice.call(list.querySelectorAll('li:not([hidden])')).slice(5);
+    document.querySelectorAll('[data-fold-sp]').forEach(function (list) {
+      var keep = parseInt(list.getAttribute('data-fold-sp'), 10) || 5;
+      var rest = Array.prototype.slice.call(list.querySelectorAll(':scope > li:not([hidden])')).slice(keep);
       if (!rest.length) return;
       rest.forEach(function (li) { li.hidden = true; });
       var btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'mq__more';
-      btn.textContent = 'ほかの悩みも見る（' + rest.length + '件）';
+      btn.className = 'mfold__more';
+      btn.textContent = 'ほかの' + (list.classList.contains('mq') ? '悩み' : '事例') + 'も見る（' + rest.length + '件）';
       btn.addEventListener('click', function () {
         rest.forEach(function (li) { li.hidden = false; });
         btn.remove();
