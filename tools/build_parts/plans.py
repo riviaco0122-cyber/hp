@@ -312,7 +312,7 @@ def plan_sim_html(key):
     def val(pre, num, unit, note):
         big = num[0].isdigit()
         return (f'<p class="psim__v{" is-num" if big else ""}">{f"<small>{e(pre)}</small>" if pre else ""}{e(num)}{f"<small>{e(unit)}</small>" if unit else ""}</p>'
-                (f'<p class="psim__note">{e(note)}</p>' if note else ""))
+                + (f'<p class="psim__note">{e(note)}</p>' if note else ""))
     rows = []
     for label, cells in PLAN_SIM_ROWS[key]:
         tds = []
