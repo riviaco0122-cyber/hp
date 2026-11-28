@@ -68,6 +68,12 @@ def _sentences(text):
     return sents
 
 
+def pe(tail, cls="pe"):
+    """行末の句読点を半分の幅に詰める（tail は「直前の1字＋句読点」）。直前の字と一緒に改行しないかたまりにし、句読点だけを幅0.5字の箱に入れる。
+    全角の「。」「、」は点が左に寄って右半分が空くので、詰めないと中央揃えの行の見た目が左にずれる（人の指摘 2026-11-28。design-guide 3章）"""
+    return f'<span class="{cls}">{e(tail[:-1])}<span>{tail[-1]}</span></span>'
+
+
 def lines_html(text):
     """リード・コンセプトの改行（お手本：トップのコンセプト文。docs/design-guide.md 3章）。
     1文を1まとまり（.ml-s、文の終わりで改行）にし、文の中は「|」の位置で区切る（「|」がない文は、読点「、」のあとで区切る）。
@@ -93,7 +99,12 @@ def lines_html(text):
             else:
                 merged.append(x)
         # 16文字を超える長い区切りは箱（inline-block）にせず流す（1行に入らない箱は行いっぱいを占め、次の区切りが続けられず右が空くため）
-        out.append('<span class="ml-s">' + "".join(f'<span{" class=\"ml-l\"" if len(x) > 16 else ""}>{e(x)}</span>' for x in merged) + "</span>")
+        # 文の終わり（＝行末）の「。」「、」は、半分の幅に詰める（.pe）。全角の句読点は点が左に寄っていて右半分が空くため、
+        # 詰めないと中央揃えの行だけが左にずれて見える（人の指摘 2026-11-28。design-guide 3章）
+        def seg(x, last):
+            body = e(x[:-2]) + pe(x[-2:]) if last and len(x) > 1 and x[-1] in "。、" else e(x)
+            return f'<span{" class=\"ml-l\"" if len(x) > 16 else ""}>{body}</span>'
+        out.append('<span class="ml-s">' + "".join(seg(x, k == len(merged) - 1) for k, x in enumerate(merged)) + "</span>")
     return "".join(out)
 
 

@@ -171,10 +171,10 @@ def media_index_page():
     shimoda = ARTICLE_BY_SLUG["case-rental-house-inn-first-year"]
     body = f"""    <section class="mcover">
       <div class="mcover__visual">
-        <figure class="mcover__photo">{photo("u-thatched-village", alt="山あいの集落に建つ茅葺きの家と棚田（イメージ）", width=1920, height=2412, sizes="100vw", lazy=False, priority=True)}</figure>
+        <figure class="mcover__photo">{photo("u-thatched-terraces", alt="棚田の奥に建つ茅葺きの家と、山の森（イメージ）", width=1920, height=1080, sizes="100vw", lazy=False, priority=True)}</figure>
         <div class="container mcover__text">
           <p class="mcover__eyebrow reveal">空き家と民泊のメディア「アキヤド」</p>
-          <h1 class="mcover__title reveal" data-delay="1"><span class="mcover__line">空き家を</span><span class="mcover__line"><em>売る。活かす。</em></span><span class="mcover__line"><em>民泊</em>をはじめる。</span></h1>
+          <h1 class="mcover__title reveal" data-delay="1"><span class="mcover__line">空き家を</span><span class="mcover__line"><em>売る。活か{pe("す。")}</em></span><span class="mcover__line"><em>民泊</em>をはじめ{pe("る。")}</span></h1>
           <p class="mcover__lead reveal" data-delay="2">{lines_html("宿を運営する私たちが、空き家と民泊の悩みに、|実際の数字でお答えします。")}</p>
         </div>
       </div>
@@ -191,7 +191,7 @@ def media_index_page():
       </div>
     </section>
 
-    <section class="section msec mrecord" id="record">
+    <section class="section section--dark msec mrecord" id="record">
       <div class="container mrecord__grid">
         <figure class="mrecord__photo reveal">
           <img src="images/photos/node-shimoda.avif" alt="NODE Shimoda のリビング。白い壁と木の床に、ソファとローテーブル" width="1440" height="960" loading="lazy" decoding="async">
@@ -249,9 +249,9 @@ def media_index_page():
     <section class="section section--soft msec" id="all">
       <div class="container">
         {msec_head("Latest", "新着記事")}
-        {search_form("media/search.html")}
+        {search_form("media/search.html").replace('placeholder="キーワード（例：相続、補助金）"', 'placeholder="キーワードで記事をさがす"')}
         <div id="themes" class="ttags-wrap reveal"><p class="ttags__label">テーマから探す</p>{theme_tags("all")}</div>
-        <div class="media-grid" id="media-list" data-page-size="9">
+        <div class="media-grid" id="media-list" data-page-size="9" data-page-size-sp="5">
 {cards}
         </div>
         <div class="media-more"><button type="button" class="btn btn--ghost media-more__btn" hidden>もっと記事を見てみる ＋</button></div>

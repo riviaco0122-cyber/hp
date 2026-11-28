@@ -479,7 +479,9 @@
     var filters = document.querySelectorAll('.media-filter');
     var moreBtn = document.querySelector('.media-more__btn');
     var empty = document.querySelector('.media-empty');
-    var pageSize = parseInt(mediaList.getAttribute('data-page-size'), 10) || 6;
+    // スマホは1画面に詰めすぎないよう、data-page-size-sp があればその件数ずつ出す
+    var spSize = window.matchMedia('(max-width: 899px)').matches && mediaList.getAttribute('data-page-size-sp');
+    var pageSize = parseInt(spSize || mediaList.getAttribute('data-page-size'), 10) || 6;
     var shown = pageSize;
     var current = 'all';
 
@@ -795,6 +797,48 @@
     });
     if (chunks < 2) { n.querySelectorAll('n-c').forEach(unwrap); } // 節が1つだけなら、まとめる意味がない
   };
+  // 中央揃え・右揃えの行で、行末に来た「。」「、」を半分の幅に詰める（p-e）。全角の句読点は点が左に寄り右半分が空くため、
+  // 詰めないと、その行だけ見た目の中心が左にずれる（人の指摘 2026-11-28。design-guide 3章）。build が付けた .pe はそのまま。
+  // 詰めたことで次の言葉が同じ行に上がってきたら（行末でなくなったら）、その字は元に戻す
+  var trimLineEnds = function (blocks) {
+    var undo = function (x) { var par = x.parentNode; par.replaceChild(document.createTextNode(x.textContent), x); par.normalize(); };
+    document.querySelectorAll('p-e').forEach(undo);
+    var rectOf = function (c) { var r = document.createRange(); r.setStart(c.n, c.i); r.setEnd(c.n, c.i + 1); return r.getBoundingClientRect(); };
+    var ends = function (blk) { // 行末の句読点の [文字ノード, 位置] の一覧
+      var tw = document.createTreeWalker(blk, NodeFilter.SHOW_TEXT), t, cs = [], out = [];
+      while ((t = tw.nextNode())) for (var i = 0; i < t.data.length; i++) if (!/\s/.test(t.data[i])) cs.push({ n: t, i: i });
+      var fs = parseFloat(getComputedStyle(blk).fontSize);
+      cs.forEach(function (c, k) {
+        if (!/[。、]/.test(c.n.data[c.i]) || c.n.parentElement.closest('.pe, p-e')) return;
+        var a = rectOf(c); if (!a.width) return;
+        var nx = cs[k + 1], b = nx && rectOf(nx);
+        if (!b || b.top > a.top + fs * 0.5) out.push(c);
+      });
+      return out;
+    };
+    blocks.forEach(function (blk) {
+      if (blk.offsetParent === null || !/center|right|end/.test(getComputedStyle(blk).textAlign)) return;
+      var made = [];
+      for (var pass = 0; pass < 3; pass++) { // 詰めると後ろの行の折り返しが変わることがあるので、行末が出なくなるまで繰り返す
+      var es = ends(blk); if (!es.length) break;
+      es.reverse().forEach(function (c) { // 後ろから包む（前の位置がずれないように）
+        var st = c.i > 0 && !/\s/.test(c.n.data[c.i - 1]) ? c.i - 1 : c.i; // 直前の1字と一緒にまとめる（句読点だけが次の行に落ちないように）
+        var rest = c.n.splitText(st); rest.splitText(c.i - st + 1);
+        var w = document.createElement('p-e'), box = document.createElement('span');
+        rest.parentNode.insertBefore(w, rest);
+        if (c.i > st) w.appendChild(document.createTextNode(rest.data.slice(0, 1)));
+        box.textContent = rest.data.slice(-1); w.appendChild(box); rest.parentNode.removeChild(rest); made.push(w);
+      });
+      }
+      made.forEach(function (w) { // 行末でなくなった字は戻す
+        var r = w.getBoundingClientRect(), fs = parseFloat(getComputedStyle(w).fontSize), nxt = w.nextSibling;
+        while (nxt && !(nxt.textContent || '').trim()) nxt = nxt.nextSibling;
+        if (!nxt) return;
+        var rg = document.createRange(); rg.selectNodeContents(nxt); var q = rg.getClientRects()[0];
+        if (q && Math.abs(q.top - r.top) < fs * 0.5) undo(w);
+      });
+    });
+  };
   var fitLines = function () {
     // 文ごとの改行（br.sb。build が短い文に入れる）は、どの文も1行に収まるときだけ残す。そうでなければ文をつなげて流す
     // （PC の狭いカードで「受け付けて／います。」のように行が増え、ページが無駄に縦に長くなるため。人の指摘 2026-11-07）
@@ -855,6 +899,7 @@
       if (fsz < 20 && !/^H[1-6]$/.test(blk.tagName) && cs.textAlign !== 'center' && cs.textAlign !== 'right' && !blk.querySelector('.ml-s') &&
           lines.length > 1 && maxGap(blk) <= 1.2) blk.classList.add('jfy'); // 1文字分を超える空きを両端揃えで埋めると、字間が目立って開くため
     });
+    trimLineEnds(blocks);
   };
   if (document.querySelector('main')) {
     var fitTimer, fitW = window.innerWidth;

@@ -69,7 +69,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .container--narrow { max-width: calc(880px + var(--gutter) * 2); }
 .section { padding: var(--section-y) 0; }
 /* セクション間の区切り線は使わない。白い背景のセクションが続くときは、上の余白を詰めて間延びさせない */
-.section:not(.section--soft):not(.cta) + .section:not(.section--soft):not(.cta) { padding-top: 0; }
+.section:not(.section--soft):not(.section--dark):not(.cta) + .section:not(.section--soft):not(.section--dark):not(.cta) { padding-top: 0; }
 .section--soft { background: var(--c-bg-soft); }
 .sp-only { display: none; }
 @media (max-width: 899px) { .sp-only { display: inline; } .pc-only { display: none; } }
@@ -1950,6 +1950,15 @@ body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(
 .nosb br.sb { display: none; }
 .jfy { text-align: justify; text-justify: inter-character; } /* 左揃えの本文・項目・表のマスの両端揃え（js/main.js が付ける。最後の行と改行の前は左揃え） */
 .ml-s { display: block; } /* リード・コンセプトの改行（tools/build_parts/common.py の lines_html）：1文＝1まとまり */
+/* 行末の句読点（「。」「、」）は半分の幅に詰める。全角の句読点は点が左に寄り右半分が空くので、詰めないと中央揃えの行が左にずれて見える
+   （人の指摘 2026-11-28。design-guide 3章）。lines_html が文の終わりに付ける。文を続けて流す所（.ml-flow）では行末とは限らないので詰めない。
+   .pe--sp はスマホでだけ行末になる所（<br class="sp-only"> の前）。
+   句読点は幅0.5字の箱に入れ（点は箱の左半分に収まる）、直前の字と離れて改行しないよう、直前の1字とまとめる。
+   p-e は js/main.js が中央揃え・右揃えの行末に付ける */
+.pe, p-e { white-space: nowrap; }
+.pe > span, p-e > span { display: inline-block; width: 0.5em; }
+.ml-flow .pe > span { width: auto; }
+@media (min-width: 900px) { .pe--sp > span { width: auto; } }
 .ml-flow { text-align: justify; text-justify: inter-character; } /* 短い最後の行が2文続くリードは、文をつなげて流し、本文と同じく右端をそろえる（js/main.js） */
 .ml-flow > .ml-s { display: inline; }
 .ml-s > span { display: inline; } /* 文の中の区切りでは改行を待たず、行末まで詰める（人の方針 2026-11-13） */
@@ -3834,7 +3843,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .mcover { position: relative; background: var(--m-bg); }
 .mcover__visual { position: relative; display: flex; align-items: flex-end; min-height: clamp(460px, calc(100svh - var(--header-h) - 150px), 600px); overflow: hidden; color: #fff; }
 .mcover__photo { position: absolute; inset: 0; margin: 0; background: var(--m-deep); }
-.mcover__photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
+.mcover__photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
 /* 文字の下だけを暗くする（写真の明るさは保ち、白い文字のコントラストを 4.5:1 以上にする） */
 .mcover__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20, 28, 22, 0.62) 0%, rgba(20, 28, 22, 0.38) 42%, rgba(20, 28, 22, 0) 70%), linear-gradient(0deg, rgba(20, 28, 22, 0.45) 0%, rgba(20, 28, 22, 0) 45%); }
 .mcover__text { position: relative; width: 100%; padding-top: 72px; padding-bottom: 148px; }
@@ -3855,15 +3864,15 @@ body.is-media .mindex__title { font-family: var(--font-round); font-weight: 700;
 .mindex__item { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: baseline; gap: 4px 12px; height: 100%; padding: 20px 20px 18px; border-radius: var(--m-r-s); transition: background .2s; }
 .mindex__item:hover { background: var(--m-green-soft); }
 .mindex__no { font-family: var(--font-en); font-size: 26px; font-weight: 500; line-height: 1; color: var(--m-green); }
-.mindex__label { font-family: var(--font-round); font-weight: 700; font-size: 17px; line-height: 1.5; letter-spacing: 0.04em; color: var(--m-ink); }
-.mindex__who { grid-column: 2 / -1; font-size: 12.5px; line-height: 1.75; color: var(--m-sub); }
-.mindex__go { grid-column: 3; grid-row: 1; color: var(--m-green); }
+.mindex__label { grid-column: 2 / -1; font-family: var(--font-round); font-weight: 700; font-size: 17px; white-space: nowrap; line-height: 1.5; letter-spacing: 0.04em; color: var(--m-ink); }
+.mindex__who { grid-column: 2; font-size: 12.5px; line-height: 1.75; color: var(--m-sub); }
+.mindex__go { grid-column: 3; grid-row: 2; align-self: end; color: var(--m-green); }
 .mcover__sub { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 0 28px; padding: 14px 4px 0; font-size: var(--m-fs-small); color: var(--m-sub); }
 .mcover__sub a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--m-cta); font-family: var(--font-round); font-weight: 700; letter-spacing: 0.04em; }
 .mcover__sub a:hover { text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 899px) {
   .mcover__visual { min-height: 0; height: clamp(360px, 96vw, 420px); }
-  .mcover__photo img { object-position: 62% 60%; }
+  .mcover__photo img { object-position: 56% 50%; }
   .mcover__photo::after { background: linear-gradient(0deg, rgba(20, 28, 22, 0.72) 0%, rgba(20, 28, 22, 0.42) 52%, rgba(20, 28, 22, 0.05) 85%); }
   /* スマホは写真の上の文字を中央揃えにする（design-guide 5章。行末の「。」の空きは 3章の決まりで詰める） */
   .mcover__text { padding-top: 0; padding-bottom: 76px; text-align: center; }
@@ -3877,7 +3886,8 @@ body.is-media .mindex__title { font-family: var(--font-round); font-weight: 700;
   .mindex__list > li + li { border-left: 0; border-top: 1px solid var(--m-line); }
   .mindex__item { grid-template-columns: 30px minmax(0, 1fr) auto; align-items: center; min-height: 56px; padding: 8px var(--m-pad); border-radius: 0; }
   .mindex__no { font-size: 20px; }
-  .mindex__label { font-size: 15.5px; }
+  .mindex__label { grid-column: 2; font-size: 15.5px; }
+  .mindex__go { grid-row: 1; align-self: center; }
   .mindex__who { display: none; }
   .mcover__sub { flex-direction: column; justify-content: center; gap: 0; padding-top: 12px; text-align: center; }
   .mcover__sub > span { width: 100%; }
@@ -3918,7 +3928,7 @@ body.is-media .mrecord :is(.msec__en, .msec__title) { color: #fff; }
 
 /* 事例：いちばん新しい1本を大きな写真で（特集）、残りは小さな写真の一覧。スマホは一覧の先頭4件だけ出し、残りはボタンで開く */
 .mcases__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: start; }
-.mcase { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 18px; align-items: center; padding: 14px 0; color: var(--m-ink); }
+.mcase { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 18px; align-items: center; padding: 11px 0; color: var(--m-ink); }
 .mcase__photo { display: block; overflow: hidden; aspect-ratio: 4 / 3; border-radius: var(--m-r-s); background: var(--m-sand); }
 .mcase__photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
 .mcase:hover .mcase__photo img { transform: scale(1.04); }
@@ -3930,7 +3940,7 @@ body.is-media .mrecord :is(.msec__en, .msec__title) { color: #fff; }
 .mcases__list > li + li { border-top: 1px solid var(--m-line); }
 .mcases__list > li:first-child .mcase { padding-top: 0; }
 .mcase--lead { display: block; padding: 0; }
-.mcase--lead .mcase__photo { aspect-ratio: 4 / 3; border-radius: var(--m-r); }
+.mcase--lead .mcase__photo { aspect-ratio: 5 / 4; border-radius: var(--m-r); }
 .mcase--lead .mcase__body { gap: 8px; margin-top: 22px; }
 .mcase--lead .mcase__title { font-size: calc(var(--m-fs-h2) * 0.72); line-height: 1.5; }
 .mcase--lead .mcase__text { font-size: var(--m-fs-body); line-height: 1.9; color: var(--m-sub); }
@@ -3950,6 +3960,7 @@ body.is-media .mrecord :is(.msec__en, .msec__title) { color: #fff; }
 
 /* はじめての方へ：体系的に学ぶコースと、よくある悩み。どちらもカードではなく、線で区切った目次の形 */
 .mstart__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 72px; align-items: start; }
+.mstart__col .msec__head { flex-direction: column; align-items: flex-start; } /* 狭い列では「一覧へ」を見出しの下に回し、見出しを1行に保つ */
 .mcourses > li + li, .mq > li + li { border-top: 1px solid var(--m-line); }
 .mcourses, .mq { border-top: 1px solid var(--m-ink); border-bottom: 1px solid var(--m-line); }
 .mcourse { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 4px 12px; align-items: baseline; padding: 20px 0; color: var(--m-ink); }
@@ -3992,15 +4003,15 @@ body.is-media .mrecord :is(.msec__en, .msec__title) { color: #fff; }
 @media (max-width: 899px) {
   .mways { grid-template-columns: 1fr; }
   .mways > li + li { border-left: 0; border-top: 1px solid var(--m-line); }
-  .mway, .mways > li:first-child .mway, .mways > li:last-child .mway { display: grid; grid-template-columns: 7em minmax(0, 1fr); gap: 2px 16px; padding: 20px 0; }
+  .mway, .mways > li:first-child .mway, .mways > li:last-child .mway { display: grid; grid-template-columns: 108px minmax(0, 1fr); gap: 2px 14px; padding: 18px 0; }
   .mway > * { grid-column: 2; }
   .mway__no { display: none; }
-  .mway__word { grid-column: 1; grid-row: 1 / span 2; margin-top: 0; font-size: 22px; }
+  .mway__word { grid-column: 1; grid-row: 1 / span 2; margin-top: 0; font-size: 20px; letter-spacing: 0.02em; }
   .mway__what { grid-column: 1; grid-row: 3; align-self: start; margin-top: 0; font-size: 12px; }
   .mway__who { margin-top: 0; padding-top: 0; border-top: 0; grid-row: 1; font-size: 11.5px; }
   .mway__name { grid-row: 2; font-size: 15.5px; }
-  .mway__text { grid-row: 3; margin-top: 4px; font-size: 13px; line-height: 1.85; }
-  .mway__more { grid-row: 4; min-height: 40px; margin-top: 4px; font-size: 13px; }
+  .mway__text { display: none; } /* スマホは道の名前とプラン名だけで比べ、説明は各プランのページに任せる */
+  .mway__more { grid-row: 3; min-height: 40px; margin-top: 2px; font-size: 13px; }
 }
 
 /* 新着：検索の欄とテーマのタグを、記事の格子の上にまとめる */
