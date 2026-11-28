@@ -911,7 +911,11 @@
       if (fsz < 20 && !/^H[1-6]$/.test(blk.tagName) && cs.textAlign !== 'center' && cs.textAlign !== 'right' && !blk.querySelector('.ml-s') &&
           lines.length > 1 && maxGap(blk) <= 1.2) blk.classList.add('jfy'); // 1文字分を超える空きを両端揃えで埋めると、字間が目立って開くため
     });
-    trimLineEnds(blocks);
+    // 段落・見出しなどのほか、display: block にした文字のまとまり（数字のカードの注記 .stat__note など）も対象にする
+    trimLineEnds(blocks.concat(Array.prototype.filter.call(document.querySelectorAll('main :is(span, div)[class]'), function (b) {
+      var cs = getComputedStyle(b);
+      return cs.display === 'block' && /center|right|end/.test(cs.textAlign) && !b.querySelector('p, li, div, h2, h3, h4, .ml-s') && b.textContent.trim().length > 0 && blocks.indexOf(b) < 0;
+    })));
   };
   if (document.querySelector('main')) {
     var fitTimer, fitW = window.innerWidth;

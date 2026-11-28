@@ -217,7 +217,7 @@ def media_index_page():
       <div class="mreel__view" tabindex="0">
         <div class="mreel__track">{mreel_set()}{mreel_set(hidden=True)}</div>
       </div>
-      <p class="container mreel__note">写真はイメージです。</p>
+      <div class="container"><p class="mreel__note">写真はイメージです。</p></div>
     </section>
 
     <section class="section section--dark msec mrecord" id="record">
