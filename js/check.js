@@ -38,12 +38,12 @@
 
     if (z === 'unknown') minpaku = { s: 'hold', t: '判定を保留', n: '用途地域がわかると判定できます。' };
     else if (z === 'chosei') minpaku = { s: 'consult', t: '要相談', n: '自治体の判断によります。保健所・市町村への事前の相談が必要です。' };
-    else if (z === 'ind') minpaku = { s: 'consult', t: '要確認', n: '工業専用地域は、住宅が建てられないため対象外です。' };
+    else if (z === 'indx') minpaku = { s: 'hard', t: '難しい', n: '工業専用地域は、住宅が建てられないため対象外です。' };
     else minpaku = { s: 'ok', t: '届出できそう', n: '条例で日数・区域が制限されることがあります。' + (condo ? '管理規約で民泊が禁止されていないことが必要です。' : '') };
 
-    var seido = ryokan.s === 'ok' ? 'ryokan' : minpaku.s === 'ok' ? 'minpaku' : 'consult';
+    var seido = ryokan.s === 'ok' ? 'ryokan' : minpaku.s === 'ok' ? 'minpaku' : (ryokan.s === 'hard' && minpaku.s === 'hard') ? 'hard' : 'consult';
     var pts = {
-      seido: { ryokan: 40, minpaku: 25, consult: 20 }[seido],
+      seido: { ryokan: 40, minpaku: 25, consult: 20, hard: 0 }[seido],
       hazard: { none: 20, unknown: 10, colored: 5 }[a.hazard],
       state: { ready: 25, care: 15, major: 5 }[a.state],
       area: { m60: 15, m150: 12, lt60: 8, gt200: 8 }[a.area]
@@ -51,7 +51,7 @@
     var score = pts.seido + pts.hazard + pts.state + pts.area;
     var band = score >= 70 ? 'high' : score >= 45 ? 'mid' : 'low';
     var p1, p2;
-    if (a.goal === 'sell') { p1 = ['sell']; p2 = ['use']; }
+    if (a.goal === 'sell' || seido === 'hard') { p1 = ['sell']; p2 = ['use']; }
     else if (a.goal === 'lend') { p1 = ['use']; p2 = ['sell']; }
     else if (a.goal === 'start') { p1 = ['side']; p2 = ['use']; }
     else { p1 = band === 'high' ? ['use', 'side'] : band === 'mid' ? ['use'] : ['sell']; p2 = []; }
@@ -144,7 +144,8 @@
     out('place').textContent = a.place === 'izu' ? '稼働率は、同じ伊豆半島の下田の宿の数字です。' : '稼働率は、静岡県下田市の宿の数字です。場所によって、数字は変わります。';
 
     var law = { ryokan: '旅館業（簡易宿所）で、通年で営業できそうです。', minpaku: '民泊新法なら、届出できそうです（年180日まで）。',
-      consult: a.zone === 'unknown' ? '用途地域がわかると、使える制度を判定できます。' : '制度は、保健所・市町村への事前の相談で決まります。' }[r.seido];
+      consult: a.zone === 'unknown' ? '用途地域がわかると、使える制度を判定できます。' : '制度は、保健所・市町村への事前の相談で決まります。',
+      hard: 'この用途地域では、宿として営業するのは難しそうです。売る・任せるなど、ほかの道を比べるのがおすすめです。' }[r.seido];
     var haz = { none: 'ハザードマップで、浸水・土砂災害などの色が付いていません。', colored: '浸水・土砂災害などの色が付いている場所です。', unknown: 'ハザードマップは、まだ確かめていません。' }[a.hazard];
     out('found').innerHTML = [law, haz, L('type', a.type) + '（' + L('area', a.area) + '・' + L('state', a.state) + '）です。'].map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
     var unk = ['建物の傷み・改修の見積（現地を見ないとわかりません）', '条例の日数の制限と、保健所・消防との事前の相談', 'その場所の1泊の料金の相場と、予約の入り方'];

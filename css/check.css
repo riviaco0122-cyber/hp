@@ -10,7 +10,7 @@
 .mchk-hero__chips li { padding: 4px 14px; border-radius: 999px; background: var(--m-green-soft); color: var(--m-green); font-family: var(--font-round); font-weight: 700; font-size: var(--m-fs-small); }
 
 .mchk-sec { padding: var(--m-head) 0 var(--section-y); }
-.mchk { max-width: 760px; margin: 0 auto; }
+.mchk { max-width: 760px; margin: 0 auto; text-wrap: pretty; }
 .mchk.is-done { max-width: 1040px; }
 .mchk__noscript { padding: var(--m-pad); border-radius: var(--m-r); background: var(--m-card); }
 
