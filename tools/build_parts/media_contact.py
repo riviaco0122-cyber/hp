@@ -98,6 +98,13 @@ def media_contact_page():
           <button type="submit" class="mbtn mform__submit">【無料】相談・お問い合わせをする {ARROW}</button>
           <p class="mform__note">ご提案まではすべて無料です。内容を見てから、進めるかどうかを決めていただけます。</p>
         </form>
+        <script>
+          // 1分診断（media/minpaku-check.html）から来たときは、診断の答え（?memo=）を詳細欄に先に入れておく（js/main.js より先に動き、書き方の例で上書きされない）
+          (function () {{
+            var m = window.URLSearchParams && new URLSearchParams(location.search).get('memo'), t = document.getElementById('m-message');
+            if (m && t && !t.value) t.value = m.slice(0, 800) + '\\n\\n・聞いてみたいこと：';
+          }})();
+        </script>
         <p class="mform__corp reveal">アキヤドは、合同会社RIVIA&amp;CO.が運営しています。不動産会社様との協業や、WEB集客・採用のご相談は<a href="CORP_CONTACT">RIVIA&amp;CO.のお問い合わせ</a>からお願いします。</p>
       </div>
     </section>"""
