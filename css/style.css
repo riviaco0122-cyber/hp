@@ -1426,6 +1426,7 @@ strong.hl { font-weight: 600; color: var(--c-text); background: linear-gradient(
 /* 空き家の収益プラン：だれが何をするか（.role）と、プランごとの試算（.psim）。PC は表、スマホは .role をタブで1列ずつ、.psim を3列のまま縦に詰める */
 .role, .psim { margin-top: 72px; padding: 52px 52px 40px; background: var(--c-bg); border: 1px solid var(--c-line-strong); border-radius: var(--radius); }
 .plans__en { font-family: var(--font-en); font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--c-shu); }
+.plans__h .ml-s > span { display: inline-block; } /* 見出しは「|」の区切りで折り、語の途中で折らない */
 .plans__h { margin-top: 10px; font-family: var(--font-serif); font-size: 30px; font-weight: 400; line-height: 1.55; letter-spacing: 0.06em; }
 .role__radio, .role__tabs { display: none; }
 .role__table, .psim__table { width: 100%; margin-top: 36px; border-collapse: collapse; table-layout: fixed; }
@@ -3897,6 +3898,35 @@ body.is-media .mindex__title { font-family: var(--font-round); font-weight: 700;
   .mcover__sub > span { width: 100%; }
   .mcover__sub a { justify-content: center; }
   .mcover__sub a + a { display: none; } /* スマホは資料の案内をメニューと最後の相談の節に任せ、表紙の行動を絞る */
+}
+
+/* 流れる写真の帯：大小の写真の列（縦長1枚・2枚の重ね）を、細い白線で区切ってゆっくり横に流す（人の参考 2026-11-28：SANU）。
+   CSS のアニメーションで動かし、画面に入ったときだけ動かす（js/main.js が .is-on）。触れている間・乗っている間は止め、指で横に送れる。
+   動きを減らす設定のときは流さず、横にスクロールする並びにする */
+.mreel { padding: calc(var(--section-y) * 0.6) 0 0; background: var(--m-bg); }
+.mreel__view { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.mreel__view::-webkit-scrollbar { display: none; }
+.mreel__view:focus-visible { outline: 2px solid var(--m-green); outline-offset: 2px; }
+.mreel__track { display: flex; width: max-content; animation: mreel 90s linear infinite; animation-play-state: paused; }
+.mreel.is-on .mreel__track { animation-play-state: running; }
+.mreel.is-on :is(.mreel__view:hover, .mreel__view:focus-within, .mreel__view.is-held) .mreel__track { animation-play-state: paused; }
+@keyframes mreel { to { transform: translateX(-50%); } }
+.mreel__set { display: flex; gap: 4px; padding-right: 4px; }
+.mreel__col { display: grid; grid-template-rows: 1fr 1fr; gap: 4px; width: 300px; height: 440px; }
+.mreel__col--tall { grid-template-rows: 1fr; width: 340px; }
+.mreel__ph { display: block; overflow: hidden; background: var(--m-sand); }
+.mreel__ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mreel__note { margin-top: 10px; font-size: 12px; color: var(--m-mute); text-align: right; }
+@media (max-width: 899px) {
+  .mreel { padding-top: calc(var(--section-y) * 0.5); }
+  .mreel__set { gap: 3px; padding-right: 3px; }
+  .mreel__col { gap: 3px; width: 160px; height: 252px; }
+  .mreel__col--tall { width: 190px; }
+  .mreel__track { animation-duration: 70s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mreel__track { animation: none; }
+  .mreel__set[aria-hidden] { display: none; }
 }
 
 /* 当事者の記録：濃い緑の帯。実物の宿の写真と、大きな数字（どの宿の・いつの数字かを数字のすぐ下に書く） */

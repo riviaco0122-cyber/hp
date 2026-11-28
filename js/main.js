@@ -267,6 +267,18 @@
       list.after(btn);
     });
   }
+  // 流れる写真の帯（アキヤドのトップ）：画面に入っているときだけ流す。指で触れたら止め、離して4秒たったら流しなおす
+  document.querySelectorAll('.mreel').forEach(function (reel) {
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (en) { reel.classList.toggle('is-on', en.isIntersecting); }); }).observe(reel);
+    } else reel.classList.add('is-on');
+    var view = reel.querySelector('.mreel__view'), t;
+    var hold = function () { clearTimeout(t); view.classList.add('is-held'); };
+    var release = function () { clearTimeout(t); t = setTimeout(function () { view.classList.remove('is-held'); }, 4000); };
+    view.addEventListener('touchstart', hold, { passive: true });
+    view.addEventListener('touchend', release, { passive: true });
+    view.addEventListener('scroll', function () { hold(); release(); }, { passive: true });
+  });
   // ガイド：公開前の記事は「公開予定」として表示し、リンクにしない
   document.querySelectorAll('.guide-step[data-date]').forEach(function (li) {
     var d = li.getAttribute('data-date');
