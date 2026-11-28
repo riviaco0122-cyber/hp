@@ -114,8 +114,11 @@ def biz_html():
             num += 1
             ph, alt, brk = BIZ_PHOTOS[k]
             assert brk.replace("|", "") == names[k], k  # 折る位置の目印だけで、名前は変えない
+            # スマホは3件の組の先頭だけ全幅、ほかは2列。PC は3列か2列（表示の幅を伝え、スマホで重い元の写真を読ませない）
+            sp = "100vw" if len(g["services"]) == 3 and not items else "50vw"
+            pc = "400px" if len(g["services"]) == 3 else "600px"
             items.append(f"""            <li><a href="service-{k}.html" class="biz__item">
-              <span class="biz__ph">{photo(ph, alt=alt, width=1600, height=1067, sizes="(max-width: 899px) 100vw, 600px")}</span>
+              <span class="biz__ph">{photo(ph, alt=alt, width=1600, height=1067, sizes=f"(max-width: 899px) {sp}, {pc}")}</span>
               <span class="biz__catch"><span class="biz__num">{num:02d}</span>{e(SERVICE_CATCH[k])}</span>
               <div class="biz__row"><h3 class="biz__name">{lines_html(brk)}</h3>{ARROW}</div>
               <p class="biz__text">{e(SERVICE_INTRO[k][1])}</p>
