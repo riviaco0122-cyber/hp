@@ -384,7 +384,7 @@ def article_page(a):
     </article>
 
     <section class="section arel">
-      <div class="container">
+      <div class="container container--article">
         {msec_head("Related", "あわせて読みたい記事")}
         <div class="media-grid media-grid--scroll" data-limit="3">
 {chr(10).join(article_card(x) for x in related)}
