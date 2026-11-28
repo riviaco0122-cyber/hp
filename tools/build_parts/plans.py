@@ -283,6 +283,7 @@ def plan_roles_html(key):
                 cells.append(f'<td class="role__c role__c--{i}{" is-rec" if p["rec"] else ""}">{who(w)}</td>')
             body.append(f'<tr class="role__row"><th scope="row">{e(name)}</th>{"".join(cells)}</tr>')
     return f"""        <div class="role reveal">
+          <p class="plans__en">Who does what</p>
           <h3 class="plans__h">{lines_html(r["title"])}</h3>
           {tabs}
           <div class="role__tabs">{labels}</div>
@@ -311,7 +312,7 @@ def plan_sim_html(key):
     def val(pre, num, unit, note):
         big = num[0].isdigit()
         return (f'<p class="psim__v{" is-num" if big else ""}">{f"<small>{e(pre)}</small>" if pre else ""}{e(num)}{f"<small>{e(unit)}</small>" if unit else ""}</p>'
-                f'<p class="psim__note">{e(note)}</p>')
+                (f'<p class="psim__note">{e(note)}</p>' if note else ""))
     rows = []
     for label, cells in PLAN_SIM_ROWS[key]:
         tds = []
@@ -320,8 +321,8 @@ def plan_sim_html(key):
             if cells == "future":
                 if n in SIM_FUTURE_NAME:
                     v, nt = fut[SIM_FUTURE_NAME[n]]
-                    note = nt
-                    tds.append(f'<td class="psim__c psim__c--bar{rec}"><span class="psim__bar" style="--r:{v / top:.2f}" aria-hidden="true"></span>{val("＋", f"{v:,}", "万円", note)}</td>')
+                    tag = f'<span class="psim__tag">{e(nt)}</span>' if nt in mark.values() else f'<p class="psim__note">{e(nt)}</p>'
+                    tds.append(f'<td class="psim__c psim__c--bar{rec}"><span class="psim__bar" style="--r:{v / top:.2f}" aria-hidden="true"></span>{val("＋", f"{v:,}", "万円", "")}{tag}</td>')
                 else:
                     tds.append(f'<td class="psim__c psim__c--bar{rec}"><span class="psim__bar psim__bar--none" aria-hidden="true"></span>{val("", SIM_SELL_NOTE[0], "", SIM_SELL_NOTE[1])}</td>')
             else:
@@ -333,7 +334,8 @@ def plan_sim_html(key):
     a, b, c = SIM_DISCLAIMER
     keep_n, keep_u, *_ = next(x for x in MEDIA_SERVICE_LP["use"]["risk"] if "10年で出ていく" in x[2])  # 空き家のままの10年（約63万円）
     return f"""        <div class="psim reveal">
-          <h3 class="plans__h">{e(fut_t)}</h3>
+          <p class="plans__en">Simulation</p>
+          <h3 class="plans__h">{lines_html(fut_t.replace("、", "、|"))}</h3>
           <div class="psim__model"><span class="psim__badge">モデル物件（架空）</span><ul>{specs}</ul></div>
           <table class="psim__table">
             <thead><tr><td></td>{head}</tr></thead>
