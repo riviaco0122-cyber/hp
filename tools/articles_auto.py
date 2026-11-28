@@ -1590,7 +1590,7 @@ ARTICLES_AUTO = [
     dict(
         slug="minpaku-house-guide", related=["minpaku-mujin-checkin"],
         keyword="民泊 ゲスト 質問",
-        date="2026-10-31", updated="2026-10-31", topics=["operate"], photo=("u-table-book", "本とコーヒーポットを置いた木のテーブル"),
+        date="2026-10-31", updated="2026-10-31", topics=["operate"], photo=("u-tatami-lowtable", "畳の部屋に置いた低い座卓と座布団"),
         title='民泊のゲストからの質問を減らす方法｜実際に届いた質問408件から',
         short="民泊のゲストの質問を減らす案内の送り方",
         blurb='届いた質問408件から',

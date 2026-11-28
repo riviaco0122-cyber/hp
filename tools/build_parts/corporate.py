@@ -96,10 +96,10 @@ def service_groups_html():
 # 事業内容のページ（services.html）は service_groups_html() の形のまま
 BIZ_PHOTOS = {
     "operation": ("u-old-house-hall", "庭に面した古い木造の家の縁側", "空き家|再生事業"),
-    "management": ("u-ryokan-gate", "提灯のともる宿の玄関", "開業・運営|支援事業"),
-    "partnership": ("u-dusk-corner", "夕暮れの町かどに建つ木造の建物", "不動産事業者様|との協業"),
-    "marketing": ("u-lantern-shop", "提灯を掲げた夜の商店", "WEB集客|支援事業"),
-    "recruit": ("u-oden-street", "商店の並ぶ通りを歩く人", "WEB採用|支援事業"),
+    "management": ("u-tatami-hall-light", "障子から光が入る広い和室", "開業・運営|支援事業"),
+    "partnership": ("u-old-house-city", "ビルの間に残る古い木造の家", "不動産事業者様|との協業"),
+    "marketing": ("u-town-farmland", "山のふもとに広がる町と畑", "WEB集客|支援事業"),
+    "recruit": ("u-mountain-town", "緑の山に囲まれた町", "WEB採用|支援事業"),
 }
 
 
@@ -165,9 +165,9 @@ CORP_NAV_LD = {"@context": "https://schema.org", "@type": "ItemList", "name": "R
 REEL = [
     [("u-engawa-garden", "縁側に座って庭をながめる人")],
     [("u-irori-hearth", "囲炉裏のある古い家の土間"), ("u-lakeside-sakura", "湖沿いの桜並木の道")],
-    [("u-window-seat", "障子の窓辺で外をながめる人")],
+    [("u-round-window", "丸い窓から庭の緑が見える和室")],
     [("u-ryokan-table", "座卓を置いた畳の客室"), ("u-gassho-paddy", "田んぼの奥に並ぶ合掌造りの家")],
-    [("u-wooden-corridor", "木の廊下と格子戸の古い建物")],
+    [("u-sunlit-house", "日の当たる古い木造の家")],
     [("u-thatched-sky", "青空の下の茅葺きの家と田んぼ"), ("u-slope-to-sea", "海へ下る坂道の町並み")],
 ]
 

@@ -90,7 +90,7 @@ SERVICE_VERTICAL = {"operation": "空き家を、灯す。", "management": "宿�
 SERVICE_COLLAGE = {
     "operation": [("thatched-house", 1920, 1080, "55% 55%"), ("gassho-village", 1080, 1620, "50% 40%"), ("window-garden", 1079, 1349, "50% 50%")],
     "management": [("irori-room", 1623, 1079, "50% 55%"), ("scene-stay", 1080, 1350, "50% 50%"), ("pillow", 1619, 1079, "50% 50%")],
-    "partnership": [("riverside-town", 1620, 1080, "50% 50%"), ("old-town-street", 1080, 1437, "50% 50%"), ("white-bedroom", 1620, 1080, "50% 50%")],
-    "marketing": [("laptop-dashboard", 1516, 1080, "50% 50%"), ("scene-walk", 901, 1350, "50% 50%"), ("fuji-lake", 1620, 1080, "50% 50%")],
+    "partnership": [("riverside-town", 1620, 1080, "50% 50%"), ("old-town-street", 918, 1437, "50% 50%"), ("white-bedroom", 1620, 1080, "50% 50%")],
+    "marketing": [("laptop-dashboard", 1516, 1080, "50% 50%"), ("scene-walk", 666, 1350, "50% 50%"), ("fuji-lake", 1620, 1080, "50% 50%")],
     "recruit": [("rural-station", 1918, 1080, "50% 50%"), ("town-railway", 1080, 1620, "50% 50%"), ("green-hills", 1620, 1080, "50% 50%")],
 }

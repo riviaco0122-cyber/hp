@@ -29,7 +29,6 @@
 | `u-lit-tatami.jpg` | minpaku-start-steps | Mmoka .（@pedarun） | https://unsplash.com/photos/mhBIl-xKUDE |
 | `u-signing-paper.jpg` | souzoku-touki-gimuka | Scott Graham（@amstram） | https://unsplash.com/photos/OQMZwNd3ThU |
 | `u-residential-alley.jpg` | minpaku-neighbor-rules | Ivan Yeo（@ivanyeors） | https://unsplash.com/photos/x9QnHBXJbuQ |
-| `u-shop-bicycles.jpg` | case-owner-setouchi-cycling | Rob Maxwell（@robmaxwell） | https://unsplash.com/photos/eKUOT14SJxY |
 | `u-phone-travel.jpg` | minpaku-shukyaku-first-steps | Dominik Dancs（@dodancs） | https://unsplash.com/photos/YumiD4DmYBA |
 | `u-made-bed.jpg` | minpaku-staff-atsumekata | Dave Photoz（@mirapolis） | https://unsplash.com/photos/6MYm-cUJRB0 |
 | `u-phone-map.jpg` | minpaku-google-map | henry perks（@hjkp） | https://unsplash.com/photos/BJXAxQ1L7dI |
@@ -38,18 +37,15 @@
 | `u-tea-room.jpg` | guest-review-tips | Jens F（@jensscapes） | https://unsplash.com/photos/VE11r3TJH70 |
 | `u-laptop-night.jpg` | case-owner-rental-side-business | Avtar Singh（@avtar9w） | https://unsplash.com/photos/PaCrOFNNBz4 |
 | `u-laptop-notepad.jpg` | akiyado-consultation-flow | Nick Morrison（@nickmorrison） | https://unsplash.com/photos/FHnnjk1Yj7Y |
-| `u-table-book.jpg` | minpaku-house-guide | Nik（@helloimnik） | https://unsplash.com/photos/pqjKwhfk5oI |
 | `u-waterside-house.jpg` | akiyado-what-we-do | Tsuyoshi Kozu（@tsuyoshikozu） | https://unsplash.com/photos/PtS-c6NRlvM |
 | `u-thatched-terraces.jpg` | アキヤドのトップ（表紙） | Victor Lu（@cazat69） | https://unsplash.com/photos/Da6XpEV2ETg |
 | `u-engawa-garden.jpg` | ホームページ（横に流れる写真の帯） | panpan ma（@mymphoebe） | https://unsplash.com/photos/KTRd6tbdi68 |
-| `u-window-seat.jpg` | ホームページ（横に流れる写真の帯） | Seiya Maeda（@seiya_maeda） | https://unsplash.com/photos/juL6u-b3naA |
 | `u-irori-hearth.jpg` | ホームページ（横に流れる写真の帯） | Susann Schuster（@susannschuster） | https://unsplash.com/photos/v5tEPII1stk |
 | `u-lakeside-sakura.jpg` | ホームページ（横に流れる写真の帯） | Ryuta（@srtgraphy） | https://unsplash.com/photos/AoIXSTI9yT8 |
 | `u-slope-to-sea.jpg` | ホームページ（横に流れる写真の帯） | Tomo M（@tomom） | https://unsplash.com/photos/x8JrdiPkjuI |
 | `u-ryokan-table.jpg` | ホームページ（横に流れる写真の帯） | Susann Schuster（@susannschuster） | https://unsplash.com/photos/aBv1DziNn4Y |
 | `u-gassho-paddy.jpg` | ホームページ（横に流れる写真の帯） | Eva Balogh（@kimaira） | https://unsplash.com/photos/yj9oDNeY83w |
 | `u-thatched-sky.jpg` | ホームページ（横に流れる写真の帯） | Kiko K（@kskoo626） | https://unsplash.com/photos/1XoaBDBl07Q |
-| `u-wooden-corridor.jpg` | ホームページ（横に流れる写真の帯） | Rafaëlla Waasdorp（@krafaella_） | https://unsplash.com/photos/GRCZGlEmnAo |
 | `u-mountain-house.jpg` | ホームページ（上下に流れる写真の帯） | Harry Angara（@theninetyfivearchive） | https://unsplash.com/photos/tLU39gmW25Y |
 | `u-thatched-field.jpg` | ホームページ（上下に流れる写真の帯） | Shing（@imshing） | https://unsplash.com/photos/Y3JwjdIt5eE |
 | `u-miyama-walk.jpg` | ホームページ（上下に流れる写真の帯） | rishi（@beingabstrac） | https://unsplash.com/photos/kRP4MuNFCMs |
@@ -58,7 +54,11 @@
 | `u-hearth-window.jpg` | ホームページ（上下に流れる写真の帯） | Leopold Maitre（@lm） | https://unsplash.com/photos/JClysmg6hjs |
 | `u-forest-road.jpg` | ホームページ（上下に流れる写真の帯） | Tuan P.（@tuan_p） | https://unsplash.com/photos/gjr0hMVP5Rk |
 | `u-old-house-hall.jpg` | ホームページ（事業紹介：空き家再生事業） | Marek Okon（@marekokon） | https://unsplash.com/photos/8VT1rJqRysI |
-| `u-ryokan-gate.jpg` | ホームページ（事業紹介：開業・運営支援事業） | mos design（@mosdesign） | https://unsplash.com/photos/HP4FOmB4Q1Y |
-| `u-dusk-corner.jpg` | ホームページ（事業紹介：不動産事業者様との協業） | Skyxius（@the_3_sky） | https://unsplash.com/photos/Usi5_PCspko |
-| `u-lantern-shop.jpg` | ホームページ（事業紹介：WEB集客支援事業） | Shigeki Wakabayashi（@kugedo6060） | https://unsplash.com/photos/6nuz52vsbWc |
-| `u-oden-street.jpg` | ホームページ（事業紹介：WEB採用支援事業） | Guus Baggermans（@guusbaggermans） | https://unsplash.com/photos/oWsy_TQAScI |
+| `u-tatami-hall-light.jpg` | ホームページ（事業紹介：開業・運営支援） | Yosuke Ota（@yosuke_ota） | https://unsplash.com/photos/TeNtfZuCWe8 |
+| `u-old-house-city.jpg` | ホームページ（事業紹介：不動産事業者様との協業） | Tsuyoshi Kozu（@tsuyoshikozu） | https://unsplash.com/photos/cfr_63V5FQE |
+| `u-town-farmland.jpg` | ホームページ（事業紹介：WEB集客支援） | Zion C（@jcs_chen） | https://unsplash.com/photos/EQKxtvaXz8o |
+| `u-mountain-town.jpg` | ホームページ（事業紹介：WEB採用支援） | Vinh Nguyen（@vinhttn） | https://unsplash.com/photos/H2h6PgAttYo |
+| `u-round-window.jpg` | ホームページ（横に流れる写真の帯） | Sunao Noguchi（@fwm3u） | https://unsplash.com/photos/6aem_R8-nPw |
+| `u-sunlit-house.jpg` | ホームページ（横に流れる写真の帯） | Gab Pili（@gabpili） | https://unsplash.com/photos/MXejRdX_nSA |
+| `u-cycle-shopfront.jpg` | case-owner-setouchi-cycling（左端ののれんの文字を切り落として使用） | Mylène Larnaud（@mylenela） | https://unsplash.com/photos/xjE0Uelsbqs |
+| `u-tatami-lowtable.jpg` | minpaku-house-guide | Alan Jiang（@alan_j） | https://unsplash.com/photos/cw0tdPDC7B4 |
