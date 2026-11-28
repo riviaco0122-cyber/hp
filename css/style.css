@@ -3158,13 +3158,15 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 .biz__ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
 .biz__catch { display: flex; align-items: baseline; gap: 14px; margin-top: 22px; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; color: var(--c-shu); }
 .biz__num { font-family: var(--font-en); font-weight: 400; font-size: 15px; letter-spacing: 0.1em; color: var(--c-muted); }
-.biz__name { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 8px; font-family: var(--font-serif); font-weight: 400; font-size: clamp(20px, 1.8vw, 25px); line-height: 1.5; letter-spacing: 0.06em; transition: color .3s; }
-.biz__name .arrow { flex-shrink: 0; }
+.biz__row { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 8px; }
+.biz__name { font-family: var(--font-serif); font-weight: 400; font-size: clamp(20px, 1.8vw, 25px); line-height: 1.5; letter-spacing: 0.06em; transition: color .3s; }
+.biz__name .ml-s > span { display: inline-block; } /* 名前は「|」の区切りで折り、語の途中で折らない */
+.biz__row .arrow { flex-shrink: 0; }
 .biz__text { margin-top: 10px; font-size: 14px; line-height: 1.95; color: var(--c-sub); }
 @media (hover: hover) {
   .biz__item:hover .biz__ph img { transform: scale(1.04); }
   .biz__item:hover .biz__name { color: var(--c-shu); }
-  .biz__item:hover .biz__name .arrow { transform: translateX(6px); }
+  .biz__item:hover .biz__row .arrow { transform: translateX(6px); }
 }
 
 /* RIVIAが選ばれる理由（section--soft の生成りの地）：線で区切った4つの力（短い一言と経歴の細い線のタグ）。左に見出しと創業者 */
@@ -3191,7 +3193,7 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
 /* 運営実績：画面の幅いっぱいの宿の写真に、白い面で名前と評価を重ねる（スマホは重ねず、写真の下に本文と同じ余白で） */
 .pj__photo { height: clamp(440px, 56vw, 760px); overflow: hidden; background: var(--c-kinari); }
 .pj__photo img { width: 100%; height: 100%; object-fit: cover; }
-.pj__card { position: relative; width: min(580px, 100%); margin: -240px 0 0 auto; padding: 56px 56px 0; background: #fff; }
+.pj__card { position: relative; width: min(580px, 100%); margin: -400px 0 0 auto; padding: 56px 56px 0; background: #fff; } /* 白い面の大半を写真に重ね、写真の下の左に大きな空きを残さない */
 .pj__card .section-title { margin-bottom: 36px; }
 .pj__link { display: block; }
 .pj__link:hover .project__name { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
@@ -3234,13 +3236,14 @@ body.is-media .guide-stage__head { padding: 12px 16px; }
   .biz__ph, .biz__list--2 .biz__ph { aspect-ratio: 4 / 5; }
   .biz__catch { flex-direction: column; gap: 2px; margin-top: 12px; font-size: 12px; line-height: 1.6; }
   .biz__num { font-size: 13px; }
-  .biz__name { margin-top: 4px; font-size: 16px; }
-  .biz__name .arrow, .biz__text { display: none; }
+  .biz__row { margin-top: 4px; }
+  .biz__name { font-size: 16px; }
+  .biz__row .arrow, .biz__text { display: none; }
   .biz__list--3 li:first-child { grid-column: 1 / -1; }
   .biz__list--3 li:first-child .biz__ph { aspect-ratio: 3 / 2; }
   .biz__list--3 li:first-child .biz__catch { flex-direction: row; align-items: baseline; gap: 12px; margin-top: 16px; }
   .biz__list--3 li:first-child .biz__name { font-size: 20px; }
-  .biz__list--3 li:first-child .biz__name .arrow, .biz__list--3 li:first-child .biz__text { display: block; }
+  .biz__list--3 li:first-child .biz__row .arrow, .biz__list--3 li:first-child .biz__text { display: block; }
   .biz__list--3 li:first-child .biz__text { margin-top: 6px; font-size: 13.5px; }
 
   .why-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }

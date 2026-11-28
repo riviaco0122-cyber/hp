@@ -92,13 +92,14 @@ def service_groups_html():
 
 
 # ホームページの事業紹介：1事業＝大きな写真1枚と名前（人の参考 2026-11-28：NOT A HOTEL の一覧）。写真は Unsplash（docs/photo-credits.md）。
+# (写真, 説明, 名前の折ってよい位置「|」。スマホの2列で「協／業」のように語の途中で折らない)
 # 事業内容のページ（services.html）は service_groups_html() の形のまま
 BIZ_PHOTOS = {
-    "operation": ("u-old-house-hall", "庭に面した古い木造の家の縁側"),
-    "management": ("u-ryokan-gate", "提灯のともる宿の玄関"),
-    "partnership": ("u-dusk-corner", "夕暮れの町かどに建つ木造の建物"),
-    "marketing": ("u-lantern-shop", "提灯を掲げた夜の商店"),
-    "recruit": ("u-oden-street", "商店の並ぶ通りを歩く人"),
+    "operation": ("u-old-house-hall", "庭に面した古い木造の家の縁側", "空き家|再生事業"),
+    "management": ("u-ryokan-gate", "提灯のともる宿の玄関", "開業・運営|支援事業"),
+    "partnership": ("u-dusk-corner", "夕暮れの町かどに建つ木造の建物", "不動産事業者様|との協業"),
+    "marketing": ("u-lantern-shop", "提灯を掲げた夜の商店", "WEB集客|支援事業"),
+    "recruit": ("u-oden-street", "商店の並ぶ通りを歩く人", "WEB採用|支援事業"),
 }
 
 
@@ -111,11 +112,12 @@ def biz_html():
         items = []
         for k in g["services"]:
             num += 1
-            ph, alt = BIZ_PHOTOS[k]
+            ph, alt, brk = BIZ_PHOTOS[k]
+            assert brk.replace("|", "") == names[k], k  # 折る位置の目印だけで、名前は変えない
             items.append(f"""            <li><a href="service-{k}.html" class="biz__item">
               <span class="biz__ph">{photo(ph, alt=alt, width=1600, height=1067, sizes="(max-width: 899px) 100vw, 600px")}</span>
               <span class="biz__catch"><span class="biz__num">{num:02d}</span>{e(SERVICE_CATCH[k])}</span>
-              <h3 class="biz__name">{e(names[k])}{ARROW}</h3>
+              <div class="biz__row"><h3 class="biz__name">{lines_html(brk)}</h3>{ARROW}</div>
               <p class="biz__text">{e(SERVICE_INTRO[k][1])}</p>
             </a></li>""")
         out.append(f"""        <div class="biz reveal">
