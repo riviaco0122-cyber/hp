@@ -174,7 +174,7 @@ def media_index_page():
         <figure class="mcover__photo">{photo("u-thatched-terraces", alt="棚田の奥に建つ茅葺きの家と、山の森（イメージ）", width=1920, height=1080, sizes="100vw", lazy=False, priority=True)}</figure>
         <div class="container mcover__text">
           <p class="mcover__eyebrow reveal">空き家と民泊のメディア「アキヤド」</p>
-          <h1 class="mcover__title reveal" data-delay="1"><span class="mcover__line">空き家を</span><span class="mcover__line"><em>売る。活か{pe("す。")}</em></span><span class="mcover__line"><em>民泊</em>をはじめ{pe("る。")}</span></h1>
+          <h1 class="mcover__title reveal" data-delay="1"><span class="mcover__line">空き家を</span><span class="mcover__line"><em>売る。活か{pe("す。", "pe pe--c")}</em></span><span class="mcover__line"><em>民泊</em>をはじめ{pe("る。", "pe pe--c")}</span></h1>
           <p class="mcover__lead reveal" data-delay="2">{lines_html("宿を運営する私たちが、空き家と民泊の悩みに、|実際の数字でお答えします。")}</p>
         </div>
       </div>

@@ -501,8 +501,8 @@ def media_cta(category="operation"):
     """アキヤドの相談ブロック。気軽さ（無料・全国・営業なし）を先に伝える"""
     title, lead = MEDIA_CTA_TEXT.get(category, MEDIA_CTA_TEXT[""])
     # 中央揃えの見出しの行末の句読点を半分の幅に詰める（スマホでだけ行末になる「、」は .pe--sp。design-guide 3章）
-    title = re.sub(r'(.)、<br class="sp-only">', lambda m: pe(m.group(1) + "、", "pe pe--sp") + '<br class="sp-only">', title)
-    title = re.sub(r'(.)。$', lambda m: pe(m.group(1) + "。"), title)
+    title = re.sub(r'(.)、<br class="sp-only">', lambda m: pe(m.group(1) + "、", "pe pe--c pe--sp") + '<br class="sp-only">', title)
+    title = re.sub(r'(.)。$', lambda m: pe(m.group(1) + "。", "pe pe--c"), title)
     return f"""    <section class="section mcta">
       <div class="container">
         <div class="mcta__box reveal">

@@ -1954,10 +1954,10 @@ body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(
    （人の指摘 2026-11-28。design-guide 3章）。lines_html が文の終わりに付ける。文を続けて流す所（.ml-flow）では行末とは限らないので詰めない。
    .pe--sp はスマホでだけ行末になる所（<br class="sp-only"> の前）。
    句読点は幅0.5字の箱に入れ（点は箱の左半分に収まる）、直前の字と離れて改行しないよう、直前の1字とまとめる。
+   .pe は lines_html の文の終わり（中央揃えになったとき＝.ml-c だけ詰める）、.pe--c は行が決まっている中央揃えの見出し。
    p-e は js/main.js が中央揃え・右揃えの行末に付ける */
 .pe, p-e { white-space: nowrap; }
-.pe > span, p-e > span { display: inline-block; width: 0.5em; }
-.ml-flow .pe > span { width: auto; }
+p-e > span, .ml-c .pe > span, .pe--c > span { display: inline-block; width: 0.5em; } /* 左揃えの文（.ml-c でない .ml-s）は詰めない */
 @media (min-width: 900px) { .pe--sp > span { width: auto; } }
 .ml-flow { text-align: justify; text-justify: inter-character; } /* 短い最後の行が2文続くリードは、文をつなげて流し、本文と同じく右端をそろえる（js/main.js） */
 .ml-flow > .ml-s { display: inline; }
