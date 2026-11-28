@@ -1958,12 +1958,12 @@ body.is-media .media-more__btn:hover { border-color: var(--m-green); color: var(
 /* 行末の句読点（「。」「、」）は半分の幅に詰める。全角の句読点は点が左に寄り右半分が空くので、詰めないと中央揃えの行が左にずれて見える
    （人の指摘 2026-11-28。design-guide 3章）。lines_html が文の終わりに付ける。文を続けて流す所（.ml-flow）では行末とは限らないので詰めない。
    .pe--sp はスマホでだけ行末になる所（<br class="sp-only"> の前）。
-   句読点は幅0.5字の箱に入れ（点は箱の左半分に収まる）、直前の字と離れて改行しないよう、直前の1字とまとめる。
+   句読点の字の送りを半分にし（点は字の左半分に収まる）、直前の字と離れて改行しないよう、直前の1字とまとめる。
    .pe--c は build が付ける（行が決まっている中央揃えの見出し）。lines_html の文など、自然に折れる中央揃えの文は js/main.js が p-e を付ける。
    p-e は js/main.js が中央揃え・右揃えの行末に付ける */
 .pe, p-e { white-space: nowrap; }
-p-e > span, .pe--c > span { display: inline-block; width: 0.5em; }
-@media (min-width: 900px) { .pe--sp > span { width: auto; } }
+p-e > span, .pe--c > span { letter-spacing: -0.5em; } /* 字の送りだけを半分にする（点は字の左半分にあるので見た目は変わらず、はみ出しも出ない） */
+@media (min-width: 900px) { .pe--sp > span { letter-spacing: inherit; } }
 .ml-flow { text-align: justify; text-justify: inter-character; } /* 短い最後の行が2文続くリードは、文をつなげて流し、本文と同じく右端をそろえる（js/main.js） */
 .ml-flow > .ml-s { display: inline; }
 .ml-s > span { display: inline; } /* 文の中の区切りでは改行を待たず、行末まで詰める（人の方針 2026-11-13） */
