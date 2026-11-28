@@ -797,34 +797,6 @@ def media_company_page():
          body, current="media", jsonld=ld)
 
 
-def media_intro():
-    """コーポレートTOPのメディア紹介。記事を並べるのではなく、アキヤドが何のメディアかを伝える"""
-    entries = "".join(
-        f'<li><a href="media/guide-{g["key"]}.html" class="mintro__entry"><span class="mintro__who">{lines_html(MEDIA_INTRO_WHO[g["key"]])}</span>'
-        f'<span class="mintro__desc">{lines_html(MEDIA_INTRO_DESC[g["key"]])}</span><span class="mintro__arrow">{ARROW}</span></a></li>'
-        for g in MEDIA_GUIDES)
-    return f"""    <section class="section mintro">
-      <div class="container">
-        <div class="mintro__grid">
-          <div class="mintro__text">
-            <span class="eyebrow reveal">Media</span>
-            <h2 class="section-title section-title--logo reveal"><a href="media.html" class="tlogo" aria-label="アキヤド（空き家と民泊のメディア）">{AKIYADO_MARK}<span class="tlogo__ja" translate="no">アキヤド</span></a><span class="tlogo__sub">空き家と民泊のメディア</span></h2>
-            <p class="mintro__copy reveal" data-delay="1">空き家を売る。活かす。<br>民泊をはじめる。</p>
-            <p class="mintro__lead reveal" data-delay="1">自ら宿を運営する私たちが、空き家と民泊の悩みに<br class="pc-only">順を追ってお答えするメディアです。</p>
-            <div class="mintro__btns reveal" data-delay="2">
-              <a href="media.html" class="btn">アキヤドを見る {ARROW}</a>
-            </div>
-          </div>
-          <a href="media.html" class="mintro__shots reveal" data-delay="1" aria-label="アキヤドを見る">
-            <span class="mintro__pc"><span class="mintro__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="images/media-preview-pc.webp?v={asset_version("images/media-preview-pc.webp")}" alt="アキヤドのトップページ（パソコン表示）" width="1440" height="900" loading="lazy" decoding="async"></span>
-            <span class="mintro__sp"><img src="images/media-preview-sp.webp?v={asset_version("images/media-preview-sp.webp")}" alt="アキヤドのトップページ（スマホ表示）" width="520" height="1040" loading="lazy" decoding="async"></span>
-          </a>
-        </div>
-        <ul class="mintro__entries reveal">{entries}</ul>
-      </div>
-    </section>"""
-
-
 # トップの「アキヤド」紹介の入り口（ガイド）。「|」は折ってよい位置（lines_html）。説明文は PC で2行に収まる長さにする（人の指摘 2026-11-07）
 MEDIA_INTRO_WHO = {"sell": "空き家を|手放したい方へ", "use": "空き家を|任せたい方へ", "side": "宿を|はじめたい方へ", "run": "宿の運営を|伸ばしたい方へ"}
 MEDIA_INTRO_DESC = {
