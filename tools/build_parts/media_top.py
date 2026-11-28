@@ -11,28 +11,6 @@ MRECORD_FACTS = [
     ("約", "14", "か月", "初期投資をほぼ回収", "約14か月で、初期投資の約98%を回収"),
     ("数か月に", "1", "回ほど", "現地に行くのは、いま", "清掃は近隣の方、入室はスマートロック。遠方から運営しています"),
 ]
-# 流れる写真の帯（人の参考 2026-11-28：SANU の「ゆっくり横に流れる写真集」）。宿で過ごす時間・地方の暮らしのイメージ。
-# 写真はすべて Unsplash のイメージ（docs/photo-credits.md）。自社の宿の写真や利用者に見えないよう、帯の下に「写真はイメージ」と書く。
-# 並びは「縦長1枚」「2枚の重ね」を交互にして、大小のリズムを作る
-MREEL = [
-    [("u-engawa-garden", "縁側に座って庭をながめる人")],
-    [("u-irori-hearth", "囲炉裏のある古い家の土間"), ("u-lakeside-sakura", "湖沿いの桜並木の道")],
-    [("u-window-seat", "障子の窓辺で外をながめる人")],
-    [("u-ryokan-table", "座卓を置いた畳の客室"), ("u-gassho-paddy", "田んぼの奥に並ぶ合掌造りの家")],
-    [("u-wooden-corridor", "木の廊下と格子戸の古い建物")],
-    [("u-thatched-sky", "青空の下の茅葺きの家と田んぼ"), ("u-slope-to-sea", "海へ下る坂道の町並み")],
-]
-
-
-def mreel_set(hidden=False):
-    """流れる写真の帯の1組（ループのため、同じ組を2つ並べる。2つ目は読み上げない）"""
-    cols = []
-    for col in MREEL:
-        imgs = "".join(f'<span class="mreel__ph">{photo(n, alt="" if hidden else a, width=800, height=533, sizes="(max-width: 899px) 190px, 340px")}</span>' for n, a in col)
-        cols.append(f'<div class="mreel__col{" mreel__col--tall" if len(col) == 1 else ""}">{imgs}</div>')
-    return f'<div class="mreel__set"{" aria-hidden=\"true\"" if hidden else ""}>{"".join(cols)}</div>'
-
-
 # 3つの道（サービス）：道の名前と、何の見込みを出すか。MEDIA_SERVICES と同じ順番（買取・借り上げ・開業運営）
 MWAYS = {"sell": ("売る", "売却額の目安"), "use": ("借り上げ", "家を残して収入"), "side": ("自分で運営", "宿の収支見込み")}
 
@@ -210,12 +188,6 @@ def media_index_page():
         <p class="mcover__sub"><span>まだ決めていない段階でも大丈夫です。</span>
           <a href="contact.html?category=operation&amp;from=akiyado-fv" data-cta="media-fv">無料で相談する {ARROW}</a>
           <a href="contact.html?category=document&amp;from=akiyado-fv" data-cta="media-fv-doc">資料をダウンロード {ARROW}</a></p>
-      </div>
-    </section>
-
-    <section class="mreel" aria-label="空き家の宿と、地方の暮らしの写真（イメージ）">
-      <div class="mreel__view" tabindex="0">
-        <div class="mreel__track">{mreel_set()}{mreel_set(hidden=True)}</div>
       </div>
     </section>
 

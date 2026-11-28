@@ -1974,7 +1974,7 @@ p-e > span, .pe--c > span { letter-spacing: -0.5em; } /* 字の送りだけを�
 .cycle__ring circle { fill: none; stroke: var(--c-line-strong); stroke-width: 0.25; }
 .cycle__ring path { fill: var(--c-accent); }
 .cycle__center { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; font-family: var(--font-serif); font-weight: 300; font-size: 17px; line-height: 1.9; letter-spacing: 0.1em; }
-.cycle__center span { display: block; }
+.cycle__center > span { display: block; }
 .cycle__center-en { margin-bottom: 8px; font-family: var(--font-en); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--c-accent); }
 .cycle__node { position: absolute; display: grid; place-content: center; gap: 6px; width: 28%; aspect-ratio: 1; border: 1px solid var(--c-line-strong); border-radius: 50%; background: var(--c-bg); text-align: center; transform: translate(-50%, -50%); }
 .cycle__node--1 { left: 50%; top: 14%; border-color: var(--c-accent); }
@@ -1983,7 +1983,7 @@ p-e > span, .pe--c > span { letter-spacing: -0.5em; } /* 字の送りだけを�
 .cycle__node--4 { left: 14%; top: 50%; }
 .cycle__en { font-family: var(--font-en); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-accent); }
 .cycle__t { font-family: var(--font-serif); font-size: 14px; line-height: 1.6; letter-spacing: 0.06em; }
-.cycle__t span { display: block; }
+.cycle__t > span { display: block; }
 @media (max-width: 899px) {
   .vision__grid { grid-template-columns: 1fr; grid-template-areas: "body" "cycle" "more"; gap: 0; }
   .vision__grid .cycle { margin-top: 48px; }
@@ -3903,29 +3903,28 @@ body.is-media .mindex__title { font-family: var(--font-round); font-weight: 700;
 /* 流れる写真の帯：大小の写真の列（縦長1枚・2枚の重ね）を、細い白線で区切ってゆっくり横に流す（人の参考 2026-11-28：SANU）。
    CSS のアニメーションで動かし、画面に入ったときだけ動かす（js/main.js が .is-on）。触れている間・乗っている間は止め、指で横に送れる。
    動きを減らす設定のときは流さず、横にスクロールする並びにする */
-.mreel { padding: calc(var(--section-y) * 0.6) 0 0; background: var(--m-bg); }
-.mreel__view { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-.mreel__view::-webkit-scrollbar { display: none; }
-.mreel__view:focus-visible { outline: 2px solid var(--m-green); outline-offset: 2px; }
-.mreel__track { display: flex; width: max-content; animation: mreel 90s linear infinite; animation-play-state: paused; }
-.mreel.is-on .mreel__track { animation-play-state: running; }
-.mreel.is-on :is(.mreel__view:hover, .mreel__view:focus-within, .mreel__view.is-held) .mreel__track { animation-play-state: paused; }
-@keyframes mreel { to { transform: translateX(-50%); } }
-.mreel__set { display: flex; gap: 4px; padding-right: 4px; }
-.mreel__col { display: grid; grid-template-rows: 1fr 1fr; gap: 4px; width: 280px; height: 400px; }
-.mreel__col--tall { grid-template-rows: 1fr; width: 320px; }
-.mreel__ph { display: block; overflow: hidden; background: var(--m-sand); }
-.mreel__ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.reel { padding: 0; background: var(--c-bg); }
+.reel__view { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.reel__view::-webkit-scrollbar { display: none; }
+.reel__view:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }
+.reel__track { display: flex; width: max-content; animation: reel 90s linear infinite; animation-play-state: paused; }
+.reel.is-on .reel__track { animation-play-state: running; }
+.reel.is-on :is(.reel__view:hover, .reel__view:focus-within, .reel__view.is-held) .reel__track { animation-play-state: paused; }
+@keyframes reel { to { transform: translateX(-50%); } }
+.reel__set { display: flex; gap: 4px; padding-right: 4px; }
+.reel__col { display: grid; grid-template-rows: 1fr 1fr; gap: 4px; width: 280px; height: 400px; }
+.reel__col--tall { grid-template-rows: 1fr; width: 320px; }
+.reel__ph { display: block; overflow: hidden; background: var(--c-bg-soft); }
+.reel__ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 899px) {
-  .mreel { padding-top: calc(var(--section-y) * 0.5); }
-  .mreel__set { gap: 3px; padding-right: 3px; }
-  .mreel__col { gap: 3px; width: 160px; height: 252px; }
-  .mreel__col--tall { width: 190px; }
-  .mreel__track { animation-duration: 70s; }
+  .reel__set { gap: 3px; padding-right: 3px; }
+  .reel__col { gap: 3px; width: 160px; height: 252px; }
+  .reel__col--tall { width: 190px; }
+  .reel__track { animation-duration: 70s; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mreel__track { animation: none; }
-  .mreel__set[aria-hidden] { display: none; }
+  .reel__track { animation: none; }
+  .reel__set[aria-hidden] { display: none; }
 }
 
 /* 当事者の記録：濃い緑の帯。実物の宿の写真と、大きな数字（どの宿の・いつの数字かを数字のすぐ下に書く） */

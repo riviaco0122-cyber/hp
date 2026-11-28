@@ -267,12 +267,12 @@
       list.after(btn);
     });
   }
-  // 流れる写真の帯（アキヤドのトップ）：画面に入っているときだけ流す。指で触れたら止め、離して4秒たったら流しなおす
-  document.querySelectorAll('.mreel').forEach(function (reel) {
+  // 流れる写真の帯（ホームページ）：画面に入っているときだけ流す。指で触れたら止め、離して4秒たったら流しなおす
+  document.querySelectorAll('.reel').forEach(function (reel) {
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) { es.forEach(function (en) { reel.classList.toggle('is-on', en.isIntersecting); }); }).observe(reel);
     } else reel.classList.add('is-on');
-    var view = reel.querySelector('.mreel__view'), t;
+    var view = reel.querySelector('.reel__view'), t;
     var hold = function () { clearTimeout(t); view.classList.add('is-held'); };
     var release = function () { clearTimeout(t); t = setTimeout(function () { view.classList.remove('is-held'); }, 4000); };
     view.addEventListener('touchstart', hold, { passive: true });

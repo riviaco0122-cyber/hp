@@ -3,6 +3,7 @@
 // 全角の「。」「、」は点が字の左下にあり、右半分が空く。中央揃え（右揃え）の行の最後がこの字だと、行の見た目の中心が左にずれる。
 // 全ページを開き、中央揃えの要素の行ごとに「左の空き」と「右の空き（行末が句読点なら、点の右の空きも足す）」を比べ、
 // 差が文字の大きさの 0.3 倍を超える行を数える（0件にする。直し方は design-guide 3章：行末の句読点を .pe で半分の幅に詰める）。
+// あわせて、句読点だけが1行に取り残されている所（p-e の中に display: block が効いている）も数える。
 // 使い方: node tools/check/punct_center.js [--widths 390,1280] [--only media,index]
 const { chromium } = require('playwright'); const fs = require('fs'); const path = require('path');
 const root = path.resolve(__dirname, '..', '..');
@@ -62,6 +63,12 @@ if (only.length) pages = pages.filter(p => only.some(o => p.endsWith('/' + o + '
               res.push(`${isCenter ? '中央' : '右'}揃えの行末の「${last.c}」で ${Math.round(diff)}px 左にずれる ${name}「${ln.cs.map(x => x.c).join('').slice(-16)}」`);
             }
           }
+        }
+        // 句読点だけが1行に取り残されていないか（詰める部品 p-e の中の span に、ほかのルールの display: block が効くと起きる。人の指摘 2026-11-28）
+        for (const pe of document.querySelectorAll('p-e, .pe')) {
+          if (pe.closest('[aria-hidden="true"]') && !pe.getClientRects().length) continue;
+          const sp = pe.querySelector(':scope > span'); if (!sp || !sp.getClientRects().length) continue;
+          if (!/inline/.test(getComputedStyle(sp).display) || !/inline/.test(getComputedStyle(pe).display)) res.push(`句読点が1行に取り残される（p-e の中が ${getComputedStyle(sp).display}）「${(pe.parentElement.textContent || '').trim().slice(0, 16)}」`);
         }
         return res;
       });

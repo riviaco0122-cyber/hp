@@ -79,6 +79,28 @@ CORP_NAV_LD = {"@context": "https://schema.org", "@type": "ItemList", "name": "R
                                    for i, (n, u) in enumerate(CORP_NAV, 1)]}
 
 
+# 流れる写真の帯（ホームページ。人の参考 2026-11-28：SANU の「ゆっくり横に流れる写真集」。メディアより会社の雰囲気を伝える場所に置く）。宿で過ごす時間・地方の暮らし。
+# 写真はすべて Unsplash（docs/photo-credits.md）。キャプションは付けない（公式サイトの写真なので「イメージ」と書かない。人の指摘 2026-11-28）。
+# 並びは「縦長1枚」「2枚の重ね」を交互にして、大小のリズムを作る
+REEL = [
+    [("u-engawa-garden", "縁側に座って庭をながめる人")],
+    [("u-irori-hearth", "囲炉裏のある古い家の土間"), ("u-lakeside-sakura", "湖沿いの桜並木の道")],
+    [("u-window-seat", "障子の窓辺で外をながめる人")],
+    [("u-ryokan-table", "座卓を置いた畳の客室"), ("u-gassho-paddy", "田んぼの奥に並ぶ合掌造りの家")],
+    [("u-wooden-corridor", "木の廊下と格子戸の古い建物")],
+    [("u-thatched-sky", "青空の下の茅葺きの家と田んぼ"), ("u-slope-to-sea", "海へ下る坂道の町並み")],
+]
+
+
+def reel_set(hidden=False):
+    """流れる写真の帯の1組（ループのため、同じ組を2つ並べる。2つ目は読み上げない）"""
+    cols = []
+    for col in REEL:
+        imgs = "".join(f'<span class="reel__ph">{photo(n, alt="" if hidden else a, width=800, height=533, sizes="(max-width: 899px) 190px, 340px")}</span>' for n, a in col)
+        cols.append(f'<div class="reel__col{" reel__col--tall" if len(col) == 1 else ""}">{imgs}</div>')
+    return f'<div class="reel__set"{" aria-hidden=\"true\"" if hidden else ""}>{"".join(cols)}</div>'
+
+
 def index_page():
     vsteps = "\n".join(
         f"""          <li class="vision__step reveal" data-delay="{i - 1}">
@@ -154,6 +176,12 @@ def index_page():
     </section>
 
 {vision}
+
+    <section class="reel" aria-label="空き家の宿と、地方の暮らしの写真">
+      <div class="reel__view" tabindex="0">
+        <div class="reel__track">{reel_set()}{reel_set(hidden=True)}</div>
+      </div>
+    </section>
 
     <section class="section">
       <div class="container news">
