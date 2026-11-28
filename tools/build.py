@@ -28,6 +28,7 @@ BUILD_PARTS = [
     "media_learn.py",  # アキヤド：基礎から学ぶ（learn.html）
     "media_contact.py",  # アキヤド：お問い合わせ・送信完了のページ
     "media_top.py",  # アキヤド：ナビ・トップ・テーマ別・ガイド・検索のページ
+    "media_check.py",  # アキヤド：民泊できる？1分診断（minpaku-check.html。動きは js/check.js、見た目は css/check.css）
     "article_page.py",  # アキヤド：記事ページの組み立て（出典の欄を含む）
     "seo_files.py",  # 404 ページ・llms.txt・sitemap.xml・robots.txt
 ]
@@ -54,6 +55,7 @@ if __name__ == "__main__":
         media_service_page(sv)
     media_company_page()
     media_learn_page()
+    media_check_page()
     media_contact_page()
     media_thanks_page()
     for k, n in MEDIA_CATEGORIES:

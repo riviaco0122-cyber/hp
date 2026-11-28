@@ -188,6 +188,13 @@
           <button type="submit" class="mbtn mform__submit"><n-w class="h"><n-b>【無</n-b>料】<wbr><n-b>相談・お</n-b>問い合わ<n-b>せをする</n-b></n-w> <span class="arrow" aria-hidden="true"></span></button>
           <p class="mform__note"><n-w class="h">ご提案までは<wbr>すべて<wbr><n-b>無料<n-b>です。</n-b></n-b><br class="sb">内容を<wbr>見てから、<wbr>進めるかどうかを<wbr>決めていただ<n-b>け<n-b>ます。</n-b></n-b></n-w></p>
         </form>
+        <script>
+          // 1分診断（media/minpaku-check.html）から来たときは、診断の答え（?memo=）を詳細欄に先に入れておく（js/main.js より先に動き、書き方の例で上書きされない）
+          (function () {
+            var m = window.URLSearchParams && new URLSearchParams(location.search).get('memo'), t = document.getElementById('m-message');
+            if (m && t && !t.value) t.value = m.slice(0, 800) + '\n\n・聞いてみたいこと：';
+          })();
+        </script>
         <p class="mform__corp reveal">アキヤドは、<n-b>合同会社RIVIA&amp;CO.</n-b>が運営してい<n-b>ます。</n-b>不動産会社様との協業や、WEB<n-b>集客・採用</n-b>のご相談は<a href="../contact.html?from=akiyado"><n-w class="h">RIVIA&amp;CO.の<wbr>お問<n-b>い合わせ</n-b></n-w></a><n-w>から<wbr>お願い<n-b>し<n-b>ます。</n-b></n-b></n-w></p>
       </div>
     </section>

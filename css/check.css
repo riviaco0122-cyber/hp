@@ -1,0 +1,190 @@
+/* アキヤド：民泊できる？1分診断（media/minpaku-check.html だけで読む）
+   色・文字・余白・角丸・影は css/style.css の body.is-media の変数（--m-*）だけを使う（docs/design-guide.md 9章）。 */
+
+/* ---------- 最初の画面（診断がすぐ見えるよう、ふつうの見出しより詰める） ---------- */
+.mchk-hero { padding-bottom: 0; text-align: center; }
+.mchk-hero .crumbs { text-align: left; }
+.mchk-hero__title { font-family: var(--font-round); font-weight: 700; letter-spacing: 0.06em; color: var(--m-ink); }
+.mchk-hero__lead { max-width: 34em; margin: 16px auto 0; color: var(--m-sub); font-size: var(--m-fs-body); }
+.mchk-hero__chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 20px; }
+.mchk-hero__chips li { padding: 4px 14px; border-radius: 999px; background: var(--m-green-soft); color: var(--m-green); font-family: var(--font-round); font-weight: 700; font-size: var(--m-fs-small); }
+
+.mchk-sec { padding: var(--m-head) 0 var(--section-y); }
+.mchk { max-width: 760px; margin: 0 auto; text-wrap: pretty; }
+.mchk.is-done { max-width: 1040px; }
+.mchk__noscript { padding: var(--m-pad); border-radius: var(--m-r); background: var(--m-card); }
+
+/* ---------- 質問（1画面に1問） ---------- */
+.mchk__panel { padding: calc(var(--m-pad) * 1.4); border-radius: var(--m-r); background: var(--m-card); box-shadow: var(--m-shadow); }
+.mchk__top { display: flex; align-items: center; justify-content: space-between; min-height: 44px; }
+.mchk__back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 4px; color: var(--m-green); font-family: var(--font-round); font-weight: 700; font-size: 14px; }
+.mchk__back[hidden] + .mchk__count { margin-left: auto; }
+.mchk__count { color: var(--m-mute); font-size: var(--m-fs-small); letter-spacing: 0.08em; }
+.mchk__count b { color: var(--m-ink); font-family: var(--font-round); font-size: 18px; }
+.mchk__progress { height: 6px; margin-top: 8px; border-radius: 999px; background: var(--m-line); overflow: hidden; }
+.mchk__progress i { display: block; height: 100%; border-radius: inherit; background: var(--m-green); transition: width .4s var(--ease); }
+.mchk__step { margin-top: calc(var(--m-head) * 0.75); }
+.mchk__q { font-family: var(--font-round); font-weight: 700; font-size: var(--m-fs-h2); line-height: 1.5; color: var(--m-ink); outline: none; }
+.mchk__subq { margin-top: 28px; font-family: var(--font-round); font-weight: 700; font-size: var(--m-fs-h3); color: var(--m-ink); }
+.mchk__q + .mchk__group .mchk__subq { margin-top: 20px; }
+.mchk__help { margin-top: 8px; color: var(--m-sub); font-size: var(--m-fs-small); line-height: 1.8; }
+.mchk__help a { color: var(--m-green); text-decoration: underline; text-underline-offset: 3px; }
+.mchk__opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+.mchk__opts--6 { grid-template-columns: 1fr 1fr; }
+.mchk__opt { position: relative; display: block; cursor: pointer; }
+.mchk__opt input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.mchk__opt span { display: flex; align-items: center; gap: 12px; height: 100%; min-height: 56px; padding: 12px 16px; border: 1.5px solid var(--m-line); border-radius: var(--m-r-s); background: var(--m-card); font-size: var(--m-fs-body); line-height: 1.6; color: var(--m-ink); transition: border-color .2s, background .2s; }
+.mchk__opt span::before { content: ""; flex: none; width: 18px; height: 18px; border: 1.5px solid var(--m-line); border-radius: 50%; background: var(--m-card); transition: border-color .2s, box-shadow .2s; }
+.mchk__opt input:checked + span { border-color: var(--m-green); background: var(--m-green-soft); font-weight: 700; }
+.mchk__opt input:checked + span::before { border-color: var(--m-green); box-shadow: inset 0 0 0 4px var(--m-card), inset 0 0 0 9px var(--m-green); }
+.mchk__opt input:focus-visible + span { outline: 2px solid var(--m-green); outline-offset: 2px; }
+@media (hover: hover) { .mchk__opt:hover span { border-color: var(--m-green); } }
+.mchk__nav { display: flex; justify-content: flex-end; margin-top: calc(var(--m-head) * 0.75); }
+.mchk__next { min-width: 200px; }
+.mchk__next:disabled { opacity: .4; box-shadow: none; cursor: default; transform: none; }
+
+/* ---------- 結果 ---------- */
+.mchk-res__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.mchk-res__title { font-family: var(--font-round); font-weight: 700; font-size: var(--m-fs-h2); color: var(--m-ink); outline: none; }
+.mchk__retry { min-height: 44px; color: var(--m-green); font-family: var(--font-round); font-weight: 700; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+.mchk-res__grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--m-gap); margin-top: var(--m-gap); }
+.mchk-card { padding: calc(var(--m-pad) * 1.15); border-radius: var(--m-r); background: var(--m-card); box-shadow: var(--m-shadow); }
+.mchk-nums { margin-top: var(--m-gap); }
+.mchk-card__label { color: var(--m-green); font-family: var(--font-round); font-weight: 700; font-size: var(--m-fs-small); letter-spacing: 0.08em; }
+
+/* 点数 */
+.mchk-score__num { margin-top: 4px; font-family: var(--font-round); color: var(--m-ink); line-height: 1.2; }
+.mchk-score__num b { font-size: 64px; letter-spacing: 0.02em; }
+.mchk-score__num small { margin-left: 6px; color: var(--m-sub); font-size: 15px; }
+.mchk-score__band { display: inline-block; margin-top: 8px; padding: 4px 14px; border-radius: 999px; font-family: var(--font-round); font-weight: 700; font-size: 15px; }
+.mchk-score__band.is-high { background: var(--m-green); color: var(--m-card); }
+.mchk-score__band.is-mid { background: var(--m-green-soft); color: var(--m-green); }
+.mchk-score__band.is-low { background: var(--m-sand); color: var(--m-ink); }
+.mchk-meter { position: relative; height: 8px; margin-top: 20px; border-radius: 999px; background: var(--m-line); }
+.mchk-meter i { position: absolute; inset: 0 auto 0 0; border-radius: inherit; background: var(--m-green); transition: width .8s var(--ease); }
+.mchk-meter span { position: absolute; top: -2px; bottom: -2px; width: 2px; background: var(--m-card); }
+.mchk-meter__legend { display: grid; grid-template-columns: 45fr 25fr 30fr; margin-top: 6px; color: var(--m-mute); font-size: 11px; letter-spacing: 0.02em; }
+.mchk-meter__legend span:nth-child(2) { text-align: center; }
+.mchk-meter__legend span:last-child { text-align: right; }
+.mchk-break { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--m-line); }
+.mchk-break li { display: grid; grid-template-columns: 6.5em 1fr 3.6em; align-items: center; gap: 10px; font-size: var(--m-fs-small); color: var(--m-sub); }
+.mchk-break li + li { margin-top: 6px; }
+.mchk-break i { position: relative; height: 4px; border-radius: 999px; background: var(--m-line); }
+.mchk-break i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--p); border-radius: inherit; background: var(--m-green); }
+.mchk-break b { text-align: right; color: var(--m-ink); font-family: var(--font-round); font-size: 15px; }
+.mchk-break b small { color: var(--m-mute); font-size: 11px; }
+
+/* 制度 */
+.mchk-law__list { margin-top: 8px; }
+.mchk-law__item { display: grid; grid-template-columns: 40px 1fr; gap: 14px; padding: 16px 0; }
+.mchk-law__item + .mchk-law__item { border-top: 1px solid var(--m-line); }
+.mchk-law__mark { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--m-bg); color: var(--m-mute); }
+.mchk-law__mark svg { width: 20px; height: 20px; }
+.mchk-law__item.is-ok .mchk-law__mark { background: var(--m-green-soft); color: var(--m-green); }
+.mchk-law__item.is-consult .mchk-law__mark, .mchk-law__item.is-hold .mchk-law__mark { background: var(--m-sand); color: var(--m-ink); }
+.mchk-law__name { font-family: var(--font-round); font-weight: 700; font-size: var(--m-fs-h3); color: var(--m-ink); line-height: 1.5; }
+.mchk-law__name small { display: block; color: var(--m-mute); font-family: var(--font-sans); font-weight: 400; font-size: 12px; }
+.mchk-law__res { margin-top: 2px; font-family: var(--font-round); font-weight: 700; font-size: 18px; color: var(--m-ink); }
+.mchk-law__item.is-ok .mchk-law__res { color: var(--m-green); }
+.mchk-law__note { margin-top: 4px; color: var(--m-sub); font-size: var(--m-fs-small); line-height: 1.8; }
+
+/* 事例の数字 */
+.mchk-nums__grid { display: grid; grid-template-columns: 5fr 7fr; gap: calc(var(--m-gap) * 1.5); align-items: start; margin-top: 12px; }
+.mchk-stat { padding: 14px 0; }
+.mchk-stat + .mchk-stat { border-top: 1px solid var(--m-line); }
+.mchk-stat dt { color: var(--m-sub); font-size: var(--m-fs-small); }
+.mchk-stat dd { margin: 2px 0 0; font-family: var(--font-round); font-weight: 700; font-size: 32px; line-height: 1.3; color: var(--m-ink); }
+.mchk-stat dd small { font-size: 15px; }
+.mchk-stat dd.is-text { font-size: 24px; }
+.mchk-stat p { margin-top: 4px; color: var(--m-mute); font-size: 12px; line-height: 1.7; }
+.mchk-chart { margin: 0; padding: 16px 18px 12px; border-radius: var(--m-r-s); background: var(--m-bg); }
+.mchk-chart__cap { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-size: var(--m-fs-small); color: var(--m-ink); }
+.mchk-chart__cap span { color: var(--m-mute); font-size: 12px; }
+.mchk-bars { --h: 120px; --lab: 22px; position: relative; margin-top: 12px; }
+.mchk-bars ol { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; height: calc(var(--h) + var(--lab) + 20px); align-items: end; }
+.mchk-bars__item { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+.mchk-bars__v { font-family: var(--font-round); font-weight: 700; font-size: 13px; color: var(--m-ink); line-height: 20px; }
+.mchk-bars__v small { font-size: 10px; }
+.mchk-bars__bar { width: 100%; max-width: 36px; height: calc(var(--h) * var(--v) / 100); border-radius: 4px 4px 0 0; background: var(--m-green); }
+.mchk-bars__m { height: var(--lab); line-height: var(--lab); color: var(--m-sub); font-size: 11px; white-space: nowrap; }
+.mchk-bars__avg { position: absolute; left: 0; right: 0; bottom: calc(var(--lab) + var(--h) * var(--avg) / 100); border-top: 1.5px dashed var(--m-sub); pointer-events: none; z-index: 1; }
+.mchk-chart__avg { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; }
+.mchk-chart__avg::before { content: ""; width: 18px; border-top: 1.5px dashed var(--m-sub); }
+.mchk-nums__note { margin-top: 12px; color: var(--m-sub); font-size: var(--m-fs-small); line-height: 1.8; }
+.mchk-nums__note[data-out="note180"] { padding: 12px 16px; border-radius: var(--m-r-s); background: var(--m-sand); color: var(--m-ink); }
+
+/* わかったこと／まだわからないこと */
+.mchk-know { grid-template-columns: 1fr 1fr; }
+.mchk-know__list { margin-top: 10px; }
+.mchk-know__list li { position: relative; padding: 6px 0 6px 26px; font-size: var(--m-fs-body); line-height: 1.8; color: var(--m-ink); }
+.mchk-know__list li::before { content: ""; position: absolute; left: 2px; top: 15px; width: 12px; height: 12px; border: 1.5px dashed var(--m-mute); border-radius: 50%; }
+.mchk-know__list--ok li::before { top: 13px; width: 11px; height: 6px; border: 0; border-left: 2px solid var(--m-green); border-bottom: 2px solid var(--m-green); border-radius: 0; transform: rotate(-45deg); }
+.mchk-know__close { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--m-line); color: var(--m-green); font-family: var(--font-round); font-weight: 700; font-size: var(--m-fs-body); }
+
+/* 案内するプラン（1番目を大きく） */
+.mchk-plans { margin-top: calc(var(--m-head) * 1.1); text-align: center; }
+.mchk-plans__title { font-family: var(--font-round); font-weight: 700; font-size: var(--m-fs-h2); color: var(--m-ink); }
+.mchk-plans__lead { margin-top: 6px; color: var(--m-sub); font-size: var(--m-fs-small); }
+.mchk-nw { display: inline-block; }
+.mchk-plans__list { display: grid; gap: var(--m-gap); margin-top: calc(var(--m-head) * 0.6); text-align: left; }
+.mchk-plans__list.is-1 { grid-template-columns: minmax(0, 640px); justify-content: center; }
+.mchk-plans__list.is-2 { grid-template-columns: 3fr 2fr; }
+.mchk-plans__list.is-2:not(:has(.mchk-plan:not(.is-main))) { grid-template-columns: 1fr 1fr; }
+.mchk-plan { display: flex; flex-direction: column; padding: calc(var(--m-pad) * 1.15); border-radius: var(--m-r); background: var(--m-card); box-shadow: var(--m-shadow); }
+.mchk-plan.is-main { box-shadow: inset 0 0 0 2px var(--m-green), var(--m-shadow); }
+.mchk-plan__tag { align-self: flex-start; margin-bottom: 10px; padding: 2px 12px; border-radius: 999px; background: var(--m-green); color: var(--m-card); font-family: var(--font-round); font-weight: 700; font-size: 12px; }
+.mchk-plan__who { color: var(--m-mute); font-size: var(--m-fs-small); }
+.mchk-plan__name { margin-top: 2px; font-family: var(--font-round); font-weight: 700; font-size: var(--m-fs-h3); color: var(--m-ink); }
+.mchk-plan.is-main .mchk-plan__name { font-size: 22px; }
+.mchk-plan__text { margin-top: 8px; color: var(--m-sub); font-size: var(--m-fs-body); line-height: 1.8; }
+.mchk-plan__btns { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: auto; padding-top: 18px; }
+.mchk-plan__btns .mbtn { padding-left: 26px; padding-right: 26px; }
+.mchk-plan__more { display: inline-flex; align-items: center; min-height: 44px; color: var(--m-green); font-family: var(--font-round); font-weight: 700; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- 検索で読まれる本文（判定のしくみ・前提と出典・よくある質問） ---------- */
+.mchk-doc { padding: var(--section-y) 0; background: var(--m-sand); }
+.mchk-doc__wrap { max-width: calc(860px + var(--gutter) * 2); }
+.mchk-doc__title { margin: var(--m-head) 0 16px; font-family: var(--font-round); font-weight: 700; font-size: var(--m-fs-h2); color: var(--m-ink); }
+.mchk-doc__title:first-child { margin-top: 0; }
+.mchk-doc p, .mchk-doc__list li { font-size: var(--m-fs-body); color: var(--m-ink); }
+.mchk-doc p + p { margin-top: 12px; }
+.mchk-doc__table { margin-top: 24px; overflow-x: auto; border-radius: var(--m-r-s); background: var(--m-card); }
+.mchk-doc__table table { width: 100%; border-collapse: collapse; font-size: var(--m-fs-small); }
+.mchk-doc__table caption { padding: 14px 16px 0; text-align: left; font-family: var(--font-round); font-weight: 700; color: var(--m-ink); }
+.mchk-doc__table th, .mchk-doc__table td { padding: 10px 16px; border-bottom: 1px solid var(--m-line); text-align: left; vertical-align: top; }
+.mchk-doc__table thead th { color: var(--m-mute); font-weight: 400; }
+.mchk-doc__table tbody th { white-space: nowrap; font-weight: 700; }
+.mchk-doc__table td:nth-child(2) { white-space: nowrap; }
+.mchk-doc__table tbody tr:last-child > * { border-bottom: 0; }
+.mchk-doc .mchk-doc__note { margin-top: 10px; color: var(--m-mute); font-size: 12px; }
+.mchk-doc__list { padding-left: 1.2em; list-style: disc; }
+.mchk-doc__list li + li { margin-top: 6px; }
+.mchk-doc__srcs { margin-top: 16px; font-size: var(--m-fs-small); }
+.mchk-doc__srcs li + li { margin-top: 4px; }
+.mchk-doc__srcs a { color: var(--m-green); text-decoration: underline; text-underline-offset: 3px; }
+.mchk-doc .faq { margin-top: 8px; }
+.mchk-doc .mchk-doc__disclaim { margin-top: var(--m-head); padding: 16px 20px; border-radius: var(--m-r-s); background: var(--m-card); color: var(--m-sub); font-size: var(--m-fs-small); line-height: 1.9; }
+
+/* ---------- スマホ（PC の縮小にしない：選択肢は1列、面積だけ2列。結果は縦に積み、数字を先に） ---------- */
+@media (max-width: 899px) {
+  .mchk-hero { padding-top: 24px; }
+  .mchk-hero__chips { margin-top: 14px; }
+  .mchk-hero__lead { text-align: left; }
+  .mchk-sec { padding-top: 24px; }
+  .mchk__panel { padding: var(--m-pad); }
+  .mchk__step { margin-top: 20px; }
+  .mchk__opts, .mchk__opts--6 { grid-template-columns: 1fr; gap: 8px; margin-top: 16px; }
+  .mchk__opts--4:has(input[name="area"]) { grid-template-columns: 1fr 1fr; }
+  .mchk__opt span { min-height: 52px; padding: 10px 14px; }
+  .mchk__nav { margin-top: 24px; }
+  .mchk__next { width: 100%; }
+  .mchk-res__grid, .mchk-know, .mchk-nums__grid, .mchk-plans__list.is-2, .mchk-plans__list.is-2:not(:has(.mchk-plan:not(.is-main))) { grid-template-columns: 1fr; }
+  .mchk-score__num b { font-size: 56px; }
+  .mchk-stats { display: grid; grid-template-columns: 1fr; }
+  .mchk-stat dd { font-size: 28px; }
+  .mchk-chart { padding: 14px 12px 10px; }
+  .mchk-bars ol { gap: 4px; }
+  .mchk-plan__btns .mbtn { width: 100%; }
+  .mchk-plan__more { margin: 0 auto; }
+  .mchk-doc__table td:nth-child(2) { white-space: normal; }
+}

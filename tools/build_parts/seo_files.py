@@ -40,6 +40,7 @@ def llms_txt():
              "", "## 会社", f"- [会社概要]({SITE}/about.html): ミッション・ビジョン・バリューと創業者",
              f"- [お問い合わせ]({SITE}/contact.html): 無料相談の窓口", "", "## サービス", f"- [事業内容]({SITE}/services.html): 5つの事業の一覧"]
     lines += [f"- [{n}]({SITE}/service-{k}.html)" for k, n in SERVICES]
+    lines += ["", "## アキヤド（診断）", f"- [空き家で民泊できる？1分診断]({SITE}/media/{CHECK_SLUG}.html): 6つの質問で、旅館業・民泊新法で営業できそうか、宿としての目安の点数、事例の売上・稼働率がわかる"]
     lines += ["", "## アキヤド（ガイド）"]
     lines += [f"- [{g['title']}]({SITE}/media/guide-{g['key']}.html): {g['lead']}" for g in MEDIA_GUIDES]
     lines += ["", "## アキヤド（記事）"]
@@ -54,7 +55,7 @@ def llms_txt():
 
 def sitemap():
     pages = ["", "about.html", "services.html"] + [f"service-{k}.html" for k, _ in SERVICES] + \
-            ["media.html"] + [f"media/category-{k}.html" for k, _ in MEDIA_CATEGORIES] + [f"media/guide-{g['key']}.html" for g in MEDIA_GUIDES] + ["media/plans.html"] + [f"media/{sv['slug']}.html" for sv in MEDIA_SERVICES] + ["media/company.html", "media/learn.html", "media/contact.html"] + [f"media/{a['slug']}.html" for a in ARTICLES if a["date"] <= BUILD_DATE] + ["careers.html", "contact.html", "privacy.html"]
+            ["media.html"] + [f"media/category-{k}.html" for k, _ in MEDIA_CATEGORIES] + [f"media/guide-{g['key']}.html" for g in MEDIA_GUIDES] + ["media/plans.html"] + [f"media/{sv['slug']}.html" for sv in MEDIA_SERVICES] + ["media/company.html", "media/learn.html", f"media/{CHECK_SLUG}.html", "media/contact.html"] + [f"media/{a['slug']}.html" for a in ARTICLES if a["date"] <= BUILD_DATE] + ["careers.html", "contact.html", "privacy.html"]
     # 公開日前の記事は sitemap に載せない（公開日を迎えて作り直すと載る）。
     # 記事ページは JS で転送しない（転送すると Google に「ページにリダイレクトがあります」と記録されるため。2026-10-22）
     pages += ["en/" + ("" if f == "index.html" else f) for f in EN_PAGES if f != "thanks.html"]
