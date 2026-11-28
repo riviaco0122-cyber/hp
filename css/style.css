@@ -3873,7 +3873,7 @@ body.is-media .mindex__title { font-family: var(--font-round); font-weight: 700;
 .mindex__who { grid-column: 2; font-size: 12.5px; line-height: 1.75; color: var(--m-sub); }
 .mindex__go { grid-column: 3; grid-row: 2; align-self: end; color: var(--m-green); }
 .mcover__sub { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 0 28px; padding: 14px 4px 0; font-size: var(--m-fs-small); color: var(--m-sub); }
-.mcover__sub a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--m-cta); font-family: var(--font-round); font-weight: 700; letter-spacing: 0.04em; }
+.mcover__sub a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--m-cta-h); font-family: var(--font-round); font-weight: 700; letter-spacing: 0.04em; } /* 小さな文字のリンクは、濃いテラコッタで 4.5:1 以上に */
 .mcover__sub a:hover { text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 899px) {
   .mcover__visual { min-height: 0; height: clamp(360px, 96vw, 420px); }

@@ -103,7 +103,7 @@
       "id": "media-top-lead",
       "status": "baseline",
       "page": "media.html",
-      "selector": ".mtop__lead",
+      "selector": ".mcover__lead",
       "note": "メディアのトップのリード（lines_html）",
       "expect": {
         "375": [
